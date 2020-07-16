@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Reservation</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="modal.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="topnav" id="myTopnav">
+      <div class="header-logo">
+      <img alt="logo" src="Logo.png" width="auto" height="auto" />
+    </div>
+    <div class="main-navbar">
+      
+      <a href="#" class="active"><span>Home</span></a>
+      <a href="#"><span>Event Details</span></a>
+      <a href="#"><span>About Us</span></a>
+      <a href="#"><span>Contact</span></a>
+      <a href="#"><span>Past Events</span></a>
+      </a>
+    </div>
+    </div>
+  </div>
+    <main>
+      <div class="hero-section">
+        <div class="hero-content">
+          <h1 class="hero-headline">
+            US Nationwide <br>
+            Game-a-Thon
+          </h1>
+          <p class="hero-text">
+            Do you live to game? Our next gaming event is now accepting
+            reservations for players, but spots are limited.
+          </p>
+          <button class="btn-signup modal-btn">
+            sign up now
+          </button>
+        </div>
+        <div class="hero-img">
+          <img src="./bg_img.jpg" alt="img" />
+        </div>
+        <button class="btn-signup modal-btn">
+          sign up now
+        </button>
+      </div>
+
+      <div class="bground">
+        <div class="content">
+          <span class="close"></span>
+          <div class="modal-body">
+            <form
+              name="reserve"
+              action="index.html"
+              method="get"
+              onsubmit="return validate();"
+            >
+              <div
+                class="formData"
+                data-error="Please type 2+ characters for name"
+                data-error-visible="false"
+              >
+                <label>First Name</label><br />
+                <input
+                  class="text-control"
+                  type="text"
+                  id="first"
+                  name="first"
+                  minlength="2"
+                /><br />
+              </div>
+              <div
+                class="formData"
+                data-error="Please type 2+ characters for name"
+                data-error-visible="false"
+              >
+                <label>Last Name</label><br />
+                <input
+                  class="text-control"
+                  type="text"
+                  id="last"
+                  name="last"
+                /><br />
+              </div>
+              <div
+                class="formData"
+                data-error="Please enter a valid email"
+                data-error-visible="false"
+              >
+                <label>Email</label><br />
+                <input
+                  class="text-control"
+                  type="email"
+                  id="email"
+                  name="email"
+                /><br />
+              </div>
+              <div
+                class="formData"
+                data-error="Please enter a valid birth date"
+                data-error-visible="false"
+              >
+                <label>Birthdate</label><br />
+                <input
+                  class="text-control"
+                  type="date"
+                  id="birthdate"
+                  name="birthdate"
+                /><br />
+              </div>
+              <div
+                class="formData"
+                data-error="Please enter a number"
+                data-error-visible="false"
+              >
+                <label>How many tournaments have you attended? </label><br />
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+              </div>
+              <p class="text-label">Which location?</p>
+              <div
+                class="formData"
+                data-error="You must select one"
+                data-error-visible="false"
+              >
+                <input
+                  class="checkbox-input"
+                  type="radio"
+                  id="location1"
+                  name="location"
+                  value="New York"
+                  checked
+                />
+                <label class="checkbox-label" for="location1">
+                  <span class="checkbox-icon"></span>
+                  New York</label
+                >
+                <input
+                  class="checkbox-input"
+                  type="radio"
+                  id="location2"
+                  name="location"
+                  value="San Franciscos"
+                />
+                <label class="checkbox-label" for="location2">
+                  <span class="checkbox-icon"></span>
+                  San Franciscos</label
+                >
+                <input
+                  class="checkbox-input"
+                  type="radio"
+                  id="location3"
+                  name="location"
+                  value="Seattle"
+                />
+                <label class="checkbox-label" for="location3">
+                  <span class="checkbox-icon"></span>
+                  Seattle</label
+                >
+                <input
+                  class="checkbox-input"
+                  type="radio"
+                  id="location4"
+                  name="location"
+                  value="Chicago"
+                />
+                <label class="checkbox-label" for="location4">
+                  <span class="checkbox-icon"></span>
+                  Chicago</label
+                >
+                <input
+                  class="checkbox-input"
+                  type="radio"
+                  id="location5"
+                  name="location"
+                  value="Boston"
+                />
+                <label class="checkbox-label" for="location5">
+                  <span class="checkbox-icon"></span>
+                  Boston</label
+                >
+                <input
+                  class="checkbox-input"
+                  type="radio"
+                  id="location6"
+                  name="location"
+                  value="Portland"
+                />
+                <label class="checkbox-label" for="location6">
+                  <span class="checkbox-icon"></span>
+                  Portland</label
+                >
+              </div>
+
+              <div
+                class="formData"
+                data-error="You must pick a value"
+                data-error-visible="false"
+              >
+                <input
+                  class="checkbox-input"
+                  type="checkbox"
+                  id="checkbox1"
+                  checked
+                />
+                <label class="checkbox2-label" for="checkbox1" required>
+                  <span class="checkbox-icon"></span>
+                  I have read and I agree to GameOn's terms and conditions.
+                </label>
+                <br />
+                <input class="checkbox-input" type="checkbox" id="checkbox2" />
+                <label class="checkbox2-label" for="checkbox2">
+                  <span class="checkbox-icon"></span>
+                  Please sign me up to be notified about future events.
+                </label>
+                <br />
+              </div>
+              <input
+                class="btn-submit"
+                type="submit"
+                class="button"
+                value="Go"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p class="copyrights">
+        Copyright 2014 - 2020, GameOn Inc.
+      </p>
+    </footer>
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "topnav") {
+          x.className += " responsive";
+        } else {
+          x.className = "topnav";
+        }
+      }
+      </script>
+    <script src="modal.js"></script>
+  </body>
+</html>
