@@ -45,7 +45,8 @@ img {
   display: block;
   color: #000000;
   text-align: center;
-  padding: 14px 16px;
+  padding: 12px 12px;
+  margin: 5px;
   text-decoration: none;
   font-size: 20px;
   font-family: Roboto, sans-serif;
@@ -65,12 +66,6 @@ img {
 
 .topnav .icon {
   display: none;
-}
-
-.bars {
-  color: #FF001B;
-  overflow: visible;
-
 }
 
 @media screen and (max-width: 768px) {
@@ -95,6 +90,16 @@ img {
   }
 }
 
+
+
+ @media screen and (max-width: 540px) {
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+    margin-top: -15px;
+  }
+} 
 
 main {
   font-size: 130%;
