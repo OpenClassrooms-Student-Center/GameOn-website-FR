@@ -24,7 +24,7 @@
       <a href="#"><span>Contact</span></a>
       <a href="#"><span>Past Events</span></a>
       <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars" style="color:#fe142f"></i>
+        <i class="fa fa-bars"></i>
       </a>
     </div>
     </div>
@@ -64,69 +64,69 @@
             >
               <div
                 class="formData"
-                data-error="Please type 2+ characters for name"
+                data-error=""
                 data-error-visible="false"
               >
-                <label>First Name</label><br />
+                <label>First Name</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="first"
                   name="first"
                   minlength="2"
-                /><br />
+                /><br>
               </div>
               <div
                 class="formData"
-                data-error="Please type 2+ characters for name"
+                data-error=""
                 data-error-visible="false"
               >
-                <label>Last Name</label><br />
+                <label>Last Name</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
-                /><br />
+                /><br>
               </div>
               <div
                 class="formData"
-                data-error="Please enter a valid email"
+                data-error=""
                 data-error-visible="false"
               >
-                <label>Email</label><br />
+                <label>Email</label><br>
                 <input
                   class="text-control"
                   type="email"
                   id="email"
                   name="email"
-                /><br />
+                /><br>
               </div>
               <div
                 class="formData"
-                data-error="Please enter a valid birth date"
+                data-error=""
                 data-error-visible="false"
               >
-                <label>Birthdate</label><br />
+                <label>Birthdate</label><br>
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                /><br />
+                /><br>
               </div>
               <div
                 class="formData"
-                data-error="Please enter a number"
+                data-error=""
                 data-error-visible="false"
               >
-                <label>How many tournaments have you attended? </label><br />
+                <label>How many tournaments have you attended? </label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
               <p class="text-label">Which location?</p>
               <div
                 class="formData"
-                data-error="You must select one"
+                data-error=""
                 data-error-visible="false"
               >
                 <input
@@ -199,7 +199,7 @@
 
               <div
                 class="formData"
-                data-error="You must pick a value"
+                data-error=""
                 data-error-visible="false"
               >
                 <input
@@ -212,13 +212,13 @@
                   <span class="checkbox-icon"></span>
                   I have read and I agree to GameOn's terms and conditions.
                 </label>
-                <br />
+                <br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Please sign me up to be notified about future events.
                 </label>
-                <br />
+                <br>
               </div>
               <input
                 class="btn-submit"
@@ -236,16 +236,6 @@
         Copyright 2014 - 2020, GameOn Inc.
       </p>
     </footer>
-    <script>
-      function editNav() {
-        var x = document.getElementById("myTopnav");
-        if (x.className === "topnav") {
-          x.className += " responsive";
-        } else {
-          x.className = "topnav";
-        }
-      }
-      </script>
     <script src="modal.js"></script>
   </body>
 </html>
