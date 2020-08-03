@@ -1,2 +1,2 @@
-#Starter code for students to use to complete Project 4.
-Download the entire project folder to your computer, keeping all files in the folders they're currently in. Open HTML file in a browser to view and to test any new code you add.
+# Code du projet 4 du parcours front-end
+Tééléchargez le projet en entier sur votre PC, en gardant la structure de fichiers actuelle. Ouvrez le fichier `index.htlm` dans votre navigateur pour voir et tester le nouveau code que vous modifiez.
