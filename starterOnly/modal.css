@@ -23,16 +23,16 @@ body {
 
 p {
   margin-bottom: 0;
-  padding: 0.5vw;
+  padding: 0.2vw;
 }
 
 img {
-  padding-right: 1rem;
+  padding: 0.4rem;
 }
 
 .topnav {
   overflow: hidden;
-  margin: 3.5%;
+  padding: 2rem 0;
 }
 .header-logo {
     float: left;
@@ -43,7 +43,7 @@ img {
 .topnav a {
   float: left;
   display: block;
-  color: #000000;
+  color: black;
   text-align: center;
   padding: 12px 12px;
   margin: 5px;
@@ -52,16 +52,18 @@ img {
   font-family: Roboto, sans-serif;
 }
 
+
 .topnav a:hover {
-  background-color: #ff0000;
-  color: #ffffff;
+  background-color: #fa1e1e;
+  color: white;
   border-radius: 15px;
 }
 
 .topnav a.active {
-  background-color: #ff0000;
+  background-color: #fa1e1e;
   color: #ffffff;
   border-radius: 15px;
+  font-weight: 600;
 }
 
 .topnav .icon {
@@ -73,6 +75,7 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
+      color: red;
   }
 }
 
@@ -97,7 +100,7 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+      color: red;
   }
 } 
 
