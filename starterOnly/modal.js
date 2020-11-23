@@ -21,4 +21,40 @@ function launchModal() {
 }
 
 
-1
+/****************** error for prénom ***************/
+
+let myForme = document.getElementById ('formData'); 
+
+
+myForme.addEventListener('submit' , function(e){  
+  
+  let prenom = document.getElementById ('first'); 
+  if (prenom.value.trim() == ""){
+   
+
+  let myError = document.getElementById ('error') ;
+  myError.innerHTML = "Veuillez entrer votre prénom.";
+  myError.style.color = 'red';
+  e.preventDefault();
+
+  }
+});
+/****************************************************/
+
+/****************** error for nom ***************/
+let myForme2 = document.getElementById ('formData');
+
+
+myForme2.addEventListener('submit' , function(e){
+  
+  let nom = document.getElementById ('last');
+  if (nom.value.trim() == ""){
+   
+
+  let myError = document.getElementById ('error2') ;
+  myError.innerHTML = "Veuillez entrer votre nom.";
+  myError.style.color = 'red';
+  e.preventDefault();
+
+  }
+});
