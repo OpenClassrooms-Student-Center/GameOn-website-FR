@@ -14,7 +14,7 @@
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
+      <img alt="logo" src="Logo.png"/>
     </div>
     <div class="main-navbar">
       
@@ -54,7 +54,7 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
-            <form
+            <form 
               id="modalBtn"
               name="reserve"
               action="index.html"
@@ -71,7 +71,7 @@
                   name="first"
                   minlength="2"
                 /><br>
-                <div id="error"></div>
+                <span id="error"></span>
               </div>
               <div
                 class="formData">
@@ -81,8 +81,9 @@
                   type="text"
                   id="last"
                   name="last"
+                  minlength="2"
                 /><br>
-                <div id="error2"></div>
+                <span id="error2"></span>
               </div>
               <div
                 class="formData">
@@ -93,6 +94,7 @@
                   id="email"
                   name="email"
                 /><br>
+                <span id="error3"></span>
               </div>
               <div
                 class="formData">
@@ -103,11 +105,13 @@
                   id="birthdate"
                   name="birthdate"
                 /><br>
+                <span id="error4"></span>
               </div>
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <span id="error5"></span>
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
@@ -177,7 +181,8 @@
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
                   Portland</label
-                >
+                ><br>
+                <span id="error6"></span>
               </div>
 
               <div
@@ -188,8 +193,8 @@
                   id="checkbox1"
                   checked
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
-                  <span class="checkbox-icon"></span>
+                <label class="checkbox2-label" for="checkbox1">
+                  <span class="checkbox-icon" id="termsChecked"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
@@ -199,11 +204,11 @@
                   Je Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
+                <span id="error7"></span>
               </div>
               <input
-                class="btn-submit"
+                class="btn-submit button"
                 type="submit"
-                class="button"
                 value="C'est parti"
               />
             </form>
