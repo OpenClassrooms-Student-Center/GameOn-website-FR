@@ -36,8 +36,6 @@ function validate(e) // this is the name of the function that whe are calling
     let error4 = document.getElementById('error4');
     let quantity = document.getElementById('quantity');
     let error5 = document.getElementById('error5');
-    let location1 = document.getElementById('location1');
-    let error6 = document.getElementById('error6');
 
     // CONDITIONS
     // if there is nothing in the input fild show the error message and prevent the page form refreshing
@@ -81,50 +79,33 @@ function validate(e) // this is the name of the function that whe are calling
         return false; 
       }
 
-      // Radio Buttons Validation
 
-    let valid = false;
+      //////////// City selector///////////////////////////////
+      let citySelector = document.getElementsByName("location");
+      let errorCity = document.getElementById('errorCity');
+      let check1 = 0;
 
-
-    if (document.getElementById('location1').checked)
-      {
-        valid = true;
-      }
-    else if (document.getElementById('location2').checked)
-      {
-        valid = true;
-      }
-    else if (document.getElementById('location3').checked)
-      {
-        valid = true;
-      }
-    else if (document.getElementById('location4').checked)
-      {
-        valid = true;
-      }
-    else if (document.getElementById('location5').checked)
-      {
-        valid = true;
-      }
-    else if (document.getElementById('location6').checked)
-      {
-        valid = true;
-      }
-
-      if (valid)
+      for(i=0; i<citySelector.length; i++)
         {
-          return true;
+          if (citySelector[i].checked)
+          {
+            check1++;
+            break;
+          }
         }
 
-      else (document.getElementById('error6'))
-        {
-          error6.innerHTML = "Vous devez choisir une option."
-          error6.style.color = "red";
-          error6.style.fontSize = "1rem";
-          return false;
-        };
-   
-};
+      if (check1){}
+      else{
+        errorCity.innerHTML = "Vous devez entrer votre date de naissance.";
+        errorCity.style.color = "red";
+        errorCity.style.fontSize = "1rem";
+        return false;
+      }
 
+
+
+
+
+};
 
 
