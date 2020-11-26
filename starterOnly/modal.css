@@ -70,7 +70,7 @@ img {
 }
 
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 801px) {
 
     h1.hero-headline
     {
@@ -81,7 +81,7 @@ img {
 }
 
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 944px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
@@ -496,6 +496,115 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+
+.submbit-confirmation-bg{
+position: fixed;
+top: 0;
+left: 0;
+height: 100vh;
+width: 100vw;
+background-color: rgba(91, 83, 133, 0.753);
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 1;
+display: none;
+}
+
+.confirmation-body{
+background-color: rgb(24, 23, 23);
+height: 60vh;
+width: 35vw;
+position: fixed;
+left: 0;
+right: 0;
+margin-left: auto;
+margin-right: auto;
+margin-top: 5rem;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 0.7rem;
+}
+
+.close-confirmation{
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 1.3rem;
+  border: #fff;
+  background-color: rgb(29, 28, 28);
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  color: #fff;
+}
+
+.close-confirmation:hover{
+  color: #afa6a6;
+}
+
+.close-btn{
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding: 0.5rem 2rem;
+  border-radius: 0.3rem;
+  background-color: rgb(224, 20, 20);
+  border: 0;
+  color: #fff;
+}
+
+.close-btn:hover{
+  background-color: rgb(216, 49, 49);
+}
+
+.confirmation-body p{
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+}
+
+@media screen and (max-width: 539px)
+{
+  .submbit-confirmation-bg{
+    position: fixed;
+    top: 3.5rem;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    display: none;
+    }
+    
+    .confirmation-body{
+    background-color: rgb(24, 23, 23);
+    height: 70vh;
+    width: 100%;
+    position: fixed;
+    top: 0rem;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    }
+}
+
 footer {
   padding-left: 2vw;
   padding-right: 2vw;

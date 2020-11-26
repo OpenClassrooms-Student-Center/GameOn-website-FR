@@ -17,13 +17,14 @@ const closeModal = document.querySelectorAll(".close");
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // close modal event
 closeModal.forEach((btn) => btn.addEventListener("click", hideModal));
+
+
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
 
 // close modal form
-
 function hideModal()
 {
   modalbg.style.display = "none";
@@ -31,10 +32,10 @@ function hideModal()
 
 
 
-// when the button submit is pressed verifie those inputs
+// When the button submit is pressed verifie those inputs
 function validate(e) // this is the name of the function that whe are calling
 {
-    // store the elements we want to change iside of a Variable
+    // Store the elements we want to change iside of a Variable
     let prenom = document.getElementById('first');
     let error = document.getElementById('error');
     let nom = document.getElementById('last');
@@ -46,17 +47,17 @@ function validate(e) // this is the name of the function that whe are calling
     let quantity = document.getElementById('quantity');
     let error5 = document.getElementById('error5');
 
-    // CONDITIONS
-    // if there is nothing in the input fild show the error message and prevent the page form refreshing
-    if ( prenom.value == "" || prenom.value == null)
+    //////////////// CONDITIONS  /////////////////
+    if ( prenom.value == "" || prenom.value == null)// if there is an empty string OR no value at all in the input...
       {
+        // ...add the html text to the ERROR class and add style 
         error.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du prenom.";
         error.style.color = "red";
         error.style.fontSize = "1rem";
-        return false;
+        return false;// dont send the form
       }
     
-    if ( nom.value == "" || nom.value == null) 
+    if ( nom.value == "" || nom.value == null)
       {
         error2.innerHTML = " Veuillez entrer 2 caractères ou plus pour le champ du nom. ";
         error2.style.color = "red";
@@ -72,7 +73,7 @@ function validate(e) // this is the name of the function that whe are calling
         return false;
       } 
       
-    if (birthdate.value == "" || birthdate.value == null)
+    if (birthdate.value == "" || birthdate.value == null) 
       {
         error4.innerHTML = "Vous devez entrer votre date de naissance.";
         error4.style.color = "red";
@@ -90,12 +91,13 @@ function validate(e) // this is the name of the function that whe are calling
 
 
       ////////////////////// City selector//////////////////////
-      /////////////////////////////////////////////////////////
+      
+      //DOM Elements
       let citySelector = document.getElementsByName("location");
       let errorCity = document.getElementById('errorCity');
       let check1 = 0;
 
-      for(i=0; i<citySelector.length; i++)
+      for(i=0; i<citySelector.length; i++)// FOR LOOP if the non of radio button is checked run te loop
         {
           if (citySelector[i].checked)
           {
@@ -112,26 +114,27 @@ function validate(e) // this is the name of the function that whe are calling
         return false;
       }
 
+
       ////////////////////// CHECKBOX /////////////////////////
       ////////////////////////////////////////////////////////
+
+      //DOM Elements
        let termsCheckbox = document.getElementById('termsChecked');
        let errorCheckbox = document.getElementById('errorCheckbox');
 
-
-       if ( !termsCheckbox.checked)
+       if ( !termsCheckbox.checked)// if checkbox it's not checked 
         {
+          // ...add the html text to the ERROR class and add style 
           errorCheckbox.innerHTML = "Vous devez accepter ça";
           errorCheckbox.style.color = "red";
           errorCheckbox.style.fontSize = "1rem";
-          return false;
+          return false;// dont send the form
         }
        else
-       {  
-          alert('GOOOOOOOOODDD');
-          return true;
+       {    
+          return true;//  send the form
        }
-
-            
-};
+          
+}
 
 
