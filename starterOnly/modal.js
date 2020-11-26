@@ -80,7 +80,8 @@ function validate(e) // this is the name of the function that whe are calling
       }
 
 
-      //////////// City selector///////////////////////////////
+      ////////////////////// City selector//////////////////////
+      /////////////////////////////////////////////////////////
       let citySelector = document.getElementsByName("location");
       let errorCity = document.getElementById('errorCity');
       let check1 = 0;
@@ -102,10 +103,26 @@ function validate(e) // this is the name of the function that whe are calling
         return false;
       }
 
+      ////////////////////// CHECKBOX /////////////////////////
+      ////////////////////////////////////////////////////////
+       let termsCheckbox = document.getElementById('termsChecked');
+       let errorCheckbox = document.getElementById('errorCheckbox');
 
 
+       if ( !termsCheckbox.checked)
+        {
+          errorCheckbox.innerHTML = "Vous devez accepter ça";
+          errorCheckbox.style.color = "red";
+          errorCheckbox.style.fontSize = "1rem";
+          return false;
+        }
+       else
+       {  
+          alert('GOOOOOOOOODDD');
+          return true;
+       }
 
-
+            
 };
 
 
