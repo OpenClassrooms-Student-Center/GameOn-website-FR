@@ -23,7 +23,6 @@ closeModal.forEach((btn) => btn.addEventListener("click", hideModal));
 function launchModal() {
   modalbg.style.display = "block";
 }
-
 // close modal form
 function hideModal()
 {
@@ -32,7 +31,7 @@ function hideModal()
 
 
 
-// When the button submit is pressed verifie those inputs
+// WHEN THE BUTTON SUBMIT IS PRESSED VERIFY THE INPUTS
 function validate(e) // this is the name of the function that whe are calling
 {
     // Store the elements we want to change iside of a Variable
@@ -91,7 +90,6 @@ function validate(e) // this is the name of the function that whe are calling
 
 
       ////////////////////// City selector//////////////////////
-      
       //DOM Elements
       let citySelector = document.getElementsByName("location");
       let errorCity = document.getElementById('errorCity');
@@ -116,8 +114,6 @@ function validate(e) // this is the name of the function that whe are calling
 
 
       ////////////////////// CHECKBOX /////////////////////////
-      ////////////////////////////////////////////////////////
-
       //DOM Elements
        let termsCheckbox = document.getElementById('termsChecked');
        let errorCheckbox = document.getElementById('errorCheckbox');
@@ -130,11 +126,52 @@ function validate(e) // this is the name of the function that whe are calling
           errorCheckbox.style.fontSize = "1rem";
           return false;// dont send the form
         }
-       else
-       {    
-          return true;//  send the form
-       }
-          
+
+      ////////////////////// SHOW SUCCES DIV ////////////////////////////
+        let succesMessage = document.getElementById('confirmation-message');
+        let test1 = false;
+        let test2 = false;
+
+        if (test1 == test2)// show this message if test1 and test2 are equal
+        {
+          succesMessage.style.display = "block";// display the div which was hidden by default
+          modalbg.style.display = "none";// hide the form 
+          return false;
+        }
+   
+        
+        //store the selected DOM element
+        document.getElementById('close_button_succes').addEventListener("click", function()
+        {
+            alert("test");
+        });
+
 }
+
+        
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
