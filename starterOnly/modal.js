@@ -7,6 +7,8 @@ function editNav() {
   }
 }
 
+
+
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
@@ -17,7 +19,6 @@ const closeModal = document.querySelectorAll(".close");
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // close modal event
 closeModal.forEach((btn) => btn.addEventListener("click", hideModal));
-
 
 // launch modal form
 function launchModal() {
@@ -55,6 +56,7 @@ function validate(e) // this is the name of the function that whe are calling
         error.style.fontSize = "1rem";
         return false;// dont send the form
       }
+    else{error.innerHTML = " ";}
     
     if ( nom.value == "" || nom.value == null)
       {
@@ -63,15 +65,17 @@ function validate(e) // this is the name of the function that whe are calling
         error2.style.fontSize = "1rem";
         return false;
       }
-    
-     if ( email.value == "" || email.value == null)
+    else{error2.innerHTML = " ";}
+
+    if ( email.value == "" || email.value == null)
       {
         error3.innerHTML = "Veuillez entre votre adresse mail!";
         error3.style.color = "red";
         error3.style.fontSize = "1rem";
         return false;
       } 
-      
+    else{error3.innerHTML = "";}  
+
     if (birthdate.value == "" || birthdate.value == null) 
       {
         error4.innerHTML = "Vous devez entrer votre date de naissance.";
@@ -79,6 +83,7 @@ function validate(e) // this is the name of the function that whe are calling
         error4.style.fontSize = "1rem";
         return false; 
       }
+    else{error4.innerHTML = "";} 
 
     if (quantity.value == "" || quantity.value == null)
       {
@@ -87,6 +92,7 @@ function validate(e) // this is the name of the function that whe are calling
         error5.style.fontSize = "1rem";
         return false; 
       }
+    else{error5.innerHTML = "";}  
 
 
       ////////////////////// City selector//////////////////////
@@ -112,47 +118,62 @@ function validate(e) // this is the name of the function that whe are calling
         return false;
       }
 
-
       ////////////////////// CHECKBOX /////////////////////////
       //DOM Elements
-       let termsCheckbox = document.getElementById('termsChecked');
-       let errorCheckbox = document.getElementById('errorCheckbox');
+      let termsCheckbox = document.getElementById('termsChecked');
+      let errorCheckbox = document.getElementById('errorCheckbox');
 
-       if ( !termsCheckbox.checked)// if checkbox it's not checked 
-        {
-          // ...add the html text to the ERROR class and add style 
-          errorCheckbox.innerHTML = "Vous devez accepter ça";
-          errorCheckbox.style.color = "red";
-          errorCheckbox.style.fontSize = "1rem";
-          return false;// dont send the form
-        }
+      if ( !termsCheckbox.checked)// if checkbox it's not checked 
+       {
+         // ...add the html text to the ERROR class and add style 
+         errorCheckbox.innerHTML = "Vous devez accepter ça";
+         errorCheckbox.style.color = "red";
+         errorCheckbox.style.fontSize = "1rem";
+         return false;// dont send the form
+       }
+       else{errorCheckbox.innerHTML = "";} 
 
-      ////////////////////// SHOW SUCCES DIV ////////////////////////////
-        let succesMessage = document.getElementById('confirmation-message');
-        let test1 = false;
-        let test2 = false;
+     ////////////////////// SHOW SUCCES DIV ////////////////////////////
+       let succesMessage = document.getElementById('confirmation-message');
+       let test1 = false;
+       let test2 = false;
 
-        if (test1 == test2)// show this message if test1 and test2 are equal
-        {
-          succesMessage.style.display = "block";// display the div which was hidden by default
-          modalbg.style.display = "none";// hide the form 
-          return false;
-        }
-   
-        
-        //store the selected DOM element
-        document.getElementById('close_button_succes').addEventListener("click", function()
-        {
-            alert("test");
-        });
-
+       if (test1 == test2)// show this message if test1 and test2 are equal
+       {
+         succesMessage.style.display = "block";// display the div which was hidden by default
+         modalbg.style.display = "none";// hide the form 
+         return false;
+       }
+      
 }
 
-        
+    //////////////////  CLOSE THE SUCCES MESSAGE BOX /////////////////////
 
+    let closeButtonSucess = document.getElementById('close_button_succes');
+    let xCloseButton = document.getElementById('X-close');
+    let succesMessage = document.getElementById('confirmation-message');
 
+    //close succes message BUTTON
+    closeButtonSucess.addEventListener('click', () => {
+    if (succesMessage.style.display === "block")// if succes message box is visible
+    {
+    succesMessage.style.display = 'none';// hide it
+    }else{
+    succesMessage.style.display = 'none';// show it
+    }
+    })
 
-
+    //close succes message X icon
+    xCloseButton.addEventListener('click', () => {
+     if (succesMessage.style.display === "block")// if succes message box is visible
+       {
+         succesMessage.style.display = 'none';// hide it
+       }
+     else
+       {
+         succesMessage.style.display = 'none';// show it
+       }
+     })
 
    
 
