@@ -153,7 +153,7 @@ function validate(e) // this is the name of the function that whe are calling
     let xCloseButton = document.getElementById('X-close');
     let succesMessage = document.getElementById('confirmation-message');
 
-    //close succes message BUTTON
+    ////close succes message BUTTON
     closeButtonSucess.addEventListener('click', () => {
     if (succesMessage.style.display === "block")// if succes message box is visible
     {
@@ -163,7 +163,7 @@ function validate(e) // this is the name of the function that whe are calling
     }
     })
 
-    //close succes message X icon
+    ////close succes message X icon
     xCloseButton.addEventListener('click', () => {
      if (succesMessage.style.display === "block")// if succes message box is visible
        {
