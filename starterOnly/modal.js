@@ -30,9 +30,8 @@ function hideModal()
 
 
 // WHEN THE BUTTON SUBMIT IS PRESSED VERIFY THE INPUTS
-function validate(e) // this is the name of the function that whe are calling
+function validate()
 {
-    // Store the elements we want to change iside of a Variable
     let prenom = document.getElementById('first');
     let error = document.getElementById('error');
     let nom = document.getElementById('last');
@@ -92,19 +91,18 @@ function validate(e) // this is the name of the function that whe are calling
     else{error5.innerHTML = "";}  
 
 
-///////////////////////////// City selector////////////////////////////
-      let citySelector = document.getElementsByName("location");
-      let errorCity = document.getElementById('errorCity');
-      let check1 = false;
+    ///////////////////// City selector////////////////////////////
+    let citySelector = document.getElementsByName("location");
+    let errorCity = document.getElementById('errorCity');
+    let check1 = false;
 
-      for(i=0; i<citySelector.length; i++)// FOR LOOP if the non of radio button is checked run te loop
+      for(i=0; i<citySelector.length; i++)// FOR LOOP if the non of radio buttons is checked run te loop
         {
           if (citySelector[i].checked)
              {
                check1 = true;
              }
         }
-
       if (check1 == false)
          {
            errorCity.innerHTML = "Vous devez choisire la ville.";
@@ -117,57 +115,62 @@ function validate(e) // this is the name of the function that whe are calling
           errorCity.innerHTML = " ";
         }
 
-///////////////////////////// TERMS AND CONDITIONS ////////////////////////////////
-      let termsCheckbox = document.getElementById('termsChecked');
-      let errorCheckbox = document.getElementById('errorCheckbox');
+    ///////////////////////// TERMS AND CONDITIONS ////////////////////////////////
+    let termsCheckbox = document.getElementById('termsChecked');
+    let errorCheckbox = document.getElementById('errorCheckbox');
 
       if ( !termsCheckbox.checked)// if checkbox it's not checked 
        {
-         // ...add the html text to the ERROR class and add style 
          errorCheckbox.innerHTML = "Vous devez accepter les conditions d'utilisation.";
          errorCheckbox.style.color = "red";
          errorCheckbox.style.fontSize = "1rem";
-         return false;// dont send the form
+         return false;
        }
        else{errorCheckbox.innerHTML = "";} 
 }
 
-//////////////////////////////// SHOW SUCCES DIV ////////////////////////////
-     let succesMessage = document.getElementById('confirmation-message');
-     let test1 = false;
-     let test2 = false;
 
-     if (test1 == test2)// show this message if test1 and test2 are equal
-     {
-       succesMessage.style.display = "block";// display the div which was hidden by default
-       modalbg.style.display = "none";// hide the form 
-     }  
+
+//////////////////////////////// OPEN SUCCES DIV ////////////////////////////
+    let succesMessage = document.getElementById('confirmation-message');
+    let test1 = false;
+    let test2 = false;
+
+     if (test1 == test2)
+        {
+           succesMessage.style.display = "block";
+            modalbg.style.display = "none";
+        } 
+     else
+         {
+            succesMessage.style.display = "none";
+         } 
+
+
 
 ///////////////////////  CLOSE THE SUCCES MESSAGE BOX /////////////////////
-    let closeButtonSucess = document.getElementById('close_button_succes');
-    let xCloseButton = document.getElementById('X-close');
     
-//close succes message BUTTON
-    closeButtonSucess.addEventListener('click', () => {
-    if (succesMessage.style.display === "block")// if succes message box is visible
+    //close succes message BUTTON
+    document.getElementById('close_button_succes').addEventListener('click', () => {
+    if (succesMessage.style.display === "block")
         {
-          succesMessage.style.display = 'none';// hide it
+          succesMessage.style.display = 'none';
         }
     else
         {
-          succesMessage.style.display = 'none';// show it
+          succesMessage.style.display = 'none';
         }
     })
 
-//close succes message X icon
-    xCloseButton.addEventListener('click', () => {
-     if (succesMessage.style.display === "block")// if succes message box is visible
+    //close succes message X icon
+    document.getElementById('X-close').addEventListener('click', () => {
+     if (succesMessage.style.display === "block")
          {
-           succesMessage.style.display = 'none';// hide it
+           succesMessage.style.display = 'none';
          }
      else
         {
-           succesMessage.style.display = 'none';// show it
+           succesMessage.style.display = 'none';
         }
      })
 
