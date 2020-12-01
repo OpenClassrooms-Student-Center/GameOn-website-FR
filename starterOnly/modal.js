@@ -132,27 +132,23 @@ function validate(e) // this is the name of the function that whe are calling
          return false;// dont send the form
        }
        else{errorCheckbox.innerHTML = "";} 
-
-     ////////////////////// SHOW SUCCES DIV ////////////////////////////
-       let succesMessage = document.getElementById('confirmation-message');
-       let test1 = false;
-       let test2 = false;
-
-       if (test1 == test2)// show this message if test1 and test2 are equal
-       {
-         succesMessage.style.display = "block";// display the div which was hidden by default
-         modalbg.style.display = "none";// hide the form 
-         return false;
-       }
-      
 }
 
-    //////////////////  CLOSE THE SUCCES MESSAGE BOX /////////////////////
+     ////////////////////// SHOW SUCCES DIV ////////////////////////////
+     let succesMessage = document.getElementById('confirmation-message');
+     let test1 = false;
+     let test2 = false;
 
+     if (test1 == test2)// show this message if test1 and test2 are equal
+     {
+       succesMessage.style.display = "block";// display the div which was hidden by default
+       modalbg.style.display = "none";// hide the form 
+     }  
+
+    //////////////////  CLOSE THE SUCCES MESSAGE BOX /////////////////////
     let closeButtonSucess = document.getElementById('close_button_succes');
     let xCloseButton = document.getElementById('X-close');
-    let succesMessage = document.getElementById('confirmation-message');
-
+    
     ////close succes message BUTTON
     closeButtonSucess.addEventListener('click', () => {
     if (succesMessage.style.display === "block")// if succes message box is visible
