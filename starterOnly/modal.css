@@ -23,16 +23,16 @@ body {
 
 p {
   margin-bottom: 0;
-  padding: 0.5vw;
+  padding: 0.2vw;
 }
 
 img {
-  padding-right: 1rem;
+  padding: 0.4rem;
 }
 
 .topnav {
   overflow: hidden;
-  margin: 3.5%;
+  padding: 2rem 0;
 }
 .header-logo {
     float: left;
@@ -43,7 +43,7 @@ img {
 .topnav a {
   float: left;
   display: block;
-  color: #000000;
+  color: black;
   text-align: center;
   padding: 12px 12px;
   margin: 5px;
@@ -52,27 +52,41 @@ img {
   font-family: Roboto, sans-serif;
 }
 
-.topnav a:hover {
-  background-color: #ff0000;
-  color: #ffffff;
+.topnav a:hover:not(.icon) {
+  background-color: red;
+  color: white;
   border-radius: 15px;
 }
 
 .topnav a.active {
-  background-color: #ff0000;
+  background-color: #fa1e1e;
   color: #ffffff;
   border-radius: 15px;
+  font-weight: 600;
 }
 
 .topnav .icon {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+
+@media screen and (min-width: 801px) {
+
+    h1.hero-headline
+    {
+    font-size: 5vw;
+    font-weight: normal;
+    width: 43vw;
+    }
+}
+
+
+@media screen and (max-width: 944px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
+    color: red;
   }
 }
 
@@ -88,17 +102,28 @@ img {
     display: block;
     text-align: left;
   }
+    
 }
-
-
 
  @media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    color: red;
   }
+  
+.header-logo img
+  {
+    width: 45vw;
+    padding: 1rem;
+  }
+     
+.topnav
+ {
+    padding: 0.2rem
+ }
+
 } 
 
 main {
@@ -405,13 +430,11 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   overflow: hidden;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
-  margin-bottom: 10px;
 }
 .hero-content {
   padding: 51px 67px;
@@ -420,7 +443,6 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -436,15 +458,16 @@ input[data-error]::after {
   z-index: 1;
 }
 .hero-headline {
-  font-size: 6rem;
+  font-size: 5vw;
   font-weight: normal;
-  white-space: nowrap;
+  width: auto;
 }
 .hero-text {
   width: 146%;
   font-weight: normal;
-  margin-top: 57px;
+  margin-top: 1.8rem;
   padding: 0;
+  font-size: 2vw;
 }
 .btn-signup {
   outline: none;
@@ -466,17 +489,126 @@ input[data-error]::after {
 .copyrights {
   color: #fe142f;
   padding: 0;
-  font-size: 1rem;
-  margin: 60px 0 30px;
+  font-size: 0.7rem;
+  margin: 20px 0 20px;
   font-weight: bolder;
 }
 .hero-section > .btn-signup {
   display: none;
 }
+
+.submbit-confirmation-bg{
+position: fixed;
+top: 0;
+left: 0;
+height: 100vh;
+width: 100vw;
+background-color: rgba(91, 83, 133, 0.753);
+display: flex;
+align-items: center;
+justify-content: center;
+z-index: 1;
+display: none;
+}
+
+.confirmation-body{
+background-color: rgb(24, 23, 23);
+height: 60vh;
+width: 35vw;
+position: fixed;
+left: 0;
+right: 0;
+margin-left: auto;
+margin-right: auto;
+margin-top: 5rem;
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 0.7rem;
+}
+
+.close-confirmation{
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 1.3rem;
+  border: #fff;
+  background-color: rgb(29, 28, 28);
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  color: #fff;
+}
+
+.close-confirmation:hover{
+  color: #afa6a6;
+}
+
+.close-btn{
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  padding: 0.5rem 2rem;
+  border-radius: 0.3rem;
+  background-color: rgb(224, 20, 20);
+  border: 0;
+  color: #fff;
+}
+
+.close-btn:hover{
+  background-color: rgb(216, 49, 49);
+}
+
+.confirmation-body p{
+  position: absolute;
+  top: 40%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+}
+
+@media screen and (max-width: 539px)
+{
+  .submbit-confirmation-bg{
+    position: fixed;
+    top: 3.5rem;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    display: none;
+    }
+    
+    .confirmation-body{
+    background-color: rgb(24, 23, 23);
+    height: 70vh;
+    width: 100%;
+    position: fixed;
+    top: 0rem;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0;
+    }
+}
+
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
-  margin: 0 20px;
+  margin: 0 10px;
 }
 @media screen and (max-width: 800px) {
   .hero-section {
@@ -495,21 +627,21 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
-    white-space: normal;
+    font-size: 8vw;
+    text-align: center;
   }
   .hero-text {
-    width: unset;
-    font-size: 1.5rem;
+    width: 100%;
+    font-size: 4vw;
+    text-align: center;
   }
   .hero-img img {
     border-radius: 10px;
-    margin-top: 40px;
   }
   .hero-section > .btn-signup {
     display: block;
     margin: 32px auto 10px;
-    padding: 12px 35px;
+    padding: 8px 15px;
   }
   .copyrights {
     margin-top: 50px;
