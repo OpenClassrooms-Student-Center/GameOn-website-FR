@@ -7,9 +7,7 @@ function editNav() {
   }
 }
 
-
-
-// DOM Elements
+//////////////////// LAUNCH THE MODEL //////////////////////
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const myForme = document.querySelectorAll(".formData");
@@ -29,7 +27,6 @@ function hideModal()
 {
   modalbg.style.display = "none";
 }
-
 
 
 // WHEN THE BUTTON SUBMIT IS PRESSED VERIFY THE INPUTS
@@ -87,7 +84,7 @@ function validate(e) // this is the name of the function that whe are calling
 
     if (quantity.value == "" || quantity.value == null)
       {
-        error5.innerHTML = "Rengseigner les info neccaiser";
+        error5.innerHTML = "Vous devez remplir les informations necceaire";
         error5.style.color = "red";
         error5.style.fontSize = "1rem";
         return false; 
@@ -95,38 +92,39 @@ function validate(e) // this is the name of the function that whe are calling
     else{error5.innerHTML = "";}  
 
 
-      ////////////////////// City selector//////////////////////
-      //DOM Elements
+///////////////////////////// City selector////////////////////////////
       let citySelector = document.getElementsByName("location");
       let errorCity = document.getElementById('errorCity');
-      let check1 = 0;
+      let check1 = false;
 
       for(i=0; i<citySelector.length; i++)// FOR LOOP if the non of radio button is checked run te loop
         {
           if (citySelector[i].checked)
-          {
-            check1++;
-            break;
-          }
+             {
+               check1 = true;
+             }
         }
 
-      if (check1){}
-      else{
-        errorCity.innerHTML = "Vous devez entrer votre date de naissance.";
-        errorCity.style.color = "red";
-        errorCity.style.fontSize = "1rem";
-        return false;
-      }
+      if (check1 == false)
+         {
+           errorCity.innerHTML = "Vous devez choisire la ville.";
+           errorCity.style.color = "red";
+           errorCity.style.fontSize = "1rem";
+           return false;
+         }
+      else
+        {
+          errorCity.innerHTML = " ";
+        }
 
-      ////////////////////// CHECKBOX /////////////////////////
-      //DOM Elements
+///////////////////////////// TERMS AND CONDITIONS ////////////////////////////////
       let termsCheckbox = document.getElementById('termsChecked');
       let errorCheckbox = document.getElementById('errorCheckbox');
 
       if ( !termsCheckbox.checked)// if checkbox it's not checked 
        {
          // ...add the html text to the ERROR class and add style 
-         errorCheckbox.innerHTML = "Vous devez accepter ça";
+         errorCheckbox.innerHTML = "Vous devez accepter les conditions d'utilisation.";
          errorCheckbox.style.color = "red";
          errorCheckbox.style.fontSize = "1rem";
          return false;// dont send the form
@@ -134,7 +132,7 @@ function validate(e) // this is the name of the function that whe are calling
        else{errorCheckbox.innerHTML = "";} 
 }
 
-     ////////////////////// SHOW SUCCES DIV ////////////////////////////
+//////////////////////////////// SHOW SUCCES DIV ////////////////////////////
      let succesMessage = document.getElementById('confirmation-message');
      let test1 = false;
      let test2 = false;
@@ -145,30 +143,32 @@ function validate(e) // this is the name of the function that whe are calling
        modalbg.style.display = "none";// hide the form 
      }  
 
-    //////////////////  CLOSE THE SUCCES MESSAGE BOX /////////////////////
+///////////////////////  CLOSE THE SUCCES MESSAGE BOX /////////////////////
     let closeButtonSucess = document.getElementById('close_button_succes');
     let xCloseButton = document.getElementById('X-close');
     
-    ////close succes message BUTTON
+//close succes message BUTTON
     closeButtonSucess.addEventListener('click', () => {
     if (succesMessage.style.display === "block")// if succes message box is visible
-    {
-    succesMessage.style.display = 'none';// hide it
-    }else{
-    succesMessage.style.display = 'none';// show it
-    }
+        {
+          succesMessage.style.display = 'none';// hide it
+        }
+    else
+        {
+          succesMessage.style.display = 'none';// show it
+        }
     })
 
-    ////close succes message X icon
+//close succes message X icon
     xCloseButton.addEventListener('click', () => {
      if (succesMessage.style.display === "block")// if succes message box is visible
-       {
-         succesMessage.style.display = 'none';// hide it
-       }
+         {
+           succesMessage.style.display = 'none';// hide it
+         }
      else
-       {
-         succesMessage.style.display = 'none';// show it
-       }
+        {
+           succesMessage.style.display = 'none';// show it
+        }
      })
 
    
