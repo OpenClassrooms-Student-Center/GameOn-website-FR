@@ -19,5 +19,12 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.style.display = "block";
 }
+function closeForm(){
+  modalbg.style.display = "none";
+}
+
+function confirm() {
+  alert("Votre inscription à bien été envoyé =)")
+}
 
 
