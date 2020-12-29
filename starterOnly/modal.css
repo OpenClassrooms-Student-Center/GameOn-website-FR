@@ -39,6 +39,11 @@ img {
     float: left;
 }
 
+.header-logo img{
+    width: auto;
+    height: auto;
+}
+
 .main-navbar {
     float: right;
 }
@@ -518,6 +523,18 @@ input[data-error]::after {
     display: none;
 }
 
+#confirm-message{
+    display: none;
+    padding: 65% 10% 0 10%;
+}
+
+#confirm-message p{
+    margin-bottom: 95%;
+    font-size: larger;
+    text-align: center;
+    font-weight: normal;
+}
+
 footer {
     padding-left: 2vw;
     padding-right: 2vw;
@@ -550,7 +567,7 @@ footer {
     }
 
     .hero-text {
-        width: 314px;
+        width: 400px;
         font-size: 1.5rem;
     }
 

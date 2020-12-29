@@ -11,7 +11,7 @@
 <body>
     <div class="topnav" id="myTopnav">
         <div class="header-logo">
-            <img alt="logo" src="Logo.png" width="auto" height="auto"/>
+            <img alt="logo" src="Logo.png"/>
         </div>
         <div class="main-navbar">
             <a href="#" class="active"><span>Accueil</span></a>
@@ -50,7 +50,7 @@
             <div class="content">
                 <span class="close" onclick="closeForm()"></span>
                 <div class="modal-body">
-                    <form name="reserve" action="index.html" method="get" onsubmit="confirm(); return validate();">
+                    <form id="formulaire" name="reserve" action="index.html" method="get">
                         <div class="formData">
                             <label for="first">Prénom</label><br>
                             <input
@@ -154,6 +154,10 @@
                         </div>
                         <input class="button btn-submit" type="submit" value="C'est parti"/>
                     </form>
+                    <div id="confirm-message">
+                        <p>Nous vous remercions d'avoir envoyé vos informations d'inscriptions</p>
+                        <input class="button btn-submit" type="button" value="Close" onclick="closeForm();"/>
+                    </div>
                 </div>
             </div>
         </div>
