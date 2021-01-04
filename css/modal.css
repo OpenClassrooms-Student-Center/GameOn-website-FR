@@ -1,3 +1,5 @@
+/* partie générale */
+ 
 :root {
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
@@ -8,6 +10,7 @@
   margin: 0;
   padding: 0;
 }
+
 /* Landing Page */
 
 body {
@@ -29,6 +32,8 @@ p {
 img {
   padding-right: 1rem;
 }
+
+/* Partie navbar & mise en page du logo en header */
 
 .topnav {
   overflow: hidden;
@@ -90,7 +95,6 @@ img {
   }
 }
 
-
 @media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
@@ -99,6 +103,8 @@ img {
     margin-top: -15px;
   }
 } 
+
+/* partie formulaire */
 
 main {
   font-size: 130%;
