@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  
+<head>
     <meta charset="utf-8" />
     <title>Reservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -11,27 +12,34 @@
       rel="stylesheet"
     />
   </head>
+  
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
+        <img alt="logo" src="Logo.png" width="auto" height="auto" />
+      </div>
+    
+      <div class="main-navbar">
+        <a href="#" class="active"><span>Accueil</span></a>
+        <a href="#"><span>Détails de l'évènement</span></a>
+        <a href="#"><span>À propos</span></a>
+        <a href="#"><span>Contact</span></a>
+        <a href="#"><span>Évènements passés</span></a>
+        
+        <!-- la balise <a> ci-dessous permet de changer la navbar 
+          de la partie desktop en menu "hamburger" pour la partie mobile -->
+        <a href="javascript:void(0);" class="icon" onclick="editNav()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
     </div>
-    <div class="main-navbar">
-      
-      <a href="#" class="active"><span>Accueil</span></a>
-      <a href="#"><span>Détails de l'évènement</span></a>
-      <a href="#"><span>À propos</span></a>
-      <a href="#"><span>Contact</span></a>
-      <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars"></i>
-      </a>
-    </div>
-    </div>
-  </div>
+
     <main>
+
       <div class="hero-section">
+
         <div class="hero-content">
+
           <h1 class="hero-headline">
             Marathon national<br>
             de jeux vidéos
@@ -40,16 +48,21 @@
             Vous aimez jouer ? Notre prochain évènement gaming est ouvert
             aux réservations... Places limitées !
           </p>
-          <button class="btn-signup modal-btn">
+
+          <button class="btn-signup modal-btn"> <!-- bouton de la partie desktop -->
             je m'inscris
           </button>
+
         </div>
+
         <div class="hero-img">
           <img src="./bg_img.jpg" alt="img" />
         </div>
-        <button class="btn-signup modal-btn">
+
+        <button class="btn-signup modal-btn"> <!-- bouton de la partie mobile -->
           je m'inscris
         </button>
+
       </div>
 
       <div class="bground">
@@ -210,11 +223,14 @@
         </div>
       </div>
     </main>
+    
     <footer>
       <p class="copyrights">
         Copyright 2014 - 2020, GameOn Inc.
       </p>
     </footer>
+
     <script src="modal.js"></script>
+
   </body>
 </html>
