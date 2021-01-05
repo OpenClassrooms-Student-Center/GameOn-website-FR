@@ -40,10 +40,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -79,6 +79,8 @@ doit être caché en desktop d'où le display: none */
   .topnav a.icon {
     float: right;
     display: block;
+    align-items: center;
+    color: #ff0000;
   }
 }
 
@@ -101,9 +103,20 @@ doit être caché en desktop d'où le display: none */
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    align-items: center;
+    color: #ff0000;
   }
 } 
+
+@media screen and (max-width: 540px) {
+  .topnav {
+    margin-top: 20px;
+  }
+
+  .header-logo {
+    margin-left: 15px;
+  }
+}
 
 /* les media screen ci-dessus permettent de gérer l'affichage du menu en version mobile */
 
@@ -112,15 +125,11 @@ Pour la partie menu :
 - faire attention à l'alignenement entre le logo et le symbole menu (utiliser la propriété align-items :center)
 - changer la couleur du symbole menu pour qu'il passe en rouge comme sur la maquette
 - mettre un peu plus de marges en haut (appliquer un margin-top en header)
+
+--> fait pour tablette & mobile
 */
 
 /* partie formulaire */
-
-/*TO DO :
-Pour la partie titre et présentation : 
-- gérer l'affichage du titre et du texte de présentation en version mobile
-- comprendre pourquoi présence d'une majuscule sur le M de "Je m'inscris" -> à supprimer
-*/
 
 main {
   font-size: 130%;
@@ -150,16 +159,8 @@ main {
   background: #3876ac;
 }
 
-.footer {
-  margin: 20px;
-  padding: 10px;
-  font-family: var(--font-slab);
-}
 
-/* fin de la partie qui est visible sur la page d'accueil du site 
-(header + navbar + présentation + bouton + img & footer) */
-
-/* Modal form */
+/* Partie formulaire d'inscription */
 
 .button {
   background: #fe142f;
@@ -173,11 +174,11 @@ main {
 
 .button:hover {
   background: #3876ac;
-}
+} /* le bouton en question est géré avec un input en HTML */
 
-.smFont {
+/*.smFont {
   font-size: 16px;
-}
+}  A QUOI CORRESPOND CETTE PARTIE ?????? n'apparait pas dans le code HTML */
 
 .bground {
   display: none;
@@ -457,34 +458,52 @@ input[data-error]::after {
   position: relative;
   z-index: 1;
 }
+
+/* partie titre + texte de présentation & @media screen */
+
+/*TO DO :
+Pour la partie titre et présentation : 
+- gérer l'affichage du titre et du texte de présentation en version mobile
+- comprendre pourquoi présence d'une majuscule sur le M de "Je m'inscris" -> à supprimer
+
+--> Ok pour tablette mais pas encore pour mobile - comprendre pourquoi ça ne fonctionne pas
+*/
+
 .hero-headline {
+  width: 100%;
   font-size: 6rem;
   font-weight: normal;
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
+  width: 170%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
 }
+
+/* bouton inscription */
 .btn-signup {
   outline: none;
-  text-transform: capitalize;
+  /*text-transform: capitalize;*/ /* permet de supprimer la majuscule du M de "Je m'inscris" */
   font-size: 1.3rem;
   padding: 15px 23px;
   margin: 0;
   margin-top: 59px;
-}
+} 
+
+/* Correspond à l'image de la page d'accueil */
 .hero-img {
   grid-column: span 8;
 }
+
 .hero-img img {
   width: 100%;
   height: 100%;
   display: block;
   padding: 0;
 }
+
 .copyrights {
   color: #fe142f;
   padding: 0;
@@ -492,52 +511,84 @@ input[data-error]::after {
   margin: 60px 0 30px;
   font-weight: bolder;
 }
+
 .hero-section > .btn-signup {
   display: none;
 }
+
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+/* partie @media screen des fonctions CSS ci-dessus */
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
     box-shadow: unset;
   }
+
   .hero-content {
     background: #fff;
     color: #000;
     padding: 20px;
   }
+
   .hero-content::after {
     content: unset;
   }
+
   .hero-content .btn-signup {
     display: none;
   }
-  .hero-headline {
-    font-size: 4.5rem;
-    white-space: normal;
-  }
-  .hero-text {
-    width: unset;
-    font-size: 1.5rem;
-  }
+  
   .hero-img img {
     border-radius: 10px;
-    margin-top: 40px;
+    margin-top: 20px;
   }
   .hero-section > .btn-signup {
     display: block;
     margin: 32px auto 10px;
     padding: 12px 35px;
   }
+
   .copyrights {
-    margin-top: 50px;
+    margin-top: 5px;
     text-align: center;
   }
 }
+
+@media screen and (min-width: 250px) and (max-width: 667px) {
+
+  .hero-headline {
+    font-size: 1.5rem;
+    font-weight: bolder;
+    text-align: center;
+  
+  }
+  .hero-text {
+    width: 50%;
+    font-size: 0.5rem;
+    text-align: justify;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero-headline {
+    font-size: 3.5rem;
+    text-align: center;
+    font-weight: bolder;
+  
+  }
+  .hero-text {
+    width: 100%;
+    font-size: 1.2rem;
+    text-align: justify;
+  }
+} /* Affichage ok pour la partie tablette */
+
 
 @keyframes modalopen {
   from {
