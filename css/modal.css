@@ -71,7 +71,8 @@ img {
 
 .topnav .icon {
   display: none;
-}
+} /* correspond au menu hamburger de la partie mobile
+doit être caché en desktop d'où le display: none */
 
 @media screen and (max-width: 768px) {
   .topnav a {display: none;}
@@ -104,7 +105,22 @@ img {
   }
 } 
 
+/* les media screen ci-dessus permettent de gérer l'affichage du menu en version mobile */
+
+/*TO DO : 
+Pour la partie menu : 
+- faire attention à l'alignenement entre le logo et le symbole menu (utiliser la propriété align-items :center)
+- changer la couleur du symbole menu pour qu'il passe en rouge comme sur la maquette
+- mettre un peu plus de marges en haut (appliquer un margin-top en header)
+*/
+
 /* partie formulaire */
+
+/*TO DO :
+Pour la partie titre et présentation : 
+- gérer l'affichage du titre et du texte de présentation en version mobile
+- comprendre pourquoi présence d'une majuscule sur le M de "Je m'inscris" -> à supprimer
+*/
 
 main {
   font-size: 130%;
@@ -116,8 +132,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -141,6 +155,9 @@ main {
   padding: 10px;
   font-family: var(--font-slab);
 }
+
+/* fin de la partie qui est visible sur la page d'accueil du site 
+(header + navbar + présentation + bouton + img & footer) */
 
 /* Modal form */
 

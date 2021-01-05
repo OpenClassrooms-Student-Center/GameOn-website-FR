@@ -70,9 +70,10 @@
 
       </div>
 
+      <!-- partie formulaire d'inscription-->
       <div class="bground"> <!-- permet de mettre une couleur de fond à la zone -->
         <div class="content">
-          <span class="close"></span>
+          <span class="close"></span> <!-- zone permettant de fermer la fenetre-->
           <div class="modal-body">
             <form
               name="reserve"
@@ -82,8 +83,7 @@
             > <!-- info perso : <form> représente une section d'un document qui contient 
               des contrôles interactifs permettant à un utilisateur d'envoyer 
               des données à un serveur web.-->
-              <div
-                class="formData">
+              <div class="formData">
                 <label>Prénom</label><br> <!-- ne doit contenir que des lettres -->
                 <input
                   class="text-control"
@@ -96,8 +96,7 @@
                 /><br>
               </div>
 
-              <div
-                class="formData">
+              <div class="formData">
                 <label>Nom</label><br> <!-- ne doit contenir que des lettres -->
                 <input
                   class="text-control"
@@ -109,8 +108,7 @@
                 /><br>
               </div>
 
-              <div
-                class="formData">
+              <div class="formData">
                 <label>E-mail</label><br> <!-- peut contenir des lettres, chiffres et caractères spéciaux -->
                 <input
                   class="text-control"
@@ -122,8 +120,7 @@
                 /><br>
               </div>
 
-              <div
-                class="formData">
+              <div class="formData">
                 <label>Date de naissance</label><br>
                 <input
                   class="text-control"
@@ -133,8 +130,7 @@
                 /><br>
               </div>
 
-              <div
-                class="formData">
+              <div class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br> <!-- ne doit contenir que des chiffres -->
                 <input 
                 type="number" 
@@ -148,9 +144,9 @@
                 /><br>
               </div>
 
-              <div
-                class="formData">
+              <div class="formData">
                 <p class="text-label">Quelles villes ?</p>
+                
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -158,10 +154,13 @@
                   name="location"
                   value="New York"
                 />
-                <label class="checkbox-label" for="location1">
+                <label 
+                class="checkbox-label" 
+                for="location1">
                   <span class="checkbox-icon"></span>
-                  New York</label
-                >
+                  New York
+                </label>
+                
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -169,10 +168,13 @@
                   name="location"
                   value="San Francisco"
                 />
-                <label class="checkbox-label" for="location2">
+                <label 
+                class="checkbox-label" 
+                for="location2">
                   <span class="checkbox-icon"></span>
-                  San Francisco</label
-                >
+                  San Francisco
+                </label>
+                
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -180,10 +182,13 @@
                   name="location"
                   value="Seattle"
                 />
-                <label class="checkbox-label" for="location3">
+                <label 
+                class="checkbox-label" 
+                for="location3">
                   <span class="checkbox-icon"></span>
-                  Seattle</label
-                >
+                  Seattle
+                </label>
+                
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -191,10 +196,13 @@
                   name="location"
                   value="Chicago"
                 />
-                <label class="checkbox-label" for="location4">
+                <label 
+                class="checkbox-label" 
+                for="location4">
                   <span class="checkbox-icon"></span>
-                  Chicago</label
-                >
+                  Chicago
+                </label>
+                
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -202,10 +210,13 @@
                   name="location"
                   value="Boston"
                 />
-                <label class="checkbox-label" for="location5">
+                <label 
+                class="checkbox-label" 
+                for="location5">
                   <span class="checkbox-icon"></span>
-                  Boston</label
-                >
+                  Boston
+                </label>
+
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -213,38 +224,50 @@
                   name="location"
                   value="Portland"
                 />
-                <label class="checkbox-label" for="location6">
+                <label 
+                class="checkbox-label" 
+                for="location6">
                   <span class="checkbox-icon"></span>
-                  Portland</label
-                >
-              </div>
+                  Portland
+                </label>
 
-              <div
-                class="formData">
+              </div> <!-- fin de la liste des villes -->
+
+              <div class="formData"> <!-- infos complémentaires (conditions utilisation + newsletter)-->
                 <input
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
                   checked
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label 
+                class="checkbox2-label" 
+                for="checkbox1" required>
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
-                <input class="checkbox-input" type="checkbox" id="checkbox2" />
-                <label class="checkbox2-label" for="checkbox2">
+                <input 
+                class="checkbox-input" 
+                type="checkbox" 
+                id="checkbox2" 
+                />
+                <label 
+                class="checkbox2-label" 
+                for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
               </div>
+              
               <input
                 class="btn-submit"
                 type="submit"
                 class="button"
                 value="C'est parti"
-              />
+              /> <!-- bouton pour soumettre son formulaire -->
+                <!-- ce dernier doit envoyer sur le message de confirmation qui se trouve ci-dessous -->
             </form>
           </div>
         </div>
@@ -266,13 +289,13 @@
 
     </main> 
     
-    <footer>
+    <footer> <!-- partie mentions légales -->
       <p class="copyrights">
         Copyright 2014 - 2020, GameOn Inc.
       </p>
     </footer>
 
-    <script src="js/modal.js"></script>
+    <script src="js/modal.js"></script> <!-- lien vers le fichier JS -->
 
   </body>
 </html>
