@@ -5,8 +5,14 @@
     <meta charset="utf-8" />
     <title>Reservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="css/modal.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link 
+      rel="stylesheet" 
+      href="css/modal.css" 
+    />
+    <link 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet" 
+    />
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans"
       rel="stylesheet"
@@ -73,7 +79,7 @@
       <!-- partie formulaire d'inscription-->
       <div class="bground"> <!-- permet de mettre une couleur de fond à la zone -->
         <div class="content">
-          <span class="close"></span> <!-- zone permettant de fermer la fenetre-->
+          <span class="close" onClick="window.close()"></span> <!-- zone permettant de fermer la fenetre-->
           <div class="modal-body">
             <form
               name="reserve"
@@ -103,10 +109,17 @@
                   type="text"
                   id="last"
                   name="last"
+                  minlength="2" 
                   pattern="[a-zA-ZÀ-ÿ]"
                   placeholder="Smith"
-                /><br>
+                /><br> 
               </div>
+
+              <!-- 
+              minlength="2" : forcer les utilisateurs à utiliser plus de 2 caractères
+              placeholder : indiquer ce qui est attendu dans le champ
+              pattern : baliser les valeurs d'entrée attendues
+              -->
 
               <div class="formData">
                 <label>E-mail</label><br> <!-- peut contenir des lettres, chiffres et caractères spéciaux -->
@@ -128,10 +141,11 @@
                   id="birthdate"
                   name="birthdate"
                 /><br>
-              </div>
+              </div> <!-- remarque présence d'un calendrier sur partie mobile 
+              et tablette -> à faire apparaitre sur la partie desktop -->
 
               <div class="formData">
-                <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br> <!-- ne doit contenir que des chiffres -->
+                <label class="text-label">À combien de tournois GameOn avez-vous déjà participé ?</label><br> <!-- ne doit contenir que des chiffres -->
                 <input 
                 type="number" 
                 class="text-control" 

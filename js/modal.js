@@ -1,3 +1,6 @@
+/* fonction permettant de gérer l'apparition et la
+disparition du mode menu hamburger
+*/ 
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -6,6 +9,7 @@ function editNav() {
     x.className = "topnav";
   }
 }
+
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
@@ -20,4 +24,4 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-
+// créer une fonction validate()
