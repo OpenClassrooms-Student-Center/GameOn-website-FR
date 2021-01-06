@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  
+<head>
+    <meta charset="utf-8" />
+    <title>Reservation</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link 
+      rel="stylesheet" 
+      href="css/modal.css" 
+    />
+    <link 
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet" 
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=DM+Sans"
+      rel="stylesheet"
+    />
+  </head>
+  
+  <body>
+    <div class="topnav" id="myTopnav">
+      <div class="header-logo">
+        <img alt="logo" src="img/Logo.png"/>
+      </div>
+    
+      <div class="main-navbar">
+        <a href="#" class="active"><span>Accueil</span></a>
+        <a href="#"><span>Détails de l'évènement</span></a>
+        <a href="#"><span>À propos</span></a>
+        <a href="#"><span>Contact</span></a>
+        <a href="#"><span>Évènements passés</span></a>
+
+        <!-- la balise <a> ci-dessous permet de changer la navbar 
+          de la partie desktop en menu "hamburger" pour la partie mobile -->
+        <a href="javascript:void(0);" class="icon" onclick="editNav()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </div>
+
+    <main> <!-- partie formulaire -->
+      <!-- info perso : L’élément <main> représente le contenu majoritaire 
+        du <body> du document. Le contenu principal de la zone est constitué de 
+        contenu directement en relation, ou qui étend le sujet principal du 
+        document ou de la fonctionnalité principale d'une application.
+      -->
+
+      <div class="hero-section"> <!-- dans cette div se trouve ce que est sur la page d'accueil -->
+
+        <div class="hero-content">
+
+          <h1 class="hero-headline">
+            Marathon national<br>
+            de jeux vidéos
+          </h1>
+          <p class="hero-text">
+            Vous aimez jouer ? Notre prochain évènement 
+            gaming est ouvert aux réservations... Places limitées !
+          </p>
+
+          <button class="btn-signup modal-btn"> <!-- bouton de la partie desktop -->
+            Je m'inscris
+          </button>
+
+        </div>
+
+        <div class="hero-img">
+          <img src="img/bg_img.jpg" alt="img"/>
+        </div>
+
+        <button class="btn-signup modal-btn"> <!-- bouton de la partie mobile -->
+          Je m'inscris
+        </button>
+
+      </div>
+
+      <!-- partie formulaire d'inscription-->
+      <div class="bground"> <!-- permet de mettre une couleur de fond à la zone -->
+        <div class="content">
+          <span class="close" onClick="window.close()"></span> <!-- zone permettant de fermer la fenetre-->
+          <div class="modal-body">
+            <form
+              name="reserve"
+              action="index.html"
+              method="get"
+              onsubmit="return validate();"
+            > <!-- info perso : <form> représente une section d'un document qui contient 
+              des contrôles interactifs permettant à un utilisateur d'envoyer 
+              des données à un serveur web.-->
+              <div class="formData">
+                <label>Prénom</label><br> <!-- ne doit contenir que des lettres -->
+                <input
+                  class="text-control"
+                  type="text"
+                  id="first"
+                  name="first"
+                  minlength="2"
+                  pattern="[a-zA-ZÀ-ÿ]"
+                  placeholder="Jane"
+                /><br>
+              </div>
+
+              <div class="formData">
+                <label>Nom</label><br> <!-- ne doit contenir que des lettres -->
+                <input
+                  class="text-control"
+                  type="text"
+                  id="last"
+                  name="last"
+                  minlength="2" 
+                  pattern="[a-zA-ZÀ-ÿ]"
+                  placeholder="Smith"
+                /><br> 
+              </div>
+
+              <!-- 
+              minlength="2" : forcer les utilisateurs à utiliser plus de 2 caractères
+              placeholder : indiquer ce qui est attendu dans le champ
+              pattern : baliser les valeurs d'entrée attendues
+              -->
+
+              <div class="formData">
+                <label>E-mail</label><br> <!-- peut contenir des lettres, chiffres et caractères spéciaux -->
+                <input
+                  class="text-control"
+                  type="email"
+                  id="email"
+                  name="email"
+                  pattern="[\w\.!#$%&'\*\+\-\/=?^`{|]+@([a-zA-Z0-9\-]+\.)+[a-zA-Z0-9]"
+                  placeholder="jane.smith@gmail.com"
+                /><br>
+              </div>
+
+              <div class="formData">
+                <label>Date de naissance</label><br>
+                <input
+                  class="text-control"
+                  type="date"
+                  id="birthdate"
+                  name="birthdate"
+                /><br>
+              </div> <!-- remarque présence d'un calendrier sur partie mobile 
+              et tablette -> à faire apparaitre sur la partie desktop -->
+
+              <div class="formData">
+                <label class="text-label">À combien de tournois GameOn avez-vous déjà participé ?</label><br> <!-- ne doit contenir que des chiffres -->
+                <input 
+                type="number" 
+                class="text-control" 
+                id="quantity" 
+                name="quantity" 
+                min="0" 
+                max="99"
+                placeholder="0"
+                /><br>
+              </div>
+
+              <div class="formData">
+                <p class="text-label">Quelles villes ?</p>
+                
+                <input
+                  class="checkbox-input"
+                  type="radio"
+                  id="location1"
+                  name="location"
+                  value="New York"
+                />
+                <label 
+                class="checkbox-label" 
+                for="location1">
+                  <span class="checkbox-icon"></span>
+                  New York
+                </label>
+                
+                <input
+                  class="checkbox-input"
+                  type="radio"
+                  id="location2"
+                  name="location"
+                  value="San Francisco"
+                />
+                <label 
+                class="checkbox-label" 
+                for="location2">
+                  <span class="checkbox-icon"></span>
+                  San Francisco
+                </label>
+                
+                <input
+                  class="checkbox-input"
+                  type="radio"
+                  id="location3"
+                  name="location"
+                  value="Seattle"
+                />
+                <label 
+                class="checkbox-label" 
+                for="location3">
+                  <span class="checkbox-icon"></span>
+                  Seattle
+                </label>
+                
+                <input
+                  class="checkbox-input"
+                  type="radio"
+                  id="location4"
+                  name="location"
+                  value="Chicago"
+                />
+                <label 
+                class="checkbox-label" 
+                for="location4">
+                  <span class="checkbox-icon"></span>
+                  Chicago
+                </label>
+                
+                <input
+                  class="checkbox-input"
+                  type="radio"
+                  id="location5"
+                  name="location"
+                  value="Boston"
+                />
+                <label 
+                class="checkbox-label" 
+                for="location5">
+                  <span class="checkbox-icon"></span>
+                  Boston
+                </label>
+
+                <input
+                  class="checkbox-input"
+                  type="radio"
+                  id="location6"
+                  name="location"
+                  value="Portland"
+                />
+                <label 
+                class="checkbox-label" 
+                for="location6">
+                  <span class="checkbox-icon"></span>
+                  Portland
+                </label>
+
+              </div> <!-- fin de la liste des villes -->
+
+              <div class="formData"> <!-- infos complémentaires (conditions utilisation + newsletter)-->
+                <input
+                  class="checkbox-input"
+                  type="checkbox"
+                  id="checkbox1"
+                  checked
+                />
+                <label 
+                class="checkbox2-label" 
+                for="checkbox1" required>
+                  <span class="checkbox-icon"></span>
+                  J'ai lu et accepté les conditions d'utilisation.
+                </label>
+                <br>
+                <input 
+                class="checkbox-input" 
+                type="checkbox" 
+                id="checkbox2" 
+                />
+                <label 
+                class="checkbox2-label" 
+                for="checkbox2">
+                  <span class="checkbox-icon"></span>
+                  Je souhaite être prévenu des prochains évènements.
+                </label>
+                <br>
+              </div>
+              
+              <input
+                class="btn-submit"
+                type="submit"
+                class="button"
+                value="C'est parti"
+              /> <!-- bouton pour soumettre son formulaire -->
+                <!-- ce dernier doit envoyer sur le message de confirmation qui se trouve ci-dessous -->
+            </form>
+          </div>
+        </div>
+      </div> <!-- fin de la partie formulaire -->
+
+      <!-- partie message de confirmation - doit apparaitre 
+        après l'envoi des infos
+      <div id="confirm-modal">
+        <div class="modal-body">
+          <span class="confirm-modal-btn closed"></span>
+          <p id="confirm-msg">
+            Merci ! Votre réservation a été reçue.
+          </p>
+          <button class="btn-confirm modal-btn">
+            Fermer
+          </button>
+        </div>
+      </div> -->
+
+    </main> 
+    
+    <footer> <!-- partie mentions légales -->
+      <p class="copyrights">
+        Copyright 2014 - 2020, GameOn Inc.
+      </p>
+    </footer>
+
+    <script src="js/modal.js"></script> <!-- lien vers le fichier JS -->
+
+  </body>
+</html>
