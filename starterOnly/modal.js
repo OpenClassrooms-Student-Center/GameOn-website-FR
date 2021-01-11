@@ -32,6 +32,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalConfirm = document.querySelectorAll("#confirm-message");
 const form = document.getElementById("formulaire");
+const closeBtn = document.querySelectorAll(".fermer");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -48,6 +49,8 @@ function launchModal() {
     document.getElementById("quantity").addEventListener("change", change_tournois);
     document.getElementById("villes").addEventListener("change", change_villes);
     document.getElementById("checkbox1").addEventListener("change", change_conditions);
+    //launch click events
+    closeBtn.forEach((btn) => btn.addEventListener("click", closeForm));
 }
 
 /**
