@@ -57,10 +57,9 @@
                                     class="text-control"
                                     type="text" id="first"
                                     name="first" minlength="2"
-                                    oninput="this.setCustomValidity('')"
-                                    oninvalid="this.setCustomValidity('Veuillez entrer 2 caractères ou plus pour le champ du prénom.')"
-                                    required
-                            /><br>
+                            />
+                            <span class="error"></span>
+                            <br>
                         </div>
                         <div class="formData">
                             <label for="last">Nom</label><br>
@@ -68,82 +67,78 @@
                                     class="text-control"
                                     type="text" id="last"
                                     name="last" minlength="2"
-                                    oninput="this.setCustomValidity('')"
-                                    oninvalid="this.setCustomValidity('Veuillez entrer 2 caractères ou plus pour le champ du nom.')"
-                                    required
-                            /><br>
+                            />
+                            <span class="error"></span>
+                            <br>
                         </div>
                         <div class="formData">
                             <label for="email">E-mail</label><br>
                             <input class="text-control"
                                    type="email" id="email"
                                    name="email"
-                                   oninput="this.setCustomValidity('')"
-                                   oninvalid="this.setCustomValidity('Veuillez entrer un email valide')"
-                                   required/><br>
+                            />
+                            <span class="error"></span>
+                            <br>
                         </div>
                         <div class="formData">
                             <label for="birthdate">Date de naissance</label><br>
-                            <input class="text-control"
-                                   type="date" id="birthdate"
-                                   name="birthdate"
-                                   oninput="this.setCustomValidity('')"
-                                   oninvalid="this.setCustomValidity('Vous devez entrer votre date de naissance.')"
-                                   required/><br>
+                            <input class="text-control" type="date" id="birthdate" name="birthdate"/>
+                            <span class="error"></span>
+                            <br>
                         </div>
                         <div class="formData">
                             <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                            <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" value="0" required>
+                            <input type="number" class="text-control" id="quantity" name="quantity" value="0">
+                            <span class="error"></span>
                         </div>
                         <p class="text-label">Quelles villes ?</p>
-                        <div class="formData">
+                        <div class="formData" id="villes">
                             <input
                                     class="checkbox-input" type="radio"
                                     id="location1" name="location"
                                     value="New York"
-                                    oninput="this.setCustomValidity('')"
-                                    oninvalid="this.setCustomValidity('Vous devez choisir une option.')"
-                                    required/>
+                            />
                             <label class="checkbox-label" for="location1">
                                 <span class="checkbox-icon"></span>
                                 New York
                             </label>
-                            <input class="checkbox-input" type="radio" id="location2" name="location" value="San Francisco" required/>
+                            <input class="checkbox-input" type="radio" id="location2" name="location" value="San Francisco"/>
                             <label class="checkbox-label" for="location2">
                                 <span class="checkbox-icon"></span>
                                 San Francisco
                             </label>
-                            <input class="checkbox-input" type="radio" id="location3" name="location" value="Seattle" required/>
+                            <input class="checkbox-input" type="radio" id="location3" name="location" value="Seattle"/>
                             <label class="checkbox-label" for="location3">
                                 <span class="checkbox-icon"></span>
                                 Seattle
                             </label>
-                            <input class="checkbox-input" type="radio" id="location4" name="location" value="Chicago" required/>
+                            <input class="checkbox-input" type="radio" id="location4" name="location" value="Chicago"/>
                             <label class="checkbox-label" for="location4">
                                 <span class="checkbox-icon"></span>
                                 Chicago
                             </label>
-                            <input class="checkbox-input" type="radio" id="location5" name="location" value="Boston" required/>
+                            <input class="checkbox-input" type="radio" id="location5" name="location" value="Boston"/>
                             <label class="checkbox-label" for="location5">
                                 <span class="checkbox-icon"></span>
                                 Boston
                             </label>
-                            <input class="checkbox-input" type="radio" id="location6" name="location" value="Portland" required/>
+                            <input class="checkbox-input" type="radio" id="location6" name="location" value="Portland"/>
                             <label class="checkbox-label" for="location6">
                                 <span class="checkbox-icon"></span>
                                 Portland
                             </label>
                         </div>
+                        <span class="error"></span>
                         <div class="formData">
                             <input class="checkbox-input"
                                    type="checkbox" id="checkbox1"
-                                   oninput="this.setCustomValidity('')"
-                                   oninvalid="this.setCustomValidity('Vous devez vérifier que vous acceptez les termes et conditions.')"
-                                   required/>
+                            />
                             <label class="checkbox2-label" for="checkbox1">
                                 <span class="checkbox-icon"></span>
                                 J'ai lu et accepté les conditions d'utilisation.
                             </label>
+                            <br>
+                            <span class="error"></span>
                             <br>
                             <input class="checkbox-input" type="checkbox" id="checkbox2"/>
                             <label class="checkbox2-label" for="checkbox2">

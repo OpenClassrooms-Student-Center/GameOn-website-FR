@@ -496,8 +496,7 @@ input[data-error]::after {
     text-transform: capitalize;
     font-size: 1.3rem;
     padding: 15px 23px;
-    margin: 0;
-    margin-top: 59px;
+    margin: 59px 0 0;
 }
 
 .hero-img {
@@ -521,6 +520,12 @@ input[data-error]::after {
 
 .hero-section > .btn-signup {
     display: none;
+}
+
+.error{
+    font-size: small;
+    color: #fe142f;
+    margin: 1rem 0;
 }
 
 #confirm-message{
@@ -551,6 +556,7 @@ footer {
         background: #fff;
         color: #000;
         padding: 20px;
+        min-width: auto;
     }
 
     .hero-content::after {
@@ -567,7 +573,7 @@ footer {
     }
 
     .hero-text {
-        width: 400px;
+        width: auto;
         font-size: 1.5rem;
     }
 
