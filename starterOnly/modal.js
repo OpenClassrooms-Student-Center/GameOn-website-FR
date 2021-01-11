@@ -1,11 +1,21 @@
+const errors_enum ={
+    prenom: "Veuillez entrer 2 caractères ou plus pour le champ du prénom.",
+    nom: "Veuillez entrer 2 caractères ou plus pour le champ du nom.",
+    mail: "Veuillez entrer un email valide.",
+    naissance: "Vous devez entrer votre date de naissance.",
+    tournois: "Le nombre doit être compris entre 0 et 99.",
+    villes: "Vous devez choisir une option.",
+    conditions: "Vous devez vérifier que vous acceptez les termes et conditions."
+}
+
 let error_list = {
-    error_prenom: "Veuillez entrer 2 caractères ou plus pour le champ du prénom",
-    error_nom: "Veuillez entrer 2 caractères ou plus pour le champ du nom",
-    error_mail: "Veuillez entrer un email valide",
-    error_naissance: "Veuillez saisir une date de naissance",
+    error_prenom: errors_enum.prenom,
+    error_nom: errors_enum.nom,
+    error_mail: errors_enum.mail,
+    error_naissance: errors_enum.naissance,
     error_tournois: "",
-    error_villes: "Veuillez sélectionner une ville",
-    error_conditions: "Veuillez accepter les conditions"
+    error_villes: errors_enum.villes,
+    error_conditions: errors_enum.conditions
 }
 
 function editNav() {
@@ -61,13 +71,13 @@ function closeForm() {
         }
     }
     error_list = {
-        error_prenom: "Veuillez entrer 2 caractères ou plus pour le champ du prénom",
-        error_nom: "Veuillez entrer 2 caractères ou plus pour le champ du nom",
-        error_mail: "Veuillez entrer un email valide",
-        error_naissance: "Veuillez saisir une date de naissance",
+        error_prenom: errors_enum.prenom,
+        error_nom: errors_enum.nom,
+        error_mail: errors_enum.mail,
+        error_naissance: errors_enum.naissance,
         error_tournois: "",
-        error_villes: "Veuillez sélectionner une ville",
-        error_conditions: "Veuillez accepter les conditions"
+        error_villes: errors_enum.villes,
+        error_conditions: errors_enum.conditions
     }
 }
 
@@ -101,7 +111,7 @@ function change_prenom() {
     if (this.value.length > 1) {
         error_list.error_prenom = "";
     } else {
-        error_list.error_prenom = "Veuillez entrer 2 caractères ou plus pour le champ du prénom";
+        error_list.error_prenom = errors_enum.prenom;
     }
 
 }
@@ -113,7 +123,7 @@ function change_nom() {
     if (this.value.length > 1) {
         error_list.error_nom = "";
     } else {
-        error_list.error_nom = "Veuillez entrer 2 caractères ou plus pour le champ du nom";
+        error_list.error_nom = errors_enum.nom;
     }
 }
 
@@ -125,7 +135,7 @@ function change_mail() {
     if (regex.test(this.value.toLowerCase())) {
         error_list.error_mail = "";
     } else {
-        error_list.error_mail = "Veuillez entrer un email valide";
+        error_list.error_mail = errors_enum.mail;
     }
 
 }
@@ -135,7 +145,7 @@ function change_mail() {
  */
 function change_naissance() {
     if (this.value === "") {
-        error_list.error_naissance = "Veuillez saisir une date de naissance";
+        error_list.error_naissance = errors_enum.naissance;
     } else {
         error_list.error_naissance = "";
     }
@@ -149,7 +159,7 @@ function change_tournois() {
     if (parseInt(this.value) >= 0 && parseInt(this.value) <= 99) {
         error_list.error_tournois = "";
     } else {
-        error_list.error_tournois = "Le nombre doit être compris entre 0 et 99"
+        error_list.error_tournois = errors_enum.tournois;
     }
 }
 
@@ -166,7 +176,7 @@ function change_villes() {
     if (one_checked) {
         error_list.error_villes = "";
     } else {
-        error_list.error_villes = "Veuillez sélectionner une ville";
+        error_list.error_villes = errors_enum.villes;
     }
 }
 
@@ -177,6 +187,6 @@ function change_conditions() {
     if (this.checked) {
         error_list.error_conditions = "";
     } else {
-        error_list.error_conditions = "Veuillez accepter les conditions";
+        error_list.error_conditions = errors_enum.conditions;
     }
 }
