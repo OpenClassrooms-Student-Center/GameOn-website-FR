@@ -473,6 +473,11 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+#lastErrorMsg, 
+#firstErrorMsg {
+  color: red;
+  font-size: 0.6em;
+}
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
