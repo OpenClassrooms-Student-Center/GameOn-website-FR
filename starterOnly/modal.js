@@ -1,33 +1,45 @@
-function editNav() {
+/*function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
     x.className += " responsive";
   } else {
     x.className = "topnav";
   }
-}
+}*/
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn"); // array
+const modalBgValid = document.querySelector(".bground-validation"); 
+const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalCross = document.querySelectorAll(".close");
-
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
 
-// close modal event
-modalCross.forEach((btn) => btn.addEventListener("click", closeModal));
-
 // close modal form
 function closeModal() {
   modalbg.style.display = "none";
 }
+
+//close modal validation
+function closeModalValidation() {
+  modalBgValid.style.display = "none";
+}
+
+// launch modal event
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
+// close modal event
+modalCross.forEach((btn) => btn.addEventListener("click", closeModal));
+
+// close modal validation event
+// click on the cross
+modalCross.forEach((btn) => btn.addEventListener("click", closeModalValidation));
+// click on the button
+document.getElementById("btn-validation").addEventListener("click", closeModalValidation);
 
 // form valid
 
@@ -96,15 +108,15 @@ function validate() {
       "il faut choisir une option";
     valid = false;
   }
-  if (valid === true) {
+  if (valid === true) {    
     closeModal();
   }
 }
 
 // la funtion validationPopUp prend comme argument un evenement qui empeche 
-// la soumission du formulaire si on clique sur le submit;
+// la soumission par défaut du formulaire si on clique sur le submit;
 // la function s'excutera quand le formulaire sera remplit et fera apparaitre le message de validation
-const modalFinal = document.querySelectorAll(".bgroundd");
+
 const validationForm = document.getElementById("validation-form");
 
 function validationPopUp(event) {
@@ -113,51 +125,3 @@ function validationPopUp(event) {
 }
 
 document.getElementById("form").addEventListener("submit", validationPopUp);
-
-
-
-
-/*function validate() {
-  let isValid = true;
-  document.querySelectorAll(".missing").forEach((m) => (m.innerHTML = ""));
-  let hasRadioSelected = false;
-  document.getElementsByName("location").forEach((r) => {
-    if (r.checked) hasRadioSelected = true;
-  });
-  if (document.getElementById("first").value.length < 2) {
-    document.getElementById("first-missing").innerHTML =
-      "Veuillez entrer 2 caractères minimun pour le champ prénom";
-    isValid = false;
-  }
-  if (document.getElementById("last").value.length < 2) {
-    document.getElementById("last-missing").innerHTML =
-      "Veuillez entrer 2 caractères minimun pour le champ nom";
-    isValid = false;
-  }
-  if (document.getElementById("email").value == "") {
-    document.getElementById("email-missing").innerHTML =
-      "Veuillez entrer un email valide";
-    isValid = false;
-  }
-  if (document.getElementById("birthdate").value == "") {
-    document.getElementById("birthdate-missing").innerHTML =
-      "Veuillez entrer une date de naissance correcte";
-    isValid = false;
-  }
-  if (document.getElementById("quantity").value == "") {
-    document.getElementById("quantity-missing").innerHTML =
-      "Veuillez entre un nombre compris entre 0 et 99";
-    isValid = false;
-  }
-  if (!hasRadioSelected) {
-    document.getElementById("radio-missing").innerHTML =
-      "il faut choisir une option";
-    isValid = false;
-  }
-  if (!document.getElementById("checkbox1").checked) {
-    document.getElementById("checkbox-missing").innerHTML =
-      "Vous devez accepter les termes et conditions générales";
-    isValid = false;
-  }
-  if (isValid) closeModal();
-}*/
