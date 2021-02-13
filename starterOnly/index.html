@@ -64,52 +64,57 @@
               >
               <div
                 class="formData">
-                <label for="firstName" required>Prénom</label><br>
+                <label for="firstName" required>*Prénom</label><br>
                 <input
-                  class="text-control"
-                  type="text"
-                  id="first"
-                  name="first"
+                class="text-control"
+                type="text"
+                id="first"
+                name="first"
                 /><br>
               </div>
               <div
                 class="formData">
-                <label for="lastName" required>Nom</label><br>
+                <label for="lastName" required>*Nom</label><br>
                 <input
-                  class="text-control"
-                  type="text"
-                  id="last"
-                  name="last"
+                class="text-control"
+                type="text"
+                id="last"
+                name="last"
                 /><br>
               </div>
               <div
                 class="formData">
-                <label for="email" required>E-mail</label><br>
+                <label for="email" required>*E-mail</label><br>
                 <input
-                  class="text-control"
-                  type="email"
-                  id="email"
-                  name="email"
-                  /><br>
+                class="text-control"
+                type="email"
+                id="email"
+                name="email"
+                autocapitalize="none"
+                /><br>
               </div>
               <div
                 class="formData">
-                <label for="birthdate" required>Date de naissance</label><br>
+                <label for="birthdate" required>*Date de naissance</label><br>
                 <input
-                  class="text-control"
-                  type="date"
-                  id="birthdate"
-                  name="birthdate"
+                class="text-control"
+                type="date"
+                id="birthdate"
+                name="birthdate"
                 /><br>
               </div>
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <input
+                type="number"
+                class="text-control"
+                id="quantity"
+                name="quantity">
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
-                class="formData">
+              class="formData">
                 <input
                   class="checkbox-input"
                   type="radio"
