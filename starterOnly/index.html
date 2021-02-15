@@ -56,6 +56,7 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
+<!-- modifier "action" + "methode" ??? -->
             <form
               name="reserve"
               action="index.html"
@@ -64,13 +65,19 @@
               >
               <div
                 class="formData">
+<!-- ajout <span> "error" -->
+                <span id="error"></span>
                 <label for="firstName" required>*Prénom</label><br>
                 <input
                 class="text-control"
                 type="text"
                 id="first"
                 name="first"
+                minlength="2"
                 /><br>
+<!-- ajout "minlength" -->
+<!-- ajout <span> "errorFirst" -->
+                <span class="error errorFirst"></span><br>
               </div>
               <div
                 class="formData">
@@ -80,7 +87,11 @@
                 type="text"
                 id="last"
                 name="last"
+                minlength="2"
                 /><br>
+<!-- ajout "minlength" -->
+<!-- ajout <span> "errorLast" -->
+                <span class="error errorLast"></span><br>
               </div>
               <div
                 class="formData">
@@ -92,6 +103,9 @@
                 name="email"
                 autocapitalize="none"
                 /><br>
+<!-- ajout autocapitalize="none" pour bloquer la fonction 1e lettre majuscule des tablettes et smartphones -->
+<!-- ajout <span> "errorEmail" -->
+                <span class="error errorEmail"></span><br>
               </div>
               <div
                 class="formData">
@@ -101,7 +115,13 @@
                 type="date"
                 id="birthdate"
                 name="birthdate"
+                min="1921/01/01"
+                max="2008/12/31"
                 /><br>
+<!-- ajout min & max -->
+<!-- NE FONCTIONNE PAS -->
+<!-- ajout <span> "errorBirthdate" -->
+                <span class="error errorBirthdate"></span><br>
               </div>
               <div
                 class="formData">
@@ -110,7 +130,11 @@
                 type="number"
                 class="text-control"
                 id="quantity"
-                name="quantity">
+                name="quantity"
+                min="0"
+                max="99"
+                />
+<!-- ajout min & max -->
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
@@ -121,6 +145,7 @@
                   id="location1"
                   name="location"
                   value="New York"
+
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -181,6 +206,8 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+<!-- ajout <span> "errorLocation" -->
+                <span class="error errorLocation"></span><br>
               </div>
 
               <div
