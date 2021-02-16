@@ -57,7 +57,7 @@
           <span class="close" onclick="closeModal()"></span> <!--premier essai de close de modal-->
           <div class="modal-body">
             <form
-              id="inscription"
+               id="inscription"
               name="reserve"
               action="index.html"
               method="get"
@@ -72,7 +72,7 @@
                   id="first"
                   name="first"
                   minlength="2"
-                /><br>
+                /><span class="blockError" id="errorFirstName"></span><br>
               </div>
               <div
                 class="formData">
@@ -82,7 +82,7 @@
                   type="text"
                   id="last"
                   name="last"
-                /><br>
+                /><span class="blockError" id="errorLastName"></span><br>
               </div>
               <div
                 class="formData">
