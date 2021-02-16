@@ -1,3 +1,9 @@
+let firstName = document.getElementById("first");
+let lastName = document.getElementById("last");
+let email = document.getElementById("email");
+let birthdate = document.getElementById("birthdate");
+let quantityNumber = document.getElementById("quantity");
+
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
