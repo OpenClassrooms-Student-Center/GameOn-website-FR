@@ -7,6 +7,11 @@ function editNav() {
   }
 }
 
+// regex
+const nameRegex = /[a-z]/;
+const mailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const dateRegex = /^(0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])[\/\-]\d{4}$/;
+
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
@@ -32,7 +37,6 @@ function closeModal() {
 
 // validation du formulaire lors de l'envoi
 document.forms["reserve"].addEventListener("submit", function(submitElement) {
-
   let erreur;
   let inputs = this;
 
@@ -41,7 +45,6 @@ document.forms["reserve"].addEventListener("submit", function(submitElement) {
       erreur = "veuillez renseigner tous les champs !";
       break;
     }
-    console.log(inputs[i])
   }
 
   if (erreur) {
@@ -53,25 +56,52 @@ document.forms["reserve"].addEventListener("submit", function(submitElement) {
   }
  });
 
+ // validation du prenom
  document.getElementById("first").addEventListener("input", function() {
-  if (this.value == "") {
-  document.getElementById("errorFirstName").innerHTML = "Veuillez entrez un Prénom valide";
+  if (this.value !== "" && this.value.length > 2) {
+  document.getElementById("errorFirstName").innerHTML = "";
   } else {
-    document.getElementById("errorFirstName").innerHTML = "";
+    document.getElementById("errorFirstName").innerHTML = "Veuillez entrer un Prénom valide";
   }
  })
 
+ // validation du nom de famille
  document.getElementById("last").addEventListener("input", function() {
-  if (this.value == "") {
-  document.getElementById("errorLastName").innerHTML = "Veuillez entrez un Nom valide";
+  if (this.value !== "" && this.value.length > 2) {
+  document.getElementById("errorLastName").innerHTML = "";
   } else {
-    document.getElementById("errorLastName").innerHTML = "";
+    document.getElementById("errorLastName").innerHTML = "Veuillez entrer un Nom valide";
   }
  })
 
 
+ // validation de l'eMail
+ document.getElementById("email").addEventListener("input", function() {
+  if (mailRegex.test(this.value)) {
+  document.getElementById("errorMail").innerHTML = "";
+  return true;
+  } else {
+    document.getElementById("errorMail").innerHTML = "Veuillez entrer une adresse mail valide";
+    return false;
+  }
+ })
 
-// regex 2 caractere : [a-z]
+ // validation de la date de naissance birthdate
+ document.getElementById("birthdate").addEventListener("input", function() {
+  if (dateRegex.test(this.value)) {
+  document.getElementById("errorBirthdate").innerHTML = "c'est good";
+  return true;
+  } else {
+    document.getElementById("errorBirthdate").innerHTML = "Veuillez entrer une date de naissance valide";
+    return false;
+  }
+ })
+
+ // validation de nombre de participation
+
+
+
+
 
 
  //   // if (!quantityNumber.value) {
