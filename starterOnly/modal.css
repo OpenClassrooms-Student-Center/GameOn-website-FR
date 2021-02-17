@@ -237,11 +237,17 @@ input {
   border: 2px solid #e54858;
 }
 
-/*input[data-error]::after {
+/* INPUT[DATA-ERROR]
+input[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
   color: red;
 }*/
+
+.msg {
+  font-size: x-small;
+  color: #e54858;
+}
 
 .checkbox-label,
 .checkbox2-label {
@@ -565,3 +571,13 @@ footer {
     opacity: 1;
   }
 }
+
+/* NE FONCTIONNE PAS
+input:invalid {
+  font-size: x-small;
+  color: #e54858;
+}
+
+input:valid {
+  border:#279e7a
+}*/
