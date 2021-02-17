@@ -56,72 +56,66 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
-<!-- modifier "action" + "methode" ??? -->
+<!-- modification "action" + "methode" -->
             <form
               name="reserve"
-              action="index.html"
-              method="get"
+              id="reserve"
+              action=""
+              method="POST"
               onsubmit="return validate();"
               >
               <div
                 class="formData">
 <!-- ajout <span> "error" -->
-                <span id="error"></span>
-                <label for="firstName" required>*Prénom</label><br>
+                <span id="data-error"></span>
+                <label for="firstName">*Prénom</label><br>
                 <input
                 class="text-control"
                 type="text"
-                id="first"
-                name="first"
-                minlength="2"
-                /><br>
-<!-- ajout "minlength" -->
+                id="firstName"
+                name="firstName"
+                />
 <!-- ajout <span> "errorFirst" -->
-                <span class="error errorFirst"></span><br>
+                <span id="errorFirst"></span><br>
               </div>
               <div
                 class="formData">
-                <label for="lastName" required>*Nom</label><br>
+                <label for="lastName">*Nom</label><br>
                 <input
                 class="text-control"
                 type="text"
-                id="last"
-                name="last"
-                minlength="2"
-                /><br>
-<!-- ajout "minlength" -->
+                id="lastName"
+                name="lastName"
+                />
 <!-- ajout <span> "errorLast" -->
-                <span class="error errorLast"></span><br>
+                <span id="errorLast"></span><br>
               </div>
               <div
                 class="formData">
-                <label for="email" required>*E-mail</label><br>
+                <label for="email">*E-mail</label><br>
                 <input
                 class="text-control"
-                type="email"
+                type="text"
                 id="email"
                 name="email"
                 autocapitalize="none"
-                /><br>
+                />
 <!-- ajout autocapitalize="none" pour bloquer la fonction 1e lettre majuscule des tablettes et smartphones -->
 <!-- ajout <span> "errorEmail" -->
-                <span class="error errorEmail"></span><br>
+                <span id="errorEmail"></span><br>
               </div>
               <div
                 class="formData">
-                <label for="birthdate" required>*Date de naissance</label><br>
+                <label for="birthdate">*Date de naissance</label><br>
                 <input
                 class="text-control"
-                type="date"
+                type="text"
                 id="birthdate"
                 name="birthdate"
-                min="1921/01/01"
-                max="2008/12/31"
-                /><br>
-<!-- ajout min & max -->
-<!-- NE FONCTIONNE PAS -->
+                placeholder="jj/mm/aaaa"
+                />
 <!-- ajout <span> "errorBirthdate" -->
-                <span class="error errorBirthdate"></span><br>
+                <span id="errorBirthdate"></span><br>
               </div>
               <div
                 class="formData">
@@ -131,10 +125,9 @@
                 class="text-control"
                 id="quantity"
                 name="quantity"
-                min="0"
-                max="99"
                 />
-<!-- ajout min & max -->
+<!-- ajout <span> "errorQuantity" -->
+                <span id="errorQuantity"></span><br>
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
@@ -145,7 +138,6 @@
                   id="location1"
                   name="location"
                   value="New York"
-
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -207,7 +199,7 @@
                   Portland</label
                 >
 <!-- ajout <span> "errorLocation" -->
-                <span class="error errorLocation"></span><br>
+                <span id="errorLocation"></span><br>
               </div>
 
               <div
@@ -221,8 +213,9 @@
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
-                </label>
-                <br>
+                </label><br>
+<!-- ajout <span> "errorConditions" -->
+                <span id="errorConditions"></span><br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2"/>
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
@@ -235,6 +228,7 @@
                 type="submit"
                 id="submit"
                 value="C'est parti"
+                onclick="validate"
               />
             </form>
           </div>
