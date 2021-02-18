@@ -56,19 +56,14 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
-<!-- modification "action" + "methode" -->
+<!-- suppression "action", "methode", onclick -->
             <form
               name="reserve"
               id="reserve"
-              action=""
-              method="POST"
-              onsubmit="return validate();"
               >
               <div
                 class="formData">
-<!-- ajout <span> "error" -->
-                <span id="data-error"></span>
-                <label for="firstName">*Prénom</label><br>
+                <label for="firstName">* Prénom</label><br>
                 <input
                 class="text-control"
                 type="text"
@@ -76,11 +71,11 @@
                 name="firstName"
                 />
 <!-- ajout <span> "errorFirst" -->
-                <span id="errorFirst"></span><br>
+                <span id="errorFirst" class="msg"></span><br>
               </div>
               <div
                 class="formData">
-                <label for="lastName">*Nom</label><br>
+                <label for="lastName">* Nom</label><br>
                 <input
                 class="text-control"
                 type="text"
@@ -88,11 +83,11 @@
                 name="lastName"
                 />
 <!-- ajout <span> "errorLast" -->
-                <span id="errorLast"></span><br>
+                <span id="errorLast" class="msg"></span><br>
               </div>
               <div
                 class="formData">
-                <label for="email">*E-mail</label><br>
+                <label for="email">* E-mail</label><br>
                 <input
                 class="text-control"
                 type="text"
@@ -102,20 +97,20 @@
                 />
 <!-- ajout autocapitalize="none" pour bloquer la fonction 1e lettre majuscule des tablettes et smartphones -->
 <!-- ajout <span> "errorEmail" -->
-                <span id="errorEmail"></span><br>
+                <span id="errorEmail" class="msg"></span><br>
               </div>
               <div
                 class="formData">
-                <label for="birthdate">*Date de naissance</label><br>
+                <label for="birthdate">* Date de naissance</label><br>
                 <input
                 class="text-control"
-                type="text"
                 id="birthdate"
                 name="birthdate"
                 placeholder="jj/mm/aaaa"
                 />
+                <!-- type="date" -->
 <!-- ajout <span> "errorBirthdate" -->
-                <span id="errorBirthdate"></span><br>
+                <span id="errorBirthdate" class="msg"></span><br>
               </div>
               <div
                 class="formData">
@@ -127,16 +122,17 @@
                 name="quantity"
                 />
 <!-- ajout <span> "errorQuantity" -->
-                <span id="errorQuantity"></span><br>
+                <span id="errorQuantity" class="msg"></span><br>
               </div>
-              <p class="text-label">Quelles villes ?</p>
+              <p class="text-label">* Dans quelle(s) ville(s) ?</p>
               <div
-              class="formData">
+              class="formDataOptions">
                 <input
                   class="checkbox-input"
                   type="radio"
                   id="location1"
-                  name="location"
+                  for="locationOption"
+                  name="locationOption"
                   value="New York"
                 />
                 <label class="checkbox-label" for="location1">
@@ -147,7 +143,8 @@
                   class="checkbox-input"
                   type="radio"
                   id="location2"
-                  name="location"
+                  for="locationOption"
+                  name="locationOption"
                   value="San Francisco"
                 />
                 <label class="checkbox-label" for="location2">
@@ -158,7 +155,8 @@
                   class="checkbox-input"
                   type="radio"
                   id="location3"
-                  name="location"
+                  for="locationOption"
+                  name="locationOption"
                   value="Seattle"
                 />
                 <label class="checkbox-label" for="location3">
@@ -169,7 +167,8 @@
                   class="checkbox-input"
                   type="radio"
                   id="location4"
-                  name="location"
+                  for="locationOption"
+                  name="locationOption"
                   value="Chicago"
                 />
                 <label class="checkbox-label" for="location4">
@@ -180,7 +179,8 @@
                   class="checkbox-input"
                   type="radio"
                   id="location5"
-                  name="location"
+                  for="locationOption"
+                  name="locationOption"
                   value="Boston"
                 />
                 <label class="checkbox-label" for="location5">
@@ -191,7 +191,8 @@
                   class="checkbox-input"
                   type="radio"
                   id="location6"
-                  name="location"
+                  for="locationOption"
+                  name="locationOption"
                   value="Portland"
                 />
                 <label class="checkbox-label" for="location6">
@@ -199,11 +200,11 @@
                   Portland</label
                 >
 <!-- ajout <span> "errorLocation" -->
-                <span id="errorLocation"></span><br>
+                <span id="errorLocation" class="msg"></span><br>
               </div>
 
               <div
-                class="formData">
+                class="formDataOptions">
                 <input
                   class="checkbox-input"
                   type="checkbox"
@@ -212,24 +213,26 @@
                 />
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
-                  J'ai lu et accepté les conditions d'utilisation.
+                  * J'ai lu et accepté les conditions d'utilisation.
                 </label><br>
-<!-- ajout <span> "errorConditions" -->
-                <span id="errorConditions"></span><br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2"/>
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
+<!-- ajout <span> "errorConditions" -->
+              <span id="errorConditions" class="msg errorForm"></span><br>
               </div>
               <input
                 class="btn-submit"
+                for="validate"
+                name="validate"
                 type="submit"
                 id="submit"
                 value="C'est parti"
-                onclick="validate"
               />
+<!-- suppression : onclick="validate" l.230, après value="C'est parti" -->
             </form>
           </div>
         </div>
