@@ -195,10 +195,11 @@ main {
 
 label {
   font-family: var(--font-default);
-  font-size: 17px;
+  font-size: 15px;
   font-weight: normal;
   display: inline-block;
-  margin-bottom: 11px;
+  margin-top: 15px;
+  margin-bottom: 5px;
 }
 
 input {
@@ -214,6 +215,10 @@ input {
   border-radius: 8px;
   font-size: 20px;
   height: 48px;
+}
+
+.formDataOptions {
+  margin-bottom: 20px;
 }
 
 .formData[data-error]::after {
@@ -249,9 +254,16 @@ input[data-error]::after {
   color: #e54858;
 }
 
+#errorConditions {
+  margin-left: 36px;
+  margin-bottom: 15px;
+}
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
+  margin-top: 0;
+  margin-bottom: 0;
   margin-left: 36px;
   font-size: 12px;
   font-weight: normal;
@@ -268,7 +280,7 @@ input[data-error]::after {
   white-space: nowrap;
   position: absolute;
   left: -30px;
-  top: -1px;
+  top: -2px;
   transition: 0.3s;
 }
 
@@ -348,6 +360,10 @@ input[data-error]::after {
 
 .close:after {
   transform: rotate(-45deg);
+}
+
+.btn-submit {
+  margin-top: 10px;
 }
 
 .btn-submit,
@@ -435,6 +451,7 @@ input[data-error]::after {
 .text-label {
   font-weight: normal;
   font-size: 16px;
+  margin-top: 15px;
 }
 
 .hero-section {
