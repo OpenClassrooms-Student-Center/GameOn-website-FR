@@ -22,8 +22,9 @@ const lastName = document.getElementById("lastName");
 const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
-const locationOption = document.getElementsByName("locationOption");
-const conditions = document.getElementById("checkbox1");
+const locationOption = document.getElementsByTagName("locationOption");
+// Uncaught TypeError: document.getElementsById is not a function
+// const checkbox1 = document.getElementsById("checkbox1");
 
 // Message d'erreur
 const errorFirstName = document.getElementById("errorFirst");
@@ -54,7 +55,7 @@ function closeModal() {
   bground.style.display = "none";
 }
 
-// Validation des champs du formulaire
+// Récupération des données des champs du formulaire
 let form = document.getElementById("reserve");
 form.addEventListener("submit", function () {});
 
@@ -85,18 +86,46 @@ form.quantity.addEventListener("change", function () {
   validQuantity(this);
 });
 
-// Location // NE FONCTIONNE PAS // VOIR l.239
-/*form.locationOption.addEventListener("click", function() {
+// Location option
+form.location1.addEventListener("change", function () {
   validLocationOption(this);
-});*/
+});
+
+form.location2.addEventListener("change", function () {
+  validLocationOption(this);
+});
+
+form.location3.addEventListener("change", function () {
+  validLocationOption(this);
+});
+
+form.location4.addEventListener("change", function () {
+  validLocationOption(this);
+});
+
+form.location5.addEventListener("change", function () {
+  validLocationOption(this);
+});
+
+form.location6.addEventListener("change", function () {
+  validLocationOption(this);
+});
+
+/*var locationOption = form.locationOption;
+var verif;
+for(var i = 0; i < locationOption.length; i++){
+    if(locationOption[i].checked){
+        verif = locationOption[i].value;
+    }
+}*/
 
 // Conditions acceptées
-form.checkbox1.addEventListener("click", function () {
+form.checkbox1.addEventListener("change", function () {
   validConditions(this);
 });
 
 // Submit /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-form.addEventListener("submit", function (event) {
+/*form.addEventListener("submit", function (event) {
   event.preventDefault();
   if (
     validFirstName(form.firstName) &&
@@ -104,34 +133,33 @@ form.addEventListener("submit", function (event) {
     validEmail(form.email) &&
     validBirthdate(form.birthdate) &&
     validQuantity(form.quantity) &&
-    validLocationOption(form.locationOption) &&
+    // ok ci-après ?
+    validLocationOption(form.location1, form.location2, form.location3, form.location4, form.location5, form.location6) &&
     validConditions(form.checkbox1)
   ) {
     form.onsubmit();
-    errorForm.innerHTML = "";
+    // closeModal ();
+    // alert = "Merci ! Votre réservation est enregistrée.";
     return true;
   } else {
     errorForm.innerHTML = "Veuillez vérifier vos informations";
     return false;
   }
-});
-
-// Submit ok ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// = close modal & show msg "Merci ! Votre réservation a été reçue." ////////////////////////////////////////////////////////////////////
+});*/
 
 // Validation du champ "Prénom"
-const validFirstName = function (inputFirstName) {
-  let firstNameRegExp = new RegExp(
-    "^[a-zsàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]+[-sa-zàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]{1,}$",
-    "i"
-  );
-
 // le champ n'est pas vide
 // le champ n'est pas remplis de " "
 // le champ contient 2 caractères minimum
 // le champ accepte des mots composés séparés par "-" ; " ")
 // le champ n'accepte pas 2 éléments de séparation consécutifs
 // casse indifférente
+
+const validFirstName = function (inputFirstName) {
+  let firstNameRegExp = new RegExp(
+    "^[a-zsàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]+[-sa-zàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]{1,}$",
+    "i"
+  );
 
   if (firstNameRegExp.test(inputFirstName.value)) {
     errorFirstName.innerHTML = "";
@@ -143,18 +171,18 @@ const validFirstName = function (inputFirstName) {
 };
 
 // Validation du champ "Nom"
-const validLastName = function (inputLastName) {
-  let lastNameRegExp = new RegExp(
-    "^[a-zsàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]+[-'sa-zsàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]{1,}$",
-    "i"
-  );
-
 // le champ n'est pas vide
 // le champ n'est pas remplis de " "
 // le champ contient 2 caractères minimum
 // le champ accepte des mots composés séparés par "'" ; "-" ; " ")
 // le champ n'accepte pas 2 éléments de séparation consécutifs
 // casse indifférente
+
+const validLastName = function (inputLastName) {
+  let lastNameRegExp = new RegExp(
+    "^[a-zsàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]+[-'sa-zsàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]{1,}$",
+    "i"
+  );
 
   if (lastNameRegExp.test(inputLastName.value)) {
     errorLastName.innerHTML = "";
@@ -166,11 +194,6 @@ const validLastName = function (inputLastName) {
 };
 
 // Validation du champ "Email"
-const validEmail = function (inputEmail) {
-  let emailRegExp = new RegExp(
-    "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@{1}[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$"
-  );
-
 // le champ n'est pas vide
 // le champ n'est pas remplis de " "
 // tout caractère ASCII accepté
@@ -178,6 +201,11 @@ const validEmail = function (inputEmail) {
 // le champs contient strictement 1 "@" et 1 "." ensuite
 // le nom de domanaine accepte les formats entreprise
 // casse indifférente
+
+const validEmail = function (inputEmail) {
+  let emailRegExp = new RegExp(
+    "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@{1}[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$"
+  );
 
   if (emailRegExp.test(inputEmail.value)) {
     errorEmail.innerHTML = "";
@@ -189,19 +217,21 @@ const validEmail = function (inputEmail) {
 };
 
 // Validation du champ "Birthdate"
-const validBirthdate = function (inputBirthdate) {
-  let birthdateRegExp = new RegExp(
-    "^(^0[1-9]$|^[12]d$|^3[01]$)/(^0[1-9]$|^1[0-2]$)/(^19[2-9]d$|^20[01]d$)$"
-    );
-
 // format jj/mm/aaaa
-// année comprise entre 1920 et 2019
+// le joueur doit avoir entre 13 et 100 ans
+// année comprise entre 1920 et 2008
 
 // bug RegExp => new ones but still invalid ///////////////////////////////////////////////////////////////////////////////////////////////////////
+// "^(0[1-9]|[10-31]\/0[1-9]|[10-12]\/[1921-2008]$"
 // "^(d{2})\/(d{2})\/(d{4})$"
 // "^(^0[1-9]$|^[12]d$|^3[01]$)\/(^0[1-9]$|^1[0-2]$)\/(d{4})$"
 // "^(0[1-9]|[12]d|3[01])\/(0[1-9]|1[0-2])\/(19[2-9]d|20[01]d)$"
 // "^(0[1-9]|[12]d|3[01])\/(0[1-9]|1[0-2])\/(19|20[d{2}])$"
+
+const validBirthdate = function (inputBirthdate) {
+  let birthdateRegExp = new RegExp(
+    "^(^0[1-9]$|^[12][0-9]$|^3[01]$)/(^0[1-9]$|^1[0-2])$/(^\1\9[2-9][0-9]$|^\2\0[01][0-8]$)$"
+  );
 
   if (birthdateRegExp.test(inputBirthdate.value)) {
     errorBirthdate.innerHTML = "";
@@ -213,14 +243,13 @@ const validBirthdate = function (inputBirthdate) {
 };
 
 // Validation du champ Quantity
-const validQuantity = function (inputQuantity) {
-  let quantityRegExp = new RegExp(
-    "^[0-9]$|^[1-9][0-9]$|^(99)$"
-  );
-
 // quantité comprise entre 0 et 99
 
-  if (quantityRegExp.test(inputQuantity.value)) {
+const validQuantity = function () {
+
+  let quantityRegExp = new RegExp("^([0-9]$|^[1-9][0-9]$)|^(99)$");
+
+  if (quantityRegExp.test(quantity.value)) {
     errorQuantity.innerHTML = "";
     return true;
   } else {
@@ -229,34 +258,31 @@ const validQuantity = function (inputQuantity) {
   }
 };
 
-// Validation checkbox Location ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// if n participation = 0 alors locationOption.checked == false
-// else if n participation > 0 alors locationOption.checked == true (lenght = 6); errorLocation.innerHTML = ""; return true;
-// else : errorLocation.innerHTML = "* Veuillez sélectionner une ville"; return false;
-
-// l.94 Uncaught TypeError: form.locationOption.addEventListener is not a function l.94
-// const validLocationOption = function () {
-// nécessaire ? // for (i=1;i<7;i++) {
-  /*if (validQuantity = 0) {
-    form.locationOption.checked == false
-  } else if (validQuantity >= 0) {
-      form.locationOption.checked == true;
-      errorLocation.innerHTML = "";
-      return true;
-    } else {
-      errorLocation.innerHTML = "* Veuillez sélectionner une ville";
-      return false;
-    }
+function setLocationOption () {
+if (quantity.value > 0 == true) {
+  document.getElementsById(formDataOption).style.display = "block";
   }
-};*/
+};
+
+// Validation LocationOption
+// Si le nombre de particpation > 0, alors le block apparait et au moins une ville doit être cochée
+function validLocationOption () {
+  if (form.locationOption.checked == true) {
+    errorLocation.innerHTML = "";
+    return true;
+  } else {
+    errorLocation.innerHTML = "* Veuillez sélectionner au moins une ville";
+    return false;
+  }
+};
 
 // Validation checkbox Conditions
-const validConditions = function () {
-  if (form.checkbox1.checked == false) {
-    errorConditions.innerHTML = "* Veuillez vérifier que vous acceptez les termes et conditions"
-    return false;
-  } else {
-    errorConditions.innerHTML = ""
+function validConditions() {
+  if (checkbox1.checked == true) {
+    errorConditions.innerHTML = "";
     return true;
+  } else {
+    errorConditions.innerHTML = "* Veuillez accepter les conditions d'utiliation";
+    return false;
   }
 };
