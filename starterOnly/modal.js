@@ -10,7 +10,7 @@ function editNav() {
 // regex
 const nameRegex = /[a-z]/;
 const mailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-const dateRegex = /^(0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])[\/\-]\d{4}$/;
+const dateRegex = /^(19|20)\d{2}[-](0?[1-9]|1[012])[-](0[1-9]|[12]\d|3[01])$/;
 
 
 // DOM Elements
@@ -37,68 +37,104 @@ function closeModal() {
 
 // validation du formulaire lors de l'envoi
 document.forms["reserve"].addEventListener("submit", function(submitElement) {
-  let erreur;
+  let error;
   let inputs = this;
 
   for (let i = 0; i < inputs.length; i++) {
     if (!inputs[i].value) {
-      erreur = "veuillez renseigner tous les champs !";
+      error = "veuillez renseigner tous les champs !";
       break;
     }
   }
 
-  if (erreur) {
+  if (error) {
     submitElement.preventDefault();
-    document.getElementById("erreur").innerHTML = erreur;
+    document.getElementById("error").innerHTML = error;
     return false;
   } else {
     alert('Merci, Votre formulaire à bien été envoyé !');
+    // document.getElementsByClassName("content").innerHTML = "";
+
+
   }
  });
 
- // validation du prenom
- document.getElementById("first").addEventListener("input", function() {
+ // Validate first Name and appear red elt when detect error
+ let firstName = document.getElementById("first");
+ let errorFirstName = document.getElementById("errorFirstName");
+
+ firstName.addEventListener("input", function() {
   if (this.value !== "" && this.value.length > 2) {
-  document.getElementById("errorFirstName").innerHTML = "";
+    errorFirstName.innerHTML = "";
+  firstName.style.border = "";
   } else {
-    document.getElementById("errorFirstName").innerHTML = "Veuillez entrer un Prénom valide";
+    errorFirstName.innerHTML = "Veuillez entrer un Prénom valide";
+    firstName.style.border = "4px solid #e54858";
   }
  })
 
- // validation du nom de famille
- document.getElementById("last").addEventListener("input", function() {
+ // Validate lastName and appear red elt when detect error
+ let lastName = document.getElementById("last");
+ let errorLastName = document.getElementById("errorLastName");
+
+ lastName.addEventListener("input", function() {
   if (this.value !== "" && this.value.length > 2) {
-  document.getElementById("errorLastName").innerHTML = "";
+  errorLastName.innerHTML = "";
+  lastName.style.border = "";
   } else {
-    document.getElementById("errorLastName").innerHTML = "Veuillez entrer un Nom valide";
+    errorLastName.innerHTML = "Veuillez entrer un Nom valide";
+    lastName.style.border = "4px solid #e54858";
   }
  })
 
 
- // validation de l'eMail
- document.getElementById("email").addEventListener("input", function() {
+ // Validate Email and appear red elt when detect error
+ let email = document.getElementById("email");
+ let errorMail = document.getElementById("errorMail");
+
+ email.addEventListener("input", function() {
   if (mailRegex.test(this.value)) {
-  document.getElementById("errorMail").innerHTML = "";
+  errorMail.innerHTML = "";
+  email.style.border = "";
   return true;
   } else {
-    document.getElementById("errorMail").innerHTML = "Veuillez entrer une adresse mail valide";
+    errorMail.innerHTML = "Veuillez entrer une adresse mail valide";
+    email.style.border = "4px solid #e54858";
     return false;
   }
  })
 
  // validation de la date de naissance birthdate
- document.getElementById("birthdate").addEventListener("input", function() {
+let birthdate = document.getElementById("birthdate");
+let errorBirthdate = document.getElementById("errorBirthdate");
+
+birthdate.addEventListener("input", function() {
+  console.log(birthdate.value);
   if (dateRegex.test(this.value)) {
-  document.getElementById("errorBirthdate").innerHTML = "c'est good";
+  errorBirthdate.innerHTML = "";
+  birthdate.style.border = "";
   return true;
   } else {
-    document.getElementById("errorBirthdate").innerHTML = "Veuillez entrer une date de naissance valide";
+    errorBirthdate.innerHTML = "Veuillez entrer une date de naissance valide";
+    birthdate.style.border = "4px solid #e54858";
     return false;
   }
  })
+ 
 
  // validation de nombre de participation
+let quantity = document.getElementById("quantity");
+let errorQuantity = document.getElementById("errorQuantity");
 
+quantity.addEventListener("input", function() {
+  if (this.value >= 0 && this.value < 10) {
+  errorQuantity.innerHTML = "";
+  quantity.style.border = "";
+  } else {
+    errorQuantity.innerHTML = "nous n'avons pas fait autant de tournois ";
+    quantity.style.border = "4px solid #e54858";
+  }
+ })
 
 
 

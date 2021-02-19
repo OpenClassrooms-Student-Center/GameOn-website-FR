@@ -16,7 +16,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
+  /* background-image: url("background.png"); */
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -198,6 +198,11 @@ main {
   padding-top: 10px;
 }
 
+.content::after {
+  display: none;
+  background: red;
+}
+
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
@@ -239,17 +244,12 @@ input {
   transition: 0.3s;
 }
 
-.formData[data-error-visible="true"]::after {
+.formData::after {
   opacity: 1;
 }
 
-.formData[data-error-visible="true"] .text-control {
-  border: 2px solid #e54858;
-}
-
 .blockError {
-  content: attr(data-error);
-  font-size: 1em;
+  font-size: 0.8em;
   color: red;
 }
 
