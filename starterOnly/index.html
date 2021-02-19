@@ -57,6 +57,7 @@
           <span class="close"></span>
           <div class="modal-body">
             <form
+            id="formulaireInscription"
               name="reserve"
               action="testvalidation.html"
               method="get"
@@ -70,8 +71,11 @@
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
-                /><br>
+                 
+                /> 
+                <!--minlength="2"-->
+                <span  class="erreur"></span>
+                <br>
               </div>
               <div
                 class="formData">
@@ -81,7 +85,10 @@
                   type="text"
                   id="last"
                   name="last"
-                /><br>
+                />
+                <span  class="erreur"></span>
+
+                <br>
               </div>
               <div
                 class="formData">
@@ -92,6 +99,7 @@
                   id="email"
                   name="email"
                 /><br>
+                <span  class="erreur"></span>
               </div>
               <div
                 class="formData">
@@ -101,7 +109,7 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                /><br>
+                /><span  class="erreur"></span><br>
               </div>
               <div
                 class="formData">
@@ -109,6 +117,7 @@
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
               <p class="text-label">Quelles villes ?</p>
+              <span  class="erreur"></span>
               <div
                 class="formData">
                 <input
@@ -178,7 +187,7 @@
                   Portland</label
                 >
               </div>
-
+              <span  class="erreur"></span>
               <div
                 class="formData">
                 <input
