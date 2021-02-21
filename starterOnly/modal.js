@@ -8,8 +8,7 @@ function editNav() {
 }
 
 // regex
-const nameRegex = /[a-z]/;
-const mailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const mailRegex = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
 const dateRegex = /^(19|20)\d{2}[-](0?[1-9]|1[012])[-](0[1-9]|[12]\d|3[01])$/;
 
 
@@ -43,6 +42,7 @@ document.forms["reserve"].addEventListener("submit", function(submitElement) {
   for (let i = 0; i < inputs.length; i++) {
     if (!inputs[i].value) {
       error = "veuillez renseigner tous les champs !";
+      document.getElementById("error").style.color = "red";
       break;
     }
   }
@@ -64,11 +64,11 @@ document.forms["reserve"].addEventListener("submit", function(submitElement) {
  let errorFirstName = document.getElementById("errorFirstName");
 
  firstName.addEventListener("input", function() {
-  if (this.value !== "" && this.value.length > 2) {
+  if (this.value !== "" && this.value.length >= 2) {
     errorFirstName.innerHTML = "";
   firstName.style.border = "";
   } else {
-    errorFirstName.innerHTML = "Veuillez entrer un Prénom valide";
+    errorFirstName.innerHTML = "Nous sommes sur que votre prénom possède plus d'une lettre !";
     firstName.style.border = "4px solid #e54858";
   }
  })
@@ -78,11 +78,11 @@ document.forms["reserve"].addEventListener("submit", function(submitElement) {
  let errorLastName = document.getElementById("errorLastName");
 
  lastName.addEventListener("input", function() {
-  if (this.value !== "" && this.value.length > 2) {
+  if (this.value !== "" && this.value.length >= 2) {
   errorLastName.innerHTML = "";
   lastName.style.border = "";
   } else {
-    errorLastName.innerHTML = "Veuillez entrer un Nom valide";
+    errorLastName.innerHTML = "c'est pareil pour votre nom Minimum 2 caractère !! ";
     lastName.style.border = "4px solid #e54858";
   }
  })
@@ -120,21 +120,52 @@ birthdate.addEventListener("input", function() {
     return false;
   }
  })
- 
+
 
  // validation de nombre de participation
 let quantity = document.getElementById("quantity");
 let errorQuantity = document.getElementById("errorQuantity");
 
 quantity.addEventListener("input", function() {
-  if (this.value >= 0 && this.value < 10) {
-  errorQuantity.innerHTML = "";
-  quantity.style.border = "";
+  if (this.value === "" || this.value == NaN) {
+  errorQuantity.innerHTML = "veuillez renseigner ce champs";
+  quantity.style.border = "4px solid #e54858";
   } else {
-    errorQuantity.innerHTML = "nous n'avons pas fait autant de tournois ";
-    quantity.style.border = "4px solid #e54858";
+    errorQuantity.innerHTML = "";
+    quantity.style.border = "";
   }
  })
+
+// validate location
+let cityLocation = document.getElementsByName("location");
+let errorLocation = document.getElementById("errorLocation");
+
+function locationChecked() {
+if ((cityLocation[0].checked || cityLocation[1].checked || cityLocation[2].checked || cityLocation[3].checked || cityLocation[4].checked || cityLocation[5].checked || cityLocation[6].checked)) {
+     errorLocation.innerHTML = "blue";
+     return true;
+   } else {
+     errorLocation.innerHTML = "Veuillez choisir une option";
+     return false;
+   }
+}
+
+// Validate CGU
+let errorCGU = document.getElementById("errorCGU");
+let checkbox1 = document.getElementById("checkbox1");
+
+checkbox1.addEventListener("input", function() {
+  if (checkbox1.checked) {
+    errorCGU.innerHTML = "";
+  } else {
+    errorCGU.innerHTML = "Veuillez accepter les termes et conditions";
+  }
+})
+
+
+
+
+
 
 
 
@@ -161,8 +192,8 @@ quantity.addEventListener("input", function() {
 //   // }
 
 // console.log(document.forms["reserve"]);
-// // let firstName = document.getElementById("first");
-// // let lastName = document.getElementById("last");
-// // let email = document.getElementById("email");
-// // let birthdate = document.getElementById("birthdate");
-// // let quantityNumber = document.getElementById("quantity");
+// let firstName = document.getElementById("first");
+// let lastName = document.getElementById("last");
+// let email = document.getElementById("email");
+// let birthdate = document.getElementById("birthdate");
+// let quantityNumber = document.getElementById("quantity")

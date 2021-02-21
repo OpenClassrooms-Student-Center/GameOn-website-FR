@@ -198,10 +198,10 @@ main {
   padding-top: 10px;
 }
 
-.content::after {
+/* .contentlpus {
   display: none;
   background: red;
-}
+} */
 
 .modal-body {
   padding: 15px 8%;
