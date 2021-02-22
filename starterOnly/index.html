@@ -58,7 +58,7 @@
           <div class="modal-body">
             <form
               name="reserve"
-              action="index.html"
+              action="testvalidation.html"
               method="get"
               onsubmit="return validate();"
             >
@@ -70,8 +70,11 @@
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
-                /><br>
+                 
+                /> 
+                <!--minlength="2"-->
+                <span  class="erreur"></span>
+                <br>
               </div>
               <div
                 class="formData">
@@ -81,7 +84,10 @@
                   type="text"
                   id="last"
                   name="last"
-                /><br>
+                />
+                <span  class="erreur"></span>
+
+                <br>
               </div>
               <div
                 class="formData">
@@ -92,6 +98,7 @@
                   id="email"
                   name="email"
                 /><br>
+                <span  class="erreur"></span>
               </div>
               <div
                 class="formData">
@@ -101,13 +108,14 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                /><br>
+                /><span  class="erreur"></span><br>
               </div>
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <input type="number" class="text-control" id="quantity" name="quantity"min="0" max="99">
               </div>
+              <span  class="erreur"></span>
               <p class="text-label">Quelles villes ?</p>
               <div
                 class="formData">
@@ -178,7 +186,7 @@
                   Portland</label
                 >
               </div>
-
+              <span  class="erreur"></span>
               <div
                 class="formData">
                 <input
@@ -189,9 +197,10 @@
                 />
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
-                  J'ai lu et accepté les conditions d'utilisation.
+                  J'ai lu et accepté les conditions d'utilisation.                
+                  <span  class="erreur"></span>
                 </label>
-                <br>
+                <br>                
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
