@@ -164,6 +164,7 @@ main {
   font-size: 16px;
 }
 
+
 .button:hover {
   background: #3876ac;
 }
@@ -206,6 +207,22 @@ main {
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
+}
+
+/* custom box confirmation */
+.confirm-body {
+  padding: 250px 8%;
+  margin: 15px auto;
+  height: 700px;
+}
+
+.confirm-body p {
+  font-size: 1.5em;
+  text-align: center;
+}
+
+.confirm-body input {
+  margin-top: 250px;
 }
 
 label {

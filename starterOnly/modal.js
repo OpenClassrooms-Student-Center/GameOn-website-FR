@@ -11,11 +11,14 @@ function editNav() {
 const mailRegex = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
 const dateRegex = /^(19|20)\d{2}[-](0?[1-9]|1[012])[-](0[1-9]|[12]\d|3[01])$/;
 
-
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const showForm = document.getElementById("showForm");
+const btnConfirm = document.getElementById("btnConfirm");
+const showConfirm = document.getElementById("showConfirm");
+const submitBtn = document.getElementById("submitBtn");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -23,155 +26,169 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  btnConfirm.style.display = "none";
+  showConfirm.style.display = "none";
 }
 
 // close modal
 function closeModal() {
-  modalbg.style.display = "none"
+  modalbg.style.display = "none";
 }
 
-// console.log(modalBtn);
+// function close confirm modal
+function closeConfirm() {
+  modalbg.style.display = "none";
+  window.location.reload(true);
+}
 
-
-
-// validation du formulaire lors de l'envoi
-document.forms["reserve"].addEventListener("submit", function(submitElement) {
+// validat form submit
+document.forms["reserve"].addEventListener("submit", function (submitElement) {
   let error;
   let inputs = this;
 
   for (let i = 0; i < inputs.length; i++) {
     if (!inputs[i].value) {
-      error = "veuillez renseigner tous les champs !";
-      document.getElementById("error").style.color = "red";
+      submitElement.preventDefault();
+      error = "error";
       break;
     }
   }
 
   if (error) {
-    submitElement.preventDefault();
-    document.getElementById("error").innerHTML = error;
-    return false;
+    document.getElementById("error").innerHTML =
+      "veuillez renseigner tous les champs";
+    document.getElementById("error").style.color = "red";
   } else {
-    alert('Merci, Votre formulaire à bien été envoyé !');
-    // document.getElementsByClassName("content").innerHTML = "";
-
-
+    submitElement.preventDefault();
+    showForm.style.display = "none";
+    submitBtn.style.display = "none";
+    showConfirm.style.display = "block";
+    btnConfirm.style.display = "block";
+    btnConfirm.addEventListener("click", closeConfirm);
+    // alert("Merci, Votre formulaire à bien été envoyé !");
+    return true;
   }
- });
+});
 
- // Validate first Name and appear red elt when detect error
- let firstName = document.getElementById("first");
- let errorFirstName = document.getElementById("errorFirstName");
+// Validate first Name and appearring red string when detect error
+let firstName = document.getElementById("first");
+let errorFirstName = document.getElementById("errorFirstName");
 
- firstName.addEventListener("input", function() {
+firstName.addEventListener("input", function () {
   if (this.value !== "" && this.value.length >= 2) {
     errorFirstName.innerHTML = "";
-  firstName.style.border = "";
+    firstName.style.border = "";
+    return true;
   } else {
-    errorFirstName.innerHTML = "Nous sommes sur que votre prénom possède plus d'une lettre !";
+    errorFirstName.innerHTML =
+      "Nous sommes sur que votre prénom possède plus d'une lettre !";
     firstName.style.border = "4px solid #e54858";
+    return false;
   }
- })
+});
 
- // Validate lastName and appear red elt when detect error
- let lastName = document.getElementById("last");
- let errorLastName = document.getElementById("errorLastName");
+// Validate lastName and appearring red string when detect error
+let lastName = document.getElementById("last");
+let errorLastName = document.getElementById("errorLastName");
 
- lastName.addEventListener("input", function() {
+lastName.addEventListener("input", function () {
   if (this.value !== "" && this.value.length >= 2) {
-  errorLastName.innerHTML = "";
-  lastName.style.border = "";
+    errorLastName.innerHTML = "";
+    lastName.style.border = "";
+    return true;
   } else {
-    errorLastName.innerHTML = "c'est pareil pour votre nom Minimum 2 caractère !! ";
+    errorLastName.innerHTML =
+      "c'est pareil pour votre nom Minimum 2 caractère !! ";
     lastName.style.border = "4px solid #e54858";
+    return false;
   }
- })
+});
 
+// Validate Email and appearring red string when detect error
+let email = document.getElementById("email");
+let errorMail = document.getElementById("errorMail");
 
- // Validate Email and appear red elt when detect error
- let email = document.getElementById("email");
- let errorMail = document.getElementById("errorMail");
-
- email.addEventListener("input", function() {
+email.addEventListener("input", function () {
   if (mailRegex.test(this.value)) {
-  errorMail.innerHTML = "";
-  email.style.border = "";
-  return true;
+    errorMail.innerHTML = "";
+    email.style.border = "";
+    return true;
   } else {
     errorMail.innerHTML = "Veuillez entrer une adresse mail valide";
     email.style.border = "4px solid #e54858";
     return false;
   }
- })
+});
 
- // validation de la date de naissance birthdate
+// validate birthdate and appearring red string when detect error
 let birthdate = document.getElementById("birthdate");
 let errorBirthdate = document.getElementById("errorBirthdate");
 
-birthdate.addEventListener("input", function() {
-  console.log(birthdate.value);
+birthdate.addEventListener("input", function () {
   if (dateRegex.test(this.value)) {
-  errorBirthdate.innerHTML = "";
-  birthdate.style.border = "";
-  return true;
+    errorBirthdate.innerHTML = "";
+    birthdate.style.border = "";
+    return true;
   } else {
     errorBirthdate.innerHTML = "Veuillez entrer une date de naissance valide";
     birthdate.style.border = "4px solid #e54858";
     return false;
   }
- })
+});
 
-
- // validation de nombre de participation
+// validate participation quantity and appearring red string when detect error
 let quantity = document.getElementById("quantity");
 let errorQuantity = document.getElementById("errorQuantity");
 
-quantity.addEventListener("input", function() {
+quantity.addEventListener("input", function () {
   if (this.value === "" || this.value == NaN) {
-  errorQuantity.innerHTML = "veuillez renseigner ce champs";
-  quantity.style.border = "4px solid #e54858";
+    errorQuantity.innerHTML = "veuillez renseigner ce champs";
+    quantity.style.border = "4px solid #e54858";
+    return false;
   } else {
     errorQuantity.innerHTML = "";
     quantity.style.border = "";
+    return true;
   }
- })
+});
 
-// validate location
+// validate location and appearring red string when detect error
 let cityLocation = document.getElementsByName("location");
 let errorLocation = document.getElementById("errorLocation");
 
 function locationChecked() {
-if ((cityLocation[0].checked || cityLocation[1].checked || cityLocation[2].checked || cityLocation[3].checked || cityLocation[4].checked || cityLocation[5].checked || cityLocation[6].checked)) {
-     errorLocation.innerHTML = "blue";
-     return true;
-   } else {
-     errorLocation.innerHTML = "Veuillez choisir une option";
-     return false;
-   }
+  if (
+    cityLocation[0].checked ||
+    cityLocation[1].checked ||
+    cityLocation[2].checked ||
+    cityLocation[3].checked ||
+    cityLocation[4].checked ||
+    cityLocation[5].checked ||
+    cityLocation[6].checked
+  ) {
+    errorLocation.innerHTML = "";
+    return true;
+  } else {
+    errorLocation.innerHTML = "Veuillez choisir une option";
+    return false;
+  }
 }
 
-// Validate CGU
+// Validate CGU and appearring red string when detect error
 let errorCGU = document.getElementById("errorCGU");
 let checkbox1 = document.getElementById("checkbox1");
 
-checkbox1.addEventListener("input", function() {
+checkbox1.addEventListener("input", function () {
   if (checkbox1.checked) {
     errorCGU.innerHTML = "";
+    return true;
   } else {
     errorCGU.innerHTML = "Veuillez accepter les termes et conditions";
+    return false;
   }
-})
+});
 
-
-
-
-
-
-
-
-
-
- //   // if (!quantityNumber.value) {
+//   // if (!quantityNumber.value) {
 //   //   erreur = "veuillez renseigner un nombre de participation"
 //   // }
 

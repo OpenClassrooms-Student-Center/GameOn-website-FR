@@ -17,7 +17,6 @@
       <img alt="logo" src="Logo.png" width="auto" height="auto" />
     </div>
     <div class="main-navbar">
-      
       <a href="#" class="active"><span>Accueil</span></a>
       <a href="#"><span>Détails de l'évènement</span></a>
       <a href="#"><span>À propos</span></a>
@@ -55,7 +54,8 @@
       <div class="bground">
         <div class="content">
           <span class="close" onclick="closeModal()"></span> <!--premier essai de close de modal-->
-          <div class="modal-body">
+          <div id="showForm"
+           class="modal-body">
             <form
                id="inscription"
               name="reserve"
@@ -186,6 +186,7 @@
                 id="location7"
                 name="location"
                 value="Aucune"
+                checked
               />
               <label class="checkbox-label" for="location7">
                 <span class="checkbox-icon"></span>
@@ -216,20 +217,33 @@
                 <span class="blockError" id="errorCGU"></span>
               </div>
               <input
+                id="submitBtn"
                 class="btn-submit"
                 type="submit"
                 class="button"
                 value="C'est parti"
               />
+              <p id="error" class="blockError"></p>
             </form>
-            <p id="error" class="blockError"></p>
           </div>
+          <div 
+            id="showConfirm" 
+            class="confirm-body">
+            <p>Merci ! Votre inscription à bien été reçu.</p>
+            <input
+              id = "btnConfirm"
+              class="btn-submit"
+              type="button"
+              class="button"
+              value="Close"
+            />
+            </div>
         </div>
       </div>
     </main>
     <footer>
       <p class="copyrights">
-        Copyright 2014 - 2020, GameOn Inc.
+        Copyright 2014 - 2021, GameOn Inc.
       </p>
     </footer>
     <script src="modal.js"></script>
