@@ -1,5 +1,5 @@
 :root {
-  --font-default: "DM Sans", Arial, Helvetica, sans-serif;
+  --font-default: 'DM Sans', Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
   --modal-duration: 0.8s;
 }
@@ -15,7 +15,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
+  background-image: url('background.png');
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -185,7 +185,6 @@ main {
   overflow: hidden;
   position: relative;
   color: #fff;
-  padding-top: 10px;
 }
 
 .modal-body {
@@ -218,7 +217,6 @@ input {
 }
 
 #formDataOptions {
-  margin-bottom: 20px;
   display: none;
 }
 
@@ -227,6 +225,7 @@ input {
   margin-bottom: 20px;
 }
 
+/* [DATA-ERROR] strart */
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -240,20 +239,20 @@ input {
   transition: 0.3s;
 }
 
-.formData[data-error-visible="true"]::after {
+.formData[data-error-visible='true']::after {
   opacity: 1;
 }
 
-.formData[data-error-visible="true"] .text-control {
+.formData[data-error-visible='true'] .text-control {
   border: 2px solid #e54858;
 }
 
-/* INPUT[DATA-ERROR]
 input[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
   color: red;
-}*/
+}
+/* [DATA-ERROR] end */
 
 .msg {
   font-size: x-small;
@@ -261,8 +260,8 @@ input[data-error]::after {
 }
 
 #errorConditions {
+  position: absolute;
   margin-left: 36px;
-  margin-bottom: 15px;
 }
 
 .checkbox-label,
@@ -292,7 +291,7 @@ input[data-error]::after {
 
 .checkbox-label .checkbox-icon::after,
 .checkbox2-label .checkbox-icon::after {
-  content: "";
+  content: '';
   width: 13px;
   height: 13px;
   background-color: #279e7a;
@@ -354,7 +353,7 @@ input[data-error]::after {
 .close:after {
   position: absolute;
   left: 15px;
-  content: " ";
+  content: ' ';
   height: 33px;
   width: 3px;
   background-color: #fff;
@@ -404,7 +403,7 @@ input[data-error]::after {
 /* Style the arrow inside the select element: */
 .select-selected:after {
   position: absolute;
-  content: "";
+  content: '';
   top: 10px;
   right: 13px;
   width: 11px;
@@ -461,27 +460,23 @@ input[data-error]::after {
 }
 
 .hero-section {
-  min-height: 93vh;
   border-radius: 10px;
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
   overflow: hidden;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
 }
 
 .hero-content {
-  padding: 51px 67px;
   grid-column: span 4;
   background: #232323;
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
 }
 
 .hero-content::after {
-  content: "";
+  content: '';
   width: 100%;
   height: 100%;
   background: #232323;
@@ -504,13 +499,12 @@ input[data-error]::after {
 .hero-text {
   width: 146%;
   font-weight: normal;
-  margin-top: 57px;
+  margin-top: 20px;
   padding: 0;
 }
 
 .btn-signup {
   outline: none;
-  text-transform: capitalize;
   font-size: 1.3rem;
   padding: 15px 23px;
   margin: 0;
@@ -546,7 +540,7 @@ footer {
   margin: 0 20px;
 }
 
-@media screen and (max-width: 800px) {
+/*@media screen and (max-width: 768px) {
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -554,7 +548,6 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
   }
   .hero-content::after {
     content: unset;
@@ -563,25 +556,27 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 2rem;
+    font-weight: 600;
     white-space: normal;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
   .hero-img img {
     border-radius: 10px;
-    margin-top: 40px;
   }
   .hero-section > .btn-signup {
     display: block;
-    margin: 32px auto 10px;
-    padding: 12px 35px;
+    margin: 20px auto;
+    padding: 10px 35px;
+    font-size: medium;
   }
   .copyrights {
-    margin-top: 50px;
+    margin-top: 0;
     text-align: center;
+    font-size: x-small;
   }
 }
 
@@ -593,14 +588,136 @@ footer {
   to {
     opacity: 1;
   }
-}
-
-/* NE FONCTIONNE PAS
-input:invalid {
-  font-size: x-small;
-  color: #e54858;
-}
-
-input:valid {
-  border:#279e7a
 }*/
+
+@media screen and (max-width: 600px) {
+  main {
+    height: auto;
+  }
+  .topnav {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .main-navbar {
+    margin-top: 20px;
+    margin-right: 5px;
+  }
+  .header-logo img {
+    width: 75%;
+    margin-left: 20px;
+  }
+
+  .hero-section {
+    display: block;
+    box-shadow: unset;
+    margin-bottom: 0;
+  }
+  .hero-content {
+    background: #fff;
+    color: #000;
+  }
+  .hero-content::after {
+    content: unset;
+  }
+  #contents {
+    top: -200px;
+  }
+  .hero-headline {
+    width: 75%;
+    margin-left: 20px;
+    font-size: 2.5rem;
+    font-weight: 600;
+    white-space: normal;
+    color: white;
+  }
+  #text {
+    background-color: #232323;
+    border-radius: 0 0 15px 15px;
+    margin-top: 20px;
+    padding: 20px 0;
+  }
+  .hero-text {
+    width: unset;
+    font-size: 1rem;
+    margin: 0 20px 15px;
+    color: white;
+  }
+  .hero-img img {
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+  }
+  #signup {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .hero-section .btn-signup {
+    z-index: 0;
+    width: 50%;
+    display: block;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 15px 10px;
+    font-size: small;
+  }
+  .copyrights {
+    margin-top: 0;
+    text-align: center;
+    font-size: x-small;
+  }
+  .content {
+    width: 90%;
+    margin: 5% auto;
+  }
+  .bground {
+    position: fixed;
+    width: 100%;
+  }
+  label {
+    font-size: 0.5em;
+  }
+
+  .text-control {
+    font-size: small;
+    height: 35px;
+    padding: 5px;
+  }
+  .text-label {
+    font-size: small;
+  }
+  #formDataConditions {
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  .checkbox2-label {
+    width: 100%;
+    margin-top: 20px;
+    font-size: 6px;
+  }
+
+  .btn-submit {
+    width: 50%;
+    text-align: center;
+    padding: 12px 0;
+    font-size: small;
+  }
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .hero-headline {
+    padding-top: 10px;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+}
