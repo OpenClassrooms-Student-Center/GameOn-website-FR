@@ -5,7 +5,10 @@
     <title>Reservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="modal.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans"
       rel="stylesheet"
@@ -14,58 +17,48 @@
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
+        <img alt="logo" src="Logo.png" />
+      </div>
+      <div class="main-navbar">
+        <a href="#" class="active"><span>Accueil</span></a>
+        <a href="#"><span>Détails de l'évènement</span></a>
+        <a href="#"><span>À propos</span></a>
+        <a href="#"><span>Contact</span></a>
+        <a href="#"><span>Évènements passés</span></a>
+        <a href="javascript:void(0);" class="icon" onclick="editNav()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
     </div>
-    <div class="main-navbar">
-      <a href="#" class="active"><span>Accueil</span></a>
-      <a href="#"><span>Détails de l'évènement</span></a>
-      <a href="#"><span>À propos</span></a>
-      <a href="#"><span>Contact</span></a>
-      <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars"></i>
-      </a>
-    </div>
-    </div>
-  </div>
+
     <main>
       <div class="hero-section">
         <div class="hero-content">
           <h1 class="hero-headline">
-            Marathon national<br>
+            Marathon national<br />
             de jeux vidéos
           </h1>
           <p class="hero-text">
-            Vous aimez jouer ? Notre prochain évènement gaming est ouvert
-            aux réservations... Places limitées !
+            Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux
+            réservations... Places limitées !
           </p>
-          <button class="btn-signup modal-btn">
-            je m'inscris
-          </button>
+          <button class="btn-signup modal-btn">je m'inscris</button>
         </div>
         <div class="hero-img">
           <img src="./bg_img.jpg" alt="img" />
         </div>
-        <button class="btn-signup modal-btn">
-          je m'inscris
-        </button>
+        <button class="btn-signup modal-btn">je m'inscris</button>
       </div>
 
       <div class="bground">
-        <div class="content">
-          <span class="close" onclick="closeModal()"></span> <!--premier essai de close de modal-->
-          <div id="showForm"
-           class="modal-body">
-            <form
-               id="inscription"
-              name="reserve"
-              action="index.html"
-              method="get"
-              onsubmit="return validate();"
-            >
-              <div
-                class="formData">
-                <label for="first">Prénom</label><br>
+        <div id="showForm" class="content">
+          <span class="close" onclick="closeModal()"></span>
+          <!--premier essai de close de modal-->
+          <div class="modal-body">
+            <form name="reserve" action="index.html" method="get">
+              <div class="formData">
+                <label for="first">Prénom</label>
+                <br />
                 <input
                   class="text-control"
                   type="text"
@@ -73,47 +66,53 @@
                   name="first"
                   minlength="2"
                   required
-                /><span class="blockError" id="errorFirstName"></span><br>
+                />
+                <span class="blockError" id="errorFirstName"></span><br />
               </div>
-              <div
-                class="formData">
-                <label for="last">Nom</label><br>
+              <div class="formData">
+                <label for="last">Nom</label><br />
                 <input
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
-                /><span class="blockError" id="errorLastName"></span><br>
+                /><span class="blockError" id="errorLastName"></span><br />
               </div>
-              <div
-                class="formData">
-                <label for="email">E-mail</label><br>
+              <div class="formData">
+                <label for="email">E-mail</label><br />
                 <input
                   class="text-control"
                   type="email"
                   id="email"
                   name="email"
-                /><span class="blockError" id="errorMail"></span><br>
+                /><span class="blockError" id="errorMail"></span><br />
               </div>
-              <div
-                class="formData">
-                <label for="birthdate">Date de naissance</label><br>
+              <div class="formData">
+                <label for="birthdate">Date de naissance</label><br />
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                /><span class="blockError" id="errorBirthdate"></span><br>
+                /><span class="blockError" id="errorBirthdate"></span><br />
               </div>
-              <div
-                class="formData">
-                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+              <div class="formData">
+                <label for="quantity"
+                  >À combien de tournois GameOn avez-vous déjà participé
+                  ?</label
+                ><br />
+                <input
+                  type="number"
+                  class="text-control"
+                  id="quantity"
+                  name="quantity"
+                  min="0"
+                  max="99"
+                />
                 <span class="blockError" id="errorQuantity"></span>
               </div>
               <p class="text-label">Quelle ville ?</p>
-              <div
-                class="formData">
+              <div class="formData">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -181,70 +180,68 @@
                   Portland</label
                 >
                 <input
-                class="checkbox-input"
-                type="radio"
-                id="location7"
-                name="location"
-                value="Aucune"
-                checked
-              />
-              <label class="checkbox-label" for="location7">
-                <span class="checkbox-icon"></span>
-                Aucune</label
-              >
-              <span class="blockError" id="errorLocation"></span>
+                  class="checkbox-input"
+                  type="radio"
+                  id="location7"
+                  name="location"
+                  value="Aucune"
+                  checked
+                />
+                <label class="checkbox-label" for="location7">
+                  <span class="checkbox-icon"></span>
+                  Aucune</label
+                >
+                <span class="blockError" id="errorLocation"></span>
               </div>
 
-              <div
-                class="formData">
+              <div class="formData">
                 <input
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
                   checked
+                  required
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
-                <br>
+                <br />
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
                 </label>
-                <br>
+                <br />
                 <span class="blockError" id="errorCGU"></span>
               </div>
+              <p id="error" class="blockError"></p>
               <input
                 id="submitBtn"
-                class="btn-submit"
+                class="btn-submit button"
                 type="submit"
-                class="button"
                 value="C'est parti"
               />
-              <p id="error" class="blockError"></p>
             </form>
           </div>
-          <div 
-            id="showConfirm" 
-            class="confirm-body">
-            <p>Merci ! Votre inscription à bien été reçu.</p>
+        </div>
+      </div>
+      <div class="bgroundConfirm">
+        <div id="showConfirm" class="content">
+          <div class="confirm-body">
+            <p>Merci ! Votre inscription a bien été reçu.</p>
             <input
-              id = "btnConfirm"
-              class="btn-submit"
+              id="btnConfirm"
+              class="btn-submit button"
               type="button"
-              class="button"
-              value="Close"
+              value="Fermer"
             />
-            </div>
+          </div>
         </div>
       </div>
     </main>
     <footer>
-      <p class="copyrights">
-        Copyright 2014 - 2021, GameOn Inc.
-      </p>
+      <p class="copyrights">Copyright 2014 - 2021, GameOn Inc.</p>
     </footer>
     <script src="modal.js"></script>
   </body>

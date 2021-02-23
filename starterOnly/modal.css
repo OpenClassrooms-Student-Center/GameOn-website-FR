@@ -173,7 +173,8 @@ main {
   font-size: 16px;
 }
 
-.bground {
+.bground,
+.bgroundConfirm {
   display: none;
   position: fixed;
   z-index: 1;
@@ -199,11 +200,6 @@ main {
   padding-top: 10px;
 }
 
-/* .contentlpus {
-  display: none;
-  background: red;
-} */
-
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
@@ -213,7 +209,7 @@ main {
 .confirm-body {
   padding: 250px 8%;
   margin: 15px auto;
-  height: 700px;
+  height: 720px;
 }
 
 .confirm-body p {
@@ -222,7 +218,7 @@ main {
 }
 
 .confirm-body input {
-  margin-top: 250px;
+  margin-top: 280px;
 }
 
 label {

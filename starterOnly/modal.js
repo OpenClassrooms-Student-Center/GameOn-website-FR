@@ -16,6 +16,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const showForm = document.getElementById("showForm");
+const confirmbg = document.querySelector(".bgroundConfirm");
 const btnConfirm = document.getElementById("btnConfirm");
 const showConfirm = document.getElementById("showConfirm");
 const submitBtn = document.getElementById("submitBtn");
@@ -26,8 +27,6 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
-  btnConfirm.style.display = "none";
-  showConfirm.style.display = "none";
 }
 
 // close modal
@@ -37,8 +36,15 @@ function closeModal() {
 
 // function close confirm modal
 function closeConfirm() {
-  modalbg.style.display = "none";
+  confirmbg.style.display = "none";
   window.location.reload(true);
+}
+
+// function open modal validate
+function modalValidate() {
+  modalbg.style.display = "none";
+  confirmbg.style.display = "block";
+  btnConfirm.addEventListener("click", closeConfirm);
 }
 
 // validat form submit
@@ -49,24 +55,18 @@ document.forms["reserve"].addEventListener("submit", function (submitElement) {
   for (let i = 0; i < inputs.length; i++) {
     if (!inputs[i].value) {
       submitElement.preventDefault();
-      error = "error";
+      error = "veuillez renseigner tous les champs";
       break;
     }
   }
 
   if (error) {
-    document.getElementById("error").innerHTML =
-      "veuillez renseigner tous les champs";
+    document.getElementById("error").innerHTML = error;
     document.getElementById("error").style.color = "red";
   } else {
     submitElement.preventDefault();
-    showForm.style.display = "none";
-    submitBtn.style.display = "none";
-    showConfirm.style.display = "block";
-    btnConfirm.style.display = "block";
-    btnConfirm.addEventListener("click", closeConfirm);
-    // alert("Merci, Votre formulaire à bien été envoyé !");
-    return true;
+    modalValidate();
+    // alert(document.getElementById("showConfirm").innerHTML);
   }
 });
 
@@ -187,30 +187,3 @@ checkbox1.addEventListener("input", function () {
     return false;
   }
 });
-
-//   // if (!quantityNumber.value) {
-//   //   erreur = "veuillez renseigner un nombre de participation"
-//   // }
-
-//   // if (!birthdate.value) {
-//   //   erreur = "veuillez renseigner un l'année de naissance"
-//   // }
-
-//   // if (!email.value) {
-//   //   erreur = "veuillez renseigner un email"
-//   // }
-
-//   // if (!lastName.value) {
-//   //   erreur = "veuillez renseigner un nom de famille"
-//   // }
-
-//   // if (!firstName.value) {
-//   //   erreur = "veuillez renseigner un Prénom"
-//   // }
-
-// console.log(document.forms["reserve"]);
-// let firstName = document.getElementById("first");
-// let lastName = document.getElementById("last");
-// let email = document.getElementById("email");
-// let birthdate = document.getElementById("birthdate");
-// let quantityNumber = document.getElementById("quantity")
