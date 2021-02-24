@@ -73,49 +73,6 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .topnav a {
-    display: none;
-  }
-
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .topnav.responsive {
-    position: relative;
-  }
-
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
-
-
-@media screen and (max-width: 540px) {
-  .topnav a {
-    display: none;
-  }
-
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-}
-
 main {
   font-size: 130%;
   font-weight: bolder;
@@ -126,8 +83,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -163,7 +118,6 @@ main {
   cursor: pointer;
   font-size: 16px;
 }
-
 
 .button:hover {
   background: #3876ac;
@@ -221,6 +175,8 @@ main {
   margin-top: 280px;
 }
 
+/* custom box confirmation */
+
 label {
   font-family: var(--font-default);
   font-size: 17px;
@@ -262,22 +218,20 @@ input {
 }
 
 .blockError {
-  font-size: 0.8em;
+  font-size: 1rem;
   color: red;
 }
 
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
 .checkbox-label,
 .checkbox2-label {
   position: relative;
-  margin-left: 36px;
+  margin-left: 30px;
   font-size: 12px;
   font-weight: normal;
+}
+
+.checkbox-label {
+  width: 78px;
 }
 
 .checkbox-label .checkbox-icon,
@@ -590,6 +544,73 @@ footer {
   .copyrights {
     margin-top: 50px;
     text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .topnav a {
+    display: none;
+  }
+
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .topnav.responsive {
+    position: relative;
+  }
+
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .header-logo img {
+    width: 245px;
+    height: 40px;
+  }
+
+  .topnav a {
+    display: none;
+  }
+
+  .topnav a.icon {
+    float: right;
+    display: block;
+    margin-top: 0px;
+  }
+
+  .hero-headline {
+    font-size: 3rem;
+    width: 90%;
+  }
+
+  .hero-text {
+    width: 90%;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  .hero-headline {
+    font-size: 3rem;
+    width: 80%;
+  }
+
+  .hero-text {
+    width: 65%;
   }
 }
 

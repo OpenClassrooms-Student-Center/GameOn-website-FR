@@ -10,6 +10,7 @@ function editNav() {
 // regex
 const mailRegex = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
 const dateRegex = /^(19|20)\d{2}[-](0?[1-9]|1[012])[-](0[1-9]|[12]\d|3[01])$/;
+const nameRegex = /^[\w'\-,.][^0-9_!¡?÷?\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,}$/;
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
@@ -29,15 +30,9 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-// close modal
+// close modal on X
 function closeModal() {
   modalbg.style.display = "none";
-}
-
-// function close confirm modal
-function closeConfirm() {
-  confirmbg.style.display = "none";
-  window.location.reload(true);
 }
 
 // function open modal validate
@@ -45,6 +40,12 @@ function modalValidate() {
   modalbg.style.display = "none";
   confirmbg.style.display = "block";
   btnConfirm.addEventListener("click", closeConfirm);
+}
+
+// function close confirm modal
+function closeConfirm() {
+  confirmbg.style.display = "none";
+  window.location.reload(true);
 }
 
 // validat form submit
@@ -66,7 +67,6 @@ document.forms["reserve"].addEventListener("submit", function (submitElement) {
   } else {
     submitElement.preventDefault();
     modalValidate();
-    // alert(document.getElementById("showConfirm").innerHTML);
   }
 });
 
@@ -75,13 +75,17 @@ let firstName = document.getElementById("first");
 let errorFirstName = document.getElementById("errorFirstName");
 
 firstName.addEventListener("input", function () {
-  if (this.value !== "" && this.value.length >= 2) {
+  if (
+    this.value !== "" &&
+    this.value.length >= 2 &&
+    nameRegex.test(this.value)
+  ) {
     errorFirstName.innerHTML = "";
     firstName.style.border = "";
     return true;
   } else {
     errorFirstName.innerHTML =
-      "Nous sommes sur que votre prénom possède plus d'une lettre !";
+      "votre prénom doit contenir au moins deux lettres";
     firstName.style.border = "4px solid #e54858";
     return false;
   }
@@ -92,13 +96,17 @@ let lastName = document.getElementById("last");
 let errorLastName = document.getElementById("errorLastName");
 
 lastName.addEventListener("input", function () {
-  if (this.value !== "" && this.value.length >= 2) {
+  if (
+    this.value !== "" &&
+    this.value.length >= 2 &&
+    nameRegex.test(this.value)
+  ) {
     errorLastName.innerHTML = "";
     lastName.style.border = "";
     return true;
   } else {
     errorLastName.innerHTML =
-      "c'est pareil pour votre nom Minimum 2 caractère !! ";
+      "c'est pareil pour votre nom Minimum 2 lettres !! ";
     lastName.style.border = "4px solid #e54858";
     return false;
   }
