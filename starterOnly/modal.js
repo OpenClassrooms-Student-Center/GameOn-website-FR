@@ -11,7 +11,7 @@ function editNav() {
 const modalbg = document.querySelector('.bground');
 const modalBtn = document.querySelectorAll('.modal-btn');
 const formData = document.querySelectorAll('.formData');
-const formDataOptions = document.getElementById('formDataOptions')
+const formDataOptions = document.getElementById('formDataOptions');
 const bground = document.querySelector('.bground');
 const closeModalBtn = document.querySelector('.close');
 
@@ -141,57 +141,8 @@ const validEmail = function (inputEmail) {
 
 // VALIDATION DU CHAMP "Birthdate"
 // format jj/mm/aaaa
-// le joueur doit avoir entre 13 et 102 ans
-
-form.birthdate.addEventListener('change', function () {
-  validBirthdate(this);
-});
-
-const validBirthdate = function () {
-  let birthdateRegExp = new RegExp(
-    '^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/(19[2-9][0-9]|200[0-8])$'
-  );
-
-  if (birthdateRegExp.test(birthdate.value)) {
-    errorBirthdate.innerHTML = '';
-    return true;
-  } else {
-    errorBirthdate.innerHTML = 'Veuillez respecter le format jj/mm/aaaa (âge requis : 13 ans minimum)';
-    return false;
-  }
-};
-
-// NE FONCTIONNE PAS
-/*form.birthdate.addEventListener('change', function () {
-  validBirthdate(this);
-  validAge(this);
-});
-
-const validBirthdate = function () {
-  let birthdateRegExp = new RegExp(
-    '^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/(19[0-9][0-9]|20[0-9][0-9]|)$'
-  );
-
-  if (birthdateRegExp.test(birthdate.value)) {
-    errorBirthdate.innerHTML = '';
-    return true;
-  } else {
-    errorBirthdate.innerHTML = 'Veuillez respecter le format jj/mm/aaaa (âge requis : 13 ans minimum)';
-    return false;
-  }
-};
-
-const validAge = function () {
-
-  if (birthdate.value > 31/12/2008) {
-    errorBirthdate.innerHTML = 'Vous devez avoir au moins 13 ans pour participer';
-    return false;
-  } else if (birthdate.value < 01/01/1920) {
-    errorBirthdate.innerHTML = 'Veuillez vérifier votre année de naissance';
-    return false;
-  } else {
-  }
-};*/
+// le joueur doit avoir plus de 13 ans
+// ___________________________________
 
 // VALIDATION DU CHAMP "Quantity"
 // nombre de participations comprimse entre 0 et 99
@@ -224,6 +175,22 @@ const quantityNull = function () {
   } else {
   }
 };
+
+var atLeastOneChecked = false;
+var i = 0;
+
+while (document.getElementById('location' + i)) {
+  if (document.getElementById('location' + i).checked) {
+    atLeastOneChecked = true;
+    break;
+  }
+  i++;
+}
+if (atLeastOneChecked == true) {
+  errorLocation.innerHTML = '';
+} else {
+  errorLocation.innerHTML = 'Veuillez sélectionner au moins une ville';
+}
 
 // VALIDATION DES OPTIONS "Location"
 // Si le nombre de particpation > 0, alors le block apparait et au moins une ville doit être cochée
@@ -306,7 +273,7 @@ function validConditions() {
     validQuantity(form.quantity) &&
     validLocationOption(form.location1, form.location2, form.location3, form.location4, form.location5, form.location6) &&
     validConditions(form.checkbox1)
-  ) {
+  ) == true) {
     form.onsubmit();
     closeModal ();
     alert ("Merci ! Votre réservation est enregistrée.");
