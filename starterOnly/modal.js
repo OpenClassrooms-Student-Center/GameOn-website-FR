@@ -142,7 +142,52 @@ const validEmail = function (inputEmail) {
 // VALIDATION DU CHAMP "Birthdate"
 // format jj/mm/aaaa
 // le joueur doit avoir plus de 13 ans
-// ___________________________________
+
+// calcul de l'âge du joueur
+form.birthdate.addEventListener('blur', function () {
+  userAge(this);
+});
+
+let userAge = function () {
+
+  // récupération de la valeur du champ "date"
+  let userDateInput = form.birthdate.value;
+  //let userDateInput = document.getElementById("birthdate").value;
+  console.log(userDateInput);
+
+  // conversion de la valeur du champ "date" en objet
+  let userBirthdate = new Date(userDateInput);
+  console.log("userBirthdate"+ birthdate);
+
+  // différence entre la date de naissance et la date du jour
+  let difference = Date.now() - userBirthdate.getTime();
+
+  // calcul de l'âge
+  let age = new Date(difference);
+  let calculateAge = Math.abs(age.getUTCFullYear() - 1970);
+  console.log(calculateAge);
+  return calculateAge;
+}
+
+// Vérification âge > 13 ans
+form.birthdate.addEventListener('change', function () {
+  validAge(this);
+});
+
+function validAge () {
+  if (userAge()>=13) {
+    errorBirthdate.innerHTML = '';
+    return true
+  } else {
+  errorBirthdate.innerHTML = 'Vous devez avoir plus de 13 ans pour participer';
+  return false
+  }
+}
+
+form.birthdate.addEventListener('focus', function () {
+  userAge(this);
+  validAge(this);
+});
 
 // VALIDATION DU CHAMP "Quantity"
 // nombre de participations comprimse entre 0 et 99
