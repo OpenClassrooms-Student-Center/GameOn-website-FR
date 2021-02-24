@@ -68,7 +68,7 @@
                 id="firstName"
                 name="firstName"
                 />
-<!-- ajout <span> "errorFirst" -->
+<!-- espace dynamique "errorFirst" -->
                 <span id="errorFirst" class="msg"></span>
               </div>
               <div
@@ -80,8 +80,8 @@
                 id="lastName"
                 name="lastName"
                 />
-<!-- ajout <span> "errorLast" -->
-                <span id="errorLast" class="msg"></span><br>
+<!-- espace dynamique "errorLast" -->
+                <span id="errorLast" class="msg"></span>
               </div>
               <div
                 class="formData">
@@ -94,7 +94,7 @@
                 autocapitalize="none"
                 />
 <!-- ajout autocapitalize="none" pour bloquer la fonction 1e lettre majuscule des tablettes et smartphones -->
-<!-- ajout <span> "errorEmail" -->
+<!-- espace dynamique "errorEmail" -->
                 <span id="errorEmail" class="msg"></span>
               </div>
               <div
@@ -104,10 +104,13 @@
                 class="text-control"
                 id="birthdate"
                 name="birthdate"
+                type="date"
                 placeholder="jj/mm/aaaa"
+                min="01/03/2008"
+                max="31/12/1921"
+                required
                 />
-                <!-- type="date" -->
-<!-- ajout <span> "errorBirthdate" -->
+<!-- espace dynamique "errorBirthdate" -->
                 <span id="errorBirthdate" class="msg"></span>
               </div>
               <div
@@ -119,13 +122,14 @@
                 id="quantity"
                 name="quantity"
                 />
-<!-- ajout <span> "errorQuantity" -->
+<!-- espace dynamique "errorQuantity" -->
                 <span id="errorQuantity" class="msg"></span>
               </div>
               <div
               id="formDataOptions">
               <p class="text-label">* Dans quelle(s) ville(s) ?</p>
-              <span id="errorLocation" class="msg"></span>
+<!-- espace dynamique "errorLocation" -->
+                <p id="errorLocation" class="msg"></p>
                 <input
                   class="checkbox-input"
                   type="checkbox"
@@ -192,8 +196,6 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 ><br>
-<!-- ajout <span> "errorLocation" -->
-                <!-- <span id="errorLocation" class="msg"></span> -->
               </div>
 
               <div
@@ -215,7 +217,7 @@
                   Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
-<!-- ajout <span> "errorConditions" -->
+<!-- espace dynamique "errorConditions" -->
               </div>
               <input
                 class="btn-submit"
