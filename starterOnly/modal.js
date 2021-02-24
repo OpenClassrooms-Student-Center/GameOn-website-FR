@@ -161,7 +161,7 @@ function villeTestValidation(champVille, champConcour){
 
 function conditionTestValidation(champCondition){
   let messageConditionErreur = document.getElementsByClassName("erreur")[6];
-  let conditionObligatoire = '*Champ obligatoire';
+  let conditionObligatoire = 'Vous devez vérifier que vous acceptez les termes et conditions';
   if(!champCondition.checked){
     messageConditionErreur.innerHTML = conditionObligatoire;
     return false;
