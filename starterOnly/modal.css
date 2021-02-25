@@ -18,6 +18,7 @@ body {
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
+  min-width: 380px; /*proposition ajout pour que le format souhaité reste le meme sur les petits ecrans*/
   margin: 0 auto;
 }
 
@@ -195,6 +196,16 @@ label {
   display: inline-block;
   margin-bottom: 11px;
 }
+
+p.erreur{
+  color: red;
+  font-size: large;
+}
+span.erreur{
+  color: red;
+  font-size: large;
+}
+
 input {
   padding: 8px;
   border: 0.8px solid #ccc;
@@ -405,7 +416,7 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
+  /*min-height: 93vh; proposition supression pour ne pas trop etirer limage du fond sur les ecran xtra large*/
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -420,7 +431,7 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
+ min-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -478,7 +489,7 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 960px) {
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -486,7 +497,7 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px;/*proposition pour regler le pb texte titre rogné version mobile*/
   }
   .hero-content::after {
     content: unset;
