@@ -187,7 +187,7 @@ function validate() {
   let champConcour = document.getElementById('quantity'); // Le nombre de concours
   let champVille = document.getElementsByName('location');
   let champCondition = document.getElementById('checkbox1');
-  let isValid = false;
+  let isValid = true;
 
     if (!prenomTestValidation(champPrenom))// declaration fonction prenom et nom
     { 
