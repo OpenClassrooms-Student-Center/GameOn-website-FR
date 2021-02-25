@@ -12,15 +12,45 @@ const mailRegex = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3
 const dateRegex = /^(19|20)\d{2}[-](0?[1-9]|1[012])[-](0[1-9]|[12]\d|3[01])$/;
 const nameRegex = /^[\w'\-,.][^0-9_!¡?÷?\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,}$/;
 
-// DOM Elements
+// DOM Elements for modal
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
+const closeBtn = document.querySelectorAll(".close");
+const navEdit = document.querySelectorAll(".icon");
 const formData = document.querySelectorAll(".formData");
 const showForm = document.getElementById("showForm");
 const confirmbg = document.querySelector(".bgroundConfirm");
 const btnConfirm = document.getElementById("btnConfirm");
 const showConfirm = document.getElementById("showConfirm");
 const submitBtn = document.getElementById("submitBtn");
+
+// DOM Elements for input firstname
+const firstName = document.getElementById("first");
+const errorFirstName = document.getElementById("errorFirstName");
+
+// DOM Elements for input lastname
+const lastName = document.getElementById("last");
+const errorLastName = document.getElementById("errorLastName");
+
+// DOM Elements for input mail
+const email = document.getElementById("email");
+const errorMail = document.getElementById("errorMail");
+
+// DOM Elements for input birthDate
+const birthdate = document.getElementById("birthdate");
+const errorBirthdate = document.getElementById("errorBirthdate");
+
+// DOM Elements for input quantity
+const quantity = document.getElementById("quantity");
+const errorQuantity = document.getElementById("errorQuantity");
+
+// DOM Elements for cityLocation
+const cityLocation = document.getElementsByName("location");
+const errorLocation = document.getElementById("errorLocation");
+
+// DOM Elements for cgu
+const errorCGU = document.getElementById("errorCGU");
+const checkbox1 = document.getElementById("checkbox1");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -30,10 +60,16 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+// close modal event
+closeBtn.forEach((btnClose) => btnClose.addEventListener("click", closeModal));
+
 // close modal on X
 function closeModal() {
   modalbg.style.display = "none";
 }
+
+// call onclick editnav
+navEdit.forEach((nav) => nav.addEventListener("click", editNav));
 
 // function open modal validate
 function modalValidate() {
@@ -52,9 +88,10 @@ function closeConfirm() {
 document.forms["reserve"].addEventListener("submit", function (submitElement) {
   let error;
   let inputs = this;
+  let locationCheckedIsOk = locationChecked();
 
   for (let i = 0; i < inputs.length; i++) {
-    if (!inputs[i].value) {
+    if (!inputs[i].value || !locationCheckedIsOk) {
       submitElement.preventDefault();
       error = "veuillez renseigner tous les champs";
       break;
@@ -71,9 +108,6 @@ document.forms["reserve"].addEventListener("submit", function (submitElement) {
 });
 
 // Validate first Name and appearring red string when detect error
-let firstName = document.getElementById("first");
-let errorFirstName = document.getElementById("errorFirstName");
-
 firstName.addEventListener("input", function () {
   if (
     this.value !== "" &&
@@ -92,9 +126,6 @@ firstName.addEventListener("input", function () {
 });
 
 // Validate lastName and appearring red string when detect error
-let lastName = document.getElementById("last");
-let errorLastName = document.getElementById("errorLastName");
-
 lastName.addEventListener("input", function () {
   if (
     this.value !== "" &&
@@ -113,9 +144,6 @@ lastName.addEventListener("input", function () {
 });
 
 // Validate Email and appearring red string when detect error
-let email = document.getElementById("email");
-let errorMail = document.getElementById("errorMail");
-
 email.addEventListener("input", function () {
   if (mailRegex.test(this.value)) {
     errorMail.innerHTML = "";
@@ -129,9 +157,6 @@ email.addEventListener("input", function () {
 });
 
 // validate birthdate and appearring red string when detect error
-let birthdate = document.getElementById("birthdate");
-let errorBirthdate = document.getElementById("errorBirthdate");
-
 birthdate.addEventListener("input", function () {
   if (dateRegex.test(this.value)) {
     errorBirthdate.innerHTML = "";
@@ -145,12 +170,10 @@ birthdate.addEventListener("input", function () {
 });
 
 // validate participation quantity and appearring red string when detect error
-let quantity = document.getElementById("quantity");
-let errorQuantity = document.getElementById("errorQuantity");
-
 quantity.addEventListener("input", function () {
-  if (this.value === "" || this.value == NaN) {
-    errorQuantity.innerHTML = "veuillez renseigner ce champs";
+  if (this.value === "" || this.value == NaN || this.value >= 100) {
+    errorQuantity.innerHTML =
+      "veuillez choisir un nombre de participation valide";
     quantity.style.border = "4px solid #e54858";
     return false;
   } else {
@@ -161,9 +184,6 @@ quantity.addEventListener("input", function () {
 });
 
 // validate location and appearring red string when detect error
-let cityLocation = document.getElementsByName("location");
-let errorLocation = document.getElementById("errorLocation");
-
 function locationChecked() {
   if (
     cityLocation[0].checked ||
@@ -183,9 +203,6 @@ function locationChecked() {
 }
 
 // Validate CGU and appearring red string when detect error
-let errorCGU = document.getElementById("errorCGU");
-let checkbox1 = document.getElementById("checkbox1");
-
 checkbox1.addEventListener("input", function () {
   if (checkbox1.checked) {
     errorCGU.innerHTML = "";
