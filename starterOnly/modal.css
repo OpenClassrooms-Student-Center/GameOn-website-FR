@@ -196,8 +196,13 @@ label {
   margin-bottom: 11px;
 }
 
+p.erreur{
+  color: red;
+  font-size: large;
+}
 span.erreur{
   color: red;
+  font-size: large;
 }
 
 input {
