@@ -431,8 +431,7 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
- /*min-width: 424px; proposition supression pour pb du paragraphe rogné*/
-
+ min-width: 424px;
 }
 .hero-content::after {
   content: "";
