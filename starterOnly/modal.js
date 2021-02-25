@@ -33,7 +33,7 @@ function prenomTestValidation(champPrenom){
      // Déclaration des variables du formulaire  
   let myregex = /^[a-zA-ZÀ-Ÿà-ÿ-\s]+$/;
   let champsVide = 'remplissez les champs';
-  let champsInssufisant = 'Au moins 2 carracteres sont demandés';
+  let champsInssufisant = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
   let nombreCaractereMinimum = 2;
   let messagePrenomErreur = document.getElementsByClassName("erreur")[0];
   let caractereInterdits = 'Ce champ doit contenir uniquement des lettres'
@@ -61,7 +61,7 @@ function nomTestValidation(champNom){
   // Déclaration des variables du formulaire  
 let myregex = /^[a-zA-ZÀ-Ÿà-ÿ-\s]+$/;
 let champsVide = 'remplissez les champs';
-let champsInssufisant = 'Au moins 2 carracteres sont demandés';
+let champsInssufisant = 'Veuillez entrer 2 caractères ou plus pour le champ du nom';
 let nombreCaractereMinimum = 2;
 let caractereInterdits = 'Ce champ doit contenir uniquement des lettres'
 let messageNomErreur = document.getElementsByClassName("erreur")[1];
@@ -106,7 +106,7 @@ function mailTestValidation(champMail){
 }
 
 function dateTestValidation(champBirthdate){
-  let birthdateErreur = 'Sélectionnez une date';
+  let birthdateErreur = 'Vous devez entrer votre date de naissance';
   let messageBirthdateErreur = document.getElementsByClassName("erreur")[3];
   if (!champBirthdate.value) {
   messageBirthdateErreur.innerHTML = birthdateErreur
@@ -140,7 +140,6 @@ function villeTestValidation(champVille, champConcour){
    if (!champConcour || champConcour == 0) { // si le nombre de concour est == a 0 ou rien 
      return true;
    }
-
   while (i < champVille.length) 
   {
     if (champVille[i].checked) {
@@ -148,16 +147,22 @@ function villeTestValidation(champVille, champConcour){
     }
     i++;
   }
-
-  if (isChecked != 0) { // si le nombre de checkbox n'est pas egale a zero
-    result = true;
+  // ischecked = nombre dinput selectionné
+  if ((isChecked != 0) && (isChecked <= champConcour)){ // si le nombre de checkbox n'est pas egale a zero
     messageVilleErreur.innerHTML = '';
-  } else {
+    result = true;
+  } 
+  else if (isChecked > champConcour) { 
+    messageVilleErreur.innerHTML = 'Le nombre de ville est supérieur au nombre de concours';
+    result = false;
+  }  
+  else {
     result = false;
     messageVilleErreur.innerHTML = champsVide;
   }
   return result;
 }
+
 
 function conditionTestValidation(champCondition){
   let messageConditionErreur = document.getElementsByClassName("erreur")[6];
@@ -217,7 +222,7 @@ function validate() {
   }
   if (isValid)
   {
-    alert ('formulaire envoyé');
+    alert ('Merci ! Votre réservation a été reçue');
   }
   return  isValid;
 }
