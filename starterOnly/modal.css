@@ -18,6 +18,7 @@ body {
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
+  min-width: 380px; /*proposition ajout pour que le format souhaité reste le meme sur les petits ecrans*/
   margin: 0 auto;
 }
 
@@ -430,7 +431,8 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
+ /*min-width: 424px; proposition supression pour pb du paragraphe rogné*/
+
 }
 .hero-content::after {
   content: "";
@@ -488,7 +490,7 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 960px) {
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -496,7 +498,7 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px;/*proposition pour regler le pb texte titre rogné version mobile*/
   }
   .hero-content::after {
     content: unset;
