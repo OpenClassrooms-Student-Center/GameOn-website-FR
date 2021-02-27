@@ -126,7 +126,6 @@ main {
 	font-weight: bolder;
 	color: black;
 	border-radius: 2rem;
-	text-align: justify;
 }
 
 .modal-btn {
@@ -149,6 +148,10 @@ main {
 	margin: 20px;
 	padding: 10px;
 	font-family: var(--font-slab);
+}
+
+.hide-element {
+  display: none;
 }
 
 /* Modal form */
@@ -197,6 +200,25 @@ main {
 	padding-top: 10px;
 }
 
+.reservation-accepted {
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  padding: 250px 0 50px 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #232323;
+}
+
+.reservation-accepted p {
+  text-align: center;
+  font-size: 2rem;
+}
+
 .modal-body {
 	padding: 15px 8%;
 	margin: 15px auto;
@@ -232,7 +254,6 @@ input {
 	display: block;
 	margin-top: 7px;
 	margin-bottom: 7px;
-	text-align: right;
 	line-height: 0.3;
 	opacity: 0;
 	transition: 0.3s;
@@ -374,6 +395,11 @@ input[data-error]::after {
 	cursor: pointer;
 	border: 0;
 }
+
+.btn-submit:hover {
+  background-color: #3876ac;
+}
+
 /* custom select styles */
 .custom-select {
 	position: relative;
@@ -515,6 +541,23 @@ input[data-error]::after {
 	padding: 15px 23px;
 	margin: 0;
 	margin-top: 40px;
+}
+
+.btn-close {
+  display: block;
+  padding: 12px 0;
+  text-align: center;
+	margin: 0 auto;
+	border-radius: 7px;
+	font-size: 1.3rem;
+  background: #fe142f;
+	color: #fff;
+	cursor: pointer;
+	border: 0;
+}
+
+.btn-close:hover {
+  background-color:#3876ac;
 }
 
 .hero-img {

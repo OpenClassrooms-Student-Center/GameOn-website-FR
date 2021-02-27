@@ -1,11 +1,15 @@
+// Entire script in strict mode
+"use strict";
+
 /***********************************************
 ************ VARIABLES / CONSTANTS *************
 ***********************************************/
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
+const modalSuccessMessage = document.querySelector(".reservation-accepted");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const closeBtn = document.querySelectorAll(".close");
+const closeBtn = document.querySelectorAll(".close, .btn-close");
 const form = document.getElementById("form");
 let formData = document.querySelectorAll(".formData");
 let commentErrorLocation = document.querySelector('.error-location');
@@ -67,6 +71,7 @@ form.addEventListener("submit", function (e) {
     validLocation() &&
     validCgu(cgu)
   ) {
+    modalSuccessMessage.style.display = "flex";
     console.log("inscription ok")
   } else {
     console.log("vous devez remplir tous les champs requis")
@@ -95,6 +100,7 @@ function launchModal() {
 // close modal
 function closeModal() {
   modalbg.style.display = "none";
+  modalSuccessMessage.style.display = "none";
 }
 
 // ********* form inputs validation *********
@@ -157,11 +163,15 @@ const validEmail = function (email) {
 const validBirthdate = function (birthdate) {
   let currentYear = new Date().getFullYear();
   let minAge = currentYear - 18;
-  let maxAge = currentYear - 100;
+  let maxAge = currentYear - 130;
   // user birth year
   let UserBirthYear = birthdate.value.split('-')[0];
 
-  if ((UserBirthYear > minAge) || (UserBirthYear < maxAge)) {
+  if (UserBirthYear > minAge) {
+    setErrorFor(birthdate, "Vous devez avoir 18 ans pour pouvoir participer");
+    return false;
+  }
+  if (UserBirthYear < maxAge) {
     setErrorFor(birthdate, "Veuillez entrer une date d'anniversaire valide");
     return false;
   }
@@ -171,7 +181,7 @@ const validBirthdate = function (birthdate) {
   }
 };
 
-// valid number of tournaments
+// valid quantity of tournaments
 const validQuantity = function (quantity) {
   // check if numeric value
   if (quantity.value == "") {
