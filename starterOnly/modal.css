@@ -184,7 +184,7 @@ main {
 }
 
 .content {
-	margin: 5% auto;
+	margin: 1% auto;
 	width: 100%;
 	max-width: 500px;
 	animation-name: modalopen;
@@ -321,6 +321,16 @@ input[data-error]::after {
 	transform: rotate(-55deg);
 	left: 21%;
 	top: 19%;
+}
+
+.error-location {
+  font-size: 0.4em;
+  color: #e54858;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: right;
+  line-height: 0.3;
 }
 
 .close {

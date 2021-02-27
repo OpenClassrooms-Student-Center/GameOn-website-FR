@@ -29,7 +29,7 @@
       <div class="hero-section">
         <div class="hero-content">
           <h1 class="hero-headline">Marathon national<br>de jeux vidéos</h1>
-          <p class="hero-text">Vous aimez jouer ? Notre prochain évènement gaming est ouvertvaux réservations... Places limitées !</p>
+          <p class="hero-text">Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux réservations... Places limitées !</p>
           <button class="btn-signup modal-btn">je m'inscris</button>
         </div>
         <div class="hero-img">
@@ -60,7 +60,7 @@
               </div>
               <div class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <input type="text" class="text-control" id="quantity" name="quantity">
                 <br>
               </div>
               <p class="text-label">Quelles villes ?</p>
@@ -99,20 +99,18 @@
                 <small class="error-location"></small>
               </div>
               <div class="formData">
-                <input class="checkbox-input" type="checkbox" id="checkbox1" name="cgu">
-                <label class="checkbox2-label" for="checkbox1">
+                <input class="checkbox-input" type="checkbox" id="cgu" name="cgu">
+                <label class="checkbox2-label" for="cgu">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
-                <br>
-                <small class="error-cgv"></small>
-                <input class="checkbox-input" type="checkbox" id="checkbox2">
-                <label class="checkbox2-label" for="checkbox2">
+              </div>
+                <input class="checkbox-input" type="checkbox" id="events" name="events">
+                <label class="checkbox2-label" for="events">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
-              </div>
               <input class="btn-submit" type="submit" class="button" value="C'est parti">
             </form>
           </div>
