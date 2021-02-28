@@ -350,7 +350,7 @@ input[data-error]::after {
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  text-align: start;
   line-height: 0.3;
 }
 

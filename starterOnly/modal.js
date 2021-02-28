@@ -10,7 +10,7 @@ const modalbg = document.querySelector(".bground");
 const modalSuccessMessage = document.querySelector(".reservation-accepted");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const closeBtn = document.querySelectorAll(".close, .btn-close");
-const form = document.getElementById("form");
+const form = document.querySelector("form");
 let formData = document.querySelectorAll(".formData");
 let commentErrorLocation = document.querySelector('.error-location');
 
@@ -72,10 +72,8 @@ form.addEventListener("submit", function (e) {
     validCgu(cgu)
   ) {
     modalSuccessMessage.style.display = "flex";
-    console.log("inscription ok")
-  } else {
-    console.log("vous devez remplir tous les champs requis")
-  }
+    this.reset();
+  } 
 });
 
 /***********************************************
@@ -105,7 +103,7 @@ function closeModal() {
 
 // ********* form inputs validation *********
 
-// valid first name
+// validation and feedback for first name
 const validFirstName = function (first) {
   if (first.value.trim().length == "") {
     setErrorFor(first, "Veuillez renseigner votre Prénom");
@@ -126,7 +124,7 @@ const validFirstName = function (first) {
   }
 };
 
-// valid last name
+// validation and feedback for last name
 const validLastName = function (last) {
   if (last.value.trim().length == "") {
     setErrorFor(last, "Veuillez renseigner votre Nom");
@@ -147,7 +145,7 @@ const validLastName = function (last) {
   }
 };
 
-// valid email
+// validation and feedback for email
 const validEmail = function (email) {
   if (!emailPattern.test(email.value.trim())) {
     setErrorFor(email, "Veuillez entrer une adresse email valide");
@@ -159,19 +157,23 @@ const validEmail = function (email) {
   }
 };
 
-// valid birthdate
+// validation and feedback for birthdate
 const validBirthdate = function (birthdate) {
   let currentYear = new Date().getFullYear();
   let minAge = currentYear - 18;
   let maxAge = currentYear - 130;
   // user birth year
-  let UserBirthYear = birthdate.value.split('-')[0];
+  let userBirthYear = birthdate.value.split('-')[0];
 
-  if (UserBirthYear > minAge) {
+  if (birthdate.value == "") {
+    setErrorFor(birthdate, "Vous devez indiquer votre date de naissance");
+    return false;
+  }
+  if (userBirthYear > minAge) {
     setErrorFor(birthdate, "Vous devez avoir 18 ans pour pouvoir participer");
     return false;
   }
-  if (UserBirthYear < maxAge) {
+  if (userBirthYear < maxAge) {
     setErrorFor(birthdate, "Veuillez entrer une date d'anniversaire valide");
     return false;
   }
@@ -181,7 +183,7 @@ const validBirthdate = function (birthdate) {
   }
 };
 
-// valid quantity of tournaments
+// validation and feedback for quantity of tournaments
 const validQuantity = function (quantity) {
   // check if numeric value
   if (quantity.value == "") {
@@ -210,14 +212,14 @@ const validQuantity = function (quantity) {
   }
 };
 
-// valid location
+// validation and feedback for location
 const validLocation = function () {
-  const options = document.querySelectorAll(`input[type=radio][name="location"]`);
-  let checkOption;
+  const locations = document.querySelectorAll(`input[type=radio][name="location"]`);
+  let checkLocation;
   // options iteration
-  for (let i = 0; i < options.length; i++) {
-    if (options[i].checked) {
-      checkOption = options[i].value;
+  for (let i = 0; i < locations.length; i++) {
+    if (locations[i].checked) {
+      checkLocation = locations[i].value;
     }
   }
   // listen radio input with id
@@ -245,7 +247,7 @@ const validLocation = function () {
     }
   });
 
-  if (checkOption != null) {
+  if (checkLocation != null) {
     return true;
   } else {
     commentErrorLocation.innerText = 'Veuillez choisir une ville';
@@ -253,7 +255,7 @@ const validLocation = function () {
   }
 };
 
-// valid cgu
+// validation and feedback for cgu
 const validCgu = function (cgu) {
   if (!cgu.checked) {
     setErrorFor(cgu, "Veuillez accepter les conditions d'utilisation");
@@ -276,4 +278,4 @@ function removeErrorFor(input) {
   formData = input.parentElement;
   formData.removeAttribute("data-error-visible");
   formData.removeAttribute("data-error");
-} 
+}
