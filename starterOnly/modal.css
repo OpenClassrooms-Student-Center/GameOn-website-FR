@@ -38,7 +38,7 @@ p {
 
 .header-logo {
   float: left;
-  width: 20%;
+  width: 15%;
   display: flex;
   align-items: center;
 }
@@ -48,7 +48,9 @@ p {
 }
 
 .main-navbar {
-  float: right;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .topnav a {
