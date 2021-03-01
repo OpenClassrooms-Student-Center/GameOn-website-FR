@@ -14,21 +14,20 @@
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
+        <img alt="logo" src="Logo.png" width="auto" height="auto" />
+      </div>
+      <div class="main-navbar">
+        <a href="#" class="active"><span>Accueil</span></a>
+        <a href="#"><span>Détails de l'évènement</span></a>
+        <a href="#"><span>À propos</span></a>
+        <a href="#"><span>Contact</span></a>
+        <a href="#"><span>Évènements passés</span></a>
+        <a href="javascript:void(0);" class="icon" onclick="editNav()">
+          <i class="fa fa-bars"></i>
+          <i class="fa fa-times"></i>
+        </a>
+      </div>
     </div>
-    <div class="main-navbar">
-
-      <a href="#" class="active"><span>Accueil</span></a>
-      <a href="#"><span>Détails de l'évènement</span></a>
-      <a href="#"><span>À propos</span></a>
-      <a href="#"><span>Contact</span></a>
-      <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars"></i>
-      </a>
-    </div>
-    </div>
-  </div>
     <main>
       <div class="hero-section">
         <div class="hero-content">
@@ -39,22 +38,22 @@
             <h1 class="hero-headline">
               Marathon national de jeux vidéos
             </h1>
-          <div id="text">
-            <p class="hero-text">Vous aimez jouer ?</p>
-            <p class="hero-text">Notre prochain évènement gaming est ouvert aux réservations...</p>
-            <p class="hero-text">Places limitées !</p>
-          <div id="signup">
-            <button class="btn-signup modal-btn">
-              Je m'inscris
-            </button>
-          </div>
+            <div id="text">
+              <p class="hero-text">Vous aimez jouer ?</p>
+              <p class="hero-text">Notre prochain évènement gaming est ouvert aux réservations...</p>
+              <p class="hero-text">Places limitées !</p>
+              <button class="btn-signup modal-btn">
+                Je m'inscris
+              </button>
+            </div>
           </div>
         </div>
+      </div>
       <div class="bground">
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
-<!-- suppression "action", "methode", onclick -->
+          <!-- suppression "action", "methode", onclick -->
             <form
               name="reserve"
               id="reserve"
@@ -68,7 +67,7 @@
                 id="firstName"
                 name="firstName"
                 />
-<!-- espace dynamique "errorFirst" -->
+                <!-- espace dynamique "errorFirst" -->
                 <span id="errorFirst" class="msg"></span>
               </div>
               <div
@@ -80,7 +79,7 @@
                 id="lastName"
                 name="lastName"
                 />
-<!-- espace dynamique "errorLast" -->
+                <!-- espace dynamique "errorLast" -->
                 <span id="errorLast" class="msg"></span>
               </div>
               <div
@@ -93,8 +92,8 @@
                 name="email"
                 autocapitalize="none"
                 />
-<!-- ajout autocapitalize="none" pour bloquer la fonction 1e lettre majuscule des tablettes et smartphones -->
-<!-- espace dynamique "errorEmail" -->
+                <!-- ajout autocapitalize="none" pour bloquer la fonction 1e lettre majuscule des tablettes et smartphones -->
+                <!-- espace dynamique "errorEmail" -->
                 <span id="errorEmail" class="msg"></span>
               </div>
               <div
@@ -110,7 +109,7 @@
                 max="31/12/1921"
                 required
                 />
-<!-- espace dynamique "errorBirthdate" -->
+                <!-- espace dynamique "errorBirthdate" -->
                 <span id="errorBirthdate" class="msg"></span>
               </div>
               <div
@@ -122,13 +121,13 @@
                 id="quantity"
                 name="quantity"
                 />
-<!-- espace dynamique "errorQuantity" -->
+                <!-- espace dynamique "errorQuantity" -->
                 <span id="errorQuantity" class="msg"></span>
               </div>
               <div
               id="formDataOptions">
               <p class="text-label">* Dans quelle(s) ville(s) ?</p>
-<!-- espace dynamique "errorLocation" -->
+                <!-- espace dynamique "errorLocation" -->
                 <p id="errorLocation" class="msg"></p>
                 <input
                   class="checkbox-input"
@@ -209,15 +208,15 @@
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
                   * J'ai lu et accepté les conditions d'utilisation.
-                </label>
-                <span id="errorConditions" class="msg errorForm"></span>
+                </label><br>
+                <span id="errorConditions" class="msg errorForm"></span><br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2"/>
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
-<!-- espace dynamique "errorConditions" -->
+              <!-- espace dynamique "errorConditions" -->
               </div>
               <input
                 class="btn-submit"
@@ -227,7 +226,7 @@
                 id="submit"
                 value="C'est parti"
               />
-<!-- suppression : onclick="validate" l.230, après value="C'est parti" -->
+              <!-- suppression : onclick="validate" l.230, après value="C'est parti" -->
             </form>
           </div>
         </div>
