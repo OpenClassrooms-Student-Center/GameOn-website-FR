@@ -129,7 +129,7 @@ function nombreConcourTestValidation(champConcour){
     }
   if (regexNombre.test(champConcour.value) == false)
     {
-      messageConcourErreur.innerHTML = 'chiffres uniquement';
+      messageConcourErreur.innerHTML = 'Vous devez entrer des chiffres uniquement';
       // border de base champConcour.style.border = '0.8px solid #ccc';
        return false;
     }
