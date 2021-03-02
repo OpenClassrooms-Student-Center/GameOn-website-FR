@@ -50,7 +50,7 @@ function prenomTestValidation(champPrenom){
     messagePrenomErreur.innerHTML = caractereInterdits;
     return false;
   }
- else {  // essayer de cibler le si le formulaire est  valide
+ else {
   messagePrenomErreur.innerHTML = '';
   return true;
   }
@@ -86,7 +86,7 @@ let messageNomErreur = document.getElementsByClassName("erreur")[1];
 
 function mailTestValidation(champMail){
   let champsVide = 'Vous devez remplir le champ mail';
-  let regexmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/; /*marche pas */
+  let regexmail =  /^[a-zA-Z0-9_-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,3}$/;
   let messageMailErreur = document.getElementsByClassName("erreur")[2];
   let mailInvalide = 'Mail invalide';
 
@@ -121,15 +121,25 @@ function dateTestValidation(champBirthdate){
 function nombreConcourTestValidation(champConcour){
   let messageConcourErreur = document.getElementsByClassName("erreur")[4];
   let champsVide = 'Vous devez indiquer le nombre de tournois';
+  let regexNombre = /^[0-9]+$/;
+
   if (!champConcour.value) {
-    messageConcourErreur.innerHTML = champsVide
+    messageConcourErreur.innerHTML = champsVide;
         return false;
+    }
+  if (regexNombre.test(champConcour.value) == false)
+    {
+      messageConcourErreur.innerHTML = 'chiffres uniquement';
+      // border de base champConcour.style.border = '0.8px solid #ccc';
+       return false;
     }
     else{
       messageConcourErreur.innerHTML = '';
+      // proposition border ok champConcour.style.border = '3px solid green';
       return true;
     }
 }
+
 function villeTestValidation(champVille, champConcour){
    let messageVilleErreur = document.getElementsByClassName("erreur")[5];
    let champsVide = 'Vous devez indiquer les villes des tournois';
@@ -177,7 +187,22 @@ function conditionTestValidation(champCondition){
   }
 }
 
+/*function openPopup(modalAlert) {
+  modalAlert.style.display="flex";
+}
+function close() {
+  let modalAlert = document.getElementById('modalAlertValidation');
+  modalAlert.style.display = "none"; // popup validation
+  Modalclose(); // le formulaire
+}
+function closePopup(){  
+  let BtnClosepopup = document.getElementById("btn-close-validation");
+  let CroixClosepopup = document.getElementById("croixPopup");
 
+  BtnClosepopup.addEventListener("click", close);
+  CroixClosepopup.addEventListener("click", close);
+
+}*/
 
 function validate() {
   let champPrenom = document.getElementById('first'); // Le prénom
@@ -187,9 +212,10 @@ function validate() {
   let champConcour = document.getElementById('quantity'); // Le nombre de concours
   let champVille = document.getElementsByName('location');
   let champCondition = document.getElementById('checkbox1');
+  // let modalAlert = document.getElementById('modalAlertValidation');
   let isValid = true;
 
-    if (!prenomTestValidation(champPrenom))// declaration fonction prenom et nom
+    if (!prenomTestValidation(champPrenom))
     { 
       isValid = false;
     }
@@ -219,9 +245,12 @@ function validate() {
     {
       isValid = false;
     }
-  if (isValid)
-  {
-    alert ('Merci ! Votre réservation a été reçue');
-  }
-  return  isValid;
+    if (isValid)
+    {
+      alert('Merci pour votre inscription');
+      //  openPopup(modalAlert); avec la popup maquette
+      //closePopup();
+    }
+     return isValid;    
 }
+
