@@ -29,7 +29,7 @@
     </div>
     </div>
   </div>
-    <main>
+    <main id="wesh">
       <div class="hero-section">
         <div class="hero-content">
           <h1 class="hero-headline">
@@ -61,7 +61,7 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+              class="registration-form"
             >
               <div
                 class="formData">
@@ -72,7 +72,7 @@
                   id="first"
                   name="first"
                 /><br>
-                <span id="firstErrorMsg"></span>
+                <span id="firstErrorMsg">Veuillez entrer 2 caractères ou plus pour le champ du prénom</span>
               </div>
               <div
                 class="formData">
@@ -83,7 +83,7 @@
                   id="last"
                   name="last"
                 /><br>
-                <span id="lastErrorMsg"></span>
+                <span id="lastErrorMsg">Veuillez entrer 2 caractères ou plus pour le champ du nom</span>
               </div>
               <div
                 class="formData">
@@ -94,7 +94,7 @@
                   id="email"
                   name="email"
                 /><br>
-                <span id="emailErrorMsg"></span>
+                <span id="emailErrorMsg">Veuillez entrer un email valide</span>
               </div>
               <div
                 class="formData">
@@ -203,6 +203,7 @@
                 <br>
               </div>
               <input
+                id="submit-button"
                 class="btn-submit"
                 type="submit"
                 class="button"
