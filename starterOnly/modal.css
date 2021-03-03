@@ -32,7 +32,7 @@ p {
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
+  width: 85%;
   margin: 20px auto;
 }
 
@@ -60,7 +60,7 @@ p {
   text-align: center;
   padding: 10px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: medium;
   font-family: Roboto, sans-serif;
 }
 
@@ -73,7 +73,7 @@ p {
 .topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
-  border-radius: 15px;
+  border-radius: 10px;
 }
 
 .topnav .icon {
@@ -82,7 +82,7 @@ p {
 
 main {
   font-weight: bolder;
-  width: 90%;
+  width: 85%;
   margin: auto;
   border-radius: 10px;
   text-align: left;
@@ -177,16 +177,16 @@ input {
   height: 50px;
 }
 
-#formDataOptions {
+#options {
   display: none;
 }
 
-#formDataConditions {
+#conditions {
   margin-top: 20px;
   margin-bottom: 40px;
 }
 
-/* [DATA-ERROR] strart */
+/* [DATA-ERROR]
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -212,15 +212,15 @@ input[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
   color: red;
-}
-/* [DATA-ERROR] end */
+}*/
 
-.msg {
+.errorMsg {
   font-size: x-small;
   color: #e54858;
 }
 
-#errorConditions {
+#errorConditions,
+#errorForm {
   position: absolute;
   margin-left: 30px;
 }
