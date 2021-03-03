@@ -53,11 +53,13 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
-          <!-- suppression "action", "methode", onclick -->
             <form
               name="reserve"
               id="reserve"
+              action="index.html"
+              methode="GET"
               >
+              <!-- onsubmit="return validForm()" -->
               <div
                 class="formData">
                 <label for="firstName">* Prénom</label><br>
@@ -68,7 +70,8 @@
                 name="firstName"
                 />
                 <!-- espace dynamique "errorFirst" -->
-                <span id="errorFirst" class="msg"></span>
+                <!-- <span id="errorFirst" class="errorMsg"></span> -->
+                <!-- <span class="data-error" id="firstName"></span> -->
               </div>
               <div
                 class="formData">
@@ -80,7 +83,7 @@
                 name="lastName"
                 />
                 <!-- espace dynamique "errorLast" -->
-                <span id="errorLast" class="msg"></span>
+                <span id="errorLast" class="errorMsg"></span>
               </div>
               <div
                 class="formData">
@@ -94,7 +97,7 @@
                 />
                 <!-- ajout autocapitalize="none" pour bloquer la fonction 1e lettre majuscule des tablettes et smartphones -->
                 <!-- espace dynamique "errorEmail" -->
-                <span id="errorEmail" class="msg"></span>
+                <span id="errorEmail" class="errorMsg"></span>
               </div>
               <div
                 class="formData">
@@ -110,7 +113,7 @@
                 required
                 />
                 <!-- espace dynamique "errorBirthdate" -->
-                <span id="errorBirthdate" class="msg"></span>
+                <span id="errorBirthdate" class="errorMsg"></span>
               </div>
               <div
                 class="formData">
@@ -122,18 +125,18 @@
                 name="quantity"
                 />
                 <!-- espace dynamique "errorQuantity" -->
-                <span id="errorQuantity" class="msg"></span>
+                <span id="errorQuantity" class="errorMsg"></span>
               </div>
               <div
-              id="formDataOptions">
+              class="formData" id="options">
               <p class="text-label">* Dans quelle(s) ville(s) ?</p>
                 <!-- espace dynamique "errorLocation" -->
-                <p id="errorLocation" class="msg"></p>
+                <p id="errorLocation" class="errorMsg"></p>
                 <input
                   class="checkbox-input"
                   type="checkbox"
                   id="location0"
-                  name="location[0]"
+                  name="location"
                   value="New York"
                 />
                 <label class="checkbox-label" for="location0">
@@ -142,9 +145,9 @@
                 >
                 <input
                   class="checkbox-input"
-                  type="checkbox"
+                  type="radio"
                   id="location1"
-                  name="location[1]"
+                  name="location"
                   value="San Francisco"
                 />
                 <label class="checkbox-label" for="location1">
@@ -153,9 +156,9 @@
                 >
                 <input
                   class="checkbox-input"
-                  type="checkbox"
+                  type="radio"
                   id="location2"
-                  name="location[2]"
+                  name="location"
                   value="Seattle"
                 />
                 <label class="checkbox-label" for="location2">
@@ -164,9 +167,9 @@
                 >
                 <input
                   class="checkbox-input"
-                  type="checkbox"
+                  type="radio"
                   id="location3"
-                  name="location[3]"
+                  name="location"
                   value="Chicago"
                 />
                 <label class="checkbox-label" for="location3">
@@ -175,9 +178,9 @@
                 >
                 <input
                   class="checkbox-input"
-                  type="checkbox"
+                  type="radio"
                   id="location4"
-                  name="location[4]"
+                  name="location"
                   value="Boston"
                 />
                 <label class="checkbox-label" for="location4">
@@ -186,9 +189,9 @@
                 >
                 <input
                   class="checkbox-input"
-                  type="checkbox"
+                  type="radio"
                   id="location5"
-                  name="location[5]"
+                  name="location"
                   value="Portland"
                 />
                 <label class="checkbox-label" for="location5">
@@ -198,25 +201,26 @@
               </div>
 
               <div
-                id="formDataConditions">
+                class="formData" id="conditions">
                 <input
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
                   checked
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1" checked>
                   <span class="checkbox-icon"></span>
                   * J'ai lu et accepté les conditions d'utilisation.
                 </label><br>
-                <span id="errorConditions" class="msg errorForm"></span><br>
+                <!-- espace dynamique "errorConditions" -->
+                <span id="errorConditions" class="errorMsg"></span><br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2"/>
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
                 </label>
-                <br>
-              <!-- espace dynamique "errorConditions" -->
+                <!-- espace dynamique "errorForm" -->
+                <span id="errorForm" class="errorMsg"></span><br>
               </div>
               <input
                 class="btn-submit"
@@ -226,7 +230,6 @@
                 id="submit"
                 value="C'est parti"
               />
-              <!-- suppression : onclick="validate" l.230, après value="C'est parti" -->
             </form>
           </div>
         </div>
