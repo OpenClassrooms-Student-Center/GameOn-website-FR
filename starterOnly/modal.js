@@ -31,7 +31,7 @@ function Modalclose() {
 
 function prenomTestValidation(champPrenom){
      // Déclaration des variables du formulaire  
-  let myregex = /^[a-zA-ZÀ-Ÿà-ÿ-\s]+$/;
+  let myregexPrenom = /^[a-zA-ZÀ-Ÿà-ÿ-\s]+$/;
   let champsVide = 'Vous devez remplir le champ prénom';
   let champsInssufisant = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
   let nombreCaractereMinimum = 2;
@@ -46,7 +46,7 @@ function prenomTestValidation(champPrenom){
     messagePrenomErreur.innerHTML = champsInssufisant; 
     return false;
   }
-  if(myregex.test(champPrenom.value) == false){
+  if(myregexPrenom.test(champPrenom.value) == false){
     messagePrenomErreur.innerHTML = caractereInterdits;
     return false;
   }
@@ -59,7 +59,7 @@ function prenomTestValidation(champPrenom){
 
 function nomTestValidation(champNom){
   // Déclaration des variables du formulaire  
-let myregex = /^[a-zA-ZÀ-Ÿà-ÿ-\s]+$/;
+let myregexNom = /^[a-zA-ZÀ-Ÿà-ÿ-\s]+$/;
 let champsVide = 'Vous devez remplir le champ nom';
 let champsInssufisant = 'Veuillez entrer 2 caractères ou plus pour le champ du nom';
 let nombreCaractereMinimum = 2;
@@ -74,11 +74,11 @@ let messageNomErreur = document.getElementsByClassName("erreur")[1];
     messageNomErreur.innerHTML = champsInssufisant; 
     return false;
   }
-  if(myregex.test(champNom.value) == false){
+  if(myregexNom.test(champNom.value) == false){
     messageNomErreur.innerHTML = caractereInterdits;
     return false;
   }
-  else /* (champPrenom.value.length > nombreCaractereMinimum)*/{  
+  else{  
   messageNomErreur.innerHTML = '';
   return true;
   }
@@ -86,7 +86,7 @@ let messageNomErreur = document.getElementsByClassName("erreur")[1];
 
 function mailTestValidation(champMail){
   let champsVide = 'Vous devez remplir le champ mail';
-  let regexmail =  /^[a-zA-Z0-9_-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,3}$/;
+  let regexmail =  /^^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/; // explications
   let messageMailErreur = document.getElementsByClassName("erreur")[2];
   let mailInvalide = 'Mail invalide';
 
@@ -130,7 +130,6 @@ function nombreConcourTestValidation(champConcour){
   if (regexNombre.test(champConcour.value) == false)
     {
       messageConcourErreur.innerHTML = 'Vous devez entrer des chiffres uniquement';
-      // border de base champConcour.style.border = '0.8px solid #ccc';
        return false;
     }
     else{
@@ -186,8 +185,8 @@ function conditionTestValidation(champCondition){
     return true;
   }
 }
-
-/*function openPopup(modalAlert) {
+// modal popup validation
+function openPopup(modalAlert) {
   modalAlert.style.display="flex";
 }
 function close() {
@@ -201,8 +200,8 @@ function closePopup(){
 
   BtnClosepopup.addEventListener("click", close);
   CroixClosepopup.addEventListener("click", close);
-
-}*/
+}
+// modal popup validation
 
 function validate() {
   let champPrenom = document.getElementById('first'); // Le prénom
@@ -210,9 +209,9 @@ function validate() {
   let champMail = document.getElementById('email'); // l'email
   let champBirthdate = document.getElementById('birthdate'); // La date d'anniversaire
   let champConcour = document.getElementById('quantity'); // Le nombre de concours
-  let champVille = document.getElementsByName('location');
-  let champCondition = document.getElementById('checkbox1');
-  // let modalAlert = document.getElementById('modalAlertValidation');
+  let champVille = document.getElementsByName('location'); // Le choix des villes
+  let champCondition = document.getElementById('checkbox1'); // Conditons d'utilisations
+  let modalAlert = document.getElementById('modalAlertValidation'); // popup validation
   let isValid = true;
 
     if (!prenomTestValidation(champPrenom))
@@ -247,9 +246,10 @@ function validate() {
     }
     if (isValid)
     {
-      alert('Merci pour votre inscription');
-      //  openPopup(modalAlert); avec la popup maquette
-      //closePopup();
+      //alert('Merci ! Votre réservation a été reçue.');
+      openPopup(modalAlert); // avec la popup maquette
+      closePopup();
+      isValid = false;
     }
      return isValid;    
 }
