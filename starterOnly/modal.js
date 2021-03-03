@@ -11,7 +11,6 @@ function editNav() {
 const modalbg = document.querySelector('.bground');
 const modalBtn = document.querySelectorAll('.modal-btn');
 const formData = document.querySelectorAll('.formData');
-const formDataOptions = document.getElementById('formDataOptions');
 const bground = document.querySelector('.bground');
 const closeModalBtn = document.querySelector('.close');
 
@@ -23,7 +22,7 @@ const lastName = document.getElementById('lastName');
 const email = document.getElementById('email');
 const birthdate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
-//const locationOption = document.getElementsById("location");
+const locationOption = document.querySelectorAll('input[type=radio]');
 
 // Message d'erreur
 const errorFirstName = document.getElementById('errorFirst');
@@ -33,7 +32,7 @@ const errorBirthdate = document.getElementById('errorBirthdate');
 const errorQuantity = document.getElementById('errorQuantity');
 const errorLocation = document.getElementById('errorLocation');
 const errorConditions = document.getElementById('errorConditions');
-const errorForm = document.querySelector('.errorForm');
+const errorForm = document.getElementById('errorForm');
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
@@ -77,12 +76,15 @@ const validFirstName = function (inputFirstName) {
   );
 
   if (firstNameRegExp.test(inputFirstName.value)) {
-    errorFirstName.innerHTML = '';
+    document.getElementsByTagName('data-error') = '';
     return true;
-  } else {
-    errorFirstName.innerHTML = 'Veuillez saisir au moins 2 lettres';
-    return false;
+    //return '';
   }
+  document.getElementsByTagName(
+    'data-error'
+  ) = 'Veuillez saisir au moins 2 lettres';
+  return false;
+  //return 'Veuillez saisir au moins 2 lettres';
 };
 
 // VALIDATION DU CHAMP "Nom"
@@ -104,12 +106,10 @@ const validLastName = function (inputLastName) {
   );
 
   if (lastNameRegExp.test(inputLastName.value)) {
-    errorLastName.innerHTML = '';
-    return true;
-  } else {
-    errorLastName.innerHTML = 'Veuillez saisir au moins 2 lettres';
-    return false;
+    return '';
   }
+
+  return 'Veuillez saisir au moins 2 lettres';
 };
 
 // VALIDATION DU CHAMP "Email"
@@ -131,12 +131,10 @@ const validEmail = function (inputEmail) {
   );
 
   if (emailRegExp.test(inputEmail.value)) {
-    errorEmail.innerHTML = '';
-    return true;
-  } else {
-    errorEmail.innerHTML = 'Veuillez saisir un format correct';
-    return false;
+    return '';
   }
+
+  return 'Veuillez saisir un format correct';
 };
 
 // VALIDATION DU CHAMP "Birthdate"
@@ -149,15 +147,11 @@ form.birthdate.addEventListener('blur', function () {
 });
 
 let userAge = function () {
-
   // récupération de la valeur du champ "date"
   let userDateInput = form.birthdate.value;
-  //let userDateInput = document.getElementById("birthdate").value;
-  console.log(userDateInput);
 
   // conversion de la valeur du champ "date" en objet
   let userBirthdate = new Date(userDateInput);
-  console.log("userBirthdate"+ birthdate);
 
   // différence entre la date de naissance et la date du jour
   let difference = Date.now() - userBirthdate.getTime();
@@ -165,29 +159,23 @@ let userAge = function () {
   // calcul de l'âge
   let age = new Date(difference);
   let calculateAge = Math.abs(age.getUTCFullYear() - 1970);
-  console.log(calculateAge);
-  return calculateAge;
-}
 
-// Vérification âge > 13 ans
+  return calculateAge;
+};
+
+// Vérification âge > 13 ans et < 100 ans
+
 form.birthdate.addEventListener('change', function () {
   validAge(this);
 });
 
-function validAge () {
-  if (userAge()>=13) {
-    errorBirthdate.innerHTML = '';
-    return true
-  } else {
-  errorBirthdate.innerHTML = 'Vous devez avoir plus de 13 ans pour participer';
-  return false
+function validAge() {
+  if (userAge() >= 13) {
+    return '';
   }
-}
 
-form.birthdate.addEventListener('focus', function () {
-  userAge(this);
-  validAge(this);
-});
+  return 'Vous devez avoir plus de 13 ans pour participer';
+}
 
 // VALIDATION DU CHAMP "Quantity"
 // nombre de participations comprimse entre 0 et 99
@@ -201,88 +189,36 @@ form.quantity.addEventListener('change', function () {
 });
 
 const validQuantity = function () {
-  let quantityRegExp = new RegExp('^([1-9]$|^[1-9][0-9]$)|^(99)$');
+  let quantityRegExp = new RegExp('^([0-9]$|^[1-9][0-9]$)|^(99)$');
 
   if (quantityRegExp.test(quantity.value)) {
-    errorQuantity.innerHTML = '';
-    formDataOptions.style.display = 'block';
-  } else {
-    formDataOptions.style.display = 'none';
-    errorQuantity.innerHTML = 'Veuillez saisir un nombre compris entre 0 et 99';
-    return false;
+    options.style.display = 'block';
+    return '';
   }
+
+  options.style.display = 'none';
+  return 'Veuillez saisir un nombre compris entre 0 et 99';
 };
 
 const quantityNull = function () {
   if (quantity.value == 0) {
-    errorQuantity.innerHTML = '';
-    formDataOptions.style.display = 'none';
-  } else {
+    options.style.display = 'none';
   }
 };
 
-var atLeastOneChecked = false;
-var i = 0;
+// VALIDATION DU CHOIX "ville"
+// au moins un bouton radio doit être sélectionné
 
-while (document.getElementById('location' + i)) {
-  if (document.getElementById('location' + i).checked) {
-    atLeastOneChecked = true;
-    break;
-  }
-  i++;
-}
-if (atLeastOneChecked == true) {
-  errorLocation.innerHTML = '';
-} else {
-  errorLocation.innerHTML = 'Veuillez sélectionner au moins une ville';
-}
-
-// VALIDATION DES OPTIONS "Location"
-// Si le nombre de particpation > 0, alors le block apparait et au moins une ville doit être cochée
-
-form.location0.addEventListener('change', function () {
-  validLocationOption(this);
-});
-
-form.location1.addEventListener('change', function () {
-  validLocationOption(this);
-});
-
-form.location2.addEventListener('change', function () {
-  validLocationOption(this);
-});
-
-form.location3.addEventListener('change', function () {
-  validLocationOption(this);
-});
-
-form.location4.addEventListener('change', function () {
-  validLocationOption(this);
-});
-
-form.location5.addEventListener('change', function () {
+options.addEventListener('click', function () {
   validLocationOption(this);
 });
 
 const validLocationOption = function () {
-  var atLeastOneChecked = false;
-  var i = 0;
-
-  while (document.getElementById('location' + i)) {
-    if (document.getElementById('location' + i).checked) {
-      atLeastOneChecked = true;
-      break;
-    }
-    i++;
+  if (document.querySelectorAll('input[type=radio]:checked').length > 0) {
+    return '';
   }
 
-  if (atLeastOneChecked == true) {
-    errorLocation.innerHTML = '';
-    return true;
-  } else {
-    errorLocation.innerHTML = 'Veuillez sélectionner au moins une ville';
-    return false;
-  }
+  return 'Veuillez sélectionner au moins une ville';
 };
 
 // VALIDATION DE L'ACCEPTATION DES CONDITIONS
@@ -292,39 +228,37 @@ form.checkbox1.addEventListener('change', function () {
   validConditions(this);
 });
 
-function validConditions() {
+const validConditions = function () {
   if (checkbox1.checked == true) {
-    errorConditions.innerHTML = '';
-    return true;
-  } else {
-    errorConditions.innerHTML =
-      "* Veuillez accepter les conditions d'utiliation";
-    return false;
+    return '';
   }
-}
 
-// Submit /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  return "* Veuillez accepter les conditions d'utiliation";
+};
+
+// Submit
 // si tous les champs sont remplis ET validés alors le formulaire est envoyé, le modal se ferme et le message de confirmation de la réservation apparaît
 // sinon le formulaire n'est pas envoyé. Le modal reste ouvert, les informations fournies sont conservées et un message d'erreur apparait
 
-/*form.addEventListener("submit", function (event) {
+form.addEventListener('submit', function (event) {
   event.preventDefault();
+  validForm(this);
+});
 
-  if (
-    validFirstName(form.firstName) &&
-    validLastName(form.lastName) &&
-    validEmail(form.email) &&
-    validBirthdate(form.birthdate) &&
-    validQuantity(form.quantity) &&
-    validLocationOption(form.location1, form.location2, form.location3, form.location4, form.location5, form.location6) &&
-    validConditions(form.checkbox1)
-  ) == true) {
-    form.onsubmit();
-    closeModal ();
-    alert ("Merci ! Votre réservation est enregistrée.");
-    return true;
-  } else {
-    errorForm.innerHTML = "Veuillez vérifier vos informations";
-    return false;
+function validForm() {
+  error.firstName = validFirstName(form.firstName);
+  error.lastName = validLastName(form.lastName);
+  error.email = validEmail(form.email);
+  error.birthdate = validAge(form.birthdate);
+  error.quantity = validQuantity(form.quantity);
+  error.location = validLocationOption(form.location);
+  error.checkbox1 = validConditions(form.checkbox1);
+  error.form = validForm(form.reserve);
+
+  let validForm = validFirstName && validLastName && validEmail && validAge && validQuantity && validLocationOption && validConditions;
+
+  if (validForm) {
+    return 'Merci ! Votre réservation est enregistrée.';
   }
-};*/
+    return 'Veuillez vérifier vos informations'
+};
