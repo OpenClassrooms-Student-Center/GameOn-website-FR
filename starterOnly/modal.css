@@ -18,7 +18,7 @@ body {
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
-  min-width: 380px; /*proposition ajout pour que le format souhaité reste le meme sur les petits ecrans*/
+  min-width: 440px; /*proposition ajout pour que le format souhaité reste le meme sur les petits ecrans*/
   margin: 0 auto;
 }
 
