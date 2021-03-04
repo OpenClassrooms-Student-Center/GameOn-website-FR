@@ -123,6 +123,22 @@ main {
   font-size: 16px;
 }
 
+#confirmation {
+  position: fixed;
+  opacity: 0;
+  z-index: -1;
+  width: 90%;
+  height: 25%;
+  background-color: white;
+  color: black;
+  border-radius: 10px;
+  margin: 55px auto;
+  padding: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .bground {
   display: none;
   position: fixed;
