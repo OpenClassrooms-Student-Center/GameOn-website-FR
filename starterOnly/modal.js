@@ -13,6 +13,8 @@ const modalBtn = document.querySelectorAll('.modal-btn');
 const formData = document.querySelectorAll('.formData');
 const bground = document.querySelector('.bground');
 const closeModalBtn = document.querySelector('.close');
+const modalBody = document.querySelector('.modal-body')
+const confirmation = document.getElementById('confirmation')
 
 // html labels links
 // const formValid = document.getElementById("submit");
@@ -55,7 +57,6 @@ function closeModal() {
 
 // Récupération des données des champs du formulaire
 let form = document.getElementById('reserve');
-form.addEventListener('submit', function () {});
 
 // VALIDATION DU CHAMP "Prénom"
 // le champ n'est pas vide
@@ -76,15 +77,9 @@ const validFirstName = function (inputFirstName) {
   );
 
   if (firstNameRegExp.test(inputFirstName.value)) {
-    document.getElementsByTagName('data-error') = '';
-    return true;
-    //return '';
+    return '';
   }
-  document.getElementsByTagName(
-    'data-error'
-  ) = 'Veuillez saisir au moins 2 lettres';
-  return false;
-  //return 'Veuillez saisir au moins 2 lettres';
+  return 'Veuillez saisir au moins 2 lettres';
 };
 
 // VALIDATION DU CHAMP "Nom"
@@ -242,10 +237,10 @@ const validConditions = function () {
 
 form.addEventListener('submit', function (event) {
   event.preventDefault();
-  validForm(this);
+  checkForm ();
 });
 
-function validForm() {
+function checkForm () {
   error.firstName = validFirstName(form.firstName);
   error.lastName = validLastName(form.lastName);
   error.email = validEmail(form.email);
@@ -253,12 +248,14 @@ function validForm() {
   error.quantity = validQuantity(form.quantity);
   error.location = validLocationOption(form.location);
   error.checkbox1 = validConditions(form.checkbox1);
-  error.form = validForm(form.reserve);
 
   let validForm = validFirstName && validLastName && validEmail && validAge && validQuantity && validLocationOption && validConditions;
 
   if (validForm) {
-    return 'Merci ! Votre réservation est enregistrée.';
+    modalBody.style.display = 'none';
+    confirmation.style.opacity = '1';
+    return true;
   }
-    return 'Veuillez vérifier vos informations'
+    errorForm.innerHTML = 'Veuillez vérifier vos informations';
+    return false;
 };
