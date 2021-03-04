@@ -8,5 +8,5 @@ Ici nous reprenons le code de quelqu'un, notre travail consiste à ajouter le co
 Base maquette :
 https://www.figma.com/file/prxFGnSUoEhk6PTcMaJQim/UI-Design-GameOn-EN?node-id=0%3A1
 
-Ci-dessous les issues sur le repo GitHub qui décrivent ce qu'il reste à faire :
+Issues qui décrivent ce qu'il reste à faire :
 https://github.com/OpenClassrooms-Student-Center/GameOn-website-FR/issues
