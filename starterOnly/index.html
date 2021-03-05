@@ -51,16 +51,17 @@
       </div>
       <div class="bground">
         <div class="content">
-          <span class="close"></span>
           <div id="confirmation">
+            <span class="close-confirm"></span>
             <p>Merci !<br> Votre réservation a été reçue.</p>
           </div>
+          <span class="close"></span>
           <div class="modal-body">
             <form
               name="reserve"
               id="reserve"
               action="index.html"
-              methode="GET"
+              methode="POST"
               >
               <!-- onsubmit="return validForm()" -->
               <div
@@ -113,7 +114,6 @@
                 placeholder="jj/mm/aaaa"
                 min="01/03/2008"
                 max="31/12/1921"
-                required
                 />
                 <!-- espace dynamique "errorBirthdate" -->
                 <span id="errorBirthdate" class="errorMsg"></span>
@@ -223,8 +223,8 @@
                   Je souhaite être prévenu des prochains évènements.
                 </label>
                 <!-- espace dynamique "errorForm" -->
-                <span id="errorForm" class="errorMsg"></span><br>
               </div>
+              <span id="errorForm" class="errorMsg"></span>
               <input
                 class="btn-submit"
                 for="validate"
