@@ -68,6 +68,30 @@ function closeConfirm() {
   bground.style.display = 'none';
 }
 
+// VALIDATION DU FORMULAIRE
+
+document.getElementById('reserve').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  // Traitement générique
+  // si tous les champs sont vides ou remplis d'espaces consécutifs = erreur (bloque l'envoi du formulaire)
+  // si tous les champs sont remplis (sauf espaces consécutifs) = succès (envoie formulaire, ferme modal, affiche confirmation résa)
+
+  let inputs = this.getElementsByTagName('input');
+  for (let i = 0; i < inputs.length; i++) {
+    console.log(inputs[i]);
+    if (!inputs[i].value.trim()) {
+      e.preventDefault();
+      errorForm.innerHTML = 'Veuillez renseigner tous les champs';
+      break;
+    } else {
+      errorForm.innerHTML = '';
+      modalBody.style.display = 'none';
+      confirm.style.opacity = '1';
+    }
+  }
+});
+
 /////////////////
 
 // // VALIDATION DU CHAMP "Prénom"
