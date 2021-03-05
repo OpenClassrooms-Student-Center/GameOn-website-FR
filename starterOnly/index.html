@@ -74,8 +74,7 @@
                 name="firstName"
                 />
                 <!-- espace dynamique "errorFirst" -->
-                <!-- <span id="errorFirst" class="errorMsg"></span> -->
-                <!-- <span class="data-error" id="firstName"></span> -->
+                <small id="errorFirst"></small>
               </div>
               <div
                 class="formData">
@@ -87,7 +86,7 @@
                 name="lastName"
                 />
                 <!-- espace dynamique "errorLast" -->
-                <span id="errorLast" class="errorMsg"></span>
+                <small id="errorLast"></small>
               </div>
               <div
                 class="formData">
@@ -101,22 +100,20 @@
                 />
                 <!-- ajout autocapitalize="none" pour bloquer la fonction 1e lettre majuscule des tablettes et smartphones -->
                 <!-- espace dynamique "errorEmail" -->
-                <span id="errorEmail" class="errorMsg"></span>
+                <small id="errorEmail"></small>
               </div>
               <div
                 class="formData">
-                <label for="birthdate">* Date de naissance</label><br>
+                <label for="birthdate">* Date de naissance</label>
                 <input
                 class="text-control"
-                id="birthdate"
-                name="birthdate"
                 type="date"
                 placeholder="jj/mm/aaaa"
-                min="01/03/2008"
-                max="31/12/1921"
+                id="birthdate"
+                name="birthdate"
                 />
                 <!-- espace dynamique "errorBirthdate" -->
-                <span id="errorBirthdate" class="errorMsg"></span>
+                <small id="errorBirthdate"></small>
               </div>
               <div
                 class="formData">
@@ -128,13 +125,13 @@
                 name="quantity"
                 />
                 <!-- espace dynamique "errorQuantity" -->
-                <span id="errorQuantity" class="errorMsg"></span>
+                <small id="errorQuantity"></small>
               </div>
               <div
               class="formData" id="options">
               <p class="text-label">* Dans quelle(s) ville(s) ?</p>
                 <!-- espace dynamique "errorLocation" -->
-                <p id="errorLocation" class="errorMsg"></p>
+                <span id="errorLocation"></span>
                 <input
                   class="checkbox-input"
                   type="checkbox"
@@ -208,23 +205,24 @@
                 <input
                   class="checkbox-input"
                   type="checkbox"
+                  name="checkbox1"
                   id="checkbox1"
                   checked
                 />
-                <label class="checkbox2-label" for="checkbox1" checked>
+                <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   * J'ai lu et accepté les conditions d'utilisation.
                 </label><br>
                 <!-- espace dynamique "errorConditions" -->
-                <span id="errorConditions" class="errorMsg"></span><br>
+                <span id="errorConditions"></span><br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2"/>
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
                 </label>
-                <!-- espace dynamique "errorForm" -->
               </div>
-              <span id="errorForm" class="errorMsg"></span>
+              <!-- espace dynamique "errorForm" -->
+              <small id="errorForm"></small>
               <input
                 class="btn-submit"
                 for="validate"

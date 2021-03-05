@@ -125,18 +125,19 @@ main {
 
 #confirmation {
   position: fixed;
-  opacity: 0;
   z-index: -1;
+  opacity: 0;
+  max-width: 425px;
   width: 90%;
-  height: 25%;
-  background-color: white;
-  color: black;
+  background-color: dodgerblue;
   border-radius: 10px;
-  margin: 55px auto;
-  padding: 0 10px;
+  margin: 50px auto;
+  padding: 50px 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+  color: white;
+  font-weight: 300;
 }
 
 .bground {
@@ -202,43 +203,27 @@ input {
   margin-bottom: 40px;
 }
 
-/* [DATA-ERROR]
-.formData[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.4em;
+.formData small {
+  font-size: x-small;
   color: #e54858;
-  display: block;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  text-align: right;
-  line-height: 0.3;
-  opacity: 0;
-  transition: 0.3s;
+  visibility: hidden;
 }
 
-.formData[data-error-visible='true']::after {
-  opacity: 1;
+.formData.error small {
+	visibility: visible;
 }
 
-.formData[data-error-visible='true'] .text-control {
-  border: 2px solid #e54858;
-}
-
-input[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.4em;
-  color: red;
-}*/
-
-.errorMsg {
+#errorConditions {
+  position: absolute;
+  margin-left: 30px;
   font-size: x-small;
   color: #e54858;
 }
 
-#errorConditions,
 #errorForm {
-  position: absolute;
-  margin-left: 30px;
+  display: flex;
+  justify-content: center;
+  color: darkgrey;
 }
 
 .checkbox-label,
@@ -316,7 +301,8 @@ input[data-error]::after {
   top: 19%;
 }
 
-.close {
+.close,
+.close-confirm {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -328,7 +314,9 @@ input[data-error]::after {
 }
 
 .close:before,
-.close:after {
+.close:after,
+.close-confirm:before,
+.close-confirm:after {
   position: absolute;
   left: 15px;
   content: ' ';
@@ -337,11 +325,13 @@ input[data-error]::after {
   background-color: #fff;
 }
 
-.close:before {
+.close:before,
+.close-confirm:before {
   transform: rotate(45deg);
 }
 
-.close:after {
+.close:after,
+.close-confirm:after {
   transform: rotate(-45deg);
 }
 
