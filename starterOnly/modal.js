@@ -10,11 +10,13 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector('.bground');
 const modalBtn = document.querySelectorAll('.modal-btn');
-const formData = document.querySelectorAll('.formData');
 const bground = document.querySelector('.bground');
 const closeModalBtn = document.querySelector('.close');
-const modalBody = document.querySelector('.modal-body')
-const confirmation = document.getElementById('confirmation')
+const modalBody = document.querySelector('.modal-body');
+const confirm = document.getElementById('confirmation');
+const closeConfirmBtn = document.querySelector('.close-confirm');
+const form = document.getElementById('reserve');
+const formData = document.querySelectorAll('.formData');
 
 // html labels links
 // const formValid = document.getElementById("submit");
@@ -55,207 +57,215 @@ function closeModal() {
   bground.style.display = 'none';
 }
 
-// Récupération des données des champs du formulaire
-let form = document.getElementById('reserve');
-
-// VALIDATION DU CHAMP "Prénom"
-// le champ n'est pas vide
-// le champ n'est pas remplis de " "
-// le champ contient 2 caractères minimum
-// le champ accepte des mots composés séparés par "-" ; " ")
-// le champ n'accepte pas 2 éléments de séparation consécutifs
-// casse indifférente
-
-form.firstName.addEventListener('change', function () {
-  validFirstName(this);
+// close confirm message event
+closeConfirmBtn.addEventListener('click', function (event) {
+  event.preventDefault();
+  closeConfirm();
 });
 
-const validFirstName = function (inputFirstName) {
-  let firstNameRegExp = new RegExp(
-    '^[a-zsàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]+[-sa-zàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]{1,}$',
-    'i'
-  );
-
-  if (firstNameRegExp.test(inputFirstName.value)) {
-    return '';
-  }
-  return 'Veuillez saisir au moins 2 lettres';
-};
-
-// VALIDATION DU CHAMP "Nom"
-// le champ n'est pas vide
-// le champ n'est pas remplis de " "
-// le champ contient 2 caractères minimum
-// le champ accepte des mots composés séparés par "'" ; "-" ; " ")
-// le champ n'accepte pas 2 éléments de séparation consécutifs
-// casse indifférente
-
-form.lastName.addEventListener('change', function () {
-  validLastName(this);
-});
-
-const validLastName = function (inputLastName) {
-  let lastNameRegExp = new RegExp(
-    "^[a-zsàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]+[-'sa-zsàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]{1,}$",
-    'i'
-  );
-
-  if (lastNameRegExp.test(inputLastName.value)) {
-    return '';
-  }
-
-  return 'Veuillez saisir au moins 2 lettres';
-};
-
-// VALIDATION DU CHAMP "Email"
-// le champ n'est pas vide
-// le champ n'est pas remplis de " "
-// tout caractère ASCII accepté
-// espaces et points non acceptés en début ou fin de saisie et si répétés côte à côte
-// le champs contient strictement 1 "@" et 1 "." ensuite
-// le nom de domanaine accepte les formats entreprise
-// casse indifférente
-
-form.email.addEventListener('change', function () {
-  validEmail(this);
-});
-
-const validEmail = function (inputEmail) {
-  let emailRegExp = new RegExp(
-    "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@{1}[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$"
-  );
-
-  if (emailRegExp.test(inputEmail.value)) {
-    return '';
-  }
-
-  return 'Veuillez saisir un format correct';
-};
-
-// VALIDATION DU CHAMP "Birthdate"
-// format jj/mm/aaaa
-// le joueur doit avoir plus de 13 ans
-
-// calcul de l'âge du joueur
-form.birthdate.addEventListener('blur', function () {
-  userAge(this);
-});
-
-let userAge = function () {
-  // récupération de la valeur du champ "date"
-  let userDateInput = form.birthdate.value;
-
-  // conversion de la valeur du champ "date" en objet
-  let userBirthdate = new Date(userDateInput);
-
-  // différence entre la date de naissance et la date du jour
-  let difference = Date.now() - userBirthdate.getTime();
-
-  // calcul de l'âge
-  let age = new Date(difference);
-  let calculateAge = Math.abs(age.getUTCFullYear() - 1970);
-
-  return calculateAge;
-};
-
-// Vérification âge > 13 ans et < 100 ans
-
-form.birthdate.addEventListener('change', function () {
-  validAge(this);
-});
-
-function validAge() {
-  if (userAge() >= 13) {
-    return '';
-  }
-
-  return 'Vous devez avoir plus de 13 ans pour participer';
+// close confirm message
+function closeConfirm() {
+  bground.style.display = 'none';
 }
 
-// VALIDATION DU CHAMP "Quantity"
-// nombre de participations comprimse entre 0 et 99
-// si la quantité est incorrecte ou nulle alors le block "choix de ville(s)" ne s'affiche pas
-// Si nombre de participation = 0 alors la saisie est valide et le block "choix de ville(s)" ne s'affiche pas
-// Si le nombre de participation(s) comprise entre 1 et 99 alors le block "choix de ville(s)" s'affiche
+/////////////////
 
-form.quantity.addEventListener('change', function () {
-  validQuantity(this);
-  quantityNull(this);
-});
+// // VALIDATION DU CHAMP "Prénom"
+// // contient 2 caractères minimum
+// // accepte des mots composés séparés par "-" ; " ")
+// // n'accepte pas 2 éléments de séparation consécutifs
+// // casse indifférente
 
-const validQuantity = function () {
-  let quantityRegExp = new RegExp('^([0-9]$|^[1-9][0-9]$)|^(99)$');
+// form.firstName.addEventListener('change', function () {
+//   validFirstName(this);
+// });
 
-  if (quantityRegExp.test(quantity.value)) {
-    options.style.display = 'block';
-    return '';
-  }
+// const validFirstName = function (inputFirstName) {
+//   let firstNameRegExp = new RegExp(
+//     '^[a-zsàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]+[-sa-zàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]{1,}$',
+//     'i'
+//   );
 
-  options.style.display = 'none';
-  return 'Veuillez saisir un nombre compris entre 0 et 99';
-};
+//   if (firstNameRegExp.test(inputFirstName.value)) {
+//     return '';
+//   }
+//   return 'Veuillez saisir au moins 2 lettres';
+// };
 
-const quantityNull = function () {
-  if (quantity.value == 0) {
-    options.style.display = 'none';
-  }
-};
+// // VALIDATION DU CHAMP "Nom"
+// // le champ n'est pas vide
+// // le champ n'est pas remplis de " "
+// // le champ contient 2 caractères minimum
+// // le champ accepte des mots composés séparés par "'" ; "-" ; " ")
+// // le champ n'accepte pas 2 éléments de séparation consécutifs
+// // casse indifférente
 
-// VALIDATION DU CHOIX "ville"
-// au moins un bouton radio doit être sélectionné
+// form.lastName.addEventListener('change', function () {
+//   validLastName(this);
+// });
 
-options.addEventListener('click', function () {
-  validLocationOption(this);
-});
+// const validLastName = function (inputLastName) {
+//   let lastNameRegExp = new RegExp(
+//     "^[a-zsàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]+[-'sa-zsàáâãäåçèéêëìíîïðòóôõöùúûüýÿ]{1,}$",
+//     'i'
+//   );
 
-const validLocationOption = function () {
-  if (document.querySelectorAll('input[type=radio]:checked').length > 0) {
-    return '';
-  }
+//   if (lastNameRegExp.test(inputLastName.value)) {
+//     return '';
+//   }
 
-  return 'Veuillez sélectionner au moins une ville';
-};
+//   return 'Veuillez saisir au moins 2 lettres';
+// };
 
-// VALIDATION DE L'ACCEPTATION DES CONDITIONS
-// la case doit être cochée
+// // VALIDATION DU CHAMP "Email"
+// // le champ n'est pas vide
+// // le champ n'est pas remplis de " "
+// // tout caractère ASCII accepté
+// // espaces et points non acceptés en début ou fin de saisie et si répétés côte à côte
+// // le champs contient strictement 1 "@" et 1 "." ensuite
+// // le nom de domanaine accepte les formats entreprise
+// // casse indifférente
 
-form.checkbox1.addEventListener('change', function () {
-  validConditions(this);
-});
+// form.email.addEventListener('change', function () {
+//   validEmail(this);
+// });
 
-const validConditions = function () {
-  if (checkbox1.checked == true) {
-    return '';
-  }
+// const validEmail = function (inputEmail) {
+//   let emailRegExp = new RegExp(
+//     "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@{1}[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$"
+//   );
 
-  return "* Veuillez accepter les conditions d'utiliation";
-};
+//   if (emailRegExp.test(inputEmail.value)) {
+//     return '';
+//   }
 
-// Submit
-// si tous les champs sont remplis ET validés alors le formulaire est envoyé, le modal se ferme et le message de confirmation de la réservation apparaît
-// sinon le formulaire n'est pas envoyé. Le modal reste ouvert, les informations fournies sont conservées et un message d'erreur apparait
+//   return 'Veuillez saisir un format correct';
+// };
 
-form.addEventListener('submit', function (event) {
-  event.preventDefault();
-  checkForm ();
-});
+// // VALIDATION DU CHAMP "Birthdate"
+// // format jj/mm/aaaa
+// // le joueur doit avoir plus de 13 ans
 
-function checkForm () {
-  error.firstName = validFirstName(form.firstName);
-  error.lastName = validLastName(form.lastName);
-  error.email = validEmail(form.email);
-  error.birthdate = validAge(form.birthdate);
-  error.quantity = validQuantity(form.quantity);
-  error.location = validLocationOption(form.location);
-  error.checkbox1 = validConditions(form.checkbox1);
+// // calcul de l'âge du joueur
+// form.birthdate.addEventListener('blur', function () {
+//   userAge(this);
+// });
 
-  let validForm = validFirstName && validLastName && validEmail && validAge && validQuantity && validLocationOption && validConditions;
+// let userAge = function () {
+//   // récupération de la valeur du champ "date"
+//   let userDateInput = form.birthdate.value;
 
-  if (validForm) {
-    modalBody.style.display = 'none';
-    confirmation.style.opacity = '1';
-    return true;
-  }
-    errorForm.innerHTML = 'Veuillez vérifier vos informations';
-    return false;
-};
+//   // conversion de la valeur du champ "date" en objet
+//   let userBirthdate = new Date(userDateInput);
+
+//   // différence entre la date de naissance et la date du jour
+//   let difference = Date.now() - userBirthdate.getTime();
+
+//   // calcul de l'âge
+//   let age = new Date(difference);
+//   let calculateAge = Math.abs(age.getUTCFullYear() - 1970);
+
+//   return calculateAge;
+// };
+
+// // Vérification âge > 13 ans et < 100 ans
+
+// form.birthdate.addEventListener('change', function () {
+//   validAge(this);
+// });
+
+// function validAge() {
+//   if (userAge() >= 13) {
+//     return '';
+//   }
+
+//   return 'Vous devez avoir plus de 13 ans pour participer';
+// }
+
+// // VALIDATION DU CHAMP "Quantity"
+// // nombre de participations comprimse entre 0 et 99
+// // si la quantité est incorrecte ou nulle alors le block "choix de ville(s)" ne s'affiche pas
+// // Si nombre de participation = 0 alors la saisie est valide et le block "choix de ville(s)" ne s'affiche pas
+// // Si le nombre de participation(s) comprise entre 1 et 99 alors le block "choix de ville(s)" s'affiche
+
+// form.quantity.addEventListener('change', function () {
+//   validQuantity(this);
+//   quantityNull(this);
+// });
+
+// const validQuantity = function () {
+//   let quantityRegExp = new RegExp('^([0-9]$|^[1-9][0-9]$)|^(99)$');
+
+//   if (quantityRegExp.test(quantity.value)) {
+//     options.style.display = 'block';
+//     return '';
+//   }
+
+//   options.style.display = 'none';
+//   return 'Veuillez saisir un nombre compris entre 0 et 99';
+// };
+
+// const quantityNull = function () {
+//   if (quantity.value == 0) {
+//     options.style.display = 'none';
+//   }
+// };
+
+// // VALIDATION DU CHOIX "ville"
+// // au moins un bouton radio doit être sélectionné
+
+// options.addEventListener('click', function () {
+//   validLocationOption(this);
+// });
+
+// const validLocationOption = function () {
+//   if (document.querySelectorAll('input[type=radio]:checked').length > 0) {
+//     return '';
+//   }
+
+//   return 'Veuillez sélectionner au moins une ville';
+// };
+
+// // VALIDATION DE L'ACCEPTATION DES CONDITIONS
+// // la case doit être cochée
+
+// form.checkbox1.addEventListener('change', function () {
+//   validConditions(this);
+// });
+
+// const validConditions = function () {
+//   if (checkbox1.checked == true) {
+//     return '';
+//   }
+
+//   return "* Veuillez accepter les conditions d'utiliation";
+// };
+
+// // Submit
+// // si tous les champs sont remplis ET validés alors le formulaire est envoyé, le modal se ferme et le message de confirmation de la réservation apparaît
+// // sinon le formulaire n'est pas envoyé. Le modal reste ouvert, les informations fournies sont conservées et un message d'erreur apparait
+
+// form.addEventListener('submit', function (event) {
+//   event.preventDefault();
+//   checkForm ();
+// });
+
+// function checkForm () {
+//   error.firstName = validFirstName(form.firstName);
+//   error.lastName = validLastName(form.lastName);
+//   error.email = validEmail(form.email);
+//   error.birthdate = validAge(form.birthdate);
+//   error.quantity = validQuantity(form.quantity);
+//   error.location = validLocationOption(form.location);
+//   error.checkbox1 = validConditions(form.checkbox1);
+
+//   let validForm = validFirstName && validLastName && validEmail && validAge && validQuantity && validLocationOption && validConditions;
+
+//   if (validForm) {
+//     modalBody.style.display = 'none';
+//     confirmation.style.opacity = '1';
+//     return true;
+//   }
+//     errorForm.innerHTML = 'Veuillez vérifier vos informations';
+//     return false;
+// };
