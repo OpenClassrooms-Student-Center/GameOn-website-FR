@@ -186,14 +186,14 @@
 
 
               <div
-                class="formData">
+                class="formData"
+                id="termsAndConditions">
                 <input
                   class="checkbox-input"
                   type="checkbox"
-                  id="checkbox1"
-                  checked
+                  id="acceptConditions"
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="acceptConditions" >
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
@@ -204,6 +204,7 @@
                   Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
+                <span class="hidden termsCheckMsg">Vous devez accepté les conditions d'utilisation</span>
               </div>
               <input
                 id="submit-button"

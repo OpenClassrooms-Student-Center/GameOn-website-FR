@@ -6,9 +6,6 @@ const modal = document.getElementById('modal');
 const $registrationForm = document.querySelector('.registration-form');
 
 
-// Functions
-//  -> dédié à l'affichage
-
 // Fonction pour ouvrir et fermer la modal
 function modalDisplay(displayStyle) {
   modal.style.display = displayStyle 
@@ -16,6 +13,14 @@ function modalDisplay(displayStyle) {
 
 // Fonctions dédiées aux vérifications
 
+/* @function checkFirstName - Check if the first name lenght is upper than 2 and return a boolean
+*
+*  @const {value} firstNameInput - Return a value of an input
+*  @const {string} firstErrorMsg - Change add or remove css propertie
+*  @const {boolean} isFirstNameValid - Return true if the value is > 2
+*  @param {string} - If the boolean is true add a propertie to the string, if its false remove
+*  @return {boolean} - Return a boolean 
+*/
 function checkFirstName() {
   const firstNameInput = document.getElementById('first').value;
   const $firstErrorMsg = document.querySelector(".firstErrorMsg");
@@ -83,25 +88,36 @@ function checkTournamentCount() {
 }
 
 function checkTournamentCity() {
-  const cityRadios = document.getElementsById('city-radios');
+  const cityRadios = document.querySelectorAll('#city-radios .checkbox-input');
   const $tournamentCityErrorMsg = document.querySelector('.tournamentCityErrorMsg');
-  const isTournamentCityIsValid = cityRadios.checked;
+  const isTournamentCityNumberIsValid = cityRadios;
 
-  if (isTournamentCityIsValid) {
-    $tournamentCityErrorMsg.classList.add('hidden')
-  } else {
-    $tournamentCityErrorMsg.classList.remove('hidden')
+  for (let i = 0; i < cityRadios.length; i++) {
+    if (cityRadios[i].checked) {
+      $tournamentCityErrorMsg.classList.add('hidden');
+      break
+    } else {
+      $tournamentCityErrorMsg.classList.remove('hidden');
+    }
   }
-  return isTournamentCityIsValid
+  return isTournamentCityNumberIsValid
 }
 
-function checkTerms() {
-  //
+function checkTermsAndConditions() {
+  const terms = document.querySelector('#acceptConditions')
+  const $termsCheckMsg = document.querySelector('.termsCheckMsg');
+  const termsAreChecked = terms.checked;
+
+  if (termsAreChecked) {
+    $termsCheckMsg.classList.add('hidden');
+  } else {
+    $termsCheckMsg.classList.remove('hidden');
+  }
+  return termsAreChecked
 }
 
-
-
-const isFormValid = () => checkFirstName() && checkLastName() && checkEmail() && checkAge() && checkTournamentCount() && checkTournamentCity()
+// Arrow function for check if the form input are all valids
+const isFormValid = () => checkFirstName() && checkLastName() && checkEmail() && checkAge() && checkTournamentCount() && checkTournamentCity() && checkTermsAndConditions()
 
 
 // Event Listeners
@@ -109,23 +125,10 @@ $registrationForm.addEventListener('submit', function(event) {
   event.preventDefault()
 
   if (isFormValid()) {
-    console.log("=====")
-    console.log("tu peux passer à l'étape d'après")
-    console.log("=====")
+    modalDisplay('none')
   } else {
-    console.log("=====")
-    console.log("C'est pété, il y a un truc pas clair dans le formulaire")
-    console.log("=====")
+
   }
 
 })
-
-/**
- * querySelector -> ça retourne un élément de type noeud
- * querySelectorAll -> ça retourne un tableau (de noeuds ?)
- */
-
-
-// À l'événement submit, déclenche la fonction à sa droite
-
 
