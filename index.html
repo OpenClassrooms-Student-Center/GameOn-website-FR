@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="FR-fr">
   <head>
     <meta charset="utf-8" />
     <title>Reservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="style/modal.css" />
+    <link rel="stylesheet" href="css/modal.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans"
@@ -72,7 +72,7 @@
                   id="first"
                   name="first"
                 /><br>
-                <span id="firstErrorMsg">Veuillez entrer 2 caractères ou plus pour le champ du prénom</span>
+                <span class="firstErrorMsg hidden">Veuillez entrer 2 caractères ou plus pour le champ du prénom</span>
               </div>
               <div
                 class="formData">
@@ -83,18 +83,17 @@
                   id="last"
                   name="last"
                 /><br>
-                <span id="lastErrorMsg">Veuillez entrer 2 caractères ou plus pour le champ du nom</span>
+                <span class="hidden lastErrorMsg">Veuillez entrer 2 caractères ou plus pour le champ du nom</span>
               </div>
               <div
                 class="formData">
                 <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
-                  type="email"
                   id="email"
                   name="email"
                 /><br>
-                <span id="emailErrorMsg">Veuillez entrer un email valide</span>
+                <span class="hidden emailErrorMsg">Veuillez entrer un email valide</span>
               </div>
               <div
                 class="formData">
@@ -105,15 +104,17 @@
                   id="birthdate"
                   name="birthdate"
                 /><br>
+                <span class="hidden ageErrorMsg">Vous devez entrer votre date de naissance</span>
               </div>
               <div
                 class="formData">
                 <label label="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                  <span class="hidden tournamentErrorMsg">Vous devez choisir une option.</span>
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
-                class="formData">
+                class="formData" id="city-radios">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -180,7 +181,9 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                <span class="hidden tournamentCityErrorMsg">Vous devez choisir une option.</span>
               </div>
+
 
               <div
                 class="formData">

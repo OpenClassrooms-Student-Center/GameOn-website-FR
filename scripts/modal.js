@@ -14,57 +14,94 @@ function modalDisplay(displayStyle) {
   modal.style.display = displayStyle 
 }
 
-//  -> dédié aux vérifications
+// Fonctions dédiées aux vérifications
+
 function checkFirstName() {
   const firstNameInput = document.getElementById('first').value;
-  const $firstErrorMsg = document.querySelector("#firstErrorMsg");
-  const isFirstNameValid = firstNameInput.length < 2;
+  const $firstErrorMsg = document.querySelector(".firstErrorMsg");
+  const isFirstNameValid = firstNameInput.length > 2;
 
   if (isFirstNameValid) {
-    $firstErrorMsg.style.display = "block";
+    $firstErrorMsg.classList.add('hidden');
   } else {
-    $firstErrorMsg.style.display = "none";
+    $firstErrorMsg.classList.remove('hidden');
   }
   return isFirstNameValid;
 }
 
 function checkLastName() {
   const lastNameInput = document.getElementById('last').value;
-  const $lastErrorMsg = document.querySelector('#lastErrorMsg');
-  const isLastNameValid = lastNameInput.length < 2;
+  const $lastErrorMsg = document.querySelector('.lastErrorMsg');
+  const isLastNameValid = lastNameInput.length > 2;
 
   if (isLastNameValid) {
-    $lastErrorMsg.style.display = "block";
+    $lastErrorMsg.classList.add('hidden');
   } else {
-    $lastErrorMsg.style.display = "none";
+    $lastErrorMsg.classList.remove('hidden');
   }
   return isLastNameValid;
 }
 
 function checkEmail() {
   const emailInput = document.getElementById('email').value;
-  const emailFormat = "/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;";
-  const $emailErrorMsg = document.querySelector('#emailErrorMsg');
-  let isEmailValid = true;
-  console.log(emailFormat);
+  const regExMail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  const $emailErrorMsg = document.querySelector('.emailErrorMsg');
+  const isEmailValid = regExMail.test(emailInput)
 
-  if (emailInput.value.match(emailFormat)) {
-    let isEmailValid = false;
-    $emailErrorMsg.style.display = "block";
-
+  if (isEmailValid) {
+    $emailErrorMsg.classList.add('hidden')
   } else {
-    $emailErrorMsg.style.display = "none";
-    let isEmailValid = true;
+    $emailErrorMsg.classList.remove('hidden')
   }
-  return 
+  return isEmailValid
+}
+
+function checkAge() {
+  const ageInput = document.getElementById('birthdate').value;
+  const $ageErrorMsg =  document.querySelector('.ageErrorMsg');
+  const isAgeValid = ageInput.length > 0;
+
+  if (isAgeValid) {
+    $ageErrorMsg.classList.add('hidden');
+  } else {
+    $ageErrorMsg.classList.remove('hidden')
+  }
+  return isAgeValid
+}
+
+function checkTournamentCount() {
+  const tournamentInput = document.getElementById('quantity').value;
+  const $tournamentErrorMsg = document.querySelector('.tournamentErrorMsg');
+  const isTournamentNumberIsValid = tournamentInput.length > 0;
+
+  if (isTournamentNumberIsValid) {
+    $tournamentErrorMsg.classList.add('hidden');
+  } else {
+    $tournamentErrorMsg.classList.remove('hidden')
+  }
+  return isTournamentNumberIsValid
+}
+
+function checkTournamentCity() {
+  const cityRadios = document.getElementsById('city-radios');
+  const $tournamentCityErrorMsg = document.querySelector('.tournamentCityErrorMsg');
+  const isTournamentCityIsValid = cityRadios.checked;
+
+  if (isTournamentCityIsValid) {
+    $tournamentCityErrorMsg.classList.add('hidden')
+  } else {
+    $tournamentCityErrorMsg.classList.remove('hidden')
+  }
+  return isTournamentCityIsValid
+}
+
+function checkTerms() {
+  //
 }
 
 
-function isFormValid() {
-  checkFirstName();
-  checkLastName();
-  checkEmail();
-}
+
+const isFormValid = () => checkFirstName() && checkLastName() && checkEmail() && checkAge() && checkTournamentCount() && checkTournamentCity()
 
 
 // Event Listeners
