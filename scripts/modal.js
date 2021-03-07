@@ -125,7 +125,8 @@ $registrationForm.addEventListener('submit', function(event) {
   event.preventDefault()
 
   if (isFormValid()) {
-    modalDisplay('none')
+    modalDisplay('none');
+    showNotificationToast()
   } else {
 
   }

@@ -5,6 +5,7 @@
     <title>Reservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="css/modal.css" />
+    <link rel="stylesheet" href="css/notification-toast.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans"
@@ -17,7 +18,6 @@
       <img alt="logo" src="public/Logo.png" width="auto" height="auto" />
     </div>
     <div class="main-navbar">
-      
       <a href="#" class="active"><span>Accueil</span></a>
       <a href="#"><span>Détails de l'évènement</span></a>
       <a href="#"><span>À propos</span></a>
@@ -29,7 +29,7 @@
     </div>
     </div>
   </div>
-    <main id="wesh">
+    <main>
       <div class="hero-section">
         <div class="hero-content">
           <h1 class="hero-headline">
@@ -218,6 +218,18 @@
         </div>
       </div>
     </main>
+    <div class="toast-area" id="toasts">
+    <div style="display: none;">
+    <div class="toast" id="clonemother">
+      <div class="toast-content">
+      <div class="before"></div>
+      <div class="icon">&#x2714</div>
+      <div class="text"><p class="toast-text">Félicitations !</p><p class="message">Votre demande d'inscription as bien été prise en compte.</p></div>
+<!--       <div onclick="deletethis()" class="close">&#x00D7</div> -->
+      </div>
+    </div>
+  </div>
+</div>
     <footer>
       <p class="copyrights">
         Copyright 2014 - 2020, GameOn Inc.
@@ -225,5 +237,6 @@
     </footer>
     <script src="scripts/modal.js"></script>
     <script src="scripts/nav.js"></script>
+    <script src="scripts/notify-toast.js"></script>
   </body>
 </html>
