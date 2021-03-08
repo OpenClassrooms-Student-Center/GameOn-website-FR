@@ -74,7 +74,7 @@
                 name="firstName"
                 />
                 <!-- espace dynamique "errorFirst" -->
-                <small id="errorFirst"></small>
+                <small></small>
               </div>
               <div
                 class="formData">
@@ -86,7 +86,7 @@
                 name="lastName"
                 />
                 <!-- espace dynamique "errorLast" -->
-                <small id="errorLast"></small>
+                <small></small>
               </div>
               <div
                 class="formData">
@@ -113,11 +113,11 @@
                 name="birthdate"
                 />
                 <!-- espace dynamique "errorBirthdate" -->
-                <small id="errorBirthdate"></small>
+                <small></small>
               </div>
               <div
                 class="formData">
-                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                <label for="quantity">* À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input
                 type="number"
                 class="text-control"
@@ -125,13 +125,13 @@
                 name="quantity"
                 />
                 <!-- espace dynamique "errorQuantity" -->
-                <small id="errorQuantity"></small>
+                <small></small>
               </div>
               <div
               class="formData" id="options">
               <p class="text-label">* Dans quelle(s) ville(s) ?</p>
                 <!-- espace dynamique "errorLocation" -->
-                <span id="errorLocation"></span>
+                <small></small>
                 <input
                   class="checkbox-input"
                   type="checkbox"
@@ -214,7 +214,7 @@
                   * J'ai lu et accepté les conditions d'utilisation.
                 </label><br>
                 <!-- espace dynamique "errorConditions" -->
-                <span id="errorConditions"></span><br>
+                <small id="errorConditions"></small><br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2"/>
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
@@ -222,15 +222,15 @@
                 </label>
               </div>
               <!-- espace dynamique "errorForm" -->
-              <small id="errorForm"></small>
               <input
-                class="btn-submit"
-                for="validate"
-                name="validate"
-                type="submit"
-                id="submit"
-                value="C'est parti"
+              class="btn-submit"
+              for="validate"
+              name="validate"
+              type="submit"
+              id="submit"
+              value="C'est parti"
               />
+              <small id="errorForm"></small>
             </form>
           </div>
         </div>
