@@ -60,6 +60,41 @@ function closeConfirm() {
   bground.style.display = 'none';
 }
 
+// VALIDATION FORMULAIRE
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  const emptyInputs = (
+    firstName &&
+    lastName &&
+    email &&
+    birthdate &&
+    quantity
+  ).value.trim();
+
+  if ((emptyInputs) && (checkbox1.checked)) {
+    // submitBtn.disabled = false;
+    // errorForm.innerHTML = '';
+    modalBody.style.display = 'none';
+    confirm.style.opacity = '1';
+  } else if (
+    validFirstName(firstName) &&
+    validLastName(lastName) &&
+    validEmail(email) &&
+    validBirthdate(birthdate) &&
+    validQuantity(quantity) &&
+    validConditions(checkbox1)
+  ) {
+    // submit.disabled = false;
+    // submit.style.backgroundColor = 'limegreen';
+    // errorForm.innerHTML = '';
+  } else {
+    // submit.disabled = true;
+    submit.style.backgroundColor = 'grey';
+    errorForm.innerHTML = 'Veuillez renseigner tous les champs';
+  }
+});
 
 // VALIDATION DES INPUTS
 
