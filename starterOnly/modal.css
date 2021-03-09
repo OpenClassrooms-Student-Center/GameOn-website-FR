@@ -167,7 +167,7 @@ main {
 
 .modal-body {
   padding: 15px 8%;
-  margin: 15px auto;
+  margin: 15px auto 30px;
 }
 
 label {
@@ -200,9 +200,11 @@ input {
 
 #conditions {
   margin-top: 20px;
-  margin-bottom: 40px;
 }
 
+.formData {
+  padding-bottom: 10px;
+}
 .formData small {
   font-size: x-small;
   color: #e54858;
@@ -210,7 +212,19 @@ input {
 }
 
 .formData.error small {
-	visibility: visible;
+  visibility: visible;
+}
+
+#errorFirst,
+#errorLast,
+#errorEmail,
+#errorBirthdate,
+#errorQuantity,
+#errorLocation {
+  position: absolute;
+  padding: 4px 0 6px;
+  font-size: x-small;
+  color: #e54858;
 }
 
 #errorConditions {
@@ -221,8 +235,11 @@ input {
 }
 
 #errorForm {
-  display: flex;
-  justify-content: center;
+  position: absolute;
+  width: 85%;
+  margin: auto;
+  text-align: center;
+  font-weight: 300;
   color: darkgrey;
 }
 
@@ -680,7 +697,6 @@ footer {
     width: 75%;
   }
 }
-
 
 @media screen and (max-width: 375px) {
   .hero-headline {
