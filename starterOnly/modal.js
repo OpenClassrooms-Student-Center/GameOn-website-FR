@@ -68,83 +68,118 @@ function closeConfirm() {
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
-
-  const emptyInputs = (
-    firstName &&
-    lastName &&
-    email &&
-    birthdate &&
-    quantity
-  ).value.trim();
-
-  if (emptyInputs && checkbox1.checked) {
-    errorForm.innerHTML = '';
-    submitBtn.disabled = true;
-    modalBody.style.display = 'none';
-    confirm.style.opacity = '1';
-  }
-  submitBtn.disabled = false;
-  errorForm.innerHTML = 'Veuillez renseigner tous les champs';
-
-  if (
-    checkInputs() &&
-    validFirstName(firstName) &&
-    validLastName(lastName) &&
-    validEmail(email) &&
-    validBirthdate(birthdate) &&
-    validQuantity(quantity) &&
-    validConditions(checkbox1)
-  ) {
-    submitBtn.disabled = true;
-    // submitBtn.style.backgroundColor = 'limegreen';
-    errorForm.innerHTML = '';
-    modalBody.style.display = 'none';
-    confirm.style.opacity = '1';
-  }
-  submitBtn.disabled = false;
-  // submitBtn.style.backgroundColor = 'grey';
-  errorForm.innerHTML = 'Veuillez vérifier vos informations';
+  validForm();
 });
 
+let emptyInputs = (
+  firstName &&
+  lastName &&
+  email &&
+  birthdate &&
+  quantity
+).value == '';
+
+let validForm = function () {
+
+if (checkInputs ()) {
+  Success(submitBtn, '');
+  submitBtn.disabled = false;
+  submitBtn.style.backgroundColor = 'dodgerblue';
+  modalBody.style.display = 'none';
+  confirm.style.opacity = '1';
+} else if (!checkInputs()) {
+  submitBtn.disabled = true;
+  submitBtn.style.backgroundColor = 'grey';
+  Error(submitBtn, 'Veuillez renseigner tous les champs');
+  }
+};
+
 // VALIDATION DES INPUTS
+
+form.addEventListener('change', function (e) {
+  e.preventDefault();
+  checkInputs();
+});
+
+const checkInputs = function () {
+
+  // if (emptyInputs) {
+  //   Error(submitBtn, 'Veuillez renseigner tous les champs');
+  //   // submitBtn.disabled = true;
+  // } else {
+  //   Success (submitBtn, '');
+  //   // submitBtn.disabled = false;
+  // }
+
+  if (validFirstName(firstName.value)) {
+    Success(firstName, '');
+  } else {
+    Error(firstName, 'Veuillez saisir au moins 2 lettres');
+  }
+
+  if (validLastName(lastName.value)) {
+    Success(lastName, '');
+  } else {
+    Error(lastName, 'Veuillez saisir au moins 2 lettres');
+  }
+
+  if (validEmail(email.value)) {
+    Success(email, '');
+  } else {
+    Error(email, 'Veuillez saisir un format correct');
+  }
+
+  if (validBirthdate(birthdate.value) > 13) {
+    Success(birthdate, '');
+  } else {
+    Error(birthdate, 'Vous devez avoir plus de 13 ans pour participer');
+  }
+
+  if (validBirthdate(birthdate.value) > 100) {
+    Error(birthdate, 'Veuillez vérifier votre année de naissance');
+  } else {
+  }
+
+  if (validQuantity(quantity.value)) {
+    options.style.display = 'block';
+    Success(quantity, '');
+  } else {
+    options.style.display = 'none';
+    Error(quantity, 'Veuillez saisir un nombre compris entre 0 et 99');
+  }
+
+  if (quantityNull(quantity.value)) {
+    options.style.display = 'none';
+    Success(quantity, '');
+  } else {
+  }
+
+  if (checkbox1.checked) {
+    Success(checkbox1, '');
+  } else {
+    Error(checkbox1, "* Veuillez accepter les conditions d'utilisation.");
+  }
+};
+
+// PARAMETRES DE VALIDATION DES INPUTS
 
 // INPUT "Prénom"
 // 2 caractères minimum
 // casse indifférente
 // toute lettre latine, y compris accentuée
 // mots composés séparés par "-" ou " ") non consécutifs
-
-// form.firstName.addEventListener('blur', function () {
-//   validFirstName(this);
-// });
-
-const validFirstName = function (firstName) {
-  let firstNameRegExp = /^[A-zÀ-ÿ]+[-\sA-zÀ-ÿ]{1,}$/;
-  if (firstNameRegExp.test(firstName.value)) {
-    return Success(firstName, '');
-  }
-
-  return Error(firstName, 'Veuillez saisir au moins 2 lettres');
-};
+function validFirstName(firstName) {
+  return /^[A-zÀ-ÿ]+[-\sA-zÀ-ÿ]{1,}$/.test(firstName);
+}
 
 // INPUT "Nom"
 // 2 caractères minimum
 // casse indifférente
 // toute lettre latine, y compris accentuée
 // mots composés séparés par "-" ou " " ou "'") non consécutifs
-
-// form.lastName.addEventListener('blur', function () {
-  // validLastName(this);
-// });
-
-const validLastName = function (lastName) {
-  let lastNameRegExp = /^[A-zÀ-ÿ]+[-\s'A-zÀ-ÿ]{1,}$/;
-  if (lastNameRegExp.test(lastName.value)) {
-    return Success(lastName, '');
-  }
-
-  return Error(lastName, 'Veuillez saisir au moins 2 lettres');
-};
+function validLastName(lastName) {
+  return /^[A-zÀ-ÿ]+[-\s'A-zÀ-ÿ]{1,}$/.test(lastName);
+}
 
 // INPUT "Email"
 // tout caractère ASCII
@@ -152,31 +187,19 @@ const validLastName = function (lastName) {
 // espaces et points non acceptés si en début ou fin de saisie et si répétés côte à côte
 // strictement 1 "@" et 1 "." ensuite
 // nom de domaine format entreprise
-
-// form.email.addEventListener('blur', function () {
-//   validEmail(this);
-// });
-
-const validEmail = function (email) {
-  let emailRegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@{1}[a-zA-Z0-9-]+\.{1}([a-zA-Z0-9-]{2,})$/;
-  if (emailRegExp.test(email.value)) {
-    return Success(email, '');
-  }
-
-  return Error(email, 'Veuillez saisir un format correct');
-};
+function validEmail(email) {
+  return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@{1}[a-zA-Z0-9-]+\.{1}([a-zA-Z0-9-]{2,})$/.test(
+    email
+  );
+}
 
 // INPUT "Birthdate"
 // format jj/mm/aaaa
 // le joueur doit avoir plus de 13 ans
-
-// form.birthdate.addEventListener('input', function () {
-  // validBirthdate(this);
-// });
-
 // function validBirthdate() {
 
-function userAge() {
+// function userAge() {
+function validBirthdate() {
   // récupération de la valeur du champ "date"
   let userDateInput = form.birthdate.value;
 
@@ -185,7 +208,6 @@ function userAge() {
 
   // différence entre la date de naissance et la date du jour
   let difference = Date.now() - userBirthdate.getTime();
-
   // calcul de l'âge
   let age = new Date(difference);
   let calculateAge = Math.abs(age.getUTCFullYear() - 1970);
@@ -193,75 +215,42 @@ function userAge() {
   return calculateAge;
 }
 
-const validBirthdate = function () {
-  if (userAge() >= 13) {
-    return Success(birthdate, '');
-  }
-
-  return Error(birthdate, 'Vous devez avoir plus de 13 ans pour participer');
-};
-
 // INPUT "Quantity"
 // nombre de participations comprimse entre 0 et 99
 // si la quantité est incorrecte ou nulle alors le block "choix de ville(s)" ne s'affiche pas
 // Si nombre de participation = 0 alors la saisie est valide et le block "choix de ville(s)" ne s'affiche pas
 // Si le nombre de participation(s) comprise entre 1 et 99 alors le block "choix de ville(s)" s'affiche
 
+function validQuantity(quantity) {
+  return /^([0-9]$|^[1-9][0-9]$)|^(99)$/.test(quantity);
+}
+function quantityNull(quantity) {
+  return /^0$/.test(quantity);
+}
+
 // INPUT "Location"
 // au moins un bouton radio est sélectionné
 
-// form.quantity.addEventListener('input', function () {
-//   validQuantity(this);
-// });
-
-const validQuantity = function (quantity) {
-  let quantityRegExp = /^([1-9]$|^[1-9][0-9]$)|^(99)$/;
-  let quantityNullRegExp = /^0$/;
-  // let locationOption = document.querySelectorAll('input[type="radio"]:checked').value;
-
-  if (quantityRegExp.test(quantity.value)) {
-    options.style.display = 'block';
-    return Error(quantity, 'Veuillez sélectionner au moins une ville');
-  } else if (quantityNullRegExp.test(quantity.value)) {
-    options.style.display = 'none';
-    return Success(quantity, '');
-
-    // } else if (locationOption.lenght > 0) {
-    //   return Success(quantity, '');
-  } else {
-    options.style.display = 'none';
-    return Error(quantity, 'Veuillez saisir un nombre compris entre 0 et 99');
-  }
-};
-
 // INPUT "conditions"
 // la case doit être cochée
-
-// form.checkbox1.addEventListener('change', function () {
-  // validConditions(this);
-// });
-
-const validConditions = function (checkbox1) {
-  if (checkbox1.checked) {
-    return Success(checkbox1, '');
-  }
-
-  return Error(checkbox1, "* Veuillez accepter les conditions d'utilisation.");
-};
 
 // MESSAGES
 // Error
 // Success
 
 function Error(input, message) {
+  console.log('error', input, message);
   const formData = input.parentElement;
   const small = formData.querySelector('small');
   formData.className = 'formData error';
   small.innerText = message;
+  return false;
 }
 
 function Success(input) {
+  console.log('success', input);
   const formData = input.parentElement;
   const small = formData.querySelector('small');
   small.innerText = '';
+  return true;
 }
