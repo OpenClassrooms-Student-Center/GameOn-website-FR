@@ -21,3 +21,18 @@ function launchModal() {
 }
 
 
+let inscrit = {
+  ifirst:"",
+  ilast:"",
+  iemail:"",
+  ibirthdate:0,
+  iquantity:0,
+  ilocation1:false,
+  ilocation2:false,
+  ilocation3:false,
+  ilocation4:false,
+  ilocation5:false,
+  ilocation6:false,
+  icheck1:false,
+  icheck2:false
+}
