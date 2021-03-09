@@ -71,26 +71,21 @@ form.addEventListener('submit', function (e) {
   validForm();
 });
 
-let emptyInputs = (
-  firstName &&
-  lastName &&
-  email &&
-  birthdate &&
-  quantity
-).value == '';
+// let validForm = function () {
 
-let validForm = function () {
+let validForm = (checkInputs) => {
 
-if (checkInputs ()) {
-  Success(submitBtn, '');
-  submitBtn.disabled = false;
-  submitBtn.style.backgroundColor = 'dodgerblue';
-  modalBody.style.display = 'none';
-  confirm.style.opacity = '1';
-} else {
-  Error(submitBtn, 'Veuillez renseigner tous les champs');
-  submitBtn.disabled = true;
-  submitBtn.style.backgroundColor = 'grey';
+  if (checkInputs) {
+    submitBtn.disabled = false;
+    Success(submitBtn, '');
+    modalBody.style.display = 'none';
+    confirm.style.opacity = '1';
+    return true;
+  } else {
+    submitBtn.disabled = true;
+    Error(submitBtn, 'Veuillez renseigner tous les champs');
+    submitBtn.style.backgroundColor = 'grey';
+    return false;
   }
 };
 
@@ -102,7 +97,6 @@ form.addEventListener('input', function (e) {
 });
 
 const checkInputs = function () {
-
   // if (emptyInputs) {
   //   Error(submitBtn, 'Veuillez renseigner tous les champs');
   //   // submitBtn.disabled = true;
@@ -159,6 +153,7 @@ const checkInputs = function () {
   } else {
     Error(checkbox1, "* Veuillez accepter les conditions d'utilisation.");
   }
+  return checkInputs;
 };
 
 // PARAMETRES DE VALIDATION DES INPUTS
@@ -214,7 +209,6 @@ function validBirthdate() {
 
   return calculateAge;
 }
-
 // INPUT "Quantity"
 // nombre de participations comprimse entre 0 et 99
 // si la quantité est incorrecte ou nulle alors le block "choix de ville(s)" ne s'affiche pas
