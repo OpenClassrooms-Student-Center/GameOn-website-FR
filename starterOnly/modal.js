@@ -87,16 +87,16 @@ if (checkInputs ()) {
   submitBtn.style.backgroundColor = 'dodgerblue';
   modalBody.style.display = 'none';
   confirm.style.opacity = '1';
-} else if (!checkInputs()) {
+} else {
+  Error(submitBtn, 'Veuillez renseigner tous les champs');
   submitBtn.disabled = true;
   submitBtn.style.backgroundColor = 'grey';
-  Error(submitBtn, 'Veuillez renseigner tous les champs');
   }
 };
 
 // VALIDATION DES INPUTS
 
-form.addEventListener('change', function (e) {
+form.addEventListener('input', function (e) {
   e.preventDefault();
   checkInputs();
 });
