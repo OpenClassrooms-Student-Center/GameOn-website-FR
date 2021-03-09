@@ -16,10 +16,12 @@ const closeModalBtn = document.querySelector('.close');
 const modalBody = document.querySelector('.modal-body');
 const confirm = document.getElementById('confirmation');
 const closeConfirmBtn = document.querySelector('.close-confirm');
+
+// FORM
 const form = document.getElementById('reserve');
 const formData = document.querySelectorAll('.formData');
 
-// html labels links
+// INPUTS
 const inputs = document.getElementsByTagName('input');
 const firstName = document.getElementById('firstName');
 const lastName = document.getElementById('lastName');
@@ -61,6 +63,8 @@ function closeConfirm() {
 }
 
 // VALIDATION FORMULAIRE
+// tous les inputs sont remplis (sauf succession d'espaces)
+// toutes les informations sont corrects
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
@@ -73,12 +77,17 @@ form.addEventListener('submit', function (e) {
     quantity
   ).value.trim();
 
-  if ((emptyInputs) && (checkbox1.checked)) {
-    // submitBtn.disabled = false;
-    // errorForm.innerHTML = '';
+  if (emptyInputs && checkbox1.checked) {
+    errorForm.innerHTML = '';
+    submitBtn.disabled = true;
     modalBody.style.display = 'none';
     confirm.style.opacity = '1';
-  } else if (
+  }
+  submitBtn.disabled = false;
+  errorForm.innerHTML = 'Veuillez renseigner tous les champs';
+
+  if (
+    checkInputs() &&
     validFirstName(firstName) &&
     validLastName(lastName) &&
     validEmail(email) &&
@@ -86,14 +95,15 @@ form.addEventListener('submit', function (e) {
     validQuantity(quantity) &&
     validConditions(checkbox1)
   ) {
-    // submit.disabled = false;
-    // submit.style.backgroundColor = 'limegreen';
-    // errorForm.innerHTML = '';
-  } else {
-    // submit.disabled = true;
-    submit.style.backgroundColor = 'grey';
-    errorForm.innerHTML = 'Veuillez renseigner tous les champs';
+    submitBtn.disabled = true;
+    // submitBtn.style.backgroundColor = 'limegreen';
+    errorForm.innerHTML = '';
+    modalBody.style.display = 'none';
+    confirm.style.opacity = '1';
   }
+  submitBtn.disabled = false;
+  // submitBtn.style.backgroundColor = 'grey';
+  errorForm.innerHTML = 'Veuillez vérifier vos informations';
 });
 
 // VALIDATION DES INPUTS
@@ -104,16 +114,17 @@ form.addEventListener('submit', function (e) {
 // toute lettre latine, y compris accentuée
 // mots composés séparés par "-" ou " ") non consécutifs
 
-form.firstName.addEventListener('blur', function (e) {
-  e.preventDefault();
-  validFirstName(this);
-});
+// form.firstName.addEventListener('blur', function () {
+//   validFirstName(this);
+// });
 
 const validFirstName = function (firstName) {
   let firstNameRegExp = /^[A-zÀ-ÿ]+[-\sA-zÀ-ÿ]{1,}$/;
   if (firstNameRegExp.test(firstName.value)) {
-    Success(firstName, '');
-  } else Error(firstName, 'Veuillez saisir au moins 2 lettres');
+    return Success(firstName, '');
+  }
+
+  return Error(firstName, 'Veuillez saisir au moins 2 lettres');
 };
 
 // INPUT "Nom"
@@ -122,10 +133,9 @@ const validFirstName = function (firstName) {
 // toute lettre latine, y compris accentuée
 // mots composés séparés par "-" ou " " ou "'") non consécutifs
 
-form.lastName.addEventListener('blur', function (e) {
-  e.preventDefault();
-  validLastName(this);
-});
+// form.lastName.addEventListener('blur', function () {
+  // validLastName(this);
+// });
 
 const validLastName = function (lastName) {
   let lastNameRegExp = /^[A-zÀ-ÿ]+[-\s'A-zÀ-ÿ]{1,}$/;
@@ -143,10 +153,9 @@ const validLastName = function (lastName) {
 // strictement 1 "@" et 1 "." ensuite
 // nom de domaine format entreprise
 
-form.email.addEventListener('blur', function (e) {
-  e.preventDefault();
-  validEmail(this);
-});
+// form.email.addEventListener('blur', function () {
+//   validEmail(this);
+// });
 
 const validEmail = function (email) {
   let emailRegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@{1}[a-zA-Z0-9-]+\.{1}([a-zA-Z0-9-]{2,})$/;
@@ -161,10 +170,9 @@ const validEmail = function (email) {
 // format jj/mm/aaaa
 // le joueur doit avoir plus de 13 ans
 
-form.birthdate.addEventListener('input', function (e) {
-  e.preventDefault();
-  validBirthdate(this);
-});
+// form.birthdate.addEventListener('input', function () {
+  // validBirthdate(this);
+// });
 
 // function validBirthdate() {
 
@@ -202,10 +210,9 @@ const validBirthdate = function () {
 // INPUT "Location"
 // au moins un bouton radio est sélectionné
 
-form.quantity.addEventListener('input', function (e) {
-  e.preventDefault();
-  validQuantity(this);
-});
+// form.quantity.addEventListener('input', function () {
+//   validQuantity(this);
+// });
 
 const validQuantity = function (quantity) {
   let quantityRegExp = /^([1-9]$|^[1-9][0-9]$)|^(99)$/;
@@ -230,10 +237,9 @@ const validQuantity = function (quantity) {
 // INPUT "conditions"
 // la case doit être cochée
 
-form.checkbox1.addEventListener('change', function (e) {
-  e.preventDefault();
-  validConditions(this);
-});
+// form.checkbox1.addEventListener('change', function () {
+  // validConditions(this);
+// });
 
 const validConditions = function (checkbox1) {
   if (checkbox1.checked) {
@@ -249,7 +255,7 @@ const validConditions = function (checkbox1) {
 
 function Error(input, message) {
   const formData = input.parentElement;
-  const small = formData.querySelector('small')
+  const small = formData.querySelector('small');
   formData.className = 'formData error';
   small.innerText = message;
 }
