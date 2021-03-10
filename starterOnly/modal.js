@@ -6,8 +6,6 @@ function editNav() {
     x.className = "topnav";
   }
 }
-
-
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
@@ -23,19 +21,20 @@ modalBtnClose.forEach((span) => span.addEventListener("click", Modalclose));
 function launchModal() {
   modalbg.style.display = "block";
 }
+
 // close modal form
 function Modalclose() {
   modalbg.style.display = "none";
 }
 
-
 function prenomTestValidation(champPrenom) {
-  // Déclaration des variables du formulaire  
-  let myregexPrenom = /^[a-zA-ZÀ-Ÿà-ÿ-\s]+$/;
+  let myregexPrenom = /^[a-zA-ZÀ-Ÿà-ÿ-\s]+$/; //uniquement des lettres majuscules ou minuscules les tirets et les espaces
+  let nombreCaractereMinimum = 2;
+
+  // gestion des messages erreurs
+  let messagePrenomErreur = document.getElementsByClassName("erreur")[0];
   let champsVide = 'Vous devez remplir le champ prénom';
   let champsInssufisant = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
-  let nombreCaractereMinimum = 2;
-  let messagePrenomErreur = document.getElementsByClassName("erreur")[0];
   let caractereInterdits = 'Ce champ doit contenir uniquement des lettres'
 
   if (!champPrenom.value) {
@@ -54,17 +53,17 @@ function prenomTestValidation(champPrenom) {
     messagePrenomErreur.innerHTML = '';
     return true;
   }
-
 }
 
 function nomTestValidation(champNom) {
-  // Déclaration des variables du formulaire  
-  let myregexNom = /^[a-zA-ZÀ-Ÿà-ÿ-\s]+$/;
+  let myregexNom = /^[a-zA-ZÀ-Ÿà-ÿ-\s]+$/; //uniquement des lettres majuscules ou minuscules les tirets et les espaces
+  let nombreCaractereMinimum = 2;
+
+  // gestion des messages erreurs 
+  let messageNomErreur = document.getElementsByClassName("erreur")[1];
   let champsVide = 'Vous devez remplir le champ nom';
   let champsInssufisant = 'Veuillez entrer 2 caractères ou plus pour le champ du nom';
-  let nombreCaractereMinimum = 2;
   let caractereInterdits = 'Ce champ doit contenir uniquement des lettres'
-  let messageNomErreur = document.getElementsByClassName("erreur")[1];
 
   if (!champNom.value) {
     messageNomErreur.innerHTML = champsVide;
@@ -85,10 +84,13 @@ function nomTestValidation(champNom) {
 }
 
 function mailTestValidation(champMail) {
-  let champsVide = 'Vous devez remplir le champ mail';
-  let regexmail = /^^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/; // explications
+  let regexmail = /^[\w-\.\+]+@([\w-]+\.)+[\w-]{2,4}$/; 
+  // explications avant le @ toutes les caracteres alphanumeriques + (. + - ), apres le point entre 2 a 4 caracteres
+
+  // gestion des messages erreurs 
   let messageMailErreur = document.getElementsByClassName("erreur")[2];
   let mailInvalide = 'Mail invalide';
+  let champsVide = 'Vous devez remplir le champ mail';
 
   if (!champMail.value) {
     messageMailErreur.innerHTML = champsVide;
@@ -105,8 +107,10 @@ function mailTestValidation(champMail) {
 }
 
 function dateTestValidation(champBirthdate) {
-  let birthdateErreur = 'Vous devez entrer votre date de naissance';
+  // gestion des messages erreurs 
   let messageBirthdateErreur = document.getElementsByClassName("erreur")[3];
+  let birthdateErreur = 'Vous devez entrer votre date de naissance';
+
   if (!champBirthdate.value) {
     messageBirthdateErreur.innerHTML = birthdateErreur
     return false;
@@ -118,9 +122,12 @@ function dateTestValidation(champBirthdate) {
 }
 
 function nombreConcourTestValidation(champConcour) {
+
+  let regexNombre = /^[0-9]+$/; // explications uniquement des chiffres
+
+  // gestion des messages erreurs 
   let messageConcourErreur = document.getElementsByClassName("erreur")[4];
   let champsVide = 'Vous devez indiquer le nombre de tournois';
-  let regexNombre = /^[0-9]+$/;
 
   if (!champConcour.value) {
     messageConcourErreur.innerHTML = champsVide;
@@ -132,35 +139,31 @@ function nombreConcourTestValidation(champConcour) {
   }
   else {
     messageConcourErreur.innerHTML = '';
-    // proposition border ok champConcour.style.border = '3px solid green';
     return true;
   }
 }
 
-function villeTestValidation(champVille, champConcour) {
-  let messageVilleErreur = document.getElementsByClassName("erreur")[5];
-  let champsVide = 'Vous devez indiquer les villes des tournois';
+
+function villeTestValidation(champVille) {
   let i = 0;
   let result = true;
   let isChecked = 0;
 
-  if (!champConcour || champConcour == 0) { // si le nombre de concour est == a 0 ou rien 
-    return true;
-  }
-  while (i < champVille.length) {
+  // gestion des messages erreurs 
+  let messageVilleErreur = document.getElementsByClassName("erreur")[5];
+  let champsVide = 'Vous devez choisir une option';
+
+  while (i < champVille.length) //compteur
+  {
     if (champVille[i].checked) {
       isChecked += 1; // chaques checkbox checked ajoute 1
     }
     i++;
   }
   // ischecked = nombre dinput selectionné
-  if ((isChecked != 0) && (isChecked <= champConcour)) { // si le nombre de checkbox n'est pas egale a zero
+  if (isChecked != 0) { // si le nombre de checkbox n'est pas egale a zero
     messageVilleErreur.innerHTML = '';
     result = true;
-  }
-  else if (isChecked > champConcour) {
-    messageVilleErreur.innerHTML = 'Le nombre de ville est supérieur au nombre de tournois';
-    result = false;
   }
   else {
     result = false;
@@ -168,7 +171,6 @@ function villeTestValidation(champVille, champConcour) {
   }
   return result;
 }
-
 
 function conditionTestValidation(champCondition) {
   let messageConditionErreur = document.getElementsByClassName("erreur")[6];
@@ -182,24 +184,6 @@ function conditionTestValidation(champCondition) {
     return true;
   }
 }
-// modal popup validation
-function openPopup(modalAlert) {
-  modalAlert.style.display = "flex";
-}
-function close() {
-  let modalAlert = document.getElementById('modalAlertValidation');
-  modalAlert.style.display = "none"; // popup validation
-  Modalclose(); // le formulaire
-}
-function closePopup() {
-  let BtnClosepopup = document.getElementById("btn-close-validation");
-  let CroixClosepopup = document.getElementById("croixPopup");
-
-  BtnClosepopup.addEventListener("click", close);
-  CroixClosepopup.addEventListener("click", close);
-}
-// modal popup validation
-
 function validate() {
   let champPrenom = document.getElementById('first'); // Le prénom
   let champNom = document.getElementById('last'); // Le nom
@@ -208,7 +192,6 @@ function validate() {
   let champConcour = document.getElementById('quantity'); // Le nombre de concours
   let champVille = document.getElementsByName('location'); // Le choix des villes
   let champCondition = document.getElementById('checkbox1'); // Conditons d'utilisations
-  let modalAlert = document.getElementById('modalAlertValidation'); // popup validation
   let isValid = true;
 
   if (!prenomTestValidation(champPrenom)) {
@@ -227,19 +210,14 @@ function validate() {
   if (!nombreConcourTestValidation(champConcour)) {
     isValid = false;
   }
-
-  if (!villeTestValidation(champVille, champConcour.value)) {
+  if (!villeTestValidation(champVille)) {
     isValid = false;
   }
   if (!conditionTestValidation(champCondition)) {
     isValid = false;
   }
   if (isValid) {
-    //alert('Merci ! Votre réservation a été reçue.');
-    openPopup(modalAlert); // avec la popup maquette
-    closePopup();
-    isValid = false;
+    alert('Merci ! Votre réservation a été reçue.');
   }
   return isValid;
 }
-

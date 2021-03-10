@@ -157,21 +157,6 @@ main {
 .smFont {
   font-size: 16px;
 }
-
-#modalAlertValidation {
-  display: none;
-  flex-direction: column;
-  justify-content: space-around;
-  text-align: center;
-  height: 100%;
-  width:100%;
-  background: #232323;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 2;
-}
-
 .bground{
   display: none;
   position: fixed;
