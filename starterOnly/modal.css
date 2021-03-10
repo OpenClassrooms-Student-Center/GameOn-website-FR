@@ -220,11 +220,15 @@ input {
 #errorEmail,
 #errorBirthdate,
 #errorQuantity,
-#errorLocation {
+#errorCity {
   position: absolute;
   padding: 4px 0 6px;
   font-size: x-small;
   color: #e54858;
+}
+
+#errorCity {
+  margin-left: 10px;
 }
 
 #errorConditions {
