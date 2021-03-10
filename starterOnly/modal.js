@@ -28,8 +28,8 @@ const lastName = document.getElementById('lastName');
 const email = document.getElementById('email');
 const birthdate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
-const options = document.getElementById('options');
-// const locationOption = document.querySelectorAll('input[type=radio]');
+let options = document.getElementById('options');
+let city = document.querySelectorAll('input[type=radio]');
 const checkbox1 = document.getElementById('checkbox1');
 
 // launch modal event
@@ -64,17 +64,41 @@ function closeConfirm() {
 
 // VALIDATION FORMULAIRE
 // tous les inputs sont remplis (sauf succession d'espaces)
-// toutes les informations sont corrects
+// toutes les informations sont correctes
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
   validForm();
 });
 
-// let validForm = function () {
+// Success == true;
+// Error == false;
+// const dataConstructor = [Success, Error];
+// let dataConstructor = new validInputs(Success, Error);
+// let dataConstructor = new checkInputs(Success, Error);
+// console.log(dataConstructor);
+// for (let i = 0; (i = dataConstructor.lenght); i++) {
+//   if (dataConstructor[i] == true) {}
+// }
+
+// checkInputs();
+
+// for (let i = 0; i = checkInputs.lenght; i++) {
+//   if (checkInputs[i] == Success) {
+//     submitBtn.disabled = false;
+//     Success(submitBtn, '');
+//     modalBody.style.display = 'none';
+//     confirm.style.opacity = '1';
+//     return true;
+//   } else {
+//     submitBtn.disabled = true;
+//     Error(submitBtn, 'Veuillez renseigner tous les champs');
+//     submitBtn.style.backgroundColor = 'grey';
+//     return false;
+//   }
+// }
 
 let validForm = (checkInputs) => {
-
   if (checkInputs) {
     submitBtn.disabled = false;
     Success(submitBtn, '');
@@ -97,14 +121,6 @@ form.addEventListener('input', function (e) {
 });
 
 const checkInputs = function () {
-  // if (emptyInputs) {
-  //   Error(submitBtn, 'Veuillez renseigner tous les champs');
-  //   // submitBtn.disabled = true;
-  // } else {
-  //   Success (submitBtn, '');
-  //   // submitBtn.disabled = false;
-  // }
-
   if (validFirstName(firstName.value)) {
     Success(firstName, '');
   } else {
@@ -123,32 +139,37 @@ const checkInputs = function () {
     Error(email, 'Veuillez saisir un format correct');
   }
 
-  if (validBirthdate(birthdate.value) > 13) {
+  if (
+    validBirthdate(birthdate.value) > 13 &&
+    validBirthdate(birthdate.value) < 100
+  ) {
     Success(birthdate, '');
-  } else {
+  } else if (validBirthdate(birthdate.value) < 13) {
     Error(birthdate, 'Vous devez avoir plus de 13 ans pour participer');
-  }
-
-  if (validBirthdate(birthdate.value) > 100) {
+  } else if (validBirthdate(birthdate.value) > 100) {
     Error(birthdate, 'Veuillez vérifier votre année de naissance');
   } else {
+    Error(birthdate, 'Veuillez saisir votre date de naissance');
   }
 
-  if (validQuantity(quantity.value)) {
+  if (validQuantity(quantity.value) | !validCity) {
     options.style.display = 'block';
+    Success(quantity, '');
+    Error(options, 'Veuillez sélectionner au moins une ville');
+  } else if (quantityNull(quantity.value)) {
+    options.style.display = 'none';
     Success(quantity, '');
   } else {
     options.style.display = 'none';
     Error(quantity, 'Veuillez saisir un nombre compris entre 0 et 99');
   }
 
-  if (quantityNull(quantity.value)) {
-    options.style.display = 'none';
-    Success(quantity, '');
-  } else {
-  }
+  // if (validCity) {
+  //   Success(options, '');
+  // } else {
+  // }
 
-  if (checkbox1.checked) {
+  if (validConditions()) {
     Success(checkbox1, '');
   } else {
     Error(checkbox1, "* Veuillez accepter les conditions d'utilisation.");
@@ -216,7 +237,7 @@ function validBirthdate() {
 // Si le nombre de participation(s) comprise entre 1 et 99 alors le block "choix de ville(s)" s'affiche
 
 function validQuantity(quantity) {
-  return /^([0-9]$|^[1-9][0-9]$)|^(99)$/.test(quantity);
+  return /^([1-9]|[1-9][0-9])$/.test(quantity);
 }
 function quantityNull(quantity) {
   return /^0$/.test(quantity);
@@ -225,26 +246,39 @@ function quantityNull(quantity) {
 // INPUT "Location"
 // au moins un bouton radio est sélectionné
 
+function validCity() {
+  // for (let i = 0; i < city.length; i++) {
+  // if (city[i].checked === true) break;
+  // }
+  if (city.checked.lenght > 0) {
+    return true;
+  }
+}
+
 // INPUT "conditions"
 // la case doit être cochée
+
+function validConditions() {
+  return checkbox1.checked;
+}
 
 // MESSAGES
 // Error
 // Success
 
-function Error(input, message) {
+const Error = (input, message) => {
   console.log('error', input, message);
   const formData = input.parentElement;
   const small = formData.querySelector('small');
   formData.className = 'formData error';
   small.innerText = message;
   return false;
-}
+};
 
-function Success(input) {
+const Success = (input) => {
   console.log('success', input);
   const formData = input.parentElement;
   const small = formData.querySelector('small');
   small.innerText = '';
   return true;
-}
+};
