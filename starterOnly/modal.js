@@ -115,22 +115,24 @@ let validForm = (checkInputs) => {
 
 // VALIDATION DES INPUTS
 
-form.addEventListener('input', function (e) {
+// retirer l'eventListener quand la fonction submit sera débugguée //
+form.addEventListener('change', function (e) {
   e.preventDefault();
   checkInputs();
 });
+//
 
 const checkInputs = function () {
   if (validFirstName(firstName.value)) {
     Success(firstName, '');
   } else {
-    Error(firstName, 'Veuillez saisir au moins 2 lettres');
+    Error(firstName, 'Veuillez vérifier votre saisie');
   }
 
   if (validLastName(lastName.value)) {
     Success(lastName, '');
   } else {
-    Error(lastName, 'Veuillez saisir au moins 2 lettres');
+    Error(lastName, 'Veuillez vérifier votre saisie');
   }
 
   if (validEmail(email.value)) {
@@ -185,7 +187,7 @@ const checkInputs = function () {
 // toute lettre latine, y compris accentuée
 // mots composés séparés par "-" ou " ") non consécutifs
 function validFirstName(firstName) {
-  return /^[A-zÀ-ÿ]+[-\sA-zÀ-ÿ]{1,}$/.test(firstName);
+  return /^[A-zÀ-ÿ]+[ \-]?[A-zÀ-ÿ]{1,}$/.test(firstName);
 }
 
 // INPUT "Nom"
@@ -194,7 +196,7 @@ function validFirstName(firstName) {
 // toute lettre latine, y compris accentuée
 // mots composés séparés par "-" ou " " ou "'") non consécutifs
 function validLastName(lastName) {
-  return /^[A-zÀ-ÿ]+[-\s'A-zÀ-ÿ]{1,}$/.test(lastName);
+  return /^[A-zÀ-ÿ]+[ \-']?[A-zÀ-ÿ]{1,}$/.test(lastName);
 }
 
 // INPUT "Email"
