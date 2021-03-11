@@ -162,7 +162,6 @@ const checkInputs = function () {
   if (validQuantity(quantity.value)) {
     options.style.display = 'block';
     Success(quantity, '');
-    Error(errorCity, 'Veuillez sélectionner au moins une ville');
   } else if (location0()) {
     Success(errorCity, '');
   } else if (quantityNull(quantity.value)) {
@@ -173,48 +172,19 @@ const checkInputs = function () {
     Error(quantity, 'Veuillez saisir un nombre compris entre 0 et 99');
   }
 
-  // A DEBUGGER ////////////////////////////////////////////////////////////////////
-  // SUCCESS / ERROR RADIO INPUT (selction ville)
-  // if (location0()) {
-  //   Success(errorCity, '');
-  // } else {
-  //   Error(errorCity, 'Veuillez sélectionner une ville');
-  // }
+  const validCity =
+    location0.checked |
+    location1.checked |
+    location2.checked |
+    location3.checked |
+    location4.checked |
+    location5.checked;
 
-  // if (validLocation()) {
-  //   Success (errorCity, "");
-  // } else {
-  //   Error (errorCity, "Veuillez sélectionner une ville");
-  // }
-
-  // if (validCity() > 0) {
-  //   Success(errorCity, '');
-  // } else {
-  //   Error(errorCity, 'Veuillez sélectionner au moins une ville');
-  // }
-
-  // if (validCity(city.lenght) > 1) {
-  // Success(errorCity, '');
-  // } else {
-  //   Error(errorCity, 'Veuillez sélectionner au moins une ville');
-  // }
-
-  // CA FONCTIONNE MAIS CE N'EST PAS DRY /////////////////////////////
-
-  if (
-    validCitya() |
-    validCityb() |
-    validCityc() |
-    validCityd() |
-    validCitye() |
-    validCityf()
-  ) {
+  if (validCity) {
     Success(errorCity, '');
   } else {
     Error(errorCity, 'Veuillez sélectionner au moins une ville');
   }
-
-  //////////////////////////////////////////////////////////////
 
   if (validConditions()) {
     Success(checkbox1, '');
@@ -222,7 +192,8 @@ const checkInputs = function () {
     Error(checkbox1, "* Veuillez accepter les conditions d'utilisation.");
   }
   return checkInputs;
-}; // FIN DE LA FONCTION checkInputs
+};
+// FIN DE LA FONCTION checkInputs
 
 // PARAMETRES DE VALIDATION DES INPUTS
 
@@ -291,84 +262,8 @@ function quantityNull(quantity) {
   return /^0$/.test(quantity);
 }
 
-// A DEBUGGER ////////////////////////////////////////////////////////////////////
 // INPUT "Location"
 // au moins un bouton radio est sélectionné
-
-// let cities = document.querySelectorAll('input[type=radio]');
-
-// ESSAI 1 //
-// function city() {
-//   let selectedCity;
-//   for (const city of cities) {
-//     if (city.checked) {
-//       Success (errorCity, '')
-//       selectedCity = city.value;
-//       break;
-//     }
-//   }
-// }
-
-// ESSAI 2 //
-// let cityOptions = function validCity() {
-//   for (let i = 0; i < city.length; i++) {
-//   return city[i].checked;
-//   }
-// }
-
-// ESSAI 3 //
-// let locationOption = [location0, location1, location2, location3, location4, location5];
-// function validCity () {
-//   return locationOption.checked;
-// }
-
-// ESSAI 4 //
-// function validCity() {
-//   console.log(validCity);
-//   return city.checked;
-// }
-
-// ESSAI 5 //
-// CA FONCTIONNE MAIS CE N'EST PAS DRY /////////////////////////////
-
-function validCitya() {
-  return location0.checked;
-}
-function validCityb() {
-  return location1.checked;
-}
-
-function validCityc() {
-  return location2.checked;
-}
-
-function validCityd() {
-  return location3.checked;
-}
-
-function validCitye() {
-  return location4.checked;
-}
-
-function validCityf() {
-  return location5.checked;
-}
-
-// ESSAI 6 //
-// function validLocation() {
-//   var m=0;
-//   for (i=0; i<6; i++) {
-//     if (city[i].checked==true) {
-//       m=i;
-//       break;
-//       // Success (options, "");
-// //     } else {
-//       // Error (options, "Veuillez sélectionner une ville");
-//     }
-//   }
-// }
-
-////////////////////////////////////////////////////////////////////////////////
 
 // INPUT "conditions"
 // la case doit être cochée
