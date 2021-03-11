@@ -29,7 +29,7 @@ const email = document.getElementById('email');
 const birthdate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
 let options = document.getElementById('options');
-let city = document.querySelectorAll('input[type=radio]');
+// let cities = document.querySelectorAll('input[type=radio]');
 const checkbox1 = document.getElementById('checkbox1');
 
 // launch modal event
@@ -71,6 +71,9 @@ form.addEventListener('submit', function (e) {
   validForm();
 });
 
+// A DEBUGGER ////////////////////////////////////////////////////////////////////
+// SUBMIT SI SUCCESS / STOP SI ERROR
+
 // Success == true;
 // Error == false;
 // const dataConstructor = [Success, Error];
@@ -98,20 +101,22 @@ form.addEventListener('submit', function (e) {
 //   }
 // }
 
-let validForm = (checkInputs) => {
-  if (checkInputs) {
-    submitBtn.disabled = false;
-    Success(submitBtn, '');
-    modalBody.style.display = 'none';
-    confirm.style.opacity = '1';
-    return true;
-  } else {
-    submitBtn.disabled = true;
-    Error(submitBtn, 'Veuillez renseigner tous les champs');
-    submitBtn.style.backgroundColor = 'grey';
-    return false;
-  }
-};
+// let validForm = (checkInputs) => {
+//   if (checkInputs) {
+//     submitBtn.disabled = false;
+//     Success(submitBtn, '');
+//     modalBody.style.display = 'none';
+//     confirm.style.opacity = '1';
+//     return true;
+//   } else {
+//     submitBtn.disabled = true;
+//     Error(submitBtn, 'Veuillez renseigner tous les champs');
+//     submitBtn.style.backgroundColor = 'grey';
+//     return false;
+//   }
+// };
+
+//////////////////////////////////////////////////////////////////////
 
 // VALIDATION DES INPUTS
 
@@ -126,13 +131,13 @@ const checkInputs = function () {
   if (validFirstName(firstName.value)) {
     Success(firstName, '');
   } else {
-    Error(firstName, 'Veuillez vérifier votre saisie');
+    Error(firstName, 'Veuillez saisir au moins 2 lettres');
   }
 
   if (validLastName(lastName.value)) {
     Success(lastName, '');
   } else {
-    Error(lastName, 'Veuillez vérifier votre saisie');
+    Error(lastName, 'Veuillez saisir au moins 2 lettres');
   }
 
   if (validEmail(email.value)) {
@@ -154,10 +159,12 @@ const checkInputs = function () {
     Error(birthdate, 'Veuillez saisir votre date de naissance');
   }
 
-  if (validQuantity(quantity.value) | !validCity) {
+  if (validQuantity(quantity.value)) {
     options.style.display = 'block';
     Success(quantity, '');
-    Error(options, 'Veuillez sélectionner au moins une ville');
+    Error(errorCity, 'Veuillez sélectionner au moins une ville');
+  } else if (location0()) {
+    Success(errorCity, '');
   } else if (quantityNull(quantity.value)) {
     options.style.display = 'none';
     Success(quantity, '');
@@ -166,10 +173,39 @@ const checkInputs = function () {
     Error(quantity, 'Veuillez saisir un nombre compris entre 0 et 99');
   }
 
-  // if (validCity) {
-  //   Success(options, '');
+// A DEBUGGER ////////////////////////////////////////////////////////////////////
+// SUCCESS / ERROR RADIO INPUT (selction ville)
+  // if (location0()) {
+  //   Success(errorCity, '');
   // } else {
+  //   Error(errorCity, 'Veuillez sélectionner une ville');
   // }
+
+  // if (validLocation()) {
+  //   Success (errorCity, "");
+  // } else {
+  //   Error (errorCity, "Veuillez sélectionner une ville");
+  // }
+
+  // if (validCity() > 0) {
+  //   Success(errorCity, '');
+  // } else {
+  //   Error(errorCity, 'Veuillez sélectionner au moins une ville');
+  // }
+
+  // if (validCity(city.lenght) > 1) {
+  // Success(errorCity, '');
+  // } else {
+  //   Error(errorCity, 'Veuillez sélectionner au moins une ville');
+  // }
+
+  // if (validCity(location0)) {
+  //   Success(errorCity, '');
+  // } else {
+  //   Error(errorCity, 'Veuillez sélectionner au moins une ville');
+  // }
+
+//////////////////////////////////////////////////////////////
 
   if (validConditions()) {
     Success(checkbox1, '');
@@ -177,7 +213,8 @@ const checkInputs = function () {
     Error(checkbox1, "* Veuillez accepter les conditions d'utilisation.");
   }
   return checkInputs;
-};
+}; // FIN DE LA FONCTION checkInputs
+
 
 // PARAMETRES DE VALIDATION DES INPUTS
 
@@ -232,6 +269,7 @@ function validBirthdate() {
 
   return calculateAge;
 }
+
 // INPUT "Quantity"
 // nombre de participations comprimse entre 0 et 99
 // si la quantité est incorrecte ou nulle alors le block "choix de ville(s)" ne s'affiche pas
@@ -245,17 +283,63 @@ function quantityNull(quantity) {
   return /^0$/.test(quantity);
 }
 
+// A DEBUGGER ////////////////////////////////////////////////////////////////////
 // INPUT "Location"
 // au moins un bouton radio est sélectionné
 
-function validCity() {
-  // for (let i = 0; i < city.length; i++) {
-  // if (city[i].checked === true) break;
-  // }
-  if (city.checked.lenght > 0) {
-    return true;
-  }
-}
+// let cities = document.querySelectorAll('input[type=radio]');
+
+// ESSAI 1 //
+// function city() {
+//   let selectedCity;
+//   for (const city of cities) {
+//     if (city.checked) {
+//       Success (errorCity, '')
+//       selectedCity = city.value;
+//       break;
+//     }
+//   }
+// }
+
+// ESSAI 2 //
+// let cityOptions = function validCity() {
+//   for (let i = 0; i < city.length; i++) {
+//   return city[i].checked;
+//   }
+// }
+
+// ESSAI 3 //
+// let locationOption = [location0, location1, location2, location3, location4, location5];
+// function validCity () {
+//   return locationOption.checked;
+// }
+
+// ESSAI 4 //
+// function validCity() {
+//   console.log(validCity);
+//   return city.checked;
+// }
+
+// ESSAI 5 //
+// function location0() {
+//   return location0.checked;
+// }
+
+// ESSAI 6 //
+// function validLocation() {
+//   var m=0;
+//   for (i=0; i<6; i++) {
+//     if (city[i].checked==true) {
+//       m=i;
+//       break;
+//       // Success (options, "");
+// //     } else {
+//       // Error (options, "Veuillez sélectionner une ville");
+//     }
+//   }
+// }
+
+////////////////////////////////////////////////////////////////////////////////
 
 // INPUT "conditions"
 // la case doit être cochée
@@ -277,10 +361,11 @@ const Error = (input, message) => {
   return false;
 };
 
-const Success = (input) => {
+const Success = (input, message) => {
   console.log('success', input);
   const formData = input.parentElement;
   const small = formData.querySelector('small');
-  small.innerText = '';
+  formData.className = 'formData';
+  small.innerText = message;
   return true;
 };
