@@ -173,8 +173,8 @@ const checkInputs = function () {
     Error(quantity, 'Veuillez saisir un nombre compris entre 0 et 99');
   }
 
-// A DEBUGGER ////////////////////////////////////////////////////////////////////
-// SUCCESS / ERROR RADIO INPUT (selction ville)
+  // A DEBUGGER ////////////////////////////////////////////////////////////////////
+  // SUCCESS / ERROR RADIO INPUT (selction ville)
   // if (location0()) {
   //   Success(errorCity, '');
   // } else {
@@ -199,13 +199,22 @@ const checkInputs = function () {
   //   Error(errorCity, 'Veuillez sélectionner au moins une ville');
   // }
 
-  // if (validCity(location0)) {
-  //   Success(errorCity, '');
-  // } else {
-  //   Error(errorCity, 'Veuillez sélectionner au moins une ville');
-  // }
+  // CA FONCTIONNE MAIS CE N'EST PAS DRY /////////////////////////////
 
-//////////////////////////////////////////////////////////////
+  if (
+    validCitya() |
+    validCityb() |
+    validCityc() |
+    validCityd() |
+    validCitye() |
+    validCityf()
+  ) {
+    Success(errorCity, '');
+  } else {
+    Error(errorCity, 'Veuillez sélectionner au moins une ville');
+  }
+
+  //////////////////////////////////////////////////////////////
 
   if (validConditions()) {
     Success(checkbox1, '');
@@ -214,7 +223,6 @@ const checkInputs = function () {
   }
   return checkInputs;
 }; // FIN DE LA FONCTION checkInputs
-
 
 // PARAMETRES DE VALIDATION DES INPUTS
 
@@ -321,9 +329,30 @@ function quantityNull(quantity) {
 // }
 
 // ESSAI 5 //
-// function location0() {
-//   return location0.checked;
-// }
+// CA FONCTIONNE MAIS CE N'EST PAS DRY /////////////////////////////
+
+function validCitya() {
+  return location0.checked;
+}
+function validCityb() {
+  return location1.checked;
+}
+
+function validCityc() {
+  return location2.checked;
+}
+
+function validCityd() {
+  return location3.checked;
+}
+
+function validCitye() {
+  return location4.checked;
+}
+
+function validCityf() {
+  return location5.checked;
+}
 
 // ESSAI 6 //
 // function validLocation() {
