@@ -9,24 +9,23 @@
     <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet">
   </head>
   <body>
-    <div class="topnav" id="myTopnav">
-      <div class="header-logo">
-      <img alt="logo" src="assets/img/Logo.png" width="auto" height="auto">
-    </div>
-    <div class="main-navbar">
-      <a href="#" class="active"><span>Accueil</span></a>
-      <a href="#"><span>Détails de l'évènement</span></a>
-      <a href="#"><span>À propos</span></a>
-      <a href="#"><span>Contact</span></a>
-      <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars"></i>
-      </a>
-    </div>
-    </div>
-  </div>
+
+    <nav class="topnav" id="myTopnav">
+      <img src="assets/img/Logo.png" alt="logo GameOn">
+      <ul class="main-navbar">
+        <li><a href="#" class="active">Accueil</a></li>
+        <li><a href="#">Détails de l'évènement</a></li>
+        <li><a href="#">À propos</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Évènements passés</a></li>
+        <li><a href="javascript:void(0);" class="icon" onclick="editNav()">
+          <i class="fa fa-bars"></i>
+        </a></li>
+      </ul>
+    </nav>
+
     <main>
-      <div class="hero-section">
+      <section class="hero-section">
         <div class="hero-content">
           <h1 class="hero-headline">Marathon national<br>de jeux vidéos</h1>
           <p class="hero-text">Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux réservations... Places limitées !</p>
@@ -36,32 +35,31 @@
           <img src="assets/img/bg_img.jpg" alt="img">
         </div>
         <button class="btn-signup modal-btn">je m'inscris</button>
-      </div>
+      </section>
       <div class="bground">
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
             <form name="reserve" id="form" action="index.html" method="POST" novalidate>
               <div class="formData">
-                <label for="first">Prénom</label><br>
-                <input class="text-control" type="text" id="first" name="first"><br>
+                <label for="first">Prénom</label>
+                <input class="text-control" type="text" id="first" name="first">
               </div>
               <div class="formData">
-                <label for="last">Nom</label><br>
-                <input class="text-control" type="text" id="last" name="last"><br>
+                <label for="last">Nom</label>
+                <input class="text-control" type="text" id="last" name="last">
               </div>
               <div class="formData">
-                <label for="email">E-mail</label><br>
-                <input class="text-control" id="email" name="email"><br>
+                <label for="email">E-mail</label>
+                <input class="text-control" id="email" name="email">
               </div>
               <div class="formData">
-                <label for="birthdate">Date de naissance</label><br>
-                <input class="text-control" type="date" id="birthdate" name="birthdate"><br>
+                <label for="birthdate">Date de naissance</label>
+                <input class="text-control" type="date" id="birthdate" name="birthdate">
               </div>
               <div class="formData">
-                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label>
                 <input type="text" class="text-control" id="quantity" name="quantity">
-                <br>
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div class="formData">
@@ -111,7 +109,7 @@
                   Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
-              <input class="btn-submit" type="submit" class="button" value="C'est parti">
+              <input class="button btn-submit" type="submit" value="C'est parti">
             </form>
             <div class="reservation-accepted">
               <span class="close"></span>

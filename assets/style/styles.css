@@ -8,7 +8,19 @@
 	margin: 0;
 	padding: 0;
 }
-/* Landing Page */
+
+@keyframes modalopen {
+	from {
+		opacity: 0;
+		transform: translateY(-150px);
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+/**** Landing Page ****/
 
 body {
 	margin: 0;
@@ -30,22 +42,27 @@ img {
 	padding-right: 1rem;
 }
 
+li {
+  list-style: none;
+}
+
 .topnav {
 	overflow: hidden;
 	margin: 15px;
 }
 
-.header-logo {
+nav >img {
 	float: left;
 }
 
-.header-logo img {
-	width: 125px;
+nav >img {
+	width: 190px;
 	padding: 14px 10px;
 }
 
 .main-navbar {
-	float: right;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .topnav a {
@@ -75,7 +92,7 @@ img {
 	display: none;
 }
 
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 540px) {
 	.topnav a {
 		display: none;
 	}
@@ -86,14 +103,22 @@ img {
 	}
 }
 
-@media screen and (max-width: 991px) {
-	.topnav a {
-		font-size: 16px;
-	}
-}
-
 @media screen and (max-width: 840px) {
-	.topnav.responsive {
+  .main-navbar {
+    display: block;
+    float: right;
+  }
+
+	.topnav a {
+		display: none;
+	}
+
+	.topnav a.icon {
+		float: right;
+		display: block;
+	}
+
+  .topnav.responsive {
 		position: relative;
 	}
 
@@ -110,14 +135,14 @@ img {
 	}
 }
 
-@media screen and (max-width: 540px) {
-	.topnav a {
-		display: none;
-	}
+@media screen and (max-width: 991px) {
+  nav >img {
+    width: 125px;
+    padding: 14px 10px;
+  }
 
-	.topnav a.icon {
-		float: right;
-		display: block;
+	.topnav a {
+		font-size: 16px;
 	}
 }
 
@@ -226,7 +251,7 @@ main {
 
 label {
 	font-family: var(--font-default);
-	font-size: 17px;
+	font-size: 14px;
 	font-weight: normal;
 	display: inline-block;
 	margin-bottom: 11px;
@@ -245,6 +270,10 @@ input {
 	border-radius: 8px;
 	font-size: 20px;
 	height: 48px;
+}
+
+.formData {
+  margin-bottom: 10px;
 }
 
 .formData[data-error]::after {
@@ -470,7 +499,7 @@ input[data-error]::after {
 /* custom select end */
 .text-label {
 	font-weight: normal;
-	font-size: 16px;
+	font-size: 14px;
 }
 
 .hero-section {
@@ -656,8 +685,8 @@ footer {
 }
 
 @media screen and (min-width: 1200px) {
-	.header-logo img {
-		width: 230px;
+	nav >img {
+		width: 240px;
 		padding: 5px 10px;
 	}
 
@@ -679,16 +708,5 @@ footer {
 
 	.hero-content {
 		padding: 55px;
-	}
-}
-
-@keyframes modalopen {
-	from {
-		opacity: 0;
-		transform: translateY(-150px);
-	}
-
-	to {
-		opacity: 1;
 	}
 }
