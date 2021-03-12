@@ -11,20 +11,13 @@ function modalDisplay(displayStyle) {
   modal.style.display = displayStyle 
 }
 
-// Fonctions dédiées aux vérifications
+// Dedicated functions to check the form validity
 
-/* @function checkFirstName - Check if the first name lenght is upper than 2 and return a boolean
-*
-*  @const {value} firstNameInput - Return a value of an input
-*  @const {string} firstErrorMsg - Change add or remove css propertie
-*  @const {boolean} isFirstNameValid - Return true if the value is > 2
-*  @param {string} - If the boolean is true add a propertie to the string, if its false remove
-*  @return {boolean} - Return a boolean 
-*/
+/** Check if the first name lenght is equal or upper than 2 and return a boolean */
 function checkFirstName() {
   const firstNameInput = document.getElementById('first').value;
   const $firstErrorMsg = document.querySelector(".firstErrorMsg");
-  const isFirstNameValid = firstNameInput.length > 2;
+  const isFirstNameValid = firstNameInput.length >= 2;
 
   if (isFirstNameValid) {
     $firstErrorMsg.classList.add('hidden');
@@ -34,10 +27,11 @@ function checkFirstName() {
   return isFirstNameValid;
 }
 
+/** Check if the last name lenght is equal or upper than 2 and return a boolean */
 function checkLastName() {
   const lastNameInput = document.getElementById('last').value;
   const $lastErrorMsg = document.querySelector('.lastErrorMsg');
-  const isLastNameValid = lastNameInput.length > 2;
+  const isLastNameValid = lastNameInput.length >= 2;
 
   if (isLastNameValid) {
     $lastErrorMsg.classList.add('hidden');
@@ -47,6 +41,7 @@ function checkLastName() {
   return isLastNameValid;
 }
 
+/** Check if the email format is valid and match to the regex and return a boolean */
 function checkEmail() {
   const emailInput = document.getElementById('email').value;
   const regExMail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
@@ -61,6 +56,7 @@ function checkEmail() {
   return isEmailValid
 }
 
+/** Check if the age is filled and return a boolean */
 function checkAge() {
   const ageInput = document.getElementById('birthdate').value;
   const $ageErrorMsg =  document.querySelector('.ageErrorMsg');
@@ -74,6 +70,7 @@ function checkAge() {
   return isAgeValid
 }
 
+/** Check if the tournament count is filled and return a boolean */
 function checkTournamentCount() {
   const tournamentInput = document.getElementById('quantity').value;
   const $tournamentErrorMsg = document.querySelector('.tournamentErrorMsg');
@@ -87,6 +84,7 @@ function checkTournamentCount() {
   return isTournamentNumberIsValid
 }
 
+/** Check if one radio button is checked and return a boolean */
 function checkTournamentCity() {
   const cityRadios = document.querySelectorAll('#city-radios .checkbox-input');
   const $tournamentCityErrorMsg = document.querySelector('.tournamentCityErrorMsg');
@@ -103,6 +101,7 @@ function checkTournamentCity() {
   return isTournamentCityNumberIsValid
 }
 
+/** Check if the user has checked the terms and conditions and return a boolean */
 function checkTermsAndConditions() {
   const terms = document.querySelector('#acceptConditions')
   const $termsCheckMsg = document.querySelector('.termsCheckMsg');
@@ -116,20 +115,19 @@ function checkTermsAndConditions() {
   return termsAreChecked
 }
 
-// Arrow function for check if the form input are all valids
+/** Arrow function for check if the form input are all valids */
 const isFormValid = () => checkFirstName() && checkLastName() && checkEmail() && checkAge() && checkTournamentCount() && checkTournamentCity() && checkTermsAndConditions()
 
 
-// Event Listeners
+/**  Event Listeners for submit button */
 $registrationForm.addEventListener('submit', function(event) {
   event.preventDefault()
-
+// if all booleans are true
   if (isFormValid()) {
+    // untoggle the modal
     modalDisplay('none');
+    // call the notification toast to confirm
     showNotificationToast()
-  } else {
-
-  }
-
+  } 
 })
 
