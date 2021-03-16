@@ -11,6 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const closeCross = document.querySelector(".close");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -21,6 +22,11 @@ function launchModal() {
 }
 
 // close modal form
+function closeModal() {
+    modalbg.style.display = "none";
+}
+
+closeCross.addEventListener("click", closeModal);
 
 // validation of the form by clicking on submit
 
