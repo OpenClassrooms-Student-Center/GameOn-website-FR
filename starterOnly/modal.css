@@ -106,7 +106,7 @@ main {
 
 /* Modal form */
 .button {
-  background: #fe142f;
+  background: #646262;
   margin-top: 0.5em;
   padding: 1em;
   color: #fff;
@@ -129,9 +129,10 @@ main {
   opacity: 0;
   max-width: 425px;
   width: 90%;
-  background-color: dodgerblue;
+  /* background-color: dodgerblue; */
+  background-color: #3876ac;
   border-radius: 10px;
-  margin: 50px auto;
+  top: 220px;
   padding: 50px 10px;
   display: flex;
   justify-content: center;

@@ -1,295 +1,292 @@
 function editNav() {
-  var x = document.getElementById('myTopnav');
-  if (x.className === 'topnav') {
-    x.className += 'responsive';
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += "responsive";
   } else {
-    x.className = 'topnav';
+    x.className = "topnav";
   }
 }
 
 // DOM Elements
-const modalbg = document.querySelector('.bground');
-const modalBtn = document.querySelectorAll('.modal-btn');
-const submitBtn = document.getElementById('submit');
-const bground = document.querySelector('.bground');
-const closeModalBtn = document.querySelector('.close');
-const modalBody = document.querySelector('.modal-body');
-const confirm = document.getElementById('confirmation');
-const closeConfirmBtn = document.querySelector('.close-confirm');
+const modalbg = document.querySelector(".bground");
+const modalBtn = document.querySelectorAll(".modal-btn");
+const submitBtn = document.getElementById("submit");
+const bground = document.querySelector(".bground");
+const closeModalBtn = document.querySelector(".close");
+const modalBody = document.querySelector(".modal-body");
+const confirm = document.getElementById("confirmation");
+const closeConfirmBtn = document.querySelector(".close-confirm");
 
 // FORM
-const form = document.getElementById('reserve');
-const formData = document.querySelectorAll('.formData');
+const form = document.getElementById("reserve");
+const formData = document.querySelectorAll(".formData");
 
 // INPUTS
-const inputs = document.getElementsByTagName('input');
-const firstName = document.getElementById('firstName');
-const lastName = document.getElementById('lastName');
-const email = document.getElementById('email');
-const birthdate = document.getElementById('birthdate');
-const quantity = document.getElementById('quantity');
-let options = document.getElementById('options');
-// let cities = document.querySelectorAll('input[type=radio]');
-const checkbox1 = document.getElementById('checkbox1');
+const firstName = document.getElementById("firstName");
+const lastName = document.getElementById("lastName");
+const email = document.getElementById("email");
+const birthdate = document.getElementById("birthdate");
+const quantity = document.getElementById("quantity");
+const options = document.getElementById("options");
+const cgu = document.getElementById("checkbox1");
 
+// EVENEMENTS MODAL
 // launch modal event
-modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal() {
-  modalbg.style.display = 'block';
+  modalbg.style.display = "block";
 }
 
 // close modal event
-closeModalBtn.addEventListener('click', function (event) {
+closeModalBtn.addEventListener("click", function (event) {
   event.preventDefault();
   closeModal();
 });
 
 // close modal form
 function closeModal() {
-  bground.style.display = 'none';
+  bground.style.display = "none";
 }
 
 // close confirm message event
-closeConfirmBtn.addEventListener('click', function (event) {
+closeConfirmBtn.addEventListener("click", function (event) {
   event.preventDefault();
   closeConfirm();
 });
 
 // close confirm message
 function closeConfirm() {
-  bground.style.display = 'none';
+  bground.style.display = "none";
 }
 
-// VALIDATION FORMULAIRE
-// tous les inputs sont remplis (sauf succession d'espaces)
-// toutes les informations sont correctes
+// VALIDATION DU FORMULAIRE
+// tous les inputs remplis (sauf succession d'espaces)
+// toutes les informations correctes
 
-form.addEventListener('submit', function (e) {
+form.addEventListener("submit", function (e) {
   e.preventDefault();
-  validForm();
+
+  if (emptyInputs()) {
+    submitBtn.disabled = true;
+    submitBtn.style.backgroundColor = "grey";
+    errorForm.style.visibility = "visible";
+    errorForm.innerHTML = "Veuillez renseigner tous les champs";
+  } else if (!emptyInputs() && validInputs()) {
+    modalBody.style.display = "none";
+    confirm.style.opacity = "1";
+    form.reset();
+  } else {
+  }
 });
-
-// A DEBUGGER ////////////////////////////////////////////////////////////////////
-// SUBMIT SI SUCCESS / STOP SI ERROR
-
-// Success == true;
-// Error == false;
-// const dataConstructor = [Success, Error];
-// let dataConstructor = new validInputs(Success, Error);
-// let dataConstructor = new checkInputs(Success, Error);
-// console.log(dataConstructor);
-// for (let i = 0; (i = dataConstructor.lenght); i++) {
-//   if (dataConstructor[i] == true) {}
-// }
-
-// checkInputs();
-
-// for (let i = 0; i = checkInputs.lenght; i++) {
-//   if (checkInputs[i] == Success) {
-//     submitBtn.disabled = false;
-//     Success(submitBtn, '');
-//     modalBody.style.display = 'none';
-//     confirm.style.opacity = '1';
-//     return true;
-//   } else {
-//     submitBtn.disabled = true;
-//     Error(submitBtn, 'Veuillez renseigner tous les champs');
-//     submitBtn.style.backgroundColor = 'grey';
-//     return false;
-//   }
-// }
-
-// let validForm = (checkInputs) => {
-//   if (checkInputs) {
-//     submitBtn.disabled = false;
-//     Success(submitBtn, '');
-//     modalBody.style.display = 'none';
-//     confirm.style.opacity = '1';
-//     return true;
-//   } else {
-//     submitBtn.disabled = true;
-//     Error(submitBtn, 'Veuillez renseigner tous les champs');
-//     submitBtn.style.backgroundColor = 'grey';
-//     return false;
-//   }
-// };
-
-//////////////////////////////////////////////////////////////////////
 
 // VALIDATION DES INPUTS
-
-// retirer l'eventListener quand la fonction submit sera débugguée //
-form.addEventListener('change', function (e) {
+form.addEventListener("input", function (e) {
   e.preventDefault();
-  checkInputs();
-});
-//
 
-const checkInputs = function () {
-  if (validFirstName(firstName.value)) {
-    Success(firstName, '');
+  // VALIDATION GENERALE
+  // Tous les inputs vides
+  // Au moins 1 input vide
+  // Au moins 1 saisie erronnée
+  if (oneEmptyInput()) {
+    submitBtn.disabled = true;
+    submitBtn.style.backgroundColor = "grey";
+    errorForm.style.visibility = "visible";
+    errorForm.innerHTML = "Veuillez renseigner tous les champs";
+  } else if (!emptyInputs() && invalidInput()) {
+    submitBtn.disabled = true;
+    submitBtn.style.backgroundColor = "cadetblue";
+    errorForm.style.visibility = "hidden";
   } else {
-    Error(firstName, 'Veuillez saisir au moins 2 lettres');
+    submitBtn.disabled = false;
+    submitBtn.style.backgroundColor = "#3876ac";
+    errorForm.style.visibility = "hidden";
   }
 
-  if (validLastName(lastName.value)) {
-    Success(lastName, '');
+  // VALIDATION AU CAS PAR CAS
+  // firstname
+  if (validFirstName(firstName)) {
+    dataSuccess(firstName, "");
   } else {
-    Error(lastName, 'Veuillez saisir au moins 2 lettres');
+    dataError(firstName, "Veuillez saisir au moins 2 lettres");
   }
-
-  if (validEmail(email.value)) {
-    Success(email, '');
+  // lastname
+  if (validLastName(lastName)) {
+    dataSuccess(lastName, "");
   } else {
-    Error(email, 'Veuillez saisir un format correct');
+    dataError(lastName, "Veuillez saisir au moins 2 lettres");
   }
-
-  if (
-    validBirthdate(birthdate.value) > 13 &&
-    validBirthdate(birthdate.value) < 100
-  ) {
-    Success(birthdate, '');
-  } else if (validBirthdate(birthdate.value) < 13) {
-    Error(birthdate, 'Vous devez avoir plus de 13 ans pour participer');
-  } else if (validBirthdate(birthdate.value) > 100) {
-    Error(birthdate, 'Veuillez vérifier votre année de naissance');
+  // email
+  if (validEmail(email)) {
+    dataSuccess(email, "");
   } else {
-    Error(birthdate, 'Veuillez saisir votre date de naissance');
+    dataError(email, "Veuillez saisir un format correct");
   }
-
-  if (validQuantity(quantity.value)) {
-    options.style.display = 'block';
-    Success(quantity, '');
-  } else if (location0()) {
-    Success(errorCity, '');
-  } else if (quantityNull(quantity.value)) {
-    options.style.display = 'none';
-    Success(quantity, '');
+  // age
+  if (validBirthdate() > 13 && validBirthdate() < 100) {
+    dataSuccess(birthdate, "");
+  } else if (validBirthdate() < 13) {
+    dataError(birthdate, "Vous devez avoir plus de 13 ans pour participer");
+  } else if (validBirthdate() > 100) {
+    dataError(birthdate, "Veuillez vérifier votre année de naissance");
   } else {
-    options.style.display = 'none';
-    Error(quantity, 'Veuillez saisir un nombre compris entre 0 et 99');
+    dataError(birthdate, "Veuillez saisir votre date de naissance");
   }
-
-  const validCity =
-    location0.checked |
-    location1.checked |
-    location2.checked |
-    location3.checked |
-    location4.checked |
-    location5.checked;
-
-  if (validCity) {
-    Success(errorCity, '');
+  // participation(s)
+  if (validQuantity(quantity)) {
+    options.style.display = "block";
+    dataSuccess(quantity, "");
+  } else if (quantityNull(quantity)) {
+    options.style.display = "none";
+    dataSuccess(quantity, "");
   } else {
-    Error(errorCity, 'Veuillez sélectionner au moins une ville');
+    options.style.display = "none";
+    dataError(quantity, "Veuillez saisir un nombre compris entre 0 et 99");
   }
-
+  // ville (si participation > 0)
+  if ((validCity() > 0) | quantityNull(quantity)) {
+    dataSuccess(errorCity, "");
+  } else {
+    dataError(errorCity, "Veuillez sélectionner au moins une ville");
+  }
+  // conditions générales
   if (validConditions()) {
-    Success(checkbox1, '');
+    dataSuccess(cgu, "");
   } else {
-    Error(checkbox1, "* Veuillez accepter les conditions d'utilisation.");
+    dataError(cgu, "* Veuillez accepter les conditions d'utilisation.");
   }
-  return checkInputs;
+});
+
+// FONCTIONS DE VALIDATION GENERALE
+
+// Tous les inputs vides
+const emptyInputs = () => {
+  const allEmpty =
+    firstName.value.trim() === "" &&
+    lastName.value.trim() === "" &&
+    email.value.trim() === "" &&
+    birthdate.value.trim() === "" &&
+    quantity.value.trim() === "" &&
+    !cgu.checked;
+  return allEmpty;
 };
-// FIN DE LA FONCTION checkInputs
 
-// PARAMETRES DE VALIDATION DES INPUTS
+// Au moins 1 input vide
+const oneEmptyInput = () => {
+  const oneEmpty =
+    (firstName.value.trim() === "") |
+    (lastName.value.trim() === "") |
+    (email.value.trim() === "") |
+    (birthdate.value.trim() === "") |
+    (quantity.value.trim() === "") |
+    !cgu.checked;
+  return oneEmpty;
+};
 
-// INPUT "Prénom"
+// Au moins 1 saisie erronnée
+function invalidInput() {
+  const oneError =
+    !validFirstName(firstName) |
+    !validLastName(lastName) |
+    !validEmail(email) |
+    (validBirthdate() < 13) |
+    (validBirthdate() > 100) |
+    (!validQuantity(quantity) && !quantityNull(quantity)) |
+    !validConditions();
+  return oneError;
+}
+
+// Tous les inputs validés
+function validInputs() {
+  const allValid =
+    validFirstName(firstName) |
+    validLastName(lastName) |
+    validEmail(email) |
+    (validBirthdate() > 13 && validBirthdate() < 100) |
+    (validQuantity(quantity) && quantityNull(quantity)) |
+    validCity() |
+    validConditions();
+  return allValid;
+}
+
+// FONCTIONS DE VALIDATION DES INPUTS AU CAS PAR CAS
+
+// input PRENOM
 // 2 caractères minimum
 // casse indifférente
 // toute lettre latine, y compris accentuée
-// mots composés séparés par "-" ou " ") non consécutifs
-function validFirstName(firstName) {
-  return /^[A-zÀ-ÿ]+[ \-]?[A-zÀ-ÿ]{1,}$/.test(firstName);
-}
+// mots composés, séparés par 1 "-" ou " "
+const validFirstName = (firstName) =>
+  /^[A-zÀ-ÿ]+[ \-]?[A-zÀ-ÿ]{1,}$/.test(firstName.value);
 
-// INPUT "Nom"
+// input NOM
 // 2 caractères minimum
 // casse indifférente
 // toute lettre latine, y compris accentuée
-// mots composés séparés par "-" ou " " ou "'") non consécutifs
-function validLastName(lastName) {
-  return /^[A-zÀ-ÿ]+[ \-']?[A-zÀ-ÿ]{1,}$/.test(lastName);
-}
+// mots composés, séparés par 1 "-" ou " "
+const validLastName = (lastName) =>
+  /^[A-zÀ-ÿ]+[ \-']?[A-zÀ-ÿ]{1,}$/.test(lastName.value);
 
-// INPUT "Email"
+// input EMAIL
 // tout caractère ASCII
 // casse indifférente
 // espaces et points non acceptés si en début ou fin de saisie et si répétés côte à côte
 // strictement 1 "@" et 1 "." ensuite
 // nom de domaine format entreprise
-function validEmail(email) {
-  return /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@{1}[a-zA-Z0-9-]+\.{1}([a-zA-Z0-9-]{2,})$/.test(
-    email
+const validEmail = (email) =>
+  /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@{1}[a-zA-Z0-9-]+\.{1}([a-zA-Z0-9-]{2,})$/.test(
+    email.value
   );
-}
 
-// INPUT "Birthdate"
+// input BIRTHDATE
 // format jj/mm/aaaa
 // le joueur doit avoir plus de 13 ans
-// function validBirthdate() {
-
-// function userAge() {
-function validBirthdate() {
+const validBirthdate = () => {
   // récupération de la valeur du champ "date"
-  let userDateInput = form.birthdate.value;
-
+  let userDateInput = birthdate.value;
   // conversion de la valeur du champ "date" en objet
   let userBirthdate = new Date(userDateInput);
-
   // différence entre la date de naissance et la date du jour
   let difference = Date.now() - userBirthdate.getTime();
   // calcul de l'âge
   let age = new Date(difference);
   let calculateAge = Math.abs(age.getUTCFullYear() - 1970);
-
   return calculateAge;
-}
+};
 
-// INPUT "Quantity"
+// input QUANTITY
 // nombre de participations comprimse entre 0 et 99
 // si la quantité est incorrecte ou nulle alors le block "choix de ville(s)" ne s'affiche pas
 // Si nombre de participation = 0 alors la saisie est valide et le block "choix de ville(s)" ne s'affiche pas
 // Si le nombre de participation(s) comprise entre 1 et 99 alors le block "choix de ville(s)" s'affiche
+const validQuantity = (quantity) => /^([1-9]|[1-9][0-9])$/.test(quantity.value);
+const quantityNull = (quantity) => /^0$/.test(quantity.value);
 
-function validQuantity(quantity) {
-  return /^([1-9]|[1-9][0-9])$/.test(quantity);
-}
-function quantityNull(quantity) {
-  return /^0$/.test(quantity);
-}
-
-// INPUT "Location"
+// input LOCATION
 // au moins un bouton radio est sélectionné
+const validCity = () =>
+  document.querySelectorAll("input[type=radio]:checked").length;
 
-// INPUT "conditions"
+// input CONDITIONS
 // la case doit être cochée
-
-function validConditions() {
-  return checkbox1.checked;
-}
+const validConditions = () => cgu.checked;
 
 // MESSAGES
 // Error
-// Success
-
-const Error = (input, message) => {
-  console.log('error', input, message);
+const dataError = (input, message) => {
+  console.log("Error", input);
   const formData = input.parentElement;
-  const small = formData.querySelector('small');
-  formData.className = 'formData error';
+  const small = formData.querySelector("small");
+  formData.className = "formData error";
   small.innerText = message;
-  return false;
 };
 
-const Success = (input, message) => {
-  console.log('success', input);
+// Success
+const dataSuccess = (input, message) => {
+  console.log("Success", input);
   const formData = input.parentElement;
-  const small = formData.querySelector('small');
-  formData.className = 'formData';
+  const small = formData.querySelector("small");
+  formData.className = "formData";
   small.innerText = message;
-  return true;
 };

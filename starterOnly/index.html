@@ -5,7 +5,10 @@
     <title>Reservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="modal.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans"
       rel="stylesheet"
@@ -40,7 +43,9 @@
             </h1>
             <div id="text">
               <p class="hero-text">Vous aimez jouer ?</p>
-              <p class="hero-text">Notre prochain évènement gaming est ouvert aux réservations...</p>
+              <p class="hero-text">
+                Notre prochain évènement gaming est ouvert aux réservations...
+              </p>
               <p class="hero-text">Places limitées !</p>
               <button class="btn-signup modal-btn">
                 Je m'inscris
@@ -53,7 +58,10 @@
         <div class="content">
           <div id="confirmation">
             <span class="close-confirm"></span>
-            <p>Merci !<br> Votre réservation a été reçue.</p>
+            <p>
+              Merci !<br />
+              Votre réservation a été reçue.
+            </p>
           </div>
           <span class="close"></span>
           <div class="modal-body">
@@ -62,75 +70,74 @@
               id="reserve"
               action="index.html"
               methode="POST"
-              >
+            >
               <!-- onsubmit="return validForm()" -->
-              <div
-                class="formData">
-                <label for="firstName">* Prénom</label><br>
+              <div class="formData">
+                <label for="firstName">* Prénom</label><br />
                 <input
-                class="text-control"
-                type="text"
-                id="firstName"
-                name="firstName"
+                  class="text-control"
+                  type="text"
+                  id="firstName"
+                  name="firstName"
                 />
                 <!-- espace dynamique "errorFirst" -->
-                <br><small id="errorFirst"></small>
+                <br /><small id="errorFirst"></small>
               </div>
-              <div
-                class="formData">
+              <div class="formData">
                 <label for="lastName">* Nom</label>
                 <input
-                class="text-control"
-                type="text"
-                id="lastName"
-                name="lastName"
+                  class="text-control"
+                  type="text"
+                  id="lastName"
+                  name="lastName"
                 />
                 <!-- espace dynamique "errorLast" -->
-                <br><small id="errorLast"></small>
+                <br /><small id="errorLast"></small>
               </div>
-              <div
-                class="formData">
+              <div class="formData">
                 <label for="email">* E-mail</label>
                 <input
-                class="text-control"
-                type="text"
-                id="email"
-                name="email"
-                autocapitalize="none"
+                  class="text-control"
+                  type="text"
+                  id="email"
+                  name="email"
+                  autocapitalize="none"
                 />
                 <!-- ajout autocapitalize="none" pour bloquer la fonction 1e lettre majuscule des tablettes et smartphones -->
                 <!-- espace dynamique "errorEmail" -->
-                <br><small id="errorEmail"></small>
+                <br /><small id="errorEmail"></small>
               </div>
-              <div
-                class="formData">
+              <div class="formData">
                 <label for="birthdate">* Date de naissance</label>
                 <input
-                class="text-control"
-                type="date"
-                placeholder="jj/mm/aaaa"
-                id="birthdate"
-                name="birthdate"
+                  class="text-control"
+                  type="date"
+                  placeholder="jj/mm/aaaa"
+                  id="birthdate"
+                  name="birthdate"
                 />
                 <!-- espace dynamique "errorBirthdate" -->
-                <br><small id="errorBirthdate"></small>
+                <br /><small id="errorBirthdate"></small>
               </div>
-              <div
-                class="formData">
-                <label for="quantity">* À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+              <div class="formData">
+                <label for="quantity"
+                  >* À combien de tournois GameOn avez-vous déjà participé
+                  ?</label
+                ><br />
                 <input
-                type="number"
-                class="text-control"
-                id="quantity"
-                name="quantity"
+                  type="number"
+                  class="text-control"
+                  id="quantity"
+                  name="quantity"
                 />
                 <!-- espace dynamique "errorQuantity" -->
-                <br><small id="errorQuantity"></small>
+                <br /><small id="errorQuantity"></small>
               </div>
-              <div
-              class="formData" id="options">
-              <span class="text-label">* Dans quelle(s) ville(s) ?</span>                <!-- espace dynamique "errorLocation" -->
-                <small id="errorCity"> Veuillez sélectionner une ville</small><br>
+              <div class="formData" id="options">
+                <span class="text-label">* Dans quelle(s) ville(s) ?</span>
+                <!-- espace dynamique "errorLocation" -->
+                <small id="errorCity"> Veuillez sélectionner une ville</small
+                ><br />
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -196,11 +203,10 @@
                 <label class="checkbox-label" for="location5">
                   <span class="checkbox-icon"></span>
                   Portland</label
-                ><br>
+                ><br />
               </div>
 
-              <div
-                class="formData" id="conditions">
+              <div class="formData" id="conditions">
                 <input
                   class="checkbox-input"
                   type="checkbox"
@@ -209,26 +215,26 @@
                 />
                 <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
-                  * J'ai lu et accepté les conditions d'utilisation.
-                </label><br>
+                  * J'ai lu et accepté les conditions d'utilisation. </label
+                ><br />
                 <!-- espace dynamique "errorConditions" -->
-                <small id="errorConditions"></small><br>
-                <input class="checkbox-input" type="checkbox" id="checkbox2"/>
+                <small id="errorConditions"></small><br />
+                <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
                 </label>
               </div>
-              <!-- espace dynamique "errorForm" -->
               <div class="formData">
                 <input
-                class="btn-submit"
-                for="validate"
-                name="validate"
-                type="submit"
-                id="submit"
-                value="C'est parti"
+                  class="btn-submit"
+                  for="validate"
+                  name="validate"
+                  type="submit"
+                  id="submit"
+                  value="C'est parti"
                 />
+                <!-- espace dynamique "errorForm" -->
                 <small id="errorForm"></small>
               </div>
             </form>
