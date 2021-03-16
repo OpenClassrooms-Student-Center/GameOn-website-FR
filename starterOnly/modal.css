@@ -132,6 +132,7 @@ main {
   /* background-color: dodgerblue; */
   background-color: dodgerblue;
   border-radius: 10px;
+  box-shadow: 0 1px 15px 5px rgba(0, 0, 0, 0.2);
   top: 220px;
   padding: 50px 10px;
   display: flex;

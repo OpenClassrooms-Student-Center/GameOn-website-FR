@@ -77,7 +77,6 @@ form.addEventListener("submit", function (e) {
     modalBody.style.display = "none";
     confirm.style.opacity = "1";
     form.reset();
-  } else {
   }
 });
 
@@ -85,7 +84,7 @@ form.addEventListener("submit", function (e) {
 form.addEventListener("input", function (e) {
   e.preventDefault();
 
-  // VALIDATION GENERALE
+  // VALIDATIONS GENERALES
   // Tous les inputs vides
   // Au moins 1 input vide
   // Au moins 1 saisie erronnée
@@ -123,7 +122,7 @@ form.addEventListener("input", function (e) {
   } else {
     dataError(email, "Veuillez saisir un format correct");
   }
-  // age
+  // age : compris entre 13 et 100 ans
   if (validBirthdate() > 13 && validBirthdate() < 100) {
     dataSuccess(birthdate, "");
   } else if (validBirthdate() < 13) {
@@ -133,10 +132,11 @@ form.addEventListener("input", function (e) {
   } else {
     dataError(birthdate, "Veuillez saisir votre date de naissance");
   }
-  // participation(s)
+  // participation(s) > 0
   if (validQuantity(quantity)) {
     options.style.display = "block";
     dataSuccess(quantity, "");
+  // participation = 0
   } else if (quantityNull(quantity)) {
     options.style.display = "none";
     dataSuccess(quantity, "");
@@ -158,7 +158,7 @@ form.addEventListener("input", function (e) {
   }
 });
 
-// FONCTIONS DE VALIDATION GENERALE
+// FONCTIONS DE VALIDATIONS GENERALES
 
 // Tous les inputs vides
 const emptyInputs = () => {
@@ -241,7 +241,7 @@ const validEmail = (email) =>
 
 // input BIRTHDATE
 // format jj/mm/aaaa
-// le joueur doit avoir plus de 13 ans
+// calcul de l'âge à partir de la date de naissance
 const validBirthdate = () => {
   // récupération de la valeur du champ "date"
   let userDateInput = birthdate.value;
@@ -275,7 +275,6 @@ const validConditions = () => cgu.checked;
 // MESSAGES
 // Error
 const dataError = (input, message) => {
-  console.log("Error", input);
   const formData = input.parentElement;
   const small = formData.querySelector("small");
   formData.className = "formData error";
@@ -284,7 +283,6 @@ const dataError = (input, message) => {
 
 // Success
 const dataSuccess = (input, message) => {
-  console.log("Success", input);
   const formData = input.parentElement;
   const small = formData.querySelector("small");
   formData.className = "formData";
