@@ -442,8 +442,7 @@ input {
 /* custom select end */
 .text-label {
   font-weight: normal;
-  font-size: medium;
-  margin-top: 15px;
+  font-size: small;
 }
 
 .hero-section {
@@ -655,9 +654,6 @@ footer {
     font-size: small;
     height: 35px;
     padding: 5px;
-  }
-  .text-label {
-    font-size: small;
   }
   #formDataConditions {
     margin-top: 10px;

@@ -148,7 +148,7 @@ form.addEventListener("input", function (e) {
   if ((validCity() > 0) | quantityNull(quantity)) {
     dataSuccess(errorCity, "");
   } else {
-    dataError(errorCity, "Veuillez sélectionner au moins une ville");
+    dataError(errorCity, "Veuillez sélectionner une ville");
   }
   // conditions générales
   if (validConditions()) {
