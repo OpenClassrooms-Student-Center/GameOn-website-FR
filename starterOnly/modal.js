@@ -73,6 +73,15 @@ email.addEventListener('blur', function (e) {
 })
 
 // verification of a numeric value for the number of competitions
+nbOfCompetitions.addEventListener('blur', function (e) {
+    let value = parseInt(e.target.value);
+    if (typeof (value) === 'number' && value > 0 && value < 99) {
+        console.log('C\'est un nombre');
+    } else {
+        console.log('Ce n\'est pas un nombre');
+    }
+    console.log(typeof (value));
+})
 
 // checking the selection of a radio button
 
