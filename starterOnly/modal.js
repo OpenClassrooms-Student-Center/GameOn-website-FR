@@ -32,7 +32,7 @@ function closeModal() {
 closeCross.addEventListener("click", closeModal);
 
 // verification of the first name and last name field has a minimum of 2 characters / is not empty
-let data = [firstName, lastName];
+let data = [firstName, lastName, email];
 
 function minLength(data) {
     for (let input of data) {
@@ -42,7 +42,7 @@ function minLength(data) {
             } else {
                 console.log('vous avez 2 caracteres');
             }
-        });
+        })
     }
 }
 
@@ -54,7 +54,7 @@ function isEmpty(data) {
             } else {
                 console.log('le champ n\'est pas vide');
             }
-        });
+        })
     }
 }
 
@@ -62,6 +62,15 @@ minLength(data);
 isEmpty(data);
 
 // verification of the email address
+email.addEventListener('blur', function (e) {
+    let emailReg = new RegExp(/([\w-\.]+@[\w\.]+\.{1}[\w]+)/);
+    let result = emailReg.test(e.target.value);
+    if (result) {
+        console.log('L\'email est valide');
+    } else {
+        console.log('L\'email n\'est pas valide');
+    }
+})
 
 // verification of a numeric value for the number of competitions
 
