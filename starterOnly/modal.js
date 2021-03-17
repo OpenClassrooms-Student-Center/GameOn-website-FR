@@ -95,11 +95,11 @@ form.addEventListener("input", function (e) {
     errorForm.innerHTML = "Veuillez renseigner tous les champs";
   } else if (!emptyInputs() && invalidInput()) {
     submitBtn.disabled = true;
-    submitBtn.style.backgroundColor = "#3876ac";
+    submitBtn.style.backgroundColor = "grey";
     errorForm.style.visibility = "hidden";
   } else {
     submitBtn.disabled = false;
-    submitBtn.style.backgroundColor = "dodgerblue";
+    submitBtn.style.backgroundColor = "royalblue";
     errorForm.style.visibility = "hidden";
   }
 
