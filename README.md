@@ -1,5 +1,7 @@
 # GameOn
 
+[![Netlify Status](https://api.netlify.com/api/v1/badges/05438979-933f-4f9b-b568-7a87c58c1680/deploy-status)](https://app.netlify.com/sites/fervent-leavitt-044880/deploys)
+
 GameOn est une PME spécialisée dans les conférences et les concours de jeux-vidéos.
 
 Les utilisateurs peuvent réserver l'accès aux conférences en entrant leurs coordonnées et diverses informations.
