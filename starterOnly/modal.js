@@ -12,13 +12,35 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeCross = document.querySelector(".close");
-const firstName = document.getElementById('first');
-const lastName = document.getElementById('last');
-const email = document.getElementById('email');
-const nbOfCompetitions = document.getElementById('quantity');
+const firstName = document.getElementById("first");
+const lastName = document.getElementById("last");
+const email = document.getElementById("email");
+const nbOfCompetitions = document.getElementById("quantity");
 
-// launch modal event
+// management modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+closeCross.addEventListener("click", closeModal);
+
+// verification of entered data
+firstName.addEventListener("blur", function (e) {
+    minLength(e.target.value, 2);
+    isEmpty(e.target.value);
+})
+
+lastName.addEventListener("blur", function (e) {
+    minLength(e.target.value, 2);
+    isEmpty(e.target.value);
+})
+
+email.addEventListener("blur", function (e) {
+    isEmpty(e.target.value);
+    emailValidity(e.target.value);
+})
+
+nbOfCompetitions.addEventListener("blur", function (e) {
+    typeOfValue(e.target.value);
+    interval(e.target.value, 0, 99);
+})
 
 // launch modal form
 function launchModal() {
@@ -29,61 +51,57 @@ function launchModal() {
 function closeModal() {
     modalbg.style.display = "none";
 }
-closeCross.addEventListener("click", closeModal);
 
-// verification of the first name and last name field has a minimum of 2 characters / is not empty
-let data = [firstName, lastName, email];
-
-function minLength(data) {
-    for (let input of data) {
-        input.addEventListener('blur', function (e) {
-            if (e.target.value.length < 2) {
-                console.log('Vous devez avoir un minimum de 2 caractéres');
-            } else {
-                console.log('vous avez 2 caracteres');
-            }
-        })
+// minimum character test
+function minLength(data, nbOfCharacters) {
+    if (data < nbOfCharacters) {
+        console.log("Vous devez avoir un minimum de " + nbOfCharacters + " caractéres");
+    } else {
+        console.log("vous avez 2 caracteres");
     }
 }
 
+// test field not empty
 function isEmpty(data) {
-    for (let input of data) {
-        input.addEventListener('blur', function (e) {
-            if (e.target.value.length == 0) {
-                console.log('le champ est vide');
-            } else {
-                console.log('le champ n\'est pas vide');
-            }
-        })
+    if (data.length == 0) {
+        console.log("le champ est vide");
+    } else {
+        console.log("le champ n'est pas vide");
     }
 }
 
-minLength(data);
-isEmpty(data);
-
-// verification of the email address
-email.addEventListener('blur', function (e) {
+// test email adress
+function emailValidity(data) {
     let emailReg = new RegExp(/([\w-\.]+@[\w\.]+\.{1}[\w]+)/);
-    let result = emailReg.test(e.target.value);
+    let result = emailReg.test(data);
     if (result) {
-        console.log('L\'email est valide');
+        console.log("L'email est valide");
     } else {
-        console.log('L\'email n\'est pas valide');
+        console.log("L'email n'est pas valide");
     }
-})
+}
 
-// verification of a numeric value for the number of competitions
-nbOfCompetitions.addEventListener('blur', function (e) {
-    let value = parseInt(e.target.value);
-    if (typeof (value) === 'number' && value > 0 && value < 99) {
-        console.log('C\'est un nombre');
+// test numeric value 
+function typeOfValue(data) {
+    let value = parseInt(data);
+    if (typeof (value) === "number") {
+        console.log("C'est un nombre");
     } else {
-        console.log('Ce n\'est pas un nombre');
+        console.log("Ce n'est pas un nombre");
     }
-    console.log(typeof (value));
-})
+}
 
-// checking the selection of a radio button
+// test interval value
+function interval(data, minValue, maxValue) {
+    let value = parseInt(data);
+    if (value > minValue && value < maxValue) {
+        console.log("C'est un nombre compris entre " + minValue + " et " + maxValue);
+    } else {
+        console.log("Ce n'est pas un nombre compris entre 0 et 99");
+    }
+}
+
+// check the selection of a radio button
 
 // check the state of the general conditions box, the other box is optional / can be left unchecked
 
