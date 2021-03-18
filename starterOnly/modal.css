@@ -208,6 +208,8 @@ input {
   padding-bottom: 10px;
 }
 .formData small {
+  position: absolute;
+  padding: 4px 0 6px;
   font-size: x-small;
   color: #e54858;
   visibility: hidden;
@@ -217,31 +219,15 @@ input {
   visibility: visible;
 }
 
-#errorFirst,
-#errorLast,
-#errorEmail,
-#errorBirthdate,
-#errorQuantity,
-#errorCity {
-  position: absolute;
-  padding: 4px 0 6px;
-  font-size: x-small;
-  color: #e54858;
-}
-
 #errorCity {
   margin-left: 10px;
 }
 
 #errorConditions {
-  position: absolute;
   margin-left: 30px;
-  font-size: x-small;
-  color: #e54858;
 }
 
 #errorForm {
-  position: absolute;
   width: 85%;
   margin: auto;
   text-align: center;
