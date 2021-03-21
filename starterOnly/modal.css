@@ -32,13 +32,11 @@ p {
   display: inline-flex;
   justify-content: space-between;
   align-items: center;
-  width: 85%;
   margin: 20px auto;
 }
 
 .header-logo {
   float: left;
-  width: 75%;
   display: flex;
   align-items: center;
 }
@@ -547,7 +545,18 @@ footer {
 }
 
 @media screen and (max-width: 1024px) {
+  .topnav a {
+    font-size: small;
+  }
   .topnav {
+    width: 90%;
+  }
+  main {
+    width: 90%;
+  }
+
+@media screen and (max-width: 767px) {
+  .topnavresponsive {
     width: 90%;
   }
   main {
@@ -603,9 +612,14 @@ footer {
   .topnavresponsive .main-navbar .fa-bars {
     display: none;
   }
-}
 
-@media screen and (max-width: 767px) {
+
+
+
+
+
+
+
   .hero-content {
     flex-direction: column;
   }
