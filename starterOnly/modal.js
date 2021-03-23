@@ -16,6 +16,8 @@ const firstName = document.getElementById("first");
 const lastName = document.getElementById("last");
 const email = document.getElementById("email");
 const nbOfCompetitions = document.getElementById("quantity");
+const radios = document.querySelectorAll("input[type='radio']");
+const checkbox = document.querySelectorAll("input[type='checkbox']");
 
 // management modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -41,6 +43,11 @@ nbOfCompetitions.addEventListener("blur", function (e) {
     typeOfValue(e.target.value);
     interval(e.target.value, 0, 99);
 })
+
+isChecked(radios);
+
+isChecked(checkbox);
+state(checkbox[0]);
 
 // launch modal form
 function launchModal() {
@@ -102,8 +109,23 @@ function interval(data, minValue, maxValue) {
 }
 
 // check the selection of a radio button
+function isChecked(data) {
+    for (let i = 0; i < data.length; i++) {
+        if (!data[i].checked) {
+            console.log("aucune checkbox validé");
+        } else {
+            console.log("checkbox validé");
+            console.log(data[i].value);
+        }
+    }
+}
 
 // check the state of the general conditions box, the other box is optional / can be left unchecked
+function state(data) {
+    if (data.value == "on") {
+        console.log("true");
+    }
+}
 
 // keep the form data when it does not pass validation
 
