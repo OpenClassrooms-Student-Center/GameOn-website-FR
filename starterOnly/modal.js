@@ -46,8 +46,8 @@ nbOfCompetitions.addEventListener("blur", function (e) {
 
 isChecked(radios);
 
-isChecked(checkbox);
 state(checkbox[0]);
+state(checkbox[1]);
 
 // launch modal form
 function launchModal() {
@@ -122,8 +122,10 @@ function isChecked(data) {
 
 // check the state of the general conditions box, the other box is optional / can be left unchecked
 function state(data) {
-    if (data.value == "on") {
-        console.log("true");
+    if (data.checked) {
+        console.log("checked");
+    } else {
+        console.log("not checked");
     }
 }
 
