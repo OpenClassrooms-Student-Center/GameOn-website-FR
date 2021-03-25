@@ -127,8 +127,7 @@ main {
   opacity: 0;
   max-width: 425px;
   width: 90%;
-  /* background-color: dodgerblue; */
-  background-color: #232323;
+  background-color: royalblue;
   border-radius: 10px;
   box-shadow: 0 1px 15px 5px rgba(0, 0, 0, 0.2);
   top: 220px;
@@ -332,11 +331,6 @@ input {
   background-color: #fff;
 }
 
-.close-confirm:before,
-.close-confirm:after {
-  background-color: #fe142f;
-}
-
 .close:before,
 .close-confirm:before {
   transform: rotate(45deg);
@@ -359,6 +353,15 @@ input {
   color: #fff;
   cursor: pointer;
 }
+
+.btn-signup {
+  background: #fe142f;
+}
+
+.btn-submit {
+  background: royalblue;
+}
+
 
 /* custom select styles */
 .custom-select {
@@ -573,8 +576,7 @@ footer {
     padding: 3px;
   }
   .topnavresponsive .fa:hover {
-    background-color: #ff0000;
-    color: #ffffff;
+    color: #ff0000;
     border-radius: 5px;
   }
   .topnavresponsive {
@@ -587,10 +589,9 @@ footer {
   }
   .topnavresponsive span:hover,
   .topnavresponsive .active span {
-    padding: 0 5px;
-    background-color: #ff0000;
-    color: #ffffff;
+    color: #ff0000;
     border-radius: 5px;
+    font-weight: 700;
   }
   .topnavresponsive .main-navbar {
     width: 72%;
