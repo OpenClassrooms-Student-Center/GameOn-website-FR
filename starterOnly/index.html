@@ -53,16 +53,16 @@
             <div class="content">
                 <span class="close"></span>
                 <div class="modal-body">
-                    <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
+                    <form name="reserve" action="index.html" method="get">
 
                         <div class="formData">
                             <label for="first">Prénom</label><br>
-                            <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
+                            <input class="text-control" type="text" id="first" name="first" minlength="2"/><br>
                         </div>
 
                         <div class="formData">
                             <label for="last">Nom</label><br>
-                            <input class="text-control" type="text" id="last" name="last" /><br>
+                            <input class="text-control" type="text" id="last" name="last" minlenght="2"/><br>
                         </div>
 
                         <div class="formData">
@@ -129,7 +129,7 @@
                             <br>
                         </div>
 
-                        <input class="btn-submit button" type="submit" value="C'est parti" />
+                        <input class="btn-submit button" type="submit" value="C'est parti" onclick="validate()"/>
                     </form>
                 </div>
             </div>
