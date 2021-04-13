@@ -12,23 +12,10 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeX = document.querySelectorAll(".close");
-
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-// launch modal form 
-function launchModal() {
-  modalbg.style.display = "block";
-}
-
-// close modal event
-closeX.forEach((btn) => btn.addEventListener("click", closeModal));
-
-// close modal form
-function closeModal() {
-  modalbg.style.display = "none";
-};
-
+// Cible le formulaire qui disparait, et le texte de confirmation qui le remplacera
+let formDisplay = document.getElementById("validation_clear");
+let validationText= document.getElementById("validation_text");
+let validationButton= document.getElementById("validation--button");
 // Variable
 const firstNameInput = document.getElementById("first");
 const lastNameInput = document.getElementById("last");
@@ -52,6 +39,36 @@ let conditionValid = true ;
 let locationValid ;
 
 
+// launch modal event
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
+// launch modal form 
+function launchModal() {
+  modalbg.style.display = "block";
+}
+
+// close modal event 
+closeX.forEach((btn) => btn.addEventListener("click", closeModal));
+
+// close modal form + enlève le message de confirmation de la validation de l'envoie au profit d'un nouveau formulaire
+function closeModal() {
+  modalbg.style.display = "none";
+  formDisplay.style.display = "block";
+  validationText.style.display= "none";
+  validationButton.style.display= "none";
+};
+
+// Le boutton ferme le message de confirmation, et remet le formulaire en place pour refaire une inscription si besoin
+validationButton.addEventListener("click", closeModal);
+
+
+// Fait disparaître le formulaire et fait apparaître le texte de confirmation de l'envoie
+function validate(){
+  formDisplay.style.display = "none";
+  validationText.style.display= "block";
+  validationButton.style.display= "block";
+};
+
 // Fonctions des messages d'erreur
 function firstNameMessage() { firstNameInput.setCustomValidity("Votre nom ne doit pas contenir de caractères spéciaux")};
 function tooShortMessage(element) {element.setCustomValidity("Votre nom doit contenir au moins 2 caractères")};
@@ -72,26 +89,34 @@ function missingMessage (element){ element.setCustomeValidity("Veuillez remplir 
 // Champ du prénom
 firstNameInput.addEventListener("change", function (event){
  if (firstNameInput.value.length < 2) { // Message si le nom est trop court
-   tooShortMessage(this)
+   tooShortMessage(this);
+   FirstNameValid = false;
+   firstNameInput.parentNode.setAttribute("data-error-visible", true);
 } else if (!event.target.value.match(/^[A-Za-z\é\è\ê\-]+$/)){  // Message si il y a des caractères spéciaux
     firstNameMessage();
+    firstNameInput.parentNode.setAttribute("data-error-visible", true);
     FirstNameValid = false;
   } else  {
     FirstNameValid = true;
     noMessage(this);
+    firstNameInput.parentNode.setAttribute("data-error-visible", false);
   } 
 });
 
 //Champ du nom
 lastNameInput.addEventListener("change", function (event){ // Message si le nom est trop court
   if (firstNameInput.value.length < 2) {
-    tooShortMessage(this)
+    tooShortMessage(this);
+    this.parentNode.setAttribute("data-error-visible", true);
+    FirstNameValid = false;
   } else if (!event.target.value.match(/^[A-Za-z\é\è\ê\-][A-Za-z\é\è\ê\-]+$/)){ // Message si il y a des caractères spéciaux
     lastNameMessage();
     LastNameValid=false;
+    this.parentNode.setAttribute("data-error-visible", true);
   } else {
     noMessage(this);
     LastNameValid= true;
+    this.parentNode.setAttribute("data-error-visible", false);
   }
 });
 
@@ -100,9 +125,11 @@ emailInput.addEventListener("change", function (){
    if (emailInput.value.match(/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i)) {
     emailValid=true;
     noMessage(this);
+    this.parentNode.setAttribute("data-error-visible", false);
    } else {
     emailValid=false;
     emailMessage();
+    this.parentNode.setAttribute("data-error-visible", true);
    }
 });
 
@@ -111,9 +138,11 @@ birthdateInput.addEventListener("change", function (){
   if (birthdateInput.value.match (/^[0-9]/)) {
     birthdateValid=true;
     noMessage(this);
+    this.parentNode.setAttribute("data-error-visible", false);
   } else {
     birthdateValid=false;
     birthdateMessage();
+    this.parentNode.setAttribute("data-error-visible", true);
   }
 });
 
@@ -122,8 +151,10 @@ quantityInput.addEventListener("change", function (){
   if (!quantityInput.value.match (/^[0-9]/)) {
     quantityMessage();
     quantityValid=false;
+    this.parentNode.setAttribute("data-error-visible", true);
   } else {
     quantityValid=true;
+    this.parentNode.setAttribute("data-error-visible", false);
     noMessage(this);
   }
 });
@@ -149,8 +180,7 @@ condition.addEventListener("change",function(){
       conditionMessage();
       conditionValid=false;
   }
-})
-
+});
 
 // Vérifie lors du submit si tout les champs précédents sont trues (bien respectés selon le type d'input)
 document.forms["reserve"].addEventListener("submit", function(e) {
@@ -165,9 +195,10 @@ document.forms["reserve"].addEventListener("submit", function(e) {
   }
 });
 
-function validate(){
-  
-}
+
+
+
+
 
 
 

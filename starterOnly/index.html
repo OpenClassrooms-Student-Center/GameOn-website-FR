@@ -56,7 +56,9 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
-            <form
+            <p id=validation_text>Merci !<br> Votre réservation a bien été reçue</p>
+            <button class="btn-submit" id=validation--button>Fermer</button>
+            <form id=validation_clear
               name="reserve"
               action="index.html"
               method="get"
@@ -71,7 +73,6 @@
               id="first"
               name="first"
               required
-              
             /><br>
           </div>
           <div
@@ -212,17 +213,6 @@
                 value="C'est parti"
               />
             </form>
-          </div>
-        </div>
-      </div>
-      
-      <div class="bground">
-        <div class="content">
-          <span class="close"></span>
-          <div class="modal-body">
-      
-            <p class="confirm-modal-message">Merci ! Votre réservation a été reçue.</p>
-            <button class="confirm-modal-btn">Fermer</button>
           </div>
         </div>
       </div>
