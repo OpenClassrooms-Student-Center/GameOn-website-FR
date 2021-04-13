@@ -36,6 +36,7 @@ const emailInput = document.getElementById("email");
 const birthdateInput = document.getElementById("birthdate");
 const quantityInput = document.getElementById("quantity");
 const condition = document.getElementById("checkbox1");
+const locationInput = document.getElementsByName("location")[0];
 const loc1 = document.getElementById ('location1');
 const loc2 = document.getElementById ('location2');
 const loc3 = document.getElementById ('location3');
@@ -48,31 +49,31 @@ let emailValid ;
 let birthdateValid ;
 let quantityValid ;
 let conditionValid = true ;
-let cityValid ;
+let locationValid ;
 
 
-// Fonctions
-function firstNameMessage() { firstNameInput.setCustomValidity("Votre nom doit contenir au moins 2 caractères")};
-function lastNameMessage() {lastNameInput.setCustomValidity("Votre nom doit contenir au moins 2 caractères")};
+// Fonctions des messages d'erreur
+function firstNameMessage() { firstNameInput.setCustomValidity("Votre nom ne doit pas contenir de caractères spéciaux")};
+function tooShortMessage(element) {element.setCustomValidity("Votre nom doit contenir au moins 2 caractères")};
+function lastNameMessage() {lastNameInput.setCustomValidity("Votre nom ne doit pas contenir de caractères spéciaux")};
+function lasttooshortMessage() {this.setCustomeValidity("Votre nom doit contenir au moins 2 caractères")};
+function firsttooshortMessage() {this.setCustomeValidity("Votre prénom doit contenir au moins 2 caractères")};
 function emailMessage() {emailInput.setCustomValidity("'"+emailInput.value+ "' n'est pas une adresse mail valide")};
 function birthdateMessage () {birthdateInput.setCustomValidity("Veuillez entrer votre date de naissance")};
 function quantityMessage () { quantityInput.setCustomValidity("Veuillez entrer le nombre de participation à des tournois GameOn")};
-function  conditionMessage() {condition.setCustomValidity("Veuillez lire et accepter les conditions d'utilisation")};
-function locMessage () {loc1.setCustomValidity("Veuillez choisir une ville");
-                       /* loc2.setCustomValidity("Veuillez choisir une ville");
-                        loc3.setCustomValidity("Veuillez choisir une ville");
-                        loc4.setCustomValidity("Veuillez choisir une ville");
-                        loc5.setCustomValidity("Veuillez choisir une ville");
-                        loc6.setCustomValidity("Veuillez choisir une ville");*/
-                        }
+function conditionMessage() {condition.setCustomValidity("Veuillez lire et accepter les conditions d'utilisation")};
+function locMessage () {loc1.setCustomValidity("Veuillez choisir une ville")};
 function noMessage (element) { element.setCustomValidity("")};
 function missingMessage (element){ element.setCustomeValidity("Veuillez remplir tout les champs")};
 
-// Evènement qui détermine si les inputs sont bien remplies. Si ce n'est pas le cas un message d'erreur apparaît
 
+// Evènement qui détermine si les inputs sont bien remplies. Si ce n'est pas le cas un message d'erreur apparaît.
+
+// Champ du prénom
 firstNameInput.addEventListener("change", function (event){
-  
-  if (!event.target.value.match(/^[A-Za-z\é\è\ê\-][A-Za-z\é\è\ê\-]+$/) || event.target.value == ' ' || event.target.value == null || event.target.value.length < 2) { 
+ if (firstNameInput.value.length < 2) { // Message si le nom est trop court
+   tooShortMessage(this)
+} else if (!event.target.value.match(/^[A-Za-z\é\è\ê\-]+$/)){  // Message si il y a des caractères spéciaux
     firstNameMessage();
     FirstNameValid = false;
   } else  {
@@ -81,8 +82,11 @@ firstNameInput.addEventListener("change", function (event){
   } 
 });
 
-lastNameInput.addEventListener("change", function (event){
-  if (!event.target.value.match(/^[A-Za-z\é\è\ê\-][A-Za-z\é\è\ê\-]+$/) || event.target.value == ' ' || event.target.value == null || event.target.value.length < 2) { 
+//Champ du nom
+lastNameInput.addEventListener("change", function (event){ // Message si le nom est trop court
+  if (firstNameInput.value.length < 2) {
+    tooShortMessage(this)
+  } else if (!event.target.value.match(/^[A-Za-z\é\è\ê\-][A-Za-z\é\è\ê\-]+$/)){ // Message si il y a des caractères spéciaux
     lastNameMessage();
     LastNameValid=false;
   } else {
@@ -91,7 +95,8 @@ lastNameInput.addEventListener("change", function (event){
   }
 });
 
-emailInput.addEventListener("input", function (event){
+//Champ de l'email
+emailInput.addEventListener("change", function (){
    if (emailInput.value.match(/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i)) {
     emailValid=true;
     noMessage(this);
@@ -101,7 +106,8 @@ emailInput.addEventListener("input", function (event){
    }
 });
 
-birthdateInput.addEventListener("change", function (event){
+// Champ de la date de naissance
+birthdateInput.addEventListener("change", function (){
   if (birthdateInput.value.match (/^[0-9]/)) {
     birthdateValid=true;
     noMessage(this);
@@ -111,53 +117,57 @@ birthdateInput.addEventListener("change", function (event){
   }
 });
 
-quantityInput.addEventListener("change", function (event){
+// Champ du nombre de tournois
+quantityInput.addEventListener("change", function (){
   if (!quantityInput.value.match (/^[0-9]/)) {
     quantityMessage();
-    return false;
+    quantityValid=false;
   } else {
     quantityValid=true;
     noMessage(this);
   }
 });
-// Si l'une des villes est choisie alors l'input est true et respecte les conditions
-function locValid(){  
+
+// Checkbox des villes à sélectionner
+locationInput.addEventListener("change", function (){ 
   if (loc1.checked || loc2.checked || loc3.checked || loc4.checked || loc5.checked || loc6.checked) {
-    noMessage(this);
-    console.log("test6")
-    return true;
+    locationValid= true;
+    console.log("ok");
+    loc1.setCustomValidity("");
   } else {
-    locMessage ();
-    return false;
-  }
-};
-
-
-condition.addEventListener("change", function (event){
-  if (condition.checked) {
-    conditionValid=true;
-    noMessage(this);
-  } else {
-    conditionValid= false;
-    conditionMessage();
+    locationValid= false;
+    locMessage();
   }
 });
 
+// CGU à cocher
+condition.addEventListener("change",function(){
+  if (this.checked){
+      this.setCustomValidity("")
+      conditionValid=true;
+  }else {
+      conditionMessage();
+      conditionValid=false;
+  }
+})
 
-// Vérifie lors du submit si tout les champs sont trues (bien respectés selon le type d'input)
+
+// Vérifie lors du submit si tout les champs précédents sont trues (bien respectés selon le type d'input)
 document.forms["reserve"].addEventListener("submit", function(e) {
+  let validation;
   
-  if (FirstNameValid == true && LastNameValid == true && emailValid == true && birthdateValid == true && quantityValid == true && conditionValid == true ) {
+  if (FirstNameValid == true && LastNameValid == true && emailValid == true && birthdateValid == true && quantityValid == true && conditionValid == true && locationValid==true) {
     e.preventDefault();
-    console.log("Ok !")
+    validation= true;
   } else {
     e.preventDefault();
-    console.log("Pas bon !");
-    missingMessage(lastNameInput);
+    validation= false;
   }
 });
 
-
+function validate(){
+  
+}
 
 
 

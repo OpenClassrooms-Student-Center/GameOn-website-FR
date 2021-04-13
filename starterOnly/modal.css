@@ -269,8 +269,18 @@ input[data-error]::after {
   transition: 0.3s;
   opacity: 0;
 }
+
 .checkbox-input {
-  display: none;
+  opacity:0;
+  position:absolute
+}
+.messageerreur-position1{ 
+  bottom:200px;
+  left:50px;
+}
+.messageerreur-position2{
+  bottom:120px;
+  left:50px;
 }
 .checkbox-input:checked + .checkbox-label .checkbox-icon::after,
 .checkbox-input:checked + .checkbox2-label .checkbox-icon::after {

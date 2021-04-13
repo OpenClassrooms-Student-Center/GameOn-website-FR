@@ -75,7 +75,6 @@ function editNav() {
   
     if (!firstNameInput.value.match(/^[A-Za-z\é\è\ê\-][A-Za-z\é\è\ê\-]+$/) || firstNameInput.value == ' ' || firstNameInput.value == null || firstNameInput.value.length < 2) { 
       firstNameMessage();
-      console.log("Erreur !")
     } else  {
       noMessage(this);
       console.log("Ok!");
