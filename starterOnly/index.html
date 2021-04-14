@@ -57,27 +57,28 @@
 
                         <div class="formData">
                             <label for="first">Prénom</label><br>
-                            <input class="text-control" type="text" id="first" name="first" minlength="2"/><br>
+                            <input class="text-control" type="text" id="first" name="first" minlength="2" required /><br>
+                            <div id="error-first" class="text-danger"></div>
                         </div>
 
                         <div class="formData">
                             <label for="last">Nom</label><br>
-                            <input class="text-control" type="text" id="last" name="last" minlenght="2"/><br>
+                            <input class="text-control" type="text" id="last" name="last" minlenght="2" required/><br>
                         </div>
 
                         <div class="formData">
                             <label for="email">E-mail</label><br>
-                            <input class="text-control" type="email" id="email" name="email" /><br>
+                            <input class="text-control" type="email" id="email" name="email" required/><br>
                         </div>
 
                         <div class="formData">
                             <label for="birthdate">Date de naissance</label><br>
-                            <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
+                            <input class="text-control" type="date" id="birthdate" name="birthdate" required/><br>
                         </div>
 
                         <div class="formData">
                             <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                            <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                            <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" >
                         </div>
 
                         <p class="text-label">Quelles villes ?</p>
@@ -115,8 +116,8 @@
                         </div>
 
                         <div class="formData">
-                            <input class="checkbox-input" type="checkbox" id="checkbox1" checked />
-                            <label class="checkbox2-label" for="checkbox1" required>
+                            <input class="checkbox-input" type="checkbox" id="checkbox1" checked required/>
+                            <label class="checkbox2-label" for="checkbox1">
                                 <span class="checkbox-icon"></span>
                                 J'ai lu et accepté les conditions d'utilisation.
                             </label>
@@ -129,7 +130,7 @@
                             <br>
                         </div>
 
-                        <input class="btn-submit button" type="submit" value="C'est parti" onclick="validate()"/>
+                        <input class="btn-submit button" type="submit" value="C'est parti"/>
                     </form>
                 </div>
             </div>
@@ -140,6 +141,6 @@
             Copyright 2014 - 2020, GameOn Inc.
         </p>
     </footer>
-    <script src="modal.js"></script>
+    <script type="text/javascript" src="modal.js"></script>
 </body>
 </html>

@@ -4,17 +4,20 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalClose = document.querySelector(".close");
 const formData = document.querySelectorAll(".formData");
-const firstName = document.getElementsByName("first");
-const lastName = document.getElementsByName("last");
-const email = document.getElementsByName("email");
-const birthdate = document.getElementsByName("birthdate");
-const quantity = document.getElementsByName("quantity");
+
+const form = document.getElementsByName('reserve')[0];
+const firstName = form[0];
+const lastName = form[1];
+const email = form[2];
+const birthdate = form[3];
+const quantity = form[4];
+
 
 
 // EVENTS
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 modalClose.addEventListener("click", closeModal);
-
+form.addEventListener("submit", validate);
 
 
 // FUNCTIONS
@@ -35,27 +38,29 @@ function editNav() {
     }
 }
 
-function validate() {
+function validate(event) {
     let valide = true;
-
+    console.log(validate)
     const regexName = /^[a-zA-Z '\-éèêëçäàï]{5,}$/;
     const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
     const regexNumber = /^[0-9]$/;
 
+    document.getElementById('error-first').innerHTML = 'Leazeeazeaze';
+
     if (!firstName.value.match(regexName)) {
         valide = false;
-        firstName.setCustomValidity("");
+        document.getElementById('error-first').innerHTML = 'Le nom doit contenir entre 2 et 50 caractères';
     }
     if (!lastName.value.match(regexName)) {
         valide = false;
-        lastName.setCustomValidity("Le nom doit contenir au minimum 2 caractères");
+        
     }
     if (!email.value.match(regexEmail)) {
         valide = false;
-        email.setCustomValidity("L'adresse électronique n'est pas valide");
+       
     }
     if (valide) {
-        return valide;
+        return true;
     } else {
         event.preventDefault();
     }
