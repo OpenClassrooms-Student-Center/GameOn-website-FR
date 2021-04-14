@@ -1,3 +1,14 @@
+function editNav() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
+// REGEX 
+const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+const regexBirthdate = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/;
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
@@ -6,18 +17,10 @@ const modalClose = document.querySelector(".close");
 const formData = document.querySelectorAll(".formData");
 
 const form = document.getElementsByName('reserve')[0];
-const firstName = form[0];
-const lastName = form[1];
-const email = form[2];
-const birthdate = form[3];
-const quantity = form[4];
-
-
 
 // EVENTS
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 modalClose.addEventListener("click", closeModal);
-form.addEventListener("submit", validate);
 
 
 // FUNCTIONS
@@ -29,39 +32,66 @@ function closeModal() {
     modalbg.style.display = "none";
 }
 
-function editNav() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
+// permet de ne pas soumettre les données du formulaire. A la place on fermera la fenetre une fois les saisies validés
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+});
+
+// fonctions gestion des erreurs de saisie 
+// affiche l'erreur
+function displayErrorMessage(elementId, message) {
+    if (elementId && message) {
+        document.getElementById(elementId).style.display = "block";
+        document.getElementById(elementId).innerText = message;
     }
+    else throw new Error('Missing parameter for handler error message');
+}
+// 'efface' le message d'erreur
+function hideErrorMessage(elementId) {
+    if (elementId) document.getElementById(elementId).style.display = "none";
 }
 
-function validate(event) {
-    let valide = true;
-    console.log(validate)
-    const regexName = /^[a-zA-Z '\-éèêëçäàï]{5,}$/;
-    const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-    const regexNumber = /^[0-9]$/;
+// verifie que le champ n'est pas vide
+function isEmpty(value) {
+    if (!value) return false;
+    else return true;
+}
 
-    document.getElementById('error-first').innerHTML = 'Leazeeazeaze';
 
-    if (!firstName.value.match(regexName)) {
-        valide = false;
-        document.getElementById('error-first').innerHTML = 'Le nom doit contenir entre 2 et 50 caractères';
-    }
-    if (!lastName.value.match(regexName)) {
-        valide = false;
-        
-    }
-    if (!email.value.match(regexEmail)) {
-        valide = false;
-       
-    }
-    if (valide) {
+function validate() {
+
+    let firstValid = isEmpty(form["first"].value) && form["first"].value.length >= 2 ;
+    firstValid ? hideErrorMessage('error-first', form["first"]) : displayErrorMessage('error-first', "Veuillez entrer 2 caractères ou plus pour le champ du prénom.");
+
+    let lastValid = isEmpty(form["last"].value) && form["last"].value.length >= 2 ;
+    lastValid ? hideErrorMessage('error-last', form["last"]) : displayErrorMessage('error-last', "Veuillez entrer 2 caractères ou plus pour le champ du nom.");
+
+    let emailValid = isEmpty(form["email"].value) && regexEmail.test(form["email"].value);
+    emailValid ? hideErrorMessage('error-email', form["email"]) : displayErrorMessage('error-email', "Veuillez entrer une addresse mail valide.");
+
+    let birthdateValid = isEmpty(form["birthdate"].value) && regexbirthdate.test(form["birthdate"].value);
+    birthdateValid ? hideErrorMessage('error-birthdate', form["birthdate"]) : displayErrorMessage('error-birthdate', "Veuillez entrer une date de naissance valide.");
+
+    let quantityValid = isEmpty(form["quantity"].value) && regexquantity.test(form["quantity"].value);
+    quantityValid ? hideErrorMessage('error-quantity', form["quantity"]) : displayErrorMessage('error-quantity', "Veuillez entrer une valeur numérique.");
+
+    let locationValid = isEmpty(form["location"].value);
+    locationValid ? hideErrorMessage('error-location') : displayErrorMessage('error-location', "Veuillez sélectionner une ville.");
+
+    let termsValid = isEmpty(form["checkbox1"].checked);
+    termsValid ? hideErrorMessage('error-checkbox1') : displayErrorMessage('error-checkbox1', "Veuillez acceptez les conditions générales.");
+
+    // si tous les champs sont valides alors on renvoie vrai et on ferme le formulaire.
+    if (
+        firstValid
+        && lastValid
+        && emailValid
+        && birthdateValid
+        && quantityValid
+        && locationValid
+        && termsValid
+    ) {
+        closeModal();
         return true;
-    } else {
-        event.preventDefault();
     }
 }
