@@ -87,13 +87,14 @@ function missingMessage (element){ element.setCustomeValidity("Veuillez remplir 
 // Evènement qui détermine si les inputs sont bien remplies. Si ce n'est pas le cas un message d'erreur apparaît.
 
 // Champ du prénom
-firstNameInput.addEventListener("change", function (event){
+firstNameInput.addEventListener("input", function (event){
  if (firstNameInput.value.length < 2) { // Message si le nom est trop court
    tooShortMessage(this);
    FirstNameValid = false;
    firstNameInput.parentNode.setAttribute("data-error-visible", true);
 } else if (!event.target.value.match(/^[A-Za-z\é\è\ê\-]+$/)){  // Message si il y a des caractères spéciaux
     firstNameMessage();
+    this.parentNode.setAttribute("data-error", ("Pas de caractères spéciaux!"));
     firstNameInput.parentNode.setAttribute("data-error-visible", true);
     FirstNameValid = false;
   } else  {
@@ -104,15 +105,17 @@ firstNameInput.addEventListener("change", function (event){
 });
 
 //Champ du nom
-lastNameInput.addEventListener("change", function (event){ // Message si le nom est trop court
-  if (firstNameInput.value.length < 2) {
+lastNameInput.addEventListener("input", function (event){ // Message si le nom est trop court
+  if (lastNameInput.value.length < 2) {
     tooShortMessage(this);
     this.parentNode.setAttribute("data-error-visible", true);
-    FirstNameValid = false;
-  } else if (!event.target.value.match(/^[A-Za-z\é\è\ê\-][A-Za-z\é\è\ê\-]+$/)){ // Message si il y a des caractères spéciaux
+    this.parentNode.setAttribute("data-error", ("Nom trop court !"));
+    LastNameValid = false;
+  } else if (!event.target.value.match(/^[A-Za-z\é\è\ê\-]+$/)){ // Message si il y a des caractères spéciaux
     lastNameMessage();
     LastNameValid=false;
     this.parentNode.setAttribute("data-error-visible", true);
+    this.parentNode.setAttribute("data-error", ("Pas de caractères spéciaux!"));
   } else {
     noMessage(this);
     LastNameValid= true;
@@ -121,7 +124,7 @@ lastNameInput.addEventListener("change", function (event){ // Message si le nom 
 });
 
 //Champ de l'email
-emailInput.addEventListener("change", function (){
+emailInput.addEventListener("input", function (){
    if (emailInput.value.match(/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i)) {
     emailValid=true;
     noMessage(this);
@@ -130,6 +133,7 @@ emailInput.addEventListener("change", function (){
     emailValid=false;
     emailMessage();
     this.parentNode.setAttribute("data-error-visible", true);
+    this.parentNode.setAttribute("data-error", ("Email non valide !"));
    }
 });
 
@@ -143,6 +147,7 @@ birthdateInput.addEventListener("change", function (){
     birthdateValid=false;
     birthdateMessage();
     this.parentNode.setAttribute("data-error-visible", true);
+    this.parentNode.setAttribute("data-error", ("Date anniversaire non correcte !"));
   }
 });
 
@@ -152,6 +157,7 @@ quantityInput.addEventListener("change", function (){
     quantityMessage();
     quantityValid=false;
     this.parentNode.setAttribute("data-error-visible", true);
+    this.parentNode.setAttribute("data-error", ("Erreur sur la quantité !"));
   } else {
     quantityValid=true;
     this.parentNode.setAttribute("data-error-visible", false);
@@ -163,7 +169,6 @@ quantityInput.addEventListener("change", function (){
 locationInput.addEventListener("change", function (){ 
   if (loc1.checked || loc2.checked || loc3.checked || loc4.checked || loc5.checked || loc6.checked) {
     locationValid= true;
-    console.log("ok");
     loc1.setCustomValidity("");
   } else {
     locationValid= false;
@@ -176,23 +181,22 @@ condition.addEventListener("change",function(){
   if (this.checked){
       this.setCustomValidity("")
       conditionValid=true;
+      this.parentNode.setAttribute("data-error-visible", false);
   }else {
       conditionMessage();
       conditionValid=false;
+      this.parentNode.setAttribute("data-error-visible", true);
+    this.parentNode.setAttribute("data-error", ("CGU non coché !"));
   }
 });
 
 // Vérifie lors du submit si tout les champs précédents sont trues (bien respectés selon le type d'input)
 document.forms["reserve"].addEventListener("submit", function(e) {
-  let validation;
+  e.preventDefault();
   
   if (FirstNameValid == true && LastNameValid == true && emailValid == true && birthdateValid == true && quantityValid == true && conditionValid == true && locationValid==true) {
-    e.preventDefault();
-    validation= true;
-  } else {
-    e.preventDefault();
-    validation= false;
-  }
+    validate(); 
+  } 
 });
 
 

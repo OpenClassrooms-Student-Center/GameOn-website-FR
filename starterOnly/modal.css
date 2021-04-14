@@ -14,7 +14,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
- /* background-image: url("background.png");*/
+ /* background-image: url("background.png"); il n'est pas dans le projet et provoque des erreurs*/
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -171,7 +171,7 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
-#validation_text {
+#validation_text { /*texte qui apparait dans modal-body quand le formData est en display:none; après validation du formulaire*/
   display:none;
   height:650px;
   padding:150px 120px 360px 105px;
@@ -180,7 +180,7 @@ main {
   line-height: 51.34px;
   text-align: center;
 }
-#validation--button {
+#validation--button {/*bouton pour fermer le message de validation*/
   display:none
 }
 .content {
@@ -224,7 +224,7 @@ input {
 }
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 1em;
+  font-size: 0.5em;
   color: #e54858;
   display: block;
   margin-top: 7px;
