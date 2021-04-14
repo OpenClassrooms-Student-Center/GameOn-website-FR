@@ -70,7 +70,7 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 825px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
@@ -78,7 +78,7 @@ img {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 825px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
@@ -239,6 +239,9 @@ input {
 }
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
+}
+.formData[data-error-visible="false"] .text-control { /*Si le champs est bien remplie, il prends une bordure verte de confirmation*/
+  border: 2px solid green;
 }
  
 input[data-error]::after {
@@ -502,7 +505,7 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1024px) {
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -525,6 +528,7 @@ footer {
   .hero-text {
     width: unset;
     font-size: 1.5rem;
+    word-break: break-word;
   }
   .hero-img img {
     border-radius: 10px;
@@ -551,3 +555,13 @@ footer {
   }
 }
 
+@media screen and (max-width: 400px) { /*Le texte reste visible sans avoir à scroller sur les côtés*/
+  .hero-headline {
+    word-break: break-word;
+    font-size:3.5rem;
+    width:250px;
+  }
+  .hero-text {
+    width:250px;
+  }
+}
