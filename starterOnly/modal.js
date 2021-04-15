@@ -8,7 +8,8 @@ function editNav() {
 }
 // REGEX 
 const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
-const regexBirthdate = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/;
+const regexBirthdate = /^\d{4}(-)(((0)[0-9])|((1)[0-2]))(-)([0-2][0-9]|(3)[0-1])$/i;
+const regexNumber = /^[0-9]*$/;
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
@@ -59,7 +60,7 @@ function isEmpty(value) {
 
 
 function validate() {
-
+  
     let firstValid = isEmpty(form["first"].value) && form["first"].value.length >= 2 ;
     firstValid ? hideErrorMessage('error-first', form["first"]) : displayErrorMessage('error-first', "Veuillez entrer 2 caractères ou plus pour le champ du prénom.");
 
@@ -69,10 +70,10 @@ function validate() {
     let emailValid = isEmpty(form["email"].value) && regexEmail.test(form["email"].value);
     emailValid ? hideErrorMessage('error-email', form["email"]) : displayErrorMessage('error-email', "Veuillez entrer une addresse mail valide.");
 
-    let birthdateValid = isEmpty(form["birthdate"].value) && regexbirthdate.test(form["birthdate"].value);
+    let birthdateValid = isEmpty(form["birthdate"].value) && regexBirthdate.test(form["birthdate"].value);
     birthdateValid ? hideErrorMessage('error-birthdate', form["birthdate"]) : displayErrorMessage('error-birthdate', "Veuillez entrer une date de naissance valide.");
 
-    let quantityValid = isEmpty(form["quantity"].value) && regexquantity.test(form["quantity"].value);
+    let quantityValid = isEmpty(form["quantity"].value) && regexNumber.test(form["quantity"].value);
     quantityValid ? hideErrorMessage('error-quantity', form["quantity"]) : displayErrorMessage('error-quantity', "Veuillez entrer une valeur numérique.");
 
     let locationValid = isEmpty(form["location"].value);
@@ -91,7 +92,7 @@ function validate() {
         && locationValid
         && termsValid
     ) {
+        alert('Merci ! Votre réservation a été reçue.');
         closeModal();
-        return true;
     }
 }
