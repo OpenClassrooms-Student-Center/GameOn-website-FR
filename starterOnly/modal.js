@@ -44,32 +44,50 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form 
 function launchModal() {
-  modalbg.style.display = "block";
+  modalbg.style.display = "block"; 
 }
 
 // close modal event 
 closeX.forEach((btn) => btn.addEventListener("click", closeModal));
 
-// close modal form + enlève le message de confirmation de la validation de l'envoie au profit d'un nouveau formulaire
+// close modal form + confirmation message
 function closeModal() {
   modalbg.style.display = "none";
   formDisplay.style.display = "block";
   validationText.style.display= "none";
   validationButton.style.display= "none";
-};
+}
+  
 
-// Le boutton ferme le message de confirmation, et remet le formulaire en place pour refaire une inscription si besoin
+// Close Validation message Button
 validationButton.addEventListener("click", closeModal);
 
 
-// Fait disparaître le formulaire et fait apparaître le texte de confirmation de l'envoie
+// Close modal and open Validation message
 function validate(){
   formDisplay.style.display = "none";
   validationText.style.display= "block";
   validationButton.style.display= "block";
-};
+  firstNameInput.value ="";
+  lastNameInput.value ="";
+  birthdateInput.value="";
+  quantityInput.value="";
+  emailInput.value="";
+  loc1.checked = false;
+  loc2.checked =false;
+  loc3.checked = false;
+  loc4.checked = false;
+  loc5.checked = false;
+  loc6.checked= false;
+  let form = document.getElementsByClassName("formData");
+  if (form.length >0) {
+    for (var h=0; h < form.length; h++) {
+      form[h].setAttribute("data-error-visible", undefined)
+    } 
+  }
+}
 
-// Fonctions des messages d'erreur
+// Error messages function
 function firstNameMessage() { firstNameInput.setCustomValidity("Votre nom ne doit pas contenir de caractères spéciaux")};
 function tooShortMessage(element) {element.setCustomValidity("Votre nom doit contenir au moins 2 caractères")};
 function lastNameMessage() {lastNameInput.setCustomValidity("Votre nom ne doit pas contenir de caractères spéciaux")};
@@ -84,27 +102,28 @@ function noMessage (element) { element.setCustomValidity("")};
 function missingMessage (element){ element.setCustomeValidity("Veuillez remplir tout les champs")};
 
 
-// Evènement qui détermine si les inputs sont bien remplies. Si ce n'est pas le cas un message d'erreur apparaît.
+// Events wich check if the fields are entered correctly 
 
-// Champ du prénom
+// Firstname field
 firstNameInput.addEventListener("input", function (event){
  if (firstNameInput.value.length < 2) { // Message si le nom est trop court
    tooShortMessage(this);
    FirstNameValid = false;
-   firstNameInput.parentNode.setAttribute("data-error-visible", true);
+   this.parentNode.setAttribute("data-error-visible", true);
+    this.parentNode.setAttribute("data-error", ("Nom trop court !"));
 } else if (!event.target.value.match(/^[A-Za-z\é\è\ê\-]+$/)){  // Message si il y a des caractères spéciaux
     firstNameMessage();
     this.parentNode.setAttribute("data-error", ("Pas de caractères spéciaux!"));
-    firstNameInput.parentNode.setAttribute("data-error-visible", true);
+    this.parentNode.setAttribute("data-error-visible", true);
     FirstNameValid = false;
   } else  {
-    FirstNameValid = true;
+    this.parentNode.setAttribute("data-error-visible", false);
+    FirstNameValid=true;
     noMessage(this);
-    firstNameInput.parentNode.setAttribute("data-error-visible", false);
   } 
 });
 
-//Champ du nom
+//Lastname field
 lastNameInput.addEventListener("input", function (event){ // Message si le nom est trop court
   if (lastNameInput.value.length < 2) {
     tooShortMessage(this);
@@ -123,7 +142,7 @@ lastNameInput.addEventListener("input", function (event){ // Message si le nom e
   }
 });
 
-//Champ de l'email
+//email field
 emailInput.addEventListener("input", function (){
    if (emailInput.value.match(/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i)) {
     emailValid=true;
@@ -137,7 +156,7 @@ emailInput.addEventListener("input", function (){
    }
 });
 
-// Champ de la date de naissance
+// birthdate field
 birthdateInput.addEventListener("change", function (){
   if (birthdateInput.value.match (/^[0-9]/)) {
     birthdateValid=true;
@@ -151,7 +170,7 @@ birthdateInput.addEventListener("change", function (){
   }
 });
 
-// Champ du nombre de tournois
+// Number of tournament field
 quantityInput.addEventListener("change", function (){
   if (!quantityInput.value.match (/^[0-9]/)) {
     quantityMessage();
@@ -165,7 +184,7 @@ quantityInput.addEventListener("change", function (){
   }
 });
 
-// Checkbox des villes à sélectionner
+// Checkbox city
 locationInput.addEventListener("change", function (){ 
   if (loc1.checked || loc2.checked || loc3.checked || loc4.checked || loc5.checked || loc6.checked) {
     locationValid= true;
@@ -176,7 +195,7 @@ locationInput.addEventListener("change", function (){
   }
 });
 
-// CGU à cocher
+// Conditions to check
 condition.addEventListener("change",function(){
   if (this.checked){
       this.setCustomValidity("")
@@ -190,7 +209,7 @@ condition.addEventListener("change",function(){
   }
 });
 
-// Vérifie lors du submit si tout les champs précédents sont trues (bien respectés selon le type d'input)
+// Check if all the fields are correctly entered (==true) If it is, it launch the validation message
 document.forms["reserve"].addEventListener("submit", function(e) {
   e.preventDefault();
   
@@ -198,14 +217,6 @@ document.forms["reserve"].addEventListener("submit", function(e) {
     validate(); 
   } 
 });
-
-
-
-
-
-
-
-
 
 
 

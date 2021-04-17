@@ -240,10 +240,9 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-.formData[data-error-visible="false"] .text-control { /*Si le champs est bien remplie, il prends une bordure verte de confirmation*/
+.formData[data-error-visible="false"] .text-control {
   border: 2px solid green;
 }
- 
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
