@@ -8,7 +8,7 @@
   margin: 0;
   padding: 0;
 }
-/* Landing Page */
+/* -----------------Landing Page--------------------- */
 
 body {
   margin: 0;
@@ -137,7 +137,7 @@ main {
   font-family: var(--font-slab);
 }
 
-/* Modal form */
+/* ------------------Modal form------------------------ */
 
 .button {
   background: #fe142f;
@@ -333,7 +333,7 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
-/* custom select styles */
+/* --------custom select styles------------ */
 .custom-select {
   position: relative;
   font-family: Arial;
@@ -348,7 +348,7 @@ input[data-error]::after {
   background-color: #fff;
 }
 
-/* Style the arrow inside the select element: */
+/* --------------Style the arrow inside the select element:----------- */
 .select-selected:after {
   position: absolute;
   content: "";

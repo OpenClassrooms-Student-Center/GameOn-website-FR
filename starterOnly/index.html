@@ -55,37 +55,37 @@
                         <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
                             <!-- Prénom -->
                             <div class="formData">
-                                <label>Prénom</label>
+                                <label for="first">Prénom</label>
                                 <br>
-                                <input class="text-control" type="text" id="first" name="first" minlength="2"/>
+                                <input id="first" class="text-control" type="text" name="first" minlength="2"/>
                                 <br>
                             </div>
                             <!-- Nom -->
                             <div class="formData">
-                                <label>Nom</label>
+                                <label for="last">Nom</label>
                                 <br>
-                                <input class="text-control" type="text" id="last" name="last"/>
+                                <input id="last" class="text-control" type="text" name="last"/>
                                 <br>
                             </div>
                             <!-- Email -->
                             <div class="formData">
-                                <label>E-mail</label>
+                                <label for="email">E-mail</label>
                                 <br>
-                                <input class="text-control" type="email" id="email" name="email"/>
+                                <input id="email" class="text-control" type="email" name="email"/>
                                 <br>
                             </div>
                             <!-- Date de naissance -->
                             <div class="formData">
-                                <label>Date de naissance</label>
+                                <label for="birthdate">Date de naissance</label>
                                 <br>
-                                <input class="text-control" type="date" id="birthdate" name="birthdate"/>
+                                <input id="birthdate" class="text-control" type="date" name="birthdate"/>
                                 <br>
                             </div>
                             <!-- Question nombre de tournois -->
                             <div class="formData">
-                                <label>À combien de tournois GameOn avez-vous déjà participé ?</label>
+                                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label>
                                 <br>
-                                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                                <input id="quantity" type="number" class="text-control" name="quantity" min="0" max="99">
                             </div>
                             <p class="text-label">Quelles villes ?</p>
                             <!-- checkbox cocher la ville -->
@@ -150,3 +150,5 @@
         <script src="modal.js"></script>
     </body>
 </html>
+
+
