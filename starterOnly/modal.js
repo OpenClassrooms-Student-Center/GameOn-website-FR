@@ -13,6 +13,7 @@ const modalBtn = document.querySelectorAll(".modal-btn"); // bouton pour ouvrir 
 const formData = document.querySelectorAll(".formData"); //
 const closeBtn = document.querySelector(".close"); // bouton X pour fermer la modale
 const contentBg = document.querySelector(".content");
+const modalBody = document.querySelector(".modal-body");
 const main = document.querySelector("main");
 const body = document.querySelector("body");
 const form = document.querySelector("form");
@@ -21,14 +22,28 @@ const lastNameInput = document.getElementById("last");
 const emailInput = document.getElementById("email");
 const birthDateInput = document.getElementById("birthdate");
 const quantityInput = document.getElementById("quantity");
-const allSpan = document.querySelectorAll('span.error-alert');
-const condUtilisation = document.getElementById("checkbox1");
+const allSpan = document.querySelectorAll('span.error-alert'); // span des messages d'erreur
+const condUtilisation = document.getElementById("checkbox1"); // checkbox conditions d'utilisation
+const confirmationBox = document.querySelector(".confirmation-box")
+const exitBtnModal = document.querySelector(".btn-exitModal"); // bouton fermer modal
+
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal() {
-  modalbg.style.display = "block";
+    // on remet tout à 0
+    firstNameInput.value = "";
+    lastNameInput.value = "";
+    emailInput.value = "";
+    birthDateInput.value = "";
+    // on retire la confirmationBox
+    confirmationBox.style.display = "none";
+    // on affiche le form
+    form.style.display = "block";
+    // on affiche toute la modal
+    modalbg.style.display = "block";
 }
 // ------------------------------------------------
 // FERMETURE DE LA MODALE
@@ -36,9 +51,11 @@ function launchModal() {
 closeBtn.addEventListener('click', function(event) {
     modalbg.style.display = "none"; // change le style en display: none;
 });
-
+exitBtnModal.addEventListener('click', function(event) {
+    modalbg.style.display = "none"; // change le style en display: none;
+});
 // ------------------------------------------------
-// VALIDATION / MESSAGES ERREUR / CONFIRMATION
+// VALIDATION / MESSAGES ERREUR
 // ------------------------------------------------
 document.forms["reserve"].addEventListener("submit", function(e) {
     e.preventDefault();
@@ -103,26 +120,17 @@ document.forms["reserve"].addEventListener("submit", function(e) {
         return false;
     } else {
         allSpan[5].innerHTML = "";
-        alert("Merci ! Votre réservation a été reçue.");
     }
-
+// ------------------------------------------------
+// CONFIRMATION
+// ------------------------------------------------
+    // On fait disparaitre le form
+    form.style.display = "none";
+    // On affiche le bouton fermer crée dans l'html
+    confirmationBox.style.display = "flex";
+    
 });
 
-// ------------------------------------------------
-// ESSAI
-// ------------------------------------------------
-
-// function validate(e) {
-    // form.addEventListener("submit", function() {
-    //     alert('Formulaire envoyé !');
-        // e.preventDefault();
-
-        // if (firstNameInput.value == "") {
-        //     allSpan[0].innerHTML = 'icoucou';
-        // }
-
-    // });
-// };
 
 // ------------------------------------------------
 // ESSAI
@@ -154,6 +162,21 @@ document.forms["reserve"].addEventListener("submit", function(e) {
 //     }
 // });
 
+// ------------------------------------------------
+// ESSAI
+// ------------------------------------------------
+
+// function validate(e) {
+    // form.addEventListener("submit", function() {
+    //     alert('Formulaire envoyé !');
+        // e.preventDefault();
+
+        // if (firstNameInput.value == "") {
+        //     allSpan[0].innerHTML = 'icoucou';
+        // }
+
+    // });
+// };
 
 
 // ---------------------QUESTIONS------------------
@@ -166,3 +189,4 @@ document.forms["reserve"].addEventListener("submit", function(e) {
 // - A quoi correspond l'input A combien de tournoi ... ?
 // - Vous devez choisir une option ... a quoi correspond ce message d'erreur ??
 // - Conseil refacto ...
+// - Breakpoints ()
