@@ -52,13 +52,14 @@
                     <span class="close"></span>
                     <div class="modal-body">
                         <!-- Formulaire -->
-                        <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
+                        <form name="reserve" action="index.html" method="get"> <!--onsubmit="return validate(event)"-->
                             <!-- Prénom -->
                             <div class="formData">
                                 <label for="first">Prénom</label>
                                 <br>
-                                <input id="first" class="text-control" type="text" name="first" minlength="2"/>
+                                <input id="first" class="text-control" type="text" name="first" /> <!--required minlength="2"-->
                                 <br>
+                                <span class="error-alert"></span>
                             </div>
                             <!-- Nom -->
                             <div class="formData">
@@ -66,6 +67,7 @@
                                 <br>
                                 <input id="last" class="text-control" type="text" name="last"/>
                                 <br>
+                                <span class="error-alert"></span>
                             </div>
                             <!-- Email -->
                             <div class="formData">
@@ -73,6 +75,7 @@
                                 <br>
                                 <input id="email" class="text-control" type="email" name="email"/>
                                 <br>
+                                <span class="error-alert"></span>
                             </div>
                             <!-- Date de naissance -->
                             <div class="formData">
@@ -80,6 +83,7 @@
                                 <br>
                                 <input id="birthdate" class="text-control" type="date" name="birthdate"/>
                                 <br>
+                                <span class="error-alert"></span>
                             </div>
                             <!-- Question nombre de tournois -->
                             <div class="formData">
@@ -90,7 +94,7 @@
                             <p class="text-label">Quelles villes ?</p>
                             <!-- checkbox cocher la ville -->
                             <div class="formData">
-                                <input class="checkbox-input" type="radio" id="location1" name="location" value="New York"/>
+                                <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" checked/>
                                 <label class="checkbox-label" for="location1">
                                     <span class="checkbox-icon"></span>
                                     New York
@@ -120,8 +124,10 @@
                                     <span class="checkbox-icon"></span>
                                     Portland
                                 </label>
+                                <br>
+                                <span class="error-alert"></span>
                             </div>
-                            <!-- Checkboxes conditions/être prévenu -->
+                            <!-- Checkboxes conditions générales/être prévenu -->
                             <div class="formData">
                                 <input class="checkbox-input" type="checkbox" id="checkbox1" checked/>
                                 <label class="checkbox2-label" for="checkbox1" required>
@@ -132,9 +138,10 @@
                                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                                 <label class="checkbox2-label" for="checkbox2">
                                     <span class="checkbox-icon"></span>
-                                    Je Je souhaite être prévenu des prochains évènements.
+                                    Je souhaite être prévenu des prochains évènements.
                                 </label>
                                 <br>
+                                <span class="error-alert"></span>
                             </div>
                             <!-- input: C'est parti! -->
                             <input class="btn-submit" type="submit" class="button" value="C'est parti"/>
