@@ -31,13 +31,14 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 // ------------------------------------------------
+// FERMETURE DE LA MODALE
 // ------------------------------------------------
-// Fermer la modal #1
 closeBtn.addEventListener('click', function(event) {
     modalbg.style.display = "none"; // change le style en display: none;
 });
 
 // ------------------------------------------------
+// VALIDATION / MESSAGES ERREUR / CONFIRMATION
 // ------------------------------------------------
 document.forms["reserve"].addEventListener("submit", function(e) {
     e.preventDefault();
@@ -162,5 +163,6 @@ document.forms["reserve"].addEventListener("submit", function(e) {
 // ---------------------QUESTIONS------------------
 // - Est ce que priviligier la validation js uniquement ? ou peut utiliser attribut html ? Impression que attribut html prioritaire ... et que peut pas utiliser les 2 ?
 // - onsubmit="return validate(event) ???? faut il englober le code dans cette fonction ?
+// - A quoi correspond l'input A combien de tournoi ... ?
 // - Vous devez choisir une option ... a quoi correspond ce message d'erreur ??
 // - Conseil refacto ...
