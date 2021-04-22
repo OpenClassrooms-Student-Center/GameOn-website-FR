@@ -12,23 +12,27 @@
 
   <body>
 
-    <header class="index_header">                         <!-- MENU NAV-->
+    <header class="index_header">                        
       
       <h1 class="header-logo">
-        <img alt="Game On" src="Logo.png" />                 <!--width="auto" height="auto"-->
+        <img alt="Game On" src="ressources/Logo.png" />                
       </h1>
         
     
-      <nav class="nav_menu ">                                <!--LIEN NAV-->
-        
-        <a href="#">Accueil</a>                                 <!--SUPPRESSION DES SPANS (INUTILE) ET CLASS ACTIVE-->
-        <a href="#">Détails de l'évènement</a>
-        <a href="#">À propos</a>
-        <a href="#">Contact</a>
-        <a href="#">Évènements passés</a>
-        <a href="javascript:void(0);" class="icon" onclick="editNav()">
-          <i class="fa fa-bars"></i>
-        </a>
+      <nav class="nav_menu ">
+
+        <ul>
+
+          <li><a href="#">Accueil</a></li>
+          <li><a href="#">Détails évènement</a></li>
+          <li> <a href="#">À propos</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Évènements passés</a></li>
+          <li>  <a href="javascript:void(0);" class="icon" onclick="editNav()">
+            <i class="fa fa-bars"></i>
+          </a></li>
+
+        </ul>       
 
       </nav>
 
@@ -40,15 +44,15 @@
 
         <div class="container_main-entete">
 
-          <h2 class="hero-headline">Marathon national<br>de jeux vidéos</h2>
+          <h2 class="hero-headline">Marathon National<br>De Jeux Vidéos</h2>
           <p class="hero-text">Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux réservations... Places limitées !</p>
           
-          <button class="btn-signup modal-btn">je m'inscris</button>
+          <button class="modal-btn">Je m'inscris</button>
+
         </div>
         
         <div class="container_main-picture"></div>
-        
-
+      
       </section>
 
       <div class="background_modal">
