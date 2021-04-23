@@ -30,10 +30,10 @@
     margin: auto;
   }
   .header-logo {
-      width:50%;
+      width:30%;
   }
   .nav_menu {
-      width: 50%;
+      width: 70%;
   }
 
   .nav_menu ul {
@@ -43,7 +43,7 @@
   }
 
   .nav_menu ul li{
-    display: inline-block;
+    display: inline-flex;
   }
 
   .nav_menu ul li:first-child a{
@@ -69,7 +69,7 @@
     display: none;
   }
     
-  main {
+  .main_index{
     font-weight: bolder;
     width: 85%;
     margin: auto;
@@ -96,14 +96,14 @@
     background-image: url("ressources/bg_img.jpg");
     background-size: cover;
     background-position: center center;
+    border-radius: 7px;
     height: 100%;
   }
   
   .hero-headline{
-    width: 40%;
     position: relative;
     z-index: 10;
-    font-size: 100px;
+    font-size: 5em;
     padding-left: 70px;
     padding-top: 50px;
     font-weight: 600;
@@ -142,20 +142,20 @@
     background: #3876ac;
   }
   
-  .copyrights {
-    color: #fe142f;
-    padding: 0;
-    font-size: 1rem;
-    margin: 60px 0 30px;
-    font-weight: bolder;
-  }
-
+  
   footer {
     padding-left: 2vw;
     padding-right: 2vw;
     margin: 0 20px;
   }
 
+  .copyrights {
+    color: #fe142f;
+    font-size: 1rem;
+    margin: 60px 0 30px;
+    font-weight: bolder;
+  }
+  
   .background_modal {
     display: none;
     position: fixed;
@@ -351,8 +351,87 @@
 
   @media screen and (max-width: 768px) {
     body{
-      width: 100%;
+      width: 95%;
+      height: auto;
+      margin: auto;
+    }
+
+    .index_header{
+      height: auto;
+    }
+
+    .header-logo img{
+      width: 100px;
+    }
+
+    .index_header a {
+      display: none;
+    }
+
+    .index_header .icon{
+      display: initial;
+      color: red;
+    }
+
+    .main_index{
+      box-shadow:none;
+      height: 80vh;
+      position: relative;
+      font-weight: normal;
+    }
+
+    .container_main{
       display: flex;
       flex-direction: column;
+      height: 80vh;
     }
+
+    .container_main-entete {
+      background-color: white;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      height: auto;
+    }
+
+    .hero-headline{
+      position:initial;
+      font-size: 1.6em;
+      font-weight: 600;
+      white-space: initial;
+      padding:0;
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+
+    .hero-text{
+      font-size: 12px;
+      padding: 0;
+      width: 100%;    
+    }
+
+    .container_main-picture{
+      width: 100%;
+      margin: 25px auto;
+    }
+
+    .modal-btn {
+      width: 160px;
+      height: 35px;
+      margin: 0;
+      font-size: 16px;
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+    
+    }
+    
+    .copyrights {
+      font-size: 10px;
+      text-align: center;
+    }
+    
+
+
   }
