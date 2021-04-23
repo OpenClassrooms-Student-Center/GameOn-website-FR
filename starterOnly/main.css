@@ -29,11 +29,11 @@
     align-items: center;
     margin: auto;
   }
-  .header-logo {
-      width:30%;
-  }
-  .nav_menu {
-      width: 70%;
+
+  .nav_menu{
+    width: 90%;
+    display: flex;
+    justify-content: flex-end;
   }
 
   .nav_menu ul {
@@ -54,8 +54,7 @@
     display: inline-block;
     color:black;
     padding: 12px 12px;
-    margin: 5px;
-    font-size: 20px;
+    font-size: 19px;
   }
   
   .index_header a:hover {
@@ -70,7 +69,6 @@
   }
     
   .main_index{
-    font-weight: bolder;
     width: 85%;
     margin: auto;
     font-size: 20px;
@@ -80,15 +78,12 @@
   .container_main {
     display: grid;
     grid-template-columns: 35% 65%;
-    height: 70vh;
-
   }
   
   .container_main-entete {
     grid-column:1/2;
     background-color: black;
     color: #fff;
-    height: 100%;
   }
   
   .container_main-picture{
@@ -97,13 +92,12 @@
     background-size: cover;
     background-position: center center;
     border-radius: 7px;
-    height: 100%;
   }
   
   .hero-headline{
     position: relative;
     z-index: 10;
-    font-size: 5em;
+    font-size: 3.5em;
     padding-left: 70px;
     padding-top: 50px;
     font-weight: 600;
@@ -112,10 +106,12 @@
   }
 
   .hero-text{
-    font-size: 25px;
+    font-weight: normal;
+    font-size: 20px;
     padding-left: 80px;
-    padding-top: 80px;
+    padding-top: 50px;
     width: 90%;
+    height: 250px;
   }
 
   .modal-btn {
@@ -124,7 +120,8 @@
 
     width: 200px;
     height: 70px;
-    margin:80px 0  0 70px;
+    margin-left: 70px;
+    margin-bottom: 50px;
 
     font-weight: bold;
     font-size: 25px;
@@ -358,6 +355,8 @@
 
     .index_header{
       height: auto;
+      justify-content: space-between;
+      margin:auto;
     }
 
     .header-logo img{
@@ -375,7 +374,6 @@
 
     .main_index{
       box-shadow:none;
-      height: 80vh;
       position: relative;
       font-weight: normal;
     }
@@ -383,7 +381,6 @@
     .container_main{
       display: flex;
       flex-direction: column;
-      height: 80vh;
     }
 
     .container_main-entete {
@@ -396,22 +393,24 @@
 
     .hero-headline{
       position:initial;
-      font-size: 1.6em;
+      font-size: 1.5em;
       font-weight: 600;
       white-space: initial;
       padding:0;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
       margin-bottom: 20px;
     }
 
     .hero-text{
       font-size: 12px;
       padding: 0;
-      width: 100%;    
+      width: 100%; 
+      height: auto;   
     }
 
     .container_main-picture{
       width: 100%;
+      height: 450px;
       margin: 25px auto;
     }
 
@@ -431,7 +430,74 @@
       font-size: 10px;
       text-align: center;
     }
-    
-
-
   }
+
+  @media screen and (min-width:769px) and (max-width:990px){
+
+    
+    .header-logo img{
+      width: 150px;
+    }
+
+    .index_header a{
+      font-size: 15px;
+    }
+
+    .main_index{
+      box-shadow:none;
+      position: relative;
+      font-weight: normal;
+    }
+
+    .container_main{
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container_main-entete {
+      background-color: white;
+      color: black;
+      display: flex;
+      flex-direction: column;
+      height: auto;
+    }
+
+    .hero-headline{
+      position:initial;
+      font-size: 3.3em;
+      font-weight: 600;
+      white-space: initial;
+      padding:0;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .hero-text{
+      font-size: 20px;
+      padding: 0;
+      width: 100%; 
+      height: auto;   
+    }
+
+    .container_main-picture{
+      width: 100%;
+      height: 450px;
+      margin: 25px auto;
+    }
+
+    .modal-btn {
+      width: 160px;
+      height: 35px;
+      margin: 0;
+      font-size: 16px;
+      position: absolute;
+      bottom: -40px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    footer{
+      text-align: center;    }
+  }
+
+  
