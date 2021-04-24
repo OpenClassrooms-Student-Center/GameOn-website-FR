@@ -202,7 +202,7 @@ document.forms["reserve"].addEventListener("submit", function(e) {
         condUtilisation.classList.remove("red-border");
     }
 
-
+// A valider !!!
     const errorTreatment = (input, span) => {
         if (error) {
             e.preventDefault();
