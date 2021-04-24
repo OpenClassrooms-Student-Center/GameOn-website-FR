@@ -84,6 +84,8 @@
     grid-column:1/2;
     background-color: black;
     color: #fff;
+    border-top-left-radius : 7px;
+    border-bottom-left-radius : 7px;
   }
   
   .container_main-picture{
@@ -91,7 +93,8 @@
     background-image: url("ressources/bg_img.jpg");
     background-size: cover;
     background-position: center center;
-    border-radius: 7px;
+    border-top-right-radius : 7px;
+    border-bottom-right-radius : 7px;
   }
   
   .hero-headline{
@@ -139,7 +142,6 @@
     background: #3876ac;
   }
   
-  
   footer {
     padding-left: 2vw;
     padding-right: 2vw;
@@ -180,159 +182,98 @@
   }
   
   .modal-body {
-    padding: 15px 8%;
-    margin: 15px auto;
+    padding: 15px 40px;
+  }
+
+ .close_modal {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+
+  width: 30px;
+  height: 30px;
+  font-size: 30px;
+  font-weight:normal;
+  
+  display: flex;
+  place-content:center center;
+  opacity: 1;
+  cursor: pointer;
+  transform: scaleX(1.2);
+}
+  
+  label{
+    font-size: 12px;
+    display: inline-block;
+    margin: 15px 0;
+  }
+
+  input{
+    padding: 8px;
+    border: 1px solid #ccc;
+    outline: none;
+    border-radius: 8px;
+  }
+
+  .input-value{
+    width: 100%;
+    font-size: 16px;
+    height: 48px;
+
   }
   
-  label {
-    font-family: var(--font-default);
-    font-size: 17px;
-    font-weight: normal;
-    display: inline-block;
-    margin-bottom: 11px;
-  }
-  input {
-    padding: 8px;
-    border: 0.8px solid #ccc;
-    outline: none;
-  }
-  .input-value{
-    margin: 0;
-    padding: 8px;
-    width: 100%;
-    border-radius: 8px;
-    font-size: 20px;
-    height: 48px;
-  }
-  .formData[data-error]::after {
-    font-size: 0.4em;
-    color: #e54858;
-    display: block;
-    margin-top: 7px;
-    margin-bottom: 7px;
-    text-align: right;
-  }
   .checkbox-label,
   .checkbox2-label {
     position: relative;
     margin-left: 36px;
-    font-size: 12px;
-    font-weight: normal;
-  }
+  } 
+
   .checkbox-label .checkbox-icon,
-  .checkbox2-label .checkbox-icon {
-    display: block;
+  .checkbox2-label .agree-icon {
     width: 20px;
     height: 20px;
-    border: 2px solid #279e7a;
+    border: 2px solid grey;
     border-radius: 50%;
-    text-indent: 29px;
-    white-space: nowrap;
     position: absolute;
     left: -30px;
     top: -1px;
     transition: 0.3s;
   }
-  .checkbox-label .checkbox-icon::after,
-  .checkbox2-label .checkbox-icon::after {
-    width: 13px;
-    height: 13px;
+
+  .fillCoche{
     background-color: #279e7a;
+    border-color: #279e7a!important;
     border-radius: 50%;
-    text-indent: 29px;
-    white-space: nowrap;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    transition: 0.3s;
-    opacity: 0;
+    transition: all 0.3s ease-in-out;
   }
-  .check-box {
+
+  /* input[type=checkbox]{
     display: none;
-  }
-  .check-box:checked + .checkbox-label .checkbox-icon::after,
-  .check-box:checked + .checkbox2-label .checkbox-icon::after {
-    opacity: 1;
-  }
-  .check-box:checked + .checkbox2-label .checkbox-icon {
-    background: #279e7a;
-  }
-  .checkbox2-label .checkbox-icon {
+  } */
+
+  .checkbox2-label .agree-icon {
     border-radius: 4px;
     border: 0;
     background: #c4c4c4;
   }
-  .checkbox2-label .checkbox-icon::after {
-    width: 7px;
-    height: 4px;
-    border-radius: 2px;
-    background: transparent;
-    border: 2px solid transparent;
-    border-bottom-color: #fff;
-    border-left-color: #fff;
-    transform: rotate(-55deg);
-    left: 21%;
-    top: 19%;
-  }
-  .close_modal {
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    width: 32px;
-    height: 32px;
-    opacity: 1;
-    cursor: pointer;
-    transform: scale(0.7);
-  }
-  .close_modal:before,
-  .close_modal:after {
-    position: absolute;
-    left: 15px;
-    height: 33px;
-    width: 3px;
-    background-color: #fff;
-  }
-  .close_modal:before {
-    transform: rotate(45deg);
-  }
-  .close_modal:after {
-    transform: rotate(-45deg);
+
+  .fillCoche2{
+    background:#279e7a!important;
   }
   .btn-submit{
     background: #fe142f;
     display: block;
     margin: 0 auto;
-    border-radius: 7px;
-    font-size: 1rem;
     padding: 12px 82px;
     color: #fff;
     cursor: pointer;
     border: 0;
   }
-  /* custom select styles */
-  .custom-select {
-    position: relative;
-    font-family: Arial;
-    font-size: 1.1rem;
-    font-weight: normal;
-  }
-  
-  .custom-select select {
-    display: none;
-  }
-  .select-selected {
-    background-color: #fff;
-  }
-  
-  .select-items div:hover,
-  .same-as-selected {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-  /* custom select end */
+
   .text-label {
     font-weight: normal;
-    font-size: 16px;
+    margin: 15px 0;
+    font-size: 12px;
   }
   
   @keyframes modalopen {
@@ -344,7 +285,6 @@
       opacity: 1;
     }
   }
-
 
   @media screen and (max-width: 768px) {
     body{
@@ -412,6 +352,7 @@
       width: 100%;
       height: 450px;
       margin: 25px auto;
+      border-radius: 7px;
     }
 
     .modal-btn {
@@ -434,7 +375,6 @@
 
   @media screen and (min-width:769px) and (max-width:990px){
 
-    
     .header-logo img{
       width: 150px;
     }
@@ -483,6 +423,7 @@
       width: 100%;
       height: 450px;
       margin: 25px auto;
+      border-radius: 7px;
     }
 
     .modal-btn {
@@ -498,6 +439,12 @@
 
     footer{
       text-align: center;    }
+  }
+
+  .fa-check::before{
+    color: #c2c2c2;
+    margin-left: 4px;
+    line-height: 21px;
   }
 
   

@@ -527,3 +527,34 @@ footer {
   }
 }
 
+
+
+/* .close_modal {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  place-content:center center;
+  font-size: 30px;
+  font-weight:normal;
+  opacity: 1;
+  cursor: pointer;
+  transform: scaleX(1.2);
+}
+.close_modal:before,
+.close_modal:after {
+  position: absolute;
+  left: 15px;
+  height: 33px;
+  width: 3px;
+  background-color: #fff;
+}
+
+.close_modal:before {
+  transform: rotate(45deg);
+}
+.close_modal:after {
+  transform: rotate(-45deg);
+} */

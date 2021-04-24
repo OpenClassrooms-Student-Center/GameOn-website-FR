@@ -6,8 +6,8 @@
     <title>Reservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="main.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet"/>
+    <script src="https://kit.fontawesome.com/45e38e596f.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -59,26 +59,26 @@
 
         <div class="window_modal">
 
-          <span class="close_modal"></span>
+          <span class="close_modal">x</span>
 
           <div class="modal-body">
 
             <form name="form_reservation" action="index.html" method="POST" onsubmit="return validate();">    <!--Modif GET/POST-->
               
               <label for="prenom">Prénom</label><br>
-              <input class="input-value" type="text" id="prenom" name="prenom" minlength="2" required/><br>
+              <input class="input-value" type="text" id="prenom" name="prenom" minlength="2" /><br>
               
               <label for="nom">Nom</label><br>
-              <input class="input-value" type="text" id="nom" name="nom" required/><br>
+              <input class="input-value" type="text" id="nom" name="nom" /><br>
               
               <label for="email">E-mail</label><br>
-              <input class="input-value" type="email" id="email" name="email" required/><br>
+              <input class="input-value" type="email" id="email" name="email" /><br>
               
               <label for="birthdate">Date de naissance</label><br>
-              <input class="input-value" type="date" id="birthdate" name="birthdate" required /><br>
+              <input class="input-value" type="date" id="birthdate" name="birthdate"  /><br>
         
               <label for="numberCompetition">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-              <input type="number" class="input-value" id="numberCompetition" name="numberCompetition" min="0" max="99" required>
+              <input type="number" class="input-value" id="numberCompetition" name="numberCompetition" min="0" max="99" >
               
               <p class="text-label">Quelles villes ?</p>
               
@@ -100,14 +100,14 @@
               <label class="checkbox-label" for="location6"><span class="checkbox-icon"></span>Portland</label>
               <input class="checkbox-input" type="checkbox" id="location6" name="location6" value="Portland" />
               
-              <label class="checkbox2-label" for="agreeCondition"><span class="checkbox-icon"></span>J'ai lu et accepté les conditions d'utilisation.</label><br>
-              <input class="checkbox-input" type="checkbox" id="agreeCondition" name="agreeCondition" checked required/>
+              <label class="checkbox2-label" for="agreeCondition"><span class="agree-icon"><span class="fas fa-check"></span></span>J'ai lu et accepté les conditions d'utilisation.</label><br>
+              <input class="checkbox-input accept" type="checkbox" id="agreeCondition" name="agreeCondition" required/>
                   
               
-              <label class="checkbox2-label" for="nextEvent"><span class="checkbox-icon"></span>Je Je souhaite être prévenu des prochains évènements.</label><br>
-              <input class="checkbox-input" type="checkbox" id="nextEvent" name="nextEvent" />
+              <label class="checkbox2-label" for="nextEvent"><span class="agree-icon"><span class="fas fa-check"></span></span>Je Je souhaite être prévenu des prochains évènements.</label><br>
+              <input class="checkbox-input accept" type="checkbox" id="nextEvent" name="nextEvent" />
               
-              <input class="btn-submit button" type="submit" value="C'est parti"/>
+              <input class="btn-submit" type="submit" value="C'est parti"/>
               
             </form>
 
