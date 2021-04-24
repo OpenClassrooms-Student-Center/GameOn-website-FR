@@ -158,8 +158,10 @@ label {
 }
 input {
   padding: 8px;
-  border: 0.8px solid #ccc;
   outline: none;
+}
+.red-border { /*Classe ajouté lorsque message d'erreur dans les inputs*/
+    border: 2px solid red;
 }
 .text-control {
   margin: 0;
@@ -290,7 +292,6 @@ input[data-error]::after {
 .btn-submit,
 .btn-signup,
 .btn-exitModal {
-  background: #fe142f;
   display: block;
   margin: 0 auto;
   border-radius: 7px;
@@ -300,7 +301,10 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
-
+.btn-submit,
+.btn-signup {
+    background: #fe142f;
+}
 
 /* ----------Confirmation box------- */
 .confirmation-box {
@@ -312,6 +316,9 @@ input[data-error]::after {
 }
 .confirmation-box span {
     padding-bottom: 220px;
+}
+.btn-exitModal {
+    background: #279E7A;
 }
 /* --------custom select styles------------ */
 

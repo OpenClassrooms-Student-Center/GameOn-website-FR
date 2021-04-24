@@ -57,7 +57,7 @@
                             <div class="formData">
                                 <label for="first">Prénom</label>
                                 <br>
-                                <input id="first" class="text-control" type="text" name="first" /> <!--required minlength="2"-->
+                                <input id="first" class="text-control" type="text" name="first" />
                                 <br>
                                 <span class="error-alert"></span>
                             </div>
@@ -73,7 +73,7 @@
                             <div class="formData">
                                 <label for="email">E-mail</label>
                                 <br>
-                                <input id="email" class="text-control" type="email" name="email"/>
+                                <input id="email" class="text-control" name="email"/>
                                 <br>
                                 <span class="error-alert"></span>
                             </div>
@@ -91,35 +91,36 @@
                                 <br>
                                 <input id="quantity" type="number" class="text-control" name="quantity" min="0" max="99">
                             </div>
+                            <span class="error-alert"></span>
                             <p class="text-label">Quelles villes ?</p>
                             <!-- checkbox cocher la ville -->
                             <div class="formData">
-                                <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" checked/>
+                                <input class="checkbox-input city" type="radio" id="location1" name="location" value="New York" checked/>
                                 <label class="checkbox-label" for="location1">
                                     <span class="checkbox-icon"></span>
                                     New York
                                 </label>
-                                <input class="checkbox-input" type="radio" id="location2" name="location" value="San Francisco"/>
+                                <input class="checkbox-input city" type="radio" id="location2" name="location" value="San Francisco"/>
                                 <label class="checkbox-label" for="location2">
                                     <span class="checkbox-icon"></span>
                                     San Francisco
                                 </label>
-                                <input class="checkbox-input" type="radio" id="location3" name="location" value="Seattle"/>
+                                <input class="checkbox-input city" type="radio" id="location3" name="location" value="Seattle"/>
                                 <label class="checkbox-label" for="location3">
                                     <span class="checkbox-icon"></span>
                                     Seattle
                                 </label>
-                                <input class="checkbox-input" type="radio" id="location4" name="location" value="Chicago"/>
+                                <input class="checkbox-input city" type="radio" id="location4" name="location" value="Chicago"/>
                                 <label class="checkbox-label" for="location4">
                                     <span class="checkbox-icon"></span>
                                     Chicago
                                 </label>
-                                <input class="checkbox-input" type="radio" id="location5" name="location" value="Boston"/>
+                                <input class="checkbox-input city" type="radio" id="location5" name="location" value="Boston"/>
                                 <label class="checkbox-label" for="location5">
                                     <span class="checkbox-icon"></span>
                                     Boston
                                 </label>
-                                <input class="checkbox-input" type="radio" id="location6" name="location" value="Portland"/>
+                                <input class="checkbox-input city" type="radio" id="location6" name="location" value="Portland"/>
                                 <label class="checkbox-label" for="location6">
                                     <span class="checkbox-icon"></span>
                                     Portland
