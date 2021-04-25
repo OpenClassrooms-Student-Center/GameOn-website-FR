@@ -66,7 +66,7 @@ img {
   text-decoration: underline;
   text-decoration-thickness: 2px;
 }
-
+/*
 .topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
@@ -77,6 +77,7 @@ img {
   text-decoration: underline;
   text-decoration-thickness: 2px;
 }
+*/
 
 .topnav .icon {
   display: none;
@@ -91,11 +92,11 @@ img {
     float: right;
     top: 5px;
     display: block;
+    color: red;    /*  Colorie l'icone en rouge   */
   }
 
   .topnav a i {
     font-size: 22px; /*  Agrandi l'icone            */
-    color: red;    /*  Colorie l'icone en rouge   */
   }
 }
 
@@ -116,7 +117,7 @@ img {
   }
 
   .hero-section {
-    max-height: 80vh;
+    max-height: 80vh;  /* Diminue la hauteur de la section */
   }
 }
 
@@ -128,7 +129,7 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    right: 10px;
+    top: 5px;
     color: red;    /*  Colorie l'icone en rouge   */
   }
 
@@ -478,7 +479,7 @@ input[data-error]::after {
 }
 
 .hero-section {
-  min-height: 93vh;
+  height: 93vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -546,11 +547,9 @@ input[data-error]::after {
 }
 
 .copyrights {
-  width: 100vh;
   color: #fe142f;
-  padding-left: 20px;
   font-size: 1rem;
-  margin: 60px 0 30px;
+  margin: 30px 20px;
   font-weight: bolder;
 }
 
@@ -587,14 +586,12 @@ footer {
 
   .hero-section {
     max-height: 93vh; /*min-height: unset;  */
-    margin-bottom: 0;
-    /*  Densifie l'écran */
+    margin-bottom: 0; /*  Densifie l'écran */
     font-weight: bolder;
   }
 
   .hero-content {
-    padding-left: 25px;
-    /*  modifie la largeur du padding   */
+    padding-left: 25px;  /*  modifie la largeur du padding   */
   }
 
   .hero-content::after {
@@ -602,7 +599,7 @@ footer {
   }
 
   .hero-headline {
-    /*    font-size: 3.0rem;  */
+    font-size: 4.0rem;
     white-space: nowrap;
   }
 
@@ -614,7 +611,7 @@ footer {
 
 @media screen and (max-width: 768px) {
   .main {
-    margin: 45px;
+    margin: 45px 0 45px 45px;
   }
 
   .topnav {
@@ -646,7 +643,7 @@ footer {
   }
 
   .hero-headline {
-    font-size: 4.0rem;
+    font-size: 3.0rem;
     white-space: normal;
   }
 
@@ -676,19 +673,19 @@ footer {
 
 @media screen and (max-width: 420px) {
   .main {
-    margin: 20px;
+    margin: 10px;
     font-size: 75%;
   }
 
   .topnav {
-    margin-bottom: 0.0%;
+    margin-bottom: 1.0%;
   }
 
   .hero-section {
     display: block;
     box-shadow: unset;
-    max-height: 93vh; /*unset;  */
-    /* min-height: unset; */    /*  Supprime la hauteur mini de la section                   */
+    min-height: unset;
+    max-height: 93vh; /*  unset;  */
     padding: 0;    /*  Supprime padding et margin-bottom pour écran plus dense  */
     margin-bottom: 0;
   }
@@ -701,6 +698,7 @@ footer {
 
   .hero-content::after {
     content: unset;
+    height: unset;  /* Supprime la hauteur de 100 % */
   }
 
   .hero-content .btn-signup {
@@ -708,7 +706,7 @@ footer {
   }
 
   .hero-headline {
-    font-size: 35px;
+    font-size: 2.2rem;
     white-space: normal;
   }
 
