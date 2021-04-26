@@ -45,7 +45,7 @@ const regexCompetition = new RegExp(/^[0-9]{1,}/);
 
 document.forms[0].addEventListener("submit", (e) => {
   // Cration d'une variable qui servira a stocké les messages d'erreurs
-  e.preventDefault();
+ 
   let erreur;
 
   // si la valeur retourné est différent de la regex => informé l'utilisateur de l'erreur
@@ -107,15 +107,15 @@ document.forms[0].addEventListener("submit", (e) => {
     input[2].value &&
     input[3].value &&
     input[4].value &&
-    radio[0].checked ||
+    (radio[0].checked ||
     radio[1].checked ||
     radio[2].checked ||
     radio[3].checked ||
     radio[4].checked ||
-    radio[5].checked &&
-    checkbox.checked 
-  ) {
-    alert("FORMULAIRE ENVOYE AVEC SUCCES");
+    radio[5].checked) &&
+    checkbox.checked === true
+    ) {
+      alert("FORMULAIRE ENVOYE AVEC SUCCES");
 
     // sinon n'envoi pas le formulaire via la demande de comportement par défault
   } else {
