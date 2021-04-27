@@ -16,7 +16,6 @@ const formDisplay = document.getElementById("validation_clear");
 const validationText= document.getElementById("validation_text");
 const validationButton= document.getElementById("validation--button");
 const inputs = document.getElementsByTagName("input");
-const form = document.getElementsByClassName("formData");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -36,6 +35,7 @@ function closeModal() {
   validationText.style.display= "none";
   validationButton.style.display= "none";
 }
+
   
 // Close Validation message Button
 validationButton.addEventListener("click", closeModal);
@@ -49,8 +49,8 @@ function validate(){
     inputs[i].value = "";
     inputs[i].checked = false;
     }
-    for (var h=0; h < form.length; h++) {
-      form[h].setAttribute("data-error-visible", undefined)
+    for (var h=0; h < formData.length; h++) {
+      formData[h].setAttribute("data-error-visible", undefined)
     } 
 }
 
@@ -69,8 +69,9 @@ function error(e,texte,custom) {
 
 //Function which check if the input is correct
 function fieldValidation(e) {
+  const minLength =2
   if (e.type === "text"){
-        if (e.value.length <2) {
+        if (e.value.length < minLength) {
           error (e,"Nom trop court !","Votre nom doit contenir au moins 2 caractères")
           inputValid=false;
         }else if (!e.value.match(/^[A-Za-z\é\è\ê\-]+$/)){ 
