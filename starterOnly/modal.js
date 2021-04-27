@@ -21,7 +21,7 @@ const emailInput = document.getElementById("email");
 const birthdateInput = document.getElementById("birthdate");
 const quantityInput = document.getElementById("quantity");
 const condition = document.getElementById("checkbox1");
-const locationInput = document.getElementsByName("location")[0];
+const locationInput = document.getElementsByName("location");
 const loc1 = document.getElementById ('location1');
 const loc2 = document.getElementById ('location2');
 const loc3 = document.getElementById ('location3');
@@ -32,14 +32,7 @@ const inputs = document.getElementsByTagName("input");
 const form = document.getElementsByClassName("formData");
 
 //Variables need to be true for modal validation
-let FirstNameValid ;
-let LastNameValid ;
-let emailValid ;
-let birthdateValid ;
-let quantityValid ;
-let conditionValid = true ;
-let locationValid ;
-
+let FirstNameValid,LastNameValid, emailValid, birthdateValid, quantityValid,conditionValid = true, locationValid;
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -69,7 +62,7 @@ function validate(){
   validationText.style.display= "block";
   validationButton.style.display= "block";
   if (inputs.length >0) {
-    for (var i=0; i < 7; i++){
+    for (var i=0; i < inputs.length -1; i++){
     inputs[i].value = "";
     inputs[i].checked = false;
     }
@@ -132,13 +125,17 @@ function fieldValidation(e) {
         }
 
   } else if (e.type ==="radio") {
-        if (loc1.checked || loc2.checked || loc3.checked || loc4.checked || loc5.checked || loc6.checked) {
+    for (i=0;  locationInput[i].checked ==true; i++){
+    locationValid= true;
+          noError(e);
+          console.log("ok");}
+        /*if (loc1.checked || loc2.checked || loc3.checked || loc4.checked || loc5.checked || loc6.checked) {
           locationValid= true;
           noError(e)
         } else {
           locationValid= false;
           e.setCustomValidity("Veuillez choisir une ville");
-        }
+        }*/
   } else if (e.type === "checkbox"){
           if (e.checked){
             noError(e);
@@ -157,6 +154,7 @@ for (var i=0; i < inputs.length; i++){
      })}
 
 // Check if all the fields are correctly entered (==true) If it is, it launch the validation message
+const isValidAllFieldValid = FirstNameValid == true && LastNameValid == true && emailValid == true && birthdateValid == true && quantityValid == true && conditionValid == true && locationValid==true
 document.forms["reserve"].addEventListener("submit", function(e) {
   e.preventDefault();
   if (FirstNameValid == true && LastNameValid == true && emailValid == true && birthdateValid == true && quantityValid == true && conditionValid == true && locationValid==true) {
