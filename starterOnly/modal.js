@@ -25,17 +25,27 @@ function launchModal() {
   modalbg.style.display = "block"; 
 }
 
+
 // close modal event 
 closeX.forEach((btn) => btn.addEventListener("click", closeModal));
 
 // close modal form + validation message
-function closeModal() {
+function closeModal(e) {
   modalbg.style.display = "none";
   formDisplay.style.display = "block";
   validationText.style.display= "none";
   validationButton.style.display= "none";
+ 
 }
-
+//close modal when click outside 
+var content = document.querySelector(".content")
+modalbg.addEventListener("click", function (e) {
+  if (e.target != modalbg) {
+  }
+  else {
+    closeModal()
+  }
+  })
   
 // Close Validation message Button
 validationButton.addEventListener("click", closeModal);
