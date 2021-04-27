@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Reservation</title>
+    <title>GameOn</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="modal.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -29,6 +29,7 @@
     </div>
     </div>
   </div>
+
     <main>
       <div class="hero-section">
         <div class="hero-content">
@@ -57,10 +58,10 @@
           <span class="close" id="close"></span>
           <div class="modal-body">
             <form
+              id="inscription"
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
             >
               <div
                 class="formData">
@@ -72,6 +73,7 @@
                   name="first"
                   minlength="2"
                 /><br>
+                <div class="error" id="firstErr"></div>
               </div>
               <div
                 class="formData">
@@ -82,6 +84,7 @@
                   id="last"
                   name="last"
                 /><br>
+                <div class="error" id="lastErr"></div>
               </div>
               <div
                 class="formData">
@@ -92,6 +95,7 @@
                   id="email"
                   name="email"
                 /><br>
+                <div class="error" id="emailErr"></div>
               </div>
               <div
                 class="formData">
@@ -102,11 +106,12 @@
                   id="birthdate"
                   name="birthdate"
                 /><br>
+                <div class="error" id="birthErr"></div>
               </div>
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" >
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
@@ -176,7 +181,8 @@
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
                   Portland</label
-                >
+                ><br>
+                <div class="error" id="cityErr"></div>
               </div>
 
               <div
@@ -187,7 +193,7 @@
                   id="checkbox1"
                   checked
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1" >
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
@@ -198,6 +204,8 @@
                   Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
+                <div class="error" id="choiceErr"></div>
+                <br>
               </div>
               <input
                 class="btn-submit"
@@ -207,6 +215,10 @@
               />
             </form>
           </div>
+          <div class="modal-body confirmation">
+						Merci de votre inscription
+						<button class="button btn-close close-modal">Fermer</button>
+					</div>
         </div>
       </div>
     </main>
@@ -218,3 +230,4 @@
     <script src="modal.js"></script>
   </body>
 </html>
+
