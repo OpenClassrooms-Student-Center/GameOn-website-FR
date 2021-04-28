@@ -25,7 +25,6 @@ function launchModal() {
   modalbg.style.display = "block"; 
 }
 
-
 // close modal event 
 closeX.forEach((btn) => btn.addEventListener("click", closeModal));
 
@@ -66,11 +65,13 @@ function validate(){
 
 // Error messages function
 function noError(e) {
+  inputValid=true;
   e.parentNode.setAttribute("data-error-visible", false);
   e.setCustomValidity("");
 }
 
 function error(e,texte,custom) {
+  inputValid= false;
   e.parentNode.setAttribute("data-error-visible", true);
   e.parentNode.setAttribute("data-error", texte);
   e.setCustomValidity(custom)
@@ -83,36 +84,27 @@ function fieldValidation(e) {
   if (e.type === "text"){
         if (e.value.length < minLength) {
           error (e,"Nom trop court !","Votre nom doit contenir au moins 2 caractères")
-          inputValid=false;
         }else if (!e.value.match(/^[A-Za-z\é\è\ê\-]+$/)){ 
           error (e,"Pas de caractères spéciaux!","Votre nom ne doit pas contenir de caractères spéciaux")
-          inputValid=false;
-        } else  {
-          noError(e);
-          inputValid=true;
+          } else  {
+          noError(e); 
         }
   } else if (e.type === "email") {
         if (e.value.match(/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i)) {
-          inputValid=true;
           noError(e);
         } else {
-          inputValid=false;
           error(e,"Email non valide !","'"+e.value+ "' n'est pas une adresse mail valide");
         }
   } else if (e.type ==="date") {
         if (e.value.match (/^[0-9]/)) {
-          inputValid=true;
           noError(e);
         } else {
-          inputValid=false;
           error(e,"Date anniversaire non correcte !","Veuillez entrer votre date de naissance");
         }
   } else if (e.type ==="number") {
         if (!e.value.match (/^[0-9]/) || e.value > 99) {
           error (e,"Erreur sur la quantité !","Veuillez entrer le nombre de participation à des tournois GameOn");
-          inputValid=false;
         } else {
-          inputValid=true;
           noError(e);
         }
   } else if (e.type ==="radio") {
@@ -122,9 +114,7 @@ function fieldValidation(e) {
   } else if (e.type === "checkbox"){
           if (e.checked){
             noError(e);
-            inputValid=true;
         } else {
-          inputValid=false;
             error(e,"CGU non coché !","Veuillez lire et accepter les conditions d'utilisation")
         }
   }
