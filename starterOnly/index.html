@@ -71,7 +71,6 @@
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
                 /><br>
                 <div class="error" id="firstErr"></div>
               </div>
@@ -111,8 +110,10 @@
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" >
+                <input type="number" class="text-control" id="quantity" name="quantity"  >
               </div>
+                <div class="error" id="quantityErr"></div>
+                <br>
               <p class="text-label">Quelles villes ?</p>
               <div
                 class="formData">
@@ -224,7 +225,7 @@
     </main>
     <footer>
       <p class="copyrights">
-        Copyright 2014 - 2020, GameOn Inc.
+        Copyright 2014 - 2021, GameOn Inc.
       </p>
     </footer>
     <script src="modal.js"></script>
