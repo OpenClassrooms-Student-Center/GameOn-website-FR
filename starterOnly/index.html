@@ -29,7 +29,7 @@
         </div>
         <!-- Main -->
         <main>
-            <!-- Banner  -->
+            <!-- Main: Banner  -->
             <div class="hero-section">
                 <!-- Banner : Texte + bg-image -->
                 <div class="hero-content">
@@ -42,14 +42,16 @@
                 <div class="hero-img">
                     <img src="./bg_img.jpg" alt="img" />
                 </div>
-                <!-- banner : Button à corriger ???? -->
+                <!-- Banner : Button -->
                 <button class="btn-signup modal-btn">je m'inscris</button>
             </div>
-            <!-- Modal entière -->
+            <!-- Main: Modal entière -->
             <div class="bground">
                 <!-- modal contenu entier (span quit "X" + modal-body) -->
                 <div class="content">
+                    <!-- l'icone close -->
                     <span class="close"></span>
+                    <!-- Corps de la modal -->
                     <div class="modal-body">
                         <!-- Formulaire -->
                         <form name="reserve" action="index.html" method="get"> <!--onsubmit="return validate(event)"-->
@@ -93,7 +95,7 @@
                             </div>
                             <span class="error-alert"></span>
                             <p class="text-label">Quelles villes ?</p>
-                            <!-- checkbox cocher la ville -->
+                            <!-- checkboxes cocher la ville -->
                             <div class="formData">
                                 <input class="checkbox-input city" type="radio" id="location1" name="location" value="New York"/>
                                 <label class="checkbox-label" for="location1">
@@ -144,9 +146,10 @@
                                 <br>
                                 <span class="error-alert"></span>
                             </div>
-                            <!-- input: C'est parti! -->
+                            <!-- Input submit: C'est parti! -->
                             <input class="btn-submit" type="submit" class="button" value="C'est parti"/>
                         </form>
+                        <!-- Box de confirmation -->
                         <div class="confirmation-box">
                             <span>Merci ! Votre réservation a été reçue</span>
                             <button class="btn-exitModal">Fermer</button>
