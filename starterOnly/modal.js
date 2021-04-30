@@ -22,14 +22,14 @@ const lastNameInput = document.getElementById("last"); // input text control 2
 const emailInput = document.getElementById("email"); // input text control 3
 const birthDateInput = document.getElementById("birthdate"); // input text control 4
 const quantityInput = document.getElementById("quantity"); // input text control 5
-const allInputs = document.querySelectorAll('.text-control'); // les inputs textcontrol (prénom nom email date naissance tournois)
+const allInputs = document.querySelectorAll('.text-control'); // les inputs textcontrol (prénom/nom/email/date naissance/tournois)
 const allSpans = document.querySelectorAll('span.error-alert'); // span des messages d'erreur
 const allCheckboxLocations = document.querySelectorAll('.checkbox-input.city'); // checkboxes des villes
 const condUtilisation = document.getElementById("checkbox1"); // checkboxes conditions d'utilisation
 const confirmationBox = document.querySelector(".confirmation-box") // la modal confirmation
 const exitBtnModal = document.querySelector(".btn-exitModal"); // bouton fermer modal
-const regexName = /^[a-zA-Z]*$/; // variable regex pour la validation des noms (caractères alphabétiques)
-const regexEmail = /\S+@\S+\.\S+/; // variable regex pour la validation des mails
+const regexName = /^[a-zA-Z]*$/; // regex pour la validation des noms (caractères alphabétiques)
+const regexEmail = /\S+@\S+\.\S+/; // regex pour la validation des mails
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -51,9 +51,7 @@ function launchModal() {
     modalbg.style.display = "block";
 }
 
-// ------------------------------------------------
-// FERMETURE DE LA MODALE
-// ------------------------------------------------
+// Fermeture de la modal du formulaire
 closeBtnX.addEventListener('click', function(event) {
     modalbg.style.display = "none"; // change le style en display: none;
 });
@@ -61,16 +59,16 @@ exitBtnModal.addEventListener('click', function(event) {
     modalbg.style.display = "none"; // change le style en display: none;
 });
 
-// ------------------------------------------------
-// VALIDATION / MESSAGES ERREUR
-// ------------------------------------------------
+
+// Validation et messages d'erreur
 document.forms["reserve"].addEventListener("submit", function(e) {
     e.preventDefault();
     // On crée une variable error qui va contenir les différents messages d'erreur
     let error; 
 
-    // VALIDATION PRENOM
-    // On écrit la condition (si la valeur de l'input est vide ou si inférieur à 2 caractères)
+    // Validation Prénom:
+    // On vérifie que la valeur de l'input nom est vide ou inférieur à 2 caractères alphabétiques 
+    // (ca retourne true dans ce cas et ca affiche le message d'erreur)
     if(allInputs[0].value == "" || allInputs[0].value.length < 2 || allInputs[0].value.search(regexName) === -1) { 
         error = "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
     };
@@ -85,7 +83,9 @@ document.forms["reserve"].addEventListener("submit", function(e) {
         allInputs[0].classList.add("green-border");
     };
 
-    // VALIDATION NOM
+    // Validation nom:
+    // On vérifie que la valeur de l'input nom est vide ou inférieur à 2 caractères alphabétiques 
+    // (ca retourne true dans ce cas et ca affiche le message d'erreur)
     if(allInputs[1].value == "" || allInputs[1].value.length < 2 || allInputs[1].value.search(regexName) === -1) {
     error = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
     };
@@ -100,8 +100,8 @@ document.forms["reserve"].addEventListener("submit", function(e) {
         allInputs[1].classList.add("green-border");
     };
 
-    // VALIDATION EMAIL
-    // On vérifie que la valeur de l'email ne verifie pas cette regex (ca retourne true dans ce cas)
+    // Validation email:
+    // On vérifie que la valeur de l'email ne verifie pas la regex (ca retourne true dans ce cas et ca affiche le message d'erreur)
     if(allInputs[2].value.search(regexEmail) === -1) { 
         error = "Rentrez un email valide"; // on indique le message d'erreur correspondant si la condition est true
     };
@@ -116,8 +116,8 @@ document.forms["reserve"].addEventListener("submit", function(e) {
         allInputs[2].classList.add("green-border");
     };
 
-    // VALIDATION BIRTHDAY 
-    // on vérifie que la valeur de la date de naissance absente (si c'est le cas retourne true)
+    // Validation date de naissance: 
+    // On vérifie que la valeur de la date de naissance absente (si c'est le cas retourne true et ca affiche le message d'erreur)
     if(allInputs[3].value == "") { 
         error = "Vous devez entrer votre date de naissance.";
     };
@@ -132,8 +132,8 @@ document.forms["reserve"].addEventListener("submit", function(e) {
         allInputs[3].classList.add("green-border");
     };
 
-    // VALIDATION TOURNOIS
-    // On vérifie que la valeur de la date de naissance absente (si c'est le cas retourne true)
+    // Validation nombre de tournois:
+    // On vérifie que l'input est vide (si c'est le cas retourne true et ca affiche le message d'erreur)
     if(allInputs[4].value == "") { 
         error = "Ce champ est obligatoire.";
     };
@@ -148,7 +148,9 @@ document.forms["reserve"].addEventListener("submit", function(e) {
         allInputs[4].classList.add("green-border");
     };
 
-    // VALIDATION CHECKBOXES VILLES
+    // Validation checkboxes villes:
+    // Boucle sur les chexboxes des villes, si une checkbox est checked, on sort de la boucle,
+    // mais si aucune checkbox n'est checked, alors affichage du message d'erreur
     for (let i=0; i<allCheckboxLocations.length; i++) {
         if(allCheckboxLocations[i].checked) {
             allSpans[5].innerHTML = "";
@@ -159,8 +161,8 @@ document.forms["reserve"].addEventListener("submit", function(e) {
         }
     };
 
-    // VALIDATION CONDITIONS GENERALES
-    // On vérifie que la checkbox n'est pas checkée (si c'est le cas c'est true)
+    // Validation conditions générales:
+    // On vérifie que la checkbox n'est pas checkée (si c'est le cas c'est true et ca affiche une erreur)
     if(!condUtilisation.checked) { 
         error = "Vous devez vérifier que vous acceptez les termes et conditions.";            
     };    
@@ -175,9 +177,7 @@ document.forms["reserve"].addEventListener("submit", function(e) {
         condUtilisation.classList.add("green-border");
     }
 
-// ------------------------------------------------
-// CONFIRMATION
-// ------------------------------------------------
+    // Affichage de la modal de confirmation
     // On fait disparaitre le form
     form.style.display = "none";
     // On affiche le bouton fermer crée dans l'html
