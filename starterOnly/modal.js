@@ -28,7 +28,8 @@ const allCheckboxLocations = document.querySelectorAll('.checkbox-input.city'); 
 const condUtilisation = document.getElementById("checkbox1"); // checkboxes conditions d'utilisation
 const confirmationBox = document.querySelector(".confirmation-box") // la modal confirmation
 const exitBtnModal = document.querySelector(".btn-exitModal"); // bouton fermer modal
-
+const regexName = /^[a-zA-Z]*$/; // variable regex pour la validation des noms (caractères alphabétiques)
+const regexEmail = /\S+@\S+\.\S+/; // variable regex pour la validation des mails
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -41,6 +42,7 @@ function launchModal() {
     emailInput.value = "";
     birthDateInput.value = "";
     quantityInput.value = "";
+    allCheckboxLocations.checked = false;
     // on retire la confirmationBox
     confirmationBox.style.display = "none";
     // on affiche le form
@@ -59,53 +61,18 @@ exitBtnModal.addEventListener('click', function(event) {
     modalbg.style.display = "none"; // change le style en display: none;
 });
 
-
-// FONCTION VALIDATION DES INPUTS (NOM PRENOM NB DE TOURNOI)
-// ----------------------------------------------------
-// function validateInput(input, span, errorMessage) {
-//     console.log("Verification type du champ", input.type);
-//     if(input.type == "text") {
-//         if(input.value == "" || input.value.length < 2) { // -------on écrit la condition (si la valeur de l'input est vide ou si inférieur à 2 caractères)
-//             error = errorMessage;
-//             if (error) { // -------------------- *** (IF) Si on a bien une erreur: 
-//                 span.innerHTML = error; // ----- j'affiche l'erreur dans le span correspondant
-//                 input.classList.add("red-border");
-//                 return false; // --------------------- On met false pour être sûr que rien ne se passe
-//             } else { // ------------------------ *** (ELSE) Si on n'a pas d'erreur:
-//                 span.innerHTML = ""; // -------- On vide le span
-//                 input.classList.remove("red-border");
-//             };
-//         }    
-//     } else {
-//         console.log("Verification champ number", input.type);
-//         if(input.value == "") { // on vérifie que la valeur de la date de naissance absente (si c'est le cas retourne true)
-//             error = errorMessage;
-//         };
-//         if (error) {
-//             span.innerHTML = error;
-//             input.classList.add("red-border");
-//             return false;
-//         } else {
-//             span.innerHTML = "";
-//             input.classList.remove("red-border");
-//         };
-//     }  
-// }
-// validateInput(allInputs[0], allSpans[0], "Veuillez entrer 2 caractères ou plus pour le champ du prénom.")
-// validateInput(allInputs[1], allSpans[1], "Veuillez entrer 2 caractères ou plus pour le champ du nom.")
-// validateInput(allInputs[4], allSpans[4], "Ce champ est obligatoire.")
 // ------------------------------------------------
 // VALIDATION / MESSAGES ERREUR
 // ------------------------------------------------
-
 document.forms["reserve"].addEventListener("submit", function(e) {
     e.preventDefault();
-    let error; // On crée une variable error qui va contenir les différents messages d'erreur
-    // traitement cas par cas (input unique)
+    // On crée une variable error qui va contenir les différents messages d'erreur
+    let error; 
 
     // VALIDATION PRENOM
-    if(allInputs[0].value == "" || allInputs[0].value.length < 2) { // -------on écrit la condition (si la valeur de l'input est vide ou si inférieur à 2 caractères)
-    error = "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
+    // On écrit la condition (si la valeur de l'input est vide ou si inférieur à 2 caractères)
+    if(allInputs[0].value == "" || allInputs[0].value.length < 2 || allInputs[0].value.search(regexName) === -1) { 
+        error = "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
     };
     if (error) { // -------------------- *** (IF) Si on a bien une erreur: 
         e.preventDefault();
@@ -115,10 +82,11 @@ document.forms["reserve"].addEventListener("submit", function(e) {
     } else { // ------------------------ *** (ELSE) Si on n'a pas d'erreur:
         allSpans[0].innerHTML = ""; // -------- On vide le span
         allInputs[0].classList.remove("red-border");
+        allInputs[0].classList.add("green-border");
     };
 
     // VALIDATION NOM
-    if(allInputs[1].value == "" || allInputs[1].value.length < 2) {
+    if(allInputs[1].value == "" || allInputs[1].value.length < 2 || allInputs[1].value.search(regexName) === -1) {
     error = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
     };
     if (error) { 
@@ -129,11 +97,12 @@ document.forms["reserve"].addEventListener("submit", function(e) {
     } else {
         allSpans[1].innerHTML = "";
         allInputs[1].classList.remove("red-border");
+        allInputs[1].classList.add("green-border");
     };
 
     // VALIDATION EMAIL
-    const regexEmail = /\S+@\S+\.\S+/; // On définit une variable regex pour la validation des mails
-    if(allInputs[2].value.search(regexEmail) === -1) { // on vérifie que la valeur de l'email ne verifie pas cette regex (ca retourne true dans ce cas)
+    // On vérifie que la valeur de l'email ne verifie pas cette regex (ca retourne true dans ce cas)
+    if(allInputs[2].value.search(regexEmail) === -1) { 
         error = "Rentrez un email valide"; // on indique le message d'erreur correspondant si la condition est true
     };
     if (error) {
@@ -144,10 +113,12 @@ document.forms["reserve"].addEventListener("submit", function(e) {
     } else {
         allSpans[2].innerHTML = "";
         allInputs[2].classList.remove("red-border");
+        allInputs[2].classList.add("green-border");
     };
 
     // VALIDATION BIRTHDAY 
-    if(allInputs[3].value == "") { // on vérifie que la valeur de la date de naissance absente (si c'est le cas retourne true)
+    // on vérifie que la valeur de la date de naissance absente (si c'est le cas retourne true)
+    if(allInputs[3].value == "") { 
         error = "Vous devez entrer votre date de naissance.";
     };
     if (error) {
@@ -158,10 +129,12 @@ document.forms["reserve"].addEventListener("submit", function(e) {
     } else {
         allSpans[3].innerHTML = "";
         allInputs[3].classList.remove("red-border");
+        allInputs[3].classList.add("green-border");
     };
 
     // VALIDATION TOURNOIS
-    if(allInputs[4].value == "") { // on vérifie que la valeur de la date de naissance absente (si c'est le cas retourne true)
+    // On vérifie que la valeur de la date de naissance absente (si c'est le cas retourne true)
+    if(allInputs[4].value == "") { 
         error = "Ce champ est obligatoire.";
     };
     if (error) {
@@ -172,26 +145,25 @@ document.forms["reserve"].addEventListener("submit", function(e) {
     } else {
         allSpans[4].innerHTML = "";
         allInputs[4].classList.remove("red-border");
+        allInputs[4].classList.add("green-border");
     };
 
     // VALIDATION CHECKBOXES VILLES
-    // for (let i=0; i<allCheckboxLocations.length; i++) {
-    //     if(allCheckboxLocations[i].checked) {
-    //         allSpans[5].innerHTML = "";
-    //         console.log("OK!");            
-    //         break;
-    //     } else {
-    //         allSpans[5].innerHTML = "Vous devez choisir une option.";
-    //         console.log("NOT OK!"); 
-    //         i++;             
-    //     }
-    // };
+    for (let i=0; i<allCheckboxLocations.length; i++) {
+        if(allCheckboxLocations[i].checked) {
+            allSpans[5].innerHTML = "";
+            return true;
+        } else {
+            allSpans[5].innerHTML = "Vous devez choisir une option.";
+            return false;
+        }
+    };
 
     // VALIDATION CONDITIONS GENERALES
-    if(!condUtilisation.checked) { // on vérifie que la checkbox n'est pas checkée (si c'est le cas c'est true)
+    // On vérifie que la checkbox n'est pas checkée (si c'est le cas c'est true)
+    if(!condUtilisation.checked) { 
         error = "Vous devez vérifier que vous acceptez les termes et conditions.";            
-    };
-    errorTreatment()
+    };    
     if (error) {
         e.preventDefault();
         allSpans[6].innerHTML = error;
@@ -200,20 +172,9 @@ document.forms["reserve"].addEventListener("submit", function(e) {
     } else {
         allSpans[6].innerHTML = "";
         condUtilisation.classList.remove("red-border");
+        condUtilisation.classList.add("green-border");
     }
 
-// A valider !!!
-    const errorTreatment = (input, span) => {
-        if (error) {
-            e.preventDefault();
-            allSpans[6].innerHTML = error;
-            condUtilisation.classList.add("red-border");
-            return false;
-        } else {
-            allSpans[6].innerHTML = "";
-            condUtilisation.classList.remove("red-border");
-        }
-    }
 // ------------------------------------------------
 // CONFIRMATION
 // ------------------------------------------------
@@ -221,5 +182,4 @@ document.forms["reserve"].addEventListener("submit", function(e) {
     form.style.display = "none";
     // On affiche le bouton fermer crée dans l'html
     confirmationBox.style.display = "flex";
-    
 });

@@ -163,6 +163,9 @@ input {
 .red-border { /*Classe ajouté lorsque message d'erreur dans les inputs*/
     border: 2px solid red;
 }
+.green-border {
+    border: 2px solid #279E7A;
+}
 .text-control {
   margin: 0;
   padding: 8px;
