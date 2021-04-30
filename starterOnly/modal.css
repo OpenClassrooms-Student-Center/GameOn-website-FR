@@ -538,6 +538,12 @@ footer {
         display: block;
         text-align: left;
     }
+    .hero-section {
+        text-align: center;
+    }
+    .hero-content {
+        text-align: center;
+    }
 }
 @media screen and (max-width: 540px) {
     .topnav a {display: none;}
@@ -553,19 +559,23 @@ footer {
     .header-logo img {
         width: 100%;
     }
+    .hero-section {
+        text-align: center;
+    }
+    .hero-content, .hero-headline, .hero-text {
+        width: 335px;
+    }
     .hero-content {
         padding: 0 5px;
-        width: 335px;
-
+        text-align: center;
     }
     .hero-headline {
-        font-size: 3rem;
+        font-size: 2.5rem;
         white-space: normal;
-        width: 335px;
+        margin-top: 20px;
     }
     .hero-text {
-        width: 335px;
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         margin-top: 20px;
     }
     .hero-img img {

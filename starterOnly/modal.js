@@ -169,12 +169,9 @@ document.forms["reserve"].addEventListener("submit", function(e) {
     if (error) {
         e.preventDefault();
         allSpans[6].innerHTML = error;
-        condUtilisation.classList.add("red-border");
         return false;
     } else {
         allSpans[6].innerHTML = "";
-        condUtilisation.classList.remove("red-border");
-        condUtilisation.classList.add("green-border");
     }
 
     // Affichage de la modal de confirmation
