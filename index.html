@@ -20,15 +20,16 @@
 
     </div>
 
-    <div class="main-navbar">
+    <nav class="main-navbar">
       
       <a href="#" class="active"><span>Accueil</span></a>
       <a href="#"><span>Détails de l'évènement</span></a>
       <a href="#"><span>À propos</span></a>
       <a href="#"><span>Contact</span></a>
       <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()"><i class="fa fa-bars"></i></a>
-    </div>
+      <a href="#" class="icon"><i class="fa fa-bars"></i></a>
+
+    </nav>
 
     </div>
 
@@ -67,35 +68,35 @@
               <div class="formData">
 
                 <label for="first">Prénom</label><br>
-                <input class="text-control" type="text" id="first" name="first" /><br>
+                <input class="text-control" type="text" id="first" name="first" pattern="[a-zA-Z]{2,}" /><br>
 
               </div>
 
               <div class="formData">
 
                 <label for="last">Nom</label><br>
-                <input class="text-control" type="text" id="last" name="last"/><br>
+                <input class="text-control" type="text" id="last" name="last" pattern="[a-zA-Z]{2,}" /><br>
 
               </div>
 
               <div class="formData">
 
                 <label for="email">E-mail</label><br>
-                <input class="text-control" type="email" id="email" name="email"/><br>
+                <input class="text-control" type="email" id="email" name="email" pattern="^[a-z0-9._-]+@[a-z0-9]{2,}\.[a-z]{2,4}$" /><br>
 
               </div>
 
               <div class="formData">
 
                 <label for="birthdate">Date de naissance</label><br>
-                <input class="text-control" type="date" id="birthdate" name="birthdate"/><br>
+                <input class="text-control" type="date" id="birthdate" name="birthdate" min="1920-01-01"  /><br>
 
               </div>
 
               <div class="formData">
 
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" />
 
               </div>
 
@@ -103,7 +104,7 @@
 
               <div class="formData">
 
-                <input class="checkbox-input" type="radio" id="location1" name="location" value="New York"/>
+                <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
                 <label class="checkbox-label" for="location1">
                 <span class="checkbox-icon"></span>New York</label>
 
@@ -134,7 +135,7 @@
                 <label class="checkbox2-label" for="checkbox1">
                 <span class="checkbox-icon"></span>J'ai lu et accepté les conditions d'utilisation.</label><br>
 
-                <input class="checkbox-input"  id="checkbox2" name="checkbox2" />
+                <input class="checkbox-input"  type="checkbox" id="checkbox2" name="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                 <span class="checkbox-icon"></span>Je souhaite être prévenu des prochains évènements.</label><br>
 
