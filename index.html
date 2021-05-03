@@ -68,35 +68,35 @@
               <div class="formData">
 
                 <label for="first">Prénom</label><br>
-                <input class="text-control" type="text" id="first" name="first" pattern="[a-zA-Z]{2,}" /><br>
+                <input class="text-control" type="text" id="first" name="first" pattern= "^[a-zA-Z]{2,}$" /><br>
 
               </div>
 
               <div class="formData">
 
                 <label for="last">Nom</label><br>
-                <input class="text-control" type="text" id="last" name="last" pattern="[a-zA-Z]{2,}" /><br>
+                <input class="text-control" type="text" id="last" name="last" pattern="^[a-zA-Z]{2,}$"/><br>
 
               </div>
 
               <div class="formData">
 
                 <label for="email">E-mail</label><br>
-                <input class="text-control" type="email" id="email" name="email" pattern="^[a-z0-9._-]+@[a-z0-9]{2,}\.[a-z]{2,4}$" /><br>
+                <input class="text-control" type="email" id="email" name="email" pattern="^[^\d][\w\-]+@[a-z]+\.[a-zA-Z]{2,}$" /><br>
 
               </div>
 
               <div class="formData">
 
                 <label for="birthdate">Date de naissance</label><br>
-                <input class="text-control" type="date" id="birthdate" name="birthdate" min="1920-01-01"  /><br>
+                <input class="text-control" type="date" id="birthdate" name="birthdate" min="1900-05-01" max="2003-05-01" /><br>
 
               </div>
 
               <div class="formData">
 
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" />
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" pattern="^\d{1,2}$"/>
 
               </div>
 
@@ -159,7 +159,7 @@
 
     </footer>
 
-    <script src="modal.js"></script>
+    <script type="module" src="modal.js"></script>
 
   </body>
 </html>

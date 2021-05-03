@@ -326,6 +326,7 @@ footer {
 }
 
 .valid {
+  text-align: center;
   color: white;
   font-size: 30px;
   position: absolute;
