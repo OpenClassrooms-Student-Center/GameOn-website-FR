@@ -1,6 +1,6 @@
 // OBJET CONTENANT DES VARIABLE QUI RECUPERE LES ELEMENTS DU DOM
 
-export const domElement = {
+ const domElement = {
     actionModal: document.getElementById("myTopnav"),
     btnNav: document.querySelector(".icon"),
     modalbg: document.querySelector(".bground"),
@@ -17,7 +17,7 @@ export const domElement = {
   };
 
   // OBJET CONTENANT DES REGEX
-export const allRegex = {
+ const allRegex = {
     0: { regex: /^[a-z]{2,}$/i},
     1: { regex: /^[a-z]{2,}$/i },
     2: { regex: /^[^\d][\w\-]+@[a-z]+\.[a-z]{2,}$/i},
@@ -25,7 +25,7 @@ export const allRegex = {
   };
   
   // OBJET CONTENANT DES MESSAGES POUR INFORMER L UTILISATEUR
- export const displayMessage = {
+  const displayMessage = {
     0: { msg: "Veuillez renseigner un prénom valide" },
     1: { msg: "Veuillre renseigner un nom valide" },
     2: { msg: "Veuillez renseigner un email valide" },
@@ -35,3 +35,6 @@ export const allRegex = {
     6: { msg: "Il est obligé d'accepter les conditions de vente générales" },
     7: { msg: "Merci ! Votre réservation a été reçue." },
   };
+
+
+  export { domElement, allRegex, displayMessage };
