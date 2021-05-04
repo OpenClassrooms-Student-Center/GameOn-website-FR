@@ -169,6 +169,16 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
+.modal-body {
+  padding: 15px 8%;
+  margin: 15px auto;
+}
+
+.button-close {
+  margin-top: 300px;
+}
+
+
 .content {
   margin: 5% auto;
   width: 100%;
@@ -188,23 +198,84 @@ main {
   margin: 15px auto;
 }
 
-/* Ajout  */
+/* Ajout  des messages (erreur et confirmation)*/
 .error {
   font-size: small;
   color: red;
 }
-.confirmation {
-	display: none;
-	flex-direction: column;
-	justify-content: center;
-	position: absolute;
-	z-index: 99999;
-	top: 35px;
-	background: #bd1010;
-	width: 100%;
-	height: 100%;
-	text-align: center;
+
+.submit_confirmation{
+  position: fixed;
+  z-index: 1;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background-color: rgba(108, 98, 156, 0.753);
+  align-items: center;
+  justify-content: center;
+  display: none;
 }
+  
+.body_confirmation{
+  background-color: black;
+  display: flex;
+  position: fixed;
+  height: 85%;
+  width: 320px;
+  left: 0;
+  right: 0;
+  margin: 5rem auto 0 auto;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+}
+  
+.body_confirmation p{
+    position: absolute;
+    text-align: center;
+    font-size: 20px;
+    color: rgb(40, 122, 67);
+    top: 40%;
+    margin: 0 auto;
+}
+
+#closeX{
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-size: 1.3rem;
+    border: #fff;
+    font-size: 30px;
+    background-color: rgb(2, 2, 2);
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: #fff;
+}
+  
+.close-btn{
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    padding: 10px 25px;
+    border-radius: 5px;
+    background-color: red;
+    border: none;
+    color: #fff;
+}
+.close_confirmation:hover{
+  cursor: pointer;
+}
+  
+.close-btn:hover{
+    background-color: rgb(219, 93, 93);
+    cursor: pointer;
+}
+  
+
 
 label {
   font-family: var(--font-default);
