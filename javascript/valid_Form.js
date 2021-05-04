@@ -36,13 +36,13 @@ export const sendData = (e) => {
 
   if (!domElement.birtday.value || Date.parse(domElement.birtday.value) < dateMin || Date.parse(domElement.birtday.value) > dateMax) {
     e.preventDefault();
-    isValid == false;
+    isValid = false;
     editMessage(paragraphe, "erreur", displayMessage[4].msg, containerBirthdate[0]);
   }
 
-  if (domElement.inputRadio.every((item) => !item.checked)) {
-    // SI TOUT LES INPUT RADIO SONT PAS CHECK
+  // SI TOUT LES INPUT RADIO SONT PAS CHECK
 
+  if (domElement.inputRadio.every((item) => !item.checked)) {
     e.preventDefault();
     isValid = false;
     editMessage(paragraphe, "erreur", displayMessage[5].msg, domElement.containerData[4]);
