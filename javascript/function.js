@@ -1,28 +1,27 @@
 // FONCTION POUR AFFICHER LE MENU NAV EN RESPONSIVE
 
-const editNav = (el) => {
-  if (el.className === "topnav") {
-    el.className += " responsive";
-  } else {
-    el.className = "topnav";
-  }
-};
+const edit_nav = el => el.className === "topnav" ? el.className += " responsive" : el.className ="topnav";
 
 // FONCTION POUR OUVRIR LA MODALE
 
-const launchModal = (el) => (el.style.display = "block");
+const launch_modal = el => el.style.display = "block";
 
 // FONCTION POUR FERMER LA MODALE
 
-const closeModal = (el) => (el.style.display = "none");
+const close_modal = el => el.style.display = "none";
 
 // FONCTION POUR AFFICHER LE BON MESSAGE D ERREUR POUR LE BON INPUT
+// CLASSE => CLASSE CRÉER EN CSS , MSGERROR => MESSAGE QU ON VEUT , ET CONTENEUR
+const edit_message = (paragraphe, classe, msgError, elParent) => {
 
-const editMessage = (paragraphe, classe, msgError, elParent) => {
-  // CLASSE => CLASSE CRÉER EN CSS , MSGERROR => MESSAGE QU ON VEUT , ET CONTENEUR
-  paragraphe.classList.add(classe); // ON AJOUTE LA CLASSE ( ERREUR OU VALID) CREE EN CSS
-  paragraphe.textContent = msgError; // ON INDIQUE LE MESSAGE A METTRE DANS LA BALISE P
-  elParent.appendChild(paragraphe); // ON SELECTIONNE LE CONTENEUR POUR PLACER LE PARAGRAPHE AVEC LE MESSAGE
+  // ON AJOUTE LA CLASSE ( ERREUR OU VALID) CREE EN CSS
+  paragraphe.classList.add(classe); 
+  
+  // ON INDIQUE LE MESSAGE A METTRE DANS LA BALISE P
+  paragraphe.textContent = msgError; 
+  
+  // ON SELECTIONNE LE CONTENEUR POUR PLACER LE PARAGRAPHE AVEC LE MESSAGE
+  elParent.appendChild(paragraphe); 
 };
 
-export { editNav , launchModal, closeModal, editMessage};
+export { edit_nav , launch_modal, close_modal, edit_message};

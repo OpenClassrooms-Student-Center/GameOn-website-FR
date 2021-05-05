@@ -383,7 +383,7 @@ input:not(:focus):invalid{
   .bground {
     top: 70px;
     width: 100%;
-    height: auto;
+    height: 120vh;
   }
 
   .content {

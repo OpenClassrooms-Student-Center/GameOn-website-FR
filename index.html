@@ -48,17 +48,17 @@
             <form name="reserve" action="index.html" method="POST">
               <div class="formData">
                 <label for="first">Prénom</label><br />
-                <input class="text-control" type="text" id="first" name="first" pattern="^[a-zA-Z]{2,}$" /><br />
+                <input class="text-control" type="text" id="first" name="first" pattern="^[a-zA-Z]+[\s\-]?[a-zA-Z]+$" /><br />
               </div>
 
               <div class="formData">
                 <label for="last">Nom</label><br />
-                <input class="text-control" type="text" id="last" name="last" pattern="^[a-zA-Z]{2,}$" /><br />
+                <input class="text-control" type="text" id="last" name="last" pattern="^[a-zA-Z]+[\s\-]?[a-zA-Z]+$" /><br />
               </div>
 
               <div class="formData">
                 <label for="email">E-mail</label><br />
-                <input class="text-control" type="email" id="email" name="email" pattern="^[^\d][\w\-]+@[a-z]+\.[a-zA-Z]{2,}$" /><br />
+                <input class="text-control" type="email" id="email" name="email" pattern="^[\w\_\-\.]+[a-z0-9]+@[a-z0-9\-]+\.[a-z]+$" /><br />
               </div>
 
               <div class="formData">

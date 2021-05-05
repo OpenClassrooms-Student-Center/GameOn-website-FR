@@ -1,12 +1,12 @@
-import { domElement} from "./constant.js";
-import { editNav, launchModal, closeModal} from "./function.js";
-import { sendData } from "./valid_Form.js";
+import { dom_element} from "./constant.js";
+import { edit_nav, launch_modal, close_modal} from "./function.js";
+import { send_data } from "./valid_form.js";
 
-domElement.btnNav.addEventListener("click", () => editNav(domElement.actionModal));
+dom_element.btnNav.addEventListener("click", () => edit_nav(dom_element.actionModal));
 
-domElement.modalBtn.forEach((btn) => btn.addEventListener("click", () => launchModal(domElement.modalbg)));
+dom_element.modalBtn.forEach((btn) => btn.addEventListener("click", () => launch_modal(dom_element.modalbg)));
 
-domElement.btnCloseModal.addEventListener("click", () => closeModal(domElement.modalbg));
+dom_element.btnCloseModal.addEventListener("click", () => close_modal(dom_element.modalbg));
 
-document.forms[0].addEventListener("submit",sendData);
+document.forms[0].addEventListener("submit",send_data);
 
