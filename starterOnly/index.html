@@ -54,11 +54,13 @@
 
       <div class="bground">
         <div class="content">
-          <span class="close"></span>
+          <span class="close closemodal"></span>
           <div class="modal-body">
-            <p id=validation_text>Merci !<br> <br> Votre réservation a bien été reçue</p> <!--Validation message appears when modal is ok,and modal disappears-->
-            <button class="btn-submit" id=validation--button>Fermer</button>
-            <form id=validation_clear  
+            <div id=validation>
+              <p id=validation_text>Merci !<br> <br> Votre réservation a bien été reçue</p> <!--Validation message appears when modal is ok,and modal disappears-->
+              <button class="btn-submit closemodal" id=validation--button>Fermer</button>
+           </div>
+            <form   
               name="reserve"
               action="index.html"
               method="get"

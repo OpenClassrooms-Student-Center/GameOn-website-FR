@@ -11,10 +11,9 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const closeX = document.querySelectorAll(".close");
-const formDisplay = document.getElementById("validation_clear");
-const validationText= document.getElementById("validation_text");
-const validationButton= document.getElementById("validation--button");
+const closeX = document.querySelectorAll(".closemodal");
+const formDisplay = document.getElementsByTagName("form");
+const validationDiv= document.getElementById("validation");
 const inputs = document.getElementsByTagName("input");
 
 // launch modal event
@@ -29,14 +28,12 @@ function launchModal() {
 closeX.forEach((btn) => btn.addEventListener("click", closeModal));
 
 // close modal form + validation message
-function closeModal(e) {
+function closeModal() {
   modalbg.style.display = "none";
-  formDisplay.style.display = "block";
-  validationText.style.display= "none";
-  validationButton.style.display= "none"; 
+  formDisplay[0].style.display = "block";
+  validationDiv.style.display= "none";
 }
 //close modal when click outside 
-var content = document.querySelector(".content")
 modalbg.addEventListener("click", function (e) {
   if (e.target != modalbg) {
   }
@@ -44,14 +41,10 @@ modalbg.addEventListener("click", function (e) {
   }
   })
   
-// Close Validation message Button
-validationButton.addEventListener("click", closeModal);
-
 // Close modal and open validation message and clear modal fields
 function validate(){
-  formDisplay.style.display = "none";
-  validationText.style.display= "block";
-  validationButton.style.display= "block";
+  formDisplay[0].style.display = "none";
+  validationDiv.style.display= "block";
     for (var i=0; i < inputs.length -1; i++){
     inputs[i].value = "";
     inputs[i].checked = false;

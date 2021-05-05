@@ -170,9 +170,11 @@ main {
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
 }
+#validation {
+  display:none
+}
 
 #validation_text { /*texte qui apparait dans modal-body quand le formData est en display:none; après validation du formulaire*/
-  display:none;
   height:650px;
   padding:40% 20% 50% 20%;
   font-weight: 400;
@@ -180,9 +182,7 @@ main {
   line-height: 51.34px;
   text-align: center;
 }
-#validation--button {/*bouton pour fermer le message de validation*/
-  display:none
-}
+
 .content {
   margin: 5% auto;
   width: 100%;
