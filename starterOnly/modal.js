@@ -33,16 +33,14 @@ function closeModal(e) {
   modalbg.style.display = "none";
   formDisplay.style.display = "block";
   validationText.style.display= "none";
-  validationButton.style.display= "none";
- 
+  validationButton.style.display= "none"; 
 }
 //close modal when click outside 
 var content = document.querySelector(".content")
 modalbg.addEventListener("click", function (e) {
   if (e.target != modalbg) {
   }
-  else {
-    closeModal()
+  else { closeModal()
   }
   })
   
@@ -76,7 +74,6 @@ function error(e,texte,custom) {
   e.parentNode.setAttribute("data-error", texte);
   e.setCustomValidity(custom)
 }
-
 
 //Function which check if the input is correct
 function fieldValidation(e) {
