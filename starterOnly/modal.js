@@ -111,7 +111,7 @@ function fieldValidation(e) {
 }
 
 // Checks every input
-for (var i=0; i < inputs.length; i++){
+for (var i=0; i < inputs.length -2; i++){
     inputs[i].addEventListener("input",  function (){
       fieldValidation(this);
      })}
