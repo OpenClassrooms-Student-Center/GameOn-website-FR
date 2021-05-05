@@ -174,7 +174,7 @@ main {
 #validation_text { /*texte qui apparait dans modal-body quand le formData est en display:none; après validation du formulaire*/
   display:none;
   height:650px;
-  padding:150px 120px 360px 105px;
+  padding:40% 20% 50% 20%;
   font-weight: 400;
   font-size: 36px;
   line-height: 51.34px;
