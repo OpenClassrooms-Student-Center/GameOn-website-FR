@@ -78,16 +78,16 @@ myform.addEventListener('submit', (e) => {
   
   e.preventDefault();
   if( firstN() && lastN() && email() && birthday() && quantityy() && cities() && choices() ) {
-    //Close ModalBox and OPEN SuccesBox
+      //fermeture du modal inscription et ouverture du modal de succès
       modalBox.style.display = "none";
       succesMessage.style.display = "block";  
-      //Close succesBox
+      //Fermer le modal de succès
       document.querySelectorAll('.close_confirmation').forEach(button =>{
       button.addEventListener('click', button => {
       if (succesMessage.style.display === "block"){
           succesMessage.style.display = 'none';
       }})});
-      //Reset the form  
+      //Remise à zéro du formulaire  
       myform.reset();
     } 
     return true;

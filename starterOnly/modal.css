@@ -166,7 +166,7 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  background-color: #eee;
 }
 
 .modal-body {
@@ -191,6 +191,7 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+  box-shadow: 0px 10px 10px -5px black;
 }
 
 .modal-body {
@@ -211,7 +212,7 @@ main {
   width: 100vw;
   top: 0;
   left: 0;
-  background-color: rgba(108, 98, 156, 0.753);
+  background-color: #eee;
   align-items: center;
   justify-content: center;
   display: none;
@@ -221,21 +222,24 @@ main {
   background-color: black;
   display: flex;
   position: fixed;
-  height: 85%;
-  width: 320px;
+  height: 89%;
+  width: 100%;
+  max-width: 420px;
   left: 0;
   right: 0;
-  margin: 5rem auto 0 auto;
+  margin: 55px auto 0 auto;
   align-items: center;
   justify-content: center;
   border-radius: 15px;
+  box-shadow: 0px 10px 10px -5px black;
 }
+
   
 .body_confirmation p{
     position: absolute;
     text-align: center;
     font-size: 20px;
-    color: rgb(40, 122, 67);
+    color: rgb(236, 241, 238);
     top: 40%;
     margin: 0 auto;
 }
@@ -246,7 +250,7 @@ main {
     top: 15px;
     font-size: 1.3rem;
     border: #fff;
-    font-size: 30px;
+    font-size: 20px;
     background-color: rgb(2, 2, 2);
     justify-content: center;
     text-align: center;
@@ -256,7 +260,7 @@ main {
   
 .close-btn{
     position: absolute;
-    bottom: 15px;
+    bottom: 25px;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -649,9 +653,19 @@ footer {
 		top: 70px;
 		margin: 0 auto;
 	}
-	.bground {
+	.bground,.submit_confirmation {
 		background-color: initial;
 	}
+}
+
+@media screen and (max-width: 430px){
+  .body_confirmation {
+    border-radius: 15px 15px 0 0;
+    height : 92%;
+  }
+  .content {
+    border-radius: 15px 15px 0 0;
+  }
 }
 
 @keyframes modalopen {
