@@ -1,5 +1,5 @@
 import { DOM_ELEMENT, ALL_REGEX, DISPLAY_MESSAGE } from "./constant.js";
-import { EDIT_MESSAGE } from "./function.js";
+import { edit_message } from "./function.js";
 
 // SUPPRESSION D'UNE INPUT ( DE LA CLE 3 ET LE PREMIER QUI SUIT)
 DOM_ELEMENT.inputTxt.splice(3, 1);
@@ -19,7 +19,7 @@ const dateMin = Date.parse("01 May 1900 00:00:00 GMT");
 const paragraphe = document.createElement("p");
 
 // FONCTION PERMETTANT DE VERIFIER LES ENTREES POUR CONFIRMER OU NON L ENVOI
-export const SEND_DATA = (e) => {
+export const send_data = (e) => {
 
   // ANNULE LE COMPORTEMENT PAR DEFAULT DE SUBMIT
   e.preventDefault();
@@ -42,7 +42,7 @@ export const SEND_DATA = (e) => {
       isValid = false;
 
       // APPEL DE LA FONCTION POUR AFFICHER LE MESSAGE
-      EDIT_MESSAGE(paragraphe, "erreur", msg, DOM_ELEMENT.containerData[key]); 
+      edit_message(paragraphe, "erreur", msg, DOM_ELEMENT.containerData[key]); 
     }
   });
 
@@ -51,7 +51,7 @@ export const SEND_DATA = (e) => {
   if (!DOM_ELEMENT.birtday.value || Date.parse(DOM_ELEMENT.birtday.value) < dateMin || Date.parse(DOM_ELEMENT.birtday.value) > dateMax) {
     e.preventDefault();
     isValid = false;
-    EDIT_MESSAGE(paragraphe, "erreur", DISPLAY_MESSAGE[4].msg, containerBirthdate[0]);
+    edit_message(paragraphe, "erreur", DISPLAY_MESSAGE[4].msg, containerBirthdate[0]);
   }
 
   // SI TOUT LES INPUT RADIO SONT PAS CHECK
@@ -59,20 +59,20 @@ export const SEND_DATA = (e) => {
   if (DOM_ELEMENT.inputRadio.every((item) => !item.checked)) {
     e.preventDefault();
     isValid = false;
-    EDIT_MESSAGE(paragraphe, "erreur", DISPLAY_MESSAGE[5].msg, DOM_ELEMENT.containerData[4]);
+    edit_message(paragraphe, "erreur", DISPLAY_MESSAGE[5].msg, DOM_ELEMENT.containerData[4]);
   }
 
 
   if (!DOM_ELEMENT.checkbox.checked) {
     e.preventDefault();
     isValid = false;
-    EDIT_MESSAGE(paragraphe, "erreur", DISPLAY_MESSAGE[6].msg, DOM_ELEMENT.containerData[5]);
+    edit_message(paragraphe, "erreur", DISPLAY_MESSAGE[6].msg, DOM_ELEMENT.containerData[5]);
   }
 
   // SI TOUTES LES CONDITIONS SONT TRUE ALORS ACCEPTE L ENVOI<
   if (isValid) {
     DOM_ELEMENT.formulaire.style.opacity = "0";
-    EDIT_MESSAGE(paragraphe, "valid", DISPLAY_MESSAGE[7].msg, DOM_ELEMENT.displayModal);
+    edit_message(paragraphe, "valid", DISPLAY_MESSAGE[7].msg, DOM_ELEMENT.displayModal);
   } else {
     return 0;
   }
