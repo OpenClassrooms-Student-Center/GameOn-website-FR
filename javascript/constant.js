@@ -1,6 +1,6 @@
 // OBJET CONTENANT DES VARIABLE QUI RECUPERE LES ELEMENTS DU DOM
 
- const dom_element = {
+ const DOM_ELEMENT = {
     actionModal: document.getElementById("myTopnav"),
     btnNav: document.querySelector(".icon"),
     modalbg: document.querySelector(".bground"),
@@ -17,15 +17,15 @@
   };
 
   // OBJET CONTENANT DES REGEX
- const all_regex = {
+ const ALL_REGEX = {
     0: { regex: /^[a-z]+[\s\-]?[a-z]+$/i},
-    1: { regex: /^[a-z]+[\s\-]?[a-z]+$/i },
+    1: { regex: /^([a-z]+([\s\-][a-z]+)*)$/i},
     2: { regex: /^[\w\_\-\.]+[a-z0-9]+@[a-z0-9\-]+\.[a-z]+$/},
     3: { regex: /^\d{1,2}$/},
   };
   
   // OBJET CONTENANT DES MESSAGES POUR INFORMER L UTILISATEUR
-  const display_message = {
+  const DISPLAY_MESSAGE = {
     0: { msg: "Veuillez renseigner un prénom valide" },
     1: { msg: "Veuillre renseigner un nom valide" },
     2: { msg: "Veuillez renseigner un email valide" },
@@ -37,4 +37,4 @@
   };
 
 
-  export { dom_element, all_regex, display_message };
+  export { DOM_ELEMENT, ALL_REGEX, DISPLAY_MESSAGE };
