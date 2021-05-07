@@ -57,14 +57,6 @@ form.addEventListener("submit", function(e) {
 		messageErreur = true ;
 	}
 
-	if (!inputs["email"].value || /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(inputs["email"].value) == false) {
-		messageErreur = true ;
-	}
-
-	if (/^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/.test(inputs["birthdate"].value) == false){
-		messageErreur = true;
-	} 
- 
 	if (messageErreur) {
 		e.preventDefault();
 		document.getElementById("erreur").innerHTML = 'remplir tous les champs';
