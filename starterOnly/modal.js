@@ -40,12 +40,12 @@ const form = document.getElementById("reserve");
 //  const quantity = document.getElementById("quantity");
 //  const listLocation = document.querySelectorAll('input[type="radio"]');
  const btnSubmit = document.getElementById('btnSubmit');
- 
+ const checkRadio = document.querySelectorAll('input[type="radio"]');
+ const checkbox = document.querySelectorAll('input[type="checkbox"]');
 
 form.addEventListener("submit", function(e) {
-
 	let messageErreur;
- 
+	
 	const inputs = this.getElementsByTagName('input');
 
 	// Traitement générique
@@ -64,6 +64,18 @@ form.addEventListener("submit", function(e) {
 	if (/^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/.test(inputs["birthdate"].value) == false){
 		messageErreur = true;
 	} 
+
+	for (let i = 0; i < checkRadio.length; i++) {
+		if (checkRadio[i].checked) {
+			break;
+		} else if (i = checkRadio.length - 1){
+			messageErreur = true;
+		}
+	}
+
+	if (!checkbox[0].checked){
+		messageErreur = true;
+	}
  
 	if (messageErreur) {
 		e.preventDefault();
@@ -74,6 +86,8 @@ form.addEventListener("submit", function(e) {
 		document.getElementById("erreur").innerHTML = '';
 		alert('Formulaire envoyé !');
 		clearValue(5 ,inputs);
+		unchecked(checkRadio.length, checkRadio);
+		unchecked(checkbox.length, checkbox);
 		return false
 	}
 });
@@ -81,5 +95,11 @@ form.addEventListener("submit", function(e) {
 function clearValue(a , b){
 	for (let i=0 ; i<a ; i++){
 		b[i].value = '';
+	}
+}
+
+function unchecked(a , b){
+	for (let i=0 ; i<a ; i++){
+		b[i].checked =  false;
 	}
 }
