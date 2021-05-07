@@ -57,6 +57,10 @@ form.addEventListener("submit", function(e) {
 		messageErreur = true ;
 	}
 
+	if (!inputs["email"].value || /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(inputs["email"].value) == false) {
+		messageErreur = true ;
+	}
+ 
 	if (messageErreur) {
 		e.preventDefault();
 		document.getElementById("erreur").innerHTML = 'remplir tous les champs';
