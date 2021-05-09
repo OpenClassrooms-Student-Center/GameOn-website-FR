@@ -28,6 +28,7 @@ closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 function closeModal() {
   modalbg.style.display = "none";
 }
+
 // #2 TO DO: implement form entries
  
  // DOM elements
@@ -64,9 +65,13 @@ function validateDate(){
 	return (/^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/.test(inputs["birthdate"].value));
 } 
 
+// valide champ nbr de tournois non vide
+function validateDate(){
+	return !inputs["quantity"].value == '';
+} 
 
 // valide si ville cochée
-function validateRadio(){
+function validateRadio() {
 	for (radio of checkRadio){
 		if(radio.checked)
 			return true;
@@ -80,16 +85,16 @@ function validateCheckbox1(){
 }
 
 // vérification des contraintes lors de la validation du formulaire
-form.addEventListener("submit", function(e) {
+function validate(){
 
 	//cré un tableau des contraintes valides et non valides	
 	const inputsItems = [validateFirst(),validateLast(),validateEmail(),validateDate(),validateRadio(),validateCheckbox1()];
 
-	let isValid = true;
-
-	//parcours du tableau des contrainte, sort de la boucle à la premiere valeur false et passe isValid à false
-	isValid = !inputsItems.includes(false);
-
-	console.log(isValid);
-
-});
+	//parcours du tableau des contraintes, sort de la boucle à la premiere valeur false et retourne false
+	if (inputsItems.includes(false)){
+		return false;
+	} else {
+		btnSubmit.preventDefault();
+		return true;
+	}
+}

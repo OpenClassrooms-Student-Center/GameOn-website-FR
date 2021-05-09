@@ -61,8 +61,8 @@
               id = "reserve"
               action="index.html"
               method="get"
+              onsubmit="return validate()"
             >
-            <!-- onsubmit="return validate();" -->
               <div class="formData">
                 <label for="first">Prénom</label><br>
                 <input
@@ -101,7 +101,7 @@
               </div>
               <div class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
               <p class="text-label">Quelle ville ?</p>
               <div class="formData" name="location">
