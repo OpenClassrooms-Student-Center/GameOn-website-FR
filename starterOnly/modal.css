@@ -18,7 +18,7 @@ body {
   font-size: 18px;
   max-width: 1300px;
   margin: 0 auto;
-  min-width: 320px;
+  min-width: 375px;
 }
 button {
   outline:0;
@@ -99,7 +99,7 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    margin-top: 0px;
   }
 } 
 

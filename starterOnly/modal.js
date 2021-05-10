@@ -55,6 +55,7 @@ function validate(){
 }
 
 // Error messages function
+let inputValid;
 function noError(e) {
   inputValid=true;
   e.parentNode.setAttribute("data-error-visible", false);
