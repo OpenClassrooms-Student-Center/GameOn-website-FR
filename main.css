@@ -11,54 +11,36 @@
 /* Landing Page */
 
 body {
-  margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
-  max-width: 1300px;
   margin: 0 auto;
 }
 
-p {
-  margin-bottom: 0;
-  padding: 0.5vw;
-}
-
-img {
-  padding-right: 1rem;
-}
-
 .topnav {
-  overflow: hidden;
-  margin: 3.5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 50px;
 }
-.header-logo {
-    float: left;
-}
-.main-navbar {
-    float: right;
-}
+
 .topnav a {
   float: left;
   display: block;
   color: #000000;
   text-align: center;
   padding: 12px 12px;
-  margin: 5px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 16px;
   font-family: Roboto, sans-serif;
 }
 
-.topnav a:hover {
-  background-color: #ff0000;
-  color: #ffffff;
-  border-radius: 15px;
+.topnav a:first-child {
+  display: none;
 }
 
-.topnav a.active {
+.topnav a:hover {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
@@ -68,41 +50,7 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} 
-
 main {
-  font-size: 130%;
   font-weight: bolder;
   color: black;
   padding-top: 0.5vw;
@@ -111,8 +59,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -120,7 +66,6 @@ main {
   background: #fe142f;
   display: flex;
   margin: auto;
-  padding: 2em;
   color: #fff;
   padding: 0.75rem 2.5rem;
   border-radius: 1rem;
@@ -131,45 +76,22 @@ main {
   background: #3876ac;
 }
 
-.footer {
-  margin: 20px;
-  padding: 10px;
-  font-family: var(--font-slab);
-}
-
 /* Modal form */
-
-.button {
-  background: #fe142f;
-  margin-top: 0.5em;
-  padding: 1em;
-  color: #fff;
-  border-radius: 15px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.button:hover {
-  background: #3876ac;
-}
-
-.smFont {
-  font-size: 16px;
-}
 
 .bground {
   display: none;
-  position: fixed;
+  position: absolute;
   z-index: 1;
   left: 0;
   top: 0;
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  background-color: #232323;
 }
 
 .content {
+  box-shadow: 4px 4px 4px #262626 inset, -4px -4px 4px 0px #202020 inset;
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
@@ -208,30 +130,7 @@ input {
   font-size: 20px;
   height: 48px;
 }
-.formData[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.4em;
-  color: #e54858;
-  display: block;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  text-align: right;
-  line-height: 0.3;
-  opacity: 0;
-  transition: 0.3s;
-}
-.formData[data-error-visible="true"]::after {
-  opacity: 1;
-}
-.formData[data-error-visible="true"] .text-control {
-  border: 2px solid #e54858;
-}
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -272,6 +171,7 @@ input[data-error]::after {
 .checkbox-input {
   display: none;
 }
+
 .checkbox-input:checked + .checkbox-label .checkbox-icon::after,
 .checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
   opacity: 1;
@@ -333,79 +233,14 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
-/* custom select styles */
-.custom-select {
-  position: relative;
-  font-family: Arial;
-  font-size: 1.1rem;
-  font-weight: normal;
-}
 
-.custom-select select {
-  display: none;
-}
-.select-selected {
-  background-color: #fff;
-}
-
-/* Style the arrow inside the select element: */
-.select-selected:after {
-  position: absolute;
-  content: "";
-  top: 10px;
-  right: 13px;
-  width: 11px;
-  height: 11px;
-  border: 3px solid transparent;
-  border-bottom-color: #f00;
-  border-left-color: #f00;
-  transform: rotate(-48deg);
-  border-radius: 5px 0 5px 0;
-}
-
-/* Point the arrow upwards when the select box is open (active): */
-.select-selected.select-arrow-active:after {
-  transform: rotate(135deg);
-  top: 13px;
-}
-
-.select-items div,
-.select-selected {
-  color: #000;
-  padding: 11px 16px;
-  border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-  cursor: pointer;
-  border-radius: 8px;
-  height: 48px;
-}
-
-/* Style items (options): */
-.select-items {
-  position: absolute;
-  background-color: #fff;
-  top: 89%;
-  left: 0;
-  right: 0;
-  z-index: 99;
-}
-
-/* Hide the items when the select box is closed: */
-.select-hide {
-  display: none;
-}
-
-.select-items div:hover,
-.same-as-selected {
-  background-color: rgba(0, 0, 0, 0.1);
-}
 /* custom select end */
 .text-label {
   font-weight: normal;
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
+  max-height: 70vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -414,34 +249,26 @@ input[data-error]::after {
   margin-bottom: 10px;
 }
 .hero-content {
-  padding: 51px 67px;
-  grid-column: span 4;
   background: #232323;
-  color: #fff;
-  position: relative;
-  text-align: left;
-  min-width: 424px;
-}
-.hero-content::after {
-  content: "";
   width: 100%;
   height: 100%;
-  background: #232323;
-  position: absolute;
-  right: -80px;
-  top: 0;
-}
-.hero-content > * {
   position: relative;
   z-index: 1;
+
+  padding: 51px 67px;
+  grid-column: span 4;
+  color: #fff;
+  text-align: left;
+  min-width: 350px;
 }
+
 .hero-headline {
-  font-size: 6rem;
+  font-size: 5.6rem;
   font-weight: normal;
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
+  width: 120%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
@@ -470,51 +297,15 @@ input[data-error]::after {
   margin: 60px 0 30px;
   font-weight: bolder;
 }
+
 .hero-section > .btn-signup {
   display: none;
 }
+
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
   margin: 0 20px;
-}
-@media screen and (max-width: 800px) {
-  .hero-section {
-    display: block;
-    box-shadow: unset;
-  }
-  .hero-content {
-    background: #fff;
-    color: #000;
-    padding: 20px;
-  }
-  .hero-content::after {
-    content: unset;
-  }
-  .hero-content .btn-signup {
-    display: none;
-  }
-  .hero-headline {
-    font-size: 4.5rem;
-    white-space: normal;
-  }
-  .hero-text {
-    width: unset;
-    font-size: 1.5rem;
-  }
-  .hero-img img {
-    border-radius: 10px;
-    margin-top: 40px;
-  }
-  .hero-section > .btn-signup {
-    display: block;
-    margin: 32px auto 10px;
-    padding: 12px 35px;
-  }
-  .copyrights {
-    margin-top: 50px;
-    text-align: center;
-  }
 }
 
 @keyframes modalopen {
@@ -527,3 +318,136 @@ footer {
   }
 }
 
+/* Classe crée pour le javascript */
+
+.erreur {
+  color: red;
+  font-size: 14px;
+}
+
+.valid {
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+input:not(:focus):invalid{
+  border: 2px solid red;
+}
+
+/* Si la saisi est incorrect quand le champs n'est plus ciblé , mettre les bors en rouge */
+
+
+
+@media screen and (max-width: 998px) {
+  body {
+    width: 90%;
+    margin: auto;
+  }
+  .topnav {
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .topnav a {
+    display: none;
+  }
+  .topnav a.icon {
+    color: red;
+    float: right;
+    display: block;
+  }
+
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  .header-logo img {
+    width: 150px;
+  }
+
+  .bground {
+    top: 70px;
+    width: 100%;
+    height: 120vh;
+  }
+
+  .content {
+    height: 100%;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
+  .checkbox-label,
+  .checkbox2-label {
+    margin-left: 32px;
+  }
+
+  main {
+    margin: 0;
+    padding: 0;
+  }
+
+  .hero-section {
+    display: block;
+    box-shadow: unset;
+    width: 100%;
+    max-height: none;
+  }
+  .hero-content {
+    background: #fff;
+    color: #000;
+    padding: 0 25px 0 0;
+  }
+
+  .hero-content .btn-signup {
+    display: none;
+  }
+  .hero-headline {
+    font-size: 2.5rem;
+    white-space: normal;
+  }
+  .hero-text {
+    margin-top: 20px;
+    width: unset;
+    font-size: 1rem;
+  }
+  .hero-img img {
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 10px;
+  }
+  .hero-section > .btn-signup {
+    display: block;
+    margin: 30px auto;
+    padding: 12px 35px;
+  }
+
+  label {
+    margin: 12px 0;
+  }
+
+  .btn-submit {
+    margin: 20px auto;
+  }
+
+  .copyrights {
+    margin-top: 20px;
+    text-align: center;
+  }
+}
