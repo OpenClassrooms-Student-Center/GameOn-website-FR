@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>Reservation</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="modal.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet"/>
+  <meta charset="utf-8" />
+  <title>Reservation</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="modal.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet"/>
 </head>
 <body>
   <div class="topnav" id="myTopnav">
@@ -32,31 +32,35 @@
     </div>
     <div class="bground">
       <div class="content">
-        <span class="close"></span>
+        <span class="close" id="closeform"></span>
         <div class="modal-body">
-          <form name="reserve" action="index.html" method="get" onsubmit="return validate();" id="myForm">
+          <form name="reserve" action="index.html" method="get" id="myform">
             <div class="formData">
-              <label>Prénom</label><br>
+              <label for="first">Prénom</label><br>
               <input class="text-control" type="text" id="first" name="first" minlength="2"/><br>
-              <span id="erreurfirst"></span><br>
+              <span class="error" id="errorfirst"></span><br>
             </div>
             <div class="formData">
-              <label>Nom</label><br>
+              <label for="last">Nom</label><br>
               <input class="text-control" type="text" id="last" name="last"/><br>
+              <span class="error" id="errorlast"></span><br>
             </div>
             <div class="formData">
-              <label>E-mail</label><br>
+              <label for="email">E-mail</label><br>
               <input class="text-control" type="email" id="email" name="email"/><br>
+              <span class="error" id="erroremail"></span><br>
             </div>
             <div class="formData">
-              <label>Date de naissance</label><br>
+              <label for="birthdate">Date de naissance</label><br>
               <input class="text-control" type="date" id="birthdate" name="birthdate"/><br>
+              <span class="error" id="errorbirthdate"></span><br>
             </div>
             <div class="formData">
-              <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-              <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+              <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+              <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99"><br>
+              <span class="error" id="errorquantity"></span><br>
             </div>
-            <p class="text-label">Quelles villes ?</p>
+            <p class="text-label"  id="location">Quelles villes ?</p>
             <div class="formData">
               <input class="checkbox-input" type="radio" id="location1" name="location" value="New York"/>
               <label class="checkbox-label" for="location1"><span class="checkbox-icon"></span>New York</label>
@@ -70,14 +74,16 @@
               <label class="checkbox-label" for="location5"><span class="checkbox-icon"></span>Boston</label>
               <input class="checkbox-input" type="radio" id="location6" name="location" value="Portland"/>
               <label class="checkbox-label" for="location6"><span class="checkbox-icon"></span>Portland</label>
+              <span class="error" id="errorlocation"></span>
             </div>
             <div class="formData">
               <input class="checkbox-input" type="checkbox" id="checkbox1" checked/>
-              <label class="checkbox2-label" for="checkbox1" required><span class="checkbox-icon"></span>J'ai lu et accepté les conditions d'utilisation.</label><br>
+              <label class="checkbox2-label" for="checkbox1" required id="checkbox1_label"><span class="checkbox-icon"></span>J'ai lu et accepté les conditions d'utilisation.</label><br>
+              <span class="error" id="errorcheckbox1"></span><br>
               <input class="checkbox-input" type="checkbox" id="checkbox2" />
               <label class="checkbox2-label" for="checkbox2"><span class="checkbox-icon"></span>Je souhaite être prévenu des prochains évènements.</label><br>
             </div>
-            <input class="btn-submit" type="submit" class="button" value="C'est parti"/>
+            <input class="btn-submit" type="submit" class="button" value="C'est parti" id="sub-btn"/>
           </form>
         </div>
       </div>

@@ -226,6 +226,18 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
+
+.class_error {
+  border: 2px solid#e54858;
+  color: #e54858;
+  background-color: rgb(255, 224, 224);
+}
+
+.error {
+  font-size: 1rem;
+  font-style: italic;
+  color: red;
+}
 /* 
 input[data-error]::after {
     content: attr(data-error);
