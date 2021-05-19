@@ -1,0 +1,21 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "firefox",
+            "request": "launch",
+            "reAttach": true,
+            "name": "Launch firefox",
+            "file": "c:\\Users\\svergnaud\\OneDrive - Expleo France\\Openclassrooms\\P4_Vergnaud_Stephane\\GameOn-website-FR\\starterOnly\\index.html"
+        },
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Open chrome",
+            "file": "c:\\Users\\svergnaud\\OneDrive - Expleo France\\Openclassrooms\\P4_Vergnaud_Stephane\\GameOn-website-FR\\starterOnly\\index.html"
+        }
+    ]
+}
