@@ -527,3 +527,28 @@ footer {
   }
 }
 
+.confirmation{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  height: 640px;
+  width: 285px;
+  font-weight: 400;
+  font-size: 36px;
+
+}
+
+.btn-confirm {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  width: fit-content;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+}

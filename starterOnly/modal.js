@@ -12,6 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const submitBtn = document.querySelector(".btn-submit");
+const formBody = document.getElementsByName("reserve");
 // objet contenant les champs du formulaire
 const form = {
   first: document.getElementById("first"),
@@ -105,7 +106,9 @@ function isCityValid() {
 
 // validation des conditions d'utilisation
 function isTermsValid() {
-  formData[6].appendChild(errorMsg.terms);
+  const checkbox = document.getElementsByClassName("checkbox2-label");
+  checkbox[0].appendChild(errorMsg.terms);
+  //formData[6].appendChild(errorMsg.terms);
   if (form.terms.checked) {
     errorMsg.terms.innerHTML = "";
     return true;
@@ -115,19 +118,41 @@ function isTermsValid() {
   }
 }
 
-// ecoute du bouton submit
-submitBtn.addEventListener("click", function (event) {
-  let validForm = validText(form.first.value, regex.name, errorMsg.first, "Veuillez saisir un prénom correct.", 0, "prénom") &
-                  validText(form.last.value, regex.name, errorMsg.last, "Veuillez saisir un nom correct.", 1, "nom") &
-                  validText(form.email.value, regex.mail, errorMsg.email, "Veuillez saisir une adresse mail correcte.", 2, "") &
-                  isDateValid() & 
-                  validText(form.quantity.value, regex.quantity, errorMsg.quantity, "Veuillez entrer un nombre entier positif.", 4, "") &
-                  isCityValid() &
-                  isTermsValid();
-  console.log(validForm);
-  if (validForm == true) {
-    console.log("ok");
-  } else {
-    event.preventDefault();
+// affichage des remerciements
+function displayThanks(){
+  
+  formBody[0].style.display = "none";
+  const modalBody = document.getElementsByClassName("modal-body");
+  const confirmMsg = document.createElement("div");
+  const confirmBtn = document.createElement("div");
+  modalBody[0].appendChild(confirmMsg);
+  modalBody[0].appendChild(confirmBtn);
+  confirmMsg.setAttribute("class", "confirmation");
+  confirmMsg.innerHTML = "Merci !<br/>Votre réservation a été reçue.";
+  confirmBtn.className = "btn-confirm";
+  confirmBtn.innerHTML = "Fermer";
+  confirmBtn.addEventListener("click", function(){
+    validate();
+  });
+  
+}
+
+// envoie du formulaire
+function validate(){
+  formBody[0].submit();
+  return true;
+}
+
+// evenement qui va verifier tous les champs au clic
+submitBtn.addEventListener("click", function(event){
+  event.preventDefault();
+  if(validText(form.first.value, regex.name, errorMsg.first, "Veuillez saisir un prénom correct.", 0, "prénom") &
+  validText(form.last.value, regex.name, errorMsg.last, "Veuillez saisir un nom correct.", 1, "nom") &
+  validText(form.email.value, regex.mail, errorMsg.email, "Veuillez saisir une adresse mail correcte.", 2, "") &
+  isDateValid() & 
+  validText(form.quantity.value, regex.quantity, errorMsg.quantity, "Veuillez entrer un nombre entier positif.", 4, "") &
+  isCityValid() &
+  isTermsValid()){
+    displayThanks();
   }
 });
