@@ -27,38 +27,31 @@ document.getElementById("btn-close-modale").addEventListener("click",function(){
 });
 
 
+// valider le formulaire
+// variable
+const prenom = document.getElementById("first");
+const nom = document.getElementById("last").innerText;
+const envoyerFormulaire = document.getElementById("envoyer-formulaire");
+
+
+//fonction
+function miniDeuxCaracteres (e) {
+  return /[\s\S]{2,}/.test(e);
+};
+
+prenom.addEventListener("change", function(a) {
+  if (miniDeuxCaracteres(a.target.value) == false){
+    alert("le prénom doit contenir au moins 2 caractere");
+  }else if (miniDeuxCaracteres(a.target.value) == ""){
+    alert("veuillez remplir le champ prenom");
+  }else {
+    alert("le prénom rentré est valide");
+  };
+});
 
 
 
-// valider les données du prénom
 
-//variable
-const prenomFormulaire = document.getElementById("first");
-const affichageValiditePrenom = document.getElementById("validite-prenom");
-
-
-// ecoute
-prenomFormulaire.addEventListener("input", function(valeur){
-    function isValidNumber(e){
-      return /\D/.test(e);
-    };
-    let caractereSaisie = valeur.target.value;
-    isValidNumber(caractereSaisie);
-
-    
-   switch(isValidNumber){
-      case "true" : affichageValiditePrenom.textContent = "je suis vrai";
-      break;
-      case "false" : affichageValiditePrenom.textContent = "je suis faut";
-      break;
-   };
-    
-   
-    
-    console.log("isvalidnumber : " + isValidNumber(caractereSaisie));
-    console.log("saisie : " + caractereSaisie);
-    console.log("validite prenom :" + affichageValiditePrenom.innerText);
-  }
-);
-
-
+// test
+console.log("prénom = " + prenom.innerText);
+console.log("2 caractere = " + miniDeuxCaracteres.value);
