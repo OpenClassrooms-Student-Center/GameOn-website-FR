@@ -27,7 +27,31 @@ document.getElementById("btn-close-modale").addEventListener("click",function(){
 });
 
 
+// valider le formulaire
+// variable
+const prenom = document.getElementById("first");
+const nom = document.getElementById("last").innerText;
+const envoyerFormulaire = document.getElementById("envoyer-formulaire");
+
+
+//fonction
+function miniDeuxCaracteres (e) {
+  return /[\s\S]{2,}/.test(e);
+};
+
+prenom.addEventListener("change", function(a) {
+  if (miniDeuxCaracteres(a.target.value) == false){
+    alert("le prénom doit contenir au moins 2 caractere");
+  }else if (miniDeuxCaracteres(a.target.value) == ""){
+    alert("veuillez remplir le champ prenom");
+  }else {
+    alert("le prénom rentré est valide");
+  };
+});
 
 
 
 
+// test
+console.log("prénom = " + prenom.innerText);
+console.log("2 caractere = " + miniDeuxCaracteres.value);
