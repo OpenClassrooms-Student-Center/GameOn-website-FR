@@ -33,6 +33,8 @@ formulaire = document.getElementById("formulaire");
 prenom = document.getElementById("first");
 nom = document.getElementById("last");
 mail = document.getElementById("email");
+nombreTournoi = document.getElementById("quantity");
+choixVille = document.getElementsByName("location");
 
 
 // boite à outil
@@ -53,9 +55,37 @@ function validerMail(mailAValider){
   let testResult = /[\s\S]{1,}@([a-zA-Z0-9-_]{1,}[.])+[a-zA-Z]{2,3}$/.test(mailAValider.value);
   //^([a-zA-Z0-9_-])+([.]?[a-zA-Z0-9_-]{1,})*@([a-zA-Z0-9-_]{2,}[.])+[a-zA-Z]{2,3}$
   if (testResult == true) {
-    alert("Test : le mail est valide");
+    return 1;
   } else {
     alert("Test : le mail est invalide forme attendue xx@xx.xx");
+    return 0;
+  };
+};
+
+function validerTournoi(qt){
+  let testResult = /^(?!\-)[0-9]{1,}$/.test(qt.value);
+  if (testResult == true && qt.value < 99){
+    alert("Test : qt tournoi valide");
+    return 1;
+  } else {
+    alert("Le nombre de tournoi doit être un nombre compris entre 0 et 99")
+    return 0;
+  };  
+};
+
+function validerSiUneVilleChoisie(villePossible){
+  let chercherVilleNonChoisie = 0;
+  for (let ville of villePossible){
+    if(ville.checked == false){
+      chercherVilleNonChoisie++;
+    };
+  };
+  if(chercherVilleNonChoisie == villePossible.length){
+      alert("aucune ville choisie");
+      return 0;
+    } else {
+      alert("une ville est sélectionnée")
+      return 1;
   };
 };
 
@@ -66,6 +96,8 @@ formulaire.addEventListener("submit",function (evenement){
   validerNomPrenom(prenom);
   validerNomPrenom(nom);
   validerMail(mail);
+  validerTournoi(nombreTournoi);
+  validerSiUneVilleChoisie(choixVille);
 });
 
 
