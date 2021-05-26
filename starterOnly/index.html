@@ -48,11 +48,12 @@
           <span class="close" id="btn-close-modale"></span>
           <div class="modal-body">
             <form
+              id="formulaire"
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
-            >
+            ><!-- onsubmit="return validate();" -->
+
               <div class="formData">
                 <label>Prénom</label><br>
                 <input
@@ -72,18 +73,16 @@
                   name="last"
                 /><br>
               </div>
-              <div
-                class="formData">
+              <div class="formData">
                 <label>E-mail</label><br>
                 <input
                   class="text-control"
-                  type="email"
+                  type="text" 
                   id="email"
                   name="email"
-                /><br>
+                /><br><!--type="email"-->
               </div>
-              <div
-                class="formData">
+              <div class="formData">
                 <label>Date de naissance</label><br>
                 <input
                   class="text-control"
@@ -92,14 +91,12 @@
                   name="birthdate"
                 /><br>
               </div>
-              <div
-                class="formData">
+              <div class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
               <p class="text-label">Quelles villes ?</p>
-              <div
-                class="formData">
+              <div class="formData">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -168,8 +165,7 @@
                 >
               </div>
 
-              <div
-                class="formData">
+              <div class="formData">
                 <input
                   class="checkbox-input"
                   type="checkbox"
@@ -188,7 +184,7 @@
                 </label>
                 <br>
               </div>
-              <input class="btn-submit" id="envoyer-formulaire" type="submit" class="button" value="C'est parti"/>
+              <input class="btn-submit" type="submit" class="button" value="C'est parti"/>
             </form>
           </div>
         </div>
