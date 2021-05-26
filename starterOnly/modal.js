@@ -50,11 +50,12 @@ function validerNomPrenom(text){
 };
 
 function validerMail(mailAValider){
-  let testResult = /[@]/.test(mailAValider.value);
+  let testResult = /[\s\S]{1,}@([a-zA-Z0-9-_]{1,}[.])+[a-zA-Z]{2,3}$/.test(mailAValider.value);
+  //^([a-zA-Z0-9_-])+([.]?[a-zA-Z0-9_-]{1,})*@([a-zA-Z0-9-_]{2,}[.])+[a-zA-Z]{2,3}$
   if (testResult == true) {
     alert("Test : le mail est valide");
   } else {
-    alert("Test : le mail est invalide");
+    alert("Test : le mail est invalide forme attendue xx@xx.xx");
   };
 };
 
