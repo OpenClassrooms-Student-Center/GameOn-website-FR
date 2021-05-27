@@ -29,13 +29,14 @@ document.getElementById("btn-close-modale").addEventListener("click",function(){
 // VALIDER FORMULAIRE
 
 // déclaration variable
-formulaire = document.getElementById("formulaire");
-prenom = document.getElementById("first");
-nom = document.getElementById("last");
-mail = document.getElementById("email");
-nombreTournoi = document.getElementById("quantity");
-choixVille = document.getElementsByName("location");
-
+const formulaire = document.getElementById("formulaire");
+const prenom = document.getElementById("first");
+const nom = document.getElementById("last");
+const mail = document.getElementById("email");
+const dateNaissance = document.getElementById("birthdate");
+const nombreTournoi = document.getElementById("quantity");
+const choixVille = document.getElementsByName("location");
+const conditionUtilisation = document.getElementById("checkbox1");
 
 // boite à outil
 function nePasSubmit(typeEvenement){
@@ -62,7 +63,21 @@ function validerMail(mailAValider){
   };
 };
 
-function validerTournoi(qt){
+function validerDateNaissance(dateAniv){
+  let anneNaissance = new Date(dateAniv.value).getFullYear();
+  let anneePresent = new Date().getFullYear();
+  let comparerAnnee = anneePresent - anneNaissance;
+  if(comparerAnnee >= 15){
+    alert("bravo vous etes dans votre 15eme année")
+    return 1;
+  } else {
+    alert("vous n'ête pas dans votre 15eme année. patienter et entrainer vous");
+    return 0;
+  };
+};
+
+
+function validerNombreTournoi(qt){
   let testResult = /^(?!\-)[0-9]{1,}$/.test(qt.value);
   if (testResult == true && qt.value < 99){
     alert("Test : qt tournoi valide");
@@ -89,6 +104,18 @@ function validerSiUneVilleChoisie(villePossible){
   };
 };
 
+function validerConditionUtilisation(caseCocher){
+  if(caseCocher.checked == true){
+    alert("les condition utilisateur son ok");
+    return 1;
+  } else {
+    alert("les condition son NOK");
+    return 0;
+  };
+};
+
+
+
 
 // déclencheur
 formulaire.addEventListener("submit",function (evenement){
@@ -96,8 +123,10 @@ formulaire.addEventListener("submit",function (evenement){
   validerNomPrenom(prenom);
   validerNomPrenom(nom);
   validerMail(mail);
-  validerTournoi(nombreTournoi);
+  validerDateNaissance(dateNaissance);
+  validerNombreTournoi(nombreTournoi);
   validerSiUneVilleChoisie(choixVille);
+  validerConditionUtilisation(conditionUtilisation);
 });
 
 
