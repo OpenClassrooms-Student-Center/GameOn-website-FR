@@ -135,6 +135,14 @@ main {
 
 /* Modal form */
 
+.erreur-saisie {
+  border-radius: 5px;
+  background-color: yellow;
+  color: red;
+  font-size: 0.6em;
+  text-align: center;
+}
+
 .button {
   background: #fe142f;
   margin-top: 0.5em;
