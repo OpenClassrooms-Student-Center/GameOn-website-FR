@@ -111,87 +111,60 @@ function validerConditionUtilisation(caseCocher){
 
 // déclencheur de validation et message erreur
 formulaire.addEventListener("submit",function (evenement){
-  let test = 0;
+  let nombreTestReussi = 0;
   
   if(validerNomPrenom(prenom) == 1){
     erreurPrenom.innerText = "";
-    test++;
+    nombreTestReussi++;
   } else {
     erreurPrenom.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
   };
   
-  alert("nombre de test reussi" + test)
-
   if (validerNomPrenom(nom) == 1){
     erreurNom.innerText = "";
-    test++;
+    nombreTestReussi++;
   } else {
     erreurNom.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
   };
 
-  alert("nombre de test reussi" + test)
-
   if (validerMail(mail) == 1){
     erreurMail.innerText = "";
-    test++;
+    nombreTestReussi++;
   } else {
     erreurMail.innerText = "Veuiller entrer un couriel valide : forme attendue couriel@couriel.xxx";
   };
 
   if (validerDateNaissance(dateNaissance) == 1){
     erreurNaissance.innerText = "";
-    test++;
+    nombreTestReussi++;
   } else {
     erreurNaissance.innerText = "Vous devez entrer votre date de naissance. Et être au moins dans votre 15ème année";
   };
 
   if (validerNombreTournoi(nombreTournoi) == 1){
     erreurTournoi.innerText = "";
-    test++;
+    nombreTestReussi++;
   } else {
     erreurTournoi.innerText = "Veuillez saisir un nombre de participation entre 0 et 99";
   };
 
-  alert("nombre de test reussi" + test)
-
   if (validerSiUneVilleChoisie(choixVille) == 1){
     erreurVille.innerText = "";
-    test++;
+    nombreTestReussi++;
   } else {
     erreurVille.innerText = "Veuillez choisir une ville";
   };
 
   if (validerConditionUtilisation(conditionUtilisation) == 1){
     erreurCondition.innerText = "";
-    test++;
+    nombreTestReussi++;
   } else {
     erreurCondition.innerText = "Vous devez vérifier que vous acceptez les termes et conditions.";
   };
 
-  alert("nombre de test reussi" + test)
-
-  if (test == 7){
-    
+  if (nombreTestReussi == 7){
+    alert("Le formulaire est envoyé, Merci de votre participation")
   } else {
     nePasSubmit(evenement);
   }
-
 });
-
-
-
-
-
-
-
-
-
-/*
-function validerEnvoyer (typeEvenement){
-  if (validerNomPrenom = 1) {
-    alert("test : le formulaire est valide")
-  } else {
-    alert("test : le formulaire est non valide")
-  }
-};
-*/
