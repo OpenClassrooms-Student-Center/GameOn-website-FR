@@ -12,7 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
-// DOM elements Validation formulaire
+// DOM Elements Validation formulaire
 const formulaire = document.getElementById("formulaire");
 const prenom = document.getElementById("first");
 const nom = document.getElementById("last");
@@ -28,7 +28,6 @@ const erreurNaissance = document.getElementById("erreur-naissance");
 const erreurTournoi = document.getElementById("erreur-tournoi");
 const erreurVille = document.getElementById("erreur-ville");
 const erreurCondition = document.getElementById("erreur-condition");
-//var nombreTestReussi = 0;
 
 // launch modal event et launch modal form
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
