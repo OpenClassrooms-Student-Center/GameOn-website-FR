@@ -28,14 +28,13 @@ const erreurNaissance = document.getElementById("erreur-naissance");
 const erreurTournoi = document.getElementById("erreur-tournoi");
 const erreurVille = document.getElementById("erreur-ville");
 const erreurCondition = document.getElementById("erreur-condition");
-
+var nombreTestReussi = 0;
 
 // launch modal event et launch modal form
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
 function launchModal() {
   modalbg.style.display = "block";
-}
+};
 
 // Fermer modal
 document.getElementById("btn-close-modale").addEventListener("click",function(){
@@ -45,28 +44,15 @@ document.getElementById("btn-close-modale").addEventListener("click",function(){
 // VALIDER FORMULAIRE
 
 // boite à outil
-function nePasSubmit(typeEvenement){
-  typeEvenement.preventDefault();
-};
 
-function validerNomPrenom(text){
-  if (text.value != "" && text.value.length >= 2) {
-    return 1;
-  } else {
-    return 0;
-  };
-};
+let nePasSubmit = (typeEvenement) => typeEvenement.preventDefault();
+let validerNomPrenom = (text) => text.value != "" && text.value.length >= 2;
+let validerMail = (mailAValider) => /[\s\S]{1,}@([a-zA-Z0-9-_]{1,}[.])+[a-zA-Z]{2,3}$/.test(mailAValider.value); //expression test complète issue d'internet : ^([a-zA-Z0-9_-])+([.]?[a-zA-Z0-9_-]{1,})*@([a-zA-Z0-9-_]{2,}[.])+[a-zA-Z]{2,3}$
+let validerDateNaissance = (dateAniv) => (new Date().getFullYear() - new Date(dateAniv.value).getFullYear()) >= 15;
 
-function validerMail(mailAValider){
-  let testResult = /[\s\S]{1,}@([a-zA-Z0-9-_]{1,}[.])+[a-zA-Z]{2,3}$/.test(mailAValider.value);
-  //^([a-zA-Z0-9_-])+([.]?[a-zA-Z0-9_-]{1,})*@([a-zA-Z0-9-_]{2,}[.])+[a-zA-Z]{2,3}$
-  if (testResult == true) {
-    return 1;
-  } else {
-    return 0;
-  };
-};
 
+
+/*
 function validerDateNaissance(dateAniv){
   let anneNaissance = new Date(dateAniv.value).getFullYear();
   let anneePresent = new Date().getFullYear();
@@ -76,7 +62,7 @@ function validerDateNaissance(dateAniv){
   } else {
     return 0;
   };
-};
+};*/
 
 function validerNombreTournoi(qt){
   let testResult = /^(?!\-)[0-9]{1,}$/.test(qt.value);
@@ -109,62 +95,33 @@ function validerConditionUtilisation(caseCocher){
   };
 };
 
+function gestionErreur (fonctionATester, zoneErreur, messageErreur){
+  if(fonctionATester == 1 || fonctionATester == true){
+    zoneErreur.innerText = "";
+    nombreTestReussi++;
+  } else {
+    zoneErreur.innerText = messageErreur;
+  };
+};
+
+
 // déclencheur de validation et message erreur
 formulaire.addEventListener("submit",function (evenement){
-  let nombreTestReussi = 0;
+  nombreTestReussi = 0;
   
-  if(validerNomPrenom(prenom) == 1){
-    erreurPrenom.innerText = "";
-    nombreTestReussi++;
-  } else {
-    erreurPrenom.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
-  };
-  
-  if (validerNomPrenom(nom) == 1){
-    erreurNom.innerText = "";
-    nombreTestReussi++;
-  } else {
-    erreurNom.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
-  };
-
-  if (validerMail(mail) == 1){
-    erreurMail.innerText = "";
-    nombreTestReussi++;
-  } else {
-    erreurMail.innerText = "Veuiller entrer un couriel valide : forme attendue couriel@couriel.xxx";
-  };
-
-  if (validerDateNaissance(dateNaissance) == 1){
-    erreurNaissance.innerText = "";
-    nombreTestReussi++;
-  } else {
-    erreurNaissance.innerText = "Vous devez entrer votre date de naissance. Et être au moins dans votre 15ème année";
-  };
-
-  if (validerNombreTournoi(nombreTournoi) == 1){
-    erreurTournoi.innerText = "";
-    nombreTestReussi++;
-  } else {
-    erreurTournoi.innerText = "Veuillez saisir un nombre de participation entre 0 et 99";
-  };
-
-  if (validerSiUneVilleChoisie(choixVille) == 1){
-    erreurVille.innerText = "";
-    nombreTestReussi++;
-  } else {
-    erreurVille.innerText = "Veuillez choisir une ville";
-  };
-
-  if (validerConditionUtilisation(conditionUtilisation) == 1){
-    erreurCondition.innerText = "";
-    nombreTestReussi++;
-  } else {
-    erreurCondition.innerText = "Vous devez vérifier que vous acceptez les termes et conditions.";
-  };
+  gestionErreur(validerNomPrenom(prenom), erreurPrenom, "Veuillez entrer 2 caractères ou plus pour le champ du prénom.");
+  gestionErreur(validerNomPrenom(nom), erreurNom, "Veuillez entrer 2 caractères ou plus pour le champ du nom.");
+  gestionErreur(validerMail(mail), erreurMail, "Veuiller entrer un couriel valide : forme attendue couriel@couriel.xxx");
+  gestionErreur(validerDateNaissance(dateNaissance), erreurNaissance, "Vous devez entrer votre date de naissance. Et être au moins dans votre 15ème année");
+  gestionErreur(validerNombreTournoi(nombreTournoi), erreurTournoi, "Veuillez saisir un nombre de participation entre 0 et 99");
+  gestionErreur(validerSiUneVilleChoisie(choixVille), erreurVille, "Veuillez choisir une ville");
+  gestionErreur(validerConditionUtilisation(conditionUtilisation), erreurCondition, "Vous devez vérifier que vous acceptez les termes et conditions.");
 
   if (nombreTestReussi == 7){
     alert("Le formulaire est envoyé, Merci de votre participation")
   } else {
+    
     nePasSubmit(evenement);
-  }
+    alert("Vous avez remplis " + (7 - nombreTestReussi) + " champ(s) incorrectement");
+  };
 });
