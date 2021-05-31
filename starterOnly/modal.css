@@ -427,7 +427,6 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -503,7 +502,7 @@ footer {
 
 @media screen and (max-width: 970px) {
   .hero-headline{
-    white-space: normal;
+    font-size: 5rem;
   }
 }
 
