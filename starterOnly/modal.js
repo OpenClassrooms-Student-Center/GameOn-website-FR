@@ -21,10 +21,10 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-// close modal evant
-close.addEventListener('click', closeModal);
+// close modal event
+close.addEventListener("click", closeModal);
 
 // close modal form
-function closeModal(){
+function closeModal() {
   modalbg.style.display = "none";
 }
