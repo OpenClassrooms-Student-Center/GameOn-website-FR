@@ -136,11 +136,8 @@ main {
 /* Modal form */
 
 .erreur-saisie {
-  border-radius: 5px;
-  background-color: yellow;
-  color: red;
+  color: #fc4059;
   font-size: 0.6em;
-  text-align: center;
 }
 
 .button {
@@ -172,7 +169,23 @@ main {
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
 }
-
+.bground-envoyer {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+#message-formulaire-envoye{
+  display: none;
+}
+.content-modif{
+  height: 800px;
+}
 .content {
   margin: 5% auto;
   width: 100%;
@@ -211,6 +224,8 @@ input {
   border-radius: 8px;
   font-size: 20px;
   height: 48px;
+  border-width: 2px;
+  border-color: #c4c4c4;
 }
 .formData[data-error]::after {
   content: attr(data-error);
@@ -501,7 +516,7 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 4rem;
     white-space: normal;
   }
   .hero-text {

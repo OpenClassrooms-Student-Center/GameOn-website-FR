@@ -43,7 +43,8 @@
         </button>
       </div>
 
-      <div class="bground">
+<!--Formulaire-->
+      <div class="bground" id="formulaire-inscription">
         <div class="content">
           <span class="close" id="btn-close-modale"></span>
           <div class="modal-body">
@@ -52,10 +53,9 @@
               name="reserve"
               action="index.html"
               method="get"
-            ><!-- onsubmit="return validate();" -->
-
+            >
               <div class="formData">
-                <label>Prénom</label><br>
+                <label for="first">Prénom</label><br>
                 <input
                   class="text-control"
                   type="text"
@@ -65,7 +65,7 @@
                 <div class="erreur-saisie" id="erreur-prenom"></div>
               </div>
               <div class="formData">
-                <label>Nom</label><br>
+                <label for="last">Nom</label><br>
                 <input
                   class="text-control"
                   type="text"
@@ -75,7 +75,7 @@
                 <div class="erreur-saisie" id="erreur-nom"></div>
               </div>
               <div class="formData">
-                <label>E-mail</label><br>
+                <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
                   type="text" 
@@ -85,7 +85,7 @@
                 <div class="erreur-saisie" id="erreur-mail"></div>
               </div>
               <div class="formData">
-                <label>Date de naissance</label><br>
+                <label for="birthdate">Date de naissance</label><br>
                 <input
                   class="text-control"
                   type="date"
@@ -95,7 +95,7 @@
                 <div class="erreur-saisie" id="erreur-naissance"></div>
               </div>
               <div class="formData">
-                <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity">
                 <div class="erreur-saisie" id="erreur-tournoi"></div>
               </div>
@@ -190,8 +190,19 @@
                 </label>
                 <br>
               </div>
-              <input class="btn-submit" type="submit" class="button" value="C'est parti"/>
+              <input class="btn-submit" id="btn-valider" type="submit" class="button" value="C'est parti"/>
             </form>
+          </div>
+        </div>
+      </div>
+
+<!--Message formulaire envoyé-->
+      <div class="bground-envoyer" id="message-formulaire-envoye">
+        <div class="content content-modif">
+          <span class="close" id="btn-close-form-envoye"></span>
+          <div>
+            <p>Merci !<br>Votre réservation a été reçue.</p>
+            <span class="button" id="btn-fermer-form-envoye"> Fermer</span>
           </div>
         </div>
       </div>
