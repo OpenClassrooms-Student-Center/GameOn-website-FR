@@ -116,12 +116,6 @@ function testFormulaire(evenement){
     erreurCondition.innerText = "Vous devez vérifier que vous acceptez les termes et conditions.";
   }
   // Gestion comportement formulaire et message formulaire valide
-  if (nombreTestReussi == 7){
-    return true;
-  } else {
-    return false;
-  }
-}
 // Fonction fermeture du message de validation formulaire
 fermerValidation1.addEventListener("click",function(){
   message.style.display = "none";
