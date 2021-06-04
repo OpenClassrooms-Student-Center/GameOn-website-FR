@@ -22,7 +22,6 @@ document.getElementById("btn-close-modale").addEventListener("click",function(){
   modalbg.style.display = "none";
 });
 
-
 // VALIDER FORMULAIRE
 // DOM elements Validation formulaire
 const formulaire = document.getElementById("formulaire");
@@ -116,6 +115,12 @@ function testFormulaire(evenement){
     erreurCondition.innerText = "Vous devez vérifier que vous acceptez les termes et conditions.";
   }
   // Gestion comportement formulaire et message formulaire valide
+  if (nombreTestReussi == 7){
+    return true;
+  } else {
+    return false;
+  }
+}
 // Fonction fermeture du message de validation formulaire
 fermerValidation1.addEventListener("click",function(){
   message.style.display = "none";
