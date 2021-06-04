@@ -52,8 +52,8 @@
         </button>
       </div>
 
-      <div class="bground bground--show">
-        <div class="content content--show">
+      <div class="bground">
+        <div class="content">
           <span class="close"></span>
           <div class="modal-body">
             <form
@@ -72,7 +72,6 @@
                   id="first"
                   name="first"
                   minlength="2"
-                  value="corentin"
                 /><br>
                 
               </div>
@@ -84,7 +83,6 @@
                   type="text"
                   id="last"
                   name="last"
-                  value="clichy"
                 /><br>
                 
               </div>
@@ -96,7 +94,6 @@
                   type="email"
                   id="email"
                   name="email"
-                  value="corentin@gmail.com"
                   novalidate
                 /><br>
                 
@@ -109,14 +106,13 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                  value='1990-09-09'
                 /><br>
                 
               </div>
               <div
                 class="formData">
                 <label  for='quantity'>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" value='89'><br>
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" s><br>
                 
               </div>
               <div
@@ -128,7 +124,6 @@
                   id="location1"
                   name="location"
                   value="New York"
-                  checked
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -233,6 +228,6 @@
         Copyright 2014 - 2020, GameOn Inc.
       </p>
     </footer>
-    <script src="modal.js"></script>
+    <script src="modal.js" type="module"></script>
   </body>
 </html>
