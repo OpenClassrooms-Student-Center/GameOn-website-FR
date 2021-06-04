@@ -47,7 +47,7 @@ const message = document.getElementById("message-formulaire-envoye");
 const couleurDefaut = "#fc4059";
 const couleurValide = "";
 // Fonction test des champs du formulaire
-function testFormulaire(evenement){
+function testFormulaire(){
   let nombreTestReussi = 0;
   let chercherVilleNonChoisie = 0;
   // Test prénom
@@ -129,11 +129,11 @@ fermerValidation2.addEventListener("click",function(){
   message.style.display = "none";
 })
 // Déclencheur de validation et message erreur
-formulaire.addEventListener("submit", function(submit){
+formulaire.addEventListener("submit", function(envoyer){
   let test = testFormulaire();
+  envoyer.preventDefault();
   if (test) {
     message.style.display = "block";
-  }else{
-    submit.preventDefault();
   }
 })
+//envoyer.defaultPrevented = false;
