@@ -133,6 +133,49 @@ main {
   font-family: var(--font-slab);
 }
 
+/* Message validation */
+
+#message-formulaire-envoye{
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: white;
+}
+.content-modif{
+  margin: 5% auto;
+  padding: 0 20px 20px 20px;
+  width: 100%;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+}
+
+.content-modif div{
+  display: grid;
+  justify-items: center;
+
+}
+.content-modif p{
+  margin: 200px 0 200px 0;
+  text-align: center;
+}
+.content-modif div span{
+  display: grid;
+  justify-content: center;
+  width: 70%;
+}
+
 /* Modal form */
 
 .erreur-saisie {
@@ -169,23 +212,7 @@ main {
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
 }
-.bground-envoyer {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
-}
-#message-formulaire-envoye{
-  display: none;
-}
-.content-modif{
-  height: 800px;
-}
+
 .content {
   margin: 5% auto;
   width: 100%;

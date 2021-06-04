@@ -134,6 +134,12 @@ formulaire.addEventListener("submit", function(envoyer){
   envoyer.preventDefault();
   if (test) {
     message.style.display = "block";
+    modalbg.style.display = "none";
+    for (let champ of tableauDesChamp= [prenom, nom, mail, dateNaissance, nombreTournoi]){
+      champ.value = "";
+    }
+    for (let ville of choixVille){
+      ville.checked = false;
+    }
   }
 })
-//envoyer.defaultPrevented = false;
