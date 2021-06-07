@@ -37,28 +37,45 @@ function formValidity(e) {
   let prénom = form.elements["first"];
   let nom = form.elements["last"];
   let email = form.elements["email"];
+  let birthdate = form.elements["birthdate"]
   let eventsQuantity = form.elements["quantity"];
-  let emailregex = /^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]­{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$/ ;
-  let nameregex = /^[^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
+  let emailRegex = /^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]­{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$/ ;
+  let nameRegex = /^[^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
+  let birthDateRegex = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+  let isValid = true;
 
-  if (nameregex.exec(prénom.value) == null) {
-    document.getElementById("nom").innerHTML = "Entrez un nom valide!"; 
-    e.preventDefault();
+  if (nameRegex.exec(prénom.value) == null) {
+    document.getElementById("prénom").innerHTML = "Entrez un nom valide!"; 
+    isValid = false;
   }
-  if (nameregex.exec(nom.value) == null) {
-    document.getElementById("prénom").innerHTML = "Entrez un prénom valide!";
-    e.preventDefault();
+  if (nameRegex.exec(nom.value) == null) {
+    document.getElementById("nom").innerHTML = "Entrez un prénom valide!";
+    isValid = false;
   }
-  if(emailregex.exec(email.value) == null) {
+  if (emailRegex.exec(email.value) == null) {
     document.getElementById("mail").innerHTML = "Entrez un email valide!";
-    e.preventDefault();
+    isValid = false;
+  }
+  if (birthdate.value == ""){
+    document.getElementById("birthday").innerHTML = "veuillez insérer une date";
+    isValid = false;
   }
   if (isCheckboxSelected() == false){
     document.getElementById("cities").innerHTML = "selectionnez au moins une ville!";
-    e.preventDefault();
+    isValid = false;
+  }
+  if (isConditionSelected() == false){
+    document.getElementById("box").innerHTML = "Veuillez accepter les conditions!";
+    isValid = false;
   }
   if (eventsQuantity.value == ""){
     document.getElementById("tournaments").innerHTML = "veuillez insérer un chiffre!";
+    isValid = false;
+  }
+  if (isValid == true){
+    alert("Merci ! Votre réservation a été reçue.")
+  }
+  if (isValid == false) {
     e.preventDefault();
   }
 }
@@ -71,6 +88,12 @@ function isCheckboxSelected(){
     if(document.getElementById('location'+i).checked) {
       return true;
     }
+  }
+return false
+}
+function isConditionSelected(){
+  if (document.getElementById('checkbox1').checked){
+    return true;
   }
 return false
 }
