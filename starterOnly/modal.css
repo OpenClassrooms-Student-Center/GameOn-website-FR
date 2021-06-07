@@ -31,11 +31,16 @@ img {
 }
 
 .topnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   overflow: hidden;
   margin: 3.5%;
 }
 .header-logo {
     float: left;
+    width: auto;
+    height: auto;
 }
 .main-navbar {
     float: right;
@@ -207,6 +212,10 @@ input {
   border-radius: 8px;
   font-size: 20px;
   height: 48px;
+}
+.mismatch {
+  font-size: 17px;
+  color: red;
 }
 .formData[data-error]::after {
   content: attr(data-error);
