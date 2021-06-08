@@ -573,7 +573,7 @@ footer {
   background: #fe142f;
   display: block;
   margin: 0 auto;
-  width: fit-content;
+  width: min-content;
   border-radius: 7px;
   font-size: 1rem;
   padding: 12px 82px;

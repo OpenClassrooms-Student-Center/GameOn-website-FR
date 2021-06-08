@@ -120,7 +120,6 @@ function isTermsValid() {
 
 // affichage des remerciements
 function displayThanks(){
-  
   formBody[0].style.display = "none";
   const modalBody = document.getElementsByClassName("modal-body");
   const confirmMsg = document.createElement("div");
@@ -128,13 +127,12 @@ function displayThanks(){
   modalBody[0].appendChild(confirmMsg);
   modalBody[0].appendChild(confirmBtn);
   confirmMsg.setAttribute("class", "confirmation");
-  confirmMsg.innerHTML = "Merci !<br/>Votre réservation a été reçue.";
+  confirmMsg.innerHTML = "Merci !<br>Votre réservation a été reçue.";
   confirmBtn.className = "btn-confirm";
   confirmBtn.innerHTML = "Fermer";
   confirmBtn.addEventListener("click", function(){
     validate();
   });
-  
 }
 
 // envoie du formulaire
@@ -146,13 +144,13 @@ function validate(){
 // evenement qui va verifier tous les champs au clic
 submitBtn.addEventListener("click", function(event){
   event.preventDefault();
-  if(validText(form.first.value, regex.name, errorMsg.first, "Veuillez saisir un prénom correct.", 0, "prénom") &
-  validText(form.last.value, regex.name, errorMsg.last, "Veuillez saisir un nom correct.", 1, "nom") &
-  validText(form.email.value, regex.mail, errorMsg.email, "Veuillez saisir une adresse mail correcte.", 2, "") &
-  isDateValid() & 
-  validText(form.quantity.value, regex.quantity, errorMsg.quantity, "Veuillez entrer un nombre entier positif.", 4, "") &
-  isCityValid() &
-  isTermsValid()){
-    displayThanks();
-  }
+  if (validText(form.first.value, regex.name, errorMsg.first, "Veuillez saisir un prénom correct.", 0, "prénom")
+    & validText(form.last.value, regex.name, errorMsg.last, "Veuillez saisir un nom correct.", 1, "nom")
+    & validText(form.email.value, regex.mail, errorMsg.email, "Veuillez saisir une adresse mail correcte.", 2, "")
+    & isDateValid() 
+    & validText(form.quantity.value, regex.quantity, errorMsg.quantity, "Veuillez entrer un nombre entier positif.", 4, "") 
+    & isCityValid() 
+    & isTermsValid()){
+      displayThanks();
+    } 
 });
