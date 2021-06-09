@@ -47,3 +47,19 @@ const validFirst = (firstName) => {
 
   }
 }
+
+// last name validation
+formGlobal.last.addEventListener('change', function(){
+  validLast(this);
+});
+
+const validLast = (lastName) => {
+  let testLast = (/^[a-zA-Z]/.test(lastName.value) && lastName.value.length>=2);
+  if(testLast){
+    document.getElementById('lastSpan').innerHTML = "";
+  }
+  else{
+    document.getElementById('lastSpan').innerHTML = "veuillez renseigner un nom valide de 2 caractères minimum";
+
+  }
+}
