@@ -28,3 +28,10 @@ close.addEventListener("click", closeModal);
 function closeModal() {
   modalbg.style.display = "none";
 }
+
+// first name verification
+console.log(document.getElementById('first').value)
+function firstNameCheck(){
+  
+}
+

@@ -57,6 +57,7 @@
           <span class="close"></span>
           <div class="modal-body">
             <form
+              data-error-visibled="true"
               name="reserve"
               action="index.html"
               method="get"
@@ -71,7 +72,9 @@
                   id="first"
                   name="first"
                   minlength="2"
+                  
                 /><br>
+                <span></span>
               </div>
               <div
                 class="formData">
@@ -83,6 +86,7 @@
                   name="last"
                   minlength="2"
                   
+                  
                 /><br>
               </div>
               <div
@@ -93,7 +97,7 @@
                   type="email"
                   id="email"
                   name="email"
-                  required
+                  
                 /><br>
               </div>
               <div
@@ -104,7 +108,7 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                  required
+                  
                 /><br>
               </div>
               <div
@@ -114,6 +118,7 @@
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
+                id="ville"
                 class="formData">
                 <input
                   class="checkbox-input"
@@ -121,7 +126,6 @@
                   id="location1"
                   name="location"
                   value="New York"
-                  
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -206,6 +210,7 @@
                 <br>
               </div>
               <input
+                id="submit"
                 class="btn-submit"
                 type="submit"
                 class="button"
