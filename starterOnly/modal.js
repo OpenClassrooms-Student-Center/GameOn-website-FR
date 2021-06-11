@@ -37,58 +37,68 @@ document.getElementById("formGlobal").addEventListener("submit", function (e) {
   const first = document.getElementById("first");
   if (!first.value) {
     erreur = "prénom manquant";
-    document.getElementById("firstSpan").innerHTML = erreur;
+    first.parentElement.setAttribute("data-error-visible", "true");
+    first.parentElement.setAttribute("data-error", erreur);
   } else if (first.value.length < 2) {
     erreur = "veuillez rentrer un prénom de 2 caractères minimum";
-    document.getElementById("firstSpan").innerHTML = erreur;
+    first.parentElement.setAttribute("data-error-visible", "true");
+    first.parentElement.setAttribute("data-error", erreur);
   } else {
-    document.getElementById("firstSpan").innerHTML = "";
+    first.parentElement.removeAttribute("data-error-visible");
+    first.parentElement.removeAttribute("data-error");
   }
 
   //last name validation
   const last = document.getElementById("last");
   if (!last.value) {
     erreur = "nom manquant";
-    document.getElementById("lastSpan").innerHTML = erreur;
+    last.parentElement.setAttribute("data-error-visible", "true");
+    last.parentElement.setAttribute("data-error", erreur);
   } else if (last.value.length < 2) {
     erreur = "veuillez entrer un nom de 2 carctères minimum";
-    document.getElementById("lastSpan").innerHTML = erreur;
+    last.parentElement.setAttribute("data-error-visible", "true");
+    last.parentElement.setAttribute("data-error", erreur);
   } else {
-    document.getElementById("lastSpan").innerHTML = "";
+    last.parentElement.removeAttribute("data-error-visible");
+    last.parentElement.removeAttribute("data-error");
   }
-
   //email validation
   const email = document.getElementById("email");
   if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email.value)) {
-    document.getElementById("mailSpan").innerHTML = "";
+    email.parentElement.removeAttribute("data-error-visible");
+    email.parentElement.removeAttribute("data-error");
   } else {
     erreur = "veuillez renseigner un email valide";
-    document.getElementById("mailSpan").innerHTML = erreur;
+    email.parentElement.setAttribute("data-error-visible", "true");
+    email.parentElement.setAttribute("data-error", erreur);
   }
 
   //birth date validation
   const today = new Date().toISOString().split("T")[0];
   let birthDate = document.getElementById("birthdate");
-  console.log(birthDate.value)
-  
-  if(birthDate.value > today) {
+ 
+  if (birthDate.value > today || birthDate.value =="") {
     erreur =
       "veuillez sélectionner une date de naissance antérieure au " + today;
-    document.getElementById("birthSpan").innerHTML = erreur;
+    birthDate.parentElement.setAttribute("data-error-visible", "true");
+    birthDate.parentElement.setAttribute("data-error", erreur);
   } else {
-    document.getElementById("birthSpan").innerHTML = "";
+    birthDate.parentElement.removeAttribute("data-error-visible");
+    birthDate.parentElement.removeAttribute("data-error");
   }
 
-  // quantity of tournament validation
-  const quantity = document.getElementById('quantity');
-  if(/[0-9]/.test(quantity.value)){
-    document.getElementById("quantitySpan").innerHTML = "";
-  }
-  else{
+  // quantity of tournaments validation
+  const quantity = document.getElementById("quantity");
+ 
+  if (/[0-9]/.test(quantity.value)) {
+    quantity.parentElement.removeAttribute("data-error-visible");
+    quantity.parentElement.removeAttribute("data-error");
+  } else {    
     erreur = "entrer un nombre entre 0 et 99";
-    document.getElementById("quantitySpan").innerHTML = erreur;
-
+    quantity.parentElement.setAttribute("data-error-visible", "true");
+    quantity.parentElement.setAttribute("data-error", erreur); 
   }
+
   if (erreur) {
     e.preventDefault();
   }
