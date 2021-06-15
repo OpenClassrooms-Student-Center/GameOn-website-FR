@@ -63,7 +63,6 @@ document.getElementById("formGlobal").addEventListener("submit", function (e) {
     last.parentElement.removeAttribute("data-error");
   }
 
-
   //email validation
   const email = document.getElementById("email");
   if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email.value)) {
@@ -76,10 +75,10 @@ document.getElementById("formGlobal").addEventListener("submit", function (e) {
   }
 
   //birth date validation
-  const today = new Date().toISOString().split("T")[0];//défini la date d'aujourd'hui
+  const today = new Date().toISOString().split("T")[0]; //défini la date d'aujourd'hui
   let birthDate = document.getElementById("birthdate");
- 
-  if (birthDate.value > today || birthDate.value =="") {
+
+  if (birthDate.value > today || birthDate.value == "") {
     erreur =
       "veuillez sélectionner une date de naissance antérieure au " + today;
     birthDate.parentElement.setAttribute("data-error-visible", "true");
@@ -91,57 +90,54 @@ document.getElementById("formGlobal").addEventListener("submit", function (e) {
 
   // quantity of tournaments validation
   const quantity = document.getElementById("quantity");
- 
+
   if (/[0-9]/.test(quantity.value)) {
     quantity.parentElement.removeAttribute("data-error-visible");
     quantity.parentElement.removeAttribute("data-error");
-  } else {    
+  } else {
     erreur = "entrer un nombre entre 0 et 99";
     quantity.parentElement.setAttribute("data-error-visible", "true");
-    quantity.parentElement.setAttribute("data-error", erreur); 
+    quantity.parentElement.setAttribute("data-error", erreur);
   }
 
-  // town validation 
-  const newYork = document.getElementById('location1');
-  const sanFrancisco = document.getElementById('location2');
-  const seattle = document.getElementById('location3');
-  const chicago = document.getElementById('location4');
-  const boston = document.getElementById('location5');
-  const portland = document.getElementById('location6');
-  const town = document.getElementById('ville');
+  // town validation
 
-  if(!newYork.checked&&!sanFrancisco.checked&&!seattle.checked&&!chicago.checked&&!boston.checked&&!portland.checked){
-    erreur = "veuillez choisir une ville"
-    town.setAttribute("data-error-visible", "true");
-    town.setAttribute("data-error", erreur);
-  }
-  else{
-    town.removeAttribute("data-error-visible", "true");
-    town.removeAttribute("data-error", erreur);
-  }
+  const town = document.getElementById("ville");
+  const radio = document.getElementsByName("location");
+
+  for (let i = 0; i < radio.length; i++) {
+    
+    if (radio[i].value) {
+      town.removeAttribute("data-error-visible", "true");
+      town.removeAttribute("data-error", erreur);
+      break
+    } else {
+      erreur = "veuillez choisir une ville";
+      town.setAttribute("data-error-visible", "true");
+      town.setAttribute("data-error", erreur);
+    }
+  }  
 
   // utilisation conditions
 
-  const check = document.getElementById('checkbox1');
-  console.log(check.parentElement)
-  if(!check.checked){
+  const check = document.getElementById("checkbox1");  
+  if (!check.checked) {
     erreur = "merci d'accepter les conditions d'utilisation";
-    check.parentElement.setAttribute("data-error-visible","true");
+    check.parentElement.setAttribute("data-error-visible", "true");
     check.parentElement.setAttribute("data-error", erreur);
-  }
-  else{
-    check.parentElement.removeAttribute("data-error-visible","true");
+  } else {
+    check.parentElement.removeAttribute("data-error-visible", "true");
     check.parentElement.removeAttribute("data-error", erreur);
   }
-  
+
   if (erreur) {
     e.preventDefault();
-  }else{
-    function validate(){
-      
+  } else {
+    function validate() {
+      alert("formulaire envoyé");
     }
     validate();
   }
 });
-
-
+const radio = document.getElementsByName("location");
+console.log(radio)
