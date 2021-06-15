@@ -12,14 +12,13 @@
     />
   </head>
   <body>
-
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
         <img alt="logo" src="Logo.png">
       </div>
       <div class="main-navbar">
         <a href="#" class="active"><span>Accueil</span></a>
-        <a href="#"><span>Détails de l'évènement</span></a>
+        <a href="#"><span>Détails</span></a>
         <a href="#"><span>À propos</span></a>
         <a href="#"><span>Contact</span></a>
         <a href="#"><span>Évènements passés</span></a>
@@ -51,41 +50,41 @@
           je m'inscris
         </button>    
       </div>
-
       <div class="bground">
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
-            <form name="reserve" action="index.html" method="get" id="inscription" onsubmit="return validate();">
+            <form name="reserve" action="index.html" method="get" id="inscription">
+              <!-- onsubmit="return validate(e); -->
               <div class="formData" data-error="" data-error-visible="false">
-                <label for="first">Prénom</label>
+                <label for="first">prénom</label>
                 <br>
-                <input class="text-control" data-error-visible="false" data-error=""  type="text" id="first" name="first" required minlength="2"/>
+                <input class="text-control" type="text" id="first" name="first"/>
                 <br>
               </div>
               <div class="formData" data-error="" data-error-visible="false">
                 <label for="last">Nom</label>
                 <br>
-                <input class="text-control" data-error-visible="false" data-error="" type="text" id="last" name="last" required minlength="2"/>
+                <input class="text-control" type="text" id="last" name="last"/>
                 <br>
               </div>
               <div class="formData" data-error="" data-error-visible="false">
                 <label for="email">E-mail</label>
                 <br>
-                <input class="text-control" data-error-visible="false" data-error="" type="email" id="email" name="email"/>
+                <input class="text-control" type="email" id="email" name="email"/>
                 <br>
               </div>
               <div class="formData" data-error="" data-error-visible="false">
                 <label for="birthdate">Date de naissance</label>
                 <span id="birthday" class="mismatch"></span>
                 <br>
-                <input class="text-control" data-error-visible="false" data-error="" type="date" id="birthdate" name="birthdate"/>
+                <input class="text-control" type="date" id="birthdate" name="birthdate"/>
                 <br>
               </div>
               <div class="formData" data-error="" data-error-visible="false">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label>
                 <br>
-                <input class="text-control" data-error-visible="false" data-error="" type="number" id="quantity" name="quantity" min="0" max="99">
+                <input class="text-control" type="number" id="quantity" name="quantity" min="0" max="99">
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div class="formData" data-error="" data-error-visible="false">
@@ -111,14 +110,23 @@
                 <input class="checkbox-input" type="checkbox" id="checkbox1" checked/>
                 <label class="checkbox2-label" for="checkbox1"><span class="checkbox-icon"></span>J'ai lu et accepté les conditions d'utilisation.</label>
                 <br>
-                <span id="box" class="mismatch"></span>
-                <br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2"><span class="checkbox-icon"></span>Je souhaite être prévenu des prochains évènements.</label>
                 <br>
               </div>
               <input class="btn-submit button" type="submit" value="C'est parti"/>
             </form>
+          </div>
+        </div>
+      </div>
+      <div class="bground2">
+        <div class="content">
+          <span class="close"></span>
+          <div class="modal-body2">
+            <div id="congratulations">
+              <p>Merci ! Votre réservation a été reçue.</p>
+              <button class="btn-submit button">Fermer</button>
+            </div>
           </div>
         </div>
       </div>

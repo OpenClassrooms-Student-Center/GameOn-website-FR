@@ -9,14 +9,16 @@ function editNav() {
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
+const modalbg2 = document.querySelector(".bground2");
 const modalClose = document.querySelectorAll(".close");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const form = document.getElementById("inscription");
+const form2 = document.getElementById("congratulations");
 
 /* Expressions Régulières*/
 
-let emailRegex = /^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]­{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$/ ;
+let emailRegex = /^[a-z0-9]+([_|\.|-]{1}[a-z0-9]+)*@[a-z0-9]+([_|\.|-]­{1}[a-z0-9]+)*[\.]{1}[a-z]{2,6}$/;
 let nameRegex = /^[^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
 let numberRegex = /^[0-9 \-]+$/;
 
@@ -39,17 +41,34 @@ modalClose.forEach((close) => close.addEventListener("click", closeModal));
 /* submit form event */
 form.addEventListener("submit", validate);
 
+form2.addEventListener("click", closeModal);
+
+
+
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
+function launchModal2() {
+  modalbg2.style.display = "block";
+}
 /* close modal form */
 function closeModal() {
   modalbg.style.display = "none";
+  modalbg2.style.display = "none";
 }
 
-/* generate message */
-generateErrorMessage();
+/* verify form validity */
+function validate(e) {
+  generateErrorMessage();
+  textValid();
+  citiesValid();
+  isConditionSelected();
+  if(check() == false) {
+    e.preventDefault();
+  }  
+}
+launchModal2();
 
 /* Générer les messages d'erreurs */
 function generateErrorMessage(){
@@ -58,33 +77,15 @@ function generateErrorMessage(){
  }
 }
 
-/* verify form validity */
-function validate(e) {
-  textValid()
-  citiesValid();
-  isConditionSelected();
-
-  if (check() == false) {
-    e.preventDefault();
-  }
-  else {
-    closeModal();
-    alert("super!");
-  }
-}
-
 /* fonctions éléments formulaire */
 function textValid() {
   
   for (i = 0; i < 5; i++) {
     if (regexList[i].exec(form.elements[i].value) == null) {
-      form.elements[i].dataset.error = form.elements[i].value; 
       formData[i].dataset.errorVisible = "true";
-      form.elements[i].dataset.errorVisible = "true";
     }
     else {
       formData[i].dataset.errorVisible = "false";
-      form.elements[i].dataset.errorVisible = "false";
     } 
  }
 }
@@ -92,7 +93,6 @@ function textValid() {
 function citiesValid(){
   if (isCheckboxSelected() == false){
     formData[5].dataset.errorVisible = "true";
-    return false;
   }
   else {
     formData[5].dataset.errorVisible = "false";
@@ -106,7 +106,6 @@ function isConditionSelected(){
   }
   else {
     formData[6].dataset.errorVisible = "true";
-    return false;
   }
 }
 
@@ -122,7 +121,7 @@ return false
 }
 function check () {
   for ( i = 0 ; i<7; i++){
-    if (formData[i].dataset.errorVisible = "true"){
+    if (formData[i].dataset.errorVisible == "true"){
       return false
     }
   }

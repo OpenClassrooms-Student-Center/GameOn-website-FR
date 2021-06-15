@@ -19,6 +19,8 @@ body {
   font-size: 18px;
   max-width: 1300px;
   margin: 0 auto;
+  height : auto;
+    
 }
 
 p {
@@ -36,6 +38,7 @@ img {
   align-items: center;
   overflow: hidden;
   margin: 3.5%;
+  height :10%;
 }
 .header-logo {
     float: left;
@@ -45,13 +48,15 @@ img {
 .main-navbar {
     float: right;
 }
+
 .topnav a {
   float: left;
   display: block;
   color: #000000;
   text-align: center;
-  padding: 12px 12px;
-  margin: 5px;
+  padding: 10px 10px;
+  border-radius: 5px;
+  margin: 2px;
   text-decoration: none;
   font-size: 20px;
   font-family: Roboto, sans-serif;
@@ -73,40 +78,10 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
 
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} 
 
 main {
+  display: flex;
   font-size: 130%;
   font-weight: bolder;
   color: black;
@@ -116,7 +91,7 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
+  height: 60%;
 
 }
 
@@ -140,6 +115,7 @@ main {
   margin: 20px;
   padding: 10px;
   font-family: var(--font-slab);
+  height: 10%;
 }
 
 /* Modal form */
@@ -162,7 +138,8 @@ main {
   font-size: 16px;
 }
 
-.bground {
+.bground,
+.bground2 {
   display: none;
   position: fixed;
   z-index: 1;
@@ -175,6 +152,7 @@ main {
 }
 
 .content {
+  height : auto;
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
@@ -190,9 +168,18 @@ main {
 
 .modal-body {
   padding: 15px 8%;
-  margin: 15px auto;
+  margin: 15px auto; 
 }
-
+.modal-body2 {
+  display : flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px auto; 
+}
+.modal-body2 p{
+  padding-top: 85%;
+  padding-bottom: 85%;
+}
 label {
   font-family: var(--font-default);
   font-size: 17px;
@@ -233,17 +220,12 @@ input {
   border: 2px solid #e54858;
 }
 
-input[data-error]::after {
+/* input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
-    opacity: 0;
-    transition: 0.3s;
-}
-input[data-error-visible="true"]::after {
-  opacity: 1;
+} */
 
-}
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -417,7 +399,6 @@ input[data-error-visible="true"]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -490,15 +471,107 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+@media screen and (max-width: 905px) {
+  
+  .topnav a{
+    font-size: 0.9rem;
+  }
+}
+@media screen and (max-width: 773px) {
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+    font-size: 15px;
+    padding:2px;
+    
+  }
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  .topnav a.icon{
+    color: red;
+    font-size: 1.9rem;
+  }
+  .active a{
+    font-size: medium;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .topnav.responsive {
+    position: relative;
+    
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+    font-size: 7px;
+    padding:2px;
+    
+  }
+}
+
+@media screen and (max-width: 685px) {
+ 
+  .hero-content h1{
+    font-weight: bold;
+    font-size: 3.5rem;
+    padding : 0px;
+  }
+} 
 @media screen and (max-width: 800px) {
+  
+  .body{
+    margin-left:30px;
+  }
+  .main-navbar{
+    display: flex;
+    align-content: center;
+    color: red;
+    margin-top: 22px;
+    font-size: 2px;
+    
+  }
+  .main-navbar a{
+    
+    font-size: 1.1rem;
+    padding : 3px;
+    
+  }
+  .topnav{
+    margin-left: 30px;
+    margin-bottom: 0px;
+  }
+  
+  .header-logo img{
+    height: 15%;
+    width: 100%;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
   }
   .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px;
+  }
+  .hero-content h1{
+    font-weight: bold;
+    font-size: 4,5rem;
+    padding : 0px;
   }
   .hero-content::after {
     content: unset;
@@ -506,13 +579,11 @@ footer {
   .hero-content .btn-signup {
     display: none;
   }
-  .hero-headline {
-    font-size: 4.5rem;
-    white-space: normal;
-  }
+  
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
+    margin-top: 30px;
   }
   .hero-img img {
     border-radius: 10px;
@@ -528,7 +599,38 @@ footer {
     text-align: center;
   }
 }
+ @media screen and (max-width: 540px) {
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+    margin-top: -15px;
+    color: red;
+  }
+  .main-navbar{
+    margin-top: 0px;;
+  }
+  .hero-content h1{
+    font-weight: bold;
+    font-size: 2.5rem;
+    padding : 0px;
+  }
+  .hero-text {
+    width: 146%;
+    font-weight: normal;
+    font-size: 1rem;
+    margin-top: 37px;
+    padding: 0;
+    width: unset;
+  }
+} 
 
+@media screen and (max-width: 971px) {
+  
+  .hero-headline{
+    font-size: 4.5rem;;
+  }
+}
 @keyframes modalopen {
   from {
     opacity: 0;
