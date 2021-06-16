@@ -226,16 +226,17 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
+
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
-} */
+} 
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
-  margin-left: 36px;
+  margin-left: 36px; 
   font-size: 12px;
   font-weight: normal;
 }
@@ -486,7 +487,10 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    min-width: 0; /*rectification affichage mobile*/
+    padding: 0px;
+    text-align: center;
+    
   }
   .hero-content::after {
     content: unset;
@@ -497,6 +501,7 @@ footer {
   .hero-headline {
     font-size: 4.5rem;
     white-space: normal;
+    
   }
   .hero-text {
     width: unset;
@@ -526,4 +531,5 @@ footer {
     opacity: 1;
   }
 }
+
 
