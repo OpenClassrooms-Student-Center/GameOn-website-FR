@@ -29,17 +29,14 @@ function closeModal() {
   modalbg.style.display = "none";
 };
 
-let first = document.getElementById("first");
-let firstParent = first.parentElement;
 
-let formGlobal = document.getElementById("formGlobal");
-
-console.log(formData)
-console.log(formGlobal.location.value)
 
 
 formGlobal.addEventListener('submit', function(e){ 
   let erreur;
+  
+
+  //town validation
 
   if(!formGlobal.location.value){      
     erreur = "selectionnez une ville";      
@@ -50,12 +47,13 @@ formGlobal.addEventListener('submit', function(e){
     formData[5].removeAttribute("data-error");    
   }
 
+
   if(erreur){    
     e.preventDefault();
 
   }else{
-    
+    alert('formulaire envoyé')
   }
 })
-console.log(formData[5]);
+
 
