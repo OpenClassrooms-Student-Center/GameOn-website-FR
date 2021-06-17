@@ -32,16 +32,17 @@ function closeModal() {
 
 
 formGlobal.addEventListener("submit", function(e){
+  let erreur;
 
   //email validation
-  const email = document.getElementById("email");
-  if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email.value)) {
-    email.parentElement.removeAttribute("data-error-visible");
-    email.parentElement.removeAttribute("data-error");
-  } else {
-    erreur = "veuillez renseigner un email valide";
-    email.parentElement.setAttribute("data-error-visible", "true");
-    email.parentElement.setAttribute("data-error", erreur);
+  
+  if(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData[2].children[2].value)){
+    formData[2].removeAttribute("data-error");
+    formData[2].removeAttribute("data-error-visible");
+  }else{
+    erreur = "veuillez entrer un mail valide"
+    formData[2].setAttribute("data-error", erreur)
+    formData[2].setAttribute("data-error-visible","true")
   }
 
   //birth date validation
@@ -59,15 +60,14 @@ formGlobal.addEventListener("submit", function(e){
   }
 
   // quantity of tournaments validation
-  const quantity = document.getElementById("quantity");
 
-  if (/[0-9]/.test(quantity.value)) {
-    quantity.parentElement.removeAttribute("data-error-visible");
-    quantity.parentElement.removeAttribute("data-error");
+  if (/[0-9]/.test(formData[4].children[2].value)) {
+    formData[4].removeAttribute("data-error-visible");
+    formData[4].removeAttribute("data-error");
   } else {
     erreur = "entrer un nombre entre 0 et 99";
-    quantity.parentElement.setAttribute("data-error-visible", "true");
-    quantity.parentElement.setAttribute("data-error", erreur);
+    formData[4].setAttribute("data-error-visible", "true");
+    formData[4].setAttribute("data-error", erreur);
   }
 
   
@@ -83,24 +83,19 @@ formGlobal.addEventListener("submit", function(e){
   }
 
 
-  const check = document.getElementById("checkbox1");  
-  if (!check.checked) {
+  
+  if (!formData[6].children[0].checked) {
     erreur = "merci d'accepter les conditions d'utilisation";
-    check.parentElement.setAttribute("data-error-visible", "true");
-    check.parentElement.setAttribute("data-error", erreur);
+    formData[6].setAttribute("data-error-visible", "true");
+    formData[6].setAttribute("data-error", erreur);
   } else {
-    check.parentElement.removeAttribute("data-error-visible", "true");
-    check.parentElement.removeAttribute("data-error", erreur);
+    formData[6].removeAttribute("data-error-visible");
+    formData[6].removeAttribute("data-error");
   }
 
-  if (erreur) {
+  if(erreur) {
     e.preventDefault();
   } else {
-    function validate() {
-      alert("formulaire envoyé");
-    }
-    validate();
+    alert("formulaire envoyé")
   }
 });
-const radio = document.getElementsByName("location");
-console.log(radio)
