@@ -55,8 +55,8 @@
       <div class="content">
         <span class="close"></span>
         <div class="modal-body">
-          <form id="formGlobal" name="reserve" action="index.html" method="get" data-error-visibled="true"
-            onsubmit="return validate();">
+          <form id="formGlobal" name="reserve" action="index.html" method="get" 
+            >
             <div class="formData">
               <label for="first">Prénom</label><br>
               <input class="text-control" type="text" id="first" name="first" /><br>
@@ -109,6 +109,7 @@
                 <span class="checkbox-icon"></span>
                 Portland</label>
             </div>
+            <span id="locationSpan"></span>
 
             <div class="formData">
               <input class="checkbox-input" type="checkbox" id="checkbox1"  />
@@ -128,6 +129,10 @@
           </form>
         </div>
       </div>
+    </div>
+
+    <div class="formValidation">
+      <p>Merci d'avoir renseigné les champs demandés pour votre inscription</p>
     </div>
   </main>
   <footer>

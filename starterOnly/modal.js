@@ -12,6 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const close = document.querySelector(".close");
+const formGlobal = document.getElementById("formGlobal");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -27,41 +28,10 @@ close.addEventListener("click", closeModal);
 // close modal form
 function closeModal() {
   modalbg.style.display = "none";
-}
+};
 
-// test preventdefault
-document.getElementById("formGlobal").addEventListener("submit", function (e) {
-  let erreur;
 
-  //first name validation
-  const first = document.getElementById("first");
-  if (!first.value) {
-    erreur = "prénom manquant";
-    first.parentElement.setAttribute("data-error-visible", "true");
-    first.parentElement.setAttribute("data-error", erreur);
-  } else if (first.value.length < 2) {
-    erreur = "veuillez rentrer un prénom de 2 caractères minimum";
-    first.parentElement.setAttribute("data-error-visible", "true");
-    first.parentElement.setAttribute("data-error", erreur);
-  } else {
-    first.parentElement.removeAttribute("data-error-visible");
-    first.parentElement.removeAttribute("data-error");
-  }
-
-  //last name validation
-  const last = document.getElementById("last");
-  if (!last.value) {
-    erreur = "nom manquant";
-    last.parentElement.setAttribute("data-error-visible", "true");
-    last.parentElement.setAttribute("data-error", erreur);
-  } else if (last.value.length < 2) {
-    erreur = "veuillez entrer un nom de 2 carctères minimum";
-    last.parentElement.setAttribute("data-error-visible", "true");
-    last.parentElement.setAttribute("data-error", erreur);
-  } else {
-    last.parentElement.removeAttribute("data-error-visible");
-    last.parentElement.removeAttribute("data-error");
-  }
+formGlobal.addEventListener("submit", function(e){
 
   //email validation
   const email = document.getElementById("email");
@@ -100,25 +70,18 @@ document.getElementById("formGlobal").addEventListener("submit", function (e) {
     quantity.parentElement.setAttribute("data-error", erreur);
   }
 
-  // town validation
+  
+  //town validation
 
-  const town = document.getElementById("ville");
-  const radio = document.getElementsByName("location");
+  if(!formGlobal.location.value){      
+    erreur = "selectionnez une ville";      
+    formData[5].setAttribute("data-error-visible","true");
+    formData[5].setAttribute("data-error",erreur);    
+  }else{
+    formData[5].removeAttribute("data-error-visible");
+    formData[5].removeAttribute("data-error");    
+  }
 
-  for (let i = 0; i < radio.length; i++) {
-    
-    if (radio[i].value) {
-      town.removeAttribute("data-error-visible", "true");
-      town.removeAttribute("data-error", erreur);
-      break
-    } else {
-      erreur = "veuillez choisir une ville";
-      town.setAttribute("data-error-visible", "true");
-      town.setAttribute("data-error", erreur);
-    }
-  }  
-
-  // utilisation conditions
 
   const check = document.getElementById("checkbox1");  
   if (!check.checked) {
