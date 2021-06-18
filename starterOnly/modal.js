@@ -98,5 +98,3 @@ formGlobal.addEventListener("submit", function (e) {
 });
 
 
-
-console.log(formData[3].children[2].value)
