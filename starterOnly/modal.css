@@ -138,11 +138,22 @@ main {
   font-size: 16px;
 }
 
-.bground,
-.bground2 {
+.bground{
   display: none;
   position: fixed;
   z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+
+.bground2 {
+  display: none;
+  position: fixed;
+  z-index: 1000;
   left: 0;
   top: 0;
   height: 100%;
@@ -165,7 +176,6 @@ main {
   color: #fff;
   padding-top: 10px;
 }
-
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto; 
@@ -629,6 +639,21 @@ footer {
   
   .hero-headline{
     font-size: 4.5rem;;
+  }
+}
+@media screen and (max-width: 466px) {
+  
+  .hero-text {
+    width: 85%;
+  }
+}
+@media screen and (max-width: 411px) {
+  
+  .hero-text {
+    width: 80%;
+  }
+  .hero-content h1{
+    font-size:2rem;
   }
 }
 @keyframes modalopen {
