@@ -49,10 +49,13 @@ formGlobal.addEventListener("submit", function (e) {
   let birthDate = document.getElementById("birthdate");//récupère la date de naissance entrée par l'utilisateur
   let parseBirthDate = Date.parse(birthDate.value);//converti la date entrée en milliseconde utc
   const today = Date.now();// défini la date d'aujourd'hui en ms utc
+  const todayDate = new Date().toLocaleDateString();//converti la date du jour au format jour/mois/année
+
+  
 
   if (parseBirthDate > today || !parseBirthDate) {
     erreur =
-      "veuillez sélectionner une date de naissance antérieure à aujourd'hui";
+      "veuillez sélectionner une date de naissance antérieure au " + todayDate;
     birthDate.parentElement.setAttribute("data-error-visible", "true");
     birthDate.parentElement.setAttribute("data-error", erreur);
   } else {
@@ -96,6 +99,8 @@ formGlobal.addEventListener("submit", function (e) {
   }
 });
 
-console.log(auj);
-console.log(parseDate);
-console.log(birthDate.value);
+const todayDate = new Date();
+let jour = todayDate.toLocaleDateString();
+console.log(jour)
+
+
