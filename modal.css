@@ -633,6 +633,9 @@ footer {
     padding: 0;
     width: unset;
   }
+  .header-logo img{
+    width: 80%;
+  }
 } 
 
 @media screen and (max-width: 971px) {
