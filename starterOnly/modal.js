@@ -46,7 +46,7 @@ formGlobal.addEventListener("submit", function (e) {
   }
 
   //birth date validation
-  let parseBirthDate = Date.parse(formData[3].value);//converti la date entrée en milliseconde utc
+  let parseBirthDate = Date.parse(formData[3].children[2].value);//converti la date entrée en milliseconde utc
   const today = Date.now();// défini la date d'aujourd'hui en ms utc
   const todayDate = new Date().toLocaleDateString();//converti la date du jour au format jour/mois/année
 
@@ -99,3 +99,4 @@ formGlobal.addEventListener("submit", function (e) {
 
 
 
+console.log(formData[3].children[2].value)
