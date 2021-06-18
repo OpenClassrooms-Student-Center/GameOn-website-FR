@@ -481,63 +481,20 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+
+@media screen and (max-width: 971px) {
+  
+  .hero-headline{
+    font-size: 4.5rem;;
+  }
+}
 @media screen and (max-width: 905px) {
   
   .topnav a{
     font-size: 0.9rem;
   }
 }
-@media screen and (max-width: 773px) {
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-    font-size: 15px;
-    padding:2px;
-    
-  }
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-  .topnav a.icon{
-    color: red;
-    font-size: 1.9rem;
-  }
-  .active a{
-    font-size: medium;
-  }
-}
-
-@media screen and (max-width: 770px) {
-  .topnav.responsive {
-    position: relative;
-    
-  }
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-    font-size: 7px;
-    padding:2px;
-    
-  }
-}
-
-@media screen and (max-width: 685px) {
- 
-  .hero-content h1{
-    font-weight: bold;
-    font-size: 3.5rem;
-    padding : 0px;
-  }
-} 
 @media screen and (max-width: 800px) {
   
   .body{
@@ -609,17 +566,90 @@ footer {
     text-align: center;
   }
 }
- @media screen and (max-width: 540px) {
+@media screen and (max-width: 773px) {
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+    font-size: 15px;
+    padding:2px;
+    
+  }
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+  }
+  .topnav a.icon{
     color: red;
+    font-size: 1.9rem;
+  }
+  .active a{
+    font-size: medium;
+  }
+}
+
+@media screen and (max-width: 770px) {
+  .topnav.responsive {
+    position: relative;
+    
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    display: block;
+    text-align: left;
+    font-size: 12px;
+    padding:2px;
+    
+  }
+  
+}
+
+@media screen and (max-width: 685px) {
+ 
+  .hero-content h1{
+    font-weight: bold;
+    font-size: 3.5rem;
+    padding : 0px;
+  }
+} 
+@media screen and (max-width: 570px) {
+  
+ 
+  .topnav.responsive{
+    display: flex;
+    justify-content: space-between;
+    width:auto;
+  }
+  .header-logo{
+    width:50%;
   }
   .main-navbar{
-    margin-top: 0px;;
+    width:50%;
+    
   }
+  .topnav a.icon{
+    font-size: 1.5rem;
+    
+  }
+  .main-navbar .icon{
+    padding-left: 80%;
+   
+  }
+  .header-logo img{
+    width:70%;
+  }
+} 
+ @media screen and (max-width: 540px) {
+  
+  .topnav a.icon {
+    color: red;
+  }
+ 
   .hero-content h1{
     font-weight: bold;
     font-size: 2.5rem;
@@ -633,21 +663,18 @@ footer {
     padding: 0;
     width: unset;
   }
-  .header-logo img{
-    width: 80%;
+  .topnav.responsive a{
+    font-size: 10px;
   }
 } 
 
-@media screen and (max-width: 971px) {
-  
-  .hero-headline{
-    font-size: 4.5rem;;
-  }
-}
 @media screen and (max-width: 466px) {
-  
+
   .hero-text {
     width: 85%;
+  }
+  .topnav.responsive a{
+    font-size: 8px;
   }
 }
 @media screen and (max-width: 411px) {
@@ -657,6 +684,17 @@ footer {
   }
   .hero-content h1{
     font-size:2rem;
+  }
+  .topnav.responsive a{
+    font-size: 6px;
+  }
+}
+@media screen and (max-width: 350px) {
+  .topnav.responsive a{
+    font-size: 5px;
+  }
+  .header-logo img{
+    width: 70%;
   }
 }
 @keyframes modalopen {
