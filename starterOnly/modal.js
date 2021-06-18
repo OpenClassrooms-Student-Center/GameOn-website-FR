@@ -46,21 +46,19 @@ formGlobal.addEventListener("submit", function (e) {
   }
 
   //birth date validation
-  let birthDate = document.getElementById("birthdate");//récupère la date de naissance entrée par l'utilisateur
-  let parseBirthDate = Date.parse(birthDate.value);//converti la date entrée en milliseconde utc
+  let parseBirthDate = Date.parse(formData[3].value);//converti la date entrée en milliseconde utc
   const today = Date.now();// défini la date d'aujourd'hui en ms utc
   const todayDate = new Date().toLocaleDateString();//converti la date du jour au format jour/mois/année
 
   
 
   if (parseBirthDate > today || !parseBirthDate) {
-    erreur =
-      "veuillez sélectionner une date de naissance antérieure au " + todayDate;
-    birthDate.parentElement.setAttribute("data-error-visible", "true");
-    birthDate.parentElement.setAttribute("data-error", erreur);
+    erreur ="veuillez sélectionner une date de naissance antérieure au " + todayDate;
+    formData[3].setAttribute("data-error-visible", "true");
+    formData[3].setAttribute("data-error", erreur);
   } else {
-    birthDate.parentElement.removeAttribute("data-error-visible");
-    birthDate.parentElement.removeAttribute("data-error");
+    formData[3].removeAttribute("data-error-visible");
+    formData[3].removeAttribute("data-error");
   }
 
   // quantity of tournaments validation
@@ -99,8 +97,5 @@ formGlobal.addEventListener("submit", function (e) {
   }
 });
 
-const todayDate = new Date();
-let jour = todayDate.toLocaleDateString();
-console.log(jour)
 
 
