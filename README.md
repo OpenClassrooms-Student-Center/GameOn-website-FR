@@ -1,5 +1,14 @@
-# Projet GameOn
-1. Forkez ce repo ;
-2. Il est conseillé d'utiliser VisualStudio Code et vous pouvez utiliser Docker, mais ce n'est pas obligatoire ;
-3. Il n'y a aucune dépendance ;
-4. Vous ne devez utiliser que du CSS personnalisé et du JavaScript pur, sans jQuery, Bootstrap ou autre librairie.
+# GAME ON
+
+##Presentation
+
+GameOn est une PME, GameOn, spécialisée dans les conférences et les concours de jeux. 
+
+## Travail à réaliser
+
+Résoudre les 5 issues :
+* fermer la modale,
+* implémenter les entrées du formulaire,
+* ajouter les messages de validation / erreur,
+* ajouter un message de confirmation lors d'un envoi reusi.
+
