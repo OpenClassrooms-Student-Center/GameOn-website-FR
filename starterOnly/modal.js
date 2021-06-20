@@ -13,7 +13,6 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const close = document.querySelector(".close");
 const formGlobal = document.getElementById("formGlobal");
-const validationPage = document.querySelector(".sendValidation");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -31,9 +30,30 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
+function testFirstName(){
+  if(!formData[0].children[2].value || formData[0].children[2].value<2){
+    erreur = " votre prénom doit comporter au minimum 2 caractères";
+    formData[0].setAttribute("data-error",erreur);
+    formData[0].setAttribute("data-error-visible","true");    
+  }else{
+    formData[0].removeAttribute("data-error");
+    formData[0].removeAttribute("data-error-visible");   
+  }
+}
+function testLastName(){
+  if(!formData[1].children[2].value || formData[1].children[2].value<2){
+    erreur = " votre nom doit comporter au minimum 2 caractères";
+    formData[1].setAttribute("data-error",erreur);
+    formData[1].setAttribute("data-error-visible","true");    
+  }else{
+    formData[1].removeAttribute("data-error");
+    formData[1].removeAttribute("data-error-visible");   
+  }
+}
 formGlobal.addEventListener("submit", function (e) {
   let erreur;
-
+  testFirstName();
+  testLastName();
   //email validation
 
   if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData[2].children[2].value)) {
