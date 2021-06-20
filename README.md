@@ -1,6 +1,6 @@
 # GAME ON
 
-##Presentation
+## Presentation
 
 GameOn est une PME, GameOn, spécialisée dans les conférences et les concours de jeux. 
 
