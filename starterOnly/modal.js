@@ -34,8 +34,9 @@ function closeModal() {
 let erreur;
 let first = document.getElementById('first');
 let last = document.getElementById('last');
+let mail = document.getElementById('email');
 
-function test(input){
+function testFirstAndLast(input){
   if(input.length<2){
     return false
   }else{
@@ -43,16 +44,22 @@ function test(input){
   }
 };
 
+function testMail(input){
+  return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(input.value)
+};
+
 function setAtt(value){
   value.parentElement.setAttribute("data-error", erreur);
   value.parentElement.setAttribute("data-error-visible", "true");
 }
+
 function removeAtt(value){
   value.parentElement.removeAttribute("data-error");
   value.parentElement.removeAttribute("data-error-visible");
 }
+
 function testFirstName(){
-  if(test(first.value)){
+  if(testFirstAndLast(first.value)){
     removeAtt(first);
     return true
   }else{
@@ -62,7 +69,7 @@ function testFirstName(){
   }
 };
 function testLastName(){
-  if(test(last.value)){
+  if(testFirstAndLast(last.value)){
     removeAtt(last);
     return true
   }else{
@@ -72,7 +79,16 @@ function testLastName(){
   }
 };
 
-
+function email(){
+  if(testMail(mail)){
+    removeAtt(mail);
+    return true
+  }else{
+    erreur = "veuillez entrer un email valide"
+    setAtt(mail);
+    return false;
+  }
+}
 
 console.log(first.value)
 formGlobal.addEventListener("submit", function (e) {  
@@ -87,7 +103,8 @@ formGlobal.addEventListener("submit", function (e) {
   // }
   testFirstName();
   testLastName();
-  if (testFirstName() && testLastName()) {
+  email()
+  if (testFirstName() && testLastName() && email()) {
     alert('formulaire envoyé')
   } else {
     e.preventDefault()
