@@ -482,7 +482,12 @@ footer {
   margin: 0 20px;
 }
 
-
+@media screen and (max-width: 950px) {
+  .hero-headline {
+    font-size: 4.5rem;
+    
+  }
+}
 
 @media screen and (max-width: 800px) {
   .hero-section {
