@@ -483,62 +483,16 @@ footer {
 }
 
 
-@media screen and (max-width: 971px) {
-  
-  .hero-headline{
-    font-size: 4.5rem;;
-  }
-}
-@media screen and (max-width: 905px) {
-  
-  .topnav a{
-    font-size: 0.9rem;
-  }
-}
+
 @media screen and (max-width: 800px) {
-  
-  .body{
-    margin-left:30px;
-  }
-  .main-navbar{
-    display: flex;
-    align-content: center;
-    color: red;
-    margin-top: 22px;
-    font-size: 2px;
-    
-  }
-  .main-navbar a{
-    
-    font-size: 1.1rem;
-    padding : 3px;
-    
-  }
-  .topnav{
-    margin-left: 30px;
-    margin-bottom: 0px;
-  }
-  
-  .header-logo img{
-    height: 15%;
-    width: 100%;
-  }
   .hero-section {
     display: block;
     box-shadow: unset;
   }
   .hero-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     background: #fff;
     color: #000;
-    padding: 0px;
-  }
-  .hero-content h1{
-    font-weight: bold;
-    font-size: 4,5rem;
-    padding : 0px;
+    padding: 20px;
   }
   .hero-content::after {
     content: unset;
@@ -546,11 +500,13 @@ footer {
   .hero-content .btn-signup {
     display: none;
   }
-  
+  .hero-headline {
+    font-size: 4.5rem;
+    white-space: normal;
+  }
   .hero-text {
     width: unset;
-    font-size: 1.7rem;
-    margin-top: 30px;
+    font-size: 1.5rem;
   }
   .hero-img img {
     border-radius: 10px;
@@ -566,135 +522,81 @@ footer {
     text-align: center;
   }
 }
-@media screen and (max-width: 773px) {
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-    font-size: 15px;
-    padding:2px;
-    
-  }
+@media screen and (max-width: 971px) {@media screen and (max-width: 785px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
-  }
-  .topnav a.icon{
-    color: red;
-    font-size: 1.9rem;
-  }
-  .active a{
-    font-size: medium;
+    
   }
 }
 
-@media screen and (max-width: 770px) {
-  .topnav.responsive {
-    position: relative;
-    
-  }
+@media screen and (max-width: 785px) {
+  .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
+    
     position: absolute;
     right: 0;
     top: 0;
   }
   .topnav.responsive a {
+  
+    float: none;
     display: block;
     text-align: left;
-    font-size: 12px;
-    padding:2px;
-    
-  }
-  
-}
-
-@media screen and (max-width: 685px) {
- 
-  .hero-content h1{
-    font-weight: bold;
-    font-size: 3.5rem;
-    padding : 0px;
-  }
-} 
-@media screen and (max-width: 570px) {
-  
- 
-  .topnav.responsive{
-    display: flex;
-    justify-content: space-between;
-    width:auto;
-  }
-  .header-logo{
-    width:50%;
-  }
-  .main-navbar{
-    width:50%;
-    
   }
   .topnav a.icon{
-    font-size: 1.5rem;
-    
+
+    color : red;
   }
-  .main-navbar .icon{
-    padding-left: 80%;
-   
+  .main-navbar{
+    margin-top: 50px;
   }
-  .header-logo img{
-    width:70%;
-  }
-} 
+}
  @media screen and (max-width: 540px) {
+  .topnav a {display: none;}
   
   .topnav a.icon {
-    color: red;
+    float: right;
+    display: block;
+    top: 0px;
   }
- 
-  .hero-content h1{
-    font-weight: bold;
-    font-size: 2.5rem;
-    padding : 0px;
+  .hero-headline{
+    font-size: 3rem;
   }
-  .hero-text {
-    width: 146%;
-    font-weight: normal;
+  .hero-text{
     font-size: 1rem;
-    margin-top: 37px;
-    padding: 0;
-    width: unset;
-  }
-  .topnav.responsive a{
-    font-size: 10px;
+    margin-right: 20px;
   }
 } 
-
-@media screen and (max-width: 466px) {
-
-  .hero-text {
-    width: 85%;
+@media screen and (max-width: 440px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    
+    position: absolute;
+    right: 0;
+    top: 0;
   }
-  .topnav.responsive a{
-    font-size: 8px;
-  }
-}
-@media screen and (max-width: 411px) {
+  .topnav.responsive a {
   
-  .hero-text {
-    width: 80%;
+    float: none;
+    display: block;
+    text-align: left;
   }
-  .hero-content h1{
-    font-size:2rem;
+  .topnav a.icon{
+    color : red;
   }
-  .topnav.responsive a{
-    font-size: 6px;
-  }
-}
-@media screen and (max-width: 350px) {
-  .topnav.responsive a{
-    font-size: 5px;
+  .main-navbar{
+    margin-top: 50px;
   }
   .header-logo img{
-    width: 70%;
+    width:80%;
+  }
+  .hero-headline{
+    width:50%;
+  }
+  .hero-text{
+    width : 50%;
   }
 }
 @keyframes modalopen {
@@ -706,4 +608,4 @@ footer {
     opacity: 1;
   }
 }
-
+}
