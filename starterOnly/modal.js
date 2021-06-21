@@ -27,94 +27,69 @@ close.addEventListener("click", closeModal);
 
 // close modal form
 function closeModal() {
-  modalbg.style.display = "none";
-}
+  modalbg.style.display = "none";}
 
+
+
+let erreur;
+let first = document.getElementById('first');
+let last = document.getElementById('last');
+
+function test(input){
+  if(input.length<2){
+    return false
+  }else{
+    return true
+  }
+};
+
+function setAtt(value){
+  value.parentElement.setAttribute("data-error", erreur);
+  value.parentElement.setAttribute("data-error-visible", "true");
+}
+function removeAtt(value){
+  value.parentElement.removeAttribute("data-error");
+  value.parentElement.removeAttribute("data-error-visible");
+}
 function testFirstName(){
-  if(!formData[0].children[2].value || formData[0].children[2].value<2){
-    erreur = " votre prénom doit comporter au minimum 2 caractères";
-    formData[0].setAttribute("data-error",erreur);
-    formData[0].setAttribute("data-error-visible","true");    
+  if(test(first.value)){
+    removeAtt(first);
+    return true
   }else{
-    formData[0].removeAttribute("data-error");
-    formData[0].removeAttribute("data-error-visible");   
+    erreur = "veuillez entrer un prénom de 2 caractères minimum";
+    setAtt(first)
+    return false
   }
-}
+};
 function testLastName(){
-  if(!formData[1].children[2].value || formData[1].children[2].value<2){
-    erreur = " votre nom doit comporter au minimum 2 caractères";
-    formData[1].setAttribute("data-error",erreur);
-    formData[1].setAttribute("data-error-visible","true");    
+  if(test(last.value)){
+    removeAtt(last);
+    return true
   }else{
-    formData[1].removeAttribute("data-error");
-    formData[1].removeAttribute("data-error-visible");   
+    erreur = "veuillez entrer un nom de 2 caractères minimum";
+    setAtt(last)
+    return false
   }
-}
-formGlobal.addEventListener("submit", function (e) {
-  let erreur;
+};
+
+
+
+console.log(first.value)
+formGlobal.addEventListener("submit", function (e) {  
+
+  // if (first.value.length>2) {
+  //   formData[0].removeAttribute("data-error");
+  //   formData[0].removeAttribute("data-error-visible");
+  // } else {
+  //   erreur = "veuillez entrer un prénom de 2 caractères minimum";
+  //   formData[0].setAttribute("data-error", erreur);
+  //   formData[0].setAttribute("data-error-visible", "true");
+  // }
   testFirstName();
   testLastName();
-  //email validation
-
-  if (/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(formData[2].children[2].value)) {
-    formData[2].removeAttribute("data-error");
-    formData[2].removeAttribute("data-error-visible");
+  if (testFirstName() && testLastName()) {
+    alert('formulaire envoyé')
   } else {
-    erreur = "veuillez entrer un mail valide";
-    formData[2].setAttribute("data-error", erreur);
-    formData[2].setAttribute("data-error-visible", "true");
-  }
-
-  //birth date validation
-  let parseBirthDate = Date.parse(formData[3].children[2].value);//converti la date entrée en milliseconde utc
-  const today = Date.now();// défini la date d'aujourd'hui en ms utc
-  const todayDate = new Date().toLocaleDateString();//converti la date du jour au format jour/mois/année
-
-  
-
-  if (parseBirthDate > today || !parseBirthDate) {
-    erreur ="veuillez sélectionner une date de naissance antérieure au " + todayDate;
-    formData[3].setAttribute("data-error-visible", "true");
-    formData[3].setAttribute("data-error", erreur);
-  } else {
-    formData[3].removeAttribute("data-error-visible");
-    formData[3].removeAttribute("data-error");
-  }
-
-  // quantity of tournaments validation
-
-  if (/[0-9]/.test(formData[4].children[2].value)) {
-    formData[4].removeAttribute("data-error-visible");
-    formData[4].removeAttribute("data-error");
-  } else {
-    erreur = "entrer un nombre entre 0 et 99";
-    formData[4].setAttribute("data-error-visible", "true");
-    formData[4].setAttribute("data-error", erreur);
-  }
-
-  //town validation
-
-  if (!formGlobal.location.value) {
-    erreur = "selectionnez une ville";
-    formData[5].setAttribute("data-error-visible", "true");
-    formData[5].setAttribute("data-error", erreur);
-  } else {
-    formData[5].removeAttribute("data-error-visible");
-    formData[5].removeAttribute("data-error");
-  }
-
-  if (!formData[6].children[0].checked) {
-    erreur = "merci d'accepter les conditions d'utilisation";
-    formData[6].setAttribute("data-error-visible", "true");
-    formData[6].setAttribute("data-error", erreur);
-  } else {
-    formData[6].removeAttribute("data-error-visible");
-    formData[6].removeAttribute("data-error");
-  }
-
-  if (erreur) {
-    e.preventDefault();
+    e.preventDefault()
   }
 });
-
-
