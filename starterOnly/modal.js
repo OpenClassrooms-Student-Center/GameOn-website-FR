@@ -29,13 +29,15 @@ close.addEventListener("click", closeModal);
 function closeModal() {
   modalbg.style.display = "none";}
 
-
+/*******************************DECLARATION DES VARIABLES POUR LA VALIDATION **********************/
 
 let erreur;
 let first = document.getElementById('first');
 let last = document.getElementById('last');
 let mail = document.getElementById('email');
 
+
+//TEST DE LA LONGUEUR DU CHAMP NOM ET PRENOM
 function testFirstAndLast(input){
   if(input.length<2){
     return false
@@ -44,20 +46,24 @@ function testFirstAndLast(input){
   }
 };
 
+//TEST DE LA VALIDITE DE L EMAIL
 function testMail(input){
   return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(input.value)
 };
 
+// INJECTION DES ATTRIBUTS EN CAS DE PROBLEME
 function setAtt(value){
   value.parentElement.setAttribute("data-error", erreur);
   value.parentElement.setAttribute("data-error-visible", "true");
 }
 
+// SUPRESSION DES ATTRIBUTS EN CAS DE PROBLEME
 function removeAtt(value){
   value.parentElement.removeAttribute("data-error");
   value.parentElement.removeAttribute("data-error-visible");
 }
 
+// FONCTION DE TEST DU PRENOM
 function testFirstName(){
   if(testFirstAndLast(first.value)){
     removeAtt(first);
@@ -68,6 +74,8 @@ function testFirstName(){
     return false
   }
 };
+
+//FONCTION DE TEST DU NOM
 function testLastName(){
   if(testFirstAndLast(last.value)){
     removeAtt(last);
@@ -79,6 +87,7 @@ function testLastName(){
   }
 };
 
+// FONCTION DE TEST DU MAIL
 function email(){
   if(testMail(mail)){
     removeAtt(mail);
@@ -90,20 +99,12 @@ function email(){
   }
 }
 
-console.log(first.value)
+// VALIDATION DU FORMULAIRE
 formGlobal.addEventListener("submit", function (e) {  
-
-  // if (first.value.length>2) {
-  //   formData[0].removeAttribute("data-error");
-  //   formData[0].removeAttribute("data-error-visible");
-  // } else {
-  //   erreur = "veuillez entrer un prénom de 2 caractères minimum";
-  //   formData[0].setAttribute("data-error", erreur);
-  //   formData[0].setAttribute("data-error-visible", "true");
-  // }
+  
   testFirstName();
   testLastName();
-  email()
+  email();
   if (testFirstName() && testLastName() && email()) {
     alert('formulaire envoyé')
   } else {
