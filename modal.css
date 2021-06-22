@@ -37,7 +37,8 @@ img {
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
-  margin: 3.5%;
+  margin: 20px;
+  padding-left: 2vw;
   height :10%;
 }
 .header-logo {
@@ -423,7 +424,7 @@ input {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
+  
 }
 .hero-content::after {
   content: "";
@@ -497,7 +498,7 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0;
   }
   .hero-content::after {
     content: unset;
@@ -505,11 +506,13 @@ footer {
   .hero-content .btn-signup {
     display: none;
   }
+
   .hero-headline {
     font-size: 4.5rem;
     white-space: normal;
   }
   .hero-text {
+    margin-top: 20px;
     width: unset;
     font-size: 1.5rem;
   }
@@ -580,11 +583,12 @@ footer {
     top: 0px;
   }
   .hero-headline{
-    font-size: 3rem;
+    
+    font-size: 3.5rem;
   }
   .hero-text{
-    font-size: 1rem;
-    margin-right: 20px;
+    font-size: 2rem;
+    
   }
 } 
 @media screen and (max-width: 440px) {
@@ -596,7 +600,7 @@ footer {
     top: 0;
   }
   .topnav.responsive a {
-  
+    font-size: 0.7rem;
     float: none;
     display: block;
     text-align: left;
@@ -611,10 +615,10 @@ footer {
     width:80%;
   }
   .hero-headline{
-    width:50%;
+    font-size: 2.5rem;
   }
   .hero-text{
-    width : 50%;
+    font-size:1rem;
   }
 }
 @keyframes modalopen {
