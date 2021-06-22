@@ -532,26 +532,39 @@ footer {
   .topnav a.icon {
     float: right;
     display: block;
-    
+    position: absolute;
+    right: 0;
+    top: 0;
+    text-align: left;
+  }
+  .header-logo{
+    align-self: end;
+  }
+  main{
+    position:static;
+  }
+  footer p{
+    position:static;
   }
 }
 
 @media screen and (max-width: 785px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
-    
     position: absolute;
     right: 0;
     top: 0;
+
   }
   .topnav.responsive a {
-  
     float: none;
     display: block;
     text-align: left;
   }
+  .topnav {position: relative;}
   .topnav a.icon{
-
+    position: absolute;
+    background-color: white;
     color : red;
   }
   .main-navbar{
