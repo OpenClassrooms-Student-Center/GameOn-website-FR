@@ -526,8 +526,11 @@ footer {
 
 /* validation page  */
 
-.sendValidation {
+#valid{
+  display: none;
   position: fixed;
+  margin-top: 120px;
+  bottom: 0;
   z-index: 1;
   left: 0;
   top: 0;

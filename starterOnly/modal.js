@@ -33,20 +33,6 @@ function closeModal() {
 /*******************************DECLARATION DES VARIABLES POUR LA VALIDATION **********************/
 
 let erreur;
-let first = document.getElementById("first");
-let last = document.getElementById("last");
-let mail = document.getElementById("email");
-let birthDate = document.getElementById("birthdate");
-let parseBirthDate = Date.parse(formData[3].children[2].value); //converti la date entrée en milliseconde utc
-const today = Date.now(); // défini la date d'aujourd'hui en ms utc
-const todayDate = new Date().toLocaleDateString(); //converti la date du jour au format jour/mois/année
-
-console.log("date entréé " + parseBirthDate);
-console.log("date du jour " + today);
-console.log("date du jour converti " + todayDate);
-console.log(validityDate(parseBirthDate));
-
-
 
 //TEST DE LA LONGUEUR DU CHAMP NOM ET PRENOM
 function testFirstAndLast(input) {
@@ -57,14 +43,13 @@ function testFirstAndLast(input) {
   }
 }
 
-
 // INJECTION DES ATTRIBUTS EN CAS DE PROBLEME
 function setAtt(value) {
   value.parentElement.setAttribute("data-error", erreur);
   value.parentElement.setAttribute("data-error-visible", "true");
 }
 
-// SUPRESSION DES ATTRIBUTS 
+// SUPRESSION DES ATTRIBUTS
 function removeAtt(value) {
   value.parentElement.removeAttribute("data-error");
   value.parentElement.removeAttribute("data-error-visible");
@@ -72,6 +57,7 @@ function removeAtt(value) {
 
 // FONCTION DE TEST DU PRENOM
 function testFirstName() {
+  let first = document.getElementById("first");
   if (testFirstAndLast(first.value)) {
     removeAtt(first);
     return true;
@@ -84,6 +70,8 @@ function testFirstName() {
 
 //FONCTION DE TEST DU NOM
 function testLastName() {
+  let last = document.getElementById("last");
+
   if (testFirstAndLast(last.value)) {
     removeAtt(last);
     return true;
@@ -101,6 +89,7 @@ function testMail(input) {
 
 // FONCTION DE TEST DU MAIL
 function email() {
+  let mail = document.getElementById("email");
   if (testMail(mail)) {
     removeAtt(mail);
     return true;
@@ -111,37 +100,30 @@ function email() {
   }
 }
 
-//  TEST DE LA VALIDITE DE LA DATE DE NAISSANCE
-function validityDate(input) {
-  if (input > today) {
-    return false;
-  } else {
-    return true;
-  }
-}
-
 // FONCTION DE TRAITEMENT DE LA DATE DE NAISSANCE
 function testBirthdayDate() {
-  if (validityDate(parseBirthDate)) {
-    removeAtt(birthDate);
-    return true;
-  } else {
+  let birthDate = document.getElementById("birthdate");
+  let parseBirthDate = Date.parse(birthDate.value); //converti la date entrée en milliseconde utc
+  const today = Date.now(); // défini la date d'aujourd'hui en ms utc
+  const todayDate = new Date().toLocaleDateString(); //converti la date du jour au format jour/mois/année
+  // const todayDate = today.toLocaleDateString();
+  if (!parseBirthDate || parseBirthDate > today) {
     erreur = "veuillez entrez une date antérieure au " + todayDate;
     setAtt(birthDate);
     return false;
+  } else {
+    removeAtt(birthDate);
+    return true;
   }
 }
 
-
 // VALIDATION DU FORMULAIRE
 formGlobal.addEventListener("submit", function (e) {
-  testFirstName();
-  testLastName();
-  email();
-  testBirthdayDate();
-  
   if (testFirstName() && testLastName() && email() && testBirthdayDate()) {
-    alert("formulaire envoyé");
+    const valid = document.getElementById("valid");
+    closeModal();
+    valid.style.display = "block";
+    e.preventDefault();
   } else {
     e.preventDefault();
   }
