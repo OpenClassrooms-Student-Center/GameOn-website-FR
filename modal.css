@@ -424,7 +424,7 @@ input {
   color: #fff;
   position: relative;
   text-align: left;
-  
+  min-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -499,6 +499,7 @@ footer {
     background: #fff;
     color: #000;
     padding: 0;
+    min-width:unset;
   }
   .hero-content::after {
     content: unset;
@@ -558,6 +559,9 @@ footer {
     right: 0;
     top: 0;
 
+  }
+  .header-logo{
+    align-self: baseline;
   }
   .topnav.responsive a {
     float: none;
