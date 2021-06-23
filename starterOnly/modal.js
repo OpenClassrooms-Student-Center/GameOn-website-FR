@@ -74,12 +74,15 @@ function resetModal() {
     input.checked = false;
     input.name === "term" && (input.checked = true);
   });
+  formDatas.forEach((formData) => {
+    formData.setAttribute("data-error-visible", false);
+    formData.setAttribute("data-error", "");
+  });
 }
 
 ////////////////////////////// SUBMITFORM
 signUpForm.addEventListener("submit", (e) => {
   let error = isError(formDatas);
-  console.log(error);
 
   if (!error) {
     //Excute specific code only if no error

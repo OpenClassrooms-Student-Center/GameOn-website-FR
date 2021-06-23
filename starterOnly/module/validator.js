@@ -25,6 +25,7 @@ export default class FormValidator {
   };
 
   validateOnEntries = () => {
+    let self = this;
     //add validation features real-time when user typing for each fields
     this.fields.forEach((field) => {
       //select all the input inside the fields (formdata)
@@ -32,7 +33,7 @@ export default class FormValidator {
 
       //target the first item of the nodelist and listen for change on the input and pass the value to the validateFilds function
       input[0].addEventListener("input", (e) => {
-        this.validateFields(input);
+        self.validateFields(input);
       });
     });
   };
@@ -60,7 +61,7 @@ export default class FormValidator {
     switch (inputName) {
       case "first":
         //(1) Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
-        if (inputValue.trim() < 2 || inputValue === null) {
+        if (inputValue.trim().length < 2 || inputValue === null) {
           formDataElement.setAttribute(
             "data-error",
             "Veuillez entrer 2 caractères ou plus pour le champ du nom."
@@ -73,7 +74,7 @@ export default class FormValidator {
 
       case "last":
         // (2) Le champ du nom de famille a un minimum de 2 caractères / n'est pas vide.
-        if (inputValue < 2 || inputValue === null) {
+        if (inputValue.trim().length < 2 || inputValue === null) {
           formDataElement.setAttribute(
             "data-error",
             "Veuillez entrer 2 caractères ou plus pour le champ du nom."

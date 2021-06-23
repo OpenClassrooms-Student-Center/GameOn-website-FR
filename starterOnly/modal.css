@@ -182,7 +182,7 @@ main {
   width: 100%;
   max-width: 500px;
   transform: translateY(-150px);
-  opacity: 0;
+  opacity: 1;
   /* animation-name: modalopen;
   animation-duration: var(--modal-duration); */
   background: #232323;
