@@ -117,12 +117,32 @@ function testBirthdayDate() {
   }
 }
 
+// TRAITEMENT DU NOMBRE DE TOURNOI
+function testNumberOfTounaments(input){
+  return /^[0-9]{1,2}$/.test(input.value)
+}
+
+// FONCTION DE TRAITEMENT DU NOMBRES DE TOURNOIS EFFECTUÉ
+
+let numberOfTounaments = document.getElementById('quantity');
+function tournament(){
+  if(testNumberOfTounaments(numberOfTounaments)){
+    removeAtt(numberOfTounaments);
+    return true;
+  }else{
+    erreur = "veuillez entrez un nombre compris entre 0 et 99 ";
+    setAtt(numberOfTounaments);
+    return false;
+  }
+}
 // VALIDATION DU FORMULAIRE
 formGlobal.addEventListener("submit", function (e) {
-  if (testFirstName() && testLastName() && email() && testBirthdayDate()) {
+  let erreur;
+
+  if (testFirstName() && testLastName() && email() && testBirthdayDate()&& tournament()) {
     const valid = document.getElementById("valid");
     closeModal();
-    valid.style.display = "block";
+    // valid.style.display = "block";
     e.preventDefault();
   } else {
     e.preventDefault();
