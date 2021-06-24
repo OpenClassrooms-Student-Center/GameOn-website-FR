@@ -56,6 +56,10 @@ export default class FormValidator {
     const inputName = field[0].name;
     let inputValue = field[0].value;
 
+    const currentDate = new Date();
+
+    const inputDate = new Date(inputValue);
+
     const formDataElement = field[0].parentElement;
 
     switch (inputName) {
@@ -102,6 +106,15 @@ export default class FormValidator {
           formDataElement.setAttribute(
             "data-error",
             "Veuillez entrer une date de naissance correcte"
+          );
+          formDataElement.setAttribute("data-error-visible", true);
+        } else if (
+          currentDate.setHours(0, 0, 0, 0) < inputDate.setHours(0, 0, 0, 0)
+        ) {
+          console.log("inputDate have to be lower than currentDate");
+          formDataElement.setAttribute(
+            "data-error",
+            "Votre date de naissance ne peut être supérieur à la date du jour"
           );
           formDataElement.setAttribute("data-error-visible", true);
         } else {
