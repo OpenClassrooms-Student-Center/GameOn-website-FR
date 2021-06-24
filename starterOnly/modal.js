@@ -157,18 +157,28 @@ function validateTownChecked() {
     return true;
   }
 }
-console.log("nombre de tournois effectués " + numberOfTounaments.value);
-console.log(validateTownChecked());
+
+// CONDITIONS D'UTILISATION 
+
+function conditions(){
+  let checkbox1 = document.getElementById("checkbox1");
+  if(checkbox1.checked){
+    removeAtt(checkbox1);
+    return true
+  }else{
+    erreur = "veuillez accepter les conditions d'utilisation "
+    setAtt(checkbox1);
+    return false
+  }
+}
 // VALIDATION DU FORMULAIRE
 formGlobal.addEventListener("submit", function (e) {
   //comptage du nb de ville sélectionnées
   for (let i = 0; i < ville.length; i++) {
     if (ville[i].checked) {
-      numberOfTownChecked++ ;
+      numberOfTownChecked++;
     }
   }
-
-  console.log("nombre de ville sélectionnées " + numberOfTownChecked);
 
   if (
     testFirstName() &&
@@ -176,16 +186,15 @@ formGlobal.addEventListener("submit", function (e) {
     email() &&
     testBirthdayDate() &&
     tournament() &&
-    validateTownChecked()
+    validateTownChecked() &&
+    conditions()
   ) {
-    
-
     alert("ok");
     // const valid = document.getElementById("valid");
     // closeModal();
     // valid.style.display = "block";
   } else {
-    numberOfTownChecked=0;
+    numberOfTownChecked = 0;
     e.preventDefault();
   }
 });
