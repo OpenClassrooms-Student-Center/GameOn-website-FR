@@ -35,10 +35,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -69,7 +69,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
@@ -77,7 +79,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -90,16 +94,16 @@ img {
   }
 }
 
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
     margin-top: -15px;
   }
-} 
+}
 
 main {
   font-size: 130%;
@@ -111,8 +115,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -228,15 +230,15 @@ input {
 }
 
 input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} 
+  content: attr(data-error);
+  font-size: 0.4em;
+  color: red;
+}
 
 .checkbox-label,
 .checkbox2-label {
   position: relative;
-  margin-left: 36px; 
+  margin-left: 36px;
   font-size: 12px;
   font-weight: normal;
 }
@@ -411,7 +413,7 @@ input[data-error]::after {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   overflow: hidden;
-  box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 7px 2px rgba(248, 2, 2, 0.2);
   margin-bottom: 10px;
 }
 .hero-content {
@@ -489,7 +491,6 @@ footer {
     color: #000;
     min-width: 0; /*rectification affichage mobile*/
     padding: 0px;
-    
   }
   .hero-content::after {
     content: unset;
@@ -500,7 +501,6 @@ footer {
   .hero-headline {
     font-size: 2.3rem;
     white-space: normal;
-    
   }
   .hero-text {
     margin-top: 20px;
@@ -522,11 +522,9 @@ footer {
   }
 }
 
-
-
 /* validation page  */
 
-#valid{
+#valid {
   display: none;
   position: fixed;
   margin-top: 120px;
@@ -549,5 +547,3 @@ footer {
     opacity: 1;
   }
 }
-
-
