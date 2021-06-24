@@ -30,7 +30,7 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-/*******************************DECLARATION DES VARIABLES POUR LA VALIDATION **********************/
+/*******************************TRAITEMENT DES INPUTS **********************/
 
 let erreur;
 
@@ -118,33 +118,74 @@ function testBirthdayDate() {
 }
 
 // TRAITEMENT DU NOMBRE DE TOURNOI
-function testNumberOfTounaments(input){
-  return /^[0-9]{1,2}$/.test(input.value)
+function testNumberOfTounaments(input) {
+  return /^[0-9]{1,2}$/.test(input.value);
 }
 
 // FONCTION DE TRAITEMENT DU NOMBRES DE TOURNOIS EFFECTUÉ
 
-let numberOfTounaments = document.getElementById('quantity');
-function tournament(){
-  if(testNumberOfTounaments(numberOfTounaments)){
+let numberOfTounaments = document.getElementById("quantity");
+function tournament() {
+  if (testNumberOfTounaments(numberOfTounaments)) {
     removeAtt(numberOfTounaments);
     return true;
-  }else{
+  } else {
     erreur = "veuillez entrez un nombre compris entre 0 et 99 ";
     setAtt(numberOfTounaments);
     return false;
   }
 }
+// TRAITEMENT DU NOMBRE DE VILLE SÉLECTIONNÉES
+let location1 = document.getElementById("location1");
+let ville = document.getElementsByName("location");
+let numberOfTownChecked = 0;
+// compter le nb de ville sélectionnées
+
+function validateTownChecked() {
+  if (!numberOfTownChecked && numberOfTounaments.value > 0) {
+    erreur =
+      " merci de sélectionner une ville si vous avez déja participé à un tournoi";
+    setAtt(location1);
+    return false;
+  } else if (numberOfTownChecked > numberOfTounaments.value) {
+    erreur =
+      "Le nombre de ville sélectionnées ne peut pas être supérieur au nombre de tournois joué";
+    setAtt(location1);
+    return false;
+  } else {
+    removeAtt(location1);
+    return true;
+  }
+}
+console.log("nombre de tournois effectués " + numberOfTounaments.value);
+console.log(validateTownChecked());
 // VALIDATION DU FORMULAIRE
 formGlobal.addEventListener("submit", function (e) {
-  let erreur;
+  //comptage du nb de ville sélectionnées
+  for (let i = 0; i < ville.length; i++) {
+    if (ville[i].checked) {
+      numberOfTownChecked++ ;
+    }
+  }
 
-  if (testFirstName() && testLastName() && email() && testBirthdayDate()&& tournament()) {
-    const valid = document.getElementById("valid");
-    closeModal();
+  console.log("nombre de ville sélectionnées " + numberOfTownChecked);
+
+  if (
+    testFirstName() &&
+    testLastName() &&
+    email() &&
+    testBirthdayDate() &&
+    tournament() &&
+    validateTownChecked()
+  ) {
+    
+
+    alert("ok");
+    // const valid = document.getElementById("valid");
+    // closeModal();
     // valid.style.display = "block";
-    e.preventDefault();
   } else {
+    numberOfTownChecked=0;
     e.preventDefault();
   }
 });
