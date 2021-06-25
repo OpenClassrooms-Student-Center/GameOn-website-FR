@@ -189,12 +189,30 @@ formGlobal.addEventListener("submit", function (e) {
     validateTownChecked() &&
     conditions()
   ) {
-    alert("ok");
-    // const valid = document.getElementById("valid");
-    // closeModal();
-    // valid.style.display = "block";
+    const valid = document.getElementById("valid");
+    closeModal();
+    valid.style.display="block";
+    e.preventDefault();
   } else {
     numberOfTownChecked = 0;
     e.preventDefault();
   }
 });
+
+// fermeture de la page de confirmation
+
+// // pourquoi le compte de formData est égale à 3
+
+// const parent = document.getElementById('formGlobal');
+// const child = document.getElementsByClassName("formData");
+// console.log(child[0])
+// console.log(child.length);
+
+// for( let i=0 ; i<child.length; i++){
+//   let removed = parent.removeChild(child[i]);
+//   console.log(child[i]);
+
+//   console.log(child.length);
+// }
+
+// console.log(child.length);

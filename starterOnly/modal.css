@@ -159,7 +159,7 @@ main {
   font-size: 16px;
 }
 
-.bground {
+.bground,#valid {
   display: none;
   position: fixed;
   z-index: 1;
@@ -212,15 +212,15 @@ input {
 }
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
+  font-size: 0.5em;
   color: #e54858;
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
   text-align: left;
-  line-height: 0.3;
+  line-height: 1.2;
   opacity: 0;
-  transition: 0.3s;
+  transition: 5s;
 }
 .formData[data-error-visible="true"]::after {
   opacity: 1;
@@ -527,15 +527,37 @@ footer {
 #valid {
   display: none;
   position: fixed;
-  margin-top: 120px;
-  bottom: 0;
-  z-index: 1;
-  left: 0;
-  top: 0;
+  z-index: 1; 
   height: 100%;
   width: 100%;
-  overflow: auto;
+  /* overflow: auto; */
   background-color: rgba(26, 39, 156, 0.4);
+  border: 3px solid gre;  
+}
+
+#container{
+  margin: 5% auto;
+  width: 100%;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+}
+
+#valid p{
+  padding: 300px 100px;
+  text-align: center;
+  line-height: 2em;
+
+}
+
+#valid button{
+  margin-bottom: 30px;
 }
 
 @keyframes modalopen {
