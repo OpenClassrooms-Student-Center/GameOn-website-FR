@@ -171,7 +171,9 @@ function conditions(){
     return false
   }
 }
+
 // VALIDATION DU FORMULAIRE
+const valid = document.getElementById("valid");
 formGlobal.addEventListener("submit", function (e) {
   //comptage du nb de ville sélectionnées
   for (let i = 0; i < ville.length; i++) {
@@ -189,7 +191,7 @@ formGlobal.addEventListener("submit", function (e) {
     validateTownChecked() &&
     conditions()
   ) {
-    const valid = document.getElementById("valid");
+    
     closeModal();
     valid.style.display="block";
     e.preventDefault();
@@ -200,6 +202,11 @@ formGlobal.addEventListener("submit", function (e) {
 });
 
 // fermeture de la page de confirmation
+
+let btnClose = document.getElementById("closeBtn");
+btnClose.addEventListener("click", function(){
+  valid.style.display = "none";
+})
 
 // // pourquoi le compte de formData est égale à 3
 
