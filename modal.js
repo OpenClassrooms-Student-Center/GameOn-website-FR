@@ -39,7 +39,7 @@ modalClose.forEach((close) => close.addEventListener("click", closeModal));
 /* submit form event */
 form.addEventListener("submit", validate);
 
-/* close modal2 form */
+/* close modal2 form event */
 form2.addEventListener("click", closeModal);
 
 // launch modal form
@@ -116,6 +116,7 @@ function isCheckboxSelected(){
   }
 return false
 }
+/* validity checker */
 function check () {
   for ( i = 0 ; i<7; i++){
     if (formData[i].dataset.errorVisible == "true"){
