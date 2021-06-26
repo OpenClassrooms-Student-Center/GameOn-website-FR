@@ -194,12 +194,14 @@ formGlobal.addEventListener("submit", function (e) {
     
     closeModal();
     valid.style.display="block";
+    formGlobal.reset();
     e.preventDefault();
-  } else {
+    
     numberOfTownChecked = 0;
     e.preventDefault();
   }
 });
+
 
 // fermeture de la page de confirmation
 
