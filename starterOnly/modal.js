@@ -36,13 +36,9 @@ let erreur;
 
 //TEST DE LA LONGUEUR DU CHAMP NOM ET PRENOM
 function testFirstAndLast(input) {
-  if (input.length < 2) {
-    return false;
-  } else {
-    return true;
-  }
+  return /^[^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(input);
 }
-
+console.log(testFirstAndLast(first.value));
 // INJECTION DES ATTRIBUTS EN CAS DE PROBLEME
 function setAtt(value) {
   value.parentElement.setAttribute("data-error", erreur);
@@ -62,7 +58,7 @@ function testFirstName() {
     removeAtt(first);
     return true;
   } else {
-    erreur = "veuillez entrer un prénom de 2 caractères minimum";
+    erreur = "veuillez entrer un prénom de 2 lettres minimum";
     setAtt(first);
     return false;
   }
@@ -76,7 +72,7 @@ function testLastName() {
     removeAtt(last);
     return true;
   } else {
-    erreur = "veuillez entrer un nom de 2 caractères minimum";
+    erreur = "veuillez entrer un nom de 2 lettres minimum";
     setAtt(last);
     return false;
   }
@@ -158,17 +154,17 @@ function validateTownChecked() {
   }
 }
 
-// CONDITIONS D'UTILISATION 
+// CONDITIONS D'UTILISATION
 
-function conditions(){
+function conditions() {
   let checkbox1 = document.getElementById("checkbox1");
-  if(checkbox1.checked){
+  if (checkbox1.checked) {
     removeAtt(checkbox1);
-    return true
-  }else{
-    erreur = "veuillez accepter les conditions d'utilisation "
+    return true;
+  } else {
+    erreur = "veuillez accepter les conditions d'utilisation ";
     setAtt(checkbox1);
-    return false
+    return false;
   }
 }
 
@@ -191,9 +187,8 @@ formGlobal.addEventListener("submit", function (e) {
     validateTownChecked() &&
     conditions()
   ) {
-    
     closeModal();
-    valid.style.display="block";
+    valid.style.display = "block";
     formGlobal.reset();
     e.preventDefault();
   } else {
@@ -205,9 +200,9 @@ formGlobal.addEventListener("submit", function (e) {
 // fermeture de la page de confirmation
 
 let btnClose = document.getElementById("closeBtn");
-btnClose.addEventListener("click", function(){
+btnClose.addEventListener("click", function () {
   valid.style.display = "none";
-})
+});
 
 // // pourquoi le compte de formData est égale à 3
 
