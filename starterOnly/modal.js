@@ -33,12 +33,6 @@ function closeModal() {
 /*******************************TRAITEMENT DES INPUTS **********************/
 
 let erreur;
-
-//TEST DE LA LONGUEUR DU CHAMP NOM ET PRENOM
-function testFirstAndLast(input) {
-  return /^[^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(input);
-}
-console.log(testFirstAndLast(first.value));
 // INJECTION DES ATTRIBUTS EN CAS DE PROBLEME
 function setAtt(value) {
   value.parentElement.setAttribute("data-error", erreur);
@@ -50,6 +44,13 @@ function removeAtt(value) {
   value.parentElement.removeAttribute("data-error");
   value.parentElement.removeAttribute("data-error-visible");
 }
+
+//TEST DE LA LONGUEUR ET DE LA VALIDITÉE DU CHAMP NOM ET PRENOM
+function testFirstAndLast(input) {
+  return /^[^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(input);
+}
+console.log(testFirstAndLast(first.value));
+
 
 // FONCTION DE TEST DU PRENOM
 function testFirstName() {
