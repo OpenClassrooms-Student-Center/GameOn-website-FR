@@ -520,6 +520,10 @@ footer {
   .topnav a.icon:hover {
     color: white;
   }
+  .header-logo img {
+    width: 160px;
+    margin: 20px 0px 0px 15px;
+  }
 }
 
 @media screen and (max-width: 540px) {
