@@ -530,9 +530,21 @@ footer {
     line-height: 1.7;
   }
 
-
-
-
+  .hero-text {
+    font-size: 15px;
+  }
+  .hero-section {
+    min-height: 0px;
+    margin-bottom: 0;
+  }
+  main{
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .copyrights{
+    padding: 0;
+    margin: 0;
+  }
 
 
 }
