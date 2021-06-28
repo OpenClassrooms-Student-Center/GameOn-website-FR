@@ -534,6 +534,9 @@ footer {
     margin-right: 4px;
     font-size: 22px;
   }
+  .topnav a.icon:hover{
+    color: white;
+  }
   /* taille originale mais trop grosse en français
   .hero-headline {
     font-size: 48px;
