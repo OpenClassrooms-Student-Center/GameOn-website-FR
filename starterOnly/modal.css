@@ -508,6 +508,18 @@ footer {
     display: block;
     text-align: left;
   }
+  .topnav a.icon {
+    float: right;
+    display: block;
+    color: red;
+    margin-right: 4px;
+    font-size: 22px;
+    padding-bottom: 9px;
+
+  }
+  .topnav a.icon:hover {
+    color: white;
+  }
 }
 
 @media screen and (max-width: 540px) {
