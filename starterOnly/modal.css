@@ -1,6 +1,5 @@
 :root {
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
-  --font-slab: var(--font-default);
   --modal-duration: 0.8s;
 }
 * {
@@ -11,11 +10,9 @@
 /* Landing Page */
 
 body {
-  margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
-  font-family: var(--font-default);
+  font-family: "DM Sans", Arial, Helvetica, sans-serif;
   font-size: 18px;
   max-width: 1300px;
   margin: 0 auto;
@@ -99,7 +96,7 @@ img {
     display: block;
     margin-top: -15px;
   }
-} 
+}
 
 main {
   font-size: 130%;
@@ -122,7 +119,6 @@ main {
   margin: auto;
   padding: 2em;
   color: #fff;
-  padding: 0.75rem 2.5rem;
   border-radius: 1rem;
   cursor: pointer;
 }
@@ -134,7 +130,7 @@ main {
 .footer {
   margin: 20px;
   padding: 10px;
-  font-family: var(--font-slab);
+  font-family: "DM Sans", Arial, Helvetica, sans-serif;
 }
 
 /* Modal form */
@@ -174,7 +170,7 @@ main {
   width: 100%;
   max-width: 500px;
   animation-name: modalopen;
-  animation-duration: var(--modal-duration);
+  animation-duration: 0.8s;
   background: #232323;
   border-radius: 10px;
   overflow: hidden;
@@ -189,7 +185,7 @@ main {
 }
 
 label {
-  font-family: var(--font-default);
+  font-family: "DM Sans", Arial, Helvetica, sans-serif;
   font-size: 17px;
   font-weight: normal;
   display: inline-block;
@@ -197,7 +193,7 @@ label {
 }
 input {
   padding: 8px;
-  border: 0.8px solid #ccc;
+  border: 1px solid #ccc;
   outline: none;
 }
 .text-control {
@@ -226,7 +222,7 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
+/*
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
@@ -336,7 +332,7 @@ input[data-error]::after {
 /* custom select styles */
 .custom-select {
   position: relative;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   font-size: 1.1rem;
   font-weight: normal;
 }
@@ -373,7 +369,6 @@ input[data-error]::after {
 .select-selected {
   color: #000;
   padding: 11px 16px;
-  border: 1px solid transparent;
   border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
   cursor: pointer;
   border-radius: 8px;
@@ -411,7 +406,6 @@ input[data-error]::after {
   grid-template-columns: repeat(12, 1fr);
   overflow: hidden;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
-  margin-bottom: 10px;
 }
 .hero-content {
   padding: 51px 67px;
@@ -421,6 +415,9 @@ input[data-error]::after {
   position: relative;
   text-align: left;
   min-width: 424px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 .hero-content::after {
   content: "";
@@ -451,8 +448,7 @@ input[data-error]::after {
   text-transform: capitalize;
   font-size: 1.3rem;
   padding: 15px 23px;
-  margin: 0;
-  margin-top: 59px;
+  margin: 59px 0 0;
 }
 .hero-img {
   grid-column: span 8;
@@ -473,11 +469,58 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+
+.message-modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+.message-content {
+  margin: 60px auto 5%;
+  width: 100%;
+  max-width: 500px;
+  height: 850px;
+  line-height: 700px;
+  white-space: nowrap;
+  animation-name: modalopen;
+  animation-duration: 0.8s;
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+}
+
+.message-body {
+  padding: 15px 8%;
+  margin: auto;
+}
+
+.btn-message {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+}
+
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
   margin: 0 20px;
 }
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
