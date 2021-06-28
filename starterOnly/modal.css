@@ -554,21 +554,24 @@ footer {
     margin: 0;
   }
    .hero-section > .btn-signup {
-     margin-top: 26px auto;     
+     margin: 26px auto ; 
      padding: 3px 18px;
 
    }
   .hero-section {
-    position: relative;
-    border: 1px solid blue;
-
+    min-height: 0px;
+    margin-bottom: 0;
   }
   .copyrights {
-    position: absolute;
-    margin: 0;
-    bottom: 0;
-border: 1px solid red; 
+   margin-top: 0;
+   padding-top: 0;
+   font-size: 9.5px;
  }
+  main{
+    margin-top: 0;
+    margin-bottom: 0;
+    height: auto;
+  }
 /* validation page  */
 
 #valid {
