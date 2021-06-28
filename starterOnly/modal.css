@@ -473,7 +473,7 @@ footer {
     display: block;
     color: red;
     margin-right: 4px;
-    font-size: 22px;
+    font-size: 30px;
     padding-bottom: 9px;
 
   }
@@ -555,9 +555,9 @@ footer {
     float: right;
     display: block;
     color: red;
-    margin-right: 4px;
-    font-size: 22px;
-    padding-bottom: 9px;
+    margin-right: 5px;
+    padding-top: 8px;
+    padding-bottom: 4px;
 
   }
   .topnav a.icon:hover {
@@ -609,8 +609,11 @@ footer {
     float: right;
     display: block;
     color: red;
-    margin-right: 4px;
+    margin-right: 5px;
     font-size: 22px;
+    padding-top: 9px;
+    padding-bottom: 8px;
+    margin-top: 7px;
   }
   .topnav a.icon:hover {
     color: white;
