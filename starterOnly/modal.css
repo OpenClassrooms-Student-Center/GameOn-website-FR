@@ -90,9 +90,7 @@ img {
   }
 }
 
-
-
- @media screen and (max-width: 540px) {
+@media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
@@ -111,8 +109,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -137,7 +133,55 @@ main {
   font-family: var(--font-slab);
 }
 
+/* Message validation */
+
+#message-formulaire-envoye{
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: white;
+}
+.content-modif{
+  margin: 5% auto;
+  padding: 0 20px 20px 20px;
+  width: 100%;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+}
+
+.content-modif div{
+  display: grid;
+  justify-items: center;
+
+}
+.content-modif p{
+  margin: 200px 0 200px 0;
+  text-align: center;
+}
+.content-modif div span{
+  display: grid;
+  justify-content: center;
+  width: 70%;
+}
+
 /* Modal form */
+
+.erreur-saisie {
+  color: #fc4059;
+  font-size: 0.6em;
+}
 
 .button {
   background: #fe142f;
@@ -207,6 +251,8 @@ input {
   border-radius: 8px;
   font-size: 20px;
   height: 48px;
+  border-width: 2px;
+  border-color: #c4c4c4;
 }
 .formData[data-error]::after {
   content: attr(data-error);
@@ -296,6 +342,7 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
+
 .close {
   position: absolute;
   right: 15px;
@@ -321,6 +368,7 @@ input[data-error]::after {
 .close:after {
   transform: rotate(-45deg);
 }
+
 .btn-submit,
 .btn-signup {
   background: #fe142f;
@@ -479,6 +527,12 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+
+  .topnav img{
+    width: 90%;
+    height: 90%;
+  }
+
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -486,7 +540,9 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 20px 0 20px 0;
+    min-width: 100px;
+    max-width: 100%;
   }
   .hero-content::after {
     content: unset;
@@ -495,7 +551,7 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 3rem;
     white-space: normal;
   }
   .hero-text {
@@ -526,4 +582,3 @@ footer {
     opacity: 1;
   }
 }
-
