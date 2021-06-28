@@ -524,6 +524,17 @@ footer {
     width: 180px;
     margin: 20px 0px 0px 15px;
   }
+  .hero-headline {
+    font-size: 55px;
+    font-weight: bold;
+    line-height: 1.7;
+  }
+
+
+
+
+
+
 }
 
 @media screen and (max-width: 540px) {
@@ -555,7 +566,7 @@ footer {
   } 
 }*/
   .hero-headline {
-    font-style: 40px;
+    font-size: 40px;
     font-weight: bold;
     line-height: 1.7;
   }
