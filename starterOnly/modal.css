@@ -446,7 +446,7 @@ footer {
   margin: 0 20px;
 }
 
-@media screen and (max-width: 800px) {
+@media  (max-width :1115px) { /*modification de l'affichage de la navbar*/
   .topnav a {
     display: none;
   }
@@ -472,14 +472,46 @@ footer {
     float: right;
     display: block;
     color: red;
-    margin-right: 4px;
+    margin-right: 5px;
     font-size: 30px;
-    padding-bottom: 9px;
-
+    padding-top: 7px;
+    padding-bottom: 6px;
   }
   .topnav a.icon:hover {
     color: white;
   }
+}
+@media (max-width : 945px){
+  .hero-content {
+    padding-left: 40px;
+  }
+  .hero-headline {
+    font-size: 5.1rem;
+  }
+}
+@media screen and (max-width: 800px) {
+  .topnav a {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  
   .header-logo img {
     width: 180px;
     margin: 20px 0px 0px 15px;
@@ -489,9 +521,6 @@ footer {
     font-weight: bold;
     line-height: 1.7;
   }
-
-  
-
 
   .hero-section {
     display: block;
@@ -509,7 +538,7 @@ footer {
   .hero-content .btn-signup {
     display: none;
   }
-  
+
   .hero-text {
     margin-top: 20px;
     width: unset;
@@ -558,7 +587,6 @@ footer {
     margin-right: 5px;
     padding-top: 8px;
     padding-bottom: 4px;
-
   }
   .topnav a.icon:hover {
     color: white;
@@ -573,7 +601,6 @@ footer {
     line-height: 1.7;
   }
 
-  
   .hero-section {
     min-height: 0px;
     margin-bottom: 0;
@@ -581,16 +608,14 @@ footer {
   .hero-text {
     font-size: 18px;
   }
-  main{
+  main {
     margin-top: 0px;
     margin-bottom: 0px;
   }
-  .copyrights{
+  .copyrights {
     padding: 0;
     margin: 0;
   }
-
-
 }
 
 @media screen and (max-width: 540px) {
