@@ -537,6 +537,9 @@ footer {
     min-height: 0px;
     margin-bottom: 0;
   }
+  .hero-text {
+    font-size: 18px;
+  }
   main{
     margin-top: 0px;
     margin-bottom: 0px;
@@ -596,6 +599,9 @@ footer {
   .hero-section {
     min-height: 0px;
     margin-bottom: 0;
+  }
+  .hero-text {
+    font-size: 15px;
   }
   .copyrights {
     margin-top: 0;
