@@ -447,6 +447,52 @@ footer {
 }
 
 @media screen and (max-width: 800px) {
+  .topnav a {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  .topnav a.icon {
+    float: right;
+    display: block;
+    color: red;
+    margin-right: 4px;
+    font-size: 22px;
+    padding-bottom: 9px;
+
+  }
+  .topnav a.icon:hover {
+    color: white;
+  }
+  .header-logo img {
+    width: 180px;
+    margin: 20px 0px 0px 15px;
+  }
+  .hero-headline {
+    font-size: 55px;
+    font-weight: bold;
+    line-height: 1.7;
+  }
+
+  
+
+
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -463,14 +509,11 @@ footer {
   .hero-content .btn-signup {
     display: none;
   }
-  .hero-headline {
-    font-size: 2.3rem;
-    white-space: normal;
-  }
+  
   .hero-text {
     margin-top: 20px;
     width: unset;
-    font-size: 13px;
+    font-size: 18px;
   }
   .hero-img img {
     border-radius: 10px;
@@ -530,9 +573,7 @@ footer {
     line-height: 1.7;
   }
 
-  .hero-text {
-    font-size: 15px;
-  }
+  
   .hero-section {
     min-height: 0px;
     margin-bottom: 0;
