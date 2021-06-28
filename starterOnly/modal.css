@@ -446,48 +446,7 @@ footer {
   margin: 0 20px;
 }
 
-/* 
-@media screen and (max-width: 768px) {
-  .topnav a {
-    display: none;
-  }
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-  .topnav.responsive {
-    position: relative;
-  }
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-} */
 
-@media screen and (max-width: 540px) {
-  .header-logo img {
-    width : 123px;
-    margin: 20px 0px 0px 15px;
-    
-  }
-  .topnav a {
-    display: none;
-  }
-
-  .topnav a.icon {
-    float: right;
-    display: block;
-    color: red;
-    margin-right: 4px;
-    font-size: 22px;
-  }
-}
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -529,6 +488,87 @@ footer {
   }
 }
 
+
+@media screen and (max-width: 768px) {
+  .topnav a {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+
+@media screen and (max-width: 540px) {
+
+  .topnav {
+    margin-bottom: 0;
+  }
+  .header-logo img {
+    width : 123px;
+    margin: 20px 0px 0px 15px;
+    
+  }
+  .topnav a {
+    display: none;
+  }
+
+  .topnav a.icon {
+    float: right;
+    display: block;
+    color: red;
+    margin-right: 4px;
+    font-size: 22px;
+  }
+  /* taille originale mais trop grosse en français
+  .hero-headline {
+    font-size: 48px;
+    font-weight: bold;
+  } 
+}*/
+  .hero-headline {
+    font-style: 40px;
+    font-weight: bold;
+    line-height: 1.7;
+  }
+
+  .hero-img img{
+    margin-top: 23px;
+  }
+  .hero-section > button {
+    border: 1px solid yellow;
+    margin: 0;
+  }
+   .hero-section > .btn-signup {
+     margin-top: 26px auto;     
+     padding: 3px 18px;
+
+   }
+  .hero-section {
+    position: relative;
+    border: 1px solid blue;
+
+  }
+  .copyrights {
+    position: absolute;
+    margin: 0;
+    bottom: 0;
+border: 1px solid red; 
+ }
 /* validation page  */
 
 #valid {
