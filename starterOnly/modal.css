@@ -447,7 +447,8 @@ footer {
   margin: 0 20px;
 }
 
-@media  (max-width :1115px) { /*modification de l'affichage de la navbar*/
+@media (max-width: 1115px) {
+  /*modification de l'affichage de la navbar*/
   .topnav a {
     display: none;
   }
@@ -482,7 +483,7 @@ footer {
     color: white;
   }
 }
-@media (max-width : 945px){
+@media (max-width: 945px) {
   .hero-content {
     padding-left: 40px;
   }
@@ -512,7 +513,6 @@ footer {
     text-align: left;
   }
 
-  
   .header-logo img {
     width: 180px;
     margin: 20px 0px 0px 15px;
@@ -621,6 +621,7 @@ footer {
 
 @media screen and (max-width: 540px) {
   .topnav {
+    margin-top: 0;
     margin-bottom: 0;
   }
   .header-logo img {
@@ -683,9 +684,23 @@ footer {
     margin-bottom: 0;
     height: auto;
   }
+  /* mise en forme formMobile*/
+  .bground,#valid{
+    margin-top: 40px;
 }
+  #formGlobal,#container{
+    font-size: 70%;
+    
+  }
+  .formData[data-error]::after{
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 0.8em;
+  }
+  #submit,#closeBtn {
+    padding: 7.5px 52px;
+  }}
 /* validation page  */
-
 
 #container {
   margin: 5% auto;
