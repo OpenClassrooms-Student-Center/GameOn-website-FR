@@ -13,17 +13,8 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const close = document.querySelector(".close");
 const formGlobal = document.getElementById("formGlobal");
-// const inputDataError = document.querySelectorAll(".text-control");
-// for(el of inputDataError){
-//   console.log(el.id);
-//   if(el.id=value){
-//     inputDataError[el.id].setAttribute("data-error", value.value)
-//   }
-//   }
-
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
