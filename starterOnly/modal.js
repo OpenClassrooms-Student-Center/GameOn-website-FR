@@ -19,8 +19,7 @@ const formGlobal = document.getElementById("formGlobal");
 //   if(el.id=value){
 //     inputDataError[el.id].setAttribute("data-error", value.value)
 //   }
-//   }  
-
+//   }
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -42,7 +41,7 @@ function closeModal() {
 
 let erreur;
 // INJECTION DES ATTRIBUTS EN CAS DE PROBLEME
-function setAtt(value) {  
+function setAtt(value) {
   value.parentElement.setAttribute("data-error", erreur);
   value.parentElement.setAttribute("data-error-visible", "true");
 }
@@ -58,8 +57,6 @@ function testFirstAndLast(input) {
   return /^[^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(input);
 }
 
-
-
 // FONCTION DE TEST DU PRENOM
 function testFirstName() {
   let first = document.getElementById("first");
@@ -67,9 +64,8 @@ function testFirstName() {
     removeAtt(first);
     return true;
   } else {
-
     erreur = "veuillez entrer un prénom de 2 lettres minimum";
-    setAtt(first);    
+    setAtt(first);
     return false;
   }
 }
@@ -145,6 +141,7 @@ function tournament() {
 let location1 = document.getElementById("location1");
 let ville = document.getElementsByName("location");
 let numberOfTownChecked = 0;
+
 // compter le nb de ville sélectionnées
 
 function validateTownChecked() {
@@ -213,19 +210,3 @@ let btnClose = document.getElementById("closeBtn");
 btnClose.addEventListener("click", function () {
   valid.style.display = "none";
 });
-
-// // pourquoi le compte de formData est égale à 3
-
-// const parent = document.getElementById('formGlobal');
-// const child = document.getElementsByClassName("formData");
-// console.log(child[0])
-// console.log(child.length);
-
-// for( let i=0 ; i<child.length; i++){
-//   let removed = parent.removeChild(child[i]);
-//   console.log(child[i]);
-
-//   console.log(child.length);
-// }
-
-// console.log(child.length);
