@@ -533,7 +533,11 @@ footer {
     width: unset;
     font-size: 18px;
   }
+  .hero-img {
+    width: 100%;
+  }
   .hero-img img {
+    
     border-radius: 10px;
     margin-top: 40px;
   }
