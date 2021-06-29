@@ -302,6 +302,7 @@ input[data-error]::after {
   cursor: pointer;
   transform: scale(0.7);
 }
+
 .close:before,
 .close:after {
   position: absolute;
@@ -470,6 +471,7 @@ input[data-error]::after {
   display: none;
 }
 
+/*Custom class*/
 .message-modal {
   display: none;
   position: fixed;
@@ -514,6 +516,7 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+/*Custom class*/
 
 footer {
   padding-left: 2vw;
@@ -567,6 +570,25 @@ footer {
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes modalclose {
+  0% {
+    opacity: 1;
+    transform: translateY(-150px);
+  }
+  20% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(-800px);
+  }
+  100% {
+    transform: translateY(-1000px);
+    display: none;
+    opacity: 0;
   }
 }
 

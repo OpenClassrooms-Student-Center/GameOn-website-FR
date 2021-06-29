@@ -1,0 +1,9 @@
+version: "3"
+services:
+  static-app:
+    image: game-on-website
+    container_name: game-on
+    deploy:
+      replicas: 1
+    ports:
+    - 80:80
