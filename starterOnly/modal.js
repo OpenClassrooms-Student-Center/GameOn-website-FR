@@ -13,6 +13,14 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const close = document.querySelector(".close");
 const formGlobal = document.getElementById("formGlobal");
+// const inputDataError = document.querySelectorAll(".text-control");
+// for(el of inputDataError){
+//   console.log(el.id);
+//   if(el.id=value){
+//     inputDataError[el.id].setAttribute("data-error", value.value)
+//   }
+//   }  
+
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -34,7 +42,7 @@ function closeModal() {
 
 let erreur;
 // INJECTION DES ATTRIBUTS EN CAS DE PROBLEME
-function setAtt(value) {
+function setAtt(value) {  
   value.parentElement.setAttribute("data-error", erreur);
   value.parentElement.setAttribute("data-error-visible", "true");
 }
@@ -49,7 +57,7 @@ function removeAtt(value) {
 function testFirstAndLast(input) {
   return /^[^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/.test(input);
 }
-console.log(testFirstAndLast(first.value));
+
 
 
 // FONCTION DE TEST DU PRENOM
@@ -59,8 +67,9 @@ function testFirstName() {
     removeAtt(first);
     return true;
   } else {
+
     erreur = "veuillez entrer un prénom de 2 lettres minimum";
-    setAtt(first);
+    setAtt(first);    
     return false;
   }
 }

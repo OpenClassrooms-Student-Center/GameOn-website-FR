@@ -132,7 +132,8 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  /* background-color: rgba(26, 39, 156, 0.4); */
+  background-color: white;
 }
 
 .content {
@@ -685,15 +686,6 @@ footer {
 }
 /* validation page  */
 
-#valid {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  height: 100%;
-  width: 100%;
-  /* overflow: auto; */
-  background-color: rgba(26, 39, 156, 0.4);
-}
 
 #container {
   margin: 5% auto;
