@@ -187,7 +187,7 @@ formGlobal.addEventListener("submit", function (e) {
   ) {
     closeModal();
     valid.style.display = "block";
-    formGlobal.reset();
+    // formGlobal.reset();
     e.preventDefault();
   } else {
     numberOfTownChecked = 0;
