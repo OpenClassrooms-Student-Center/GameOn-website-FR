@@ -186,7 +186,7 @@ formGlobal.addEventListener("submit", function (e) {
     conditions()
   ) {
     closeModal();
-    valid.style.display = "block";
+    valid.classList.add("displayBlock")
     // formGlobal.reset();
     e.preventDefault();
   } else {
@@ -199,5 +199,9 @@ formGlobal.addEventListener("submit", function (e) {
 
 let btnClose = document.getElementById("closeBtn");
 btnClose.addEventListener("click", function () {
-  valid.style.display = "none";
+  valid.classList.replace("displayBlock" , "displayNone")
 });
+let closeValid = document.querySelector('.closeValid')
+closeValid.addEventListener("click", function(){
+  valid.classList.replace("displayBlock" , "displayNone")
+})
