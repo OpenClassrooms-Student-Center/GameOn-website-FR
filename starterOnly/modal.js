@@ -186,6 +186,7 @@ formGlobal.addEventListener("submit", function (e) {
     conditions()
   ) {
     closeModal();
+    valid.classList.remove("displayNone")
     valid.classList.add("displayBlock")
     // formGlobal.reset();
     e.preventDefault();
@@ -197,11 +198,13 @@ formGlobal.addEventListener("submit", function (e) {
 
 // fermeture de la page de confirmation
 
+//Avec le boutton fermer
 let btnClose = document.getElementById("closeBtn");
 btnClose.addEventListener("click", function () {
   valid.classList.replace("displayBlock" , "displayNone")
 });
+ //Avec la croix
 let closeValid = document.querySelector('.closeValid')
 closeValid.addEventListener("click", function(){
   valid.classList.replace("displayBlock" , "displayNone")
-})
+});
