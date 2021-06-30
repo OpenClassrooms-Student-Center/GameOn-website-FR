@@ -167,7 +167,9 @@ function conditions() {
 }
 
 // VALIDATION DU FORMULAIRE
+
 const valid = document.querySelector(".valid");
+
 formGlobal.addEventListener("submit", function (e) {
   //comptage du nb de ville sélectionnées
   for (let i = 0; i < ville.length; i++) {
@@ -188,7 +190,7 @@ formGlobal.addEventListener("submit", function (e) {
     closeModal();
     valid.classList.remove("displayNone")
     valid.classList.add("displayBlock")
-    // formGlobal.reset();
+    formGlobal.reset();
     e.preventDefault();
   } else {
     numberOfTownChecked = 0;
