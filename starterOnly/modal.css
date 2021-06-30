@@ -169,6 +169,8 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
+
+
 .content {
   margin: 5% auto;
   width: 100%;
@@ -296,7 +298,7 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
-.close {
+#close {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -306,8 +308,8 @@ input[data-error]::after {
   cursor: pointer;
   transform: scale(0.7);
 }
-.close:before,
-.close:after {
+#close:before,
+#close:after {
   position: absolute;
   left: 15px;
   content: " ";
@@ -315,12 +317,17 @@ input[data-error]::after {
   width: 3px;
   background-color: #fff;
 }
-.close:before {
+#close:before {
   transform: rotate(45deg);
 }
-.close:after {
+#close:after {
   transform: rotate(-45deg);
 }
+#message__tournoi, #message__nom, #message__prenom, #message__email, #message__birthday, #message__ville, #message__conditionsUtilisation{
+  color: red;
+  font-size: 0.8rem;
+}
+
 .btn-submit,
 .btn-signup {
   background: #fe142f;
@@ -333,6 +340,32 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+
+.bouton-fermer {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+  width: 50%;
+  text-align: center;
+}
+
+.validation{
+  position: absolute;
+  color: white;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 1.2rem;
+  white-space: nowrap;
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -388,11 +421,6 @@ input[data-error]::after {
   left: 0;
   right: 0;
   z-index: 99;
-}
-
-/* Hide the items when the select box is closed: */
-.select-hide {
-  display: none;
 }
 
 .select-items div:hover,
@@ -462,6 +490,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 .copyrights {
   color: #fe142f;
@@ -478,6 +507,29 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+@media (min-width:801px) and (max-width : 950px) {
+  .hero-headline{
+    font-size: 5rem; 
+  }
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -487,6 +539,7 @@ footer {
     background: #fff;
     color: #000;
     padding: 20px;
+    min-width: 100%;
   }
   .hero-content::after {
     content: unset;
@@ -495,7 +548,7 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     white-space: normal;
   }
   .hero-text {
