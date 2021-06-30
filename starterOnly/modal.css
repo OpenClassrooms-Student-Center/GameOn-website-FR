@@ -123,7 +123,7 @@ main {
 }
 
 .bground,
-#valid {
+.valid {
   display: none;
   position: fixed;
   z-index: 1;
@@ -678,7 +678,7 @@ footer {
   }
   /* mise en forme formMobile*/
   .bground,
-  #valid {
+  .valid {
     margin-top: 40px;
   }
   #formGlobal,
@@ -711,13 +711,13 @@ footer {
   padding-top: 10px;
 }
 
-#valid p {
+.valid p {
   padding: 275px 100px;
   text-align: center;
   line-height: 2em;
 }
 
-#valid button {
+.valid button {
   margin-bottom: 30px;
 }
 

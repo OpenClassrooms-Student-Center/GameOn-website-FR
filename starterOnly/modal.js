@@ -167,7 +167,7 @@ function conditions() {
 }
 
 // VALIDATION DU FORMULAIRE
-const valid = document.getElementById("valid");
+const valid = document.querySelector(".valid");
 formGlobal.addEventListener("submit", function (e) {
   //comptage du nb de ville sélectionnées
   for (let i = 0; i < ville.length; i++) {
