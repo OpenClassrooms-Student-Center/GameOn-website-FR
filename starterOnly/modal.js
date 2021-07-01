@@ -17,7 +17,8 @@ const formGlobal = document.getElementById("formGlobal");
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
-  modalbg.style.display = "block";
+  modalbg.classList.remove("bgroundNone");
+  modalbg.classList.add("bgroundBlock");
 }
 
 // close modal event
@@ -25,7 +26,8 @@ close.addEventListener("click", closeModal);
 
 // close modal form
 function closeModal() {
-  modalbg.style.display = "none";
+  modalbg.classList.remove("bgroundBlock");
+  modalbg.classList.add("bgroundNone");
 }
 
 /*******************************TRAITEMENT DES INPUTS **********************/

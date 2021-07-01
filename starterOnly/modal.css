@@ -132,9 +132,16 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  /* background-color: rgba(26, 39, 156, 0.4); */
+  background-color: white;
 }
 
+.bgroundBlock{
+  display: block;
+}
+.bgroundNone {
+  display: none;
+}
 .content {
   margin: 5% auto;
   width: 100%;
@@ -537,7 +544,6 @@ footer {
     width: 100%;
   }
   .hero-img img {
-    
     border-radius: 10px;
     margin-top: 40px;
   }
@@ -751,8 +757,6 @@ footer {
 .closeValid:after {
   transform: rotate(-45deg);
 }
-
-
 
 @keyframes modalopen {
   from {
