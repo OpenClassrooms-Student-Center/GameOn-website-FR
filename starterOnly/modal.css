@@ -136,13 +136,14 @@ main {
   background-color: white;
 }
 
-.bgroundBlock{
+.bgroundBlock {
   display: block;
 }
 .bgroundNone {
   display: none;
 }
-.content {
+.content,
+#container {
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
@@ -702,21 +703,7 @@ footer {
   }
 }
 /* validation page  */
-
-#container {
-  margin: 5% auto;
-  width: 100%;
-  max-width: 500px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
-  background: #232323;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-  color: #fff;
-  padding-top: 10px;
-}
-
+  
 .valid p {
   padding: 275px 100px;
   text-align: center;
@@ -726,12 +713,17 @@ footer {
 .valid button {
   margin-bottom: 30px;
 }
+
+/*ajout de la classe sur la div valid lors de la validation du formulaire pour affichage de la page de validation*/
 .displayBlock {
   display: block;
 }
+/* ajout de la classe pour la fermeture de la page de validation*/
 .displayNone {
   display: none;
 }
+
+/*croix de la page de validation*/
 .closeValid {
   position: absolute;
   right: 15px;

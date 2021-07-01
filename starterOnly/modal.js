@@ -200,7 +200,7 @@ formGlobal.addEventListener("submit", function (e) {
   }
 });
 
-// fermeture de la page de confirmation
+// fermeture de la page de validation
 
 //Avec le boutton fermer
 let btnClose = document.getElementById("closeBtn");
