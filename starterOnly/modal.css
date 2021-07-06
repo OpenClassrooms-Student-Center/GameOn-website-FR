@@ -40,26 +40,6 @@ img {
 }
 
 
-
-
-
-/*---------------------------*/
-.header-logo:hover {
-  border-bottom: 1px solid;
-  border-left: 1px solid;
-  border-color:#fb2d08;
-  border-width: 2.2px;
-  border-bottom-left-radius: 27px;
-  border-top-left-radius: 23px;
-  
-}
-
-
-
-
-/*-----------------------------------------------------------*/
-
-
 .main-navbar {
     float: right;
 }
@@ -120,9 +100,11 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    margin-top: 0px;
   }
 } 
+
+
 
 main {
   font-size: 130%;
@@ -545,12 +527,25 @@ footer {
     display: block;
     box-shadow: unset;
   }
+
+
+  .header-logo {
+    float: left;
+    cursor: pointer;
+    font-size: 40px;
+}
+
+.nav-logo {
+  background-color: #232323;
+}
+
   .hero-content {
     background: #fff;
     color: #000;
     padding: 20px;
     min-width: 100%;
   }
+  
   .hero-content::after {
     content: unset;
   }
@@ -558,12 +553,15 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 3.5rem;
+    font-size: 38px;
     white-space: normal;
+    font-weight: 600;
+    margin-left: -17px;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 21px;
+    margin-left: -17px;
   }
   .hero-img img {
     border-radius: 10px;
@@ -589,4 +587,3 @@ footer {
     opacity: 1;
   }
 }
-
