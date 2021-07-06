@@ -36,7 +36,30 @@ img {
 }
 .header-logo {
     float: left;
+    cursor: pointer;
 }
+
+
+
+
+
+/*---------------------------*/
+.header-logo:hover {
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+  border-color:#fb2d08;
+  border-width: 2.2px;
+  border-bottom-left-radius: 27px;
+  border-top-left-radius: 23px;
+  
+}
+
+
+
+
+/*-----------------------------------------------------------*/
+
+
 .main-navbar {
     float: right;
 }
@@ -433,13 +456,14 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
+  min-height: 13vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   overflow: hidden;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
+  
 }
 .hero-content {
   padding: 51px 67px;
@@ -507,27 +531,13 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+
 @media (min-width:801px) and (max-width : 950px) {
   .hero-headline{
     font-size: 5rem; 
   }
-  
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 @media screen and (max-width: 800px) {
