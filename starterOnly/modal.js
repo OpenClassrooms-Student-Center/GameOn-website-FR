@@ -12,6 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const close = document.querySelector(".close");
+let first = document.getElementById("first");
 const formGlobal = document.getElementById("formGlobal");
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -19,6 +20,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.classList.remove("bgroundNone");
   modalbg.classList.add("bgroundBlock");
+  first.focus();
 }
 
 // close modal event
@@ -52,7 +54,6 @@ function testFirstAndLast(input) {
 
 // FONCTION DE TEST DU PRENOM
 function testFirstName() {
-  let first = document.getElementById("first");
   if (testFirstAndLast(first.value)) {
     removeAtt(first);
     return true;
@@ -190,8 +191,8 @@ formGlobal.addEventListener("submit", function (e) {
     conditions()
   ) {
     closeModal();
-    valid.classList.remove("displayNone")
-    valid.classList.add("displayBlock")
+    valid.classList.remove("displayNone");
+    valid.classList.add("displayBlock");
     formGlobal.reset();
     e.preventDefault();
   } else {
@@ -205,10 +206,10 @@ formGlobal.addEventListener("submit", function (e) {
 //Avec le boutton fermer
 let btnClose = document.getElementById("closeBtn");
 btnClose.addEventListener("click", function () {
-  valid.classList.replace("displayBlock" , "displayNone")
+  valid.classList.replace("displayBlock", "displayNone");
 });
- //Avec la croix
-let closeValid = document.querySelector('.closeValid')
-closeValid.addEventListener("click", function(){
-  valid.classList.replace("displayBlock" , "displayNone")
+//Avec la croix
+let closeValid = document.querySelector(".closeValid");
+closeValid.addEventListener("click", function () {
+  valid.classList.replace("displayBlock", "displayNone");
 });
