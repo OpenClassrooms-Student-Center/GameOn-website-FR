@@ -196,3 +196,102 @@ function validTournois() {
     resTournois.endroit.innerText = resTournois.message;
   }
 }
+
+
+
+//Fonction qui retourne true si une valeur est check
+function validVille() {
+  for (let i = 0; i < villes.length; i++) {
+    if (villes[i].checked) {
+      resVille.endroit.innerText = "";
+      return (resVille.valeur = true);
+    }
+    resVille.valeur = false;
+    resVille.endroit.innerText = resVille.message;
+  }
+}
+
+//Fonction qui renvoie true si check et false sinon.
+function validCondition() {
+  if (conditionUtilisation.checked) {
+    resCondition.valeur = true;
+    resCondition.endroit.innerText = "";
+  } else {
+    resCondition.valeur = false;
+    resCondition.endroit.innerText = resCondition.message;
+  }
+}
+
+//Fonction qui va mettre un message de validation au centre de la modale
+function messageValidation() {
+  formData.forEach((items) => {
+    items.style["visibility"] = "hidden";
+  });
+  btnSubmit.style["visibility"] = "hidden";
+  let messsageValidation = document.createElement("p");
+  messsageValidation.className = "validation";
+  messsageValidation.innerText = "Merci pour votre inscription !";
+  form.appendChild(messsageValidation);
+  let boutonFermer = document.createElement('div'); 
+  boutonFermer.className = "bouton-fermer"; 
+  boutonFermer.innerText = "Fermer"; 
+  form.appendChild(boutonFermer)
+}
+
+// Fonciton qui test toute nos entrées de formulaire en lançant toutes les fonctions associées
+function validationFormulaire() {
+  validPrenom();
+  validNom();
+  validEmail();
+  validBirthday();
+  validTournois();
+  validVille();
+  validCondition();
+}
+
+// Fonction qui permet un reset du formulaire
+function resetFormulaire () {
+  formData.forEach((items) => {
+    items.style["visibility"] = "visible" ; 
+  });
+  document.querySelectorAll(".validation").forEach(element => element.remove());
+  form.reset()
+}
+
+//Fonction qui femre la modale
+function fermeModal() {
+  document.querySelector(".bouton-fermer").remove();
+  btnSubmit.style["visibility"] = "visible";
+  modalbg.style.display = "none";
+  resetFormulaire()
+}
+
+
+//Fonction qui vérifie si si le formulaire est bien renplis et l'envoi si c'est bon avec un message
+//Sinon affiche un message d'erreur sur les éléments mal remplis
+function validationModale(e) {
+  validationFormulaire();
+  e.preventDefault(); 
+  if (!resPrenom.valeur) {
+    return;
+  } else if (!resNom.valeur) {
+    return;
+  } else if (!resEmail.valeur) {
+    return;
+  } else if (!resBirthday.valeur) {
+    return;
+  } else if (!resTournois.valeur) {
+    return;
+  } else if (!resVille.valeur) {
+    return;
+  } else if (!resCondition.valeur) {
+    return;
+  } else {
+    messageValidation();
+  }
+  document.querySelector('.bouton-fermer').addEventListener('click', fermeModal);
+  btnClose.addEventListener("click", fermeModal);
+}
+
+
+btnSubmit.addEventListener("click", validationModale);
