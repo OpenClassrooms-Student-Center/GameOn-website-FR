@@ -125,6 +125,7 @@ function annuleErreur(ouInjecter, messageErreur, styleSurInput) {
 }
 */
 
+
 //fonction qui renvoie une erreur si l'input du nom est un nombre ou s'il a moins de 2 caratères.
 function validPrenom() {
   if (/(^[a-zA-Z])([a-zA-Z\-\'])/.test(firstName.value)) {
@@ -196,6 +197,8 @@ function validTournois() {
     resTournois.endroit.innerText = resTournois.message;
   }
 }
+
+
 
 //Fonction qui retourne true si une valeur est check
 function validVille() {
