@@ -47,6 +47,7 @@ const dateNow = new Date(Date.now());
 
 //Class resultat qui permet d'avoir l'endroit ou injceter le message d'erreur,  
 // la valeur retouner par les fonctions de test et le message d'erreur
+
 class resultat {
   constructor(endroit, valeur, message) {
     this.endroit = endroit;
@@ -292,5 +293,3 @@ function validationModale(e) {
 
 
 btnSubmit.addEventListener("click", validationModale);
-
-

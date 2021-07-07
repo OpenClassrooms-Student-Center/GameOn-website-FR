@@ -61,15 +61,22 @@ img {
   border-radius: 15px;
 }
 
+/*------------------------------------------*/
 .topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
 }
 
+
+span:hover{
+text-decoration: underline;
+}
+
 .topnav .icon {
   display: none;
 }
+
 
 @media screen and (max-width: 768px) {
   .topnav a {display: none;}
