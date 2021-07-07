@@ -123,3 +123,76 @@ function annuleErreur(ouInjecter, messageErreur, styleSurInput) {
   styleSurInput.style.border = "1px solid black";
 }
 */
+
+
+//fonction qui renvoie une erreur si l'input du nom est un nombre ou s'il a moins de 2 caratères.
+function validPrenom() {
+  if (/(^[a-zA-Z])([a-zA-Z\-\'])/.test(firstName.value)) {
+    resPrenom.valeur = true;
+    resPrenom.endroit.innerText = "";
+  } else {
+    resPrenom.valeur = false;
+    resPrenom.endroit.innerText = resPrenom.message;
+  }
+}
+//fonction qui renvoie une erreur si l'input du prenom est un nombre ou s'il a moins de 2 caratères.
+function validNom() {
+  if (/(^[a-zA-Z])([a-zA-Z\-\'])/.test(lastName.value)) {
+    resNom.valeur = true;
+    resNom.endroit.innerText = "";
+  } else {
+    resNom.valeur = false;
+    resNom.endroit.innerText = resNom.message;
+  }
+}
+
+//Fonction qui renvoie un resultat true si le format de l'email correpsond ou sinon message d'erreur.
+function validEmail() {
+  if (/^([\w-\.]+)@((?:[\w]+\.)+)([a-zA-Z]{2,4})/i.test(email.value)) {    
+    resEmail.valeur = true;
+    resEmail.endroit.innerText = "";
+  } else {
+    resEmail.valeur = false;
+    resEmail.endroit.innerText = resEmail.message;
+  }
+}
+
+//Renvoie des messages d'erreurs si false en fonction de l'age rentré ou true si l'age est bon
+function validBirthday() {
+  let anniversaire = new Date(birthday.value);
+  if (anniversaire >= dateBasse && anniversaire <= dateHaute) {
+    resBirthday.valeur = true;
+    resBirthday.message = resBirthday.endroit.innerText = "";
+  } else if (anniversaire < dateBasse) {
+    resBirthday.valeur = false;
+    resBirthday.message = resBirthday.endroit.innerText =
+      "Vous me semblez un peu trop agé pour participer. Merci de rentrer une date valide.";
+  } else if (anniversaire > dateNow) {
+    resBirthday.valeur = false;
+    resBirthday.message = resBirthday.endroit.innerText =
+      "Merci de rentrer un date valide.";
+  } else if (anniversaire > dateHaute && anniversaire <= dateNow) {
+    resBirthday.valeur = false;
+    resBirthday.message = resBirthday.endroit.innerText =
+      "Tu me semble un peu jeune pour participer, reviens nous voir dans quelques années.";
+  } else {
+    resBirthday.valeur = false;
+    resBirthday.message = resBirthday.endroit.innerText =
+      "Merci de rentrer un date valide.";
+  }
+}
+
+//Fonction qui renvoi une erreur si elle si elle l'entrée n'est pas comprise entre 0-99 ou si lettres
+function validTournois() {
+  if (
+    /[0-9]/.test(nbrTournois.value) &&
+    nbrTournois.value >= 0 &&
+    nbrTournois.value < 100
+  ) {
+    resTournois.valeur = true;
+    resTournois.endroit.innerText = "";
+  } else {
+    resTournois.valeur = false;
+    resTournois.endroit.innerText = resTournois.message;
+  }
+}
