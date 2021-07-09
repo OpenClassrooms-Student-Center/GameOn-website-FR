@@ -58,22 +58,22 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
-            <form name="reserve" action="index.html" method="GET" onsubmit="return validate(event);">
+            <form name="reserve" action="index.html" method="GET" novalidate onsubmit="return validate(event);">
               <div class="formData">
                 <label for="first">Prénom</label><br>
                 <input class="text-control" type="text" id="first" name="first" /><br>
-                <span id="error-first"></span><br />                
+                <span id="error-first"></span>               
               </div>
 
               <div class="formData">
                 <label for="last">Nom</label><br>
                 <input class="text-control" type="text" id="last" name="last" /><br>
-                <span id="last-error"></span>
+                <span id="error-last"></span>
               </div>
 
               <div class="formData">
                 <label for="email">E-mail</label><br>
-                <input lass="text-control" type="email" id="email" name="email" /><br>
+                <input class="text-control" type="email" id="email" name="email" /><br>
                 <span id="error-email"></span>
               </div>
 

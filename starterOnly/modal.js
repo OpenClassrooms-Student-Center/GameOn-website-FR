@@ -43,24 +43,50 @@ function closeModal() {
 }
 
 const inputs= document.querySelector('form').elements;
-const first= inputs['first'];
-const error= document.getElementById('error-first');
 
 //firstname validation
-function firstNameValidation(e){
+function firstNameValidation(e){  
+  const input= inputs['first'];
   
-  if(checkString.test(first.value) === false){
-    // console.log(first);
-    // alert(first.value);
-    // console.log(error);
-    // alert('error');   
+  const error= document.getElementById('error-first');
+  if(checkString.test(input.value.trim()) === false){
     error.innerText= "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
     error.style.color= "red";
     e.preventDefault();
     return false;
   }
   else{
-    alert('yabon');
+    error.innerText= "";
+    return true;
+  }
+}
+
+function lastNameValidation(e){
+  const input= inputs['last'];
+  const error= document.getElementById('error-last');
+  if(checkString.test(input.value.trim()) === false){
+    error.innerText= "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
+    error.style.color= "red";
+    e.preventDefault();
+    return false;
+  }
+  else{
+    error.innerText= "";
+    return true;
+  }
+}
+
+function emailValidation(e){
+  const input= inputs['email'];
+  const error= document.getElementById('error-email');
+  if(checkMail.test(input.value.trim()) === false){
+    error.innerText= "Vous devez entrer une adresse email valide.";
+    error.style.color= "red";
+    e.preventDefault();
+    return false;
+  }
+  else{
+    error.innerText= "";
     return true;
   }
 }
@@ -68,4 +94,6 @@ function firstNameValidation(e){
 //form submit function
 function validate(e){
   firstNameValidation(e);
+  lastNameValidation(e);
+  emailValidation(e);
 }
