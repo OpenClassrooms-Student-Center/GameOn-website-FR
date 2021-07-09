@@ -45,17 +45,21 @@ function closeModal() {
 const inputs= document.querySelector('form').elements;
 
 //firstname validation
-function firstNameValidation(e){  
+function firstNameValidation(e){ 
   const input= inputs['first'];
   
   const error= document.getElementById('error-first');
   if(checkString.test(input.value.trim()) === false){
+    input.classList.add('invalid');
     error.innerText= "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
-    error.style.color= "red";
+    error.classList.add('span-error');
     e.preventDefault();
     return false;
   }
   else{
+    input.classList.remove('invalid');
+    input.classList.add('valid');
+    error.classList.remove('span-error');
     error.innerText= "";
     return true;
   }
