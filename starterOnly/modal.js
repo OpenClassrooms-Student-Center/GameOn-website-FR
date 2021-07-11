@@ -13,6 +13,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
 const inputFirst = document.getElementById("first");
+const inputEmail = document.getElementById("email");
 
 
 // launch modal event
@@ -32,11 +33,19 @@ function closeModal() {
 
 // Validate form
 function validate() {
+
+  let formIsOkay = true;
   const valueFirst = inputFirst.value;
-  // Verifie if first is empty
+  const valueEmail = inputEmail.value;
+  // Check if first is empty and lengths
   if (valueFirst == "" || valueFirst.length < 2) {
-    return false
+    formIsOkay = false;
+  }
+  // Check email formatting
+  // full regex definition here : https://datatracker.ietf.org/doc/html/rfc2822#section-3.4.1
+  if (/^([a-z]\.?)+@([a-z]+\.)+[a-z]+$/.test(valueEmail) == false) {
+    formIsOkay = false
   }
 
-  return true
+  return formIsOkay;
 }
