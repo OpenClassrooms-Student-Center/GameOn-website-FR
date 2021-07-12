@@ -6,10 +6,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="modal.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" />
+    <link rel="stylesheet" href="modal.css" />
   </head>
   <body>
     <header>
@@ -32,26 +30,17 @@
     <main>
       <section class="hero-section">
         <div class="hero-content">
-          <h1 class="hero-headline">
-            Marathon national<br>
-            de jeux vidéos
-          </h1>
-          <p class="hero-text">
-            Vous aimez jouer ? Notre prochain évènement gaming est ouvert
-            aux réservations... Places limitées !
-          </p>
-          <button class="btn-signup modal-btn">
-            je m'inscris
-          </button>
+          <h1 class="hero-headline">Marathon national<br>de jeux vidéos</h1>
+          <p class="hero-text">Vous aimez jouer ? Notre prochain évènement gaming est ouvert
+            aux réservations... Places limitées !</p>
+          <button class="btn-signup modal-btn">je m'inscris</button>
         </div>
 
         <div class="hero-img">
           <img src="./bg_img.jpg" alt="img" />
         </div>
 
-        <button class="btn-signup modal-btn">
-          je m'inscris
-        </button>
+        <button class="btn-signup modal-btn">je m'inscris</button>
       </section>
 
       <section class="bground">
@@ -77,15 +66,16 @@
                 <span id="error-email"></span>
               </div>
 
-              <div
-                class="formData">
+              <div class="formData">
                 <label for="birthdate">Date de naissance</label><br>
                 <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
+                <span id="error-birthdate"></span>
               </div>
 
               <div class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" />
+                <span id="error-quantity"></span>
               </div>
 
               <p class="text-label">Quelles villes ?</p>
@@ -114,7 +104,7 @@
                   Chicago
                 </label>
 
-                <input class="checkbox-input" type="radio" id="location5" name="location" />
+                <input class="checkbox-input" type="radio" id="location5" name="location" value="Boston" />
                 <label class="checkbox-label" for="location5">
                   <span class="checkbox-icon"></span>
                   Boston
@@ -124,7 +114,8 @@
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
                   Portland
-                </label>
+                </label><br />
+                <span id="error-location"></span>
               </div>
 
               <div class="formData">

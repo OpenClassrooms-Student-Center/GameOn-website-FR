@@ -13,7 +13,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  /* background-image: url("background.png"); */
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -110,8 +109,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -221,9 +218,9 @@ input {
   transition: 0.3s;
 }
 
-.formData[data-error-visible="true"]::after {
+/*.formData[data-error-visible="true"]::after {
   opacity: 1;
-}
+}*/
 
 .invalid {
   border: 2px solid #e54858;
@@ -304,6 +301,7 @@ input {
   left: 21%;
   top: 19%;
 }
+
 .close {
   position: absolute;
   right: 15px;
@@ -314,6 +312,7 @@ input {
   cursor: pointer;
   transform: scale(0.7);
 }
+
 .close:before,
 .close:after {
   position: absolute;
@@ -323,12 +322,15 @@ input {
   width: 3px;
   background-color: #fff;
 }
+
 .close:before {
   transform: rotate(45deg);
 }
+
 .close:after {
   transform: rotate(-45deg);
 }
+
 .btn-submit,
 .btn-signup {
   background: #fe142f;
@@ -341,6 +343,7 @@ input {
   cursor: pointer;
   border: 0;
 }
+
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -352,6 +355,7 @@ input {
 .custom-select select {
   display: none;
 }
+
 .select-selected {
   background-color: #fff;
 }
@@ -407,11 +411,13 @@ input {
 .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
 /* custom select end */
 .text-label {
   font-weight: normal;
   font-size: 16px;
 }
+
 .hero-section {
   min-height: 93vh;
   border-radius: 10px;
@@ -421,6 +427,7 @@ input {
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
 }
+
 .hero-content {
   padding: 51px 67px;
   grid-column: span 4;
@@ -430,6 +437,7 @@ input {
   text-align: left;
   min-width: 424px;
 }
+
 .hero-content::after {
   content: "";
   width: 100%;
@@ -439,21 +447,25 @@ input {
   right: -80px;
   top: 0;
 }
+
 .hero-content > * {
   position: relative;
   z-index: 1;
 }
+
 .hero-headline {
   font-size: 6rem;
   font-weight: normal;
   white-space: nowrap;
 }
+
 .hero-text {
   width: 146%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
 }
+
 .btn-signup {
   outline: none;
   text-transform: capitalize;
@@ -462,15 +474,18 @@ input {
   margin: 0;
   margin-top: 59px;
 }
+
 .hero-img {
   grid-column: span 8;
 }
+
 .hero-img img {
   width: 100%;
   height: 100%;
   display: block;
   padding: 0;
 }
+
 .copyrights {
   color: #fe142f;
   padding: 0;
@@ -478,14 +493,17 @@ input {
   margin: 60px 0 30px;
   font-weight: bolder;
 }
+
 .hero-section > .btn-signup {
   display: none;
 }
+
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
   margin: 0 20px;
 }
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
