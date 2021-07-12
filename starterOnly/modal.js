@@ -49,7 +49,7 @@ function firstNameValidation(e){
   const input= inputs['first'];
   
   const error= document.getElementById('error-first');
-  if(checkString.test(input.value.trim()) === false){
+  if(!checkString.test(input.value.trim())){
     input.classList.remove('valid');
     input.classList.add('invalid');
     error.innerText= "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
@@ -69,7 +69,7 @@ function firstNameValidation(e){
 function lastNameValidation(e){
   const input= inputs['last'];
   const error= document.getElementById('error-last');
-  if(checkString.test(input.value.trim()) === false){
+  if(!checkString.test(input.value.trim())){
     error.innerText= "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
     input.classList.remove('valid');
     input.classList.add('invalid');
@@ -89,7 +89,7 @@ function lastNameValidation(e){
 function emailValidation(e){
   const input= inputs['email'];
   const error= document.getElementById('error-email');
-  if(checkMail.test(input.value.trim()) === false){
+  if(!checkMail.test(input.value.trim())){
     error.innerText= "Vous devez entrer une adresse email valide.";
     input.classList.remove('valid');
     input.classList.add('invalid');
@@ -110,7 +110,7 @@ function emailValidation(e){
 function birthdateValidation(e){ 
   const input= inputs['birthdate'];
   const error= document.getElementById('error-birthdate');
-  if(checkDate.test(input.value.trim()) === false){
+  if(!checkDate.test(input.value.trim())){
     input.classList.remove('valid');
     input.classList.add('invalid');
     error.innerText= "Veuillez entrer votre date de naissance.";
@@ -131,7 +131,7 @@ function birthdateValidation(e){
 function quantityValidation(e){ 
   const input= inputs['quantity'];
   const error= document.getElementById('error-quantity');
-  if(checkNumber.test(input.value.trim()) === false){
+  if(!checkNumber.test(input.value.trim())){
     input.classList.remove('valid');
     input.classList.add('invalid');
     error.innerText= "Veuillez saisir une valeur numérique.";
@@ -149,29 +149,45 @@ function quantityValidation(e){
 }
 
 // location Validation
-
-function locationValidation(e, location){
+function locationValidation(e){
   const checkBoxes= document.querySelectorAll('.checkbox-input[type=radio]');
   const error= document.getElementById('error-location');
-  checkBoxes.forEach(location => {
-    if(location.checked){
-      console.log(location.value);
-      location.classList.remove('invalid');
-      location.classList.add('valid');
+  for(let i= 0; i< checkBoxes.length; i++){
+    if(checkBoxes[i].checked){
+      //checkBoxes.classList.remove('invalid');
+      //checkBoxes.classList.add('valid');
       error.classList.remove('span-error');
       error.innerText= "";
-      break;
-    }else{
-      location.classList.remove('valid');
-      location.classList.add('invalid');
-      error.innerText= "Veuillez choisir une ville.";
-      error.classList.add('span-error');
-      e.preventDefault();
-      return false;
+      return true;
     }
-    
-    
-    });
+  }
+  //checkBoxes.classList.remove('valid');
+  //checkBoxes.classList.add('invalid');
+  error.innerText= "Veuillez choisir une ville.";
+  error.classList.add('span-error');
+  e.preventDefault();
+  return false;
+}
+
+// cgu validation
+function cguValidation(e){
+  const input= inputs['cgu'];
+  const error= document.getElementById('error-cgu');
+  if(!input.checked){
+    //input.classList.remove('valid');
+    //input.classList.add('invalid');
+    error.innerText= "Veuillez accepter les CGU.";
+    error.classList.add('span-error');
+    e.preventDefault();
+    return false;
+  }
+  else{
+    //input.classList.remove('invalid');
+    //input.classList.add('valid');
+    error.classList.remove('span-error');
+    error.innerText= "";
+    return true;
+  }
 }
 
 //form submit function
@@ -182,4 +198,5 @@ function validate(e){
   birthdateValidation(e);
   quantityValidation(e);
   locationValidation(e);
+  cguValidation(e);
 }
