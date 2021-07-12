@@ -175,12 +175,12 @@ const valid = document.querySelector(".valid");
 
 formGlobal.addEventListener("submit", function (e) {
   //comptage du nb de ville sélectionnées
+  e.preventDefault();
   for (let i = 0; i < ville.length; i++) {
     if (ville[i].checked) {
       numberOfTownChecked++;
     }
   }
-
   if (
     testFirstName() &&
     testLastName() &&
@@ -194,10 +194,8 @@ formGlobal.addEventListener("submit", function (e) {
     valid.classList.remove("displayNone");
     valid.classList.add("displayBlock");
     formGlobal.reset();
-    e.preventDefault();
   } else {
     numberOfTownChecked = 0;
-    e.preventDefault();
   }
 });
 
