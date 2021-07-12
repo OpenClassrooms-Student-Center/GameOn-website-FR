@@ -102,7 +102,6 @@ function testBirthdayDate() {
   let parseBirthDate = Date.parse(birthDate.value); //converti la date entrée en milliseconde utc
   const today = Date.now(); // défini la date d'aujourd'hui en ms utc
   const todayDate = new Date().toLocaleDateString(); //converti la date du jour au format jour/mois/année
-  // const todayDate = today.toLocaleDateString();
   if (!parseBirthDate || parseBirthDate > today) {
     erreur = "veuillez entrez une date antérieure au " + todayDate;
     setAtt(birthDate);
