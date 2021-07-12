@@ -99,8 +99,8 @@ function email() {
 // FONCTION DE TRAITEMENT DE LA DATE DE NAISSANCE
 function testBirthdayDate() {
   let birthDate = document.getElementById("birthdate");
-  let parseBirthDate = Date.parse(birthDate.value); //converti la date entrée en seconde depuis le 1er janvier 1970
-  const today = Date.now(); // défini la date d'aujourd'hui en seconde depuis le 1er janvier 1970
+  let parseBirthDate = Date.parse(birthDate.value); //converti la date entrée en millisecondes depuis le 1er janvier 1970
+  const today = Date.now(); // défini la date d'aujourd'hui en millisecondes depuis le 1er janvier 1970
   const todayDate = new Date().toLocaleDateString(); //converti la date du jour au format jour/mois/année
   if (!parseBirthDate || parseBirthDate > today) {
     erreur = "veuillez entrez une date antérieure au " + todayDate;
