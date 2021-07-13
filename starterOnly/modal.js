@@ -1,15 +1,20 @@
 function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
+  var burgerMenu = document.getElementById("myTopnav");
+  if (burgerMenu.className === "topnav") {
+    burgerMenu.className += " responsive";
   } else {
-    x.className = "topnav";
+    burgerMenu.className = "topnav";
   }
 }
+
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
+const modalBody = document.querySelector(".modal-body");
+const validation = document.querySelector(".validation");
+const validationContainer = document.querySelector(".validation-container");
+const form = document.querySelector("form");
 const formData = document.querySelectorAll(".formData");
 const close = document.querySelector(".close");
 const first = document.getElementById("first");
@@ -31,9 +36,10 @@ function launchModal() {
 }
 
 // Close modal form
-close.addEventListener("click", () => {
+function closeModal () {
   modalbg.style.display = "none";
-})
+}
+close.addEventListener("click", closeModal);
 
 // Tableau messages d'erreurs formulaires
 let errorsLists = [
@@ -49,10 +55,10 @@ let errorsLists = [
 ];
 
 // Vérification du formulaire
-document.getElementById("validation-form").addEventListener("submit", (e) => {
+document.getElementById("registration-form").addEventListener("submit", (e) => {
 
   // Initialisation d'une variable pour la soumission du formulaire
-  let error; 
+  let error;
 
   // Regex pour vérification saisie dans les inputs
   let regexName = /^[a-zA-Z-\s]+$/;
@@ -97,7 +103,7 @@ document.getElementById("validation-form").addEventListener("submit", (e) => {
     }
 
     // On vérifie que le mail saisie soit correct
-    if (regexMail.test(email.value) == false && email.value != "") {
+    if (regexMail.test(email.value) == false && email.value == "") {
       const errorMail = document.getElementById("errorMail");
       error = true;
       errorMail.textContent = errorsLists[5];
@@ -146,5 +152,18 @@ document.getElementById("validation-form").addEventListener("submit", (e) => {
   if (error) {
     e.preventDefault();
     return false;
+  }else{// si le dossier est validé, on affiche le message de validation du formulaire
+    e.preventDefault();
+    form.style.display = "none";
+    validationContainer.style.display = "block";
+    modalBody.classList.add("validation");
+    modalbg.style.display = "block";
+    
   }
+    
+  // Envoie du formulaire
+  document.querySelector(".btn-close-form").addEventListener("click", () => {
+    form.submit();
+  });
+  
 });
