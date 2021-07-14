@@ -3,10 +3,10 @@
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
+//const formData = document.querySelectorAll(".formData");
 const modalCloseBtn = document.querySelector(".close");
-
-// const form= document.querySelector('form');
+const inputs= document.querySelector('form').elements;
+const thanksModal= document.querySelector(".thanks");
 
 //Variables
 let checkString = /^[a-zA-Z]{2}/;
@@ -41,8 +41,6 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = "none";
 }
-
-const inputs= document.querySelector('form').elements;
 
 //firstname validation
 function firstNameValidation(e){ 
@@ -151,18 +149,21 @@ function quantityValidation(e){
 // location Validation
 function locationValidation(e){
   const checkBoxes= document.querySelectorAll('.checkbox-input[type=radio]');
+  const checkBoxesLabels= document.querySelectorAll('.checkbox-label span');
   const error= document.getElementById('error-location');
   for(let i= 0; i< checkBoxes.length; i++){
     if(checkBoxes[i].checked){
-      //checkBoxes.classList.remove('invalid');
-      //checkBoxes.classList.add('valid');
+      checkBoxesLabels.forEach(element=>{
+        element.classList.remove('invalid');
+      });
       error.classList.remove('span-error');
       error.innerText= "";
       return true;
     }
   }
-  //checkBoxes.classList.remove('valid');
-  //checkBoxes.classList.add('invalid');
+  checkBoxesLabels.forEach(element=>{
+    element.classList.add('invalid');
+  });
   error.innerText= "Veuillez choisir une ville.";
   error.classList.add('span-error');
   e.preventDefault();
@@ -172,18 +173,17 @@ function locationValidation(e){
 // cgu validation
 function cguValidation(e){
   const input= inputs['cgu'];
+  const checkBoxIcon= document.querySelector('.checkbox2-label span');
   const error= document.getElementById('error-cgu');
   if(!input.checked){
-    //input.classList.remove('valid');
-    //input.classList.add('invalid');
+    checkBoxIcon.classList.add('invalid');
     error.innerText= "Veuillez accepter les CGU.";
     error.classList.add('span-error');
     e.preventDefault();
     return false;
   }
   else{
-    //input.classList.remove('invalid');
-    //input.classList.add('valid');
+    checkBoxIcon.classList.remove('invalid');
     error.classList.remove('span-error');
     error.innerText= "";
     return true;
@@ -192,6 +192,7 @@ function cguValidation(e){
 
 //form submit function
 function validate(e){
+  e.preventDefault();
   firstNameValidation(e);
   lastNameValidation(e);
   emailValidation(e);
@@ -199,4 +200,7 @@ function validate(e){
   quantityValidation(e);
   locationValidation(e);
   cguValidation(e);
+  if(firstNameValidation(e) && lastNameValidation(e) && emailValidation(e) && birthdateValidation(e) && quantityValidation(e) && locationValidation(e) && cguValidation(e)){
+    thanksModal.style.display = "block";
+  }
 }

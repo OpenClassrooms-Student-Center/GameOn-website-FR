@@ -88,9 +88,7 @@ img {
   }
 }
 
-
-
- @media screen and (max-width: 540px) {
+@media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
@@ -153,7 +151,7 @@ main {
   font-size: 16px;
 }
 
-.bground {
+.bground, .thanks{
   display: none;
   position: fixed;
   z-index: 1;
@@ -244,6 +242,7 @@ input {
   font-size: 12px;
   font-weight: normal;
 }
+
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
   display: block;
@@ -258,6 +257,8 @@ input {
   top: -1px;
   transition: 0.3s;
 }
+
+
 .checkbox-label .checkbox-icon::after,
 .checkbox2-label .checkbox-icon::after {
   content: "";
@@ -274,21 +275,26 @@ input {
   transition: 0.3s;
   opacity: 0;
 }
+
 .checkbox-input {
   display: none;
 }
+
 .checkbox-input:checked + .checkbox-label .checkbox-icon::after,
 .checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
   opacity: 1;
 }
+
 .checkbox-input:checked + .checkbox2-label .checkbox-icon {
   background: #279e7a;
 }
+
 .checkbox2-label .checkbox-icon {
   border-radius: 4px;
   border: 0;
   background: #c4c4c4;
 }
+
 .checkbox2-label .checkbox-icon::after {
   width: 7px;
   height: 4px;
@@ -300,6 +306,10 @@ input {
   transform: rotate(-55deg);
   left: 21%;
   top: 19%;
+}
+
+.checkbox-icon.invalid {
+  border: 2px solid #e54858;
 }
 
 .close {
