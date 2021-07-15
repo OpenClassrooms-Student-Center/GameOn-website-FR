@@ -1,32 +1,29 @@
-
-
+// VARIABLES
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-//const formData = document.querySelectorAll(".formData");
 const modalCloseBtn = document.querySelector(".close");
 const inputs= document.querySelector('form').elements;
-const thanksModal= document.querySelector(".thanks");
 
-//Variables
-let checkString = /^[a-zA-Z]{2}/;
-let checkMail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-let checkDate= /^\d{4}-\d{2}-\d{2}$/;
-let checkNumber= /^[0-9]+$/;
+// Regex
+const checkString = /^[a-zA-Z]{2}/;
+const checkMail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const checkDate= /^\d{4}-\d{2}-\d{2}$/;
+const checkNumber= /^[0-9]+$/;
 
+//EVENTS
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // close modal event
 modalCloseBtn.addEventListener("click", closeModal);
 
-//Functions
-
+//FUNCTIONS
 // Navbar
 function editNav() {
   const navBar = document.getElementById("myTopnav");
   if (navBar.className === "topnav") {
-    navBar.className += " responsive";
+    navBar.className += "responsive";
   } else {
     navBar.className = "topnav";
   }
@@ -44,15 +41,14 @@ function closeModal() {
 
 //firstname validation
 function firstNameValidation(e){ 
+  e.preventDefault();
   const input= inputs['first'];
-  
   const error= document.getElementById('error-first');
   if(!checkString.test(input.value.trim())){
     input.classList.remove('valid');
     input.classList.add('invalid');
     error.innerText= "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
     error.classList.add('span-error');
-    e.preventDefault();
     return false;
   }
   else{
@@ -64,7 +60,9 @@ function firstNameValidation(e){
   }
 }
 
+// lastName Validation
 function lastNameValidation(e){
+  e.preventDefault();
   const input= inputs['last'];
   const error= document.getElementById('error-last');
   if(!checkString.test(input.value.trim())){
@@ -72,7 +70,6 @@ function lastNameValidation(e){
     input.classList.remove('valid');
     input.classList.add('invalid');
     error.classList.add('span-error');
-    e.preventDefault();
     return false;
   }
   else{
@@ -84,7 +81,9 @@ function lastNameValidation(e){
   }
 }
 
+// emailValidation
 function emailValidation(e){
+  e.preventDefault();
   const input= inputs['email'];
   const error= document.getElementById('error-email');
   if(!checkMail.test(input.value.trim())){
@@ -92,7 +91,6 @@ function emailValidation(e){
     input.classList.remove('valid');
     input.classList.add('invalid');
     error.classList.add('span-error');
-    e.preventDefault();
     return false;
   }
   else{
@@ -106,6 +104,7 @@ function emailValidation(e){
 
 //birthdate validation
 function birthdateValidation(e){ 
+  e.preventDefault();
   const input= inputs['birthdate'];
   const error= document.getElementById('error-birthdate');
   if(!checkDate.test(input.value.trim())){
@@ -113,7 +112,6 @@ function birthdateValidation(e){
     input.classList.add('invalid');
     error.innerText= "Veuillez entrer votre date de naissance.";
     error.classList.add('span-error');
-    e.preventDefault();
     return false;
   }
   else{
@@ -127,6 +125,7 @@ function birthdateValidation(e){
 
 //quantity validation
 function quantityValidation(e){ 
+  e.preventDefault();
   const input= inputs['quantity'];
   const error= document.getElementById('error-quantity');
   if(!checkNumber.test(input.value.trim())){
@@ -134,7 +133,6 @@ function quantityValidation(e){
     input.classList.add('invalid');
     error.innerText= "Veuillez saisir une valeur numérique.";
     error.classList.add('span-error');
-    e.preventDefault();
     return false;
   }
   else{
@@ -148,6 +146,7 @@ function quantityValidation(e){
 
 // location Validation
 function locationValidation(e){
+  e.preventDefault();
   const checkBoxes= document.querySelectorAll('.checkbox-input[type=radio]');
   const checkBoxesLabels= document.querySelectorAll('.checkbox-label span');
   const error= document.getElementById('error-location');
@@ -166,12 +165,12 @@ function locationValidation(e){
   });
   error.innerText= "Veuillez choisir une ville.";
   error.classList.add('span-error');
-  e.preventDefault();
   return false;
 }
 
 // cgu validation
 function cguValidation(e){
+  e.preventDefault();
   const input= inputs['cgu'];
   const checkBoxIcon= document.querySelector('.checkbox2-label span');
   const error= document.getElementById('error-cgu');
@@ -179,7 +178,6 @@ function cguValidation(e){
     checkBoxIcon.classList.add('invalid');
     error.innerText= "Veuillez accepter les CGU.";
     error.classList.add('span-error');
-    e.preventDefault();
     return false;
   }
   else{
@@ -201,6 +199,20 @@ function validate(e){
   locationValidation(e);
   cguValidation(e);
   if(firstNameValidation(e) && lastNameValidation(e) && emailValidation(e) && birthdateValidation(e) && quantityValidation(e) && locationValidation(e) && cguValidation(e)){
+    //créer un template de la modal "validation" ici
+    const thanksModal= document.createElement('section');
+    document.querySelector('main').appendChild(thanksModal);
+    thanksModal.classList.add('thanks');
+    thanksModal.innerHTML= "<div class='content'><span class='close'></span><div class='modal-body'><h3>Merci pour votre inscription !</h3><button class='btn-submit' type='submit' class='button'>Fermer</button></div></div>"
+    modalbg.style.display= "none";
     thanksModal.style.display = "block";
+    const finalModalCloseBtn= document.querySelector(".close");
+    const thanksCloseButton= document.querySelector("button.btn-submit");
+    finalModalCloseBtn.addEventListener("click", closeThanksModal);
+    thanksCloseButton.addEventListener("click", closeThanksModal);
+    function closeThanksModal(){
+      thanksModal.style.display= "none";
+    }
   }
 }
+
