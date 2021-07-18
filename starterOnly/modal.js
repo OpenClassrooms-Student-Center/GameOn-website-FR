@@ -54,7 +54,7 @@ function testFirstAndLast(input) {
 
 // FONCTION DE TEST DU PRENOM
 function testFirstName() {
-  if (testFirstAndLast(first.value)) {
+  if (testFirstAndLast(first.value.trim())) {
     removeAtt(first);
     return true;
   } else {
@@ -68,7 +68,7 @@ function testFirstName() {
 function testLastName() {
   let last = document.getElementById("last");
 
-  if (testFirstAndLast(last.value)) {
+  if (testFirstAndLast(last.value.trim())) {
     removeAtt(last);
     return true;
   } else {
