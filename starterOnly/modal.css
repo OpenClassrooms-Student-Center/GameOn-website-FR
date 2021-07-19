@@ -35,10 +35,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -68,39 +68,6 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} 
-
 main {
   font-size: 130%;
   font-weight: bolder;
@@ -111,8 +78,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -157,7 +122,8 @@ main {
   font-size: 16px;
 }
 
-.bground {
+.bground,
+.valid {
   display: none;
   position: fixed;
   z-index: 1;
@@ -169,12 +135,21 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
-.content {
+.bgroundBlock {
+  display: block;
+}
+.bgroundNone {
+  display: none;
+}
+.content,
+#container {
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
+  -webkit-animation-name: modalopen;
+          animation-name: modalopen;
+  -webkit-animation-duration: var(--modal-duration);
+          animation-duration: var(--modal-duration);
   background: #232323;
   border-radius: 10px;
   overflow: hidden;
@@ -210,15 +185,15 @@ input {
 }
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
+  font-size: 0.5em;
   color: #e54858;
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
-  line-height: 0.3;
+  text-align: left;
+  line-height: 1.2;
   opacity: 0;
-  transition: 0.3s;
+  transition: 5s;
 }
 .formData[data-error-visible="true"]::after {
   opacity: 1;
@@ -226,12 +201,13 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
+
 input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+  content: attr(data-error);
+  font-size: 0.4em;
+  color: red;
+}
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -405,32 +381,21 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
   border-radius: 10px;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  display: flex;
   overflow: hidden;
-  box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 7px 2px rgba(248, 2, 2, 0.2);
   margin-bottom: 10px;
 }
 .hero-content {
   padding: 51px 67px;
-  grid-column: span 4;
   background: #232323;
   color: #fff;
   position: relative;
   text-align: left;
   min-width: 424px;
 }
-.hero-content::after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  background: #232323;
-  position: absolute;
-  right: -80px;
-  top: 0;
-}
+
 .hero-content > * {
   position: relative;
   z-index: 1;
@@ -441,7 +406,7 @@ input[data-error]::after {
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
+  width: 116%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
@@ -455,7 +420,7 @@ input[data-error]::after {
   margin-top: 59px;
 }
 .hero-img {
-  grid-column: span 8;
+  width: 170%;
 }
 .hero-img img {
   width: 100%;
@@ -478,7 +443,83 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+@media (max-width: 1115px) {
+  /*modification de l'affichage de la navbar*/
+  .topnav a {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  .topnav a.icon {
+    float: right;
+    display: block;
+    color: red;
+    margin-right: 5px;
+    font-size: 30px;
+    padding-top: 7px;
+    padding-bottom: 6px;
+  }
+  .topnav a.icon:hover {
+    color: white;
+  }
+}
+@media (max-width: 945px) {
+  .hero-content {
+    padding-left: 40px;
+  }
+  .hero-headline {
+    font-size: 5.1rem;
+  }
+}
 @media screen and (max-width: 800px) {
+  .topnav a {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  .header-logo img {
+    width: 180px;
+    margin: 20px 0px 0px 15px;
+  }
+  .hero-headline {
+    font-size: 55px;
+    font-weight: bold;
+    line-height: 1.7;
+  }
+
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -486,7 +527,8 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    min-width: 0; /*rectification affichage mobile*/
+    padding: 0px;
   }
   .hero-content::after {
     content: unset;
@@ -494,13 +536,14 @@ footer {
   .hero-content .btn-signup {
     display: none;
   }
-  .hero-headline {
-    font-size: 4.5rem;
-    white-space: normal;
-  }
+
   .hero-text {
+    margin-top: 20px;
     width: unset;
-    font-size: 1.5rem;
+    font-size: 18px;
+  }
+  .hero-img {
+    width: 100%;
   }
   .hero-img img {
     border-radius: 10px;
@@ -517,7 +560,199 @@ footer {
   }
 }
 
-@keyframes modalopen {
+@media screen and (max-width: 768px) {
+  .topnav a {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+    color: red;
+    margin-right: 5px;
+    padding-top: 8px;
+    padding-bottom: 4px;
+  }
+  .topnav a.icon:hover {
+    color: white;
+  }
+  .header-logo img {
+    width: 180px;
+    margin: 20px 0px 0px 15px;
+  }
+  .hero-headline {
+    font-size: 55px;
+    font-weight: bold;
+    line-height: 1.7;
+  }
+
+  .hero-section {
+    min-height: 0px;
+    margin-bottom: 0;
+  }
+  .hero-text {
+    font-size: 18px;
+  }
+  main {
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .copyrights {
+    padding: 0;
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .topnav {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .header-logo img {
+    width: 123px;
+    margin: 20px 0px 0px 15px;
+  }
+  .topnav a {
+    display: none;
+  }
+
+  .topnav a.icon {
+    float: right;
+    display: block;
+    color: red;
+    margin-right: 5px;
+    font-size: 22px;
+    padding-top: 9px;
+    padding-bottom: 8px;
+    margin-top: 7px;
+  }
+  .topnav a.icon:hover {
+    color: white;
+  }
+  /* taille originale mais trop grosse en français
+  .hero-headline {
+    font-size: 48px;
+    font-weight: bold;
+  } 
+}*/
+  .hero-headline {
+    font-size: 40px;
+    font-weight: bold;
+    line-height: 1.7;
+  }
+
+  .hero-img img {
+    margin-top: 23px;
+  }
+  .hero-section > button {
+    margin: 0;
+  }
+  .hero-section > .btn-signup {
+    margin: 26px auto;
+    padding: 3px 18px;
+  }
+  .hero-section {
+    min-height: 0px;
+    margin-bottom: 0;
+  }
+  .hero-text {
+    font-size: 15px;
+  }
+  .copyrights {
+    margin-top: 0;
+    padding-top: 0;
+    font-size: 9.5px;
+  }
+  main {
+    margin-top: 0;
+    margin-bottom: 0;
+    height: auto;
+  }
+  /* mise en forme formMobile*/
+  .bground,
+  .valid {
+    margin-top: 50px;
+    background-color: white;
+  }
+  #formGlobal,
+  #container {
+    font-size: 70%;
+  }
+  .formData[data-error]::after {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 0.8em;
+  }
+  #submit,
+  #closeBtn {
+    padding: 7.5px 52px;
+  }
+}
+/* validation page  */
+  
+.valid p {
+  padding: 275px 100px;
+  text-align: center;
+  line-height: 2em;
+}
+
+.valid button {
+  margin-bottom: 30px;
+}
+
+/*ajout de la classe sur la div valid lors de la validation du formulaire pour affichage de la page de validation*/
+.displayBlock {
+  display: block;
+}
+/* ajout de la classe pour la fermeture de la page de validation*/
+.displayNone {
+  display: none;
+}
+
+/*croix de la page de validation*/
+.closeValid {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(0.7);
+}
+.closeValid:before,
+.closeValid:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 3px;
+  background-color: #fff;
+}
+.closeValid:before {
+  transform: rotate(45deg);
+}
+.closeValid:after {
+  transform: rotate(-45deg);
+}
+
+@-webkit-keyframes modalopen {
   from {
     opacity: 0;
     transform: translateY(-150px);
@@ -527,3 +762,12 @@ footer {
   }
 }
 
+@keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+  to {
+    opacity: 1;
+  }
+}
