@@ -1,7 +1,7 @@
 // VARIABLES
 // DOM Elements
 const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
+const modalBtn = document.querySelectorAll(".btn-signup");
 const modalCloseBtn = document.querySelector(".close");
 const inputs= document.querySelector('form').elements;
 
@@ -22,10 +22,13 @@ modalCloseBtn.addEventListener("click", closeModal);
 // Navbar
 function editNav() {
   const navBar = document.getElementById("myTopnav");
+  const icon= document.querySelector('.icon');
   if (navBar.className === "topnav") {
-    navBar.className += "responsive";
+    navBar.className += " responsive";
+    icon.innerHTML= "<i class='fas fa-times'></i>";
   } else {
     navBar.className = "topnav";
+    icon.innerHTML= "<i class='fa fa-bars'></i>";
   }
 }
 
