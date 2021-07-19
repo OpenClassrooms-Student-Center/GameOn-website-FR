@@ -36,7 +36,7 @@ img {
   justify-content: space-between;
   margin: 3.5%;
 }
-.main-navbar{
+.main-navbar {
   display: flex;
 }
 .topnav a {
@@ -67,7 +67,7 @@ img {
 @media screen and (min-width: 826px) and (max-width: 1110px) {
   .topnav {
     flex-direction: column;
-    align-items: flex-start
+    align-items: flex-start;
   }
   .header-logo {
     margin-bottom: 20px;
@@ -79,12 +79,12 @@ img {
     display: none;
   }
   .topnav a.icon {
-    display:flex;
+    display: flex;
     position: absolute;
     right: 0;
     top: 0;
   }
-  .topnav{
+  .topnav {
     position: relative;
   }
   .topnav.responsive a {
@@ -115,8 +115,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -320,7 +318,8 @@ input {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup, .btn-close-form {
+.btn-signup,
+.btn-close-form {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -418,7 +417,6 @@ input {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -516,7 +514,18 @@ footer {
     text-align: center;
   }
 }
-
+@media screen and (max-width: 500px) {
+  .hero-headline {
+    font-size: 2.5rem;
+  }
+  .hero-text {
+    display: none;
+  }
+  img {
+    width: 13rem;
+    padding-top: 0.25rem;
+  }
+}
 @keyframes modalopen {
   from {
     opacity: 0;
@@ -533,21 +542,20 @@ footer {
 }
 
 /* Validation du formulaire */
-.validation{
+.validation {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   height: 680px;
 }
-.validation-container{
+.validation-container {
   display: none;
 }
 
-.btn-close-form{
+.btn-close-form {
   position: relative;
   top: 15rem;
 }
 
 /* Burger Menu */
-
