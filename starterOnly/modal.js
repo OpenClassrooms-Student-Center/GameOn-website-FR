@@ -109,6 +109,7 @@ function emailValidation(e){
 function birthdateValidation(e){ 
   e.preventDefault();
   const input= inputs['birthdate'];
+  // console.log(input);
   const error= document.getElementById('error-birthdate');
   if(!checkDate.test(input.value.trim())){
     input.classList.remove('valid');
@@ -118,11 +119,22 @@ function birthdateValidation(e){
     return false;
   }
   else{
-    input.classList.remove('invalid');
-    input.classList.add('valid');
-    error.classList.remove('span-error');
-    error.innerText= "";
-    return true;
+    const diff= Date.now() - (new Date(input.value).getTime());
+    const age= Math.abs(new Date(diff).getUTCFullYear() - 1970);
+    // age validation
+    if(age < 14){
+      input.classList.remove('valid');
+      input.classList.add('invalid');
+      error.innerText= "Vous devez avoir au moins 14 ans pour participer.";
+      error.classList.add('span-error');
+      return false;
+    }else{
+      input.classList.remove('invalid');
+      input.classList.add('valid');
+      error.classList.remove('span-error');
+      error.innerText= "";
+      return true;
+    }    
   }
 }
 
@@ -202,7 +214,7 @@ function validate(e){
   locationValidation(e);
   cguValidation(e);
   if(firstNameValidation(e) && lastNameValidation(e) && emailValidation(e) && birthdateValidation(e) && quantityValidation(e) && locationValidation(e) && cguValidation(e)){
-    //créer un template de la modal "validation" ici
+    //subscription success message template
     const thanksModal= document.createElement('section');
     document.querySelector('main').appendChild(thanksModal);
     thanksModal.classList.add('thanks');
