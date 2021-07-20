@@ -213,20 +213,24 @@ function validate(e){
   quantityValidation(e);
   locationValidation(e);
   cguValidation(e);
+  //if all validations are ok, subscription success modal launch
   if(firstNameValidation(e) && lastNameValidation(e) && emailValidation(e) && birthdateValidation(e) && quantityValidation(e) && locationValidation(e) && cguValidation(e)){
     //subscription success message template
     const thanksModal= document.createElement('section');
     document.querySelector('main').appendChild(thanksModal);
     thanksModal.classList.add('thanks');
-    thanksModal.innerHTML= "<div class='content'><span class='close'></span><div class='modal-body'><h3>Merci pour votre inscription !</h3><button class='btn-submit' type='submit' class='button'>Fermer</button></div></div>"
+    thanksModal.innerHTML= "<div class='content'><span class='close thanks-cross'></span><div class='modal-body'><h3>Merci pour votre inscription !</h3><button class='btn-submit' type='submit' class='button'>Fermer</button></div></div>"
     modalbg.style.display= "none";
     thanksModal.style.display = "block";
-    const finalModalCloseBtn= document.querySelector(".close");
+    //new DOM elements
+    const finalModalCloseBtn= document.querySelector(".thanks-cross");
     const thanksCloseButton= document.querySelector("button.btn-submit");
+    //events on new DOM elements
     finalModalCloseBtn.addEventListener("click", closeThanksModal);
     thanksCloseButton.addEventListener("click", closeThanksModal);
+    //close subscription success modal function
     function closeThanksModal(){
-      thanksModal.style.display= "none";
+      document.querySelector('main').removeChild(thanksModal);
     }
   }
 }
