@@ -41,76 +41,80 @@
             aux réservations... Places limitées !
           </p>
           <button class="btn-signup modal-btn">
-            je m'inscris
-          </button>
-        </div>
+            Je m'inscris <!-- Ajouté une majuscule à "je"-->
+          </button> 
+        </div> 
         <div class="hero-img">
           <img src="./bg_img.jpg" alt="img" />
         </div>
         <button class="btn-signup modal-btn">
-          je m'inscris
+          Je m'inscris <!-- Ajouté une majuscule à "je"-->
         </button>
       </div>
 
       <div class="bground">
         <div class="content">
           <span class="close"></span>
-          <div class="modal-body">
+          <div class="modal-body" id="modal"> <!--Ajouté un identifiant à cette div pour lui donner une valeur unique-->
             <form
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
-            >
+              id="formulaire" 
+            > <!--Enlevé l'attribut "onsubmit" du formulaire et lui ai ajouté un identifiant pour pouvoir gérer son envoi uniquement avec le JS-->
               <div
-                class="formData">
-                <label>Prénom</label><br>
+                class="formData" data-error-visible="false" > <!--Ajouté l'attribut "data-error-visible" avec une valeur "false" dans les div de class "formData"-->
+                <label for="first">Prénom</label><br> <!--Lié le label à l'input-->
                 <input
                   class="text-control"
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
+                  minlength="2"   
                 /><br>
               </div>
               <div
-                class="formData">
-                <label>Nom</label><br>
+                class="formData" data-error-visible="false"> <!--Ajouté l'attribut "data-error-visible" avec une valeur "false" dans les div de class "formData"-->
+                <label for="last">Nom</label><br> <!--Lié le label à l'input-->
                 <input
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
-                /><br>
+                  minlength="2" 
+                 
+                /><br> <!--Ajouté un "minlength" de "2" comme pour le prénom-->
               </div>
               <div
-                class="formData">
-                <label>E-mail</label><br>
+                class="formData" data-error-visible="false"> <!--Ajouté l'attribut "data-error-visible" avec une valeur "false" dans les div de class "formData"-->
+                <label for="email">E-mail</label><br> <!--Lié le label à l'input-->
                 <input
                   class="text-control"
                   type="email"
                   id="email"
                   name="email"
+                 
                 /><br>
               </div>
               <div
-                class="formData">
-                <label>Date de naissance</label><br>
+                class="formData" data-error-visible="false"> <!--Ajouté l'attribut "data-error-visible" avec une valeur "false" dans les div de class "formData"-->
+                <label for="birthdate">Date de naissance</label><br> <!--Lié le label à l'input-->
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
+                 
                 /><br>
               </div>
               <div
-                class="formData">
-                <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
-              </div>
+                class="formData" data-error-visible="false"> <!--Ajouté l'attribut "data-error-visible" avec une valeur "false" dans les div de class "formData"-->
+                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br> <!--Lié le label à l'input-->
+                <input type="number" class="text-control" id="quantity" name="quantity" min="1" max="99"> <!--Passé la valeur de min de "0" à "1" car si "0" aucun bouton radio ne peut être selectionné-->
+              </div> 
               <p class="text-label">Quelles villes ?</p>
               <div
-                class="formData">
+                class="formData" data-error-visible="false"> <!--Ajouté l'attribut "data-error-visible" avec une valeur "false" dans les div de class "formData"-->
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -118,6 +122,7 @@
                   name="location"
                   value="New York"
                 />
+
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
                   New York</label
@@ -180,22 +185,18 @@
               </div>
 
               <div
-                class="formData">
-                <input
-                  class="checkbox-input"
-                  type="checkbox"
-                  id="checkbox1"
-                  checked
-                />
+                class="formData" data-error-visible="false"> <!--Ajouté l'attribut "data-error-visible" avec une valeur "false" dans les div de class "formData"-->
+                <input class="checkbox-input" type="checkbox" id="checkbox1" checked/>
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
+                  
                 </label>
                 <br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
-                  Je Je souhaite être prévenu des prochains évènements.
+                  Je souhaite être prévenu(e) des prochains évènements. <!--corrigé un "je" en moins et ajouté "(e)" à la fin de "prévenu"-->
                 </label>
                 <br>
               </div>

@@ -226,12 +226,12 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
+/*
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
-} */
+}*/
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -448,7 +448,7 @@ input[data-error]::after {
 }
 .btn-signup {
   outline: none;
-  text-transform: capitalize;
+  /*Enlevé le "text-transform: capitalize" pour qu'il n'y ai pas de majuscule en milieu de phrase sur le bouton "Je m'incris"*/
   font-size: 1.3rem;
   padding: 15px 23px;
   margin: 0;
@@ -478,15 +478,29 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+/* Apporté les modifications nécéssaires sur ce média quierie pour corriger les erreurs d'affichage sur les versions mobiles*/
 @media screen and (max-width: 800px) {
+  #myTopnav {
+    margin-bottom: 0px;
+  }
+  .header-logo img {
+    width: 50%;
+    padding-left: 15px;
+  }
+
+  .fa {
+    color: red;
+  }
   .hero-section {
+    min-height: 80vh;
     display: block;
     box-shadow: unset;
   }
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px;
   }
   .hero-content::after {
     content: unset;
@@ -495,25 +509,41 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 2.1rem;
     white-space: normal;
+    width: 100%;
   }
   .hero-text {
-    width: unset;
-    font-size: 1.5rem;
+    width: 80%;
+    font-size: 0.8rem;
+    margin-top: 20px;
   }
   .hero-img img {
     border-radius: 10px;
-    margin-top: 40px;
+    margin-top: 20px;
   }
   .hero-section > .btn-signup {
     display: block;
-    margin: 32px auto 10px;
+    margin: 32px auto 0px;
     padding: 12px 35px;
   }
   .copyrights {
-    margin-top: 50px;
+    margin: 8px 0 90px;
     text-align: center;
+  }
+  .bground  {
+    margin-top: 30px;
+    height: 657px;
+    background-color: #1fe0;
+  }
+  .checkbox-label, label {
+    margin-bottom: 0px;
+  }
+  .text-control {
+    height: 40px;
+  }
+  #event {
+    margin-top: 10px;
   }
 }
 
