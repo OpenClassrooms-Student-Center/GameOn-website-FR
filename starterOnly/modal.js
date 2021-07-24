@@ -215,7 +215,7 @@ function validate(e){
   cguValidation(e);
   //if all validations are ok, subscription success modal launch
   if(firstNameValidation(e) && lastNameValidation(e) && emailValidation(e) && birthdateValidation(e) && quantityValidation(e) && locationValidation(e) && cguValidation(e)){
-    //subscription success message template
+    //subscription success message template here
     const thanksModal= document.createElement('section');
     document.querySelector('main').appendChild(thanksModal);
     thanksModal.classList.add('thanks');
