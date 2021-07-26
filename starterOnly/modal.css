@@ -478,6 +478,27 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+#Errorfirstname{
+  display: none;
+}
+#Errorlastname{
+  display: none;
+}
+#Errorbirthdate{
+  display: none;
+}
+#Errorcgu{
+  display: none;
+}
+#error-mail{
+  display: none;
+}
+#error-locations{
+  display: none;
+}
+#error-quantity{
+  display: none;
+}
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;

@@ -70,8 +70,8 @@
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
                 /><br>
+                <span id="Errorfirstname">Veuillez entrer 2 caractères ou plus pour le champ du Prénom.</span>
               </div>
               <div
                 class="formData">
@@ -82,6 +82,7 @@
                   id="last"
                   name="last"
                 /><br>
+                <span id="Errorlastname">Veuillez entrer 2 caractères ou plus pour le champ du Nom.</span>
               </div>
               <div
                 class="formData">
@@ -92,6 +93,7 @@
                   id="email"
                   name="email"
                 /><br>
+                <span id="error-mail">Vous devez entrer une adresse mail valide.</span>
               </div>
               <div
                 class="formData">
@@ -102,12 +104,14 @@
                   id="birthdate"
                   name="birthdate"
                 /><br>
+                <span id=Errorbirthdate>Vous devez entrer votre date de naissance.</span>
               </div>
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
+              <span id="error-quantity">Veuillez entrer une valeur numérique.</span>
               <p class="text-label">Quelles villes ?</p>
               <div
                 class="formData">
@@ -178,7 +182,7 @@
                   Portland</label
                 >
               </div>
-
+              <span id="error-locations">Veuillez choisir une ville.</span>
               <div
                 class="formData">
                 <input
@@ -192,6 +196,7 @@
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
+                <span id="Errorcgu">Vous devez respecter les termes et conditions.</span>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>

@@ -8,44 +8,108 @@ function editNav() {
 }
 
 // DOM Elements
-const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
+const modalBackground = document.querySelector(".bground");
+const modalButton = document.querySelectorAll(".modal-btn");
+const closeButton = document.querySelector(".close");
 const formData = document.querySelectorAll(".formData");
-const closeBtn = document.querySelector(".close");
-const inputFirst = document.getElementById("first");
-const inputEmail = document.getElementById("email");
-
 
 // launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-closeBtn.addEventListener("click", closeModal);
-
+modalButton.forEach((btn) => btn.addEventListener("click", launchModal));
+closeButton.addEventListener("click", closeModal);
 
 // launch modal form
 function launchModal() {
-  modalbg.style.display = "block";
+  modalBackground.style.display = "block";
+  modalBackground.style.opacity = 1;
+  modalBackground.style.transition = "0.5s";
+  modalBackground.style.zIndex = "1";
 }
 
 // Close modal form
 function closeModal() {
-  modalbg.style.display = "none";
+  modalBackground.style.opacity = 0;
+  modalBackground.style.transition = "0.5s";
+  modalBackground.style.zIndex = "-1";
+  //modalBackground.style.display = "none";
 }
+
+const displayError = (element) => {
+  element.style.display = "block";
+  element.style.color = "red";
+  element.style.fontSize = "1rem";
+};
+
+const hideError = (element) => {
+  element.style.display = "none";
+};
 
 // Validate form
 function validate() {
+  let isValid = true;
+  const firstname = document.getElementById("first").value;
+  const lastname = document.getElementById("last").value;
+  const email = document.getElementById("email").value;
+  const numbersparticipation = document.getElementById("quantity").value;
+  const birthdate = document.getElementById("birthdate").value;
+  const locations = Array.from(document.getElementsByName("location"));
+  const isCguAccepted = document.getElementById("checkbox1");
+  const errorFirstname = document.getElementById("Errorfirstname");
+  const errorLastname = document.getElementById("Errorlastname");
+  const errorbirthdate = document.getElementById("Errorbirthdate");
+  const errorcgu = document.getElementById("Errorcgu");
+  const errormail = document.getElementById("error-mail");
+  const errorlocations = document.getElementById("error-locations");
+  const errorquantity = document.getElementById("error-quantity");
 
-  let formIsOkay = true;
-  const valueFirst = inputFirst.value;
-  const valueEmail = inputEmail.value;
-  // Check if first is empty and lengths
-  if (valueFirst == "" || valueFirst.length < 2) {
-    formIsOkay = false;
-  }
-  // Check email formatting
-  // full regex definition here : https://datatracker.ietf.org/doc/html/rfc2822#section-3.4.1
-  if (/^([a-z]\.?)+@([a-z]+\.)+[a-z]+$/.test(valueEmail) == false) {
-    formIsOkay = false
+  if (firstname == "" || firstname.length < 2) {
+    displayError(errorFirstname);
+    isValid = false;
+  } else {
+    hideError(errorFirstname);
   }
 
-  return formIsOkay;
+  if (lastname == "" || lastname.length < 2) {
+    displayError(errorLastname);
+    isValid = false;
+  } else {
+    hideError(errorLastname);
+  }
+
+  if (/^([a-z]\.?)+@([a-z]+\.)+[a-z]+$/.test(email) == false) {
+    displayError(errormail);
+    isValid = false;
+  } else {
+    hideError(errormail);
+  }
+
+  if (birthdate == "") {
+    displayError(errorbirthdate);
+    isValid = false;
+  } else {
+    hideError(errorbirthdate);
+  }
+  if (/^([0-9])$/.test(numbersparticipation) == false) {
+    displayError(errorquantity);
+    isValid = false;
+  } else {
+    hideError(errorquantity);
+  }
+
+  if (!locations.some(({ checked }) => checked)) {
+    displayError(errorlocations);
+    isValid = false;
+  } else {
+    hideError(errorlocations);
+  }
+
+  if (!isCguAccepted.checked) {
+    displayError(errorcgu);
+    isValid = false;
+  } else {
+    hideError(errorcgu);
+  }
+  if (isValid){
+    alert ("Merci ! Votre réservation a été reçue.");
+  }
+  return isValid;
 }
