@@ -61,7 +61,6 @@
               name="reserve"
               action="index.html"
               method="get"
-              
             >
               <div
                 class="formData">
@@ -73,6 +72,7 @@
                   name="firstName"
                   minlength="2"
                 /><br>
+                <p id="first_error"></p>
               </div>
               <div
                 class="formData">
@@ -83,6 +83,7 @@
                   id="last_name"
                   name="last"
                 /><br>
+                <p id="last_error"></p>
               </div>
               <div
                 class="formData">
@@ -93,6 +94,7 @@
                   id="email"
                   name="email"
                 /><br>
+                <p id="email_error"></p>
               </div>
               <div
                 class="formData">
@@ -108,6 +110,7 @@
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <p id="tournoi_error"></p>
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
@@ -178,6 +181,7 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                <p id="location_error"></p>
               </div>
 
               <div
@@ -199,6 +203,7 @@
                   Je Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
+                <p id="condition_error"></p>
               </div>
               <input
                 class="btn-submit"

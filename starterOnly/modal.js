@@ -18,7 +18,7 @@ let myForm = document.getElementById("myForm");
 let firstName = document.getElementById("first_name");
 let lastName = document.getElementById("last_name");
 let email = document.getElementById("email");
-let tournoiNumber = document.getElementById("tournoi_number");
+let tournoiNumber = document.getElementById("quantity");
 let locationUn = document.getElementById("location1");
 let locationDeux = document.getElementById("location2");
 let locationTrois = document.getElementById("location3");
@@ -34,47 +34,62 @@ myform.addEventListener("submit", (e) => {
 
 function checkInputs() {
   // Conditions if NAME //
+  let firstError = document.getElementById("first_error");
   // Si firstName est égal a vide ou inferieux a deux = msg d'erreur + return false.
   if (firstName.value == "" || firstName.value.length < 2) {
-    alert("erreur");
+    firstError.innerHTML =
+      "Veuillez entrer 2 caractères ou plus pour le champs du prénom";
+    firstError.style.color = "Red";
+    firstError.style.fontSize = "20px";
     return false;
     // Sinon pas de msg d'erreur + return true.
   } else {
-    alert("Merci");
+    firstError.innerHTML = "";
   }
 
   // Conditions if LASTNAME //
+  let lastError = document.getElementById("last_error");
   // Si lastName est égal a vide ou inferieur a deux = msg d'erreur + return false.
   if (lastName.value == "" || lastName.value.length < 2) {
-    alert("erreur");
+    lastError.innerHTML =
+      "Veuillez entrer 2 caractères ou plus pour le champs du nom";
+    lastError.style.color = "red";
+    lastError.style.fontSize = "20px";
     return false;
     // Sinon pas de msg d'erreur + return true.
   } else {
-    alert("Merci");
+    lastError.innerHTML = "";
   }
 
   // Conditions if EMAIL //
+  let emailError = document.getElementById("email_error");
   let myRegex =
     /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
   // Si myRegex est different de la valeur de email ou si email est égal a vide = msg d'erreur + return false.
   if (!myRegex.test(email.value) || email.Value == "") {
-    alert("erreur");
+    emailError.innerHTML = "Veuillez rentrer une adresse mail valide";
+    emailError.style.color = "red";
+    emailError.style.fontSize = "20px";
     return false;
     // Sinon pas de msg d'erreur + return true.
   } else {
-    alert("Merci");
+    emailError.innerHTML = "";
   }
 
   // Conditions if TOURNOI //
+  let numberError = document.getElementById("tournoi_error");
   // Si tournoiNumber est égal à 0 ou si la valeur de tournoiNumber n'es pas un nombre = msg d'erreur + return false.
   if (tournoiNumber.value == "" || isNaN(tournoiNumber.value)) {
-    alert("erreur");
+    numberError.innerHTML = "Veuillez rentrer au moins un chiffre";
+    numberError.style.color = "red";
+    numberError.style.fontSize = "20px";
     return false;
   } else {
-    alert("Merci");
+    numberError.innerHTML = "";
   }
 
   // Conditions if CHECKBOX //
+  let locationError = document.getElementById("location_error");
   // Si au moins un des six inputs est checked = pas de msg d'erreur + return true.
   if (
     locationUn.checked ||
@@ -84,22 +99,28 @@ function checkInputs() {
     locationCinq.checked ||
     locationSix.checked
   ) {
-    alert("Merci");
+    locationError.innerHTML = "";
     // Sinon si aucun input n'est checked = msg d'erreur + return false
   } else {
-    alert("erreur");
+    locationError.innerHTML = "Vous devez choisir une option";
+    locationError.style.color = "red";
+    locationError.style.fontSize = "20px";
     return false;
   }
 
   // Conditions if REGLEMENT //
+  let conditionError = document.getElementById("condition_error");
   // Si checkbox n'est pas coché = msg d'erreur + return false.
   if (!checkCondition.checked) {
-    alert("erreur");
+    ("Vous devez verifier que vous acceptez les termes et conditions");
+    conditionError.style.color = "red";
+    conditionError.style.fontSize = "20px";
     return false;
     // Sinon pas de msg d'erreur + return true.
   } else {
-    alert("Merci");
+    conditionError.innerHTML = "";
   }
+  return true;
 }
 
 // launch modal event
