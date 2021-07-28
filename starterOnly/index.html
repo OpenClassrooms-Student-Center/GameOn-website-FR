@@ -57,10 +57,11 @@
           <span class="close" id="close"></span>
           <div class="modal-body">
             <form
+              id="myForm"
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+              
             >
               <div
                 class="formData">
@@ -68,8 +69,8 @@
                 <input
                   class="text-control"
                   type="text"
-                  id="first"
-                  name="first"
+                  id="first_name"
+                  name="firstName"
                   minlength="2"
                 /><br>
               </div>
@@ -79,7 +80,7 @@
                 <input
                   class="text-control"
                   type="text"
-                  id="last"
+                  id="last_name"
                   name="last"
                 /><br>
               </div>
