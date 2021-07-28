@@ -20,6 +20,7 @@ body {
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
+  width: 85%;
   margin: 0 auto;
 }
 
@@ -34,10 +35,11 @@ p {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  align-items: stretch;
+  align-items: center;
   overflow: hidden;
-  margin: 35px;
+  margin: 35px auto;
   position: relative;
+  min-height: 5rem;
 }
 
 .header-logo {
@@ -84,7 +86,10 @@ p {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav .main-navbar 
+  {
+    display: none;
+  }
   .topnav a.icon {
     color: #ff0000;
     width: 50px;
@@ -95,32 +100,14 @@ p {
   }
 }
 
-@media screen and (max-width: 768px) {
-  .topnav.responsive {
-    position: relative;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    align-items: center;
-    overflow: hidden;
-  }
-
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .topnav.responsive a {
+@media screen and (max-width: 768px) {  
+  .topnav.responsive .main-navbar {
     display: block;
   }
 }
 
 @media screen and (max-width: 540px) {
-  .topnav a {
+  .topnav .main-navbar {
     display: none;
   }
   .topnav a.icon {
@@ -134,10 +121,6 @@ main {
   font-size: 130%;
   font-weight: bolder;
   color: black;
-  padding-top: 0.5vw;
-  padding-left: 2vw;
-  padding-right: 2vw;
-  margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
 }
@@ -221,7 +204,7 @@ main {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0;
   }
   .hero-content::after {
     content: unset;
@@ -266,7 +249,7 @@ main {
 @media screen and (max-width: 540px) {
   .bground, .thanks {
     bottom: 0;
-    padding-top: 50px;
+    padding: 20vh 0 0 0;
     /* background-color: transparent; */
   }
 }
@@ -284,11 +267,18 @@ main {
   color: #fff;
   padding-top: 10px;
 }
+@media screen and (max-width: 540px) {
+  .content {
+    margin: 0 auto;
+  }
+}
+
 
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
 }
+
 
 /* Modal thanks */
 .thanks .content{
@@ -474,11 +464,6 @@ input {
 }
 
 /* FOOTER */
-footer {
-  padding-left: 2vw;
-  padding-right: 2vw;
-  margin: 0 20px;
-}
 
 .copyrights {
   color: #fe142f;
