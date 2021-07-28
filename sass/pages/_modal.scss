@@ -1,0 +1,207 @@
+.modal {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background: rgba(26, 39, 156, 0.4);
+    @include modal;
+    &__content {
+        width: 100%;
+        margin: 5% auto;
+        max-width: 500px;
+        animation-name: modalopen;
+        animation-duration: $modal-duration;
+        background: $color-secondary;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        color: #fff;
+        padding: rem(38) rem(30) rem(30);
+    }
+    &__modal__ {
+        padding: 15px 8%;
+        margin: 15px auto;
+    }
+    &__town,
+    label {
+        font-size: rem(14);
+        font-weight: 400;
+        display: inline-block;
+        margin-bottom: 11px;
+    }
+    &__formData {
+        margin-bottom: rem(10);
+    }
+    &__text {
+        width: 100%;
+        font-size: rem(18);
+        padding: 8px;
+        border-radius: 8px;
+        height: rem(48);
+        border: 0.8px solid $color-bg;
+        outline: none;
+    }
+    &__checklabel,
+    &__check2label {
+        position: relative;
+        margin-left: rem(36);
+        font-size: rem(12);
+        font-weight: normal;
+        .modal__checkicon {
+            display: block;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #279e7a;
+            border-radius: 50%;
+            text-indent: 29px;
+            white-space: nowrap;
+            position: absolute;
+            left: -30px;
+            top: -1px;
+            transition: 0.3s;
+            &::after {
+                content: "";
+                width: 13px;
+                height: 13px;
+                background-color: #279e7a;
+                border-radius: 50%;
+                text-indent: 29px;
+                white-space: nowrap;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                transition: 0.3s;
+                opacity: 0;
+            }
+        }
+    }
+    &__check2label .modal__checkicon {
+        border-radius: rem(4);
+        border: 0;
+        background: #c4c4c4;
+        &::after {
+            width: rem(12);
+            height: rem(8);
+            border-radius: rem(2);
+            background: transparent;
+            border: 2px solid transparent;
+            border-bottom-color: #fff;
+            border-left-color: #fff;
+            transform: rotate(-55deg);
+            left: 21%;
+            top: 19%;
+        }
+    }
+    &__checkinput {
+        display: none;
+        &:checked + .modal__checklabel .modal__checkicon::after,
+        &:checked + .modal__check2label .modal__checkicon::after {
+            opacity: 1;
+        }
+        &:checked + .modal__check2label .modal__checkicon {
+            background: $color-valid;
+        }
+    }
+    &__formData[data-error]::after {
+        content: attr(data-error);
+        font-size: 0.4em;
+        color: $color-error;
+        display: block;
+        margin-top: rem(7);
+        margin-bottom: rem(7);
+        line-height: 0.3;
+        opacity: 0;
+        transition: 0.3s;
+    }
+    &__formData[data-error-visible="true"]::after {
+        opacity: 1;
+    }
+    &__formData[data-error-visible="true"] .text-control {
+        border: 2px solid $color-error;
+    }
+    &__close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        width: 32px;
+        height: 32px;
+        opacity: 1;
+        cursor: pointer;
+        transform: scale(0.7);
+        &::before,
+        &::after {
+            position: absolute;
+            left: 15px;
+            content: " ";
+            height: 33px;
+            width: 3px;
+            background-color: #fff;
+        }
+        &::before {
+            transform: rotate(45deg);
+        }
+        &::after {
+            transform: rotate(-45deg);
+        }
+    }
+}
+/* custom select */
+.select {
+    position: relative;
+    font-size:rem(17.6);
+    select {
+        display: none;
+    }
+}
+.selected {
+    background-color: #fff;
+    /* Style the arrow inside the select element */
+    ::after {
+        position: absolute;
+        content: "";
+        top: rem(10);
+        right: rem(13);
+        width: rem(11);
+        height: rem(11);
+        border: 3px solid transparent;
+        border-bottom-color: $color-primary;
+        border-left-color: $color-primary;
+        transform: rotate(-48deg);
+        border-radius: rem(5) 0 rem(5) 0;
+    }
+    &.select-arrow-active::after {
+        transform: rotate(135deg);
+        top: rem(13);
+    }
+}
+.select-items div, .selected {
+    color: #000;
+    padding: rem(11) rem(16);
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+    border-radius: rem(8);
+    height: rem(48);
+}
+/* Style items (options): */
+.select-items {
+    position: absolute;
+    background-color: #fff;
+    top: 89%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+  }
+  /* Hide the items when the select box is closed: */
+.select-hide {
+    display: none;
+  }
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+/* custom select end */

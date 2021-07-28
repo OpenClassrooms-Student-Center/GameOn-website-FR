@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GameOn</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <section class="header" id="header-cont">
+    <nav class="navbar">
+      <a href="#" class="navbar__logo"></a>
+      <ul class="navbar__menu">
+        <li class="navbar__item active">
+          <a href="#" class="navbar__link">Accueil</a>
+        </li>
+        <li class="navbar__item">
+          <a href="#" class="navbar__link">Détails de l'évènement</a>
+        </li>
+        <li class="navbar__item">
+          <a href="#" class="navbar__link">À propos</a>
+        </li>
+        <li class="navbar__item">
+          <a href="#" class="navbar__link">Contact</a>
+        </li>
+        <li class="navbar__item">
+          <a href="#" class="navbar__link">Évènements passés</a>
+        </li>
+      </ul>
+      <div class="hamburger">
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+        <span class="hamburger__bar"></span>
+      </div>
+    </nav>
+  </section>
+
+  <main class="main">
+    <section class="main__container">
+      <div class="main__content">
+        <h1 class="main__title">Marathon national de jeux vidéos</h1>
+        <p class="main__txt">
+          Vous aimez jouer ? Notre prochain évènement gaming est ouvert
+          aux réservations... Places limitées !
+        </p>
+        <!-- <button class="main__btn modal-btn">je m'inscris</button> -->
+      </div>
+      <div class="main__img">
+        <img src="images/bg_img.jpg" alt="img" />
+      </div>
+      <button class="main__btn main__btn--modal">je m'inscris</button>
+    </section>
+
+    <div class="modal">
+      <div class="modal__content">
+        <span class="modal__close"></span>
+        <div class="modal__body">
+          <form name="modal__reserve" action="index.html" method="get" onsubmit="return validate();">
+            <div class="modal__formData">
+              <label>Prénom</label><br>
+              <input class="modal__text" type="text" id="first" name="first" minlength="2" /><br>
+            </div>
+            <div class="modal__formData">
+              <label>Nom</label><br>
+              <input class="modal__text" type="text" id="last" name="last" /><br>
+            </div>
+            <div class="modal__formData">
+              <label>E-mail</label><br>
+              <input class="modal__text" type="email" id="email" name="email" /><br>
+            </div>
+            <div class="modal__formData">
+              <label>Date de naissance</label><br>
+              <input class="modal__text" type="date" id="birthdate" name="birthdate" /><br>
+            </div>
+            <div class="modal__formData">
+              <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+              <input type="number" class="modal__text" id="quantity" name="quantity" min="0" max="99">
+            </div>
+            <p class="modal__town">Quelles villes ?</p>
+
+            <div class="modal__formData">
+              <input class="modal__checkinput" type="radio" id="location1" name="location" value="New York" />
+              <label class="modal__checklabel" for="location1">
+                <span class="modal__checkicon"></span>
+                New York</label>
+              <input class="modal__checkinput" type="radio" id="location2" name="location" value="San Francisco" />
+              <label class="modal__checklabel" for="location2">
+                <span class="modal__checkicon"></span>
+                San Francisco</label>
+              <input class="modal__checkinput" type="radio" id="location3" name="location" value="Seattle" />
+              <label class="modal__checklabel" for="location3">
+                <span class="modal__checkicon"></span>
+                Seattle</label>
+              <input class="modal__checkinput" type="radio" id="location4" name="location" value="Chicago" />
+              <label class="modal__checklabel" for="location4">
+                <span class="modal__checkicon"></span>
+                Chicago</label>
+              <input class="modal__checkinput" type="radio" id="location5" name="location" value="Boston" />
+              <label class="modal__checklabel" for="location5">
+                <span class="modal__checkicon"></span>
+                Boston</label>
+              <input class="modal__checkinput" type="radio" id="location6" name="location" value="Portland" />
+              <label class="modal__checklabel" for="location6">
+                <span class="modal__checkicon"></span>
+                Portland</label>
+            </div>
+
+            <div class="modal__formData">
+              <input class="modal__checkinput" type="checkbox" id="checkbox1" checked />
+              <label class="modal__check2label" for="checkbox1" required>
+                <span class="modal__checkicon"></span>
+                J'ai lu et accepté les conditions d'utilisation.
+              </label><br/>
+              <input class="modal__checkinput" type="checkbox" id="checkbox2" />
+              <label class="modal__check2label" for="checkbox2">
+                <span class="modal__checkicon"></span>
+                Je souhaite être prévenu des prochains évènements.
+              </label>
+            </div>
+            <input class="modal__submit" type="submit" class="button" value="C'est parti" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p class="footer__copy">Copyright 2014 - 2020, GameOn Inc.</p>
+  </footer>
+
+  <script src="JS/navigation.js"></script>
+</body>
+
+</html>

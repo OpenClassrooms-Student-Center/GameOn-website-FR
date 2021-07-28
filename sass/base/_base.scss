@@ -1,0 +1,33 @@
+:root {
+    --font-slab: var(--font-default);
+}
+
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    scroll-behavior: smooth;
+    font-size: $base-font-size;
+    display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+    background: $color-bg;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    transition: color 0.2s ease;
+    // &:visited {
+    //     color: lighten($color-primary, 20%);
+    // }
+    &:active {
+        color: $color-secondary;
+    }
+}
