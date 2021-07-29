@@ -569,11 +569,11 @@ footer {
   width: 70%;
 }
 
-#label-confirm {
+#validate_label {
   font-size: 1.6em;
 }
 
-#input-confirm {
+#validate {
   width: 20%;
   padding: 10px;
   font-size: 0.8em;

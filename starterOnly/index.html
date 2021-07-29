@@ -14,21 +14,20 @@
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
-    </div>
-    <div class="main-navbar">
+        <img alt="logo" src="Logo.png"/>
+      </div>
+      <div class="main-navbar">
       
-      <a href="#" class="active"><span>Accueil</span></a>
-      <a href="#"><span>Détails de l'évènement</span></a>
-      <a href="#"><span>À propos</span></a>
-      <a href="#"><span>Contact</span></a>
-      <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars"></i>
-      </a>
+        <a href="#" class="active"><span>Accueil</span></a>
+        <a href="#"><span>Détails de l'évènement</span></a>
+        <a href="#"><span>À propos</span></a>
+        <a href="#"><span>Contact</span></a>
+        <a href="#"><span>Évènements passés</span></a>
+        <a href="javascript:void(0);" class="icon" onclick="editNav()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
     </div>
-    </div>
-  </div>
     <main>
       <div class="hero-section">
         <div class="hero-content">
@@ -88,7 +87,7 @@
               </div>
               <div
                 class="formData">
-                <label for="Email">E-mail</label><br>
+                <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
                   type="email"
@@ -99,14 +98,14 @@
               </div>
               <div
                 class="formData">
-                <label for="birthday">Date de naissance</label><br>
+                <label for="birthdate">Date de naissance</label><br>
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                  required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
                 /><br>
+                <p id="birthdate_error"></p>
               </div>
               <div
                 class="formData">
@@ -194,7 +193,7 @@
                   id="checkbox1"
                   checked
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
@@ -210,13 +209,12 @@
               <input
                 class="btn-submit"
                 type="submit"
-                class="button"
                 value="C'est parti"
               />
             </form>
             <div id="message-confirm">
-              <label class="msg_confirm" id="label-confirm" for="Validation">Merci votre inscription à bien était prise en compte !</label>
-              <input type="button" value="OK" class="msg_confirm" id="input-confirm">
+              <label for="validate" id="validate_label">Merci votre inscription à bien était prise en compte !</label>
+              <input type="button" value="OK" name="validate"  id="validate">
             </div>
           </div>
         </div>

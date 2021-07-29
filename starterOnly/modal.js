@@ -29,14 +29,16 @@ let checkCondition = document.getElementById("checkbox1");
 let msgConfirm = document.getElementById("message-confirm");
 
 // MES FONCTIONS
+// A l'envoi on vérifie que la fonction checkInputs return true //
 myForm.addEventListener("submit", (e) => {
   e.preventDefault();
   checkInputs();
+  // Si return true alors on fait apparaitre le msg de validation
   if (checkInputs() == true) {
     msgConfirm.style.display = "block";
     messageValid();
+    // Sinon on return false est le formulaire ne s'envoie pas.
   } else {
-    e.preventDefault();
     return false;
   }
 });
@@ -83,6 +85,18 @@ function checkInputs() {
     // Sinon pas de msg d'erreur + return true.
   } else {
     emailError.innerHTML = "";
+  }
+
+  let birthdate = document.getElementById("birthdate");
+  let birthdateError = document.getElementById("birthdate_error");
+  let regex = /^\d{4}\-\d{1,2}\-\d{1,2}$/;
+  if (!regex.test(birthdate.value)) {
+    birthdateError.innerHTML = "Veuillez rentrer une adresse mail valide";
+    birthdateError.style.color = "red";
+    birthdateError.style.fontSize = "20px";
+    return false;
+  } else {
+    birthdateError.innerHTML = "";
   }
 
   // Conditions if TOURNOI //
@@ -134,7 +148,7 @@ function checkInputs() {
 
 function messageValid() {
   // Au clique sur l'input le message de validation disparait + envoie du formulaire.
-  let cliqueOk = document.getElementById("input-confirm");
+  let cliqueOk = document.getElementById("validate");
   cliqueOk.addEventListener("click", () => {
     msgConfirm.style.display = "none";
     myForm.submit();
