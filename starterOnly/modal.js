@@ -6,6 +6,7 @@ const modalCloseBtn = document.querySelector(".close");
 const inputs= document.querySelector('form').elements;
 
 // Regex
+//attention cette regex n'accepte pas les accents et caractères "spéciaux" ( -, ', ...)
 const checkString = /^[a-zA-Z]{2}/;
 const checkMail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 const checkDate= /^\d{4}-\d{2}-\d{2}$/;
