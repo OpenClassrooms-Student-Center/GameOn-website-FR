@@ -44,16 +44,22 @@ function closeModal() {
 
 //firstname validation
 function firstNameValidation(e){ 
+  // cancellation of default behavior
   e.preventDefault();
+  // DOM elements
   const input= inputs['first'];
   const error= document.getElementById('error-first');
+  // input verification with REGEX, not empty and spaces deletion
   if(!checkString.test(input.value.trim())){
+    //style modification, error message
     input.classList.remove('valid');
     input.classList.add('invalid');
     error.innerText= "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
     error.classList.add('span-error');
+    // error = return false
     return false;
   }
+  // valid input
   else{
     input.classList.remove('invalid');
     input.classList.add('valid');
@@ -109,7 +115,6 @@ function emailValidation(e){
 function birthdateValidation(e){ 
   e.preventDefault();
   const input= inputs['birthdate'];
-  // console.log(input);
   const error= document.getElementById('error-birthdate');
   if(!checkDate.test(input.value.trim())){
     input.classList.remove('valid');
@@ -119,9 +124,9 @@ function birthdateValidation(e){
     return false;
   }
   else{
+    //age verification with Date()
     const diff= Date.now() - (new Date(input.value).getTime());
     const age= Math.abs(new Date(diff).getUTCFullYear() - 1970);
-    // age validation
     if(age < 14){
       input.classList.remove('valid');
       input.classList.add('invalid');
@@ -165,6 +170,7 @@ function locationValidation(e){
   const checkBoxes= document.querySelectorAll('.checkbox-input[type=radio]');
   const checkBoxesLabels= document.querySelectorAll('.checkbox-label span');
   const error= document.getElementById('error-location');
+  // loop to check if at least one checkbox is checked
   for(let i= 0; i< checkBoxes.length; i++){
     if(checkBoxes[i].checked){
       checkBoxesLabels.forEach(element=>{
@@ -172,9 +178,11 @@ function locationValidation(e){
       });
       error.classList.remove('span-error');
       error.innerText= "";
+      // once a checkbox is valid the loop and the code stop here and return true
       return true;
     }
   }
+  // if no checkbox has been checked, the code continue and return false
   checkBoxesLabels.forEach(element=>{
     element.classList.add('invalid');
   });
@@ -206,6 +214,7 @@ function cguValidation(e){
 //form submit function
 function validate(e){
   e.preventDefault();
+  //validation functions
   firstNameValidation(e);
   lastNameValidation(e);
   emailValidation(e);

@@ -267,18 +267,17 @@ main {
   color: #fff;
   padding-top: 10px;
 }
+
 @media screen and (max-width: 540px) {
   .content {
     margin: 0 auto;
   }
 }
 
-
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
 }
-
 
 /* Modal thanks */
 .thanks .content{
@@ -513,4 +512,3 @@ input {
   text-transform: capitalize;
   margin: 59px 0 0 0;
 }
-
