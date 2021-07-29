@@ -26,10 +26,19 @@ let locationQuatre = document.getElementById("location4");
 let locationCinq = document.getElementById("location5");
 let locationSix = document.getElementById("location6");
 let checkCondition = document.getElementById("checkbox1");
+let msgConfirm = document.getElementById("message-confirm");
 
 // MES FONCTIONS
-myform.addEventListener("submit", (e) => {
+myForm.addEventListener("submit", (e) => {
   e.preventDefault();
+  checkInputs();
+  if (checkInputs() == true) {
+    msgConfirm.style.display = "block";
+    messageValid();
+  } else {
+    e.preventDefault();
+    return false;
+  }
 });
 
 function checkInputs() {
@@ -121,6 +130,14 @@ function checkInputs() {
     conditionError.innerHTML = "";
   }
   return true;
+}
+
+function messageValid() {
+  let cliqueOk = document.getElementById("input-confirm");
+  cliqueOk.addEventListener("click", () => {
+    msgConfirm.style.display = "none";
+    myForm.submit();
+  });
 }
 
 // launch modal event
