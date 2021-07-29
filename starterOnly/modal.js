@@ -214,7 +214,7 @@ function cguValidation(e){
 //form submit function
 function validate(e){
   e.preventDefault();
-  //validation functions
+  //validation functions + amélioration à mettre en oeuvre, ne pas lancer les fonctions 2 fois, créer une variable à vérifier dans la condition
   firstNameValidation(e);
   lastNameValidation(e);
   emailValidation(e);
@@ -244,3 +244,4 @@ function validate(e){
   }
 }
 
+// deuxième axe d'amélioration possible : créer une classe pour les vérifications ! passer les inputs en arguments
