@@ -133,6 +133,7 @@ function checkInputs() {
 }
 
 function messageValid() {
+  // Au clique sur l'input le message de validation disparait + envoie du formulaire.
   let cliqueOk = document.getElementById("input-confirm");
   cliqueOk.addEventListener("click", () => {
     msgConfirm.style.display = "none";

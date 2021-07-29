@@ -64,19 +64,20 @@
             >
               <div
                 class="formData">
-                <label>Prénom</label><br>
+                <label for="first_name">Prénom</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="first_name"
                   name="firstName"
                   minlength="2"
+                  pattern= "[A-Za-z]{1,32}"
                 /><br>
                 <p id="first_error"></p>
               </div>
               <div
                 class="formData">
-                <label>Nom</label><br>
+                <label for="last_name">Nom</label><br>
                 <input
                   class="text-control"
                   type="text"
@@ -87,7 +88,7 @@
               </div>
               <div
                 class="formData">
-                <label>E-mail</label><br>
+                <label for="Email">E-mail</label><br>
                 <input
                   class="text-control"
                   type="email"
@@ -98,17 +99,18 @@
               </div>
               <div
                 class="formData">
-                <label>Date de naissance</label><br>
+                <label for="birthday">Date de naissance</label><br>
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
+                  required pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}"
                 /><br>
               </div>
               <div
                 class="formData">
-                <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
                 <p id="tournoi_error"></p>
               </div>
