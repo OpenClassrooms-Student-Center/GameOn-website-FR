@@ -135,7 +135,8 @@ function checkInputs() {
   let conditionError = document.getElementById("condition_error");
   // Si checkbox n'est pas coché = msg d'erreur + return false.
   if (!checkCondition.checked) {
-    ("Vous devez verifier que vous acceptez les termes et conditions");
+    conditionError.innerHTML =
+      "Vous devez verifier que vous acceptez les termes et conditions";
     conditionError.style.color = "red";
     conditionError.style.fontSize = "20px";
     return false;
