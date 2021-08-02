@@ -87,16 +87,18 @@ const validatorRules = {
  */
 function getFormData(event) {
   event.preventDefault();
-  if (document.querySelectorAll('.error')) errorReset();
+  
   let data = new FormData(event.target);
   const inputState = [];
+
+  if (document.querySelectorAll('.error')) errorReset();
+  
   for (const [name, value] of data) {
     if (!validatorRules[name](value)) {
       inputState.push({ name: name, message: errorMessages[name]  });
     }
   }
   if (!data.has('location')) {
-    console.error('no location')
     validatorRules['location'](false)
     inputState.push({ name: 'location', message: errorMessages["location"] });
   };
@@ -104,13 +106,28 @@ function getFormData(event) {
     validatorRules['checkbox1'](false);
     inputState.push({ name: "checkbox1", message: errorMessages["checkbox1"]});
   }
-  if (!inputState.length) {
-    console.log('validate')
-  } else {
-    console.log(inputState)
+
+  if (inputState.length) {
     validator(inputState);
+    return;
   }
+
+  validateParticipation(data);
 }
+
+function validateParticipation(data) {
+  // const contestants = []
+  // data.forEach((value, name) => contestants.push({ name, value }));
+  // localStorage.setItem('contestants', JSON.stringify(contestants));
+  $(".content").style = "max-width: 550px";
+  $('.modal-body').innerHTML = `
+  <p>
+    Merci ! Votre réservation a été reçue
+  </p>
+  <button class="btn-submit" onclick="closeModal()">Fermer</button>
+  `;
+}
+
 function validator(data) {
   data.forEach(({ name, message }) => {
     errorMessage(name, message);
