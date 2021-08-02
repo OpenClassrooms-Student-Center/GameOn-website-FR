@@ -58,7 +58,7 @@ $(".modal-body > form").addEventListener("submit", getFormData);
  * Contain all error message.
  * @type {[key: string]: string}
  */
-const validationMesages = {
+const errorMessages = {
   "first": "Veuillez entrer 2 caractères ou plus pour le champ du prénom.",
   "last": "Veuillez entrer 2 caractères ou plus pour le champ du nom.",
   "email": "Veuillez entrer un e-mail valide.",
@@ -71,14 +71,14 @@ const validationMesages = {
  * Contain all validator methods.
  * @type {[key:string]: (input:string, value:string): void | ""}
  */
-const validator = {
-  "first": (input, value) => value.length < 2 && value.trim() === "" ? errorMessage(input) : "",
-  "last": (input, value) => value.length < 2 && value.trim() === "" ? errorMessage(input) : "",
-  "email": (input, value) => value.trim() === "" && !new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(value) ? errorMessage(input) : "",
-  "birthdate": (input, value) => value.trim() === "" ? errorMessage(input) : "",
-  "quantity": (input, value) => value <= 0 ? errorMessage(input) : "",
-  "location": (input, value) => !value ? errorMessage(input) : "",
-  "checkbox1": (input) => errorMessage(input)
+const validatorRules = {
+  "first": (value) => value.trim() !== "" && value.length > 2 ,
+  "last": (value) => value.length > 2 && value.trim() !== "",
+  "email": (value) => value.trim() !== "" && new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(value),
+  "birthdate": (value) => value.trim() !== "",
+  "quantity": (value) => parseInt(value) >= 0,
+  "location": (value) => value,
+  "checkbox1": (value) => value
 };
 
 /**
@@ -89,32 +89,44 @@ function getFormData(event) {
   event.preventDefault();
   if (document.querySelectorAll('.error')) errorReset();
   let data = new FormData(event.target);
+  const inputState = [];
   for (const [name, value] of data) {
-    validator[name](name, value);
+    if (!validatorRules[name](value)) {
+      inputState.push({ name: name, message: errorMessages[name]  });
+    }
   }
   if (!data.has('location')) {
-    validator['location']('location', false)
+    console.error('no location')
+    validatorRules['location'](false)
+    inputState.push({ name: 'location', message: errorMessages["location"] });
   };
-}
-
-/**
- * Check if CGU checkbox as checked
- */
-function validateCGU() {
   if (!$('#checkbox1').checked) {
-    validator['checkbox1']("checkbox1");
+    validatorRules['checkbox1'](false);
+    inputState.push({ name: "checkbox1", message: errorMessages["checkbox1"]});
+  }
+  if (!inputState.length) {
+    console.log('validate')
+  } else {
+    console.log(inputState)
+    validator(inputState);
   }
 }
-
+function validator(data) {
+  data.forEach(({ name, message }) => {
+    errorMessage(name, message);
+  });
+}
 /**
  * Create error message and display at top of input
  * @param {string} name
+ * @param {string} message
  */
-function errorMessage(name) {
+function errorMessage(name, message) {
+  console.log(name)
   const field = $(`input[name="${name}"]`) === null ? $(`#${name}`) : $(`input[name="${name}"]`);
   field.style = "border-color: red; border-width: 4px;"
 
-  const wrapper = createErrorElement(name);
+  const wrapper = createErrorElement(message);
 
   field.parentNode.prepend(wrapper);
 }
@@ -123,12 +135,12 @@ function errorMessage(name) {
  * @param {string} name
  * @return {HTMLElement} 
  */
-function createErrorElement(name) {
+function createErrorElement(message) {
   const wrapper = createElement('div');
   wrapper.className = "error";
 
   const errorElm = createElement('span');
-  errorElm.innerHTML = validationMesages[name];
+  errorElm.innerHTML = message;
   errorElm.style = "color: red; font-size: 12px";
 
   wrapper.append(errorElm);
@@ -141,4 +153,6 @@ function createErrorElement(name) {
  */
 function errorReset() {
   document.querySelectorAll('.error').forEach(elm => elm.remove());
+  document.querySelectorAll('input').forEach(input => input.style = "");
+
 }
