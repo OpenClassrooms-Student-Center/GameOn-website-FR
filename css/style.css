@@ -74,7 +74,7 @@ body {
   text-shadow: 2px 2px 5px rgba(100, 100, 111, 0.5);
 }
 
-.modal__submit {
+.modal__submit, .modal__closeregistration {
   display: block;
   margin: 0 auto;
   font-size: 0.875rem;
@@ -89,10 +89,15 @@ body {
   margin-top: 1.4775rem;
 }
 @media (min-width: 768px) {
-  .modal__submit {
+  .modal__submit, .modal__closeregistration {
     font-size: 1rem;
     padding: 0.75rem 3.4375rem;
   }
+}
+
+.modal__closeregistration {
+  position: absolute;
+  bottom: 0;
 }
 
 .header {
@@ -190,6 +195,7 @@ body {
   width: 100%;
   height: 100%;
   padding: 1.25rem 0;
+  transition: background-color 0.2s ease-out;
 }
 .header .navbar__item:not(:last-child) {
   border-bottom: 1px solid white;
@@ -197,6 +203,16 @@ body {
 @media (min-width: 768px) {
   .header .navbar__item:not(:last-child) {
     border-bottom: none;
+  }
+}
+.header .navbar__item:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+@media (min-width: 768px) {
+  .header .navbar__item:hover {
+    color: transparent;
+    background-color: transparent;
   }
 }
 .header .navbar__link {
@@ -207,15 +223,15 @@ body {
   padding: 0.9375rem;
   border-radius: 0.5rem;
 }
-.header .navbar__link:hover {
-  color: #fff;
-  background-color: #FE142F;
-}
 @media (min-width: 768px) {
   .header .navbar__link {
     color: inherit;
     font-size: 0.9375rem;
     margin-left: 0.3125rem;
+  }
+  .header .navbar__link:hover {
+    color: #fff;
+    background-color: #FE142F;
   }
 }
 
@@ -314,15 +330,19 @@ body {
 }
 
 .modal {
-  display: block;
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
   top: 0;
   height: 100%;
   width: 100%;
-  overflow: auto;
-  background: rgba(26, 39, 156, 0.4);
+  overflow: hidden;
+}
+@media (min-width: 768px) {
+  .modal {
+    background: rgba(26, 39, 156, 0.4);
+  }
 }
 @keyframes modalopen {
   from {
@@ -335,8 +355,8 @@ body {
 }
 .modal__content {
   width: 100%;
-  margin: 5% auto;
-  max-width: 500px;
+  height: 100vh;
+  margin: 5.25rem auto 5.5625rem;
   animation-name: modalopen;
   animation-duration: 0.8s;
   background: #232323;
@@ -345,6 +365,14 @@ body {
   position: relative;
   color: #fff;
   padding: 2.375rem 1.875rem 1.875rem;
+}
+@media (min-width: 768px) {
+  .modal__content {
+    max-width: 31.25rem;
+    margin: 5% auto;
+    margin: 5.25rem auto;
+    height: auto;
+  }
 }
 .modal__modal__ {
   padding: 15px 8%;
@@ -360,7 +388,7 @@ body {
 .modal__formData {
   margin-bottom: 0.625rem;
 }
-.modal__text {
+.modal__input {
   width: 100%;
   font-size: 1.125rem;
   padding: 8px;
@@ -368,6 +396,7 @@ body {
   height: 3rem;
   border: 0.8px solid #E5E5E5;
   outline: none;
+  margin-bottom: 0.3125rem;
 }
 .modal__checklabel, .modal__check2label {
   position: relative;
@@ -443,7 +472,7 @@ body {
 .modal__formData[data-error-visible=true]::after {
   opacity: 1;
 }
-.modal__formData[data-error-visible=true] .text-control {
+.modal__formData[data-error-visible=true] .modal__input {
   border: 2px solid #FF4E60;
 }
 .modal__close {
@@ -470,67 +499,24 @@ body {
 .modal__close::after {
   transform: rotate(-45deg);
 }
-
-/* custom select */
-.select {
+.modal__registration {
+  min-height: 43.75rem;
   position: relative;
-  font-size: 1.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
-.select select {
-  display: none;
+.modal__greetings {
+  width: 19.375rem;
+  height: 9.6875rem;
+  text-align: center;
+  font-weight: 400;
+  font-size: 2.25rem;
+  flex: 1;
 }
-
-.selected {
-  background-color: #fff;
-  /* Style the arrow inside the select element */
+.modal .error {
+  font-size: 0.875rem;
 }
-.selected ::after {
-  position: absolute;
-  content: "";
-  top: 0.625rem;
-  right: 0.8125rem;
-  width: 0.6875rem;
-  height: 0.6875rem;
-  border: 3px solid transparent;
-  border-bottom-color: #FE142F;
-  border-left-color: #FE142F;
-  transform: rotate(-48deg);
-  border-radius: 0.3125rem 0 0.3125rem 0;
-}
-.selected.select-arrow-active::after {
-  transform: rotate(135deg);
-  top: 0.8125rem;
-}
-
-.select-items div, .selected {
-  color: #000;
-  padding: 0.6875rem 1rem;
-  border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-  cursor: pointer;
-  border-radius: 0.5rem;
-  height: 3rem;
-}
-
-/* Style items (options): */
-.select-items {
-  position: absolute;
-  background-color: #fff;
-  top: 89%;
-  left: 0;
-  right: 0;
-  z-index: 99;
-}
-
-/* Hide the items when the select box is closed: */
-.select-hide {
-  display: none;
-}
-
-.select-items div:hover, .same-as-selected {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-/* custom select end */
 
 /*# sourceMappingURL=style.css.map */

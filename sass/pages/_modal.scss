@@ -1,18 +1,20 @@
 .modal {
-    display: block;
+    display: none;
     position: fixed;
     z-index: 1;
     left: 0;
     top: 0;
     height: 100%;
     width: 100%;
-    overflow: auto;
+    overflow: hidden;
+    @include tablet {
     background: rgba(26, 39, 156, 0.4);
+    }
     @include modal;
     &__content {
         width: 100%;
-        margin: 5% auto;
-        max-width: 500px;
+        height: 100vh;
+        margin: rem(84) auto rem(89);
         animation-name: modalopen;
         animation-duration: $modal-duration;
         background: $color-secondary;
@@ -21,6 +23,12 @@
         position: relative;
         color: #fff;
         padding: rem(38) rem(30) rem(30);
+        @include tablet {
+            max-width: rem(500);
+            margin: 5% auto;
+            margin: rem(84) auto;
+            height: auto;
+        }
     }
     &__modal__ {
         padding: 15px 8%;
@@ -36,7 +44,7 @@
     &__formData {
         margin-bottom: rem(10);
     }
-    &__text {
+    &__input {
         width: 100%;
         font-size: rem(18);
         padding: 8px;
@@ -44,6 +52,7 @@
         height: rem(48);
         border: 0.8px solid $color-bg;
         outline: none;
+        margin-bottom: rem(5);
     }
     &__checklabel,
     &__check2label {
@@ -121,7 +130,7 @@
     &__formData[data-error-visible="true"]::after {
         opacity: 1;
     }
-    &__formData[data-error-visible="true"] .text-control {
+    &__formData[data-error-visible="true"] .modal__input {
         border: 2px solid $color-error;
     }
     &__close {
@@ -149,59 +158,23 @@
             transform: rotate(-45deg);
         }
     }
-}
-/* custom select */
-.select {
-    position: relative;
-    font-size:rem(17.6);
-    select {
-        display: none;
+    &__registration {
+        min-height: rem(700);
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+    &__greetings {
+        width: rem(310);
+        height: rem(155);
+        text-align: center;
+        font-weight: 400;
+        font-size: rem(36);
+        flex: 1;
+    }
+    .error {
+        font-size: rem(14);
     }
 }
-.selected {
-    background-color: #fff;
-    /* Style the arrow inside the select element */
-    ::after {
-        position: absolute;
-        content: "";
-        top: rem(10);
-        right: rem(13);
-        width: rem(11);
-        height: rem(11);
-        border: 3px solid transparent;
-        border-bottom-color: $color-primary;
-        border-left-color: $color-primary;
-        transform: rotate(-48deg);
-        border-radius: rem(5) 0 rem(5) 0;
-    }
-    &.select-arrow-active::after {
-        transform: rotate(135deg);
-        top: rem(13);
-    }
-}
-.select-items div, .selected {
-    color: #000;
-    padding: rem(11) rem(16);
-    border: 1px solid transparent;
-    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-    cursor: pointer;
-    border-radius: rem(8);
-    height: rem(48);
-}
-/* Style items (options): */
-.select-items {
-    position: absolute;
-    background-color: #fff;
-    top: 89%;
-    left: 0;
-    right: 0;
-    z-index: 99;
-  }
-  /* Hide the items when the select box is closed: */
-.select-hide {
-    display: none;
-  }
-.select-items div:hover, .same-as-selected {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-/* custom select end */

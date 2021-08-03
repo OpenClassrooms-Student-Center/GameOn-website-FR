@@ -22,7 +22,7 @@
         }
 }
 
-.modal__submit {
+.modal__submit, .modal__closeregistration {
     display: block;
     margin: 0 auto;
     font-size: rem(14);
@@ -39,4 +39,9 @@
         font-size: rem(16);
         padding: rem(12) rem(55);
     }
+}
+
+.modal__closeregistration {
+    position: absolute;
+    bottom: 0;
 }
