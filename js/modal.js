@@ -114,7 +114,11 @@ function getFormData(event) {
 
   validateParticipation(data);
 }
-
+/**
+ * Send validation message
+ *
+ * @param {FormData} data
+ */
 function validateParticipation(data) {
   // const contestants = []
   // data.forEach((value, name) => contestants.push({ name, value }));
@@ -127,7 +131,11 @@ function validateParticipation(data) {
   <button class="btn-submit" onclick="closeModal()">Fermer</button>
   `;
 }
-
+/**
+ * Display error
+ *
+ * @param {Formdata} data
+ */
 function validator(data) {
   data.forEach(({ name, message }) => {
     errorMessage(name, message);
