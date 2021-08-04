@@ -20,6 +20,19 @@
                 transform: scale(1.05);
                 text-shadow: 2px 2px 5px rgba(100, 100, 111, 0.5);
         }
+        @include desktop {
+            position: absolute;
+            left: rem(67);
+            top: rem(500);
+            font-size: rem(20);
+            margin-top: rem(0);
+            &:hover {
+                    color: #fff;
+                    background-color: $color-primary;
+                    transform: scale(1.05);
+                    text-shadow: 2px 2px 5px rgba(100, 100, 111, 0.5);
+            }
+        }
 }
 
 .modal__submit, .modal__closeregistration {

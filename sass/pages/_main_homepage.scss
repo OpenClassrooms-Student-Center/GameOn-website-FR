@@ -9,21 +9,36 @@
         margin-top: rem(0);
         padding: rem(0);
     }
+    @include desktop {
+        max-width: rem(1024);
+    }
     &__container {
+        position: relative;
         width: 100%;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        @include desktop {
+            min-height: 93vh;
+        }
     }
     &__content {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
+        position: relative;
         @include tablet {
             border-radius: rem(8) rem(8) rem(0) rem(0);
             padding: rem(30) rem(0);
             color: #fff;
             background-color: $color-secondary;
+        }
+        @include desktop {
+            position: absolute;
+            left: 0;
+            width: rem(500);
+            height: 93vh;
+            align-content: flex-start;
         }
     }
     &__title {
@@ -36,6 +51,13 @@
             font-size: rem(65);
             margin-left: rem(20);
         }
+        @include desktop {
+            font-size: rem(96);
+            height: rem(300);
+            font-weight: normal;
+            white-space: nowrap;
+            margin-left: rem(65);
+        }
     }
     &__txt {
         font-size: rem(13);
@@ -45,12 +67,19 @@
             font-size: rem(24);
             margin-left: rem(20);
         }
+        @include desktop {
+            margin-left: rem(65);
+        }
     }
     &__img {
         width: 100%;
         background: rgb(194, 63, 63);
         @include tablet {   
         height: 40vh;
+        }
+        @include desktop {
+            height: 93vh;
+            border-radius: rem(8) rem(8) rem(8) rem(8);
         }
         & img {
             width: 100%;
@@ -59,6 +88,10 @@
             @include tablet {   
                 border-radius: rem(0) rem(0) rem(8) rem(8);
             }
+            @include desktop {
+                border-radius: rem(8) rem(8) rem(8) rem(8);
+            }
+
         }
     }
 }

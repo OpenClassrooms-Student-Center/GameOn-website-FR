@@ -7,6 +7,9 @@
         max-width: rem(768);
         padding: rem(25) rem(0);
     }
+    @include desktop {
+        max-width: rem(1024);
+    }
     .navbar {
         position: fixed;
         width: 100%;
@@ -25,6 +28,10 @@
             background-size: contain;
             width: rem(103);
             height: rem(20);
+            @include desktop {
+                width: rem(265);
+                height: rem(45);
+            }
         }
         .hamburger {
             cursor: pointer;
@@ -60,13 +67,11 @@
             text-align: center;
             transition: 0.3s;
             border-bottom: 1px solid $color-primary;
-            @include tablet {  
-                border-bottom: none;
-            }
             &.active {
                 left: 0;
             } 
             @include tablet {
+                border-bottom: none;
                 position: static;  
                 width: 80%;
                 display: flex;
@@ -115,6 +120,11 @@
                     color: #fff;
                     background-color: $color-primary;
                 }
+            }
+            @include desktop {
+                font-size: rem(20);
+                margin-left: rem(0);
+                padding: rem(15) rem(5);;
             }
         }
     }
