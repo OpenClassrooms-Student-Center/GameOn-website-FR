@@ -7,6 +7,10 @@
  *  $(".class").text('Hello World !').style("color: red");
  */
 const $ = function (selector) {
+  /**
+   * Selecte element with selector
+   *  @type {HTMLELement}
+   */
   let elm = document.querySelector(selector);
   return {
     /**
@@ -53,7 +57,7 @@ const $ = function (selector) {
      * @example $(selector).addClass("container"); 
      */
     addClass(className) {
-      elm.className += className
+      elm.className += ` ${className}`
       return this;
     },
     /**
@@ -109,7 +113,6 @@ const $ = function (selector) {
     /**
      * Create and add new HTMLElement into selected element,
      * Add new class if you specified
-     * @WIP elm need switch to created element.
      * @param {string} element
      * @return {$}
      * @example 
@@ -117,9 +120,13 @@ const $ = function (selector) {
      * $(selector).add("div.class"); 
      */
     add(element) {
-      let splitClassElement = element.split('.');
-      let newElm = createElement(splitClassElement[0]);
-      newElm.className += splitClassElement[1];
+      let splitTagAndClassElement = element.split('.');
+      let newElm = createElement(splitTagAndClassElement[0]);
+      if (splitTagAndClassElement.length > 0) {
+        for (let i = 1; i < splitTagAndClassElement.length; i++) {
+          newElm.className += ` ${splitTagAndClassElement[i]}`;
+        }
+      }
       elm.append(newElm);
       return this;
     },
@@ -323,7 +330,8 @@ const rules = (value, flag, compareValue) => {
  */
 function formValidated() {
   $('.content .modal-body').style('display:none');
-  $('.content').add('div.success-message');
+  $('.content').add('div.success-message.hello-world');
+
   $('.success-message').style('text-align: center; margin: 15px').html(`
     <p>
       Merci ! Votre réservation a été reçue.
