@@ -76,9 +76,6 @@ img {
     float: right;
     display: block;
   }
-}
-
-@media screen and (max-width: 768px) {
   .topnav.responsive {
     position: relative;
   }
@@ -95,13 +92,21 @@ img {
 }
 
 @media screen and (max-width: 540px) {
+  .topnav {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
   .topnav a {
     display: none;
   }
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
+
+  .hero-section .hero-content .hero-text,
+  .hero-section .hero-content .hero-headline {
+    width: 80%;
+  }
+  .hero-section .hero-content .hero-headline {
+    font-size: 4rem;
   }
 }
 
@@ -516,6 +521,12 @@ footer {
   .copyrights {
     margin-top: 50px;
     text-align: center;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .hero-section {
+    min-height: 55vh;
   }
 }
 
