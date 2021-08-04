@@ -53,6 +53,12 @@
         border: 0.8px solid $color-bg;
         outline: none;
         margin-bottom: rem(5);
+        &--error {
+            border: 2px solid $color-error;
+        }
+        &--valid {
+            border: 2px solid $color-valid;
+        }
     }
     &__checklabel,
     &__check2label {
@@ -64,7 +70,7 @@
             display: block;
             width: 20px;
             height: 20px;
-            border: 2px solid #279e7a;
+            border: 2px solid $color-valid;
             border-radius: 50%;
             text-indent: 29px;
             white-space: nowrap;
@@ -76,7 +82,7 @@
                 content: "";
                 width: 13px;
                 height: 13px;
-                background-color: #279e7a;
+                background-color: $color-valid;
                 border-radius: 50%;
                 text-indent: 29px;
                 white-space: nowrap;
@@ -86,6 +92,12 @@
                 transform: translate(-50%, -50%);
                 transition: 0.3s;
                 opacity: 0;
+            }
+            &--error {
+                border: 2px solid $color-error;
+            }
+            &--valid {
+                border: 2px solid $color-valid;
             }
         }
     }
@@ -176,5 +188,15 @@
     }
     .error {
         font-size: rem(14);
+        &--invalid {
+            color: $color-error;
+        }
+        &--valid {
+            color: $color-valid;
+        }
+    }
+    .error-town {
+        font-size: rem(14);
+        color: $color-error;
     }
 }

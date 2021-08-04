@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <section class="header" id="header-cont">
+  <header class="header" id="header-cont">
     <nav class="navbar">
       <a href="#" class="navbar__logo"></a>
       <ul class="navbar__menu">
@@ -41,7 +41,7 @@
         <span class="hamburger__bar"></span>
       </div>
     </nav>
-  </section>
+  </header>
 
   <main class="main">
     <section class="main__container">
@@ -63,7 +63,7 @@
       <div class="modal__content">
         <span class="modal__close"></span>
         <div class="modal__body">
-          <form name="reservation" method="get" id="reservation" action="index.html">
+          <form class="reservation" method="get" action="#">
             <!-- "onsubmit="return validateForm()" -->
             <div class="modal__formData">
               <label>Prénom</label><br>
@@ -87,10 +87,10 @@
             </div>
             <div class="modal__formData">
               <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-              <input type="number" class="modal__input" id="quantity" name="quantity" min="0" max="99">
-              <span class="error" id="error-quantity"></span>
+              <input type="number" class="modal__input" id="tournaments" name="tournaments" min="0" max="99">
+              <span class="error" id="error-tournaments"></span>
             </div>
-            <p class="modal__town">Quelles villes ?</p>
+            <p class="modal__town">Quelles villes ? </p><span class="error-town"></span>
             <div class="modal__formData">
               <input class="modal__checkinput" type="checkbox" id="location1" name="location" value="New York" />
               <label class="modal__checklabel" for="location1">

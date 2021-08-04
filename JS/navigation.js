@@ -6,23 +6,11 @@ const btnMainOpen = document.querySelector('.main__btn');
 const btnModCross = document.querySelector('.modal__close');
 const btnCloseRegistration = document.querySelector('.modal__closeregistration');
 const blockModal = document.querySelector('.modal');
-const myForm = document.querySelector('#reservation');
 let modal = false;
 
-const allError = document.querySelectorAll('.error');
-const allInputs = document.querySelectorAll('.modal__input');
+// const allError = document.querySelectorAll('.error');
+// const allInputs = document.querySelectorAll('.modal__input');
 const allItemNav = document.querySelectorAll('.navbar__link');
-
-// Création d'une classe pour fabriquer un objet dans lequel ont met les données du formulaire
-class Formulaire {
-  constructor() {
-    this.firstname = document.querySelector('#first').value;
-    this.lastname = document.querySelector('#last').value;
-    this.email = document.querySelector('#email').value;
-    this.birthdate = document.querySelector('#birthdate').value;
-    this.numbers = document.querySelector('#quantity').value;
-  }
-}
 
 //----------------------------- Menu Header  -----------------------------//
 
@@ -41,7 +29,7 @@ allItemNav.forEach(item => {
   });
 });
 // on stopPropagation pour menu active && hamburger
-if (modal = true) {
+if (modal == true) {
   navbarMenu.addEventListener("click", function (e) {
     e.stopPropagation;
     mobileMenu();
@@ -62,7 +50,7 @@ btnMainOpen.addEventListener("click", () => {
   blockModal.removeAttribute('aria-hidden');
   blockModal.setAttribute('aria-modal', 'true');
   document.removeEventListener("click", mobileMenu);
-  allInputs[0].focus();
+  firstNameInput.focus();
 });
 // Fermeture
 btnModCross.addEventListener("click", () => {
@@ -74,122 +62,231 @@ btnModCross.addEventListener("click", () => {
   document.addEventListener("click", mobileMenu);
 });
 
-myForm.addEventListener('submit', function(e) {
-  e.preventDefault();
-  let error;
-  const formulaireValues = new Formulaire();
-  const firstName = formulaireValues.firstname;
-  const lastName = formulaireValues.lastname;
-  const email = formulaireValues.email;
-  const birthdate = formulaireValues.birthdate;
-  const numbers = document.querySelector("#quantity").value;
-  const checkCondition = document.querySelector("#checkbox1");
-  
-  if (firstName.trim() == "") {
-    allError[0].innerHTML = "Le champ prénom est requis";
-    allError[0].style.color = "#FF4E60";
-    allInputs[0].style.border = "2px solid #FF4E60";
-    allInputs[0].focus();
-    error = true;
-  } else if (regExFirstLastName(firstName) == false) {
-    allError[0].innerHTML = "Le champ prénom doit comporter des lettres et des tirets";
-    error = true;
-  } else {
-    allError[0].innerHTML = "";
-    allInputs[0].style.border = "2px solid #279e7a";
-  }
-  if (lastName.trim() == "") {
-    allError[1].innerHTML = "Le champ nom est requis";
-    allError[1].style.color = "#FF4E60";
-    allInputs[1].style.border = "2px solid #FF4E60";
-    allInputs[1].focus();
-    error = true;
-  } else if (regExFirstLastName(lastName) == false) {
-    allInputs[4].style.border = "2px solid #FF4E60";
-    allError[1].innerHTML = "Le champ nom doit comporter des lettres et des tirets";
-    error = true;
-  } else {
-    allError[1].innerHTML = "";
-    allInputs[1].style.border = "2px solid #279e7a";
-  }
-  if (email.trim() == "") {
-    allError[2].innerHTML = "Le champ email est requis";
-    allError[2].style.color = "#FF4E60";
-    allInputs[2].style.border = "2px solid #FF4E60";
-    allInputs[2].focus();
-    error = true;
-  } else if (regExEmail(email) == false) {
-    allInputs[4].style.border = "2px solid #FF4E60";
-    allError[2].innerHTML = "Le champ email n'est pas valide";
-    error = true;
-  } else {
-    allError[2].innerHTML = "";
-    allInputs[2].style.border = "2px solid #279e7a";
-  }
-  if (birthdate == "") {
-    allError[3].innerHTML = "Le champ email est requis";
-    allError[3].style.color = "#FF4E60";
-    allInputs[3].style.border = "2px solid #FF4E60";
-    allInputs[3].focus();
-    error = true;
-  } else if (regExBdate(birthdate) == false) {
-    allInputs[4].style.border = "2px solid #FF4E60";
-    allError[3].innerHTML = "Le champ date de naissance n'est pas valide";
-    error = true;
-  } else {
-    allError[3].innerHTML = "";
-    allInputs[3].style.border = "2px solid #279e7a";
-  }
-  if (numbers == "") {
-    allError[4].innerHTML = "Le champ tournois est requis";
-    allError[4].style.color = "#FF4E60";
-    allInputs[4].style.border = "2px solid #FF4E60";
-    allInputs[4].focus();
-    error = true;
-  } else if (regExNumber(numbers) == false || numbers == null) {
-    allInputs[4].style.border = "2px solid #FF4E60";
-    allError[4].innerHTML = "Le champ tournoi(s) n'est pas valide";
-    error = true;
-  } else {
-    allError[4].innerHTML = "";
-    allInputs[4].style.border = "2px solid #279e7a";
-  }
-  if (checkCondition.checked == false) {
-    allError[5].style.color = "#FF4E60";
-    allError[5].innerHTML = "Cocher la case pour valider les conditions";
-    document.querySelector("#reservation > div:nth-child(8) > label:nth-child(2) > span.modal__checkicon").style.background = "#FF4E60";
-    error = true;
-  } else if (checkCondition.checked == true) {
-    allError[5].innerHTML = "";
-    document.querySelector("#reservation > div:nth-child(8) > label:nth-child(2) > span.modal__checkicon").style.background = "#279e7a";
-  }
-  console.log(error);
-  if (error == true) {
-    e.preventDefault();
-    return false;
-  } else {
-    modifyModal()
-  }
-})
-//----------------------------- Gestion de validation du formulaire -----------------------------//
+//----------------------------- Gestion de formulaire -----------------------------//
 
-// Expression de fonction pour faire les regEx
-const regExFirstLastName = (value) => {
-  return /^[A-Za-z\s]{3,20}$/.test(value);
+const firstNameInput = document.querySelector('#first');
+const lastNameInput = document.querySelector('#last');
+const emailInput = document.querySelector('#email');
+const birthdateInput = document.querySelector('#birthdate');
+const tournamentsInput = document.querySelector('#tournaments');
+const errorTown = document.querySelector('.error-town');
+
+const form = document.querySelector('.reservation');
+
+const nameRegex = /^[A-Za-z\s]{3,20}$/
+const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+const birthdateRegex = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
+const tournamentsRegex = /^(0?[1-9]|[1-9][0-9])$/;
+
+// Validation des regex
+const nameIsValid = (name) => {
+  return nameRegex.test(name)
 }
-const regExEmail = (value) => {
-  return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
+const emailIsValid = (email) => {
+  return emailRegex.test(email)
 }
-const regExBdate = (value) => {
-  return /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/.test(value);
+const birthdateIsValid = (birthdate) => {
+  return birthdateRegex.test(birthdate)
 }
-const regExNumber = (value) => {
-  if (isNaN(value)) {
-    return Number(/^(([1-8][0-9]?|9[0-8]?)\.\d+|[1-9][0-9]?)$/.test(value));
+const tournamentsIsValid = (tournaments) => {
+  return tournamentsRegex.test(tournaments)
+}
+
+// On stylise si ça passe le .test
+const validateName = (name, input) => {
+  if (nameIsValid(name)) {
+    input.classList.remove('modal__input--error');
+    input.classList.add('modal__input--valid');
+    input.nextElementSibling.classList.remove('error--invalid');
+    input.nextElementSibling.innerHTML="";
+  } else if (name.trim()  == "") {
+    input.classList.add('modal__input--error');
+    input.classList.remove('modal__input--valid');
+    input.nextElementSibling.classList.add('error--invalid');
+    input.nextElementSibling.innerHTML="Veuillez remplir ce champ"
   } else {
-    return /^^(([1-8][0-9]?|9[0-8]?)\.\d+|[1-9][0-9]?)$/.test(value);
+    input.classList.add('modal__input--error');
+    input.classList.remove('modal__input--valid');;
+    input.nextElementSibling.classList.add('error--invalid');
+    input.nextElementSibling.innerHTML="Le champ accepte les lettres et les tirets maximum 20 caractères";
   }
 }
+// lancer la fonction pour test de focusout
+const validateInputFirstName = (e) => {
+  const firstName = e.target.value
+  
+  validateName(firstName, firstNameInput)
+}
+const validateInputLastName = (e) => {
+  const lastName = e.target.value
+  
+  validateName(lastName, lastNameInput)
+}
+
+// Email
+const validateEmail = (email, input) => {
+  if (emailIsValid(email)) {
+    input.classList.remove('modal__input--error');
+    input.classList.add('modal__input--valid');
+    input.nextElementSibling.classList.remove('error--invalid');
+    input.nextElementSibling.innerHTML="";
+  } else if (email.trim() == "") {
+    input.classList.add('modal__input--error');
+    input.classList.remove('modal__input--valid');
+    input.nextElementSibling.classList.add('error--invalid');
+    input.nextElementSibling.innerHTML="Veuillez remplir ce champ"
+  } else {
+    input.classList.add('modal__input--error');
+    input.classList.remove('modal__input--valid');;
+    input.nextElementSibling.classList.add('error--invalid');
+    input.nextElementSibling.innerHTML="Le champ email n'est pas valide";
+  }
+}
+const validateInputEmail = (e) => {
+  const email = e.target.value
+  
+  validateEmail(email, emailInput)
+}
+
+// Date de naissance
+const validateBirthdate = (birthdate, input) => {
+  if (birthdateIsValid(birthdate)) {
+    input.classList.remove('modal__input--error');
+    input.classList.add('modal__input--valid');
+    input.nextElementSibling.classList.remove('error--invalid');
+    input.nextElementSibling.innerHTML="";
+  } else if (birthdate == "") {
+    input.classList.add('modal__input--error');
+    input.classList.remove('modal__input--valid');
+    input.nextElementSibling.classList.add('error--invalid');
+    input.nextElementSibling.innerHTML="Veuillez remplir ce champ"
+  } else {
+    input.classList.add('modal__input--error');
+    input.classList.remove('modal__input--valid');;
+    input.nextElementSibling.classList.add('error--invalid');
+    input.nextElementSibling.innerHTML="Le champ date de naissance n'est pas valide";
+  }
+}
+const validateInputBirthdate = (e) => {
+  const birthdate = e.target.value
+  
+  validateBirthdate(birthdate, birthdateInput)
+}
+
+// Quantité de tournois
+const validateTournaments = (tournaments, input) => {
+  if (tournamentsIsValid(tournaments)) {
+    input.classList.remove('modal__input--error');
+    input.classList.add('modal__input--valid');
+    input.nextElementSibling.classList.remove('error--invalid');
+    input.nextElementSibling.innerHTML="";
+  } else if (tournaments == "") {
+    input.classList.add('modal__input--error');
+    input.classList.remove('modal__input--valid');
+    input.nextElementSibling.classList.add('error--invalid');
+    input.nextElementSibling.innerHTML="Veuillez remplir ce champ"
+  } else {
+    input.classList.add('modal__input--error');
+    input.classList.remove('modal__input--valid');;
+    input.nextElementSibling.classList.add('error--invalid');
+    input.nextElementSibling.innerHTML="Le champ tounoi(s) n'est pas valide";
+  }
+}
+const validateInputTournaments = (e) => {
+  const tournaments = e.target.value
+  
+  validateTournaments(tournaments, tournamentsInput)
+}
+
+// Checkbox
+const checkboxElement = document.querySelectorAll("input[name='location']")
+let count = 0;
+
+for (let i = 0; i < checkboxElement.length; i++) {  
+  checkboxElement[i].addEventListener("click", verifyNumberCheck);
+}
+
+function verifyNumberCheck(e) {
+  if (e.target.checked) {
+    //const nameCheckBox = e.target.id;
+    count ++;
+    //console.log(nameCheckBox);
+  } else {
+    count --;
+  }
+  //console.log(count)
+  return count;
+}
+
+function checkBoxIsValid(value) {
+  if (value >= 1) {
+    return true
+  } else if (value == 0) {
+    errorTown.innerHTML = " Merci de cocher une ville";
+  } else {
+    return false
+  }
+}
+
+function checkRequiredIsValid() {
+  if (document.querySelector("#checkbox1").checked){
+    return true
+  } else {
+    return false
+  }
+}
+
+// Compilation des retour true/false de chaque value
+const firstNameFormValid = () => {
+  return nameIsValid(firstNameInput.value)
+}
+const lastNameFormValid = () => {
+  return nameIsValid(lastNameInput.value)
+}
+const emailFormValid = () => {
+  return emailIsValid(emailInput.value)
+}
+const birthdateFormValid = () => {
+  return birthdateIsValid(birthdateInput.value)
+}
+const tournamentsFormValid = () => {
+  return tournamentsIsValid(tournamentsInput.value)
+}
+
+const checkboxFormValid = () => {
+  return checkBoxIsValid(count);
+}
+const formIsValid = () => {
+  return firstNameFormValid() && lastNameFormValid() && emailFormValid() && birthdateFormValid() && tournamentsFormValid() &&checkboxFormValid() && checkRequiredIsValid()
+}
+
+const submit = (e) => {
+  if (formIsValid()) {
+    // submit the form
+    e.preventDefault();
+    modifyModal()
+    // alert('formulaire validé');
+  } else {
+    // do not submit form
+    // console.log(nameIsValid(firstNameInput.value))
+    // console.log(nameIsValid(lastNameInput.value))
+    // console.log(emailIsValid(emailInput.value))
+    // console.log(birthdateIsValid(birthdateInput.value))
+    // console.log(tournamentsIsValid(tournamentsInput.value))
+    // console.log(checkBoxIsValid(count))
+    // console.log(checkRequiredIsValid())
+    e.preventDefault();
+  }
+}
+
+firstNameInput.addEventListener('focusout', validateInputFirstName);
+lastNameInput.addEventListener('focusout', validateInputLastName);
+emailInput.addEventListener('focusout', validateInputEmail);
+birthdateInput.addEventListener('focusout', validateInputBirthdate);
+tournamentsInput.addEventListener('focusout', validateInputTournaments);
+form.addEventListener('submit', submit);
+
+//----------------------------- Fin de gestion du formulaire -----------------------------//
 
 function modifyModal() {
   let modalBody = document.querySelector('.modal__body');
@@ -221,27 +318,3 @@ function modifyModal() {
     document.addEventListener("click", mobileMenu);
   });
 }
-
-// let error;
-//   console.log(allInputs)
-//   for (let i in allInputs){
-//     if (allInputs[i].value == "") {
-//       allError[i].innerHTML = "Le champ est requis";
-//       allError[i].style.color = "#FF4E60";
-//       allInputs[i].focus();
-//       allInputs[i].style.border = "2px solid #FF4E60";
-//       error = false;
-//     } else {
-//       allError[i].innerHTML = "";
-//       allInputs[i].style.border = "2px solid #279e7a";
-//       console.log(allInputs[i].style.border);
-//       error = true;
-//     }
-//   }
-//   if (error) {
-//     return false
-//   } else {
-//     modifyModal()
-//   }
-
-
