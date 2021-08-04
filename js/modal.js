@@ -205,7 +205,7 @@ function launchModal() {
   * Close Modal
   */
  function closeModal() {
-   modalbg.style("display: none;");
+  $(".bground").style("display: none;");
  }
  
 
