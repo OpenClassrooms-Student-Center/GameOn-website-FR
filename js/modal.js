@@ -1,8 +1,8 @@
 /**
  * Get HTMLElement with selector and return lot of utils to manipulate DOM.
  * returning the context allows us to chain the method.
- * @param {string} selector 
- * @return {$} this
+ * @param {string} selector A string that identifies an element to select
+ * @return {$} Current Object
  * @example
  *  $(".class").text('Hello World !').style("color: red");
  */
@@ -15,18 +15,18 @@ const $ = function (selector) {
   return {
     /**
      * Add text into selected element
-     * @param {string} text
-     * @return {$}
+     * @param {string} text A string added in elemen
+     * @return {$} Current Object
      * @example $(selector).text("Write some text")
      */
     text(text){
-      elm.innerText = text
+      elm.innerText = text;
       return this;
     },
     /**
      * Add Html into selected element
-     * @param {string} template
-     * @return {$}
+     * @param {string} template A string that structures the html element that will be added
+     * @return {$} Current Object
      * @example 
      * $(selector).html('<p>Hello world!</p>');
      * $(selector).html(`
@@ -42,38 +42,38 @@ const $ = function (selector) {
     },
     /**
      * Add some style into selected element
-     * @param {string} style
-     * @return {$}
+     * @param {string} style A string that structures the style element that will be added
+     * @return {$} Current Object
      * @example $(selector).style("display: none"); 
      */
     style(style) {
-      elm.style = style
+      elm.style = style;
       return this;
     },
     /**
      * Add some class into selected element
-     * @param {string} className
-     * @return {$}
+     * @param {string} className A string defines the classes that will be added
+     * @return {$} Current Object
      * @example $(selector).addClass("container"); 
      */
     addClass(className) {
-      elm.className += ` ${className}`
+      elm.className += ` ${className}`;
       return this;
     },
     /**
      * Remove some class into selected element
-     * @param {string} className
-     * @return {$}
+     * @param {string} className A string defines the classes that will be deleted
+     * @return {$} Current Object
      * @example $(selector).removeClass("container"); 
      */
     removeClass(className) {
-      elm.className -= className
+      elm.className = elm.className.split(' ').filter(c => c !== className).join(" ")
       return this;
     },
     /**
-     * Append new HTMLElement into selected element
-     * @param {string} element
-     * @return {$}
+     * Append new HTMLElement to the end selected element to the end
+     * @param { HTMLElement } element The HTML element that will be added to the end of the parent
+     * @return {$} Current Object
      * @example $(selector).append(newElement); 
      */
     append(element) {
@@ -81,9 +81,9 @@ const $ = function (selector) {
       return this;
     },
     /**
-     * Prepend new HTMLElement into selected element
-     * @param {string} element
-     * @return {$}
+     * Prepend new HTMLElement at the start selected element
+     * @param { HTMLElement } element The HTML element that will be added at the start of the parent
+     * @return {$} Current Object
      * @example $(selector).prepend(newElement); 
      */
     prepend(element) {
@@ -92,8 +92,8 @@ const $ = function (selector) {
     },
     /**
      * Add event click into selected element
-     * @param {string} element
-     * @return {$}
+     * @param {string} cb Function executed after the triggering event
+     * @return {$} Current Object
      * @example $(selector).click(() => alert('Clicked!')); 
      */
     click(cb) {
@@ -102,8 +102,8 @@ const $ = function (selector) {
     },
     /**
      * Add event submit into form selected
-     * @param {string} element
-     * @return {$}
+     * @param {function} cb Function executed after the triggering event
+     * @return {$} Current Object
      * @example $(selector).submit(() => alert('Submited!')); 
      */
     submit(cb) {
@@ -113,8 +113,9 @@ const $ = function (selector) {
     /**
      * Create and add new HTMLElement into selected element,
      * Add new class if you specified
-     * @param {string} element
-     * @return {$}
+     * @todo do same to add id.
+     * @param {string} element A string defines an element that will be created and appended to the end of the parent
+     * @return {$} Current Object Current Object
      * @example 
      * $(selector).add("p"); 
      * $(selector).add("div.class"); 
@@ -122,39 +123,43 @@ const $ = function (selector) {
     add(element) {
       let splitTagAndClassElement = element.split('.');
       let newElm = createElement(splitTagAndClassElement[0]);
-      if (splitTagAndClassElement.length > 0) {
-        for (let i = 1; i < splitTagAndClassElement.length; i++) {
-          newElm.className += ` ${splitTagAndClassElement[i]}`;
-        }
-      }
+      let classList = splitTagAndClassElement.splice(1, splitTagAndClassElement.length).join(" ")
+      newElm.className += classList;
       elm.append(newElm);
       return this;
     },
     /**
      * Remove selected element
-     * @return {$} 
+     * @return {$} Current Object 
      */
     remove() {
       elm.remove();
       return this;
     },
     /**
+     * List all class element contain.
+     * @return {string[]} Array of strings of the classes contained in the element
+     */
+    classList() {
+      return elm.className.split(" ");
+    },
+    /**
      * Get parent element
-     * @return {Node & ParentNode} 
+     * @return {Node & ParentNode} Parent of the selected element
      */
     parent() {
       return elm.parentNode;
     },
     /**
      * Returns the current element
-     * @return {Element} 
+     * @return {HTMLElement} Current HTMLElement
      */
     getElm() {
       return elm;
     },
     /**
      * Check if the input checkbox is checked
-     * @return {bool} 
+     * @return {boolean} 
      */
     checked() {
       return elm.checked;
@@ -165,29 +170,29 @@ const $ = function (selector) {
 const createElement = (elm) => document.createElement(elm);
 
 function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
+  if (!$("#myTopnav").classList().includes("responsive")) {
+    $("#myTopnav").addClass("responsive");
   } else {
-    x.className = "topnav";
+    $("#myTopnav").removeClass("responsive");
   }
 }
 
 // DOM Elements
-const modalbg = $(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// launch modal form
+/**
+ * Launch form modal
+ */
 function launchModal() {
   if ($('.success-message').getElm() !== null) {
     $('.success-message').remove();
     $('.content .modal-body').style('display:block');
   }
-  modalbg.style("display: block;");
+  $(".bground").style("display: block;");
 }
 
 /**
@@ -249,7 +254,7 @@ const getFormData = (form) => new FormData(form);
  * Run form validator
  * check if the data entered is correct and launch formValidated().
  * If the data is incorrect it launch displayError().
- * @param { Event } event
+ * @param { Event } event All Events will be triggered by form
  * @return {void} void
  */
 function formValidation(event) {
@@ -292,7 +297,7 @@ function formValidation(event) {
  * @param {string | number } value Enter value
  * @param {"REQUIRED | STRING | NUMBER | MIN | MAX | EMAIL"} flag Choosed rules for validations
  * @param {string | number } compareValue Value to be compare with enter value
- * @return boolean 
+ * @return { boolean }
  * @example 
  *    rules("text", "REQUIRED");
  *    rules("text", "MIN", 8);
@@ -330,6 +335,7 @@ const rules = (value, flag, compareValue) => {
  */
 function formValidated() {
   $('.content .modal-body').style('display:none');
+
   $('.content').add('div.success-message.hello-world');
 
   $('.success-message').style('text-align: center; margin: 15px').html(`
@@ -338,20 +344,21 @@ function formValidated() {
     </p>
     <button class="btn-submit" onclick="closeModal();">Fermer</button>
   `);
+
   resetInput();
 }
 
 /**
  * Display error
- * @param {{ name: string, message: string }} data
+ * @param {{ name: string, message: string }[]} data Object array of all error catches by validator
  * @return {void} void
  */
 const displayError = (data) => data.forEach(({ name, message }) => errorMessage(name, message));
 
 /**
  * Create elements for error message and display at top of input
- * @param {string} name
- * @param {string} message
+ * @param {string} name A string defined input name
+ * @param {string} message A message defined by a string that will be displayed
  * @return {void} void
  */
 function errorMessage(name, message) {
