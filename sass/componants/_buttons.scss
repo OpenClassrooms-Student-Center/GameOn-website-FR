@@ -1,0 +1,47 @@
+.main__btn {
+        font-weight: 600;
+        font-size: rem(16);
+        border: none;
+        padding: rem(7) rem(28);
+        color: #fff;
+        border-radius: rem(12);
+        background-color: $color-primary;
+        cursor: pointer;
+        transition: all .2s ease-out;
+        margin-top: rem(25);
+        @include tablet {
+            font-size: rem(25);
+            font-weight: 500;
+            padding: rem(18) rem(56);
+        }
+        &:hover {
+            color: $color-primary;
+                background-color: $color-secondary;
+                transform: scale(1.05);
+                text-shadow: 2px 2px 5px rgba(100, 100, 111, 0.5);
+        }
+}
+
+.modal__submit, .modal__closeregistration {
+    display: block;
+    margin: 0 auto;
+    font-size: rem(14);
+    font-weight: 500;
+    border: none;
+    padding: rem(7) rem(28);
+    color: #fff;
+    border-radius: rem(8);
+    background-color: $color-primary;
+    cursor: pointer;
+    transition: all .2s ease-out;
+    margin-top: rem(23.64);
+    @include tablet {
+        font-size: rem(16);
+        padding: rem(12) rem(55);
+    }
+}
+
+.modal__closeregistration {
+    position: absolute;
+    bottom: 0;
+}

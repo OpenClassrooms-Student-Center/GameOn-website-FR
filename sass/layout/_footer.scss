@@ -1,0 +1,14 @@
+.footer {
+    width: 100%;
+    min-width: rem(320);
+    margin: 0 auto;
+    padding: 0 rem(30);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-primary;
+    padding: rem(35.8) rem(0) rem(20) rem(0);
+    @include tablet {
+        max-width: rem(768);
+    }
+}

@@ -1,0 +1,64 @@
+.main {
+    width: 100%;
+    min-width: rem(320);
+    margin: 0 auto;
+    padding: rem(0) rem(30);
+    margin-top: rem(92);
+    @include tablet {
+        max-width: rem(768);
+        margin-top: rem(0);
+        padding: rem(0);
+    }
+    &__container {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    &__content {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        @include tablet {
+            border-radius: rem(8) rem(8) rem(0) rem(0);
+            padding: rem(30) rem(0);
+            color: #fff;
+            background-color: $color-secondary;
+        }
+    }
+    &__title {
+        font-size: rem(45);
+        font-weight: 500;
+        overflow-wrap: break-word;
+        margin-bottom: rem(15);
+        @include tablet {
+            width: 80%;
+            font-size: rem(65);
+            margin-left: rem(20);
+        }
+    }
+    &__txt {
+        font-size: rem(13);
+        font-weight: 400;
+        margin-bottom: rem(19);
+        @include tablet {
+            font-size: rem(24);
+            margin-left: rem(20);
+        }
+    }
+    &__img {
+        width: 100%;
+        background: rgb(194, 63, 63);
+        @include tablet {   
+        height: 40vh;
+        }
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            @include tablet {   
+                border-radius: rem(0) rem(0) rem(8) rem(8);
+            }
+        }
+    }
+}
