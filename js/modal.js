@@ -387,7 +387,8 @@ const displayError = (data) => data.forEach(({ name, message }) => errorMessage(
  */
 function errorMessage(name, message) {
   const field = $(`input[name="${name}"]`).getElm() === null ? $(`#${name}`) : $(`input[name="${name}"]`);
-  field.style("border-color: red; border-width: 4px;");
+  field.parent().setAttribute('data-error', '')
+  field.parent().setAttribute('data-error-visible', true);
   
   const wrapper = createElement('div');
   wrapper.className = "error";
@@ -406,7 +407,11 @@ function errorMessage(name, message) {
  */
 function errorReset() {
   document.querySelectorAll('.error').forEach(elm => elm.remove());
-  document.querySelectorAll('input').forEach(input => input.style = "");
+  document.querySelectorAll('input').forEach(input => {
+    let parent = input.parentNode;
+    parent.removeAttribute('data-error-visible');
+    parent.removeAttribute('data-error');
+  });
 }
 
 /**
