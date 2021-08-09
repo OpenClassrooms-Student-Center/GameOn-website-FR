@@ -290,6 +290,7 @@ function formValidation(event) {
   if (document.querySelectorAll(".error")) errorReset();
 
   data.forEach((value, name) => {
+    console.log(name, value);
     if (!validator[name](value)) {
       errors.push({
         name,
@@ -420,7 +421,7 @@ function errorReset() {
  */
 function resetInput() {
   document.querySelectorAll('.formData > input').forEach(input => {
-    input.value = "";
-    if(input.checked) input.checked = false;
+    if (input.classList.contains('text-control')) input.value = "";
+    input.checked = false;
   });
 }
