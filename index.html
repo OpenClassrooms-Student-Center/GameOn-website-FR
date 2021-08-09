@@ -62,7 +62,7 @@
     <section class="modal" aria-hidden="true" role="dialog">
       <div class="modal__content">
         <span class="modal__close"></span>
-        <div class="modal__body">
+        <br class="modal__body">
           <form class="reservation" method="get" action="#">
             <!-- "onsubmit="return validateForm()" -->
             <div class="modal__formData">
@@ -82,7 +82,7 @@
             </div>
             <div class="modal__formData">
               <label>Date de naissance</label><br>
-              <input class="modal__input" type="date" id="birthdate" name="birthdate" />
+              <input class="modal__input" type="date" id="birthdate" name="birthdate" min="1899-01-01"/>
               <span class="error" id="error-birthdate"></span>
             </div>
             <div class="modal__formData">
@@ -90,7 +90,8 @@
               <input type="number" class="modal__input" id="tournaments" name="tournaments" min="0" max="99">
               <span class="error" id="error-tournaments"></span>
             </div>
-            <p class="modal__town">Quelles villes ? </p><span class="error-town"></span>
+            <p class="modal__town">Quelles villes ? </p></form>
+            <span class="error" id="error-town"></span>
             <div class="modal__formData">
               <input class="modal__checkinput" type="checkbox" id="location1" name="location" value="New York" />
               <label class="modal__checklabel" for="location1">

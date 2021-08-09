@@ -72,11 +72,12 @@ const tournamentsInput = document.querySelector('#tournaments');
 const errorTown = document.querySelector('.error-town');
 
 const form = document.querySelector('.reservation');
+console.log(form)
 
-const nameRegex = /^[A-Za-z\s]{3,20}$/
+const nameRegex = /^[A-Za-z\s]{3,20}$/;
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 const birthdateRegex = /([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))/;
-const tournamentsRegex = /^(0?[1-9]|[1-9][0-9])$/;
+const tournamentsRegex = /^(0?[0-9]|[0-9][0-9])$/;
 
 // Validation des regex
 const nameIsValid = (name) => {
@@ -92,6 +93,10 @@ const tournamentsIsValid = (tournaments) => {
   return tournamentsRegex.test(tournaments)
 }
 
+const nameIsEmpty = (name) => {
+  return name.trim() == ""
+}
+
 // On stylise si ça passe le .test
 const validateName = (name, input) => {
   if (nameIsValid(name)) {
@@ -99,7 +104,7 @@ const validateName = (name, input) => {
     input.classList.add('modal__input--valid');
     input.nextElementSibling.classList.remove('error--invalid');
     input.nextElementSibling.innerHTML="";
-  } else if (name.trim()  == "") {
+  } else if (nameIsEmpty(name)) {
     input.classList.add('modal__input--error');
     input.classList.remove('modal__input--valid');
     input.nextElementSibling.classList.add('error--invalid');
@@ -126,9 +131,7 @@ const validateInputLastName = (e) => {
 // Email
 const validateEmail = (email, input) => {
   if (emailIsValid(email)) {
-    input.classList.remove('modal__input--error');
-    input.classList.add('modal__input--valid');
-    input.nextElementSibling.classList.remove('error--invalid');
+    testValidation(input);
     input.nextElementSibling.innerHTML="";
   } else if (email.trim() == "") {
     input.classList.add('modal__input--error');
@@ -151,9 +154,7 @@ const validateInputEmail = (e) => {
 // Date de naissance
 const validateBirthdate = (birthdate, input) => {
   if (birthdateIsValid(birthdate)) {
-    input.classList.remove('modal__input--error');
-    input.classList.add('modal__input--valid');
-    input.nextElementSibling.classList.remove('error--invalid');
+    testValidation(input);
     input.nextElementSibling.innerHTML="";
   } else if (birthdate == "") {
     input.classList.add('modal__input--error');
@@ -167,40 +168,69 @@ const validateBirthdate = (birthdate, input) => {
     input.nextElementSibling.innerHTML="Le champ date de naissance n'est pas valide";
   }
 }
+function testValidation(input) {
+  input.classList.remove('modal__input--error');
+  input.classList.add('modal__input--valid');
+  input.nextElementSibling.classList.remove('error--invalid');
+}
 const validateInputBirthdate = (e) => {
   const birthdate = e.target.value
   
   validateBirthdate(birthdate, birthdateInput)
 }
 
+let today = new Date();
+let dd = today.getDate();
+let mm = today.getMonth()+1 // janvier est 0
+const yyyy = today.getUTCFullYear();
+if (dd<10) {
+  dd = `0${dd}`;
+}
+if (mm < 10){
+  mm = `0${mm}`;
+}
+today = `${yyyy}-${mm}-${dd}`;
+document.querySelector("#birthdate").setAttribute("max", today);
+//console.log(today);
+
 // Quantité de tournois
 const validateTournaments = (tournaments, input) => {
-  if (tournamentsIsValid(tournaments)) {
+  if (tournamentsIsValid(tournaments) && tournaments > 0) {
     input.classList.remove('modal__input--error');
     input.classList.add('modal__input--valid');
     input.nextElementSibling.classList.remove('error--invalid');
     input.nextElementSibling.innerHTML="";
-  } else if (tournaments == "") {
-    input.classList.add('modal__input--error');
-    input.classList.remove('modal__input--valid');
-    input.nextElementSibling.classList.add('error--invalid');
-    input.nextElementSibling.innerHTML="Veuillez remplir ce champ"
+    for (let inputs of checkboxElement) {
+      inputs.disabled = false;
+      let inputCheckIcon = inputs.nextElementSibling.childNodes[1];
+      inputCheckIcon.classList.remove('modal__checkicon--disabled');
+      //console.log(inputs);
+    }
+  } else if (tournaments == "" || tournaments == 0) {
+    for (let inputs of checkboxElement) {
+      inputs.disabled = true;
+      let inputCheckIcon = inputs.nextElementSibling.childNodes[1];
+      inputCheckIcon.classList.add('modal__checkicon--disabled')
+    }
   } else {
     input.classList.add('modal__input--error');
-    input.classList.remove('modal__input--valid');;
+    input.classList.remove('modal__input--valid');
     input.nextElementSibling.classList.add('error--invalid');
     input.nextElementSibling.innerHTML="Le champ tounoi(s) n'est pas valide";
   }
 }
 const validateInputTournaments = (e) => {
-  const tournaments = e.target.value
+  const tournaments = e.target.value;
   
   validateTournaments(tournaments, tournamentsInput)
 }
 
 // Checkbox
-const checkboxElement = document.querySelectorAll("input[name='location']")
-let count = 0;
+const checkboxElement = document.querySelectorAll("input[name='location']");
+let  count = 0;
+// for (let input of checkboxElement) {
+//   console.log(input.nextElementSibling.childNodes[1]);
+// }
 
 for (let i = 0; i < checkboxElement.length; i++) {  
   checkboxElement[i].addEventListener("click", verifyNumberCheck);
@@ -209,31 +239,34 @@ for (let i = 0; i < checkboxElement.length; i++) {
 function verifyNumberCheck(e) {
   if (e.target.checked) {
     //const nameCheckBox = e.target.id;
-    count ++;
+    count++;
     //console.log(nameCheckBox);
   } else {
-    count --;
+    count--;
   }
   //console.log(count)
   return count;
 }
 
 function checkBoxIsValid(value) {
-  if (value >= 1) {
+  if (value >= 0) {
     return true
-  } else if (value == 0) {
-    errorTown.innerHTML = " Merci de cocher une ville";
   } else {
     return false
   }
+  //return value >= 1 ? true : false;
 }
 
-function checkRequiredIsValid() {
-  if (document.querySelector("#checkbox1").checked){
-    return true
-  } else {
-    return false
-  }
+function checkRequiredIsValid() { 
+// let checkBox1 = document.querySelector("#checkbox1");
+//     if (checkBox1.checked){
+//     return true
+//   } else {
+//     document.querySelector("#error-quantity").innerHTML = "Merci de cocher cette case pour valider le formulaire";
+//     return false
+//   }
+  //return document.querySelector("#checkbox1").checked ? true : false;
+  return document.querySelector("#checkbox1").checked;
 }
 
 // Compilation des retour true/false de chaque value
@@ -251,13 +284,6 @@ const birthdateFormValid = () => {
 }
 const tournamentsFormValid = () => {
   return tournamentsIsValid(tournamentsInput.value)
-}
-
-const checkboxFormValid = () => {
-  return checkBoxIsValid(count);
-}
-const formIsValid = () => {
-  return firstNameFormValid() && lastNameFormValid() && emailFormValid() && birthdateFormValid() && tournamentsFormValid() &&checkboxFormValid() && checkRequiredIsValid()
 }
 
 const submit = (e) => {

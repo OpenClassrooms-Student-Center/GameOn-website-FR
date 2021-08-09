@@ -34,7 +34,6 @@
         padding: 15px 8%;
         margin: 15px auto;
     }
-    &__town,
     label {
         font-size: rem(14);
         font-weight: 400;
@@ -93,18 +92,16 @@
                 transition: 0.3s;
                 opacity: 0;
             }
-            &--error {
-                border: 2px solid $color-error;
-            }
-            &--valid {
-                border: 2px solid $color-valid;
+            &--disabled {
+                border: 2px solid $color-disabled;
+                opacity: 0.3;
             }
         }
     }
     &__check2label .modal__checkicon {
         border-radius: rem(4);
         border: 0;
-        background: #c4c4c4;
+        background: $color-disabled;
         &::after {
             width: rem(12);
             height: rem(8);
