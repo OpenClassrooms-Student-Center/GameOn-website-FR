@@ -8,7 +8,7 @@
  */
 const $ = function (selector) {
   /**
-   * Selecte element with selector
+   * Select element with selector
    *  @type {HTMLELement}
    */
   let elm = document.querySelector(selector);
@@ -126,6 +126,30 @@ const $ = function (selector) {
       let classList = splitTagAndClassElement.splice(1, splitTagAndClassElement.length).join(" ")
       newElm.className += classList;
       elm.append(newElm);
+      return this;
+    },
+    /**
+     * Insert a new HTMLElement before the current element.
+     *
+     * @param {HTMLElement | string} element A string defines an element that will be created and appended before the parent
+     * @return {$} Current Object Current Object
+     * @example
+     * $(selector).before(element);
+     */
+    before(element) {
+      elm.before(element);
+      return this;
+    },
+    /**
+     * Insert a new HTML element after the current element
+     *
+     * @param {HTMLElement | string} element A string defines an element that will be created and appended after the parent
+     * @return {$} Current Object Current Object
+     * @example
+     * $(selector).after(element);
+     */
+    after(element) {
+      elm.after(element);
       return this;
     },
     /**
@@ -279,7 +303,7 @@ function formValidation(event) {
       message: errorMessages["location"]
     });
   }
-  if (!$("#checkbox1").checked) {
+  if (!$("#checkbox1").checked()) {
     errors.push({
       name: "checkbox1",
       message: errorMessages["cgu"]
@@ -336,7 +360,7 @@ const rules = (value, flag, compareValue) => {
 function formValidated() {
   $('.content .modal-body').style('display:none');
 
-  $('.content').add('div.success-message.hello-world');
+  $('.content').add('div.success-message');
 
   $('.success-message').style('text-align: center; margin: 15px').html(`
     <p>
@@ -363,7 +387,8 @@ const displayError = (data) => data.forEach(({ name, message }) => errorMessage(
  */
 function errorMessage(name, message) {
   const field = $(`input[name="${name}"]`).getElm() === null ? $(`#${name}`) : $(`input[name="${name}"]`);
-  field.style("border-color: red; border-width: 4px;");
+  field.parent().setAttribute('data-error', '')
+  field.parent().setAttribute('data-error-visible', true);
   
   const wrapper = createElement('div');
   wrapper.className = "error";
@@ -373,8 +398,7 @@ function errorMessage(name, message) {
   errorElm.style = "color: red; font-size: 12px";
 
   wrapper.append(errorElm);
-  
-  field.parent().prepend(wrapper);
+  field.before(wrapper);
 }
 
 /**
@@ -383,7 +407,11 @@ function errorMessage(name, message) {
  */
 function errorReset() {
   document.querySelectorAll('.error').forEach(elm => elm.remove());
-  document.querySelectorAll('input').forEach(input => input.style = "");
+  document.querySelectorAll('input').forEach(input => {
+    let parent = input.parentNode;
+    parent.removeAttribute('data-error-visible');
+    parent.removeAttribute('data-error');
+  });
 }
 
 /**
