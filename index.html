@@ -62,22 +62,22 @@
     <section class="modal" aria-hidden="true" role="dialog">
       <div class="modal__content">
         <span class="modal__close"></span>
-        <br class="modal__body">
+        <div class="modal__body">
           <form class="reservation" method="get" action="#">
             <!-- "onsubmit="return validateForm()" -->
             <div class="modal__formData">
               <label>Prénom</label><br>
-              <input class="modal__input" type="text" id="first" name="firstname" minlength="2" />
+              <input class="modal__input" type="text" id="first" name="firstname" minlength="2"/>
               <span class="error" id="error-firstname"></span>
             </div>
             <div class="modal__formData">
               <label>Nom</label><br>
-              <input class="modal__input" type="text" id="last" name="lastname" />
+              <input class="modal__input" type="text" id="last" name="lastname"/>
               <span class="error" id="error-lastname"></span>
             </div>
             <div class="modal__formData">
               <label>E-mail</label><br>
-              <input class="modal__input" type="email" id="email" name="email" />
+              <input class="modal__input" type="email" id="email" name="email"/>
               <span class="error" id="error-email"></span>
             </div>
             <div class="modal__formData">
@@ -90,32 +90,32 @@
               <input type="number" class="modal__input" id="tournaments" name="tournaments" min="0" max="99">
               <span class="error" id="error-tournaments"></span>
             </div>
-            <p class="modal__town">Quelles villes ? </p></form>
+            <p class="modal__town">Quelles villes ? </p></br>
             <span class="error" id="error-town"></span>
             <div class="modal__formData">
               <input class="modal__checkinput" type="checkbox" id="location1" name="location" value="New York" />
               <label class="modal__checklabel" for="location1">
-                <span class="modal__checkicon"></span>
+                <span class="modal__checkicon modal__checkicon--disabled"></span>
                 New York</label>
               <input class="modal__checkinput" type="checkbox" id="location2" name="location" value="San Francisco" />
               <label class="modal__checklabel" for="location2">
-                <span class="modal__checkicon"></span>
+                <span class="modal__checkicon modal__checkicon--disabled"></span>
                 San Francisco</label>
               <input class="modal__checkinput" type="checkbox" id="location3" name="location" value="Seattle" />
               <label class="modal__checklabel" for="location3">
-                <span class="modal__checkicon"></span>
+                <span class="modal__checkicon modal__checkicon--disabled"></span>
                 Seattle</label>
               <input class="modal__checkinput" type="checkbox" id="location4" name="location" value="Chicago" />
               <label class="modal__checklabel" for="location4">
-                <span class="modal__checkicon"></span>
+                <span class="modal__checkicon modal__checkicon--disabled"></span>
                 Chicago</label>
               <input class="modal__checkinput" type="checkbox" id="location5" name="location" value="Boston" />
               <label class="modal__checklabel" for="location5">
-                <span class="modal__checkicon"></span>
+                <span class="modal__checkicon modal__checkicon--disabled"></span>
                 Boston</label>
               <input class="modal__checkinput" type="checkbox" id="location6" name="location" value="Portland" />
               <label class="modal__checklabel" for="location6">
-                <span class="modal__checkicon"></span>
+                <span class="modal__checkicon modal__checkicon--disabled"></span>
                 Portland</label>
             </div>
 

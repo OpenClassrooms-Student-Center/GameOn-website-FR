@@ -3,6 +3,7 @@
     min-width: rem(320);
     margin: 0 auto;
     position: relative;
+    z-index: 1;
     @include tablet {
         max-width: rem(768);
         padding: rem(25) rem(0);

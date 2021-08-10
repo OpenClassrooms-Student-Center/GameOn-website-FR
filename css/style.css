@@ -120,6 +120,7 @@ body {
   min-width: 20rem;
   margin: 0 auto;
   position: relative;
+  z-index: 1;
 }
 @media (min-width: 768px) {
   .header {
@@ -449,11 +450,11 @@ body {
     height: auto;
   }
 }
-.modal__modal__ {
+.modal__modal__body {
   padding: 15px 8%;
   margin: 15px auto;
 }
-.modal label {
+.modal__town, .modal label {
   font-size: 0.875rem;
   font-weight: 400;
   display: inline-block;
@@ -512,9 +513,15 @@ body {
   transition: 0.3s;
   opacity: 0;
 }
+.modal__checklabel .modal__checkicon--error, .modal__check2label .modal__checkicon--error {
+  border: 2px solid #FF4E60;
+}
+.modal__checklabel .modal__checkicon--valid, .modal__check2label .modal__checkicon--valid {
+  border: 2px solid #279e7a;
+}
 .modal__checklabel .modal__checkicon--disabled, .modal__check2label .modal__checkicon--disabled {
   border: 2px solid #c4c4c4;
-  opacity: 0.3;
+  opacity: 0.5;
 }
 .modal__check2label .modal__checkicon {
   border-radius: 0.25rem;
@@ -601,6 +608,7 @@ body {
 }
 .modal .error {
   font-size: 0.875rem;
+  color: #FF4E60;
 }
 .modal .error--invalid {
   color: #FF4E60;

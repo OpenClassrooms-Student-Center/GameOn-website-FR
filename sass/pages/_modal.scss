@@ -30,11 +30,11 @@
             height: auto;
         }
     }
-    &__modal__ {
+    &__modal__body {
         padding: 15px 8%;
         margin: 15px auto;
     }
-    label {
+    &__town, label {
         font-size: rem(14);
         font-weight: 400;
         display: inline-block;
@@ -92,16 +92,22 @@
                 transition: 0.3s;
                 opacity: 0;
             }
+            &--error {
+                border: 2px solid $color-error;
+            }
+            &--valid {
+                border: 2px solid $color-valid;
+            }
             &--disabled {
                 border: 2px solid $color-disabled;
-                opacity: 0.3;
+                opacity: 0.5;
             }
         }
     }
     &__check2label .modal__checkicon {
         border-radius: rem(4);
         border: 0;
-        background: $color-disabled;
+        background: #c4c4c4;
         &::after {
             width: rem(12);
             height: rem(8);
@@ -185,6 +191,7 @@
     }
     .error {
         font-size: rem(14);
+        color: $color-error;
         &--invalid {
             color: $color-error;
         }
