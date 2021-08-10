@@ -56,5 +56,86 @@ buttonClose.addEventListener("click", closeModal);
 function closeModal() {
   modalbg.style.display = "none";
 };
+// rest error message
+function restErrorMessage(){
+  errorFirstName.textContent = "";
+  errorLastName.textContent = "";
+  errorEmail.textContent = "";
+  errorBirthdate.textContent = "";
+  errorNumberTournaments.textContent = "";
+  errorCity.textContent = "";
+  errorCheck.textContent = "";
+} 
+//Form input checks
+
+function validate(e) {
+  restErrorMessage ()
+  var isValid = true;
+  //verification the first name is empty or less than 2 characters
+  if (!firstName.value || firstName.value.length <= 2 || regexLettres.test(firstName.value) == false) {
+    errorFirstName.textContent = "Le prénom doit comporter 2 charactères minimum sans accent et uniquement des lettres.";
+    errorFirstName.style.fontSize = "12px";
+    errorFirstName.style.color = "red";
+    isValid = false;
+  }
+
+  /*verification the name is empty or less than 2 characters or contains numbers*/
+
+  if (!lastName.value || lastName.value.length <= 2 || regexLettres.test(lastName.value) == false) {
+    errorLastName.textContent = "Le nom doit comporter 2 charactères minimum sans accent et uniquement des lettres.."
+    errorLastName.style.fontSize = "12px";
+    errorLastName.style.color = "red";
+    isValid = false;
+  }
+
+  //verivication the email is valid or not 
+  if (regexMessagerie.test(email.value) == false) {
+    errorEmail.textContent = "L'adresse de messagerie n'est pas valide.."
+    errorEmail.style.fontSize = "12px";
+    errorEmail.style.color = "red";
+    isValid = false;
+  }
+  if (!regexbirthdate.test(birthdate.value)) {
+    errorBirthdate.textContent = "La date de naissance n'est pas valide.."
+    errorBirthdate.style.fontSize = "12px";
+    errorBirthdate.style.color = "red";
+    isValid = false;
+  }
+  if (!numberTournaments.value) {
+    errorNumberTournaments.textContent = "Vous devez entrer un nombre dans ce champ.."
+    errorNumberTournaments.style.fontSize = "12px";
+    errorNumberTournaments.style.color = "red";
+    isValid = false;
+  }
+
+  //test if one of the cities is checked otherwise error message
+  if (!((nyCity.checked) || (sfCity.checked) || (seattleCity.checked) ||
+    (chicagoCity.checked) || (bostonCity.checked) || (portlandCity.checked))) {
+    errorCity.textContent = "Vous devez sélectionner une ville";
+    errorCity.style.fontSize = "12px";
+    errorCity.style.color = "red";
+    isValid = false;
+  }
+
+  //check if checked
+  if (!focuscgu1.checked) {
+    errorCheck.textContent = "Vous devez accepter les conditions d'utilisation";
+    errorCheck.style.fontSize = "12px";
+    errorCheck.style.color = "red";
+    isValid = false;
+  }
+  // if is valid true display a thank  message
+  if (isValid) {
+    containerForm.textContent = "Merci, votre formulaire nous a bien été transmis";
+    containerForm.style.fontFamily = "DM Sans";
+    containerForm.style.height = "700px";
+    containerForm.style.paddingTop = "300px";
+    containerForm.style.paddingLeft = "100px";
+    containerForm.style.paddingRight = "100px";
+    boutonClose.style.display = "block";
+    boutonClose.addEventListener("click", closeModal);
+  }
+  return isValid;
+}
 
 
