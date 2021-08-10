@@ -49,5 +49,12 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.style.display = "block";
 }
+// listener closing form when clicking on the cross
+buttonClose.addEventListener("click", closeModal);
+
+//Form closing function when clicking on the cross
+function closeModal() {
+  modalbg.style.display = "none";
+};
 
 
