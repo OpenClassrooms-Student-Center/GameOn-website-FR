@@ -79,8 +79,8 @@
             transition: 0.3s;
             &::after {
                 content: "";
-                width: 13px;
-                height: 13px;
+                width: rem(12);
+                height: rem(12);
                 background-color: $color-valid;
                 border-radius: 50%;
                 text-indent: 29px;
@@ -100,7 +100,7 @@
             }
             &--disabled {
                 border: 2px solid $color-disabled;
-                opacity: 0.5;
+                opacity: 0.3;
             }
         }
     }

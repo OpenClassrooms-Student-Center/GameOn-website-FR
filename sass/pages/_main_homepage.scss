@@ -10,16 +10,22 @@
         padding: rem(0);
     }
     @include desktop {
-        max-width: rem(1024);
+        max-width: rem(1440);
     }
     &__container {
         position: relative;
         width: 100%;
         display: flex;
+        margin: 0 auto;
         flex-wrap: wrap;
         justify-content: center;
+        @include tablet {
+            max-width: rem(1240);
+            min-height: 40vh;
+        }
         @include desktop {
-            min-height: 93vh;
+            max-width: rem(1240);
+            min-height: 70vh;
         }
     }
     &__content {
@@ -29,15 +35,17 @@
         position: relative;
         @include tablet {
             border-radius: rem(8) rem(8) rem(0) rem(0);
-            padding: rem(30) rem(0);
+            padding: rem(30);
             color: #fff;
             background-color: $color-secondary;
         }
         @include desktop {
+            border-radius: rem(8) rem(0) rem(0) rem(8);
             position: absolute;
+            padding: rem(70);
             left: 0;
             width: rem(500);
-            height: 93vh;
+            height: 80vh;
             align-content: flex-start;
         }
     }
@@ -49,14 +57,12 @@
         @include tablet {
             width: 80%;
             font-size: rem(65);
-            margin-left: rem(20);
         }
         @include desktop {
             font-size: rem(96);
             height: rem(300);
             font-weight: normal;
             white-space: nowrap;
-            margin-left: rem(65);
         }
     }
     &__txt {
@@ -65,20 +71,16 @@
         margin-bottom: rem(19);
         @include tablet {
             font-size: rem(24);
-            margin-left: rem(20);
-        }
-        @include desktop {
-            margin-left: rem(65);
         }
     }
     &__img {
         width: 100%;
-        background: rgb(194, 63, 63);
+        height: 100%;
         @include tablet {   
-        height: 40vh;
+            height: 45vh;
         }
         @include desktop {
-            height: 93vh;
+            height: 80vh;
             border-radius: rem(8) rem(8) rem(8) rem(8);
         }
         & img {

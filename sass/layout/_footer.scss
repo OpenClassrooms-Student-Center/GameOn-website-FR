@@ -1,5 +1,6 @@
 .footer {
     width: 100%;
+    height: 10vh;
     min-width: rem(320);
     margin: 0 auto;
     padding: 0 rem(30);
@@ -10,5 +11,10 @@
     padding: rem(35.8) rem(0) rem(20) rem(0);
     @include tablet {
         max-width: rem(768);
+    }
+    @include desktop {
+        max-width: rem(1240);
+        justify-content: flex-start;
+        font-size: rem(18);
     }
 }

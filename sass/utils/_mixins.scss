@@ -17,13 +17,7 @@
 }
 
 @mixin desktop {
-  @media (min-width: 1024px) {
-      @content;
-  }
-}
-
-@mixin laptop {
-  @media (min-width: 1200px) {
+  @media (min-width: 1440px) {
       @content;
   }
 }

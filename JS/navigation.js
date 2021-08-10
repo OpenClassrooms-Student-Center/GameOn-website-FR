@@ -8,7 +8,7 @@ const btnCloseRegistration = document.querySelector('.modal__closeregistration')
 const blockModal = document.querySelector('.modal');
 let modal = false;
 
-const allItemNav = document.querySelectorAll('.navbar__link');
+const allItemNav = document.querySelectorAll('.navbar__item');
 
 //----------------------------- Menu Header  -----------------------------//
 
@@ -17,7 +17,13 @@ function mobileMenu() {
   navbarMenu.classList.toggle("active");
 }
 // Faire apparaitre au click
-document.addEventListener("click", mobileMenu);
+function clickAdministration(e) {
+  if (e.target.classList.contains("hamburger")) {
+    mobileMenu();
+  }
+}
+document.body.addEventListener('click', clickAdministration, false);
+// document.addEventListener("click", mobileMenu);
 // sur le hamburger
 hamburger.addEventListener("click", mobileMenu);
 // sur tout les liens
@@ -48,16 +54,16 @@ btnMainOpen.addEventListener("click", () => {
   blockModal.style.display = "block";
   blockModal.removeAttribute('aria-hidden');
   blockModal.setAttribute('aria-modal', 'true');
-  document.removeEventListener("click", mobileMenu);
+  //document.removeEventListener("click", mobileMenu);
 });
 // Fermeture
 btnModCross.addEventListener("click", () => {
-  modal = false;
-  //console.log(modal);
+  //modal = false;
+  console.log(modal);
   blockModal.style.display = "none";
   blockModal.setAttribute('aria-hidden', 'true');
   blockModal.removeAttribute('aria-modal');
-  document.addEventListener("click", mobileMenu);
+  //document.addEventListener("click", mobileMenu);
 });
 
 //----------------------------- Gestion de formulaire -----------------------------//
@@ -174,6 +180,7 @@ const validateInputBirthdate = (e) => {
   validateBirthdate(birthdate, birthdateInput)
 }
 
+// Gestion de la date pour le maximum d'années
 let today = new Date();
 let dd = today.getDate();
 let mm = today.getMonth() + 1 // janvier est 0
@@ -210,7 +217,7 @@ const validateTournaments = (tournaments, input) => {
       inputs.checked = false
       inputs.disabled = true;
       let inputCheckIcon = inputs.nextElementSibling.childNodes[1];
-      inputCheckIcon.classList.add('modal__checkicon--disabled')
+      inputCheckIcon.classList.add('modal__checkicon--disabled');
     }
   } else if (tournaments == "") {
     input.classList.add('modal__input--error');
@@ -221,7 +228,7 @@ const validateTournaments = (tournaments, input) => {
       inputs.checked = false
       inputs.disabled = true;
       let inputCheckIcon = inputs.nextElementSibling.childNodes[1];
-      inputCheckIcon.classList.add('modal__checkicon--disabled')
+      inputCheckIcon.classList.add('modal__checkicon--disabled');
     }
   } else {
     input.classList.add('modal__input--error');
@@ -233,7 +240,7 @@ const validateTournaments = (tournaments, input) => {
 const validateInputTournaments = (e) => {
   const tournaments = e.target.value;
 
-  validateTournaments(tournaments, tournamentsInput)
+  validateTournaments(tournaments, tournamentsInput);
 }
 
 // Checkbox
@@ -259,42 +266,39 @@ function verifyNumberCheck(e) {
 function checkBoxIsValid(value) {
   let errorTown = document.querySelector('#error-town');
   if (value > 0) {
-    errorTown.innerHTML = ""
+    errorTown.innerHTML = "";
     return true;
   } else {
-    errorTown.innerHTML = "Merci de valider au moins une ville"
+    errorTown.innerHTML = "Merci de valider au moins une ville";
     return false;
   }
   //return value > 1 ? true : false;
 }
 
 function checkRequiredIsValid() {
-  // let checkBox1 = document.querySelector("#checkbox1");
-  //     if (checkBox1.checked){
-  //     return true
-  //   } else {
-  //     document.querySelector("#error-quantity").innerHTML = "Merci de cocher cette case pour valider le formulaire";
-  //     return false
-  //   }
+  if (document.querySelector("#checkbox1").checked) {
+    return document.querySelector("#checkbox1").checked;
+  } else {
+    document.querySelector('#error-quantity').innerHTML = "Vous devez vérifier que vous acceptez les termes et conditions.";
+  }
   //return document.querySelector("#checkbox1").checked ? true : false;
-  return document.querySelector("#checkbox1").checked;
 }
 
 // Compilation des retour true/false de chaque value
 const firstNameFormValid = () => {
-  return nameIsValid(firstNameInput.value)
+  return nameIsValid(firstNameInput.value);
 }
 const lastNameFormValid = () => {
-  return nameIsValid(lastNameInput.value)
+  return nameIsValid(lastNameInput.value);
 }
 const emailFormValid = () => {
-  return emailIsValid(emailInput.value)
+  return emailIsValid(emailInput.value);
 }
 const birthdateFormValid = () => {
-  return birthdateIsValid(birthdateInput.value)
+  return birthdateIsValid(birthdateInput.value);
 }
 const tournamentsFormValid = () => {
-  return tournamentsIsValid(tournamentsInput.value)
+  return tournamentsIsValid(tournamentsInput.value);
 }
 const checkboxFormValid = () => {
   return checkBoxIsValid(count);
@@ -302,8 +306,8 @@ const checkboxFormValid = () => {
 const formIsValid = () => {
   return firstNameFormValid() && lastNameFormValid() && emailFormValid() && birthdateFormValid() && tournamentsFormValid() && checkboxFormValid() && checkRequiredIsValid()
 }
-
-function ifInputNotFill(input){
+// error des values non vide au submit
+function ifInputNotFill(input) {
   if (input.value == "") {
     input.classList.add('modal__input--error');
     input.classList.remove('modal__input--valid');
@@ -311,22 +315,31 @@ function ifInputNotFill(input){
     input.nextElementSibling.innerHTML = "Veuillez remplir ce champ";
   }
 }
+// reset au submit
+function ifsubmitReset(input) {
+  input.value = "";
+}
 
 const submit = (e) => {
   if (formIsValid()) {
     // submit the form
     e.preventDefault();
-    modifyModal()
+    modifyModal();
+    ifsubmitReset(firstNameInput);
+    ifsubmitReset(lastNameInput);
+    ifsubmitReset(emailInput);
+    ifsubmitReset(birthdateInput);
+    ifsubmitReset(tournamentsInput);
     //
     alert('formulaire validé');
   } else {
     // do not submit form
+    e.preventDefault();
     ifInputNotFill(firstNameInput);
     ifInputNotFill(lastNameInput);
     ifInputNotFill(emailInput);
     ifInputNotFill(birthdateInput);
     ifInputNotFill(tournamentsInput);
-    ifInputNotFill(firstNameInput);
     // console.log(nameIsValid(firstNameInput.value))
     // console.log(nameIsValid(lastNameInput.value))
     // console.log(emailIsValid(emailInput.value))
@@ -334,7 +347,6 @@ const submit = (e) => {
     // console.log(tournamentsIsValid(tournamentsInput.value))
     // console.log(checkBoxIsValid(count))
     // console.log(checkRequiredIsValid())
-    e.preventDefault();
   }
 }
 
@@ -363,17 +375,17 @@ function modifyModal() {
   newP.classList.add("modal__greetings");
   newBtn.classList.add("modal__closeregistration");
   document.querySelector(".modal__greetings").innerHTML = "Merci ! <br>Votre réservation a été reçue."
-  document.querySelector(".modal__closeregistration").innerHTML = "Fermer"
+  document.querySelector(".modal__closeregistration").innerHTML = "Fermer";
   // fermer la seconde modale
   newBtn.addEventListener("click", () => {
-    modal = false;
     //on supprime la div crée
     modalBody.style.display = "block";
     modalContent.removeChild(newElt);
-    // on maque la modale
+    // on masque la modale
+    modal = false;
     blockModal.style.display = "none";
     blockModal.setAttribute('aria-hidden', 'true');
     blockModal.removeAttribute('aria-modal');
-    document.addEventListener("click", mobileMenu);
+    //document.addEventListener("click", mobileMenu);
   });
 }
