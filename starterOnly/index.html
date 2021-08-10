@@ -57,8 +57,8 @@
         <div class="modal-body">
           <form name="reserve" action="index.html" method="get" onsubmit="return validate();" id="form">
             <div class="formData">
-              <label for= "first">Prénom</label><br>
-              <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
+              <label for="first">Prénom</label><br>
+              <input class="text-control" type="text" id="first" name="first" /><br>
               <span id="error_firstName"></span>
             </div>
             <div class="formData">
@@ -106,9 +106,9 @@
               <input class="checkbox-input" type="radio" id="location6" name="location" value="Portland" />
               <label class="checkbox-label" for="location6">
                 <span class="checkbox-icon"></span>
-                Portland</label>
-                <span id="error_cities"></span>
-              </div>
+                Portland</label><br>
+              <span id="error_cities"></span>
+            </div>
 
             <div class="formData">
               <input class="checkbox-input" type="checkbox" id="checkbox1" checked />
@@ -125,9 +125,11 @@
               </label>
               <br>
             </div>
-            <input  id="submitButon" class="btn-submit" type="submit" class="button" value="C'est parti" />
+            <input id="submitButon" class="btn-submit" type="submit" class="button" value="C'est parti" />
           </form>
         </div>
+        <!--Ajout du bouton de fermeture de la page de remerciement-->
+        <input class="btn-close" type="submit" value="fermer" />
       </div>
     </div>
   </main>
