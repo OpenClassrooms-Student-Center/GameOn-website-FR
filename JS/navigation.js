@@ -16,13 +16,7 @@ function mobileMenu() {
   hamburger.classList.toggle("active");
   navbarMenu.classList.toggle("active");
 }
-// Faire apparaitre au click
-function clickAdministration(e) {
-  if (e.target.classList.contains("hamburger")) {
-    mobileMenu();
-  }
-}
-document.body.addEventListener('click', clickAdministration, false);
+
 // document.addEventListener("click", mobileMenu);
 // sur le hamburger
 hamburger.addEventListener("click", mobileMenu);
