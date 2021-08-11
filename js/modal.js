@@ -363,8 +363,8 @@ function formValidated() {
 
   $('.content').add('div.success-message');
 
-  $('.success-message').style('text-align: center; margin: 30px').html(`
-    <p style="margin-bottom: 16px">
+  $('.success-message').html(`
+    <p>
       Merci ! Votre réservation a été reçue.
     </p>
     <button class="btn-submit" onclick="closeModal();">Fermer</button>

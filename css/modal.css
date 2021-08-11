@@ -66,10 +66,9 @@ img {
 }
 
 @media screen and (max-width: 540px) {
-  .topnav {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  .topnav .header-logo {
+    margin-top: 16px;
+    align-self: first baseline;
   }
   .topnav a {
     display: none;
@@ -80,7 +79,11 @@ img {
     width: 80%;
   }
   .hero-section .hero-content .hero-headline {
-    font-size: 4rem;
+    font-size: 2.5rem;
+  }
+  .hero-section .hero-content .hero-text {
+    font-size: 1.1rem;
+    margin-top: 30px;
   }
 }
 
@@ -167,6 +170,14 @@ main {
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
+}
+
+.success-message {
+  height: 70vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 11fr 1fr;
+  align-items: center;
 }
 
 label {
@@ -486,6 +497,10 @@ footer {
 }
 
 @media screen and (max-width: 800px) {
+  .topnav .header-logo {
+    margin-top: 16px;
+    align-self: first baseline;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
