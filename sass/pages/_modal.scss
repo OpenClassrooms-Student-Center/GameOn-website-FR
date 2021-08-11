@@ -26,7 +26,6 @@
         @include tablet {
             max-width: rem(500);
             margin: 5% auto;
-            margin: rem(84) auto;
             height: auto;
         }
     }
@@ -100,7 +99,7 @@
             }
             &--disabled {
                 border: 2px solid $color-disabled;
-                opacity: 0.3;
+                opacity: 0.5;
             }
         }
     }
@@ -174,8 +173,7 @@
         }
     }
     &__registration {
-        min-height: rem(700);
-        position: relative;
+        min-height: rem(700.63);
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -184,6 +182,7 @@
     &__greetings {
         width: rem(310);
         height: rem(155);
+        margin: 0 auto;
         text-align: center;
         font-weight: 400;
         font-size: rem(36);

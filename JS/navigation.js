@@ -12,53 +12,62 @@ const allItemNav = document.querySelectorAll('.navbar__item');
 
 //----------------------------- Menu Header  -----------------------------//
 
+// la cible n'est ni header ni l'un de ses descendants ; fermer le menu
+window.addEventListener("click", function (e) {
+  if (!e.target.closest("header")) {
+    hamburger.classList.remove("active");
+    navbarMenu.classList.remove("active");
+  }
+})
+
+// Toggle du hmaburger et du menu
 function mobileMenu() {
   hamburger.classList.toggle("active");
   navbarMenu.classList.toggle("active");
 }
 
-// document.addEventListener("click", mobileMenu);
-// sur le hamburger
-hamburger.addEventListener("click", mobileMenu);
-// sur tout les liens
-allItemNav.forEach(item => {
-  item.addEventListener('click', () => {
-    mobileMenu();
+// Empecher le click si l'écran autre que Mobile
+const isMobile = !window.matchMedia("(min-width: 768px)").matches;
+console.log(isMobile)
+if (isMobile) {
+  // sur le hamburger
+  hamburger.addEventListener("click", mobileMenu);
+  // sur tout les liens
+  allItemNav.forEach(item => {
+    item.addEventListener('click', () => {
+      mobileMenu();
+    });
   });
-});
+}
 
-// on stopPropagation pour menu active && hamburger
+// StopPropagation des menus à la modale True
 if (modal === true) {
   navbarMenu.addEventListener("click", function (e) {
     e.stopPropagation;
-    mobileMenu();
   });
   hamburger.addEventListener("click", function (e) {
     e.stopPropagation;
-    mobileMenu();
   });
 }
 
 //----------------------------- Modale -----------------------------//
 
 // Ouverture
-btnMainOpen.addEventListener("click", () => {
+function openModal() {
   modal = true;
-  //console.log(modal);
   blockModal.style.display = "block";
   blockModal.removeAttribute('aria-hidden');
   blockModal.setAttribute('aria-modal', 'true');
-  //document.removeEventListener("click", mobileMenu);
-});
+}
+btnMainOpen.addEventListener("click", openModal);
 // Fermeture
-btnModCross.addEventListener("click", () => {
-  //modal = false;
-  console.log(modal);
+function closeModal() {
+  modal = false;
   blockModal.style.display = "none";
   blockModal.setAttribute('aria-hidden', 'true');
   blockModal.removeAttribute('aria-modal');
-  //document.addEventListener("click", mobileMenu);
-});
+}
+btnModCross.addEventListener("click", closeModal);
 
 //----------------------------- Gestion de formulaire -----------------------------//
 
@@ -92,22 +101,28 @@ const nameIsEmpty = (name) => {
   return name.trim() == ""
 }
 
-// On stylise si ça passe le .test
+function ifInputValid(input) {
+  input.classList.remove('modal__input--error');
+  input.classList.add('modal__input--valid');
+  input.nextElementSibling.classList.remove('error--invalid');
+}
+
+function ifInputInvalid(input) {
+  input.classList.add('modal__input--error');
+  input.classList.remove('modal__input--valid');
+  input.nextElementSibling.classList.add('error--invalid');
+}
+
+// On lance au focusOut
 const validateName = (name, input) => {
   if (nameIsValid(name)) {
-    input.classList.remove('modal__input--error');
-    input.classList.add('modal__input--valid');
-    input.nextElementSibling.classList.remove('error--invalid');
+    ifInputValid(input);
     input.nextElementSibling.innerHTML = "";
   } else if (nameIsEmpty(name)) {
-    input.classList.add('modal__input--error');
-    input.classList.remove('modal__input--valid');
-    input.nextElementSibling.classList.add('error--invalid');
+    ifInputInvalid(input);
     input.nextElementSibling.innerHTML = "Veuillez remplir ce champ"
   } else {
-    input.classList.add('modal__input--error');
-    input.classList.remove('modal__input--valid');;
-    input.nextElementSibling.classList.add('error--invalid');
+    ifInputInvalid(input);
     input.nextElementSibling.innerHTML = "Le champ accepte les lettres et les tirets maximum 20 caractères";
   }
 }
@@ -126,52 +141,40 @@ const validateInputLastName = (e) => {
 // Email
 const validateEmail = (email, input) => {
   if (emailIsValid(email)) {
-    testValidation(input);
+    ifInputValid(input);
     input.nextElementSibling.innerHTML = "";
   } else if (email.trim() == "") {
-    input.classList.add('modal__input--error');
-    input.classList.remove('modal__input--valid');
-    input.nextElementSibling.classList.add('error--invalid');
-    input.nextElementSibling.innerHTML = "Veuillez remplir ce champ"
+    ifInputInvalid(input);
+    input.nextElementSibling.innerHTML = "Veuillez remplir ce champ";
   } else {
-    input.classList.add('modal__input--error');
-    input.classList.remove('modal__input--valid');;
-    input.nextElementSibling.classList.add('error--invalid');
+    ifInputInvalid(input);
     input.nextElementSibling.innerHTML = "Le champ email n'est pas valide";
   }
 }
 const validateInputEmail = (e) => {
-  const email = e.target.value
+  const email = e.target.value;
 
-  validateEmail(email, emailInput)
+  validateEmail(email, emailInput);
 }
 
 // Date de naissance
 const validateBirthdate = (birthdate, input) => {
   if (birthdateIsValid(birthdate)) {
-    testValidation(input);
+    ifInputValid(input);
     input.nextElementSibling.innerHTML = "";
   } else if (birthdate == "") {
-    input.classList.add('modal__input--error');
-    input.classList.remove('modal__input--valid');
-    input.nextElementSibling.classList.add('error--invalid');
+    ifInputInvalid(input);
     input.nextElementSibling.innerHTML = "Veuillez remplir ce champ";
   } else {
-    input.classList.add('modal__input--error');
-    input.classList.remove('modal__input--valid');;
-    input.nextElementSibling.classList.add('error--invalid');
+    ifInputInvalid(input);
     input.nextElementSibling.innerHTML = "Le champ date de naissance n'est pas valide";
   }
 }
-function testValidation(input) {
-  input.classList.remove('modal__input--error');
-  input.classList.add('modal__input--valid');
-  input.nextElementSibling.classList.remove('error--invalid');
-}
-const validateInputBirthdate = (e) => {
-  const birthdate = e.target.value
 
-  validateBirthdate(birthdate, birthdateInput)
+const validateInputBirthdate = (e) => {
+  const birthdate = e.target.value;
+
+  validateBirthdate(birthdate, birthdateInput);
 }
 
 // Gestion de la date pour le maximum d'années
@@ -192,9 +195,7 @@ document.querySelector("#birthdate").setAttribute("max", today);
 // Quantité de tournois
 const validateTournaments = (tournaments, input) => {
   if (tournamentsIsValid(tournaments) && tournaments > 0) {
-    input.classList.remove('modal__input--error');
-    input.classList.add('modal__input--valid');
-    input.nextElementSibling.classList.remove('error--invalid');
+    ifInputValid(input);
     input.nextElementSibling.innerHTML = "";
     for (let inputs of checkboxElement) {
       inputs.disabled = false;
@@ -203,9 +204,7 @@ const validateTournaments = (tournaments, input) => {
       //console.log(inputs);
     }
   } else if (parseInt(tournaments) === 0) {
-    input.classList.remove('modal__input--error');
-    input.classList.add('modal__input--valid');
-    input.nextElementSibling.classList.remove('error--invalid');
+    ifInputValid(input);
     input.nextElementSibling.innerHTML = "";
     for (let inputs of checkboxElement) {
       inputs.checked = false
@@ -214,9 +213,7 @@ const validateTournaments = (tournaments, input) => {
       inputCheckIcon.classList.add('modal__checkicon--disabled');
     }
   } else if (tournaments == "") {
-    input.classList.add('modal__input--error');
-    input.classList.remove('modal__input--valid');
-    input.nextElementSibling.classList.add('error--invalid')
+    ifInputInvalid(input);
     input.nextElementSibling.innerHTML = "Veuillez remplir ce champ";
     for (let inputs of checkboxElement) {
       inputs.checked = false
@@ -225,9 +222,7 @@ const validateTournaments = (tournaments, input) => {
       inputCheckIcon.classList.add('modal__checkicon--disabled');
     }
   } else {
-    input.classList.add('modal__input--error');
-    input.classList.remove('modal__input--valid');
-    input.nextElementSibling.classList.add('error--invalid');
+    ifInputInvalid(input);
     input.nextElementSibling.innerHTML = "Veuillez remplir ce champ";
   }
 }
@@ -240,6 +235,13 @@ const validateInputTournaments = (e) => {
 // Checkbox
 const checkboxElement = document.querySelectorAll("input[name='location']");
 let count = 0;
+
+for (let inputs of checkboxElement) {
+  inputs.checked = false
+  inputs.disabled = true;
+  let inputCheckIcon = inputs.nextElementSibling.childNodes[1];
+  inputCheckIcon.classList.add('modal__checkicon--disabled');
+}
 
 for (let i = 0; i < checkboxElement.length; i++) {
   checkboxElement[i].addEventListener("click", verifyNumberCheck);
@@ -268,7 +270,6 @@ function checkBoxIsValid(value) {
   }
   //return value > 1 ? true : false;
 }
-
 function checkRequiredIsValid() {
   if (document.querySelector("#checkbox1").checked) {
     return document.querySelector("#checkbox1").checked;
@@ -300,16 +301,15 @@ const checkboxFormValid = () => {
 const formIsValid = () => {
   return firstNameFormValid() && lastNameFormValid() && emailFormValid() && birthdateFormValid() && tournamentsFormValid() && checkboxFormValid() && checkRequiredIsValid()
 }
-// error des values non vide au submit
+
+// Values "" au submit
 function ifInputNotFill(input) {
   if (input.value == "") {
-    input.classList.add('modal__input--error');
-    input.classList.remove('modal__input--valid');
-    input.nextElementSibling.classList.add('error--invalid');
+    ifInputInvalid(input);
     input.nextElementSibling.innerHTML = "Veuillez remplir ce champ";
   }
 }
-// reset au submit
+// Reset au submit
 function ifsubmitReset(input) {
   input.value = "";
 }
@@ -353,33 +353,29 @@ form.addEventListener('submit', submit);
 
 //----------------------------- Fin de gestion du formulaire début de la modale de remerciement -----------------------------//
 
-function modifyModal() {
-  let modalBody = document.querySelector('.modal__body');
-  let modalContent = document.querySelector('.modal__content');
-  // on cache le formulaire
-  modalBody.style.display = "none";
-  let newElt = document.createElement("div");
-  modalContent.appendChild(newElt);
-  newElt.classList.add("modal__registration");
-  let modalRegistration = document.querySelector('.modal__registration');
+function createModalRegistration() {
+  const modalBody = document.querySelector('.modal__body');
+  const newElt = document.createElement("div");
+  modalBody.appendChild(newElt);
+  modalBody.classList.add('modal__registration')
   const newP = document.createElement("p");
   const newBtn = document.createElement("button");
-  modalRegistration.appendChild(newP);
-  modalRegistration.appendChild(newBtn);
+  newElt.appendChild(newP);
+  newElt.appendChild(newBtn);
   newP.classList.add("modal__greetings");
   newBtn.classList.add("modal__closeregistration");
   document.querySelector(".modal__greetings").innerHTML = "Merci ! <br>Votre réservation a été reçue."
   document.querySelector(".modal__closeregistration").innerHTML = "Fermer";
-  // fermer la seconde modale
   newBtn.addEventListener("click", () => {
-    //on supprime la div crée
-    modalBody.style.display = "block";
-    modalContent.removeChild(newElt);
-    // on masque la modale
-    modal = false;
-    blockModal.style.display = "none";
-    blockModal.setAttribute('aria-hidden', 'true');
-    blockModal.removeAttribute('aria-modal');
-    //document.addEventListener("click", mobileMenu);
+    //on supprime la div attachée
+    modalBody.removeChild(newElt);
+    // on masque la modale et on remet le form
+    form.style.display = "block";
+    closeModal()
   });
+}
+
+function modifyModal() {
+  form.style.display = "none";
+  createModalRegistration();
 }

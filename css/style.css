@@ -118,7 +118,9 @@ body {
 
 .modal__closeregistration {
   position: absolute;
-  bottom: 0;
+  left: 50%;
+  margin-left: -20%;
+  bottom: 3.75rem;
 }
 
 .header {
@@ -156,7 +158,7 @@ body {
   }
 }
 .header .navbar__logo {
-  background: url(/images/Logo.png) no-repeat center;
+  background: url(../images/Logo.png) no-repeat center;
   background-size: contain;
   width: 6.4375rem;
   height: 1.25rem;
@@ -174,6 +176,7 @@ body {
   }
 }
 .header .navbar .hamburger {
+  padding: 0.3125rem;
   cursor: pointer;
 }
 .header .navbar .hamburger.active .hamburger__bar:nth-child(1) {
@@ -226,6 +229,11 @@ body {
     box-shadow: none;
   }
 }
+@media (min-width: 1440px) {
+  .header .navbar__menu {
+    width: 70%;
+  }
+}
 .header .navbar__item {
   width: 100%;
   height: 100%;
@@ -275,7 +283,7 @@ body {
   .header .navbar__link {
     font-size: 1.25rem;
     margin-left: 0rem;
-    padding: 0.9375rem 0.3125rem;
+    padding: 0.9375rem;
   }
 }
 
@@ -470,7 +478,6 @@ body {
   .modal__content {
     max-width: 31.25rem;
     margin: 5% auto;
-    margin: 5.25rem auto;
     height: auto;
   }
 }
@@ -545,7 +552,7 @@ body {
 }
 .modal__checklabel .modal__checkicon--disabled, .modal__check2label .modal__checkicon--disabled {
   border: 2px solid #c4c4c4;
-  opacity: 0.3;
+  opacity: 0.5;
 }
 .modal__check2label .modal__checkicon {
   border-radius: 0.25rem;
@@ -615,8 +622,7 @@ body {
   transform: rotate(-45deg);
 }
 .modal__registration {
-  min-height: 43.75rem;
-  position: relative;
+  min-height: 43.789375rem;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -625,6 +631,7 @@ body {
 .modal__greetings {
   width: 19.375rem;
   height: 9.6875rem;
+  margin: 0 auto;
   text-align: center;
   font-weight: 400;
   font-size: 2.25rem;

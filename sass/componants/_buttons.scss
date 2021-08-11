@@ -59,5 +59,7 @@
 
 .modal__closeregistration {
     position: absolute;
-    bottom: 0;
+    left: 50%;
+    margin-left: -20%;
+    bottom: rem(60);
 }

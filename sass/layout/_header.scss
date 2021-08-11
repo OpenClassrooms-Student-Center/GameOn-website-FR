@@ -25,7 +25,7 @@
             padding: 0;
         }
         &__logo {
-            background: url(/images/Logo.png) no-repeat center;
+            background: url(../images/Logo.png) no-repeat center;
             background-size: contain;
             width: rem(103);
             height: rem(20);
@@ -39,6 +39,7 @@
             }
         }
         .hamburger {
+            padding: rem(5);
             cursor: pointer;
             &.active .hamburger__bar:nth-child(1) {
                 transform: translateY(8px) rotate(45deg);
@@ -86,6 +87,9 @@
                 background-color: transparent;
                 box-shadow: none;
             }
+            @include desktop {
+                width: 70%;
+            }
         }
         &__item {
             width: 100%;
@@ -130,7 +134,7 @@
             @include desktop {
                 font-size: rem(20);
                 margin-left: rem(0);
-                padding: rem(15) rem(5);;
+                padding: rem(15);
             }
         }
     }
