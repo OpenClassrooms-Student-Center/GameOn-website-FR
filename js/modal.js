@@ -228,7 +228,7 @@ function launchModal() {
  /**
   * Close Modal
   */
- function closeModal() {
+function closeModal() {
   $(".bground").style("display: none;");
  }
  
@@ -346,7 +346,7 @@ const rules = (value, flag, compareValue) => {
       return value.length < compareValue;
     }
     case "EMAIL": {
-      return new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/).test(value)
+      return new RegExp(/([a-z0-9]+(?:[._-][a-z0-9]+)*)@([a-z0-9]+(?:[.-][a-z0-9]+)*\.[a-z]{2,})$/).test(value)
     }
     default:
       break;
@@ -399,7 +399,11 @@ function errorMessage(name, message) {
   errorElm.style = "color: red; font-size: 12px";
 
   wrapper.append(errorElm);
-  field.before(wrapper);
+  if (field.getElm().classList.contains("checkbox-input")) {
+    field.before(wrapper);
+  } else {
+    field.after(wrapper);
+  }
 }
 
 /**
