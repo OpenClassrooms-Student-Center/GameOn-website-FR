@@ -176,7 +176,7 @@ main {
   grid-template-rows: 11fr 1fr;
   align-items: center;
   justify-items: center;
-  padding: 32px 0;
+  padding: 32px;
 }
 
 label {
