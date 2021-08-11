@@ -89,6 +89,9 @@ img {
     display: block;
     text-align: left;
   }
+  .checkbox2-label {
+    margin-bottom: 16px;
+  }
 }
 
 @media screen and (max-width: 540px) {
