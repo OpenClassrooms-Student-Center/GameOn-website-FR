@@ -55,6 +55,7 @@ buttonClose.addEventListener("click", closeModal);
 //Form closing function when clicking on the cross
 function closeModal() {
   modalbg.style.display = "none";
+  document.location.reload();
 };
 // rest error message
 function restErrorMessage(){
@@ -130,8 +131,7 @@ function validate(e) {
     containerForm.style.fontFamily = "DM Sans";
     containerForm.style.height = "700px";
     containerForm.style.paddingTop = "300px";
-    containerForm.style.paddingLeft = "100px";
-    containerForm.style.paddingRight = "100px";
+    containerForm.style.textAlign = "center";
     boutonClose.style.display = "block";
     boutonClose.addEventListener("click", closeModal);
   }
