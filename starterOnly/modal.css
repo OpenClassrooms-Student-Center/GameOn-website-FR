@@ -537,3 +537,24 @@ footer {
         opacity: 1;
     }
 }
+
+/* set style page message validation */
+.confirm-validation {
+    display: none;
+    padding: 15px 8%;
+    margin: 15px auto;
+    width: 450px;
+    height: 700px;
+}
+#content-validation-message {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+#content-validation-message > p {
+    margin: auto;
+    text-align: center;
+}

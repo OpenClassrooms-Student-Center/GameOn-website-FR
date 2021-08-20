@@ -12,6 +12,7 @@ const modalbg = document.querySelector('.bground');
 const modalBtn = document.querySelectorAll('.modal-btn');
 const formData = document.querySelectorAll('.formData');
 const closeBtn = document.getElementById('close-btn');
+const closeBtnpage = document.getElementById('close-button-confirmation-page');
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
@@ -26,11 +27,15 @@ function launchModal() {
 // close modal event
 
 closeBtn.addEventListener('click', closeModal);
+closeBtnpage.addEventListener('click', closeModal);
 
 // close Modal function
 
 function closeModal() {
     modalbg.style.display = 'none';
+    document.querySelector('.modal-body').style.display = 'block';
+    document.querySelector('.confirm-validation').style.display = 'none';
+    clearFrom();
 }
 
 // ***************** Implémenter entrées du formulaire*******************
@@ -148,5 +153,23 @@ const validate = () => {
         checkBoxErrorMessageEl.innerHTML = '';
     }
 
-    return isFormValid;
+    if (isFormValid) {
+        document.querySelector('.modal-body').style.display = 'none';
+        document.querySelector('.confirm-validation').style.display = 'block';
+    }
+
+    return false;
+};
+
+//clear form input
+
+const clearFrom = () => {
+    // solution with foreach
+    // const allInputValue = document.querySelectorAll('div.formData input');
+    // console.log(allInputValue);
+    // allInputValue.forEach((inputEl) => (inputEl.value = ''));
+
+    // solution with reset
+    const form = document.querySelector('form');
+    form.reset();
 };
