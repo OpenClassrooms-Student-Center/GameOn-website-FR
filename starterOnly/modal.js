@@ -20,6 +20,7 @@ modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
 // launch modal form
 function launchModal() {
     modalbg.style.display = 'block';
+    document.getElementById('myTopNav').scrollTop();
 }
 
 // ******************* Ferme modal***************
@@ -67,7 +68,10 @@ const validate = () => {
     const isFirstNameValid = Validation.minLength(firstName, 2) && Validation.isRequired(firstName);
     isFormValid = isFormValid && isFirstNameValid;
     //  set error message
-    if (!isFirstNameValid) {
+    if (!Validation.isRequired(firstName)) {
+        firstNameErrorMessageEl.innerHTML = 'Cette case ne peut pas être laissée vide.';
+        firstNameInputEl.classList.add('error-form');
+    } else if (!isFirstNameValid) {
         firstNameErrorMessageEl.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
         firstNameInputEl.classList.add('error-form');
     } else {
@@ -80,7 +84,10 @@ const validate = () => {
     const isLastNameValid = Validation.minLength(lastName, 2) && Validation.isRequired(lastName);
     isFormValid = isFormValid && isLastNameValid;
     // set error message
-    if (!isLastNameValid) {
+    if (!Validation.isRequired(lastName)) {
+        lastNameErrorMessageEl.innerHTML = 'Cette case ne peut pas être laissée vide.';
+        lastNameInputEl.classList.add('error-form');
+    } else if (!isLastNameValid) {
         lastNameErrorMessageEl.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
         lastNameInputEl.classList.add('error-form');
     } else {
@@ -90,10 +97,13 @@ const validate = () => {
 
     //email validation
     const email = emailInputEl.value;
-    const isEmailValid = Validation.checkEmail(email);
+    const isEmailValid = Validation.checkEmail(email) && Validation.isRequired(email);
     isFormValid = isFormValid && isEmailValid;
     // set error message
-    if (!isEmailValid) {
+    if (!Validation.isRequired(email)) {
+        emailErrorMessageEl.innerHTML = 'Cette case ne peut pas être laissée vide.';
+        emailInputEl.classList.add('error-form');
+    } else if (!isEmailValid) {
         emailErrorMessageEl.innerHTML = 'Vous devez entrer votre adresse mail';
         emailInputEl.classList.add('error-form');
     } else {
@@ -164,12 +174,14 @@ const validate = () => {
 //clear form input
 
 const clearFrom = () => {
-    // solution with foreach
-    // const allInputValue = document.querySelectorAll('div.formData input');
-    // console.log(allInputValue);
-    // allInputValue.forEach((inputEl) => (inputEl.value = ''));
+    const allInputValue = document.querySelectorAll('div.formData input');
+    allInputValue.forEach((inputEl) => inputEl.classList.remove('error-form'));
 
     // solution with reset
     const form = document.querySelector('form');
     form.reset();
+
+    const errorMessageElements = document.querySelectorAll('form div.error');
+    console.log(errorMessageElements);
+    errorMessageElements.forEach((element) => (element.innerHTML = ''));
 };

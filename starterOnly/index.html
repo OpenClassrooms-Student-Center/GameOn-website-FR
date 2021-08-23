@@ -12,29 +12,25 @@
         <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" />
     </head>
     <body>
-        <class class="topnav" id="myTopnav">
+        <header class="topnav" id="myTopnav">
             <div class="header-logo">
-                <img alt="logo" src="Logo.png" width="auto" height="auto" />
+                <img alt="logo" src="Logo.png" />
             </div>
-            <div class="main-navbar">
+            <nav class="main-navbar">
                 <a href="#" class="active"><span>Accueil</span></a>
-                <a href="#"><span>Détails de l'évènement</span></a>
                 <a href="#"><span>À propos</span></a>
                 <a href="#"><span>Contact</span></a>
                 <a href="#"><span>Évènements passés</span></a>
                 <a href="javascript:void(0);" class="icon" onclick="editNav()">
                     <i class="fa fa-bars"></i>
                 </a>
-            </div>
-        </class>
+            </nav>
+        </header>
 
         <main>
             <div class="hero-section">
                 <div class="hero-content">
-                    <h1 class="hero-headline">
-                        Marathon national<br />
-                        de jeux vidéos
-                    </h1>
+                    <h1 class="hero-headline">Marathon national de jeux vidéos</h1>
                     <p class="hero-text">
                         Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux réservations... Places
                         limitées !
@@ -55,7 +51,7 @@
                             <div class="formData">
                                 <label for="first">Prénom</label><br />
                                 <input class="text-control" type="text" id="first" name="first" /><br />
-                                <!-- add span "error" -->
+                                <!-- add div "error" -->
                                 <div class="error" id="first-error"></div>
                             </div>
                             <div class="formData">
@@ -84,7 +80,7 @@
                                     min="0"
                                     max="99"
                                 />
-                                <span class="error" id="quantity-error"></span>
+                                <div class="error" id="quantity-error"></div>
                             </div>
                             <p class="text-label">Quelles villes ?</p>
                             <div class="formData">
@@ -164,7 +160,7 @@
                                     J'ai lu et accepté les conditions d'utilisation.
                                 </label>
                                 <br />
-                                <span class="error" id="checkbox-error"></span>
+                                <div class="error" id="checkbox-error"></div>
                                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                                 <label class="checkbox2-label" for="checkbox2">
                                     <span class="checkbox-icon"></span>
