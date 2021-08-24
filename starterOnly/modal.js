@@ -20,7 +20,6 @@ modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
 // launch modal form
 function launchModal() {
     modalbg.style.display = 'block';
-    document.getElementById('myTopNav').scrollTop();
 }
 
 // ******************* Ferme modal***************
@@ -60,6 +59,28 @@ const locationErrorMessageEl = document.getElementById('location-error');
 const checkBox1 = document.getElementById('checkbox1');
 const checkBoxErrorMessageEl = document.getElementById('checkbox-error');
 
+const emailValidation = () => {
+    let isEmailValid = true;
+    const email = emailInputEl.value;
+    if (!Validation.isRequired(email)) {
+        emailErrorMessageEl.innerHTML = 'Cette case ne peut pas être laissée vide.';
+        emailInputEl.classList.add('error-form');
+        isEmailValid = false;
+    } else if (!Validation.checkEmail(email)) {
+        emailErrorMessageEl.innerHTML = 'Adresse e-mail invalide';
+        emailInputEl.classList.add('error-form');
+        isEmailValid = false;
+    } else {
+        emailErrorMessageEl.innerHTML = '';
+        emailInputEl.classList.remove('error-form');
+    }
+
+    return isEmailValid;
+};
+
+// add function for onchange emanil input
+emailInputEl.addEventListener('keyup', emailValidation);
+
 const validate = () => {
     let isFormValid = true;
 
@@ -96,20 +117,8 @@ const validate = () => {
     }
 
     //email validation
-    const email = emailInputEl.value;
-    const isEmailValid = Validation.checkEmail(email) && Validation.isRequired(email);
+    const isEmailValid = emailValidation();
     isFormValid = isFormValid && isEmailValid;
-    // set error message
-    if (!Validation.isRequired(email)) {
-        emailErrorMessageEl.innerHTML = 'Cette case ne peut pas être laissée vide.';
-        emailInputEl.classList.add('error-form');
-    } else if (!isEmailValid) {
-        emailErrorMessageEl.innerHTML = 'Vous devez entrer votre adresse mail';
-        emailInputEl.classList.add('error-form');
-    } else {
-        emailErrorMessageEl.innerHTML = '';
-        emailInputEl.classList.remove('error-form');
-    }
 
     //birthdate validation
     const birthDate = birthDateInputEl.value;
