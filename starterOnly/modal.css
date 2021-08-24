@@ -509,6 +509,14 @@ footer {
     font-size: 36px;
     padding: 40px;
 }
+.valide-form {
+    border: 2px solid green;
+}
+#email-confirmation {
+    color: green;
+    font-size: 10px;
+    font-weight: 400;
+}
 @media screen and(max-width:768px) {
     .confirm-validation {
         width: 358px;

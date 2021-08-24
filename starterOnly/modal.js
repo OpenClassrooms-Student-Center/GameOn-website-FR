@@ -58,94 +58,95 @@ const location6 = document.getElementById('location6');
 const locationErrorMessageEl = document.getElementById('location-error');
 const checkBox1 = document.getElementById('checkbox1');
 const checkBoxErrorMessageEl = document.getElementById('checkbox-error');
-
-const emailValidation = () => {
-    let isEmailValid = true;
-    const email = emailInputEl.value;
-    if (!Validation.isRequired(email)) {
-        emailErrorMessageEl.innerHTML = 'Cette case ne peut pas être laissée vide.';
-        emailInputEl.classList.add('error-form');
-        isEmailValid = false;
-    } else if (!Validation.checkEmail(email)) {
-        emailErrorMessageEl.innerHTML = 'Adresse e-mail invalide';
-        emailInputEl.classList.add('error-form');
-        isEmailValid = false;
-    } else {
-        emailErrorMessageEl.innerHTML = '';
-        emailInputEl.classList.remove('error-form');
-    }
-
-    return isEmailValid;
-};
-
-// add function for onchange emanil input
-emailInputEl.addEventListener('keyup', emailValidation);
-
-const validate = () => {
-    let isFormValid = true;
-
-    //first name validation
+const confirmationMessageEmail = document.getElementById('email-confirmation');
+//first name validation
+const firstNameValidation = () => {
     const firstName = firstNameInputEl.value;
-    const isFirstNameValid = Validation.minLength(firstName, 2) && Validation.isRequired(firstName);
-    isFormValid = isFormValid && isFirstNameValid;
     //  set error message
     if (!Validation.isRequired(firstName)) {
         firstNameErrorMessageEl.innerHTML = 'Cette case ne peut pas être laissée vide.';
         firstNameInputEl.classList.add('error-form');
-    } else if (!isFirstNameValid) {
+        return false;
+    } else if (!Validation.minLength(firstName, 2)) {
         firstNameErrorMessageEl.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
         firstNameInputEl.classList.add('error-form');
+        return false;
     } else {
         firstNameErrorMessageEl.innerHTML = '';
         firstNameInputEl.classList.remove('error-form');
+        return true;
     }
-
-    //last name validation
+};
+// lastname validation
+const lastNameValidation = () => {
     const lastName = lastNameInputEl.value;
-    const isLastNameValid = Validation.minLength(lastName, 2) && Validation.isRequired(lastName);
-    isFormValid = isFormValid && isLastNameValid;
     // set error message
     if (!Validation.isRequired(lastName)) {
         lastNameErrorMessageEl.innerHTML = 'Cette case ne peut pas être laissée vide.';
         lastNameInputEl.classList.add('error-form');
-    } else if (!isLastNameValid) {
+        return false;
+    } else if (!Validation.minLength(lastName, 2)) {
         lastNameErrorMessageEl.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
         lastNameInputEl.classList.add('error-form');
+        return false;
     } else {
         lastNameErrorMessageEl.innerHTML = '';
         lastNameInputEl.classList.remove('error-form');
+        return true;
     }
+};
+// email valiation
+const emailValidation = () => {
+    const email = emailInputEl.value;
+    emailInputEl.classList.remove('error-form');
+    emailInputEl.classList.remove('valide-form');
+    confirmationMessageEmail.innerHTML = ' ';
+    emailErrorMessageEl.innerHTML = '';
 
-    //email validation
-    const isEmailValid = emailValidation();
-    isFormValid = isFormValid && isEmailValid;
-
-    //birthdate validation
-    const birthDate = birthDateInputEl.value;
-    const isBirthDateValid = Validation.checkBirthDate(birthDate);
-    isFormValid = isFormValid && isBirthDateValid;
-    // set error message
-    if (!isBirthDateValid) {
-        birthDateErrorMessageEl.innerHTML = 'Vous devez entrer votre date de naissance';
-        birthDateInputEl.classList.add('error-form');
+    if (!Validation.isRequired(email)) {
+        emailErrorMessageEl.innerHTML = 'Cette case ne peut pas être laissée vide.';
+        emailInputEl.classList.add('error-form');
+        return false;
+    } else if (!Validation.checkEmail(email)) {
+        emailErrorMessageEl.innerHTML = 'Adresse e-mail invalide';
+        emailInputEl.classList.add('error-form');
+        return false;
     } else {
-        birthDateErrorMessageEl.innerHTML = '';
-        birthDateInputEl.classList.remove('error-form');
+        confirmationMessageEmail.innerHTML = ' Adresse e-mail valide';
+        emailInputEl.classList.add('valide-form');
+        return true;
     }
-
-    //participate count validation
+};
+//participate count validation
+const numberParticipateValidation = () => {
     const numberParticipate = numberParticipateEl.value;
-    const isNumberParticipateValid = Validation.checkNumber(numberParticipate);
-    isFormValid = isFormValid && isNumberParticipateValid;
-    if (!isNumberParticipateValid) {
+    if (!Validation.checkNumber(numberParticipate)) {
         numberParticipateErrorMessageEl.innerHTML = 'Vous devez entrer votre date de naissance';
         numberParticipateEl.classList.add('error-form');
+        return false;
     } else {
         numberParticipateErrorMessageEl.innerHTML = '';
         numberParticipateEl.classList.remove('error-form');
+        return true;
     }
+};
 
-    //location validation
+// birthdate validation
+const birthDateValidation = () => {
+    const birthDate = birthDateInputEl.value;
+    // set error message
+    if (!Validation.checkBirthDate(birthDate)) {
+        birthDateErrorMessageEl.innerHTML = 'Vous devez entrer votre date de naissance';
+        birthDateInputEl.classList.add('error-form');
+        return false;
+    } else {
+        birthDateErrorMessageEl.innerHTML = '';
+        birthDateInputEl.classList.remove('error-form');
+        return true;
+    }
+};
+// location valiation
+const locationValidation = () => {
     const locationValues = [
         location1.checked,
         location2.checked,
@@ -154,23 +155,60 @@ const validate = () => {
         location5.checked,
         location6.checked,
     ];
-    const isLocationValid = Validation.isAnyChecked(locationValues);
-    isFormValid = isFormValid && isLocationValid;
     // set error message
-    if (!isLocationValid) {
+    if (!Validation.isAnyChecked(locationValues)) {
         locationErrorMessageEl.innerHTML = 'Vous devez choisir une option';
+        return false;
     } else {
         locationErrorMessageEl.innerHTML = '';
+        return true;
     }
+};
 
-    //is condition accept
+// checkbox validation
+const checkboxValidation = () => {
     const checkBoxValid = checkBox1.checked;
-    isFormValid = isFormValid && checkBoxValid;
     if (!checkBoxValid) {
         checkBoxErrorMessageEl.innerHTML = 'Vous devez vérifier que vous acceptez les termes et conditions.';
+        return false;
     } else {
         checkBoxErrorMessageEl.innerHTML = '';
+        return true;
     }
+};
+
+// add function for onchange emanil input
+emailInputEl.addEventListener('keyup', emailValidation);
+
+const validate = () => {
+    let isFormValid = true;
+    // first name validation
+    const isFirstNameValid = firstNameValidation();
+    isFormValid = isFormValid && isFirstNameValid;
+
+    // lastname validation
+    const isLastNameValid = lastNameValidation();
+    isFormValid = isFormValid && isLastNameValid;
+
+    //email validation
+    const isEmailValid = emailValidation();
+    isFormValid = isFormValid && isEmailValid;
+
+    //participate count validation
+    const isNumberParticipateValid = numberParticipateValidation();
+    isFormValid = isFormValid && isNumberParticipateValid;
+
+    //birthdate validation
+    const isBirthDateValid = birthDateValidation();
+    isFormValid = isFormValid && isBirthDateValid;
+
+    //location validation
+    const isLocationValid = locationValidation();
+    isFormValid = isFormValid && isLocationValid;
+
+    //is condition accept
+    const isCheckBoxValid = checkboxValidation();
+    isFormValid = isFormValid && isCheckBoxValid;
 
     if (isFormValid) {
         document.querySelector('.modal-body').style.display = 'none';
@@ -180,17 +218,23 @@ const validate = () => {
     return false;
 };
 
-//clear form input
-
+//clear form values and validation messages
 const clearFrom = () => {
+    // clear validation class
     const allInputValue = document.querySelectorAll('div.formData input');
-    allInputValue.forEach((inputEl) => inputEl.classList.remove('error-form'));
+    allInputValue.forEach((inputEl) => {
+        inputEl.classList.remove('error-form');
+        inputEl.classList.remove('valide-form');
+    });
 
-    // solution with reset
+    //clear form values
     const form = document.querySelector('form');
     form.reset();
 
+    //clear error messages
     const errorMessageElements = document.querySelectorAll('form div.error');
-    console.log(errorMessageElements);
     errorMessageElements.forEach((element) => (element.innerHTML = ''));
+    // clear email validation message
+    const confirmValidationMessage = document.querySelectorAll('form div.confirmation');
+    confirmValidationMessage.forEach((element) => (element.innerHTML = ''));
 };
