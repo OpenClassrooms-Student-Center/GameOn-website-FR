@@ -97,7 +97,7 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    margin-top: 3px;
   }
 } 
 
@@ -166,7 +166,7 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  background-color: #fff;
 }
 
 .content {
@@ -321,6 +321,7 @@ input[data-error]::after {
 .close:after {
   transform: rotate(-45deg);
 }
+.btn-close,
 .btn-submit,
 .btn-signup {
   background: #fe142f;
@@ -332,6 +333,11 @@ input[data-error]::after {
   color: #fff;
   cursor: pointer;
   border: 0;
+}
+.btn-close{
+  margin: auto;
+  display: none;
+  margin-bottom: 20px;
 }
 /* custom select styles */
 .custom-select {
@@ -479,6 +485,23 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+  img {
+    padding-right: 1rem;
+    width: 140px;
+    margin: 13px;
+}
+.bground {
+
+  background-color:transparent;
+}
+.topnav {
+  overflow: hidden;
+  margin: 3.5%;
+  margin-bottom: -12px;
+}
+.content {
+  margin: 16% auto;
+}
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -495,16 +518,17 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 4.0rem;
     white-space: normal;
   }
   .hero-text {
-    width: unset;
-    font-size: 1.5rem;
+    width: 75%;
+    font-size: 0.8rem;
+    margin-top: 15px;
   }
   .hero-img img {
     border-radius: 10px;
-    margin-top: 40px;
+    margin:auto;
   }
   .hero-section > .btn-signup {
     display: block;
@@ -512,7 +536,7 @@ footer {
     padding: 12px 35px;
   }
   .copyrights {
-    margin-top: 50px;
+    margin-top: 0px;
     text-align: center;
   }
 }
