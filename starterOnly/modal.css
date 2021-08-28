@@ -512,7 +512,7 @@ footer {
 .valide-form {
     border: 2px solid green;
 }
-#email-confirmation {
+.confirmation {
     color: green;
     font-size: 10px;
     font-weight: 400;

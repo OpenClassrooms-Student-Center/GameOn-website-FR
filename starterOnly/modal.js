@@ -59,9 +59,16 @@ const locationErrorMessageEl = document.getElementById('location-error');
 const checkBox1 = document.getElementById('checkbox1');
 const checkBoxErrorMessageEl = document.getElementById('checkbox-error');
 const confirmationMessageEmail = document.getElementById('email-confirmation');
+const confirmationMessageFirstName = document.getElementById('first-confirmation');
+const confirmationMessageLastName = document.getElementById('last-confirmation');
 //first name validation
 const firstNameValidation = () => {
     const firstName = firstNameInputEl.value;
+    firstNameInputEl.classList.remove('error-form');
+    firstNameInputEl.classList.remove('valide-form');
+    confirmationMessageFirstName.innerHTML = ' ';
+    firstNameErrorMessageEl.innerHTML = '';
+
     //  set error message
     if (!Validation.isRequired(firstName)) {
         firstNameErrorMessageEl.innerHTML = 'Cette case ne peut pas être laissée vide.';
@@ -72,14 +79,18 @@ const firstNameValidation = () => {
         firstNameInputEl.classList.add('error-form');
         return false;
     } else {
-        firstNameErrorMessageEl.innerHTML = '';
-        firstNameInputEl.classList.remove('error-form');
+        confirmationMessageFirstName.innerHTML = 'Prenom valide';
+        firstNameInputEl.classList.add('valide-form');
         return true;
     }
 };
 // lastname validation
 const lastNameValidation = () => {
     const lastName = lastNameInputEl.value;
+    lastNameInputEl.classList.remove('error-form');
+    lastNameInputEl.classList.remove('valide-form');
+    confirmationMessageLastName.innerHTML = ' ';
+    lastNameErrorMessageEl.innerHTML = '';
     // set error message
     if (!Validation.isRequired(lastName)) {
         lastNameErrorMessageEl.innerHTML = 'Cette case ne peut pas être laissée vide.';
@@ -90,8 +101,8 @@ const lastNameValidation = () => {
         lastNameInputEl.classList.add('error-form');
         return false;
     } else {
-        lastNameErrorMessageEl.innerHTML = '';
-        lastNameInputEl.classList.remove('error-form');
+        confirmationMessageLastName.innerHTML = 'Nom valide';
+        lastNameInputEl.classList.add('valide-form');
         return true;
     }
 };
