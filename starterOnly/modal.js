@@ -190,6 +190,13 @@ const checkboxValidation = () => {
 
 // add function for onchange emanil input
 emailInputEl.addEventListener('keyup', emailValidation);
+firstNameInputEl.addEventListener('keyup', firstNameValidation);
+lastNameInputEl.addEventListener('keyup', lastNameValidation);
+birthDateInputEl.addEventListener('change', birthDateValidation);
+document
+    .querySelectorAll('input[name="location"]')
+    .forEach((inputEl) => inputEl.addEventListener('change', locationValidation));
+checkBox1.addEventListener('change', checkboxValidation);
 
 const validate = () => {
     let isFormValid = true;
