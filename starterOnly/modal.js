@@ -61,6 +61,7 @@ const checkBoxErrorMessageEl = document.getElementById('checkbox-error');
 const confirmationMessageEmail = document.getElementById('email-confirmation');
 const confirmationMessageFirstName = document.getElementById('first-confirmation');
 const confirmationMessageLastName = document.getElementById('last-confirmation');
+const form = document.getElementById('form-reservation');
 //first name validation
 const firstNameValidation = () => {
     const firstName = firstNameInputEl.value;
@@ -198,7 +199,8 @@ document
     .forEach((inputEl) => inputEl.addEventListener('change', locationValidation));
 checkBox1.addEventListener('change', checkboxValidation);
 
-const validate = () => {
+const validate = (event) => {
+    event.preventDefault();
     let isFormValid = true;
     // first name validation
     const isFirstNameValid = firstNameValidation();
@@ -233,7 +235,7 @@ const validate = () => {
         document.querySelector('.confirm-validation').style.display = 'block';
     }
 
-    return false;
+    return isFormValid;
 };
 
 //clear form values and validation messages
@@ -256,3 +258,5 @@ const clearFrom = () => {
     const confirmValidationMessage = document.querySelectorAll('form div.confirmation');
     confirmValidationMessage.forEach((element) => (element.innerHTML = ''));
 };
+
+form.addEventListener('submit', validate);
