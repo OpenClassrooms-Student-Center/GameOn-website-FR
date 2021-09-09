@@ -404,6 +404,10 @@ input[data-error]::after {
   font-weight: normal;
   font-size: 16px;
 }
+.error-message {
+	color: red;
+	font-size: 12px;
+}
 .hero-section {
   min-height: 93vh;
   border-radius: 10px;
@@ -516,6 +520,8 @@ footer {
     text-align: center;
   }
 }
+
+
 
 @keyframes modalopen {
   from {
