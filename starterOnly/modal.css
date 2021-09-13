@@ -35,10 +35,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -69,7 +69,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
@@ -77,7 +79,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -90,16 +94,16 @@ img {
   }
 }
 
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
     margin-top: -15px;
   }
-} 
+}
 
 main {
   font-size: 130%;
@@ -111,8 +115,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -223,15 +225,31 @@ input {
 .formData[data-error-visible="true"]::after {
   opacity: 1;
 }
-.formData[data-error-visible="true"] .text-control {
+.input-error {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+#error {
+  visibility: hidden;
+  opacity: 0;
+  display: block;
+  font-size: 0.8em;
+  transition: 0.3s;
+  color: #e54858;
+}
+.formData span {
+  visibility: visible;
+  opacity: 1;
+  color: #e54858;
+}
+.input-validate {
+  border: solid 2px green;
+}
+
+/*input[data-error]::after {
+  content: attr(data-error);
+  font-size: 0.4em;
+  color: red;
+}*/
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -526,4 +544,3 @@ footer {
     opacity: 1;
   }
 }
-

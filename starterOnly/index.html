@@ -63,50 +63,58 @@
               onsubmit="return validate();"
             >
               <div
-                class="formData">
-                <label>Prénom</label><br>
+                class="first-formData">
+                <label for="first">Prénom</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
+                onchange="validateFirst()"
+                 
                 /><br>
+                <span id="error"></span>
               </div>
               <div
-                class="formData">
-                <label>Nom</label><br>
+                class="last-formData">
+                <label for="last">Nom</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
+                  onchange="validateLast()"
                 /><br>
+                <span id="error"></span>
               </div>
               <div
-                class="formData">
-                <label>E-mail</label><br>
+                class="email-formData">
+                <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
-                  type="email"
+                  type="text"
                   id="email"
                   name="email"
+                  onchange="validateEmail()"
                 /><br>
+                <span id ="error"></span>
               </div>
               <div
                 class="formData">
-                <label>Date de naissance</label><br>
+                <label for="birthdate">Date de naissance</label><br>
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
                 /><br>
+                <span class="error"></span>
               </div>
               <div
                 class="formData">
-                <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                <input type="number" class="text-control" id="quantity" name="quantity" onchange="validateQuantity()" min="0" max="99">
+                <span id="error"></span>
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
