@@ -23,7 +23,7 @@ body {
 
 p {
   margin-bottom: 0;
-  padding: 0.5vw;
+  padding: 0.5vw 0.5vw 0.5vw 0;
 }
 
 img {
@@ -190,7 +190,7 @@ main {
 
 label {
   font-family: var(--font-default);
-  font-size: 17px;
+  font-size: 15px;
   font-weight: normal;
   display: inline-block;
   margin-bottom: 11px;
@@ -234,7 +234,7 @@ input[data-error]::after {
 .checkbox-label,
 .checkbox2-label {
   position: relative;
-  margin-left: 36px;
+  margin-left: 30px;
   font-size: 12px;
   font-weight: normal;
 }
@@ -295,6 +295,15 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
+.checkbox-label {
+    margin-bottom: 0;
+}
+.checkbox2-label {
+    margin-bottom: 0;
+}
+.checkbox2-label[for='checkbox1'] {
+    margin-top: 20px;
+}
 .close {
   position: absolute;
   right: 15px;
@@ -331,6 +340,9 @@ input[data-error]::after {
   color: #fff;
   cursor: pointer;
   border: 0;
+}
+.btn-submit {
+    margin-top: 25px;
 }
 /* custom select styles */
 .custom-select {
@@ -401,7 +413,7 @@ input[data-error]::after {
 /* custom select end */
 .text-label {
   font-weight: normal;
-  font-size: 16px;
+  font-size: 15px;
 }
 .hero-section {
   min-height: 93vh;
@@ -526,3 +538,22 @@ footer {
   }
 }
 
+.formData input,
+.formData .checkbox-icon {
+    transition: border-color 0.3s;
+}
+.formData:not([data-error-visible]) input {
+    border: 2px solid #13d198;
+}
+.formData[data-error-visible="true"] input,
+.formData[data-error-visible="true"] [for='checkbox1'] .checkbox-icon {
+    border: 2px solid #e54858;
+}
+.formData[data-error-visible="true"] [for='checkbox1'] {
+    transition: color 0.3s;
+}
+.formData[data-error-visible="true"] [for='checkbox1'] {
+    font-weight: 700;
+    color: #e54858;
+}
+ 
