@@ -71,6 +71,7 @@
                   id="first"
                   name="first"
                   minlength="2"
+                  required
                 /><br>
               </div>
               <div
@@ -81,6 +82,8 @@
                   type="text"
                   id="last"
                   name="last"
+                  minlength="2"
+                  required
                 /><br>
               </div>
               <div
@@ -91,6 +94,7 @@
                   type="email"
                   id="email"
                   name="email"
+                  required
                 /><br>
               </div>
               <div
@@ -101,12 +105,22 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
+                  required
                 /><br>
               </div>
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <input
+                  type="number"
+                  class="text-control"
+                  id="quantity"
+                  name="quantity"
+                  min="0"
+                  max="99"
+                  value="0"
+                  required
+                >
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
@@ -117,6 +131,7 @@
                   id="location1"
                   name="location"
                   value="New York"
+                  checked
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -185,14 +200,18 @@
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
-                  checked
+                  required
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
-                <input class="checkbox-input" type="checkbox" id="checkbox2" />
+                <input
+                  class="checkbox-input"
+                  type="checkbox"
+                  id="checkbox2"
+                />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je Je souhaite être prévenu des prochains évènements.
