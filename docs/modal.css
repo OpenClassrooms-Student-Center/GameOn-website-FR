@@ -405,6 +405,7 @@ input[data-error]::after {
   font-size: 16px;
 }
 .error-message {
+  display:none;
 	color: red;
 	font-size: 12px;
 }

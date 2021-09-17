@@ -4,7 +4,6 @@ const lastname = document.getElementById("last");
 const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
-const cities = document.querySelectorAll("input[type=radio]");
 const tou = document.getElementById("checkbox1");
 const validationBtn = document.getElementById("validationBtn");
 
@@ -14,32 +13,7 @@ const lastnameErrorMessage = document.getElementById("lastnameErrorMessage");
 const emailErrorMessage = document.getElementById("emailErrorMessage");
 const birthdateErrorMessage = document.getElementById("birthdateErrorMessage");
 const quantityErrorMessage = document.getElementById("quantityErrorMessage");
-const citiesErrorMessage = document.getElementById("citiesErrorMessage");
 const touErrorMessage = document.getElementById("touErrorMessage");
-
-//CACHER LES MESSAGES D'ERREUR PAR DEFAUT
-firstnameErrorMessage.style.display = "none";
-lastnameErrorMessage.style.display = "none";
-emailErrorMessage.style.display = "none";
-birthdateErrorMessage.style.display = "none";
-quantityErrorMessage.style.display = "none";
-citiesErrorMessage.style.display = "none";
-touErrorMessage.style.display = "none";
-
-//ACTIVER OU DESACTIVER LES BOUTONS RADIO
-function radioDisable() {
-	for (let radio of cities) {
-		radio.disabled = true;
-		radio.checked = false;
-	}
-}
-//radioDisable();
-
-function radioEnable() {
-	for (let radio of cities) {
-		radio.disabled = false;
-	}
-}
 
 // VERIFIER LES INFOS DANS CHAQUES CHAMPS DU FORMULAIRE
 //AU MOINS 2 CARACTERES DANS LE CHAMPS
@@ -77,21 +51,6 @@ function dateNotEmpty(value) {
 		return true;
 	}
 }
-// BOUCLE POUR VERIFIER LES BOUTONS RADIO BIEN COCHES
-function citiesCheck(cityArray) {
-	let counter;
-	for (let city of cityArray) {
-		if (city.checked) {
-			counter++;
-		}
-	}
-	if (counter !== 0) {
-		return true;
-	} else {
-		return false;
-	}
-}
-// citiesCheck(cities);
 
 // CONDITIONS D'UTILISATION BIEN COCHE
 function touChecked() {
@@ -133,12 +92,20 @@ function showId(event) {
 	}
 }
 
+// CHAMPS NON VALIDES PAR DEFAUT
+let inputFirstName = false;
+let inputLastName = false;
+let inputEmail = false;
+let inputBirthDate = false;
+let inputNumber = false;
+let inputCheckBox = false;
+
 function errorDisplay(event) {
 	let value = event.target.value;
 	let element;
 	switch (activeInput) {
 
-		//input type=text
+		//Nom et Prénom de l'utilisateur qui ont bien 2 caractères minimum
 		case "text":
 			if (idTextInput == "first") {
 				element = firstnameErrorMessage;
@@ -166,7 +133,7 @@ function errorDisplay(event) {
 			}
 			break;
 
-		//adresse email
+		//adresse email valide
 		case "email":
 			if (emailValid(value) == true) {
 				this.parentElement.removeAttribute("data-error-visible");
@@ -192,38 +159,16 @@ function errorDisplay(event) {
 			}
 			break;
 
-		//input type=number
+		//nombre de participation
 		case "number":
 			if (valueIsNumber(value) == true) {
-				radioEnable();
 				this.parentElement.removeAttribute("data-error-visible");
 				quantityErrorMessage.style.display = "none";
 				inputNumber = true;
-				inputRadio = false;
-				if (quantityErrorMessage.value > 0) {
-					citiesErrorMessage.style.display = "block";
-					inputRadio = false;
-					radioDisable();
-				} else {
-					citiesErrorMessage.style.display = "none";
-					inputRadio = true;
-					radioEnable();
-				}
 			} else {
 				this.parentElement.setAttribute("data-error-visible", true);
 				quantityErrorMessage.style.display = "block";
 				inputNumber = false;
-			}
-			break;
-
-		//boutons radio
-		case "radio":
-			if (citiesCheck(cities)) {
-				citiesErrorMessage.style.display = "none";
-				inputRadio = true;
-			} else {
-				citiesErrorMessage.style.display = "block";
-				inputRadio = false;
 			}
 			break;
 
@@ -237,21 +182,8 @@ function errorDisplay(event) {
 				inputCheckBox = false;
 			}
 			break;
-
-		default:
-			alert("Une erreur est survenue.");
-			break;
 	}
 }
-
-// CHAMPS NON VALIDES PAR DEFAUT
-let inputFirstName = false;
-let inputLastName = false;
-let inputEmail = false;
-let inputBirthDate = false;
-let inputNumber = false;
-let inputRadio = true;
-let inputCheckBox = true;
 
 // ON REGARDE QUEL CHAMPS EST FOCUS PAR L'UTILISATEUR
 firstname.addEventListener("focus", showAttribute);
@@ -261,11 +193,6 @@ lastname.addEventListener("focus", showId);
 email.addEventListener("focus", showAttribute);
 birthdate.addEventListener("focus", showAttribute);
 quantity.addEventListener("focus", showAttribute);
-
-cities.forEach((btn) =>
-	btn.addEventListener("click", showAttribute)
-);
-
 tou.addEventListener("click", showAttribute);
 
 // AFFICHE LES MESSAGES D'ERREUR AU BESOIN
@@ -274,27 +201,53 @@ lastname.addEventListener("input", errorDisplay);
 email.addEventListener("input", errorDisplay);
 birthdate.addEventListener("input", errorDisplay);
 quantity.addEventListener("input", errorDisplay);
-cities.forEach((btn) => btn.addEventListener("click", errorDisplay));
 tou.addEventListener("click", errorDisplay);
 
 // VALIDATION DU FORMULAIRE ET AFFICHAGE DE MESSAGE DE CONFIRMATION
-const formBody = document.querySelector("form");
+const form = document.querySelector("form");
 const modal = document.getElementById("modal");
 
 validationBtn.addEventListener("click", (e) => {
+	//recerifie chaque champs individuellement et affiche un message d'erreur au besoin
+ 
+	if(inputFirstName == false){
+		e.preventDefault();
+		firstnameErrorMessage.style.display = "block";
+	}
+	if(inputLastName == false){
+		e.preventDefault();
+		lastnameErrorMessage.style.display = "block";
+	}
+	if(inputEmail == false){
+		e.preventDefault();
+		emailErrorMessage.style.display = "block";
+	}
+	if(inputBirthDate == false){
+		e.preventDefault();
+		birthdateErrorMessage.style.display = "block";
+	}
+	if(inputNumber == false){
+		e.preventDefault();
+		quantityErrorMessage.style.display = "block";
+	}
+	if(inputCheckBox == false){
+		e.preventDefault();
+		touErrorMessage.style.display = "block";
+	}
 	if (
+		//si tous les champs sont remplis correctement
 		inputFirstName == true &&
 		inputLastName == true &&
 		inputEmail == true &&
 		inputBirthDate == true &&
 		inputNumber == true &&
-		inputRadio == true &&
 		inputCheckBox == true
 	) {
+		//cache le formulaire et le remplace par le message de validation
 		e.preventDefault();
-		formBody.style.display = "none";
+		form.style.display = "none";
 		const validationMessage = document.createElement("p");
 		validationMessage.innerHTML = "Merci pour votre inscription";
 		modal.appendChild(validationMessage);
-	} 
+	}
 });
