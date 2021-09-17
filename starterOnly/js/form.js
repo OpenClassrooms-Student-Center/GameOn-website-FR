@@ -252,6 +252,7 @@ validationBtn.addEventListener("click", (e) => {
 		let btnFermer = document.createElement("button");
 		btnFermer.classList.add("btn-submit");
 		btnFermer.classList.add("btn-fermer");
+		btnFermer.setAttribute("onclick", "closeModal();");
 		btnFermer.innerHTML = "Fermer";
 		modal.appendChild(validationMessage);
 		modal.appendChild(btnFermer);
