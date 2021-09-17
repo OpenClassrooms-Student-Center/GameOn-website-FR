@@ -56,48 +56,39 @@
         <div class="content">
           <span class="close" id="close"></span>
           <div class="modal-body">
-            <form
-              name="reserve"
-              action="index.html"
-              method="get"
-              onsubmit="return validate();"
-            >
+            <form name="reserve" action="index.html" method="get"autocomplete="off" >
               <div
-                class="first-formData">
+                class="formData">
                 <label for="first">Prénom</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="first"
                   name="first"
-                onchange="validateFirst()"
-                 
                 /><br>
-                <span id="error"></span>
+                <span id="errorFirst" class="error"></span>
               </div>
               <div
-                class="last-formData">
+                class="formData">
                 <label for="last">Nom</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
-                  onchange="validateLast()"
                 /><br>
-                <span id="error"></span>
+                <span id="errorLast" class="error"></span>
               </div>
               <div
-                class="email-formData">
+                class="formData">
                 <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="email"
                   name="email"
-                  onchange="validateEmail()"
                 /><br>
-                <span id ="error"></span>
+                <span id="errorMail" class="error"></span>
               </div>
               <div
                 class="formData">
@@ -107,14 +98,15 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
+                  
                 /><br>
-                <span class="error"></span>
+                <span id="errorBirthdate" class="error"></span>
               </div>
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" onchange="validateQuantity()" min="0" max="99">
-                <span id="error"></span>
+                <input type="number" class="text-control" id="quantity" name="quantity"  min="0" max="99">
+                <span id="errorQuantity" class="error"></span>
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
@@ -186,7 +178,7 @@
                   Portland</label
                 >
               </div>
-
+              <span id="errorRadio" class="error" ></span>
               <div
                 class="formData">
                 <input
@@ -206,6 +198,7 @@
                   Je Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
+                <span id="errorCheckbox" class="error"></span>
               </div>
               <input
                 class="btn-submit"

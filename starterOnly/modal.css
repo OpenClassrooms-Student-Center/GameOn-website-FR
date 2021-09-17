@@ -228,21 +228,25 @@ input {
 .input-error {
   border: 2px solid #e54858;
 }
-#error {
+
+.error span {
   visibility: hidden;
   opacity: 0;
   display: block;
-  font-size: 0.8em;
+  font-size: 0.4em;
   transition: 0.3s;
   color: #e54858;
 }
-.formData span {
+/*class for span error */
+.error {
   visibility: visible;
   opacity: 1;
   color: #e54858;
+  font-size: 0.8em;
 }
+/* for valid input*/
 .input-validate {
-  border: solid 2px green;
+  border: solid 3px green;
 }
 
 /*input[data-error]::after {
@@ -271,6 +275,7 @@ input {
   top: -1px;
   transition: 0.3s;
 }
+
 .checkbox-label .checkbox-icon::after,
 .checkbox2-label .checkbox-icon::after {
   content: "";
