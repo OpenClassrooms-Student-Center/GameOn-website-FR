@@ -243,11 +243,17 @@ validationBtn.addEventListener("click", (e) => {
 		inputNumber == true &&
 		inputCheckBox == true
 	) {
-		//cache le formulaire et le remplace par le message de validation
+		//cache le formulaire et le remplace par le message de validation et un bouton
+		// pour fermer la modal
 		e.preventDefault();
 		form.style.display = "none";
-		const validationMessage = document.createElement("p");
+		let validationMessage = document.createElement("div");
 		validationMessage.innerHTML = "Merci pour votre inscription";
+		let btnFermer = document.createElement("button");
+		btnFermer.classList.add("btn-submit");
+		btnFermer.classList.add("btn-fermer");
+		btnFermer.innerHTML = "Fermer";
 		modal.appendChild(validationMessage);
+		modal.appendChild(btnFermer);
 	}
 });

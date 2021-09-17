@@ -11,6 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalBtnClose = document.querySelectorAll(".close");
+const modalCloseAfterValidation = document.querySelectorAll(".btn-fermer");
 const formData = document.querySelectorAll(".formData");
 
 // launch modal event
@@ -27,3 +28,9 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = "none";
 }
+
+// button to close modal after form validation
+modalCloseAfterValidation.addEventListener("click", (e) => {
+  e.preventDefault();
+  closeModal();
+});

@@ -166,7 +166,7 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  background-color: #fff;
 }
 
 .content {
@@ -186,6 +186,15 @@ main {
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
+  min-height:750px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btn-fermer{
+  position:absolute;
+  bottom: 30px;
 }
 
 label {
