@@ -200,6 +200,12 @@ input {
   border: 0.8px solid #ccc;
   outline: none;
 }
+input:valid {
+  border: 2px solid #279e7a;
+}
+input:invalid {
+  border: 2px solid #e54858;
+}
 .text-control {
   margin: 0;
   padding: 8px;
