@@ -11,6 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const modalBody = document.querySelector(".modal-body");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -30,7 +31,6 @@ function closeModal() {
   /* modalbg.style.animation = "modalclose 1s forwards"; */ // pb: on ne peut plus afficher le modal...
   /* contentbox.style.animation = "modalclose 1s forwards";
   modalbg.style.animation = "modalclosepure 1s ease-in 1s forwards"; */
-  
 }
 
 
@@ -81,7 +81,10 @@ function validate() {
   // si le nombre d'entrées invalides est supérieur à 0, on bloque l'envoi.
   if (invalidInput > 0) {
     return false;
+  } else { // sinon, on peut afficher un message indiquant le bon envoi du formulaire
+	  modalBody.innerHTML = "<p class=\"success\"><br>Merci, votre demande a bien été réceptionnée !<br></p>";
   }
+
 }
 
 // Validate email function

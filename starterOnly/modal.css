@@ -551,3 +551,10 @@ footer {
   color: red;
   font-size: 0.7rem;
 }
+
+.success {
+  color: greenyellow;
+  font-size: 1.35rem;
+  font-weight: 400;
+  text-align: center;
+}
