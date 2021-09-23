@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
-    <title>Reservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="./css/modal.css" />
+    <title>Reservation</title>
+    <link rel="icon" href="./images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <div class="topnav" id="myTopnav">
@@ -48,7 +45,7 @@
           <img src="./images/bg_img.jpg" alt="img" />
         </div>
         <button class="btn-signup modal-btn">
-          je m'inscrist
+          je m'inscris
         </button>
       </div>
 
@@ -73,6 +70,7 @@
                   minlength="2"
                   required
                   /><br>
+                <span class="errorMsg hidden">Veuillez entrer 2 caractères ou plus pour le champ du prénom.</span>
                 </div>
                 <div
                   class="formData">
@@ -85,6 +83,7 @@
                   minlength="2"
                   required
                   /><br>
+                <span class="errorMsg hidden">Veuillez entrer 2 caractères ou plus pour le champ du nom.</span>
               </div>
               <div
                 class="formData">
@@ -96,6 +95,7 @@
                   name="email"
                   required
                   /><br>
+                <span class="errorMsg hidden">Veuillez entrer une adresse email valide.</span>
               </div>
               <div
                 class="formData">
@@ -107,11 +107,13 @@
                   name="birthdate"
                   required
                   /><br>
+                <span class="errorMsg hidden">Vous devez entrer votre date de naissance.</span>
               </div>
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
+                <span class="errorMsg hidden">Veuillez choisir une quantité.</span>
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
@@ -182,27 +184,31 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                <span class="errorMsge hidden">Vous devez choisir une option.</span>
               </div>
 
               <div
                 class="formData">
                 <input
-                  class="checkbox-input"
+                  class="checkbox-inputs"
                   type="checkbox"
-                  id="checkbox1"
+                  id="terms"
+                  value="terms"
                   checked
+                  required
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="terms" required>
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
-                <input class="checkbox-input" type="checkbox" id="checkbox2" />
+                <input class="checkbox-inputs" type="checkbox" id="checkbox2" value="newsletter" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
-                  Je Je souhaite être prévenu des prochains évènements.
+                  Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
+                <span class="errorMsg hidden">Vous devez vérifier que vous acceptez les termes et conditions.</span>
               </div>
               <input
                 class="btn-submit"
@@ -220,6 +226,6 @@
         Copyright 2014 - 2020, GameOn Inc.
       </p>
     </footer>
-    <script src="modal.js"></script>
+    <script src="./js/index.js"></script>
   </body>
 </html>

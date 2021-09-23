@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
 :root {
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
@@ -200,11 +202,20 @@ input {
   border: 0.8px solid #ccc;
   outline: none;
 }
-input:valid {
+.valid {
   border: 2px solid #279e7a;
 }
-input:invalid {
+.invalid {
   border: 2px solid #e54858;
+}
+.errorMsg {
+  color: #e54858;
+  font-size:0.75rem;
+  display: block;
+  text-align: center;
+}
+.hidden {
+  display: none;
 }
 .text-control {
   margin: 0;
@@ -275,14 +286,19 @@ input[data-error]::after {
   transition: 0.3s;
   opacity: 0;
 }
-.checkbox-input {
+.checkbox-input, .checkbox-inputs {
   display: none;
 }
 .checkbox-input:checked + .checkbox-label .checkbox-icon::after,
 .checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
   opacity: 1;
 }
-.checkbox-input:checked + .checkbox2-label .checkbox-icon {
+.checkbox-inputs:checked + .checkbox-label .checkbox-icon::after,
+.checkbox-inputs:checked + .checkbox2-label .checkbox-icon::after {
+  opacity: 1;
+}
+.checkbox-input:checked + .checkbox2-label .checkbox-icon,
+.checkbox-inputs:checked + .checkbox2-label .checkbox-icon {
   background: #279e7a;
 }
 .checkbox2-label .checkbox-icon {
