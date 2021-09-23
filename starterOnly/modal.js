@@ -33,6 +33,36 @@ closeModal.addEventListener("click", () => {
 //-------------------------------------------------------------------
 //validation form
 //-------------------------------------------------------------------
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  if (validateFirst() === false) {
+    return false;
+  } else if (validateLast() === false) {
+    return false;
+  } else if (validateEmail() === false) {
+    return false;
+  } else if (validateBirthdate() === false) {
+    return false;
+  } else if (validateQuantity() === false) {
+    return false;
+  } else if (validateCities() === false) {
+    return false;
+  } else if (validateCheckbox() === false) {
+    return false;
+  } else {
+    form.remove();
+    let validate = document.querySelector(".validationModal");
+    let message = document.querySelector("p");
+    message.classList.add("validationText");
+    message.textContent = "Merci! Votre reservation a été reçue";
+    validate.appendChild(message);
+    let btnCloseValidation = document.createElement("button");
+    btnCloseValidation.classList.add("btn-submit");
+    btnCloseValidation.textContent = "Fermer";
+    btnCloseValidation.addEventListener("click", closeModal);
+    validate.appendChild(btnCloseValidation);
+  }
+});
 
 //-------------------------------------------------------------------
 //Regex
