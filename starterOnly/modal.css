@@ -32,13 +32,24 @@ img {
 
 .topnav {
   overflow: hidden;
-  margin: 3.5%;
+  margin: 6%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
+
+@media screen and (max-width: 540px) {
+  .header-logo img {
+    width: 100%;
+  }
+
+  .header-logo {
+    width: 40%;
+  }
+}
+
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -69,7 +80,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
@@ -77,7 +90,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -90,16 +105,17 @@ img {
   }
 }
 
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
     margin-top: -15px;
+    color: #fe142f;
   }
-} 
+}
 
 main {
   font-size: 130%;
@@ -111,8 +127,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -166,11 +180,11 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .content {
-  margin: 5% auto;
+  margin: 2% auto;
   width: 100%;
   max-width: 500px;
   animation-name: modalopen;
@@ -193,7 +207,8 @@ label {
   font-size: 17px;
   font-weight: normal;
   display: inline-block;
-  margin-bottom: 11px;
+  margin-bottom: 5px;
+  margin-top: 10px;
 }
 input {
   padding: 8px;
@@ -414,7 +429,7 @@ input[data-error]::after {
   margin-bottom: 10px;
 }
 .hero-content {
-  padding: 51px 67px;
+  padding: 5% 67px;
   grid-column: span 4;
   background: #232323;
   color: #fff;
@@ -479,6 +494,10 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+  .topnav {
+    margin: 4% 6% 0;
+  }
+
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -486,7 +505,8 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0;
+    min-width: auto;
   }
   .hero-content::after {
     content: unset;
@@ -495,25 +515,66 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 2.25rem;
     white-space: normal;
+    line-height: 1;
+    padding-bottom: 5%;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 0.9rem;
+    margin-top: auto;
   }
   .hero-img img {
     border-radius: 10px;
-    margin-top: 40px;
+    margin-top: 5%;
   }
   .hero-section > .btn-signup {
     display: block;
     margin: 32px auto 10px;
     padding: 12px 35px;
+    font-size: 1.1rem;
   }
   .copyrights {
-    margin-top: 50px;
+    margin-top: 0px;
     text-align: center;
+    font-size: 0.8rem;
+  }
+
+  .hero-section {
+    min-height: 85vh;
+  }
+
+  .text-label,
+  label {
+    font-size: 13px;
+  }
+
+  .text-control {
+    height: 40px;
+  }
+
+  .formData {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .modal-body {
+    margin: 0 auto;
+    padding-top: 0;
+  }
+
+  .content {
+    margin-top: 12%;
+  }
+
+  .close {
+    transform: scale(0.5);
+    top: 2px;
+  }
+
+  .bground {
+    background-color: rgba(255, 255, 255, 0);
   }
 }
 
@@ -526,4 +587,3 @@ footer {
     opacity: 1;
   }
 }
-
