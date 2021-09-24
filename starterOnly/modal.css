@@ -215,7 +215,6 @@ input {
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
