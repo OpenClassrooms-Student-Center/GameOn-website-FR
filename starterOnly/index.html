@@ -54,11 +54,10 @@
           <span class="close"></span>
           <div class="modal-body">
             <form
-              name="reserve"
-              action="index.html"
-              method="get"
-              onsubmit="return validate();"
-            >
+              name="signupForm"
+              action=""
+              method="post"
+              onsubmit="submitForm()">
               <div
                 class="formData">
                 <label for="firstname">Prénom</label><br>
@@ -67,10 +66,10 @@
                   type="text"
                   id="firstname"
                   name="firstname"
-                  minlength="2"
+                  pattern="^[a-zA-Z]{1}[a-zA-Z'À-ÿ -]+$"
                   required
                   /><br>
-                <span class="errorMsg hidden">Veuillez entrer 2 caractères ou plus pour le champ du prénom.</span>
+                <span class="errorMsg hidden">Ne doit contenir que des lettres (au moins 2).</span>
                 </div>
                 <div
                   class="formData">
@@ -80,10 +79,10 @@
                   type="text"
                   id="lastname"
                   name="lastname"
-                  minlength="2"
+                  pattern="^[a-zA-Z]{1}[a-zA-Z'À-ÿ -]+$"
                   required
                   /><br>
-                <span class="errorMsg hidden">Veuillez entrer 2 caractères ou plus pour le champ du nom.</span>
+                <span class="errorMsg hidden">Ne doit contenir que des lettres (au moins 2).</span>
               </div>
               <div
                 class="formData">
@@ -93,6 +92,7 @@
                   type="email"
                   id="email"
                   name="email"
+                  pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})"
                   required
                   /><br>
                 <span class="errorMsg hidden">Veuillez entrer une adresse email valide.</span>
@@ -119,7 +119,7 @@
               <div
                 class="formData">
                 <input
-                  class="checkbox-input"
+                  class="checkbox-input option"
                   type="radio"
                   id="location1"
                   name="location"
@@ -130,7 +130,7 @@
                   New York</label
                 >
                 <input
-                  class="checkbox-input"
+                  class="checkbox-input option"
                   type="radio"
                   id="location2"
                   name="location"
@@ -141,7 +141,7 @@
                   San Francisco</label
                 >
                 <input
-                  class="checkbox-input"
+                  class="checkbox-input option"
                   type="radio"
                   id="location3"
                   name="location"
@@ -152,7 +152,7 @@
                   Seattle</label
                 >
                 <input
-                  class="checkbox-input"
+                  class="checkbox-input option"
                   type="radio"
                   id="location4"
                   name="location"
@@ -163,7 +163,7 @@
                   Chicago</label
                 >
                 <input
-                  class="checkbox-input"
+                  class="checkbox-input option"
                   type="radio"
                   id="location5"
                   name="location"
@@ -174,7 +174,7 @@
                   Boston</label
                 >
                 <input
-                  class="checkbox-input"
+                  class="checkbox-input option"
                   type="radio"
                   id="location6"
                   name="location"
@@ -184,16 +184,17 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
-                <span class="errorMsge hidden">Vous devez choisir une option.</span>
+                <span class="errorMsge hidden">Vous devez choisir une ville.</span>
               </div>
 
               <div
                 class="formData">
                 <input
-                  class="checkbox-inputs"
+                  class="checkbox-input"
                   type="checkbox"
                   id="terms"
-                  value="terms"
+                  name="terms"
+                  value="accepted"
                   checked
                   required
                 />
@@ -202,8 +203,8 @@
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
-                <input class="checkbox-inputs" type="checkbox" id="checkbox2" value="newsletter" />
-                <label class="checkbox2-label" for="checkbox2">
+                <input class="checkbox-input" type="checkbox" name="newsletter" id="newsletter" value="accepted" />
+                <label class="checkbox2-label" for="newsletter">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
                 </label>

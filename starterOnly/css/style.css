@@ -211,8 +211,7 @@ input {
 .errorMsg {
   color: #e54858;
   font-size:0.75rem;
-  display: block;
-  text-align: center;
+  display: inline-block;
 }
 .hidden {
   display: none;
@@ -293,12 +292,7 @@ input[data-error]::after {
 .checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
   opacity: 1;
 }
-.checkbox-inputs:checked + .checkbox-label .checkbox-icon::after,
-.checkbox-inputs:checked + .checkbox2-label .checkbox-icon::after {
-  opacity: 1;
-}
-.checkbox-input:checked + .checkbox2-label .checkbox-icon,
-.checkbox-inputs:checked + .checkbox2-label .checkbox-icon {
+.checkbox-input:checked + .checkbox2-label .checkbox-icon {
   background: #279e7a;
 }
 .checkbox2-label .checkbox-icon {
