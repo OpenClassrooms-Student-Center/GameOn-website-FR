@@ -1,0 +1,7 @@
+services:
+  web:
+    build: .
+    ports:
+        - '80:80'
+    volumes:
+        - ./starterOnly:/usr/share/nginx/html
