@@ -32,7 +32,10 @@ img {
 
 .topnav {
   overflow: hidden;
-  margin: 3.5%;
+  margin: 55px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .header-logo {
   float: left;
@@ -43,7 +46,7 @@ img {
 .topnav a {
   float: left;
   display: block;
-  color: #000000;
+  color: #ff001b;
   text-align: center;
   padding: 12px 12px;
   margin: 5px;
@@ -75,6 +78,7 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
+    font-size: 30px;
   }
 }
 
@@ -173,7 +177,7 @@ main {
 }
 
 .content {
-  margin: 5% auto;
+  margin: 10% auto;
   width: 100%;
   max-width: 500px;
   animation-name: modalopen;
@@ -502,9 +506,32 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+.validationModal {
+  margin: 20% auto;
+  width: 100%;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+}
+
+.validationText {
+  color: white;
+  font-family: var(--font-default);
+  font-size: 36px;
+  font-weight: 400;
+  text-align: center;
+  padding: 8rem 18rem 16rem 4rem;
+}
+
 @media screen and (max-width: 800px) {
   .content {
-    margin: 20% auto;
+    margin: 25% auto;
   }
   .hero-section {
     display: block;
@@ -542,6 +569,14 @@ footer {
     margin-top: 50px;
     text-align: center;
   }
+  .validationText {
+    color: white;
+    font-family: var(--font-default);
+    font-size: 36px;
+    font-weight: 400;
+    text-align: center;
+    padding: 8rem 4rem 16rem 4rem;
+  }
 }
 
 @keyframes modalopen {
@@ -552,27 +587,4 @@ footer {
   to {
     opacity: 1;
   }
-}
-
-.validationModal {
-  margin: 20% auto;
-  width: 100%;
-  max-width: 500px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
-  background: #232323;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-  color: #fff;
-  padding-top: 10px;
-}
-
-.validationText {
-  color: white;
-  font-family: var(--font-default);
-  font-size: 36px;
-  font-weight: 400;
-  text-align: center;
-  padding: 4rem;
 }

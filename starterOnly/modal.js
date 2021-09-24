@@ -59,7 +59,9 @@ form.addEventListener("submit", (e) => {
     let btnCloseValidation = document.createElement("button");
     btnCloseValidation.classList.add("btn-submit");
     btnCloseValidation.textContent = "Fermer";
-    btnCloseValidation.addEventListener("click", closeModal);
+    btnCloseValidation.addEventListener("click", () => {
+      modalbg.style.display = "none";
+    }); // pour fermer le bouton
     validate.appendChild(btnCloseValidation);
   }
 });
