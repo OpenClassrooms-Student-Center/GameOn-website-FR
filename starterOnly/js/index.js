@@ -10,6 +10,7 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground"),
   modalBtn = document.querySelectorAll(".modal-btn"),
+  modalBody = document.querySelector(".modal-body"),
   closeBtn = document.querySelector(".close"),
   formData = document.querySelectorAll(".formData"),
   firstname = document.querySelector("#firstname"),
@@ -19,6 +20,7 @@ const modalbg = document.querySelector(".bground"),
   quantity = document.querySelector("#quantity"),
   terms = document.querySelector("#terms"),
   errorMsg = document.querySelectorAll(".errorMsg"),
+  errorOptionMsg = document.querySelector(".errorOptionMsg"),
   newsletter = document.querySelector("#newsletter");
 
 // launch modal event
@@ -52,8 +54,8 @@ for (let i = 0; i < inputs.length; i++) {
 }
 
 let choice,
-  option = document.querySelectorAll(".option"),
-  isChecked = false;
+    option = document.querySelectorAll(".option"),
+    isChecked = false;
 
 for (let i = 0; i < option.length; i++) {
   const elt = option[i];
@@ -82,7 +84,7 @@ function checkForm() {
 function submitForm() {
   event.preventDefault();
   if (checkForm()) {
-    const info = {
+    const infos = {
       firstname: firstname.value,
       lastname: lastname.value,
       email: email.value,
@@ -92,9 +94,23 @@ function submitForm() {
       terms: terms.checked,
       newsletter: newsletter.checked,
     };
-    console.log(info);
-    console.log("on change le contenu pour afficher les remerciements");
-  } else {
+    console.log(infos);
+    modalBody.innerHTML = `
+    <div class="modal-body-container">
+    <div class="thanks-container">
+    <p>Merci ${ firstname.value } !</p>
+    <p>Votre réservation a été reçue.</p>
+    </div>
+    <button class="btn-signup modal-btn close-btn" onclick="closeModal()">
+    Fermer
+    </button>
+    </div>
+    `;
+  } else if(!checkForm() && !isChecked) {
+    errorOptionMsg.classList.remove("hidden");
+  }  else {
     console.log("oops une erreur");
   }
 }
+
+
