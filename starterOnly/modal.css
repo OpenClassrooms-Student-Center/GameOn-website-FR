@@ -540,7 +540,7 @@ footer {
 
 .formData input,
 .formData .checkbox-icon {
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, background-color 0.3s;
 }
 .formData:not([data-error-visible]) input {
     border: 2px solid #13d198;
@@ -556,4 +556,21 @@ footer {
     font-weight: 700;
     color: #e54858;
 }
- 
+
+
+@keyframes sayNo {
+    from {
+        transform: translateX(-10px);
+    }
+    to {
+        transform: translateX(10px);
+    }
+}
+
+[data-error-visible="true"].say-no input {
+    animation: sayNo 0.1s ease-in-out 2;
+}
+[data-error-visible="true"] .red {
+    background-color: #e54858;
+    color: white;
+}

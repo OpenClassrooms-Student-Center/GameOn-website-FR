@@ -51,6 +51,21 @@ class Form extends Mediator {
         this.birthdateData.setState(birthdateIsValid ? 'valid' : 'invalid');
         this.tournamentsData.setState(tournamentsIsValid ? 'valid' : 'invalid');
         this.conditionsData.setState(conditionsAccepted ? 'valid' : 'invalid');
+        if (!firstIsValid) {
+            this.firstData.sayNo();
+        }
+        if (!lastIsValid) {
+            this.lastData.sayNo();
+        }
+        if (!emailIsValid) {
+            this.emailData.sayNo();
+        }
+        if (!birthdateIsValid) {
+            this.birthdateData.sayNo();
+        }
+        if (!tournamentsIsValid) {
+            this.tournamentsData.sayNo();
+        }
         return firstIsValid &&
             lastIsValid &&
             emailIsValid &&
@@ -58,8 +73,12 @@ class Form extends Mediator {
             tournamentsIsValid &&
             conditionsAccepted;
     }
+    animate() {
+    }
     clearInputs() {
-        this.components.map(component => component.clear());
+        this.components.map(component => {
+            component.clear();
+        });
     }
     handleSubmit = event => {
         event.preventDefault();

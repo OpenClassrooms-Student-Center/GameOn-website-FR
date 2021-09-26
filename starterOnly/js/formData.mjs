@@ -6,6 +6,8 @@ class FormData extends Mediator.Component {
         this.element = element;
         this.input = element.querySelector('input');
         this.input.addEventListener('input', this.handleValueChange);
+        this.input.addEventListener('focus', this.resetBackground);
+        this.input.addEventListener('input', this.resetBackground);
     }
     getValue() {
         return this.input.value;
@@ -25,9 +27,24 @@ class FormData extends Mediator.Component {
                 this.element.dataset.errorVisible = false;
         }
     }
+    sayNo() {
+        this.element.classList.add('say-no');
+        this.setBackground();
+        setTimeout(this.resetSayNo, 500);
+    }
+    resetSayNo = () => {
+        this.element.classList.remove('say-no');
+    }
+    setBackground() {
+        this.input.classList.add('red');
+    }
+    resetBackground = () => {
+        this.input.classList.remove('red');
+    }
     clear() {
         this.input.value = '';
         this.setState();
+        this.resetBackground();
     }
     handleValueChange = () => {
         this.notify('change', [this, this.getValue()]);
