@@ -144,11 +144,11 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  /* background-color: rgba(26, 39, 156, 0.4); */
 }
 
 .content {
-  margin: 5% auto;
+  margin-top: 80px;
   width: 100%;
   max-width: 500px;
   animation-name: modalopen;
@@ -158,7 +158,7 @@ main {
   overflow: hidden;
   position: relative;
   color: #fff;
-  padding-top: 10px;
+  /* padding-top: 10px; */
 }
 
 .modal-body {
@@ -168,10 +168,11 @@ main {
 
 label {
   font-family: var(--font-default);
-  font-size: 17px;
+  font-size: 13px;
+  line-height: 12px;
   font-weight: normal;
   display: inline-block;
-  margin-bottom: 11px;
+  margin-bottom: 10px;
 }
 input {
   padding: 8px;
@@ -200,6 +201,9 @@ input {
   font-size: 20px;
   height: 48px;
 }
+.formData {
+  margin-bottom: 10px;
+}
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -224,26 +228,36 @@ input[data-error]::after {
     font-size: 0.4em;
     color: red;
 } */
+.checkbox-town:active {
+  color: #279e7a;
+}
 .checkbox-label,
 .checkbox2-label {
   position: relative;
-  margin-left: 36px;
+  display: inline-flex;
+  align-items: center;
+  /* margin-left: 36px; */
   font-size: 12px;
   font-weight: normal;
 }
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
-  display: block;
+  /* display: block; */
   width: 20px;
   height: 20px;
-  border: 2px solid #279e7a;
+  border: 2px solid;
   border-radius: 50%;
+  margin-right: 0.5rem;
   text-indent: 29px;
   white-space: nowrap;
-  position: absolute;
-  left: -30px;
-  top: -1px;
+  position: relative;
+  /* left: -35px; */
+  /* top: -1px; */
   transition: 0.3s;
+}
+.checkbox-label .checkbox-icon:checked,
+.checkbox2-label .checkbox-icon:checked {
+  border-color: #279e7a;
 }
 .checkbox-label .checkbox-icon::after,
 .checkbox2-label .checkbox-icon::after {
@@ -291,20 +305,20 @@ input[data-error]::after {
 .close {
   position: absolute;
   right: 15px;
-  top: 15px;
+  top: 10px;
   width: 32px;
   height: 32px;
   opacity: 1;
   cursor: pointer;
-  transform: scale(0.7);
+  transform: scale(0.5);
 }
 .close:before,
 .close:after {
   position: absolute;
   left: 15px;
   content: " ";
-  height: 33px;
-  width: 3px;
+  height: 38px;
+  width: 5px;
   background-color: #fff;
 }
 .close:before {
@@ -312,6 +326,9 @@ input[data-error]::after {
 }
 .close:after {
   transform: rotate(-45deg);
+}
+.btn-submit {
+  margin: 0 auto;
 }
 .btn-submit,
 .btn-signup {
