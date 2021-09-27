@@ -7,11 +7,16 @@ function editNav() {
   }
 }
 
+function openMenu() {
+  console.log("On ouvre le menu");
+};
+
 // DOM Elements
 const modalbg = document.querySelector(".bground"),
   modalBtn = document.querySelectorAll(".modal-btn"),
   modalBody = document.querySelector(".modal-body"),
   closeBtn = document.querySelector(".close"),
+  icon = document.querySelector(".icon"),
   formData = document.querySelectorAll(".formData"),
   firstname = document.querySelector("#firstname"),
   lastname = document.querySelector("#lastname"),
@@ -22,6 +27,8 @@ const modalbg = document.querySelector(".bground"),
   errorMsg = document.querySelectorAll(".errorMsg"),
   errorOptionMsg = document.querySelector(".errorOptionMsg"),
   newsletter = document.querySelector("#newsletter");
+
+icon.addEventListener("click", openMenu);
 
 // launch modal event
 modalBtn.forEach((btn) =>

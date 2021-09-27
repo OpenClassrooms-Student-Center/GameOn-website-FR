@@ -50,6 +50,7 @@ p {
 .main-navbar .fa-bars {
   color: #FF001B;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 .topnav a {
   /* float: left; */
@@ -580,4 +581,3 @@ footer {
     /* margin-top: 50px; */
     text-align: center;
   }
-}
