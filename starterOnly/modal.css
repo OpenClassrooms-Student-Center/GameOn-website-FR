@@ -86,7 +86,7 @@ img {
 }
 
 #ErrorLocation {
-  /*<!--Ajouter validation ou messages d'erreur #3-->*/
+  /*Ajouter validation ou messages d'erreur #3*/
   display: none;
   text-align: center;
   background-color: white;
@@ -100,7 +100,7 @@ img {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 #ErrorRules {
-  /*<!--Ajouter validation ou messages d'erreur #3-->*/
+  /*Ajouter validation ou messages d'erreur #3*/
   display: none;
   text-align: center;
   background-color: white;
@@ -669,7 +669,7 @@ footer {
     font-family: DM Sans;
     font-style: normal;
     font-weight: 500;
-    font-size: 40px;
+    font-size: 36px;
     line-height: 62px;
   }
   .hero-text {

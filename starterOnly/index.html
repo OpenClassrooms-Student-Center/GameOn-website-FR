@@ -6,28 +6,22 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="modal.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet"/>
   </head>
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
+      <img alt="logo" src="Logo.png" width="auto" height="auto"/>
+      </div>
+      <div class="main-navbar">      
+        <a href="#" class="active"><span>Accueil</span></a>
+        <a href="#"><span>Détails de l'évènement</span></a>
+        <a href="#"><span>À propos</span></a>
+        <a href="#"><span>Contact</span></a>
+        <a href="#"><span>Évènements passés</span></a>
+        <a href="javascript:void(0);" class="icon" onclick="editNav()"><i class="fa fa-bars"></i></a>
+      </div>
     </div>
-    <div class="main-navbar">      
-      <a href="#" class="active"><span>Accueil</span></a>
-      <a href="#"><span>Détails de l'évènement</span></a>
-      <a href="#"><span>À propos</span></a>
-      <a href="#"><span>Contact</span></a>
-      <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars"></i>
-      </a>
-    </div>
-    </div>
-  </div>
     <main>
       <div class="hero-section">
         <div class="hero-content">
@@ -67,9 +61,9 @@
                   class="text-control"
                   type="text"
                   id="first"
-                  name="first"                 
-                                                    
-                /><br>
+                  name="first"
+                />
+              <br>
               </div>
               <div
                 class="formData">
@@ -78,9 +72,9 @@
                   class="text-control"
                   type="text"
                   id="last"
-                  name="last"                
-                                  
-                /><br>
+                  name="last"    
+                />
+                <br>
               </div>
               <div
                 class="formData"  >
@@ -90,9 +84,8 @@
                   type="email"
                   id="email"
                   name="email"
-                  
-                 
-                /><br>
+                />
+                <br>
               </div>
               <div class="formData"  >
                 <label for='birthdate'>Date de naissance</label><br><!--Implémenter entrées du formulaire #2 For-id & required  -->
@@ -104,13 +97,9 @@
                 <input
                  type="number" 
                  class="text-control"
-                id="quantity"
-                name="quantity"
-                min="0" max="99"
-                
-                
-                >
-                
+                 id="quantity"
+                 name="quantity"
+                 min="0" max="99">
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
@@ -126,8 +115,8 @@
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
-                  New York</label
-                >
+                  New York
+                  </label>
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -137,8 +126,8 @@
                 />
                 <label class="checkbox-label" for="location2">
                   <span class="checkbox-icon"></span>
-                  San Francisco</label
-                >
+                  San Francisco
+                  </label>
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -148,8 +137,8 @@
                 />
                 <label class="checkbox-label" for="location3">
                   <span class="checkbox-icon"></span>
-                  Seattle</label
-                >
+                  Seattle
+                  </label>
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -159,8 +148,8 @@
                 />
                 <label class="checkbox-label" for="location4">
                   <span class="checkbox-icon"></span>
-                  Chicago</label
-                >
+                  Chicago
+                </label>
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -170,8 +159,8 @@
                 />
                 <label class="checkbox-label" for="location5">
                   <span class="checkbox-icon"></span>
-                  Boston</label
-                >
+                  Boston
+                  </label>
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -181,8 +170,8 @@
                 />
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
-                  Portland</label
-                >
+                  Portland
+                  </label>
               </div>
 
               <div
@@ -190,14 +179,11 @@
                 <input
                   class="checkbox-input"
                   type="checkbox"
-                  id="checkbox1"                 
-                 
-
+                  id="checkbox1"
                 />
                 <label class="checkbox2-label" for="checkbox1" >
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
-                  
                 </label>
                
                 <br>

@@ -12,7 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
-// ToDo : Fermer la modale #1
+//Fermer la modale #1
 const closeBtn = document.querySelectorAll(".close");
 
 //modal validation Ajouter confirmation quand envoie réussi #4
@@ -21,7 +21,7 @@ const modalVbg = document.querySelector(".bground2");
 const closeBtnV = document.querySelectorAll(".closeV");
 const closeBtn2 = document.querySelectorAll(".close2");
 
-// Implémenter entrées du formulaire #2 /Ajouter validation ou messages d'erreur #3 /Ajouter confirmation quand envoie réussi #4
+//Implémenter entrées du formulaire #2 /Ajouter validation ou messages d'erreur #3 /Ajouter confirmation quand envoie réussi #4
 
 // submit
 document.getElementById("reserve-form").addEventListener("submit", validate);
@@ -54,24 +54,24 @@ const errorMessages = {
   checkbox: "Veuillez accepter les conditions d'utilisations.",
 };
 
-// F launch modal form (handler)
+//Fonction launch modal form (handler)
 function launchModal() {
   modalbg.style.display = "block";
 }
 
-// F close modal form (handler)
+//Fonction close modal form (handler)
 function closeModal() {
   modalbg.style.display = "none";
 }
 
-//close modal form and open validate
+// close modal form and open validate
 function validateModal() {
   modalbg.style.display = "none";
   modalV.style.display = "flex";
   modalVbg.style.display = "block";
 }
 
-// F close modal Validation form (handler)
+//Fonction close modal Validation form (handler)
 function closeModalV() {
   modalV.style.display = "none";
   modalVbg.style.display = "none";
@@ -151,7 +151,7 @@ function validateRules() {
   }
 }
 
-// F principal du formulaire on test si location et rules son true avant de fermer le modal , les autres inputs sont testé avant via required
+// Fonction principal du formulaire on test si location et rules son true avant de fermer le modal , les autres inputs sont testé avant via required
 function validate(ev) {
   ev.preventDefault();
 
