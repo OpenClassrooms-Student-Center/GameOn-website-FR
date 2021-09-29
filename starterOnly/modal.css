@@ -14,7 +14,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-
+  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -35,10 +35,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-  float: left;
+    float: left;
 }
 .main-navbar {
-  float: right;
+    float: right;
 }
 .topnav a {
   float: left;
@@ -68,55 +68,8 @@ img {
   display: none;
 }
 
-.validateForm {
-  width: 200px;
-  height: 200px;
-  margin: 5% auto;
-  width: 100%;
-  max-width: 500px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
-  background: #232323;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-  color: #fff;
-  padding-top: 10px;
-  display: none;
-}
-
-#ErrorLocation {
-  /*Ajouter validation ou messages d'erreur #3*/
-  display: none;
-  text-align: center;
-  background-color: white;
-  color: black;
-  width: 90%;
-  margin: auto;
-  border-radius: 5px;
-  font-size: 0.9em;
-  font-weight: 400;
-  padding-bottom: 10px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
-#ErrorRules {
-  /*Ajouter validation ou messages d'erreur #3*/
-  display: none;
-  text-align: center;
-  background-color: white;
-  color: black;
-  width: 90%;
-  margin: auto;
-  border-radius: 5px;
-  font-size: 0.9em;
-  font-weight: 400;
-  padding-bottom: 10px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-}
 @media screen and (max-width: 768px) {
-  .topnav a {
-    display: none;
-  }
+  .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
@@ -124,9 +77,7 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav.responsive {
-    position: relative;
-  }
+  .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -136,20 +87,19 @@ img {
     float: none;
     display: block;
     text-align: left;
-    color: darkgoldenrod;
   }
 }
 
-@media screen and (max-width: 540px) {
-  .topnav a {
-    display: none;
-  }
+
+
+ @media screen and (max-width: 540px) {
+  .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
     margin-top: -15px;
   }
-}
+} 
 
 main {
   font-size: 130%;
@@ -161,6 +111,8 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
+
+
 }
 
 .modal-btn {
@@ -186,6 +138,7 @@ main {
 }
 
 /* Modal form */
+
 .button {
   background: #fe142f;
   margin-top: 0.5em;
@@ -215,75 +168,6 @@ main {
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
 }
-.bground2 {
-  /*Ajouter confirmation quand envoie réussi #4*/
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
-}
-
-.modalValidate {
-  /*Ajouter confirmation quand envoie réussi #4*/
-  margin: 5% auto;
-  width: 100%;
-  max-width: 500px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
-  background: #232323;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-  color: #fff;
-  padding-top: 10px;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  height: 900px;
-}
-.closeV {
-  /*Ajouter confirmation quand envoie réussi #4*/
-  margin-bottom: 15px;
-  background: #fe142f;
-  width: 30%;
-  padding: 0.8em;
-  color: #fff;
-  border-radius: 15px;
-  cursor: pointer;
-  font-size: 14px;
-  border: none;
-}
-.closeText {
-  /*<!--Ajouter confirmation quand envoie réussi #4-->*/
-  font-size: larger;
-  text-align: center;
-}
-.close2 {
-  /*<!--Ajouter confirmation quand envoie réussi #4-->*/
-  transform: scale(0.7);
-  align-self: flex-end;
-}
-.close2:before,
-.close2:after {
-  position: absolute;
-  right: 40px;
-  top: 13px;
-  content: " ";
-  height: 33px;
-  width: 3px;
-  background-color: #fff;
-}
-.close2:before {
-  transform: rotate(45deg);
-}
-.close2:after {
-  transform: rotate(-45deg);
-}
 
 .content {
   margin: 5% auto;
@@ -306,7 +190,7 @@ main {
 
 label {
   font-family: var(--font-default);
-  font-size: 14px;
+  font-size: 17px;
   font-weight: normal;
   display: inline-block;
   margin-bottom: 11px;
@@ -331,7 +215,7 @@ input {
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: left;
+  text-align: right;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -413,7 +297,6 @@ input[data-error]::after {
   top: 19%;
 }
 .close {
-  /*<!--ToDo : Fermer la modale #1 -->*/
   position: absolute;
   right: 15px;
   top: 15px;
@@ -596,68 +479,14 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
-  .bground {
-    display: none;
-    position: absolute;
-    z-index: 1;
-    left: 0;
-    top: 60px;
-    height: 120%;
-    width: 100%;
-    overflow: auto;
-    background-color: rgba(26, 39, 156, 0.4);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-  }
-  .bground2 {
-    display: none;
-    position: absolute;
-    z-index: 1;
-    left: 0;
-    top: 60px;
-    height: 120%;
-    width: 100%;
-    overflow: auto;
-    background-color: rgba(26, 39, 156, 0.4);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-  }
-  .modalValidate {
-    border-radius: 0;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    margin: 0;
-  }
-  .content {
-    border-radius: 0;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    margin: 0;
-
-    height: 105%;
-  }
-  .header-logo img {
-    width: 103px;
-  }
-  .topnav {
-    margin: 30px 30px 0 30px;
-    z-index: 10;
-  }
-  .fa-bars {
-    color: red;
-  }
   .hero-section {
     display: block;
     box-shadow: unset;
-    min-height: 0;
   }
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 0;
-    width: 90%;
-    min-width: 0;
-    text-align: center;
+    padding: 20px;
   }
   .hero-content::after {
     content: unset;
@@ -666,20 +495,12 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-family: DM Sans;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 36px;
-    line-height: 62px;
+    font-size: 4.5rem;
+    white-space: normal;
   }
   .hero-text {
-    /*<!--Tests manuels #5-->*/
-    font-family: DM Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 13px;
-    line-height: 17px;
-    width: 80vw;
+    width: unset;
+    font-size: 1.5rem;
   }
   .hero-img img {
     border-radius: 10px;
@@ -705,3 +526,4 @@ footer {
     opacity: 1;
   }
 }
+
