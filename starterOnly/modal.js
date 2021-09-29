@@ -21,6 +21,10 @@ const modalVbg = document.querySelector(".bground2");
 const closeBtnV = document.querySelectorAll(".closeV");
 const closeBtn2 = document.querySelectorAll(".close2");
 
+// Implémenter entrées du formulaire #2, ajouter validation ou messages d'erreur #3, ajouter confirmation quand envoie réussi #4
+// submit
+document.getElementById("reserve-form").addEventListener("submit", validate);
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
