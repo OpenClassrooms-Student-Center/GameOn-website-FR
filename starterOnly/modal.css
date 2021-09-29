@@ -68,6 +68,52 @@ img {
   display: none;
 }
 
+.validateForm {
+  width: 200px;
+  height: 200px;
+  margin: 5% auto;
+  width: 100%;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+  display: none;
+}
+#ErrorLocation {
+  /*<!--Ajouter validation ou messages d'erreur #3-->*/
+  display: none;
+  text-align: center;
+  background-color: white;
+  color: black;
+  width: 90%;
+  margin: auto;
+  border-radius: 5px;
+  font-size: 0.9em;
+  font-weight: 400;
+  padding-bottom: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+#ErrorRules {
+  /*<!--Ajouter validation ou messages d'erreur #3-->*/
+  display: none;
+  text-align: center;
+  background-color: white;
+  color: black;
+  width: 90%;
+  margin: auto;
+  border-radius: 5px;
+  font-size: 0.9em;
+  font-weight: 400;
+  padding-bottom: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/*mobile*/
 @media screen and (max-width: 768px) {
   .topnav a {display: none;}
   .topnav a.icon {
@@ -158,6 +204,19 @@ main {
 }
 
 .bground {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+
+.bground2 {
+  /*Ajouter confirmation quand envoie réussi #4*/
   display: none;
   position: fixed;
   z-index: 1;
