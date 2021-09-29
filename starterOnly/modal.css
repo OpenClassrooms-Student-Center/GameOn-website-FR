@@ -663,12 +663,19 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
-    white-space: normal;
+    font-family: "DM Sans";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 62px;
   }
-  .hero-text {
-    width: unset;
-    font-size: 1.5rem;
+  .hero-text { /*Tests manuels #5*/
+    font-family: "DM Sans";
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 17px;
+    width: 80vw;
   }
   .hero-img img {
     border-radius: 10px;
