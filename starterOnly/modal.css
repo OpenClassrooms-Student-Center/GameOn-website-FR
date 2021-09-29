@@ -228,6 +228,63 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
+.modalValidate {
+  /*Ajouter confirmation quand envoie réussi #4*/
+  margin: 5% auto;
+  width: 100%;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 900px;
+}
+.closeV {
+  /*Ajouter confirmation quand envoie réussi #4*/
+  margin-bottom: 15px;
+  background: #fe142f;
+  width: 30%;
+  padding: 0.8em;
+  color: #fff;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 14px;
+  border: none;
+}
+.closeText {
+  /*Ajouter confirmation quand envoie réussi #4*/
+  font-size: larger;
+  text-align: center;
+}
+.close2 {
+  /*Ajouter confirmation quand envoie réussi #4*/
+  transform: scale(0.7);
+  align-self: flex-end;
+}
+.close2:before,
+.close2:after {
+  position: absolute;
+  right: 40px;
+  top: 13px;
+  content: " ";
+  height: 33px;
+  width: 3px;
+  background-color: #fff;
+}
+.close2:before {
+  transform: rotate(45deg);
+}
+.close2:after {
+  transform: rotate(-45deg);
+}
+
 .content {
   margin: 5% auto;
   width: 100%;
