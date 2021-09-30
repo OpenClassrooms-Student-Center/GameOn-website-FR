@@ -28,9 +28,25 @@ document.getElementById("reserve-form").addEventListener("submit", validate);
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
+// close modal event
+closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
+
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
 
+//form regex
+isName = (name) => {
+  return new RegExp(/^[A-Za-z]{2,20}$/).test(name);
+};
+isMail = (mail) => {
+  return new RegExp(/^[A-Za-z0-9-éàè.]+@[a-z.]+[a-z.]$/).test(mail);
+};
+isBirth = (birthdate) => {
+  return new RegExp(/^\d{4}\-\d{2}\-\d{2}$/).test(birthdate);
+};
+isQuantity = (quantity) => {
+  return new RegExp("^([1-9][0-9]?){0,1}$").test(quantity);
+};
 
