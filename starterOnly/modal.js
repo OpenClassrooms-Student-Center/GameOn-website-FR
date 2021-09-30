@@ -50,3 +50,20 @@ isQuantity = (quantity) => {
   return new RegExp("^([1-9][0-9]?){0,1}$").test(quantity);
 };
 
+//déclaration variables du DOM
+const form = document.getElementById("loginForm");
+const formPrenom = form.first;
+const formNom = form.last;
+const formEmail = form.email;
+const formBirth = form.birthdate;
+const formQuantity = form.quantity;
+const formCGV = form.checkbox1;
+const RADIOS = [
+  form.location1,
+  form.location2,
+  form.location3,
+  form.location4,
+  form.location5,
+  form.location6,
+];
+const formLocation = document.getElementById("location-error");
