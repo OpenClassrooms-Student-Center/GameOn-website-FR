@@ -12,6 +12,24 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
+const firstNameInput = document.getElementById("first");
+const lastNameInput = document.getElementById("last");
+const emailInput = document.getElementById("email");
+const birthdateInput = document.getElementById("birthdate");
+const quantityInput = document.getElementById("quantity");
+const locationInput = document.querySelectorAll("[name='location']");
+const checkboxInput = document.getElementById("checkbox1");
+
+const errorMessages = {
+  firstName: "Veuillez entrer un prénom comportant 2 caractères ou plus.",
+  lastName: "Veuillez entrer un nom comportant 2 caractères ou plus.",
+  email: "Veuillez entrer une adresse email valide.",
+  birthdate: "Veuillez entrer une date de naissance valide.",
+  quantity: "Veuillez entrer un nombre valide.",
+  location: "Veuillez choisir une ville.",
+  checkbox: "Veuillez accepter les conditions d'utilisations.",
+};
+
 // Fermer la modale #1
 const closeBtn = document.querySelectorAll(".close");
 
@@ -34,25 +52,6 @@ closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 // close modal validation event
 closeBtnV.forEach((btn) => btn.addEventListener("click", closeModalV));
 closeBtn2.forEach((btn) => btn.addEventListener("click", closeModalV));
-
-//déclaration variables du DOM
-const firstNameInput = document.getElementById("first");
-const lastNameInput = document.getElementById("last");
-const emailInput = document.getElementById("email");
-const birthdateInput = document.getElementById("birthdate");
-const quantityInput = document.getElementById("quantity");
-const locationInput = document.querySelectorAll("[name='location']");
-const checkboxInput = document.getElementById("checkbox1");
-
-const errorMessages = {
-  firstName: "Veuillez entrer un prénom comportant 2 caractères ou plus.",
-  lastName: "Veuillez entrer un nom comportant 2 caractères ou plus.",
-  email: "Veuillez entrer une adresse email valide.",
-  birthdate: "Veuillez entrer une date de naissance valide.",
-  quantity: "Veuillez entrer un nombre valide.",
-  location: "Veuillez choisir une ville.",
-  checkbox: "Veuillez accepter les conditions d'utilisations.",
-};
 
 // launch modal form 
 function launchModal() {
@@ -166,41 +165,41 @@ function validateRules() {
 }
 
 // Fonction principal du formulaire on test si location et rules son ok avant de fermer la modale , les autres inputs sont testé avant par required
-/*function validate(ev) {
+function validate(ev) {
   ev.preventDefault();
 
   let isValidInput = true;
   removeAlerts();
-  if (firstValidation()) {
+  if (!firstValidation()) {
     isValidInput = false;
     isInvalid(firstNameInput, errorMessages.firstName);
   }
-  if (lastValidation()) {
+  if (!lastValidation()) {
     isValidInput = false;
     isInvalid(lastNameInput, errorMessages.lastName);
   }
-  if (emailValidation()) {
+  if (!emailValidation()) {
     isValidInput = false;
     isInvalid(emailInput, errorMessages.email);
   }
-  if (birthdateValidation()) {
+  if (!birthdateValidation()) {
     isValidInput = false;
     isInvalid(birthdateInput, errorMessages.birthdate);
   }
-  if (quantityValidation()) {
+  if (!quantityValidation()) {
     isValidInput = false;
     isInvalid(quantityInput, errorMessages.quantity);
   }
-  if (validateLocation()) {
+  if (!validateLocation()) {
     isValidInput = false;
     isInvalid(locationInput, errorMessages.location);
   }
-  if (validateRules()) {
+  if (!validateRules()) {
     isValidInput = false;
     isInvalid(checkboxInput, errorMessages.checkbox);
   }
   if (isValidInput) {
     validateModal();
   }
-}*/
+}
 
