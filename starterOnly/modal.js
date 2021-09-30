@@ -85,6 +85,16 @@ function isInvalid(element, message) {
   target.setAttribute("data-error", message);
 }
 
+//remove previous alerts
+function removeAlerts() {
+  let invalidFields = document.querySelectorAll(
+    '.formData[data-error-visible="true"]'
+  );
+  for (let field of invalidFields) {
+    field.setAttribute("data-error-visible", false);
+    field.setAttribute("data-error", "");
+  }
+}
 //form regex
 isName = (name) => {
   return new RegExp(/^[A-Za-z]{2,20}$/).test(name);
