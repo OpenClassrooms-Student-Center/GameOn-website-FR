@@ -116,6 +116,25 @@ function emailValidation() {
   return regex.test(emailInput.value);
 }
 
+//validate birthday
+function birthdateValidation() {
+  let birthdate = new Date(birthdateInput.value);
+  let today = new Date();
+  if (birthdate.toString() !== "Invalid Date") {
+    if (
+      birthdate.getDate() >= today.getDate() &&
+      birthdate.getMonth() == today.getMonth() &&
+      birthdate.getFullYear() == today.getFullYear()
+    ) {
+      return false;
+    } else {
+      return true;
+    }
+  } else {
+    return false;
+  }
+}
+
 //form regex
 isName = (name) => {
   return new RegExp(/^[A-Za-z]{2,20}$/).test(name);
