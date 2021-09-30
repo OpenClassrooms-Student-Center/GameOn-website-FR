@@ -110,6 +110,12 @@ function lastValidation() {
   else return false;
 }
 
+//validate email
+function emailValidation() {
+  let regex = /^([a-z0-9_\.-]+\@[\da-z\.-]+\.[a-z\.]{2,6})$/;
+  return regex.test(emailInput.value);
+}
+
 //form regex
 isName = (name) => {
   return new RegExp(/^[A-Za-z]{2,20}$/).test(name);
