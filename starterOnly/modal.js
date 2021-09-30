@@ -54,14 +54,27 @@ const errorMessages = {
   checkbox: "Veuillez accepter les conditions d'utilisations.",
 };
 
-// launch modal form (handler)
+// launch modal form 
 function launchModal() {
   modalbg.style.display = "block";
 }
 
-// close modal form (handler)
+// close modal form 
 function closeModal() {
   modalbg.style.display = "none";
+}
+
+//close modal form and open validate: ouvre la modale et la ferme en cliquant
+function validateModal() {
+  modalbg.style.display = "none";
+  modalV.style.display = "flex";
+  modalVbg.style.display = "block";
+}
+
+// close modal Validation form 
+function closeModalV() {
+  modalV.style.display = "none";
+  modalVbg.style.display = "none";
 }
 
 //form regex
