@@ -140,6 +140,18 @@ function quantityValidation() {
   let regex = /^[0-9]+$/;
   return regex.test(quantityInput.value);
 }
+
+// Implémenter entrées du formulaire #2 /Ajouter validation ou messages d'erreur #3 / Test localisation
+function validateLocation() {
+  const input = locationInput;
+  for (var i = 0; i < input.length; i++) {
+    const validityState = input[i].checked;
+    if (validityState) {
+      return true;
+    }
+  }
+  return false;
+}
 //form regex
 isName = (name) => {
   return new RegExp(/^[A-Za-z]{2,20}$/).test(name);
