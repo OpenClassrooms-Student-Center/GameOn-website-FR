@@ -31,6 +31,10 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // close modal event
 closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 
+// close modal validation event
+closeBtnV.forEach((btn) => btn.addEventListener("click", closeModalV));
+closeBtn2.forEach((btn) => btn.addEventListener("click", closeModalV));
+
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
