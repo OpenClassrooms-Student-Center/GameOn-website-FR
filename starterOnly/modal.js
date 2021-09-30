@@ -15,7 +15,7 @@ const formData = document.querySelectorAll(".formData");
 // Fermer la modale #1
 const closeBtn = document.querySelectorAll(".close");
 
-//validation: ajouter confirmation quand envoie réussi #4
+//validation modal: ajouter confirmation quand envoie réussi #4
 const modalV = document.querySelector(".modalValidate");
 const modalVbg = document.querySelector(".bground2");
 const closeBtnV = document.querySelectorAll(".closeV");
