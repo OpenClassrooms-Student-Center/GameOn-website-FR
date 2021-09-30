@@ -35,6 +35,15 @@ closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 closeBtnV.forEach((btn) => btn.addEventListener("click", closeModalV));
 closeBtn2.forEach((btn) => btn.addEventListener("click", closeModalV));
 
+//déclaration variables du DOM
+const firstNameInput = document.getElementById("first");
+const lastNameInput = document.getElementById("last");
+const emailInput = document.getElementById("email");
+const birthdateInput = document.getElementById("birthdate");
+const quantityInput = document.getElementById("quantity");
+const locationInput = document.querySelectorAll("[name='location']");
+const checkboxInput = document.getElementById("checkbox1");
+
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
@@ -54,20 +63,3 @@ isQuantity = (quantity) => {
   return new RegExp("^([1-9][0-9]?){0,1}$").test(quantity);
 };
 
-//déclaration variables du DOM
-const form = document.getElementById("loginForm");
-const formPrenom = form.first;
-const formNom = form.last;
-const formEmail = form.email;
-const formBirth = form.birthdate;
-const formQuantity = form.quantity;
-const formCGV = form.checkbox1;
-const RADIOS = [
-  form.location1,
-  form.location2,
-  form.location3,
-  form.location4,
-  form.location5,
-  form.location6,
-];
-const formLocation = document.getElementById("location-error");
