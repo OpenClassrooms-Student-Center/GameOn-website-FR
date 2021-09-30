@@ -166,41 +166,41 @@ function validateRules() {
 }
 
 // Fonction principal du formulaire on test si location et rules son ok avant de fermer la modale , les autres inputs sont testé avant par required
-function validate(ev) {
+/*function validate(ev) {
   ev.preventDefault();
 
   let isValidInput = true;
   removeAlerts();
-  if (!firstValidation()) {
+  if (firstValidation()) {
     isValidInput = false;
     isInvalid(firstNameInput, errorMessages.firstName);
   }
-  if (!lastValidation()) {
+  if (lastValidation()) {
     isValidInput = false;
     isInvalid(lastNameInput, errorMessages.lastName);
   }
-  if (!emailValidation()) {
+  if (emailValidation()) {
     isValidInput = false;
     isInvalid(emailInput, errorMessages.email);
   }
-  if (!birthdateValidation()) {
+  if (birthdateValidation()) {
     isValidInput = false;
     isInvalid(birthdateInput, errorMessages.birthdate);
   }
-  if (!quantityValidation()) {
+  if (quantityValidation()) {
     isValidInput = false;
     isInvalid(quantityInput, errorMessages.quantity);
   }
-  if (!validateLocation()) {
+  if (validateLocation()) {
     isValidInput = false;
     isInvalid(locationInput, errorMessages.location);
   }
-  if (!validateRules()) {
+  if (validateRules()) {
     isValidInput = false;
     isInvalid(checkboxInput, errorMessages.checkbox);
   }
   if (isValidInput) {
     validateModal();
   }
-}
+}*/
 
