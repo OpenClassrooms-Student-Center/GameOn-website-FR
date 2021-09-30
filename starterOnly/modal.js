@@ -135,6 +135,11 @@ function birthdateValidation() {
   }
 }
 
+//validate quantity
+function quantityValidation() {
+  let regex = /^[0-9]+$/;
+  return regex.test(quantityInput.value);
+}
 //form regex
 isName = (name) => {
   return new RegExp(/^[A-Za-z]{2,20}$/).test(name);
