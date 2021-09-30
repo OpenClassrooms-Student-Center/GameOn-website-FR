@@ -95,6 +95,14 @@ function removeAlerts() {
     field.setAttribute("data-error", "");
   }
 }
+
+//validate first name
+function firstValidation() {
+  let inputValue = firstNameInput.value;
+  if (inputValue !== null && inputValue.length >= 2) return true;
+  else return false;
+}
+
 //form regex
 isName = (name) => {
   return new RegExp(/^[A-Za-z]{2,20}$/).test(name);
