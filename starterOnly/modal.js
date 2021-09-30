@@ -44,6 +44,16 @@ const quantityInput = document.getElementById("quantity");
 const locationInput = document.querySelectorAll("[name='location']");
 const checkboxInput = document.getElementById("checkbox1");
 
+const errorMessages = {
+  firstName: "Veuillez entrer un prénom comportant 2 caractères ou plus.",
+  lastName: "Veuillez entrer un nom comportant 2 caractères ou plus.",
+  email: "Veuillez entrer une adresse email valide.",
+  birthdate: "Veuillez entrer une date de naissance valide.",
+  quantity: "Veuillez entrer un nombre valide.",
+  location: "Veuillez choisir une ville.",
+  checkbox: "Veuillez accepter les conditions d'utilisations.",
+};
+
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
