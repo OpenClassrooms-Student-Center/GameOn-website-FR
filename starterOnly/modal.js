@@ -12,7 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
-const firstNameInput = document.getElementById("first");
+const firstNameInput = document.getElementById('first').value;
 const lastNameInput = document.getElementById("last");
 const emailInput = document.getElementById("email");
 const birthdateInput = document.getElementById("birthdate");
@@ -42,6 +42,25 @@ const closeBtn2 = document.querySelectorAll(".close2");
 // Implémenter entrées du formulaire #2, ajouter validation ou messages d'erreur #3, ajouter confirmation quand envoie réussi #4
 // submit
 document.getElementById("reserve-form").addEventListener("submit", validate);
+
+const firstNameError = document.getElementById('firstError');
+firstNameError.style.display = "none";
+//fonction validate des champs de saisie
+function validate () {
+  //alert ("hello");
+  let firstNameInput = document.getElementById('first').value;
+  //let firstNameErrors = document.getElementById('firstError').value;
+  //prénom
+  alert (firstNameInput.trim().length);
+  if (firstNameInput.trim().length<2){
+    //alert ("prénom trop court");
+    firstNameError.style.display = "inline";
+  } 
+  /*else {
+    alert ("prénom ok")
+  }*/
+}
+
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -96,11 +115,57 @@ function removeAlerts() {
 }
 
 //validate first name
-function firstValidation() {
+/*function firstValidation() {
   let inputValue = firstNameInput.value;
   if (inputValue !== null && inputValue.length >= 2) return true;
   else return false;
-}
+}*/
+
+const firstValue = firstNameInput.value;
+isfirst = (name) => {
+  return new RegExp(/^[A-Za-z]{2,20}$/).test(name);
+};
+isValid = () => {
+  if (
+    isValidFirstName()
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
+isValid();
+console.log("statut form IS VALID ?", isValid());
+isValidFirstName = () => {
+  if (firstValue === "") {
+    setErrorFor(firstNameInput, "le champ est vide");
+    return false;
+  } else if (!firstNameInput(firstValue)) {
+    setErrorFor(
+      firstNameInput,
+      "Veuillez entrer 2 caractères ou plus pour le champ du nom."
+    );
+    return false;
+  } else {
+    setSuccessFor(firstNameInput);
+    return true;
+  }
+};
+
+isValidFirstName();
+console.log("statut FIRSTNAME", isValidFirstName());
+
+// écoute les événements sur cet élément.
+firstNameInput.addEventListener("input", (e) => {
+  let etv = e.target.value;
+  isfirst(etv)
+    ? setSuccessFor(firstNameInput)
+    : setErrorFor(
+      firstNameInput,
+        "Veuillez entrer 2 caractères ou plus pour le champ du nom."
+      );
+});
+
 
 //validate last name
 function lastValidation() {
@@ -138,68 +203,5 @@ function birthdateValidation() {
 function quantityValidation() {
   let regex = /^[0-9]+$/;
   return regex.test(quantityInput.value);
-}
-
-// Implémenter entrées du formulaire #2 /Ajouter validation ou messages d'erreur #3 / Test localisation
-//Validate location
-function validateLocation() {
-  const input = locationInput;
-  for (var i = 0; i < input.length; i++) {
-    const validityState = input[i].checked;
-    if (validityState) {
-      return true;
-    }
-  }
-  return false;
-}
-
-//Validate condition générale
-function validateRules() {
-  const input = checkboxInput;
-  const validityState = input.checked;
-  if (validityState == false) {
-    return false;
-  } else {
-    return true;
-  }
-}
-
-// Fonction principal du formulaire on test si location et rules son ok avant de fermer la modale , les autres inputs sont testé avant par required
-function validate(ev) {
-  ev.preventDefault();
-
-  let isValidInput = true;
-  removeAlerts();
-  if (!firstValidation()) {
-    isValidInput = false;
-    isInvalid(firstNameInput, errorMessages.firstName);
-  }
-  if (!lastValidation()) {
-    isValidInput = false;
-    isInvalid(lastNameInput, errorMessages.lastName);
-  }
-  if (!emailValidation()) {
-    isValidInput = false;
-    isInvalid(emailInput, errorMessages.email);
-  }
-  if (!birthdateValidation()) {
-    isValidInput = false;
-    isInvalid(birthdateInput, errorMessages.birthdate);
-  }
-  if (!quantityValidation()) {
-    isValidInput = false;
-    isInvalid(quantityInput, errorMessages.quantity);
-  }
-  if (!validateLocation()) {
-    isValidInput = false;
-    isInvalid(locationInput, errorMessages.location);
-  }
-  if (!validateRules()) {
-    isValidInput = false;
-    isInvalid(checkboxInput, errorMessages.checkbox);
-  }
-  if (isValidInput) {
-    validateModal();
-  }
 }
 
