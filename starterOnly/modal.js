@@ -142,6 +142,7 @@ function quantityValidation() {
 }
 
 // Implémenter entrées du formulaire #2 /Ajouter validation ou messages d'erreur #3 / Test localisation
+//Validate location
 function validateLocation() {
   const input = locationInput;
   for (var i = 0; i < input.length; i++) {
@@ -151,6 +152,17 @@ function validateLocation() {
     }
   }
   return false;
+}
+
+//Validate condition générale
+function validateRules() {
+  const input = checkboxInput;
+  const validityState = input.checked;
+  if (validityState == false) {
+    return false;
+  } else {
+    return true;
+  }
 }
 //form regex
 isName = (name) => {
