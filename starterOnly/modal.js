@@ -103,6 +103,13 @@ function firstValidation() {
   else return false;
 }
 
+//validate last name
+function lastValidation() {
+  let inputValue = lastNameInput.value;
+  if (inputValue !== null && inputValue.length >= 2) return true;
+  else return false;
+}
+
 //form regex
 isName = (name) => {
   return new RegExp(/^[A-Za-z]{2,20}$/).test(name);
