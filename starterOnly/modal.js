@@ -77,6 +77,14 @@ function closeModalV() {
   modalVbg.style.display = "none";
 }
 
+function isInvalid(element, message) {
+  let target;
+  if (NodeList.prototype.isPrototypeOf(element)) target = element[0].parentNode;
+  else target = element.parentNode;
+  target.setAttribute("data-error-visible", true);
+  target.setAttribute("data-error", message);
+}
+
 //form regex
 isName = (name) => {
   return new RegExp(/^[A-Za-z]{2,20}$/).test(name);
