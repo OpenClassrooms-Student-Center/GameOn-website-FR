@@ -7,14 +7,13 @@ function editNav() {
   }
 }
 
-function openMenu() {
-  console.log("On ouvre le menu");
-};
+
 
 // DOM Elements
 const modalbg = document.querySelector(".bground"),
   modalBtn = document.querySelectorAll(".modal-btn"),
   modalBody = document.querySelector(".modal-body"),
+  mainNavBar = document.querySelector(".main-navbar"),
   closeBtn = document.querySelector(".close"),
   icon = document.querySelector(".icon"),
   formData = document.querySelectorAll(".formData"),
@@ -28,7 +27,34 @@ const modalbg = document.querySelector(".bground"),
   errorOptionMsg = document.querySelector(".errorOptionMsg"),
   newsletter = document.querySelector("#newsletter");
 
-icon.addEventListener("click", openMenu);
+
+const navTemplate = `
+    <a href="#" class="active"><span>Accueil</span></a>
+    <a href="#"><span>Détails de l'évènement</span></a>
+    <a href="#"><span>À propos</span></a>
+    <a href="#"><span>Contact</span></a>
+    <a href="#"><span>Évènements passés</span></a>
+  `;
+icon.addEventListener("click", () => {
+  let navWrapper = document.getElementById("navWrapper");
+  if (navWrapper !== null) {
+    navWrapper.remove();
+  } else {
+    const ul = document.createElement("ul");
+    ul.className = "navWrapper";
+    ul.id = "navWrapper";
+    ul.innerHTML = navTemplate;
+    mainNavBar.appendChild(ul);
+    closeOnOut();
+  }
+});
+
+function closeOnOut(){
+  let nav= document.querySelector("#navWrapper");
+  nav.addEventListener("mouseleave", () => {
+    nav.remove();
+  })
+}
 
 // launch modal event
 modalBtn.forEach((btn) =>

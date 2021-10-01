@@ -54,8 +54,15 @@ p {
   color: #FF001B;
   font-size: 1.5rem;
   cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 10px;
 }
-.topnav a {
+.main-navbar .fa-bars:hover {
+  background-color: #FF001B;
+  color: white;
+  transition: all ease-in-out 0.3s;
+}
+.topnav .link-main-navbar {
   /* float: left; */
   /* display: block; */
   display: none;
@@ -141,7 +148,7 @@ main {
 .bground {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 5;
   left: 0;
   top: 0;
   height: 100%;
@@ -278,6 +285,91 @@ input[data-error]::after {
     border-color: #279e7a;
 }
 
+/* test checkbox */
+.formCheck {
+  display: inline-block;
+  position: relative;
+  padding-right: 5px;
+  /* padding: 0 6px; */
+  /* margin: 10px 0 0; */
+}
+
+.formCheck input[type='checkbox'] {
+  display: none;
+}
+
+.checkbox2-label {
+  font-size: 11px;
+  /* margin: 0; */
+  display: flex;
+  align-items: center;
+  margin-left: 1.5rem;
+}
+.checkbox-icon {
+  margin-left: 1.5rem;
+}
+
+
+.checkbox-label .checkbox-icon,
+.checkbox2-label .checkbox-icon {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #279e7a;
+  border-radius: 50%;
+  text-indent: 29px;
+  white-space: nowrap;
+  position: absolute;
+  left: -25px;
+  /* top: -1px; */
+  transition: 0.3s;
+}
+.checkbox-label .checkbox-icon::after,
+.checkbox2-label .checkbox-icon::after {
+  content: "";
+  width: 13px;
+  height: 13px;
+  background-color: #279e7a;
+  border-radius: 50%;
+  text-indent: 29px;
+  white-space: nowrap;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.3s;
+  opacity: 0;
+}
+/* .checkbox-input, .checkbox-inputs {
+  display: none;
+} */
+.formCheck input[type='checkbox']:checked + .checkbox-label .checkbox-icon::after,
+.formCheck input[type='checkbox']:checked + .checkbox2-label .checkbox-icon::after {
+  opacity: 1;
+}
+.formCheck input[type='checkbox']:checked + .checkbox2-label .checkbox-icon {
+  background: #279e7a;
+}
+.checkbox2-label .checkbox-icon {
+  border-radius: 4px;
+  border: 0;
+  background: #c4c4c4;
+}
+.checkbox2-label .checkbox-icon::after {
+  width: 7px;
+  height: 4px;
+  border-radius: 2px;
+  background: transparent;
+  border: 2px solid transparent;
+  border-bottom-color: #fff;
+  border-left-color: #fff;
+  transform: rotate(-55deg);
+  left: 21%;
+  top: 19%;
+}
+.close-btn {
+  margin-top: auto;
+}
 .close {
   position: absolute;
   right: 15px;
@@ -305,6 +397,8 @@ input[data-error]::after {
 }
 .btn-submit {
   margin: 0 auto;
+  font-size: 0.75rem;
+  padding: 0.5rem 2.5rem;
 }
 .btn-submit,
 .btn-signup {
@@ -312,11 +406,13 @@ input[data-error]::after {
   display: block;
   /* margin: 0 auto; */
   border-radius: 7px;
-  font-size: 1rem;
-  padding: 12px 82px;
   color: #fff;
   cursor: pointer;
   border: 0;
+}
+.btn-signup {
+  font-size: 1rem;
+  padding: 12px 82px;
 }
 /* custom select styles */
 .custom-select {
@@ -482,7 +578,7 @@ footer {
 .modal-body-container {
   display: flex;
   flex-direction: column;
-  height: 75vh;
+  height: 81vh;
   justify-content: space-between;
 }
 .thanks-container {
@@ -497,15 +593,15 @@ footer {
 }
 
 /* Breakpoints */
-@media screen and (max-width: 540px) {
-  /* .topnav a {display: none;}
+/*@media screen and (max-width: 540px) {
+   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
     margin-top: -15px;
-  } */
+  } 
   
-}
+}*/
 
 /* @media screen and (max-width: 1023px) {
   .topnav.responsive {position: relative;}
@@ -533,11 +629,11 @@ footer {
   .main-navbar {
     display: flex;
   }
-  .main-navbar a {
+  .main-navbar .link-main-navbar {
     display: block;
   }
 }
-@media screen and (max-width: 800px) {
+/* @media screen and (max-width: 800px) { */
   .hero-section {
     display: flex;
     flex-direction: column;
@@ -570,8 +666,37 @@ footer {
     display: block;
     margin: 32px auto 10px; */
     /* padding: 12px 35px; */
-  }
+  /* } */
   .copyrights {
     /* margin-top: 50px; */
     text-align: center;
+  }
+
+  #navWrapper {
+    position: absolute;
+    top: 3rem;
+    right: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    z-index: 3;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+  }
+  #navWrapper a {
+    text-decoration: none;
+    color: inherit;
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
+  #navWrapper a:not(:first-child) {
+    margin-top: 0.25rem;
+  }
+  #navWrapper a:hover, #navWrapper a.active {
+    color: white;
+  }
+  #navWrapper span {
+    padding: 0.5rem;
   }
