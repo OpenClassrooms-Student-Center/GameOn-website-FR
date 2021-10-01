@@ -64,6 +64,7 @@ function validate() {
 
   // on récupère l'ensemble des éléments ayant la classe "warning"
   const warningText = document.querySelectorAll(".warning");
+  const attentionOutline = document.querySelectorAll(".attention");
 
   // on créé une variable qui va stocker le nombre de champs invalide
   let invalidInput = 0;
@@ -72,6 +73,7 @@ function validate() {
   for (let i = 0; i<conditions.length; i++) {
     if (conditions[i]) { // si oui (ie, si le champ est invalide): 
       warningText[i].style.display = "inline-block"; // on affiche un message d'erreur 
+      attentionOutline[i].style.outline = "2px solid red";
       invalidInput++; // et on incrémente le nombre de champs invalide
     } else { // si non (ie si le champ est valide)
       warningText[i].style.display =" none"; // on fait disparaitre un éventuel message d'erreur
@@ -82,7 +84,7 @@ function validate() {
   if (invalidInput > 0) {
     return false;
   } else { // sinon, on peut afficher un message indiquant le bon envoi du formulaire
-	  modalBody.innerHTML = "<p class=\"success\"><br>Merci, votre demande a bien été réceptionnée !<br></p>";
+    showSuccess();
   }
 
 }
@@ -116,4 +118,14 @@ function validateBirthdate(testDate) {
   } else {
     return true;
   }
+}
+
+// Function showSuccess : si les entrées du formulaire sont validées, on affiche ce contenu
+function showSuccess() {
+  const formFull = document.getElementById("test_form");
+    formFull.style.visibility = "hidden";
+
+    const modalSuccess = document.createElement("div");
+    modalBody.appendChild(modalSuccess);
+	  modalSuccess.innerHTML = "<p class=\"success\">Merci, votre demande a bien été réceptionnée !</p><button class=\"btn-submit modal-btn btn-center\" onclick=\"closeModal()\">Fermer</button>";
 }
