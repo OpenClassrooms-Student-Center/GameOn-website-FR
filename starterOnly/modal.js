@@ -275,6 +275,32 @@ locationInput.forEach((locationInputs, index, locationInput) => {
   });
 });
 
+//Validation condition: J'ai lu et accepté les conditions d'utilisation
+ValidCondition = () => {
+  if (checkboxInput.checked === true) {
+    setSuccessFor(checkboxInput);
+    return true;
+  } else {
+    setErrorFor(
+      checkboxInput,
+      "Veuillez accepter les conditions d'utilisations."
+    );
+    return false;
+  }
+};
+ValidCondition();
+console.log("statut CGV", ValidCondition());
+
+//Pour écouter les événements sur cet élément.
+checkboxInput.addEventListener("input", (e) => {
+  let etc = e.target.checked;
+  etc
+    ? setSuccessFor(checkboxInput)
+    : setErrorFor(
+      checkboxInput,
+        "Veuillez accepter les conditions d'utilisations."
+      );
+});
 /*const errorMessages = {
   firstName: "Veuillez entrer un prénom comportant 2 caractères ou plus.",
   lastName: "Veuillez entrer un nom comportant 2 caractères ou plus.",
