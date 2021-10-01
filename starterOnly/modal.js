@@ -65,6 +65,19 @@ function checkInputs() {
   const quantityValue = quantityInput.value.trim();
 }
 
+//Fonction success et error
+setSuccessFor = (input, message) => {
+  const formData = input.parentElement;
+  formData.className = "formData success";
+};
+
+setErrorFor = (input, message) => {
+  const formData = input.parentElement;
+  const p = formData.querySelector("p");
+  formData.className = "formData error";
+  p.innerText = message;
+};
+
 /*const errorMessages = {
   firstName: "Veuillez entrer un prénom comportant 2 caractères ou plus.",
   lastName: "Veuillez entrer un nom comportant 2 caractères ou plus.",
