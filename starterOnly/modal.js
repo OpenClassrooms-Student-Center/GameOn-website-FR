@@ -332,7 +332,7 @@ success = () => {
   getModalBg.appendChild(divValidate);
 
   //  bouton MERCI
-  let btnThankie = document.createElement("button");
+  let btnValidate = document.createElement("button");
   btnValidate.textContent = "Merci";
   btnValidate.classList.add("btnValidate");
   getModalBg.appendChild(btnValidate);
