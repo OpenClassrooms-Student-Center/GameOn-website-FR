@@ -13,7 +13,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 console.log(modalBtn);
 const formData = document.querySelectorAll(".formData");
 //Modal close
-const close = document.querySelector(".close");
+const closeBtn = document.querySelector(".close");
 // console.log(close);
 
 // launch modal event
@@ -28,4 +28,4 @@ function launchModal() {
 function closeModal() {
   modalBg.style.display = "none";
 }
-close.addEventListener("click", closeModal);
+closeBtn.addEventListener("click", closeModal);
