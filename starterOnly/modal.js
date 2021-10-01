@@ -35,8 +35,6 @@ console.log("STATUT C.G.V DEFAULT " + ConditionDefaultchecked + "");
 launchCloseModale = () => {
   const getBground = document.querySelector(".bground");
   const isClose = document.querySelector(".close");  //Fermer la modale #1 
-  // const modalBtn = document.querySelectorAll(".modal-btn");
-  // const formData = document.querySelectorAll(".formData");
 
   launchModal = () => {
     getBground.style.display = "block";
