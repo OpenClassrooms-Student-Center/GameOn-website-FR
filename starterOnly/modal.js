@@ -201,7 +201,7 @@ ValidMail = () => {
 ValidMail();
 console.log("statut MAIL", ValidMail());
 
-// écoute des événements sur cet élément.
+// Pour écouter des événements sur cet élément.
 emailInput.addEventListener("input", (e) => {
   let etv = e.target.value;
   Mail(etv)
