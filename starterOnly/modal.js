@@ -12,7 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
-const firstNameInput = document.getElementById('first').value;
+const firstNameInput = document.getElementById('first');
 const lastNameInput = document.getElementById("last");
 const emailInput = document.getElementById("email");
 const birthdateInput = document.getElementById("birthdate");
@@ -43,7 +43,7 @@ const closeBtn2 = document.querySelectorAll(".close2");
 // submit
 document.getElementById("reserve-form").addEventListener("submit", validate);
 
-const firstNameError = document.getElementById('firstError');
+/*const firstNameError = document.getElementById('firstError');
 firstNameError.style.display = "none";
 //fonction validate des champs de saisie
 function validate () {
@@ -59,7 +59,7 @@ function validate () {
   /*else {
     alert ("prénom ok")
   }*/
-}
+/*}*/
 
 
 // launch modal event
