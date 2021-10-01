@@ -266,10 +266,10 @@ console.log("statut LOCATION", ValidLocation());
 locationInput.forEach((locationInputs, index, locationInput) => {
   locationInputs.addEventListener("input", (e) => {
     let etc = e.target.checked;
-    console.log(etc, "addeventlistener");
+    console.log(etc, "Voici");
     etc
       ? setSuccessFor(locationInputs)
-      : setErrorFor(locationInput, 
+      : setErrorFor(locationInputs, 
         "Veuillez choisir une ville."
         );
   });
