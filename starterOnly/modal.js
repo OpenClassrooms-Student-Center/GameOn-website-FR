@@ -105,7 +105,7 @@ validBirthDate = () => {
     return false;
   }
 };
-isvalidBirthDate();
+validBirthDate();
 console.log("statut BIRTHDATE", isvalidBirthDate());
 
 // écoute des événements sur cet élément.
