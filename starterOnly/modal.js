@@ -240,7 +240,6 @@ quantityInput.addEventListener("input", (e) => {
 ValidLocation = () => {
   let oneIsChecked = false;
   for (let i = 0; i < locationInput.length; i++) {
-    //console.log(RADIOS[i]);
     if (locationInput[i].checked) {
       oneIsChecked = true;
       break;
