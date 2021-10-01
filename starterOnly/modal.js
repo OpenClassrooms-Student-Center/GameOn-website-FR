@@ -78,6 +78,32 @@ setErrorFor = (input, message) => {
   p.innerText = message;
 };
 
+
+//Validation anniversaire
+validBirthDate = () => {
+  if (birthValue === "") {
+    setErrorFor(birthdateInput, "le champ est vide");
+    return false;
+  } else if (isBirth(birthValue)) {
+    setSuccessFor(birthdateInput);
+    return true;
+  } else {
+    setErrorFor(birthdateInput, "Veuillez entrer une date de naissance valide.");
+    return false;
+  }
+};
+isvalidBirthDate();
+console.log("statut BIRTHDATE", isvalidBirthDate());
+
+// écoute des événements sur cet élément.
+formBirth.addEventListener("change", checkingForValidDate);
+function checkingForValidDate() {
+  console.log(this.value, Birth(this.value));
+  Birth(this.value, "addeventlistener")
+    ? setSuccessFor(birthdateInput)
+    : setErrorFor(birthdateInput, "Veuillez entrer une date de naissance valide.");
+}
+
 /*const errorMessages = {
   firstName: "Veuillez entrer un prénom comportant 2 caractères ou plus.",
   lastName: "Veuillez entrer un nom comportant 2 caractères ou plus.",
