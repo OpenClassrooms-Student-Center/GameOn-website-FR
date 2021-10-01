@@ -1,13 +1,13 @@
 {
-  "name": "oc-projet-5",
+  "name": "giulianoloic_4_01102021",
   "version": "1.0.0",
-  "description": "",
+  "description": "projet-4-ocr-dev-front-end",
   "main": "modal.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "devweb13",
   "license": "ISC",
   "devDependencies": {
     "eslint": "^7.32.0"
