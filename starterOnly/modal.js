@@ -237,6 +237,44 @@ quantityInput.addEventListener("input", (e) => {
       "Veuillez entrer un nombre valide."
       );
 });
+
+//Validation location
+ValidLocation = () => {
+  let oneIsChecked = false;
+  for (let i = 0; i < locationInput.length; i++) {
+    //console.log(RADIOS[i]);
+    if (locationInput[i].checked) {
+      oneIsChecked = true;
+      break;
+    }
+  }
+
+  if (!oneIsChecked) {
+    setErrorFor(formLocation, 
+      "Veuillez choisir une ville."
+      );
+    return false;
+  } else {
+    setSuccessFor(formLocation);
+    return true;
+  }
+};
+ValidLocation();
+console.log("statut LOCATION", ValidLocation());
+
+//Pour écouter les événements sur cet élément.
+locationInput.forEach((locationInputs, index, locationInput) => {
+  locationInputs.addEventListener("input", (e) => {
+    let etc = e.target.checked;
+    console.log(etc, "addeventlistener");
+    etc
+      ? setSuccessFor(locationInput)
+      : setErrorFor(locationInput, 
+        "Veuillez choisir une ville."
+        );
+  });
+});
+
 /*const errorMessages = {
   firstName: "Veuillez entrer un prénom comportant 2 caractères ou plus.",
   lastName: "Veuillez entrer un nom comportant 2 caractères ou plus.",
