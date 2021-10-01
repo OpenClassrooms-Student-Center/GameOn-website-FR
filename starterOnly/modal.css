@@ -113,6 +113,23 @@ img {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }*/
 
+
+.formData p {
+  visibility: hidden;
+}
+
+.formData.error p {
+  visibility: visible;
+  color: #e74c3c;
+  bottom: 0;
+  left: 0;
+  display: block;
+}
+
+.formData.success p {
+  display: none;
+}
+
 /*mobile*/
 @media screen and (max-width: 768px) {
   .topnav a {display: none;}
