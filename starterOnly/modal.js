@@ -62,7 +62,7 @@ function checkInputs() {
   //const nomValue = lastNameInput.value.trim();
   //const emailValue = emailInput.value.trim();
   //const birthValue = birthdateInput.value.trim();
-  const quantityValue = quantityInput.value.trim();
+  //const quantityValue = quantityInput.value.trim();
 }
 
 //Fonction success et error
@@ -207,6 +207,35 @@ emailInput.addEventListener("input", (e) => {
   Mail(etv)
     ? setSuccessFor(emailInput)
     : setErrorFor(emailInput, "Veuillez entrer une adresse email valide.");
+});
+
+//Validation quantité
+const quantityValue = quantityInput.value.trim();
+ValidQuantity = () => {
+  if (quantityValue === "") {
+    setErrorFor(quantityInput, "le champ est vide");
+    return false;
+  } else if (!Quantity(quantityValue)) {
+    setErrorFor(quantityInput, 
+      "Veuillez entrer un nombre valide."
+      );
+    return false;
+  } else {
+    setSuccessFor(quantityInput);
+    return true;
+  }
+};
+ValidQuantity();
+console.log("statut QUANTITY", ValidQuantity());
+
+// écoute des événements sur cet élément.
+quantityInput.addEventListener("input", (e) => {
+  let etv = e.target.value;
+  Quantity(etv, "addeventlistener")
+    ? setSuccessFor(quantityInput)
+    : setErrorFor(quantityInput, 
+      "Veuillez entrer un nombre valide."
+      );
 });
 /*const errorMessages = {
   firstName: "Veuillez entrer un prénom comportant 2 caractères ou plus.",
