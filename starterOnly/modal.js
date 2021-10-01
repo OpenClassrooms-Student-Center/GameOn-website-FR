@@ -31,6 +31,26 @@ console.log("STATUT LOCATION DEFAULT " + BtnLocationDefault + "");
 const ConditionDefaultchecked = (checkboxInput.checked = true);
 console.log("STATUT C.G.V DEFAULT " + ConditionDefaultchecked + "");
 
+//ouvre la modale et la ferme en cliquant
+launchCloseModale = () => {
+  const getBground = document.querySelector(".bground");
+  const isClose = document.querySelector(".close");  //Fermer la modale #1 
+  // const modalBtn = document.querySelectorAll(".modal-btn");
+  // const formData = document.querySelectorAll(".formData");
+
+  launchModal = () => {
+    getBground.style.display = "block";
+  };
+
+  window.onclick = (event) => {
+    if (event.target == getBground || event.target == isClose) {
+      getBground.style.display = "none";
+    }
+  };
+};
+launchCloseModale();
+
+
 /*const errorMessages = {
   firstName: "Veuillez entrer un prénom comportant 2 caractères ou plus.",
   lastName: "Veuillez entrer un nom comportant 2 caractères ou plus.",
@@ -41,6 +61,7 @@ console.log("STATUT C.G.V DEFAULT " + ConditionDefaultchecked + "");
   checkbox: "Veuillez accepter les conditions d'utilisations.",
 };*/
 
+/*
 // Fermer la modale #1
 const closeBtn = document.querySelectorAll(".close");
 
@@ -72,7 +93,7 @@ function validate () {
   }*/
 /*}*/
 
-
+/*
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -131,7 +152,7 @@ function removeAlerts() {
   if (inputValue !== null && inputValue.length >= 2) return true;
   else return false;
 }*/
-
+/*
 const firstValue = firstNameInput.value;
 isfirst = (name) => {
   return new RegExp(/^[A-Za-z]{2,20}$/).test(name);
@@ -215,4 +236,4 @@ function quantityValidation() {
   let regex = /^[0-9]+$/;
   return regex.test(quantityInput.value);
 }
-
+*/
