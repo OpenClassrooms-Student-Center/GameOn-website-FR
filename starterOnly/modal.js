@@ -122,14 +122,14 @@ ValidFirstName = () => {
   if (firstValue === "") {
     setErrorFor(firstNameInput, "le champ est vide");
     return false;
-  } else if (!Name(firstNameInput)) {
+  } else if (Name(firstValue)) {
     setErrorFor(
       firstNameInput,
       "Veuillez entrer un prénom comportant 2 caractères ou plus."
     );
     return false;
   } else {
-    setSuccessFor(formPrenom);
+    setSuccessFor(firstNameInput);
     return true;
   }
 };
@@ -153,7 +153,7 @@ ValidLastName = () => {
   if (nomValue === "") {
     setErrorFor(lastNameInput, "le champ est vide");
     return false;
-  } else if (!Name(nomValue)) {
+  } else if (Name(nomValue)) {
     setErrorFor(
       lastNameInput,
       "Veuillez entrer un nom comportant 2 caractères ou plus."
@@ -186,7 +186,7 @@ ValidMail = () => {
       "le champ est vide"
       );
     return false;
-  } else if (!Mail(emailValue)) {
+  } else if (Mail(emailValue)) {
     setErrorFor(emailInput, 
       "Veuillez entrer une adresse email valide."
       );
@@ -213,7 +213,7 @@ ValidQuantity = () => {
   if (quantityValue === "") {
     setErrorFor(quantityInput, "le champ est vide");
     return false;
-  } else if (!Quantity(quantityValue)) {
+  } else if (Quantity(quantityValue)) {
     setErrorFor(quantityInput, 
       "Veuillez entrer un nombre valide."
       );
@@ -357,7 +357,7 @@ setTimeout(
 // le formulaire est - il "valide" ?
   //    REPONSE SI VRAI "display success"
   //    REPONSE SI FAUX "reset"
-  Valid() ? success() : form.reset();
+  Valid() ? success() : formInput.reset();
 
   console.log("c'est parfait");
 }
