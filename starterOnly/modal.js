@@ -12,31 +12,17 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
-/*const firstNameInput = document.getElementById('first');
+const firstNameInput = document.getElementById('first');
 const lastNameInput = document.getElementById("last");
 const emailInput = document.getElementById("email");
 const birthdateInput = document.getElementById("birthdate");
 const quantityInput = document.getElementById("quantity");
 const locationInput = document.querySelectorAll("[name='location']");
 const checkboxInput = document.getElementById("checkbox1");
-const LocationInput = document.getElementById("location-error");
-const cgvInput = document.getElementById("location-error");*/
+const LocationInput = document.getElementById("locationError");
+const cgvInput = document.getElementById("cgvError");
 const form = document.getElementById("loginForm");
-const formPrenom = form.first;
-const formNom = form.last;
-const formMail = form.email;
-const formBirth = form.birthdate;
-const formQuantity = form.quantity;
-const formCGV = form.checkbox1;
-const RADIOS = [
-  form.location1,
-  form.location2,
-  form.location3,
-  form.location4,
-  form.location5,
-  form.location6,
-];
-const formLocation = document.getElementById("locationError");
+
 
 
 /*const errorMessages = {
