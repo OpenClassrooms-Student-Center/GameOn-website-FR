@@ -301,6 +301,26 @@ checkboxInput.addEventListener("input", (e) => {
         "Veuillez accepter les conditions d'utilisations."
       );
 });
+
+//Pour vérifier si les conditions sont remplis et bouton valider 
+Valid = () => {
+  if (
+    ValidFirstName() &&
+    ValidLastName() &&
+    ValidMail() &&
+    validBirthDate() &&
+    ValidLocation() &&
+    ValidQuantity() &&
+    ValidCondition()
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
+Valid();
+console.log("statut is form VALID ?", Valid());
+
 /*const errorMessages = {
   firstName: "Veuillez entrer un prénom comportant 2 caractères ou plus.",
   lastName: "Veuillez entrer un nom comportant 2 caractères ou plus.",
