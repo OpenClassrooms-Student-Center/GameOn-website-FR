@@ -60,7 +60,7 @@ formInput.addEventListener("submit", (e) => {
 function checkInputs() {
   //const firstValue = firstNameInput.value.trim(); // trim permet de retirer les blancs en début et fin de chaîne
   //const nomValue = lastNameInput.value.trim();
-  const emailValue = emailInput.value.trim();
+  //const emailValue = emailInput.value.trim();
   //const birthValue = birthdateInput.value.trim();
   const quantityValue = quantityInput.value.trim();
 }
@@ -178,6 +178,35 @@ lastNameInput.addEventListener("input", (e) => {
       lastNameInput,
         "Veuillez entrer un nom comportant 2 caractères ou plus."
       );
+});
+
+//Validation mail
+const emailValue = emailInput.value.trim();
+ValidMail = () => {
+  if (emailValue === "") {
+    setErrorFor(emailInput, 
+      "le champ est vide"
+      );
+    return false;
+  } else if (!Mail(emailValue)) {
+    setErrorFor(emailInput, 
+      "Veuillez entrer une adresse email valide."
+      );
+    return false;
+  } else {
+    setSuccessFor(emailInput);
+    return true;
+  }
+};
+ValidMail();
+console.log("statut MAIL", ValidMail());
+
+// écoute des événements sur cet élément.
+emailInput.addEventListener("input", (e) => {
+  let etv = e.target.value;
+  Mail(etv)
+    ? setSuccessFor(emailInput)
+    : setErrorFor(emailInput, "Veuillez entrer une adresse email valide.");
 });
 /*const errorMessages = {
   firstName: "Veuillez entrer un prénom comportant 2 caractères ou plus.",
