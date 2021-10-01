@@ -21,7 +21,7 @@ const locationInput = document.querySelectorAll("[name='location']");
 const checkboxInput = document.getElementById("checkbox1");
 const formLocation = document.getElementById("locationError");
 const cgvInput = document.getElementById("cgvError");
-const formInput = document.getElementById("loginForm");
+const formInput = document.getElementById("reserve-form");
 
 //Aucune coché par defaut
 const BtnLocationDefault = (locationInput.checked = false);
@@ -50,6 +50,11 @@ launchCloseModale = () => {
 };
 launchCloseModale();
 
+//Fonction submit : soumettre le formulaire, formulaire est vérifié
+formInput.addEventListener("submit", (e) => {
+  e.preventDefault();
+  checkInputs();
+});
 
 /*const errorMessages = {
   firstName: "Veuillez entrer un prénom comportant 2 caractères ou plus.",
