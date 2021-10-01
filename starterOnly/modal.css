@@ -14,7 +14,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  /*background-image: url("background.png");*/
+  /*background-image: url("background.png");*/ /*enlevé car affiche une erreur sur la console: get 'nom du dossier' net::ERR_FILE_NOT_FOUND*/
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -227,9 +227,9 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
-.bground2 {
+/*.bground2 {
   /*Ajouter confirmation quand envoie réussi #4*/
-  display: none;
+  /*display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -240,9 +240,9 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
-.modalValidate {
+/*.modalValidate {
   /*Ajouter confirmation quand envoie réussi #4*/
-  margin: 5% auto;
+ /* margin: 5% auto;
   width: 100%;
   max-width: 500px;
   animation-name: modalopen;
@@ -258,9 +258,9 @@ main {
   justify-content: space-between;
   height: 900px;
 }
-.closeV {
+/*.closeV {
   /*Ajouter confirmation quand envoie réussi #4*/
-  margin-bottom: 15px;
+  /*margin-bottom: 15px;
   background: #fe142f;
   width: 30%;
   padding: 0.8em;
@@ -269,17 +269,17 @@ main {
   cursor: pointer;
   font-size: 14px;
   border: none;
-}
-.closeText {
+}*/
+/*.closeText {
   /*Ajouter confirmation quand envoie réussi #4*/
-  font-size: larger;
+  /*font-size: larger;
   text-align: center;
 }
 .close2 {
   /*Ajouter confirmation quand envoie réussi #4*/
-  transform: scale(0.7);
+ /* transform: scale(0.7);
   align-self: flex-end;
-}
+}*/
 .close2:before,
 .close2:after {
   position: absolute;
