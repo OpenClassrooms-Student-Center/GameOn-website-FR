@@ -59,7 +59,7 @@ formInput.addEventListener("submit", (e) => {
 //Vérification modale
 function checkInputs() {
   //const firstValue = firstNameInput.value.trim(); // trim permet de retirer les blancs en début et fin de chaîne
-  const nomValue = lastNameInput.value.trim();
+  //const nomValue = lastNameInput.value.trim();
   const emailValue = emailInput.value.trim();
   //const birthValue = birthdateInput.value.trim();
   const quantityValue = quantityInput.value.trim();
@@ -146,6 +146,37 @@ firstNameInput.addEventListener("input", (e) => {
     : setErrorFor(
       firstNameInput,
         "Veuillez entrer un prénom comportant 2 caractères ou plus."
+      );
+});
+
+//Validation nom
+const nomValue = lastNameInput.value.trim();
+ValidLastName = () => {
+  if (nomValue === "") {
+    setErrorFor(lastNameInput, "le champ est vide");
+    return false;
+  } else if (!Name(nomValue)) {
+    setErrorFor(
+      lastNameInput,
+      "Veuillez entrer un nom comportant 2 caractères ou plus."
+    );
+    return false;
+  } else {
+    setSuccessFor(lastNameInput);
+    return true;
+  }
+};
+ValidLastName();
+console.log("statut NAME", ValidLastName());
+
+// Pour écoute des événements sur cet élément.
+lastNameInput.addEventListener("input", (e) => {
+  let etv = e.target.value;
+  Name(etv)
+    ? setSuccessFor(lastNameInput)
+    : setErrorFor(
+      lastNameInput,
+        "Veuillez entrer un nom comportant 2 caractères ou plus."
       );
 });
 /*const errorMessages = {
