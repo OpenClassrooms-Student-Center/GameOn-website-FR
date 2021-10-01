@@ -19,11 +19,17 @@ const birthdateInput = document.getElementById("birthdate");
 const quantityInput = document.getElementById("quantity");
 const locationInput = document.querySelectorAll("[name='location']");
 const checkboxInput = document.getElementById("checkbox1");
-const LocationInput = document.getElementById("locationError");
+const formLocation = document.getElementById("locationError");
 const cgvInput = document.getElementById("cgvError");
 const formInput = document.getElementById("loginForm");
 
+//Aucune coché par defaut
+const BtnLocationDefault = (locationInput.checked = false);
+console.log("STATUT LOCATION DEFAULT " + BtnLocationDefault + "");
 
+//Condition coché par defaut
+const ConditionDefaultchecked = (checkboxInput.checked = true);
+console.log("STATUT C.G.V DEFAULT " + ConditionDefaultchecked + "");
 
 /*const errorMessages = {
   firstName: "Veuillez entrer un prénom comportant 2 caractères ou plus.",
