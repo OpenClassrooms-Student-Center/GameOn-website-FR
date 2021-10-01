@@ -61,7 +61,7 @@ function checkInputs() {
   const firstValue = firstNameInput.value.trim(); // trim permet de retirer les blancs en début et fin de chaîne
   const nomValue = lastNameInput.value.trim();
   const emailValue = emailInput.value.trim();
-  const birthValue = birthdateInput.value.trim();
+  //const birthValue = birthdateInput.value.trim();
   const quantityValue = quantityInput.value.trim();
 }
 
@@ -93,11 +93,12 @@ Quantity = (quantity) => {
 };
 
 //Validation anniversaire
+const birthValue = birthdateInput.value.trim();
 validBirthDate = () => {
   if (birthValue === "") {
     setErrorFor(birthdateInput, "le champ est vide");
     return false;
-  } else if (isBirth(birthValue)) {
+  } else if (Birth(birthValue)) {
     setSuccessFor(birthdateInput);
     return true;
   } else {
@@ -106,10 +107,10 @@ validBirthDate = () => {
   }
 };
 validBirthDate();
-console.log("statut BIRTHDATE", isvalidBirthDate());
+console.log("statut BIRTHDATE", validBirthDate());
 
 // écoute des événements sur cet élément.
-formBirth.addEventListener("change", checkingForValidDate);
+birthdateInput.addEventListener("change", checkingForValidDate);
 function checkingForValidDate() {
   console.log(this.value, Birth(this.value));
   Birth(this.value, "addeventlistener")
