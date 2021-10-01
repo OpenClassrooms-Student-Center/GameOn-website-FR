@@ -1,22 +1,24 @@
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
+// function editNav() {
+//   var x = document.getElementById("myTopnav");
+//   if (x.className === "topnav") {
+//     x.className += " responsive";
+//   } else {
+//     x.className = "topnav";
+//   }
+// }
 
 
 
 // DOM Elements
 const modalbg = document.querySelector(".bground"),
-  modalBtn = document.querySelectorAll(".modal-btn"),
+  modalBtn = document.querySelector(".modal-btn"),
+  signupBtn = document.querySelector(".btn-signup"),
   modalBody = document.querySelector(".modal-body"),
   mainNavBar = document.querySelector(".main-navbar"),
   closeBtn = document.querySelector(".close"),
   icon = document.querySelector(".icon"),
   formData = document.querySelectorAll(".formData"),
+  signupForm = document.querySelector("#signupForm"),
   firstname = document.querySelector("#firstname"),
   lastname = document.querySelector("#lastname"),
   email = document.querySelector("#email"),
@@ -57,14 +59,19 @@ function closeOnOut(){
 }
 
 // launch modal event
-modalBtn.forEach((btn) =>
-  btn.addEventListener("click", () => {
-    modalbg.style.display = "block";
-  })
-);
+// modalBtn.forEach((btn) =>
+//   btn.addEventListener("click", () => {
+//     modalbg.style.display = "block";
+//   })
+// );
 
 // close modal event
+signupBtn.addEventListener("click", openModal);
 closeBtn.addEventListener("click", closeModal);
+function openModal() {
+  modalbg.style.display = "flex";
+  console.log(modalbg);
+}
 function closeModal() {
   modalbg.style.display = "none";
 }
@@ -128,13 +135,14 @@ function submitForm() {
       newsletter: newsletter.checked,
     };
     console.log(infos);
+    signupForm.reset();
     modalBody.innerHTML = `
     <div class="modal-body-container">
     <div class="thanks-container">
-    <p>Merci ${ firstname.value } !</p>
+    <p>Merci !</p>
     <p>Votre réservation a été reçue.</p>
     </div>
-    <button class="btn-signup modal-btn close-btn" onclick="closeModal()">
+    <button class="btn-signup modal-btn close-btn" id="closingBtn" onclick="closeModal()">
     Fermer
     </button>
     </div>
