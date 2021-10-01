@@ -228,7 +228,7 @@ ValidQuantity = () => {
 ValidQuantity();
 console.log("statut QUANTITY", ValidQuantity());
 
-// écoute des événements sur cet élément.
+// pour écouter les événements sur cet élément.
 quantityInput.addEventListener("input", (e) => {
   let etv = e.target.value;
   Quantity(etv, "addeventlistener")
@@ -247,12 +247,12 @@ quantityInput.addEventListener("input", (e) => {
   checkbox: "Veuillez accepter les conditions d'utilisations.",
 };*/
 
-/*
+
 // Fermer la modale #1
-const closeBtn = document.querySelectorAll(".close");
+//const closeBtn = document.querySelectorAll(".close");
 
 //validation modal: ajouter confirmation quand envoie réussi #4
-const modalV = document.querySelector(".modalValidate");
+/*const modalV = document.querySelector(".modalValidate");
 const modalVbg = document.querySelector(".bground2");
 const closeBtnV = document.querySelectorAll(".closeV");
 const closeBtn2 = document.querySelectorAll(".close2");
