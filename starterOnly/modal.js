@@ -10,7 +10,7 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
+//const formData = document.querySelectorAll(".formData");
 
 const firstNameInput = document.getElementById('first');
 const lastNameInput = document.getElementById("last");
@@ -66,16 +66,16 @@ function checkInputs() {
 }
 
 //Fonction success et error
-setSuccessFor = (input, message) => {
-  const formData = input.parentElement;
-  formData.className = "formData success";
-};
-
 setErrorFor = (input, message) => {
   const formData = input.parentElement;
   const p = formData.querySelector("p");
   formData.className = "formData error";
   p.innerText = message;
+};
+
+setSuccessFor = (input, message) => {
+  const formData = input.parentElement;
+  formData.className = "formData success";
 };
 
 //forme regex
@@ -268,7 +268,7 @@ locationInput.forEach((locationInputs, index, locationInput) => {
     let etc = e.target.checked;
     console.log(etc, "addeventlistener");
     etc
-      ? setSuccessFor(locationInput)
+      ? setSuccessFor(locationInputs)
       : setErrorFor(locationInput, 
         "Veuillez choisir une ville."
         );
@@ -363,22 +363,22 @@ function validate () {
   }*/
 /*}*/
 
-/*
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
+/*
 // close modal event
 closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 
 // close modal validation event
 closeBtnV.forEach((btn) => btn.addEventListener("click", closeModalV));
-closeBtn2.forEach((btn) => btn.addEventListener("click", closeModalV));
+closeBtn2.forEach((btn) => btn.addEventListener("click", closeModalV));*/
 
 // launch modal form 
 function launchModal() {
   modalbg.style.display = "block";
 }
-
+/*
 // close modal form 
 function closeModal() {
   modalbg.style.display = "none";
