@@ -21,7 +21,7 @@ const locationInput = document.querySelectorAll("[name='location']");
 const checkboxInput = document.getElementById("checkbox1");
 const LocationInput = document.getElementById("locationError");
 const cgvInput = document.getElementById("cgvError");
-const form = document.getElementById("loginForm");
+const formInput = document.getElementById("loginForm");
 
 
 
