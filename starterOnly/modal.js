@@ -56,6 +56,15 @@ formInput.addEventListener("submit", (e) => {
   checkInputs();
 });
 
+//Vérification modale
+function checkInputs() {
+  const firstValue = firstNameInput.value.trim(); // trim permet de retirer les blancs en début et fin de chaîne
+  const nomValue = lastNameInput.value.trim();
+  const emailValue = emailInput.value.trim();
+  const birthValue = birthdateInput.value.trim();
+  const quantityValue = quantityInput.value.trim();
+}
+
 /*const errorMessages = {
   firstName: "Veuillez entrer un prénom comportant 2 caractères ou plus.",
   lastName: "Veuillez entrer un nom comportant 2 caractères ou plus.",
