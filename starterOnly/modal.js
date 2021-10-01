@@ -321,6 +321,49 @@ Valid = () => {
 Valid();
 console.log("statut is form VALID ?", Valid());
 
+//close modal Validation form : Validation et message de retour
+success = () => {
+  //  reset de la modale
+  const getModalBg = document.querySelector(".modal-body");
+  getModalBg.innerHTML = "";
+  getModalBg.classList.add("modalValidate");
+
+  //  message de CONFIRMATION
+  let divValidate = document.createElement("div");
+  divValidate.textContent = "Merci ! Votre réservation a été reçue.";
+  divValidate.classList.add("divValidate");
+  getModalBg.appendChild(divValidate);
+
+  //  bouton MERCI
+  let btnThankie = document.createElement("button");
+  btnValidate.textContent = "Merci";
+  btnValidate.classList.add("btnValidate");
+  getModalBg.appendChild(btnValidate);
+
+  closeValidate = () => {
+    boutonClose = document.querySelector(".btnValidate");
+    boutonClose.onclick = (event) => {
+      document.querySelector(".bground").style.display = "none";
+      // window.location.reload();
+    };
+  };
+  closeValidate();
+
+  //  actualiser la page du navigateur
+setTimeout(
+  (windowOff = () => {
+    window.location.reload();
+  }),
+  2000
+);
+
+// le formulaire est - il "valide" ?
+  //    REPONSE SI VRAI "display success"
+  //    REPONSE SI FAUX "reset"
+  Valid() ? success() : form.reset();
+
+  console.log("c'est parfait");
+}
 /*const errorMessages = {
   firstName: "Veuillez entrer un prénom comportant 2 caractères ou plus.",
   lastName: "Veuillez entrer un nom comportant 2 caractères ou plus.",
