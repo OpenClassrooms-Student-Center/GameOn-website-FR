@@ -58,7 +58,7 @@ formInput.addEventListener("submit", (e) => {
 
 //Vérification modale
 function checkInputs() {
-  const firstValue = firstNameInput.value.trim(); // trim permet de retirer les blancs en début et fin de chaîne
+  //const firstValue = firstNameInput.value.trim(); // trim permet de retirer les blancs en début et fin de chaîne
   const nomValue = lastNameInput.value.trim();
   const emailValue = emailInput.value.trim();
   //const birthValue = birthdateInput.value.trim();
@@ -109,7 +109,7 @@ validBirthDate = () => {
 validBirthDate();
 console.log("statut BIRTHDATE", validBirthDate());
 
-// écoute des événements sur cet élément.
+// Pour écouter des événements sur cet élément.
 birthdateInput.addEventListener("change", checkingForValidDate);
 function checkingForValidDate() {
   console.log(this.value, Birth(this.value));
@@ -118,6 +118,36 @@ function checkingForValidDate() {
     : setErrorFor(birthdateInput, "Veuillez entrer une date de naissance valide.");
 }
 
+//Validation prénom first
+const firstValue = firstNameInput.value.trim();
+ValidFirstName = () => {
+  if (firstValue === "") {
+    setErrorFor(firstNameInput, "le champ est vide");
+    return false;
+  } else if (!Name(firstNameInput)) {
+    setErrorFor(
+      firstNameInput,
+      "Veuillez entrer un prénom comportant 2 caractères ou plus."
+    );
+    return false;
+  } else {
+    setSuccessFor(formPrenom);
+    return true;
+  }
+};
+ValidFirstName();
+console.log("statut FIRSTNAME", ValidFirstName());
+
+// pour écouter les événements sur cet élément.
+firstNameInput.addEventListener("input", (e) => {
+  let etv = e.target.value;
+  Name(etv)
+    ? setSuccessFor(firstNameInput)
+    : setErrorFor(
+      firstNameInput,
+        "Veuillez entrer un prénom comportant 2 caractères ou plus."
+      );
+});
 /*const errorMessages = {
   firstName: "Veuillez entrer un prénom comportant 2 caractères ou plus.",
   lastName: "Veuillez entrer un nom comportant 2 caractères ou plus.",
