@@ -80,7 +80,7 @@ setSuccessFor = (input, message) => {
 
 //forme regex
 Name = (name) => {
-  return new RegExp(/^[A-Za-z]{2,20}$/).test(name);
+  return new RegExp(/^[A-Za-z]{2,20}$/).test(name); //vérifie s'il y a une correspondance entre le texte et le regex
 };
 Mail = (mail) => {
   return new RegExp(/^([a-z0-9_\.-]+\@[\da-z\.-]+\.[a-z\.]{2,6})$/).test(mail);
