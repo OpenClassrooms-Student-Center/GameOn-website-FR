@@ -78,6 +78,19 @@ setErrorFor = (input, message) => {
   p.innerText = message;
 };
 
+//forme regex
+Name = (name) => {
+  return new RegExp(/^[A-Za-z]{2,20}$/).test(name);
+};
+Mail = (mail) => {
+  return new RegExp(/^[A-Za-z0-9-éàè.]+@[a-z.]+[a-z.]$/).test(mail);
+};
+Birth = (birthdate) => {
+  return new RegExp(/^\d{4}\-\d{2}\-\d{2}$/).test(birthdate);
+};
+Quantity = (quantity) => {
+  return new RegExp("^([1-9][0-9]?){0,1}$").test(quantity);
+};
 
 //Validation anniversaire
 validBirthDate = () => {
