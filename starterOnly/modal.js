@@ -477,51 +477,6 @@ function validateLocation() {
   else return false;
 }*/
 
-const firstValue = firstNameInput.value;
-isfirst = (name) => {
-  return new RegExp(/^[A-Za-z]{2,20}$/).test(name);
-};
-isValid = () => {
-  if (
-    isValidFirstName()
-  ) {
-    return true;
-  } else {
-    return false;
-  }
-};
-isValid();
-console.log("statut form IS VALID ?", isValid());
-isValidFirstName = () => {
-  if (firstValue === "") {
-    setErrorFor(firstNameInput, "le champ est vide");
-    return false;
-  } else if (!firstNameInput(firstValue)) {
-    setErrorFor(
-      firstNameInput,
-      "Veuillez entrer 2 caractères ou plus pour le champ du nom."
-    );
-    return false;
-  } else {
-    setSuccessFor(firstNameInput);
-    return true;
-  }
-};
-
-isValidFirstName();
-console.log("statut FIRSTNAME", isValidFirstName());
-
-// écoute les événements sur cet élément.
-firstNameInput.addEventListener("input", (e) => {
-  let etv = e.target.value;
-  isfirst(etv)
-    ? setSuccessFor(firstNameInput)
-    : setErrorFor(
-      firstNameInput,
-        "Veuillez entrer 2 caractères ou plus pour le champ du nom."
-      );
-});
-
 //validate last name
 function lastValidation() {
   let inputValue = lastNameInput.value;
