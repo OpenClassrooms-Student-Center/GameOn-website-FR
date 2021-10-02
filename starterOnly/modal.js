@@ -96,7 +96,7 @@ validBirthDate = () => {
   if (birthValue === "") {
     setErrorFor(birthdateInput, "le champ est vide");
     return false;
-  } else if (Birth(birthValue)) {
+  } else if (!Birth(birthValue)) {
     setSuccessFor(birthdateInput);
     return true;
   } else {
@@ -122,7 +122,7 @@ ValidFirstName = () => {
   if (firstValue === "") {
     setErrorFor(firstNameInput, "le champ est vide");
     return false;
-  } else if (Name(firstValue)) {
+  } else if (!Name(firstValue)) {
     setErrorFor(
       firstNameInput,
       "Veuillez entrer un prénom comportant 2 caractères ou plus."
@@ -153,7 +153,7 @@ ValidLastName = () => {
   if (nomValue === "") {
     setErrorFor(lastNameInput, "le champ est vide");
     return false;
-  } else if (Name(nomValue)) {
+  } else if (!Name(nomValue)) {
     setErrorFor(
       lastNameInput,
       "Veuillez entrer un nom comportant 2 caractères ou plus."
@@ -186,7 +186,7 @@ ValidMail = () => {
       "le champ est vide"
       );
     return false;
-  } else if (Mail(emailValue)) {
+  } else if (!Mail(emailValue)) {
     setErrorFor(emailInput, 
       "Veuillez entrer une adresse email valide."
       );
