@@ -458,7 +458,7 @@ function removeAlerts() {
 }
 
 // Implémenter entrées du formulaire #2 /Ajouter validation ou messages d'erreur #3 / Test localisation
-//Validate location
+//Validation location
 function validateLocation() {
   const input = locationInput;
   for (var i = 0; i < input.length; i++) {
@@ -470,27 +470,27 @@ function validateLocation() {
   return false;
 }
 
-//validate first name
+//Validation prénom
 function firstValidation() {
   let inputValue = firstNameInput.value;
   if (inputValue !== null && inputValue.length >= 2) return true;
   else return false;
 }
 
-//validate last name
+//Validation nom
 function lastValidation() {
   let inputValue = lastNameInput.value;
   if (inputValue !== null && inputValue.length >= 2) return true;
   else return false;
 }
 
-//validate email
+//Validation email
 function emailValidation() {
   let regex = /^([a-z0-9_\.-]+\@[\da-z\.-]+\.[a-z\.]{2,6})$/;
   return regex.test(emailInput.value);
 }
 
-//validate birthday
+//Validation anniversaire
 function birthdateValidation() {
   let birthdate = new Date(birthdateInput.value);
   let today = new Date();
@@ -509,13 +509,13 @@ function birthdateValidation() {
   }
 }
 
-//validate quantity
+//Validation quantity
 function quantityValidation() {
   let regex = /^[0-9]+$/;
   return regex.test(quantityInput.value);
 }
 
-//Validate condition générale
+//Validation cgv
 function validateRules() {
   const input = checkboxInput;
   const validityState = input.checked;
@@ -527,7 +527,7 @@ function validateRules() {
 }
 
 
-// Fonction principal du formulaire on test si location et rules son ok avant de fermer la modale , les autres inputs sont testé avant par required
+// Fonction principal du formulaire on test si location et cgv son ok avant de fermer la modale , les autres inputs sont testé avant par required
 function validate(ev) {
   ev.preventDefault();
 
