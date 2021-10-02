@@ -386,7 +386,7 @@ const closeBtn2 = document.querySelectorAll(".close2");
 // submit
 document.getElementById("reserve-form").addEventListener("submit", validate);
 
-const firstNameError = document.getElementById('firstError');
+/*const firstNameError = document.getElementById('firstError');
 firstNameError.style.display = "none";
 //fonction validate des champs de saisie
 function validate () {
@@ -402,7 +402,7 @@ function validate () {
   /*else {
     alert ("prénom ok")
   }*/
-}
+/*}*/
 
 
 // launch modal event
