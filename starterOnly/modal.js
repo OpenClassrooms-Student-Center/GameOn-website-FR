@@ -96,7 +96,7 @@ validBirthDate = () => {
   if (birthValue === "") {
     setErrorFor(birthdateInput, "le champ est vide");
     return false;
-  } else if (!Birth(birthValue)) {
+  } else if (Birth(birthValue)) {
     setSuccessFor(birthdateInput);
     return true;
   } else {
@@ -213,7 +213,7 @@ ValidQuantity = () => {
   if (quantityValue === "") {
     setErrorFor(quantityInput, "le champ est vide");
     return false;
-  } else if (Quantity(quantityValue)) {
+  } else if (!Quantity(quantityValue)) {
     setErrorFor(quantityInput, 
       "Veuillez entrer un nombre valide."
       );
