@@ -471,11 +471,11 @@ function validateLocation() {
 }
 
 //validate first name
-/*function firstValidation() {
+function firstValidation() {
   let inputValue = firstNameInput.value;
   if (inputValue !== null && inputValue.length >= 2) return true;
   else return false;
-}*/
+}
 
 //validate last name
 function lastValidation() {
