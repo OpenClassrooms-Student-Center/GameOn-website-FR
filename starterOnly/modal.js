@@ -361,7 +361,8 @@ setTimeout(
 
   console.log("c'est parfait");
 }
-/*const errorMessages = {
+
+const errorMessages = {
   firstName: "Veuillez entrer un prénom comportant 2 caractères ou plus.",
   lastName: "Veuillez entrer un nom comportant 2 caractères ou plus.",
   email: "Veuillez entrer une adresse email valide.",
@@ -369,14 +370,14 @@ setTimeout(
   quantity: "Veuillez entrer un nombre valide.",
   location: "Veuillez choisir une ville.",
   checkbox: "Veuillez accepter les conditions d'utilisations.",
-};*/
+};
 
 
 // Fermer la modale #1
-//const closeBtn = document.querySelectorAll(".close");
+const closeBtn = document.querySelectorAll(".close");
 
 //validation modal: ajouter confirmation quand envoie réussi #4
-/*const modalV = document.querySelector(".modalValidate");
+const modalV = document.querySelector(".modalValidate");
 const modalVbg = document.querySelector(".bground2");
 const closeBtnV = document.querySelectorAll(".closeV");
 const closeBtn2 = document.querySelectorAll(".close2");
@@ -385,7 +386,7 @@ const closeBtn2 = document.querySelectorAll(".close2");
 // submit
 document.getElementById("reserve-form").addEventListener("submit", validate);
 
-/*const firstNameError = document.getElementById('firstError');
+const firstNameError = document.getElementById('firstError');
 firstNameError.style.display = "none";
 //fonction validate des champs de saisie
 function validate () {
@@ -401,24 +402,24 @@ function validate () {
   /*else {
     alert ("prénom ok")
   }*/
-/*}*/
+}
 
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-/*
+
 // close modal event
 closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 
 // close modal validation event
 closeBtnV.forEach((btn) => btn.addEventListener("click", closeModalV));
-closeBtn2.forEach((btn) => btn.addEventListener("click", closeModalV));*/
+closeBtn2.forEach((btn) => btn.addEventListener("click", closeModalV));
 
 // launch modal form 
 function launchModal() {
   modalbg.style.display = "block";
 }
-/*
+
 // close modal form 
 function closeModal() {
   modalbg.style.display = "none";
@@ -454,4 +455,68 @@ function removeAlerts() {
     field.setAttribute("data-error-visible", false);
     field.setAttribute("data-error", "");
   }
-}*/
+}
+
+// Implémenter entrées du formulaire #2 /Ajouter validation ou messages d'erreur #3 / Test localisation
+//Validate location
+function validateLocation() {
+  const input = locationInput;
+  for (var i = 0; i < input.length; i++) {
+    const validityState = input[i].checked;
+    if (validityState) {
+      return true;
+    }
+  }
+  return false;
+}
+
+//Validate condition générale
+function validateRules() {
+  const input = checkboxInput;
+  const validityState = input.checked;
+  if (validityState == false) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+
+// Fonction principal du formulaire on test si location et rules son ok avant de fermer la modale , les autres inputs sont testé avant par required
+function validate(ev) {
+  ev.preventDefault();
+
+  let isValidInput = true;
+  removeAlerts();
+  if (!firstValidation()) {
+    isValidInput = false;
+    isInvalid(firstNameInput, errorMessages.firstName);
+  }
+  if (!lastValidation()) {
+    isValidInput = false;
+    isInvalid(lastNameInput, errorMessages.lastName);
+  }
+  if (!emailValidation()) {
+    isValidInput = false;
+    isInvalid(emailInput, errorMessages.email);
+  }
+  if (!birthdateValidation()) {
+    isValidInput = false;
+    isInvalid(birthdateInput, errorMessages.birthdate);
+  }
+  if (!quantityValidation()) {
+    isValidInput = false;
+    isInvalid(quantityInput, errorMessages.quantity);
+  }
+  if (!validateLocation()) {
+    isValidInput = false;
+    isInvalid(locationInput, errorMessages.location);
+  }
+  if (!validateRules()) {
+    isValidInput = false;
+    isInvalid(checkboxInput, errorMessages.checkbox);
+  }
+  if (isValidInput) {
+    validateModal();
+  }
+}
