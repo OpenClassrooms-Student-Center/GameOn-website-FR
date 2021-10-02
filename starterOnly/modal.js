@@ -10,7 +10,7 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-//const formData = document.querySelectorAll(".formData");
+const formData = document.querySelectorAll(".formData");
 
 const firstNameInput = document.getElementById('first');
 const lastNameInput = document.getElementById("last");
@@ -454,96 +454,4 @@ function removeAlerts() {
     field.setAttribute("data-error-visible", false);
     field.setAttribute("data-error", "");
   }
-}
-
-//validate first name
-/*function firstValidation() {
-  let inputValue = firstNameInput.value;
-  if (inputValue !== null && inputValue.length >= 2) return true;
-  else return false;
 }*/
-/*
-const firstValue = firstNameInput.value;
-isfirst = (name) => {
-  return new RegExp(/^[A-Za-z]{2,20}$/).test(name);
-};
-isValid = () => {
-  if (
-    isValidFirstName()
-  ) {
-    return true;
-  } else {
-    return false;
-  }
-};
-isValid();
-console.log("statut form IS VALID ?", isValid());
-isValidFirstName = () => {
-  if (firstValue === "") {
-    setErrorFor(firstNameInput, "le champ est vide");
-    return false;
-  } else if (!firstNameInput(firstValue)) {
-    setErrorFor(
-      firstNameInput,
-      "Veuillez entrer 2 caractères ou plus pour le champ du nom."
-    );
-    return false;
-  } else {
-    setSuccessFor(firstNameInput);
-    return true;
-  }
-};
-
-isValidFirstName();
-console.log("statut FIRSTNAME", isValidFirstName());
-
-// écoute les événements sur cet élément.
-firstNameInput.addEventListener("input", (e) => {
-  let etv = e.target.value;
-  isfirst(etv)
-    ? setSuccessFor(firstNameInput)
-    : setErrorFor(
-      firstNameInput,
-        "Veuillez entrer 2 caractères ou plus pour le champ du nom."
-      );
-});
-
-
-//validate last name
-function lastValidation() {
-  let inputValue = lastNameInput.value;
-  if (inputValue !== null && inputValue.length >= 2) return true;
-  else return false;
-}
-
-//validate email
-function emailValidation() {
-  let regex = /^([a-z0-9_\.-]+\@[\da-z\.-]+\.[a-z\.]{2,6})$/;
-  return regex.test(emailInput.value);
-}
-
-//validate birthday
-function birthdateValidation() {
-  let birthdate = new Date(birthdateInput.value);
-  let today = new Date();
-  if (birthdate.toString() !== "Invalid Date") {
-    if (
-      birthdate.getDate() >= today.getDate() &&
-      birthdate.getMonth() == today.getMonth() &&
-      birthdate.getFullYear() == today.getFullYear()
-    ) {
-      return false;
-    } else {
-      return true;
-    }
-  } else {
-    return false;
-  }
-}
-
-//validate quantity
-function quantityValidation() {
-  let regex = /^[0-9]+$/;
-  return regex.test(quantityInput.value);
-}
-*/
