@@ -4,7 +4,7 @@
   "description": "projet-4-ocr-dev-front-end",
   "main": "modal.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint ./"
   },
   "keywords": [],
   "author": "devweb13",
