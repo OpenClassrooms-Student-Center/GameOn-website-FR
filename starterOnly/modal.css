@@ -633,7 +633,6 @@ footer {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     margin: 0;
-
     height: 105%;
   }
   .header-logo img {
@@ -669,7 +668,7 @@ footer {
     font-family: DM Sans;
     font-style: normal;
     font-weight: 500;
-    font-size: 40px;
+    font-size: 38px;
     line-height: 62px;
   }
   .hero-text {
