@@ -55,13 +55,13 @@ formInput.addEventListener("submit", (e) => {
 });
 
 //Vérification modale
-function checkInputs() {
+//function checkInputs() {
   //const firstValue = firstNameInput.value.trim(); // trim permet de retirer les blancs en début et fin de chaîne
   //const nomValue = lastNameInput.value.trim();
   //const emailValue = emailInput.value.trim();
   //const birthValue = birthdateInput.value.trim();
   //const quantityValue = quantityInput.value.trim();
-}
+//}
 
 //Fonction success et error
 setErrorFor = (input, message) => {

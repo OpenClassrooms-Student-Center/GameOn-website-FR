@@ -131,12 +131,16 @@ img {
 
 /*mobile*/
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  /*.topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
+  }*/
+  .topnav.responsive {
+    position: relative;
   }
-  .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -660,11 +664,15 @@ footer {
   .hero-section {
     display: block;
     box-shadow: unset;
+    min-height: 0;
   }
   .hero-content {
     background: #fff;
     color: #000;
     padding: 3px;
+    width: 90%;
+    min-width: 0;
+    text-align: center;
   }
   .hero-content::after {
     content: unset;
@@ -676,7 +684,7 @@ footer {
     font-family: "DM Sans";
     font-style: normal;
     font-weight: 500;
-    font-size: 38px;
+    font-size: 40px;
     line-height: 62px;
   }
   .hero-text { /*Tests manuels #5*/
@@ -685,7 +693,7 @@ footer {
     font-weight: normal;
     font-size: 13px;
     line-height: 17px;
-    width: 320px;
+    width: 80vw;
   }
   .hero-img img {
     border-radius: 10px;
