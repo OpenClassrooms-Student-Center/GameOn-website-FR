@@ -665,7 +665,7 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 3px;
   }
   .hero-content::after {
     content: unset;
@@ -677,7 +677,7 @@ footer {
     font-family: "DM Sans";
     font-style: normal;
     font-weight: 500;
-    font-size: 40px;
+    font-size: 38px;
     line-height: 62px;
   }
   .hero-text { /*Tests manuels #5*/
@@ -686,7 +686,7 @@ footer {
     font-weight: normal;
     font-size: 13px;
     line-height: 17px;
-    width: 80vw;
+    width: 320px;
   }
   .hero-img img {
     border-radius: 10px;
