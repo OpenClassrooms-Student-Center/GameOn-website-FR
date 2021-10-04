@@ -135,7 +135,7 @@ img {
     float: none;
     display: block;
     text-align: left;
-    color: red;
+    color: black;
   }
 }
 
@@ -309,6 +309,7 @@ label {
   font-weight: normal;
   display: inline-block;
   margin-bottom: 11px;
+  margin-bottom: 11px;;
 }
 input {
   padding: 8px;
@@ -329,7 +330,7 @@ input {
   color: #e54858;
   display: block;
   margin-top: 7px;
-  margin-bottom: 7px;
+  /*margin-bottom: 7px;*/
   text-align: left;
   line-height: 0.3;
   opacity: 0;
