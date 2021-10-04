@@ -216,7 +216,7 @@ ValidQuantity = () => {
   } else if (!Quantity(quantityValue)) {
     setErrorFor(quantityInput, 
       "Veuillez entrer un nombre valide."
-      );
+    );
     return false;
   } else {
     setSuccessFor(quantityInput);

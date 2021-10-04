@@ -614,7 +614,7 @@ footer {
     z-index: 1;
     left: 0;
     top: 60px;
-    height: 110%;
+    height: 120%;
     width: 100%;
     overflow: auto;
     background-color: rgba(26, 39, 156, 0.4);
@@ -645,7 +645,6 @@ footer {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     margin: 0;
-
     height: 105%;
   }
   .header-logo img {
