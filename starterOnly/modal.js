@@ -523,7 +523,7 @@ function validateRules() {
     return false;
   } else {
     return true;
-    console.log("statut CGV", validateRules());
+    //console.log("statut CGV", validateRules());
   }
 }
 
