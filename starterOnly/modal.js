@@ -486,7 +486,7 @@ function lastValidation() {
 
 //Validation email
 function emailValidation() {
-  let regex = /^([a-z0-9_\.-]+\@[\da-z\.-]+\.[a-z\.]{2,6})$/;
+  let regex = /^[A-Za-z0-9-éàè.]+@[a-z.]+[a-z.]$/;
   return regex.test(emailInput.value);
 }
 
