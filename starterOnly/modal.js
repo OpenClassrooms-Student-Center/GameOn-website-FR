@@ -49,10 +49,10 @@ launchCloseModale = () => {
 launchCloseModale();
 
 //Fonction submit : soumettre le formulaire, formulaire est vérifié
-formInput.addEventListener("submit", (e) => {
+/*formInput.addEventListener("submit", (e) => {
   e.preventDefault();
   checkInputs();
-});
+});*/
 
 //Vérification modale
 //function checkInputs() {
