@@ -19,9 +19,9 @@ const birthdateInput = document.getElementById("birthdate");
 const quantityInput = document.getElementById("quantity");
 const locationInput = document.querySelectorAll("[name='location']");
 const checkboxInput = document.getElementById("checkbox1");
-const formLocation = document.getElementById("locationError");
-const cgvInput = document.getElementById("cgvError");
-const formInput = document.getElementById("reserve-form");
+//const formLocation = document.getElementById("locationError");
+//const cgvInput = document.getElementById("cgvError");
+//const formInput = document.getElementById("reserve-form");
 
 //Aucune coché par defaut
 const BtnLocationDefault = (locationInput.checked = false);
@@ -32,7 +32,7 @@ const ConditionDefaultchecked = (checkboxInput.checked = true);
 console.log("STATUT C.G.V DEFAULT " + ConditionDefaultchecked + "");
 
 //ouvre la modale et la ferme en cliquant
-launchCloseModale = () => {
+/*launchCloseModale = () => {
   const getBground = document.querySelector(".bground");
   const isClose = document.querySelector(".close");  //Fermer la modale #1 
 
@@ -61,10 +61,10 @@ launchCloseModale();
   //const emailValue = emailInput.value.trim();
   //const birthValue = birthdateInput.value.trim();
   //const quantityValue = quantityInput.value.trim();
-//}
+//}*/
 
 //Fonction success et error
-setErrorFor = (input, message) => {
+/*setErrorFor = (input, message) => {
   const formData = input.parentElement;
   const p = formData.querySelector("p");
   formData.className = "formData error";
