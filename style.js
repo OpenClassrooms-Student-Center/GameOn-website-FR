@@ -29,7 +29,6 @@ console.log("STATUT LOCATION DEFAULT " + BtnLocationDefault + "");
 const ConditionDefaultchecked = (checkboxInput.checked = true);
 console.log("STATUT C.G.V DEFAULT " + ConditionDefaultchecked + "");
 
-
 const errorMessages = {
   firstName: "Veuillez entrer un prénom comportant 2 caractères ou plus.",
   lastName: "Veuillez entrer un nom comportant 2 caractères ou plus.",
@@ -39,7 +38,6 @@ const errorMessages = {
   location: "Veuillez choisir une ville.",
   checkbox: "Veuillez accepter les conditions d'utilisations.",
 };
-
 
 // Fermer la modale #1
 const closeBtn = document.querySelectorAll(".close");
@@ -175,7 +173,6 @@ function validateRules() {
     //console.log("statut CGV", validateRules());
   }
 }
-
 
 // Fonction principal du formulaire on test si location et cgv son ok avant de fermer la modale , les autres inputs sont testé avant par required
 function validate(ev) {
