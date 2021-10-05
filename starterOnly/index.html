@@ -66,7 +66,8 @@
                         </div>
                         <div class="formData">
                             <label>E-mail</label><br>
-                            <input class="text-control" type="email" id="email" name="email" oninput="checkEmail()" /><br>
+                            <input class="text-control" type="email" id="email" name="email" onblur="checkEmail()" /><br>
+                            <p class="erreur_email">Veuillez entrer une adresse email valide.</p>
                         </div>
                         <div class="formData">
                             <label>Date de naissance</label><br>
