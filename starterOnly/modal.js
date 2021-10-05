@@ -127,5 +127,6 @@ function showSuccess() {
 
     const modalSuccess = document.createElement("div");
     modalBody.appendChild(modalSuccess);
+    modalSuccess.classList.add("success-box");
 	  modalSuccess.innerHTML = "<p class=\"success\">Merci, votre demande a bien été réceptionnée !</p><button class=\"btn-submit modal-btn btn-center\" onclick=\"closeModal()\">Fermer</button>";
 }
