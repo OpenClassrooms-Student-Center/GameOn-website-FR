@@ -77,6 +77,7 @@ function validate() {
       invalidInput++; // et on incrémente le nombre de champs invalide
     } else { // si non (ie si le champ est valide)
       warningText[i].style.display =" none"; // on fait disparaitre un éventuel message d'erreur
+      attentionOutline[i].style.outline = "0px solid red";
     }
   }
 
