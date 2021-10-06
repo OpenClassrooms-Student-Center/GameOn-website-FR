@@ -170,7 +170,6 @@ function validateRules() {
     return false;
   } else {
     return true;
-    //console.log("statut CGV", validateRules());
   }
 }
 
