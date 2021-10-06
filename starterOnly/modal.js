@@ -12,16 +12,12 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const form = document.getElementById('form');
-const erreur_prenom = document.querySelector(".erreur_prenom");
-const erreur_nom = document.querySelector(".erreur_nom");
-const erreur_email = document.querySelector(".erreur_email");
+
+
 const date = document.getElementById('birthdate');
-const erreur_date = document.querySelector('.erreur_date');
 
 
-erreur_prenom.style.display = "none";
-erreur_nom.style.display = "none";
-erreur_email.style.display = "none";
+
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -36,48 +32,27 @@ function closeForm() {
     console.log('fermé')
 }
 
-async function checkFirstName() {
-    const firstName = document.getElementById('first').value;
-    const length = document.getElementById('first').value.length;
-    const erreur_prenom = document.querySelector(".erreur_prenom");
-    if (length !== 0) {
-        if (length < 2) {
-            console.log("invalide");
-            erreur_prenom.style.display = "initial";
-            erreur_prenom.style.color = "red";
-            erreur_prenom.style.fontSize = "12px";
-        } else {
-            console.log("valide");
-            erreur_prenom.style.display = "none";
-        }
+function checkFirstAndLastName(input) {
+    const regex = /^[a-zA-Z\-éëàèìòùÀÈÌÒÙáéíóúýÁÉÍÓÚÝâêîôûÂÊÎÔÛãñõÃÑÕäëïöüÿÄËÏÖÜŸçÇÆæœ]{2,}$/;
+    const input_value = input.value;
+    const test = regex.test(input_value);
+    if (test) {
+        input.parentElement.setAttribute('valid', true);
+        input.parentElement.removeAttribute('data-error');
+        input.parentElement.removeAttribute('data-error-visible');
     } else {
-        erreur_prenom.style.display = "none";
+        input.parentElement.removeAttribute('valid');
+        input.parentElement.setAttribute('data-error', 'erreur');
+        input.parentElement.setAttribute('data-error-visible', true);
     }
 }
 
-async function checkLastName() {
-    const lastName = document.getElementById('last').value;
-    const length = document.getElementById('last').value.length;
-    const erreur_nom = document.querySelector(".erreur_nom");
-    if (length !== 0) {
-        if (length < 2) {
-            console.log("invalide");
-            erreur_nom.style.display = "initial";
-            erreur_nom.style.color = "red";
-            erreur_nom.style.fontSize = "12px";
-        } else {
-            console.log("valide");
-            erreur_nom.style.display = "none";
-        }
-    } else {
-        erreur_nom.style.display = "none";
-    }
-}
+
 
 async function checkEmail() {
     const email = document.getElementById('email').value;
     const length = document.getElementById('email').value.length;
-    var regex = /[@]/g;
+    var regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     console.log(email.search(regex));
     if (length !== 0) {
         if (email.search(regex) == -1) {

@@ -56,23 +56,23 @@
                     <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
                         <div class="formData">
                             <label>Prénom</label><br>
-                            <input class="text-control" type="text" id="first" name="first" minlength="2" onblur="checkFirstName()" /><br>
-                            <p class="erreur_prenom">Veuillez entrer 2 caractères ou plus pour le champ du prénom.</p>
+                            <input class="text-control" type="text" id="first" name="first" minlength="2" onblur="checkFirstAndLastName(this)" /><br>
+
                         </div>
                         <div class="formData">
                             <label>Nom</label><br>
-                            <input class="text-control" type="text" id="last" name="last" onblur="checkLastName()" /><br>
-                            <p class="erreur_nom">Veuillez entrer 2 caractères ou plus pour le champ du nom.</p>
+                            <input class="text-control" type="text" id="last" name="last" onblur="checkFirstAndLastName(this)" /><br>
+
                         </div>
                         <div class="formData">
                             <label>E-mail</label><br>
                             <input class="text-control" type="email" id="email" name="email" onblur="checkEmail()" /><br>
-                            <p class="erreur_email">Veuillez entrer une adresse email valide.</p>
+
                         </div>
                         <div class="formData">
                             <label>Date de naissance</label><br>
                             <input class="text-control" type="date" id="birthdate" name="birthdate" onblur="checkBirthdate()" /><br>
-                            <p class="erreur_date">Vous devez entrer une date de naissance.</p>
+
                         </div>
                         <div class="formData">
                             <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
