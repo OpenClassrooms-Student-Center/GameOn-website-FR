@@ -506,20 +506,8 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-.validationModal {
-  margin: 20% auto;
-  width: 100%;
-  max-width: 500px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
-  background: #232323;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-  color: #fff;
-  padding-top: 10px;
-}
 
+/* propiètés du message de validation*/
 .validationText {
   color: white;
   font-family: var(--font-default);
@@ -569,6 +557,7 @@ footer {
     margin-top: 50px;
     text-align: center;
   }
+  /* propiètés du message de validation en responsive*/
   .validationText {
     color: white;
     font-family: var(--font-default);

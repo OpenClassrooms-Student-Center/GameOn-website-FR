@@ -51,7 +51,7 @@ form.addEventListener("submit", (e) => {
     return false;
   } else {
     form.remove();
-    let validate = document.querySelector(".validationModal");
+    let validate = document.querySelector(".modal-body");
     let message = document.querySelector("p");
     message.classList.add("validationText");
     message.textContent = "Merci! Votre reservation a été reçue";
@@ -84,10 +84,10 @@ let checkQuantity = /^[0-9]*$/;
 function validateFirst() {
   let first = form.elements["first"]; // je viens chercher l'id
   let error = document.getElementById("errorFirst");
-  if (checkFirst.test(first.value) === false || first.value.length <= 2) {
+  if (checkFirst.test(first.value) === false || first.value.length <= 1) {
     first.classList.add("input-error");
     first.classList.remove("input-validate");
-    error.innerText = "Veuillez entrer 2 caractères ou plus pour le prénom.";
+    error.innerText = "Veuillez entrer 2 caractères pour le prénom.";
     return false;
   } else {
     first.classList.remove("input-error");
@@ -102,10 +102,10 @@ function validateFirst() {
 function validateLast() {
   let last = form.elements["last"]; // je viens chercher l'id dans le form
   let error = document.getElementById("errorLast");
-  if (checkLast.test(last.value) === false || last.value.length <= 2) {
+  if (checkLast.test(last.value) === false || last.value.length <= 1) {
     last.classList.add("input-error");
     last.classList.remove("input-validate");
-    error.innerText = "Veuillez entrer 2 caractères ou plus pour le nom. ";
+    error.innerText = "Veuillez entrer 2 caractères pour le nom. ";
     return false;
   } else {
     last.classList.remove("input-error");
