@@ -57,6 +57,7 @@
           <span class="close" id="close"></span>
           <div class="modal-body">
             <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
+
               <div class="formData">
                 <label>Prénom</label><br>
                 <input class="text-control" type="text" id="first" name="first" minlength="2"><br>
@@ -77,6 +78,7 @@
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
+
               <p class="text-label">Quelles villes ?</p>
               <div class="formData">
                 <input class="checkbox-input" type="radio" id="location1" name="location" value="New York">
@@ -105,11 +107,14 @@
         </div>
       </div>
     </main>
+
+    <!------- FOOTER ------->
+
     <footer>
-      <p class="copyrights">
-        Copyright 2014 - 2020, GameOn Inc.
-      </p>
+      <p class="copyrights">Copyright 2014 - 2020, GameOn Inc.</p>
     </footer>
+
     <script src="modal.js"></script>
+    
   </body>
 </html>
