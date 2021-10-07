@@ -242,7 +242,7 @@ function controlBtRadio() {
     numberOfBtRadioChecked = 0;
     return false;
     // Et si aucun btRadio checked  et quantitt.value > 0
-  } else if (numberOfBtRadioChecked == 0 && quantity.value > 0) {
+  } else if (numberOfBtRadioChecked === 0 && quantity.value > 0) {
     // On affiche le message d'erreur
     errorBtRadio.innerHTML = "Veuillez sélectionner une ville";
     // On remet le nombre de ville a zéro => false
