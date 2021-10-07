@@ -88,7 +88,7 @@ function closeModalV() {
 }
 
 function isInvalid(element, message) {
-  let target;
+  let target = "";
   if (NodeList.prototype.isPrototypeOf(element)) target = element[0].parentNode;
   else target = element.parentNode;
   target.setAttribute("data-error-visible", true);
