@@ -178,8 +178,8 @@ function validateRules() {
 
 
 // Fonction principal du formulaire on test si location et cgv son ok avant de fermer la modale , les autres inputs sont testé avant par required
-function validate(ev) {
-  ev.preventDefault();
+function validate(e) {
+  e.preventDefault();
 
   let isValidInput = true;
   removeAlerts();
