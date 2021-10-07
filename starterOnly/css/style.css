@@ -479,9 +479,8 @@ input[data-error]::after {
 }
 .hero-content {
   /* padding: 51px 67px; */
-  grid-column: span 4;
-  background: #232323;
-  color: #fff;
+  grid-column: span 5;
+
   position: relative;
   text-align: left;
   /* min-width: 424px; */
@@ -619,9 +618,9 @@ footer {
   .hero-content::after {
     content: unset;
   }
-  .hero-content .btn-signup {
+  /* .hero-content .btn-signup {
     display: none;
-  }
+  } */
   .hero-headline {
     /* font-size: 4.5rem; */
     white-space: normal;
@@ -673,6 +672,12 @@ footer {
     padding: 0.5rem;
   }
 
+  @media screen and (min-width: 492px) {
+    .bground {
+      background-color: #fff;
+      justify-content: center;
+    }
+  }
   @media screen and (min-width: 1024px) {
     main {
       width: 100%;
@@ -705,7 +710,7 @@ footer {
       height: 100%;
     }
     .hero-img {
-      height: 100%;
+      /* height: 100%; */
       grid-column-start: 6;
       grid-column-end: span 7;
     }
@@ -717,16 +722,16 @@ footer {
     }
     .hero-headline {
       font-size: 4rem;
-      line-height:6rem;
+      line-height:5rem;
       position: absolute;
       white-space: nowrap;
-      top: 8%;
+      top: 1rem;
       left: 3rem;
     }
     .hero-text {
       font-size: 1.4rem;
-      position: absolute;
-      top: 55%;
+      /* position: absolute; */
+      top: 40%;
       left: 3rem;
     }
     .main-navbar .icon {
@@ -738,12 +743,9 @@ footer {
     .main-navbar .link-main-navbar {
       display: block;
     }
-    .bground {
-      background-color: #fff;
-      justify-content: center;
-    }
+
     .text-control {
-      height: 67px;
+      height: 3rem;
     }
     .label {
       margin-bottom: 0.5rem;
@@ -752,7 +754,7 @@ footer {
     .content {
       margin: 80px 0;
       max-width: 540px;
-      padding: 1.5rem 0;
+      /* padding: 1.5rem 0; */
     }
     .radio-item label::before {
       width: 25px;
@@ -819,11 +821,19 @@ footer {
   }
   @media screen and (min-width: 1440px) {
     body {
-      margin: 0 auto;
+      margin: 0 auto 5rem;
     }
     .hero-headline {
       font-size: 6rem;
       line-height:8rem;
+      top: 3rem;
+    }
+    .hero-text {
+      position: absolute;
+      top: 55%;
+    }
+    .text-control {
+      height: 67px;
     }
     .header-logo img {
       width: 16rem;
