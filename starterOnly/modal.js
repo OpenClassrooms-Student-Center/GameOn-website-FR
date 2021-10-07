@@ -79,6 +79,12 @@ function validateModal() {
   modalbg.style.display = "none";
   modalV.style.display = "flex";
   modalVbg.style.display = "block";
+  firstNameInput.value = ""; //permet de vider formulaire après validation
+  lastNameInput.value = "";
+  birthdateInput.value = "";
+  emailInput.value = "";
+  quantityInput.value = "";
+  locationInput.value = "";
 }
 
 // close modal Validation form 

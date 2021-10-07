@@ -72,11 +72,21 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
+/*function closeModal(styleElement) {
+  modalbg.style.display = styleElement; //moins de répétition de code
+}*/
+
 //close modal form and open validate: ouvre la modale et la ferme en cliquant
 function validateModal() {
   modalbg.style.display = "none";
   modalV.style.display = "flex";
   modalVbg.style.display = "block";
+  firstNameInput.value = ""; //permet de vider formulaire après validation
+  lastNameInput.value = "";
+  birthdateInput.value = "";
+  emailInput.value = "";
+  quantityInput.value = "";
+  locationInput.value = "";
 }
 
 // close modal Validation form 
@@ -138,7 +148,7 @@ function emailValidation() {
 }
 
 //Validation anniversaire
-function birthdateValidation() {
+/*function birthdateValidation() {
   let birthdate = new Date(birthdateInput.value);
   let today = new Date();
   if (birthdate.toString() !== "Invalid Date") {
@@ -146,6 +156,24 @@ function birthdateValidation() {
       birthdate.getDate() >= today.getDate() &&
       birthdate.getMonth() == today.getMonth() &&
       birthdate.getFullYear() == today.getFullYear()
+    ) {
+      return false;
+    } else {
+      return true;
+    }
+  } else {
+    return false;
+  }
+}*/
+
+function birthdateValidation() {
+  let birthdate = new Date(birthdateInput.value);
+  let today = new Date();
+  let limitAge = new Date();
+  limitAge.setFullYear(today.getFullYear()-18); //on retire 18 année à la date d'aujourd'hui
+  if (birthdate.toString() !== "Invalid Date") {
+    if (
+      birthdate > limitAge 
     ) {
       return false;
     } else {
