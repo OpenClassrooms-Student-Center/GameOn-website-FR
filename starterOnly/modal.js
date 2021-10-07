@@ -11,7 +11,7 @@ function editNav() {
 const modalBg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-//Modal close
+// Modal close
 const closeBtn = document.querySelector(".close");
 
 // Regex elements
@@ -22,7 +22,7 @@ const emailRegex =
   /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
 
 /* ???????????????????????????????????????????????????????????????????????????????? */
-//error elements
+// Error elements
 // const errorFirst = document.getElementById("errorFirst");
 // const errorLast = document.getElementById("errorLast");
 // const errorEmail = document.getElementById("errorEmail");
@@ -44,56 +44,65 @@ function closeModal() {
 closeBtn.addEventListener("click", closeModal);
 
 /* ********************* PRENOM ************************** */
-//(1) Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
+// (1) Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
 const first = document.getElementById("first");
-// let firstInput = "";
 
-//Control de la longueur du prénom
-//Control que la chaine n'est pas vide avec trim()
+// Fonction de controle de la chaine de caractere du prenom
 function controlFirst() {
-  return firstLastRegex.test(first.value.trim()) ? true : false;
+  // Si la chaine a un minimum de 2 characters, qu'elle ne contient aucun chiffre ni caracteres spéciaux avec le test Regex, et qu'elle ne soit pas vide avec trim()
+  if (firstLastRegex.test(first.value.trim())) {
+    // On supprime le message d'erreur => true
+    errorFirst.innerHTML = "";
+    return true;
+  }
+  // Sinon on affiche le message d'erreur => false
+  errorFirst.innerHTML =
+    "Veuillez entrer 2 caractères littéral ou plus pour le champ du prénom.";
+  return false;
 }
 
-//Lors de l'input, si controlFirst() = true on suprime le message d'erreur
-first.addEventListener("input", () => {
-  if (controlFirst()) {
-    errorFirst.innerHTML = "";
-  }
-});
+// Lors de l'input sue first on execute la fonction controlFirst();
+first.addEventListener("input", controlFirst);
 
 /* ********************* NOM ******************************************* */
 //(2) Le champ du nom de famille a un minimum de 2 caractères / n'est pas vide.
 const last = document.getElementById("last");
-let lastInput = "";
 
-//Control le la longueur du nom
-//Control que la chaine n'est pas vide avec trim()
 function controlLast() {
-  return firstLastRegex.test(last.value.trim()) ? true : false;
+  // Si la chaine a un minimum de 2 characters, qu'elle ne contient aucun chiffre ni caracteres spéciaux avec le test Regex, et qu'elle ne soit pas vide avec trim()
+  if (firstLastRegex.test(last.value.trim())) {
+    // On supprime le message d'erreur => true
+    errorLast.innerHTML = "";
+    return true;
+  }
+  // Sinon on affiche le message d'erreur => false
+  errorLast.innerHTML =
+    "Veuillez entrer 2 caractères littéral ou plus pour le champ du nom.";
+  return false;
 }
 
-//Lors de l'input, si controlLast() = true on suprime le message d'erreur
-last.addEventListener("input", () => {
-  if (controlLast()) {
-    errorLast.innerHTML = "";
-  }
-});
+// Lors de l'input sur last on execute la fonction controlLast();
+last.addEventListener("input", controlLast);
 
 /* ******************************* EMAIL ******************** */
 //(3) L'adresse électronique est valide.
 const email = document.getElementById("email");
 
-//control de la validité de l'email
+// Control de la validité de l'email avec le test Regex
 function controlEmail() {
-  return emailRegex.test(email.value) ? true : false;
+  // Control de la validité de l'email avec le test Regex
+  if (emailRegex.test(email.value)) {
+    // On supprime le message d'erreur => true
+    errorEmail.innerHTML = "";
+    return true;
+  }
+  // Sinon on affiche le message d'erreur => false
+  errorEmail.innerHTML = "Veuillez entrer une adresse Email valide.";
+  return false;
 }
 
-//Lors de l'input, si controlLast() = true on suprime le message d'erreur
-email.addEventListener("input", () => {
-  if (controlEmail()) {
-    errorEmail.innerHTML = "";
-  }
-});
+//Lors de l'input sur email on execute la fonction controlEmail();
+email.addEventListener("input", controlEmail);
 
 /* **************************** BIRTHDATE ************************** */
 const birthdate = document.getElementById("birthdate");
@@ -106,11 +115,8 @@ let date = new Date();
 // récupération de l'année en cours
 let year = date.getFullYear();
 
-//control de la validité de la date de naissance
+// Control de la validité de la date de naissance
 function controlBirthdate() {
-  if (birthdate.value === "") {
-    return false;
-  }
   // récuperation de l'année entrée par l'utilisateur
   birthdateYear = parseInt(
     birthdate.value[0] +
@@ -122,111 +128,160 @@ function controlBirthdate() {
   birthdateMonth = parseInt(birthdate.value[5] + birthdate.value[6]);
   // récuperation du jour entrée par l'utilisateur
   birthdateDay = parseInt(birthdate.value[8] + birthdate.value[9]);
+  // Si la chaine est vide
+  if (birthdate.value === "") {
+    // on affiche le message d'erreur => false
+    errorBirthdate.innerHTML = "Veuillez entrer une date de naissance valide.";
+    return false;
+  }
 
-  // Si l'année n'est pas comprise entre 1900 et l'année actuelle
+  //Si l'année n'est pas comprise entre 1900 et l'année actuelle => false
   if (birthdateYear < 1900 || birthdateYear > year) {
+    // on affiche le message d'erreur => false
+    errorBirthdate.innerHTML =
+      "Veuillez choisir une année entre 1900 et aujourd'hui";
     return false;
   }
-  // Sinon si le mois n'est pas comprise entre 1 et 12
-  else if (birthdateMonth < 1 || birthdateMonth > 12) {
-    return false;
-  }
-  // Sinon si c'est un mois à 31 jours et que birthdateDay n'est pas compris entre 1 et 31
-  else if (
-    (birthdateMonth === 1 ||
-      birthdateMonth === 3 ||
-      birthdateMonth === 5 ||
-      birthdateMonth === 7 ||
-      birthdateMonth === 8 ||
-      birthdateMonth === 10 ||
-      birthdateMonth === 12) &&
-    (birthdateDay < 1 || birthdateDay > 31)
-  ) {
-    return false;
-  }
-  // Sinon si c'est un mois à 30 jours et que birthdateDay n'est pas compris entre 1 et 30
-  else if (
-    (birthdateMonth === 4 ||
-      birthdateMonth === 6 ||
-      birthdateMonth === 9 ||
-      birthdateMonth === 11) &&
-    (birthdateDay < 1 || birthdateDay > 30)
-  ) {
-    return false;
-  }
-  // Sinon si c'est le mois de février et que birthdateDay n'est pas compris entre 1 et 29
-  else if (birthdateMonth === 2 && (birthdateDay < 1 || birthdateDay > 29)) {
-    birthdateDay = "";
-    return false;
-  }
+  // // Sinon si le mois n'est pas comprise entre 1 et 12 => false
+  // else if (birthdateMonth < 1 || birthdateMonth > 12) {
+  //   // on affiche le message d'erreur => false
+  //   errorBirthdate.innerHTML = "Veuillez choisir un mois entre 1 et 12";
+  //   return false;
+  // }
+  // // Sinon si c'est un mois à 31 jours et que birthdateDay n'est pas compris entre 1 et 31 => false
+  // else if (
+  //   (birthdateMonth === 1 ||
+  //     birthdateMonth === 3 ||
+  //     birthdateMonth === 5 ||
+  //     birthdateMonth === 7 ||
+  //     birthdateMonth === 8 ||
+  //     birthdateMonth === 10 ||
+  //     birthdateMonth === 12) &&
+  //   (birthdateDay < 1 || birthdateDay > 31)
+  // ) {
+  //   // on affiche le message d'erreur => false
+  //   errorBirthdate.innerHTML = "Veuillez choisir un jour entre 1 et 31";
+  //   return false;
+  // }
+  // // Sinon si c'est un mois à 30 jours et que birthdateDay n'est pas compris entre 1 et 30 => false
+  // else if (
+  //   (birthdateMonth === 4 ||
+  //     birthdateMonth === 6 ||
+  //     birthdateMonth === 9 ||
+  //     birthdateMonth === 11) &&
+  //   (birthdateDay < 1 || birthdateDay > 30)
+  // ) {
+  //   // on affiche le message d'erreur => false
+  //   errorBirthdate.innerHTML = "Veuillez choisir un jour entre 1 et 30";
+  //   return false;
+  // }
+  // // Sinon si c'est le mois de février et que birthdateDay n'est pas compris entre 1 et 29 => false
+  // else if (birthdateMonth === 2 && (birthdateDay < 1 || birthdateDay > 29)) {
+  //   // birthdateDay = "";
+  //   // on affiche le message d'erreur => false
+  //   errorBirthdate.innerHTML = "Veuillez choisir un jour entre 1 et 29";
+  //   return false;
+  // }
   // Sinon ... ben tout est bon!! true
   else {
+    // on supprime le message d'erreur => true
+    errorBirthdate.innerHTML = "";
     return true;
   }
 }
-
-//Lors de l'input, si controlBirthdate() = true on suprime le message d'erreur
-birthdate.addEventListener("input", () => {
-  if (controlBirthdate()) {
-    errorBirthdate.innerHTML = "";
-  }
-});
+birthdate.addEventListener("focus", controlBirthdate);
+//Lors de l'input sur birhtdate on execute controlBirthdate()
+birthdate.addEventListener("input", controlBirthdate);
 
 /* ********************* QUANTITY ********************************** */
 //(4) Pour le nombre de concours, une valeur numérique est saisie.
 const quantity = document.getElementById("quantity");
+
+// Control de la validité de quantity
 function controlQuantity() {
+  // Si la valeur numérique de la chaine est compris entre 0 est 100
   if (parseInt(quantity.value) < 100 && parseInt(quantity.value) >= 0) {
+    // On suprime le message d'erreur => true
+    errorQuantity.innerHTML = "";
     return true;
   } else {
+    // Si la chaine est vide ou non comprise entre 0 et 100
+    // Sinon on affiche le message d'erreur => false
+    errorQuantity.innerHTML =
+      "Veuillez entrer une valeur numérique entre 0 et 99.";
     return false;
   }
 }
 
-//Lors de l'input, si controlQuantity() = true on suprime le message d'erreur
-quantity.addEventListener("input", () => {
-  if (controlQuantity()) {
-    errorQuantity.innerHTML = "";
-  }
-});
+// Lors de l'input sur quantity on execute la fonction controlQuantity
+quantity.addEventListener("input", controlQuantity);
+// Lors de l'input sur quantity on execute la fonction controlQuantity
+quantity.addEventListener("input", controlBtRadio);
 
 /* ************************** BTRADIO ********************************************* */
 //(5) Un bouton radio est sélectionné.
-const btRadio = document.querySelectorAll("input[type=radio]");
+const btRadios = document.querySelectorAll("input[name=location]");
+console.log(btRadios);
+// Nombre de btRadios checked
+let numberOfBtRadioChecked = 0;
+// Control de la validité de btRadios
 function controlBtRadio() {
-  for (let i = 0; i < btRadio.length; i++) {
-    if (btRadio[i].checked) {
-      return true;
+  // Boucle pour savoir le nombre de btRadios checked
+  for (let i = 0; i < btRadios.length; i++) {
+    if (btRadios[i].checked) {
+      numberOfBtRadioChecked += 1;
     }
   }
-  return false;
+
+  // Si le nombre de villes cochés est superieur au nombre de tournois participé
+  if (numberOfBtRadioChecked > quantity.value) {
+    // On affiche le message d'erreur
+    errorBtRadio.innerHTML =
+      "Vous ne pouvez pas sélectionner plus de villes que de tournois participé";
+    // On remet le nombre de ville a zéro => false
+    numberOfBtRadioChecked = 0;
+    return false;
+    // Et si aucun btRadio checked  et quantitt.value > 0
+  } else if (numberOfBtRadioChecked == 0 && quantity.value > 0) {
+    // On affiche le message d'erreur
+    errorBtRadio.innerHTML = "Veuillez sélectionner une ville";
+    // On remet le nombre de ville a zéro => false
+    numberOfBtRadioChecked = 0;
+    return false;
+  } else {
+    // Sinon on supprime le message d'erreur
+    errorBtRadio.innerHTML = "";
+    // On remet le nombre de ville a zéro => tru
+    numberOfBtRadioChecked = 0;
+    return true;
+  }
 }
 
-//Lors de l'input, si controlBtRadio() = true on suprime le message d'erreur
-for (let i = 0; i < btRadio.length; i++) {
-  btRadio[i].addEventListener("input", () => {
-    if (controlBtRadio()) {
-      errorBtRadio.innerHTML = "";
-    }
-  });
-}
-
+// Pour chaque btRadio dans le tableau btRadios
+btRadios.forEach((btRadio) => {
+  // Lors de l'input sur un btRadio on execute controlBtRadio();
+  btRadio.addEventListener("input", controlBtRadio);
+  // Lors de l'input sur un btRadio on execute controlQuantity();
+  btRadio.addEventListener("input", controlQuantity);
+});
 /* ********************** CHECKBOX1 ******************************************************** */
 //(6) La case des conditions générales est cochée, l'autre case est facultative / peut être laissée décochée.
 const checkbox1 = document.getElementById("checkbox1");
+// Controle de la case conditions generales coché
 function controlCheckbox1() {
+  // Si la case est cochée
   if (checkbox1.checked) {
+    // On supprime le message d'erreur => true
+    errorCheckbox1.innerHTML = "";
     return true;
   }
+  // On affiche le message d'erreur => false
+  errorCheckbox1.innerHTML = "Veuillez accepter les conditions d'utilisation";
   return false;
 }
 
 //Lors de l'input, si controlCheckbox1() = true on suprime le message d'erreur
-checkbox1.addEventListener("input", () => {
-  if (controlCheckbox1()) {
-    errorCheckbox1.innerHTML = "";
-  }
-});
+checkbox1.addEventListener("input", controlCheckbox1);
 
 /* ********************** SUBMIT ******************************** */
 //Soumission du formulaire
@@ -234,45 +289,8 @@ const form = document.querySelector("form");
 form.addEventListener("submit", (e) => {
   //Conserver les données du formulaire (ne pas effacer le formulaire) lorsqu'il ne passe pas la validation.
   e.preventDefault();
-  //Afficher les messages d'erreurs
-  messageError();
   validate();
 });
-
-function messageError() {
-  //Si controlFirst() = false on affiche le message d'erreur.
-  if (!controlFirst()) {
-    errorFirst.innerHTML =
-      "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
-  }
-  //Si controlLast() = false on affiche le message d'erreur.
-  if (!controlLast()) {
-    errorLast.innerHTML =
-      "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
-  }
-  //Si controlEmail() = false on affiche le message d'erreur.
-  if (!controlEmail()) {
-    errorEmail.innerHTML = "Veuillez entrer une adresse Email valide.";
-  }
-  //Si controlbirthdate() = false on remet birthdate.value à zero et on affiche le message d'erreur.
-  if (!controlBirthdate()) {
-    birthdate.value = "";
-    errorBirthdate.innerHTML = "Veuillez entrer une date de naissance valide.";
-  }
-  //Si controlQuantity() = false on affiche le message d'erreur.
-  if (!controlQuantity()) {
-    errorQuantity.innerHTML =
-      "Veuillez entrer une valeur numérique entre 0 et 99.";
-  }
-  //Si controlBtRadio = false on affiche le message d'erreur.
-  if (!controlBtRadio()) {
-    errorBtRadio.innerHTML = "Veuillez selectionner une ville";
-  }
-  //Si controlCheckbox1 = false on affiche le message d'erreur.
-  if (!controlCheckbox1()) {
-    errorCheckbox1.innerHTML = "Veuillez accepter les conditions d'utilisation";
-  }
-}
 
 function validate() {
   if (
