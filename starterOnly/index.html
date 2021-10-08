@@ -18,39 +18,37 @@
       </div>
       <div class="main-navbar">
         <a href="#" class="active link-main-navbar"><span>Accueil</span></a>
-        <a href="#" class="link-main-navbar"><span>Détails de l'évènement</span></a>
+        <a href="#" class="link-main-navbar"
+          ><span>Détails de l'évènement</span></a
+        >
         <a href="#" class="link-main-navbar"><span>À propos</span></a>
         <a href="#" class="link-main-navbar"><span>Contact</span></a>
         <a href="#" class="link-main-navbar"><span>Évènements passés</span></a>
-        <!-- <a href="javascript:void(0);" class="icon" onclick="editNav()"> -->
         <i class="fa fa-bars icon"></i>
-        <!-- </a> -->
       </div>
-      <!-- </div> -->
     </div>
     <main>
-      <div class="hero-section">
-        <div class="hero-content">
-          <h1 class="hero-headline">
+      <div class="heroWrapper">
+        <div class="heroContent">
+          <h1 class="heroTitle">
             Marathon national<br />
             de jeux vidéos
           </h1>
-          <p class="hero-text">
+          <p class="heroText">
             Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux
             réservations... Places limitées !
           </p>
-          <!-- <button class="btn-signup modal-btn">je m'inscris</button> -->
         </div>
-        <div class="hero-img">
+        <div class="heroImg">
           <img src="./images/bg_img.jpg" alt="img" />
         </div>
-        <button class="btn-signup modal-btn">je m'inscris</button>
+        <button class="heroBtn modal-btn">je m'inscris</button>
       </div>
 
-      <div class="bground">
-        <div class="content">
-          <span class="close"></span>
-          <div class="modal-body">
+      <div class="modalBackground">
+        <div class="modalContent">
+          <span class="closeFormCross"></span>
+          <div class="modalBody">
             <form
               name="signupForm"
               action=""
@@ -130,9 +128,9 @@
                   >Veuillez choisir une quantité.</span
                 >
               </div>
-              <p class="text-label">Quelles villes ?</p>
+              <p class="townLabel">Quelles villes ?</p>
               <div class="formData towns">
-                <div class="radio-item">
+                <div class="radioItem">
                   <input
                     class="checkbox-input option"
                     type="radio"
@@ -140,9 +138,9 @@
                     name="location"
                     value="New York"
                   />
-                  <label class="checkbox-label" for="location1"> New York</label>
+                  <label class="townLabels" for="location1"> New York</label>
                 </div>
-                <div class="radio-item">
+                <div class="radioItem">
                   <input
                     class="checkbox-input option"
                     type="radio"
@@ -150,11 +148,11 @@
                     name="location"
                     value="San Francisco"
                   />
-                  <label class="checkbox-label" for="location2">
+                  <label class="townLabels" for="location2">
                     San Francisco</label
                   >
                 </div>
-                <div class="radio-item">
+                <div class="radioItem">
                   <input
                     class="checkbox-input option"
                     type="radio"
@@ -162,9 +160,9 @@
                     name="location"
                     value="Seattle"
                   />
-                  <label class="checkbox-label" for="location3"> Seattle</label>
+                  <label class="townLabels" for="location3"> Seattle</label>
                 </div>
-                <div class="radio-item">
+                <div class="radioItem">
                   <input
                     class="checkbox-input option"
                     type="radio"
@@ -172,9 +170,9 @@
                     name="location"
                     value="Chicago"
                   />
-                  <label class="checkbox-label" for="location4"> Chicago</label>
+                  <label class="townLabels" for="location4"> Chicago</label>
                 </div>
-                <div class="radio-item">
+                <div class="radioItem">
                   <input
                     class="checkbox-input option"
                     type="radio"
@@ -182,9 +180,9 @@
                     name="location"
                     value="Boston"
                   />
-                  <label class="checkbox-label" for="location5"> Boston</label>
+                  <label class="townLabels" for="location5"> Boston</label>
                 </div>
-                <div class="radio-item">
+                <div class="radioItem">
                   <input
                     class="checkbox-input option"
                     type="radio"
@@ -192,7 +190,7 @@
                     name="location"
                     value="Portland"
                   />
-                  <label class="checkbox-label" for="location6"> Portland</label>
+                  <label class="townLabels" for="location6"> Portland</label>
                 </div>
                 <span class="errorOptionMsg hidden"
                   >Vous devez choisir une ville.</span
@@ -209,11 +207,11 @@
                   checked
                   required
                 />
-                <label class="checkbox2-label" for="terms" required>
-                  <span class="checkbox-icon"></span>
+                <label class="ConsentLabels" for="terms" required>
+                  <span class="ConsentIcons"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
-                
+
                 <input
                   class="checkbox-input"
                   type="checkbox"
@@ -221,20 +219,19 @@
                   id="newsletter"
                   value="accepted"
                 />
-                <label class="checkbox2-label" for="newsletter">
-                  <span class="checkbox-icon"></span>
+                <label class="ConsentLabels" for="newsletter">
+                  <span class="ConsentIcons"></span>
                   Je souhaite être prévenu des prochains évènements.
                 </label>
-                
+
                 <span class="errorMsg hidden"
                   >Vous devez vérifier que vous acceptez les termes et
                   conditions.</span
                 >
               </div>
               <input
-                class="btn-submit"
+                class="formSubmitBtn submitButton"
                 type="submit"
-                class="button"
                 value="C'est parti"
               />
             </form>

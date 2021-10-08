@@ -1,21 +1,10 @@
-// function editNav() {
-//   var x = document.getElementById("myTopnav");
-//   if (x.className === "topnav") {
-//     x.className += " responsive";
-//   } else {
-//     x.className = "topnav";
-//   }
-// }
-
-
-
-// DOM Elements
-const modalbg = document.querySelector(".bground"),
+// On récupère les élements du DOM nécessaires
+const modalBackground = document.querySelector(".modalBackground"),
   modalBtn = document.querySelector(".modal-btn"),
-  signupBtn = document.querySelector(".btn-signup"),
-  modalBody = document.querySelector(".modal-body"),
+  heroBtn = document.querySelector(".heroBtn"),
+  modalBody = document.querySelector(".modalBody"),
   mainNavBar = document.querySelector(".main-navbar"),
-  closeBtn = document.querySelector(".close"),
+  closeFormCross = document.querySelector(".closeFormCross"),
   icon = document.querySelector(".icon"),
   formData = document.querySelectorAll(".formData"),
   signupForm = document.querySelector("#signupForm"),
@@ -29,7 +18,7 @@ const modalbg = document.querySelector(".bground"),
   errorOptionMsg = document.querySelector(".errorOptionMsg"),
   newsletter = document.querySelector("#newsletter");
 
-
+// On déclare le template du menu en vue mobile
 const navTemplate = `
     <a href="#" class="active"><span>Accueil</span></a>
     <a href="#"><span>Détails de l'évènement</span></a>
@@ -37,6 +26,8 @@ const navTemplate = `
     <a href="#"><span>Contact</span></a>
     <a href="#"><span>Évènements passés</span></a>
   `;
+
+// On écoute le click sur l'icône de menu en vue mobile pour ouvrir et fermer le menu
 icon.addEventListener("click", () => {
   let navWrapper = document.getElementById("navWrapper");
   if (navWrapper !== null) {
@@ -51,41 +42,50 @@ icon.addEventListener("click", () => {
   }
 });
 
-function closeOnOut(){
-  let nav= document.querySelector("#navWrapper");
+/**
+ * Permet de fermer le menu en vue mobile lorsque la souris sort du menu
+ */
+function closeOnOut() {
+  let nav = document.querySelector("#navWrapper");
   nav.addEventListener("mouseleave", () => {
     nav.remove();
-  })
+  });
 }
 
-// launch modal event
-// modalBtn.forEach((btn) =>
-//   btn.addEventListener("click", () => {
-//     modalbg.style.display = "block";
-//   })
-// );
+// Ecoute le click pour ouvrir la modale de formulaire
+heroBtn.addEventListener("click", openModal);
 
-// close modal event
-signupBtn.addEventListener("click", openModal);
-closeBtn.addEventListener("click", closeModal);
+// Ecoute le click pour fermer la modale de formulaire
+closeFormCross.addEventListener("click", closeModal);
+
+/**
+ * Permet d'ajouter la classe visible à la modale pour la faire apparaître
+ */
 function openModal() {
-  modalbg.style.display = "flex";
-  console.log(modalbg);
-}
-function closeModal() {
-  modalbg.style.display = "none";
+  modalBackground.classList.add("visible");
 }
 
-// afficher message d'erreur
+/**
+ * Permet de retirer la classe visible à la modale pour la faire disparaître
+ */
+function closeModal() {
+  modalBackground.classList.remove("visible");
+}
+
+// On récupère les champs de formulaire à vérifier
 const inputs = [firstname, lastname, email, birthdate, quantity, terms];
 
+// On boucle sur les champs de formulaire pour vérifier la validité
 for (let i = 0; i < inputs.length; i++) {
   inputs[i].addEventListener("input", () => {
+    // Si ce n'est pas valide, on affiche le message d'erreur et on change l'affichage du champs
     if (!inputs[i].validity.valid) {
       errorMsg[i].classList.remove("hidden");
       inputs[i].classList.remove("valid");
       inputs[i].classList.add("invalid");
-    } else {
+    } 
+    // Si c'est valide, on retire le message d'erreur et on change l'affichage du champs
+    else {
       inputs[i].classList.remove("invalid");
       inputs[i].classList.add("valid");
       errorMsg[i].classList.add("hidden");
@@ -93,10 +93,12 @@ for (let i = 0; i < inputs.length; i++) {
   });
 }
 
+// On récupère les choix de villes du formulaire
 let choice,
-    option = document.querySelectorAll(".option"),
-    isChecked = false;
+  option = document.querySelectorAll(".option"),
+  isChecked = false;
 
+// On écoute le click sur toutes les options, on passe isChecked à true dès qu'il y a au moins un click et on enregiste le nom de la ville choisie 
 for (let i = 0; i < option.length; i++) {
   const elt = option[i];
   elt.addEventListener("click", () => {
@@ -105,6 +107,11 @@ for (let i = 0; i < option.length; i++) {
   });
 }
 
+/**
+ * Permet de vérifier si tous les champs requis sont valides
+ *
+ * @return  {Boolean}  true si tous les champs sont valides, sinon false
+ */
 function checkForm() {
   if (
     firstname.validity.valid &&
@@ -121,6 +128,10 @@ function checkForm() {
   }
 }
 
+/**
+ * Permet de sauvegarder les infos du formulaire si tous les champs sont valides
+ * Affiche ensuite un message de remerciement
+ */
 function submitForm() {
   event.preventDefault();
   if (checkForm()) {
@@ -142,16 +153,14 @@ function submitForm() {
     <p>Merci !</p>
     <p>Votre réservation a été reçue.</p>
     </div>
-    <button class="btn-signup modal-btn close-btn" id="closingBtn" onclick="closeModal()">
+    <button class="heroBtn modal-btn thanksCloseBtn" id="closingBtn" onclick="closeModal()">
     Fermer
     </button>
     </div>
     `;
-  } else if(!checkForm() && !isChecked) {
+  } else if (!checkForm() && !isChecked) {
     errorOptionMsg.classList.remove("hidden");
-  }  else {
+  } else {
     console.log("oops une erreur");
   }
 }
-
-
