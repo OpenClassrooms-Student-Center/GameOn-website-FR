@@ -135,7 +135,7 @@ main {
   top: 0;
   height: 100%;
   width: 100%;
-  overflow: auto;
+  overflow: hidden;
   /* background-color: rgba(26, 39, 156, 0.4); */
 }
 
@@ -745,7 +745,7 @@ footer {
     }
 
     .text-control {
-      height: 3rem;
+      height: 2rem;
     }
     .label {
       margin-bottom: 0.5rem;
@@ -831,6 +831,9 @@ footer {
     .hero-text {
       position: absolute;
       top: 55%;
+    }
+    .content {
+      max-height: 100%;
     }
     .text-control {
       height: 67px;
