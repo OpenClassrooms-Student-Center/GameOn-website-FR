@@ -14,7 +14,7 @@ const formData = document.querySelectorAll(".formData");
 const closeModal = document.querySelector("#close");
 const form = document.querySelector("form");
 const inputs = document.querySelectorAll(
-  'input[type="text"], input[type="number"],input[type="date"],input[type="radio"] ,input[type="checkbox"]'
+  'input[type="text"], input[type="number"],input[type="date"]'
 ); // Pour selectionner les inputs
 
 // launch modal event

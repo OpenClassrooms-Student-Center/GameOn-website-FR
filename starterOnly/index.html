@@ -55,12 +55,8 @@
           <span class="close" id="close"></span>
           <!--ajout de l'id pour fermer la modale-->
           <div class="modal-body">
-            <form
-              name="reserve"
-              action="index.html"
-              method="get"
-              autocomplete="off"
-            >
+            <!--modal qui permet de générer la modale du form et la modale de validation-->
+            <form name="reserve" action="index.html" method="get">
               <div class="formData">
                 <label for="first">Prénom</label><br />
                 <!--ajout des attributs for et id pour lier les labels aux entrées-->
@@ -74,32 +70,27 @@
                 <!--Ajout d'une span afin d'afficher le message d'erreur-->
               </div>
               <div class="formData">
-                <label for="last">Nom</label
-                ><br /><!--ajout des attributs for et id pour lier les labels aux entrées-->
+                <label for="last">Nom</label><br />
                 <input
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
                 /><br />
-                <span id="errorLast" class="error"></span
-                ><!--Ajout d'une span afin d'afficher le message d'erreur-->
+                <span id="errorLast" class="error"></span>
               </div>
               <div class="formData">
-                <label for="email">E-mail</label
-                ><br /><!--ajout des attributs for et id pour lier les labels aux entrées-->
+                <label for="email">E-mail</label><br />
                 <input
                   class="text-control"
                   type="text"
                   id="email"
                   name="email"
                 /><br />
-                <span id="errorMail" class="error"></span
-                ><!--Ajout d'une span afin d'afficher le message d'erreur-->
+                <span id="errorMail" class="error"></span>
               </div>
               <div class="formData">
-                <label for="birthdate">Date de naissance</label
-                ><br /><!--ajout des attributs for et id pour lier les labels aux entrées-->
+                <label for="birthdate">Date de naissance</label><br />
                 <input
                   class="text-control"
                   type="date"
@@ -112,7 +103,7 @@
                 <label for="quantity"
                   >À combien de tournois GameOn avez-vous déjà participé
                   ?</label
-                ><br /><!--ajout des attributs for et id pour lier les labels aux entrées-->
+                ><br />
                 <input
                   type="number"
                   class="text-control"
@@ -191,7 +182,8 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
-                <span id="errorRadio" class="error"></span>
+                <span id="errorRadio" class="error"></span
+                ><!--span message d'erreur selection ville-->
               </div>
 
               <div class="formData">
@@ -201,7 +193,8 @@
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br />
-                <span id="errorCheckbox" class="error"></span>
+                <span id="errorCheckbox" class="error"></span
+                ><!--message d'erreur conditions générales-->
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>

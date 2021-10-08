@@ -102,10 +102,21 @@ img {
   .topnav a {
     display: none;
   }
+  /*logo & icon size*/
+  .topnav {
+    margin: 30px;
+  }
+  .header-logo img {
+    width: 132px;
+    height: 24px;
+  }
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    margin-top: 5px;
+    margin-right: 0px;
+    padding-right: 0px;
+    font-size: 19px;
   }
 }
 
@@ -253,12 +264,7 @@ input {
 .input-validate {
   border: solid 3px green;
 }
-
-/*input[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.4em;
-  color: red;
-}*/
+/*checkbox*/
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -324,6 +330,7 @@ input {
   left: 21%;
   top: 19%;
 }
+/* Closing Button*/
 .close {
   position: absolute;
   right: 15px;
@@ -448,7 +455,6 @@ input {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -528,7 +534,7 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 20px 0px;
   }
   .hero-content::after {
     content: unset;
