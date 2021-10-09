@@ -13,6 +13,12 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeModalBtn = document.querySelectorAll("#close");
+// inputs
+var first = document.getElementById("first");
+var last = document.getElementById("last");
+var email = document.getElementById("email");
+var birthday = document.getElementById("birthdate");
+var quantity = document.getElementById("quantity");
 
 /*--------- EVENTS ---------*/
 
