@@ -39,6 +39,9 @@ function launchModal() {
 // close modal form
 function closeModal() {
   modalbg.style.display = "none";
+  confirmation.style.display = 'none'
+  form.style.display = 'block'
+}
 
 function validEmail(email) {
   var reg = /\S+@\S+\.\S+/;
@@ -154,5 +157,10 @@ function errorMessage(e) {
     termError.textContent = ""
   }
 
+
+  if (numberOfValidFields === 7) {
+    confirmation.style.display = 'block'
+    form.style.display = 'none'
+  }
 
 }
