@@ -473,6 +473,16 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+
+.error {
+  color: #fe142f;
+  font-size: 10px;
+}
+
+.error_field {
+  border-color: #fe142f;
+}
+
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
