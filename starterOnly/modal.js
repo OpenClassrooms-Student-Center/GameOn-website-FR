@@ -19,6 +19,12 @@ const closeModalBtn = document.querySelectorAll("#close");
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
+// modal validation event
+document.getElementById("reserve").addEventListener("submit" , function(e) {
+  e.preventDefault();
+  alert('formulaire envoyé');
+});
+
 // close modal event
 closeModalBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 
