@@ -80,7 +80,8 @@ function addValidation(input) {
     case "checkbox":
       if (input.name === "location") {
         input.onchange = function () {
-          validCheckboxLocation(input, quantity.value, quantity);
+          // @ts-ignore
+          validCheckboxLocation(input, quantity.value);
         };
       } else {
         input.onchange = function () {
@@ -230,6 +231,7 @@ function numberOfLocationChecked() {
   const inputsLocations = document.querySelectorAll("input[name = location]");
   let numberInputLocationChecked = 0;
   for (let inputLocation of inputsLocations) {
+    // @ts-ignore
     if (inputLocation.checked) {
       numberInputLocationChecked++;
     }
@@ -257,5 +259,6 @@ function validCheckboxConditions(input) {
 function showMessage(input, msg) {
   const target = input.parentElement;
   target.setAttribute("data-error", msg);
+  // @ts-ignore
   target.setAttribute("data-error-visible", msg !== "");
 }
