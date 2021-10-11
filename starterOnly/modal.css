@@ -52,7 +52,12 @@ img {
   font-family: Roboto, sans-serif;
 }
 
-.topnav a:hover {
+/* .topnav a:hover {
+  background-color: #ff0000;
+  color: #ffffff;
+  border-radius: 15px;
+} */
+.navig:hover {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
