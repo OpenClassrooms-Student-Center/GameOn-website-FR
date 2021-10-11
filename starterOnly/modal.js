@@ -116,7 +116,7 @@ function removeAlerts() {
 //Validation location
 function validateLocation() {
   const input = locationInput;
-  for (let i = 0; i < input.length; i++) {
+  for (var i = 0; i < input.length; i++) {
     const validityState = input[i].checked;
     if (validityState) {
       return true;
