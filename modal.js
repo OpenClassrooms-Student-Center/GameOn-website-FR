@@ -164,6 +164,9 @@ form.addEventListener("submit", function(event) {
         const check_parent = document.querySelector('input[id="checkbox1"]').parentNode;
         check_parent.removeAttribute('data-error');
         check_parent.removeAttribute('data-error-visible');
+        const radio_parent = document.querySelector('input[name="location"]').parentNode;
+        radio_parent.removeAttribute('data-error');
+        radio_parent.removeAttribute('data-error-visible');
     }
 })
 
