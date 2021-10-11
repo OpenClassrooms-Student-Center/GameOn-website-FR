@@ -449,6 +449,7 @@ input {
   margin-bottom: 10px;
 }
 .hero-content {
+  width: 100%;
   padding: 51px 67px;
   grid-column: span 4;
   background: #232323;
