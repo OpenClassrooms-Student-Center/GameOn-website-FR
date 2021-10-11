@@ -3,18 +3,33 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Fan de gaming ? Cette année encore, participez au marathon national de jeux vidéos avec Game On !! Faites chauffer votre manette, on attend plus que vous.">
+
     <title>GameOn | Réservation</title>
+
     <link rel="icon" href="./images/favicon.png" type="image/png" />
     <link rel="stylesheet" href="./css/style.css" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+    <!-- Balises OpenGraph -->
+    <meta property="og:title" content="Game On 2021 en folie : Le marathon national des jeux vidéos" />
+    <meta property="og:title" content="./images/miniature.png" />
+    <meta property="og:description" content="Vous êtes fan de jeux vidéos ? On vous surnomme le boss de la manette ? Cette année encore, venez participer au marathon national de jeux vidéos avec Game On !! Retrouvez tous les détails de l'évènement ainsi que notre formulaire de réservation. Faites chauffer votre manette, on attend plus que vous." />
+    <meta property="og:url" content="https://lokkotara.github.io/GameOn-website-FR/" />
+    <meta property="og:site_name" content="gameon.fr" />
+    <!-- Fin des balises OpenGraph -->
+
+    <!-- Balises TwitterCard -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gameon" />
+    <meta name="twitter:creator" content="@gameon" />
+    <!-- Fin des balises TwitterCard -->
+
   </head>
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-        <img alt="logo" src="./images/Logo.png" />
+        <img alt="Logo Game On en écriture rouge" src="./images/Logo.png" />
       </div>
       <div class="main-navbar">
         <a href="#" class="active link-main-navbar"><span>Accueil</span></a>
@@ -40,7 +55,7 @@
           </p>
         </div>
         <div class="heroImg">
-          <img src="./images/bg_img.jpg" alt="img" />
+          <img src="./images/bg_img.jpg" alt="Joueuse tenant une manette à la main et les bras en l'air" />
         </div>
         <button class="heroBtn modal-btn">je m'inscris</button>
       </div>
@@ -51,7 +66,6 @@
           <div class="modalBody">
             <form
               name="signupForm"
-              action=""
               method="post"
               id="signupForm"
               onsubmit="submitForm()"
@@ -207,7 +221,7 @@
                   checked
                   required
                 />
-                <label class="ConsentLabels" for="terms" required>
+                <label class="ConsentLabels" for="terms">
                   <span class="ConsentIcons"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
