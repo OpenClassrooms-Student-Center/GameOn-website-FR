@@ -17,10 +17,17 @@ const form = document.querySelector("form");
 const closer = document.querySelectorAll(".close");
 
 let stringsNumber = document.querySelectorAll(".text-control");
-let formInputs = document.querySelectorAll("input");
+let allInputs = document.querySelectorAll("input");
+let allRadios = document.querySelectorAll('[name=location]');
+let quantityParticipation;
+
+const regexEmail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+const regexDate = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+const regexNumber = /[0-9]/;
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+closer.forEach((closer) => closer.addEventListener("click", closeModal));
 
 // launch modal form
 function launchModal() {
@@ -32,91 +39,100 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-closer.forEach((closer) => {
-  closer.addEventListener("click", closeModal);
-});
+let firstName = document.querySelector(".formData>#first");
+let lastName = document.querySelector(".formData>#last");
+let email = document.querySelector(".formData>#email");
 
-var firstName = document.querySelector(".formData>#first");
-firstName.addEventListener("input", () => {
-  var container = firstName.parentNode;
-  if (firstName.value.length <= 2) {
-    container.setAttribute("data-error-visible", "true");
-    container.setAttribute(
-      "data-error",
-      "Le prénom doit comporter au minimum 3 caractères"
-    );
-  } else if (!firstName.value.match(/^[A-Za-z]+$/)) {
-    //console.log("regexerror");
-    container.setAttribute("data-error-visible", "true");
-    container.setAttribute(
-      "data-error",
-      "Le prénom ne peut pas avoir de chiffre ou de caractères spéciaux"
-    );
-  } else {
-    //onsole.log("ok");
-    container.setAttribute("data-error-visible", "");
-  }
-});
+// setErrorMessage(firstName, "Vous devez saisir 3 caractères minimum.");
+// setErrorMessage(last);
+// setErrorMessage(email, "Vous mail");
 
-var lastName = document.querySelector(".formData>#last");
-lastName.addEventListener("input", () => {
-  var container = lastName.parentNode;
-  if (lastName.value.length <= 2) {
-    container.setAttribute("data-error-visible", "true");
-    container.setAttribute(
-      "data-error",
-      "Le nom doit comporter au minimum 3 caractères"
-    );
-  } else if (!lastName.value.match(/^[A-Za-z]+$/)) {
-    //console.log("regexerror");
-    container.setAttribute("data-error-visible", "true");
-    container.setAttribute(
-      "data-error",
-      "Le nom ne peut pas avoir de chiffre ou de caractères spéciaux"
-    );
-  } else {
-    //onsole.log("ok");
-    container.setAttribute("data-error-visible", "");
-  }
-});
+validate.addEventListener("click", validationInputs);
 
-var eMail = document.querySelector(".formData>#email");
-eMail.addEventListener("input", () => {
-  var container = eMail.parentNode;
-  if (!eMail.value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)) {
-    //console.log("regexerror");
-    container.setAttribute("data-error-visible", "true");
-    container.setAttribute("data-error", "L'adresse email n'est pas valide");
-  } else {
-    //onsole.log("ok");
-    container.setAttribute("data-error-visible", "");
-  }
-});
+ allInputs.forEach((input) => input.addEventListener('keyup', validationInputs));
 
-var tournament = document.querySelector(".formData>#quantity");
-tournament.addEventListener("input", () => {
-  var container = tournament.parentNode;
-  if (!tournament.value.match(/[0-9]/) || tournament === null) {
-    //console.log("regexerror");
-    container.setAttribute("data-error-visible", "true");
-    container.setAttribute("data-error", "Vous devez saisir un chiffre");
-  } else {
-    //onsole.log("ok");
-    container.setAttribute("data-error-visible", "");
-  }
-});
 
-var radios = document.querySelectorAll("input[type=radio]");
-radios.forEach((radio) => {
-  var container = radio.parentNode;
-  if (!radio.checked) {
-    container.setAttribute("data-error-visible", "true");
-  }
-});
+function validationInputs() {
+  console.log("yes");
+  event.preventDefault();
 
-validate.addEventListener("click", (submitting) => {
-  submitting.preventDefault();
-  if ((firstName = false)) {
-    alert("toto");
-  }
-});
+  allInputs.forEach((input) => {
+    let inputName = input.name;
+    let inputValue = input.value;
+  
+    switch (inputName) {
+      case "first":
+        if (inputValue.length < 2) {
+          setErrorMessage(input, " prennom ");
+        } else {
+          setSuccessMessage(input);
+        }
+        break;
+      case "last":
+        if (inputValue.length < 2) {
+          setErrorMessage(input, " name ");
+        } else {
+          setSuccessMessage(input);
+        }
+        break;
+      case "email":
+        if (!regexEmail.test(inputValue)) {
+          setErrorMessage(input, " email ");
+        } else {
+          setSuccessMessage(input);
+        }
+        break;
+      case "birthdate":
+        if (!regexDate.test(inputValue)) {
+          setErrorMessage(input, " date ");
+        } else {
+          setSuccessMessage(input);
+        }
+        break;
+      case "quantity":
+        if ( !regexNumber.test(inputValue) || inputValue < 0 || inputValue > 10) {
+          setErrorMessage(input, " quantiyty ");
+
+        } else {
+          setSuccessMessage(input);
+          quantityParticipation = inputValue;
+        }
+        break;
+      case "location":
+        let radioCochee = 0;
+
+        allRadios.forEach((radio)=>{
+           
+            if(radio.checked){
+              radioCochee++;
+            }
+        });
+        if (((quantityParticipation > 0) && (radioCochee === 0)) || (quantityParticipation === undefined) || (((!quantityParticipation === 0) && !radioCochee ===0))) {
+          setErrorMessage(input, " location ");
+        } else {
+          setSuccessMessage(input);
+        }
+        break;
+        case "checkbox1":
+          if (!input.checked) {
+            setErrorMessage(input, " checkerror ");
+          } else {
+            setSuccessMessage(input);
+          }
+          break;
+    }
+  });
+}
+
+function setSuccessMessage(input) {
+  let container = input.parentNode;
+  container.removeAttribute("data-error-visible");
+  container.removeAttribute("data-error");
+}
+
+function setErrorMessage(input, message) {
+  let container = input.parentNode;
+  container.setAttribute("data-error-visible", "true");
+  container.setAttribute("data-error", message);
+}
+
