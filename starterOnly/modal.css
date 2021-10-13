@@ -527,3 +527,24 @@ footer {
   }
 }
 
+/* Form Error messages */
+
+.validation-messages{
+  font-family: var(--font-default);
+  font-size: 17px;
+  font-weight: normal;
+  color: #fe142f;
+}
+
+.validation-messages__error {
+  color: #fe142f;
+  line-height: 1.4em;
+}
+
+.validation-messages__success {
+  color: #4adeb1;
+  line-height: 1.4em;
+}
+
+
+
