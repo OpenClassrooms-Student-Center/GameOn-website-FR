@@ -61,10 +61,6 @@ function validate() {
   validBirthdate();
   validQuantity();
 
-  if (validFirstName() == true && validLastName() == true && validEmail() == true && validBirthdate() == true && validQuantity() == true) {
-    alert("Form valid")
-    closeModal();
-  }
 }
 
 // FirstName validation
