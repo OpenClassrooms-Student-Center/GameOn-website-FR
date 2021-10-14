@@ -32,18 +32,21 @@ img {
 
 .topnav {
   overflow: hidden;
-  margin: 3.5%;
+  margin: 55px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
   display: block;
-  color: #000000;
+  color: #ff001b;
   text-align: center;
   padding: 12px 12px;
   margin: 5px;
@@ -69,15 +72,20 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
+    font-size: 30px;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -90,16 +98,27 @@ img {
   }
 }
 
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
+  /*logo & icon size*/
+  .topnav {
+    margin: 30px;
+  }
+  .header-logo img {
+    width: 132px;
+    height: 24px;
+  }
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    margin-top: 5px;
+    margin-right: 0px;
+    padding-right: 0px;
+    font-size: 19px;
   }
-} 
+}
 
 main {
   font-size: 130%;
@@ -111,8 +130,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -147,6 +164,7 @@ main {
   border-radius: 15px;
   cursor: pointer;
   font-size: 16px;
+  text-align: center;
 }
 
 .button:hover {
@@ -170,7 +188,7 @@ main {
 }
 
 .content {
-  margin: 5% auto;
+  margin: 10% auto;
   width: 100%;
   max-width: 500px;
   animation-name: modalopen;
@@ -223,15 +241,30 @@ input {
 .formData[data-error-visible="true"]::after {
   opacity: 1;
 }
-.formData[data-error-visible="true"] .text-control {
+.input-error {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+
+.error span {
+  visibility: hidden;
+  opacity: 0;
+  display: block;
+  font-size: 0.4em;
+  transition: 0.3s;
+  color: #e54858;
+}
+/*class for span error */
+.error {
+  visibility: visible;
+  opacity: 1;
+  color: #e54858;
+  font-size: 0.8em;
+}
+/* for valid input*/
+.input-validate {
+  border: solid 3px green;
+}
+/*checkbox*/
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -253,6 +286,7 @@ input[data-error]::after {
   top: -1px;
   transition: 0.3s;
 }
+
 .checkbox-label .checkbox-icon::after,
 .checkbox2-label .checkbox-icon::after {
   content: "";
@@ -296,6 +330,7 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
+/* Closing Button*/
 .close {
   position: absolute;
   right: 15px;
@@ -414,13 +449,13 @@ input[data-error]::after {
   margin-bottom: 10px;
 }
 .hero-content {
+  width: 100%;
   padding: 51px 67px;
   grid-column: span 4;
   background: #232323;
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -478,7 +513,21 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+/* propiètés du message de validation*/
+.validationText {
+  color: white;
+  font-family: var(--font-default);
+  font-size: 36px;
+  font-weight: 400;
+  text-align: center;
+  padding: 8rem 18rem 16rem 4rem;
+}
+
 @media screen and (max-width: 800px) {
+  .content {
+    margin: 25% auto;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -486,7 +535,7 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 20px 0px;
   }
   .hero-content::after {
     content: unset;
@@ -515,6 +564,15 @@ footer {
     margin-top: 50px;
     text-align: center;
   }
+  /* propiètés du message de validation en responsive*/
+  .validationText {
+    color: white;
+    font-family: var(--font-default);
+    font-size: 36px;
+    font-weight: 400;
+    text-align: center;
+    padding: 8rem 4rem 16rem 4rem;
+  }
 }
 
 @keyframes modalopen {
@@ -526,4 +584,3 @@ footer {
     opacity: 1;
   }
 }
-
