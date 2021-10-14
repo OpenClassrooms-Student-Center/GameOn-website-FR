@@ -14,10 +14,25 @@ const formsData = document.querySelectorAll(".formData");
 
 const validate = document.querySelector(".btn-submit");
 const form = document.querySelector("form");
-const closer = document.querySelectorAll(".close");
+const closer = document.querySelectorAll(".closing");
 
 let stringsNumber = document.querySelectorAll(".text-control");
 let formInputs = document.querySelectorAll("input");
+let inputLocation=document.querySelectorAll('[name = location]');
+
+
+const regexLetter = /[0-9]/;
+const regexMail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+const regexDate = /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/;
+
+
+let dataPrenom=null;
+let dataNom=null;
+let dataMail=null;
+let dataDate=null;
+let dataTournament=null;
+let dataCity=null;
+let dataCheck=null;
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -27,96 +42,141 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+closer.forEach(closer=>closer.addEventListener('click',closeModal));
 //ISSUE 1 Fermer la modal
 function closeModal() {
   modalbg.style.display = "none";
 }
 
-closer.forEach((closer) => {
-  closer.addEventListener("click", closeModal);
-});
 
-var firstName = document.querySelector(".formData>#first");
-firstName.addEventListener("input", () => {
-  var container = firstName.parentNode;
-  if (firstName.value.length <= 2) {
-    container.setAttribute("data-error-visible", "true");
-    container.setAttribute(
-      "data-error",
-      "Le prénom doit comporter au minimum 3 caractères"
-    );
-  } else if (!firstName.value.match(/^[A-Za-z]+$/)) {
-    //console.log("regexerror");
-    container.setAttribute("data-error-visible", "true");
-    container.setAttribute(
-      "data-error",
-      "Le prénom ne peut pas avoir de chiffre ou de caractères spéciaux"
-    );
-  } else {
-    //onsole.log("ok");
-    container.setAttribute("data-error-visible", "");
-  }
-});
+// Validation formulaire
+validate.addEventListener('click',(e)=>{
+   e.preventDefault();
+   displayError();
+   liveUpdate();
 
-var lastName = document.querySelector(".formData>#last");
-lastName.addEventListener("input", () => {
-  var container = lastName.parentNode;
-  if (lastName.value.length <= 2) {
-    container.setAttribute("data-error-visible", "true");
-    container.setAttribute(
-      "data-error",
-      "Le nom doit comporter au minimum 3 caractères"
-    );
-  } else if (!lastName.value.match(/^[A-Za-z]+$/)) {
-    //console.log("regexerror");
-    container.setAttribute("data-error-visible", "true");
-    container.setAttribute(
-      "data-error",
-      "Le nom ne peut pas avoir de chiffre ou de caractères spéciaux"
-    );
-  } else {
-    //onsole.log("ok");
-    container.setAttribute("data-error-visible", "");
-  }
-});
+   data = {dataPrenom,dataNom,dataMail,dataDate,dataTournament,dataCity,dataCheck};
 
-var eMail = document.querySelector(".formData>#email");
-eMail.addEventListener("input", () => {
-  var container = eMail.parentNode;
-  if (!eMail.value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)) {
-    //console.log("regexerror");
-    container.setAttribute("data-error-visible", "true");
-    container.setAttribute("data-error", "L'adresse email n'est pas valide");
-  } else {
-    //onsole.log("ok");
-    container.setAttribute("data-error-visible", "");
-  }
-});
+   if(dataPrenom && dataNom && dataMail && dataDate && dataTournament && dataCity && dataCheck){
+    success()
+   }
+   console.log(data);
 
-var tournament = document.querySelector(".formData>#quantity");
-tournament.addEventListener("input", () => {
-  var container = tournament.parentNode;
-  if (!tournament.value.match(/[0-9]/) || tournament === null) {
-    //console.log("regexerror");
-    container.setAttribute("data-error-visible", "true");
-    container.setAttribute("data-error", "Vous devez saisir un chiffre");
-  } else {
-    //onsole.log("ok");
-    container.setAttribute("data-error-visible", "");
-  }
-});
+  });
 
-var radios = document.querySelectorAll("input[type=radio]");
-radios.forEach((radio) => {
-  var container = radio.parentNode;
-  if (!radio.checked) {
-    container.setAttribute("data-error-visible", "true");
-  }
-});
+//Verification sur la saisie
+function liveUpdate(){
+  formInputs.forEach(input=>{ 
+    input.addEventListener('keyup', displayError);
+    input.addEventListener('click', displayError);
+  });
 
-validate.addEventListener("click", (submitting) => {
-  submitting.preventDefault();
-  if ((firstName = false)) {
-    alert("toto");
-  }
-});
+}
+
+// Contôle de saisies utilisateurs
+function displayError(){
+  formInputs.forEach(input=>{
+      let inputName = input.name;
+      let inputValue = input.value;
+
+      switch (inputName) {
+        case 'first':
+          if(inputValue.length < 3 || regexLetter.test(inputValue)){
+            setError(input,"Le prénom doit comporter au minimum 2 lettres.");
+          }else{
+            removeError(input);
+            dataPrenom = inputValue;
+          }
+          break;
+
+        case 'last':
+          if(inputValue.length < 3 || regexLetter.test(inputValue)){
+            setError(input,"Le nom doit comporter au minimum 2 lettres.");
+          }else{
+            removeError(input);
+            dataNom=inputValue;
+          }
+          break;
+
+        case 'email':
+          if(!regexMail.test(inputValue)){
+            setError(input,"L'adresse email n'est pas valide.");
+          }else{
+            removeError(input);
+            dataMail=inputValue;
+          }
+          break;
+
+        case 'birthdate':
+          if(!regexDate.test(inputValue)){
+            setError(input,"Le format de date de naissance n'est pas valide.");
+          }else{
+            removeError(input);
+            dataDate=inputValue;
+          }
+          break;
+
+        case 'quantity':
+          if(!regexLetter.test(inputValue) || (inputValue<0) || (inputValue>6)){
+            setError(input,"Vous devez saisir au moins un chiffre.");
+          }else{
+            removeError(input);
+            dataTournament=inputValue;
+          }
+          break;
+
+        case 'location':
+            let radioCheck = 0;
+            inputLocation.forEach(location=>{
+             if(location.checked){
+              radioCheck++
+             };
+            });      
+            if(radioCheck === 0){
+              setError(input,"Vous devez choisir votre ville.");
+            }else{
+              removeError(input);
+              dataCity=input.value;
+            }
+          break;
+
+        case 'checkbox1':
+          if(!input.checked){
+            setError(input,"Vous devez vérifier que vous acceptez les termes et conditions.");
+          }else{
+            removeError(input);
+            dataCheck=input.value;
+          }
+          break;
+      
+        default:
+          break;
+      }  
+  })
+};
+
+
+//Attribuer erreur aux champs
+function setError(input, message){
+  let container = input.parentNode;
+  container.setAttribute('data-error-visible', 'true');
+  container.setAttribute('data-error', message);
+};
+
+//Supprimer erreur champs
+function removeError(input){
+  let container = input.parentNode;
+  container.removeAttribute('data-error-visible');
+  container.removeAttribute('data-error');
+}
+
+function success(){
+  form.innerHTML=`
+        <div class="success">
+       <h4>Merci ! Votre réservation a été reçue.</h4>
+        <input class="btn-submit closing" type="submit" class="button" value="Fermer">
+        </div>
+      `;
+};
+
+

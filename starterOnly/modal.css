@@ -14,7 +14,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
+  /* background-image: url("background.png"); */
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -172,14 +172,13 @@ main {
 }
 
 .bground {
-  display: block;
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
   top: 0;
   height: 100%;
   width: 100%;
-  overflow: auto;
   background-color: rgba(255, 255, 255, 1);
 }
 
@@ -493,6 +492,14 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+.success{
+  display: flex;
+    height: 80vh;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
 @media screen and (max-width: 800px) {
   .topnav {
     margin: 4% 6% 0;
@@ -574,7 +581,7 @@ footer {
   }
 
   .bground {
-    background-color: rgba(255, 255, 255, 0);
+   /* / background-color: rgba(255, 255, 255, 0); */
   }
 }
 
