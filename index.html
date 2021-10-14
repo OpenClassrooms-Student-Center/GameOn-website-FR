@@ -11,9 +11,10 @@
 </head>
 
 <body>
+
     <div class="topnav" id="myTopnav">
         <div class="header-logo">
-            <img alt="logo" src="Logo.png" width="auto" height="auto" />
+            <img alt="logo" src="Logo.png" width="auto" height="auto" class="logo" />
         </div>
         <div class="main-navbar">
 
@@ -28,6 +29,10 @@
         </div>
     </div>
     </div>
+
+
+
+
     <main>
         <div class="hero-section">
             <div class="hero-content">
@@ -38,91 +43,92 @@
                     Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux réservations... Places limitées !
                 </p>
                 <button class="btn-signup modal-btn">
-          je m'inscris
-        </button>
+                    je m'inscris
+                </button>
             </div>
             <div class="hero-img">
                 <img src="bg_img.jpg" alt="img" />
             </div>
             <button class="btn-signup modal-btn">
-        je m'inscris
-      </button>
+                je m'inscris
+            </button>
         </div>
 
         <div class="bground" id="form">
             <div class="content">
                 <span class="close" onclick="closeForm()"></span>
-                <div class="modal-body">
+                <div class="modal-body" id="modal-body">
                     <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
                         <div class="formData">
-                            <label>Prénom</label><br>
+                            <label for="first" id="label_first">Prénom</label><br>
                             <input class="text-control" type="text" id="first" name="first" minlength="2" onblur="checkFirstAndLastName(this,'first')" /><br>
                         </div>
                         <div class="formData">
-                            <label>Nom</label><br>
+                            <label for="last" id="label_last">Nom</label><br>
                             <input class="text-control" type="text" id="last" name="last" onblur="checkFirstAndLastName(this,'last')" /><br>
                         </div>
                         <div class="formData">
-                            <label>E-mail</label><br>
+                            <label for="email" id="label_email">E-mail</label><br>
                             <input class="text-control" type="email" id="email" name="email" onblur="checkEmail(this)" /><br>
                         </div>
                         <div class="formData">
-                            <label>Date de naissance</label><br>
+                            <label for="date" id="label_date">Date de naissance</label><br>
                             <input class="text-control" type="date" id="birthdate" name="birthdate" onblur="checkBirthdate(this)" /><br>
                         </div>
                         <div class="formData">
-                            <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                            <label for="quantity" id="label_quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                             <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" onblur="checkQuantity(this)">
                         </div>
                         <p class="text-label">Quelles villes ?</p>
                         <div class="formData">
                             <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
-                            <label class="checkbox-label" for="location1">
-                <span class="checkbox-icon"></span>
-                New York</label>
+                            <label class="checkbox-label" for="location1" id="label_location1">
+                                <span class="checkbox-icon"></span>
+                                New York</label>
                             <input class="checkbox-input" type="radio" id="location2" name="location" value="San Francisco" />
-                            <label class="checkbox-label" for="location2">
-                <span class="checkbox-icon"></span>
-                San Francisco</label>
+                            <label class="checkbox-label" for="location2" id="label_location2">
+                                <span class="checkbox-icon"></span>
+                                San Francisco</label>
                             <input class="checkbox-input" type="radio" id="location3" name="location" value="Seattle" />
-                            <label class="checkbox-label" for="location3">
-                <span class="checkbox-icon"></span>
-                Seattle</label>
+                            <label class="checkbox-label" for="location3" id="label_location3">
+                                <span class="checkbox-icon"></span>
+                                Seattle</label>
                             <input class="checkbox-input" type="radio" id="location4" name="location" value="Chicago" />
-                            <label class="checkbox-label" for="location4">
-                <span class="checkbox-icon"></span>
-                Chicago</label>
+                            <label class="checkbox-label" for="location4" id="label_location4">
+                                <span class="checkbox-icon"></span>
+                                Chicago</label>
                             <input class="checkbox-input" type="radio" id="location5" name="location" value="Boston" />
-                            <label class="checkbox-label" for="location5">
-                <span class="checkbox-icon"></span>
-                Boston</label>
+                            <label class="checkbox-label" for="location5" id="label_location5">
+                                <span class="checkbox-icon"></span>
+                                Boston</label>
                             <input class="checkbox-input" type="radio" id="location6" name="location" value="Portland" />
-                            <label class="checkbox-label" for="location6">
-                <span class="checkbox-icon"></span>
-                Portland</label>
+                            <label class="checkbox-label" for="location6" id="label_location6">
+                                <span class="checkbox-icon"></span>
+                                Portland</label>
                         </div>
 
                         <div class="formData">
                             <input class="checkbox-input" type="checkbox" id="checkbox1" checked />
-                            <label class="checkbox2-label" for="checkbox1" required>
-                <span class="checkbox-icon"></span>
-                J'ai lu et accepté les conditions d'utilisation.
-              </label>
+                            <label class="checkbox2-label" for="checkbox1" id="label_checkbox1" required>
+                                <span class="checkbox-icon"></span>
+                                J'ai lu et accepté les conditions d'utilisation.
+                            </label>
                             <br>
                             <input class="checkbox-input" type="checkbox" id="checkbox2" />
-                            <label class="checkbox2-label" for="checkbox2">
-                <span class="checkbox-icon"></span>
-                Je souhaite être prévenu des prochains évènements.
-              </label>
+                            <label class="checkbox2-label" for="checkbox2" id="label_checkbox2">
+                                <span class="checkbox-icon"></span>
+                                Je souhaite être prévenu des prochains évènements.
+                            </label>
                             <br>
                         </div>
                         <input class="btn-submit" type="submit" class="button" value="C'est parti" />
                     </form>
                 </div>
+
             </div>
         </div>
         <!--Fenêtre de confirmation-->
-        <div class="content-valid">
+        <!--<div class="content-valid">
             <div class="valid">
                 <span class="close" onclick="closeConfirmation()"></span>
                 <p class="confirmed">
@@ -131,7 +137,7 @@
                 <button class="btn-close" onclick="closeConfirmation()">Fermer</button>
             </div>
 
-        </div>
+        </div>-->
     </main>
     <footer>
         <p class="copyrights">

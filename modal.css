@@ -36,6 +36,9 @@ img {
 .topnav {
     overflow: hidden;
     margin: 3.5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .header-logo {
@@ -44,12 +47,13 @@ img {
 
 .main-navbar {
     float: right;
+    margin-top: auto;
 }
 
 .topnav a {
     float: left;
     display: block;
-    color: #000000;
+    color: #ff0000;
     text-align: center;
     padding: 12px 12px;
     margin: 5px;
@@ -107,7 +111,7 @@ img {
     .topnav a.icon {
         float: right;
         display: block;
-        margin-top: -15px;
+        /*margin-top: -15px;*/
     }
 }
 
@@ -195,6 +199,7 @@ main {
 .modal-body {
     padding: 15px 8%;
     margin: 15px auto;
+    height: 708px;
 }
 
 label {
@@ -458,7 +463,7 @@ input[data-error]::after {
 }
 
 .hero-section {
-    min-height: 93vh;
+    /*min-height: 93vh;*/
     border-radius: 10px;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -475,6 +480,12 @@ input[data-error]::after {
     position: relative;
     text-align: left;
     min-width: 424px;
+}
+
+@media screen and (max-width:768px) {
+    .hero-content {
+        min-width: 0;
+    }
 }
 
 .hero-content::after {
@@ -523,6 +534,7 @@ input[data-error]::after {
     height: 100%;
     display: block;
     padding: 0;
+    object-fit: cover;
 }
 
 .copyrights {
@@ -625,4 +637,37 @@ footer {
     align-items: center;
     justify-content: center;
     color: white;
+}
+
+@media screen and (max-width: 800px) {
+    .logo {
+        width: 80%;
+    }
+    .hero-headline {
+        font-size: 40px;
+        font-weight: 600;
+    }
+    main {
+        margin: 3.5%;
+        padding: 0;
+    }
+    .hero-content {
+        padding: 0;
+    }
+}
+
+@media screen and (min-width:800px) and (max-width:1000px) {
+    .hero-headline {
+        font-size: 60px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .content[content-mobile="true"] {
+        margin-top: 80px;
+        height: inherit;
+    }
+    .bground[bground-mobile="true"] {
+        background-color: inherit;
+    }
 }
