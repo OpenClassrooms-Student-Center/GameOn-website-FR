@@ -63,6 +63,9 @@ function validate(event) {
     firstName.classList.add('input-error');
     alert("Veuillez renseigner un Prenom correct.");
     return false;
+  } else {
+    firstName.classList.add('input-valid');
+    firstName.classList.remove('input-error');
   }
 
   if (!lastName.value) {
@@ -73,24 +76,36 @@ function validate(event) {
     lastName.classList.add('input-error');
     alert("Veuillez renseigner un nom correct.");
     return false;
+  } else {
+    lastName.classList.add('input-valid');
+    lastName.classList.remove('input-error');
   }
 
   if (!email.value) {
     email.classList.add('input-error');
     alert("Veuillez renseigner un E-mail.");
     return false;
+  } else {
+    email.classList.add('input-valid');
+    email.classList.remove('input-error');
   }
 
   if (!birthdate.value) {
     birthdate.classList.add('input-error');
     alert("Veuillez renseigner une date de naissance.");
     return false;
+  } else {
+    birthdate.classList.add('input-valid');
+    birthdate.classList.remove('input-error');
   }
 
   if (!quantity.value) {
     quantity.classList.add('input-error');
     alert("Veuillez renseigner a combien de tournois GameOn avez-vous déjà participé ?.");
     return false;
+  } else {
+    quantity.classList.add('input-valid');
+    quantity.classList.remove('input-error');
   }
 }
 
