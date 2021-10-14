@@ -54,33 +54,53 @@ function launchModal() {
 }
 
 // Form validation
-function validate(event) {
+function validate() {
+  validFirstName();
+  validLastName();
+  validEmail();
+  validBirthdate();
+  validQuantity();
+
+  if (validFirstName() == true && validLastName() == true && validEmail() == true && validBirthdate() == true && validQuantity() == true) {
+    alert("Form valid")
+    closeModal();
+  }
+}
+
+// FirstName validation
+function validFirstName() {
   if (!firstName.value) {
     firstName.classList.add('input-error');
     alert("Veuillez renseigner un Prenom.");
     return false;
   } else if (firstName.value.length <= 1){
     firstName.classList.add('input-error');
-    alert("Veuillez renseigner un Prenom correct.");
+    alert("Veuillez entrer 2 caractères ou plus pour le champ du prenom.");
     return false;
   } else {
     firstName.classList.add('input-valid');
     firstName.classList.remove('input-error');
+    return true;
   }
-
+}
+// LastName validation
+function validLastName() {
   if (!lastName.value) {
     lastName.classList.add('input-error');
     alert("Veuillez renseigner un Nom.");
     return false;
   } else if (lastName.value.length <= 1){
     lastName.classList.add('input-error');
-    alert("Veuillez renseigner un nom correct.");
+    alert("Veuillez entrer 2 caractères ou plus pour le champ du nom.");
     return false;
   } else {
     lastName.classList.add('input-valid');
     lastName.classList.remove('input-error');
+    return true;
   }
-
+}
+// email validation
+function validEmail() {
   if (!email.value) {
     email.classList.add('input-error');
     alert("Veuillez renseigner un E-mail.");
@@ -88,8 +108,11 @@ function validate(event) {
   } else {
     email.classList.add('input-valid');
     email.classList.remove('input-error');
+    return true;
   }
-
+}
+// Birthdate validation
+function validBirthdate() {
   if (!birthdate.value) {
     birthdate.classList.add('input-error');
     alert("Veuillez renseigner une date de naissance.");
@@ -97,8 +120,11 @@ function validate(event) {
   } else {
     birthdate.classList.add('input-valid');
     birthdate.classList.remove('input-error');
+    return true;
   }
-
+}
+// Quantity validation
+function validQuantity() {
   if (!quantity.value) {
     quantity.classList.add('input-error');
     alert("Veuillez renseigner a combien de tournois GameOn avez-vous déjà participé ?.");
@@ -106,6 +132,7 @@ function validate(event) {
   } else {
     quantity.classList.add('input-valid');
     quantity.classList.remove('input-error');
+    return true;
   }
 }
 
