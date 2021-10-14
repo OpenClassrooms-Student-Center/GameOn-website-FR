@@ -35,6 +35,11 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // form submit
 reserve.addEventListener('submit', (e) => {
   e.preventDefault();
+  console.log(firstName.value);
+  console.log(lastName.value);
+  console.log(email.value);
+  console.log(birthdate.value);
+  console.log(quantity.value);
   console.log('submit');
 })
 
@@ -50,21 +55,34 @@ function launchModal() {
 
 // Form validation
 function validate(event) {
+  if (!firstName.value) {
+    alert("Veuillez renseigner un Prenom.");
+    return false;
+  } else if (firstName.value.length <= 1){
+    alert("Veuillez renseigner un Prenom correct.");
+    return false;
+  }
+
+  if (!lastName.value) {
+    alert("Veuillez renseigner un Nom.");
+    return false;
+  } else if (lastName.value.length <= 1){
+    alert("Veuillez renseigner un nom correct.");
+    return false;
+  }
+
+  if (!email.value) {
+    alert("Veuillez renseigner un E-mail.");
+    return false;
+  }
+
+  if (!birthdate.value) {
+    alert("Veuillez renseigner une date de naissance.");
+    return false;
+  }
 
   if (!quantity.value) {
-    erreur = "Veuillez renseigner a combien de tournois GameOn avez-vous déjà participé ?.";
-  }
-  if (!birthdate.value) {
-    erreur = "Veuillez renseigner une date de naissance.";
-  }
-  if (!email.value) {
-    erreur = "Veuillez renseigner un E-mail.";
-  }
-  if (!lastName.value) {
-    erreur = "Veuillez renseigner un Nom.";
-  }
-  if (!firstName.value) {
-    alert("erreur");
+    alert("Veuillez renseigner a combien de tournois GameOn avez-vous déjà participé ?.");
     return false;
   }
 }
