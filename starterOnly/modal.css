@@ -206,6 +206,10 @@ input {
 .input-error {
   border: 2px solid #fe142f;
 }
+small {
+  font-size: 15px;
+  color: #fe142f;
+}
 
 .text-control {
   margin: 0;

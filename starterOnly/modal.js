@@ -31,6 +31,13 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // form submit
 reserve.addEventListener('submit', (e) => {
   e.preventDefault();
+
+  validate();
+
+  if (validFirstName() == true && validLastName() == true && validEmail() == true && validBirthdate() == true && validQuantity() == true && validCGV() == true) {
+    alert("Form valid");
+    closeModal();
+  }
   console.log(firstName.value);
   console.log(lastName.value);
   console.log(email.value);
@@ -51,84 +58,61 @@ function launchModal() {
 
 // Form validation
 function validate() {
+
   validFirstName();
   validLastName();
   validEmail();
   validBirthdate();
   validQuantity();
   validCGV();
-
-  if (validFirstName() == true && validLastName() == true && validEmail() == true && validBirthdate() == true && validQuantity() == true && validCGV() == true) {
-    alert("Form valid");
-    closeModal();
-  }
 }
 
 // FirstName validation
 function validFirstName() {
   if (!firstName.value) {
-    firstName.classList.add('input-error');
-    alert("Veuillez renseigner un Prenom.");
-    return false;
+    setErreur(firstName, "Veuillez renseigner un prénom.");
   } else if (firstName.value.length <= 1){
-    firstName.classList.add('input-error');
-    alert("Veuillez entrer 2 caractères ou plus pour le champ du prenom.");
-    return false;
+    setErreur(firstName, "Veuillez entrer 2 caractères ou plus pour le champ du prenom.");
   } else {
-    firstName.classList.add('input-valid');
-    firstName.classList.remove('input-error');
+    setValid(firstName);
     return true;
   }
 }
 // LastName validation
 function validLastName() {
   if (!lastName.value) {
-    lastName.classList.add('input-error');
-    alert("Veuillez renseigner un Nom.");
-    return false;
+    setErreur(lastName, "Veuillez renseigner un nom.");
   } else if (lastName.value.length <= 1){
-    lastName.classList.add('input-error');
-    alert("Veuillez entrer 2 caractères ou plus pour le champ du nom.");
-    return false;
+    setErreur(lastName, "Veuillez entrer 2 caractères ou plus pour le champ du nom.");
   } else {
-    lastName.classList.add('input-valid');
-    lastName.classList.remove('input-error');
+    setValid(lastName);
     return true;
   }
 }
 // email validation
 function validEmail() {
   if (!email.value) {
-    email.classList.add('input-error');
-    alert("Veuillez renseigner un E-mail.");
-    return false;
+    setErreur(email, "Veuillez renseigner un E-mail.");
   } else {
-    email.classList.add('input-valid');
-    email.classList.remove('input-error');
+    setValid(email);
     return true;
   }
 }
 // Birthdate validation
 function validBirthdate() {
   if (!birthdate.value) {
-    birthdate.classList.add('input-error');
-    alert("Veuillez renseigner une date de naissance.");
-    return false;
+    setErreur(birthdate, "Veuillez renseigner une date de naissance.");
   } else {
-    birthdate.classList.add('input-valid');
-    birthdate.classList.remove('input-error');
+    setValid(birthdate);
     return true;
   }
 }
 // Quantity validation
 function validQuantity() {
   if (!quantity.value) {
-    quantity.classList.add('input-error');
-    alert("Veuillez renseigner a combien de tournois GameOn avez-vous déjà participé.");
-    return false;
+    setErreur(quantity, "Veuillez renseigner a combien de tournois GameOn avez-vous déjà participé.");
   } else {
-    quantity.classList.add('input-valid');
-    quantity.classList.remove('input-error');
+    setValid(quantity);
     return true;
   }
 }
@@ -137,9 +121,22 @@ function validCGV() {
   if (CGV.checked) {
     return true;
   } else {
-    alert("Veuillez accepter les CGV.");
-    return false;
+    setErreur(CGV, "Veuillez accepter les CGV.");
   }
+}
+
+// SetErreur validation
+function setErreur(input, message) {
+  const formData = input.parentElement; //Div 
+  const small = formData.querySelector('small');
+
+  //message erreur
+  small.innerText = message;
+  input.className = 'text-control input-error';
+}
+// SetValid validation
+function setValid(input) {
+  input.className = 'text-control input-valid';
 }
 
 // close modal form
