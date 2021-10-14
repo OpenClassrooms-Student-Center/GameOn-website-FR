@@ -56,32 +56,39 @@ function launchModal() {
 // Form validation
 function validate(event) {
   if (!firstName.value) {
+    firstName.classList.add('input-error');
     alert("Veuillez renseigner un Prenom.");
     return false;
   } else if (firstName.value.length <= 1){
+    firstName.classList.add('input-error');
     alert("Veuillez renseigner un Prenom correct.");
     return false;
   }
 
   if (!lastName.value) {
+    lastName.classList.add('input-error');
     alert("Veuillez renseigner un Nom.");
     return false;
   } else if (lastName.value.length <= 1){
+    lastName.classList.add('input-error');
     alert("Veuillez renseigner un nom correct.");
     return false;
   }
 
   if (!email.value) {
+    email.classList.add('input-error');
     alert("Veuillez renseigner un E-mail.");
     return false;
   }
 
   if (!birthdate.value) {
+    birthdate.classList.add('input-error');
     alert("Veuillez renseigner une date de naissance.");
     return false;
   }
 
   if (!quantity.value) {
+    quantity.classList.add('input-error');
     alert("Veuillez renseigner a combien de tournois GameOn avez-vous déjà participé ?.");
     return false;
   }
