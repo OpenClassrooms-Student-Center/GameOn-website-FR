@@ -20,12 +20,8 @@ const lastName = document.getElementById ('last');
 const email = document.getElementById ('email');
 const birthdate = document.getElementById ('birthdate');
 const quantity = document.getElementById ('quantity');
-const location1 = document.getElementById ('location1');
-const location2 = document.getElementById ('location2');
-const location3 = document.getElementById ('location3');
-const location4 = document.getElementById ('location4');
-const location5 = document.getElementById ('location5');
-const location6 = document.getElementById ('location6');
+const CGV = document.getElementById ('checkbox1');
+
 
 /*--------- EVENTS ---------*/
 
@@ -60,12 +56,12 @@ function validate() {
   validEmail();
   validBirthdate();
   validQuantity();
+  validCGV();
 
-  if (validFirstName() == true && validLastName() == true && validEmail() == true && validBirthdate() == true && validQuantity() == true) {
+  if (validFirstName() == true && validLastName() == true && validEmail() == true && validBirthdate() == true && validQuantity() == true && validCGV() == true) {
     alert("Form valid");
     closeModal();
   }
-
 }
 
 // FirstName validation
@@ -128,12 +124,21 @@ function validBirthdate() {
 function validQuantity() {
   if (!quantity.value) {
     quantity.classList.add('input-error');
-    alert("Veuillez renseigner a combien de tournois GameOn avez-vous déjà participé ?.");
+    alert("Veuillez renseigner a combien de tournois GameOn avez-vous déjà participé.");
     return false;
   } else {
     quantity.classList.add('input-valid');
     quantity.classList.remove('input-error');
     return true;
+  }
+}
+// Quantity validation
+function validCGV() {
+  if (CGV.checked) {
+    return true;
+  } else {
+    alert("Veuillez accepter les CGV.");
+    return false;
   }
 }
 
