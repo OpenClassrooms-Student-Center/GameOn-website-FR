@@ -1,0 +1,139 @@
+[33mcommit f07e565ba0e81dde30c30faaa971ec6934b78e67[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/modalEvolution[m[33m, [m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmodalEvolution[m[33m)[m
+Author: laurent972 <laurent.digitick@gmail.com>
+Date:   Tue Oct 12 16:15:35 2021 +0200
+
+    Co-authored-by: Cyranno973 <Cyranno973@users.noreply.github.com>
+
+[33mcommit 55cb509c0f0e954eca450eff4516a8baaccb4670[m
+Author: laurent972 <laurent.digitick@gmail.com>
+Date:   Fri Oct 8 16:25:17 2021 +0200
+
+    1st commi bad
+
+[33mcommit a11ba522a33d5c6abb9c31a30cc35087e321bcf6[m
+Author: laurent972 <laurent.digitick@gmail.com>
+Date:   Fri Sep 24 14:31:25 2021 +0200
+
+    corrections affichage issue#5
+
+[33mcommit 74e7ea1bb75cd3770d1e9152f50809db86443608[m
+Author: nicolaspatschkowski <47756052+nicolaspatschkowski@users.noreply.github.com>
+Date:   Wed Aug 19 18:13:44 2020 +0200
+
+    Typo
+
+[33mcommit bcee082830ff09361c8bbd2e412a32cdf394ce72[m
+Author: nicolaspatschkowski <47756052+nicolaspatschkowski@users.noreply.github.com>
+Date:   Wed Aug 19 18:04:03 2020 +0200
+
+    Traduction go > c'est parti
+
+[33mcommit 154f4f61e4aecebc19c78d4b41b13a8296e52521[m
+Author: nicolaspatschkowski <47756052+nicolaspatschkowski@users.noreply.github.com>
+Date:   Wed Aug 19 17:29:49 2020 +0200
+
+    Update README
+
+[33mcommit 36bc39161dddce17a5951e5b82bd1b43a2eafcad[m
+Author: nicolaspatschkowski <47756052+nicolaspatschkowski@users.noreply.github.com>
+Date:   Wed Aug 19 17:28:57 2020 +0200
+
+    Traduction de la page HTML
+
+[33mcommit de2954c0d0735b21507b35a56e65823fda18e722[m
+Author: nicolaspatschkowski <47756052+nicolaspatschkowski@users.noreply.github.com>
+Date:   Mon Aug 3 19:02:32 2020 +0200
+
+    Fix README
+
+[33mcommit a8cb7c46dc924da0d6be15095eb2b4082abcb982[m
+Author: nicolaspatschkowski <47756052+nicolaspatschkowski@users.noreply.github.com>
+Date:   Mon Aug 3 19:01:57 2020 +0200
+
+    Translated README
+
+[33mcommit 530f73b22b733a7adff23264e810bd98c5a13484[m
+Author: T3events <49736855+T3events@users.noreply.github.com>
+Date:   Mon Aug 3 07:49:30 2020 -0400
+
+    Add files via upload
+
+[33mcommit ed512be939824e758162a4da20755be8e078c879[m
+Author: T3events <49736855+T3events@users.noreply.github.com>
+Date:   Mon Aug 3 07:45:44 2020 -0400
+
+    Update README.md
+
+[33mcommit 8ed4a9a25dc437fcab4da200f7f9cc713d7b59c5[m
+Author: HayVThom <39294226+HayVThom@users.noreply.github.com>
+Date:   Mon Aug 3 09:19:30 2020 +0200
+
+    Delete modal.js
+
+[33mcommit eccf37494096f12694b055cb1bf87c9a02098bf1[m
+Author: HayVThom <39294226+HayVThom@users.noreply.github.com>
+Date:   Mon Aug 3 09:19:14 2020 +0200
+
+    Delete modal.css
+
+[33mcommit 7f361d40656fa8c9d2d33c0eac18c8ce88050bc3[m
+Author: HayVThom <39294226+HayVThom@users.noreply.github.com>
+Date:   Mon Aug 3 09:18:55 2020 +0200
+
+    Delete index.html
+
+[33mcommit 66526b89d32dd7f82fcb6fa90a3f0efe8b48f103[m
+Author: T3events <49736855+T3events@users.noreply.github.com>
+Date:   Sat Aug 1 11:35:21 2020 -0400
+
+    Add files via upload
+
+[33mcommit bc299efb1d6f7b183e178eb54e6c11d45d5d1f5e[m
+Author: T3events <49736855+T3events@users.noreply.github.com>
+Date:   Sat Aug 1 11:34:40 2020 -0400
+
+    Add files via upload
+
+[33mcommit 2716053aabcfe82a7d928ae4f91a255ebdfb8dc5[m
+Author: T3events <49736855+T3events@users.noreply.github.com>
+Date:   Sat Aug 1 11:13:27 2020 -0400
+
+    Update README.md
+
+[33mcommit 14416290d7c83ec3a918f63e31b32e2776cee258[m
+Author: T3events <49736855+T3events@users.noreply.github.com>
+Date:   Sun Jul 19 12:05:19 2020 -0400
+
+    Update README.md
+
+[33mcommit d9d663574404f6c09a0c85e2c0f98e218f41c1a6[m
+Author: T3events <49736855+T3events@users.noreply.github.com>
+Date:   Sun Jul 19 12:03:27 2020 -0400
+
+    Add files via upload
+    
+    made visual changes as requested
+
+[33mcommit 1716b54756e2833ca6b4acaba26147dad36afceb[m
+Author: T3events <49736855+T3events@users.noreply.github.com>
+Date:   Thu Jul 16 17:10:02 2020 -0400
+
+    Add files via upload
+
+[33mcommit 59fb76468c67add939fabdc504bf21e5d1088965[m
+Author: T3events <49736855+T3events@users.noreply.github.com>
+Date:   Thu Jul 16 17:03:22 2020 -0400
+
+    Update index.html
+
+[33mcommit 49a3b74ceed506c165f63e767ac8acf48a182d3e[m
+Author: T3events <49736855+T3events@users.noreply.github.com>
+Date:   Thu Jul 16 08:45:22 2020 -0400
+
+    Add files via upload
+
+[33mcommit 5c59f3bd9200489969fd481f4c25450fe002bb86[m
+Author: HayVThom <39294226+HayVThom@users.noreply.github.com>
+Date:   Wed Jul 8 11:25:50 2020 +0200
+
+    Initial commit
