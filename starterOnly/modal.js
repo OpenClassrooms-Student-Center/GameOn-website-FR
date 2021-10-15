@@ -117,13 +117,15 @@ function validQuantity() {
   }
 }
 // Quantity validation
+/*---
 function validCGV() {
   if (CGV.checked) {
+    setValid(CGV);
     return true;
   } else {
     setErreur(CGV, "Veuillez accepter les CGV.");
   }
-}
+} ---*/
 
 // SetErreur validation
 function setErreur(input, message) {
