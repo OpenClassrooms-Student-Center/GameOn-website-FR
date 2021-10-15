@@ -232,6 +232,15 @@ input[data-error]::after {
     font-size: 0.4em;
     color: red;
 } */
+.confirmation {
+  display: none;
+}
+
+.confirm {
+  padding: 230px 30px;
+  text-align: center;
+}
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -441,7 +450,7 @@ input[data-error]::after {
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
+  width: 90%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
@@ -473,6 +482,16 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+
+.error {
+  color: #fe142f;
+  font-size: 10px;
+}
+
+.error_field {
+  border: 2px solid #fe142f;
+}
+
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
