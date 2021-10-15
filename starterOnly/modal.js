@@ -19,11 +19,6 @@ const inputs = document.querySelectorAll("input"); // Tous les inputs
  * @type    {any}
  */
 const quantity = document.getElementById("quantity");
-
-/**
- * input id="checkbox1"
- * @type  {any}
- */
 const checkbox1 = document.getElementById("checkbox1");
 
 // Regex elements
@@ -32,8 +27,6 @@ const firstLastRegex = /^[^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
 // Vérification d'email
 const emailRegex =
   /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
-
-let quantityValue = quantity.value; //Nombre de tournois participés
 
 // launch modal event
 modalBtns.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -63,15 +56,21 @@ inputs.forEach((input) => {
 // Ajoute les data-error pour eviter que le formulaire soit valide au chargement de la page
 addDataError(formDatas);
 
+const validations = [];
+
 /**
- * Au clic ou au changement d'etat valid ou renvoi msg erreur aux inputs.
- * Au clic sur submit valid le formulaire ou renvoi msg erreur aux inputs
+ * Au clic ou au changement d'etat => valid ou renvoi msg erreur aux inputs.
+ * Au clic sur submit => valid le formulaire ou renvoi msg erreur aux inputs
  * @param   {HTMLInputElement}  input  element input du formulaire
  * @return  {void} Valid ou renvoi msg erreur aux inputs
  */
+// eslint-disable-next-line max-lines-per-function
 function addValidation(input) {
   switch (input.type) {
     case "text":
+      // const validateText = function () {
+      //   validText(input);
+      // };
       input.oninput = function () {
         validText(input);
       };
@@ -107,37 +106,7 @@ function addValidation(input) {
     case "submit":
       input.onclick = function (e) {
         e.preventDefault();
-        if (errorTest(formDatas)) {
-          console.log(input);
-          createValidText();
-        } else {
-          inputs.forEach((input) => {
-            switch (input.type) {
-              case "text":
-                validText(input);
-                break;
-              case "email":
-                validMail(input);
-                break;
-              case "date":
-                validDate(input);
-                break;
-              case "number":
-                validNumber(
-                  input,
-                  document.querySelector("input[name = location]")
-                );
-                break;
-              case "checkbox":
-                if (input.name === "location") {
-                  validCheckboxLocation(input, parseInt(quantity.value));
-                } else {
-                  validCheckboxConditions(input, checkbox1);
-                }
-                break;
-            }
-          });
-        }
+        submit();
       };
       break;
     default:
@@ -145,8 +114,51 @@ function addValidation(input) {
   }
 }
 
+function submit() {
+  // const errors = document.querySelectorAll("[data-error]").length;
+  // if (errors > 0) {
+
+  // }
+  //on verifie si la case des conditions est bien cochée
+  if (errorTest(formDatas)) {
+    createValidText();
+  } else {
+    inputs.forEach((input) => {
+      switch (input.type) {
+        case "text":
+          validText(input);
+          break;
+        case "email":
+          validMail(input);
+          break;
+        case "date":
+          validDate(input);
+          break;
+        case "number":
+          validNumber(input, document.querySelector("input[name = location]"));
+          break;
+        case "checkbox":
+          if (input.name === "location") {
+            validCheckboxLocation(input, parseInt(quantity.value));
+          } else {
+            validCheckboxConditions(input, checkbox1);
+          }
+          break;
+      }
+    });
+  }
+}
+// break;
+//     validCheckboxLocation(input, quantity.value);
+//   };
+// } else {
+//   input.onchange = function () {
+//     validCheckboxConditions(input);
+//   };
+// }
+
 function createValidText() {
-  let validDiv = document.createElement("div");
+  const validDiv = document.createElement("div");
   validDiv.id = "validDiv";
   modalBg.appendChild(validDiv);
   validDiv.innerHTML = "<p>Merci ! Votre réservation à été recue</p>";
@@ -195,7 +207,7 @@ function addDataError(formDatas) {
  *
  */
 function validText(input) {
-  let value = input.value.trim();
+  const value = input.value.trim();
   if (value.length < 2)
     return showMessage(input, "Veuillez entrez au moins 2 caractères");
   // si pas regex return showMessage...
@@ -204,7 +216,7 @@ function validText(input) {
       input,
       "Veuillez entrez seulement des caractéres litterales"
     );
-  deleteMessage(input);
+  showMessage(input, "");
 }
 
 /* ************************ input[type="date"] *************************************** */
@@ -241,12 +253,12 @@ function limitDate(input, type, gap) {
  * @returns {Void} Affiche ou supprime le message d'erreur
  */
 function validDate(input) {
-  let value = input.value;
-  let min = input.min;
-  let max = input.max;
+  const value = input.value;
+  const min = input.min;
+  const max = input.max;
   if (value < min) return showMessage(input, "Age maximum 100 ans");
   else if (value > max) return showMessage(input, "Age minimum 18 ans");
-  deleteMessage(input);
+  showMessage(input, "");
 }
 
 /* ****************************** input[type="mail"] ********************************** */
@@ -258,10 +270,10 @@ function validDate(input) {
  * @returns {void} Affiche ou supprime le message d'erreur
  */
 function validMail(input) {
-  let value = input.value;
+  const value = input.value;
   if (!emailRegex.test(value))
     return showMessage(input, "Veuillez entrez une adresse email valide");
-  return deleteMessage(input);
+  return showMessage(input, "");
 }
 
 /* ****************************************** input[type="number"] ********************** */
@@ -270,79 +282,61 @@ function validMail(input) {
  * @param {HTMLInputElement} cible input du formulaire qui recevra le message erreur
  */
 function validNumber(input, cible) {
-  let value = input.value;
-  if (parseInt(value) < 0 || parseInt(value) > 100 || value == "") {
-    deleteMessage(cible);
+  const value = parseInt(input.value);
+  if (value <= -1 || value > 100) {
     return showMessage(input, "Veuillez entrez une valeur entre 0 et 100");
-  } else if (
-    parseInt(value) > 0 &&
-    numberOfLocationChecked(inputsLocations) === 0
-  ) {
-    deleteMessage(input);
-    return showMessage(cible, "Veuillez selectionner une ville");
-  } else if (
-    parseInt(value) == 0 &&
-    numberOfLocationChecked(inputsLocations) > 0
-  ) {
-    deleteMessage(input);
+  } else if (value > 0 && numberOfLocationChecked() === 0) {
+    showMessage(cible, "Veuillez selectionner une ville");
+  } else if (value === 0 && numberOfLocationChecked() > 0) {
+    showMessage(input, "");
     return showMessage(
       cible,
       "Vous ne pouvez pas selectionner une ville si vous n'avez jamais participé à un tournoi"
     );
-  } else if (parseInt(value) < numberOfLocationChecked(inputsLocations)) {
+  } else if (value < numberOfLocationChecked()) {
     return showMessage(
       cible,
       "Vous ne pouvez pas selectionner plus de villes que de tournoi participé"
     );
-  } else if (value == "" && numberOfLocationChecked(inputsLocations) == 0) {
-    deleteMessage(cible);
-    return showMessage(input, "Veuillez entrez une valeur entre 0 et 100");
-  } else if (
-    parseInt(value) > 0 &&
-    numberOfLocationChecked(inputsLocations) > 0
-  ) {
-    deleteMessage(cible);
+  } else if (value === 0 && numberOfLocationChecked() === 0) {
+    showMessage(cible, "");
+  } else if (value > 0 && numberOfLocationChecked() > 0) {
+    showMessage(cible, "");
   }
 
-  deleteMessage(input);
+  return showMessage(input, "");
 }
 
 /* ************************************** input[type="checkbox", name="location"] ********************** */
 
 /**
  * @param {HTMLInputElement} input  input du formulaire
- * @param {number} quantity nombre de tournois participés
+ * @param {number} quantity quantité de ville checked
  */
 function validCheckboxLocation(input, quantity) {
-  if (numberOfLocationChecked(inputsLocations) === 0 && quantity > 0) {
+  if (numberOfLocationChecked() === 0 && quantity > 0) {
     return showMessage(input, "Veuillez sélectionner une ville");
-  } else if (
-    numberOfLocationChecked(inputsLocations) > 0 &&
-    (quantity == 0 || quantity.toString() == "NaN")
-  ) {
+  }
+  if (numberOfLocationChecked() > 0 && quantity === 0) {
     return showMessage(
       input,
       "Vous ne pouvez pas selectionner une ville si vous n'avez jamais participé à un tournoi"
     );
-  } else if (numberOfLocationChecked(inputsLocations) > quantity) {
+  }
+  if (numberOfLocationChecked() > quantity) {
     return showMessage(
       input,
-      "Vous ne pouvez pas selectionner plus de ville que de tournoi participé"
+      "Vous ne pouvez pas selectionner plus de villes que de tournoi participé"
     );
-  } else {
-    return deleteMessage(input);
   }
+  return showMessage(input, "");
 }
-const inputsLocations = document.querySelectorAll("input[name = location]");
-/**
- * Nombre de villes séléctionnées
- * @param {NodeListOf} [array]
- * @return {number} [return description]
- */
-function numberOfLocationChecked(array) {
+
+function numberOfLocationChecked() {
+  const inputsLocations = document.querySelectorAll("input[name = location]");
   let numberInputLocationChecked = 0;
-  for (let element of array) {
-    if (element.checked) {
+  for (const inputLocation of inputsLocations) {
+    if (inputLocation.checked) {
       numberInputLocationChecked++;
     }
   }
@@ -350,24 +344,16 @@ function numberOfLocationChecked(array) {
 }
 
 /* *************************** input[type="checkbox"] **************************** */
-
-/**
- * [validCheckboxConditions description]
- *
- * @param   {HTMLInputElement} input  input du formulaire
- * @param   {HTMLInputElement}  elm    element du formulaire
- *
- * @return  {void}         Affiche ou supprime le message erreur
- */
 function validCheckboxConditions(input, elm) {
-  if (!elm.checked) {
+  if (input === elm && !input.checked) {
     return showMessage(
       input,
       "Veuillez accepter les conditions d'utilisations"
     );
   }
-  return deleteMessage(input);
+  return showMessage(input, "");
 }
+
 /**
  * Ajoute les attributs d'erreurs avec le msg correspondant au parent de input
  *
@@ -376,12 +362,8 @@ function validCheckboxConditions(input, elm) {
  */
 function showMessage(input, msg) {
   const target = input.parentElement;
-  target.setAttribute("data-error", msg);
-  target.setAttribute("data-error-visible", "true");
-}
-
-function deleteMessage(input) {
-  const target = input.parentElement;
-  target.removeAttribute("data-error");
-  target.removeAttribute("data-error-visible");
+  msg === ""
+    ? target.removeAttribute("data-error")
+    : target.setAttribute("data-error", msg);
+  target.setAttribute("data-error-visible", (msg !== "").toString());
 }

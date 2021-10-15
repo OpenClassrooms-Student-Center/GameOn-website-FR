@@ -1,28 +1,139 @@
 {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-        "ecmaVersion": "latest"
-    },
-    "rules": {
-        "indent": [
-            "error",
-            "space"
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "double"
-        ],
-        "semi": [
-            "error",
-            "always"
-        ]
-    }
+  "root": true,
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "es2020": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
+  "globals": {
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": [
+      "warn",
+      2,
+      {
+        "SwitchCase": 1
+      }
+    ],
+    "quotes": [
+      "warn",
+      "double"
+    ],
+    "no-unused-vars": "warn",
+    "semi": [
+      "error",
+      "always"
+    ],
+    "no-case-declarations": "off",
+    "no-constructor-return": [
+      "warn"
+    ],
+    "no-else-return": [
+      "warn",
+      {
+        "allowElseIf": true
+      }
+    ],
+    "no-extra-bind": [
+      "warn"
+    ],
+    "no-implicit-coercion": [
+      "warn"
+    ],
+    "generator-star-spacing": [
+      "warn"
+    ],
+    "no-useless-constructor": [
+      "warn"
+    ],
+    "prefer-const": [
+      "warn",
+      {
+        "destructuring": "any",
+        "ignoreReadBeforeAssign": false
+      }
+    ],
+    "no-delete-var": [
+      "off"
+    ],
+
+    "linebreak-style": [
+      "warn",
+      "unix"
+    ],
+    "complexity": [
+      "error",
+      15
+    ],
+    "prefer-spread": ["warn"],
+
+    "camelcase": [
+      "warn"
+    ],
+    "eqeqeq": [
+      "warn",
+      "always",
+      {
+        "null": "ignore"
+      }
+    ],
+    "no-eval": [
+      "error"
+    ],
+    // "key-spacing": [
+    //   "warn"
+    // ],
+    "keyword-spacing": [
+      "warn"
+    ],
+    "arrow-spacing": [
+      "warn"
+    ],
+    "sort-imports": [
+      "warn"
+    ],
+    "sort-keys": [
+      "warn"
+    ],
+    "no-trailing-spaces": [
+      "warn"
+    ],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1,
+        "maxEOF": 0
+      }
+    ],
+    "new-cap": [
+      "error",
+      {
+        "newIsCap": true
+      }
+    ],
+    "max-lines-per-function": [
+      "warn",
+      40
+    ],
+    "multiline-ternary": [
+      "error",
+      "always-multiline"
+    ],
+    "lines-between-class-members": [
+      "error",
+      "always"
+    ],
+    "no-useless-catch" : ["off"]
+  }
 }
