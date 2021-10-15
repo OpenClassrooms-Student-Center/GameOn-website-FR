@@ -489,7 +489,7 @@ input[data-error]::after {
 }
 
 .error_field {
-  border-color: #fe142f;
+  border: 2px solid #fe142f;
 }
 
 footer {

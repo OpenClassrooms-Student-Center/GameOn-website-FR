@@ -25,142 +25,131 @@ const loc3 = document.getElementById("location3");
 const loc4 = document.getElementById("location4");
 const loc5 = document.getElementById("location5");
 const loc6 = document.getElementById("location6");
+const nameError = document.getElementById("name_error")
+const lastNameError = document.getElementById("lastName_error")
+const quantityError = document.getElementById("quantity_error")
+const emailError = document.getElementById("email_error")
+const dateError = document.getElementById("date_error")
+const radioboxError = document.getElementById("radiobox_error")
+const termError = document.getElementById("term_error")
 const confirmation = document.getElementById("confirmation");
 
-// launch modal event
+var numberOfValidFields = 0;
+// definir l'action 'click' pour l'ouverture et la fermeture de la modale. 
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
-form.addEventListener("submit", (e) => errorMessage(e));
 
-// launch modal form
+// definir l'action 'submit'
+form.addEventListener("submit", (e) => validateForm(e));
+
+
+/**
+ * ouverture de la modale
+ */
 function launchModal() {
   modalbg.style.display = "block";
 }
-// close modal form
+
+
+/**
+ * fermeture de la modale
+ */
 function closeModal() {
+  //fermeture de la modale
   modalbg.style.display = "none";
+  //masquer le message de confirmation
   confirmation.style.display = 'none'
+  //reafficher le formulaire
   form.style.display = 'block'
 }
 
+/**
+ * validation d'une adresse mail via une expression regex
+ * @param {Stirng} email email à verifier
+ * @returns si l'email est valide ou pas
+ */
 function validEmail(email) {
   var reg = /\S+@\S+\.\S+/;
   var result = reg.test(email);
   return result;
 }
 
-// show error message under fields
-function errorMessage(e) {
-  e.preventDefault();
-  let numberOfValidFields = 0;
+/**
+ * Test et affiche un message d'erreur si le test est invalide
+ * @param {Boolean} condition la condition à tester
+ * @param {HTMLElement} errorElement l'élément sur lequel afficher l'erreur
+ * @param {String} message Le message à afficher
+ * @param {HTMLElement} fieldElement L'élément sur lequel rajouter une bordure rouge
+ * @param {Boolean} isEmail Est-ce que c'est un email
+ */
+function showErrorMessage(condition, errorElement, message, fieldElement, isEmail) {
 
-  var nameError = document.getElementById("name_error")
-  // validate name
-  if (firstName.value.length < 2) {
+  //verifier la condition de la validation du champs
+  if (condition == true) {
+    //afficher le message d'erreur
+    errorElement.textContent = message;
 
-    // Changing content and color of content
-    nameError.textContent = "Veuillez entrer 2 caractères ou plus pour"
-    firstName.className += " error_field ";
+    //ajouter une classe CSS pour rendre les bordures rouge
+    if (fieldElement) fieldElement.className += " error_field ";
 
-  } else {
-    numberOfValidFields++;
-    nameError.textContent = ""
-    firstName.className = "text-control";
-  }
-
-  var lastNameError = document.getElementById("lastName_error")
-  // validate last name
-  if (lastName.value.length < 2) {
-
-    // Changing content and color of content
-    lastNameError.textContent = "Veuillez entrer 2 caractères ou plus"
-    lastName.className += " error_field ";
+    //retourne 0 parce que la valeur saisie par l'utilisateur n'est pas correcte
+    return 0;
 
   } else {
-    numberOfValidFields++;
-    lastNameError.textContent = ""
-    lastName.className = "text-control";
-  }
 
-  var emailError = document.getElementById("email_error")
-
-  // validate email
-  if (email.value == "") {
-
-    // Changing content and color of content
-    emailError.textContent = "Veuillez saisir votre adresse email";
-    email.className += " error_field ";
-
-  } else {
-    if (!validEmail(email.value)) {
-      emailError.textContent = "Veuillez saisir une adresse email valid !";
+    //s'il s'agit d'un champs pour saisir l'adresse mail, alors on verifie le format
+    if (isEmail && !validEmail(email.value)) {
+      //afficher le message d'erreur
+      errorElement.textContent = "Veuillez saisir une adresse email valide !";
+      //retourne 0 parce que la valeur saisie par l'utilisateur n'est pas correcte
+      return 0;
     } else {
-      numberOfValidFields++;
-      emailError.textContent = ""
-      email.className = "text-control";
+
+      //suppresion de la message d'erreur
+      errorElement.textContent = ""
+      //reinitialisation de la classe CSS du champs (suppression des bordures rouges)
+      if (fieldElement) fieldElement.className = "text-control";
+
+      //retourne 1 car la valeur saisie est correcte.
+      return 1;
     }
-
-
+  }
 }
 
 
-  var quantityError = document.getElementById("quantity_error")
-  // validate email
-  if (quantity.value == "") {
+/**
+ * Verification des valeurs saisies par l'utilisateur
+ * @param {*} e 
+ */
+function validateForm(e) {
 
-    // Changing content and color of content
-    quantityError.textContent = "Veuillez saisir une valeur"
-    quantity.className += " error_field ";
+  //Permet d'empêcher le rechargement de la page
+  e.preventDefault();
 
-  } else {
-    numberOfValidFields++;
-    quantityError.textContent = ""
-    quantity.className = "text-control";
-  }
+  numberOfValidFields = 0;
 
-  var dateError = document.getElementById("date_error")
-  // validate birth date
-  if (birth.value == "") {
+  //verification du champ 'prenom'
+  numberOfValidFields += showErrorMessage(firstName.value.length < 2, nameError, "Veuillez entrer 2 caractères ou plus", firstName)
+  //verification du champ 'nom'
+  numberOfValidFields += showErrorMessage(lastName.value.length < 2, lastNameError, "Veuillez entrer 2 caractères ou plus", lastName)
+  //verification du champ 'email'
+  numberOfValidFields += showErrorMessage(email.value == "", emailError, "Veuillez saisir votre adresse email", email, true)
+  //verification du champ 'nombre de paticipations'
+  numberOfValidFields += showErrorMessage(quantity.value == "", quantityError, "Veuillez saisir une valeur", quantity)
 
-    // Changing content and color of content
-    dateError.textContent = "Vous devez entrer votre date de naissance"
-    birth.className += " error_field ";
+  //verification du champ 'date de naissance'
+  numberOfValidFields += showErrorMessage(birth.value == "", dateError, "Vous devez entrer votre date de naissance", birth)
 
-  } else {
-    numberOfValidFields++;
-    dateError.textContent = ""
-    birth.className = "text-control";
-  }
+  let resultRadio = !loc1.checked && !loc2.checked && !loc3.checked
+    && !loc4.checked && !loc5.checked && !loc6.checked
+  //verification du champ 'Quelles villes ?'
+  numberOfValidFields += showErrorMessage(resultRadio, radioboxError, "Vous devez choisir une option", null)
+  //verification du champ 'conditions d'utilisation'
+  numberOfValidFields += showErrorMessage(!checkBox.checked, termError, "Vous devez vérifier que vous acceptez les termes", null)
 
-  var radioboxError = document.getElementById("radiobox_error")
-  // validate radio box
-  if (!loc1.checked && !loc2.checked && !loc3.checked
-    && !loc4.checked && !loc5.checked && !loc6.checked) {
-
-    // Changing content and color of content
-    radioboxError.textContent = "Vous devez choisir une option"
-
-  } else {
-    numberOfValidFields++;
-    radioboxError.textContent = ""
-  }
-
-  var termError = document.getElementById("term_error")
-  // validate radio box
-  if (!checkBox.checked) {
-
-    // Changing content and color of content
-    termError.textContent = "Vous devez vérifier que vous acceptez les termes"
-
-  } else {
-    numberOfValidFields++;
-    termError.textContent = ""
-  }
-
-
+  //si tous les champs sont valides, alors on affiche le message de confirmation.
   if (numberOfValidFields === 7) {
     confirmation.style.display = 'block'
     form.style.display = 'none'
   }
-
 }
