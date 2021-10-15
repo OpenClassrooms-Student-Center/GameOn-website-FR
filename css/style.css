@@ -633,6 +633,9 @@ footer {
   .thanks-container {
     width: 80%;
   }
+  .thanksCloseBtn {
+    left: auto;
+  }
   footer {
     align-self: flex-start;
     margin-top: 4.3rem;
