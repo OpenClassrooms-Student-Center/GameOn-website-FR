@@ -340,6 +340,20 @@ input {
   cursor: pointer;
   border: 0;
 }
+
+#validDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;

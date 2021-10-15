@@ -9,14 +9,22 @@ function editNav() {
 
 // DOM Elements
 const modalBg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
-// Modal close
-const closeBtn = document.querySelector(".close");
-// Tous les inputs
-const inputs = document.querySelectorAll("input");
-const first = document.getElementById("firts");
+const modalBtns = document.querySelectorAll(".modal-btn");
+const formDatas = document.querySelectorAll(".formData");
+const form = document.querySelector("form"); //Formulaire
+const closeBtn = document.querySelector(".close"); // Modal close
+const inputs = document.querySelectorAll("input"); // Tous les inputs
+/**
+ * input id="quantity"
+ * @type    {any}
+ */
 const quantity = document.getElementById("quantity");
+
+/**
+ * input id="checkbox1"
+ * @type  {any}
+ */
+const checkbox1 = document.getElementById("checkbox1");
 
 // Regex elements
 // (< 2 characters; Pas de chiffres)
@@ -25,15 +33,23 @@ const firstLastRegex = /^[^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
 const emailRegex =
   /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
 
+let quantityValue = quantity.value; //Nombre de tournois participés
+
 // launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+modalBtns.forEach((btn) => btn.addEventListener("click", launchModal));
 // close modal event
 closeBtn.addEventListener("click", closeModal);
-// Open modal
+/**
+ * Ouverture de la modal
+ * @return  {void}  Ajoute l'attribut "visible=true" à modalBg
+ */
 function launchModal() {
   modalBg.setAttribute("visible", "true");
 }
-// close modal
+/**
+ * Fermeture de la modal
+ * @return  {void}  Supprime l'attribut "visible" à modalBg
+ */
 function closeModal() {
   modalBg.removeAttribute("visible");
 }
@@ -44,14 +60,14 @@ inputs.forEach((input) => {
   addValidation(input);
 });
 
+// Ajoute les data-error pour eviter que le formulaire soit valide au chargement de la page
+addDataError(formDatas);
+
 /**
- * [addValidation description]
- *
- * @param   {HTMLInputElement}  input  [input description]
- *
- * @return  {void} [return description]
-   
- }}         
+ * Au clic ou au changement d'etat valid ou renvoi msg erreur aux inputs.
+ * Au clic sur submit valid le formulaire ou renvoi msg erreur aux inputs
+ * @param   {HTMLInputElement}  input  element input du formulaire
+ * @return  {void} Valid ou renvoi msg erreur aux inputs
  */
 function addValidation(input) {
   switch (input.type) {
@@ -80,20 +96,95 @@ function addValidation(input) {
     case "checkbox":
       if (input.name === "location") {
         input.onchange = function () {
-          // @ts-ignore
-          validCheckboxLocation(input, quantity.value);
+          validCheckboxLocation(input, parseInt(quantity.value));
         };
       } else {
         input.onchange = function () {
-          validCheckboxConditions(input);
+          validCheckboxConditions(input, checkbox1);
         };
       }
+      break;
+    case "submit":
+      input.onclick = function (e) {
+        e.preventDefault();
+        if (errorTest(formDatas)) {
+          console.log(input);
+          createValidText();
+        } else {
+          inputs.forEach((input) => {
+            switch (input.type) {
+              case "text":
+                validText(input);
+                break;
+              case "email":
+                validMail(input);
+                break;
+              case "date":
+                validDate(input);
+                break;
+              case "number":
+                validNumber(
+                  input,
+                  document.querySelector("input[name = location]")
+                );
+                break;
+              case "checkbox":
+                if (input.name === "location") {
+                  validCheckboxLocation(input, parseInt(quantity.value));
+                } else {
+                  validCheckboxConditions(input, checkbox1);
+                }
+                break;
+            }
+          });
+        }
+      };
       break;
     default:
       break;
   }
 }
 
+function createValidText() {
+  let validDiv = document.createElement("div");
+  validDiv.id = "validDiv";
+  modalBg.appendChild(validDiv);
+  validDiv.innerHTML = "<p>Merci ! Votre réservation à été recue</p>";
+  validDiv.onclick = function () {
+    form.reset();
+    addDataError(formDatas);
+    modalBg.removeChild(validDiv);
+    closeModal();
+  };
+}
+/**
+ * Permet de savoir si tous les inputs sont valides
+ *
+ * @param   {NodeListOf<Element>}  formDatas  Array (des parents des inputs(7))
+ *
+ * @return  {boolean}             Si aucune erreur => true
+ */
+function errorTest(formDatas) {
+  for (const formData of formDatas) {
+    if (formData.getAttribute("data-error")) {
+      return false;
+    }
+  }
+  return true;
+}
+
+/**
+ * Permet d'éviter que le formulaire soit valide au chargement de la page
+ *
+ * @param   {any}  formDatas  Array (des parents des inputs(7))
+ *
+ * @return  {void}             Ajoute atrr"data-error" sauf à 'conditions' qui est checked
+ */
+function addDataError(formDatas) {
+  for (const formData of formDatas) {
+    if (!formData.hasAttribute("id")) formData.setAttribute("data-error", " ");
+  }
+}
 /* **************************************** input[type=text] ************************** */
 /**
  * Validation input[type="text"]
@@ -113,7 +204,7 @@ function validText(input) {
       input,
       "Veuillez entrez seulement des caractéres litterales"
     );
-  showMessage(input, "");
+  deleteMessage(input);
 }
 
 /* ************************ input[type="date"] *************************************** */
@@ -155,7 +246,7 @@ function validDate(input) {
   let max = input.max;
   if (value < min) return showMessage(input, "Age maximum 100 ans");
   else if (value > max) return showMessage(input, "Age minimum 18 ans");
-  showMessage(input, "");
+  deleteMessage(input);
 }
 
 /* ****************************** input[type="mail"] ********************************** */
@@ -170,7 +261,7 @@ function validMail(input) {
   let value = input.value;
   if (!emailRegex.test(value))
     return showMessage(input, "Veuillez entrez une adresse email valide");
-  return showMessage(input, "");
+  return deleteMessage(input);
 }
 
 /* ****************************************** input[type="number"] ********************** */
@@ -179,60 +270,79 @@ function validMail(input) {
  * @param {HTMLInputElement} cible input du formulaire qui recevra le message erreur
  */
 function validNumber(input, cible) {
-  let value = parseInt(input.value);
-  if (value <= -1 || value > 100) {
+  let value = input.value;
+  if (parseInt(value) < 0 || parseInt(value) > 100 || value == "") {
+    deleteMessage(cible);
     return showMessage(input, "Veuillez entrez une valeur entre 0 et 100");
-  } else if (value > 0 && numberOfLocationChecked() === 0) {
-    showMessage(cible, "Veuillez selectionner une ville");
-  } else if (value === 0 && numberOfLocationChecked() > 0) {
-    showMessage(input, "");
+  } else if (
+    parseInt(value) > 0 &&
+    numberOfLocationChecked(inputsLocations) === 0
+  ) {
+    deleteMessage(input);
+    return showMessage(cible, "Veuillez selectionner une ville");
+  } else if (
+    parseInt(value) == 0 &&
+    numberOfLocationChecked(inputsLocations) > 0
+  ) {
+    deleteMessage(input);
     return showMessage(
       cible,
       "Vous ne pouvez pas selectionner une ville si vous n'avez jamais participé à un tournoi"
     );
-  } else if (value < numberOfLocationChecked()) {
+  } else if (parseInt(value) < numberOfLocationChecked(inputsLocations)) {
     return showMessage(
       cible,
       "Vous ne pouvez pas selectionner plus de villes que de tournoi participé"
     );
-  } else if (value === 0 && numberOfLocationChecked() === 0) {
-    showMessage(cible, "");
-  } else if (value > 0 && numberOfLocationChecked() > 0) {
-    showMessage(cible, "");
+  } else if (value == "" && numberOfLocationChecked(inputsLocations) == 0) {
+    deleteMessage(cible);
+    return showMessage(input, "Veuillez entrez une valeur entre 0 et 100");
+  } else if (
+    parseInt(value) > 0 &&
+    numberOfLocationChecked(inputsLocations) > 0
+  ) {
+    deleteMessage(cible);
   }
 
-  return showMessage(input, "");
+  deleteMessage(input);
 }
 
 /* ************************************** input[type="checkbox", name="location"] ********************** */
 
 /**
  * @param {HTMLInputElement} input  input du formulaire
- * @param {number} quantity quantité de ville checked
+ * @param {number} quantity nombre de tournois participés
  */
 function validCheckboxLocation(input, quantity) {
-  if (numberOfLocationChecked() === 0 && quantity > 0) {
+  if (numberOfLocationChecked(inputsLocations) === 0 && quantity > 0) {
     return showMessage(input, "Veuillez sélectionner une ville");
-  } else if (numberOfLocationChecked() > 0 && quantity == 0) {
+  } else if (
+    numberOfLocationChecked(inputsLocations) > 0 &&
+    (quantity == 0 || quantity.toString() == "NaN")
+  ) {
     return showMessage(
       input,
       "Vous ne pouvez pas selectionner une ville si vous n'avez jamais participé à un tournoi"
     );
-  } else if (numberOfLocationChecked() > quantity) {
+  } else if (numberOfLocationChecked(inputsLocations) > quantity) {
     return showMessage(
       input,
-      "Vous ne pouvez pas selectionner plus de villes que de tournoi participé"
+      "Vous ne pouvez pas selectionner plus de ville que de tournoi participé"
     );
+  } else {
+    return deleteMessage(input);
   }
-  return showMessage(input, "");
 }
-
-function numberOfLocationChecked() {
-  const inputsLocations = document.querySelectorAll("input[name = location]");
+const inputsLocations = document.querySelectorAll("input[name = location]");
+/**
+ * Nombre de villes séléctionnées
+ * @param {NodeListOf} [array]
+ * @return {number} [return description]
+ */
+function numberOfLocationChecked(array) {
   let numberInputLocationChecked = 0;
-  for (let inputLocation of inputsLocations) {
-    // @ts-ignore
-    if (inputLocation.checked) {
+  for (let element of array) {
+    if (element.checked) {
       numberInputLocationChecked++;
     }
   }
@@ -240,15 +350,23 @@ function numberOfLocationChecked() {
 }
 
 /* *************************** input[type="checkbox"] **************************** */
-function validCheckboxConditions(input) {
-  let checkbox1 = document.getElementById("checkbox1");
-  if (input === checkbox1 && !input.checked) {
+
+/**
+ * [validCheckboxConditions description]
+ *
+ * @param   {HTMLInputElement} input  input du formulaire
+ * @param   {HTMLInputElement}  elm    element du formulaire
+ *
+ * @return  {void}         Affiche ou supprime le message erreur
+ */
+function validCheckboxConditions(input, elm) {
+  if (!elm.checked) {
     return showMessage(
       input,
       "Veuillez accepter les conditions d'utilisations"
     );
   }
-  return showMessage(input, "");
+  return deleteMessage(input);
 }
 /**
  * Ajoute les attributs d'erreurs avec le msg correspondant au parent de input
@@ -259,6 +377,11 @@ function validCheckboxConditions(input) {
 function showMessage(input, msg) {
   const target = input.parentElement;
   target.setAttribute("data-error", msg);
-  // @ts-ignore
-  target.setAttribute("data-error-visible", msg !== "");
+  target.setAttribute("data-error-visible", "true");
+}
+
+function deleteMessage(input) {
+  const target = input.parentElement;
+  target.removeAttribute("data-error");
+  target.removeAttribute("data-error-visible");
 }
