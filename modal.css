@@ -199,7 +199,7 @@ main {
 .modal-body {
     padding: 15px 8%;
     margin: 15px auto;
-    height: 708px;
+    height: 717px;
 }
 
 label {
@@ -665,9 +665,21 @@ footer {
 @media screen and (max-width: 425px) {
     .content[content-mobile="true"] {
         margin-top: 80px;
-        height: inherit;
+        margin-bottom: 0;
     }
     .bground[bground-mobile="true"] {
         background-color: inherit;
+    }
+    .hero-section[hero-section-mobile="true"] {
+        display: none;
+    }
+    .hero-section[hero-section-mobile="false"] {
+        display: initial;
+    }
+    footer[footer-mobile="true"] {
+        display: none;
+    }
+    footer[footer-mobile="false"] {
+        display: initial;
     }
 }

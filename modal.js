@@ -15,11 +15,13 @@ const form = document.getElementById('form');
 const content = document.querySelector('.content');
 const hero_section = document.querySelector('.hero-section');
 const topnav = document.querySelector('.topnav');
+const main = document.querySelector('main');
 const footer = document.querySelector('footer');
 const confirmed = document.querySelector('.confirmed');
 
 var modalBody = document.getElementById('modal-body');
 var initial = modalBody.innerHTML;
+
 
 
 
@@ -31,12 +33,16 @@ function launchModal() {
     modalbg.style.display = "block";
     content.setAttribute('content-mobile', true);
     modalbg.setAttribute('bground-mobile', true);
+    footer.setAttribute('footer-mobile', true);
+    hero_section.setAttribute('hero-section-mobile', true);
 }
 
 // fermer formulaire
 function closeForm() {
     form.style.display = "none";
     modalBody.innerHTML = initial;
+    footer.setAttribute('footer-mobile', false);
+    hero_section.setAttribute('hero-section-mobile', false);
 }
 
 
@@ -172,7 +178,6 @@ form.addEventListener("submit", function(event) {
                         </p>
                         <button class="btn-close" onclick="closeForm()">Fermer</button>
                 `;
-        //modalbg.style.backgroundColor="initial";        
         content.setAttribute('content-mobile', true);
         modalbg.setAttribute('bground-mobile', true);
     }
