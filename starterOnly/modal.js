@@ -13,7 +13,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeModalBtn = document.querySelectorAll("#close");
-// form element
+// form elements
 const form = document.getElementById ('reserve');
 const firstName = document.getElementById ('first');
 const lastName = document.getElementById ('last');
@@ -127,15 +127,20 @@ function validCGV() {
 
 // SetErreur validation
 function setErreur(input, message) {
-  const formData = input.parentElement; //Div 
-  const small = formData.querySelector('small');
+  // Form elements for error and validation
+  const formDataInput = input.parentElement; // Select input
+  const small = formDataInput.querySelector('small'); // Select div for error message
 
-  //message erreur
   small.innerText = message;
   input.className = 'text-control input-error';
 }
 // SetValid validation
 function setValid(input) {
+  // Form elements for error and validation
+  const formDataInput = input.parentElement; // Select input
+  const small = formDataInput.querySelector('small'); // Select div for error message
+
+  small.innerText = " "; // Reset error message
   input.className = 'text-control input-valid';
 }
 
