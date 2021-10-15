@@ -116,8 +116,7 @@ function validQuantity() {
     return true;
   }
 }
-// Quantity validation
-/*---
+// CGV validation
 function validCGV() {
   if (CGV.checked) {
     setValid(CGV);
@@ -125,7 +124,7 @@ function validCGV() {
   } else {
     setErreur(CGV, "Veuillez accepter les CGV.");
   }
-} ---*/
+}
 
 // SetErreur validation
 function setErreur(input, message) {
