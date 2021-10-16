@@ -24,7 +24,6 @@ var initial = modalBody.innerHTML;
 
 
 
-
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -180,20 +179,11 @@ form.addEventListener("submit", function(event) {
                 `;
         content.setAttribute('content-mobile', true);
         modalbg.setAttribute('bground-mobile', true);
+        modalBody.setAttribute('valid-form', true);
     }
 })
 
-// fermer la confirmation
-function closeConfirmation() {
-    hero_section.style.display = 'grid';
-    content_valid.style.display = "none"
-    confirmed.style.display = "none";
-    topnav.style.display = "initial";
-    footer.style.display = "initial";
-}
-
 // Vérifier âge
-
 function checkAge(currentDate, birthDate) {
     var diff = Math.floor(currentDate.getTime() - birthDate.getTime());
     var day = 1000 * 60 * 60 * 24;

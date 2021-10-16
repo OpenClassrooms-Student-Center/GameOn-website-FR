@@ -199,7 +199,7 @@ main {
 .modal-body {
     padding: 15px 8%;
     margin: 15px auto;
-    /*height: 717px;*/
+    height: 717px;
 }
 
 label {
@@ -631,7 +631,7 @@ footer {
 }
 
 .confirmed {
-    height: 80%;
+    height: 60%;
     text-align: center;
     display: flex;
     align-items: center;
@@ -666,6 +666,10 @@ footer {
     .content[content-mobile="true"] {
         margin-top: 80px;
         margin-bottom: 0;
+        height: auto;
+    }
+    .content[content-mobile="false"] {
+        height: auto;
     }
     .bground[bground-mobile="true"] {
         background-color: inherit;
@@ -681,5 +685,11 @@ footer {
     }
     footer[footer-mobile="false"] {
         display: initial;
+    }
+    .modal-body[valid-form="false"] {
+        height: -webkit-fill-available;
+    }
+    .modal-body[valid-form="true"] {
+        height: 756px
     }
 }
