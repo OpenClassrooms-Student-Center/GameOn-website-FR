@@ -12,6 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -21,3 +22,12 @@ function launchModal() {
 }
 
 
+//TODO #1 Fermer la modale
+const modalCloseBtn = document.querySelectorAll(".close");
+
+// close modal event
+modalCloseBtn.forEach((btn) => btn.addEventListener("click", closeModal));
+// close modal form
+function closeModal(){
+  modalbg.style.display = 'none';
+}
