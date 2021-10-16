@@ -1,32 +1,36 @@
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
+// function editNav() {
+//   var x = document.getElementById("myTopnav");
+//   if (x.className === "topnav") {
+//     x.className += " responsive";
+//   } else {
+//     x.className = "topnav";
+//   }
+// }
 
 // DOM Elements
-const modalBg = document.querySelector(".bground");
-const modalBtns = document.querySelectorAll(".modal-btn");
-const formDatas = document.querySelectorAll(".formData");
+const modalBtns = document.querySelectorAll(".modal-btn"); //Tous le boutons de la modal
+const formDatas = document.querySelectorAll(".formData"); //Toutes les class="formdata"
+const inputs = document.querySelectorAll("input"); // Tous les inputs
+const inputsLocations = document.querySelectorAll("input[name = location]"); //Tous les inputs ayant l'attribut [name = location]
+
+const modalBg = document.querySelector(".bground"); //Modal
 const form = document.querySelector("form"); //Formulaire
 const closeBtn = document.querySelector(".close"); // Modal close
-const inputs = document.querySelectorAll("input"); // Tous les inputs
 /**
  * input id="quantity"
  * @type    {any}
  */
-const quantity = document.getElementById("quantity");
-const checkbox1 = document.getElementById("checkbox1");
+const quantity = document.getElementById("quantity"); //Input tournoi participé
+/**
+ * input id="checkbox1"
+ * @type    {any}
+ */
+const checkbox1 = document.getElementById("checkbox1"); //Conditions d'utilisation
 
 // Regex elements
-// (< 2 characters; Pas de chiffres)
-const firstLastRegex = /^[^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
-// Vérification d'email
+const firstLastRegex = /^[^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/; // (< 2 characters; Pas de chiffres)
 const emailRegex =
-  /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
+  /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/; // Vérification d'email
 
 // launch modal event
 modalBtns.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -34,9 +38,10 @@ modalBtns.forEach((btn) => btn.addEventListener("click", launchModal));
 closeBtn.addEventListener("click", closeModal);
 /**
  * Ouverture de la modal
- * @return  {void}  Ajoute l'attribut "visible=true" à modalBg
+ * @return  {void}  Ajoute les data-error/Ajoute l'attribut "visible=true" à modalBg
  */
 function launchModal() {
+  addDataError(formDatas); // Ajoute les data-error pour eviter que le formulaire soit valide au chargement de la page
   modalBg.setAttribute("visible", "true");
 }
 /**
@@ -53,24 +58,17 @@ inputs.forEach((input) => {
   addValidation(input);
 });
 
-// Ajoute les data-error pour eviter que le formulaire soit valide au chargement de la page
-addDataError(formDatas);
-
-const validations = [];
-
 /**
  * Au clic ou au changement d'etat => valid ou renvoi msg erreur aux inputs.
  * Au clic sur submit => valid le formulaire ou renvoi msg erreur aux inputs
  * @param   {HTMLInputElement}  input  element input du formulaire
  * @return  {void} Valid ou renvoi msg erreur aux inputs
  */
+
 // eslint-disable-next-line max-lines-per-function
 function addValidation(input) {
   switch (input.type) {
     case "text":
-      // const validateText = function () {
-      //   validText(input);
-      // };
       input.oninput = function () {
         validText(input);
       };
@@ -95,7 +93,7 @@ function addValidation(input) {
     case "checkbox":
       if (input.name === "location") {
         input.onchange = function () {
-          validCheckboxLocation(input, parseInt(quantity.value));
+          validCheckboxLocation(input, parseInt(quantity.value, 10));
         };
       } else {
         input.onchange = function () {
@@ -113,13 +111,11 @@ function addValidation(input) {
       break;
   }
 }
-
+/**
+ * Verifie si le formulaire est valide
+ * @return  {void}  Form valide => Affiche message de validation / Form invalide => Affiche les messages d'erreurs
+ */
 function submit() {
-  // const errors = document.querySelectorAll("[data-error]").length;
-  // if (errors > 0) {
-
-  // }
-  //on verifie si la case des conditions est bien cochée
   if (errorTest(formDatas)) {
     createValidText();
   } else {
@@ -139,7 +135,7 @@ function submit() {
           break;
         case "checkbox":
           if (input.name === "location") {
-            validCheckboxLocation(input, parseInt(quantity.value));
+            validCheckboxLocation(input, parseInt(quantity.value, 10));
           } else {
             validCheckboxConditions(input, checkbox1);
           }
@@ -148,15 +144,10 @@ function submit() {
     });
   }
 }
-// break;
-//     validCheckboxLocation(input, quantity.value);
-//   };
-// } else {
-//   input.onchange = function () {
-//     validCheckboxConditions(input);
-//   };
-// }
-
+/**
+ * Affiche le message de validation et le supprime au clic
+ * @return  {void}  Affiche le message de validation et le supprime au clic
+ */
 function createValidText() {
   const validDiv = document.createElement("div");
   validDiv.id = "validDiv";
@@ -171,9 +162,7 @@ function createValidText() {
 }
 /**
  * Permet de savoir si tous les inputs sont valides
- *
  * @param   {NodeListOf<Element>}  formDatas  Array (des parents des inputs(7))
- *
  * @return  {boolean}             Si aucune erreur => true
  */
 function errorTest(formDatas) {
@@ -187,9 +176,7 @@ function errorTest(formDatas) {
 
 /**
  * Permet d'éviter que le formulaire soit valide au chargement de la page
- *
- * @param   {any}  formDatas  Array (des parents des inputs(7))
- *
+ * @param   {NodeListOf}  formDatas  Array (des parents des inputs(7))
  * @return  {void}             Ajoute atrr"data-error" sauf à 'conditions' qui est checked
  */
 function addDataError(formDatas) {
@@ -200,23 +187,19 @@ function addDataError(formDatas) {
 /* **************************************** input[type=text] ************************** */
 /**
  * Validation input[type="text"]
- *
  * @param   {HTMLInputElement}  input  input[type="text"]
- *
  * @return    {void}                      Message error
- *
  */
 function validText(input) {
   const value = input.value.trim();
   if (value.length < 2)
     return showMessage(input, "Veuillez entrez au moins 2 caractères");
-  // si pas regex return showMessage...
   else if (!firstLastRegex.test(value))
     return showMessage(
       input,
       "Veuillez entrez seulement des caractéres litterales"
     );
-  showMessage(input, "");
+  return showMessage(input, "");
 }
 
 /* ************************ input[type="date"] *************************************** */
@@ -265,7 +248,6 @@ function validDate(input) {
 
 /**
  * Validation input[type="email"]
- *
  * @param {HTMLInputElement} input  input du formulaire
  * @returns {void} Affiche ou supprime le message d'erreur
  */
@@ -278,52 +260,51 @@ function validMail(input) {
 
 /* ****************************************** input[type="number"] ********************** */
 /**
+ * Validation input[type="number"]
  * @param {HTMLInputElement} input input du formulaire
  * @param {HTMLInputElement} cible input du formulaire qui recevra le message erreur
+ * @returns {void} Affiche ou supprime le message d'erreur
  */
 function validNumber(input, cible) {
   const value = parseInt(input.value);
-  if (value <= -1 || value > 100) {
+  if (value < 0 || value > 100 || value.toString() === "NaN") {
     return showMessage(input, "Veuillez entrez une valeur entre 0 et 100");
-  } else if (value > 0 && numberOfLocationChecked() === 0) {
+  }
+  if (value > 0 && numberOfLocationChecked(inputsLocations) === 0) {
     showMessage(cible, "Veuillez selectionner une ville");
-  } else if (value === 0 && numberOfLocationChecked() > 0) {
-    showMessage(input, "");
-    return showMessage(
-      cible,
-      "Vous ne pouvez pas selectionner une ville si vous n'avez jamais participé à un tournoi"
-    );
-  } else if (value < numberOfLocationChecked()) {
-    return showMessage(
+  }
+  if (value < numberOfLocationChecked(inputsLocations)) {
+    showMessage(
       cible,
       "Vous ne pouvez pas selectionner plus de villes que de tournoi participé"
     );
-  } else if (value === 0 && numberOfLocationChecked() === 0) {
-    showMessage(cible, "");
-  } else if (value > 0 && numberOfLocationChecked() > 0) {
+    return showMessage(input, "");
+  }
+  if (value === 0 && numberOfLocationChecked(inputsLocations) === 0) {
     showMessage(cible, "");
   }
-
+  if (value > 0 && numberOfLocationChecked(inputsLocations) > 0) {
+    showMessage(cible, "");
+  }
   return showMessage(input, "");
 }
 
 /* ************************************** input[type="checkbox", name="location"] ********************** */
 
 /**
+ * Validation input[type="checkbox", name="location"]
  * @param {HTMLInputElement} input  input du formulaire
  * @param {number} quantity quantité de ville checked
  */
 function validCheckboxLocation(input, quantity) {
-  if (numberOfLocationChecked() === 0 && quantity > 0) {
+  if (numberOfLocationChecked(inputsLocations) === 0 && quantity > 0) {
     return showMessage(input, "Veuillez sélectionner une ville");
   }
-  if (numberOfLocationChecked() > 0 && quantity === 0) {
-    return showMessage(
-      input,
-      "Vous ne pouvez pas selectionner une ville si vous n'avez jamais participé à un tournoi"
-    );
-  }
-  if (numberOfLocationChecked() > quantity) {
+  if (
+    numberOfLocationChecked(inputsLocations) > quantity ||
+    (quantity.toString() === "NaN" &&
+      numberOfLocationChecked(inputsLocations) !== 0)
+  ) {
     return showMessage(
       input,
       "Vous ne pouvez pas selectionner plus de villes que de tournoi participé"
@@ -331,12 +312,15 @@ function validCheckboxLocation(input, quantity) {
   }
   return showMessage(input, "");
 }
-
-function numberOfLocationChecked() {
-  const inputsLocations = document.querySelectorAll("input[name = location]");
+/**
+ * Nombre de checkbox checked
+ * @param   {NodeListOf}  arr  Array contenant les checkbox
+ * @return  {number}       Nombre de checkbox checked
+ */
+function numberOfLocationChecked(arr) {
   let numberInputLocationChecked = 0;
-  for (const inputLocation of inputsLocations) {
-    if (inputLocation.checked) {
+  for (const elm of arr) {
+    if (elm.checked) {
       numberInputLocationChecked++;
     }
   }
@@ -344,6 +328,13 @@ function numberOfLocationChecked() {
 }
 
 /* *************************** input[type="checkbox"] **************************** */
+
+/**
+ * Validation input[type="checkbox"]
+ * @param   {HTMLInputElement}  input  input du formulaire
+ * @param   {HTMLInputElement}  elm    Element qui doit etre checked
+ * @return  {void}         Affiche ou supprime le message d'erreur
+ */
 function validCheckboxConditions(input, elm) {
   if (input === elm && !input.checked) {
     return showMessage(
@@ -356,7 +347,6 @@ function validCheckboxConditions(input, elm) {
 
 /**
  * Ajoute les attributs d'erreurs avec le msg correspondant au parent de input
- *
  * @param {HTMLInputElement} input  input du formulaire
  * @param {string} msg        message d'erreur
  */
