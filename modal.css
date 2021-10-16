@@ -690,6 +690,6 @@ footer {
         height: -webkit-fill-available;
     }
     .modal-body[valid-form="true"] {
-        height: 756px
+        height: 800px
     }
 }

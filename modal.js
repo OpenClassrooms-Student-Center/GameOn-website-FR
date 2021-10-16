@@ -62,6 +62,7 @@ function checkFirstAndLastName(input, type) {
             input.parentElement.setAttribute('data-error', 'Veuillez entrer 2 caractères ou plus pour le champ du nom.');
         }
         input.parentElement.setAttribute('data-error-visible', true);
+        modalBody.setAttribute('valid-form', true);
         return false;
     }
 }
@@ -77,6 +78,7 @@ function checkEmail(input) {
     } else {
         input.parentElement.setAttribute('data-error', 'Vous devez entrer une adresse email valide.');
         input.parentElement.setAttribute('data-error-visible', true);
+        modalBody.setAttribute('valid-form', true);
         return false;
     }
 }
@@ -104,6 +106,7 @@ function checkBirthdate(input) {
     } else {
         input.parentElement.setAttribute('data-error', 'Vous devez entrer votre date de naissance.');
         input.parentElement.setAttribute('data-error-visible', true);
+        modalBody.setAttribute('valid-form', true);
         return false;
     }
 }
