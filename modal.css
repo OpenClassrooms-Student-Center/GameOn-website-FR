@@ -687,10 +687,10 @@ footer {
     footer[footer-mobile="false"] {
         display: initial;
     }
-    /*.modal-body[valid-form="false"] {
+    .modal-body[valid-form="false"] {
         height: -webkit-fill-available;
     }
     .modal-body[valid-form="true"] {
         height: 800px
-    }*/
+    }
 }
