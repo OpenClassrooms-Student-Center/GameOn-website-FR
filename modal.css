@@ -199,7 +199,8 @@ main {
 .modal-body {
     padding: 15px 8%;
     margin: 15px auto;
-    height: 717px;
+    /*height: 800px;*/
+    overflow: auto;
 }
 
 label {
@@ -686,10 +687,10 @@ footer {
     footer[footer-mobile="false"] {
         display: initial;
     }
-    .modal-body[valid-form="false"] {
+    /*.modal-body[valid-form="false"] {
         height: -webkit-fill-available;
     }
     .modal-body[valid-form="true"] {
         height: 800px
-    }
+    }*/
 }
