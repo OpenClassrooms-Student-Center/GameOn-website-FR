@@ -32,34 +32,51 @@ closeBtn.addEventListener('click', closeModal);
 // FORM INPUTS VALIDATION
 
 const form = document.forms['reserve'];
-let errMessages = [];
+let err = 0;
 
-// Check input FirstName and LastName 
-// inputId: "first" or "last"
-// textLabel: "prénom" or "nom"
-function checkName(inputId, textLabel) {
-  let nameValue = document.getElementById(inputId).value;
-  let regex = new RegExp('^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ.-\s]{2,99}$');
-  if (nameValue.length < 2 || !regex.test(nameValue)) {
-    errMessages.push("Veuillez entrer un " + textLabel + " d'au moins 2 caractères."); 
-  }
-}
+/*
+const firstNameProp = [
+  "text",
+  "first",
+  "^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ.-\s]{2,99}$",
+  "Veuillez entrer un prénom d'au moins 2 caractères."
+];
 
-// Check input email adress
-function checkEmail() {
-  let emailValue = form.email.value;
-  let regex = new RegExp('^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$');
-  if (!regex.test(emailValue)) {
-    errMessages.push("Veuillez entrer un email valide."); 
-  }
-}
+const lastNameProp = [
+  "text",
+  "last",
+  "^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ.-\s]{2,99}$",
+  "Veuillez entrer un nom d'au moins 2 caractères."
+];
 
-// Check input participation
-function checkParticipation() {
-  let participationValue = form.quantity.value;
-  let regex = new RegExp('^[0-9]{1,9999}$');
-  if (!regex.test(participationValue)) {
-    errMessages.push("Veuillez entrer un nombre entre 0 et 9999."); 
+const emailProp = [
+  "email",
+  "email",
+  "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$",
+  "Veuillez entrer un email valide."
+];
+
+const quantityProp [
+  "number",
+  "quantity",
+  "^[0-9]{1,9999}$",
+  "Veuillez entrer un nombre entre 0 et 9999."
+];
+*/
+
+
+// Check input type text, number and email
+function checkInputText(inputId, regex, errMessage) {
+  const elt = document.getElementById(inputId)
+  let eltValue = elt.value;
+  let regEx = new RegExp(regex);
+  if (!regEx.test(eltValue)) {
+    const parent = elt.parentNode;
+    const p = document.createElement('p');
+    p.classList.add("validation-messages", "validation-messages--error");
+    p.textContent = errMessage;
+    parent.append(p);
+    err++;
   }
 }
 
@@ -75,7 +92,12 @@ function checkLocation() {
     }   
   }
   if (x === options.length) {
-    errMessages.push("Veuillez séléctionner une ville."); 
+    const parent = document.querySelector(".locations");
+    const p = document.createElement('p');
+    p.classList.add("validation-messages", "validation-messages--error");
+    p.textContent = "Veuillez selectionner une ville.";
+    parent.append(p);
+    err++;
   }
 }
 
@@ -83,61 +105,53 @@ function checkLocation() {
 function checkLegal() {
   const checkbox = document.getElementById('checkbox1');
   if (!checkbox.checked) {
-    errMessages.push("Vous devez accepter nos conditions d'utilisation."); 
+    const parent = document.querySelector(".locations");
+    const p = document.createElement('p');
+    p.classList.add("validation-messages", "validation-messages--error");
+    p.textContent = "Vous devez accepter nos conditions d'utilisation.";
+    err++;
   }
 }
 
 // Check all
 function checkAllInputs() {
-  checkName('first', 'prénom');
-  checkName('last', 'nom');
-  checkEmail();
-  checkParticipation();
+  checkInputText("first", "^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ.-\s]{2,99}$", "Veuillez entrer un prénom d'au moins 2 caractères.");
+  checkInputText("last", "^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ.-\s]{2,99}$", "Veuillez entrer un nom d'au moins 2 caractères.");
+  checkInputText("email", "^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$", "Veuillez entrer un email valide.");
+  checkInputText("quantity", "^[0-9]{1,9999}$", "Veuillez entrer un nombre entre 0 et 9999.");
   checkLocation();
   checkLegal();
 }
 
-// Display error messages
-function displayErrorMessages() {
-  const ul = document.createElement('ul');
-  for (let i = 0; i < errMessages.length; i++) {
-    const li = document.createElement('li');
-    li.classList.add("validation-messages__error");
-    li.textContent = errMessages[i];
-    ul.append(li);
-  }
-  document.querySelector('.validation-messages').append(ul);
-}
-
 // Remove error messages
 function removeErrorMessages() {
-  const parent = document.querySelector('.validation-messages');
-    if (parent.childNodes.length > 0) {
-      parent.removeChild(parent.firstChild);
+  const childs = document.querySelectorAll('.validation-messages');
+  if (childs.length > 0) {
+    for (let child of childs) {
+      const parent = child.parentNode;
+      parent.removeChild(child);
     }
-  errMessages = [];
+  }
 }
   
-
 // Display success message
 function displaySuccessMessage() {
   setTimeout(closeModal, 5000);
   form.style.display = "none";
   const successMessage = document.createElement('p');
-  successMessage.classList.add("validation-messages__success");
-  successMessage.textContent = "Votre inscription a bien été envoyée, à très bientôt";
-  document.querySelector('.validation-messages').append(successMessage);
+  successMessage.classList.add("validation-messages", "validation-messages--success");
+  successMessage.textContent = "Votre inscription a bien été envoyée, merci et à très bientôt";
+  document.querySelector('.modal-body').append(successMessage);
 }
 
 
 // Check inputs when submit
 form.addEventListener('submit', function(e) {
   e.preventDefault();
+  err = 0;
   removeErrorMessages();
   checkAllInputs();
-  if (errMessages.length > 0) {
-    displayErrorMessages();
-  } else {
+  if (err === 0) {
     displaySuccessMessage();
   }
 })

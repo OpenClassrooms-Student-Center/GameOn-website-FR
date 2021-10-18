@@ -536,12 +536,12 @@ footer {
   color: #fe142f;
 }
 
-.validation-messages__error {
+.validation-messages--error {
   color: #fe142f;
   line-height: 1.4em;
 }
 
-.validation-messages__success {
+.validation-messages--success {
   color: #4adeb1;
   line-height: 1.4em;
 }
