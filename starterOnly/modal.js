@@ -74,6 +74,12 @@ function validEmail(email) {
   return result;
 }
 
+function validateRegex(string) {
+  var regex = /^[a-zA-Z]{2,30}$/;
+  var result = regex.test(string);
+  return result;
+
+}
 /**
  * Test et affiche un message d'erreur si le test est invalide
  * @param {Boolean} condition la condition à tester
@@ -129,9 +135,9 @@ function validateForm(e) {
   numberOfValidFields = 0;
 
   //verification du champ 'prenom'
-  numberOfValidFields += showErrorMessage(firstName.value.length < 2, nameError, "Veuillez entrer 2 caractères ou plus", firstName)
+  numberOfValidFields += showErrorMessage(!validateRegex(firstName.value), nameError, "Veuillez entrer 2 caractères ou plus", firstName)
   //verification du champ 'nom'
-  numberOfValidFields += showErrorMessage(lastName.value.length < 2, lastNameError, "Veuillez entrer 2 caractères ou plus", lastName)
+  numberOfValidFields += showErrorMessage(!validateRegex(lastName.value), lastNameError, "Veuillez entrer 2 caractères ou plus", lastName)
   //verification du champ 'email'
   numberOfValidFields += showErrorMessage(email.value == "", emailError, "Veuillez saisir votre adresse email", email, true)
   //verification du champ 'nombre de paticipations'
