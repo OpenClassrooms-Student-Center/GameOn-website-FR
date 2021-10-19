@@ -47,9 +47,6 @@
         <div class="hero-img">
           <img src="./bg_img.jpg" alt="img" />
         </div>
-        <button class="btn-signup modal-btn">
-          je m'inscris
-        </button>
       </div>
 
       <div class="bground">
@@ -72,6 +69,7 @@
                   name="first"
                   minlength="2"
                 /><br>
+                <span id="errorFirstName">Veuillez entrer 2 caractères ou plus pour le champ du prénom.</span>
               </div>
               <div
                 class="formData">
@@ -81,7 +79,9 @@
                   type="text"
                   id="last"
                   name="last"
+                  minlength="2"
                 /><br>
+                <span id="errorLastName">Veuillez entrer 2 caractères ou plus pour le champ du nom.</span>
               </div>
               <div
                 class="formData">
@@ -92,6 +92,7 @@
                   id="email"
                   name="email"
                 /><br>
+                <span id="errorEmail">Veuillez entrer 2 caractères ou plus pour le champ du prénom.</span>
               </div>
               <div
                 class="formData">
@@ -102,15 +103,17 @@
                   id="birthdate"
                   name="birthdate"
                 /><br>
+                <span id="errorBirthdate">Vous devez entrer votre date de naissance.</span>
               </div>
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
+              <span id="errorQuantity">Vous devez choisir une valeur entre 0 et 99.</span>
               <p class="text-label">Quelles villes ?</p>
               <div
-                class="formData">
+                class="formData" for="locations">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -178,7 +181,7 @@
                   Portland</label
                 >
               </div>
-
+              <span id="errorLocations">Vous devez choisir une option.</span>
               <div
                 class="formData">
                 <input
@@ -192,10 +195,11 @@
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
+                <span id="errorPolicy">Vous devez vérifier que vous acceptez les termes et conditions.</span>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
-                  Je Je souhaite être prévenu des prochains évènements.
+                  Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
               </div>

@@ -31,3 +31,20 @@ modalCloseBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 function closeModal(){
   modalbg.style.display = 'none';
 }
+
+//TODO #2 Implémenter entrées du formulaire
+const firstName = document.getElementById("first");
+const errorFirstName = document.getElementById("errorFirstName");
+const lastName = document.getElementById("last");
+const errorLastName = document.getElementById("errorLastName");
+const email = document.getElementById("email");
+const errorEmail = document.getElementById("errorEmail");
+const birthdate = document.getElementById("birthdate");
+const errorBirthdate = document.getElementById("errorBirthdate");
+const quantityTournamenent = document.getElementById("quantity");
+const errorQuantity = document.getElementById("errorQuantity");
+const location = document.querySelector('input[name="location"]');
+const errorLocation = document.getElementById("errorLocations");
+const policy = document.getElementById("checkbox1");
+const errorPolicy = document.getElementById("errorPolicy");
+
