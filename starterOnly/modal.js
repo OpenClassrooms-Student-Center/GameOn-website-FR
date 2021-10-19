@@ -20,7 +20,8 @@ let stringsNumber = document.querySelectorAll(".text-control");
 let formInputs = document.querySelectorAll("input");
 let inputLocation=document.querySelectorAll('[name = location]');
 
-
+// const regexSpeciaux = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+$/;
+const regexPre = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+$/;
 const regexLetter = /[0-9]/;
 const regexMail = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 const regexDate = /^\d{4}[\/\-](0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])$/;
@@ -82,9 +83,12 @@ function displayError(){
 
       switch (inputName) {
         case 'first':
-          if(inputValue.length < 3 || regexLetter.test(inputValue)){
+          if(inputValue.length < 3 ){
             setError(input,"Le prénom doit comporter au minimum 2 lettres.");
-          }else{
+          } else if(!regexPre.test(inputValue)){
+            setError(input,"Vous ne pouvez pas saisir de caractères spéciaux ou des espaces.");
+          }     
+          else{
             removeError(input);
             dataPrenom = inputValue;
           }
@@ -93,7 +97,10 @@ function displayError(){
         case 'last':
           if(inputValue.length < 3 || regexLetter.test(inputValue)){
             setError(input,"Le nom doit comporter au minimum 2 lettres.");
-          }else{
+          } else if(!regexPre.test(inputValue)){
+            setError(input,"Vous ne pouvez pas saisir de caractères spéciaux ou des espaces.");
+          }  
+          else{
             removeError(input);
             dataNom=inputValue;
           }
