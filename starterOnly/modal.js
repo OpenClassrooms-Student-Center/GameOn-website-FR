@@ -58,9 +58,10 @@ validate.addEventListener('click',(e)=>{
    data = {dataPrenom,dataNom,dataMail,dataDate,dataTournament,dataCity,dataCheck};
 
    if(dataPrenom && dataNom && dataMail && dataDate && dataTournament && dataCity && dataCheck){
-    success()
+    success();
+    console.log(data);
    }
-   console.log(data);
+
 
   });
 
