@@ -111,6 +111,7 @@ function displayError(){
         case 'birthdate':
           if(!regexDate.test(inputValue)){
             setError(input,"Le format de date de naissance n'est pas valide.");
+            dataDate=null;
           }else{
             removeError(input);
             dataDate=inputValue;
