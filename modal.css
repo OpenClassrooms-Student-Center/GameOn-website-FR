@@ -513,7 +513,6 @@ footer {
   .hero-section {
     display: block;
     box-shadow: unset;
-    height: 100%;
   }
   .hero-content {
     background: #fff;
