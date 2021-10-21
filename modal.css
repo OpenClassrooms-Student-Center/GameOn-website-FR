@@ -506,6 +506,11 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+
+  main {
+    padding-left: 0;
+    padding-right: 0;
+  }
   .topnav {
     background-color: #fff;
 
@@ -517,7 +522,7 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0;
     text-align: center;
   }
   .hero-content::after {
