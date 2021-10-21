@@ -441,7 +441,6 @@ input[data-error]::after {
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
   min-height: 70vh;
-  height: 650px;
 }
 .hero-content {
   padding: 51px 67px;
