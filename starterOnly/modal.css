@@ -17,7 +17,7 @@ body {
   background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
-  max-width: 1300px;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -31,12 +31,29 @@ img {
 }
 
 .topnav {
+  display: flex;
   overflow: hidden;
   margin: 3.5%;
+  padding: 0 2vw;
+  align-items: center;
+  justify-content: space-between;
 }
+
 .header-logo {
     float: left;
 }
+
+.fa {
+  color : #FF001B;
+}
+
+.fa:hover{
+  color: #FFF;
+}
+
+  color: #FFF;
+}
+
 .main-navbar {
     float: right;
 }
@@ -90,6 +107,10 @@ img {
   }
 }
 
+.topnav.responsive {
+  display: flex;
+  flex-wrap: wrap;
+}
 
 
  @media screen and (max-width: 540px) {
@@ -97,22 +118,31 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
-} 
+
+  .bground {
+      position: absolute;
+      top: 78px;
+  }
+}
 
 main {
   font-size: 130%;
   font-weight: bolder;
   color: black;
   padding-top: 0.5vw;
-  padding-left: 2vw;
-  padding-right: 2vw;
+  padding-left: 4vw;
+  padding-right: 4vw;
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
 
 
+}
+
+.header-logo img {
+  width: 80%;
+  padding : 1rem 0;
 }
 
 .modal-btn {
@@ -159,14 +189,12 @@ main {
 
 .bground {
   display: none;
-  position: fixed;
   z-index: 1;
   left: 0;
-  top: 0;
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  background-color: #ffffff;
 }
 
 .content {
@@ -226,7 +254,7 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
+/*
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
@@ -420,7 +448,6 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -437,11 +464,10 @@ input[data-error]::after {
 }
 .hero-headline {
   font-size: 6rem;
-  font-weight: normal;
+  font-weight: bold;
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
@@ -479,6 +505,10 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+  .topnav {
+    background-color: #fff;
+
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -487,6 +517,7 @@ footer {
     background: #fff;
     color: #000;
     padding: 20px;
+    text-align: center;
   }
   .hero-content::after {
     content: unset;
@@ -495,7 +526,7 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 3rem;
     white-space: normal;
   }
   .hero-text {
@@ -526,4 +557,3 @@ footer {
     opacity: 1;
   }
 }
-

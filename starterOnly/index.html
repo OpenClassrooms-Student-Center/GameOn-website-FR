@@ -17,7 +17,7 @@
       <img alt="logo" src="Logo.png" width="auto" height="auto" />
     </div>
     <div class="main-navbar">
-      
+
       <a href="#" class="active"><span>Accueil</span></a>
       <a href="#"><span>Détails de l'évènement</span></a>
       <a href="#"><span>À propos</span></a>
@@ -75,7 +75,7 @@
               </div>
               <div
                 class="formData">
-                <label>Nom</label><br>
+                <label for="last">Nom</label><br>
                 <input
                   class="text-control"
                   type="text"
@@ -206,7 +206,17 @@
                 value="C'est parti"
               />
             </form>
+            <!-- Ajout message remerciement-->
           </div>
+          <div id="confirmationMsg">Merci !
+            <br>Votre réservation a bien été reçue.
+          </div>
+          <input
+            id = "closeBtnRed"
+            class="button btn-submit"
+            type="button"
+            value="Close"
+          />
         </div>
       </div>
     </main>
