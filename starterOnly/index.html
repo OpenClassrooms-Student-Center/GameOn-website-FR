@@ -69,7 +69,7 @@
                   name="first"
                   minlength="2"
                 /><br>
-                <span id="errorFirstName">Veuillez entrer 2 caractères ou plus pour le champ du prénom.</span>
+                <span id="errorFirstName" class="hidden">Veuillez entrer 2 caractères ou plus pour le champ du prénom.</span>
               </div>
               <div
                 class="formData">
@@ -81,7 +81,7 @@
                   name="last"
                   minlength="2"
                 /><br>
-                <span id="errorLastName">Veuillez entrer 2 caractères ou plus pour le champ du nom.</span>
+                <span id="errorLastName" class="hidden">Veuillez entrer 2 caractères ou plus pour le champ du nom.</span>
               </div>
               <div
                 class="formData">
@@ -92,7 +92,7 @@
                   id="email"
                   name="email"
                 /><br>
-                <span id="errorEmail">Veuillez entrer 2 caractères ou plus pour le champ du prénom.</span>
+                <span id="errorEmail" class="hidden">Veuillez entrer une adresse email valide. Exemple : johndoe@gmail.com</span>
               </div>
               <div
                 class="formData">
@@ -103,14 +103,14 @@
                   id="birthdate"
                   name="birthdate"
                 /><br>
-                <span id="errorBirthdate">Vous devez entrer votre date de naissance.</span>
+                <span id="errorBirthdate" class="hidden">Vous devez entrer votre date de naissance.</span>
               </div>
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <span id="errorQuantity" class="hidden">Vous devez choisir une valeur entre 0 et 99.</span>
               </div>
-              <span id="errorQuantity">Vous devez choisir une valeur entre 0 et 99.</span>
               <p class="text-label">Quelles villes ?</p>
               <div
                 class="formData" for="locations">
@@ -180,8 +180,8 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                <span id="errorLocations" class="hidden">Vous devez choisir une option.</span>
               </div>
-              <span id="errorLocations">Vous devez choisir une option.</span>
               <div
                 class="formData">
                 <input
@@ -195,7 +195,7 @@
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
-                <span id="errorPolicy">Vous devez vérifier que vous acceptez les termes et conditions.</span>
+                <span id="errorPolicy" class="hidden">Vous devez vérifier que vous acceptez les termes et conditions.</span>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
@@ -207,6 +207,7 @@
                 class="btn-submit"
                 type="submit"
                 class="button"
+                id="submitBtn"
                 value="C'est parti"
               />
             </form>
