@@ -200,6 +200,17 @@ input {
   border: 0.8px solid #ccc;
   outline: none;
 }
+.input-valid {
+  border: 2px solid #279e7a;
+}
+.input-error {
+  border: 2px solid #fe142f;
+}
+small {
+  font-size: 15px;
+  color: #fe142f;
+}
+
 .text-control {
   margin: 0;
   padding: 8px;
