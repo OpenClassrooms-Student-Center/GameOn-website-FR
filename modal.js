@@ -8,15 +8,30 @@ function editNav() {
 }
 
 // DOM Elements
+//modal related elements
 const modalbg = document.querySelector('.bground');
 const modalBtn = document.querySelectorAll('.modal-btn');
+const modalBody = document.querySelector('.modal-body');
 const formData = document.querySelectorAll('.formData');
 const closeFormCross = document.querySelectorAll('.close');
 const btnSubmit = document.querySelectorAll('.btn-submit');
 const textControls = document.querySelectorAll('.text-control');
+const successSubmitMessage = document.querySelector('.successMessageOnSubmit');
 
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
+
+//others
+const myTopNav = document.getElementById('myTopnav');
+const mainNavBar = document.querySelector('.main-navbar');
+const body = document.querySelector('body');
+const main = document.querySelector('main');
+const content = document.querySelector('content');
+
+let isEverythingGood = true;
+
+
+
+// open modal event
+modalBtn.forEach((btn) => btn.addEventListener('click', openModal));
 
 // close modal event
 closeFormCross.forEach((cross) => cross.addEventListener('click', closeModal));
@@ -24,14 +39,43 @@ closeFormCross.forEach((cross) => cross.addEventListener('click', closeModal));
 // modal form submit event
 btnSubmit.forEach((btnSubmit) => btnSubmit.addEventListener('click', (event) => handleFormSubmit(event)));
 
-// launch modal form
-function launchModal() {
-	modalbg.style.display = 'block';
+// open modal form
+function openModal() {
+	//few css changes so everything look clean
+	body.style.overflow = "hidden";
+	main.style.fontSize="initial";
+	myTopNav.style.cssText = "display: flex; flex-direction: column;position: fixed;z-index: 5;background: white;padding: 3.5%;width: 100%;margin: initial;";
+
+	modalbg.style.display = `flex`;
+
+	//allow to see header on tablet/mobile when modal opened
+	if (window.matchMedia("(max-width: 1000px)").matches) {
+		modalbg.style.height = `calc(100vh - ${myTopNav.offsetHeight}px + ${mainNavBar.offsetHeight}px`;
+		console.log(mainNavBar.offsetHeight);
+	}else{
+		modalbg.style.height = `100%`
+	}
+	
+	
 }
 
 // close modal form
 function closeModal() {
+
+	//remove css we added at the opening
+	body.style.overflow = "initial";
+	main.style.fontSize="130%";
+	myTopNav.style.cssText = 'display: flex; flex-direction: column;position: relative;';
+	
+	//make modal disappear
 	modalbg.style.display = 'none';
+
+	//make success submit message disappear
+	successSubmitMessage.style.display = 'none';
+	
+	
+
+
 }
 
 // Validates that the input string is a valid date formatted as "mm-dd-yyyy"
@@ -63,44 +107,24 @@ function isValidDate(dateString) {
 }
 
 //add and remove error messages
-function handleErrorMessage(element, condition, errorMessage) {
-	const error = document.getElementById(element.id + '-error-message');
+function handleErrorMessage(input, condition) {
+	const error = document.getElementById(input.id + '-error-message');
 
-	switch (true) {
-		case condition && element.parentElement.contains(error):
-			error.remove();
+	if (condition) {
+		input.parentElement.setAttribute('data-error-visible', "false")
+	}else{
+			//display error message
+			input.parentElement.setAttribute('data-error-visible', "true")
 
-			break;
-		case !condition:
 			isEverythingGood = false;
-
-			//display only one error message
-			if (!element.parentElement.contains(error)) {
-				const errorBlock = document.createElement('p');
-				const errorMessageNode = document.createTextNode(errorMessage);
-
-				errorBlock.style.cssText = 'color:red; font-size:15px;';
-				errorBlock.setAttribute('id', element.id + '-error-message');
-				errorBlock.appendChild(errorMessageNode);
-
-				element.parentElement.appendChild(errorBlock);
-			}
-			break;
-
-		default:
-			// console.log('everything is good (y)');
-			break;
 	}
 }
-let isEverythingGood = true; //initiated outside handleFormSubmit() so handleErrorMessage() can use it
 
 //handle modal form submit
 function handleFormSubmit(event) {
 	isEverythingGood = true;
 	//prevent form from submitting (we want to check inputs first)
 	event.preventDefault();
-
-	const textControls = document.querySelectorAll('.text-control');
 
 	textControls.forEach((textControl) => {
 		let inputValue = textControl.value;
@@ -109,17 +133,11 @@ function handleFormSubmit(event) {
 		// check text control inputs' format validation if true
 		switch (elementId) {
 			case 'first':
-				const firstCondition = inputValue && inputValue.length >= 2;
-				const firstErrorMessage = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
-
-				handleErrorMessage(textControl, firstCondition, firstErrorMessage);
-
-				break;
 			case 'last':
-				const lastCondition = inputValue && inputValue.length >= 2;
-				const lastErrorMessage = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
+				const condition = inputValue && inputValue.length >= 2;
+				const errorMessage = 'Veuillez entrer 2 caractères ou plus.';
 
-				handleErrorMessage(textControl, lastCondition, lastErrorMessage);
+				handleErrorMessage(textControl, condition, errorMessage);
 
 				break;
 			case 'email':
@@ -152,7 +170,7 @@ function handleFormSubmit(event) {
 		}
 	});
 
-	//check if one location checkbox is checked
+	//make sure at least one location checkbox is checked
 	let isOneOfThemChecked = false;
 	for (let i = 1; i <= 6; i++) {
 		let checkboxId = 'location' + i;
@@ -161,13 +179,15 @@ function handleFormSubmit(event) {
 			isOneOfThemChecked = true;
 		}
 	}
+
+	//display error messages if not
 	const location1Checkbox = document.getElementById('location1');
 	const locationsCheckboxesCondition = isOneOfThemChecked;
 	const locationsCheckboxesErrorMessage = 'Vous devez choisir une ville.';
 
 	handleErrorMessage(location1Checkbox, locationsCheckboxesCondition, locationsCheckboxesErrorMessage);
 
-	//check if TOS checkbox is checked
+	//check if TOS checkbox is checked and call handleErrorMessage
 	const termsOfServiceCheckbox = document.getElementById('checkbox1');
 	const termsOfServiceCondition = termsOfServiceCheckbox.checked;
 	const termsOfServiceErrorMessage = 'Vous devez vérifier que vous acceptez les termes et conditions.';
@@ -176,72 +196,12 @@ function handleFormSubmit(event) {
 
 	// 2-trigger submit if everything is good
 	if (isEverythingGood) {
-		//display sucess submit message for 3s before submitting form
-		const main = document.getElementsByTagName('main')[0];
+		//display success submit message 
+		successSubmitMessage.style.display= "flex";
 
-		const sucessSubmitBlock = document.createElement('div');
-		const sucessSubmitText = document.createTextNode('Merci ! Votre réservation a été reçue.');
-
-		sucessSubmitBlock.style.cssText =
-			'width: 100%;color:green;background:rgba(200, 255, 203, 0.9);font-size:30px;position: fixed;top:50%; right:50%; transform: translateX(50%);text-align:center;z-index: 10;padding: 20px';
-		sucessSubmitBlock.appendChild(sucessSubmitText);
-
-		main.appendChild(sucessSubmitBlock);
-
-		setTimeout(function() {
-			const myForm = document.querySelector('.modal-body form');
-			myForm.submit();
-		}, 3000);
 	}
 }
 
-//UI corrections
-const topNavIcon = document.querySelector('.topnav .icon');
-const myTopNav = document.getElementById('myTopnav');
-const mainNavbarLinkArray = document.querySelectorAll('.main-navbar a');
 
-myTopNav.style.cssText = 'display: flex; flex-direction: column;position: relative;';
-topNavIcon.style.cssText = 'position: absolute; top:0; right:0; margin-top: 0px;';
 
-for (let index = 0; index < mainNavbarLinkArray.length - 1; index++) {
-	mainNavbarLinkArray[index].style.cssText = 'font-size: 18px';
-}
 
-function fixTheResponsive() {
-	// Create a media condition that targets viewports
-	const mediaQuery1000pxMax = window.matchMedia('(max-width: 1000px)');
-	const mediaQuery1001pxMin = window.matchMedia('(min-width: 1001px)');
-	const mediaQuery540px = window.matchMedia('(min-width: 540px)');
-
-	//element that we change the style
-	const heroHeadlinearray = document.getElementsByClassName('hero-headline');
-	const heroTextarray = document.getElementsByClassName('hero-text');
-	const heroContentarray = document.getElementsByClassName('hero-content');
-	const heroSectionarray = document.getElementsByClassName('hero-section');
-	const btnSignUpArray = document.getElementsByClassName('btn-signup');
-	const mainArray = document.getElementsByTagName('main');
-
-	if (mediaQuery1000pxMax.matches) {
-		heroHeadlinearray[0].style.cssText = 'font-size:200%;text-align:center;';
-		heroTextarray[0].style.cssText = 'width: auto; text-align: center;';
-		heroContentarray[0].style.cssText = 'min-width: initial;';
-		heroSectionarray[0].style.cssText = 'display: block;';
-		btnSignUpArray[0].style.cssText = 'margin: 20px auto auto auto';
-		mainArray[0].style.cssText = 'padding:0; margin: auto;';
-	}
-
-	if (mediaQuery1001pxMin.matches) {
-		heroHeadlinearray[0].style.cssText = '';
-		heroTextarray[0].style.cssText = '';
-		heroContentarray[0].style.cssText = '';
-		heroSectionarray[0].style.cssText = '';
-		btnSignUpArray[0].style.cssText = '';
-		mainArray[0].style.cssText = '';
-	}
-}
-
-//apply the change
-fixTheResponsive();
-
-// Check if the screen is being resized otherwide the css changes are not applied
-window.addEventListener('resize', fixTheResponsive);

@@ -30,15 +30,23 @@ img {
 	padding-right: 1rem;
 }
 
-.topnav {
-	overflow: hidden;
-	margin: 3.5%;
-}
+
 .header-logo {
 	float: left;
 }
 .main-navbar {
 	float: right;
+}
+
+
+.topnav {
+	overflow: hidden;
+	margin: 3.5%;
+
+	display: flex;
+	justify-content: space-between;
+	position: relative;
+	
 }
 .topnav a {
 	float: left;
@@ -48,7 +56,8 @@ img {
 	padding: 12px 12px;
 	margin: 5px;
 	text-decoration: none;
-	font-size: 20px;
+	font-size: 15px;
+	font-weight: 600;
 	font-family: Roboto, sans-serif;
 }
 
@@ -66,44 +75,14 @@ img {
 
 .topnav .icon {
 	display: none;
+
+	position: absolute;
+	top:0;
+	right:0;
+	margin-top: 0px;
 }
 
-@media screen and (max-width: 768px) {
-	.topnav a {
-		display: none;
-	}
-	.topnav a.icon {
-		float: right;
-		display: block;
-	}
-}
 
-@media screen and (max-width: 768px) {
-	.topnav.responsive {
-		position: relative;
-	}
-	.topnav.responsive .icon {
-		position: absolute;
-		right: 0;
-		top: 0;
-	}
-	.topnav.responsive a {
-		float: none;
-		display: block;
-		text-align: left;
-	}
-}
-
-@media screen and (max-width: 540px) {
-	.topnav a {
-		display: none;
-	}
-	.topnav a.icon {
-		float: right;
-		display: block;
-		margin-top: -15px;
-	}
-}
 
 main {
 	font-size: 130%;
@@ -161,18 +140,71 @@ main {
 
 .bground {
 	display: none;
+	justify-content: center;
+	align-items: center;
 	position: fixed;
-	z-index: 1;
+	z-index:5;
 	left: 0;
 	top: 0;
 	height: 100%;
 	width: 100%;
 	overflow: auto;
-	background-color: rgba(26, 39, 156, 0.4);
+	background-color: white;
+
+	top: initial;
+	bottom: 0;
+	overflow: hidden;
+
+	padding: 25px 0px;
+	
+}
+
+.successMessageOnSubmit{
+
+	display: none;
+	position: absolute;
+	width: 100%;
+	max-width: 500px;
+	margin: auto;
+	height: 100%;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	z-index: 2;
+	background-color: #232323;
+
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: white;
+	text-align: center;
+	max-height: 700px;
+	
+}
+
+.successMessageOnSubmit__message{
+
+	margin: auto;
+}
+
+.successMessageOnSubmit button{
+	
+
+	background: #fe142f;
+display: block;
+margin: 0 auto;
+margin-bottom: 15px;
+border-radius: 7px;
+font-size: 1rem;
+padding: 12px 82px;
+color: #fff;
+cursor: pointer;
+border: 0;
 }
 
 .content {
-	margin: 5% auto;
+	
 	width: 100%;
 	max-width: 500px;
 	animation-name: modalopen;
@@ -183,11 +215,24 @@ main {
 	position: relative;
 	color: #fff;
 	padding-top: 10px;
+
+	margin: 0% auto;
+	height: 100%;
+	max-height: 700px;
 }
 
 .modal-body {
 	padding: 15px 8%;
-	margin: 15px auto;
+
+	margin: 0px auto;
+	height: 100%;
+}
+
+form{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	height: 100%;
 }
 
 label {
@@ -195,7 +240,7 @@ label {
 	font-size: 17px;
 	font-weight: normal;
 	display: inline-block;
-	margin-bottom: 11px;
+	margin: initial;
 }
 input {
 	padding: 8px;
@@ -208,35 +253,40 @@ input {
 	width: 100%;
 	border-radius: 8px;
 	font-size: 20px;
-	height: 48px;
+
+	height:initial;
 }
+
+.formData:nth-child(0n + 6){
+
+	display: flex;
+	flex-wrap: wrap;
+}
+
 .formData[data-error]::after {
 	content: attr(data-error);
-	font-size: 0.4em;
+	font-size: 75%;
 	color: #e54858;
-	display: block;
-	margin-top: 7px;
-	margin-bottom: 7px;
-	text-align: right;
-	line-height: 0.3;
+	display: inline-block;
+
 	opacity: 0;
 	transition: 0.3s;
+	display: none;
+	
 }
+
 .formData[data-error-visible="true"]::after {
 	opacity: 1;
+	display: flex;
 }
 .formData[data-error-visible="true"] .text-control {
 	border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+
 .checkbox-label,
 .checkbox2-label {
 	position: relative;
+	margin: 5px;
 	margin-left: 36px;
 	font-size: 12px;
 	font-weight: normal;
@@ -307,6 +357,7 @@ input[data-error]::after {
 	opacity: 1;
 	cursor: pointer;
 	transform: scale(0.7);
+	z-index: 3;
 }
 .close:before,
 .close:after {
@@ -480,6 +531,77 @@ footer {
 	padding-right: 2vw;
 	margin: 0 20px;
 }
+
+@media screen and (max-width: 1000px) {
+
+
+	.topnav{
+
+		flex-direction: column;
+	}
+	.topnav a {
+		display: none;
+	}
+	.topnav a.icon {
+		float: right;
+		display: block;
+
+		position: absolute;
+		top: 0px;
+		right:0;
+		margin-top: 0px;
+	}
+
+	
+	.topnav.responsive .icon {
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+	.topnav.responsive a {
+		float: none;
+		display: block;
+		text-align: left;
+	}
+	
+	.hero-headline {
+		font-size:200%;
+		text-align:center;
+	}
+	.hero-text{
+		width: auto;
+		text-align: center;
+	}
+
+	.hero-content{
+		min-width: initial;
+	}
+
+	.hero-section{
+
+		display: block;
+
+	}
+
+	.btn-signup{
+
+		margin: 20px auto auto auto;
+
+	}
+
+	main{
+		padding:0;
+		margin: auto;
+	}
+
+	.bground{
+
+		padding: 0px;
+		z-index: 1;
+	}
+	
+}
+
 @media screen and (max-width: 800px) {
 	.hero-section {
 		display: block;
@@ -497,16 +619,20 @@ footer {
 		display: none;
 	}
 	.hero-headline {
-		font-size: 4.5rem;
+		
 		white-space: normal;
 	}
 	.hero-text {
 		width: unset;
-		font-size: 1.5rem;
+		font-size: 13px;
+		text-align: left;
+		margin-top: 25px;
+	
 	}
 	.hero-img img {
 		border-radius: 10px;
-		margin-top: 40px;
+		
+		padding: 20px;
 	}
 	.hero-section > .btn-signup {
 		display: block;
@@ -516,6 +642,11 @@ footer {
 	.copyrights {
 		margin-top: 50px;
 		text-align: center;
+	}
+
+	.content, .successMessageOnSubmit{
+
+		max-height:initial;
 	}
 }
 
