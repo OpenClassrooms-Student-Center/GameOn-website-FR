@@ -73,6 +73,15 @@ img {
 	border-radius: 15px;
 }
 
+.topnav a.active::after{
+	content: "";
+width: 100%;
+border: solid 1px;
+display: block;
+border-top: none;
+margin: 5px 0 0 0;
+}
+
 .topnav .icon {
 	display: none;
 
