@@ -57,14 +57,16 @@
           <span class="close"></span>
           <div class="modal-body">
             <form
+              id= "reserve"
               name="reserve"
               action="index.html"
               method="get"
               onsubmit="return validate();"
+              novalidate
             >
               <div
                 class="formData">
-                <label>Prénom</label><br>
+                <label for="first">Prénom</label><br>
                 <input
                   class="text-control"
                   type="text"
@@ -73,6 +75,7 @@
                   minlength="2"
                 /><br>
               </div>
+              <div id="firstError" class="error"></div>
               <div
                 class="formData">
                 <label for="last">Nom</label><br>
@@ -81,32 +84,37 @@
                   type="text"
                   id="last"
                   name="last"
+                  minlength="2"
                 /><br>
+                <div id="lastError" class="error"></div>
               </div>
               <div
                 class="formData">
-                <label>E-mail</label><br>
+                <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
                   type="email"
                   id="email"
                   name="email"
                 /><br>
+                <div id="emailError" class="error"></div>
               </div>
               <div
                 class="formData">
-                <label>Date de naissance</label><br>
+                <label for="birthdate">Date de naissance</label><br>
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
                 /><br>
+                <div id="birthdateError" class="error"></div>
               </div>
               <div
                 class="formData">
-                <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <div id="quantityError" class="error"></div>
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
@@ -177,6 +185,7 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                <div id="locationError" class="error"></div>
               </div>
 
               <div
@@ -185,24 +194,24 @@
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
-                  checked
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
-                <br>
+                <div id="conditionsError" class="error"></div>
+
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
-                  Je Je souhaite être prévenu des prochains évènements.
+                  Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
               </div>
               <input
-                class="btn-submit"
+                id = "submit"
+                class="button btn-submit"
                 type="submit"
-                class="button"
                 value="C'est parti"
               />
             </form>
