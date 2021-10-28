@@ -10,7 +10,7 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
+const formData = document.querySelectorAll(".formData"); 
 const closeBtn = document.querySelector(".close");
 const submitBtn = document.querySelector(".btn-submit");
 const form = document.getElementById("reserve");

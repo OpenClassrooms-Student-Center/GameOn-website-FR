@@ -14,21 +14,21 @@
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
+      <img alt="logo" src="Logo.png"/>
+      </div>
+      <div class="main-navbar">
+        <div class="navlinks">
+          <a href="#" class="active"><span>Accueil</span></a>
+          <a href="#"><span>Détails de l'évènement</span></a>
+          <a href="#"><span>À propos</span></a>
+          <a href="#"><span>Contact</span></a>
+          <a href="#"><span>Évènements passés</span></a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="editNav()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
     </div>
-    <div class="main-navbar">
-
-      <a href="#" class="active"><span>Accueil</span></a>
-      <a href="#"><span>Détails de l'évènement</span></a>
-      <a href="#"><span>À propos</span></a>
-      <a href="#"><span>Contact</span></a>
-      <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars"></i>
-      </a>
-    </div>
-    </div>
-  </div>
     <main>
       <div class="hero-section">
         <div class="hero-content">
@@ -215,9 +215,8 @@
                 value="C'est parti"
               />
             </form>
-            <!-- Ajout message remerciement-->
           </div>
-          <div id="confirmationMsg">Merci !
+          <div id="confirmationMsg">Merci ! 
             <br>Votre réservation a bien été reçue.
           </div>
           <input
