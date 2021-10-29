@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Fan de gaming ? Cette année encore, participez au marathon national de jeux vidéos avec Game On !! Faites chauffer votre manette, on attend plus que vous.">
+
+    <title>GameOn | Réservation</title>
+
+    <link rel="icon" href="./images/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
+    <!-- Balises OpenGraph -->
+    <meta property="og:title" content="Game On 2021 en folie : Le marathon national des jeux vidéos" />
+    <meta property="og:title" content="./images/miniature.png" />
+    <meta property="og:description" content="Vous êtes fan de jeux vidéos ? On vous surnomme le boss de la manette ? Cette année encore, venez participer au marathon national de jeux vidéos avec Game On !! Retrouvez tous les détails de l'évènement ainsi que notre formulaire de réservation. Faites chauffer votre manette, on attend plus que vous." />
+    <meta property="og:url" content="https://lokkotara.github.io/GameOn-website-FR/" />
+    <meta property="og:site_name" content="gameon.fr" />
+    <!-- Fin des balises OpenGraph -->
+
+    <!-- Balises TwitterCard -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@gameon" />
+    <meta name="twitter:creator" content="@gameon" />
+    <!-- Fin des balises TwitterCard -->
+
+  </head>
+  <body>
+    <div class="topnav" id="myTopnav">
+      <div class="header-logo">
+        <img alt="Logo Game On en écriture rouge" src="./images/Logo.png" />
+      </div>
+      <div class="main-navbar">
+        <a href="#" class="active link-main-navbar"><span>Accueil</span></a>
+        <a href="#" class="link-main-navbar"
+          ><span>Détails de l'évènement</span></a
+        >
+        <a href="#" class="link-main-navbar"><span>À propos</span></a>
+        <a href="#" class="link-main-navbar"><span>Contact</span></a>
+        <a href="#" class="link-main-navbar"><span>Évènements passés</span></a>
+        <i class="fa fa-bars icon"></i>
+      </div>
+    </div>
+    <main>
+      <div class="heroWrapper">
+        <div class="heroContent">
+          <h1 class="heroTitle">
+            Marathon national<br />
+            de jeux vidéos
+          </h1>
+          <p class="heroText">
+            Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux
+            réservations... Places limitées !
+          </p>
+        </div>
+        <div class="heroImg">
+          <img src="./images/bg_img.jpg" alt="Joueuse tenant une manette à la main et les bras en l'air" />
+        </div>
+        <button class="heroBtn modal-btn">je m'inscris</button>
+      </div>
+
+      <div class="modalBackground">
+        <div class="modalContent">
+          <span class="closeFormCross"></span>
+          <div class="modalBody">
+            <form
+              name="signupForm"
+              method="post"
+              id="signupForm"
+              onsubmit="submitForm()"
+            >
+              <div class="formData">
+                <label for="firstname">Prénom</label><br />
+                <input
+                  class="text-control"
+                  type="text"
+                  id="firstname"
+                  name="firstname"
+                  pattern="^[a-zA-Z]{1}[a-zA-Z'À-ÿ -]+$"
+                  required
+                /><br />
+                <span class="errorMsg hidden"
+                  >Ne doit contenir que des lettres (au moins 2).</span
+                >
+              </div>
+              <div class="formData">
+                <label for="lastname">Nom</label><br />
+                <input
+                  class="text-control"
+                  type="text"
+                  id="lastname"
+                  name="lastname"
+                  pattern="^[a-zA-Z]{1}[a-zA-Z'À-ÿ -]+$"
+                  required
+                /><br />
+                <span class="errorMsg hidden"
+                  >Ne doit contenir que des lettres (au moins 2).</span
+                >
+              </div>
+              <div class="formData">
+                <label for="email">E-mail</label><br />
+                <input
+                  class="text-control"
+                  type="email"
+                  id="email"
+                  name="email"
+                  pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([_\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})"
+                  required
+                /><br />
+                <span class="errorMsg hidden"
+                  >Veuillez entrer une adresse email valide.</span
+                >
+              </div>
+              <div class="formData">
+                <label for="birthdate">Date de naissance</label><br />
+                <input
+                  class="text-control"
+                  type="date"
+                  id="birthdate"
+                  name="birthdate"
+                  required
+                /><br />
+                <span class="errorMsg hidden"
+                  >Vous devez entrer votre date de naissance.</span
+                >
+              </div>
+              <div class="formData">
+                <label for="quantity"
+                  >À combien de tournois GameOn avez-vous participé ?</label
+                ><br />
+                <input
+                  type="number"
+                  class="text-control"
+                  id="quantity"
+                  name="quantity"
+                  min="0"
+                  max="99"
+                  required
+                />
+                <span class="errorMsg hidden"
+                  >Veuillez choisir une quantité.</span
+                >
+              </div>
+              <p class="townLabel">Quelles villes ?</p>
+              <div class="formData towns">
+                <div class="radioItem">
+                  <input
+                    class="checkbox-input option"
+                    type="radio"
+                    id="location1"
+                    name="location"
+                    value="New York"
+                  />
+                  <label class="townLabels" for="location1"> New York</label>
+                </div>
+                <div class="radioItem">
+                  <input
+                    class="checkbox-input option"
+                    type="radio"
+                    id="location2"
+                    name="location"
+                    value="San Francisco"
+                  />
+                  <label class="townLabels" for="location2">
+                    San Francisco</label
+                  >
+                </div>
+                <div class="radioItem">
+                  <input
+                    class="checkbox-input option"
+                    type="radio"
+                    id="location3"
+                    name="location"
+                    value="Seattle"
+                  />
+                  <label class="townLabels" for="location3"> Seattle</label>
+                </div>
+                <div class="radioItem">
+                  <input
+                    class="checkbox-input option"
+                    type="radio"
+                    id="location4"
+                    name="location"
+                    value="Chicago"
+                  />
+                  <label class="townLabels" for="location4"> Chicago</label>
+                </div>
+                <div class="radioItem">
+                  <input
+                    class="checkbox-input option"
+                    type="radio"
+                    id="location5"
+                    name="location"
+                    value="Boston"
+                  />
+                  <label class="townLabels" for="location5"> Boston</label>
+                </div>
+                <div class="radioItem">
+                  <input
+                    class="checkbox-input option"
+                    type="radio"
+                    id="location6"
+                    name="location"
+                    value="Portland"
+                  />
+                  <label class="townLabels" for="location6"> Portland</label>
+                </div>
+                <span class="errorOptionMsg hidden"
+                  >Vous devez choisir une ville.</span
+                >
+              </div>
+
+              <div class="formData formCheck">
+                <input
+                  class="checkbox-input"
+                  type="checkbox"
+                  id="terms"
+                  name="terms"
+                  value="accepted"
+                  checked
+                  required
+                />
+                <label class="ConsentLabels" for="terms">
+                  <span class="ConsentIcons"></span>
+                  J'ai lu et accepté les conditions d'utilisation.
+                </label>
+
+                <input
+                  class="checkbox-input"
+                  type="checkbox"
+                  name="newsletter"
+                  id="newsletter"
+                  value="accepted"
+                />
+                <label class="ConsentLabels" for="newsletter">
+                  <span class="ConsentIcons"></span>
+                  Je souhaite être prévenu des prochains évènements.
+                </label>
+
+                <span class="errorMsg hidden"
+                  >Vous devez vérifier que vous acceptez les termes et
+                  conditions.</span
+                >
+              </div>
+              <input
+                class="formSubmitBtn submitButton"
+                type="submit"
+                value="C'est parti"
+              />
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p class="copyrights">Copyright 2014 - 2020, GameOn Inc.</p>
+    </footer>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
