@@ -61,6 +61,7 @@
           <span class="close"></span>
           <div class="modal-body">
             <form
+              id="main-form"
               name="reserve"
               action="index.html"
               method="get"
@@ -74,8 +75,8 @@
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
                 /><br>
+                <span id="errorNameMessage">Veuillez entrer un nom d'un moins deux caractères</span>
               </div>
               <div
                 class="formData">
@@ -86,6 +87,7 @@
                   id="last"
                   name="last"
                 /><br>
+                <span id="errorLastNameMessage">Veuillez entrer un nom d'un moins deux caractères</span>
               </div>
               <div
                 class="formData">
@@ -96,6 +98,7 @@
                   id="email"
                   name="email"
                 /><br>
+                <span id="errorEmailMessage">Veuillez entrer un e-mail valide</span>
               </div>
               <div
                 class="formData">
@@ -106,11 +109,14 @@
                   id="birthdate"
                   name="birthdate"
                 /><br>
+                <span id="errorAgeMessage">Vous devez être majeur</span>
               </div>
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <br>
+                <span id="errorNbOfTournamentMessage">Veuillez entrer une valeur entre 0 et 99</span>
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
@@ -181,6 +187,7 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                <span id="errorCitiesMessage">Veuillez entrer au moins une ville</span>
               </div>
 
               <div
@@ -196,6 +203,7 @@
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
+                <span id="errorCvgMessage">Veuillez entrer au moins une ville</span>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
@@ -204,6 +212,7 @@
                 <br>
               </div>
               <input
+                id="submit-btn"
                 class="btn-submit"
                 type="submit"
                 class="button"

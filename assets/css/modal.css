@@ -223,8 +223,41 @@ input {
 .formData[data-error-visible="true"]::after {
   opacity: 1;
 }
-.formData[data-error-visible="true"] .text-control {
+/*.formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
+}*/
+.formData > span {
+  font-family: 'roboto' sans-serif;
+  font-weight: 400;
+  font-size: 0.4em;
+  color: #e54858;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: right;
+  line-height: 0.3;
+}
+/* errors messags  for the main form*/
+#errorNameMessage {
+  display: none;
+}
+#errorLastNameMessage {
+  display: none;
+}
+#errorEmailMessage {
+  display: none;
+}
+#errorAgeMessage {
+  display: none;
+}
+#errorNbOfTournamentMessage {
+  display: none;
+}
+#errorCitiesMessage {
+  display: none;
+}
+#errorCvgMessage {
+  display: none;
 }
 /* 
 input[data-error]::after {
