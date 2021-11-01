@@ -26,9 +26,7 @@ closeForm.addEventListener("click", function(e){
 const mainForm = document.getElementById("main-form");
 const submitBtn = document.getElementById('submit-btn');
 // stop prevent default on form sending 
-submitBtn.addEventListener("click", function(e){
-  e.preventDefault();
-});
+
 // Tests inputs results 
 var firstNameTest;
 var lastNameTest; 
@@ -66,10 +64,12 @@ mainForm.last.addEventListener('change', function() {
     lastNameTest = false;
     let errorLastMessage = document.getElementById("errorLastNameMessage");
     errorLastMessage.style.display = "flex";
+    return lastNameTest;
   } else {
     lastNameTest = true;
     let errorLastMessage = document.getElementById("errorLastNameMessage");
     errorLastMessage.style.display = "none";
+    return lastNameTest;
   };
 });
 // checking function for || E-MAIL INPUT ||
@@ -86,10 +86,12 @@ mainForm.email.addEventListener('change', function() {
     emailTest = false;
     let errorEmailMessage = document.getElementById("errorEmailMessage");
     errorEmailMessage.style.display = "flex ";
+    return emailTest;
   } else {
-    emailTest = true;
     let errorEmailMessage = document.getElementById("errorEmailMessage");
     errorEmailMessage.style.display = "none";
+    emailTest = true;
+    return emailTest;
   }
 });
 // checking function for || BIRTHDAY INPUT || under 18 years old --> rejected 
@@ -112,13 +114,15 @@ mainForm.birthdate.addEventListener('change', function () {
   let testResult = legalAge();
   legalAge();
   if (testResult) {
-    ageTest = true; 
+    ageTest = false; 
     let errorAgeMessage = document.getElementById('errorAgeMessage');
     errorAgeMessage.style.display = 'flex';
+    return ageTest;
   } else {
-    ageTest= false;
+    ageTest= true;
     let errorAgeMessage = document.getElementById('errorAgeMessage');
     errorAgeMessage.style.display = 'none';
+    return ageTest;
   }
 });
 // function to check the value of || NUMBER of TOURNAMENT INPUT ||
@@ -132,6 +136,7 @@ mainForm.quantity.addEventListener('change', function() {
     numberOfTournamentTest= true;
     let errorNbTournament = document.getElementById('errorNbOfTournamentMessage');
     errorNbTournament.style.display = 'none';
+    
   }
 });
 // function to check if one checkbox is checked in the value of || CITIES INPUT ||&&||CVG INPUT||
@@ -167,13 +172,35 @@ const cvgBtn = document.getElementById('checkbox1');
 cvgBtn.addEventListener('change', function() {
   let testResult = isChecked(cvgBtn);
   if (!testResult) {
-    cgvTest = false;
     let errorCvgMessage = document.getElementById('errorCvgMessage');
     errorCvgMessage.style.display = 'flex';
+    cgvTest = false;
+    return cgvTest;
   } else {
-    cgvTest = true;
     let errorCvgMessage = document.getElementById('errorCvgMessage');
     errorCvgMessage.style.display = 'none';
+    cgvTest = true;
+    return cgvTest;
   }
-})
-
+});
+// fucntion to listening all changes in the form 
+mainForm.addEventListener('change', function(){
+    submitBtn.addEventListener('click', function (){ 
+      if ( firstNameTest && lastNameTest && emailTest && ageTest && numberOfTournamentTest && citiesTest && cgvTest){
+           mainForm.style.display = 'none';
+           let formSendingMessage = document.getElementById('form-sending');
+            formSendingMessage.style.display = 'flex';
+            let closeBtnModal = document.getElementById('close-modal-btn');
+            closeBtnModal.addEventListener('click', function() {
+              modalbg.style.display = 'none';
+            });
+           return false; 
+      } else {
+            return false; 
+      }
+    })
+  })
+// setup validate() function 
+const validate = () => {
+  return false;
+}
