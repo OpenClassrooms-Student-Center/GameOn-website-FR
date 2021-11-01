@@ -34,7 +34,7 @@ var emailTest;
 var ageTest; 
 var numberOfTournamentTest; 
 var citiesTest;
-var cgvTest; 
+var cgvTest = true; 
 
 // --- > || FORM VALIDATION functions ||
 // checking function for ||FIRSTNAME INPUT && LASTNAME INPUT||
@@ -196,6 +196,9 @@ mainForm.addEventListener('change', function(){
             });
            return false; 
       } else {
+            let errorNumberOfTournament = document.getElementById("errorNbOfTournamentMessage");
+            errorNumberOfTournament.style.display = 'flex';
+            
             return false; 
       }
     })
