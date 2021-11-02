@@ -39,7 +39,7 @@ function closeModal() {
 
 // on recupère les id
 
-let erreur;
+
 const firstName=document.getElementById('first');
 const lastName=document.getElementById('last');
 const email=document.getElementById('email');
@@ -52,13 +52,17 @@ const location4=document.getElementById('location4');
 const location5=document.getElementById('location5');
 const location6=document.getElementById('location6');
 const checkbox1=document.getElementById('checkbox1');
-const checkbox2=document.getElementById('checkbox2'); //cg
+const checkbox2=document.getElementById('checkbox2');
+
+const modalForm=document.getElementById('form');
 
 // Validate - Function
 
 
 // submit
   document.getElementById('submit').addEventListener("submit", function(e){
+
+
 
 //regex (expression reguliere)
     let FirstLastRegex = new RegExp(
@@ -77,116 +81,177 @@ const checkbox2=document.getElementById('checkbox2'); //cg
 
 // erreur
 
+    let erreurFirstName = [
+      "veuillez renseigner votre prénom",
+      "un prénom doit contenir entre 2 et 40 caractères",
+      "un prenom ne doit contenir que des lettres"
+    ];
+    let erreurLastName = [
+      "veuillez renseigner votre nom",
+      "un nom doit contenir entre 2 et 40 caractères",
+      "un prenom ne doit contenir que des lettres"
+    ];
+    let erreurEmail = [
+      "veuillez renseigner une addresse mail",
+      "un email doit contenir ENTRE 3 ET 40 CARACTERES caractères",
+      "vous devez renseigné une addresse valide"
+    ];
+    let erreurBirthdate = [
+      "veuillez renseigner votre date de naissance",
+      "une date de naissance ne peut contenir que des chiffres",
+      "une date de naissance contient 8 chiffres"
+    ];
+    let erreurTournament = [
+      "Merci de renseigner le nombre de vos participation aux tournois",
+      "Nous n'avons pas organisé autant de tournois"
+
+    ];
+    let erreurLocation = [
+      "vous ne pouvez pas selectionner plusieurs localisation",
+      "vous n'avez pas choisi de localisation"
+    ];
+    let erreurCgd = [
+        "vous devez accepter les conditions"
+    ];
+
+    let erreurDefault = [
+        ""
+    ];
+
+
+
+
     if(checkbox1.checked === false){
 
-      erreur="vous devez accepter les conditions";
+      errorCgd=erreurCgd[0];
+    }
+    else {
+      errorCgd=erreurDefault[0];
     }
 
+    let locations = [location1, location2, location3, location4, location5, location6];
 
     var checkCount = 0;
-    if(location1.checked === true){
-      checkCount++;
-    }
-    if(location2.checked === true){
-      checkCount++;
+
+    for (let location of locations){
+      if (location.checked === true){
+        checkCount++;
+      }
     }
 
-    if(location3.checked === true){
-      checkCount++;
-    }
-    if(location4.checked === true){
-      checkCount++;
-    }
-    if(location5.checked === true){
-      checkCount++;
-    }
-    if(location6.checked === true){
-      checkCount++;
-    }
 
     if (checkCount>1){
-      erreur = "vous ne pouvez pas selectionner plusieurs localisation";
+      errorLocation = erreurLocation[0];
     } else if (checkCount<1){
-      erreur = "vous n'avez pas choisi de localisation";
-    } else {
-      erreur=" ";
+      errorLocation = erreurLocation[1];
+    } else{
+      errorLocation = erreurDefault[0];
     }
+
+
+
 
     if(!quantityTournament.value){
-      erreur ="Merci de renseigner le nombre de vos participation aux tournois";
+      errorTournament =erreurTournament[0];
     } else if(quantityTournament.value>99){
-      erreur ="Nous n'avons pas organisé autant de tournois";
+      errorTournament =erreurTournament[1];
+    }else{
+      errorTournament=erreurDefault[0];
     }
 
 
 
 
-    var birdthdateValidity = false;
+
     if (!birthdate.value){  // on verifie que le champs est different de "" (n'est pas vide)
-      erreur = "veuillez renseigner votre date de naissance";
+      errorBirthdate = erreurBirthdate[0];
     } else if (BirthdateRegex.test(birthdate.value) == false){
-      erreur="une date de naissance ne peut contenir que des chiffres";
+      errorBirthdate=erreurBirthdate[1];
     } else if (birthdate.value.length != 10){
-      erreur="une date de naissance contient 8 chiffres";
-    } else{
-      birdthdateValidity = true;
+      errorBirthdate=erreurBirthdate[2];
+    }else {
+      errorBirthdate =erreurDefault[0];
     }
 
 
 
-    var emailValidity = false;
+
     if (!email.value){
-      erreur = "veuillez renseigner une addresse mail";
+      errorEmail = erreurEmail[0];
     }
     else if(email.value.length > 41 || email.value.length <3 ){
-      erreur ="un email doit contenir ENTRE 3 ET 40 CARACTERES caractères";
+      errorEmail = erreurEmail[1];
     }
 
     else if (EmailRegex.test(email.value) == false) { //on test la validité des caractère avec la regex
-      erreur = "vous devez renseigné une addresse valide";
+      errorEmail = erreurEmail[2];
     }
-    else{
-      emailValidity = true;
+    else {
+      errorEmail = erreurDefault[0];
     }
 
 
 
-    var lastNameValidity = false;
+
+
     if (!lastName.value) {
-      erreur = "veuillez renseigner votre nom";
+      errorLastName = erreurLastName[0];
     } else if (lastName.value.length < 2 || lastName.value.length > 40) {
-      erreur = "un nom doit contenir entre 2 et 40 caractères";
+      errorLastName = erreurLastName[1];
 
     } else if (FirstLastRegex.test(lastName.value) == false) { //on test la validité des caractère avec la regex
-      erreur = "un nom ne doit contenir que des lettres";
+      errorLastName = erreurLastName[2];
     } else{
-      lastNameValidity = true;
+      errorLastName = erreurDefault[0];
     }
 
 
 
-      var FirstNameValidity = false;
+
       if (!firstName.value) {
         firstName.closest('.formData').dataset.error = "sss"; // on definit la propriété error de l'objet cutomisable dataset
         firstName.closest('.formData').dataset.errorVisible = 'true';
 
-        erreur = "veuillez renseigner votre prénom";
+        errorFirstName = erreurFirstName[0];
       } else if (firstName.value.length < 2 || firstName.value.length > 40) {
-        erreur = "un prénom doit contenir entre 2 et 40 caractères";
+        errorFirstName = erreurFirstName[1];
 
       } else if (FirstLastRegex.test(firstName.value) == false) { //on test la validité des caractère avec la regex
-        erreur = "un prenom ne doit contenir que des lettres";
+        errorFirstName = erreurFirstName[2];
       } else{
-        FirstNameValidity = true;
+        errorFirstName = erreurDefault[0];
       }
 
 
 
-    if (erreur) {
+    if (errorFirstName) {
       e.preventDefault();
-      document.getElementById("erreur").innerHTML = erreur;  // on ecrit le contenu de l'erreur dans le paragraphe qui a pour id "erreur"
+      document.getElementById("errorFirstName").innerHTML = errorFirstName;  // on ecrit le contenu de l'erreur dans le paragraphe
     }
-
+    if (errorLastName) {
+      e.preventDefault();
+      document.getElementById("errorLastName").innerHTML = errorLastName;
+    }
+    if (errorEmail) {
+      e.preventDefault();
+      document.getElementById("errorEmail").innerHTML = errorEmail;
+    }
+    if (errorBirthdate) {
+      e.preventDefault();
+      document.getElementById("errorBirthdate").innerHTML = errorBirthdate;
+    }
+    if (errorTournament) {
+      e.preventDefault();
+      document.getElementById("errorTournament").innerHTML = errorTournament;
+    }
+    if (errorLocation) {
+      e.preventDefault();
+      document.getElementById("errorLocation").innerHTML = errorLocation;
+    }
+    if (errorCgd) {
+      e.preventDefault();
+      document.getElementById("errorCgd").innerHTML = errorCgd;
+    }
 
   });
 
