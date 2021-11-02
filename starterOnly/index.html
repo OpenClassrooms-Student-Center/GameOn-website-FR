@@ -74,6 +74,7 @@
 
 
                 /><br>
+                <p style="color:darkred" id="errorFirstName"></p>
               </div>
               <div
                 class="formData">
@@ -84,6 +85,7 @@
                   id="last"
                   name="last"
                 /><br>
+                <p style="color:darkred" id="errorLastName"></p>
               </div>
               <div
                 class="formData">
@@ -93,8 +95,10 @@
                   type="email"
                   id="email"
                   name="email"
-                /><br>
+                />
+                <p style="color:darkred" id="errorEmail"></p><br>
               </div>
+
               <div
                 class="formData">
                 <label>Date de naissance</label><br>
@@ -104,12 +108,15 @@
                   id="birthdate"
                   name="birthdate"
                 /><br>
+                <p style="color:darkred" id="errorBirthdate"></p>
               </div>
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0">
+
               </div>
+              <p style="color:darkred" id="errorTournament"></p>
               <p class="text-label">Quelles villes ?</p>
               <div
                 class="formData">
@@ -180,6 +187,7 @@
                   Portland</label
                 >
               </div>
+              <p style="color:darkred" id="errorLocation"></p>
 
               <div
                 class="formData">
@@ -194,6 +202,7 @@
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
+                <p style="color:darkred" id="errorCgd"></p>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
