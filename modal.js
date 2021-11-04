@@ -198,3 +198,9 @@ function validate(event){
 
 // listening submit event on form element so function validate is run
 form.addEventListener("submit", validate);
+
+function ClearFields() {
+
+     document.getElementById("textfield1").value = "";
+     document.getElementById("textfield2").value = "";
+}

@@ -37,6 +37,7 @@ img {
   padding: 0 2vw;
   align-items: center;
   justify-content: space-between;
+  z-index: 1;
 }
 
 .header-logo {
@@ -123,7 +124,15 @@ img {
 
   .bground {
       position: absolute;
-      top: 78px;
+      top: 90px;
+  }
+
+  .content {
+    margin: auto!important;
+  }
+
+  .modal-body {
+    padding : 0!important;
   }
 }
 
@@ -193,29 +202,30 @@ main {
   position: fixed;
   z-index: 1;
   left: 0;
-  top: 0;
+  top: 90px;
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: #fff;
 }
 
 .content {
   margin: 5% auto;
-    width: 100%;
-    max-width: 500px;
-    height: 750px;
-    animation-name: modalopen;
-    animation-duration: var(--modal-duration);
-    background: #232323;
-    border-radius: 10px;
-    overflow: hidden;
-    position: relative;
-    color: #fff;
-    padding-top: 10px;
-    box-shadow: 0px 12px 12px rgb(0 0 0 / 25%);
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  height: 750px;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding: 10px 20px;
+  box-shadow: 0px 12px 12px rgb(0 0 0 / 25%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: center;
 }
 
 .modal-body {
