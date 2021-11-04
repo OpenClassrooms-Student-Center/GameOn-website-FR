@@ -32,6 +32,6 @@ Des messages d'erreur spécifiques doivent apparaître sous l'entrée qui n'est 
 **#4 Ajouter confirmation quand envoie réussi<br>**
 Après une validation réussie, inclure un message de confirmation de la soumission réussie pour l'utilisateur (ex. "Merci ! Votre réservation a été reçue.")<br>
 
-**#5Tests manuels**<br>
+**# 5Tests manuels**<br>
 Visualiser et tester l'interface utilisateur dans les dernières versions de Chrome et de Firefox, ainsi que dans les versions mobile et desktop. Corriger les erreurs d'affichage existantes.<br>
 Tester toutes les fonctionnalités des boutons et des entrées de formulaire (tester les valeurs correctes et incorrectes)<br>
