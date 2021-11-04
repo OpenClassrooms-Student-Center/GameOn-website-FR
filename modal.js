@@ -69,6 +69,8 @@ closeBtn.addEventListener("click", closeModal);
 function closeModal() {
   modalbg.style.display = "none";
   confirmationMsg.style.display = "none";
+  closeBtnRed.style.display = "none";
+  submitBtn.style.display = "block";
   form.style.display = "block";
   if(mediaQueryMobile.matches){
     heroSection.style.display = "block";
