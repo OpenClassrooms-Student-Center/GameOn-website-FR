@@ -204,10 +204,4 @@ form.addEventListener("submit", validate);
 
 function ClearFields() {
   document.getElementBy("reserve").reset();
-
-  
-  confirmationMsg.style.height = 0;
-
-  modalbg.style.display = "block";
-
 }
