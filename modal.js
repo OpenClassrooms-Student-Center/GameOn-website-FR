@@ -56,6 +56,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  document.getElementById("reserve").reset();
   // if mobile screen, heroSection doesn't appear
   if(mediaQueryMobile.matches){
     heroSection.style.display = "none";
@@ -67,9 +68,13 @@ closeBtn.addEventListener("click", closeModal);
 // close modal form
 function closeModal() {
   modalbg.style.display = "none";
+  confirmationMsg.style.display = "none";
+  form.style.display = "block";
   if(mediaQueryMobile.matches){
     heroSection.style.display = "block";
+
   }
+  document.getElementById("reserve").reset();
 }
 
 // button close and confirmation message not displayed
@@ -200,8 +205,6 @@ function validate(event){
 form.addEventListener("submit", validate);
 
 // reset form when submit or close
-
-
-function ClearFields() {
+function resetfield() {
   document.getElementBy("reserve").reset();
 }
