@@ -198,3 +198,16 @@ function validate(event){
 
 // listening submit event on form element so function validate is run
 form.addEventListener("submit", validate);
+
+// reset form when submit or close
+
+
+function ClearFields() {
+  document.getElementBy("reserve").reset();
+
+  
+  confirmationMsg.style.height = 0;
+
+  modalbg.style.display = "block";
+
+}
