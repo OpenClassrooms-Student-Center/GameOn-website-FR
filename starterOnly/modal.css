@@ -255,7 +255,8 @@ input {
 .location-error,
 .quantity-error,
 .date-error,
-.conditions-error {
+.conditions-error,
+.submit-error {
   display: none;
 }
 

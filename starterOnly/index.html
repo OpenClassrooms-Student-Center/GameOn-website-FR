@@ -55,7 +55,7 @@
       <div class="content">
         <span class="close"></span>
         <div class="modal-body">
-          <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
+          <form id="formReserve" name="reserve" action="index.html" method="get" onsubmit="return validate();">
 
             <div class="formData">
               <label for="first">Prénom</label><br>
@@ -127,7 +127,9 @@
               </label>
               <br>
             </div>
-            <input class="btn-submit button" type="submit" value="C'est parti" />
+            <p class="submit-error error-msn">Vous devez vérifier que prénom, nom, email et date de naissance soient
+              rempli.</p>
+            <input id="submitButton" class="btn-submit button" type="submit" value="C'est parti" />
           </form>
         </div>
       </div>
