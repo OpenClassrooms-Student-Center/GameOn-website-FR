@@ -375,7 +375,8 @@ input[data-error]::after {
 }
 
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-close {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -528,6 +529,31 @@ input[data-error]::after {
   display: block;
   padding: 0;
 }
+
+/* modal thank you  */
+.thankyou {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 8%;
+  /* margin: 15px auto; */
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+.thankyou__text {
+  padding: 206px 0;
+
+}
+
+.thankyou__text p {
+  align-self: flex-end;
+  text-align: center;
+  font-size: 2rem;
+
+
+}
+
 
 .copyrights {
   color: #fe142f;

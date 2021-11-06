@@ -74,12 +74,15 @@
             </div>
             <div class="formData">
               <label for="birthdate">Date de naissance</label><br>
-              <input class="text-control" type="date" id="birthdate" name="birthdate" required /><br>
+              <input class="text-control" type="date" id="birthdate" name="birthdate" placeholder="dd-mm-yyyy"
+                maxlength="10" required /><br>
+
+
               <p class="date-error error-msn">Vous devez entrer votre date de naissance.</p>
             </div>
             <div class="formData">
               <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-              <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" value="0">
+              <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" value="1">
               <p class="quantity-error error-msn">Veuillez entrer combien de tournois.</p>
             </div>
             <p class="text-label">Quelles villes ?</p>
@@ -131,6 +134,18 @@
               rempli.</p>
             <input id="submitButton" class="btn-submit button" type="submit" value="C'est parti" />
           </form>
+          <div class="thankyou">
+            <div class="thankyou__text">
+              <p>Merci!</p>
+              <p> Votre réservation<br /> a été reçue.</p>
+            </div>
+
+            <button class="btn-close modal-btn">
+              Fermer
+            </button>
+          </div>
+
+
         </div>
       </div>
     </div>
