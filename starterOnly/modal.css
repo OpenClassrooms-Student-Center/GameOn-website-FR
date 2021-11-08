@@ -2,6 +2,7 @@
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
   --modal-duration: 0.8s;
+  --margin-labels: 11px 0 8px;
 }
 
 * {
@@ -33,7 +34,6 @@ img {
 }
 
 .topnav {
-  overflow: hidden;
   margin: 3.5%;
 }
 
@@ -43,7 +43,9 @@ img {
 
 .main-navbar {
   float: right;
+
 }
+
 
 .topnav a {
   float: left;
@@ -67,32 +69,80 @@ img {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
+  position: relative;
+}
+
+.topnav a.active::after {
+  content: "";
+  position: absolute;
+  width: 80%;
+  height: 1px;
+  background-color: #fff;
+  top: 80%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
 }
 
 .topnav .icon {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1160px) {
+  .topnav {
+    height: 60px;
+  }
+
+
   .topnav a {
     display: none;
+  }
+
+  .topnav a.active::after {
+    content: "";
+    position: absolute;
+    width: 30%;
+    height: 1px;
+    background-color: #fff;
+    top: 80%;
+    left: 8%;
+    transform: translateX(-8%);
+    z-index: 1;
   }
 
   .topnav a.icon {
     float: right;
     display: block;
+    color: #fe142f;
+  }
+
+  .topnav a.icon:hover {
+    color: #fff;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1160px) {
+  .main-navbar {
+    background-color: white
+  }
+
+
   .topnav.responsive {
     position: relative;
+  }
+
+  .topnav.responsive .main-navbar {
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 100;
   }
 
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
     top: 0;
+    color: white;
   }
 
   .topnav.responsive a {
@@ -105,6 +155,23 @@ img {
 
 
 @media screen and (max-width: 540px) {
+
+  .topnav {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .topnav img {
+    width: 180px;
+    margin-left: 5px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+
   .topnav a {
     display: none;
   }
@@ -112,7 +179,6 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
 }
 
@@ -208,13 +274,15 @@ label {
   font-size: 17px;
   font-weight: normal;
   display: inline-block;
-  margin-bottom: 11px;
+  margin: var(--margin-labels);
 }
 
 input {
   padding: 8px;
   border: 0.8px solid #ccc;
   outline: none;
+  font-family: Roboto, sans-serif;
+
 }
 
 .text-control {
@@ -224,6 +292,7 @@ input {
   border-radius: 8px;
   font-size: 20px;
   height: 48px;
+
 }
 
 .formData[data-error]::after {
@@ -459,7 +528,8 @@ input[data-error]::after {
 /* custom select end */
 .text-label {
   font-weight: normal;
-  font-size: 16px;
+  font-size: 17px;
+  margin: var(--margin-labels);
 }
 
 .hero-section {
@@ -479,7 +549,8 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
+  min-width: 300px;
+
 }
 
 .hero-content::after {
@@ -528,6 +599,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 
 /* modal thank you  */
@@ -536,7 +608,7 @@ input[data-error]::after {
   flex-direction: column;
   padding: 20px 8%;
   /* margin: 15px auto; */
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -547,6 +619,7 @@ input[data-error]::after {
 }
 
 .thankyou__text p {
+
   align-self: flex-end;
   text-align: center;
   font-size: 2rem;
@@ -573,7 +646,20 @@ footer {
   margin: 0 20px;
 }
 
+@media screen and (max-width: 980px) {
+  .hero-headline {
+    font-size: 4.5rem;
+  }
+}
+
 @media screen and (max-width: 800px) {
+
+  main {
+    margin: 1px 10px 15px;
+    border-radius: 0;
+
+  }
+
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -582,8 +668,9 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0;
   }
+
 
   .hero-content::after {
     content: unset;
@@ -594,7 +681,6 @@ footer {
   }
 
   .hero-headline {
-    font-size: 4.5rem;
     white-space: normal;
   }
 
@@ -617,6 +703,18 @@ footer {
   .copyrights {
     margin-top: 50px;
     text-align: center;
+  }
+}
+
+@media screen and (max-width:540px) {
+  .hero-headline {
+    font-size: 3rem;
+
+  }
+
+  .hero-text {
+    margin-top: 30px;
+    font-size: 1.2rem;
   }
 }
 

@@ -173,74 +173,7 @@ function fillForm() {
   quantityNbr.addEventListener("change", (e) => {
     locationErrorMsg.style.display = "none";
     submitBtn.removeAttribute("disabled");
-    // if (quantityNbr.value > 0) {
-    //   let j = 0;
-    //   for (i = 0; i < radioBtns.length; i++) {
-    //     if (!radioBtns[i].checked) {
-    //       j++;
-    //       if (j < radioBtns.length) {
-    //         quantityErrorMsg.style.display = "none";
-    //         locationErrorMsg.style.display = "inline";
-    //         submitBtn.setAttribute("disabled");
-    //       } else {
-    //         locationErrorMsg.style.display = "none";
-    //         quantityErrorMsg.style.display = "none";
-    //         submitBtn.removeAttribute("disabled");
-    //       }
-    //     }
-
-    //     if (radioBtns[i].checked) {
-    //       j++;
-    //       if (j < radioBtns.length) {
-    //         quantityErrorMsg.style.display = "none";
-    //         locationErrorMsg.style.display = "none";
-    //         submitBtn.removeAttribute("disabled");
-    //       } else {
-    //         locationErrorMsg.style.display = "none";
-    //         quantityErrorMsg.style.display = "none";
-    //         submitBtn.removeAttribute("disabled");
-    //       }
-    //     }
-    //   }
-    // } else if (quantityNbr.value == 0) {
-    //   for (i = 0; i < radioBtns.length; i++) {
-    //     if (radioBtns[i].checked) {
-    //       radioBtns[i].checked = false;
-    //     }
-    //   }
-    // } else {
-    //   locationErrorMsg.style.display = "none";
-    //   submitBtn.removeAttribute("disabled");
-    // }
   });
-
-  // for (var i = 0; i < radioBtns.length; i++) {
-  //   radioBtns[i].addEventListener("change", displayCheck);
-  // }
-
-  // function displayCheck(e) {
-  //   if (e.target.checked) {
-  //     if (quantityNbr.value > 0) {
-  //       quantityErrorMsg.style.display = "none";
-  //       locationErrorMsg.style.display = "none";
-  //       submitBtn.setAttribute("disabled");
-  //     } else {
-  //       quantityErrorMsg.style.display = "inline";
-  //       locationErrorMsg.style.display = "none";
-  //       submitBtn.removeAttribute("disabled");
-  //     }
-  //   } else {
-  //     if (quantityNbr.value === 0) {
-  //       quantityErrorMsg.style.display = "none";
-  //       locationErrorMsg.style.display = "inline";
-  //       submitBtn.setAttribute("disabled");
-  //     } else {
-  //       quantityErrorMsg.style.display = "none";
-  //       locationErrorMsg.style.display = "none";
-  //       submitBtn.removeAttribute("disabled");
-  //     }
-  //   }
-  // }
 
   //checking conditions
   conditionAccept.addEventListener("change", (e) => {
