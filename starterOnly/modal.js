@@ -209,7 +209,6 @@ const modalForm=document.getElementById('form');
 
 
       if (!firstName.value) {
-        firstName.closest('.formData').dataset.error = "sss"; // on definit la propriété error de l'objet cutomisable dataset
         firstName.closest('.formData').dataset.errorVisible = 'true';
 
         errorFirstName = erreurFirstName[0];
@@ -227,33 +226,71 @@ const modalForm=document.getElementById('form');
     if (errorFirstName) {
       e.preventDefault();
       document.getElementById("errorFirstName").innerHTML = errorFirstName;  // on ecrit le contenu de l'erreur dans le paragraphe
+    }else{
+     document.getElementById("errorFirstName").innerHTML = errorFirstName;
     }
+
+
     if (errorLastName) {
       e.preventDefault();
       document.getElementById("errorLastName").innerHTML = errorLastName;
+    }else{
+      document.getElementById("errorLastName").innerHTML = errorLastName;
     }
+
     if (errorEmail) {
       e.preventDefault();
       document.getElementById("errorEmail").innerHTML = errorEmail;
+    }else{
+      document.getElementById("errorEmail").innerHTML = errorEmail;
     }
+
+
     if (errorBirthdate) {
       e.preventDefault();
       document.getElementById("errorBirthdate").innerHTML = errorBirthdate;
+    }else{
+      document.getElementById("errorBirthdate").innerHTML = errorBirthdate;
     }
+
+
     if (errorTournament) {
       e.preventDefault();
       document.getElementById("errorTournament").innerHTML = errorTournament;
+    } else{
+      document.getElementById("errorTournament").innerHTML = errorTournament;
     }
+
+
     if (errorLocation) {
       e.preventDefault();
       document.getElementById("errorLocation").innerHTML = errorLocation;
+    } else {
+      document.getElementById("errorLocation").innerHTML = errorLocation;
     }
+
+
     if (errorCgd) {
       e.preventDefault();
       document.getElementById("errorCgd").innerHTML = errorCgd;
+    } else {
+      document.getElementById("errorCgd").innerHTML = errorCgd;
+    }
+
+    /* on suprime l'interieur du formulaire pour le remplacer par un message*/
+
+    if ((errorCgd == erreurDefault[0]) && (errorEmail == erreurDefault[0]) && (errorTournament == erreurDefault[0]) && (errorLocation == erreurDefault[0]) && (errorBirthdate == erreurDefault[0]) && (errorLastName == erreurDefault[0]) && (errorFirstName == erreurDefault[0])) {
+      e.preventDefault();
+
+      let message = "<p>Merci pour votre inscription<p>";
+
+      document.querySelector('#submit').innerHTML = message;
+
     }
 
   });
+
+
 
 
 
