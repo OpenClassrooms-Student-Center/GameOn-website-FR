@@ -1,18 +1,16 @@
-:root 
-{
+:root {
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
   --modal-duration: 0.8s;
 }
-* 
-{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 /* Landing Page */
-body 
-{
+
+body {
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -21,17 +19,17 @@ body
   max-width: 1500px;
   margin: 0 auto;
 }
-p 
-{
+
+p {
   margin-bottom: 0;
   padding: 0.5vw;
 }
-img 
-{
+
+img {
   padding-right: 1rem;
 }
-.topnav 
-{
+
+.topnav {
   overflow: hidden;
   margin: 20px;
   display: flex;
@@ -40,8 +38,7 @@ img
   padding-left: 2vw;
   padding-right: 2vw;
 }
-.topnav a 
-{
+.topnav a {
   color: black;
   text-align: center;
   padding: 12px 12px;
@@ -50,76 +47,63 @@ img
   font-size: 20px;
   font-family: Roboto, sans-serif;
 }
-.topnav a:hover 
-{
+
+.topnav a:hover {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
 }
-.topnav a.active 
-{
+
+.topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
 }
-.topnav .icon, .topnav.responsive .icon 
-{
+
+.topnav .icon, .topnav.responsive .icon {
   display: none;
 }
-.main-navbar 
-{
+
+.main-navbar {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: flex-start;
 }
-@media screen and (max-width: 1160px) 
-{
-.main-navbar 
-{
+@media screen and (max-width: 1160px) {
+.main-navbar {
   max-width: 500px;
 }
-.header-logo img
-{
+.header-logo img{
   max-width: 220px;
 }
 }
-@media screen and (max-width: 800px) 
-{
-  .main-navbar 
-  {
+@media screen and (max-width: 800px) {
+  .main-navbar {
     padding-right: 5px;
   }
-  .topnav
-  {
+  .topnav{
     align-items: flex-start;
   }
-  .topnav a {display: none;
-  }
-  .topnav a.icon 
-  {
+  .topnav a {display: none;}
+  .topnav a.icon {
     display: flex;
     color: red;
     padding: 4px;
     font-size: 20px;
   }
-  .topnav a.icon:hover 
-  {
+  .topnav a.icon:hover {
     display: flex;
     color: white;
     background-color: red;
   }
-  .topnav.responsive .icon 
-  {
+  .topnav.responsive .icon {
     display: flex;
   }
 }
-  .topnav.responsive 
-  {
-    position: relative;
-  }
-  .topnav.responsive .icon 
-  {
+
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
     position: absolute;
     right: 0;
     top: 0;
@@ -131,6 +115,8 @@ img
     text-align: right;
     margin-right: 15px;
   }
+
+
  @media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
@@ -140,6 +126,7 @@ img
     max-width: 190px;
   }
 } 
+
 main {
   font-size: 130%;
   font-weight: bolder;
@@ -151,6 +138,7 @@ main {
   border-radius: 2rem;
   text-align: justify;
 }
+
 .modal-btn {
   font-size: 145%;
   background: #fe142f;
@@ -162,15 +150,19 @@ main {
   border-radius: 1rem;
   cursor: pointer;
 }
+
 .btn-signup:hover {
   background: #3876ac;
 }
+
 .footer {
   margin: 20px;
   padding: 10px;
   font-family: var(--font-slab);
 }
+
 /* Modal form */
+
 .button {
   background: #fe142f;
   margin-top: 0.5em;
@@ -180,12 +172,15 @@ main {
   cursor: pointer;
   font-size: 16px;
 }
+
 .btn-submit:hover {
   background: #3876ac;
 }
+
 .smFont {
   font-size: 16px;
 }
+
 .bground {
   display: none;
   position: fixed;
@@ -197,6 +192,7 @@ main {
   overflow: auto;
   background-color: white;
 }
+
 .content {
   margin: 10% auto;
   width: 100%;
@@ -211,10 +207,12 @@ main {
   padding-top: 10px;
   box-shadow: darkgray 5px 10px 15px;
 }
+
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
 }
+
 label {
   font-family: var(--font-default);
   font-size: 17px;
@@ -235,8 +233,7 @@ input {
   font-size: 20px;
   height: 48px;
 }
-.formData[data-error]::after 
-{
+.formData[data-error]::after {
   content: attr(data-error);
   font-size: 12px;
   color: #e54858;
@@ -248,19 +245,12 @@ input {
   opacity: 0;
   transition: 0.3s;
 }
-.formData[data-error-invalid-visible="true"]::after
-{
+.formData[data-error-invalid-visible="true"]::after{
   content:attr(data-error);
   opacity: 1;
 }
-.formData[data-error-jeune]::after
-{
-  content: attr(data-error-jeune);
-  opacity: 1;
-}
 
-.formData[data-error-jeune-visible="true"]::after
-{
+.formData[data-error-jeune-visible="true"]::after{
   content: attr(data-error-jeune);
   opacity: 1;
 }
@@ -386,6 +376,7 @@ input[data-error]::after {
 .validation_email{
   font-size: 18px; 
 }
+
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -393,12 +384,14 @@ input[data-error]::after {
   font-size: 1.1rem;
   font-weight: normal;
 }
+
 .custom-select select {
   display: none;
 }
 .select-selected {
   background-color: #fff;
 }
+
 /* Style the arrow inside the select element: */
 .select-selected:after {
   position: absolute;
@@ -413,11 +406,13 @@ input[data-error]::after {
   transform: rotate(-48deg);
   border-radius: 5px 0 5px 0;
 }
+
 /* Point the arrow upwards when the select box is open (active): */
 .select-selected.select-arrow-active:after {
   transform: rotate(135deg);
   top: 13px;
 }
+
 .select-items div,
 .select-selected {
   color: #000;
@@ -428,6 +423,7 @@ input[data-error]::after {
   border-radius: 8px;
   height: 48px;
 }
+
 /* Style items (options): */
 .select-items {
   position: absolute;
@@ -437,6 +433,7 @@ input[data-error]::after {
   right: 0;
   z-index: 99;
 }
+
 /* Hide the items when the select box is closed: */
 .select-hide {
   display: none;
@@ -550,6 +547,7 @@ footer {
   content: unset;
 }
 }
+
 @media screen and (max-width: 800px) {
   .bground{
     background-color: transparent;
@@ -595,6 +593,7 @@ footer {
     text-align: center;
   }
 }
+
 @media screen and (max-width: 667px) {
 .hero-text{
   font-size: 1.2rem;
@@ -608,25 +607,22 @@ footer {
 .hero-content{
   min-width: 0;
 }
-.hero-text
-{
+.hero-text{
   font-size: 1.2rem;
 }
 }
-@keyframes modalopen 
-{
-  from 
-  {
+
+@keyframes modalopen {
+  from {
     opacity: 0;
     transform: translateY(-150px);
   }
-  to 
-  {
+  to {
     opacity: 1;
   }
 }
-.submit_merci
-{
+
+.submit_merci{
   display: none;
   width: 100%;
   max-width: 500px;
@@ -640,22 +636,18 @@ footer {
   margin: 15% auto;
   padding: 15px;
 }
-.merci
-{
+.merci{
   font-size: 1.3rem;
   margin: 40px auto;
 }
-.validation_soumission
-{
+.validation_soumission{
   margin: 30% 5%;
   font-size: 1.6rem;
   color: white;
 }
-.backModal
-{
+.backModal{
   display: none;
 }
 .visibleModal{
   display: block;
-} 
-
+}
