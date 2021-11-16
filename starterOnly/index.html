@@ -60,8 +60,9 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+              onsubmit="return false;"
             >
+            <!--onsubmit之前是onsubmit="return validate();-->
               <div
                 class="formData">
                 <label>Prénom</label><br>
@@ -201,6 +202,7 @@
               </div>
               <input
                 class="btn-submit"
+                id="submitButton"
                 type="submit"
                 class="button"
                 value="C'est parti"
