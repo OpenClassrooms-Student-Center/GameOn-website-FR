@@ -35,10 +35,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -69,7 +69,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
@@ -77,7 +79,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -90,16 +94,16 @@ img {
   }
 }
 
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
     margin-top: -15px;
   }
-} 
+}
 
 main {
   font-size: 130%;
@@ -111,8 +115,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -233,6 +235,7 @@ input[data-error]::after {
     color: red;
 } */
 .checkbox-label,
+.checkbox1-label,
 .checkbox2-label {
   position: relative;
   margin-left: 36px;
@@ -240,6 +243,7 @@ input[data-error]::after {
   font-weight: normal;
 }
 .checkbox-label .checkbox-icon,
+.checkbox1-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
   display: block;
   width: 20px;
@@ -254,6 +258,7 @@ input[data-error]::after {
   transition: 0.3s;
 }
 .checkbox-label .checkbox-icon::after,
+.checkbox1-label .checkbox-icon::after,
 .checkbox2-label .checkbox-icon::after {
   content: "";
   width: 13px;
@@ -272,19 +277,23 @@ input[data-error]::after {
 .checkbox-input {
   display: none;
 }
-.checkbox-input:checked + .checkbox-label .checkbox-icon::after,
+.checkbox-input:checked + .checkbox1-label .checkbox-icon::after,
 .checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
   opacity: 1;
 }
+.checkbox-input:checked + .checkbox-label .checkbox-icon,
+.checkbox-input:checked + .checkbox1-label .checkbox-icon,
 .checkbox-input:checked + .checkbox2-label .checkbox-icon {
   background: #279e7a;
 }
-.checkbox2-label .checkbox-icon {
+.checkbox2-label .checkbox-icon,
+.checkbox1-label .checkbox-icon {
   border-radius: 4px;
   border: 0;
   background: #c4c4c4;
 }
-.checkbox2-label .checkbox-icon::after {
+.checkbox2-label .checkbox-icon::after,
+.checkbox1-label .checkbox-icon::after {
   width: 7px;
   height: 4px;
   border-radius: 2px;
@@ -527,3 +536,12 @@ footer {
   }
 }
 
+#errorFirstName,
+#errorLastName,
+#errorEmailAddress,
+#errorBirthDate,
+#ErrorOption,
+#ErrorCondition {
+  font-size: 0.7rem;
+  color: red;
+}
