@@ -37,6 +37,10 @@ img {
 .header-logo {
   float: left;
 }
+
+.header-logo img {
+  width: 10rem;
+}
 .main-navbar {
   float: right;
 }
@@ -66,43 +70,6 @@ img {
 
 .topnav .icon {
   display: none;
-}
-
-@media screen and (max-width: 768px) {
-  .topnav a {
-    display: none;
-  }
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .topnav.responsive {
-    position: relative;
-  }
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
-@media screen and (max-width: 540px) {
-  .topnav a {
-    display: none;
-  }
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
 }
 
 main {
@@ -487,44 +454,6 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
-  .hero-section {
-    display: block;
-    box-shadow: unset;
-  }
-  .hero-content {
-    background: #fff;
-    color: #000;
-    padding: 20px;
-  }
-  .hero-content::after {
-    content: unset;
-  }
-  .hero-content .btn-signup {
-    display: none;
-  }
-  .hero-headline {
-    font-size: 4.5rem;
-    white-space: normal;
-  }
-  .hero-text {
-    width: unset;
-    font-size: 1.5rem;
-  }
-  .hero-img img {
-    border-radius: 10px;
-    margin-top: 40px;
-  }
-  .hero-section > .btn-signup {
-    display: block;
-    margin: 32px auto 10px;
-    padding: 12px 35px;
-  }
-  .copyrights {
-    margin-top: 50px;
-    text-align: center;
-  }
-}
 
 @keyframes modalopen {
   from {
@@ -544,4 +473,166 @@ footer {
 #ErrorCondition {
   font-size: 0.7rem;
   color: red;
+}
+
+@media screen and (max-width: 800px) {
+  .main-navbar {
+    margin: 1rem auto;
+  }
+  .main-navbar a {
+    font-size: 1rem;
+  }
+  .hero-section {
+    display: block;
+    box-shadow: unset;
+  }
+  .hero-content {
+    background: #fff;
+    color: #000;
+    padding: 20px;
+  }
+  .hero-content::after {
+    content: unset;
+  }
+  .hero-content .btn-signup {
+    display: none;
+  }
+  .hero-headline {
+    font-size: 3.5rem;
+    white-space: normal;
+  }
+  .hero-text {
+    width: unset;
+    font-size: 1.5rem;
+    text-align: justify;
+  }
+  .hero-img img {
+    border-radius: 10px;
+    margin-top: 40px;
+  }
+  .hero-section > .btn-signup {
+    display: block;
+    margin: 32px auto 10px;
+    padding: 12px 35px;
+  }
+  .copyrights {
+    margin-top: 50px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hero-headline {
+    font-size: 3rem;
+    white-space: normal;
+  }
+  .hero-text {
+    font-size: 1.2rem;
+  }
+  .topnav a {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+    font-size: 3rem;
+    padding: 0;
+  }
+  .header-logo img {
+    padding: 2rem;
+    width: 20rem;
+  }
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .hero-headline {
+    font-size: 2.8rem;
+  }
+  .header-logo img {
+    padding: 0rem;
+    width: 15rem;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .hero-headline {
+    font-size: 2.5rem;
+  }
+  .hero-text {
+    width: 90%;
+    font-size: 1.2rem;
+  }
+  .topnav a {
+    display: none;
+  }
+  .topnav a.icon {
+    font-size: 2.5rem;
+  }
+  .header-logo img {
+    padding: 0.5rem;
+    width: 13rem;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .hero-headline {
+    font-size: 2rem;
+  }
+  .hero-text {
+    width: 80%;
+    font-size: 1rem;
+  }
+  .topnav a.icon {
+    font-size: 2rem;
+  }
+  .header-logo img {
+    padding: 0.5rem 1.5rem;
+    width: 10rem;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .hero-headline {
+    font-size: 2rem;
+  }
+  .hero-text {
+    width: 70%;
+    margin-top: 30px;
+    padding: 0;
+    font-size: 1rem;
+  }
+  .header-logo img {
+    padding: 0.5rem 1.5rem;
+    width: 10rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .hero-headline {
+    font-size: 1.5rem;
+  }
+  .hero-text {
+    width: 60%;
+    font-size: 1rem;
+  }
+  .topnav a.icon {
+    font-size: 1rem;
+  }
+  .header-logo img {
+    padding: 1rem;
+    width: 8rem;
+  }
 }
