@@ -67,7 +67,6 @@ const onSubmit = function(){
     errorBirthDate.innerHTML = "Vous devez entrer votre date de naissance.";
   }
 }
-
 formData.addEventListener("submit", onSubmit);
 firstNameInput.addEventListener("submit", onSubmit);
 lastNameInput.addEventListener("submit", onSubmit);
