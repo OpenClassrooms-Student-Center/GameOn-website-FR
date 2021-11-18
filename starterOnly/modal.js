@@ -68,6 +68,13 @@ const onSubmit = function(){
   }
 }
 
+formData.addEventListener("submit", onSubmit);
+firstNameInput.addEventListener("submit", onSubmit);
+lastNameInput.addEventListener("submit", onSubmit);
+emailAddressInput.addEventListener("submit", onSubmit);
+birthDateInput.addEventListener("submit", onSubmit);
+submitButton.addEventListener("click", onSubmit); 
+
  //city option:
  function isChecked(){
   for(let i=0;i<checkBoxInput.length;i++){
@@ -88,9 +95,3 @@ const onSubmit = function(){
 }
 
 
-formData.addEventListener("submit", onSubmit);
-firstNameInput.addEventListener("submit", onSubmit);
-lastNameInput.addEventListener("submit", onSubmit);
-emailAddressInput.addEventListener("submit", onSubmit);
-birthDateInput.addEventListener("submit", onSubmit);
-submitButton.addEventListener("click", onSubmit); 
