@@ -108,14 +108,15 @@
                 /><br>
                 <span id="errorBirthDate"></span>
               </div>
-              <div
-                class="formData">
+              <div class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
+
+              
               <p class="text-label">Quelles villes ?</p>
-              <div
-                class="formData">
+
+              <form class="formData">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -183,10 +184,10 @@
                   Portland</label
                 ><br>
                 <span id=ErrorOption></span>
-              </div>
+                </form>
 
-              <div
-                class="formData">
+
+              <form class="formData">
                 <input class="checkbox-input" type="checkbox" id="checkbox1"/>
                 <label class="checkbox1-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
@@ -201,13 +202,14 @@
                 </label>
                 <br>
                 <span id="ErrorCondition"></span>
-              </div>
+              </form>
               <input
                 class="btn-submit"
                 id="submitButton"
                 type="submit"
                 class="button"
                 value="C'est parti"
+                onclick="isChecked()"
               />
             </form>
           </div>
