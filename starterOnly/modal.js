@@ -78,7 +78,6 @@ const onSubmit = function(){
       ErrorOption.innerHTML="Vous devez choisir une ville."
 }
   }
-
  //terms & condition option: 
   if(checkCondition.checked){
     ErrorCondition.innerHTML="";

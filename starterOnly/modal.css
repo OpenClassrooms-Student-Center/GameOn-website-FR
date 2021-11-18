@@ -562,8 +562,22 @@ footer {
     font-size: 2.8rem;
   }
   .header-logo img {
-    padding: 0rem;
+    margin: 0.5rem 0;
     width: 15rem;
+  }
+}
+
+@media screen and (max-width: 462px) {
+  .hero-headline {
+    font-size: 2.6rem;
+  }
+  .hero-text {
+    width: 90%;
+    font-size: 1rem;
+  }
+  .header-logo img {
+    padding: 1.5rem;
+    width: 14rem;
   }
 }
 
@@ -572,7 +586,7 @@ footer {
     font-size: 2.5rem;
   }
   .hero-text {
-    width: 90%;
+    width: 85%;
     font-size: 1.2rem;
   }
   .topnav a {
@@ -582,7 +596,7 @@ footer {
     font-size: 2.5rem;
   }
   .header-logo img {
-    padding: 0.5rem;
+    margin: 0.5rem;
     width: 13rem;
   }
 }
@@ -620,9 +634,23 @@ footer {
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 342px) {
   .hero-headline {
     font-size: 1.5rem;
+  }
+  .hero-text {
+    width: 65%;
+    font-size: 1rem;
+  }
+  .header-logo img {
+    padding: 1.5rem;
+    width: 10rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .hero-headline {
+    font-size: 1.2rem;
   }
   .hero-text {
     width: 60%;
