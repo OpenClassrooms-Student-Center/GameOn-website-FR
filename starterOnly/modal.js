@@ -1,3 +1,5 @@
+/* *************************lien du site https://yayarivas.github.io/GameOn-website-FR/starterOnly/ ************* */
+
 /* ********************************* DOM ELEMENTS ************************************ */
 /**
  * Tous les boutons d'ouverture de la modal
