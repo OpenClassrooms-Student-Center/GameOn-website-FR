@@ -1,347 +1,478 @@
-function editNav() {
-  let x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-
-// DOM Elements
-const modalBg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
-const modalClose = document.querySelector(".content > span");
-const hideHeroSection = document.querySelector(".hero-section");
-const hideFooter = document.querySelector("footer");
-const hideTopnav = document.querySelector(".topnav");
-
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-// launch modal form
-function launchModal() {
-  modalBg.classList.add("visibleModal");
-  hideHeroSection.classList.add("backModal");
-  hideFooter.classList.add("backModal");
-};
-
-// close modal form
-modalClose.addEventListener("click", closeModal); 
-  
-function closeModal() {
-  modalBg.classList.remove("visibleModal");
-  hideFooter.classList.remove("backModal");
-  hideHeroSection.classList.remove("backModal");
-};
-
-//********* validation firstname ************
-//getting field firstname
-const textFirstname = document.getElementById("first");
-//getting its parent 'formData'
-const parentFirst = textFirstname.parentElement;
-
-//listening to a change from the field firstname
-textFirstname.addEventListener("input", function() {
-  validateFirstname(this);
-});
-
-function validateFirstname(textFirstname) {
-  //regex creation
-  const regexFirstname = /^[a-zA-ZÀ-ÿ-]{2,}/g;
-  //regex test on the field firstname
-  const validFirstname = regexFirstname.test(textFirstname.value);
-  if(textFirstname.value === ""){
-    textFirstname.setAttribute("data-error-visible", true);
-    parentFirst.removeAttribute("data-error-invalid-visible");
-    parentFirst.setAttribute("data-error-empty", true);
-    return false;
-  }
-  if(validFirstname === false) {
-    textFirstname.setAttribute("data-error-visible", true);
-    parentFirst.setAttribute("data-error-invalid-visible", true);
-    parentFirst.removeAttribute("data-error-empty");
-    return false;
-  }else {
-    textFirstname.removeAttribute("data-error-visible");
-    parentFirst.removeAttribute("data-error-invalid-visible");
-    parentFirst.removeAttribute("data-error-empty");
-    return true;
-  }
-};
-
-//********* validation lastname ************
-//getting field lastname
-const textLastname = document.getElementById("last");
-//getting its parent 'formData'
-const parentLast = textLastname.parentElement;
-
-//listening to a change from the field Lastname
-textLastname.addEventListener("input", function() {
-  validateLastname(this);
-});
-
-function validateLastname(textLastname) {
-  //regex creation
-  const regexLastname = /^[a-zA-ZÀ-ÿ-]{2,}/g;
-  //regex test on the field Lastname
-  const validLastname = regexLastname.test(textLastname.value);
-
-  if(textLastname.value === ""){
-    textLastname.setAttribute("data-error-visible", true);
-    parentLast.removeAttribute("data-error-invalid-visible");
-    parentLast.setAttribute("data-error-empty", true);
-    return false;
-  }
-  if(validLastname === false) {
-    textLastname.setAttribute("data-error-visible", true);
-    parentLast.removeAttribute("data-error-empty");
-    parentLast.setAttribute("data-error-invalid-visible", true);
-    return false;
-  }else {
-    textLastname.removeAttribute("data-error-visible");
-    parentLast.removeAttribute("data-error-empty");
-    parentLast.removeAttribute("data-error-invalid-visible");
-    return true;
-  }
-};
-
-//********* validation email ************
-//getting field email
-const textEmail = document.getElementById("email");
-//getting its parent 'formData'
-const parentEmail = textEmail.parentElement;
-
-//listening to a change from the field email
-textEmail.addEventListener("input", function() {
-  validateEmail(this);
-});
-
-function validateEmail(textEmail) {
-  //regex creation
-  const regexEmail = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/g;
-  //regex test on the field email
-  const validEmail = regexEmail.test(textEmail.value);
-
-  if(textEmail.value === ""){
-    textEmail.setAttribute("data-error-visible", true);
-    parentEmail.removeAttribute("data-error-invalid-visible");
-    parentEmail.setAttribute("data-error-empty", true);
-    return false;
-  }
-  if(validEmail === false) {
-    textEmail.setAttribute("data-error-visible", true);
-    parentEmail.setAttribute("data-error-invalid-visible", true);
-    parentEmail.removeAttribute("data-error-empty");
-    return false;
-  }else{
-    textEmail.removeAttribute("data-error-visible");
-    parentEmail.removeAttribute("data-error-invalid-visible");
-    parentEmail.removeAttribute("data-error-empty");
-    return true;
-  }
-};
-
-//********* validation birthdate ************
-//getting field birthdate
-const textBirthdates = document.getElementById("birthdate");
-//getting its parent 'formData'
-const parentBirthdates = textBirthdates.parentElement;
-
-textBirthdates.addEventListener("input", function(){
-  validateBirth(this);
-});
-
-function validateBirth (textBirthdates){
-  let birthValue = textBirthdates.value;
-  let birthYear = birthValue.split("-")[0];
-  let now = new Date();
-  let nowYear = now.getFullYear();
-  let diffYear = Math.abs(nowYear - birthYear);
+/* ********************************* DOM ELEMENTS ************************************ */
+/**
+ * Tous les boutons d'ouverture de la modal
+ */
+ const modalBtns = document.querySelectorAll(".modal-btn");
+ /**
+  * Tous les éléments avec la class="formdata"
+  */
+ const formDatas = document.querySelectorAll(".formData");
+ /**
+  * Tous les inputs
+  */
+ const inputs = document.querySelectorAll("input");
+ /**
+  * Tous les inputs ayant l'attribut [name = location]
+  */
+ const inputsLocations = document.querySelectorAll("input[name = location]");
+ /**
+  * Les 2 boutons du message de validation
+  */
+ const btsCloseValidMsg = document.getElementsByName("button");
+ /**
+  * Navigation
+  */
+ const mainNavbar = document.querySelector(".main-navbar");
+ /**
+  * Bouton burger de navigation(<768px)
+  * @type {any}
+  */
+ const icon = document.querySelector(".icon");
+ /**
+  * Formulaire
+  */
+ const form = document.querySelector("form");
+ /**
+  * Modal background
+  */
+ const modalBg = document.querySelector(".bground");
+ /**
+  * Bouton de fermeture de la modal
+  */
+ const closeBtn = document.querySelector(".close");
+ /**
+  * Modal body
+  */
+ const modalBody = document.querySelector(".modal-body");
+ /**
+  * Bonton soumission du formulaire
+  */
+ const btnSubmit = document.querySelector(".btn-submit");
+ /**
+  * Input du nombre de tournoi participé
+  * @type {any}
+  */
+ const quantity = document.getElementById("quantity");
+ /**
+  * Checkbox des conditions d'utilisation
+  * @type {any}
+  */
+ const checkbox1 = document.getElementById("checkbox1"); //
  
-  if(birthValue === ""){
-    textBirthdates.setAttribute("data-error-visible", true);
-    parentBirthdates.removeAttribute("data-error-jeune-visible", true);
-    parentBirthdates.removeAttribute("data-error-visible");
-    parentBirthdates.setAttribute("data-error-empty", true);
-    return false;
-  }
-  if (Number.isNaN(diffYear)) {//diffYear is Not A Number
-    textBirthdates.removeAttribute("data-error-visible");
-    parentBirthdates.removeAttribute("data-error-visible");
-    parentBirthdates.removeAttribute("data-error-empty");
-    parentBirthdates.removeAttribute("data-error-invalid-visible");
-    parentBirthdates.removeAttribute("data-error-jeune-visible");
-    return NaN;
-  }
-  if ((diffYear <= 120) && (diffYear > 5)){
-    textBirthdates.removeAttribute("data-error-visible");
-    parentBirthdates.removeAttribute("data-error-visible");
-    parentBirthdates.removeAttribute("data-error-jeune-visible");
-    parentBirthdates.removeAttribute("data-error-empty");
-    parentBirthdates.removeAttribute("data-error-invalid-visible");
-    return true;
-  }else{
-    if(diffYear < 5){
-      textBirthdates.setAttribute("data-error-visible", true);
-      parentBirthdates.setAttribute("data-error-jeune-visible", true);
-      parentBirthdates.removeAttribute("data-error-empty");
-      parentBirthdates.removeAttribute("data-error-invalid-visible");
-      return false;
-    }else{
-      textBirthdates.setAttribute("data-error-visible", true);
-      parentBirthdates.setAttribute("data-error-invalid-visible", true);
-      parentBirthdates.removeAttribute("data-error-empty");
-      parentBirthdates.removeAttribute("data-error-jeune-visible");
-      return false;
-    }
-  };
-};
-
-//********* validation number of competitions ************
-//getting field nombre de concours
-const textConcours = document.getElementById("quantity");
-//getting its parent 'formData'
-const parentConcours = textConcours.parentElement;
-
-//listening to a change from the field nombre de concours
-textConcours.addEventListener("input", function() {
-  validateCompetitions(this);
-});
-
-function validateCompetitions(textConcours) {
-  //regex creation
-  const regexConcours = /[0-9]/g;
-  //regex test on the field nombre de concours
-  const validConcours = regexConcours.test(textConcours.value);
-
-  if(validConcours === false) {
-    textConcours.setAttribute("data-error-visible", true);
-    parentConcours.setAttribute("data-error-invalid-visible", true);
-    parentConcours.removeAttribute("data-error-empty");
-    return false;
-  }else{
-    //transform a negative number into a positive
-    const absConcours = Math.abs(textConcours.value);
-    textConcours.value = absConcours;
-    validateRadioChecked();
-    textConcours.removeAttribute("data-error-visible");
-    parentConcours.removeAttribute("data-error-invalid-visible");
-    parentConcours.removeAttribute("data-error-empty");
-    return true;
-  };
-};
-  
-//********* validation bouton radio ************
-//getting field location => Array locations
-const locations = document.querySelectorAll(".location");
-//getting field invalid text
-const validCheckVille = document.querySelector(".validation_checkbox_ville");
-
-function validateRadioChecked(){
-  //transform the string in an integer
-  let resConcours = parseInt(textConcours.value, 10);
-  //resConcours is Not A Number
-  if (Number.isNaN(resConcours)) {
-    textConcours.setAttribute("data-error-visible", true);
-    parentConcours.removeAttribute("data-error-invalid-visible");
-    parentConcours.setAttribute("data-error-empty", true);
-    return NaN;
-  }else{
-    if(resConcours === 0){ //resConcours = 0 so no need to check a radio
-      textConcours.removeAttribute("data-error-visible");
-      parentConcours.removeAttribute("data-error-invalid-visible");
-      parentConcours.removeAttribute("data-error-empty", true);
-      document.getElementById("location1").parentElement.removeAttribute("data-error-invalid-visible");
-      return true;
-    }else{
-      document.getElementById("location1").parentElement.setAttribute("data-error-invalid-visible", true);
-      //listening to a change from the radio button
-      for(let i = 0; i < locations.length; i++){
-        if(locations[i].checked === true){
-          document.getElementById("location1").parentElement.removeAttribute("data-error-invalid-visible");
-          return true;
-        }
-      }
-      for(let i = 0; i < locations.length; i++){
-        locations[i].addEventListener("input", function() {
-          if(locations[i].checked === true){
-            document.getElementById("location1").parentElement.removeAttribute("data-error-invalid-visible");
-            return true;
-          }else{
-            return false;
-          };
-        });
-      };
-    };  
-  };
-};
-
-//********* validation terms of use ************
-//getting field checkbox1
-const conditions = document.getElementById("checkbox1");
-
-//listening to a change from the button conditions d'utilisation
-conditions.addEventListener("click", function(){
-  selectConditions(this);
-});
-
-function selectConditions(inputconditions){
-  if(conditions.checked === true){
-    document.getElementById("checkbox1").parentElement.removeAttribute("data-error-invalid-visible");
-    return true;
-  }else{
-    document.getElementById("checkbox1").parentElement.setAttribute("data-error-invalid-visible", true);
-    return false;
-  }
-};
-
-//********* validation formulaire ************
-//getting field to validate the form
-const formSubmit = document.querySelector(".btn-submit");
-const form = document.querySelector("form");
-//getting field to open thanks modal
-const validText = document.querySelector(".submit_merci");
-//getting field to close thanks modal
-const submitClose = document.querySelector(".submited");
-const submitCloseButton = document.querySelector(".merci");
-
-// listening to a change from the validation button in the form modal
-formSubmit.addEventListener("click", function(e){
-  e.preventDefault();
-  validate(this);
-});
-// listening to a change from the close button or cross in thanks modal
-submitClose.addEventListener("click", function() {
-  closeMerci(this);
-}); 
-submitCloseButton.addEventListener("click", function() {
-  closeMerci(this);
-});  
-
-function closeMerci() {
-  validText.classList.remove("visibleModal");
-  hideFooter.classList.remove("backModal");
-  hideHeroSection.classList.remove("backModal");
-};
-
-function validate(){
-  const isFirstValid = validateFirstname (textFirstname);
-  const isLastValid = validateLastname (textLastname);
-  const isEmailValid = validateEmail(textEmail);
-  const isBirthValid = validateBirth (textBirthdates);
-  const isConcoursValid = validateCompetitions (textConcours);
-  const isLocationValid = validateRadioChecked (locations);
-  const isConditionsValid = selectConditions (conditions);
+ /* ************************************ REGEX ************************************* */
+ /**
+  * Regex (< 2 characters; Pas de chiffres)
+  */
+ const firstLastRegex = /^[^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/;
+ /**
+  * Regex de vérification d'email
+  */
+ const emailRegex =
+   /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/; // Vérification d'email
  
-  if((isFirstValid) && (isLastValid) && (isEmailValid) && (isBirthValid) && (isConcoursValid) && (isLocationValid) && (isConditionsValid)){ 
-    closeModal();
-    form.reset();
-    validText.classList.add("visibleModal");
-    hideHeroSection.classList.add("backModal");
-    hideFooter.classList.add("backModal");
-  }else{return false;}
-};
-
+ /* ************************************************ INPUTS ************************************ */
+ /**
+  * Pour chaque inputs
+  * @param   {HTMLInputElement}  input  Element input du formulaire
+  * @param {function} addValidation Fonction de verification des inputs
+  * @return  {void}         Chaque input est soumis à la function addValidation
+  */
+ inputs.forEach((input) => {
+   addValidation(input);
+ });
+ /**
+  * Au clic ou au changement d'etat => valid ou renvoi msg erreur aux inputs.
+  * Au clic sur submit => valid le formulaire ou renvoi msg erreur aux inputs
+  * @param   {HTMLInputElement}  input  element input du formulaire
+  * @return  {void} Valid ou renvoi msg erreur aux inputs
+  */
+ 
+ // eslint-disable-next-line max-lines-per-function
+ function addValidation(input) {
+   switch (input.type) {
+     case "text":
+       input.oninput = function () {
+         validText(input);
+       };
+       break;
+     case "email":
+       input.oninput = function () {
+         validMail(input);
+       };
+       break;
+     case "date":
+       limitDate(input, "max", 18); // Age minimun 18ans
+       limitDate(input, "min", 100); // Age maximum 100ans
+       input.onchange = function () {
+         validDate(input);
+       };
+       break;
+     case "number":
+       input.oninput = function () {
+         validNumber(input, document.querySelector("input[name = location]"));
+       };
+       break;
+     case "checkbox":
+       if (input.name === "location") {
+         input.onchange = function () {
+           validCheckboxLocation(input, parseInt(quantity.value, 10));
+         };
+       } else {
+         input.onchange = function () {
+           validCheckboxConditions(input, checkbox1);
+         };
+       }
+       break;
+     case "submit":
+       input.onclick = function (e) {
+         e.preventDefault();
+         submit();
+       };
+       break;
+     default:
+       break;
+   }
+ }
+ 
+ /* ************************************* SUBMIT ***************************************** */
+ /**
+  * Verifie si le formulaire est valide
+  * @return  {void}  Form valide => Affiche message de validation / Form invalide => Affiche les messages d'erreurs
+  */
+ function submit() {
+   if (errorTest(formDatas) && btsCloseValidMsg.length < 2) {
+     createValidText();
+     btsCloseValidMsg.forEach((button) => {
+       closeValidation(button);
+     });
+   } else {
+     inputs.forEach((input) => {
+       switch (input.type) {
+         case "text":
+           validText(input);
+           break;
+         case "email":
+           validMail(input);
+           break;
+         case "date":
+           validDate(input);
+           break;
+         case "number":
+           validNumber(input, document.querySelector("input[name = location]"));
+           break;
+         case "checkbox":
+           if (input.name === "location") {
+             validCheckboxLocation(input, parseInt(quantity.value, 10));
+           } else {
+             validCheckboxConditions(input, checkbox1);
+           }
+           break;
+       }
+     });
+   }
+ }
+ 
+ /**
+  * Affiche le message de validation
+  * @return  {void}  Affiche le message de validation / Change les attributs des boutons de la modal
+  */
+ function createValidText() {
+   const validDiv = document.createElement("div");
+   validDiv.id = "validDiv";
+   modalBody.appendChild(validDiv);
+   validDiv.innerHTML = "<p>Merci ! Votre réservation à été recue</p>";
+   btnSubmit.setAttribute("type", "button");
+   btnSubmit.setAttribute("value", "Fermer");
+   btnSubmit.setAttribute("name", "button");
+   closeBtn.setAttribute("name", "button");
+ }
+ 
+ /**
+  * Ferme le message de validation
+  * @param {HTMLElement} button
+  * @return {void} Ferme le message de validation et la modal / Reinitialise le formulaire et les attributs des boutons
+  */
+ function closeValidation(button) {
+   button.onclick = function () {
+     addDataError(formDatas);
+     form.reset();
+     modalBody.removeChild(document.getElementById("validDiv"));
+     btnSubmit.removeAttribute("name");
+     closeBtn.removeAttribute("name");
+     btnSubmit.setAttribute("value", "C'est parti");
+     btnSubmit.setAttribute("type", "submit");
+     closeModal();
+   };
+ }
+ 
+ /**
+  * Permet de savoir si tous les inputs sont valides
+  * @param   {NodeListOf<Element>}  formDatas  Array (des parents des inputs(7))
+  * @return  {boolean}             Si aucune erreur => true
+  */
+ function errorTest(formDatas) {
+   for (const formData of formDatas) {
+     if (formData.getAttribute("data-error") !== " ") {
+       return false;
+     }
+   }
+   return true;
+ }
+ 
+ /**
+  * Permet d'éviter que le formulaire soit valide au chargement de la page
+  * @param   {NodeListOf}  formDatas  Array (des parents des inputs(7))
+  * @return  {void}             Ajoute atrr[data-error = "q"] sauf à 'conditions' qui est checked
+  */
+ function addDataError(formDatas) {
+   for (const formData of formDatas) {
+     if (!formData.childNodes[1].checked) {
+       formData.childNodes[1].setAttribute(
+         "data-error",
+         "Veuillez accepter les conditions d'utilisations"
+       );
+     } else {
+       formData.setAttribute("data-error", " ");
+     }
+   }
+ }
+ /* **************************************** input[type=text] ************************** */
+ /**
+  * Validation input[type="text"]
+  * @param   {HTMLInputElement}  input  input[type="text"]
+  * @return    {void}                      Message error
+  */
+ function validText(input) {
+   const value = input.value.trim();
+   if (value.length < 2)
+     return showMessage(input, "Veuillez entrez au moins 2 caractères");
+   else if (!firstLastRegex.test(value))
+     return showMessage(
+       input,
+       "Veuillez entrez seulement des caractéres litterales"
+     );
+   return showMessage(input, "");
+ }
+ 
+ /* ************************ input[type="date"] *************************************** */
+ 
+ /**
+  * Ajoute un zero devant date si date < 10
+  * @param {string | number} dateNumber jour ou mois
+  * @returns {string} 0+jours ou 0+mois
+  */
+ function addZero(dateNumber) {
+   if (dateNumber < 10) return "0" + dateNumber;
+   return dateNumber.toString();
+ }
+ 
+ /**
+  * donne une limite à l'input
+  * @param {HTMLInputElement} input input du formulaire
+  * @param {("min" | "max")} type l'extrémité à limiter
+  * @param {Number} gap le nombre d'années à décaler
+  * @returns {void} met à jour l'input avec une limite
+  */
+ function limitDate(input, type, gap) {
+   const now = new Date(); // Récupération de la date actuelle
+   const year = now.getFullYear() - gap; // Année actuelle -18ans ou -100ans
+   const month = addZero(now.getUTCMonth()); // Ajout du zero(Mois actuel)
+   const day = addZero(now.getUTCDate()); // Ajout du zero(jour actuel)
+   input.setAttribute(type, `${year}-${month}-${day}`); // Ajoute l'attribut "Min" ou "max" avec la date correspondante.
+ }
+ 
+ /**
+  * Validation input[type="date"]
+  *
+  * @param {HTMLInputElement} input  input du formulaire
+  * @returns {Void} Affiche ou supprime le message d'erreur
+  */
+ function validDate(input) {
+   const value = input.value;
+   const min = input.min;
+   const max = input.max;
+   if (value < min) return showMessage(input, "Age maximum 100 ans");
+   else if (value > max) return showMessage(input, "Age minimum 18 ans");
+   showMessage(input, "");
+ }
+ 
+ /* ****************************** input[type="mail"] ********************************** */
+ 
+ /**
+  * Validation input[type="email"]
+  * @param {HTMLInputElement} input  input du formulaire
+  * @returns {void} Affiche ou supprime le message d'erreur
+  */
+ function validMail(input) {
+   const value = input.value;
+   if (!emailRegex.test(value))
+     return showMessage(input, "Veuillez entrez une adresse email valide");
+   return showMessage(input, "");
+ }
+ 
+ /* ****************************************** input[type="number"] ********************** */
+ /**
+  * Validation input[type="number"]
+  * @param {HTMLInputElement} input input du formulaire
+  * @param {HTMLInputElement} cible input du formulaire qui recevra le message erreur
+  * @returns {void} Affiche ou supprime le message d'erreur
+  */
+ function validNumber(input, cible) {
+   const value = parseInt(input.value, 10);
+   if (value < 0 || value > 100 || value.toString() === "NaN") {
+     return showMessage(input, "Veuillez entrez une valeur entre 0 et 100");
+   }
+   if (value > 0 && numberOfLocationChecked(inputsLocations) === 0) {
+     showMessage(cible, "Veuillez selectionner une ville");
+   }
+   if (value < numberOfLocationChecked(inputsLocations)) {
+     showMessage(
+       cible,
+       "Vous ne pouvez pas selectionner plus de villes que de tournoi participé"
+     );
+     return showMessage(input, "");
+   }
+   if (value === 0 && numberOfLocationChecked(inputsLocations) === 0) {
+     showMessage(cible, "");
+   }
+   if (value > 0 && numberOfLocationChecked(inputsLocations) > 0) {
+     showMessage(cible, "");
+   }
+   return showMessage(input, "");
+ }
+ 
+ /* ************************************** input[type="checkbox", name="location"] ********************** */
+ 
+ /**
+  * Validation input[type="checkbox", name="location"]
+  * @param {HTMLInputElement} input  input du formulaire
+  * @param {number} quantity quantité de ville checked
+  */
+ function validCheckboxLocation(input, quantity) {
+   if (numberOfLocationChecked(inputsLocations) === 0 && quantity > 0) {
+     return showMessage(input, "Veuillez sélectionner une ville");
+   }
+   if (
+     numberOfLocationChecked(inputsLocations) > quantity ||
+     (quantity.toString() === "NaN" &&
+       numberOfLocationChecked(inputsLocations) !== 0)
+   ) {
+     return showMessage(
+       input,
+       "Vous ne pouvez pas selectionner plus de villes que de tournoi participé"
+     );
+   }
+   return showMessage(input, "");
+ }
+ /**
+  * Nombre de checkbox checked
+  * @param   {NodeListOf}  arr  Array contenant les checkbox
+  * @return  {number}       Nombre de checkbox checked
+  */
+ function numberOfLocationChecked(arr) {
+   let numberInputLocationChecked = 0;
+   for (const elm of arr) {
+     if (elm.checked) {
+       numberInputLocationChecked++;
+     }
+   }
+   return numberInputLocationChecked;
+ }
+ 
+ /* *************************** input[type="checkbox"] **************************** */
+ 
+ /**
+  * Validation input[type="checkbox"]
+  * @param   {HTMLInputElement}  input  input du formulaire
+  * @param   {HTMLInputElement}  elm    Element qui doit etre checked
+  * @return  {void}         Affiche ou supprime le message d'erreur
+  */
+ function validCheckboxConditions(input, elm) {
+   if (input !== elm) {
+     return null;
+   }
+   if (input === elm && !input.checked) {
+     return showMessage(
+       input,
+       "Veuillez accepter les conditions d'utilisations"
+     );
+   }
+   return showMessage(input, "");
+ }
+ 
+ /**
+  * Ajoute les attributs d'erreurs avec le msg correspondant au parent de input
+  * @param {HTMLInputElement} input  input du formulaire
+  * @param {string} msg        message d'erreur
+  */
+ function showMessage(input, msg) {
+   const target = input.parentElement;
+   if (msg === "") {
+     target.setAttribute("data-error", " ");
+     target.removeAttribute("data-error-visible");
+   } else {
+     target.setAttribute("data-error", msg);
+     target.setAttribute("data-error-visible", (msg !== "").toString());
+   }
+   // msg === ""
+   //   ? target.removeAttribute("data-error")
+   //   : target.setAttribute("data-error", msg);
+   // target.setAttribute("data-error-visible", (msg !== "").toString());
+ }
+ 
+ /* ******************************************** NAVIGATION ************************************* */
+ /**
+  * Lors du clic sur Burger
+  *@return  {void}  Ouverture ou fermeture de la navigation
+  */
+ icon.onclick = function () {
+   editNav(mainNavbar);
+ };
+ /**
+  * Ouverture et fermeture de la navigation
+  * @param   {Element}  elm  Header
+  * @return  {void}       Ajoute ou supprime la class responsive
+  */
+ function editNav(elm) {
+   if (elm.className === "main-navbar") {
+     elm.className += " responsive";
+   } else {
+     elm.className = "main-navbar";
+   }
+ }
+ 
+ /* ******************************** MODAL EVENTS *********************************** */
+ /**
+  * Au clic sur un des boutons
+  * @param   {HTMLButtonElement}  btn          Bouton d'ouverture de la modal
+  * @param   {function} launchModal  Fonction d'ouverture de la modal
+  * @return  {void}               Ouverture de la modal
+  */
+ modalBtns.forEach((btn) => btn.addEventListener("click", launchModal));
+ /**
+  * Ouverture de la modal
+  * @return  {void}  Ajoute les data-error/Ajoute l'attribut "visible=true" à modalBg
+  */
+ function launchModal() {
+   if (mainNavbar.className === "main-navbar responsive") {
+     editNav(mainNavbar);
+   }
+   addDataError(formDatas); // Ajoute les data-error pour eviter que le formulaire soit valide au chargement de la page
+   modalBg.setAttribute("visible", "true");
+ }
+ 
+ /**
+  * Au clic sur la croix
+  * @param   {function}  closeModal  Fonction de fermeture de la modal
+  * @return  {void}              Fermeture de la modal
+  */
+ closeBtn.addEventListener("click", closeModal);
+ /**
+  * Fermeture de la modal
+  * @return  {void}  Supprime l'attribut "visible" à modalBg
+  */
+ function closeModal() {
+   modalBg.removeAttribute("visible");
+ }
 
 
