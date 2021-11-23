@@ -58,7 +58,7 @@ header a:hover {
   background-color: #f00;
   color: #fff;
   border-radius: 15px;
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 nav {
