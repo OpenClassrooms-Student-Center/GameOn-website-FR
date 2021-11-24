@@ -17,10 +17,10 @@ function pushData() {
 
   for(let input of inputs) {
     dataInputs.push({id: input.id, status: "default", message: dataErrors[input.id]});  
-  } 
+  }
+  updateDataStatus('checkbox1', 'valid'); 
 }
 pushData();
-updateDataStatus('checkbox1', 'valid');
 
 // get Obj DataInputs
 function getObjDataInputs(id){
@@ -181,8 +181,14 @@ modalClose.addEventListener("click", closeModal);
 
 // validate form
 function validate(event) {
-  event.preventDefault();
-  updateAllDataVibility();
+  if (formIsValid()) {
+    // Redirection
+    alert("GOOOOOOOOD");
+  }
+  else {
+    event.preventDefault();
+    updateAllDataVibility();
+  }
   console.log(dataInputs);
   console.log(formIsValid());
 }
