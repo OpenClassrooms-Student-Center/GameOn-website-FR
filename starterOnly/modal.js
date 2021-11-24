@@ -77,6 +77,7 @@ function validateEmail(event) {
 // validate quantity
 function validateQuantity(event) {
   value = parseInt(event.target.value);
+
   if (value < 0 || isNaN(value)) {
     updateDataStatus('quantity', 'error');
   }
@@ -110,6 +111,7 @@ function validateCheckbox(event) {
 function updateDataVisibility(element) {
   const status = getObjDataInputs(element.id).status;
   const error = getObjDataInputs(element.id).message;
+
   if (status === 'error' || status === 'default') {
     element.parentElement.setAttribute("data-error-visible", true);
     element.parentElement.setAttribute("data-error", error);
@@ -123,6 +125,7 @@ function updateDataVisibility(element) {
 // update data-error attribute of all elements
 function updateAllDataVibility() {
   const requiredInput = dataInputs.filter(obj => obj.message);
+
   for (let obj of requiredInput) {
     updateDataVisibility(document.getElementById(obj.id));
   }
@@ -131,6 +134,7 @@ function updateAllDataVibility() {
 // check if form is valid
 function formIsValid() {
   const requiredInput = dataInputs.filter(obj => obj.message);
+  
   for(let obj of requiredInput) {
     if (obj.status != 'valid') {
       return false;
