@@ -2,8 +2,8 @@
 const dataErrors = {
   first: "Veuillez entrer 2 caractères ou plus pour le champ du prénom.",
   last: "Veuillez entrer 2 caractères ou plus pour le champ du nom.",
-  email: "Veuillez entrer une addresse mail valide",
-  birthdate : "Vous devez entrer votre date de naissance.",
+  email: "Veuillez entrer une addresse mail valide.",
+  birthdate: "Vous devez entrer votre date de naissance valide.",
   quantity:
     "Pour le nombre de concours, une valeur numérique doit être saisie.",
   location1: "Vous devez choisir une option.",
@@ -48,6 +48,7 @@ function validateFirstName(event) {
   } else {
     updateDataStatus("first", "valid");
   }
+
   updateDataVisibility(firstName);
 }
 
@@ -61,6 +62,7 @@ function validateLastName(event) {
   } else {
     updateDataStatus("last", "valid");
   }
+
   updateDataVisibility(lastName);
 }
 
@@ -75,7 +77,23 @@ function validateEmail(event) {
   } else {
     updateDataStatus("email", "valid");
   }
+
   updateDataVisibility(email);
+}
+
+// validate birthdate
+function validateBirthdate(event) {
+  const value = event.target.value;
+  // yyyy-MM-dd
+  const re = /^(19|20)\d{2}\-(0[1-9]|1[0-2])\-(0[1-9]|1\d|2\d|3[01])$/;
+
+  if (!re.test(value)) {
+    updateDataStatus("birthdate", "error");
+  } else {
+    updateDataStatus("birthdate", "valid");
+  }
+
+  updateDataVisibility(birthdate);
 }
 
 // validate quantity
@@ -87,6 +105,7 @@ function validateQuantity(event) {
   } else {
     updateDataStatus("quantity", "valid");
   }
+
   updateDataVisibility(quantity);
 }
 
@@ -105,6 +124,7 @@ function validateCheckbox(event) {
   } else {
     updateDataStatus("checkbox1", "error");
   }
+
   updateDataVisibility(checkbox1);
 }
 
@@ -180,12 +200,11 @@ function closeModal() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
-const form = document.querySelector(".modal-body form");
 const modalClose = document.querySelector(".close");
 const firstName = document.getElementById("first");
 const lastName = document.getElementById("last");
 const email = document.getElementById("email");
+const birthdate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
 const city = document.getElementsByName("location");
 const checkbox1 = document.getElementById("checkbox1");
@@ -196,11 +215,11 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // close modal event
 modalClose.addEventListener("click", closeModal);
 
-
 pushData();
 firstName.addEventListener("input", validateFirstName);
 lastName.addEventListener("input", validateLastName);
 email.addEventListener("input", validateEmail);
+birthdate.addEventListener("input", validateBirthdate);
 quantity.addEventListener("input", validateQuantity);
 city.forEach((radio) => radio.addEventListener("input", validateCity));
 checkbox1.addEventListener("input", validateCheckbox);
