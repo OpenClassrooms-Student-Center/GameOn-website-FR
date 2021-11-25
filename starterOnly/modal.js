@@ -49,7 +49,7 @@ if(lastNameInput.value.length<2){
 }
 
 const emailValidation = function(){
-  let mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  //let mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   if(emailAddressInput.value.match(mailFormat)){
     errorEmailAddress.innerHTML="";
     return true;
@@ -60,7 +60,7 @@ const emailValidation = function(){
 }
 
 const birthdayValidation = function(){
-  let dateFormat = /^\d{2}\/\d{2}\/\d{4}$/;
+  //let dateFormat = /^\d{2}\/\d{2}\/\d{4}$/;
   if(birthDateInput.value !="" && !birthDateInput.value.match(dateFormat)){   
     errorBirthDate.innerHTML="";
     return true;

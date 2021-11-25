@@ -5,53 +5,56 @@
     <title>Reservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="modal.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans"
       rel="stylesheet"
     />
   </head>
   <body>
-    <div class="topnav" id="myTopnav">
-      <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
-    </div>
-    <div class="main-navbar">
-      
-      <a href="#" class="active"><span>Accueil</span></a>
-      <a href="#"><span>Détails de l'évènement</span></a>
-      <a href="#"><span>À propos</span></a>
-      <a href="#"><span>Contact</span></a>
-      <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars"></i>
-      </a>
-    </div>
-    </div>
-  </div>
+    <nav>
+        <img alt="logo" src="Logo.png" />
+        <div class="main-navbar">
+          <a href="#" class="active"><span>Event Details</span></a>
+          <a href="#"><span>About us</span></a>
+          <a href="#"><span>Contact</span></a>
+          <a href="#"><span>Pass events</span></a>
+          <a href="javascript:void(0);" class="icon" onclick="editNav()">
+            <i class="fa fa-bars"></i>
+          </a>
+        </div>
+    </nav>
+
     <main>
+      <!--Hero part-->
       <div class="hero-section">
         <div class="hero-content">
           <h1 class="hero-headline">
-            Marathon national<br>
-            de jeux vidéos
+            US Nationwide<br/>
+            Game-a-Thon
           </h1>
           <p class="hero-text">
-            Vous aimez jouer ? Notre prochain évènement gaming est ouvert
-            aux réservations... Places limitées !
+            Do you live to game? Our next gaming <br/>
+            event is now accepting reservations <br/>
+            for players, but spots are limited.
           </p>
-          <button class="btn-signup modal-btn">
-            je m'inscris
-          </button>
+          <button class="btn-signup">Sign Up Now</button>
         </div>
         <div class="hero-img">
-          <img src="./bg_img.jpg" alt="img" />
+          <img src="./bg_img.jpg" alt="img"/>
         </div>
-        <button class="btn-signup modal-btn">
-          Je m'inscris
-        </button>
       </div>
 
+      <!--Form part-->
       <div class="bground">
         <div class="content">
           <span class="close"></span>
@@ -63,57 +66,62 @@
               class="form"
               id="formSheet"
             >
-              <div
-                class="formData">
-                <label>Prénom</label><br>
+              <div class="formData">
+                <label>Prénom</label><br />
                 <input
                   class="text-control"
                   type="text"
                   id="first"
                   name="first"
                   minlength="2"
-                /><br>
+                /><br />
                 <span id="errorFirstName"></span>
               </div>
-              <div
-                class="formData">
-                <label>Nom</label><br>
+              <div class="formData">
+                <label>Nom</label><br />
                 <input
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
-                /><br>
+                /><br />
                 <span id="errorLastName"></span>
               </div>
-              <div
-                class="formData">
-                <label>E-mail</label><br>
+              <div class="formData">
+                <label>E-mail</label><br />
                 <input
                   class="text-control"
                   type="email"
                   id="email"
                   name="email"
-                /><br>
+                /><br />
                 <span id="errorEmailAddress"></span>
               </div>
-              <div
-                class="formData">
-                <label>Date de naissance</label><br>
+              <div class="formData">
+                <label>Date de naissance</label><br />
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                /><br>
+                /><br />
                 <span id="errorBirthDate"></span>
               </div>
               <div class="formData">
-                <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <label
+                  >À combien de tournois GameOn avez-vous déjà participé
+                  ?</label
+                ><br />
+                <input
+                  type="number"
+                  class="text-control"
+                  id="quantity"
+                  name="quantity"
+                  min="0"
+                  max="99"
+                />
               </div>
 
-              
               <p class="text-label">Quelle ville ?</p>
 
               <div class="formData">
@@ -182,25 +190,34 @@
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
                   Portland</label
-                ><br>
-                <span id=ErrorOption></span>
-                </div>
-
+                ><br />
+                <span id="ErrorOption"></span>
+              </div>
 
               <form class="formData">
-                <input class="checkbox-input" type="checkbox" id="checkbox1" name="check"/>
+                <input
+                  class="checkbox-input"
+                  type="checkbox"
+                  id="checkbox1"
+                  name="check"
+                />
                 <label class="checkbox1-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
-                <br>
-                
-                <input class="checkbox-input" type="checkbox" id="checkbox2" name="check"/>
+                <br />
+
+                <input
+                  class="checkbox-input"
+                  type="checkbox"
+                  id="checkbox2"
+                  name="check"
+                />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je Je souhaite être prévenu des prochains évènements.
                 </label>
-                <br>
+                <br />
                 <span id="ErrorCondition"></span>
               </form>
 
@@ -210,16 +227,19 @@
                 type="submit"
                 class="button"
                 value="C'est parti"
-                onclick="onSubmit()">C'est parti</button>
+                onclick="onSubmit()"
+              >
+                C'est parti
+              </button>
             </form>
           </div>
         </div>
       </div>
     </main>
+
+    
     <footer>
-      <p class="copyrights">
-        Copyright 2014 - 2020, GameOn Inc.
-      </p>
+      <p class="copyrights">Copyright 2014 - 2020, GameOn Inc.</p>
     </footer>
     <script src="modal.js"></script>
   </body>
