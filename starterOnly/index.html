@@ -60,9 +60,11 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return false;"
+              class="form";
             >
             <!--onsubmit之前是onsubmit="return validate();-->
+            <!--onsubmit后来改成="return false;"-->
+            <!--onsubmit="return false"改为submit（）后删掉了-->
               <div
                 class="formData">
                 <label>Prénom</label><br>
@@ -114,9 +116,9 @@
               </div>
 
               
-              <p class="text-label">Quelles villes ?</p>
+              <p class="text-label">Quelle ville ?</p>
 
-              <form class="formData">
+              <div class="formData">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -184,7 +186,7 @@
                   Portland</label
                 ><br>
                 <span id=ErrorOption></span>
-                </form>
+                </div>
 
 
               <form class="formData">
@@ -209,7 +211,7 @@
                 type="submit"
                 class="button"
                 value="C'est parti"
-                onclick="isChecked()"
+                onclick="onSubmit()"
               />
             </form>
           </div>
