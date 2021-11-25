@@ -91,14 +91,6 @@ const termsChecked = function(){
  }
 
  const validation = function () {
-  firstNameInput.value;
-  lastNameInput.value;
-  emailAddressInput.value;
-  birthDateInput.value;
-  quantityInput.value;
-  locationCheckbox.value;
-  checkCondition.value;
-  
   if(firstNameInput.value.length>=2 
     && lastNameInput.value.length >=2 
     && emailAddressInput.value.match(mailFormat) 
@@ -106,12 +98,11 @@ const termsChecked = function(){
     && !birthDateInput.value.match(dateFormat) 
     && checkCondition.checked === true
     && checkCondition.checked === true){
-    console.log("Sending test")
+    //console.log("Sending test")
     alert("Informations envoyées avec succès！")
   }else{
     alert("Les informations saisies sont incorrectes.")
   }
-
  }
 
  const onSubmit = function(){
@@ -129,29 +120,6 @@ validation();
 //console.log("Send Form")
 });
 
-
-
-
-
-
-//form.addEventListener("submit",sendForm);
-  
-/*
- function onSubmit(e){
- e.preventDefault();
- console.log("formSending");
- const dataForm = new DataForm(formSending);
- const first = dataForm.get('first');
- const last = dataForm.get('last');
- const email = dataForm.get('email');
- const birthdate = dataForm.get('birthdate');
- const quantity = dataForm.get('quantity');
- const location = dataForm.get('location');
- const check = dataForm.get('check');
- console.log('Form',{first, last, email, birthdate, quantity, location, check});
- 
- }
- */
 
 
  /*
