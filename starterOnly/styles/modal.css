@@ -21,16 +21,6 @@ body {
 /* ===== MODAL FORM ===== */
 /* ====================== */
 
-.button {
-  background: #fe142f;
-  margin-top: 0.5em;
-  padding: 1em;
-  color: #fff;
-  border-radius: 15px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
 .button:hover {
   background: #3876ac;
 }
@@ -208,7 +198,7 @@ input[data-error]::after {
   position: absolute;
   left: 15px;
   content: " ";
-  height: 33px;
+  height: 32px;
   width: 3px;
   background-color: #fff;
 }
@@ -223,33 +213,34 @@ input[data-error]::after {
 
 .btn-submit {
   background: #fe142f;
+  margin-top: 0.5em;
+  padding: 12px 66px;
+  color: #fff;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 1rem;
   display: block;
   margin: 0 auto;
-  border-radius: 7px;
-  font-size: 1rem;
-  padding: 12px 82px;
-  color: #fff;
-  cursor: pointer;
   border: 0;
 }
 
 /* custom select styles */
-.custom-select {
+/* .custom-select {
   position: relative;
   font-family: Arial;
   font-size: 1.1rem;
   font-weight: normal;
-}
+} */
 
-.custom-select select {
+/* .custom-select select {
   display: none;
-}
+} */
 
-.select-selected {
+/* .select-selected {
   background-color: #fff;
-}
+} */
 
-/* Style the arrow inside the select element: */
+/* Style the arrow inside the select element:
 .select-selected:after {
   position: absolute;
   content: "";
@@ -262,15 +253,15 @@ input[data-error]::after {
   border-left-color: #f00;
   transform: rotate(-48deg);
   border-radius: 5px 0 5px 0;
-}
+} */
 
 /* Point the arrow upwards when the select box is open (active): */
-.select-selected.select-arrow-active:after {
+/* .select-selected.select-arrow-active:after {
   transform: rotate(135deg);
   top: 13px;
-}
+} */
 
-.select-items div,
+/* .select-items div,
 .select-selected {
   color: #000;
   padding: 11px 16px;
@@ -279,27 +270,27 @@ input[data-error]::after {
   cursor: pointer;
   border-radius: 8px;
   height: 48px;
-}
+} */
 
 /* Style items (options): */
-.select-items {
+/* .select-items {
   position: absolute;
   background-color: #fff;
   top: 89%;
   left: 0;
   right: 0;
   z-index: 99;
-}
+} */
 
 /* Hide the items when the select box is closed: */
-.select-hide {
+/* .select-hide {
   display: none;
-}
+} */
 
-.select-items div:hover,
+/* .select-items div:hover,
 .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
-}
+} */
 
 /* custom select end */
 .text-label {
