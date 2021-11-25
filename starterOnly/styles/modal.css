@@ -299,7 +299,20 @@ input[data-error]::after {
   margin-block: 11px;
 }
 
+@media screen and (max-width: 900px) {
+  .content {
+    max-width: 460px;
+    padding-top: 0;
+  }
+}
 
+@media screen and (max-width: 540px) {
+  .content {
+    max-width: 100%;
+    padding-top: 0;
+    margin: 20% auto;
+  }
+}
 
 @keyframes modalopen {
   from {
