@@ -57,15 +57,15 @@ body {
 
 .modal-body {
   padding: 15px 8%;
-  margin: 15px auto;
+  margin: 8px auto;
 }
 
 label {
   font-family: var(--font-default);
-  font-size: 17px;
+  font-size: 0.9rem;
   font-weight: normal;
   display: inline-block;
-  margin-bottom: 11px;
+  margin-block: 11px;
 }
 
 input {
@@ -220,7 +220,7 @@ input[data-error]::after {
   cursor: pointer;
   font-size: 1rem;
   display: block;
-  margin: 0 auto;
+  margin-inline: auto;
   border: 0;
 }
 
@@ -293,9 +293,10 @@ input[data-error]::after {
 } */
 
 /* custom select end */
-.text-label {
+.checkbox-title {
   font-weight: normal;
-  font-size: 16px;
+  font-size: 0.9rem;
+  margin-block: 11px;
 }
 
 
