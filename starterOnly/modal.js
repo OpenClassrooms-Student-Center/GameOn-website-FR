@@ -165,15 +165,14 @@ function formIsValid() {
 
 // validate form
 function validate(event) {
+  event.preventDefault();
+
   if (formIsValid()) {
-    // Redirection
-    alert("GOOOOOOOOD");
+    form.style.display = "none";
+    thanks.style.display = "block";
   } else {
-    event.preventDefault();
     updateAllDataVibility();
   }
-  console.log(dataInputs);
-  console.log(formIsValid());
 }
 
 // edit navbar
@@ -201,6 +200,9 @@ function closeModal() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalClose = document.querySelector(".close");
+const thanks = document.querySelector(".thanks");
+const thanksClose = document.querySelector(".btn-close");
+const form = document.querySelector(".modal-body form");
 const firstName = document.getElementById("first");
 const lastName = document.getElementById("last");
 const email = document.getElementById("email");
@@ -223,3 +225,4 @@ birthdate.addEventListener("input", validateBirthdate);
 quantity.addEventListener("input", validateQuantity);
 city.forEach((radio) => radio.addEventListener("input", validateCity));
 checkbox1.addEventListener("input", validateCheckbox);
+thanksClose.addEventListener("click", closeModal);

@@ -322,7 +322,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-close {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -332,6 +333,13 @@ input[data-error]::after {
   color: #fff;
   cursor: pointer;
   border: 0;
+}
+.thanks {
+  display: none;
+}
+.thanks__message {
+  text-align: center;
+  padding: 15rem 3rem;
 }
 /* custom select styles */
 .custom-select {
