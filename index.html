@@ -62,47 +62,59 @@
                 name="reserve"
                 action="index.html"
                 method="get"
+                data-form
                 onsubmit="return validate();"
               >
-                <div class="formData">
-                  <label>Prénom</label>
+                <div class="formData" data-formData data-error data-error-visible ="false" >
+                  <label for="first">Prénom</label>
                   <input
                     class="text-control"
                     type="text"
                     id="first"
                     name="first"
-                    minlength="2"
+                    data-minlength="2"
+                    data-required
+                    data-validate
                   />
                 </div>
-                <div class="formData">
-                  <label>Nom</label>
+                <div class="formData" data-formData data-error data-error-visible ="false">
+                  <label for="last">Nom</label>
                   <input
                     class="text-control"
                     type="text"
                     id="last"
                     name="last"
+                    data-minlength="2"
+                    data-required
+                    data-validate
                   />
                 </div>
-                <div class="formData">
-                  <label>E-mail</label>
+                <div class="formData" data-formData data-error data-error-visible ="false">
+                  <label for="email">E-mail</label>
                   <input
                     class="text-control"
                     type="email"
                     id="email"
                     name="email"
+                    data-email
+                    data-required
+                    data-validate
                   />
                 </div>
-                <div class="formData">
-                  <label>Date de naissance</label>
+                <div class="formData" data-formData data-error data-error-visible ="false">
+                  <label for="birthdate">Date de naissance</label>
                   <input
                     class="text-control"
                     type="date"
                     id="birthdate"
                     name="birthdate"
+                    data-birthdate
+                    data-required
+                    data-validate
                   />
                 </div>
-                <div class="formData">
-                  <label>
+                <div class="formData" data-formData data-error data-error-visible ="false">
+                  <label for="quantity">
                     À combien de tournois GameOn avez-vous déjà participé ?
                   </label>
                   <input
@@ -112,16 +124,20 @@
                     name="quantity"
                     min="0"
                     max="99"
+                    data-required
+                    data-validate
                   />
                 </div>
                 <p class="checkbox-title">Quelles villes ?</p>
-                <div class="formData">
+                <div class="formData" data-formData data-error data-error-visible ="false">
                   <input
                     class="checkbox-input"
                     type="radio"
                     id="location1"
                     name="location"
                     value="New York"
+                    data-required
+                    data-validate
                   />
                   <label class="checkbox-label" for="location1">
                     <span class="checkbox-icon"></span>
@@ -133,6 +149,8 @@
                     id="location2"
                     name="location"
                     value="San Francisco"
+                    data-required
+                    data-validate
                   />
                   <label class="checkbox-label" for="location2">
                     <span class="checkbox-icon"></span>
@@ -144,6 +162,8 @@
                     id="location3"
                     name="location"
                     value="Seattle"
+                    data-required
+                    data-validate
                   />
                   <label class="checkbox-label" for="location3">
                     <span class="checkbox-icon"></span>
@@ -155,6 +175,8 @@
                     id="location4"
                     name="location"
                     value="Chicago"
+                    data-required
+                    data-validate
                   />
                   <label class="checkbox-label" for="location4">
                     <span class="checkbox-icon"></span>
@@ -166,6 +188,8 @@
                     id="location5"
                     name="location"
                     value="Boston"
+                    data-required
+                    data-validate
                   />
                   <label class="checkbox-label" for="location5">
                     <span class="checkbox-icon"></span>
@@ -177,6 +201,8 @@
                     id="location6"
                     name="location"
                     value="Portland"
+                    data-required
+                    data-validate
                   />
                   <label class="checkbox-label" for="location6">
                     <span class="checkbox-icon"></span>
@@ -184,12 +210,14 @@
                   </label>
                 </div>
 
-                <div class="formData">
+                <div class="formData" data-formData data-error data-error-visible ="false">
                   <input
                     class="checkbox-input"
                     type="checkbox"
                     id="checkbox1"
                     checked
+                    data-validate
+                    data-required
                   />
                   <label class="checkbox2-label" for="checkbox1">
                     <span class="checkbox-icon"></span>
@@ -199,7 +227,9 @@
                     class="checkbox-input"
                     type="checkbox"
                     id="checkbox2"
-                    required
+                    name="terms"
+                    data-validate
+                    data-required
                   />
                   <label class="checkbox2-label" for="checkbox2">
                     <span class="checkbox-icon"></span>

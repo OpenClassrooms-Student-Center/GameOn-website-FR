@@ -2,6 +2,17 @@
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
   --modal-duration: 0.8s;
+
+  /* Colors */
+  --color-primary: #232323;
+  --color-secondary:  #fe142f;
+  --color-tertiary: #279e7a;
+  --color-bg-checkbox: #c4c4c4;
+  --color-error: #e54858;
+  --color-white: #fff;
+  --color-btn-hover: #3876ac;
+  --color-input-border: #ccc;
+  --color-bg-viewport: rgba(26, 39, 156, 0.4);
 }
 
 * {
@@ -15,20 +26,11 @@ body {
   height: 100%;
 }
 
-
-
 /* ====================== */
 /* ===== MODAL FORM ===== */
 /* ====================== */
 
-.button:hover {
-  background: #3876ac;
-}
-
-/* .smFont {
-  font-size: 16px;
-} */
-
+/* Viewport background when modal opened*/
 .bground {
   display: none;
   position: fixed;
@@ -38,28 +40,46 @@ body {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  background-color: var(--color-bg-viewport);
 }
 
+/* Modal wrapper */
 .content {
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
-  background: #232323;
+  background: var(--color-primary);
   border-radius: 10px;
   overflow: hidden;
   position: relative;
-  color: #fff;
+  color: var(--color-white);
   padding-top: 10px;
 }
 
+@media screen and (max-width: 900px) {
+  .content {
+    max-width: 460px;
+    padding-top: 0;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .content {
+    max-width: 100%;
+    padding-top: 0;
+    margin: 20% auto;
+  }
+}
+
+/* Modal form wrapper */
 .modal-body {
   padding: 15px 8%;
   margin: 8px auto;
 }
 
+/* Modal form content */
 label {
   font-family: var(--font-default);
   font-size: 0.9rem;
@@ -70,7 +90,7 @@ label {
 
 input {
   padding: 8px;
-  border: 0.8px solid #ccc;
+  border: 0.8px solid var(--color-input-border);
   outline: none;
 }
 
@@ -83,10 +103,12 @@ input {
   height: 48px;
 }
 
+/* Error messages */
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
-  color: #e54858;
+  color: var(--color-error);
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
@@ -101,7 +123,7 @@ input {
 }
 
 .formData[data-error-visible="true"] .text-control {
-  border: 2px solid #e54858;
+  border: 2px solid var(--color-error);
 }
 
 /* 
@@ -110,6 +132,20 @@ input[data-error]::after {
     font-size: 0.4em;
     color: red;
 } */
+
+/* ==== Radio buttons ==== */
+
+.checkbox-title {
+  font-weight: normal;
+  font-size: 0.9rem;
+  margin-block: 11px;
+}
+
+/* Hide basic radio buttons */
+.checkbox-input {
+  display: none;
+}
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -123,7 +159,7 @@ input[data-error]::after {
   display: block;
   width: 20px;
   height: 20px;
-  border: 2px solid #279e7a;
+  border: 2px solid var(--color-tertiary);
   border-radius: 50%;
   text-indent: 29px;
   white-space: nowrap;
@@ -138,7 +174,7 @@ input[data-error]::after {
   content: "";
   width: 13px;
   height: 13px;
-  background-color: #279e7a;
+  background-color: var(--color-tertiary);
   border-radius: 50%;
   text-indent: 29px;
   white-space: nowrap;
@@ -150,37 +186,39 @@ input[data-error]::after {
   opacity: 0;
 }
 
-.checkbox-input {
-  display: none;
-}
-
 .checkbox-input:checked+.checkbox-label .checkbox-icon::after,
 .checkbox-input:checked+.checkbox2-label .checkbox-icon::after {
   opacity: 1;
 }
 
 .checkbox-input:checked+.checkbox2-label .checkbox-icon {
-  background: #279e7a;
+  background: var(--color-tertiary);
 }
+
+
+/* ==== Checkbox ==== */
 
 .checkbox2-label .checkbox-icon {
   border-radius: 4px;
   border: 0;
-  background: #c4c4c4;
+  background: var(--color-bg-checkbox);
 }
 
+/* Styles on icon check of the checkbox */
 .checkbox2-label .checkbox-icon::after {
   width: 7px;
   height: 4px;
   border-radius: 2px;
   background: transparent;
   border: 2px solid transparent;
-  border-bottom-color: #fff;
-  border-left-color: #fff;
+  border-bottom-color: var(--color-white);
+  border-left-color: var(--color-white);
   transform: rotate(-55deg);
   left: 21%;
   top: 19%;
 }
+
+/* ==== Cross to close the modal ==== */
 
 .close {
   position: absolute;
@@ -200,7 +238,7 @@ input[data-error]::after {
   content: " ";
   height: 32px;
   width: 3px;
-  background-color: #fff;
+  background-color: var(--color-white);
 }
 
 .close:before {
@@ -211,17 +249,23 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 
+/* ==== Button ==== */
+
 .btn-submit {
-  background: #fe142f;
+  background: var(--color-secondary);
   margin-top: 0.5em;
   padding: 12px 66px;
-  color: #fff;
+  color: var(--color-white);
   border-radius: 7px;
   cursor: pointer;
   font-size: 1rem;
   display: block;
   margin-inline: auto;
   border: 0;
+}
+
+.btn-submit:hover {
+  background: var(--color-btn-hover);
 }
 
 /* custom select styles */
@@ -291,28 +335,6 @@ input[data-error]::after {
 .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
 } */
-
-/* custom select end */
-.checkbox-title {
-  font-weight: normal;
-  font-size: 0.9rem;
-  margin-block: 11px;
-}
-
-@media screen and (max-width: 900px) {
-  .content {
-    max-width: 460px;
-    padding-top: 0;
-  }
-}
-
-@media screen and (max-width: 540px) {
-  .content {
-    max-width: 100%;
-    padding-top: 0;
-    margin: 20% auto;
-  }
-}
 
 @keyframes modalopen {
   from {
