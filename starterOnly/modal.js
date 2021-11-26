@@ -188,6 +188,7 @@ function editNav() {
 
 // launch modal form
 function launchModal() {
+  document.documentElement.scrollTop = 0;
   modalbg.style.display = "block";
 }
 
