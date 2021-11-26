@@ -12,16 +12,12 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeModalElement = document.querySelector(".close");
-// get the form
-const form = document.querySelector("form[data-form]");
-// Get each input of the form
-// const firstnameInput = document.querySelector("#first");
-// const lastnameInput = document.querySelector("#last");
-// const emailInput = document.querySelector("#email");
-// const birthdateInput = document.querySelector("#birthdate");
-// const quantityInput = document.querySelector("#quantity");
-// const lastnameInput = document.querySelector("#last");
-// const lastnameInput = document.querySelector("#last");
+// get the form element
+const forms = document.querySelectorAll("form[data-form]");
+
+// =================================
+// === Modal opening and closing ===
+// =================================
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -31,56 +27,55 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-// === Close modal by click on the cross ===
+// === Close the modal by click on the cross ===
 
 // function to close the modal
 const closeModal = () => (modalbg.style.display = "none");
 
-// listen the event on the cross of the modal for closing it
+// listen the event click on the cross
 closeModalElement.addEventListener("click", closeModal);
 
+// =======================
 // === Form validation ===
+// =======================
 
 // Check if form exist
-if (form.lenght > 0) {
+if (forms.length > 0) {
   // Loop on all elements
-  for (let formElement of form) {
+  for (let form of forms) {
     // Get all inputs that have to be validated (have data-validate attribute)
-    const inputs = formElement.querySelectorAll("input[data-validate]");
+    const inputs = form.querySelectorAll("[data-validate]");
 
-    // Listen the form submit event
+    // Loops trough inputs to check them
+    inputs.forEach((input) => {
+      // Add input event to all inputs to check them with checkInput function
+      input.addEventListener("submit", checkInput);
+    });
+
+    // Listen the form submit event and submit the form
     form.addEventListener("submit", submitForm.bind(form, inputs));
   }
-
-  // Loops trough inputsto check them
-  inputs.forEach((input) => {
-    // Add input event to all inputs to check if valid with validateInput function
-    input.addEventListener("input", validateInput);
-  });
 }
 
-function submitForm(inputs, event) {
-  event.preventDefault();
-  const errors = [];
+// Check input
+function checkInput() {
+  const input = this;
+  validateInput(input);
 }
-
-// Check if input is valid
-// function check(input) {
-// const input = this;
-//   validateInput(input);
-// }
 
 // Validate input
 function validateInput(input) {
-  // get the value and error element
+  // get the value and formData element for assigning error message
+  // (via CSS pseudo-elements)
   const value = input.value;
-  // const dataErrorAttr = input.closest('div[data-formData]').querySelector('[data-error]');
-  // Declare errorMessage variable for displaying error messages and assign null by default
-  let errorMessage = null;
-  let formDataElement = input.closest("div[data-formData]");
+  let formDataElement = input.closest("[data-formData]");
+  // Declare error variable for displaying error messages and assign null by default
+  let error = null;
 
-  // Check if input has data-required attribute and if the value is empty
-  // and if the input is not radio or checkbox
+  // Check if : -> if the input is not radio or checkbox
+  // -> and input has data-required attribute
+  //  -> and the value is empty and the value has a required minlength
+  // -> the input value is < to the minlength
   if (
     input.type !== "radio" &&
     input.type !== "checkbox" &&
@@ -88,53 +83,60 @@ function validateInput(input) {
     input.dataset.minlength !== undefined &&
     value.length < +input.dataset.minlength
   ) {
-    formDataElement.setAttribute("data-error-visible", "true");
-    errorMessage = formDataElement.setAttribute(
+    // Set data-error-visible attribute to true for applying error styles
+    // formDataElement.setAttribute("data-error-visible", "true");
+    // Set an error message to the data-error attribute for display to the user
+    formDataElement.setAttribute(
       "data-error",
-      "Ce champ est requis. S'il vous plaît, entrez au moins ${input.dataset.minlength} caractères."
+      `Ce champ est requis. Veuillez entrer au moins ${input.dataset.minlength} caractères.`
     );
+    error = formDataElement.dataset.error;
   }
 
-  // Check if input has data-email attribute and if email is not valid
+  // Check if input has data-email attribute and if email is not valid with validateEmail function
   if (input.dataset.email !== undefined && !validateEmail(value)) {
-    formDataElement.setAttribute("data-error-visible", "true");
-    errorMessage = formDataElement.setAttribute(
+    // formDataElement.setAttribute("data-error-visible", "true");
+    formDataElement.setAttribute(
       "data-error",
-      "Veuillez s'il vous plaît entrer une adresse email valide."
+      "Ce champ est requis. Veuillez entrer une adresse email valide."
     );
+    error = formDataElement.dataset.error;
   }
 
-  // Validate email
+  // Validate email using a regex
   function validateEmail(email) {
     var regexMail =
       /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return regexMail.test(String(email).toLowerCase());
   }
 
-  // Check if input type is date and if the value is empty
+  // Check if input has data-date and data-required attributes and if the value is empty
   if (
-    input.type === "date" &&
+    input.dataset.date !== undefined &&
     input.dataset.required !== undefined &&
     value === ""
   ) {
-    formDataElement.setAttribute("data-error-visible", "true");
-    errorMessage = formDataElement.setAttribute(
+    // formDataElement.setAttribute("data-error-visible", "true");
+    formDataElement.setAttribute(
       "data-error",
-      "Ce champ est requis. S'il vous plaît, veuillez entrer une date."
+      "Ce champ est requis. Veuillez entrer une date."
     );
+    error = formDataElement.dataset.error;
+    console.log(error);
   }
 
-  // Check if input type is number and if the value is empty
+  // Check if input has data-number and data-required attributes and if the value is empty
   if (
-    input.type === "number" &&
+    input.dataset.number !== undefined &&
     input.dataset.required !== undefined &&
     value === ""
   ) {
-    formDataElement.setAttribute("data-error-visible", "true");
-    errorMessage = formDataElement.setAttribute(
+    // formDataElement.setAttribute("data-error-visible", "true");
+    formDataElement.setAttribute(
       "data-error",
-      "Ce champ est requis. S'il vous plaît, veuillez entrer un nombre compris entre 0 et 99."
+      "Ce champ est requis. Veuillez entrer un nombre entre 0 et 99."
     );
+    error = formDataElement.dataset.error;
   }
 
   // Check if input is radio
@@ -150,27 +152,63 @@ function validateInput(input) {
       if (radio.checked) {
         isChecked = true;
       }
-
-      if (!isChecked) {
-        formDataElement.setAttribute("data-error-visible", "true");
-        errorMessage = formDataElement.setAttribute(
-          "data-error",
-          "Ce champ est requis. S'il vous plaît, veuillez sélectionner une réponse."
-        );
-      }
     });
+
+    if (!isChecked) {
+      // formDataElement.setAttribute("data-error-visible", "true");
+      formDataElement.setAttribute(
+        "data-error",
+        "Ce champ est requis. Veuillez sélectionner une réponse."
+      );
+      error = formDataElement.dataset.error;
+    }
   }
 
-  // Check if input is checkbox and it is not checked
+  // Check if input is checkbox and if it has data-required attribute and if it is not checked
   if (
     input.type === "checkbox" &&
     input.dataset.required !== undefined &&
     !input.checked
   ) {
-    formDataElement.setAttribute("data-error-visible", "true");
-    errorMessage = formDataElement.setAttribute(
+    // formDataElement.setAttribute("data-error-visible", "true");
+    formDataElement.setAttribute(
       "data-error",
       "Veuillez accepter les conditions générales pour continuer."
     );
+    error = formDataElement.dataset.error;
+  }
+
+  // If there is no error, remove message from error element and so data-error attribute
+  // and set data-error-visible attribute to false
+  if (!error) {
+    formDataElement.setAttribute("data-error-visible", "false");
+    error = "";
+    formDataElement.setAttribute("data-error", "");
+  } else {
+    formDataElement.setAttribute("data-error-visible", "true");
+  }
+
+  console.log("Soumission du form, variable error :");
+  console.log(error);
+
+  return error;
+}
+
+// submit form on submit button click
+// all inputs are passed as argument with bind to loop through inputs
+// and call validateInput on each input element
+function submitForm(inputs, event) {
+  event.preventDefault();
+  const errors = [];
+
+  inputs.forEach((input) => {
+    const error = validateInput(input);
+    if (error) {
+      errors.push(error);
+    }
+  });
+  // Check if errors array is empty and only in that case, form is submited
+  if (errors.length === 0) {
+    console.log("Le formulaire peut être soumis...");
   }
 }
