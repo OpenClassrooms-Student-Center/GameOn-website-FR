@@ -77,6 +77,7 @@ function closeModal() {
 
   }
   document.getElementById("reserve").reset();
+  let formOk = false;
 }
 
 // button close and confirmation message not displayed
