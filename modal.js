@@ -77,6 +77,7 @@ function closeModal() {
 
   }
   document.getElementById("reserve").reset();
+  checkInputs();
 
 }
 
@@ -210,5 +211,4 @@ form.addEventListener("submit", validate);
 // reset form when submit or close
 function resetfield() {
   document.getElementBy("reserve").reset();
-  return formOk === false;
 }
