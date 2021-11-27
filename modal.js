@@ -77,7 +77,7 @@ function closeModal() {
 
   }
   document.getElementById("reserve").reset();
-  return formOk === false;
+
 }
 
 // button close and confirmation message not displayed
@@ -210,4 +210,5 @@ form.addEventListener("submit", validate);
 // reset form when submit or close
 function resetfield() {
   document.getElementBy("reserve").reset();
+  return formOk === false;
 }
