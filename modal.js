@@ -54,12 +54,13 @@ let mediaQueryMobile = window.matchMedia("(max-width: 540px)");
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
-function launchModal() && function checkInputs(){
+function launchModal() {
   modalbg.style.display = "block";
   document.getElementById("reserve").reset();
   // if mobile screen, heroSection doesn't appear
   if(mediaQueryMobile.matches){
     heroSection.style.display = "none";
+    $checkInputs()
   }
 }
 
@@ -203,6 +204,8 @@ function validate(event){
     return true;
   }
 }
+
+
 
 // listening submit event on form element so function validate is run
 form.addEventListener("submit", validate);
