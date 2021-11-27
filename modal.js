@@ -7,206 +7,256 @@ function editNav() {
   }
 }
 
+//not possible to select birthdate in future
+const date = new Date().toISOString().split("T")[0];
+document.getElementsByName("birthdate")[0].setAttribute("max", date);
+
 // DOM Elements
 const modalbg = document.querySelector(".bground");
+const modalBody = document.querySelector(".modal-body");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
-const closeBtn = document.querySelector(".close");
-const submitBtn = document.querySelector(".btn-submit");
-const form = document.getElementById("reserve");
-const closeBtnRed = document.getElementById("closeBtnRed");
-const confirmationMsg = document.getElementById("confirmationMsg");
-
-
-const first = document.getElementById("first");
-const firstError = document.getElementById("firstError");
-
-const last = document.getElementById("last");
-const lastError = document.getElementById("lastError");
-
-const email = document.getElementById("email");
-const emailError = document.getElementById("emailError");
-
-const birthdate = document.getElementById("birthdate");
-const birthdateError = document.getElementById("birthdateError");
-
-const quantity = document.getElementById("quantity");
-const quantityError = document.getElementById("quantityError");
-
-const location2 = document.getElementsByName("location");
-const locationError = document.getElementById("locationError");
-
-const conditions = document.getElementById("checkbox1");
-const conditionsError = document.getElementById("conditionsError");
-
-
-const heroSection = document.querySelector('.hero-section');
-
-
-// variable mobile media query
-let mediaQueryMobile = window.matchMedia("(max-width: 540px)");
-
-
-
-
+const modalCloseBtn = document.querySelector(".close");
+const dataSendCloseBtn = document.querySelector(".btn-close");
+//const formData = document.querySelectorAll(".formData");
+const copyright = document.querySelector(".copyrights");
+const form = document.getElementById("form");
+const formTransmitted = document.getElementById("confirmation");
+const locationInputData = document.getElementsByName("location");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
+// close modal event
+modalCloseBtn.addEventListener("click", closeModal);
+dataSendCloseBtn.addEventListener("click", closeModal);
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
-  document.getElementById("reserve").reset();
-  // if mobile screen, heroSection doesn't appear
-  if(mediaQueryMobile.matches){
-    heroSection.style.display = "none";
-  }
 }
-
-// close modal event
-closeBtn.addEventListener("click", closeModal);
 // close modal form
 function closeModal() {
   modalbg.style.display = "none";
-  confirmationMsg.style.display = "none";
-  closeBtnRed.style.display = "none";
-  submitBtn.style.display = "block";
-  form.style.display = "block";
-  if(mediaQueryMobile.matches){
-    heroSection.style.display = "block";
-
+  //reset modal when closing after data sended
+  if (formTransmitted.style.display === "flex") {
+    form.reset();
+    modalBody.style.display = "block";
+    dataSendCloseBtn.style.display = "none";
+    formTransmitted.style.display = "none";
   }
-  document.getElementById("reserve").reset();
 }
 
-// button close and confirmation message not displayed
-closeBtnRed.style.display = "none";
-confirmationMsg.style.display = "none";
+//insert copyright with automatically good actual year
+const year = new Date().getFullYear();
+copyright.textContent = "Copyright 2014 - " + year + ", GameOn Inc.";
 
-let formOk = false;
+//verify if a field is missing to secure website, alert message to user, and refresh page
+function fieldIsMissing() {
+  const allFields = [
+    "first",
+    "last",
+    "email",
+    "birthdate",
+    "quantity",
+    "location1",
+    "location2",
+    "location3",
+    "location4",
+    "location5",
+    "location6",
+    "checkbox1",
+    "checkbox2",
+  ];
+  //verify if a field is missing from data into array allFields
+  allFields.forEach((field) => {
+    const input = document.querySelector(`#${field}`);
+    if (!input) {
+      alert(
+        `Merci de ne pas effacer les champs du formulaire ! La page va se rafraîchir !`
+      );
+      //refresh page
+      document.location.reload();
+    }
+  });
+}
+/***** endof  fieldIsMissing function     **********/
 
-// inputs check + error message and its style
-function checkInputs(){
-
-  // if first.value is empty and doesn't respect regex name, or first.length is less than 2 characters
-  // then error message is displayed
-  let verifName = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,}$/;
-  if(verifName.exec(first.value) === null || first.length < 2) {
-    firstError.textContent = "Veuillez entrer votre nom (2 caractères minimum)";
-    firstError.style.color = "red";
-    firstError.style.fontSize = "10px";
-    first.style.borderColor = "red";
-    first.style.borderWidth = "2px";
-    return formOk === false;
+/***** function to control minLength of inputs ******/
+function minLengthIsOK(field, data, size) {
+  if (data.length < size) {
+    setStatus(
+      field,
+      `Merci de renseigner au minimum ${size} charactères.`,
+      "error"
+    );
   } else {
-    firstError.style.display = "none";
-    first.style = "default";
+    setStatus(field, null, "success");
   }
-
-  if(verifName.exec(last.value) === null || last.length < 2) {
-    lastError.textContent = "Veuillez entrer prenom (2 caractères minimum)";
-    lastError.style.color = "red";
-    lastError.style.fontSize = "10px";
-    last.style.borderColor = "red";
-    last.style.borderWidth = "2px";
-    return formOk === false;
-  }  else {
-    lastError.style.display = "none";
-    last.style = "default";
-  }
-
-  // if email doesn't correspond to regex => error
-  let verifEmail = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
-  if(verifEmail.exec(email.value) === null) {
-    emailError.textContent = "Veuillez renseigner votre adresse mail";
-    emailError.style.color = "red";
-    emailError.style.fontSize = "10px";
-    email.style.borderColor = "red";
-    email.style.borderWidth = "2px";
-    return formOk === false;
-  } else {
-    emailError.style.display = "none";
-    email.style = "default";
-  }
-
-  if(!birthdate.value) {
-    birthdateError.textContent =  "Veuillez entrer votre date de naissance";
-    birthdateError.style.color = "red";
-    birthdateError.style.fontSize = "10px";
-    birthdate.style.borderColor = "red";
-    birthdate.style.borderWidth = "2px";
-    return formOk === false;
-  } else {
-    birthdateError.style.display = "none";
-    birthdate.style = "default";
-  }
-
-  // if quantity.value is empty or its value is not a number => error
-  if(quantity.value === "" || isNaN(quantity.value)) {
-    quantityError.textContent = "Veuillez renseigner ce champ";
-    quantityError.style.color = "red";
-    quantityError.style.fontSize = "10px";
-    quantity.style.borderColor = "red";
-    quantity.style.borderWidth = "2px";
-    return formOk === false;
-  } else {
-    quantityError.style.display = "none";
-    quantity.style = "default";
-  }
-
-  //if one of the option is not checked => error
-  if(!(location2[0].checked || location2[1].checked || location2[2].checked || location2[3].checked || location2[4].checked || location2[5].checked)) {
-    locationError.textContent = "Veuillez choisir une option";
-    locationError.style.color = "red";
-    locationError.style.fontSize = "10px";
-    return formOk === false;
-  } else {
-    locationError.style.display = "none";
-    location2.style = "default";
-  }
-
-  if(!conditions.checked) {
-    conditionsError.textContent = "Veuillez vérifier que vous avez accepté les termes et conditions";
-    conditionsError.style.color = "red";
-    conditionsError.style.fontSize = "10px";
-    conditions.style.borderColor = "red";
-    conditions.style.borderWidth = "2px";
-    return formOk === false;
-  } else {
-    conditionsError.style.display = "none";
-    conditions.style = "default";
-  }
-  return formOk = true;
 }
 
+//function verify is data inputs validate the conditions required
+function validateFields(field) {
+  // check for a checked radio input
+  if (field.type === "radio") {
+    if (field.checked) {
+      setStatus(field, null, "success");
+    }
+  }
 
-// function called at form submit event
-function validate(event){
+  // Check presence of values
+  if (field.value.trim() === "") {
+    setStatus(
+      field,
+      `Le Champ ${
+        field.parentElement.querySelector("label").innerText
+      } ne peut être vide.`,
+      "error"
+    );
+  }
+  // check for a valid email address
+  else if (field.type === "email") {
+    const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (regex.test(field.value)) {
+      setStatus(field, null, "success");
+    } else {
+      setStatus(
+        field,
+        "Merci de renseigner une adresse email valide.",
+        "error"
+      );
+    }
+  }
+  //check minLength of first and last field
+  else if (field.id === "first" || field.id === "last") {
+    minLengthIsOK(field, field.value, 2);
+  } //everything is good
+  else {
+    setStatus(field, null, "success");
+  }
+}
+/*****endfo ValidateFields function*******/
 
-  // default behavior of submit event is avoided
-  event.preventDefault();
-  // run checkInputs function instead
+function setStatus(field, message, status) {
+  //create new div element with error class
+  const newDivError = document.createElement("div");
+  newDivError.className = "error";
+  //DOM element type radio
+  const radioIcon = document.querySelectorAll(
+    "label.checkbox-label > span.checkbox-icon"
+  );
+  //DOM element type checkbox
+  const checkboxIcon = document.querySelector(
+    "label.checkbox2-label > span.checkbox-icon"
+  );
+
+  //success status => remove all CSS styling for error
+  if (status === "success") {
+    if (field.name === "location") {
+      //change borderColor to red when no radio selected
+      radioIcon.forEach((item) => {
+        item.style.borderColor = "#279e7a";
+      });
+    } else if (field.id === "checkbox1") {
+      //remove border to checkbox
+      checkboxIcon.style.border = "";
+    } else {
+      //normal color for Bordercolor with no error
+      field.style.borderColor = "#ccc";
+    }
+    //remove div with error message
+    const elt = field.parentElement.querySelector("div.error");
+    if (elt) {
+      elt.remove();
+    }
+  }
+
+  //error status => indicate visually error to user
+  if (status === "error") {
+    if (field.name === "location") {
+      //change borderColor to red when no radio selected
+      radioIcon.forEach((item) => {
+        item.style.borderColor = "red";
+      });
+    } else if (field.id === "checkbox1") {
+      //add red border to checkbox
+      checkboxIcon.style.border = "2px solid red";
+    } else {
+      //Red color for borderColor to indicate an error to user
+      field.style.borderColor = "red";
+    }
+    //adding new div element with error message
+    field.parentElement.appendChild(newDivError);
+    field.parentElement.querySelector(".error").innerText = message;
+  }
+}
+/***endof setstatus function *****/
+
+//checking inputs
+function checkInputs() {
+  //create data Object to receive all entries from form and permit to send data with easy way to back end
+  const formData = new FormData(form);
+  const entries = formData.entries();
+  const data = Object.fromEntries(entries);
+  //get all fields of form to check if nothing is missing
+  const fields = Object.keys(data);
+  //console.log(data, fields);
+
+  //verify if someone modify input form before sending data
+  fieldIsMissing();
+
+  /*analyze inputs data to alert users by error message if something is wrong
+  if a city is not selected and terms of usage not accepted
+  fields will be an array without inputs from radio element and checkbox element
+  and fields.length === 5 (5 inputs: first, last, email, birthdate, and quantity)
+  minimum required is 7 inputs 
+  */
+
+  //if a city is not selected => error message to user
+  if (fields.indexOf(location) === -1) {
+    const field = document.querySelector("div.formData input[type='radio']");
+    setStatus(field, "Merci de bien vouloir sélectionner une ville.", "error");
+  }
+
+  //if terms and conditions not accepted => error message to user
+  if (fields.indexOf(checkbox1) === -1) {
+    const field = document.querySelector("div.formData input[type='checkbox']");
+    setStatus(field, "Merci d'accepter les conditions d'utilisation.", "error");
+  }
+
+  fields.forEach((field) => {
+    if (field === "location") {
+      const input = document.querySelector(
+        `div.formData input[value="${data.location}"]`
+      );
+      validateFields(input);
+    } else {
+      const input = document.querySelector(`#${field}`);
+      validateFields(input);
+    }
+  });
+
+  /* end of analyse inputs data */
+
+  if (
+    data.first &&
+    data.last &&
+    data.email &&
+    data.birthdate &&
+    data.quantity &&
+    data.location &&
+    data.checkbox1
+  ) {
+    modalBody.style.display = "none";
+    dataSendCloseBtn.style.display = "block";
+    formTransmitted.style.display = "flex"; ///
+    /*****here send information to backend data format Json ***/
+    /***console.log(JSON.stringify(data));*/ return true;
+  } else {
+    return false;
+  }
+}
+
+/**** endof checkInputs function */
+
+function validate(e) {
+  e.preventDefault();
   checkInputs();
-
-  // all inputs must be true so the form can be submitted correctly
-  // if so, confirmation message and red close button are displayed
-  if(formOk === true) {
-    form.style.display = "none";
-    confirmationMsg.style.fontSize = "30px";
-    confirmationMsg.style.textAlign = "center";
-
-    closeBtnRed.style.display = "block";
-    submitBtn.style.display = "none";
-    confirmationMsg.style.display = "flex";
-    closeBtnRed.addEventListener("click", closeModal);
-    return true;
-  }
-}
-
-// listening submit event on form element so function validate is run
-form.addEventListener("submit", validate);
-
-// reset form when submit or close
-function resetfield() {
-  document.getElementBy("reserve").reset();
 }
