@@ -92,7 +92,7 @@ function checkInputs(){
   // then error message is displayed
   let verifName = /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{1,}$/;
   if(verifName.exec(first.value) === null || first.length < 2) {
-    firstError.textContent = "Veuillez entrer 2 caractères minimum";
+    firstError.textContent = "Veuillez entrer votre nom (2 caractères minimum)";
     firstError.style.color = "red";
     firstError.style.fontSize = "10px";
     first.style.borderColor = "red";
@@ -104,7 +104,7 @@ function checkInputs(){
   }
 
   if(verifName.exec(last.value) === null || last.length < 2) {
-    lastError.textContent = "Veuillez entrer 2 caractères minimum";
+    lastError.textContent = "Veuillez entrer prenom (2 caractères minimum)";
     lastError.style.color = "red";
     lastError.style.fontSize = "10px";
     last.style.borderColor = "red";
