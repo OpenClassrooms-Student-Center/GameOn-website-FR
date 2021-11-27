@@ -31,6 +31,10 @@ dataSendCloseBtn.addEventListener("click", closeModal);
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  document.getElementById("reserve").reset();
+  // if mobile screen, heroSection doesn't appear
+  if(mediaQueryMobile.matches){
+    heroSection.style.display = "none";
 }
 // close modal form
 function closeModal() {
@@ -42,6 +46,8 @@ function closeModal() {
     dataSendCloseBtn.style.display = "none";
     formTransmitted.style.display = "none";
   }
+  document.getElementById("reserve").reset();
+
 }
 
 //insert copyright with automatically good actual year
@@ -221,40 +227,34 @@ function checkInputs() {
     setStatus(field, "Merci d'accepter les conditions d'utilisation.", "error");
   }
 
-  fields.forEach((field) => {
-    if (field === "location") {
-      const input = document.querySelector(
-        `div.formData input[value="${data.location}"]`
-      );
-      validateFields(input);
-    } else {
-      const input = document.querySelector(`#${field}`);
-      validateFields(input);
-    }
-  });
+// function called at form submit event
+function validate(event){
 
-  /* end of analyse inputs data */
+  // default behavior of submit event is avoided
+  event.preventDefault();
+  // run checkInputs function instead
+  checkInputs();
 
-  if (
-    data.first &&
-    data.last &&
-    data.email &&
-    data.birthdate &&
-    data.quantity &&
-    data.location &&
-    data.checkbox1
-  ) {
-    modalBody.style.display = "none";
-    dataSendCloseBtn.style.display = "block";
-    formTransmitted.style.display = "flex"; ///
-    /*****here send information to backend data format Json ***/
-    /***console.log(JSON.stringify(data));*/ return true;
-  } else {
-    return false;
+  // all inputs must be true so the form can be submitted correctly
+  // if so, confirmation message and red close button are displayed
+  if(formOk === true) {
+    form.style.display = "none";
+    confirmationMsg.style.fontSize = "30px";
+    confirmationMsg.style.textAlign = "center";
+
+    closeBtnRed.style.display = "block";
+    submitBtn.style.display = "none";
+    confirmationMsg.style.display = "flex";
+    closeBtnRed.addEventListener("click", closeModal);
+    return true;
+    let formOk = false;
   }
 }
 
-/**** endof checkInputs function */
+
+
+// listening submit event on form element so function validate is run
+form.addEventListener("submit", validate);
 
 function validate(e) {
   e.preventDefault();
