@@ -60,8 +60,6 @@ function launchModal() {
   // if mobile screen, heroSection doesn't appear
   if(mediaQueryMobile.matches){
     heroSection.style.display = "none";
-    checkInputs();
-
 }
 
 // close modal event
@@ -202,6 +200,7 @@ function validate(event){
     confirmationMsg.style.display = "flex";
     closeBtnRed.addEventListener("click", closeModal);
     return true;
+    let formOk = false;
   }
 }
 
