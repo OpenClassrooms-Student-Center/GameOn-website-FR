@@ -60,8 +60,7 @@ function launchModal() {
   // if mobile screen, heroSection doesn't appear
   if(mediaQueryMobile.matches){
     heroSection.style.display = "none";
-    $checkInputs()
-  }
+
 }
 
 // close modal event
@@ -78,7 +77,7 @@ function closeModal() {
 
   }
   document.getElementById("reserve").reset();
-
+  function checkInputs();
 }
 
 // button close and confirmation message not displayed
