@@ -206,7 +206,7 @@ function checkInputs() {
   if a city is not selected and terms of usage not accepted
   fields will be an array without inputs from radio element and checkbox element
   and fields.length === 5 (5 inputs: first, last, email, birthdate, and quantity)
-  minimum required is 7 inputs 
+  minimum required is 7 inputs
   */
 
   //if a city is not selected => error message to user
