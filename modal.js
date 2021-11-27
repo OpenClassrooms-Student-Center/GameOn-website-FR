@@ -54,7 +54,7 @@ let mediaQueryMobile = window.matchMedia("(max-width: 540px)");
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
-function launchModal() {
+function launchModal() && function checkInputs(){
   modalbg.style.display = "block";
   document.getElementById("reserve").reset();
   // if mobile screen, heroSection doesn't appear
@@ -77,7 +77,6 @@ function closeModal() {
 
   }
   document.getElementById("reserve").reset();
-  checkInputs();
 
 }
 
