@@ -1,8 +1,4 @@
-/**
- * /*Form style
- *
- * @format
- */
+/*Form style*/
 
 /*Modal general style*/
 .bground {
@@ -214,5 +210,3 @@ small {
   cursor: pointer;
   border: 0;
 }
-
-/*Error messages*/
