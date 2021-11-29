@@ -8,7 +8,7 @@ const lastName = document.querySelector("#last");
 const email = document.querySelector("#email");
 const birthday = document.querySelector("#birthday");
 const quantity = document.querySelector("#quantity");
-const locations = document.querySelectorAll("input[name=location]");
+const locations = document.querySelectorAll('input[name="location"]');
 const locationMessage = document.getElementById("locationMessage");
 const checkbox1 = document.getElementById("checkbox-1");
 const conditionMessage = document.getElementById("conditionMessage");
@@ -28,7 +28,6 @@ signUpBtn.addEventListener("click", launchModal);
 closeBtn.addEventListener("click", closeModal);
 
 //Error message:
-
 // Setup 2 classes = Error & Success:
 function setError(input, message) {
   const formData = input.parentElement;
@@ -40,7 +39,7 @@ function setError(input, message) {
 }
 function setSuccess(input) {
   const formData = input.parentElement;
-  //add error class
+  //add success class
   formData.className = "formData success";
 }
 function isEmail(email) {
@@ -103,29 +102,32 @@ function isInput() {
     // show success green icon
     setSuccess(quantity);
   }
-}
+  //for Radio checkbox part :
 
-//Function for Radio checkbox part : isLocation():
-function isLocation() {
-  for (let i = 0; i < locations.length; i++) {
-    if (locations[i].checked === true) {
+  for (const location of locations) {
+    if (location.checked == true) {
       setSuccess(locationMessage);
-      return true;
+      break;
     } else {
       setError(locationMessage, "You have to choose a city");
     }
   }
-}
 
-//Function for checkbox part : isCondition():
-function isCondition() {
-  if (checkbox1.checked === true) {
+  /*
+  if (locations.checked) {
+    setSuccess(locationMessage);
+  } else {
+    setError(locationMessage, "You have to choose a city");
+  }
+*/
+  //for checkbox part :
+  if (checkbox1.checked) {
     setSuccess(conditionMessage);
-    return true;
   } else {
     setError(conditionMessage, "You have to accept the terms and conditions");
   }
 }
+
 /*
 const isSuccess = function () {
   console.log("success");
@@ -144,15 +146,11 @@ function validation() {
 
 const onSubmit = function () {
   isInput();
-  isLocation();
-  isCondition();
 };
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   isInput();
-  isLocation();
-  isCondition();
 });
 
 submitButton.addEventListener("click", (e) => {
