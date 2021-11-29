@@ -126,11 +126,12 @@ function isCondition() {
     setError(conditionMessage, "You have to accept the terms and conditions");
   }
 }
-
+/*
 const isSuccess = function () {
   console.log("success");
   form.style.opacity = "0";
 };
+*/
 
 //Validation & sumbit the form :
 function validation() {
@@ -158,6 +159,6 @@ submitButton.addEventListener("click", (e) => {
   e.preventDefault();
   onSubmit();
   validation();
-  isSuccess();
+  //isSuccess();
   //console.log("Send Form");
 });
