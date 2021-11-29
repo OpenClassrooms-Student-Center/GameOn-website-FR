@@ -189,15 +189,18 @@ function editNav() {
 // launch modal form
 function launchModal() {
   document.documentElement.scrollTop = 0;
+  body.classList.add('noscroll');
   modalbg.style.display = "block";
 }
 
 // close modal form
 function closeModal() {
   modalbg.style.display = "none";
+  body.classList.remove('noscroll');
 }
 
 // DOM Elements
+const body = document.body;
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalClose = document.querySelector(".close");

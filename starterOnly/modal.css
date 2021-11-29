@@ -38,16 +38,16 @@ img {
   overflow: hidden;
   margin: 3.5%;
 }
+
 .header-logo {
     align-self: flex-start;
 }
+
 .header-logo img {
   width: 65%;
   margin-top: 15px;
 }
-.main-navbar {
-    /* float: right; */
-}
+
 .topnav a {
   float: left;
   display: block;
@@ -191,6 +191,11 @@ main {
   padding: 15px 8%;
   margin: 15px auto;
 }
+
+.noscroll {
+  overflow: hidden;
+}
+
 @media screen and (max-width: 768px) {
   .bground {
     top: 80px;
