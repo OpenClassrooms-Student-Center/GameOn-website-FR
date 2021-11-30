@@ -52,9 +52,8 @@
     <!--Modal part-->
     <div class="bground">
       <div class="content">
+        <span class="close">+</span>
         <form name="reserve" action="index.html" method="get" class="form" id="formSheet">
-          <span class="close">+</span>
-
           <div class="formData">
             <label class="label-name">First name</label>
             <input class="text-control success" type="text" id="first" name="first" minlength="2" />
@@ -62,7 +61,7 @@
               <i class="fas fa-check-circle"></i>
               <i class="fas fa-exclamation-circle"></i>
             </div>
-            <small>Error message</small>
+            <small></small>
           </div>
 
           <div class="formData">
@@ -72,7 +71,7 @@
               <i class="fas fa-check-circle"></i>
               <i class="fas fa-exclamation-circle"></i>
             </div>
-            <small>Error message</small>
+            <small></small>
           </div>
 
           <div class="formData">
@@ -82,7 +81,7 @@
               <i class="fas fa-check-circle"></i>
               <i class="fas fa-exclamation-circle"></i>
             </div>
-            <small>Error message</small>
+            <small></small>
           </div>
 
           <div class="formData">
@@ -92,7 +91,7 @@
               <i class="fas fa-check-circle"></i>
               <i class="fas fa-exclamation-circle"></i>
             </div>
-            <small>Error message</small>
+            <small></small>
           </div>
 
           <div class="formData">
@@ -102,7 +101,7 @@
               <i class="fas fa-check-circle"></i>
               <i class="fas fa-exclamation-circle"></i>
             </div>
-            <small>Error message</small>
+            <small></small>
           </div>
 
           <label class="label-name">Which location?</label>
@@ -155,7 +154,7 @@
               <i class="fas fa-check-circle"></i>
               <i class="fas fa-exclamation-circle"></i>
             </div>
-            <small id="locationMessage">Error message</small>
+            <small id="locationMessage"></small>
           </div>
 
           <div class="formData checkbox-wrapper">
@@ -174,13 +173,17 @@
               <i class="fas fa-check-circle"></i>
               <i class="fas fa-exclamation-circle"></i>
             </div>
-            <small id="conditionMessage">Error message</small>
+            <small id="conditionMessage"></small>
           </div>
-
-          <button class="btn-submit" id="submitButton" type="submit" class="button" value="go" onclick="onSubmit()">
-            Go
-          </button>
         </form>
+        <div class="thanks" id="thanks-message">
+          Thank you for submitting your registration details!
+        </div>
+        <button class="btn-submit" id="submitButton" type="submit" class="button" value="go" onclick="onSubmit()">
+          Go
+        </button>
+      </div>
+
   </main>
 
   <!--Footer-->

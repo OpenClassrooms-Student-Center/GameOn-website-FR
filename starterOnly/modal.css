@@ -25,6 +25,7 @@
   box-shadow: 0px 12px 12px 0px #00000040;
   border-radius: 8px;
   color: #fff;
+  padding-bottom: 1rem;
   animation-name: modalopen;
   animation-duration: 0.9s;
 }
@@ -39,7 +40,7 @@
 }
 
 form {
-  padding: 60px 40px 20px 40px;
+  padding: 60px 40px 10px 40px;
 }
 
 .formDate {
@@ -64,7 +65,6 @@ form {
   font-weight: normal;
   display: inline-block;
   margin-bottom: 12px;
-  font-family: "DM Sans", sans-serif;
 }
 .text-control {
   width: 100%;
@@ -76,7 +76,6 @@ form {
   border: 3px solid white;
   outline: none;
   font-size: 20px;
-  font-family: "DM Sans", sans-serif;
   background: #ffffff;
 }
 
@@ -127,7 +126,6 @@ small {
   align-items: center;
   cursor: pointer;
   margin-right: 14px;
-  font-family: "DM Sans", sans-serif;
   font-size: 12px;
 }
 
@@ -200,13 +198,21 @@ small {
 /* Go button */
 .btn-submit {
   background: #fe142f;
-  font-family: "DM Sans", sans-serif;
+
   display: block;
-  margin: 5px auto;
+  margin: 0 auto;
   border-radius: 7px;
   font-size: 14px;
   padding: 10px 89px;
   color: #fff;
   cursor: pointer;
   border: 0;
+}
+
+/*Thanks message */
+.thanks {
+  display: none;
+  padding: 25rem 5rem;
+  font-size: 37px;
+  text-align: center;
 }
