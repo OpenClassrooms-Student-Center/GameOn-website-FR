@@ -23,8 +23,14 @@ const launchModal = function () {
 const closeModal = function () {
   modalbg.style.display = "none";
 };
-signUpBtn.addEventListener("click", launchModal);
-closeBtn.addEventListener("click", closeModal);
+signUpBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  launchModal();
+});
+closeBtn.addEventListener("click", (event) => {
+  event.preventDefault();
+  closeModal();
+});
 
 //Error message:
 // Setup 2 functions = isError() & isSuccess():
@@ -36,12 +42,13 @@ function isError(input, message) {
   //add error class
   formData.className = "formData error";
 }
-
 function isSuccess(input) {
   const formData = input.parentElement;
   //add success class
   formData.className = "formData success";
 }
+
+//Email test:
 function isEmail(email) {
   return emailFormat.test(email);
 }
