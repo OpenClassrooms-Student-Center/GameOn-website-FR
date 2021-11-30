@@ -70,7 +70,7 @@ nav a span {
   text-align: center;
 }
 
-nav .icon {
+nav .fa {
   display: none;
 }
 
@@ -156,7 +156,6 @@ main {
   height: 18px;
   color: #fe142f;
   font-size: 14px;
-  margin: 0 1157px 0 40px;
 }
 footer {
   padding: 50px 0 2px 0;
@@ -180,14 +179,14 @@ footer {
   nav {
     width: 100%;
     height: 3rem;
-    margin: 3rem auto;
-    gap: 5rem;
+    margin: 3rem;
+    align-items: center;
+    justify-content: space-around;
   }
-  nav .icon {
+  nav .fa {
     display: block;
     font-size: 3rem;
     color: #fe142f;
-    width: 100%;
     height: 100%;
     margin: 0;
   }
@@ -203,7 +202,7 @@ footer {
   .hero-img {
     width: 33rem;
     height: 100%;
-    margin: -40rem auto;
+    margin: -45rem auto;
     z-index: 1;
   }
   .hero-img img {
@@ -234,7 +233,7 @@ footer {
     height: 10rem;
     font-size: 73px;
     line-height: 85px;
-    margin: 3rem;
+    margin: 1rem auto;
   }
 
   .hero-text {
@@ -242,12 +241,12 @@ footer {
     font-size: 20px;
     line-height: 26px;
     margin: 0 auto;
+    text-align: center;
   }
   .btn-signup {
     margin: 35rem auto 0 auto;
   }
   footer {
-    z-index: 1;
     margin-top: 50rem;
     width: 100%;
     text-align: center;
@@ -255,13 +254,50 @@ footer {
 
   .copyrights {
     width: 100%;
-    margin: 0 auto;
+    margin: 6rem auto 3rem auto;
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 780px) {
+  .hero-headline {
+    font-size: 3rem;
+    line-height: 3rem;
+  }
+  nav {
+    height: 2rem;
+  }
+  .hero-headline {
+    text-align: center;
+  }
+  .hero-text {
+    margin: -4rem auto;
+  }
+  .hero-img {
+    margin-top: -50rem;
+  }
+  .hero-img img {
+    margin: 1rem auto;
+  }
+  footer {
+    margin-top: 46rem;
+  }
+  .btn-signup {
+    margin-top: 40rem;
+  }
+  .copyrights {
+    margin-top: 13rem;
+  }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 740px) {
+  .hero-img {
+    width: 25rem;
+  }
+  .btn-signup {
+    margin-top: 29rem;
+  }
+  .copyrights {
+    margin-top: 17rem;
+  }
 }
 @media screen and (max-width: 540px) {
 }

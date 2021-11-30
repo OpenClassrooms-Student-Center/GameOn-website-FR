@@ -212,7 +212,7 @@ small {
 /*Thanks message */
 .thanks {
   display: none;
-  padding: 25rem 5rem;
+  padding: 20rem 5rem;
   font-size: 37px;
   text-align: center;
 }
