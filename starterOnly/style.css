@@ -6,13 +6,12 @@
 }
 
 body {
-  padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 1440px;
-  height: 944px;
+  width: 100%;
+  height: 100vh;
   margin: 0 auto;
 }
 
@@ -166,7 +165,7 @@ footer {
 }
 
 /*Responsive*/
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 960px) {
   body {
     width: 100%;
     height: 100%;
@@ -200,9 +199,8 @@ footer {
     display: none;
   }
   .hero-img {
-    width: 33rem;
-    height: 100%;
-    margin: -45rem auto;
+    width: 36rem;
+    margin-top: -30rem;
     z-index: 1;
   }
   .hero-img img {
@@ -227,27 +225,27 @@ footer {
     width: 38rem;
     height: 100vh;
     text-align: justify;
+    padding: 0 1rem;
   }
   .hero-headline {
-    width: 85%;
-    height: 10rem;
-    font-size: 73px;
-    line-height: 85px;
-    margin: 1rem auto;
+    width: 100%;
+    font-size: 85px;
+    line-height: 80px;
+    margin: 0 auto;
   }
 
   .hero-text {
-    width: 85%;
+    width: 100%;
     font-size: 20px;
     line-height: 26px;
-    margin: 0 auto;
-    text-align: center;
+    margin: 2rem auto;
+    text-align: justify;
   }
   .btn-signup {
     margin: 35rem auto 0 auto;
   }
   footer {
-    margin-top: 50rem;
+    margin-top: 0;
     width: 100%;
     text-align: center;
   }
@@ -256,48 +254,41 @@ footer {
     width: 100%;
     margin: 6rem auto 3rem auto;
   }
+  .text-control {
+    height: 1.8rem;
+  }
 }
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 650px) {
   .hero-headline {
-    font-size: 3rem;
-    line-height: 3rem;
-  }
-  nav {
-    height: 2rem;
-  }
-  .hero-headline {
+    font-size: 70px;
+    line-height: 70px;
     text-align: center;
   }
   .hero-text {
-    margin: -4rem auto;
+    font-size: 17px;
+    text-align: center;
   }
   .hero-img {
-    margin-top: -50rem;
-  }
-  .hero-img img {
-    margin: 1rem auto;
-  }
-  footer {
-    margin-top: 46rem;
+    width: 30rem;
+    margin-top: -31rem;
   }
   .btn-signup {
-    margin-top: 40rem;
-  }
-  .copyrights {
-    margin-top: 13rem;
+    margin: 30rem auto 0 auto;
   }
 }
-@media screen and (max-width: 740px) {
+
+@media screen and (max-width: 540px) {
+  .hero-headline {
+    font-size: 60px;
+  }
   .hero-img {
     width: 25rem;
   }
+  .hero-text {
+    width: 72%;
+  }
   .btn-signup {
-    margin-top: 29rem;
+    margin: 26rem auto 0 auto;
   }
-  .copyrights {
-    margin-top: 17rem;
-  }
-}
-@media screen and (max-width: 540px) {
 }
