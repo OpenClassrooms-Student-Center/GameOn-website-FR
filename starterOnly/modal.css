@@ -1,5 +1,4 @@
 /*Form style*/
-
 /*Modal general style*/
 .bground {
   height: 100%;
@@ -159,7 +158,6 @@ small {
 }
 
 /*Checkbox style*/
-
 .checkbox {
   display: inline-flex;
   align-items: center;
