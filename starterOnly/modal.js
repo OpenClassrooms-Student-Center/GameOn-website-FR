@@ -112,7 +112,7 @@ function isInput() {
   } else {
     isError(conditionMessage, "You have to accept the terms and conditions");
   }
-
+  //Check all inputs value to show thanks message:
   if (
     firstNameValue.length > 1 &&
     lastNameValue.length > 1 &&
@@ -124,6 +124,12 @@ function isInput() {
     form.remove();
     thanksMessage.style.display = "block";
     submitButton.innerHTML = submitButton.innerHTML.replace("Go", "Close");
+    // add 1st event to submit-button:
+    const addCloseEvent = function (event) {
+      event.preventDefault();
+      closeModal();
+    };
+    submitButton.addEventListener("click", addCloseEvent, false);
   } else {
     form.style.display = "block";
   }
@@ -133,14 +139,16 @@ function isInput() {
 function onSubmit() {
   isInput();
 }
-
-submitButton.addEventListener("click", (e) => {
-  e.preventDefault();
+// add 2nd event to submit-button:
+const addSubmitEvent = function (event) {
+  event.preventDefault();
   onSubmit();
   isInput();
-});
+};
+submitButton.addEventListener("click", addSubmitEvent, false);
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+//add event to form:
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
   isInput();
 });
