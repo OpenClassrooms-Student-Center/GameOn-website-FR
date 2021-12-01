@@ -1,6 +1,7 @@
 const signUpBtn = document.querySelector(".btn-signup");
 const closeBtn = document.querySelector(".close");
 const modalbg = document.querySelector(".bground");
+const submitButton = document.getElementById("submitButton");
 const form = document.querySelector(".form");
 const formData = document.querySelectorAll(".formData");
 const firstName = document.querySelector("#first");
@@ -13,20 +14,22 @@ const locationMessage = document.getElementById("locationMessage");
 const checkbox1 = document.getElementById("checkbox-1");
 const conditionMessage = document.getElementById("conditionMessage");
 const emailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-const submitButton = document.getElementById("submitButton");
 const thanksMessage = document.getElementById("thanks-message");
 
 // Launch & close modal:
+
 const launchModal = function () {
   modalbg.style.display = "block";
-};
-const closeModal = function () {
-  modalbg.style.display = "none";
 };
 signUpBtn.addEventListener("click", (event) => {
   event.preventDefault();
   launchModal();
 });
+
+const closeModal = function () {
+  modalbg.style.display = "none";
+};
+
 closeBtn.addEventListener("click", (event) => {
   event.preventDefault();
   closeModal();
@@ -119,6 +122,7 @@ function isInput() {
   } else {
     isError(conditionMessage, "You have to accept the terms and conditions");
   }
+
   //Check all inputs value to show thanks message:
   if (
     firstNameValue.length > 1 &&
