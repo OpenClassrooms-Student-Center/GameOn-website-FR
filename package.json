@@ -2,7 +2,7 @@
   "name": "gameon-website-fr",
   "version": "1.0.0",
   "description": "Projet N°4 Parcours développeur d'application Javascript / React - Openclassrooms",
-  "main": "index.js",
+  "main": "modal.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
