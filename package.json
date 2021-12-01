@@ -1,0 +1,19 @@
+{
+  "name": "gameon-website-fr",
+  "version": "1.0.0",
+  "description": "Projet N°4 Parcours développeur d'application Javascript / React - Openclassrooms",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antoineThomasCode/GameOn-website-FR.git"
+  },
+  "author": "Antoine Thomas",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antoineThomasCode/GameOn-website-FR/issues"
+  },
+  "homepage": "https://github.com/antoineThomasCode/GameOn-website-FR#readme"
+}
