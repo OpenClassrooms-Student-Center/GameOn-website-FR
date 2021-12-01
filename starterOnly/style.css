@@ -253,9 +253,6 @@ footer {
     width: 100%;
     margin: 6rem auto 3rem auto;
   }
-  .text-control {
-    height: 1.8rem;
-  }
 }
 
 @media screen and (max-width: 650px) {
