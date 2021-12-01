@@ -70,6 +70,8 @@ img {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
+  text-decoration: underline;
+  text-underline-position: under;
 }
 
 .topnav .icon {
@@ -119,7 +121,7 @@ main {
 
 }
 
-.modal-btn {
+/* .modal-btn {
   font-size: 145%;
   background: #fe142f;
   display: flex;
@@ -134,7 +136,7 @@ main {
 .modal-btn:hover {
   background: #3876ac;
 }
-
+ */
 .footer {
   margin: 20px;
   padding: 10px;
