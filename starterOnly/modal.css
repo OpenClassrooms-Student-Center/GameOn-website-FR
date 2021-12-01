@@ -114,6 +114,9 @@ img {
     right: 0;
     top: 51px;
   }
+  .content{
+    top: 0;
+  }
 } 
 
 main {
@@ -574,6 +577,12 @@ footer {
   .hero-headline {
     font-size: 45px;
     white-space: normal;
+  }
+}
+@media screen and (max-width: 340px){
+  .topnav a.icon {
+    margin-top: -45px;
+    margin-right: -1px;
   }
 }
 
