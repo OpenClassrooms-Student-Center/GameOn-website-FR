@@ -40,7 +40,7 @@ img {
 }
 
 .header-logo {
-    align-self: flex-start;
+  align-self: flex-start;
 }
 
 .header-logo img {
@@ -80,7 +80,9 @@ img {
 }
 
 @media screen and (max-width: 800px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     /* float: right; */
     display: block;
@@ -88,7 +90,9 @@ img {
 }
 
 @media screen and (max-width: 800px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -117,11 +121,9 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
-/* .modal-btn {
+.modal-btn {
   font-size: 145%;
   background: #fe142f;
   display: flex;
@@ -136,7 +138,7 @@ main {
 .modal-btn:hover {
   background: #3876ac;
 }
- */
+
 .footer {
   margin: 20px;
   padding: 10px;
@@ -555,4 +557,3 @@ input[data-error]::after {
     opacity: 1;
   }
 }
-

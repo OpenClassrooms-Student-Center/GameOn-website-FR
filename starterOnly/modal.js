@@ -1,5 +1,5 @@
 // Data-errors values
-const dataErrors = {
+const DATA_ERRORS = {
   first: "Veuillez entrer 2 caractères ou plus pour le champ du prénom.",
   last: "Veuillez entrer 2 caractères ou plus pour le champ du nom.",
   email: "Veuillez entrer une addresse mail valide.",
@@ -8,21 +8,37 @@ const dataErrors = {
     "Pour le nombre de concours, une valeur numérique doit être saisie.",
   location1: "Vous devez choisir une option.",
   checkbox1: "Vous devez vérifier que vous acceptez les termes et conditions.",
+  unknown: "Le message d'erreur n'est pas connu.",
 };
 
 // array of obj : {id: 'str', status : 'default' or 'valid' or 'error', message : dataErrors[id] }
-const dataInputs = [];
+const DATA_INPUTS = [];
 
 // push all infos inputs
 function pushData() {
   const inputs = document.querySelectorAll(".formData input");
 
-  for (let input of inputs) {
-    dataInputs.push({
+  for (const input of inputs) {
+    const status = "default";
+    const errorMsg = DATA_ERRORS[input.id]
+      ? DATA_ERRORS[input.id]
+      : status === "error"
+      ? DATA_ERRORS["unknown"]
+      : null;
+
+    DATA_INPUTS.push({
       id: input.id,
-      status: "default",
-      message: dataErrors[input.id],
+      status,
+      message: errorMsg,
     });
+  }
+
+  updateDataStatus("checkbox1", "valid");
+}
+
+function resetStatus() {
+  for (const data of DATA_INPUTS) {
+    data.status = "default";
   }
 
   updateDataStatus("checkbox1", "valid");
@@ -30,12 +46,14 @@ function pushData() {
 
 // get Obj DataInputs
 function getObjDataInputs(id) {
-  return dataInputs.filter((obj) => obj.id === id)[0];
+  return DATA_INPUTS.filter((obj) => obj.id === id)[0];
 }
 
 // update status obj DataInputs
 function updateDataStatus(id, newStatus) {
-  getObjDataInputs(id).status = newStatus;
+  const newObj = getObjDataInputs(id);
+
+  newObj.status = newStatus;
 }
 
 // validate firstName
@@ -132,30 +150,35 @@ function validateCheckbox(event) {
 function updateDataVisibility(element) {
   const status = getObjDataInputs(element.id).status;
   const error = getObjDataInputs(element.id).message;
+  const hasError = element.parentElement.hasAttribute("data-error");
 
   if (status === "error" || status === "default") {
     element.parentElement.setAttribute("data-error-visible", true);
     element.parentElement.setAttribute("data-error", error);
-  } else if (element.parentElement.hasAttribute("data-error")) {
-    element.parentElement.removeAttribute("data-error-visible");
-    element.parentElement.removeAttribute("data-error");
+  } else {
+    if (hasError) {
+      element.parentElement.removeAttribute("data-error-visible");
+      element.parentElement.removeAttribute("data-error");
+    }
   }
 }
 
 // update data-error attribute of all elements
 function updateAllDataVibility() {
-  const requiredInput = dataInputs.filter((obj) => obj.message);
+  const requiredInput = DATA_INPUTS.filter((obj) => obj.message);
 
-  for (let obj of requiredInput) {
-    updateDataVisibility(document.getElementById(obj.id));
+  for (const obj of requiredInput) {
+    const id = document.getElementById(obj.id);
+
+    updateDataVisibility(id);
   }
 }
 
 // check if form is valid
 function formIsValid() {
-  const requiredInput = dataInputs.filter((obj) => obj.message);
+  const requiredInput = DATA_INPUTS.filter((obj) => obj.message);
 
-  for (let obj of requiredInput) {
+  for (const obj of requiredInput) {
     if (obj.status != "valid") {
       return false;
     }
@@ -188,15 +211,21 @@ function editNav() {
 
 // launch modal form
 function launchModal() {
+  if (formIsValid()) {
+    resetData();
+    form.reset();
+    form.style.display = "block";
+    thanks.style.display = "none";
+  }
   document.documentElement.scrollTop = 0;
-  body.classList.add('noscroll');
+  body.classList.add("noscroll");
   modalbg.style.display = "block";
 }
 
 // close modal form
 function closeModal() {
   modalbg.style.display = "none";
-  body.classList.remove('noscroll');
+  body.classList.remove("noscroll");
 }
 
 // DOM Elements
