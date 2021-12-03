@@ -59,7 +59,7 @@ function updateDataStatus(id, newStatus) {
 // validate firstName
 function validateFirstName(event) {
   const value = event.target.value;
-  const re = /^[A-Za-z]{2,}$/;
+  const re = /^[A-zÀ-ú -]{2,}$/;
 
   if (!re.test(value)) {
     updateDataStatus("first", "error");
@@ -73,7 +73,7 @@ function validateFirstName(event) {
 // validate lastName
 function validateLastName(event) {
   const value = event.target.value;
-  const re = /^[A-Za-z]{2,}$/;
+  const re = /^[A-zÀ-ú -]{2,}$/;
 
   if (!re.test(value)) {
     updateDataStatus("last", "error");
