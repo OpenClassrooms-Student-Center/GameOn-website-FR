@@ -212,7 +212,7 @@ function editNav() {
 // launch modal form
 function launchModal() {
   if (formIsValid()) {
-    resetData();
+    resetStatus();
     form.reset();
     form.style.display = "block";
     thanks.style.display = "none";
