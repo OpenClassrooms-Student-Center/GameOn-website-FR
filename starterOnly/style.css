@@ -1,0 +1,290 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "DM Sans", sans-serif;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+/*nav*/
+nav {
+  width: 1240px;
+  height: 50.1px;
+  margin: 52px 100px;
+  display: flex;
+  justify-content: space-between;
+}
+.header-logo img {
+  width: 277px;
+  height: 49.86px;
+}
+
+.main-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+}
+
+nav a {
+  color: #000000;
+  text-align: center;
+  text-decoration: none;
+  width: 142px;
+  height: 41px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav a:hover {
+  background-color: #fe142f;
+  color: #ffffff;
+  border-radius: 8px;
+  text-decoration: underline white;
+  text-underline-offset: 4px;
+}
+
+nav a.active {
+  background-color: #fe142f;
+  color: #ffffff;
+  border-radius: 8px;
+  text-decoration: underline white;
+  text-underline-offset: 4px;
+}
+
+nav a span {
+  width: 110px;
+  height: 23px;
+  font-size: 18px;
+  text-align: center;
+}
+
+nav .fa {
+  display: none;
+}
+
+/*main*/
+
+main {
+  color: black;
+  border-radius: 8px;
+  text-align: justify;
+}
+
+/*hero style*/
+.hero-section {
+  width: 1239px;
+  height: 657px;
+  border-radius: 8px;
+  box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.25);
+  display: flex;
+}
+
+.hero-content {
+  background: #232323;
+  width: 509px;
+  height: 657px;
+  color: #fff;
+  position: relative;
+  text-align: left;
+  min-width: 424px;
+  border-radius: 8px 0 0 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-img img {
+  width: 730px;
+  height: 657px;
+  border-radius: 0 8px 8px 0;
+}
+.hero-headline {
+  width: 670px;
+  height: 240px;
+  font-size: 96px;
+  line-height: 125px;
+  margin: 53px 513px auto 56px;
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+.hero-text {
+  width: 430px;
+  height: 93px;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 31px;
+  margin: 0 753px 0 56px;
+}
+
+.hero-content > * {
+  z-index: 1;
+}
+
+.btn-signup {
+  width: 199px;
+  height: 55px;
+  border-radius: 8px;
+  background: #fe142f;
+  color: white;
+  padding: 11px 26px;
+  cursor: pointer;
+  border: 0;
+  font-size: 25px;
+  line-height: 32.55px;
+  margin-left: 56px;
+  margin-top: 73px;
+  margin-bottom: 70px;
+}
+
+/*footer*/
+
+.copyrights {
+  width: 243px;
+  height: 18px;
+  color: #fe142f;
+  font-size: 14px;
+}
+footer {
+  padding: 50px 0 2px 0;
+}
+
+.hero-section > .btn-signup {
+  display: none;
+}
+
+/*Responsive*/
+@media screen and (max-width: 960px) {
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+  }
+  main {
+    width: 100%;
+    height: auto;
+  }
+  nav {
+    width: 100%;
+    height: 3rem;
+    margin: 3rem;
+    align-items: center;
+    justify-content: space-around;
+  }
+  nav .fa {
+    display: block;
+    font-size: 3rem;
+    color: #fe142f;
+    height: 100%;
+    margin: 0;
+  }
+  .header-logo img {
+    width: 5rem;
+    height: 3rem;
+    margin: 0 9rem;
+  }
+
+  .main-navbar {
+    display: none;
+  }
+  .hero-img {
+    width: 36rem;
+    margin-top: -30rem;
+    z-index: 1;
+  }
+  .hero-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+  }
+
+  .hero-section {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none;
+  }
+
+  .hero-content {
+    color: black;
+    background: #fff;
+    width: 38rem;
+    height: 100vh;
+    text-align: justify;
+    padding: 0 1rem;
+  }
+  .hero-headline {
+    width: 100%;
+    font-size: 85px;
+    line-height: 80px;
+    margin: 0 auto;
+  }
+
+  .hero-text {
+    width: 100%;
+    font-size: 20px;
+    line-height: 26px;
+    margin: 2rem auto;
+    text-align: justify;
+  }
+  .btn-signup {
+    margin: 35rem auto 0 auto;
+  }
+  footer {
+    margin-top: 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .copyrights {
+    width: 100%;
+    margin: 6rem auto 3rem auto;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .hero-headline {
+    font-size: 70px;
+    line-height: 70px;
+    text-align: center;
+  }
+  .hero-text {
+    font-size: 17px;
+    text-align: center;
+  }
+  .hero-img {
+    width: 30rem;
+    margin-top: -31rem;
+  }
+  .btn-signup {
+    margin: 30rem auto 0 auto;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .hero-headline {
+    font-size: 60px;
+  }
+  .hero-img {
+    width: 25rem;
+  }
+  .hero-text {
+    width: 72%;
+  }
+  .btn-signup {
+    margin: 26rem auto 0 auto;
+  }
+}

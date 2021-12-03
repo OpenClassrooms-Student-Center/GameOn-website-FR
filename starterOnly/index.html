@@ -1,220 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>Reservation</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="modal.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <div class="topnav" id="myTopnav">
-      <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
-    </div>
+
+<head>
+  <meta charset="utf-8" />
+  <title>Reservation</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="modal.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/5c94a816e7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <nav id="myTopnav" class="topnav">
+    <img alt="logo" src="Logo.png" />
     <div class="main-navbar">
-      
-      <a href="#" class="active"><span>Accueil</span></a>
-      <a href="#"><span>Détails de l'évènement</span></a>
-      <a href="#"><span>À propos</span></a>
+      <a href="#" class="active"><span>Event Details</span></a>
+      <a href="#"><span>About us</span></a>
       <a href="#"><span>Contact</span></a>
-      <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars"></i>
-      </a>
+      <a href="#"><span>Pass events</span></a>
     </div>
+    <i class="fa fa-bars"></i>
+  </nav>
+
+  <main>
+    <!--Hero part-->
+    <div class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-headline">
+          US Nationwide<br />
+          Game-a-Thon
+        </h1>
+        <p class="hero-text">
+          Do you live to game? Our next gaming
+          event is now accepting reservations
+          for players, but spots are limited.
+        </p>
+        <button class="btn-signup">Sign Up Now</button>
+      </div>
+      <div class="hero-img">
+        <img src="./bg_img.jpg" alt="background-image" />
+      </div>
     </div>
-  </div>
-    <main>
-      <div class="hero-section">
-        <div class="hero-content">
-          <h1 class="hero-headline">
-            Marathon national<br>
-            de jeux vidéos
-          </h1>
-          <p class="hero-text">
-            Vous aimez jouer ? Notre prochain évènement gaming est ouvert
-            aux réservations... Places limitées !
-          </p>
-          <button class="btn-signup modal-btn">
-            je m'inscris
-          </button>
+
+    <!--Modal part-->
+    <div class="bground">
+      <div class="content">
+        <span class="close">+</span>
+        <form name="reserve" action="index.html" method="get" class="form" id="formSheet">
+          <div class="formData">
+            <label class="label-name">First name</label>
+            <input class="text-control success" type="text" id="first" name="first" minlength="2" />
+            <div class="icons">
+              <i class="fas fa-check-circle"></i>
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <small></small>
+          </div>
+
+          <div class="formData">
+            <label class="label-name">Last name</label>
+            <input class="text-control error" type="text" id="last" name="last" />
+            <div class="icons">
+              <i class="fas fa-check-circle"></i>
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <small></small>
+          </div>
+
+          <div class="formData">
+            <label class="label-name">Email</label>
+            <input class="text-control" id="email" name="email" />
+            <div class="icons">
+              <i class="fas fa-check-circle"></i>
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <small></small>
+          </div>
+
+          <div class="formData">
+            <label class="label-name">Birthday</label>
+            <input class="text-control" type="date" id="birthday" name="birthdate" />
+            <div class="icons">
+              <i class="fas fa-check-circle"></i>
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <small></small>
+          </div>
+
+          <div class="formData">
+            <label class="label-name">How many tournaments have you attended?</label>
+            <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" />
+            <div class="icons">
+              <i class="fas fa-check-circle"></i>
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <small></small>
+          </div>
+
+          <label class="label-name">Which location?</label>
+
+          <div class="formData">
+            <label for="location-1" class="radio">
+              <input type="radio" name="location" id="location-1" class="radio__input" value="New York">
+              <div class="radio-checkmark">
+                <!--Virtual element inside here-->
+              </div>
+              New York
+            </label>
+
+            <label for="location-2" class="radio">
+              <input type="radio" name="location" id="location-2" class="radio__input" value="San Francisco">
+              <div class="radio-checkmark">
+                <!--Virtual element inside here-->
+              </div>
+              San Francisco
+            </label>
+            <label for="location-3" class="radio">
+              <input type="radio" name="location" id="location-3" class="radio__input" value="Seattle">
+              <div class="radio-checkmark">
+                <!--Virtual element inside here-->
+              </div>
+              Seattle
+            </label>
+            <label for="location-4" class="radio">
+              <input type="radio" name="location" id="location-4" class="radio__input" value="Chicago">
+              <div class="radio-checkmark">
+                <!--Virtual element inside here-->
+              </div>
+              Chicago
+            </label>
+            <label for="location-5" class="radio">
+              <input type="radio" name="location" id="location-5" class="radio__input" value="Boston">
+              <div class="radio-checkmark">
+                <!--Virtual element inside here-->
+              </div>
+              Boston
+            </label>
+            <label for="location-6" class="radio">
+              <input type="radio" name="location" id="location-6" class="radio__input" value="Portland">
+              <div class="radio-checkmark">
+                <!--Virtual element inside here-->
+              </div>
+              Portland
+            </label><br />
+            <div class="icons">
+              <i class="fas fa-check-circle"></i>
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <small id="locationMessage"></small>
+          </div>
+
+          <div class="formData checkbox-wrapper">
+            <label class="checkbox" for="checkbox-1">
+              <input class="checkbox__input" type="checkbox" name="term-1" id="checkbox-1">
+              <div class="checkbox__box"></div>
+              I have read and accept the terms of use.
+            </label>
+            <label class="checkbox" for="checkbox-2">
+              <input class="checkbox__input" type="checkbox" name="term-2" id="checkbox-2">
+              <div class="checkbox__box"></div>
+              I want to be notified of upcoming events. (Optional)
+            </label>
+            <br />
+            <div class="icons">
+              <i class="fas fa-check-circle"></i>
+              <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <small id="conditionMessage"></small>
+          </div>
+        </form>
+        <div class="thanks" id="thanks-message">
+          Thank you for submitting your registration details!
         </div>
-        <div class="hero-img">
-          <img src="./bg_img.jpg" alt="img" />
-        </div>
-        <button class="btn-signup modal-btn">
-          je m'inscris
+        <button class="btn-submit" id="submitButton" type="submit" class="button" value="go" onclick="onSubmit()">
+          Go
         </button>
       </div>
 
-      <div class="bground">
-        <div class="content">
-          <span class="close"></span>
-          <div class="modal-body">
-            <form
-              name="reserve"
-              action="index.html"
-              method="get"
-              onsubmit="return validate();"
-            >
-              <div
-                class="formData">
-                <label>Prénom</label><br>
-                <input
-                  class="text-control"
-                  type="text"
-                  id="first"
-                  name="first"
-                  minlength="2"
-                /><br>
-              </div>
-              <div
-                class="formData">
-                <label>Nom</label><br>
-                <input
-                  class="text-control"
-                  type="text"
-                  id="last"
-                  name="last"
-                /><br>
-              </div>
-              <div
-                class="formData">
-                <label>E-mail</label><br>
-                <input
-                  class="text-control"
-                  type="email"
-                  id="email"
-                  name="email"
-                /><br>
-              </div>
-              <div
-                class="formData">
-                <label>Date de naissance</label><br>
-                <input
-                  class="text-control"
-                  type="date"
-                  id="birthdate"
-                  name="birthdate"
-                /><br>
-              </div>
-              <div
-                class="formData">
-                <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
-              </div>
-              <p class="text-label">Quelles villes ?</p>
-              <div
-                class="formData">
-                <input
-                  class="checkbox-input"
-                  type="radio"
-                  id="location1"
-                  name="location"
-                  value="New York"
-                />
-                <label class="checkbox-label" for="location1">
-                  <span class="checkbox-icon"></span>
-                  New York</label
-                >
-                <input
-                  class="checkbox-input"
-                  type="radio"
-                  id="location2"
-                  name="location"
-                  value="San Francisco"
-                />
-                <label class="checkbox-label" for="location2">
-                  <span class="checkbox-icon"></span>
-                  San Francisco</label
-                >
-                <input
-                  class="checkbox-input"
-                  type="radio"
-                  id="location3"
-                  name="location"
-                  value="Seattle"
-                />
-                <label class="checkbox-label" for="location3">
-                  <span class="checkbox-icon"></span>
-                  Seattle</label
-                >
-                <input
-                  class="checkbox-input"
-                  type="radio"
-                  id="location4"
-                  name="location"
-                  value="Chicago"
-                />
-                <label class="checkbox-label" for="location4">
-                  <span class="checkbox-icon"></span>
-                  Chicago</label
-                >
-                <input
-                  class="checkbox-input"
-                  type="radio"
-                  id="location5"
-                  name="location"
-                  value="Boston"
-                />
-                <label class="checkbox-label" for="location5">
-                  <span class="checkbox-icon"></span>
-                  Boston</label
-                >
-                <input
-                  class="checkbox-input"
-                  type="radio"
-                  id="location6"
-                  name="location"
-                  value="Portland"
-                />
-                <label class="checkbox-label" for="location6">
-                  <span class="checkbox-icon"></span>
-                  Portland</label
-                >
-              </div>
+  </main>
 
-              <div
-                class="formData">
-                <input
-                  class="checkbox-input"
-                  type="checkbox"
-                  id="checkbox1"
-                  checked
-                />
-                <label class="checkbox2-label" for="checkbox1" required>
-                  <span class="checkbox-icon"></span>
-                  J'ai lu et accepté les conditions d'utilisation.
-                </label>
-                <br>
-                <input class="checkbox-input" type="checkbox" id="checkbox2" />
-                <label class="checkbox2-label" for="checkbox2">
-                  <span class="checkbox-icon"></span>
-                  Je Je souhaite être prévenu des prochains évènements.
-                </label>
-                <br>
-              </div>
-              <input
-                class="btn-submit"
-                type="submit"
-                class="button"
-                value="C'est parti"
-              />
-            </form>
-          </div>
-        </div>
-      </div>
-    </main>
-    <footer>
-      <p class="copyrights">
-        Copyright 2014 - 2020, GameOn Inc.
-      </p>
-    </footer>
-    <script src="modal.js"></script>
-  </body>
+  <!--Footer-->
+  <footer>
+    <p class="copyrights">Copyright 2014 - 2020, GameOn Inc.</p>
+  </footer>
+  <script src="modal.js"></script>
+</body>
+
 </html>
