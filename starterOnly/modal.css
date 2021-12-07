@@ -80,16 +80,15 @@ img {
 }
 
 @media screen and (max-width: 800px) {
+  .topnav {
+    margin: 15px 30px;
+  }
   .topnav a {
     display: none;
   }
   .topnav a.icon {
-    /* float: right; */
     display: block;
   }
-}
-
-@media screen and (max-width: 800px) {
   .topnav.responsive {
     position: relative;
   }
@@ -102,6 +101,14 @@ img {
     float: none;
     display: block;
     text-align: left;
+  }
+  .header-logo {
+    align-self: flex-start;
+  }
+  .header-logo img {
+    width: 103px;
+    margin-top: 18px;
+    padding-right: 0;
   }
 }
 
@@ -122,7 +129,12 @@ main {
   border-radius: 2rem;
   text-align: justify;
 }
-
+@media screen and (max-width: 800px) {
+  main {
+    padding: 0;
+    margin: 0 30px;
+  }
+}
 .modal-btn {
   font-size: 145%;
   background: #fe142f;
@@ -139,12 +151,12 @@ main {
   background: #3876ac;
 }
 
-.footer {
+/* .footer {
   margin: 20px;
   padding: 10px;
   font-family: var(--font-slab);
 }
-
+ */
 /* Modal form */
 
 .button {
@@ -200,14 +212,20 @@ main {
   overflow: hidden;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
   .bground {
     top: 80px;
     background-color: #232323;
+    box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.25);
+    border-radius: 8px 8px 0px 0px;
   }
   .content {
     margin: 0 0 80px 0;
     max-width: unset;
+    padding-top: 0;
+  }
+  .modal-body {
+    padding: 15px 30px 0;
   }
 }
 label {
@@ -267,7 +285,7 @@ input[data-error]::after {
   display: block;
   width: 20px;
   height: 20px;
-  border: 2px solid #279e7a;
+  border: 2px solid #ffffff;
   border-radius: 50%;
   text-indent: 29px;
   white-space: nowrap;
@@ -298,6 +316,9 @@ input[data-error]::after {
 .checkbox-input:checked + .checkbox-label .checkbox-icon::after,
 .checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
   opacity: 1;
+}
+.checkbox-input:checked + .checkbox-label .checkbox-icon {
+  border: 2px solid #279e7a;
 }
 .checkbox-input:checked + .checkbox2-label .checkbox-icon {
   background: #279e7a;
@@ -343,6 +364,21 @@ input[data-error]::after {
 }
 .close:after {
   transform: rotate(-45deg);
+}
+@media screen and (max-width: 800px) {
+  .formData {
+    margin-top: 10px;
+  }
+  label {
+    font-size: 14px;
+  }
+  .close {
+    transform: scale(0.6);
+  }
+  .checkbox-label,
+  .checkbox2-label {
+    margin: 0 0 0 30px;
+  }
 }
 .btn-submit,
 .btn-signup,
@@ -479,7 +515,6 @@ input[data-error]::after {
 }
 .btn-signup {
   outline: none;
-  /* text-transform: capitalize; */
   font-size: 1.3rem;
   padding: 15px 23px;
   margin: 0;
@@ -504,12 +539,16 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
-/* footer {
-  padding-left: 2vw;
-  padding-right: 2vw;
-  margin: 0 20px;
-}  */
 @media screen and (max-width: 800px) {
+  .btn-submit,
+  .btn-signup,
+  .btn-close {
+    margin-top: 20px;
+  }
+  .text-label {
+    font-size: 14px;
+    margin-top: 10px;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -518,6 +557,7 @@ input[data-error]::after {
     background: #fff;
     color: #000;
     padding: 0;
+    min-width: unset;
   }
   .hero-content::after {
     content: unset;
@@ -526,25 +566,28 @@ input[data-error]::after {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 43px;
     white-space: normal;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 13px;
+    margin-top: 20px;
   }
   .hero-img img {
     border-radius: 10px;
-    margin-top: 40px;
+    margin-top: 20px;
   }
   .hero-section > .btn-signup {
     display: block;
     margin: 32px auto 10px;
-    padding: 12px 35px;
+    padding: 8px 30px;
+    font-size: 0.875rem;
   }
   .copyrights {
-    margin-top: 50px;
+    margin-top: 20px;
     text-align: center;
+    font-size: 10px;
   }
 }
 
