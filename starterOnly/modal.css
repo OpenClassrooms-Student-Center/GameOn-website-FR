@@ -399,6 +399,7 @@ input[data-error]::after {
 .thanks__message {
   text-align: center;
   padding: 15rem 3rem;
+  font-size: 36px;
 }
 /* custom select styles */
 .custom-select {
@@ -544,6 +545,8 @@ input[data-error]::after {
   .btn-signup,
   .btn-close {
     margin-top: 20px;
+    font-size: 14px;
+    padding: 8px 50px;
   }
   .text-label {
     font-size: 14px;
