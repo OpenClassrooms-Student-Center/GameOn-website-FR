@@ -199,7 +199,7 @@ function formIsValid() {
   return true;
 }
 
-// validate form
+// validate onsubmit form
 function validate(event) {
   event.preventDefault();
 
@@ -223,27 +223,6 @@ function editNav() {
   }
 }
 
-// launch modal form
-function launchModal() {
-  if (formIsValid()) {
-    // when form is valid, reset all the input valures, close the thanks messsage & open form
-    resetStatus();
-    form.reset();
-    form.style.display = "block";
-    thanks.style.display = "none";
-  }
-  // reset the page to the top, open the form & hide the body overflow
-  document.documentElement.scrollTop = 0;
-  body.classList.add("noscroll");
-  modalbg.style.display = "block";
-}
-
-// close modal form
-function closeModal() {
-  modalbg.style.display = "none";
-  body.classList.remove("noscroll");
-}
-
 // DOM Elements
 const body = document.body;
 const modalbg = document.querySelector(".bground");
@@ -263,6 +242,30 @@ const checkbox1 = document.getElementById("checkbox1");
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
+// launch modal form
+function launchModal() {
+  if (formIsValid()) {
+    // when form is valid, reset all the input valures, close the thanks messsage & open form
+    resetStatus();
+    form.reset();
+    form.style.display = "block";
+    thanks.style.display = "none";
+  }
+  // reset the page to the top, open the form & hide the body overflow
+  document.documentElement.scrollTop = 0;
+  body.classList.add("noscroll");
+  modalbg.style.display = "block";
+}
+
+// Close
+thanksClose.addEventListener("click", closeModal);
+
+// close modal form
+function closeModal() {
+  modalbg.style.display = "none";
+  body.classList.remove("noscroll");
+}
+
 // close modal event
 modalClose.addEventListener("click", closeModal);
 
@@ -275,4 +278,3 @@ birthdate.addEventListener("input", validateBirthdate);
 quantity.addEventListener("input", validateQuantity);
 city.forEach((radio) => radio.addEventListener("input", validateCity));
 checkbox1.addEventListener("input", validateCheckbox);
-thanksClose.addEventListener("click", closeModal);
