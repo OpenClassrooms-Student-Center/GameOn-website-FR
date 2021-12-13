@@ -1,9 +1,10 @@
 // Data-errors values { input.id: errorMsg }
 const DATA_ERRORS = {
-  first: "Veuillez entrer 2 caractères ou plus pour le champ du prénom.",
-  last: "Veuillez entrer 2 caractères ou plus pour le champ du nom.",
+  first: "Veuillez entrer un prénom valide.",
+  last: "Veuillez entrer un nom valide.",
   email: "Veuillez entrer une addresse mail valide.",
-  birthdate: "Vous devez entrer votre date de naissance valide.",
+  birthdate:
+    "Vous devez avoir 18 ans ou plus et entrer votre date de naissance valide.",
   quantity:
     "Pour le nombre de concours, une valeur numérique doit être saisie.",
   location1: "Vous devez choisir une option.",
@@ -110,8 +111,11 @@ function validateBirthdate(event) {
   const value = event.target.value;
   // date format yyyy-MM-dd
   const re = /^(19|20)\d{2}\-(0[1-9]|1[0-2])\-(0[1-9]|1\d|2\d|3[01])$/;
+  const birth = new Date(value);
+  const ageDate = new Date(Date.now() - birth.getTime());
+  const age = ageDate.getUTCFullYear() - 1970;
 
-  if (!re.test(value)) {
+  if (!re.test(value) || age < 18) {
     updateDataStatus("birthdate", "error");
   } else {
     updateDataStatus("birthdate", "valid");
