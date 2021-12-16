@@ -80,64 +80,76 @@ function validateLocation() {
 }
 
 // *** Issue 3
+// alert message
 
+let divFormData = document.querySelectorAll("div.formData");
 
-let inputIds = document.querySelectorAll("div.formData");
+let messagesErrors = [
+  "Veuillez entrer 2 caractères ou plus pour le prénom.",
+  "Veuillez entrer 2 caractères ou plus pour le prénom.",
+  "Veuillez entrer une adresse email valide.",
+  "Veuillez indiquez une date.",
+  "Veuillez un nombre.",
+  "Veuillez sélectionner une ville.",
+  "Veuillez accepter les conditions d'utilisation.",
+];
 
-for(let i = 0; i < inputIds.length; i++) {
-  let errors = [
-    "Veuillez entrer 2 caractères ou plus pour le prénom.",
-    "Veuillez entrer 2 caractères ou plus pour le prénom.",
-    "Veuillez entrer une adresse email valide.",
-    "Veuillez indiquez une date.",
-    "Veuillez un nombre."
-  ];
+for(let i = 0; i<divFormData.length; i++) {
+  
+  let messageErrors = messagesErrors;
 
-  inputIds[i].addEventListener("input", function noneValide(event ) {
-    inputIds[i].setAttribute("data-error-visible", !event.target.validity.valid);
-    inputIds[i].setAttribute("data-error", errors[i]);
+  if (i < 5) {
+    divFormData[i].addEventListener("input", (e) => {
+      divFormData[i].setAttribute("data-error-visible", !e.target.validity.valid);
+      divFormData[i].setAttribute("data-error", messageErrors[i]);
+    });
+
+  } else {
+  divFormData[i].addEventListener("change", (e) => {
+    divFormData[i].setAttribute("data-error-visible", !e.target.checked);
+    divFormData[i].setAttribute("data-error", messageErrors[i]);
   });
+  }
+
+};
+  
+// alert mesage at click on submit without form completed
+
+
+/*
+NE FONCTIONNE PAS ENCORE :
+
+document.querySelector("#submit").addEventListener("click", checkFirst )
+
+function checkFirst() {
+
+  let inputId = document.querySelectorAll("input.text-control");
+
+  for(let i = 0; i<inputId.length; i++) {
+  
+    let messageErrors = messagesErrors;
+
+    inputId[i].addEventListener("invalid", () => {
+      inputId[i].setAttribute("data-error-visible", true);
+      inputId[i].setAttribute("data-error",  messageErrors[i]);
+    });
+
 };
 
 
+  if (validateLocation() == false) {
+    document.querySelector("#formLocation").setAttribute("data-error-visible", true);
+    document.querySelector("#formLocation").setAttribute("data-error", "Veuillez sélectionner une ville.");
+  };
 
-
-/*
-  targetInputId.addEventListener("input", (e) => noneValide(e, "Veuillez entrer 2 caractères ou plus pour le prénom.")); 
-  
-  targetInputId.addEventListener("input", (e) => noneValide(e, "Veuillez entrer 2 caractères ou plus pour le prénom.")); 
-  targetInputId.addEventListener("input", (e) => noneValide(e, "targetInputId",  "Veuillez entrer une adresse email valide.")); 
-  targetInputId.addEventListener("input", (e) => noneValide(e, "targetInputId",  "Veuillez indiquez une date.")); 
-  targetInputId.addEventListener("input", (e) => noneValide(e, "targetInputId",  "Veuillez un nombre.")); 
-  
-  function noneValide(event , errorMessage ) {
-    targetInputId.setAttribute("data-error-visible", !event.target.validity.valid);
-    targetInputId.setAttribute("data-error", errorMessage);
-  }
-*/
-
-/*
-// alert message
-document.querySelector("#formFirst").addEventListener("input", (e) => noneValide(e, "#formFirst",  "Veuillez entrer 2 caractères ou plus pour le prénom.")); 
-document.querySelector("#formLast").addEventListener("input", (e) => noneValide(e, "#formLast",  "Veuillez entrer 2 caractères ou plus pour le prénom.")); 
-document.querySelector("#formEmail").addEventListener("input", (e) => noneValide(e, "#formEmail",  "Veuillez entrer une adresse email valide.")); 
-document.querySelector("#formBirth").addEventListener("input", (e) => noneValide(e, "#formBirth",  "Veuillez indiquez une date.")); 
-document.querySelector("#formQuantity").addEventListener("input", (e) => noneValide(e, "#formQuantity",  "Veuillez un nombre.")); 
-function noneValide(event , id, errorMessage ) {
-  document.querySelector(id).setAttribute("data-error-visible", !event.target.validity.valid);
-  document.querySelector(id).setAttribute("data-error", errorMessage);
+  if (checkbox1.checked == false) {
+    document.querySelector("#formCheckbox1").setAttribute("data-error-visible", true);
+    document.querySelector("#formCheckbox1").setAttribute("data-error", "Veuillez accepter les conditions d/'utilisation.");
+  };
 }
 */
 
-document.querySelector("#formCheckbox1").addEventListener("change", (e) => noneCheck(e, "#formCheckbox1", "Veuillez accepter les conditions d'utilisation.")); 
-document.querySelector("#formLocation").addEventListener("change", (e) => noneCheck(e, "#formLocation",  "Veuillez sélectionner une ville.")); 
-  function noneCheck(event , id, errorMessage ) {
-    document.querySelector(id).setAttribute("data-error-visible", !event.target.checked);
-    document.querySelector(id).setAttribute("data-error", errorMessage);
-}
-  
-  
-// alert mesage at click on submit without form completed
+
 
 document.querySelector("#submit").addEventListener("click", checkFirst )
 
@@ -161,50 +173,4 @@ function checkFirst() {
     document.querySelector("#formCheckbox1").setAttribute("data-error-visible", true);
     document.querySelector("#formCheckbox1").setAttribute("data-error", "Veuillez accepter les conditions d/'utilisation.");
   };
-}
-
-
-
-
-// *** Issue 3
-/*
-form.addEventListener("submit", function(e) {
-    e.preventDefault();
- // document.querySelector("#submit").Value="Formulaire Envoyé !";
-  alert("Formulaire envoyé !");
- //document.querySelectorAll(".formData").style.display = "none";
- 
-});
-*/
-/*
-
-// Create Text element
-const validationText = document.createElement("p");
-validationText.innerHTML = "Formulaire Envoyé !";
-validationText.style.cssText = "text-align: center; padding: 30vh 0.5vw";
-
-// Création de l"élément boutton
-const validationButton = document.createElement("button");
-validationButton.classList.add("btn-submit");
-validationButton.classList.add("final-submit");
-validationButton.style.cssText = "margin: 0px 14%; text-align: center;";
-validationButton.innerHTML = "Close";
-
-
-// Ajout dans le DOM
-
-const modalBody = document.querySelector(".modal-body");
-
-modalBody.appendChild(validationText);
-modalBody.appendChild(validationButton);
-//modalbg.after(newModal);
-
-// Fermeture de la modale sur la croix et le boutton
-//validationButton.addEventListener("click", () => newModal.remove());
-//closeIcon.addEventListener("click", () => newModal.remove());
-
-
-// Gestion de l"affichage de la modale de confirmation
-const DISPLAY_VALIDATION_POPUP = "DISPLAY_VALIDATION_POPUP";
-
-*/
+};
