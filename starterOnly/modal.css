@@ -14,7 +14,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
+  /* background-image: url("background.png");*/
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -35,10 +35,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -69,7 +69,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
@@ -77,7 +79,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -90,16 +94,39 @@ img {
   }
 }
 
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    /*  margin-top: -15px;*/
   }
-} 
+}
+
+@media screen and (max-width: 340px) {
+  .topnav a.icon {
+    display: none;
+  }
+
+  .topnav {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+  }
+
+  .main-navbar {
+    margin-top: 20px;
+  }
+
+  .topnav a {
+    display: flex;
+    justify-content: space-around;
+    float: none;
+  }
+}
 
 main {
   font-size: 130%;
@@ -111,8 +138,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -420,7 +445,7 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
+  /*min-width: 424px;*/
 }
 .hero-content::after {
   content: "";
@@ -487,6 +512,7 @@ footer {
     background: #fff;
     color: #000;
     padding: 20px;
+    text-align: center;
   }
   .hero-content::after {
     content: unset;
@@ -495,7 +521,7 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     white-space: normal;
   }
   .hero-text {
@@ -527,3 +553,28 @@ footer {
   }
 }
 
+#message-confirm {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  border-radius: 15px;
+  padding: 15px;
+  z-index: 1000;
+  border: #232323 solid 4px;
+  background-color: white;
+  color: #232323;
+  width: 70%;
+}
+
+#validate_label {
+  font-size: 1.6em;
+}
+
+#validate {
+  width: 20%;
+  padding: 10px;
+  font-size: 0.8em;
+}
