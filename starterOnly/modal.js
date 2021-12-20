@@ -26,13 +26,8 @@ const modalClose = document.querySelector(".close");
 
 // close modal event
 // Listen to the mouse click on the .close element. On click call the "closeModal" method - Ecoute le click de la sourie sur l"élément .close. Au click appel la fonction (méthode) "closeModal"
-modalClose.addEventListener("click", closeModal); 
-
-// close modal form
 // Apply the "none" style on modalbd, which has the .bground class - Applique le syle "none" sur modalbd, qui corespont à l"élement qui à la classe .bground 
-function closeModal() {                            
-  modalbg.style.display = "none";   
-}
+modalClose.addEventListener("click", (e) => {modalbg.style.display = "none"}); 
 
 // *** Issue 2
 const first = document.querySelector("#first"); 
@@ -53,31 +48,22 @@ const form = document.querySelector("#form");
 // function valdate
 
 function validate() {
-  if (first.checkValidity() &&   // PM - checkValidity = Méthodes de l"API de validation des contraintes
-      last.checkValidity() && 
-      email.checkValidity() && 
-      birthdate.checkValidity() &&
-      quantity.checkValidity() &&
-      (validateLocation()) &&
-      checkbox1.checked) {
-    return true;
+  if (first.checkValidity() && last.checkValidity() && email.checkValidity() && birthdate.checkValidity() && quantity.checkValidity() &&
+      (validateLocation()) && checkbox1.checked) {
+      return true;
   } else {
     return false; 
   }
-}
+};
 
 function validateLocation() {
-  if (location1.checked || 
-       location2.checked ||
-       location3.checked ||
-       location4.checked ||
-       location5.checked ||
-       location6.checked) {
+  if (location1.checked || location2.checked || location3.checked || location4.checked || location5.checked || location6.checked) {
     return true;
   } else {
     return false; 
   }
-}
+};
+
 
 // *** Issue 3
 // alert message
@@ -85,8 +71,7 @@ function validateLocation() {
 let divFormData = document.querySelectorAll("div.formData");
 
 let messagesErrors = [
-  "Veuillez entrer 2 caractères ou plus pour le prénom.",
-  "Veuillez entrer 2 caractères ou plus pour le prénom.",
+  "Veuillez entrer 2 caractères ou plus pour le prénom.", "Veuillez entrer 2 caractères ou plus pour le prénom.",
   "Veuillez entrer une adresse email valide.",
   "Veuillez indiquez une date.",
   "Veuillez un nombre.",
@@ -98,79 +83,62 @@ for(let i = 0; i<divFormData.length; i++) {
   
   let messageErrors = messagesErrors;
 
-  if (i < 5) {
+  if (i < 6) {
     divFormData[i].addEventListener("input", (e) => {
       divFormData[i].setAttribute("data-error-visible", !e.target.validity.valid);
       divFormData[i].setAttribute("data-error", messageErrors[i]);
     });
+    
 
   } else {
-  divFormData[i].addEventListener("change", (e) => {
+  divFormData[i].firstElementChild.addEventListener("change", (e) => {
     divFormData[i].setAttribute("data-error-visible", !e.target.checked);
     divFormData[i].setAttribute("data-error", messageErrors[i]);
   });
-  }
 
+  };
 };
+
+//** Issue 4 
+
+
+form.addEventListener("submit", (e) =>{
   
-// alert mesage at click on submit without form completed
+  e.preventDefault();
 
-
-/*
-NE FONCTIONNE PAS ENCORE :
-
-document.querySelector("#submit").addEventListener("click", checkFirst )
-
-function checkFirst() {
-
-  let inputId = document.querySelectorAll("input.text-control");
-
-  for(let i = 0; i<inputId.length; i++) {
-  
-    let messageErrors = messagesErrors;
-
-    inputId[i].addEventListener("invalid", () => {
-      inputId[i].setAttribute("data-error-visible", true);
-      inputId[i].setAttribute("data-error",  messageErrors[i]);
+  if (validate () == true) {
+    
+    document.querySelector(".btn-submit").setAttribute("value", "Fermer");
+    
+    let formDatas = document.querySelectorAll(".formData");
+      formDatas.forEach(function(formData) {
+      formData.style.display = "none";
     });
 
-};
+    document.querySelector("span.close").style.display = "none";
 
+    let text = document.querySelector("p.text-label");
+     text.style.textAlign = "center";
+     text.style.marginBottom = "5vw";
+     text.innerText = "Merci ! Votre réservation a été reçue."
 
-  if (validateLocation() == false) {
-    document.querySelector("#formLocation").setAttribute("data-error-visible", true);
-    document.querySelector("#formLocation").setAttribute("data-error", "Veuillez sélectionner une ville.");
+      btnSubmit = addEventListener ("click", (e) => {
+        document.forms["form"].submit();
+      });
+  } else {
+    for(let i = 0; i<divFormData.length; i++)
+      
+      if (i < 6) {
+        let messageErrors = messagesErrors;
+          divFormData[i].setAttribute("data-error-visible",  !inputs[i].validity.valid);
+          divFormData[i].setAttribute("data-error", messageErrors[i]);
+      
+      if (!validateLocation()) {
+        document.querySelector("#formLocation").setAttribute("data-error-visible", true);
+        document.querySelector("#formLocation").setAttribute("data-error", messageErrors[i])
+      };
+    };
   };
+}, false);
 
-  if (checkbox1.checked == false) {
-    document.querySelector("#formCheckbox1").setAttribute("data-error-visible", true);
-    document.querySelector("#formCheckbox1").setAttribute("data-error", "Veuillez accepter les conditions d/'utilisation.");
-  };
-}
-*/
-
-
-
-document.querySelector("#submit").addEventListener("click", checkFirst )
-
-function checkFirst() {
-  document.querySelector("#formFirst").addEventListener("invalid", noneCheckFirst("#formFirst", "Veuillez entrer 2 caractères ou plus pour le prénom."));
-  document.querySelector("#formLast").addEventListener("invalid", noneCheckFirst("#formLast", "Veuillez entrer 2 caractères ou plus pour le prénom."));
-  document.querySelector("#formEmail").addEventListener("invalid", noneCheckFirst("#formEmail",  "Veuillez entrer une adresse email valide."));
-  document.querySelector("#formBirth").addEventListener("invalid", noneCheckFirst("#formBirth",  "Veuillez indiquez une date.")); 
-  document.querySelector("#formQuantity").addEventListener("invalid", noneCheckFirst("#formQuantity",  "Veuillez un nombre.")); 
-    function noneCheckFirst( id, errorMessage ) {
-      document.querySelector(id).setAttribute("data-error-visible", true);
-      document.querySelector(id).setAttribute("data-error", errorMessage);
-    }
-
-  if (validateLocation() == false) {
-    document.querySelector("#formLocation").setAttribute("data-error-visible", true);
-    document.querySelector("#formLocation").setAttribute("data-error", "Veuillez sélectionner une ville.");
-  };
-
-  if (checkbox1.checked == false) {
-    document.querySelector("#formCheckbox1").setAttribute("data-error-visible", true);
-    document.querySelector("#formCheckbox1").setAttribute("data-error", "Veuillez accepter les conditions d/'utilisation.");
-  };
-};
+let inputs = document.querySelectorAll("input");

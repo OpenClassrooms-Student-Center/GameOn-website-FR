@@ -61,7 +61,8 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+              
+              novalidate
             >
               <div
                 class="formData"
@@ -80,7 +81,7 @@
                 /><br>
               </div>
               <div
-                class="formData"
+                class = "formData"
                 id = "formLast"
                 data-error-visible="false"
                 data-valid="false" >
@@ -96,10 +97,10 @@
                 /><br>
               </div>
               <div
-              class="formData"
+              class = "formData"
               id = "formEmail"
-              data-error-visible="false"
-              data-valid="false" >
+              data-error-visible = "false"
+              data-valid = "false" >
                 <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
@@ -241,9 +242,11 @@
               </div>
               <input
                 class="btn-submit"
+                id="btsubmit"
                 type="submit"
                 class="button"
                 value="C'est parti"
+
               />
             </form>
           </div>
