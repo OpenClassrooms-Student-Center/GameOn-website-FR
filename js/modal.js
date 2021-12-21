@@ -35,4 +35,4 @@ function valider() {
     alert("Saisissez le prénom");
   }
 }
-console.log(valider);
+console.log(".formData");
