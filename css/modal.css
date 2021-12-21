@@ -32,13 +32,15 @@ img {
 
 .topnav {
   overflow: hidden;
-  margin: 3.5%;
+  margin: 3% 0% 3% 0%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
-.header-logo {
-    float: left;
-}
+
 .main-navbar {
-    float: right;
+  color: #ff0000;
 }
 .topnav a {
   float: left;
@@ -56,12 +58,14 @@ img {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
+  text-decoration: underline;
 }
 
 .topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
+  text-decoration: underline #ffffff;
 }
 
 .topnav .icon {
@@ -69,19 +73,31 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
+    color: #ff0000;
+  }
+  .topnav a.icon:hover {
+    color: #ffffff;
+  }
+  .topnav {
+    z-index: 2;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
-    right: 0;
+    right: 17px;
     top: 0;
+    color: #ffffff;
   }
   .topnav.responsive a {
     float: none;
@@ -90,16 +106,18 @@ img {
   }
 }
 
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
   }
-} 
+  .topnav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    z-index: 2;
+  }
+}
 
 main {
   font-size: 130%;
@@ -111,8 +129,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -166,11 +182,11 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  background-color: #ffffff;
 }
 
 .content {
-  margin: 5% auto;
+  margin: 20% auto;
   width: 100%;
   max-width: 500px;
   animation-name: modalopen;
@@ -405,13 +421,13 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   overflow: hidden;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
+  object-fit: cover;
 }
 .hero-content {
   padding: 51px 67px;
@@ -495,11 +511,11 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 4.3rem;
     white-space: normal;
   }
   .hero-text {
-    width: unset;
+    width: 80%;
     font-size: 1.5rem;
   }
   .hero-img img {
@@ -526,4 +542,3 @@ footer {
     opacity: 1;
   }
 }
-
