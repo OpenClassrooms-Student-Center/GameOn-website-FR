@@ -64,7 +64,6 @@ function validateLocation() {
   }
 };
 
-
 // *** Issue 3
 // alert message
 
@@ -91,23 +90,22 @@ for(let i = 0; i<divFormData.length; i++) {
     
 
   } else {
-  divFormData[i].firstElementChild.addEventListener("change", (e) => {
-    divFormData[i].setAttribute("data-error-visible", !e.target.checked);
-    divFormData[i].setAttribute("data-error", messageErrors[i]);
-  });
-
+    divFormData[i].firstElementChild.addEventListener("change", (e) => {
+      divFormData[i].setAttribute("data-error-visible", !e.target.checked);
+      divFormData[i].setAttribute("data-error", messageErrors[i]);
+    });
   };
 };
 
 //** Issue 4 
-
+let inputs = document.querySelectorAll("input");
 
 form.addEventListener("submit", (e) =>{
   
   e.preventDefault();
 
   if (validate () == true) {
-    
+    //* Setting up thank window - Mise en place de fenêtre de remerciement
     document.querySelector(".btn-submit").setAttribute("value", "Fermer");
     
     let formDatas = document.querySelectorAll(".formData");
@@ -115,17 +113,28 @@ form.addEventListener("submit", (e) =>{
       formData.style.display = "none";
     });
 
-    document.querySelector("span.close").style.display = "none";
+    let content = document.querySelector("div.content");
+    content.style.marginTop = "5rem";
+    content.style.height = "100%";
 
     let text = document.querySelector("p.text-label");
-     text.style.textAlign = "center";
-     text.style.marginBottom = "5vw";
-     text.innerText = "Merci ! Votre réservation a été reçue."
+    text.style.textAlign = "center";
+    text.style.margin = "34vh 0";
+    text.style.fontSize = "2.57rem";
+    text.innerText = "Merci pour votre inscription"
 
-      btnSubmit = addEventListener ("click", (e) => {
-        document.forms["form"].submit();
-      });
+    //* Send form on "close" btn or cross  - Envoi du formulaire sur bouton "fermer" ou croie.
+    btnSubmit = addEventListener ("click", (e) => {
+      document.forms["form"].submit();
+    });
+
+    document.querySelector("span.close").addEventListener ("click", (e) => {
+      document.forms["form"].submit();
+    });
+
   } else {
+    //* Form verification if ti's not completed - Vérification du formulaire si non remplie 
+    
     for(let i = 0; i<divFormData.length; i++)
       
       if (i < 6) {
@@ -138,7 +147,8 @@ form.addEventListener("submit", (e) =>{
         document.querySelector("#formLocation").setAttribute("data-error", messageErrors[i])
       };
     };
+    
   };
 }, false);
 
-let inputs = document.querySelectorAll("input");
+
