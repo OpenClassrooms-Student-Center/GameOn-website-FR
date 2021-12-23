@@ -12,6 +12,8 @@
     />
   </head>
   <body>
+
+    <!--------------- TOPNAV --------------->
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
       <img alt="logo" src="img/Logo.png" width="auto" height="auto" />
@@ -29,7 +31,9 @@
     </div>
     </div>
   </div>
+  <!--------------- MAIN --------------->
     <main>
+  <!--------------- SECTION HERO --------------->
       <div class="hero-section">
         <div class="hero-content">
           <h1 class="hero-headline">
@@ -51,16 +55,17 @@
           je m'inscris
         </button>
       </div>
-
-      <div class="bground">
+  <!--------------- FORMULAIRE --------------->
+      <div id="bground" class="bground">
         <div class="content">
-          <span class="close"></span>
+          <span class="close closeModal"></span>
           <div class="modal-body">
             <form
               name="reserve"
               action="index.html"
               method="get"
               onsubmit="return validate();"
+              
             >
               <div
                 class="formData">
@@ -210,11 +215,13 @@
         </div>
       </div>
     </main>
+  <!--------------- FOOTER --------------->
     <footer>
       <p class="copyrights">
         Copyright 2014 - 2020, GameOn Inc.
       </p>
     </footer>
+  <!--------------- SCRIPT JS --------------->  
     <script src="modal.js"></script>
   </body>
 </html>
