@@ -1,17 +1,13 @@
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
+import { editNav, capitalize } from "./utils.js";
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const closeModalBtn = document.querySelector(".close");
 const formData = document.querySelectorAll(".formData");
+
+// TEXT FORMATTING
+capitalize(document.querySelector(".btn-signup.modal-btn"));
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -26,3 +22,5 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = "none";
 }
+
+//
