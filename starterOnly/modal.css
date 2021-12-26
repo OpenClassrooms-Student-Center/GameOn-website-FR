@@ -14,7 +14,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -194,11 +193,12 @@ main {
   margin: 15px auto;
 }
 
-label {
+.form-label {
   font-family: var(--font-default);
-  font-size: 17px;
+  font-size: 14px;
   font-weight: normal;
   display: inline-block;
+  width: 100%;
   margin-bottom: 11px;
 }
 input {
@@ -232,6 +232,10 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
+
+.form-radio-group {
+  margin-bottom: 11px;
+}
 /* 
 input[data-error]::after {
     content: attr(data-error);
@@ -241,29 +245,29 @@ input[data-error]::after {
 .checkbox-label,
 .checkbox2-label {
   position: relative;
-  margin-left: 36px;
+  margin-left: 41px;
   font-size: 12px;
   font-weight: normal;
 }
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
   display: block;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #279e7a;
+  width: 26px;
+  height: 26px;
+  border: 1px solid #279e7a;
   border-radius: 50%;
   text-indent: 29px;
   white-space: nowrap;
   position: absolute;
   left: -30px;
-  top: -1px;
+  top: -5px;
   transition: 0.3s;
 }
 .checkbox-label .checkbox-icon::after,
 .checkbox2-label .checkbox-icon::after {
   content: "";
-  width: 13px;
-  height: 13px;
+  width: 18px;
+  height: 18px;
   background-color: #279e7a;
   border-radius: 50%;
   text-indent: 29px;
@@ -338,6 +342,10 @@ input[data-error]::after {
   color: #fff;
   cursor: pointer;
   border: 0;
+}
+
+.btn-submit {
+  margin-top: 20px;
 }
 /* custom select styles */
 .custom-select {
