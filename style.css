@@ -57,6 +57,7 @@ img {
   color: #ffffff;
   border-radius: 15px;
 } */
+
 .navig:hover {
   background-color: #ff0000;
   color: #ffffff;
@@ -521,6 +522,7 @@ input[data-error]::after {
 .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
 /* custom select end */
 .text-label {
   font-weight: normal;
@@ -600,6 +602,7 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
 @media screen and (max-width: 800px) {
   .bground {
     display: none;
@@ -638,6 +641,7 @@ footer {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     margin: 0;
+
     height: 105%;
   }
   .header-logo img {
@@ -681,9 +685,10 @@ footer {
     font-family: DM Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 13px;
+    font-size: 12px;
     line-height: 17px;
     width: 80vw;
+    text-align: justify;
   }
   .hero-img img {
     border-radius: 10px;

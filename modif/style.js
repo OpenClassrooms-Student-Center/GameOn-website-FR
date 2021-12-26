@@ -79,12 +79,6 @@ function validateModal() {
   modalbg.style.display = "none";
   modalV.style.display = "flex";
   modalVbg.style.display = "block";
-  firstNameInput.value = ""; //permet de vider formulaire après validation
-  lastNameInput.value = "";
-  birthdateInput.value = "";
-  emailInput.value = "";
-  quantityInput.value = "";
-  locationInput.value = "";
 }
 
 // close modal Validation form 
@@ -94,7 +88,7 @@ function closeModalV() {
 }
 
 function isInvalid(element, message) {
-  let target = "";
+  let target;
   if (NodeList.prototype.isPrototypeOf(element)) target = element[0].parentNode;
   else target = element.parentNode;
   target.setAttribute("data-error-visible", true);
@@ -146,7 +140,7 @@ function emailValidation() {
 }
 
 //Validation anniversaire
-/*function birthdateValidation() {
+function birthdateValidation() {
   let birthdate = new Date(birthdateInput.value);
   let today = new Date();
   if (birthdate.toString() !== "Invalid Date") {
@@ -154,23 +148,6 @@ function emailValidation() {
       birthdate.getDate() >= today.getDate() &&
       birthdate.getMonth() == today.getMonth() &&
       birthdate.getFullYear() == today.getFullYear()
-    ) {
-      return false;
-    } else {
-      return true;
-    }
-  } else {
-    return false;
-  }
-}*/
-function birthdateValidation() {
-  let birthdate = new Date(birthdateInput.value);
-  let today = new Date();
-  let limitAge = new Date();
-  limitAge.setFullYear(today.getFullYear()-18); //on retire 18 année à la date d'aujourd'hui
-  if (birthdate.toString() !== "Invalid Date") {
-    if (
-      birthdate > limitAge 
     ) {
       return false;
     } else {
@@ -201,8 +178,8 @@ function validateRules() {
 
 
 // Fonction principal du formulaire on test si location et cgv son ok avant de fermer la modale , les autres inputs sont testé avant par required
-function validate(e) {
-  e.preventDefault();
+function validate(ev) {
+  ev.preventDefault();
 
   let isValidInput = true;
   removeAlerts();

@@ -52,12 +52,7 @@ img {
   font-family: Roboto, sans-serif;
 }
 
-/* .topnav a:hover {
-  background-color: #ff0000;
-  color: #ffffff;
-  border-radius: 15px;
-} */
-.navig:hover {
+.topnav a:hover {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
@@ -638,6 +633,7 @@ footer {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     margin: 0;
+
     height: 105%;
   }
   .header-logo img {
@@ -648,7 +644,7 @@ footer {
     z-index: 10;
   }
   .fa-bars {
-    color: black;
+    color: red;
   }
   .hero-section {
     display: block;
@@ -681,9 +677,10 @@ footer {
     font-family: DM Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 13px;
+    font-size: 12px;
     line-height: 17px;
     width: 80vw;
+    text-align: justify;
   }
   .hero-img img {
     border-radius: 10px;
