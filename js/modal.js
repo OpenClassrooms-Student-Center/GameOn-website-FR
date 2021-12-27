@@ -24,15 +24,9 @@ function launchModal() {
 //Fermeture du modal
 bouton.addEventListener("click", () => (modalbg.style.display = "none"));
 
-// //Validation du formulaire
-// function valider() {
-//   // si la valeur du champ prenom est non vide
-//   if (document.formData.prenom.value != "") {
-//     // alors on envoie le formulaire
-//     document.formData.submit();
-//   } else {
-//     // sinon on affiche un message
-//     alert("Saisissez le prénom");
-//   }
-// }
-// console.log(".formData");
+//Empêcher la page de se recharger
+formData.forEach((form) =>
+  form.addEventListener("submit", (e) => e.preventDefault())
+);
+
+//validation du formulaire

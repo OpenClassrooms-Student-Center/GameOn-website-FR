@@ -61,7 +61,7 @@
               action="index.html"
               method="get"
               onsubmit="return validate();"
-            >
+             >
               <div
                 class="formData">
                 <label>Prénom</label><br>
@@ -71,6 +71,7 @@
                   id="first"
                   name="first"
                   minlength="2"
+                  maxlength="6"
                   required
                 /><br>
               </div>
@@ -82,6 +83,8 @@
                   type="text"
                   id="last"
                   name="last"
+                  minlength="2"
+                  maxlength="6"
                   required
                 /><br>
               </div>
@@ -121,7 +124,6 @@
                   id="location1"
                   name="location"
                   value="New York"
-                  required
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
