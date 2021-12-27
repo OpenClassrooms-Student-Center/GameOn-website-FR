@@ -35,10 +35,13 @@ function closeModal() {
 
 
 
-//message erreur adr mail
-
+//variable formulaire
 let form = document.forms["reserve"]
+
+//format text et mail
 let verifMail = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
+let textFormat = /^[a-zA-Z\é\è\-\^\']{2,30}$/; 
+
 
 form.addEventListener('submit', function(e){
 
@@ -55,23 +58,30 @@ form.addEventListener('submit', function(e){
   const myError3 = document.getElementById('error3');
   const myError4 = document.getElementById('error4');
   
-  const conditions = document.getElementById('checkbox1');
-  console.log(conditions.checked)
-
-
   const formErrors = 0;
 
-  //label prenom doit avoir 2 caractere min et ne peut être vide
-  if(!prenom.value.trim().match()) {
+  //label prenom
+  if(first.value == "" || textFormat.test(first.value) == false) {
     alert('Veuillez entrer 2 caractères ou plus pour le champ du prénom')
-    formError++;
-  } else {
-    hideFieldError(prenom);
+    error.style.color = 'red'
+  } 
+  else {
+    error.innerHTML = ""; 
+    formErrors++
   }
 
+  //label nom 
+  if (last.value == "" || textFormat.test(last.value) == false) {     
+    alert('Veuillez remplir le champ avec min 2 lettres.') 
+    error1.style.color = 'red'; 
+  } 
+  else {
+    error1.innerHTML = ""; 
+    formErrors++
+  }
 
-  if(!email.value.trim().match(verifMail))
-  {
+  //label mail
+  if(!email.value.trim().match(verifMail)) {
     alert('l\'adresse email n\'est pas valide')
     e.preventDefault()
     e.removeEventListener()
@@ -103,11 +113,6 @@ document.querySelector('form').addEventListener('submit', function(e){
 })*/
 
 
-for (let i=0; i<prenom.length; i++) {
-  let p = prenom[i]
-
-
-}
 
 
 
@@ -115,60 +120,7 @@ for (let i=0; i<prenom.length; i++) {
 
 
 
-//ici commence l'excercise 
 
-reserve = document.getElementById('reserve'); 
-reserve.addEventListener('submit', function(e) {
-   
-//Variables
-  e.preventDefault();
-  
-  const conditions = document.getElementById('checkbox1');
-  console.log(conditions.checked)
-  
- 
-  // Pattern des différents types 
-  let textFormat = /^[a-zA-Z\é\è\-\^\']{2,30}$/; 
-  let emailFormat = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,3}$/;  
-  
-
-  let compteur = 0;
-  //prenom 
-  if (first.value == "" || textFormat.test(first.value) == false) {  
-    first.style.border = "1px red solid";
-    error.textContent = "Veuillez remplir le champ avec min 2 lettres."
-    myError.style.color = 'red';  
-    myError.style.fontSize = '0.5em'    
-   }
-  else {  
-    myError.innerHTML = ""; 
-    first.style.border = "2px green solid";   
-    compteur++ 
-  }    
-  // nom
-  if (last.value == "" || textFormat.test(last.value) == false) {  
-    last.style.border = "2px red solid";    
-    error1.textContent = "Veuillez remplir le champ avec min 2 lettres."
-    myError1.style.color = 'red';
-    myError1.style.fontSize = '0.5em';    
-  } 
-  else {
-    myError1.innerHTML = ""; 
-    last.style.border = "2px green solid";
-    compteur++
-  }
-  //email 
-  if (email.value == "" || emailFormat.test(email.value) == false) {              
-    email.style.border = "2px red solid";
-    error2.textContent = "Veuillez entrer un email valide."
-    myError2.style.color = 'red';
-    myError2.style.fontSize = '0.5em';   
-  }  
-    else {
-    myError2.innerHTML = ""; 
-    email.style.border = "2px green solid";
-    compteur++
-    }
   //Date de naissance- birthdate
   if (birthdate.value == "")  { 
     birthdate.style.border = "2px red solid";           
@@ -237,4 +189,4 @@ reserve.addEventListener('submit', function(e) {
   //       bground.style.display = "none";
   //       e.preventDefault();      
   //      } 
-  //  } }) 
+   } }) 
