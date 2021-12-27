@@ -86,6 +86,17 @@ form.addEventListener('submit', function(e){
     e.preventDefault()
     e.removeEventListener()
   }
+
+  //label birthday
+  if (birthdate.value == "")  { 
+             
+    alert('Veuillez entrer votre date de naissance.')
+    error3.style.color = 'red'; 
+  } 
+  else {
+    error3.innerHTML = "";
+    formErrors++
+  }
 })
 
 
@@ -121,18 +132,7 @@ document.querySelector('form').addEventListener('submit', function(e){
 
 
 
-  //Date de naissance- birthdate
-  if (birthdate.value == "")  { 
-    birthdate.style.border = "2px red solid";           
-    error3.textContent ="Veuillez entrer votre date de naissance."
-    myError3.style.color = 'red'; 
-    myError3.style.fontSize = '0.5em';
-  } 
-  else {
-    myError3.innerHTML = "";
-    birthdate.style.border = "2px green solid";
-    compteur++ 
-  }
+  
   //Tournois -quantity     
   if (quantity.value == "") {   
     quantity.style.border = "2px red solid";    
