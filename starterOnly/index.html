@@ -77,6 +77,7 @@
                   name="first"
                   minlength="2"
                 /><br>
+                <div class="error"></div>
               </div>
               <div
                 class="formData">
@@ -87,6 +88,7 @@
                   id="last"
                   name="last"
                 /><br>
+                <div class="error1"></div>
               </div>
               <div
                 class="formData">
@@ -97,6 +99,7 @@
                   id="email"
                   name="email"
                 /><br>
+                <div class="error2"></div>
               </div>
               <div
                 class="formData">
@@ -107,11 +110,13 @@
                   id="birthdate"
                   name="birthdate"
                 /><br>
+                <div class="error3"></div>
               </div>
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <div class="error4"></div>
               </div>
               <p class="text-label">Quelles villes ?</p>
               <div
@@ -185,25 +190,28 @@
               </div>
 
               <div
-                class="formData">
-                <input
-                  class="checkbox-input"
-                  type="checkbox"
-                  id="checkbox1"
-                  checked
+                class="formData" data-error="Vous devez accepter les conditions d'utilisation.">
+                <input class="form-check-input" 
+                type="checkbox" 
+                id="terms" 
+                name="terms"
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
-                  <span class="checkbox-icon"></span>
+                <label class="form-check-label" for="terms" required>
+                  <span class="form-check-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
-                <input class="checkbox-input" type="checkbox" id="checkbox2" />
-                <label class="checkbox2-label" for="checkbox2">
-                  <span class="checkbox-icon"></span>
+                <input class="form-check-input" 
+                type="checkbox" 
+                id="suscribe" 
+                name="suscribe" />
+                <label class="form-check-label" for="suscribe">
+                  <span class="form-check-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
               </div>
+
               <input
                 class="btn-submit"
                 type="submit"
