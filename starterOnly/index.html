@@ -14,20 +14,20 @@
   <body>
 
     <!--------------- TOPNAV --------------->
+
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
       <img alt="logo" src="img/Logo.png" width="auto" height="auto" />
     </div>
     <div class="main-navbar">
-      
+      <a href="javascript:void(0);" class="icon" onclick="editNav()">
+        <i class="fa fa-bars"></i>
+      </a>
       <a href="#" class="active"><span>Accueil</span></a>
       <a href="#"><span>Détails de l'évènement</span></a>
       <a href="#"><span>À propos</span></a>
       <a href="#"><span>Contact</span></a>
       <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars"></i>
-      </a>
     </div>
     </div>
   </div>
@@ -64,8 +64,8 @@
               name="reserve"
               action="index.html"
               method="get"
+              id="reserve"
               onsubmit="return validate();"
-              
             >
 
             <!-- PRENOM -->
@@ -77,9 +77,8 @@
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
                 /><br>
-                <div class="error"></div>
+                <div class="error" id="error"></div>
               </div>
               <!-- NOM -->
               <div
@@ -91,7 +90,7 @@
                   id="last"
                   name="last"
                 /><br>
-                <div class="error1"></div>
+                <div class="error1" id="error1"></div>
               </div>
               <!-- MAIL -->
               <div
@@ -103,7 +102,6 @@
                   id="email"
                   name="email"
                 /><br>
-                <div class="error2"></div>
               </div>
               <!-- DATE DE NAISSANCE -->
               <div
@@ -115,18 +113,19 @@
                   id="birthdate"
                   name="birthdate"
                 /><br>
-                <div class="error3"></div>
+                <div class="error2" id="error2"></div>
               </div>
-              <!-- QUANTITY -->
+              <!-- TOURNOI QUANTITY -->
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
-                <div class="error4"></div>
+                <div class="error3" id="error3"></div>
               </div>
               <p class="text-label">Quelles villes ?</p>
+              <div class="errorMessage" id="errorMessage"></div>
 
-              
+              <!-- LOCATION -->
               <div
                 class="formData">
                 <input
@@ -196,9 +195,10 @@
                   Portland</label
                 >
               </div>
-
+              <!-- CONDITIONS & SUSCRIBE -->
               <div
                 class="formData">
+                <p id="errorTerms"></p>
                 <input class="form-check-input" 
                 type="checkbox" 
                 id="terms" 
