@@ -13,24 +13,30 @@
   </head>
   <body>
 
-    <!--------------- TOPNAV --------------->
+    <!--------------- HEADER --------------->
 
-    <div class="topnav" id="myTopnav">
+    <header class="header">
+
       <div class="header-logo">
       <img alt="logo" src="img/Logo.png" width="auto" height="auto" />
     </div>
-    <div class="main-navbar">
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars"></i>
-      </a>
+
+    <!--------------- TOGGLE --------------->
+		<button type="button" class="header-toggle toggleMenu">
+      <i class="fa fa-bars"></i>
+    </button>
+
+    <!--------------- NAVBAR --------------->
+    <nav class="header-nav">
       <a href="#" class="active"><span>Accueil</span></a>
       <a href="#"><span>Détails de l'évènement</span></a>
       <a href="#"><span>À propos</span></a>
       <a href="#"><span>Contact</span></a>
       <a href="#"><span>Évènements passés</span></a>
-    </div>
-    </div>
-  </div>
+    </nav>
+
+    </header>
+    
   <!--------------- MAIN --------------->
     <main>
   <!--------------- SECTION HERO --------------->
@@ -49,7 +55,7 @@
           </button>
         </div>
         <div class="hero-img">
-          <img src="./bg_img.jpg" alt="img" />
+          <img src="./img/bg_img.jpg" alt="photo d'une joueuse vue de dos avec un casque et une manette de jeux vidéo" />
         </div>
         <button class="btn-signup modal-btn">
           je m'inscris

@@ -14,7 +14,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
+  background-color: white;
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -30,7 +30,10 @@ img {
   padding-right: 1rem;
 }
 
-.topnav {
+
+/*****HEADER****/
+
+header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -39,20 +42,19 @@ img {
   padding: 3%;
 }
 
-/*****HEADER****/
 .header-logo {
     /* float: left; */
     height: 50px;
 }
 
 /*NAVBAR*/
-.main-navbar {
+.header-nav {
     /* float: right; */
     display: flex;
     align-items: center;
     gap: 5px;
 }
-.topnav a {
+.header-nav a {
   /* float: left; */
   display: flex;
   align-items: center;
@@ -65,64 +67,52 @@ img {
   transition: all .3s ease-in-out;
 }
 
-.topnav a:hover {
+.header-nav a:hover, .header-nav a.active {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
 }
 
-.topnav a.active {
-  background-color: #ff0000;
-  color: #ffffff;
-  border-radius: 15px;
-}
-
-.topnav .icon {
+.header-toggle {
   display: none;
 }
 
-@media screen and (max-width: 972px){
-  .topnav{
-    justify-content: center;
+@media screen and (max-width: 992px){
+  header {
+    flex-direction: column;
   }
-  .main-navbar {
+  .header-nav{
     margin-top: 10px;
   }
 }
 
 
 @media screen and (max-width: 768px) {
-  .topnav{
+
+  .header-nav{
     justify-content: space-between;
   }
   .header-logo{
     width: 50%;
   }
-  .main-navbar{
+  header{
     flex-direction: column;
     flex-shrink: 0;
   }
 
-  .topnav a {
+  .header-nav a {
     display: none;
   }
-  .topnav a.icon {
+  .header-nav a.icon {
     display: block;
   }
 
-  
-  #myTopnav {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    top: 10px;
-  }
-  .topnav.responsive .icon {
+  .header-nav.responsive .icon {
     position: absolute;
     right: 0;
     top: 0;
   }
-  .topnav.responsive a {
+  .header-nav.responsive a {
     display: block;
     text-align: right;
     flex-shrink: 0;
@@ -132,10 +122,10 @@ img {
 
 
 @media screen and (max-width: 540px) {
-  .topnav a {
+  .header-nav a {
     display: none;
   }
-  .topnav a.icon {
+  .header-nav a.icon {
     float: right;
     display: block;
     margin-top: -15px;
@@ -272,14 +262,14 @@ input[data-error]::after {
     color: red;
 } */
 .checkbox-label,
-.checkbox2-label {
+.form-check-label {
   position: relative;
   margin-left: 36px;
   font-size: 12px;
   font-weight: normal;
 }
 .checkbox-label .checkbox-icon,
-.checkbox2-label .checkbox-icon {
+.form-check-label .checkbox-icon {
   display: block;
   width: 20px;
   height: 20px;
@@ -293,7 +283,7 @@ input[data-error]::after {
   transition: 0.3s;
 }
 .checkbox-label .checkbox-icon::after,
-.checkbox2-label .checkbox-icon::after {
+.form-check-label .checkbox-icon::after {
   content: "";
   width: 13px;
   height: 13px;
@@ -312,18 +302,18 @@ input[data-error]::after {
   display: none;
 }
 .checkbox-input:checked + .checkbox-label .checkbox-icon::after,
-.checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
+.checkbox-input:checked + .form-check-label .checkbox-icon::after {
   opacity: 1;
 }
-.checkbox-input:checked + .checkbox2-label .checkbox-icon {
+.checkbox-input:checked + .form-check-label .checkbox-icon {
   background: #279e7a;
 }
-.checkbox2-label .checkbox-icon {
+.form-check-label .checkbox-icon {
   border-radius: 4px;
   border: 0;
   background: #c4c4c4;
 }
-.checkbox2-label .checkbox-icon::after {
+.form-check-label .checkbox-icon::after {
   width: 7px;
   height: 4px;
   border-radius: 2px;
@@ -506,6 +496,7 @@ input[data-error]::after {
 .hero-img img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   display: block;
   padding: 0;
 }

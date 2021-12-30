@@ -1,11 +1,19 @@
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += "responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
+// function editNav() {
+//   let x = document.getElementById("myTopnav");
+//   if (x.className === "topnav") {
+//     x.className += "responsive";
+//   } else {
+//     x.className = "topnav";
+//   }
+// }
+
+/*Toggle menu*/
+const toggleMenu = document.querySelector(".toggleMenu");
+
+toggleMenu.forEach((el) => el.addEventListener("click", (e) => {
+      document.body.classList.toggle('menu-open');
+    }
+));
 
 // DOM Elements
 const modalbg = document.getElementById("bground");
@@ -119,7 +127,7 @@ form.addEventListener("submit", function (e) {
     errorMessage.fontSize = "0.5rem";
   }
 
-  if (!document.getElementById("terms").checked) {
+  if (!terms.checked) {
     errorTerms.textContent =
       "Vous devez vérifier que vous acceptez les termes et conditions.";
     errorTerms.style.color = "red";
@@ -133,8 +141,7 @@ form.addEventListener("submit", function (e) {
   if (formErrors === 7) {
     reserve.innerHTML = "Votre reservation <br> a bien été reçue";
     btnClose.style.display = "block";
-    reserve.style =
-      "display: flex;  justify-content: center; align-item : center";
+    reserve.style = "display: flex;  justify-content: center; align-item : center";
     document.getElementById("reserve").reset();
     closeDelay();
   }
