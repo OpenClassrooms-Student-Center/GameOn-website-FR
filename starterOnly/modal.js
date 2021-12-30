@@ -9,6 +9,7 @@ function editNav() {
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
+const modalConfirmation = document.querySelector(".bground-confirmation");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const btnClose = document.querySelectorAll('.close');
@@ -43,6 +44,7 @@ function launchModal() {
 // Close modal form
 function closeModal(){
   modalbg.style.display = "none";
+  modalConfirmation.style.display = "none";
 }
 
 
@@ -70,25 +72,21 @@ function checkboxLocation(radio, errorId, errorMsg){
   let errorTag = document.getElementById(errorId);
   let valid = false;
 
-    for (var i = 0 ; i < radio.length ; i++){
-      if (radio[i].type === 'radio' && radio[i].checked){
-        valid = true;
-        break; 
-       }
-    }
-    if(valid){
-      errorTag.textContent = "";
-      value = radio[i].value;
-      console.log(value)
-    } else {
-      errorTag.textContent = errorMsg;
-      errorTag.style.color = "#FF4E60";
-      errorTag.style.fontSize = "12px";
-    }
-
+    radio.forEach((btnRadio) => {
+       if (btnRadio.checked){
+         valid = true;
+         return
+       } 
+    })
+      if(valid){
+       errorTag.textContent = "";
+     } else {
+       errorTag.textContent = errorMsg;
+       errorTag.style.color = "#FF4E60";
+       errorTag.style.fontSize = "12px";
+     }
+     return valid
 }
-
-
 
 function checkboxCondition(checkbox, errorId, errorMsg){
   let errorTag = document.getElementById(errorId)
@@ -105,14 +103,29 @@ function checkboxCondition(checkbox, errorId, errorMsg){
   }
 }
 
+function launchConfirmationModal () {
+    modalConfirmation.style.display = "block";
+    modalConfirmation.style.fontSize = "16px";
+
+}
+
 function validate (event){
   event.preventDefault();
-  checkEntry(inputFirstName, nameRegex, 'prenom-error', 'Veuillez entrer 2 caractères ou plus pour le champ du nom.');
-  checkEntry(inputLastName, nameRegex, 'nom-error', 'Veuillez entrer 2 caractères ou plus pour le champ du nom.');
-  checkEntry(inputEmail, emailRegex, 'email-error', " l'Email utiliser n'est pas valide.");
-  checkEntry(inputDate, birthRegex, 'date-error', "Vous devez entrer votre date de naissance.");
-  checkEntry(inputQuantity, tournoiRegex, 'quantity-error', "Vous devez indiquez un nombre entre 0 et 99.");
-  checkboxLocation(inputLocation,'location-error', "Vous devez selectionnez une ville pour le tournoi.");
-  checkboxCondition(inputCondition,'condition-error',"Vous devez vérifier que vous acceptez les termes et conditions.");
- 
+  const isFirstNameValid = checkEntry(inputFirstName, nameRegex, 'prenom-error', 'Veuillez entrer 2 caractères ou plus pour le champ du nom.');
+  const isLastNameValid = checkEntry(inputLastName, nameRegex, 'nom-error', 'Veuillez entrer 2 caractères ou plus pour le champ du nom.');
+  const isEmailValid = checkEntry(inputEmail, emailRegex, 'email-error', " l'Email utiliser n'est pas valide.");
+  const isBirthdayValid = checkEntry(inputDate, birthRegex, 'date-error', "Vous devez entrer votre date de naissance.");
+  const isNumberTournamentValid = checkEntry(inputQuantity, tournoiRegex, 'quantity-error', "Vous devez indiquez un nombre entre 0 et 99.");
+  const isLocationValid = checkboxLocation(inputLocation,'location-error', "Vous devez selectionnez une ville pour le tournoi.");
+  const isConditionValid = checkboxCondition(inputCondition,'condition-error',"Vous devez vérifier que vous acceptez les termes et conditions.");
+
+  if( isFirstNameValid && 
+      isLastNameValid && 
+      isEmailValid && 
+      isBirthdayValid && 
+      isNumberTournamentValid && 
+      isLocationValid && 
+      isConditionValid){
+        launchConfirmationModal();
+      }  
 }
