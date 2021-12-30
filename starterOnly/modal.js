@@ -7,20 +7,23 @@
 //   }
 // }
 
-/*Toggle menu*/
-const toggleMenu = document.querySelector(".toggleMenu");
-
-toggleMenu.forEach((el) => el.addEventListener("click", (e) => {
-      document.body.classList.toggle('menu-open');
-    }
-));
 
 // DOM Elements
 const modalbg = document.getElementById("bground");
 const closeModalBtn = document.querySelector(".closeModal");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const toggleMenu = document.querySelectorAll(".toggleMenu");
 
+
+/*TOGGLE MENU*/
+toggleMenu.forEach((el) => el.addEventListener("click", (e) => {
+  document.body.classList.toggle('menu-open');
+}
+));
+
+
+/*OUVERTURE MODAL*/
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
