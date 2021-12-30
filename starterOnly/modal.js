@@ -20,8 +20,8 @@ const inputEmail = document.getElementById('email');
 const inputDate = document.getElementById('birthdate');
 const inputQuantity = document.getElementById('quantity');
 
-const inputLocation = document.querySelectorAll('.input-location');
-const inputCondition = document.querySelector('.input-condition');
+let inputLocation = document.reserve.location;
+const inputCondition = document.getElementById('checkbox1');
 
 
 // regex 
@@ -54,7 +54,7 @@ function checkEntry(input, regex, errorId, errorMsg) {
     errorTag.textContent = "";
     input.style.borderColor = "green";
     input.style.borderWidth = "2px";
-    return true;
+    return true;  
   } else {
     errorTag.textContent = errorMsg; 
     input.style.borderColor = "#FF4E60";
@@ -68,26 +68,32 @@ function checkEntry(input, regex, errorId, errorMsg) {
 
 function checkboxLocation(radio, errorId, errorMsg){
   let errorTag = document.getElementById(errorId);
+  let valid = false;
 
-  for( let i = 0; i < radio.length ; i++){
-    if (radio[i].getAttribute("name") === 'location' && radio[i].checked){
+    for (var i = 0 ; i < radio.length ; i++){
+      if (radio[i].type === 'radio' && radio[i].checked){
+        valid = true;
+        break; 
+       }
+    }
+    if(valid){
       errorTag.textContent = "";
-      return true
-     } else {
-      errorTag.textContent = errorMsg; 
+      value = radio[i].value;
+      console.log(value)
+    } else {
+      errorTag.textContent = errorMsg;
       errorTag.style.color = "#FF4E60";
       errorTag.style.fontSize = "12px";
-      return false
-     }
-  }
-
+    }
 
 }
+
+
 
 function checkboxCondition(checkbox, errorId, errorMsg){
   let errorTag = document.getElementById(errorId)
 
-  if (checkbox.getAttribute("id") == "checkbox1" && checkbox.checked == false){
+  if (checkbox.getAttribute('type') === "checkbox"  && checkbox.checked == false){
     console.log("error")
     errorTag.textContent = errorMsg;
     errorTag.style.color = "#FF4E60";
