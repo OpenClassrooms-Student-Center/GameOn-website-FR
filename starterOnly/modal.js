@@ -13,6 +13,7 @@ const modalConfirmation = document.querySelector(".bground-confirmation");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const btnClose = document.querySelectorAll('.close');
+const closeConfirmation = document.querySelector('.close-confirmation');
 
 // Forms modal DOM Elements
 const inputFirstName = document.getElementById('first');
@@ -35,6 +36,7 @@ const tournoiRegex = /^[+]?\d+([.]\d+)?$/;
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal,))
 // Close modal event
 btnClose.forEach((btnClose) => btnClose.addEventListener("click", closeModal))
+
 
 // launch modal form
 function launchModal() {
@@ -104,9 +106,13 @@ function checkboxCondition(checkbox, errorId, errorMsg){
 }
 
 function launchConfirmationModal () {
+    modalbg.style.display = "none";
     modalConfirmation.style.display = "block";
     modalConfirmation.style.fontSize = "16px";
 
+    closeConfirmation.addEventListener('click', function (){
+      modalConfirmation.style.display = "none";
+    })
 }
 
 function validate (event){

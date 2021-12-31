@@ -188,6 +188,30 @@ main {
   margin: 15px auto;
 }
 
+.bground-confirmation .modal-body {
+  padding: 15px 8%;
+  margin: 15px auto;
+  height: 585px;
+}
+
+.bground-confirmation .container {
+  position: relative;
+  top:210px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin:0 auto ;
+  font-size: 30px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.close-confirmation {
+  position: relative;
+  bottom:40px;
+}
+
+
 label {
   font-family: var(--font-default);
   font-size: 17px;
@@ -322,7 +346,7 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup, .btn-close {
   background: #fe142f;
   display: block;
   margin: 0 auto;
