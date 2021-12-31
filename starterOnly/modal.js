@@ -11,7 +11,7 @@
 // DOM Elements
 const modalbg = document.getElementById("bground");
 const closeModalBtn = document.querySelector(".closeModal");
-const modalBtn = document.querySelectorAll(".modal-btn");
+const modalBtn = document.querySelector(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const toggleMenu = document.querySelectorAll(".toggleMenu");
 
@@ -25,7 +25,7 @@ toggleMenu.forEach((el) => el.addEventListener("click", (e) => {
 
 /*OUVERTURE MODAL*/
 // launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+modalBtn.addEventListener("click", launchModal);
 
 // launch modal form
 function launchModal() {
@@ -52,10 +52,11 @@ let verifMail =
 let textFormat = /^[a-zA-Z\é\è\-\^\']{2,30}$/;
 
 form.addEventListener("submit", function (e) {
+  e.preventDefault();
   //constantes
   const first = form.querySelector('input[name="first"]');
   const last = form.querySelector('input[name="last"]');
-  const email = document.querySelector("email");
+  const email = form.querySelector('input[name="email"]');
   const birthdate = form.querySelector('input[name="birthdate"]');
   const quantity = form.querySelector('input[name="quantity"]');
 
@@ -64,7 +65,7 @@ form.addEventListener("submit", function (e) {
   const error2 = document.getElementById("error2");
   const error3 = document.getElementById("error3");
 
-  const formErrors = 0;
+  let formErrors = 0;
 
   //label prenom
   if (first.value == "" || textFormat.test(first.value) == false) {
@@ -89,7 +90,6 @@ form.addEventListener("submit", function (e) {
   //label mail
   if (!email.value.trim().match(verifMail)) {
     alert("l'adresse email n'est pas valide");
-    e.preventDefault();
     e.removeEventListener();
   }
 
@@ -114,7 +114,7 @@ form.addEventListener("submit", function (e) {
   }
 
   //location
-  errorMsg.innerHTML = "";
+  errorMessage.innerHTML = "";
   if (
     document.getElementById("location1").checked ||
     document.getElementById("location2").checked ||

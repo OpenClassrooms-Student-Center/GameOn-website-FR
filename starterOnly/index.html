@@ -60,9 +60,6 @@
         <div class="hero-img">
           <img src="./img/bg_img.jpg" alt="photo d'une joueuse vue de dos avec un casque et une manette de jeux vidéo" />
         </div>
-        <button class="btn-signup modal-btn">
-          je m'inscris
-        </button>
       </div>
   <!--------------- FORMULAIRE --------------->
       <div id="bground" class="bground">
@@ -74,7 +71,6 @@
               action="index.html"
               method="get"
               id="reserve"
-              onsubmit="return validate();"
             >
 
             <!-- PRENOM -->
@@ -86,6 +82,7 @@
                   type="text"
                   id="first"
                   name="first"
+                  value="roger"
                 /><br>
                 <div class="error" id="error"></div>
               </div>
@@ -98,6 +95,7 @@
                   type="text"
                   id="last"
                   name="last"
+                  value="marcel"
                 /><br>
                 <div class="error1" id="error1"></div>
               </div>
@@ -110,6 +108,7 @@
                   type="email"
                   id="email"
                   name="email"
+                  value="emma.ju@fr.fr"
                 /><br>
               </div>
               <!-- DATE DE NAISSANCE -->
@@ -121,6 +120,7 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
+                  value="1874-08-14"
                 /><br>
                 <div class="error2" id="error2"></div>
               </div>
