@@ -470,7 +470,6 @@ input[data-error]::after {
   position: relative;
   font-size: 6rem;
   white-space: nowrap;
-  position: relative;
 }
 .hero-text{
   font-size: 1.5rem;
@@ -499,7 +498,6 @@ overflow: hidden;
   height: 100%;
   object-fit: cover;
 }
-
 
 /*FOOTER*/
 
@@ -545,11 +543,11 @@ footer {
     padding: inherit;
     border-radius: 15px;
   }
-  .hero-section > .btn-signup {
+  /* .hero-section > .btn-signup {
     display: block;
     margin: 32px auto 10px;
     padding: 12px 35px;
-  }
+  } */
   .copyrights {
     margin-top: 50px;
     text-align: center;
@@ -563,26 +561,5 @@ footer {
   }
   to {
     opacity: 1;
-  }
-}
-
-
-/***********RESPONSIVE 500PX **************/
-
-@media screen and (max-width: 500px) {
-  /* .hero-section {
-    overflow: inherit;
-  } */
-  /* .hero-content {
-    padding: inherit;
-  } */
-  .hero-headline {
-    font-size: 3rem;
-  }
-  .hero-text {
-    font-size: 1.25rem;
-  }
-  .hero-img {
-    border-radius: 10px;
   }
 }
