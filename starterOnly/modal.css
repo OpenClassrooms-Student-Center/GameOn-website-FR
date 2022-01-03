@@ -450,6 +450,24 @@ input[data-error]::after {
   font-size: 16px;
 }
 
+/********** remerciement**********/
+.thanks {
+  display: flex; 
+  flex-direction: column; 
+  align-items: center;
+  height: 600px;
+  }
+
+.thanks-message {
+flex-grow: 1;
+display: flex; 
+align-items: center;
+width: 309px;
+text-align: center;
+font-size: 30px;
+font-weight: 400;
+}
+
 /********** HERO SECTION**********/
 
 .hero-section {
