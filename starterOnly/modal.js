@@ -28,7 +28,7 @@ toggleMenu.forEach((el) => el.addEventListener("click", (e) => {
 modalBtn.addEventListener("click", launchModal);
 
 // launch modal form
-function launchModal() {
+function launchModal(){
   modalbg.style.display = "block";
 }
 
@@ -38,7 +38,7 @@ function launchModal() {
 closeModalBtn.addEventListener("click", closeModal);
 
 //close modal form
-function closeModal() {
+function closeModal(){
   modalbg.style.display = "none";
   closeModalBtn.removeEventListener("click", closeModal);
 }
@@ -51,7 +51,7 @@ let verifMail =
   /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
 let textFormat = /^[a-zA-Z\é\è\-\^\']{2,30}$/;
 
-form.addEventListener("submit", function (e) {
+form.addEventListener("submit", function(e){
   e.preventDefault();
   //constantes
   const first = form.querySelector('input[name="first"]');
@@ -68,80 +68,80 @@ form.addEventListener("submit", function (e) {
   let formErrors = 0;
 
   //label prenom
-  if (first.value == "" || textFormat.test(first.value) == false) {
+  if(first.value == "" || textFormat.test(first.value) == false){
     error.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom';
     error.style.color = "red";
     error.fontSize = '0.5rem';
-  } else {
+  }else{
     error.innerHTML = "";
     formErrors++;
   }
 
   //label nom
-  if (last.value == "" || textFormat.test(last.value) == false) {
+  if(last.value == "" || textFormat.test(last.value) == false){
     error1.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
     error1.style.color = "red";
     error1.fontSize = '0.5rem';
-  } else {
+  }else{
     error1.innerHTML = "";
     formErrors++;
   }
 
   //label mail
-  if (!email.value.trim().match(verifMail)) {
+  if (!email.value.trim().match(verifMail)){
     alert("l'adresse email n'est pas valide");
     e.removeEventListener();
   }
 
   //label birthday
-  if (birthdate.value == "") {
+  if(birthdate.value == ""){
     error2.textContent = 'Vous devez entrer votre date de naissance.';
     error2.style.color = "red";
     error2.fontSize = '0.5rem';
-  } else {
+  }else{
     error2.innerHTML = "";
     formErrors++;
   }
 
   //tournoi quantity
-  if (quantity.value == "") {
+  if(quantity.value == ""){
     error3.textContent = 'Vous devez saisir un nombre.';
     error3.style.color = "red";
     error3.fontSize = '0.5rem';
-  } else {
+  }else{
     error3.innerHTML = "";
     formErrors++;
   }
 
   //location
   errorMessage.innerHTML = "";
-  if (
+  if(
     document.getElementById("location1").checked ||
     document.getElementById("location2").checked ||
     document.getElementById("location3").checked ||
     document.getElementById("location4").checked ||
     document.getElementById("location5").checked ||
     document.getElementById("location6").checked
-  ) {
+  ){
     formErrors++;
-  } else {
+  }else{
     errorMessage.textContent = "Vous devez choisir une option.";
     errorMessage.style.color = "red";
     errorMessage.fontSize = "0.5rem";
   }
 
-  if (!terms.checked) {
+  if(!terms.checked){
     errorTerms.textContent =
       "Vous devez vérifier que vous acceptez les termes et conditions.";
     errorTerms.style.color = "red";
     errorTerms.style.fontSize = "0.5em";
-  } else {
+  }else{
     errorTerms.innerHTML = "";
     formErrors++;
   }
 
   console.log(formErrors);
-  if (formErrors === 7) {
+  if(formErrors === 7) {
     reserve.innerHTML = "Votre reservation <br> a bien été reçue";
     btnClose.style.display = "block";
     reserve.style = "display: flex;  justify-content: center; align-item : center";
@@ -149,11 +149,11 @@ form.addEventListener("submit", function (e) {
     closeDelay();
   }
 
-  function closeDelay() {
+  function closeDelay(){
     window.setTimeout(reloadPage, 5000);
   }
 
-  function reloadPage() {
+  function reloadPage(){
     location.reload();
   }
 });
