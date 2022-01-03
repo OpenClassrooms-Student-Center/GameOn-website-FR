@@ -13,7 +13,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalClose = document.querySelector(".close") //Création et chargement de la constante 'modalClose' et accès à la class .close du DOM  
 // launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
 
 // launch modal form
 function launchModal() {
@@ -21,9 +21,14 @@ function launchModal() {
 }
 
 //Fermeture du questionnaire
-modalClose.addEventListener("click", close); //Ecoute event clic de souris sur l'element close, nommé 'close'
+modalClose.addEventListener('click', close); //Ecoute event clic de souris sur la constante modalClose qui cible la class .close, nommé 'close'
 
 //Appel de la fonction 'close' pour cacher le formulaire
 function close () {
   modalbg.style.display = "none"; 
 }
+
+//ou
+//modalClose.addEventListener('click', function () {
+//  modalbg.style.display = "none";
+//}); //Ecoute event clic de souris sur l'element close, nommé 'close' et on cache le formulaire
