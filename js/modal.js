@@ -69,7 +69,7 @@ last.addEventListener("blur", (e) => {
 function checkNom() {
   const lastValue = last.value.trim();
   console.log(lastValue);
-  if (lastValue.length < 2 || lastValue.length > 10) {
+  if (regexName.exec(last.value) === null || last.length < 2) {
     last.nextElementSibling.classList.remove("invisible");
     last.style.border = "2px solid red";
     console.log("Erreur! Veuillez entrer un nom valide");
