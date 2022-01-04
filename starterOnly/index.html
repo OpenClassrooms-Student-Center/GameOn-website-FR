@@ -60,7 +60,7 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+              onsubmit="return validate(event);"
             >
               <div
                 class="formData">
@@ -96,6 +96,7 @@
                   name="email"
                   required
                 /><br> <!--Ajout de required-->
+                <div class="result" id="code-validation"></div>
               </div>
               <div
                 class="formData">
