@@ -70,7 +70,8 @@ function validateLocation() {
 let divFormData = document.querySelectorAll("div.formData");
 
 let messagesErrors = [
-  "Veuillez entrer 2 caractères ou plus pour le prénom.", "Veuillez entrer 2 caractères ou plus pour le prénom.",
+  "Veuillez entrer 2 caractères ou plus pour le prénom.", 
+  "Veuillez entrer 2 caractères ou plus pour le prénom.",
   "Veuillez entrer une adresse email valide.",
   "Veuillez indiquez une date.",
   "Veuillez un nombre.",
@@ -80,17 +81,17 @@ let messagesErrors = [
 
 for(let i = 0; i<divFormData.length; i++) {
   
-  let messageErrors = messagesErrors;
+  let messageErrors = messagesErrors;                                              // j'insere de tableau "messagesErrors dans la boucle
 
-  if (i < 6) {
-    divFormData[i].addEventListener("input", (e) => {
-      divFormData[i].setAttribute("data-error-visible", !e.target.validity.valid);
-      divFormData[i].setAttribute("data-error", messageErrors[i]);
+  if (i < 6) {                                                                     // pour chaque champ de formulaire - qui ne sont pas de type radip donc 
+    divFormData[i].addEventListener("input", (e) => {                              // j'écoute l'évenement imput
+      divFormData[i].setAttribute("data-error-visible", !e.target.validity.valid); // l'attribut data-error-visible passa à true si le champ est non valide et rend de message d'erreur visible 
+      divFormData[i].setAttribute("data-error", messageErrors[i]);                //  l'attribut data-error prend message d'eereur corespondant
     });
     
 
   } else {
-    divFormData[i].firstElementChild.addEventListener("change", (e) => {
+    divFormData[i].firstElementChild.addEventListener("change", (e) => {          // idem dito mais pour les input de type radio
       divFormData[i].setAttribute("data-error-visible", !e.target.checked);
       divFormData[i].setAttribute("data-error", messageErrors[i]);
     });
@@ -101,41 +102,48 @@ for(let i = 0; i<divFormData.length; i++) {
 let inputs = document.querySelectorAll("input");
 
 form.addEventListener("submit", (e) =>{
-  
-  e.preventDefault();
-
-  if (validate () == true) {
-    //* Setting up thank window - Mise en place de fenêtre de remerciement
-    document.querySelector(".btn-submit").setAttribute("value", "Fermer");
+  e.preventDefault();                                               // à la soumission du fomulaire je met en pause
+  if (validate()) {                                        
     
-    let formDatas = document.querySelectorAll(".formData");
-      formDatas.forEach(function(formData) {
-      formData.style.display = "none";
-    });
+    thanksModal();
 
-    let content = document.querySelector("div.content");
-    content.style.marginTop = "5rem";
-    content.style.height = "100%";
-
-    let text = document.querySelector("p.text-label");
-    text.style.textAlign = "center";
-    text.style.margin = "34vh 0";
-    text.style.fontSize = "2.57rem";
-    text.innerText = "Merci pour votre inscription"
-
-    //* Send form on "close" btn or cross  - Envoi du formulaire sur bouton "fermer" ou croie.
+   //* Send form on "close" btn or cross  - Envoi du formulaire sur bouton "fermer" ou croie.
     btnSubmit = addEventListener ("click", (e) => {
-      document.forms["form"].submit();
+    document.forms["form"].submit();
     });
 
     document.querySelector("span.close").addEventListener ("click", (e) => {
-      document.forms["form"].submit();
+    document.forms["form"].submit();
     });
-
   } else {
-    //* Form verification if ti's not completed - Vérification du formulaire si non remplie 
+    verifCompletForm();  
+  };
+}, false);
+
+
+function thanksModal() {                                                  //si le formulaire et valide :
+  //* Setting up thank window - Mise en place de fenêtre de remerciement - je modifie la fenêtre exitante
+  document.querySelector(".btn-submit").setAttribute("value", "Fermer"); // modifiaction du boutton sumit    
     
-    for(let i = 0; i<divFormData.length; i++)
+  let formDatas = document.querySelectorAll(".formData");                // effacement de tous les champs du formulaire
+  formDatas.forEach(function(formData) {
+    formData.style.display = "none";
+  });
+
+  let content = document.querySelector("div.content");                  // mise en forme de la div "content"
+  content.style.marginTop = "5rem";
+  content.style.height = "100%";
+
+  let text = document.querySelector("p.text-label");                  // mise en place du message - modification du text initial "Quelle villes ?"
+  text.style.textAlign = "center";
+  text.style.margin = "34vh 0";
+  text.style.fontSize = "2.57rem";
+  text.innerText = "Merci pour votre inscription"
+};
+
+//* Form verification if ti's not completed - Vérification du formulaire si non remplie 
+function verifCompletForm () {
+  for(let i = 0; i<divFormData.length; i++)
       
       if (i < 6) {
         let messageErrors = messagesErrors;
@@ -147,8 +155,4 @@ form.addEventListener("submit", (e) =>{
         document.querySelector("#formLocation").setAttribute("data-error", messageErrors[i])
       };
     };
-    
-  };
-}, false);
-
-
+};
