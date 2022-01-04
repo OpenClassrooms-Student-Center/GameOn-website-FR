@@ -32,7 +32,7 @@ modalBtn.addEventListener("click", launchModal);
 function launchModal(){
   modalbg.style.display = "block";
   window.scrollTo(0, 0);
-  modalbg.scrollTo(0,0);
+  modalbg.scrollTo(0, 0);
   document.body.style.overflow = "hidden";
 }
 
@@ -181,22 +181,4 @@ form.addEventListener("submit", function(e){
         modalThanks.style.display = 'none';
         formulaire.style.display = '';
         }
-/*
-const getUsers = async function () {
-  let data = await fetch()
-  .then(response => response.json())
-  console.log(data)
-}
 
-getUsers()
-
-let email = document.querySelector('#email')
-email.focus()
-
-document.querySelector('form').addEventListener('submit', function(e){
-    let mentions = document.querySelector('#mentions')
-    if(!mentions.checked) {
-        alert('Vous n\'avez pas accepté les CGU')
-        e.preventDefault()
-    }
-})*/
