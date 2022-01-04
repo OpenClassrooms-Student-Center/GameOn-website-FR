@@ -245,7 +245,7 @@ input {
 .error {
   margin-top: 5px;
   color: #e54858;
-  font-size: 0.8em;
+  font-size: 0.6em;
 }
 .invisible {
   display: none;

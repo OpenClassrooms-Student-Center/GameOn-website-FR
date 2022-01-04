@@ -85,10 +85,10 @@ email.addEventListener("blur", (e) => {
   checkEmail();
 });
 
-// Fonctions validation du formulaire
 function checkEmail() {
-  const regexEmail = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,3}$/;
-  if (email.value == "") {
+  const emailValue = email.value.trim();
+  console.log(emailValue);
+  if (regexEmail.exec(email.value) === null) {
     last.nextElementSibling.classList.remove("invisible");
     email.style.border = "2px solid red";
     console.log("Erreur! Veuillez entrer une adresse email valide");
@@ -109,8 +109,7 @@ function checkBirthdate() {
   console.log(birthdateValue);
   if (birthdate.value == "") {
     birthdate.style.border = "2px solid red";
-    birthdate.nextElementSibling.innerHTML =
-      "Veuillez entrer votre date de naissance";
+    birthdate.nextElementSibling.classList.remove("invisible");
     console.log("Erreur! Veuillez entrer une date de naissance valide");
   } else {
     birthdate.style.border = "2px solid green";
@@ -128,8 +127,7 @@ function checkQuantity() {
   console.log(quantityValue);
   if (quantity.value == "") {
     quantity.style.border = "2px solid red";
-    quantity.nextElementSibling.innerHTML =
-      "Veuillez entrer le nombre de tournois";
+    quantity.nextElementSibling.classList.remove("invisible");
     console.log("Erreur! Veuillez entrer un nombre de tournois valide");
   } else {
     quantity.style.border = "2px solid green";
