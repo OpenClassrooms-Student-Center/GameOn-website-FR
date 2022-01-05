@@ -120,9 +120,8 @@ form.addEventListener("submit", (e) =>{
   };
 }, false);
 
-
-function thanksModal() {                                                  //si le formulaire et valide :
   //* Setting up thank window - Mise en place de fenêtre de remerciement - je modifie la fenêtre exitante
+function thanksModal() {                                                  //si le formulaire et valide :
   document.querySelector(".btn-submit").setAttribute("value", "Fermer"); // modifiaction du boutton sumit    
     
   let formDatas = document.querySelectorAll(".formData");                // effacement de tous les champs du formulaire
