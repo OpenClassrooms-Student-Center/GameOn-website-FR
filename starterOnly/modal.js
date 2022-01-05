@@ -14,6 +14,15 @@ const formData = document.querySelectorAll(".formData");
 const modalClose = document.querySelector(".close") //Création et chargement de la constante 'modalClose' et accès à la class .close du DOM  
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
+//Stockage des valeurs de champs dans des variables//
+const firstName = document.getElementById("first");
+const lastName = document.getElementById("last");
+const emailAdress = document.getElementById("email");
+const birthdate = document.getElementById("birthdate");
+const quantityTournois = document.getElementById("quantity");
+const checkbox1 = document.getElementById("checkbox1");
+//Controle du format du mail//
+const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 // launch modal form
 function launchModal() {
@@ -26,6 +35,7 @@ modalClose.addEventListener('click', close); //Ecoute event clic de souris sur l
 //Appel de la fonction 'close' pour cacher le formulaire
 function close () {
   modalbg.style.display = "none"; 
+  document.querySelectorAll(".formData").reset();
 }
 
 /* ou
@@ -38,25 +48,16 @@ modalClose.addEventListener('click', function () {
 function validate (event) {
 //Désactivé le comportement par défaut de l'évenement//
   event.preventDefault();
-//Stockage des valeurs de champs dans des variables//
-  var first = document.getElementById("first");
-  var last = document.getElementById("last");
-  var email = document.getElementById("email");
-  var birthdate = document.getElementById("birthdate");
-  var quantity = document.getElementById("quantity");
-  var checkbox1 = document.getElementById("checkbox1");
-//Controle du format du mail//
-  var emailReg = /^([w-.]+@([w-]+.)+[w-]{2,4})?$/;
+}
 
-  function verifFirstLength() {
-    if (document.getElementById("first").value.length < 2) {
-      alert("Attention : Votre pseudo doit contenir 3 lettres au minimum !");
-      return false;
-    }
-    else {
-      return true;
-    }
-
+function verifFirstLength() {
+  if (document.getElementById("first").value.length < 2) {
+    alert("Veuillez entrer 2 caractères ou plus pour le champ du nom.");
+    return false;
+  }
+  else {
+    return true;
+  }
 }
 
 /*
