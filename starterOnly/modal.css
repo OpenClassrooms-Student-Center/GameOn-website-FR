@@ -73,6 +73,7 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
+    color: red;
   }
 }
 
@@ -88,16 +89,30 @@ img {
     display: block;
     text-align: left;
   }
+
+  .logo{
+    width : 80%;    /* Issue 5 */
+  }
 }
 
 
 
  @media screen and (max-width: 540px) {
+  .topnav{
+    margin: 20px 20px 10px;
+    padding: 0 0 0 2vw;
+  };
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    margin-top: -12px; /* Issue 5 */
+    color:red;      /* Issue 5 */
+  }
+
+  .logo{
+    width : 60%;
+    padding:0;     /* Issue 5 */
   }
 } 
 
@@ -170,7 +185,7 @@ main {
 }
 
 .content {
-  margin: 5% auto;
+  margin: 20% auto; /* Issue 5 */
   width: 100%;
   max-width: 500px;
   animation-name: modalopen;
@@ -215,7 +230,7 @@ input {
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  text-align: left; /* Issue 3 et 4 */
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -486,7 +501,8 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px;    /* Issue 5 */
+    min-width: 305px; /* Issue 5 */
   }
   .hero-content::after {
     content: unset;
@@ -495,12 +511,12 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 2rem; /* Issue 5 */
     white-space: normal;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 0.75rem; /* Issue 5 */
   }
   .hero-img img {
     border-radius: 10px;
