@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
 
@@ -19,20 +19,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
   
+    <!--Logo title page-->
+    <link rel="icon" href="images/favicon.ico">
+
   </head>
 
   <body>
 
     <header id="myTopnav">
+
       <!--logo GameOn-->
-      <img alt="logo Game one" src="images/Logo.png" />
+      <div class="header__logo">
+        <img alt="logo Game one" src="images/Logo.png" />
+      </div>  
 
       <nav>
           
-        <a href="#" class="active">Event details</a>
-        <a href="#">About us</a>
-        <a href="#">Contact</a>
-        <a href="#">Pass events</a>
+        <a href="#" class="header__navbar--active">Détails de l'évènement</a>
+        <a href="#" class="header__navbar">À propos</a>
+        <a href="#" class="header__navbar">Contact</a>
+        <a href="#" class="header__navbar">Évènements passés</a>
         <a href="javascript:void(0);" class="icon" onclick="editNav()">
           <i class="fa fa-bars"></i>
         </a>
@@ -42,87 +48,84 @@
     </header>
 
     <main>
+      <!--Section "hero"-->
       <section class="section--hero">
 
         <div class="section--hero-content">
 
-          <h1 class="section--hero-headline"> US Nationwide</h1>
-          <h1 class="sectio--hero-headline"> Game-a-Thon</h1>
-          
-          <p class="section--hero-text">
-            Do you live to game ? Our next gaming event is now accepting reservations for players, but spots are limited.
-          </p>
+          <h1 class="section--hero-headline">Marathon national<br>de jeux vidéos</h1>  
+          <p class="section--hero-text">Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux réservations... Places limitées !</p>
+          <!--Button desktop-->
+          <button class="btn-signup modalOpen">Je M'inscris</button>
 
-          <button class="btn-signup modal-btn">
-            Sign Up Now
-          </button>
-
-        </div> <!--End of div hero.content-->
+        </div>
         
         <div class="section--hero-img">
           <img src="images/bg_img.jpg" alt="background image" />
         </div> 
-
-        <button class="btn-signup modal-btn">
-          Sign Up Now <!--ne change pas reste marquer je m'inscris : Pourquoi?-->
-        </button>
+        <!-- BUTTON Mobile version-->
+        <button class="btn-signup modal-btn">Je M'inscris</button>
 
       </section> 
 
+      <!--Modal Windows-->
       <div class="bground">
         <div class="content">
           <span class="close"></span>
 
           <div class="modal-body">
-            <!--FORM-->
-            <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
+
+            <!--REGISTRATION FORM-->
+            <form id="modalForm" name="modalForm" action="index.html" method="get" onsubmit="return validate();">
+              
               <!--FORM PART 1: User informations -->
               <!--User info 1-->
-              <div class="formData">
-                <label>First Name</label>
+              <div class="formData info" data-error="Le champ du Prénom doit comporter deux caractères au minimum.">
+                <label for="first">Prénom</label>
                 <br>
-                <input class="text-control" type="text" id="first" name="first" minlength="2">
+                <input class="text-control" type="text" id="first" name="first" minlength="2" required>
                 <br>
               </div>
 
               <!--User info 2-->
-              <div class="formData">
-                <label>Last Name</label>
+              <div class="formData info" data-error="Le champ du Nom doit comporter deux caractères au minimum.">
+                <label for="last">Nom</label>
                 <br>
-                <input class="text-control" type="text" id="last" name="last">
+                <input class="text-control" type="text" id="last" name="last" minlength="2" required>
                 <br>
               </div>
 
               <!--User info 3-->
-              <div class="formData">
-                <label>Email</label>
+              <div class="formData info" data-error="L'adresse e-mail doit être valide.">
+                <label for="email">E-mail</label>
                 <br>
-                <input class="text-control" type="email" id="email" name="email">
+                <input class="text-control" type="email" id="email" name="email" required>
                 <br>
               </div>
 
               <!--User info 4-->
-              <div class="formData">
-                <label>Birthdate</label>
+              <div class="formData info">
+                <label for="birthdate">Date de naissance</label>
                 <br>
-                <input class="text-control" type="date" id="birthdate" name="birthdate">   
+                <input class="text-control" type="date" id="birthdate" name="birthdate" required>   
                 <br>
               </div>
 
               <!--User info 5-->
-              <div class="formData">
-                <label>How many tournaments have you attended ?</label>
+              <div class="formData info" data-error="Le nombre doit être un entier compris entre 0 et 99.">
+                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label>
                 <br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
               </div>
 
+
               <!--FORM PART 2: User location -->
-              <p class="text-label"> Where do you want to participate this year ?</p>
-              
-              <!--Location 1-->
-              <div class="formData">
+              <label class="form__label--checkboxes"> A quel tournoi souhaitez-vous participer cette année ?</p>
                 
-                <input class="checkbox-input" type="radio" id="location1" name="location" value="New York">
+              <div class="formData locations" data-error="il faut choisir une ville.">
+               
+                <!--Location 1--> 
+                <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" required>
 
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -172,11 +175,11 @@
               </div>
 
               <!--FORM PART 3: User Rights -->
-              <div class="formData">
+              <div class="formData rights">
                 
-                <input class="checkbox-input" id="checkbox1" checked>
+                <input class="checkbox-input" id="checkbox1" required checked>
              
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
@@ -192,20 +195,25 @@
 
                 <br>
 
-              </div>
+              </div><!--End part 3 Form-->
+
               <!--BUTTON : "Go"-->
-              <input class="btn-submit" type="submit" class="button" value="Go">
+              <input class="form__button--submit" type="submit" value="C'est parti">
 
             </form>
+
+
+
+
           </div>
         </div>
       </div>
     </main>
 
     <footer>
-
-      Copyright 2014 - 2022, GameOn Inc.
-
+      <p class="copyrights">
+        Copyright 2014 - 2022, GameOn Inc.
+      </p>
     </footer>
 
     <script src="modal.js"></script>

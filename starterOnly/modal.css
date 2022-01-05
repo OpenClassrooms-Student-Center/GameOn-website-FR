@@ -14,7 +14,7 @@
 
 p {
   margin-bottom: 0;
-  padding: 0.5vw;
+  /*padding: 0.5vw;*/
 }
 
 img {
@@ -25,35 +25,36 @@ img {
 /* COMPUTER VERSION :Landing Page */
 
 body {
-  margin: 0;
+  /*margin: 0;*/
   display: flex;
   flex-direction: column;
   justify-content: center;
   font-family: var(--font-default);
   font-size: 18px;
-  width: 100%;
+  
   margin: 0 auto;
+  max-width: 1500px;
 }
 
 /*-----HEADER-----*/
 
 header {
-  /*overflow: hidden;*/
-  margin: 3.5%;
+  overflow: hidden;
+  margin: 3.5% 3.5% 5% 3.5%;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-between;
 }
 
-header img {
-    /*float: left;*/
+/*header img {
+    float: left;
     height: 50px;
-}
-
-/*header nav {
-    float: right;
 }*/
+
+header nav {
+    float: right;
+}
 
 header a {
   float: left;
@@ -71,10 +72,13 @@ header a:hover, header a.active {
   color: #ffffff;
   border-radius: 15px;
   text-decoration: underline;
+  text-underline-offset: 0.2em;
 }
 
 header .icon {
   display: none;
+  color: red;
+  font-size: xx-large;
 }
 
 /*-----END of HEADER-----*/
@@ -91,48 +95,52 @@ header .icon {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
+  
 }
 /*-----SECTION-----*/
 
 .section--hero{
-  display: flex;
-  width: 100%;
-  min-height: 93vh;
+  
+  /*width: 100%;*/
+  /*min-height: 93vh;*/
   border-radius: 10px;
-  /*display: grid;*/
-  /*grid-template-columns: repeat(12, 1fr);*/
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
   overflow: hidden;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
 }
+
 .section--hero > .btn-signup {
   display: none;
 }
 
 .section--hero-content {
   /*margin: 2% auto;*/
-  width: 45%;
+  width: 100%;
   /*max-width: 500px;*/
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
   background: #232323;
-  border-radius: 10px;
   overflow: hidden;
   position: relative;
   color: #fff;
   /*padding-top: 10px;*/
-  display: flex;
-  flex-direction: column;
+  
   padding: 51px 67px;
-  /*grid-column: span 4;*/
+  grid-column: span 5;
  
   text-align: left;
   min-width: 424px;
 
 }
 
+.section--hero-content > * {
+  position: relative;
+  z-index: 1;  
+}
 
-.section--hero-content::after::after {
+/*.section--hero-content::after::after {
   content: "";
   width: 100%;
   height: 100%;
@@ -140,12 +148,9 @@ header .icon {
   position: absolute;
   right: -80px;
   top: 0;
-}
-
-/*.section--hero-content > * {
-  position: relative;
-  z-index: 1;  
 }*/
+
+
 
 
 .section--hero-headline {/*h1*/
@@ -155,26 +160,53 @@ header .icon {
 }
 
 .section--hero-text {/*p*/
-  width: 146%;
+  width: 110%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
+  font-size: 24px;
 }
 
 
+/*--Backgound image--*/
 
 
-.button {
+.section--hero-img {
+  grid-column: span 7;
+  
+}
+.section--hero-img img {
+  
+  height: 100%;
+  display: block;
+  padding: 0;
+  object-fit: cover;
+  
+}
+
+/*.section-hero-img img { /*à revoir
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 0;
+  object-fit: cover;
+}*/
+
+/*--BUTTON "je m'inscris" --*/
+
+button .btn-signup {
   background: #fe142f;
-  margin-top: 0.5em;
-  padding: 1em;
+  /*margin-top: 0.5em;*/
+  /*padding: 1em;*/
   color: #fff;
-  border-radius: 15px;
+  border-radius: 1rem;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 145%;
+  display: flex;
+  margin: auto;
 }
 
-.button:hover {
+.btn-signup:hover {
   background: #3876ac;
 }
 
@@ -196,8 +228,7 @@ header .icon {
   background: #3876ac;
 }
 
-.btn-submit,
-.btn-signup {
+.btn-submit,.btn-signup {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -209,39 +240,21 @@ header .icon {
   border: 0;
 }
 
-.btn-signup {
+.btn-signup { /*button desktop "Je M'inscris"*/
   outline: none;
   text-transform: capitalize;
-  font-size: 1.3rem;
-  padding: 15px 5px;
+  font-size: 24px;
+  padding: 15px 40px;
   margin: 0;
-  margin-top: 7em;
-}
-
-
-.section--hero-img {
-  /*grid-column: span 8*/
-  display: flex;
-  width: 55%;
-}
-.section-hero-img img {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  padding: 0;
-  object-fit: cover;
+  margin-top: 3.5em;
+  margin-bottom: 2em;
 }
 
 
 
 /*-----END of SECTION-----*/
 
-/*-----FORM-----*/
-
-
-
-/*-----End of FORM-----*/
-
+/*--Modal Windows--*/
 .bground {
   display: none;
   position: fixed;
@@ -251,9 +264,22 @@ header .icon {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  background-color: white;
 }
 
+.content {
+  margin: 5% auto;
+  width: 100%;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+}
 
 
 .modal-body {
@@ -261,18 +287,86 @@ header .icon {
   margin: 15px auto;
 }
 
+/*home page- modal open- validation ok*/
+.thanks {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  height: 600px;
+}
+
+.thanks-message {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  font-size: 36px;
+  font-weight: 400;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(0.7);
+}
+
+.close:before,.close:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 3px;
+  background-color: #fff;
+}
+
+.close:before {
+  transform: rotate(45deg);
+}
+
+.close:after {
+  transform: rotate(-45deg);
+}
+
+
+
+
+
+/*-----REGISTRATION FORM-----*/
 label {
   font-family: var(--font-default);
   font-size: 17px;
   font-weight: normal;
   display: inline-block;
   margin-bottom: 11px;
+  margin-top: 10px;
 }
+
 input {
   padding: 8px;
   border: 0.8px solid #ccc;
   outline: none;
 }
+
+/* 
+input[data-error]::after {
+    content: attr(data-error);
+    font-size: 0.4em;
+    color: red;
+} */
+
+.formData p {
+  color: red;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 8px;
+}
+/*--FORM PART 1: User Info--*/
 .text-control {
   margin: 0;
   padding: 8px;
@@ -281,6 +375,9 @@ input {
   font-size: 20px;
   height: 48px;
 }
+
+
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -293,23 +390,23 @@ input {
   opacity: 0;
   transition: 0.3s;
 }
+
 .formData[data-error-visible="true"]::after {
   opacity: 1;
 }
+
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
-.checkbox-label,
-.checkbox2-label {
+
+/*--FORM PART 2 +3: User Location + Rights--*/
+
+
+
+.checkbox-label,.checkbox2-label {
   position: relative;
   margin-left: 36px;
-  font-size: 12px;
+  font-size: 17px;
   font-weight: normal;
 }
 .checkbox-label .checkbox-icon,
@@ -369,31 +466,33 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
-.close {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  width: 32px;
-  height: 32px;
-  opacity: 1;
-  cursor: pointer;
-  transform: scale(0.7);
+/* BUTTON "Go"*/
+.form__button--submit{ 
+  color:white;
+  background-color: red;
+  border-color: red;
+  border-radius: 10px;
+  padding: 15px 70px;
+  margin-top: 20px;
+  margin-left: 25%; /*à améliorer pour centrer vraiment*/
 }
-.close:before,
-.close:after {
-  position: absolute;
-  left: 15px;
-  content: " ";
-  height: 33px;
-  width: 3px;
-  background-color: #fff;
-}
-.close:before {
-  transform: rotate(45deg);
-}
-.close:after {
-  transform: rotate(-45deg);
-}
+
+
+/*-----End of FORM-----*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /* custom select styles */
 .custom-select {
@@ -431,8 +530,7 @@ input[data-error]::after {
   top: 13px;
 }
 
-.select-items div,
-.select-selected {
+.select-items div, .select-selected {
   color: #000;
   padding: 11px 16px;
   border: 1px solid transparent;
@@ -457,15 +555,30 @@ input[data-error]::after {
   display: none;
 }
 
-.select-items div:hover,
-.same-as-selected {
+.select-items div:hover,.same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
 /* custom select end */
 .text-label {
   font-weight: normal;
   font-size: 16px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*-----End of MAIN-----*/
@@ -503,10 +616,81 @@ footer {
 
 /*End of COMPUTEUR VERSION : Landing page*/
 
-/* MOBILE VERSION :Landing Page */
-@media screen and (max-width: 768px) {
+/* MEDIAS QUERIES:Landing Page */
+
+
+@media screen and (max-width: 1000px) {
+  
+  header .responsive {
+    position: relative;
+  }
+
+  header .responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  header .responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
   
   header a {
+    display: none;
+  }
+  header a.icon {
+    float: right;
+    display: block;
+  }
+
+  
+  .section--hero {
+    display: block;
+    box-shadow: unset;
+  }
+
+  
+  .section--hero-content {
+    background: #fff;
+    color: #000;
+    padding: 20px;
+  }
+  .section--hero-content::after {
+    content: unset;
+  }
+  .section--hero-content .btn-signup {
+    display: none;
+  }
+  .section--hero-headline {
+    font-size: 4.5rem;
+    white-space: normal;
+    margin-top: 0;
+  }
+  .section--hero-text {
+    width: unset;
+    font-size: 1.5rem;
+  }
+  .section--hero-img img {
+    border-radius: 10px;
+    margin-top: 40px;
+  }
+  .section--hero > .btn-signup {
+    display: block;
+    margin: 32px auto 10px;
+    padding: 15px 70px;
+    font-size: 27px;
+  }
+  footer {
+    margin-top: 50px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  
+  /*header a {
     display: none;
   }
 
@@ -523,70 +707,60 @@ footer {
     position: absolute;
     right: 0;
     top: 0;
-  }
+  }*/
 
-  header .responsive a {
+  /*header .responsive a {
     float: none;
     display: block;
     text-align: left;
+  }*/
+
+
+  .header__logo img {
+    width: 150px;
+    margin-top: 15px;
+    margin-left: 35px;
+  }
+
+
+  .section--hero-content {
+    min-width: 0;
+  }
+  .section--hero-headline {
+    font-size: 70px;
+  }
+  .section--hero-text {
+    font-size: 27px;
+  }
+  .bground {
+    background-color: transparent;
+  }
+  .content {
+    margin-top: 80px;
+    max-width: 100vw;
   }
 }
 
 
 
- @media screen and (max-width: 540px) {
-  header a {
-    display: none;
-  }
 
-  header a.icon {
+@media screen and (max-width: 500px) {
+  /*header a {
+    display: none;
+  }*/
+
+  /*header a.icon {
     float: right;
     display: block;
     margin-top: -15px;
+  }*/
+
+  nav .header__navbar{
+    margin-right: 13px;
+    width: 85vw;
   }
 } 
 
-
-
-
-@media screen and (max-width: 800px) {
-  .hero-section {
-    display: block;
-    box-shadow: unset;
-  }
-  .hero-content {
-    background: #fff;
-    color: #000;
-    padding: 20px;
-  }
-  .hero-content::after {
-    content: unset;
-  }
-  .hero-content .btn-signup {
-    display: none;
-  }
-  .hero-headline {
-    font-size: 4.5rem;
-    white-space: normal;
-  }
-  .hero-text {
-    width: unset;
-    font-size: 1.5rem;
-  }
-  .hero-img img {
-    border-radius: 10px;
-    margin-top: 40px;
-  }
-  .hero-section > .btn-signup {
-    display: block;
-    margin: 32px auto 10px;
-    padding: 12px 35px;
-  }
-  footer {
-    margin-top: 50px;
-    text-align: center;
-  }
-}
 
 
 
