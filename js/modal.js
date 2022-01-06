@@ -22,12 +22,7 @@ const last = document.getElementById("last");
 const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
-const location1 = document.getElementById("location1");
-const location2 = document.getElementById("location2");
-const location3 = document.getElementById("location3");
-const location4 = document.getElementById("location4");
-const location5 = document.getElementById("location5");
-const location6 = document.getElementById("location6");
+const checkedCity = document.querySelectorAll(".checkedCity");
 const checkbox = document.getElementById("checkbox1");
 
 // launch modal event
@@ -42,7 +37,10 @@ function launchModal() {
 bouton.addEventListener("click", () => (modalbg.style.display = "none"));
 
 //Empêcher la page de se recharger
-submitBtn.addEventListener("click", (e) => e.preventDefault());
+submitBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  validForm();
+});
 
 //Fonctions pour le formulaire
 function goodBorder(element) {
@@ -60,8 +58,11 @@ function changeBorder(element, color) {
 function removeInvisible(element) {
   element.nextElementSibling.classList.remove("invisible");
 }
+function addInvisible(element) {
+  element.nextElementSibling.classList.add("invisible");
+}
 
-//Fonctions de contrôle des inputs
+//Fonctions de contrôle du formulaire
 first.addEventListener("blur", (e) => {
   checkPrenom();
 });
@@ -77,6 +78,7 @@ birthdate.addEventListener("blur", (e) => {
 quantity.addEventListener("blur", (e) => {
   checkQuantity();
 });
+checkedCity.forEach((check) => check.addEventListener("click", checkLocation));
 
 //Fonction de contrôle du prénom
 function checkPrenom() {
@@ -87,7 +89,7 @@ function checkPrenom() {
     return false;
   }
   goodBorder(first);
-  first.nextElementSibling.innerHTML = "";
+  addInvisible(first);
   return true;
 }
 
@@ -100,7 +102,7 @@ function checkNom() {
     return false;
   }
   goodBorder(last);
-  last.nextElementSibling.innerHTML = "";
+  addInvisible(last);
   return true;
 }
 
@@ -113,7 +115,7 @@ function checkEmail() {
     return false;
   }
   goodBorder(email);
-  email.nextElementSibling.innerHTML = "";
+  addInvisible(email);
   return true;
 }
 
@@ -126,7 +128,7 @@ function checkBirthdate() {
     return false;
   }
   goodBorder(birthdate);
-  birthdate.nextElementSibling.innerHTML = "";
+  addInvisible(birthdate);
   return true;
 }
 
@@ -139,32 +141,18 @@ function checkQuantity() {
     return false;
   }
   goodBorder(quantity);
-  quantity.nextElementSibling.innerHTML = "";
+  addInvisible(quantity);
   return true;
 }
 
 //Fonction de validation location
 function checkLocation() {
-  const location1Value = location1.value;
-  const location2Value = location2.value;
-  const location3Value = location3.value;
-  const location4Value = location4.value;
-  const location5Value = location5.value;
-  const location6Value = location6.value;
-  if (
-    location1Value === "" ||
-    location2Value === "" ||
-    location3Value === "" ||
-    location4Value === "" ||
-    location5Value === "" ||
-    location6Value === ""
-  ) {
-    removeInvisible(location1);
-    badBorder(location1);
+  const checkedCityValue = document.querySelectorAll(".checkedCity:checked");
+  if (checkedCityValue.length === 0) {
+    document.getElementById("errorCity").classList.remove("invisible");
     return false;
   }
-  goodBorder(location1);
-  location1.nextElementSibling.innerHTML = "";
+  document.getElementById("errorCity").classList.add("invisible");
   return true;
 }
 
@@ -176,7 +164,7 @@ function checkCheckbox() {
     return false;
   }
   goodBorder(checkbox);
-  checkbox.nextElementSibling.innerHTML = "";
+  addInvisible(checkbox);
   return true;
 }
 
@@ -205,4 +193,6 @@ function validForm() {
   checkNom();
   checkEmail();
   checkBirthdate();
+  checkQuantity();
+  checkLocation();
 }
