@@ -23,7 +23,7 @@ const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
 const checkedCity = document.querySelectorAll(".checkedCity");
-const checkbox = document.getElementById("checkbox1");
+const checkedBox = document.getElementById("checkbox1");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -79,6 +79,10 @@ quantity.addEventListener("blur", (e) => {
   checkQuantity();
 });
 checkedCity.forEach((check) => check.addEventListener("click", checkLocation));
+
+checkedBox.addEventListener("click", (e) => {
+  checkBox();
+});
 
 //Fonction de contrôle du prénom
 function checkPrenom() {
@@ -157,35 +161,15 @@ function checkLocation() {
 }
 
 //Fonction de validation checkbox
-function checkCheckbox() {
-  if (checkbox.checked === false) {
-    removeInvisible(checkbox);
-    badBorder(checkbox);
+function checkBox() {
+  const checkboxValue = (document.getElementById("checkbox1").checked = false);
+  if (checkboxValue === false) {
+    document.getElementById("errorTerms").classList.add("invisible");
     return false;
   }
-  goodBorder(checkbox);
-  addInvisible(checkbox);
+  document.getElementById("errorTerms").classList.remove("invisible");
   return true;
 }
-
-// //Fonction de validation du formulaire
-// form.addEventListener("submit", (e) => {
-//   e.preventDefault();
-//   if (
-//     checkPrenom() &&
-//     checkNom() &&
-//     checkEmail() &&
-//     checkBirthdate() &&
-//     checkQuantity() &&
-//     checkLocation() &&
-//     checkCheckbox()
-//   ) {
-//     modalbg.style.display = "none";
-//     console.log("Bravo vous avez rempli le formulaire");
-//   } else {
-//     console.log("Erreur! Veuillez remplir le formulaire correctement");
-//   }
-// });
 
 //Fonctions de contrôle avant validation du formulaire
 function validForm() {

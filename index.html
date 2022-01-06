@@ -73,7 +73,7 @@
                   minlength="2"
                   required
                 />
-                <div class="error invisible">Veuillez entrer  2 caractères alphabétique minimum !</div>
+                <div class="error invisible">Vous devez entrer 2 caractères alphabétique minimum !</div>
                 
               </div>
               <div
@@ -86,7 +86,7 @@
                   name="last"
                   minlength="2"
                   required
-                /><div class="error invisible">Veuillez entrer 2 caractères alphabétique minimum !</div>
+                /><div class="error invisible">Vous devez entrer 2 caractères alphabétique minimum !</div>
                 
               </div>
               <div
@@ -99,7 +99,7 @@
                   name="email"
                   minlength="2"
                   required
-                /><div class="error invisible">Veuillez entrer une adresse mail valide !</div>
+                /><div class="error invisible">Vous devez entrer une adresse mail valide !</div>
                 
               </div>
               <div
@@ -111,16 +111,16 @@
                   id="birthdate"
                   name="birthdate"
                   required
-                /><div class="error invisible">Veuillez entrer une date de naissance valide !</div>
+                /><div class="error invisible">Vous devez entrer votre date de naissance !</div>
               </div>
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
-                <div class="error invisible">Veuillez indiquer un nombre compris en 0 et 99 !</div>
+                <div class="error invisible">Vous devez indiquer un nombre compris en 0 et 99 !</div>
               </div>
               <p class="text-label">Quelles villes ?</p>
-              <div id="errorCity" class="error invisible">Veuillez choisir une ville !</div>
+              <div id="errorCity" class="error invisible">Vous devez choisir une ville !</div>
               <div
                 class="formData">
                 <input
@@ -198,8 +198,8 @@
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
-                  checked
-                />
+                /><div id="errorTerms" class="error invisible">Vous devez acceptez les termes et conditions !</div>
+
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
@@ -210,7 +210,6 @@
                   <span class="checkbox-icon"></span>
                    Je souhaite être prévenu des prochains évènements.
                 </label>
-                
               </div>
               <input
                 class="btn-submit"
