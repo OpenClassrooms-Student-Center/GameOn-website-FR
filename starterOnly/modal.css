@@ -4,6 +4,7 @@
   --modal-duration: 0.8s;
   --color-error: #ff4e60;
 }
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,13 +18,8 @@ body {
   flex-direction: column;
   font-family: var(--font-default);
   font-size: 18px;
-  max-width: 1300px;
+  max-width: 1520px;
   margin: 0 auto;
-}
-
-p {
-  margin-bottom: 0;
-  padding: 0.5vw;
 }
 
 img {
@@ -31,11 +27,25 @@ img {
 }
 
 .topnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   overflow: hidden;
-  margin: 3.5%;
+  margin: 3rem 3.2rem;
 }
+
+#burger-menu > i {
+  color: red;
+}
+
+.logo{
+  width: 100%;
+  height: auto;
+}
+
 .header-logo {
   float: left;
+  width: 15rem;
 }
 .main-navbar {
   float: right;
@@ -50,12 +60,6 @@ img {
   text-decoration: none;
   font-size: 20px;
   font-family: Roboto, sans-serif;
-}
-
-.topnav a:hover {
-  background-color: #ff0000;
-  color: #ffffff;
-  border-radius: 15px;
 }
 
 .topnav a.active {
@@ -117,6 +121,10 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
+}
+
+.inline {
+  display: inline-block;
 }
 
 .modal-btn {
@@ -533,15 +541,20 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+  .header-logo {   
+      width: 8rem;
+  }
+
   .hero-section {
     display: block;
     box-shadow: unset;
+    min-height: auto;
   }
   .hero-content {
     min-width: auto;
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px;
   }
   .hero-content::after {
     content: unset;
@@ -557,7 +570,7 @@ footer {
   .hero-text {
     margin-top: 20px;
     width: unset;
-    font-size: 1.5rem;
+    font-size: 0.80rem;
   }
   .hero-img img {
     width: 100%;
@@ -570,8 +583,34 @@ footer {
     padding: 12px 35px;
   }
   .copyrights {
-    margin-top: 50px;
+    margin: 40px 0 0 0;
     text-align: center;
+  }
+
+  .bground {
+    background-color: #ffffff00;
+  }
+
+  .content {
+    position: absolute;
+    bottom: 0;
+    margin: auto;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .checkbox2-label {
+    font-size: 11px;
+  }
+
+  .form-label {
+    margin-bottom: 3px;
+  }
+  .text-control {
+    margin-bottom: 5px;
+  }
+
+  .topnav {
+    margin: 1.25rem;
   }
 }
 

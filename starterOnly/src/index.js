@@ -15,7 +15,10 @@ const form = document.getElementById("signup");
 const formList = [];
 
 // Burger Menu
-menu.addEventListener("click", editNav);
+menu.addEventListener("click", () => {
+  editNav();
+  closeModal();
+});
 
 // TEXT FORMATTING
 capitalize(document.querySelector(".btn-signup.modal-btn"));
@@ -69,7 +72,7 @@ form.addEventListener("submit", (e) => {
     currentEl = currentEl.length === 1 ? currentEl[0] : Array.from(currentEl);
 
     //If the currentEl is an nodeList of more than 1 element, its converted to an Array,
-    //then I filter this arrray to find the checked element which will be the checked radio.
+    //then I filter this array to find the checked element which will be the checked radio.
     if (currentEl.length > 1) {
       const name = currentEl[0].name;
       const defaultValue = "";
@@ -81,14 +84,14 @@ form.addEventListener("submit", (e) => {
     } else if (currentEl.type === "checkbox") {
       formList.push({ name: currentEl.name, value: currentEl.checked });
     } else {
-      formList.push({ name: currentEl.name, value: currentEl.value });
+      formList.push({ name: currentEl.name, value: currentEl.value.trim() });
     }
 
     // formList.push adds the currentEl name and value as an object
     // into the formList Array
   });
 
-  // Here happens the validation, and an it returns and array, inside
+  // Here happens the validation, it returns and array, inside
   // of it for each element there is either true if the value is valid
   // or a string containing the error message in case the value in
   // not accepted or empty but required.

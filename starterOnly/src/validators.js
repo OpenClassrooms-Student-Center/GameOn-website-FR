@@ -2,11 +2,11 @@
 // I can just import validators. It also make the code more consice and easier to read. 
 
 const firstNameValidator = (string) => {
-  return string && string.length > 0 ? true : false;
+  return string.length > 1 ? true : false;
 };
 
 const lastNameValidator = (string) => {
-  return string && string.length > 0 ? true : false;
+  return string.length > 1 ? true : false;
 };
 
 const emailValidator = (string) => {
@@ -19,7 +19,7 @@ const emailValidator = (string) => {
 };
 
 const birthDateValidator = (string) => {
-  return string && string.length > 0 ? true : false;
+  return string.length > 0 ? true : false;
 };
 
 const isNumericValidator = (string) => {
