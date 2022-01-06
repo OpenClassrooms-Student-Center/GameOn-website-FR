@@ -11,7 +11,7 @@
 // DOM Elements
 const modalbg = document.getElementById("bground");
 const closeModalBtn = document.querySelector(".closeModal");
-const modalBtn = document.querySelector(".modal-btn");
+const modalBtn = document.querySelector(".btn-signup");
 const formData = document.querySelectorAll(".formData");
 const toggleMenu = document.querySelectorAll(".toggleMenu");
 const modalThanks = document.getElementById("thanks");
@@ -23,28 +23,45 @@ toggleMenu.forEach((el) => el.addEventListener("click", (e) => {
 }
 ));
 
-
-/*OUVERTURE MODAL*/
+/*EVENT MODAL*/
 // launch modal event
 modalBtn.addEventListener("click", launchModal);
+//close modal event
+closeModalBtn.addEventListener("click", closeModal);
+//Thank modal
+
+
+
+
+
+/*FONCTION MODAL*/
 
 // launch modal form
 function launchModal(){
   modalbg.style.display = "block";
   window.scrollTo(0, 0);
   modalbg.scrollTo(0, 0);
-  document.body.style.overflow = "hidden";
+  document.body.classList.add('overflow');
 }
-
-/*FERMETURE MODAL*/
-
-//close modal event
-closeModalBtn.addEventListener("click", closeModal);
 
 //close modal form
 function closeModal(){
   modalbg.style.display = "none";
   closeModalBtn.removeEventListener("click", closeModal);
+  document.body.classList.remove('overflow');
+}
+
+//modal thanks
+function showModalThanks(){
+  form.style.display= 'none';
+  modalThanks.style.display = 'block';
+  document.querySelector('#closeAll').addEventListener("click", closeModal);
+}
+
+
+function showModalForm(){
+modalThanks.style.display = 'none';
+form.style.display = 'block';
 }
 
 //variable formulaire
@@ -75,9 +92,9 @@ form.addEventListener("submit", function(e){
     error.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom';
     error.style.color = "red";
     error.style.fontSize = '0.75rem';
+    formErrors++;
   }else{
     error.innerHTML = "";
-    formErrors++;
   }
 
   //label nom
@@ -85,9 +102,9 @@ form.addEventListener("submit", function(e){
     error1.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
     error1.style.color = "red";
     error.style.fontSize = '0.75rem';;
+    formErrors++;
   }else{
     error1.innerHTML = "";
-    formErrors++;
   }
 
   //label mail
@@ -101,9 +118,9 @@ form.addEventListener("submit", function(e){
     error2.textContent = 'Vous devez entrer votre date de naissance.';
     error2.style.color = "red";
     error.style.fontSize = '0.75rem';
+    formErrors++;
   }else{
     error2.innerHTML = "";
-    formErrors++;
   }
 
   //tournoi quantity
@@ -111,9 +128,9 @@ form.addEventListener("submit", function(e){
     error3.textContent = 'Vous devez saisir un nombre.';
     error3.style.color = "red";
     error3.style.fontSize = '0.75rem';
+    formErrors++;
   }else{
     error3.innerHTML = "";
-    formErrors++;
   }
 
   //location
@@ -126,11 +143,11 @@ form.addEventListener("submit", function(e){
     document.getElementById("location5").checked ||
     document.getElementById("location6").checked
   ){
-    formErrors++;
   }else{
     errorMessage.textContent = "Vous devez choisir une option.";
     errorMessage.style.color = "red";
     errorMessage.style.fontSize = "0.75rem";
+    formErrors++;
   }
 
   if(!terms.checked){
@@ -138,47 +155,20 @@ form.addEventListener("submit", function(e){
       "Vous devez vérifier que vous acceptez les termes et conditions.";
     errorTerms.style.color = "red";
     errorTerms.style.fontSize = "0.75rem";
+    formErrors++;
   }else{
     errorTerms.innerHTML = "";
-    formErrors++;
   }
 
   if (formErrors > 0){
     console.log('azeaze')
-    return false
+    
   }else{
     form.reset();
     showModalThanks()
   }
 
-
-
-    // console.log(formErrors);
-    // if(formErrors === 7) {
-      //   reserve.innerHTML = "Votre reservation <br> a bien été reçue";
-      //   btnClose.style.display = "block";
-      //   reserve.style = "display: flex;  justify-content: center; align-item : center";
-      //   document.getElementById("reserve").reset();
-      //   closeDelay();
-      // }
-      
-      // function closeDelay(){
-        //   window.setTimeout(reloadPage, 5000);
-        // }
-        
-        // function reloadPage(){
-          //   location.reload();
-          // }
-        });
-        
-        function showModalThanks(){
-          formulaire.style.display= 'none';
-          modalThanks.style.display = '';
-        }
+});
         
         
-        function showModalForm(){
-        modalThanks.style.display = 'none';
-        formulaire.style.display = '';
-        }
 

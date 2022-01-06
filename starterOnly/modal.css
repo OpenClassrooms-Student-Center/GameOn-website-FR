@@ -8,22 +8,19 @@
   margin: 0;
   padding: 0;
 }
+
 /* Landing Page */
 
 body {
   margin: 0;
-  display: flex;
-  flex-direction: column;
+  min-height: 100vh;
   background-color: white;
   font-family: var(--font-default);
   font-size: 18px;
-  max-width: 1300px;
-  margin: 0 auto;
 }
 
-p {
-  margin-bottom: 0;
-  padding: 0.5vw;
+.overflow{
+  overflow: hidden;
 }
 
 
@@ -33,7 +30,8 @@ header {
   display: flex;
   justify-content: space-between;
   max-width: 1380px;
-  padding: 5% 0%;
+  margin: 0 auto;
+  padding: 5% 3%;
 }
 
 /*LOGO*/
@@ -52,7 +50,7 @@ header {
   align-items: center;
   padding: 0px 15px;
   text-decoration: none;
-  color: #232323;
+  color: #000000;
   font-size: 1rem;
   font-family: Roboto, sans-serif;
   transition: all .3s ease-in-out;
@@ -71,7 +69,11 @@ header {
 @media screen and (max-width: 992px){
   header {
     flex-wrap: wrap;
-    padding-top: 3%;
+    padding: 2%;
+    padding-bottom: 0%;
+  }
+  .header-logo img {
+    height: 1.5rem;
   }
   .header-nav {
     width: 100%;
@@ -88,9 +90,6 @@ header {
   } */
   .header-logo{
     width: 50%;
-  }
-  .header-logo img {
-    height: 1.5rem;
   }
   .header-toggle {
     display: block;
@@ -124,10 +123,15 @@ header {
 /* MAIN */
 
 main {
-  font-size: 130%;
-  font-weight: bolder;
-  color: black;
-  max-width: 1380px;
+  max-width: 1239px;
+  padding: 2% 3%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 992px){
+  main {
+    padding: 0 3%;
+  }
 }
 
 /* HERO SECTION */
@@ -141,7 +145,7 @@ main {
 .hero-content{
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 73px;
   width: 480px;
   padding: 56px 30px 70px;
   color: #fff;
@@ -160,6 +164,8 @@ main {
   color: #fff;
   cursor: pointer;
   border: 0;
+  width: 200px;
+  margin: 0 auto;
   font-size: 1rem;
   padding: 10px 15px;
   font-size: 1.25rem;
@@ -183,9 +189,10 @@ overflow: hidden;
 }
 
 /* FOOTER */
-.footer {
-  margin: 20px;
-  padding: 10px;
+footer {
+  margin: 2%;
+  padding: 1%;
+  max-width: 1380px;
 }
 .copyrights{
   font-family: Roboto, sans-serif;
@@ -214,7 +221,7 @@ overflow: hidden;
     color: #000000;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 3rem;
     white-space: nowrap;
   }
   .hero-text {
@@ -251,24 +258,6 @@ overflow: hidden;
 
 /* Modal form */
 
-/* .button {
-  background: #fe142f;
-  margin-top: 0.5em;
-  padding: 1em;
-  color: #fff;
-  border-radius: 1rem;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-.button:hover {
-  background: #3876ac;
-} */
-
-/* .smFont {
-  font-size: 16px;
-} */
-
 .bground {
   display: none;
   position: fixed;
@@ -299,6 +288,7 @@ overflow: hidden;
   padding: 15px 8%;
   margin: 15px auto;
 }
+
 
 label {
   font-family: var(--font-default);
@@ -338,12 +328,6 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
 .checkbox-label,
 .form-check-label {
   position: relative;
@@ -528,8 +512,8 @@ input[data-error]::after {
 flex-grow: 1;
 display: flex; 
 align-items: center;
-width: 309px;
 text-align: center;
+height: 500px;
 font-size: 30px;
 font-weight: 400;
 }
