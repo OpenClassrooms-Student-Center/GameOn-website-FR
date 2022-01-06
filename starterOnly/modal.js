@@ -45,10 +45,10 @@ formData.addEventListener("submit", function (e) {
         .removeAttribute("data-error-visible");
     }
   }
-
+  // Boucle pour le comportement de l'input en cas d'erreur ou de validation 
   inputFirst.addEventListener("input", function (e) {
     if (inputFirst.value.trim() == "") {
-      let myError = document.getElementById('error'); // ce qui me fais créer un span avec comme ID error, il me manque un truc ici !!!
+      let myError = document.getElementById('error'); // ce qui me fais créer un span avec comme ID error (pas la meilleur solution), il me manque un truc ici comment faire pour recuperer la fonctions de fromDataError ??!
       myError.innerHTML = "le champ prénom est requis";
       e.preventDefault();
     }
@@ -84,7 +84,7 @@ formData.addEventListener("submit", function (e) {
   let birthdate = document.getElementById('birthdate');
   let quantity = document.getElementById('quantity');
   let location = document.getElementsByName('location'); // Je dois créer un tableau je pense pour gerer tous les boutons de type radio "locations"
-  let checkbox1 = document.getElementById('checkbox1');
+  let checkbox1 = document.getElementById('checkbox1'); // Peux étre qu'un tableau la aussi serai une bonne idée si je décide de rajouter "checkbox 2"
 
   if (!first.value) {
     erreur = "Veuiller rentrer un prénom de plus de 2 cartères";
@@ -107,7 +107,7 @@ formData.addEventListener("submit", function (e) {
   }
 
   if (!location.value) {
-    erreur = "Veuiller selectionner une ville ";
+    erreur = "Veuiller selectionner une ville "; //pas a jour, comment faire pour recuperer le tableau ?
   }
 
   if (!checkbox1.value) {
