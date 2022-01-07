@@ -23,6 +23,7 @@ const quantityTournois = document.getElementById("quantity");
 const checkbox1 = document.getElementById("checkbox1");
 //Controle du format du mail//
 const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const newError = document.createElement("p")
 
 // launch modal form
 function launchModal() {
@@ -32,11 +33,16 @@ function launchModal() {
 //Fermeture du questionnaire
 modalClose.addEventListener('click', close); //Ecoute event clic de souris sur la constante modalClose qui cible la class .close, nommé 'close'
 
-//Appel de la fonction 'close' pour cacher le formulaire
+//Appel de la fonction 'close' pour cacher le formulaire et réinitialiser les entrées
 function close () {
   modalbg.style.display = "none"; 
-  document.querySelectorAll(".formData").reset();
+  clearInput();
 }
+
+const clearInput = () => {
+  const form = document.querySelector('form')
+ form.reset();
+};
 
 /* ou
 modalClose.addEventListener('click', function () {
@@ -50,6 +56,22 @@ function validate (event) {
   event.preventDefault();
 }
 
+firstName.addEventListener("input", function() {
+  // Chaque fois que l'utilisateur saisit quelque chose
+  // on vérifie la validité du champ prénom.
+  if (this.value.length < 2){
+  newError();
+  alert('Trop court!!!')
+  };
+});
+
+const newError = () => {
+document.createElement("p")
+let messageError = document.getElementById(firstName)
+messageError(newError)
+};
+
+/*
 function verifFirstLength() {
   if (document.getElementById("first").value.length < 2) {
     alert("Veuillez entrer 2 caractères ou plus pour le champ du nom.");
@@ -58,7 +80,7 @@ function verifFirstLength() {
   else {
     return true;
   }
-}
+}*/
 
 /*
 if (first != '' && last != '' && email != '' && contact != '') {
