@@ -16,6 +16,7 @@ const modalClose = document.querySelector(".close") //Création et chargement de
 modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
 //Stockage des valeurs de champs dans des variables//
 const firstName = document.getElementById("first");
+const firstDiv = document.getElementById("firstDiv");
 const lastName = document.getElementById("last");
 const emailAdress = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
@@ -23,7 +24,7 @@ const quantityTournois = document.getElementById("quantity");
 const checkbox1 = document.getElementById("checkbox1");
 //Controle du format du mail//
 const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-const newError = document.createElement("p")
+
 
 // launch modal form
 function launchModal() {
@@ -60,15 +61,24 @@ firstName.addEventListener("input", function() {
   // Chaque fois que l'utilisateur saisit quelque chose
   // on vérifie la validité du champ prénom.
   if (this.value.length < 2){
-  newError();
-  alert('Trop court!!!')
-  };
+    let ErrorFirstNameP = document.createElement('p')
+    ErrorFirstNameP.textContent = 'Votre prénom doit comporter au-moins 2 caractères';
+    firstDiv.appendChild(ErrorFirstNameP)
+//  newError();
+//  alert('Trop court!!!')
+  } else {
+    firstDiv.removeChild(ErrorFirstNameP)
+  }
 });
 
-const newError = () => {
-document.createElement("p")
-let messageError = document.getElementById(firstName)
-messageError(newError)
+/*
+const addError = () => {
+  // crée un nouvel élément p
+var newError = document.createElement("p");
+// et lui donne du contenu
+  var newContent = document.createTextNode('Hi there and greetings!');
+// ajoute le nœud texte au nouveau p créé
+  newDiv.appendChild(newContent);
 };
 
 /*
