@@ -12,7 +12,9 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
-const myForm = document.getElementById('form'); // est-ce-que c'est le bon choix ou utiliser plus tot une const ? 
+const myForm = document.getElementById('form');
+const first = document.getElementById("first")
+
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal)); //les fonctions => n'ont pas de noms
@@ -29,34 +31,36 @@ function closeModal() {
 
 //function pour ajouter l'atribut a fromData je ne sais pas si c'est la bonne manière ??
 //je dois trouver un moyen de sélectionner mon array et de lui appliquer a chaque paramètre faux la fonctions 'error' ?
-formData.addEventListener("click", error));
+first.addEventListener("click", firstError);
 
-function error() {
+function firstError() {
   if (error) {
     document
-      .getElementsByClassName(".fromData")
+      .getElementsByClassName(".fromData") // REP: le problème ici c'est que tu vas tjs récupérer le 1er élément avec class="formData" — hors ce que tu veux c'est récupérer celui où il y a effectivement une erreur
+      .setAttribute("data-error");
       .setAttribute("data-error-visible", true);
   } else {
     document
       .getElementsByClassName(".fromData")
       .removeAttribute("data-error-visible");
+      .removeAttribute("data-error");
   }
 }
-
+// REP: il te faudra un 2nd attribut “data-error“ avec comme valeur le texte de l'erreur
 // Dans l'idée ça serai de créer une fonction qui modifie le comportement de data en data-error, de récupérer cette fonction et de l'utiliser dans les différent inputs et aprés d'y rajouter un texte en HTML
 
 // first name : il y a déjà un minimum de caractère sur l'HTML (peut être le récupérer pour la validation final ?) donc juste vérifier que ce n'est pas un champ vide
 // lien vidéo YouTube : https://www.youtube.com/watch?v=JmbZBZhOtl8
-myForm.addEventListener("submit" function (e) {
+// REP: l'attribut minlength en HTML c'est bien mais cela ne te permet pas de styliser l'erreur, c'est pour ça qu'ici on te demande de le faire en js
+myForm.addEventListener("submit" function (e) { // REP: est-ce que tu n'as pas envie d'écouter l'evénement pour tous les inputs de ton formulaire ?
 
-  let inputFirst = document.getElementById('first');
   let myregex = /^[a-zA-Z\s]+$/;
 
   // Boucle pour le comportement de l'input en cas d'erreur ou de validation 
   inputFirst.addEventListener("input", function (e) {
     if (inputFirst.value.trim() == "") {
       let myError = document.getElementById('error'); // ce qui me fais créer un span avec comme ID error (pas la meilleur solution), il me manque un truc ici comment faire pour recuperer la fonctions de fromDataError ??!
-      myError.innerHTML = "le champ prénom est requis";
+      myError.innerHTML = "le champ prénom est requis"; // REP: tu n'as pas besoin de créer de <span>, tu utilises uniquement l'attribut “data-error”
       e.preventDefault();
     }
     else if (myregex.test(inputFirst.value) == false) {
