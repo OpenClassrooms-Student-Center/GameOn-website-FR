@@ -65,6 +65,7 @@ let textFormat = /^[a-zA-Z\é\è\-\^\']{2,30}$/;
 
 form.addEventListener("submit", function(e){
   e.preventDefault();
+
   //constantes
   const first = form.querySelector('input[name="first"]');
   const last = form.querySelector('input[name="last"]');
@@ -126,20 +127,21 @@ form.addEventListener("submit", function(e){
   }
 
   //location
-  errorMessage.innerHTML = "";
+  
   if(
-    document.getElementById("location1").checked ||
-    document.getElementById("location2").checked ||
-    document.getElementById("location3").checked ||
-    document.getElementById("location4").checked ||
-    document.getElementById("location5").checked ||
-    document.getElementById("location6").checked
-  ){
-  }else{
+    !document.getElementById("location1").checked ||
+    !document.getElementById("location2").checked ||
+    !document.getElementById("location3").checked ||
+    !document.getElementById("location4").checked ||
+    !document.getElementById("location5").checked ||
+    !document.getElementById("location6").checked)
+    {
+    formErrors++;
     errorMessage.textContent = "Vous devez choisir une option.";
     errorMessage.style.color = "red";
     errorMessage.style.fontSize = "0.75rem";
-    formErrors++;
+  }else{
+    errorMessage.innerHTML = '';
   }
 
   if(!terms.checked){
@@ -153,8 +155,6 @@ form.addEventListener("submit", function(e){
   }
 
   if (formErrors > 0){
-    console.log('azeaze')
-    
   }else{
     form.reset();
     showModalThanks()
