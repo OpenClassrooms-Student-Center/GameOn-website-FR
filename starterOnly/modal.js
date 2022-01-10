@@ -107,20 +107,25 @@ lastName.addEventListener("input", function () {
 
 });
 
+//Controle email
+//Reinitialisation
 emailAdress.addEventListener("input", function(){
   mailError.innerHTML = '';
   mailError.classList.remove('errorStyle')
   email.classList.remove('errorForm')
 
+  //Si la valeur du mail correspond au standard
   if (emailAdress.value.match(mailRegex)) {
     mailError.innerHTML = '';
     
+  //Si rien n'a été indiqué
   } else if (emailAdress.value == "") {
     mailError.innerHTML = 'Entrez une adresse mail';
     mailError.classList.add('errorStyle')
     email.classList.add('errorForm')
   }
   
+  //Sinon, si l'adresse n'est pas bonne
   else {
     mailError.innerHTML = 'Adresse mail invalide';
     mailError.classList.add('errorStyle')
@@ -128,3 +133,4 @@ emailAdress.addEventListener("input", function(){
   }
   
 });
+
