@@ -16,7 +16,7 @@ const modalClose = document.querySelector(".close") //Création et chargement de
 modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
 //Stockage des valeurs de champs dans des variables//
 const firstName = document.getElementById("first");
-const firstDiv = document.getElementById("firstDiv");
+const firstError = document.getElementById("firstError");
 const lastName = document.getElementById("last");
 const emailAdress = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
@@ -58,17 +58,18 @@ function validate (event) {
 }
 
 firstName.addEventListener("input", function() {
+  firstError.innerHTML = ' ';
   // Chaque fois que l'utilisateur saisit quelque chose
   // on vérifie la validité du champ prénom.
   if (this.value.length < 2){
-    let ErrorFirstNameP = document.createElement('p')
-    ErrorFirstNameP.textContent = 'Votre prénom doit comporter au-moins 2 caractères';
-    firstDiv.appendChild(ErrorFirstNameP)
+    firstError.innerHTML = 'Votre prénom doit comporter au-moins 2 caractères';
+    
 //  newError();
 //  alert('Trop court!!!')
   } else {
-    firstDiv.removeChild(ErrorFirstNameP)
+    firstError.innerHTML = ' ';
   }
+
 });
 
 /*
