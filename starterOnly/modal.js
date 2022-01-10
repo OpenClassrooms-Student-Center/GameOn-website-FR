@@ -16,7 +16,6 @@ const modalClose = document.querySelector(".close") //Création et chargement de
 modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
 //Stockage des valeurs de champs dans des variables//
 const firstName = document.getElementById("first");
-const firstError = document.getElementById("firstError");
 const lastName = document.getElementById("last");
 const emailAdress = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
@@ -57,20 +56,82 @@ function validate (event) {
   event.preventDefault();
 }
 
+//Controle d'entrée du prénom
 firstName.addEventListener("input", function() {
+  //Réinitialise les messages d'erreur
   firstError.innerHTML = ' ';
+  firstError.classList.remove('errorStyle')
+  first.classList.remove('errorForm')
   // Chaque fois que l'utilisateur saisit quelque chose
   // on vérifie la validité du champ prénom.
-  if (this.value.length < 2){
-    firstError.innerHTML = 'Votre prénom doit comporter au-moins 2 caractères';
-    
-//  newError();
-//  alert('Trop court!!!')
+//si rien n'est écrit
+  if (this.value.length == 0){
+    firstError.innerHTML = 'Réponse obligatoire!'; //ajout du message
+    firstError.classList.add('errorStyle') //ajout d'une class au message d'erreur
+    first.classList.add('errorForm') //ajout d'une class a la zone d'entrée
+//s'il y a moins de 2 caracteres
+  } else if (this.value.length < 2) {
+    firstError.innerHTML = 'Votre prénom doit comporter au-moins 2 caractères'; 
+    firstError.classList.add('errorStyle')
+    first.classList.add('errorForm')
+//si toutes les conditions sont remplies
   } else {
     firstError.innerHTML = ' ';
   }
 
 });
+
+//Controle d'entrée du nom
+lastName.addEventListener("input", function () {
+  //Réinitialise les messages d'erreur
+  lastError.innerHTML = ' ';
+  lastError.classList.remove('errorStyle')
+  last.classList.remove('errorForm')
+  // Chaque fois que l'utilisateur saisit quelque chose
+  // on vérifie la validité du champ
+  //si rien n'est écrit
+  if (this.value.length == 0) {
+    lastError.innerHTML = 'Réponse obligatoire!'; //ajout du message
+    lastError.classList.add('errorStyle') //ajout d'une class au message d'erreur
+    last.classList.add('errorForm') //ajout d'une class a la zone d'entrée
+    //s'il y a moins de 2 caracteres
+  } else if (this.value.length < 2) {
+    lastError.innerHTML = 'Votre nom doit comporter au-moins 2 caractères';
+    lastError.classList.add('errorStyle')
+    last.classList.add('errorForm')
+    //si toutes les conditions sont remplies
+  } else {
+    lastError.innerHTML = ' ';
+  }
+
+});
+
+/*
+//Controle d'entrée du mail
+lastName.addEventListener("input", function () {
+  //Réinitialise les messages d'erreur
+  mailError.innerHTML = ' ';
+  mailError.classList.remove('errorStyle')
+  mail.classList.remove('errorForm')
+  // Chaque fois que l'utilisateur saisit quelque chose
+  // on vérifie la validité du champ
+  //si rien n'est écrit
+  if (this.value.length == 0) {
+    mailError.innerHTML = 'Réponse obligatoire!'; //ajout du message
+    mailError.classList.add('errorStyle') //ajout d'une class au message d'erreur
+    mail.classList.add('errorForm') //ajout d'une class a la zone d'entrée
+    //s'il y a moins de 2 caracteres
+  } else if (this.value.length < 2) {
+    mailError.innerHTML = 'Votre nom doit comporter au-moins 2 caractères';
+    mailError.classList.add('errorStyle')
+    mail.classList.add('errorForm')
+    //si toutes les conditions sont remplies
+  } else {
+    mailError.innerHTML = ' ';
+  }
+
+});
+
 
 /*
 const addError = () => {

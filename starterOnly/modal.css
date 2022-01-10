@@ -157,6 +157,16 @@ main {
   font-size: 16px;
 }
 
+.errorStyle {
+  color: #ff4e60;
+    font-size: 10px;
+    font-weight: normal;
+}
+
+.errorForm {
+  border: 2px solid #ff4e60;
+}
+
 .bground {
   display: none;
   position: fixed;

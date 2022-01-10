@@ -59,8 +59,7 @@
               novalidate 
             > <!--attribut "novalidate" pour désactiver la validation automatique par le navigateur-->
               <div
-                class="formData"
-                id="firstDiv">
+                class="formData">
                 <label for="first">Prénom</label><br> <!--Ajout de for-->
                 <input
                   class="text-control"
@@ -70,6 +69,7 @@
                   minlength="2"
                   required="required"
                 /><br> <!--Ajout du prénom obligatoire-->
+                <div id="firstError"></div>
               </div>
               <div
                 class="formData">
@@ -82,6 +82,7 @@
                   minlength="2"
                   required="required"
                 /><br> <!--Ajout de required-->
+                <div id="lastError"></div>
               </div>
               <div
                 class="formData">
