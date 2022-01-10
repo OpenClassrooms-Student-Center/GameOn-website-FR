@@ -16,7 +16,7 @@ const submitBtn = document.querySelector(".btn-submit");
 const confirmationCloseBtn = document.querySelectorAll(".btn-close");
 const regexName = /[a-zA-Z]/;
 const regexEmail = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
-const form = document.getElementById("form");
+const form = document.querySelector("form");
 const first = document.getElementById("first");
 const last = document.getElementById("last");
 const email = document.getElementById("email");
@@ -24,7 +24,7 @@ const birthdate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
 const checkedCity = document.querySelectorAll(".checkedCity");
 const checkedBox = document.getElementById("checkbox1");
-
+const btnClose = document.querySelector(".btn-close");
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -35,7 +35,7 @@ function launchModal() {
 
 //Fermeture du modal
 bouton.addEventListener("click", () => (modalbg.style.display = "none"));
-
+btnClose.addEventListener("click", () => (modalbg.style.display = "none"));
 //Empêcher la page de se recharger tant que le formulaire n'est pas validé
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -193,7 +193,7 @@ function closeForm() {
     checkLocation() &&
     checkBox()
   ) {
-    formData.style.display = "none";
-    confirmationModal();
+    form.remove();
+    document.getElementById("confirmation").classList.remove("invisible");
   }
 }
