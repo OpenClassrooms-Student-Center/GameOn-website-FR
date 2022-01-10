@@ -14,7 +14,7 @@ const formData = document.querySelectorAll(".formData");
 const bouton = document.querySelector(".close");
 const submitBtn = document.querySelector(".btn-submit");
 const confirmationCloseBtn = document.querySelectorAll(".btn-close");
-const regexName = /[a-zA-Z]+/g;
+const regexName = /[a-zA-Z]/;
 const regexEmail = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
 const form = document.getElementById("form");
 const first = document.getElementById("first");
@@ -36,19 +36,20 @@ function launchModal() {
 //Fermeture du modal
 bouton.addEventListener("click", () => (modalbg.style.display = "none"));
 
-//Empêcher la page de se recharger
+//Empêcher la page de se recharger tant que le formulaire n'est pas validé
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
   validForm();
+  closeForm();
 });
 
 //Fonctions pour le formulaire
 function goodBorder(element) {
-  changeBorder(element, "green");
+  changeBorder(element, "#279e7a");
 }
 
 function badBorder(element) {
-  changeBorder(element, "red");
+  changeBorder(element, "#e54858");
 }
 
 function changeBorder(element, color) {
@@ -87,7 +88,7 @@ checkedBox.addEventListener("click", (e) => {
 //Fonction de contrôle du prénom
 function checkPrenom() {
   const firstValue = first.value.trim();
-  if (regexName.exec(firstValue) === null || first.length < 2) {
+  if (regexName.exec(firstValue) === null || firstValue.length < 2) {
     removeInvisible(first);
     badBorder(first);
     return false;
@@ -100,7 +101,7 @@ function checkPrenom() {
 //Fonction de contrôle du nom
 function checkNom() {
   const lastValue = last.value.trim();
-  if (regexName.exec(lastValue) === null || last.length < 2) {
+  if (regexName.exec(lastValue) === null || lastValue.length < 2) {
     removeInvisible(last);
     badBorder(last);
     return false;
@@ -162,12 +163,12 @@ function checkLocation() {
 
 //Fonction de validation checkbox
 function checkBox() {
-  const checkboxValue = (document.getElementById("checkbox1").checked = false);
+  const checkboxValue = checkedBox.checked;
   if (checkboxValue === false) {
-    document.getElementById("errorTerms").classList.add("invisible");
+    document.getElementById("errorTerms").classList.remove("invisible");
     return false;
   }
-  document.getElementById("errorTerms").classList.remove("invisible");
+  document.getElementById("errorTerms").classList.add("invisible");
   return true;
 }
 
@@ -179,4 +180,20 @@ function validForm() {
   checkBirthdate();
   checkQuantity();
   checkLocation();
+  checkBox();
+}
+//Fonction de validation du formulaire
+function closeForm() {
+  if (
+    checkPrenom() &&
+    checkNom() &&
+    checkEmail() &&
+    checkBirthdate() &&
+    checkQuantity() &&
+    checkLocation() &&
+    checkBox()
+  ) {
+    formData.style.display = "none";
+    confirmationModal();
+  }
 }

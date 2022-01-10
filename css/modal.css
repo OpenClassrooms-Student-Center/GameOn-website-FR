@@ -497,6 +497,24 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+.confirmation button {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+}
+.confirmation {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: normal;
+}
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
