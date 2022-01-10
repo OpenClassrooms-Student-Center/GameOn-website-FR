@@ -17,12 +17,13 @@ modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
 //Stockage des valeurs de champs dans des variables//
 const firstName = document.getElementById("first");
 const lastName = document.getElementById("last");
-const emailAdress = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
 const quantityTournois = document.getElementById("quantity");
 const checkbox1 = document.getElementById("checkbox1");
 //Controle du format du mail//
-const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+const emailAdress = document.getElementById("email");
+const mailError = document.getElementById("mailError");
+const mailRegex = /^[a-zA-Z][a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}$/;
 
 
 // launch modal form
@@ -106,75 +107,24 @@ lastName.addEventListener("input", function () {
 
 });
 
-/*
-//Controle d'entrée du mail
-lastName.addEventListener("input", function () {
-  //Réinitialise les messages d'erreur
-  mailError.innerHTML = ' ';
+emailAdress.addEventListener("input", function(){
+  mailError.innerHTML = '';
   mailError.classList.remove('errorStyle')
-  mail.classList.remove('errorForm')
-  // Chaque fois que l'utilisateur saisit quelque chose
-  // on vérifie la validité du champ
-  //si rien n'est écrit
-  if (this.value.length == 0) {
-    mailError.innerHTML = 'Réponse obligatoire!'; //ajout du message
-    mailError.classList.add('errorStyle') //ajout d'une class au message d'erreur
-    mail.classList.add('errorForm') //ajout d'une class a la zone d'entrée
-    //s'il y a moins de 2 caracteres
-  } else if (this.value.length < 2) {
-    mailError.innerHTML = 'Votre nom doit comporter au-moins 2 caractères';
+  email.classList.remove('errorForm')
+
+  if (emailAdress.value.match(mailRegex)) {
+    mailError.innerHTML = '';
+    
+  } else if (emailAdress.value == "") {
+    mailError.innerHTML = 'Entrez une adresse mail';
     mailError.classList.add('errorStyle')
-    mail.classList.add('errorForm')
-    //si toutes les conditions sont remplies
-  } else {
-    mailError.innerHTML = ' ';
+    email.classList.add('errorForm')
   }
-
-});
-
-
-/*
-const addError = () => {
-  // crée un nouvel élément p
-var newError = document.createElement("p");
-// et lui donne du contenu
-  var newContent = document.createTextNode('Hi there and greetings!');
-// ajoute le nœud texte au nouveau p créé
-  newDiv.appendChild(newContent);
-};
-
-/*
-function verifFirstLength() {
-  if (document.getElementById("first").value.length < 2) {
-    alert("Veuillez entrer 2 caractères ou plus pour le champ du nom.");
-    return false;
-  }
+  
   else {
-    return true;
+    mailError.innerHTML = 'Adresse mail invalide';
+    mailError.classList.add('errorStyle')
+    email.classList.add('errorForm')
   }
-}*/
-
-/*
-if (first != '' && last != '' && email != '' && contact != '') {
-  if (email.match(emailReg)) {
-    if (document.getElementById("male").checked || document.getElementById("female").checked) {
-      if (contact.length == 10) {
-        alert("All type of validation has done on OnSubmit event.");
-        return true;
-      } else {
-        alert("The Contact No. must be at least 10 digit long!");
-        return false;
-      }
-    } else {
-      alert("You must select gender.....!");
-      return false;
-    }
-  } else {
-    alert("Invalid Email Address...!!!");
-    return false;
-  }
-} else {
-  alert("All fields are required.....!");
-  return false;
-}
-*/
+  
+});
