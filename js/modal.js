@@ -25,17 +25,21 @@ const quantity = document.getElementById("quantity");
 const checkedCity = document.querySelectorAll(".checkedCity");
 const checkedBox = document.getElementById("checkbox1");
 const btnClose = document.querySelector(".btn-close");
-// launch modal event
+const icon = document.getElementById("menu");
+
+// Launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// launch modal form
+// Launch modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
 
-//Fermeture du modal
-bouton.addEventListener("click", () => (modalbg.style.display = "none"));
-btnClose.addEventListener("click", () => (modalbg.style.display = "none"));
+//Fonction ouverture et fermeture au clic
+bouton.addEventListener("click", () => modalClose());
+btnClose.addEventListener("click", () => modalClose());
+icon.addEventListener("click", () => editNav());
+
 //Empêcher la page de se recharger tant que le formulaire n'est pas validé
 submitBtn.addEventListener("click", (e) => {
   e.preventDefault();
@@ -43,7 +47,7 @@ submitBtn.addEventListener("click", (e) => {
   closeForm();
 });
 
-//Fonctions pour le formulaire
+//Fonctions pour les bordures des inputs
 function goodBorder(element) {
   changeBorder(element, "#279e7a");
 }
@@ -56,11 +60,17 @@ function changeBorder(element, color) {
   element.style.border = "2px solid " + color;
 }
 
+//Fonctions d'apparition et disparition des messages d'erreur
 function removeInvisible(element) {
   element.nextElementSibling.classList.remove("invisible");
 }
 function addInvisible(element) {
   element.nextElementSibling.classList.add("invisible");
+}
+
+//Fonction d'ouverture et fermeture du menu en responsive
+function modalClose() {
+  modalbg.style.display = "none";
 }
 
 //Fonctions de contrôle du formulaire
@@ -111,7 +121,7 @@ function checkNom() {
   return true;
 }
 
-//validation du formulaire de l'email
+//Fonction de contrôle de l'email
 function checkEmail() {
   const emailValue = email.value.trim();
   if (regexEmail.exec(emailValue) === null) {
@@ -137,7 +147,7 @@ function checkBirthdate() {
   return true;
 }
 
-//Fonction de validation du nombre de tournois
+//Fonction de contrôle du nombre de tournois
 function checkQuantity() {
   const quantityValue = quantity.value;
   if (quantityValue === "" || quantityValue > 99) {
@@ -150,7 +160,7 @@ function checkQuantity() {
   return true;
 }
 
-//Fonction de validation location
+//Fonction de contrôle location
 function checkLocation() {
   const checkedCityValue = document.querySelectorAll(".checkedCity:checked");
   if (checkedCityValue.length === 0) {
@@ -161,7 +171,7 @@ function checkLocation() {
   return true;
 }
 
-//Fonction de validation checkbox
+//Fonction de contrôle des checkbox
 function checkBox() {
   const checkboxValue = checkedBox.checked;
   if (checkboxValue === false) {
