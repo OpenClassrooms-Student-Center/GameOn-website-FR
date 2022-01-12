@@ -37,80 +37,92 @@ function closeModal() {
 function checkFirstName() {
   const firstName = document.getElementById("first").value;
 
-  if (firstName.length < 2) {
-
+  if (firstName.length < 2 || !firstName) {
     document.getElementById("errorFirstName").classList.remove("hidden")
+    return false;
   }
+  document.getElementById("errorFirstName").classList.add("hidden")
+  return true;
 }
 
 function checkLastName() {
   const lastName = document.getElementById("last").value;
 
-  if (lastName.length < 2) {
-
+  if (lastName.length < 2 || !lastName) {
     document.getElementById("errorLastName").classList.remove("hidden")
+    return false;
   }
+  document.getElementById("errorLastName").classList.add("hidden")
+  return true;
 }
 
-function checkEmailName() {
+
+function checkEmail() {
   const email = document.getElementById("email").value;
 
-  var regex = /^(([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5}){1,25})+([;.](([a-zA-Z0-9_\-\.]+)@{[a-zA-Z0-9_\-\.]+0\.([a-zA-Z]{2,5}){1,25})+)*$/;
-
-  if (regex.test(email.value)) {
-    return true;
-  }
-
-  else {
+  if (/^([a-z]\.?)+@([a-z]+\.)+[a-z]+$/.test(email) == false) {
     document.getElementById("errorEmail").classList.remove("hidden")
+    return false;
   }
+  document.getElementById("errorEmail").classList.add("hidden")
+  return true;
 }
 
 function checkBirthdate() {
   const birthdate = document.getElementById("birthdate").value;
 
-  if (!birthdate)
-
-  document.getElementById("errorBirthdate").classList.remove("hidden")
+  if (!birthdate) {
+    document.getElementById("errorBirthdate").classList.remove("hidden")
+    return false;
+  }
+  document.getElementById("errorBirthdate").classList.add("hidden")
+  return true;
 }
 
 function checkQuantity() {
   var x = document.getElementById("quantity").value;
 
-  if ((x < 0 || x > 99 || !x)) {
+  if ((!x || x < 0 || x > 99)) {
     document.getElementById("errorQuantity").classList.remove("hidden")
-  }
-
-  else {
     return false;
   }
+  document.getElementById("errorQuantity").classList.add("hidden")
+  return true;
 }
 
 function checkLocation() {
   var getSelectedValue = document.querySelector('input[name="location"]:checked');
 
-  if (getSelectedValue !=null) {
-    return true;
-  }
-
-  else {
+  if (getSelectedValue === null) {
     document.getElementById("errorLocations").classList.remove("hidden")
+    return false;
   }
+  document.getElementById("errorLocations").classList.add("hidden")
+  return true;
 }
  
 function checkPolicy() {
   
   if (document.getElementById("checkbox1").checked) {
+    document.getElementById("errorPolicy").classList.add("hidden")
     return true;
   }
-
-  else {
-    document.getElementById("errorPolicy").classList.remove("hidden")
-  }
+  document.getElementById("errorPolicy").classList.remove("hidden")
+  return false;
 }
 
 function validate() {
-  checkFirstName() & checkLastName() & checkEmailName() & checkBirthdate() & checkQuantity() & checkLocation() & checkPolicy();
+
+  if (checkFirstName() && checkLastName() && checkEmail() && checkBirthdate() && checkQuantity() && checkLocation() && checkPolicy()) {
+    console.log("Ok")
+    modalbg.style.display = "none"
+    return true;
+  }
+  else {
+    console.log("Error")
+    modalbg.style.display = "block"
+    return false;
+  }
 }
 
 document.getElementById("submitBtn").addEventListener("click", validate)
