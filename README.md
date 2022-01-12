@@ -1,4 +1,4 @@
-# Oh My Food
+# GameOn
 
 :tada: Ce projet est issu du parcours "Développeur Front-End" de OpenClassrooms.
 
