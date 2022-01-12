@@ -6,7 +6,7 @@ Objectif : Créer une landing page avec JavaScript
 
 ## Livrables
 
-### Travailler sur un repo forké
+#### Travailler sur un repo forké
 
 #### Utiliser des fichiers séparés
 
@@ -23,8 +23,8 @@ Le but est de décrire chaque fonction et chaque classe, ainsi que les parties d
 - [x] 1 - Fermer la modale
 - [x] 2 - Implémenter les entrées du formulaires
 - [x] 3 - Afficher des messages d'erreur
-- [ ] 4 - Ajouter une confirmation lors de la validation du formulaire
-- [ ] 5 - Réaliser les tests
+- [x] 4 - Ajouter une confirmation lors de la validation du formulaire
+- [x] 5 - Réaliser les tests
 
 ### Contraintes
 
