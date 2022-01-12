@@ -138,7 +138,27 @@ emailAdress.addEventListener("input", function(){
 
 //Controle age
 const dateRegex = /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/;
+birthdateInput.addEventListener ("input", function() {
+  if (birthdateInput.value == ""){
+    birthdateError.innerHTML = '';
+    birthdateError.classList.remove('errorStyle')
+    birthdate.classList.remove('errorForm')
+    return true;
 
+  } else if (Date.parse(birthdateInput.value) > Date.now()){
+    birthdateError.innerHTML = 'Vous devez entrez une date valide';
+    birthdateError.classList.add('errorStyle')
+    birthdate.classList.add('errorForm')
+    return false;
+
+  } else {
+    birthdateError.innerHTML = '';
+    birthdateError.classList.remove('errorStyle')
+    birthdate.classList.remove('errorForm')
+  }
+});
+
+/*
 birthdateInput.addEventListener("input", function() {
   // set error message
   if (dateRegex.test(birthdateInput)) {
@@ -154,6 +174,7 @@ birthdateInput.addEventListener("input", function() {
     return false;
   }
 });
+*/
 
 //Control nombre de tournois
 function checkNb() { 
@@ -163,7 +184,12 @@ function checkNb() {
     quantityError.classList.add('errorStyle')
     quantity.classList.add('errorForm');
     return false;
-  } else {
+
+  } else if ((this.value == 0)) {
+    
+  }
+  
+  else {
     quantityError.innerHTML = "";
     quantityError.classList.remove('errorStyle')
     quantity.classList.remove('errorForm');
