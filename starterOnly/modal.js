@@ -20,6 +20,7 @@ const lastName = document.getElementById("last");
 const birthdateInput = document.getElementById("birthdate");
 const birthdateError = document.getElementById("birthdateError")
 const quantityTournois = document.getElementById("quantity");
+const quantityError = document.getElementById("quantityError")
 const checkbox1 = document.getElementById("checkbox1");
 //Controle du format du mail//
 const emailAdress = document.getElementById("email");
@@ -147,9 +148,25 @@ birthdateInput.addEventListener("input", function() {
     return true;
 
   } else {
-    birthdateError.innerHTML = 'Vous devez entrer votre date de naissance';
+    birthdateError.innerHTML = 'Vous devez indiquer votre date de naissance';
     birthdateError.classList.add('errorStyle')
     birthdate.classList.add('errorForm');
     return false;
   }
 });
+
+//Control nombre de tournois
+function checkNb() { 
+  var nbTournois = document.getElementById("quantity").value;
+  if (isNaN(nbTournois)) {
+    quantityError.innerHTML = "Entrez uniquement une valeur numérique";
+    quantityError.classList.add('errorStyle')
+    quantity.classList.add('errorForm');
+    return false;
+  } else {
+    quantityError.innerHTML = "";
+    quantityError.classList.remove('errorStyle')
+    quantity.classList.remove('errorForm');
+    return true;
+  }
+}
