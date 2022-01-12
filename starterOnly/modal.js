@@ -111,11 +111,17 @@ function checkPolicy() {
   return false;
 }
 
+const modalBody = document.querySelector(".modal-body");
+
 function validate() {
 
   if (checkFirstName() && checkLastName() && checkEmail() && checkBirthdate() && checkQuantity() && checkLocation() && checkPolicy()) {
     console.log("Ok")
-    modalbg.style.display = "none"
+    modalBody.innerHTML = " Merci ! Votre réservation a bien été enregistrée.";
+    modalBody.style.height = "600px";
+    modalBody.style.paddingTop = "250px";
+    modalBody.style.paddingLeft = "100px";
+    modalBody.style.paddingRight = "100px";
     return true;
   }
   else {
