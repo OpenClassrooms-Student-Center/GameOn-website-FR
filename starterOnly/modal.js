@@ -17,7 +17,8 @@ modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
 //Stockage des valeurs de champs dans des variables//
 const firstName = document.getElementById("first");
 const lastName = document.getElementById("last");
-const birthdate = document.getElementById("birthdate");
+const birthdateInput = document.getElementById("birthdate");
+const birthdateError = document.getElementById("birthdateError")
 const quantityTournois = document.getElementById("quantity");
 const checkbox1 = document.getElementById("checkbox1");
 //Controle du format du mail//
@@ -134,3 +135,21 @@ emailAdress.addEventListener("input", function(){
   
 });
 
+//Controle age
+const dateRegex = /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/;
+
+birthdateInput.addEventListener("input", function() {
+  // set error message
+  if (dateRegex.test(birthdateInput)) {
+    birthdateError.innerHTML = '';
+    birthdateError.classList.remove('errorStyle')
+    birthdate.classList.remove('errorForm')
+    return true;
+
+  } else {
+    birthdateError.innerHTML = 'Vous devez entrer votre date de naissance';
+    birthdateError.classList.add('errorStyle')
+    birthdate.classList.add('errorForm');
+    return false;
+  }
+});
