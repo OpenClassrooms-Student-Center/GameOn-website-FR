@@ -35,6 +35,25 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
+// exemple pour des messages personnalisés
+/*const nameInput = document.querySelector('input');
+
+nameInput.addEventListener('input', () => {
+  nameInput.setCustomValidity('');
+  nameInput.checkValidity();
+});
+
+nameInput.addEventListener('invalid', () => {
+  if (nameInput.value === '') {
+    nameInput.setCustomValidity("Veuillez saisir votre nom d'utilisateur !");
+  } else {
+    nameInput.setCustomValidity("Un nom d'utilisateur ne peut contenir que des lettres minuscules et majuscules, veuillez réessayer");
+  }
+});*/
+
+let displayError = true;
+let inputName = document.getElementsById("");
+
 function displayError(inputName, errorMessage) { // exemple: displayError('first', 'Le prénom n'est pas conforme')
   if (displayError) {
     document.getElementsById(inputName);// REP: le problème ici c'est que tu vas tjs récupérer le 1er élément avec class="formData" — hors ce que tu veux c'est récupérer celui où il y a effectivement une erreur
@@ -60,7 +79,7 @@ first.addEventListener("input", function () {
     Element.setAttribute("data-error", false);
   }
   else {
-    displayError(first, "le nom doit comporter minimum 2 caractères");
+    displayError("first", "le nom doit comporter minimum 2 caractères");
     e.preventDefault();
   }
 });
