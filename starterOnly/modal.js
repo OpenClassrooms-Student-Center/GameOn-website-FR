@@ -5,7 +5,7 @@ const toggleMenu = document.querySelectorAll(".toggleMenu")
 
 const modalbg = document.getElementById("bground");
 const modalThanks = document.getElementById("thanks");
-
+const formData = document.querySelectorAll(".formData");
 const modalBtn = document.querySelector(".btn-signup");
 const closeModalBtn = document.querySelector(".closeModal");
 const thanksCloseBtn = document.getElementById("closeAll");
@@ -22,7 +22,7 @@ toggleMenu.forEach((el) => el.addEventListener("click", () => {
 modalBtn.addEventListener("click", launchModal);
 //close modal event
 closeModalBtn.addEventListener("click", closeModal);
-thanksCloseBtn.addEventListener("click", closeModal);
+// thanksCloseBtn.addEventListener("click", closeModal);
 
 
 /*FONCTION MODAL*/
@@ -34,25 +34,23 @@ function launchModal(){
   document.body.classList.add('overflow');
 }
 
-//close modal form
-function closeModal(){
-  modalbg.style.display = "none";
-  closeModalBtn.removeEventListener("click", closeModal);
-  document.body.classList.remove('overflow');
-}
-
 //open modal thanks
 function showModalThanks(){
   form.style.display= 'none';
+  form.reset()
   modalThanks.style.display = 'block';
   document.querySelector('#closeAll').addEventListener("click", closeModal);
-}
-//close modal thanks
-function showModalForm(){
-modalThanks.style.display = 'none';
-form.style.display = 'block';
+  document.querySelector('#closeModal').addEventListener("click", closeModal);
 }
 
+//close modal form
+function closeModal(){
+  form.style.display='block'
+  modalbg.style.display = "none";
+  modalThanks.style.display="none";
+  closeModalBtn.removeEventListener("click", closeModal);
+  document.body.classList.remove('overflow');
+}
 
 
 //variable formulaire
@@ -73,7 +71,7 @@ form.addEventListener("submit", function(e){
   const email = form.querySelector('input[name="email"]');
   const birthdate = form.querySelector('input[name="birthdate"]');
   const quantity = form.querySelector('input[name="quantity"]');
-  const radiolocation = document.querySelector('input[name="location"]');
+  const radioLocation = document.querySelectorAll('input[type="radio"]');
   const terms = document.getElementById('terms');
 
   const error = document.getElementById("error");
@@ -81,6 +79,7 @@ form.addEventListener("submit", function(e){
   const error2 = document.getElementById("error2");
   const error3 = document.getElementById("error3");
   const errorMessage = document.getElementById("errorMessage");
+  const finalError = document.getElementById("finalError");
 
 
   //label prenom
@@ -131,11 +130,14 @@ form.addEventListener("submit", function(e){
 
   //location
 
-  for(let i= 0 ; i.checked; i++){
-    if (i == 0){
-      errorMessage.textContent="vous devez choisir une option";
+  for(let i= 0 ; i < radioLocation; i++){
+    if(radioLocation[i] != checked){
+      errorMessage.textContent = "vous devez choisir une option.";
+      errorMessage.style.color = "red";
+      errorMessage.style.fontSize = "0.75rem";
+      formErrors++; 
     }else{
-      errorMessage.innerHTML = "";
+      errorMessage.innerHTML= ""
     }
   }
 
@@ -197,10 +199,11 @@ form.addEventListener("submit", function(e){
   }
 
   if (formErrors > 0){
-    return false
+    finalError.textContent = "vous devez renseigner tous les champs.";
+    finalError.style.color = "red";
+    finalError.style.fontSize = "0.75rem";
   }else{
     form.reset();
-    // closeModal;
     showModalThanks();
   }
 // window.location.reload
