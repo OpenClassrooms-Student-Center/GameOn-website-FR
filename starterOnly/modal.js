@@ -1,5 +1,3 @@
-
-
 // DOM Elements
 const toggleMenu = document.querySelectorAll(".toggleMenu")
 
@@ -174,8 +172,6 @@ form.addEventListener("submit", function(e){
   //   formErrors++;
   /* }
 
-
-
   /* if(('input[type=radio]:checked').length === 0) {
   //   errorMessage.textContent = "Vous devez choisir une option.";
   //   errorMessage.style.color = "red";
@@ -184,7 +180,6 @@ form.addEventListener("submit", function(e){
   // }else{
   //   errorMessage.innerHTML = '';
  }*/
-
 
 
   //Conditions and subscribe
