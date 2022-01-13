@@ -174,30 +174,53 @@ function checkNb() {
   }
 }
 
+/*
+
 document.addEventListener("submit", function () {
   const checkRadio = document.getElementsByName('location[type=radio]:checked');
   if (checkRadio.length == 0) {
     locationError.innerHTML = 'Réponse obligatoire!'; //ajout du message
     locationError.classList.add('errorStyle') //ajout d'une class au message d'erreur
-    //s'il y a moins de 2 caracteres
   } else {
     locationError.innerHTML = ' ';
     locationError.classList.remove('errorStyle')
   }
 });
-
-/*
-function validateForm() {
-  var radios = document.getElementsByName("yesno");
+*/
+const radios = document.getElementsByName("location");
+document.addEventListener("submit", function () {
   var formValid = false;
 
   var i = 0;
   while (!formValid && i < radios.length) {
     if (radios[i].checked) formValid = true;
     i++;
+    locationError.innerHTML = ' ';
+    locationError.classList.remove('errorStyle')
   }
 
-  if (!formValid) alert("Must check some option!");
+  if (!formValid) {
+    locationError.innerHTML = 'Réponse obligatoire!';
+    locationError.classList.add('errorStyle')
   return formValid;
-}
-*/
+  }
+  });
+
+  document.addEventListener("change", function () {
+  var formValid = false;
+
+  var i = 0;
+  while (!formValid && i < radios.length) {
+    if (radios[i].checked) formValid = true;
+    i++;
+    locationError.innerHTML = ' ';
+    locationError.classList.remove('errorStyle')
+  }
+
+  if (!formValid) {
+    locationError.innerHTML = 'Réponse obligatoire!';
+    locationError.classList.add('errorStyle')
+  return formValid;
+  }
+  });
+
