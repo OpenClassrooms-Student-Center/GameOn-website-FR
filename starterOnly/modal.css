@@ -331,10 +331,20 @@ input {
 .checkbox-label,
 .form-check-label {
   position: relative;
-  margin-left: 36px;
   font-size: 12px;
   font-weight: normal;
 }
+
+.checkbox-label{
+  margin-left: 36px;
+}
+
+.form-check-label{
+  position: relative;
+  margin-left: 10px;
+
+}
+
 .checkbox-label .checkbox-icon,
 .form-check-label .checkbox-icon {
   display: block;
@@ -404,7 +414,7 @@ input {
   transition: all .3s;
 }
 .close:hover{
-  transform: scale(1);
+  transform: rotate(-45deg);
 }
 
 .close:before,

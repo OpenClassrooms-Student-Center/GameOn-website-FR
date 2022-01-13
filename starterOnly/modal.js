@@ -22,8 +22,7 @@ toggleMenu.forEach((el) => el.addEventListener("click", () => {
 modalBtn.addEventListener("click", launchModal);
 //close modal event
 closeModalBtn.addEventListener("click", closeModal);
-//Thank modal
-thanksCloseBtn.addEventListener("click", closeModalThanks);
+thanksCloseBtn.addEventListener("click", closeModal);
 
 
 /*FONCTION MODAL*/
@@ -49,9 +48,9 @@ function showModalThanks(){
   document.querySelector('#closeAll').addEventListener("click", closeModal);
 }
 //close modal thanks
-function closeModalThanks(){
+function showModalForm(){
 modalThanks.style.display = 'none';
-modalbg.style.display = 'none';
+form.style.display = 'block';
 }
 
 
@@ -132,18 +131,12 @@ form.addEventListener("submit", function(e){
 
   //location
 
-  let radiovalue;
-  radiolocation.forEach((el) => {
-    if (el.checked) radioValue = el.value;
-  }
-  );
-  if (!radioValue) {
-    errorMessage.textContent = "vous devez choisir une option.";
-    errorMessage.style.color = "red";
-    errorMessage.style.fontSize = "0.75rem";
-    formErrors++
-  }else{
-    errorMessage.innerHTML = "";
+  for(let i= 0 ; i.checked; i++){
+    if (i == 0){
+      errorMessage.textContent="vous devez choisir une option";
+    }else{
+      errorMessage.innerHTML = "";
+    }
   }
 
   // switch (radiolocation){
@@ -207,10 +200,10 @@ form.addEventListener("submit", function(e){
     return false
   }else{
     form.reset();
-    closeModal;
+    // closeModal;
     showModalThanks();
   }
-window.location.reload
+// window.location.reload
 });
         
         
