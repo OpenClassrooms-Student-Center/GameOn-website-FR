@@ -401,7 +401,12 @@ input {
   opacity: 1;
   cursor: pointer;
   transform: scale(0.7);
+  transition: all .3s;
 }
+.close:hover{
+  transform: scale(1);
+}
+
 .close:before,
 .close:after {
   position: absolute;
