@@ -183,6 +183,7 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                <div class="result" id="locationError"></div> <!--Ajout du message d'erreur-->
               </div>
 
               <div
@@ -199,6 +200,7 @@
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
+                <div class="result" id="CGVError"></div> <!--Ajout du message d'erreur-->
                 <br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" name="checkbox2"/> <!--Ajout de name-->
                 <label class="checkbox2-label" for="checkbox2">
@@ -211,6 +213,7 @@
                 class="btn-submit button"
                 type="submit"
                 value="C'est parti"
+                onkeyup="return checkNb()"
               /> <!-- Il y avait 2 class séparées-->
             </form>
           </div>

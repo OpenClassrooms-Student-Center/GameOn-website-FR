@@ -11,6 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const form = document.querySelector('form');
 const modalClose = document.querySelector(".close") //Création et chargement de la constante 'modalClose' et accès à la class .close du DOM  
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
@@ -34,7 +35,7 @@ function launchModal() {
 }
 
 //Fermeture du questionnaire
-modalClose.addEventListener('click', close); //Ecoute event clic de souris sur la constante modalClose qui cible la class .close, nommé 'close'
+modalClose.addEventListener('click', close); //Ecoute event clic de souris sur la constante modalClose qui cible la class .close, et une fonction est lancée
 
 //Appel de la fonction 'close' pour cacher le formulaire et réinitialiser les entrées
 function close () {
@@ -43,7 +44,6 @@ function close () {
 }
 
 const clearInput = () => {
-  const form = document.querySelector('form')
  form.reset();
 };
 
@@ -137,19 +137,18 @@ emailAdress.addEventListener("input", function(){
 });
 
 //Controle age
-const dateRegex = /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/;
 birthdateInput.addEventListener ("input", function() {
   if (birthdateInput.value == ""){
-    birthdateError.innerHTML = '';
-    birthdateError.classList.remove('errorStyle')
-    birthdate.classList.remove('errorForm')
-    return true;
+    birthdateError.innerHTML = 'Vous devez entrer votre date de naissance';
+    birthdateError.classList.add('errorStyle')
+    birthdate.classList.add('errorForm')
+    formIsValid = false; 
 
   } else if (Date.parse(birthdateInput.value) > Date.now()){
     birthdateError.innerHTML = 'Vous devez entrez une date valide';
     birthdateError.classList.add('errorStyle')
     birthdate.classList.add('errorForm')
-    return false;
+    formIsValid = false; 
 
   } else {
     birthdateError.innerHTML = '';
@@ -157,24 +156,6 @@ birthdateInput.addEventListener ("input", function() {
     birthdate.classList.remove('errorForm')
   }
 });
-
-/*
-birthdateInput.addEventListener("input", function() {
-  // set error message
-  if (dateRegex.test(birthdateInput)) {
-    birthdateError.innerHTML = '';
-    birthdateError.classList.remove('errorStyle')
-    birthdate.classList.remove('errorForm')
-    return true;
-
-  } else {
-    birthdateError.innerHTML = 'Vous devez indiquer votre date de naissance';
-    birthdateError.classList.add('errorStyle')
-    birthdate.classList.add('errorForm');
-    return false;
-  }
-});
-*/
 
 //Control nombre de tournois
 function checkNb() { 
@@ -184,15 +165,39 @@ function checkNb() {
     quantityError.classList.add('errorStyle')
     quantity.classList.add('errorForm');
     return false;
-
-  } else if ((this.value == 0)) {
     
-  }
-  
-  else {
+  } else {
     quantityError.innerHTML = "";
     quantityError.classList.remove('errorStyle')
     quantity.classList.remove('errorForm');
     return true;
   }
 }
+
+document.addEventListener("submit", function () {
+  const checkRadio = document.getElementsByName('location[type=radio]:checked');
+  if (checkRadio.length == 0) {
+    locationError.innerHTML = 'Réponse obligatoire!'; //ajout du message
+    locationError.classList.add('errorStyle') //ajout d'une class au message d'erreur
+    //s'il y a moins de 2 caracteres
+  } else {
+    locationError.innerHTML = ' ';
+    locationError.classList.remove('errorStyle')
+  }
+});
+
+/*
+function validateForm() {
+  var radios = document.getElementsByName("yesno");
+  var formValid = false;
+
+  var i = 0;
+  while (!formValid && i < radios.length) {
+    if (radios[i].checked) formValid = true;
+    i++;
+  }
+
+  if (!formValid) alert("Must check some option!");
+  return formValid;
+}
+*/
