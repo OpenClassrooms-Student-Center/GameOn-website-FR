@@ -5,7 +5,7 @@ const modalbg = document.getElementById("bground");
 const modalThanks = document.getElementById("thanks");
 const formData = document.querySelectorAll(".formData");
 const modalBtn = document.querySelector(".btn-signup");
-const closeModalBtn = document.querySelector(".closeModal");
+const closeModalBtn = document.querySelector("#closeModal");
 const thanksCloseBtn = document.getElementById("closeAll");
 
 
@@ -57,10 +57,10 @@ let form = document.forms["reserve"];
 let verifMail = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
 let textFormat = /^[a-zA-Z\é\è\-\^\']{2,30}$/;
 
+console.log("azeaze")
 
 form.addEventListener("submit", function(e){
   e.preventDefault();
-  
   let formErrors = 0;
 
   //constantes
@@ -128,58 +128,18 @@ form.addEventListener("submit", function(e){
 
   //location
 
-  for(let i= 0 ; i < radioLocation; i++){
-    if(radioLocation[i] != checked){
-      errorMessage.textContent = "vous devez choisir une option.";
-      errorMessage.style.color = "red";
-      errorMessage.style.fontSize = "0.75rem";
-      formErrors++; 
-    }else{
-      errorMessage.innerHTML= ""
-    }
-  }
-
-  // switch (radiolocation){
-  //   case 0: document.getElementById("location1").checked
-  //   break
-  //   case 1: document.getElementById("location2").checked
-  //   break
-  //   default document.getElementsByClassName("checkbox-input").innerHTML = "Vous devez choisir une option."
-  // }
   
-// if(!radiolocation.checked) {
-//   errorMessage.textContent = "vous devez choisir une option.";
-//   errorMessage.style.color = "red";
-//   errorMessage.style.fontSize = "0.75rem";
-//   formErrors++;
-// }else{
-//   errorMessage.innerHTML = "";
-// }
+console.log(document.querySelector('input[type=radio]:checked'))
 
-  /* errorMessage.innerHTML = "";
-  // if(
-  //   document.getElementById("location1").checked ||
-  //   document.getElementById("location2").checked ||
-  //   document.getElementById("location3").checked ||
-  //   document.getElementById("location4").checked ||
-  //   document.getElementById("location5").checked ||
-  //   document.getElementById("location6").checked
-  // ){
-  // }else{
-  //   errorMessage.textContent = "Vous devez choisir une option.";
-  //   errorMessage.style.color = "red";
-  //   errorMessage.style.fontSize = "0.75rem";
-  //   formErrors++;
-  /* }
-
-  /* if(('input[type=radio]:checked').length === 0) {
-  //   errorMessage.textContent = "Vous devez choisir une option.";
-  //   errorMessage.style.color = "red";
-  //   errorMessage.style.fontSize = "0.75rem";
-  //   formErrors++;
-  // }else{
-  //   errorMessage.innerHTML = '';
- }*/
+  
+   if(document.querySelector('input[type=radio]:checked') === null) {
+    errorMessage.textContent = "Vous devez choisir une option.";
+    errorMessage.style.color = "red";
+    errorMessage.style.fontSize = "0.75rem";
+    formErrors++;
+  }else{
+    errorMessage.innerHTML = '';
+ }
 
 
   //Conditions and subscribe
