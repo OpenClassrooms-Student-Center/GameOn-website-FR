@@ -28,6 +28,7 @@ function launchModal(){
   modalbg.style.display = "block";
   window.scrollTo(0, 0);
   modalbg.scrollTo(0, 0);
+  document.querySelector('#closeModal').addEventListener("click", closeModal);
   document.body.classList.add('overflow');
 }
 
