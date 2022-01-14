@@ -27,6 +27,7 @@ const checkbox1 = document.getElementById("checkbox1");
 const emailAdress = document.getElementById("email");
 const mailError = document.getElementById("mailError");
 const mailRegex = /^[a-zA-Z][a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}$/;
+const cgv = document.getElementById("checkbox1");
 
 
 // launch modal form
@@ -224,3 +225,12 @@ document.addEventListener("submit", function () {
   }
   });
 
+cgv.addEventListener("change", (event) => {
+  if (event.target.checked) {
+    cgvError.innerHTML = ' ';
+    cgvError.classList.remove('errorStyle')
+  } else {
+    cgvError.innerHTML = "Merci d'acceptez les conditions d'utilisation";
+    cgvError.classList.add('errorStyle')
+  }
+})
