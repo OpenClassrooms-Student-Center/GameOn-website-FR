@@ -22,7 +22,6 @@ const birthdateInput = document.getElementById("birthdate");
 const birthdateError = document.getElementById("birthdateError")
 const quantityTournois = document.getElementById("quantity");
 const quantityError = document.getElementById("quantityError")
-const checkbox1 = document.getElementById("checkbox1");
 //Controle du format du mail//
 const emailAdress = document.getElementById("email");
 const mailError = document.getElementById("mailError");
@@ -53,12 +52,6 @@ modalClose.addEventListener('click', function () {
   modalbg.style.display = "none";
 }); //Ecoute event clic de souris sur l'element close, nommé 'close' et on cache le formulaire
 */
-
-//La fonction est exécutée lors de la soumission du formulaire//
-function validate (event) {
-//Désactivé le comportement par défaut de l'évenement//
-  event.preventDefault();
-}
 
 //Controle d'entrée du prénom
 firstName.addEventListener("input", function() {
@@ -146,7 +139,7 @@ birthdateInput.addEventListener ("input", function() {
     formIsValid = false; 
 
   } else if (Date.parse(birthdateInput.value) > Date.now()){
-    birthdateError.innerHTML = 'Vous devez entrez une date valide';
+    birthdateError.innerHTML = 'Vous devez entrer une date valide';
     birthdateError.classList.add('errorStyle')
     birthdate.classList.add('errorForm')
     formIsValid = false; 
@@ -175,19 +168,50 @@ function checkNb() {
   }
 }
 
-/*
+const city = document.getElementsByName("location");
+const cityCheck = document.getElementsByClassName("checkboxCity")
 
-document.addEventListener("submit", function () {
-  const checkRadio = document.getElementsByName('location[type=radio]:checked');
-  if (checkRadio.length == 0) {
-    locationError.innerHTML = 'Réponse obligatoire!'; //ajout du message
-    locationError.classList.add('errorStyle') //ajout d'une class au message d'erreur
-  } else {
+function cityFn () {
+
+  var i = 0;
+  while (!formValid && i < city.length) {
+    if (city[i].checked) formValid = true;
+    i++;
     locationError.innerHTML = ' ';
     locationError.classList.remove('errorStyle')
+    return true
   }
-});
-*/
+
+  if (!formValid) {
+    locationError.innerHTML = 'Réponse obligatoire!';
+    locationError.classList.add('errorStyle')
+    return false;
+  }
+};
+
+cgv.addEventListener("change", (event) => {
+  if (event.target.checked) {
+    cgvError.innerHTML = ' ';
+    cgvError.classList.remove('errorStyle')
+  } else {
+    cgvError.innerHTML = "Merci d'acceptez les conditions d'utilisation";
+    cgvError.classList.add('errorStyle')
+  }
+})
+
+form.addEventListener('submit', validate);
+
+//La fonction est exécutée lors de la soumission du formulaire//
+function validate(event) {
+  //Désactivé le comportement par défaut de l'évenement//
+  event.preventDefault();
+  var formValid = true;
+  
+  //localisation
+  
+}
+
+/* bouts de code
 const radios = document.getElementsByName("location");
 document.addEventListener("submit", function () {
   var formValid = false;
@@ -203,11 +227,11 @@ document.addEventListener("submit", function () {
   if (!formValid) {
     locationError.innerHTML = 'Réponse obligatoire!';
     locationError.classList.add('errorStyle')
-  return formValid;
+    return formValid;
   }
-  });
+});
 
-  document.addEventListener("change", function () {
+document.addEventListener("change", function () {
   var formValid = false;
 
   var i = 0;
@@ -221,16 +245,7 @@ document.addEventListener("submit", function () {
   if (!formValid) {
     locationError.innerHTML = 'Réponse obligatoire!';
     locationError.classList.add('errorStyle')
-  return formValid;
+    return formValid;
   }
-  });
-
-cgv.addEventListener("change", (event) => {
-  if (event.target.checked) {
-    cgvError.innerHTML = ' ';
-    cgvError.classList.remove('errorStyle')
-  } else {
-    cgvError.innerHTML = "Merci d'acceptez les conditions d'utilisation";
-    cgvError.classList.add('errorStyle')
-  }
-})
+});
+*/
