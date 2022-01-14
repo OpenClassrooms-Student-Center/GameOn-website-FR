@@ -26,7 +26,7 @@
 
   <body>
 
-    <header id="myTopnav">
+    <header class="topnav" id="myTopnav">
 
       <!--logo GameOn-->
       <div class="header__logo">
@@ -64,7 +64,7 @@
           <img src="images/bg_img.jpg" alt="background image" />
         </div> 
         <!-- BUTTON Mobile version-->
-        <button class="btn-signup modal-btn">Je M'inscris</button>
+        <button class="btn-signup modalOpen">Je M'inscris</button>
 
       </section> 
 
@@ -80,7 +80,7 @@
               
               <!--FORM PART 1: User informations -->
               <!--User info 1-->
-              <div class="formData info" data-error="Le champ du Prénom doit comporter deux caractères au minimum.">
+              <div class="formData infoFirst" data-error="Le champ du Prénom doit comporter deux caractères au minimum.">
                 <label for="first">Prénom</label>
                 <br>
                 <input class="text-control" type="text" id="first" name="first" minlength="2" required>
@@ -88,7 +88,7 @@
               </div>
 
               <!--User info 2-->
-              <div class="formData info" data-error="Le champ du Nom doit comporter deux caractères au minimum.">
+              <div class="formData infoName" data-error="Le champ du Nom doit comporter deux caractères au minimum.">
                 <label for="last">Nom</label>
                 <br>
                 <input class="text-control" type="text" id="last" name="last" minlength="2" required>
@@ -96,7 +96,7 @@
               </div>
 
               <!--User info 3-->
-              <div class="formData info" data-error="L'adresse e-mail doit être valide.">
+              <div class="formData infoEmail" data-error="L'adresse e-mail doit être valide.">
                 <label for="email">E-mail</label>
                 <br>
                 <input class="text-control" type="email" id="email" name="email" required>
@@ -104,7 +104,7 @@
               </div>
 
               <!--User info 4-->
-              <div class="formData info">
+              <div class="formData infoBirthdate">
                 <label for="birthdate">Date de naissance</label>
                 <br>
                 <input class="text-control" type="date" id="birthdate" name="birthdate" required>   
@@ -112,64 +112,64 @@
               </div>
 
               <!--User info 5-->
-              <div class="formData info" data-error="Le nombre doit être un entier compris entre 0 et 99.">
-                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label>
+              <div class="formData infoQuantity" data-error="Le nombre doit être un entier compris entre 0 et 99.">
+                <label class="form__label--quantityTitle" for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label>
                 <br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
               </div>
 
 
               <!--FORM PART 2: User location -->
-              <label class="form__label--checkboxes"> A quel tournoi souhaitez-vous participer cette année ?</p>
-                
               <div class="formData locations" data-error="il faut choisir une ville.">
-               
+                <label class="form__label--checkboxes"> 
+                  <span class="form__label--checkboxes-title">A quel tournoi souhaitez-vous participer cette année ? </span>
+                  <br>
                 <!--Location 1--> 
-                <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" required>
+                <input class="checkbox-input location" type="radio" id="location1" name="location" value="New York" checked >
 
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
-                  New York
+                  <span class="checkbox-title">New York</span>
                 </label>
                 
                 <!--Location 2-->
-                <input class="checkbox-input" type="radio" id="location2" name="location" value="San Francisco">
+                <input class="checkbox-input location" type="radio" id="location2" name="location" value="San Francisco">
   
                 <label class="checkbox-label" for="location2">
                   <span class="checkbox-icon"></span>
-                  San Francisco
+                  <span class="checkbox-title">San Francisco</span>
                 </label>
                 
                 <!--Location 3-->
-                <input class="checkbox-input" type="radio" id="location3" name="location" value="Seattle"/>
+                <input class="checkbox-input location" type="radio" id="location3" name="location" value="Seattle"/>
 
                 <label class="checkbox-label" for="location3">
                   <span class="checkbox-icon"></span>
-                  Seattle
+                  <span class="checkbox-title">Seattle</span>
                 </label>
 
                 <!--Location 4-->
-                <input class="checkbox-input" type="radio" id="location4" name="location" value="Chicago"/>
+                <input class="checkbox-input location" type="radio" id="location4" name="location" value="Chicago"/>
                 
                   <label class="checkbox-label" for="location4">
                     <span class="checkbox-icon"></span>
-                    Chicago
+                    <span class="checkbox-title">Chicago</span>
                   </label>
                 
                   <!--Location 5-->
-                <input class="checkbox-input" type="radio"  id="location5"  name="location" value="Boston">
+                <input class="checkbox-input location" type="radio"  id="location5"  name="location" value="Boston">
          
                 <label class="checkbox-label" for="location5">
                   <span class="checkbox-icon"></span>
-                  Boston
+                  <span class="checkbox-title">Boston</span>
                 </label>
                
                 <!--Location 6-->
-                <input class="checkbox-input" type="radio" id="location6" name="location" value="Portland">
+                <input class="checkbox-input location" type="radio" id="location6" name="location" value="Portland">
            
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
-                  Portland
+                  <span class="checkbox-title">Portland</span>
                 </label>
                 
               </div>
@@ -177,11 +177,11 @@
               <!--FORM PART 3: User Rights -->
               <div class="formData rights">
                 
-                <input class="checkbox-input" id="checkbox1" required checked>
+                <input class="checkbox-input"  type="checkbox" id="checkbox1" required checked>
              
                 <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
-                  J'ai lu et accepté les conditions d'utilisation.
+                  <span class="checkbox-title">J'ai lu et accepté les conditions d'utilisation.</span>
                 </label>
 
                 <br>
@@ -190,7 +190,7 @@
                 
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
-                  Je Je souhaite être prévenu des prochains évènements.
+                  <span class="checkbox-title">Je Je souhaite être prévenu des prochains évènements.</span>
                 </label>
 
                 <br>

@@ -13,8 +13,8 @@
 }
 
 p {
-  margin-bottom: 0;
-  /*padding: 0.5vw;*/
+  font-size: 17px; /*for footer*/
+
 }
 
 img {
@@ -25,7 +25,6 @@ img {
 /* COMPUTER VERSION :Landing Page */
 
 body {
-  /*margin: 0;*/
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -33,7 +32,7 @@ body {
   font-size: 18px;
   
   margin: 0 auto;
-  max-width: 1500px;
+  /*max-width: 1500px;*/
 }
 
 /*-----HEADER-----*/
@@ -47,10 +46,9 @@ header {
   justify-content: space-between;
 }
 
-/*header img {
-    float: left;
-    height: 50px;
-}*/
+.header__logo img {
+    height: 55px;
+}
 
 header nav {
     float: right;
@@ -65,6 +63,7 @@ header a {
   margin: 5px;
   text-decoration: none;
   font-family: Roboto, sans-serif;
+  font-size: 19px;
 }
 
 header a:hover, header a.active {
@@ -101,14 +100,16 @@ header .icon {
 
 .section--hero{
   
-  /*width: 100%;*/
+  width: 100%;
+  max-width: 1401px; /*permet de conserver bonne dispo de la section mais du coup non centrée*/
   /*min-height: 93vh;*/
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   overflow: hidden;
-  box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 10px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
+  
 }
 
 .section--hero > .btn-signup {
@@ -122,12 +123,11 @@ header .icon {
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
   background: #232323;
-  overflow: hidden;
   position: relative;
   color: #fff;
   /*padding-top: 10px;*/
   
-  padding: 51px 67px;
+  padding: 65px 67px;
   grid-column: span 5;
  
   text-align: left;
@@ -154,17 +154,22 @@ header .icon {
 
 
 .section--hero-headline {/*h1*/
-  font-size: 6rem;
+  font-size: 6.45rem;
   font-weight: normal;
+  line-height: 1.3;
   white-space: nowrap;
+  margin-top: 0;
+  
 }
 
 .section--hero-text {/*p*/
   width: 110%;
   font-weight: normal;
-  margin-top: 57px;
+  margin-top: 65px;
+  margin-bottom: 4rem;
   padding: 0;
-  font-size: 24px;
+  font-size: 25px;
+  line-height: 1.3;
 }
 
 
@@ -178,19 +183,14 @@ header .icon {
 .section--hero-img img {
   
   height: 100%;
-  display: block;
+  width: 100%;
+  display: block;/*ou flex?*/
   padding: 0;
   object-fit: cover;
   
 }
 
-/*.section-hero-img img { /*à revoir
-  width: 100%;
-  height: 100%;
-  display: flex;
-  padding: 0;
-  object-fit: cover;
-}*/
+
 
 /*--BUTTON "je m'inscris" --*/
 
@@ -204,15 +204,37 @@ button .btn-signup {
   font-size: 145%;
   display: flex;
   margin: auto;
+  margin-bottom: 0;/*ne marche pas!*/
+}
+
+
+.btn-submit,.btn-signup {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px 0px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+}
+
+.btn-signup { /*button desktop "Je M'inscris"*/
+  outline: none;
+  text-transform: capitalize;
+  font-size: 24px;
+  padding: 15px 40px;
+  margin: 0;
+  margin-top: 3.5em;
+  margin-bottom: 0;
 }
 
 .btn-signup:hover {
   background: #3876ac;
 }
 
-
-
-.modal-btn {
+/*.modal-btn {
   font-size: 145%;
   background: #fe142f;
   display: flex;
@@ -226,29 +248,7 @@ button .btn-signup {
 
 .modal-btn:hover {
   background: #3876ac;
-}
-
-.btn-submit,.btn-signup {
-  background: #fe142f;
-  display: block;
-  margin: 0 auto;
-  border-radius: 7px;
-  font-size: 1rem;
-  padding: 12px 82px;
-  color: #fff;
-  cursor: pointer;
-  border: 0;
-}
-
-.btn-signup { /*button desktop "Je M'inscris"*/
-  outline: none;
-  text-transform: capitalize;
-  font-size: 24px;
-  padding: 15px 40px;
-  margin: 0;
-  margin-top: 3.5em;
-  margin-bottom: 2em;
-}
+}*/
 
 
 
@@ -264,7 +264,9 @@ button .btn-signup {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: white;
+  background-color: rgba(255, 255, 255, 0.8);/* form with background "home page" */
+  align-items: center;
+  justify-content: center;
 }
 
 .content {
@@ -282,10 +284,37 @@ button .btn-signup {
 }
 
 
-.modal-body {
-  padding: 15px 8%;
-  margin: 15px auto;
+/*--Home page- Modale Open -Closing the modale windows with a click on the form's "icone" X*/
+/*(without validation with click on button--*/
+
+.close { /* "icone" X  ; .close= bground__content--span*/
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(0.7);
 }
+
+.close:before,.close:after { 
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 3px;
+  background-color: #fff;
+}
+
+.close:before {
+  transform: rotate(45deg);
+}
+
+.close:after {
+  transform: rotate(-45deg);
+}
+
 
 /*home page- modal open- validation ok*/
 .thanks {
@@ -305,46 +334,23 @@ button .btn-signup {
   font-weight: 400;
 }
 
-.close {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  width: 32px;
-  height: 32px;
-  opacity: 1;
-  cursor: pointer;
-  transform: scale(0.7);
-}
-
-.close:before,.close:after {
-  position: absolute;
-  left: 15px;
-  content: " ";
-  height: 33px;
-  width: 3px;
-  background-color: #fff;
-}
-
-.close:before {
-  transform: rotate(45deg);
-}
-
-.close:after {
-  transform: rotate(-45deg);
-}
-
-
-
-
 
 /*-----REGISTRATION FORM-----*/
+
+
+.modal-body { /*container of the form*/
+  padding: 15px 8%;
+  margin: 15px auto;
+}
+
+/*FORM- global Formatting*/
 label {
   font-family: var(--font-default);
-  font-size: 17px;
-  font-weight: normal;
+  font-size: 14px;
+  font-weight: 400;
   display: inline-block;
-  margin-bottom: 11px;
-  margin-top: 10px;
+  margin-bottom: 17px;
+  /*margin-top: 13px;*/
 }
 
 input {
@@ -353,21 +359,7 @@ input {
   outline: none;
 }
 
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
-
-.formData p {
-  color: red;
-  font-size: 12px;
-  font-weight: 400;
-  margin-top: 8px;
-}
-/*--FORM PART 1: User Info--*/
-.text-control {
+.text-control { /*writing text by user*/
   margin: 0;
   padding: 8px;
   width: 100%;
@@ -376,7 +368,121 @@ input[data-error]::after {
   height: 48px;
 }
 
+.formData p {
+  color: red;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 8px;
+}
 
+
+/*--FORM PART 1: User Info--*/
+
+.form__label--quantityTitle{
+  margin-bottom: 17px;
+  margin-top: 25px;
+}
+
+
+
+/*--FORM PART 2 +3: User Location + Rights--*/
+
+
+.form__label--checkboxes{/*marge under chekboxes locations(part 2)*/
+  margin-bottom: 0;
+}
+
+.form__label--checkboxes-title{ /*part 2 title*/
+ 
+  line-height: 2.5;
+  font-size: 14px;
+  color: #fff;
+}
+
+.checkbox-label,.checkbox2-label {
+  position: relative;
+  margin-left: 36px;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.checkbox-label .checkbox-icon,
+.checkbox2-label .checkbox-icon {/*checkboxes part 2 (circle) + part of checkboxes part 3 (case)*/
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #c4c4c4;
+  border-radius: 50%;
+  text-indent: 29px;
+  white-space: nowrap;
+  position: absolute;
+  left: -36px;
+  top: -1px;
+  transition: 0.3s;
+}
+.checkbox-label .checkbox-icon::after,
+.checkbox2-label .checkbox-icon::after { /*circle full in checkbox part2(circle) + case full in checkbox part 3*/
+  content: "";
+  width: 13px;
+  height: 13px;
+  background-color: #279e7a;
+  border: 2px solid #279e7a;/*Ne fonctionne pas pq?*/
+  border-radius: 50%;
+  text-indent: 29px;
+  white-space: nowrap;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.3s;
+  opacity: 0;
+}
+ .checkbox-label .checkbox-title, .checkbox2-label .checkbox-title {
+  margin-left: -6px;
+  margin-right: 10px;
+ }
+
+.checkbox-input:checked + .checkbox-label .checkbox-icon::after,
+.checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
+  opacity: 1;
+}
+
+.checkbox-input:checked + .checkbox2-label .checkbox-icon {
+  background: #279e7a;
+  border: 2px solid #279e7a;
+}
+
+
+.checkbox-input { /*formatting part3 :no rectangular white "label"*/
+  display: none;
+}
+
+.checkbox2-label .checkbox-icon { /*complement checkboxes part3*/
+  border-radius: 4px;
+  border: 0;
+  background: #c4c4c4;
+}
+.checkbox2-label .checkbox-icon::after {
+  width: 7px;
+  height: 4px;
+  border-radius: 2px;
+  background: transparent;
+  border: 2px solid transparent;
+  border-bottom-color: #fff;
+  border-left-color: #fff;
+  transform: rotate(-55deg);
+  left: 21%;
+  top: 19%;
+}
+
+/*Data error*/
+
+ 
+input[data-error]::after {
+    content: attr(data-error);
+    font-size: 0.4em;
+    color: red;
+} 
 
 .formData[data-error]::after {
   content: attr(data-error);
@@ -399,73 +505,8 @@ input[data-error]::after {
   border: 2px solid #e54858;
 }
 
-/*--FORM PART 2 +3: User Location + Rights--*/
 
 
-
-.checkbox-label,.checkbox2-label {
-  position: relative;
-  margin-left: 36px;
-  font-size: 17px;
-  font-weight: normal;
-}
-.checkbox-label .checkbox-icon,
-.checkbox2-label .checkbox-icon {
-  display: block;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #279e7a;
-  border-radius: 50%;
-  text-indent: 29px;
-  white-space: nowrap;
-  position: absolute;
-  left: -30px;
-  top: -1px;
-  transition: 0.3s;
-}
-.checkbox-label .checkbox-icon::after,
-.checkbox2-label .checkbox-icon::after {
-  content: "";
-  width: 13px;
-  height: 13px;
-  background-color: #279e7a;
-  border-radius: 50%;
-  text-indent: 29px;
-  white-space: nowrap;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  transition: 0.3s;
-  opacity: 0;
-}
-.checkbox-input {
-  display: none;
-}
-.checkbox-input:checked + .checkbox-label .checkbox-icon::after,
-.checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
-  opacity: 1;
-}
-.checkbox-input:checked + .checkbox2-label .checkbox-icon {
-  background: #279e7a;
-}
-.checkbox2-label .checkbox-icon {
-  border-radius: 4px;
-  border: 0;
-  background: #c4c4c4;
-}
-.checkbox2-label .checkbox-icon::after {
-  width: 7px;
-  height: 4px;
-  border-radius: 2px;
-  background: transparent;
-  border: 2px solid transparent;
-  border-bottom-color: #fff;
-  border-left-color: #fff;
-  transform: rotate(-55deg);
-  left: 21%;
-  top: 19%;
-}
 /* BUTTON "Go"*/
 .form__button--submit{ 
   color:white;
@@ -474,7 +515,7 @@ input[data-error]::after {
   border-radius: 10px;
   padding: 15px 70px;
   margin-top: 20px;
-  margin-left: 25%; /*à améliorer pour centrer vraiment*/
+  margin-left: 23%; /*à améliorer pour centrer vraiment*/
 }
 
 
@@ -484,18 +525,8 @@ input[data-error]::after {
 
 
 
-
-
-
-
-
-
-
-
-
-
 /* custom select styles */
-.custom-select {
+/*.custom-select {
   position: relative;
   font-family: Arial;
   font-size: 1.1rem;
@@ -510,7 +541,7 @@ input[data-error]::after {
 }
 
 /* Style the arrow inside the select element: */
-.select-selected:after {
+/*.select-selected:after {
   position: absolute;
   content: "";
   top: 10px;
@@ -522,15 +553,15 @@ input[data-error]::after {
   border-left-color: #f00;
   transform: rotate(-48deg);
   border-radius: 5px 0 5px 0;
-}
+}*/
 
 /* Point the arrow upwards when the select box is open (active): */
-.select-selected.select-arrow-active:after {
+/*.select-selected.select-arrow-active:after {
   transform: rotate(135deg);
   top: 13px;
-}
+}*/
 
-.select-items div, .select-selected {
+/*.select-items div, .select-selected {
   color: #000;
   padding: 11px 16px;
   border: 1px solid transparent;
@@ -538,47 +569,32 @@ input[data-error]::after {
   cursor: pointer;
   border-radius: 8px;
   height: 48px;
-}
+}*/
 
 /* Style items (options): */
-.select-items {
+/*.select-items {
   position: absolute;
   background-color: #fff;
   top: 89%;
   left: 0;
   right: 0;
   z-index: 99;
-}
+}*/
 
 /* Hide the items when the select box is closed: */
-.select-hide {
+/*.select-hide {
   display: none;
-}
+}*/
 
-.select-items div:hover,.same-as-selected {
+/*.select-items div:hover,.same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
-}
+}*/
 
 /* custom select end */
-.text-label {
+/*.text-label {
   font-weight: normal;
   font-size: 16px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}*/
 
 
 /*-----End of MAIN-----*/
@@ -595,12 +611,17 @@ footer {
   font-weight: bolder;
 }
 
-/*footer {
-  padding-left: 2vw;
-  padding-right: 2vw;
-  margin: 0 20px;
-}*/
+
 /*-----End of Footer-----*/
+
+
+
+
+
+
+
+
+
 
 /*-----ANIMATIONS CSS-----*/
 
@@ -616,25 +637,42 @@ footer {
 
 /*End of COMPUTEUR VERSION : Landing page*/
 
+
+
+
+
+
+
+
+
+
+
+
 /* MEDIAS QUERIES:Landing Page */
 
-
-@media screen and (max-width: 1000px) {
+/*VERSION IPAD*/
+@media screen and (max-width: 1033px) {
   
-  header .responsive {
-    position: relative;
+
+  .header__logo img { /*logo "Game on"*/
+    height: 40px;
+    margin-top: 15px;
   }
 
-  header .responsive .icon {
+  .topnav.mobile {
+    position: relative;
+  }
+  .topnav.mobile .icon {
     position: absolute;
     right: 0;
     top: 0;
   }
 
-  header .responsive a {
-    float: none;
-    display: block;
-    text-align: left;
+  .topnav .mobile a{ /*à reverifier*/
+      float: none;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
   }
   
   header a {
@@ -647,7 +685,8 @@ footer {
 
   
   .section--hero {
-    display: block;
+    display: flex;
+    flex-direction: column;
     box-shadow: unset;
   }
 
@@ -655,111 +694,134 @@ footer {
   .section--hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: column;
   }
+
   .section--hero-content::after {
     content: unset;
   }
-  .section--hero-content .btn-signup {
-    display: none;
-  }
+  
   .section--hero-headline {
-    font-size: 4.5rem;
+    display: flex;
+    line-height: 1.2;
+    font-size: 5.1rem;
     white-space: normal;
     margin-top: 0;
+    margin-bottom: 50px;
   }
+
   .section--hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 50px;
   }
+
   .section--hero-img img {
     border-radius: 10px;
-    margin-top: 40px;
+    margin-top: 0;
+    margin-bottom: 50px;
   }
-  .section--hero > .btn-signup {
-    display: block;
-    margin: 32px auto 10px;
+
+  .section--hero-content .btn-signup { /*disparition FORMAT COMPUTER Button "Je M'inscris"*/
+    display: none;
+  }
+
+  .section--hero > .btn-signup { /*Format IPAD Button "Je M'inscris"*/
+    display: flex;
+  
+    margin: 0 auto;
     padding: 15px 70px;
     font-size: 27px;
+    border-radius: 15px;
   }
   footer {
-    margin-top: 50px;
+    margin-top: 0px;
+    margin-bottom: 30px;
     text-align: center;
   }
 }
 
-@media screen and (max-width: 800px) {
+
+
+
+
+/*VERSION IPhone*/
+@media screen and (max-width: 768px) {
   
-  /*header a {
-    display: none;
-  }
 
-  header .icon {
-    float: right;
-    display: block;
-  }
-
-  header.responsive {
-    position: relative;
-  }
-
-  header .responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
+  /*nav .header__navbar{ 
+    margin-right: 13px;
+    width: 85vw;  
   }*/
+  
 
-  /*header .responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }*/
-
-
-  .header__logo img {
-    width: 150px;
-    margin-top: 15px;
-    margin-left: 35px;
+  header  {
+    
+    margin-right: 30px;
   }
 
 
-  .section--hero-content {
-    min-width: 0;
+  .header__logo img { /*logo "Game on"*/
+    height: 20px;
+    margin-top: 33px;
+    margin-left: 15px;
   }
+
+  header a i{ /*icone "hamburger"*/
+    height:13.5px ; /*ne marche pas car class .fa de fontawesome prend le dessus*/
+    width: 19px;
+    margin-top: 6px;
+  }
+
   .section--hero-headline {
-    font-size: 70px;
+    line-height: 52px;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 17px;
+    
   }
+
   .section--hero-text {
-    font-size: 27px;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16.9px;
+    margin-top: 0;
+    margin-bottom: 36px;
+   
   }
-  .bground {
+
+  .section--hero-img img {
+    margin-top: 0;
+    margin-bottom: 50px;
+  }
+
+  .section--hero > .btn-signup { /*Format IPAD Button "Je M'inscris"*/
+    padding: 10px 50px;
+    font-size: 20px;
+    border-radius: 15px;
+  }
+
+  footer {
+    margin: 29px 30px 26px 30px;  
+  }
+
+  .bground { /*box Windows Modal*/
     background-color: transparent;
   }
-  .content {
-    margin-top: 80px;
+  .content { /*box (span"close" + modal form)*/
+    margin-top: 120px;
     max-width: 100vw;
   }
+
 }
 
 
 
 
-@media screen and (max-width: 500px) {
-  /*header a {
-    display: none;
-  }*/
 
-  /*header a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }*/
-
-  nav .header__navbar{
-    margin-right: 13px;
-    width: 85vw;
-  }
-} 
 
 
 
