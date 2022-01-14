@@ -4,8 +4,8 @@
     <meta charset="utf-8" />
     <title>Reservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="main.css" />
-    <link rel="stylesheet" href="modal.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/modal.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans"
@@ -15,7 +15,7 @@
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="Logo.png"  />
+      <img alt="logo" src="assets/Logo.png"  />
     </div>
     <div class="main-navbar">
       
@@ -46,7 +46,7 @@
           </button>  <!--   bouton je m'inscris pour desktop   -->
         </div>
         <div class="hero-img">
-          <img src="./bg_img.jpg" alt="img" />
+          <img src="assets/bg_img.jpg" alt="img" />
         </div>
         <button class="btn-signup modal-btn">
           Je m'inscris
@@ -55,7 +55,7 @@
 
 
 
- <!-- ==============================  Formulaire en background qui apparaît Modale  =========================== -->
+ <!-- ========================  Formulaire en background qui apparaît Modale  =========================== -->
 
       <div class="bground">
         <div class="content">
@@ -66,21 +66,20 @@
               action="index.html"
               method="get"
               onsubmit="return validate();"
-            >
+            >              
               <div
-                class="formData">
-                <label>Prénom</label><br>
+                class="formData" data-error="Veuillez entrer au moins deux caractères">
+                <label for="first">Prénom</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="first"
-                  name="first"
-                  minlength="2"
-                /><br>
+                  name="first" 
+                /><br> 
               </div>
               <div
-                class="formData">
-                <label>Nom</label><br>
+                class="formData" data-error="Veuillez entrer au moins deux caractères">
+                <label for="last">Nom</label><br>
                 <input
                   class="text-control"
                   type="text"
@@ -89,8 +88,8 @@
                 /><br>
               </div>
               <div
-                class="formData">
-                <label>E-mail</label><br>
+                class="formData" data-error="le format de l'email est invalide">
+                <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
                   type="email"
@@ -99,8 +98,8 @@
                 /><br>
               </div>
               <div
-                class="formData">
-                <label>Date de naissance</label><br>
+                class="formData" data-error="Vous devez entrer votre date de naissance" >
+                <label for="birthdate">Date de naissance</label><br>
                 <input
                   class="text-control"
                   type="date"
@@ -109,13 +108,13 @@
                 /><br>
               </div>
               <div
-                class="formData">
-                <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                class="formData" data-error="Vous devez entrer un nombre">
+                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
-              <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
+              <p class="text-label">À quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                class="formData">
+                class="formData" data-error="Vous devez choisir une option">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -185,8 +184,8 @@
               </div>
 
               <div
-                class="formData">
-                <input class="checkbox-input"  type="checkbox"    id="checkbox1"      />  
+                class="formData" data-error="Vous devez accepter les termes et conditions">
+                <input class="checkbox-input"  type="checkbox"    id="checkbox1"  />  
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
@@ -199,12 +198,14 @@
                 </label>
                 <br>
               </div>
+              <div class="sent-message"></div>
               <input
                 class="btn-submit"
                 type="submit"
                 class="button"
                 value="C'est parti"
               />
+             
             </form>
           </div>
         </div>
@@ -215,6 +216,7 @@
         Copyright 2014 - 2022, GameOn Inc.
       </p>
     </footer>
-    <script src="openclosemodal.js"></script>
+    <script src="js/openclosemodal.js"></script>
+    <script src="js/validation.js"></script>
   </body>
 </html>
