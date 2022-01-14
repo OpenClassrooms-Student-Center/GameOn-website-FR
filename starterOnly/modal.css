@@ -289,7 +289,6 @@ footer {
   margin: 15px auto;
 }
 
-
 label {
   font-family: var(--font-default);
   font-size: 17px;
@@ -328,6 +327,10 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
+.error{
+  font-size: 0.75rem;
+  color: red;
+}
 .checkbox-label,
 .form-check-label {
   position: relative;
@@ -342,7 +345,6 @@ input {
 .form-check-label{
   position: relative;
   margin-left: 10px;
-
 }
 
 .checkbox-label .checkbox-icon,

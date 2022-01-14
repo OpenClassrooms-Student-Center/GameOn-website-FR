@@ -20,7 +20,6 @@ toggleMenu.forEach((el) => el.addEventListener("click", () => {
 modalBtn.addEventListener("click", launchModal);
 //close modal event
 closeModalBtn.addEventListener("click", closeModal);
-// thanksCloseBtn.addEventListener("click", closeModal);
 
 
 /*FONCTION MODAL*/
@@ -83,8 +82,6 @@ form.addEventListener("submit", function(e){
   //label prenom
   if(first.value == "" || textFormat.test(first.value) == false){
     error.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom';
-    error.style.color = "red";
-    error.style.fontSize = '0.75rem';
     formErrors++;
   }else{
     error.innerHTML = "";
@@ -93,8 +90,6 @@ form.addEventListener("submit", function(e){
   //label nom
   if(last.value == "" || textFormat.test(last.value) == false){
     error1.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
-    error1.style.color = "red";
-    error.style.fontSize = '0.75rem';
     formErrors++;
   }else{
     error1.innerHTML = "";
@@ -109,8 +104,6 @@ form.addEventListener("submit", function(e){
   //label birthday
   if(birthdate.value == ""){
     error2.textContent = 'Vous devez entrer votre date de naissance.';
-    error2.style.color = "red";
-    error.style.fontSize = '0.75rem';
     formErrors++;
   }else{
     error2.innerHTML = "";
@@ -119,8 +112,6 @@ form.addEventListener("submit", function(e){
   //tournoi quantity
   if(quantity.value == ""){
     error3.textContent = 'Vous devez saisir un nombre.';
-    error3.style.color = "red";
-    error3.style.fontSize = '0.75rem';
     formErrors++;
   }else{
     error3.innerHTML = "";
@@ -134,8 +125,6 @@ console.log(document.querySelector('input[type=radio]:checked'))
   
    if(document.querySelector('input[type=radio]:checked') === null) {
     errorMessage.textContent = "Vous devez choisir une option.";
-    errorMessage.style.color = "red";
-    errorMessage.style.fontSize = "0.75rem";
     formErrors++;
   }else{
     errorMessage.innerHTML = '';
@@ -146,8 +135,6 @@ console.log(document.querySelector('input[type=radio]:checked'))
   
   if(!terms.checked){
     errorTerms.textContent = "Vous devez vérifier que vous acceptez les termes et conditions.";
-    errorTerms.style.color = "red";
-    errorTerms.style.fontSize = "0.75rem";
     formErrors++;
   }else{
     errorTerms.innerHTML = "";
@@ -155,8 +142,6 @@ console.log(document.querySelector('input[type=radio]:checked'))
 
   if (formErrors > 0){
     finalError.textContent = "vous devez renseigner tous les champs.";
-    finalError.style.color = "red";
-    finalError.style.fontSize = "0.75rem";
   }else{
     form.reset();
     showModalThanks();
