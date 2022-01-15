@@ -1,6 +1,7 @@
 export function editNav() {
   const nav = document.getElementById("myTopnav"); // no vars since es6
-  nav.classList.toggle("responsive"); // Simplifying burger menu logic using classlist toggle.
+  nav.classList.toggle("responsive");
+  document.querySelector("#burger-menu").classList.toggle("open"); // Simplifying burger menu logic using classlist toggle.
 }
 
 // Auto captitalize first letter

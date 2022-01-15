@@ -37,6 +37,9 @@ img {
 #burger-menu > i {
   color: red;
 }
+#burger-menu.open > i {
+  color: white;
+}
 
 .logo{
   width: 100%;
