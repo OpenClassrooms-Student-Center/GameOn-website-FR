@@ -54,32 +54,34 @@ modalClose.addEventListener('click', function () {
 */
 
 //Controle d'entrée du prénom
-firstName.addEventListener("input", function() {
+const prenomValidation = () => {
   //Réinitialise les messages d'erreur
   firstError.innerHTML = ' ';
-  firstError.classList.remove('errorStyle')
-  first.classList.remove('errorForm')
+  firstError.classList.remove('errorStyle');
+  first.classList.remove('errorForm');
   // Chaque fois que l'utilisateur saisit quelque chose
   // on vérifie la validité du champ prénom.
 //si rien n'est écrit
-  if (this.value.length == 0){
+  if (firstName.value.length == 0){
     firstError.innerHTML = 'Réponse obligatoire!'; //ajout du message
-    firstError.classList.add('errorStyle') //ajout d'une class au message d'erreur
-    first.classList.add('errorForm') //ajout d'une class a la zone d'entrée
+    firstError.classList.add('errorStyle'); //ajout d'une class au message d'erreur
+    first.classList.add('errorForm'); //ajout d'une class a la zone d'entrée
+    return false;
 //s'il y a moins de 2 caracteres
-  } else if (this.value.length < 2) {
+  } else if (firstName.value.length < 2) {
     firstError.innerHTML = 'Votre prénom doit comporter au-moins 2 caractères'; 
-    firstError.classList.add('errorStyle')
-    first.classList.add('errorForm')
+    firstError.classList.add('errorStyle');
+    first.classList.add('errorForm');
+    return false;
 //si toutes les conditions sont remplies
   } else {
     firstError.innerHTML = ' ';
+    return true;
   }
-
-});
+};
 
 //Controle d'entrée du nom
-lastName.addEventListener("input", function () {
+const nomValidation = () => {
   //Réinitialise les messages d'erreur
   lastError.innerHTML = ' ';
   lastError.classList.remove('errorStyle')
@@ -87,48 +89,51 @@ lastName.addEventListener("input", function () {
   // Chaque fois que l'utilisateur saisit quelque chose
   // on vérifie la validité du champ
   //si rien n'est écrit
-  if (this.value.length == 0) {
+  if (lastName.value.length == 0) {
     lastError.innerHTML = 'Réponse obligatoire!'; //ajout du message
     lastError.classList.add('errorStyle') //ajout d'une class au message d'erreur
     last.classList.add('errorForm') //ajout d'une class a la zone d'entrée
+    return false
     //s'il y a moins de 2 caracteres
-  } else if (this.value.length < 2) {
+  } else if (lastName.value.length < 2) {
     lastError.innerHTML = 'Votre nom doit comporter au-moins 2 caractères';
     lastError.classList.add('errorStyle')
     last.classList.add('errorForm')
+    return false
     //si toutes les conditions sont remplies
   } else {
     lastError.innerHTML = ' ';
+    return true
   }
-
-});
+};
 
 //Controle email
 //Reinitialisation
-emailAdress.addEventListener("input", function(){
+const mailValidation = () => {
   mailError.innerHTML = '';
-  mailError.classList.remove('errorStyle')
-  email.classList.remove('errorForm')
+  mailError.classList.remove('errorStyle');
+  email.classList.remove('errorForm');
 
   //Si la valeur du mail correspond au standard
   if (emailAdress.value.match(mailRegex)) {
     mailError.innerHTML = '';
-    
+    return true
   //Si rien n'a été indiqué
   } else if (emailAdress.value == "") {
     mailError.innerHTML = 'Entrez une adresse mail';
-    mailError.classList.add('errorStyle')
-    email.classList.add('errorForm')
+    mailError.classList.add('errorStyle');
+    email.classList.add('errorForm');
+    return false;
   }
-  
+
   //Sinon, si l'adresse n'est pas bonne
   else {
     mailError.innerHTML = 'Adresse mail invalide';
     mailError.classList.add('errorStyle')
     email.classList.add('errorForm')
+    return false;
   }
-  
-});
+};
 
 //Controle age
 birthdateInput.addEventListener ("input", function() {
@@ -168,28 +173,26 @@ function checkNb() {
   }
 }
 
-const city = document.getElementsByName("location");
-const cityCheck = document.getElementsByClassName("checkboxCity")
+const city = document.querySelectorAll('input[name="location"]');
 
-function cityFn () {
-
+document.addEventListener('change', function () {
+  var formValid = false;
   var i = 0;
   while (!formValid && i < city.length) {
     if (city[i].checked) formValid = true;
     i++;
     locationError.innerHTML = ' ';
     locationError.classList.remove('errorStyle')
-    return true
   }
 
   if (!formValid) {
     locationError.innerHTML = 'Réponse obligatoire!';
     locationError.classList.add('errorStyle')
-    return false;
+    return formValid;
   }
-};
+});
 
-cgv.addEventListener("change", (event) => {
+cgv.addEventListener('change', (event) => {
   if (event.target.checked) {
     cgvError.innerHTML = ' ';
     cgvError.classList.remove('errorStyle')
@@ -210,6 +213,15 @@ function validate(event) {
   //localisation
   
 }
+
+//Ecoute des evenements 
+//Prénom
+firstName.addEventListener('input', prenomValidation);
+//Nom
+lastName.addEventListener('input', nomValidation);
+//Mail
+emailAdress.addEventListener("input", mailValidation);
+
 
 /* bouts de code
 const radios = document.getElementsByName("location");
