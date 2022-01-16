@@ -114,29 +114,28 @@ const mailValidation = () => {
   mailError.classList.remove('errorStyle');
   email.classList.remove('errorForm');
 
-  //Si la valeur du mail correspond au standard
-  if (emailAdress.value.match(mailRegex)) {
-    mailError.innerHTML = '';
-    return true
-  //Si rien n'a été indiqué
-  } else if (emailAdress.value == "") {
+//Si rien n'a été indiqué
+  if (emailAdress.value == "") {
     mailError.innerHTML = 'Entrez une adresse mail';
     mailError.classList.add('errorStyle');
     email.classList.add('errorForm');
     return false;
-  }
-
-  //Sinon, si l'adresse n'est pas bonne
-  else {
+//Si la valeur du mail ne correspond pas au standard
+  } else if (!emailAdress.value.match(mailRegex)) {
     mailError.innerHTML = 'Adresse mail invalide';
     mailError.classList.add('errorStyle')
     email.classList.add('errorForm')
     return false;
   }
+  
+  else {
+    mailError.innerHTML = '';
+    return true
+  }
 };
 
 //Controle age
-birthdateInput.addEventListener ("input", function() {
+const birthdateValidation = () => {
   if (birthdateInput.value == ""){
     birthdateError.innerHTML = 'Vous devez entrer votre date de naissance';
     birthdateError.classList.add('errorStyle')
@@ -154,17 +153,18 @@ birthdateInput.addEventListener ("input", function() {
     birthdateError.classList.remove('errorStyle')
     birthdate.classList.remove('errorForm')
   }
-});
+};
 
 //Control nombre de tournois
-function checkNb() { 
+const checkNb = () => { 
   var nbTournois = document.getElementById("quantity").value;
+  //Si ce n'est pas un chiffre
   if (isNaN(nbTournois)) {
     quantityError.innerHTML = "Entrez uniquement une valeur numérique";
     quantityError.classList.add('errorStyle')
     quantity.classList.add('errorForm');
     return false;
-    
+  //Sinon
   } else {
     quantityError.innerHTML = "";
     quantityError.classList.remove('errorStyle')
@@ -220,8 +220,11 @@ firstName.addEventListener('input', prenomValidation);
 //Nom
 lastName.addEventListener('input', nomValidation);
 //Mail
-emailAdress.addEventListener("input", mailValidation);
-
+emailAdress.addEventListener('input', mailValidation);
+//Age
+birthdateInput.addEventListener('input', birthdateValidation);
+//Nombre de tournois
+quantityTournois.addEventListener('keyup', checkNb);
 
 /* bouts de code
 const radios = document.getElementsByName("location");

@@ -111,7 +111,7 @@
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br> <!--Ajout for-->
-                <input type="text" class="text-control" id="quantity" name="quantity" onkeyup="return checkNb()" required /> <!--Ajout de required et / et pattern-->
+                <input type="text" class="text-control" id="quantity" name="quantity" min="0" max="99" required /> <!--Ajout de required et / et pattern-->
                 <div class="result" id="quantityError"></div> <!--Ajout du message d'erreur-->
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
