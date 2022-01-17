@@ -311,6 +311,9 @@ input {
   font-size: 20px;
   height: 48px;
 }
+.formData{
+  margin: 11px 0;
+}
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -328,6 +331,14 @@ input {
 }
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
+}
+
+.form-label {
+  width: 100%;
+}
+.form-control {
+  width: 100%;
+  border-radius: 10px;
 }
 .error{
   font-size: 0.75rem;
@@ -517,6 +528,7 @@ input {
 .text-label {
   font-weight: normal;
   font-size: 16px;
+  margin: 11px 0;
 }
 
 /********** REMERCIEMENT **********/

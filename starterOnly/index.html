@@ -67,34 +67,34 @@
             <form name="reserve" id="reserve">
 
               <!-- PRENOM -->
-              <div class="form-group">
+              <div class="formData">
                 <label class="form-label" for="firstName">Prénom</label><br>
                 <input class="form-control" type="text" id="first" name="firstName"/><br>
                 <div class="error" id="firstError"></div>
               </div>
 
               <!-- NOM -->
-              <div class="form-group">
+              <div class="formData">
                 <label class="form-label" for="lastName">Nom</label><br>
                 <input class="form-control" type="text" id="last" name="lastName"/><br>
                 <div class="error" id="lastError"></div>
               </div>
               <!-- MAIL -->
-              <div class="form-group">
+              <div class="formData">
                 <label class="form-label" for="email">E-mail</label><br>
                 <input class="form-control" type="email" id="email" name="email"/><br>
                 <div class="error" id="mailError"></div>
               </div>
 
               <!-- DATE DE NAISSANCE -->
-              <div class="form-group">
+              <div class="formData">
                 <label class="form-label" for="birthdate">Date de naissance</label><br>
                 <input class="form-control" type="date" id="birthdate" name="birthdate" /><br>
                 <div class="error" id="birthError"></div>
               </div>
 
               <!-- TOURNOI QUANTITY -->
-              <div class="form-group">
+              <div class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
                 <div class="error" id="quantityError"></div>
@@ -102,8 +102,8 @@
 
               <!-- LOCATION -->
               <p class="text-label">Quelles villes ?</p>
-              <div class="errorMessage" id="locationError"></div>
-              <div class="form-group">
+              <div class="error" id="locationError"></div>
+              <div class="formData">
                 <input class="checkbox-input" type="radio" id="location1" name="location" value="New York"/>
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
