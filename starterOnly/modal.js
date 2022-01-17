@@ -175,7 +175,7 @@ const checkNb = () => {
 
 const city = document.querySelectorAll('input[name="location"]');
 
-document.addEventListener('change', function () {
+document.addEventListener('change', function choiceCity () {
   var formValid = false;
   var i = 0;
   while (!formValid && i < city.length) {
@@ -192,7 +192,7 @@ document.addEventListener('change', function () {
   }
 });
 
-cgv.addEventListener('change', (event) => {
+const cgvCheck = (event) => {
   if (event.target.checked) {
     cgvError.innerHTML = ' ';
     cgvError.classList.remove('errorStyle')
@@ -200,7 +200,7 @@ cgv.addEventListener('change', (event) => {
     cgvError.innerHTML = "Merci d'acceptez les conditions d'utilisation";
     cgvError.classList.add('errorStyle')
   }
-})
+};
 
 form.addEventListener('submit', validate);
 
@@ -225,6 +225,8 @@ emailAdress.addEventListener('input', mailValidation);
 birthdateInput.addEventListener('input', birthdateValidation);
 //Nombre de tournois
 quantityTournois.addEventListener('keyup', checkNb);
+//CGV
+cgv.addEventListener('change', cgvCheck)
 
 /* bouts de code
 const radios = document.getElementsByName("location");
