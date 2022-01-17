@@ -16,7 +16,6 @@ const submitBtn = document.querySelector(".btn-submit");
 const confirmationCloseBtn = document.querySelectorAll(".btn-close");
 const regexName = /[a-zA-Z]/;
 const regexEmail = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
-// const regexDate = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[1-9]|2[1-9])$/;
 const form = document.querySelector("form");
 const first = document.getElementById("first");
 const last = document.getElementById("last");
@@ -27,7 +26,8 @@ const checkedCity = document.querySelectorAll(".checkedCity");
 const checkedBox = document.getElementById("checkbox1");
 const btnClose = document.querySelector(".btn-close");
 const icon = document.getElementById("menu");
-
+const errorCity = document.getElementById("errorCity");
+const errorTerms = document.getElementById("errorTerms");
 // Launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -69,7 +69,12 @@ function removeInvisible(element) {
 function addInvisible(element) {
   element.nextElementSibling.classList.add("invisible");
 }
-
+function toHide(element) {
+  element.classList.add("invisible");
+}
+function toShow(element) {
+  element.classList.remove("invisible");
+}
 //Fonction d'ouverture et fermeture du menu en responsive
 function modalClose() {
   modalbg.style.display = "none";
@@ -170,10 +175,10 @@ function checkQuantity() {
 function checkLocation() {
   const checkedCityValue = document.querySelectorAll(".checkedCity:checked");
   if (checkedCityValue.length === 0) {
-    document.getElementById("errorCity").classList.remove("invisible");
+    toShow(errorCity);
     return false;
   }
-  document.getElementById("errorCity").classList.add("invisible");
+  toHide(errorCity);
   return true;
 }
 
@@ -181,10 +186,10 @@ function checkLocation() {
 function checkBox() {
   const checkboxValue = checkedBox.checked;
   if (checkboxValue === false) {
-    document.getElementById("errorTerms").classList.remove("invisible");
+    toShow(errorTerms);
     return false;
   }
-  document.getElementById("errorTerms").classList.add("invisible");
+  toHide(errorTerms);
   return true;
 }
 
