@@ -12,7 +12,8 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const form = document.querySelector('form');
-const modalClose = document.querySelector(".close") //Création et chargement de la constante 'modalClose' et accès à la class .close du DOM  
+const modalClose = document.querySelector(".close") //Création et chargement de la constante 'modalClose' et accès à la class .close du DOM 
+const btnsubmit = document.getElementsByClassName("btnsubmit")
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
 //Stockage des valeurs de champs dans des variables//
@@ -130,7 +131,7 @@ const mailValidation = () => {
   
   else {
     mailError.innerHTML = '';
-    return true
+    return true;
   }
 };
 
@@ -140,18 +141,19 @@ const birthdateValidation = () => {
     birthdateError.innerHTML = 'Vous devez entrer votre date de naissance';
     birthdateError.classList.add('errorStyle')
     birthdate.classList.add('errorForm')
-    formIsValid = false; 
+    return false;
 
   } else if (Date.parse(birthdateInput.value) > Date.now()){
     birthdateError.innerHTML = 'Vous devez entrer une date valide';
     birthdateError.classList.add('errorStyle')
     birthdate.classList.add('errorForm')
-    formIsValid = false; 
+    return false;
 
   } else {
     birthdateError.innerHTML = '';
     birthdateError.classList.remove('errorStyle')
     birthdate.classList.remove('errorForm')
+    return true;
   }
 };
 
@@ -175,43 +177,76 @@ const checkNb = () => {
 
 const city = document.querySelectorAll('input[name="location"]');
 
-document.addEventListener('change', function choiceCity () {
-  var formValid = false;
+const locationValidation = () => {
   var i = 0;
   while (!formValid && i < city.length) {
     if (city[i].checked) formValid = true;
     i++;
     locationError.innerHTML = ' ';
     locationError.classList.remove('errorStyle')
+    return true;
   }
 
   if (!formValid) {
     locationError.innerHTML = 'Réponse obligatoire!';
     locationError.classList.add('errorStyle')
-    return formValid;
+    return false;
   }
-});
+};
 
 const cgvCheck = (event) => {
   if (event.target.checked) {
     cgvError.innerHTML = ' ';
     cgvError.classList.remove('errorStyle')
+    return true;
   } else {
     cgvError.innerHTML = "Merci d'acceptez les conditions d'utilisation";
     cgvError.classList.add('errorStyle')
+    return false;
   }
 };
 
-form.addEventListener('submit', validate);
+//btnsubmit.addEventListener('submit', validate);
 
 //La fonction est exécutée lors de la soumission du formulaire//
 function validate(event) {
   //Désactivé le comportement par défaut de l'évenement//
   event.preventDefault();
-  var formValid = true;
-  
-  //localisation
-  
+  let valid = true;
+  for (let input of allFields) {
+    if (!input.checkValidity()) {
+      input.classList.add("is-invalid");
+      valid = false;
+    } else {
+      input.classList.remove("is-invalid");
+    }
+  }
+  return valid;
+}
+
+btnsubmit.onsubmit = function (e) {
+
+
+  prenomValidation();
+  nomValidation();
+  mailValidation();
+  birthdateValidation();
+  checkNb();
+  locationValidation();
+  cgvCheck();
+
+  if (
+    prenomValidation() == true &&
+    nomValidation() == true &&
+    mailValidation() == true &&
+    birthdateValidation() == true &&
+    checkNb() == true &&
+    locationValidation() == true &&
+    cgvCheck() == true) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 //Ecoute des evenements 
@@ -227,6 +262,10 @@ birthdateInput.addEventListener('input', birthdateValidation);
 quantityTournois.addEventListener('keyup', checkNb);
 //CGV
 cgv.addEventListener('change', cgvCheck)
+//Choix de la ville
+document
+  .querySelectorAll('input[name="location"]')
+  .forEach((inputEl) => inputEl.addEventListener('submit', locationValidation));
 
 /* bouts de code
 const radios = document.getElementsByName("location");
