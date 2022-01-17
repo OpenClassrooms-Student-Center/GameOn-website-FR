@@ -269,7 +269,9 @@ footer {
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
 }
-
+.modal-open .bground {
+  display: block;
+}
 .content {
   margin: 5% auto;
   width: 100%;

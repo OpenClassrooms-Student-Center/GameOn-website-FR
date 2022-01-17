@@ -1,58 +1,61 @@
 // DOM Elements
-const toggleMenu = document.querySelectorAll(".toggleMenu")
+let toggleMenu = document.querySelector('.toggleMenu')
 
-const modalbg = document.getElementById("bground");
+let modal = document.querySelector('#modal')
+let openModalBtn = document.querySelector('.openModal')
+let closeModalBtn = document.querySelectorAll('.closeModal')
+
+let form = document.forms['reserve']
+let thanks = document.querySelector('#thanks')
+
 const modalThanks = document.getElementById("thanks");
 const formData = document.querySelectorAll(".formData");
-const modalBtn = document.querySelector(".btn-signup");
-const closeModalBtn = document.querySelector("#closeModal");
 const thanksCloseBtn = document.getElementById("closeAll");
 
-
-/*TOGGLE MENU*/
-toggleMenu.forEach((el) => el.addEventListener("click", () => {
-  document.body.classList.toggle('menu-open');
-}
-));
-
-/*EVENT MODAL*/
-// launch modal event
-modalBtn.addEventListener("click", launchModal);
-//close modal event
-closeModalBtn.addEventListener("click", closeModal);
-
-
-/*FONCTION MODAL*/
-// launch modal form
-function launchModal(){
-  modalbg.style.display = "block";
-  window.scrollTo(0, 0);
-  modalbg.scrollTo(0, 0);
-  document.querySelector('#closeModal').addEventListener("click", closeModal);
+/*Fonction Open Modal*/
+function openModal(){
+  document.body.classList.add('modal-open')
   document.body.classList.add('overflow');
-}
-
-//open modal thanks
-function showModalThanks(){
-  form.style.display= 'none';
+  window.scrollTo(0, 0);
+  modal.scrollTo(0, 0);
   form.reset()
-  modalThanks.style.display = 'block';
-  document.querySelector('#closeAll').addEventListener("click", closeModal);
-  document.querySelector('#closeModal').addEventListener("click", closeModal);
+  modal.style.display = 'block'
+  modalThanks.style.display = 'none'
 }
 
-//close modal form
+/*Fonction toggle Modal*/
+function showModalThanks(){
+  form.style.display= 'none'
+  modalThanks.style.display = 'block'
+}
+
+/*Fonction close Modal*/
 function closeModal(){
-  form.style.display='block'
-  modalbg.style.display = "none";
-  modalThanks.style.display="none";
-  closeModalBtn.removeEventListener("click", closeModal);
+  document.body.classList.remove('modal-open')
   document.body.classList.remove('overflow');
+  
 }
 
 
-//variable formulaire
-let form = document.forms["reserve"];
+/*listener Modal*/
+
+/*Toggle Menu*/
+toggleMenu.addEventListener('click', e => {
+  document.body.classList.toggle('menu-open')
+})
+
+/*Open Modal*/
+openModalBtn.addEventListener("click", openModal)
+
+/*close Modal*/
+closeModalBtn.forEach(element => {
+  element.addEventListener('click', closeModal)
+})
+
+
+
+
+
 //format text et mail
 let verifMail = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
 let textFormat = /^[a-zA-Z\é\è\-\^\']{2,30}$/;
