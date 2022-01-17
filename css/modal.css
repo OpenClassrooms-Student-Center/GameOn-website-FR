@@ -87,9 +87,6 @@ img {
   .topnav {
     z-index: 2;
   }
-}
-
-@media screen and (max-width: 768px) {
   .topnav.responsive {
     position: relative;
   }
@@ -182,11 +179,11 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: #ffffff;
+  background-color: rgba(26, 39, 156, 0.4);
 }
 
 .content {
-  margin: 20% auto;
+  margin: 2% auto;
   width: 100%;
   max-width: 500px;
   animation-name: modalopen;
@@ -242,7 +239,15 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
+.error {
+  margin-top: 5px;
+  color: #e54858;
+  font-size: 0.6em;
+}
+.invisible {
+  display: none;
+}
+/*
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
@@ -452,7 +457,7 @@ input[data-error]::after {
   z-index: 1;
 }
 .hero-headline {
-  font-size: 6rem;
+  font-size: 85px;
   font-weight: normal;
   white-space: nowrap;
 }
@@ -460,7 +465,7 @@ input[data-error]::after {
   width: 146%;
   font-weight: normal;
   margin-top: 57px;
-  padding: 0;
+  padding-top: 10%;
 }
 .btn-signup {
   outline: none;
@@ -489,6 +494,33 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+#confirmation button {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1.3rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+}
+#confirmation {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 2.3rem;
+  font-weight: normal;
+}
+.fermeture {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  height: 52vh;
+}
+.fermeture p {
+  margin-bottom: 70%;
+}
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
@@ -515,8 +547,8 @@ footer {
     white-space: normal;
   }
   .hero-text {
-    width: 80%;
-    font-size: 1.5rem;
+    width: 100%;
+    font-size: 1.3rem;
   }
   .hero-img img {
     border-radius: 10px;
