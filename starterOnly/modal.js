@@ -175,25 +175,29 @@ const checkNb = () => {
   }
 }
 
-const city = document.querySelectorAll('input[name="location"]');
-
+//Selection d'une ville
 const locationValidation = () => {
-  var formValid = false;
-  var i = 0;
-  while (!formValid && i < city.length) {
-    if (city[i].checked) formValid = true;
-    i++;
-    locationError.innerHTML = ' ';
-    locationError.classList.remove('errorStyle')
-    return true;
-  }
+//instialise la variable
+var valid = false;
+var x = document.reserve.location;
 
-  if (!formValid) {
-    locationError.innerHTML = 'Réponse obligatoire!';
-    locationError.classList.add('errorStyle')
-    return false;
+//on crée une boucle qui regarde si un élément est "checked"
+for(var i=0; i<x.length; i++) {
+  if(x[i].checked){
+    valid = true;
+    break;
   }
-};
+}
+if(valid){
+  locationError.innerHTML = ' ';
+  locationError.classList.remove('errorStyle')
+  return true;
+} else {
+  locationError.innerHTML = 'Réponse obligatoire!';
+  locationError.classList.add('errorStyle')
+  return false;
+}
+}
 
 const checkCGV = () => {
   if (cgv.checked) {
@@ -206,14 +210,6 @@ const checkCGV = () => {
     return false;
   }
 };
-
-//btnsubmit.addEventListener('submit', validate);
-
-//La fonction est exécutée lors de la soumission du formulaire//
-function validate(event) {
-  //Désactivé le comportement par défaut de l'évenement//
-  event.preventDefault();
-}
 
 //Ecoute des evenements 
 //Prénom
@@ -231,13 +227,14 @@ cgv.addEventListener('change', checkCGV)
 //Choix de la ville
 document
   .querySelectorAll('input[name="location"]')
-  .forEach((inputEl) => inputEl.addEventListener('submit', locationValidation));
+  .forEach((inputEl) => inputEl.addEventListener('change', locationValidation));
 
 
 //Controle avant envoi du formulaire
-document.getElementById("registrationForm").onsubmit = function (e) {
-  e.preventDefault();
-
+document.getElementById("registrationForm").onsubmit = function (event) {
+//on n'execute pas l'action par defaut
+  event.preventDefault();
+//Charge les fonctions d'input
   prenomValidation();
   nomValidation();
   mailValidation();
@@ -246,6 +243,7 @@ document.getElementById("registrationForm").onsubmit = function (e) {
   locationValidation();
   checkCGV();
 
+//Verifie si toutes les conditions sont remplies
   if (
     prenomValidation() == true &&
     nomValidation() == true &&
@@ -255,48 +253,9 @@ document.getElementById("registrationForm").onsubmit = function (e) {
     locationValidation() == true &&
     checkCGV() == true
     )
-    {
+  {
     return true;
   } else {
     return false;
   }
 }
-
-/* bouts de code
-const radios = document.getElementsByName("location");
-document.addEventListener("submit", function () {
-  var formValid = false;
-
-  var i = 0;
-  while (!formValid && i < radios.length) {
-    if (radios[i].checked) formValid = true;
-    i++;
-    locationError.innerHTML = ' ';
-    locationError.classList.remove('errorStyle')
-  }
-
-  if (!formValid) {
-    locationError.innerHTML = 'Réponse obligatoire!';
-    locationError.classList.add('errorStyle')
-    return formValid;
-  }
-});
-
-document.addEventListener("change", function () {
-  var formValid = false;
-
-  var i = 0;
-  while (!formValid && i < radios.length) {
-    if (radios[i].checked) formValid = true;
-    i++;
-    locationError.innerHTML = ' ';
-    locationError.classList.remove('errorStyle')
-  }
-
-  if (!formValid) {
-    locationError.innerHTML = 'Réponse obligatoire!';
-    locationError.classList.add('errorStyle')
-    return formValid;
-  }
-});
-*/
