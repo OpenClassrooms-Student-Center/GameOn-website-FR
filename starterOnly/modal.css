@@ -483,6 +483,14 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+
+/*Ajout du message de validation*/
+.message-validation {
+  padding: 15px 8%;
+  margin: 15px auto;
+  text-align: center;
+}
+
 footer {
   padding-left: 2vw;
   padding-right: 2vw;

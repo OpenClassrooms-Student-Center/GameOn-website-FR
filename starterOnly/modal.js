@@ -244,6 +244,7 @@ document.getElementById("registrationForm").onsubmit = function (event) {
   checkCGV();
 
 //Verifie si toutes les conditions sont remplies
+  let formulaireValide = true;
   if (
     prenomValidation() == true &&
     nomValidation() == true &&
@@ -254,8 +255,13 @@ document.getElementById("registrationForm").onsubmit = function (event) {
     checkCGV() == true
     )
   {
-    return true;
+    return formulaireValide();
   } else {
     return false;
   }
+}
+
+const formulaireValide = () => {
+  document.querySelector('.modal-body').style.display = 'none';
+  document.querySelector('.message-validation').style.display = 'block';
 }
