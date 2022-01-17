@@ -6,34 +6,30 @@ let openModalBtn = document.querySelector('.openModal')
 let closeModalBtn = document.querySelectorAll('.closeModal')
 
 let form = document.forms['reserve']
-let thanks = document.querySelector('#thanks')
-
-const modalThanks = document.getElementById("thanks");
-const formData = document.querySelectorAll(".formData");
-const thanksCloseBtn = document.getElementById("closeAll");
+let modalThanks = document.querySelector('#thanks')
 
 /*Fonction Open Modal*/
 function openModal(){
   document.body.classList.add('modal-open')
-  document.body.classList.add('overflow');
+  document.body.classList.add('overflow')
   window.scrollTo(0, 0);
   modal.scrollTo(0, 0);
+
   form.reset()
-  modal.style.display = 'block'
+  modal.style.display = ''
   modalThanks.style.display = 'none'
 }
 
 /*Fonction toggle Modal*/
 function showModalThanks(){
-  form.style.display= 'none'
+  form.style.display = 'none'
   modalThanks.style.display = 'block'
 }
 
 /*Fonction close Modal*/
 function closeModal(){
   document.body.classList.remove('modal-open')
-  document.body.classList.remove('overflow');
-  
+  document.body.classList.remove('overflow')
 }
 
 
@@ -48,110 +44,96 @@ toggleMenu.addEventListener('click', e => {
 openModalBtn.addEventListener("click", openModal)
 
 /*close Modal*/
-closeModalBtn.forEach(element => {
-  element.addEventListener('click', closeModal)
+closeModalBtn.forEach(el => {
+  el.addEventListener('click', closeModal)
 })
 
 
 
-
+/*Validation form and listener*/
 
 //format text et mail
-let verifMail = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
-let textFormat = /^[a-zA-Z\é\è\-\^\']{2,30}$/;
-
-console.log("azeaze")
 
 form.addEventListener("submit", function(e){
   e.preventDefault();
-  let formErrors = 0;
+  
+  // Expression for fields
+  const verifMail = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
+  const textFormat = /^[a-z\é\è\-\^\']{2,}$/i;
+  
+  //Form flag validation
+  let formFlag = true
+  
+  console.log(form.elements)
 
-  //constantes
-  const first = form.querySelector('input[name="first"]');
-  const last = form.querySelector('input[name="last"]');
-  const email = form.querySelector('input[name="email"]');
-  const birthdate = form.querySelector('input[name="birthdate"]');
-  const quantity = form.querySelector('input[name="quantity"]');
-  const radioLocation = document.querySelectorAll('input[type="radio"]');
-  const terms = document.getElementById('terms');
-
-  const error = document.getElementById("error");
-  const error1 = document.getElementById("error1");
-  const error2 = document.getElementById("error2");
-  const error3 = document.getElementById("error3");
-  const errorMessage = document.getElementById("errorMessage");
-  const finalError = document.getElementById("finalError");
-
-
-  //label prenom
-  if(first.value == "" || textFormat.test(first.value) == false){
-    error.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom';
-    formErrors++;
+  // Firstname - min 2 char & not empty
+  if(!form.elements['first'].value.trim().match(textFormat)){
+  formFlag = false
+  firstError.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom'
   }else{
-    error.innerHTML = "";
+    firstError.innerHTML = ''
   }
 
-  //label nom
-  if(last.value == "" || textFormat.test(last.value) == false){
-    error1.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
-    formErrors++;
+  // Lastname - min 2 char & not empty
+  if(!form.elements['last'].value.trim().match(textFormat)){
+    formFlag = false
+    lastError.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.'
   }else{
-    error1.innerHTML = "";
+    lastError.innerHTML = ''
   }
 
-  //label mail
-  if(!email.value.trim().match(verifMail)){
-    alert("l'adresse email n'est pas valide");
-    e.removeEventListener();
+  // email validity
+  if(!form.elements['email'].value.trim().match(verifMail)){
+  formFlag = false
+  mailError.textContent = 'L\'adresse email n\'est pas Valide.'
+  }else{
+    mailError.innerHTML = ''
   }
 
   //label birthday
   if(birthdate.value == ""){
-    error2.textContent = 'Vous devez entrer votre date de naissance.';
-    formErrors++;
+    formFlag = false
+    birthError.textContent = 'Vous devez entrer votre date de naissance.'
   }else{
-    error2.innerHTML = "";
+    birthError.innerHTML = ""
   }
+
 
   //tournoi quantity
-  if(quantity.value == ""){
-    error3.textContent = 'Vous devez saisir un nombre.';
-    formErrors++;
+  let quantity = form.elements['quantity'].value
+  if(quantity == ''|| isNaN(quantity) || Number.isInteger(quantity)){
+  formFlag = false
+  quantityError.textContent = 'Vous devez saisir un nombre.'
   }else{
-    error3.innerHTML = "";
+  quantityError.innerHTML = ""
   }
 
+
   //location
-
-  
-console.log(document.querySelector('input[type=radio]:checked'))
-
-  
-   if(document.querySelector('input[type=radio]:checked') === null) {
-    errorMessage.textContent = "Vous devez choisir une option.";
-    formErrors++;
+  if(document.querySelector('input[type=radio]:checked') === null) {
+  formFlag = false
+  locationError.textContent = "Vous devez choisir une option."
   }else{
-    errorMessage.innerHTML = '';
- }
+    locationError.innerHTML = ''
+  }
 
 
   //Conditions and subscribe
-  
-  if(!terms.checked){
-    errorTerms.textContent = "Vous devez vérifier que vous acceptez les termes et conditions.";
-    formErrors++;
+  if(!form.elements['terms'].checked){
+  formFlag = false;
+  errorTerms.textContent = "Vous devez vérifier que vous acceptez les termes et conditions.";
   }else{
-    errorTerms.innerHTML = "";
+  errorTerms.innerHTML = ""
   }
 
-  if (formErrors > 0){
-    finalError.textContent = "vous devez renseigner tous les champs.";
-  }else{
-    form.reset();
-    showModalThanks();
+  //Check validation errors
+  if(!formFlag){
+    return false
   }
-// window.location.reload
-});
+
+  showModalThanks ()
+
+})
         
         
 
