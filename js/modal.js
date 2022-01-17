@@ -216,10 +216,11 @@ function closeForm() {
   ) {
     form.classList.add("invisible");
     document.getElementById("confirmation").classList.remove("invisible");
+    form.reset();
   }
 }
+//Fonction affichage formulaire après validation
 function openForm() {
   form.classList.remove("invisible");
   document.getElementById("confirmation").classList.add("invisible");
-  form.reset();
 }
