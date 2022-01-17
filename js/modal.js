@@ -28,6 +28,7 @@ const btnClose = document.querySelector(".btn-close");
 const icon = document.getElementById("menu");
 const errorCity = document.getElementById("errorCity");
 const errorTerms = document.getElementById("errorTerms");
+
 // Launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -75,6 +76,7 @@ function toHide(element) {
 function toShow(element) {
   element.classList.remove("invisible");
 }
+
 //Fonction d'ouverture et fermeture du menu en responsive
 function modalClose() {
   modalbg.style.display = "none";
@@ -148,7 +150,6 @@ function checkBirthdate() {
     birthdate.value === "" ||
     birthdateValue.getTime() > Date.now() - 1000 * 60 * 60 * 24 * 365.25 * 18
   ) {
-    // if (birthdateValue === "") {
     removeInvisible(birthdate);
     badBorder(birthdate);
     return false;
@@ -203,6 +204,7 @@ function validForm() {
   checkLocation();
   checkBox();
 }
+
 //Fonction de validation du formulaire
 function closeForm() {
   if (
@@ -219,6 +221,7 @@ function closeForm() {
     form.reset();
   }
 }
+
 //Fonction affichage formulaire après validation
 function openForm() {
   form.classList.remove("invisible");
