@@ -13,7 +13,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const form = document.querySelector('form');
 const modalClose = document.querySelector(".close") //Création et chargement de la constante 'modalClose' et accès à la class .close du DOM 
-const btnsubmit = document.getElementsByClassName("btnsubmit")
+const btnsubmit = document.getElementsByClassName("btn-submit")
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
 //Stockage des valeurs de champs dans des variables//
@@ -178,6 +178,7 @@ const checkNb = () => {
 const city = document.querySelectorAll('input[name="location"]');
 
 const locationValidation = () => {
+  var formValid = false;
   var i = 0;
   while (!formValid && i < city.length) {
     if (city[i].checked) formValid = true;
@@ -194,8 +195,8 @@ const locationValidation = () => {
   }
 };
 
-const cgvCheck = (event) => {
-  if (event.target.checked) {
+const checkCGV = () => {
+  if (cgv.checked) {
     cgvError.innerHTML = ' ';
     cgvError.classList.remove('errorStyle')
     return true;
@@ -212,41 +213,6 @@ const cgvCheck = (event) => {
 function validate(event) {
   //Désactivé le comportement par défaut de l'évenement//
   event.preventDefault();
-  let valid = true;
-  for (let input of allFields) {
-    if (!input.checkValidity()) {
-      input.classList.add("is-invalid");
-      valid = false;
-    } else {
-      input.classList.remove("is-invalid");
-    }
-  }
-  return valid;
-}
-
-btnsubmit.onsubmit = function (e) {
-
-
-  prenomValidation();
-  nomValidation();
-  mailValidation();
-  birthdateValidation();
-  checkNb();
-  locationValidation();
-  cgvCheck();
-
-  if (
-    prenomValidation() == true &&
-    nomValidation() == true &&
-    mailValidation() == true &&
-    birthdateValidation() == true &&
-    checkNb() == true &&
-    locationValidation() == true &&
-    cgvCheck() == true) {
-    return true;
-  } else {
-    return false;
-  }
 }
 
 //Ecoute des evenements 
@@ -261,11 +227,40 @@ birthdateInput.addEventListener('input', birthdateValidation);
 //Nombre de tournois
 quantityTournois.addEventListener('keyup', checkNb);
 //CGV
-cgv.addEventListener('change', cgvCheck)
+cgv.addEventListener('change', checkCGV)
 //Choix de la ville
 document
   .querySelectorAll('input[name="location"]')
   .forEach((inputEl) => inputEl.addEventListener('submit', locationValidation));
+
+
+//Controle avant envoi du formulaire
+document.getElementById("registrationForm").onsubmit = function (e) {
+  e.preventDefault();
+
+  prenomValidation();
+  nomValidation();
+  mailValidation();
+  birthdateValidation();
+  checkNb();
+  locationValidation();
+  checkCGV();
+
+  if (
+    prenomValidation() == true &&
+    nomValidation() == true &&
+    mailValidation() == true &&
+    birthdateValidation() == true &&
+    checkNb() == true &&
+    locationValidation() == true &&
+    checkCGV() == true
+    )
+    {
+    return true;
+  } else {
+    return false;
+  }
+}
 
 /* bouts de code
 const radios = document.getElementsByName("location");
