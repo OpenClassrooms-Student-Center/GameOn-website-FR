@@ -486,8 +486,14 @@ input[data-error]::after {
 
 /*Ajout du message de validation*/
 .message-validation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 15px 8%;
   margin: 15px auto;
+  width: 100%;
+  height: 700px;
   text-align: center;
 }
 
