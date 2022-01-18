@@ -1,6 +1,4 @@
-
 /* Modal form */
-
 
 .smFont {
   font-size: 16px;
@@ -57,14 +55,15 @@ input {
   font-size: 20px;
   height: 48px;
 }
+
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
+  font-size: 0.6em;
   color: #e54858;
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  text-align: left;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -161,7 +160,7 @@ input[data-error]::after {
   position: absolute;
   left: 15px;
   content: " ";
-  height: 33px;  /* barre blanche de 33px de haut et 3 de large pour faire la croix */
+  height: 33px; /* barre blanche de 33px de haut et 3 de large pour faire la croix */
   width: 3px;
   background-color: #fff;
 }
@@ -270,11 +269,6 @@ input[data-error]::after {
   background: #3876ac;
 }
 
-
-
-
-
-
 @keyframes modalopen {
   from {
     opacity: 0;
@@ -285,13 +279,11 @@ input[data-error]::after {
   }
 }
 
-
-
 @keyframes modalclose {
-  from {opacity: 1;
-    
+  from {
+    opacity: 1;
   }
-  to {    
+  to {
     opacity: 0;
     transform: translateY(150px);
   }
