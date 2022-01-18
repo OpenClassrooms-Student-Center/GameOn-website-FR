@@ -49,12 +49,20 @@ function close () {
 }
 
 const clearInput = () => {
+//Suppression de ce qui a pu etre entré
  form.reset();
  
-  const inputError = document.querySelectorAll('input')
-  inputError.forEach((element) => {
+//Suppression des cadres rouges
+  const resetErrorBorder = document.querySelectorAll('input')
+  resetErrorBorder.forEach((element) => {
    element.classList.remove ('errorForm');
 });
+
+//Suppression des messages d'erreur
+  const resetErrorMessage = document.querySelectorAll('.result')
+  resetErrorMessage.forEach((message) => {
+    message.innerHTML = '';
+  });
 };
 
 /* ou
