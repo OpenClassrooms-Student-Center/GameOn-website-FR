@@ -12,8 +12,8 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const form = document.querySelector('form');
-const modalClose = document.querySelector(".close") //Création et chargement de la constante 'modalClose' et accès à la class .close du DOM 
-const btnsubmit = document.getElementsByClassName("btn-submit")
+const modalClose = document.querySelector(".close") //Création et chargement de la constante 'modalClose' et accès à la class .close du DOM
+const modalSubmitClose = document.getElementById("submitClose")
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
 //Stockage des valeurs de champs dans des variables//
@@ -38,9 +38,13 @@ function launchModal() {
 //Fermeture du questionnaire
 modalClose.addEventListener('click', close); //Ecoute event clic de souris sur la constante modalClose qui cible la class .close, et une fonction est lancée
 
+modalSubmitClose.addEventListener('click', close);
+
 //Appel de la fonction 'close' pour cacher le formulaire et réinitialiser les entrées
 function close () {
   modalbg.style.display = "none"; 
+  document.querySelector('.modal-body').style.display = 'block';
+  document.querySelector('.message-validation').style.display = 'none';
   clearInput();
 }
 
@@ -185,6 +189,7 @@ var x = document.reserve.location;
 for(var i=0; i<x.length; i++) {
   if(x[i].checked){
     valid = true;
+    //On termine la boucle quand un element est selectionne 
     break;
   }
 }
@@ -211,7 +216,7 @@ const checkCGV = () => {
   }
 };
 
-//Ecoute des evenements 
+//Ecoute des evenements dans chaque input et la fonction associée est lancée 
 //Prénom
 firstName.addEventListener('input', prenomValidation);
 //Nom
@@ -230,11 +235,11 @@ document
   .forEach((inputEl) => inputEl.addEventListener('change', locationValidation));
 
 
-//Controle avant envoi du formulaire
+//Envoi du formulaire
 document.getElementById("registrationForm").onsubmit = function (event) {
 //on n'execute pas l'action par defaut
   event.preventDefault();
-//Charge les fonctions d'input
+//Charge les fonctions ecoutant les inputs
   prenomValidation();
   nomValidation();
   mailValidation();
@@ -244,7 +249,6 @@ document.getElementById("registrationForm").onsubmit = function (event) {
   checkCGV();
 
 //Verifie si toutes les conditions sont remplies
-  let formulaireValide = true;
   if (
     prenomValidation() == true &&
     nomValidation() == true &&
@@ -255,13 +259,13 @@ document.getElementById("registrationForm").onsubmit = function (event) {
     checkCGV() == true
     )
   {
-    return formulaireValide();
+    //Si tout est bon, on enleve le formulaire et le mesage de validation s'affiche
+    document.querySelector('.modal-body').style.display = 'none';
+    document.querySelector('.message-validation').style.display = 'flex';
+    return true
   } else {
     return false;
   }
 }
 
-const formulaireValide = () => {
-  document.querySelector('.modal-body').style.display = 'none';
-  document.querySelector('.message-validation').style.display = 'flex';
-}
+//Enlever tous les messages d'erreur
