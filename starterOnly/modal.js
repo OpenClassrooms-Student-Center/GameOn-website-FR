@@ -87,7 +87,7 @@ const prenomValidation = () => {
     return false;
 //s'il y a moins de 2 caracteres
   } else if (firstName.value.length < 2) {
-    firstError.innerHTML = 'Votre prénom doit comporter au-moins 2 caractères'; 
+    firstError.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.'; 
     firstError.classList.add('errorStyle');
     first.classList.add('errorForm');
     return false;
@@ -114,7 +114,7 @@ const nomValidation = () => {
     return false
     //s'il y a moins de 2 caracteres
   } else if (lastName.value.length < 2) {
-    lastError.innerHTML = 'Votre nom doit comporter au-moins 2 caractères';
+    lastError.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
     lastError.classList.add('errorStyle')
     last.classList.add('errorForm')
     return false
@@ -134,13 +134,13 @@ const mailValidation = () => {
 
 //Si rien n'a été indiqué
   if (emailAdress.value == "") {
-    mailError.innerHTML = 'Entrez une adresse mail';
+    mailError.innerHTML = 'Entrez une adresse mail.';
     mailError.classList.add('errorStyle');
     email.classList.add('errorForm');
     return false;
 //Si la valeur du mail ne correspond pas au standard
   } else if (!emailAdress.value.match(mailRegex)) {
-    mailError.innerHTML = 'Adresse mail invalide';
+    mailError.innerHTML = 'Adresse mail invalide.';
     mailError.classList.add('errorStyle')
     email.classList.add('errorForm')
     return false;
@@ -155,13 +155,13 @@ const mailValidation = () => {
 //Controle age
 const birthdateValidation = () => {
   if (birthdateInput.value == ""){
-    birthdateError.innerHTML = 'Vous devez entrer votre date de naissance';
+    birthdateError.innerHTML = 'Vous devez entrer votre date de naissance.';
     birthdateError.classList.add('errorStyle')
     birthdate.classList.add('errorForm')
     return false;
 
   } else if (Date.parse(birthdateInput.value) > Date.now()){
-    birthdateError.innerHTML = 'Vous devez entrer une date valide';
+    birthdateError.innerHTML = 'Vous devez entrer une date valide.';
     birthdateError.classList.add('errorStyle')
     birthdate.classList.add('errorForm')
     return false;
@@ -179,7 +179,7 @@ const checkNb = () => {
   var nbTournois = document.getElementById("quantity").value;
   //Si ce n'est pas un chiffre
   if (isNaN(nbTournois)) {
-    quantityError.innerHTML = "Entrez uniquement une valeur numérique";
+    quantityError.innerHTML = "Entrez uniquement une valeur numérique.";
     quantityError.classList.add('errorStyle')
     quantity.classList.add('errorForm');
     return false;
@@ -211,7 +211,7 @@ if(valid){
   locationError.classList.remove('errorStyle')
   return true;
 } else {
-  locationError.innerHTML = 'Réponse obligatoire!';
+  locationError.innerHTML = 'Vous devez choisir une option.';
   locationError.classList.add('errorStyle')
   return false;
 }
@@ -223,7 +223,7 @@ const checkCGV = () => {
     cgvError.classList.remove('errorStyle')
     return true;
   } else {
-    cgvError.innerHTML = "Merci d'acceptez les conditions d'utilisation";
+    cgvError.innerHTML = "Vous devez vérifier que vous acceptez les termes et conditions.";
     cgvError.classList.add('errorStyle')
     return false;
   }
