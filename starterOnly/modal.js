@@ -30,6 +30,7 @@ function showModalThanks(){
 function closeModal(){
   document.body.classList.remove('modal-open')
   document.body.classList.remove('overflow')
+  form.style.display = 'block'
 }
 
 
@@ -64,8 +65,6 @@ form.addEventListener("submit", function(e){
   //Form flag validation
   let formFlag = true
   
-  console.log(form.elements)
-
   // Firstname - min 2 char & not empty
   if(!form.elements['first'].value.trim().match(textFormat)){
   formFlag = false
