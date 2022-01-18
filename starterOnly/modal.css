@@ -343,6 +343,12 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+.btn-submit-close {
+  position: absolute;
+  bottom: 35px;
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -486,7 +492,7 @@ input[data-error]::after {
 
 /*Ajout du message de validation*/
 .message-validation {
-  display: flex;
+  display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;

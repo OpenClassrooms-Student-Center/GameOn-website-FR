@@ -263,5 +263,5 @@ document.getElementById("registrationForm").onsubmit = function (event) {
 
 const formulaireValide = () => {
   document.querySelector('.modal-body').style.display = 'none';
-  document.querySelector('.message-validation').style.display = 'block';
+  document.querySelector('.message-validation').style.display = 'flex';
 }
