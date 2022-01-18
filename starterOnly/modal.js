@@ -58,8 +58,8 @@ form.addEventListener("submit", function(e){
   e.preventDefault();
   
   // Expression for fields
-  const verifMail = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/;
-  const textFormat = /^[a-z\é\è\-\^\']{2,}$/i;
+  const verifMail = /^(([^<>()[]\.,;:s@]+(.[^<>()[]\.,;:s@]+)*)|(.+))@(([[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}])|(([a-zA-Z-0-9]+.)+[a-zA-Z]{2,}))$/
+  const textFormat = /^[a-z\é\è\-\^\']{2,}$/i
   
   //Form flag validation
   let formFlag = true
@@ -119,7 +119,7 @@ form.addEventListener("submit", function(e){
   //Conditions and subscribe
   if(!form.elements['terms'].checked){
   formFlag = false;
-  errorTerms.textContent = "Vous devez vérifier que vous acceptez les termes et conditions.";
+  errorTerms.textContent = "Vous devez vérifier que vous acceptez les termes et conditions."
   }else{
   errorTerms.innerHTML = ""
   }
@@ -130,7 +130,6 @@ form.addEventListener("submit", function(e){
   }
 
   showModalThanks ()
-
 })
         
         
