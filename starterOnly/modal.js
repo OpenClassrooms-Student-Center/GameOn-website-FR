@@ -2,7 +2,7 @@
 let toggleMenu = document.querySelector('.toggleMenu')
 
 let modal = document.querySelector('#modal')
-let openModalBtn = document.querySelector('.openModal')
+let openModalBtn = document.querySelector('#openModal')
 let closeModalBtn = document.querySelectorAll('.closeModal')
 
 let form = document.forms['reserve']
@@ -23,14 +23,15 @@ function openModal(){
 /*Fonction toggle Modal*/
 function showModalThanks(){
   form.style.display = 'none'
-  modalThanks.style.display = 'block'
+  modalThanks.style.display = ''
 }
 
 /*Fonction close Modal*/
 function closeModal(){
   document.body.classList.remove('modal-open')
   document.body.classList.remove('overflow')
-  form.style.display = 'block'
+  modalThanks.style.display = 'none';
+  form.style.display = 'block';
 }
 
 
