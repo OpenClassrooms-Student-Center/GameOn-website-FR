@@ -50,6 +50,11 @@ function close () {
 
 const clearInput = () => {
  form.reset();
+ 
+  const inputError = document.querySelectorAll('input')
+  inputError.forEach((element) => {
+   element.classList.remove ('errorForm');
+});
 };
 
 /* ou
@@ -267,5 +272,3 @@ document.getElementById("registrationForm").onsubmit = function (event) {
     return false;
   }
 }
-
-//Enlever tous les messages d'erreur
