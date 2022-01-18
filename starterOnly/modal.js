@@ -52,8 +52,6 @@ closeModalBtn.forEach(el => {
 
 /*Validation form and listener*/
 
-//format text et mail
-
 form.addEventListener("submit", function(e){
   e.preventDefault();
   
