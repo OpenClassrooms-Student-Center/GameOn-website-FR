@@ -16,7 +16,7 @@ function openModal(){
   modal.scrollTo(0, 0);
 
   form.reset()
-  modal.style.display = ''
+  form.style.display = ''
   modalThanks.style.display = 'none'
 }
 
@@ -30,8 +30,6 @@ function showModalThanks(){
 function closeModal(){
   document.body.classList.remove('modal-open')
   document.body.classList.remove('overflow')
-  modalThanks.style.display = 'none';
-  form.style.display = 'block';
 }
 
 
