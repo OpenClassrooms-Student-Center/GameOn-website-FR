@@ -39,6 +39,7 @@
         <a href="#" class="header__navbar">À propos</a>
         <a href="#" class="header__navbar">Contact</a>
         <a href="#" class="header__navbar">Évènements passés</a>
+        <!--icone hamburger-->
         <a href="javascript:void(0);" class="icon" onclick="editNav()">
           <i class="fa fa-bars"></i>
         </a>
@@ -55,17 +56,15 @@
 
           <h1 class="section--hero-headline">Marathon national<br>de jeux vidéos</h1>  
           <p class="section--hero-text">Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux réservations... Places limitées !</p>
-          <!--Button desktop-->
-          <button class="btn-signup modalOpen">Je M'inscris</button>
+          <!--Button "I sign up"-->
+          <!--<button class="btn-signup modalOpen">Je M'inscris</button>-->
 
         </div>
         
         <div class="section--hero-img">
           <img src="images/bg_img.jpg" alt="background image" />
         </div> 
-        <!-- BUTTON Mobile version-->
-        <button class="btn-signup modalOpen">Je M'inscris</button>
-
+        <button class="btn-signup modal-btn">Je M'inscris</button>
       </section> 
 
       <!--Modal Windows-->
@@ -75,7 +74,7 @@
 
           <div class="modal-body">
 
-            <!--REGISTRATION FORM-->
+            <!--Form element-->
             <form id="modalForm" name="modalForm" action="index.html" method="get" onsubmit="return validate();">
               
               <!--FORM PART 1: User informations -->
@@ -198,10 +197,23 @@
               </div><!--End part 3 Form-->
 
               <!--BUTTON : "Go"-->
-              <input class="form__button--submit" type="submit" value="C'est parti">
+              <input class="btn-submit btnGo" type="submit" value="C'est parti">
 
             </form>
 
+            <!--Congrats element-->
+            <div class="congrats">
+
+              <div class="congrats-text">
+                <p>Merci!</p>
+                <br>
+                <p>Votre réservation a bien été enregistrée.</p>
+              </div>
+
+              <!--BUTTON : "Close"-->
+              <button class="btn-submit congratsBtnClose" type="button">Fermer</button>
+
+            </div>
 
 
 
@@ -216,6 +228,6 @@
       </p>
     </footer>
 
-    <script src="modal.js"></script>
+    <script type="module" src="./js/main.js"></script>
   </body>
 </html>
