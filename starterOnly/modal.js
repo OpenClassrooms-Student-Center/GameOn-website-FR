@@ -35,66 +35,50 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-// exemple pour des messages personnalisés
-/*const nameInput = document.querySelector('input');
+//Fonction génèral pour l'ajout d'attribue
+function displayError(input, errorMessage) {
+  input.setAttribute("data-error-visible", true);
+  input.setAttribute("data-error", errorMessage);
 
-nameInput.addEventListener('input', () => {
-  nameInput.setCustomValidity('');
-  nameInput.checkValidity();
-});
-
-nameInput.addEventListener('invalid', () => {
-  if (nameInput.value === '') {
-    nameInput.setCustomValidity("Veuillez saisir votre nom d'utilisateur !");
-  } else {
-    nameInput.setCustomValidity("Un nom d'utilisateur ne peut contenir que des lettres minuscules et majuscules, veuillez réessayer");
-  }
-});*/
-
-let displayError = true;
-let inputName = document.getElementsById("");
-
-function displayError(inputName, errorMessage) { // exemple: displayError('first', 'Le prénom n'est pas conforme')
-  if (displayError) {
-    document.getElementsById(inputName);// REP: le problème ici c'est que tu vas tjs récupérer le 1er élément avec class="formData" — hors ce que tu veux c'est récupérer celui où il y a effectivement une erreur
-    document.setAttribute("data-error-visible", true);
-    document.setAttribute("data-error", errorMessage);
-  } else {
-    document.getElementsById(inputName);
-    document.removeAttribute("data-error-visible", true);
-    document.removeAttribute("data-error", errorMessage);
-  }
 }
-// REP: il te faudra un 2nd attribut “data-error“ avec comme valeur le texte de l'erreur
-// Dans l'idée ça serai de créer une fonction qui modifie le comportement de data en data-error, de récupérer cette fonction et de l'utiliser dans les différent inputs et aprés d'y rajouter un texte en HTML
+function removeError(input) {
+  input.setAttribute("data-error-visible", false);
+}
 
-// first name : il y a déjà un minimum de caractère sur l'HTML (peut être le récupérer pour la validation final ?) donc juste vérifier que ce n'est pas un champ vide
-// lien vidéo YouTube : https://www.youtube.com/watch?v=JmbZBZhOtl8
-// REP: l'attribut minlength en HTML c'est bien mais cela ne te permet pas de styliser l'erreur, c'est pour ça qu'ici on te demande de le faire en js
-let myregex = /^[a-zA-Z\s]+$/;
+//let myregex = /^[a-zA-Z\s]+$/;
 
-// evenement pour le comportement de l'input en cas d'erreur ou de validation
-first.addEventListener("input", function () {
+// Evenement pour le Prenom
+first.addEventListener("input", function (e) {
   if (first.value.trim() >= 2) {
-    Element.setAttribute("data-error", false);
+    removeError(e.target.parentNode);
   }
   else {
-    displayError("first", "le nom doit comporter minimum 2 caractères");
-    e.preventDefault();
+    displayError(e.target.parentNode, "le nom doit comporter minimum 2 caractères");
   }
 });
 
-/*input.addEventListener("input", function () {
-  // test si mon input est valide
+// Evenement pour le Nom
+last.addEventListener("input", function (e) {
+  if (last.value.trim() >= 2) {
+    e.target.parentNode.setAttribute("data-error-visible", false);
+  }
+  else {
+    e.target.parentNode.setAttribute("data-error-visible", true);
+    e.target.parentNode.setAttribute("data-error", 'le nom doit comporter minimum 2 caractères');
+  }
+});
 
-  // Si oui on ne fait rien
+//Evenement pour le Nombre de tournois
+quantity.addEventListener("input", function (e) {
+  if (quantity.value >= 0) {
+    e.target.parentNode.setAttribute("data-error-visible", false);
+  }
+  else {
+    e.target.parentNode.setAttribute("data-error-visible", true);
+    e.target.parentNode.setAttribute("data-error", 'le nom doit comporter minimum 2 caractères');
+  }
+});
 
-
-  // Si c'est faux on affiche une erreur
-  displayError(inputName, errorMessage)
-})*/
-
-// last name : pas de minimum de caractère dans l'HTML, vérifier que ce n'est pas un champ vide
 
 // email : adresse électronique valide
 
