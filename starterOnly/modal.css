@@ -218,6 +218,7 @@ header .icon {
 
 .btn-signup:hover, .btn-submit:hover {
   background: #3876ac;
+  border-color: #3876ac;
 }
 
 /*.section--hero > .btn-signup {
@@ -267,7 +268,8 @@ header .icon {
   background: #232323;
   border-radius: 10px;
   overflow: hidden;
-  position: relative;
+  position: relative; /*a revoir dble bar de navi*/
+  
   color: #fff;
   padding-top: 10px;
 }
@@ -339,14 +341,66 @@ input {
   border-radius: 8px;
   font-size: 20px;
   height: 48px;
+  outline:transparent solid 2px;
+}
+/*------------Data error*/
+
+.error{
+  color: red;
+  font-size:small;
+  font-weight: 600;
+  display: none;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: left;
+  line-height: 0.3;
+  /*opacity: 0;
+  transition: 0.3s;*/
+}
+.error p{
+  color: red;
+  font-size: small;
+  font-weight: 600;
+  margin-top: -1em;
+  margin-bottom:1.7em;
 }
 
-.formData p {
+
+/*.formData p {
   color: red;
   font-size: 12px;
   font-weight: 400;
   margin-top: 8px;
+}*/
+
+
+/*input[data-error]::after {
+    content: attr(data-error);
+    font-size: 0.4em;
+    color: red;
+} 
+
+.formData[data-error]::after {
+  content: attr(data-error);
+  font-size: 0.4em;
+  color: #e54858;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: right;
+  line-height: 0.3;
+  opacity: 0;
+  transition: 0.3s;
 }
+
+.formData[data-error-visible="true"]::after {
+  opacity: 1;
+}
+
+.formData[data-error-visible="true"] .text-control {
+  outline: 2px solid red;
+}
+*/
 
 
 /*--FORM PART 1: User Info--*/
@@ -448,37 +502,6 @@ input {
   top: 19%;
 }
 
-/*Data error*/
- 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} 
-
-.formData[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.4em;
-  color: #e54858;
-  display: block;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  text-align: right;
-  line-height: 0.3;
-  opacity: 0;
-  transition: 0.3s;
-}
-
-.formData[data-error-visible="true"]::after {
-  opacity: 1;
-}
-
-.formData[data-error-visible="true"] .text-control {
-  border: 2px solid #e54858;
-}
-
-
-
 /* BUTTON "Go"*/
 .btn-submit{ 
   color:white;
@@ -512,7 +535,10 @@ input[data-error]::after {
   font-weight: 400;
 }
 
-
+.congratsBtnClose{
+  margin-top: 0;
+  margin-left: -1.4rem;
+}
 
 
 /* custom select styles */
@@ -649,32 +675,39 @@ footer {
     margin-top: 15px;
   }
 
-  .topnav.mobile {
-    position: relative;
-  }
-
   header a {
     display: none;
   }
 
-  .topnav .mobile a{ /*à reverifier*/
+  .topnav.responsive {
+    position: relative;    
+  }
+
+  .topnav .icon {
+    display: none;
+    color:red;
+  }
+
+
+  .topnav.responsive a{ 
       float: none;
       display: flex;
       flex-direction: column;
-      text-align: left;
+      text-align: left;    
   }
-  
+   
 
-  header a.icon {
+  .topnav a.icon {
     float: right;
     display: flex;
   }
 
-  .topnav.mobile .fa {
-    /*position: absolute;*/
+  .topnav.responsive .icon {
+    position: absolute;
     right: 0;
-    /*top: 0;*/
+    top: 0;
   }
+
 
   
   .section--hero {

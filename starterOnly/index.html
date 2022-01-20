@@ -40,7 +40,7 @@
         <a href="#" class="header__navbar">Contact</a>
         <a href="#" class="header__navbar">Évènements passés</a>
         <!--icone hamburger-->
-        <a href="javascript:void(0);" class="icon" onclick="editNav()">
+        <a href="javascript:void(0);" id="hamburgerIcon" class="icon" onclick="editNav()">
           <i class="fa fa-bars"></i>
         </a>
 
@@ -75,31 +75,34 @@
           <div class="modal-body">
 
             <!--Form element-->
-            <form id="modalForm" name="modalForm" action="index.html" method="get" onsubmit="return validate();">
+            <form id="modalForm" class="modalForm" action="index.html" method="get" onsubmit="return validate();">
               
               <!--FORM PART 1: User informations -->
               <!--User info 1-->
-              <div class="formData infoFirst" data-error="Le champ du Prénom doit comporter deux caractères au minimum.">
+              <div class="formData infoFirst" >
                 <label for="first">Prénom</label>
                 <br>
                 <input class="text-control" type="text" id="first" name="first" minlength="2" required>
                 <br>
+                <span class="error">Le Prénom doit comporter minimum 2 lettres.</span>
               </div>
 
               <!--User info 2-->
-              <div class="formData infoName" data-error="Le champ du Nom doit comporter deux caractères au minimum.">
+              <div class="formData infoName">
                 <label for="last">Nom</label>
                 <br>
                 <input class="text-control" type="text" id="last" name="last" minlength="2" required>
                 <br>
+                <span class="error">Le Nom doit comporter minimum 2 lettres.</span>
               </div>
 
               <!--User info 3-->
-              <div class="formData infoEmail" data-error="L'adresse e-mail doit être valide.">
+              <div class="formData infoEmail">
                 <label for="email">E-mail</label>
                 <br>
-                <input class="text-control" type="email" id="email" name="email" required>
+                <input class="text-control" type="email" id="email" name="email" required >
                 <br>
+                <span class="error">L'adresse e-mail doit être valide.</span>
               </div>
 
               <!--User info 4-->
@@ -108,23 +111,29 @@
                 <br>
                 <input class="text-control" type="date" id="birthdate" name="birthdate" required>   
                 <br>
+                <span class="error">Une date de naissance doit être saisie.</span>
               </div>
 
               <!--User info 5-->
-              <div class="formData infoQuantity" data-error="Le nombre doit être un entier compris entre 0 et 99.">
+              <div class="formData infoQuantity">
                 <label class="form__label--quantityTitle" for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label>
                 <br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
+                <span class="error">Le nombre doit être un entier compris entre 0 et 99.</span>
+                
               </div>
 
 
               <!--FORM PART 2: User location -->
-              <div class="formData locations" data-error="il faut choisir une ville.">
+              <div class="formData locations">
+                
                 <label class="form__label--checkboxes"> 
-                  <span class="form__label--checkboxes-title">A quel tournoi souhaitez-vous participer cette année ? </span>
-                  <br>
+                  <span class="form__label--checkboxes-title">A quel tournoi souhaitez-vous participer cette année ? </span>  
+                </label>
+                                
+                <br>
                 <!--Location 1--> 
-                <input class="checkbox-input location" type="radio" id="location1" name="location" value="New York" checked >
+                <input class="checkbox-input location" type="radio" id="location1" name="location" value="New York" >
 
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -170,26 +179,30 @@
                   <span class="checkbox-icon"></span>
                   <span class="checkbox-title">Portland</span>
                 </label>
+
+                <span class="error"><p>Il faut cocher une ville.</p></span>
                 
               </div>
 
               <!--FORM PART 3: User Rights -->
               <div class="formData rights">
                 
-                <input class="checkbox-input"  type="checkbox" id="checkbox1" required checked>
+                <input class="checkbox-input" name="checkbox-input" type="checkbox" id="checkbox1" required >
              
-                <label class="checkbox2-label" for="checkbox1">
+                <label class="checkbox2-label" for="checkbox1" >
                   <span class="checkbox-icon"></span>
                   <span class="checkbox-title">J'ai lu et accepté les conditions d'utilisation.</span>
+                  <br>
+                  <span class="error">La case des conditions d'utilisation doit être cochée.</span>
                 </label>
 
                 <br>
 
-                <input class="checkbox-input" type="checkbox" id="checkbox2" />
+                <input class="checkbox-input" type="checkbox" name="checkbox-input" id="checkbox2" />
                 
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
-                  <span class="checkbox-title">Je Je souhaite être prévenu des prochains évènements.</span>
+                  <span class="checkbox-title">Je souhaite être prévenu des prochains évènements.</span>
                 </label>
 
                 <br>
@@ -205,9 +218,9 @@
             <div class="congrats">
 
               <div class="congrats-text">
-                <p>Merci!</p>
+                Félicitations!
                 <br>
-                <p>Votre réservation a bien été enregistrée.</p>
+                Votre réservation a bien été enregistrée.
               </div>
 
               <!--BUTTON : "Close"-->

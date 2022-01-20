@@ -1,12 +1,20 @@
-//----NAV BAR
-/*Change the nav bar in fonction of the screen size */
-/*(icone "hamburger"( Ipad and Iphone) or not (computer))*/
-function editNav() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") { /*si la class topnav(=header) est égale à celle de la var*/
-      x.className += " mobile";/*alors ajouter la class mobile*/
-    } 
-    else {
-      x.className = "topnav";
+///////TOGGLE MENU for width'screen < 1000px
+
+
+//DOM element
+let navBarIcon = document.getElementById("hamburgerIcon");
+
+//Function
+//----Change the nav bar in fonction of the screen size 
+
+export function editNav() {
+    const x = document.getElementById("myTopnav");
+    if (x.className.includes("topnav")) {
+        x.className += " responsive"; //pb : a chaque nouveau click on rajoute une nouvelle class responsive
+    } else {
+        x.className = "topnav";
     }
 }
+
+//Event on click on navBarIcon
+navBarIcon .onclick = editNav;
