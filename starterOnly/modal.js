@@ -45,11 +45,25 @@ function removeError(input) {
   input.setAttribute("data-error-visible", false);
 }
 
-//let myregex = /^[a-zA-Z\s]+$/;
+let regexName = /^([a-zA-Z]{3,30}\s*)+/;
+let regexMail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
+let regexNombre = /^(0|[1-9]\d*)$/;
+let regexBirthdate = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
+
 
 // Evenement pour le Prenom
 first.addEventListener("input", function (e) {
-  if (first.value.trim() >= 2) {
+  if (regexName.test(first.value) == true) {
+    removeError(e.target.parentNode);
+  }
+  else {
+    displayError(e.target.parentNode, "le prénom doit comporter minimum 2 caractères");
+  }
+});
+
+// Evenement pour le Nom
+last.addEventListener("input", function (e) {
+  if (regexName.test(last.value) == true) {
     removeError(e.target.parentNode);
   }
   else {
@@ -57,30 +71,36 @@ first.addEventListener("input", function (e) {
   }
 });
 
-// Evenement pour le Nom
-last.addEventListener("input", function (e) {
-  if (last.value.trim() >= 2) {
-    e.target.parentNode.setAttribute("data-error-visible", false);
+
+// Evenement pour l'email
+email.addEventListener("input", function (e) {
+  if (regexMail.test(email.value) == true) {
+    removeError(e.target.parentNode);
   }
   else {
-    e.target.parentNode.setAttribute("data-error-visible", true);
-    e.target.parentNode.setAttribute("data-error", 'le nom doit comporter minimum 2 caractères');
+    displayError(e.target.parentNode, "Veillez renseigner une adresse mail valide");
   }
 });
 
 //Evenement pour le Nombre de tournois
 quantity.addEventListener("input", function (e) {
-  if (quantity.value >= 0) {
-    e.target.parentNode.setAttribute("data-error-visible", false);
+  if (regexNombre.test(quantity.value) == true) {
+    removeError(e.target.parentNode);
   }
   else {
-    e.target.parentNode.setAttribute("data-error-visible", true);
-    e.target.parentNode.setAttribute("data-error", 'le nom doit comporter minimum 2 caractères');
+    displayError(e.target.parentNode, "Veillez renseigner le nombre de tournois que vous avez réalisé");
   }
 });
 
-
-// email : adresse électronique valide
+//Evenement pour la date d'anniversaire a terminer !!
+birthdate.addEventListener("input", function (e) {
+  if (regexBirthdate.test(birthdate.value) == true) {
+    removeError(e.target.parentNode);
+  }
+  else {
+    displayError(e.target.parentNode, "Veillez renseigner une date de naissance valide");
+  }
+});
 
 // birthdate : une valeur numérique est saisie et verifier la comparaison des date en JavaScript (voir l'objet "date")
 
