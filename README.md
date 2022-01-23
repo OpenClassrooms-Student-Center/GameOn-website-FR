@@ -42,8 +42,8 @@ Le but est de décrire chaque fonction et chaque classe, ainsi que les parties d
 
 #### Validation W3C
 
-- [ ] W3C HTML
-- [ ] W3C CSS
+- [x] W3C HTML
+- [x] W3C CSS
 
 #### Compatibilité
 
