@@ -21,35 +21,6 @@ body {
   margin: 0 auto;
 }
 
-main {
-  font-size: 130%;
-  font-weight: bolder;
-  color: black;
-  padding-top: 0.5vw;
-  padding-left: 2vw;
-  padding-right: 2vw;
-  margin: 1px 20px 15px;
-  border-radius: 2rem;
-  text-align: justify;
-
-
-}
-
-.modal-btn {
-  font-size: 145%;
-  background: #fe142f;
-  display: flex;
-  margin: auto;
-  padding: 2em;
-  color: #fff;
-  padding: 0.75rem 2.5rem;
-  border-radius: 1rem;
-  cursor: pointer;
-}
-
-.modal-btn:hover {
-  background: #3876ac;
-}
 
 .footer {
   margin: 20px;
@@ -59,53 +30,10 @@ main {
 
 /* Modal form */
 
-.button {
-  background: #fe142f;
-  margin-top: 0.5em;
-  padding: 1em;
-  color: #fff;
-  border-radius: 15px;
-  cursor: pointer;
-  font-size: 16px;
-}
 
-.button:hover {
-  background: #3876ac;
-}
 
 .smFont {
   font-size: 16px;
-}
-
-.bground {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
-}
-
-.content {
-  margin: 5% auto;
-  width: 100%;
-  max-width: 500px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
-  background: #232323;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-  color: #fff;
-  padding-top: 10px;
-}
-
-.modal-body {
-  padding: 15px 8%;
-  margin: 15px auto;
 }
 
 label {
