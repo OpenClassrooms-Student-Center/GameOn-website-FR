@@ -28,6 +28,15 @@
         }
     }
 }
+@keyframes modalopen {
+    from {
+      opacity: 0;
+      transform: translateY(-150px);
+    }
+    to {
+      opacity: 1;
+    }
+  }
 
 .close {
     position: absolute;

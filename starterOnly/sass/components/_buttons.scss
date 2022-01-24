@@ -16,7 +16,14 @@
 .modal-btn:hover {
     background: #3876ac;
 }
-
+.btn-signup {
+    outline: none;
+    text-transform: capitalize;
+    font-size: 1.3rem;
+    padding: 15px 23px;
+    margin: 0;
+    margin-top: 59px;
+  }
 
 //modal btn
 
@@ -32,4 +39,17 @@
   
 .button:hover {
     background: #3876ac;
+}
+
+.btn-submit,
+.btn-signup {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
 }

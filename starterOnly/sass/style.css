@@ -4,6 +4,11 @@ p {
   padding: 0.5vw;
 }
 
+.text-label {
+  font-weight: normal;
+  font-size: 16px;
+}
+
 .header-logo {
   float: left;
 }
@@ -153,6 +158,15 @@ input[data-error]::after {
   background: #3876ac;
 }
 
+.btn-signup {
+  outline: none;
+  text-transform: capitalize;
+  font-size: 1.3rem;
+  padding: 15px 23px;
+  margin: 0;
+  margin-top: 59px;
+}
+
 .button {
   background: #fe142f;
   margin-top: 0.5em;
@@ -165,6 +179,19 @@ input[data-error]::after {
 
 .button:hover {
   background: #3876ac;
+}
+
+.btn-submit,
+.btn-signup {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
 }
 
 .topnav {
@@ -248,6 +275,70 @@ main {
   text-align: justify;
 }
 
+.hero-img {
+  grid-column: span 8;
+}
+
+.hero-img img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  padding: 0;
+}
+
+.hero-section > .btn-signup {
+  display: none;
+}
+
+/* custom select end */
+.hero-section {
+  min-height: 93vh;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  overflow: hidden;
+  box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+}
+
+.hero-content {
+  padding: 51px 67px;
+  grid-column: span 4;
+  background: #232323;
+  color: #fff;
+  position: relative;
+  text-align: left;
+  min-width: 424px;
+}
+
+.hero-content::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #232323;
+  position: absolute;
+  right: -80px;
+  top: 0;
+}
+
+.hero-content > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-headline {
+  font-size: 6rem;
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+.hero-text {
+  width: 146%;
+  font-weight: normal;
+  margin-top: 57px;
+  padding: 0;
+}
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -323,6 +414,15 @@ main {
   margin: 15px auto;
 }
 
+@keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+  to {
+    opacity: 1;
+  }
+}
 .close {
   position: absolute;
   right: 15px;
@@ -362,6 +462,14 @@ footer {
   padding-left: 2vw;
   padding-right: 2vw;
   margin: 0 20px;
+}
+
+.copyrights {
+  color: #fe142f;
+  padding: 0;
+  font-size: 1rem;
+  margin: 60px 0 30px;
+  font-weight: bolder;
 }
 
 /*# sourceMappingURL=style.css.map */
