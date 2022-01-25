@@ -1,4 +1,7 @@
 // DOM constants definitions
+
+const content = document.querySelector(".content");
+
 const formulary = document.querySelector("form");
 const formularyData = document.querySelectorAll(".formData");
 const firstName = document.querySelector("#first");
@@ -14,6 +17,9 @@ const location5 = document.querySelector("#location5");
 const location6 = document.querySelector("#location6");
 const termsAndConditions = document.querySelector("#checkbox1");
 const buttonSubmit = document.querySelector(".btn-submit");
+
+const formError = document.querySelector(".formError");
+
 // Regex const definition
 const regexName = /^[a-zA-Z-\s]+$/;
 const regexEmail = /([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+).([a-zA-Z]{2,5})/;
@@ -27,6 +33,36 @@ formulary.addEventListener("submit", (e) => {
   e.preventDefault();
   validate();
 });
+
+// listening to the keyboard input to help the customer
+
+firstName.addEventListener("input", function (e) {
+  let value = e.target.value;
+  if (value.trim().length >= 2 && regexName.test(value)) {
+    formularyData[0].setAttribute("data-error-visible", "false");
+  } else {
+    formularyData[0].setAttribute("data-error-visible", "true");
+  }
+});
+
+lastName.addEventListener("input", function (e) {
+  let value = e.target.value;
+  if (value.trim().length >= 2 && regexName.test(value)) {
+    formularyData[1].setAttribute("data-error-visible", "false");
+  } else {
+    formularyData[1].setAttribute("data-error-visible", "true");
+  }
+});
+
+email.addEventListener("input", function (e) {
+  let value = e.target.value;
+  if (regexEmail.test(value)) {
+    formularyData[2].setAttribute("data-error-visible", "false");
+  } else {
+    formularyData[2].setAttribute("data-error-visible", "true");
+  }
+});
+
 
 // The big validation function that test all input values
 function validate() {
@@ -90,11 +126,21 @@ function validate() {
     numberOfErrors++;
   }
 
+
+  //console.log(numberOfErrors);
+
+  if (numberOfErrors > 0) {
+    formError.style.opacity = "1";
+  } else {
+    formulary.style.display = "none";
+    document.querySelector(".data-sent").style.display = "flex";
+
   console.log(numberOfErrors);
 
   if (numberOfErrors > 0) {
     buttonSubmit.setAttribute("value", "Formulaire non valide");
   } else {
     buttonSubmit.setAttribute("value", "Formulaire envoyé");
+
   }
 }

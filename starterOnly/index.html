@@ -55,19 +55,31 @@
 
 
 
+
+ <!-- ====  Formulaire en background qui apparaît = Modale  ==== -->
+
  <!-- ========================  Formulaire en background qui apparaît Modale  =========================== -->
+
 
       <div class="bground">
         <div class="content">
+        <!-- Croix qui ferme le formulaire -->
           <span class="close"></span>
           <div class="modal-body">
+            
+    
             <form
               name="reserve"
               action="index.html"
               method="get"
               novalidate
               onsubmit="return validate();"
-            >              
+
+
+                 <!-- champs prénom dans le formulaire -->       
+
+            
+
               <div
                 class="formData" data-error="Veuillez entrer au moins deux caractères">
                 <label for="first">Prénom</label><br>
@@ -78,6 +90,7 @@
                   name="first" 
                 /><br> 
               </div>
+              <!-- champs nom dans le formulaire -->
               <div
                 class="formData" data-error="Veuillez entrer au moins deux caractères">
                 <label for="last">Nom</label><br>
@@ -88,6 +101,7 @@
                   name="last"
                 /><br>
               </div>
+              <!-- champs email dans le formulaire -->
               <div
                 class="formData" data-error="le format de l'email est invalide">
                 <label for="email">E-mail</label><br>
@@ -98,6 +112,7 @@
                   name="email"
                 /><br>
               </div>
+              <!-- champs date de naissance dans le formulaire -->
               <div
                 class="formData" data-error="Vous devez entrer votre date de naissance" >
                 <label for="birthdate">Date de naissance</label><br>
@@ -108,11 +123,15 @@
                   name="birthdate"
                 /><br>
               </div>
+              <!-- champs nombre de participation au tournois dans le formulaire -->
               <div
                 class="formData" data-error="Vous devez entrer un nombre">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
+
+              <!-- champs lieu du tournoi choisi dans le formulaire -->
+
               <p class="text-label">À quel tournoi souhaitez-vous participer cette année ?</p>
               <div
                 class="formData" data-error="Vous devez choisir une option">
@@ -183,7 +202,7 @@
                   Portland</label
                 >
               </div>
-
+              <!-- champs termes et conditions dans le formulaire -->
               <div
                 class="formData" data-error="Vous devez accepter les termes et conditions">
                 <input class="checkbox-input"  type="checkbox"    id="checkbox1"  />  
@@ -199,6 +218,9 @@
                 </label>
                 <br>
               </div>
+
+              <!-- bouton c'est parti dans le formulaire -->
+
               <div class="sent-message"></div>
               <input
                 class="btn-submit"
@@ -206,8 +228,18 @@
                 class="button"
                 value="C'est parti"
               />
-             
+
+             <div class="formError" data-error="Veuillez renseigner tous les champs">Veuillez renseigner tous les champs</div>
+
             </form>
+            <!-- ====  Confirmation envoi des données après avoir rempli le formulaire  ==== -->
+            <div class="data-sent">
+                <img alt="logo" src="assets/Logo.png"  />
+              <p>Merci ! Votre demande de réservation a bien été enregistrée !</p>
+            <button class="button btn-close">
+              Fermer
+            </button> 
+            </div>
           </div>
         </div>
       </div>

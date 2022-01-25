@@ -74,6 +74,13 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
+
+
+.formData[data-error-visible="false"] .text-control {
+  border: 2px solid #3876ac;
+}
+
+
 /* 
 input[data-error]::after {
     content: attr(data-error);
@@ -268,6 +275,44 @@ input[data-error]::after {
 .button:hover {
   background: #3876ac;
 }
+
+
+.formError {
+  content: attr(data-error);
+  font-size: 0.6em;
+  color: #e54858;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: left;
+  line-height: 0.3;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.data-sent {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 600px;
+  max-height: 850px;
+  position: relative;
+}
+
+.data-sent p {
+  width: 309px;
+  font-weight: 400;
+  font-size: 36px;
+  color: #ffffff;
+  text-align: center;
+  margin: 18% 0;
+}
+
+.data-sent img {
+  padding-top: 40px;
+}
+
 
 @keyframes modalopen {
   from {
