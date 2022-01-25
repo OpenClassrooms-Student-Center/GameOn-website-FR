@@ -75,9 +75,11 @@ input {
   border: 2px solid #e54858;
 }
 
+
 .formData[data-error-visible="false"] .text-control {
   border: 2px solid #3876ac;
 }
+
 
 /* 
 input[data-error]::after {
@@ -274,6 +276,7 @@ input[data-error]::after {
   background: #3876ac;
 }
 
+
 .formError {
   content: attr(data-error);
   font-size: 0.6em;
@@ -309,6 +312,7 @@ input[data-error]::after {
 .data-sent img {
   padding-top: 40px;
 }
+
 
 @keyframes modalopen {
   from {

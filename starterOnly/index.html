@@ -55,7 +55,11 @@
 
 
 
+
  <!-- ====  Formulaire en background qui apparaît = Modale  ==== -->
+
+ <!-- ========================  Formulaire en background qui apparaît Modale  =========================== -->
+
 
       <div class="bground">
         <div class="content">
@@ -70,8 +74,12 @@
               method="get"
               novalidate
               onsubmit="return validate();"
-            >  
+
+
                  <!-- champs prénom dans le formulaire -->       
+
+            
+
               <div
                 class="formData" data-error="Veuillez entrer au moins deux caractères">
                 <label for="first">Prénom</label><br>
@@ -121,7 +129,9 @@
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
+
               <!-- champs lieu du tournoi choisi dans le formulaire -->
+
               <p class="text-label">À quel tournoi souhaitez-vous participer cette année ?</p>
               <div
                 class="formData" data-error="Vous devez choisir une option">
@@ -208,7 +218,9 @@
                 </label>
                 <br>
               </div>
+
               <!-- bouton c'est parti dans le formulaire -->
+
               <div class="sent-message"></div>
               <input
                 class="btn-submit"
@@ -216,7 +228,9 @@
                 class="button"
                 value="C'est parti"
               />
+
              <div class="formError" data-error="Veuillez renseigner tous les champs">Veuillez renseigner tous les champs</div>
+
             </form>
             <!-- ====  Confirmation envoi des données après avoir rempli le formulaire  ==== -->
             <div class="data-sent">
