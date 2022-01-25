@@ -18,7 +18,7 @@ const last = document.getElementById("last");
 const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
-//const location = document.getElementsByName("location");
+const locations = document.getElementsByName("location");
 const checkbox1 = document.getElementById("checkbox1"); // Peux être qu'un tableau la aussi serai une bonne idée si je décide de rajouter "checkbox 2"
 const checkbox2 = document.getElementById("checkbox2"); // Peux être qu'un tableau la aussi serai une bonne idée si je décide de rajouter "checkbox 2"
 
@@ -46,7 +46,7 @@ function removeError(input) {
   input.setAttribute("data-error-visible", false);
 }
 
-let regexName = /^([a-zA-Z]{3,30}\s*)+/;
+let regexName = /^([a-zA-Z]{2,30}\s*)+/;
 let regexMail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
 let regexNombre = /^(0|[1-9]\d*)$/;
 let regexBirthdate = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
@@ -106,30 +106,37 @@ birthdate.addEventListener("input", function (e) {
 // birthdate : une valeur numérique est saisie et verifier la comparaison des date en JavaScript (voir l'objet "date")
 
 // location : récupérer tous les éléments dans un tableau et créer une boucle qui vérifie qu'un bouton radio est bien sélectionné
-const locations = document.getElementsByName("location");
-//locations.addEventListener("input", function (e) {
+//
+//const locations = document.getElementsByName("location");
 for (let i = 0; i < locations.length; i++) {
-  if (locations[i].checked) {
-    valeur = locations[i].value;
-    console.log("valeur");
-    removeError(e.target.parentNode);
-  }
-  else {
-    displayError(e.target.parentNode, "Veillez renseigner une ville");
-  }
+  locations[i].addEventListener("change", function (e) {
+    let error = true;
+    for (let u = 0; u < locations.length; u++) {
+      if (locations[u].checked) {
+        error = false;
+        valeur = locations[u].value;
+        console.log(valeur);
+        removeError(e.target.parentNode);
+        break
+      }
+    }
+    if (error) {
+      displayError(e.target.parentNode, "Veillez renseigner une ville");
+    }
+
+  });
+
+  // la case des conditions générales est cochée, l'autre case est facultative / peut être laissée décochée (vérifier la première case est coché en JavaScript)
+  checkbox1.addEventListener("input", function (e) {
+    if (checkbox1) {
+      console.log("je vois tous.")
+      removeError(e.target.parentNode);
+    }
+    else {
+      displayError(e.target.parentNode, "cette case est obligatoire");
+    }
+  });
 }
-//});
-
-// la case des conditions générales est cochée, l'autre case est facultative / peut être laissée décochée (vérifier la première case est coché en JavaScript)
-checkbox1.addEventListener("input", function (e) {
-  if (checkbox1 == true) {
-    removeError(e.target.parentNode);
-  }
-  else {
-    displayError(e.target.parentNode, "cette case est obligatoire");
-  }
-});
-
 //validation du formulaire (idée : créer un tableau qui récupérer tous les validations et faire une boucle avec si if ok si erreur else afficher l'erreur), ajouter confirmation quand envoie (voir p.4 du doc google)
 
 //function validate() {}
@@ -173,7 +180,8 @@ if (erreur) {
 
 else {
   alert('Merci, votre inscription est bien prise en compte !');
-}*/
+}
 
 
 // trouver un moyen de conserver les données du formulaire !
+*/
