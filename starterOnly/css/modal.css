@@ -1,6 +1,4 @@
-
 /* Modal form */
-
 
 .smFont {
   font-size: 16px;
@@ -57,14 +55,15 @@ input {
   font-size: 20px;
   height: 48px;
 }
+
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
+  font-size: 0.6em;
   color: #e54858;
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  text-align: left;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -75,6 +74,11 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
+
+.formData[data-error-visible="false"] .text-control {
+  border: 2px solid #3876ac;
+}
+
 /* 
 input[data-error]::after {
     content: attr(data-error);
@@ -161,7 +165,7 @@ input[data-error]::after {
   position: absolute;
   left: 15px;
   content: " ";
-  height: 33px;  /* barre blanche de 33px de haut et 3 de large pour faire la croix */
+  height: 33px; /* barre blanche de 33px de haut et 3 de large pour faire la croix */
   width: 3px;
   background-color: #fff;
 }
@@ -270,10 +274,41 @@ input[data-error]::after {
   background: #3876ac;
 }
 
+.formError {
+  content: attr(data-error);
+  font-size: 0.6em;
+  color: #e54858;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: left;
+  line-height: 0.3;
+  opacity: 0;
+  transition: 0.3s;
+}
 
+.data-sent {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 600px;
+  max-height: 850px;
+  position: relative;
+}
 
+.data-sent p {
+  width: 309px;
+  font-weight: 400;
+  font-size: 36px;
+  color: #ffffff;
+  text-align: center;
+  margin: 18% 0;
+}
 
-
+.data-sent img {
+  padding-top: 40px;
+}
 
 @keyframes modalopen {
   from {
@@ -285,13 +320,11 @@ input[data-error]::after {
   }
 }
 
-
-
 @keyframes modalclose {
-  from {opacity: 1;
-    
+  from {
+    opacity: 1;
   }
-  to {    
+  to {
     opacity: 0;
     transform: translateY(150px);
   }
