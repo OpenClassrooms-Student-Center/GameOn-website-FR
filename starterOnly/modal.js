@@ -18,8 +18,9 @@ const last = document.getElementById("last");
 const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
-//const location = document.getElementsByName("location"); // Je dois créer un tableau je pense pour gérer tous les boutons de type radio "locations"
+//const location = document.getElementsByName("location");
 const checkbox1 = document.getElementById("checkbox1"); // Peux être qu'un tableau la aussi serai une bonne idée si je décide de rajouter "checkbox 2"
+const checkbox2 = document.getElementById("checkbox2"); // Peux être qu'un tableau la aussi serai une bonne idée si je décide de rajouter "checkbox 2"
 
 
 // launch modal event
@@ -105,16 +106,36 @@ birthdate.addEventListener("input", function (e) {
 // birthdate : une valeur numérique est saisie et verifier la comparaison des date en JavaScript (voir l'objet "date")
 
 // location : récupérer tous les éléments dans un tableau et créer une boucle qui vérifie qu'un bouton radio est bien sélectionné
+const locations = document.getElementsByName("location");
+//locations.addEventListener("input", function (e) {
+for (let i = 0; i < locations.length; i++) {
+  if (locations[i].checked) {
+    valeur = locations[i].value;
+    console.log("valeur");
+    removeError(e.target.parentNode);
+  }
+  else {
+    displayError(e.target.parentNode, "Veillez renseigner une ville");
+  }
+}
+//});
 
 // la case des conditions générales est cochée, l'autre case est facultative / peut être laissée décochée (vérifier la première case est coché en JavaScript)
+checkbox1.addEventListener("input", function (e) {
+  if (checkbox1 == true) {
+    removeError(e.target.parentNode);
+  }
+  else {
+    displayError(e.target.parentNode, "cette case est obligatoire");
+  }
+});
 
-// quand réponse fausse chercher "data error" & "data error visible = true" ! penser a ajouter un message d'erreur quand réponse fausse (voir p.3 du doc google)
+//validation du formulaire (idée : créer un tableau qui récupérer tous les validations et faire une boucle avec si if ok si erreur else afficher l'erreur), ajouter confirmation quand envoie (voir p.4 du doc google)
 
+//function validate() {}
 
 /*form.addEventListener("submit", function (e) {
   e.preventDefault();
-
-// validation du formulaire (idée : créer un tableau qui récupérer tous les validations et faire une boucle avec si if ok si erreur else afficher l'erreur), ajouter confirmation quand envoie (voir p.4 du doc google)
 
 if (!first.value) {
   erreur = "Veuillez rentrer un prénom de plus de 2 caractères";
