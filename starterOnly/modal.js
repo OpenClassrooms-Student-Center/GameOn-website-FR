@@ -20,4 +20,25 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+document.getElementById("reverve").addEventListener("submit", validate);
 
+function validate(){
+const name = document.getElementById("first");
+const last = document.getElementById("last");
+const email = document.getElementById("email");
+const bithdate = document.getElementById("bithdate");
+const quantity = document.getElementById("quantity");
+
+if (last.value == "") {
+  console.log('erreur');
+  erreur = "Veuillez renseigner le champ"
+  console.log(erreur);
+}
+if (erreur) {
+
+  document.getElementById("erreur").innerHTML = erreur;
+  return false
+}
+
+alert('Formulaire envoyé !');
+};
