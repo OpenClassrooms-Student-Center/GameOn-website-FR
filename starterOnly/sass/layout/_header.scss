@@ -31,6 +31,7 @@
     .topnav {
         a {
             display: none;
+            
             .icon {
                 float: right;
                 display: block;
@@ -62,8 +63,6 @@
       text-align: left;
     }
 }
-  
-  
   
 @media screen and (max-width: 540px) {
     .topnav a {
