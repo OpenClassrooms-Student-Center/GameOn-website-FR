@@ -1,3 +1,4 @@
+import Product from '.javaScript/Inputs.js';
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -20,4 +21,25 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+document.getElementById("reverve").addEventListener("submit", validate);
 
+function validate(){
+  const imputs = document.getElementsByTagName("input");
+  for (let i = 0; i< inputs.lenght; i++){
+
+  }
+  
+
+  if (last.value == "") {
+    console.log('erreur');
+    erreur = "Veuillez renseigner le champ"
+    console.log(erreur);
+  };
+  if (erreur) {
+
+    document.getElementById("erreur").innerHTML = erreur;
+    return false
+  };
+
+  alert('Formulaire envoyé !');
+};
