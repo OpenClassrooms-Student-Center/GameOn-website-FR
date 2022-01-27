@@ -1,32 +1,26 @@
-//import { formDataValidation} from "./_formData.js";
+////////FORM DATA ERROR : actions to be performed when there are (or not) errors in the filling of fields by the user 
+import { formDataValidation} from "./_formData.js";
 
 //DOM elements
-let formData = document.querySelectorAll(".formData");
-let input= document.querySelector(".input")
-let inputError = document.createElement(".text-control");// for red outline
-let textError = document.querySelectorAll(".error");//span
+const modalForm = document.querySelector(".modalForm");
 
 
 //Functions
 
-//----Show text error
+//----Show text error for each element
+export function showTextError(el){
+    //console.log(el,":show text error");
 
-export function showTextError (el) {
-    input.after(inputError);
-    input.style.outline = "2px solid #D8000C";
-    span.after(textError);
-    span.style.display = "block";
-}
-  
-//----Hide text error
-export function hideTextError(el) { 
-    textError.style.display = "none";//A Revoir
-    for (let i = 0; i < allTextError.length; i++) { 
-        allTextError[i].style.display = "none"// hide red text 
-    }
+    // attribut data-error-visible="true"
+    el.closest(".formData").dataset.errorVisible = true;
+    //console.log("erreur");
+};
 
-    inputError.style.outline = "none";// hide red outline// a revoir
-    for (let i = 0; i < allInputError.length; i++) {
-        allInputError[i].style.outline = "none"; 
-    }
-}
+//----Hide text error for each element
+export function hideTextError(el){
+    //console.log(el ," :text error hide");
+
+    // attribut data-error-visible=null
+    el.closest(".formData").dataset.errorVisible = null; 
+    //console.log("pas d'erreur");
+};

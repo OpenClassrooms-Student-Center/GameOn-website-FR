@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     
     <!--Importation : CSS files-->
-    <link rel="stylesheet" href="modal.css"/>
+    <link rel="stylesheet" href="style.css"/>
     <link rel="stylesheet" href="normalize.css"/>
 
     <!--Importation : icones-->
@@ -75,57 +75,52 @@
           <div class="modal-body">
 
             <!--Form element-->
-            <form id="modalForm" class="modalForm" action="index.html" method="get" onsubmit="return validate();">
+            <form id="modalForm" class="modalForm" action="#" method="get">
               
               <!--FORM PART 1: User informations -->
               <!--User info 1-->
-              <div class="formData infoFirst" >
+              <div class="formData" data-error="Le Prénom doit comporter minimum 2 lettres.">
                 <label for="first">Prénom</label>
                 <br>
-                <input class="text-control" type="text" id="first" name="first" minlength="2" required>
+                <input class="text-control" type="text" id="first" name="first" minlength="2"/>
                 <br>
-                <span class="error">Le Prénom doit comporter minimum 2 lettres.</span>
               </div>
 
               <!--User info 2-->
-              <div class="formData infoName">
+              <div class="formData" data-error="Le Nom doit comporter minimum 2 lettres.">
                 <label for="last">Nom</label>
                 <br>
-                <input class="text-control" type="text" id="last" name="last" minlength="2" required>
+                <input class="text-control" type="text" id="last" name="last" minlength="2">
                 <br>
-                <span class="error">Le Nom doit comporter minimum 2 lettres.</span>
               </div>
 
               <!--User info 3-->
-              <div class="formData infoEmail">
+              <div class="formData" data-error="L'adresse e-mail doit être valide.">
                 <label for="email">E-mail</label>
                 <br>
-                <input class="text-control" type="email" id="email" name="email" required >
+                <input class="text-control" type="email" id="email" name="email">
                 <br>
-                <span class="error">L'adresse e-mail doit être valide.</span>
               </div>
 
               <!--User info 4-->
-              <div class="formData infoBirthdate">
+              <div class="formData" data-error="Une date de naissance doit être saisie.">
                 <label for="birthdate">Date de naissance</label>
                 <br>
-                <input class="text-control" type="date" id="birthdate" name="birthdate" required>   
+                <input class="text-control" type="date" id="birthdate" name="birthdate">   
                 <br>
-                <span class="error">Une date de naissance doit être saisie.</span>
               </div>
 
               <!--User info 5-->
-              <div class="formData infoQuantity">
+              <div class="formData" data-error="Le nombre doit être un entier compris entre 0 et 99.">
                 <label class="form__label--quantityTitle" for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label>
                 <br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
-                <span class="error">Le nombre doit être un entier compris entre 0 et 99.</span>
-                
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+               <br> 
               </div>
 
 
               <!--FORM PART 2: User location -->
-              <div class="formData locations">
+              <div class="formData" data-error="Il faut cocher une ville.">
                 
                 <label class="form__label--checkboxes"> 
                   <span class="form__label--checkboxes-title">A quel tournoi souhaitez-vous participer cette année ? </span>  
@@ -133,7 +128,7 @@
                                 
                 <br>
                 <!--Location 1--> 
-                <input class="checkbox-input location" type="radio" id="location1" name="location" value="New York" >
+                <input class="checkboxes location" type="radio" id="location1" name="location" value="New York" >
 
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -141,7 +136,7 @@
                 </label>
                 
                 <!--Location 2-->
-                <input class="checkbox-input location" type="radio" id="location2" name="location" value="San Francisco">
+                <input class="checkboxes location" type="radio" id="location2" name="location" value="San Francisco">
   
                 <label class="checkbox-label" for="location2">
                   <span class="checkbox-icon"></span>
@@ -149,7 +144,7 @@
                 </label>
                 
                 <!--Location 3-->
-                <input class="checkbox-input location" type="radio" id="location3" name="location" value="Seattle"/>
+                <input class="checkboxes location" type="radio" id="location3" name="location" value="Seattle"/>
 
                 <label class="checkbox-label" for="location3">
                   <span class="checkbox-icon"></span>
@@ -157,7 +152,7 @@
                 </label>
 
                 <!--Location 4-->
-                <input class="checkbox-input location" type="radio" id="location4" name="location" value="Chicago"/>
+                <input class="checkboxes location" type="radio" id="location4" name="location" value="Chicago"/>
                 
                   <label class="checkbox-label" for="location4">
                     <span class="checkbox-icon"></span>
@@ -165,7 +160,7 @@
                   </label>
                 
                   <!--Location 5-->
-                <input class="checkbox-input location" type="radio"  id="location5"  name="location" value="Boston">
+                <input class="checkboxes location" type="radio"  id="location5"  name="location" value="Boston">
          
                 <label class="checkbox-label" for="location5">
                   <span class="checkbox-icon"></span>
@@ -173,32 +168,29 @@
                 </label>
                
                 <!--Location 6-->
-                <input class="checkbox-input location" type="radio" id="location6" name="location" value="Portland">
+                <input class="checkboxes location" type="radio" id="location6" name="location" value="Portland">
            
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
                   <span class="checkbox-title">Portland</span>
                 </label>
-
-                <span class="error"><p>Il faut cocher une ville.</p></span>
-                
+  
               </div>
 
               <!--FORM PART 3: User Rights -->
-              <div class="formData rights">
+              <div class="formData" data-error="La case des conditions d'utilisation doit être cochée.">
                 
-                <input class="checkbox-input" name="checkbox-input" type="checkbox" id="checkbox1" required >
+                <input class="checkboxes right" name="right" type="checkbox" id="checkbox1"  > 
              
                 <label class="checkbox2-label" for="checkbox1" >
                   <span class="checkbox-icon"></span>
                   <span class="checkbox-title">J'ai lu et accepté les conditions d'utilisation.</span>
                   <br>
-                  <span class="error">La case des conditions d'utilisation doit être cochée.</span>
                 </label>
 
                 <br>
 
-                <input class="checkbox-input" type="checkbox" name="checkbox-input" id="checkbox2" />
+                <input class="checkboxes right" type="checkbox" name="right" id="checkbox2" />
                 
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
@@ -218,17 +210,15 @@
             <div class="congrats">
 
               <div class="congrats-text">
-                Félicitations!
+                Merci!
                 <br>
-                Votre réservation a bien été enregistrée.
+                Votre inscription a bien été enregistrée.
               </div>
 
               <!--BUTTON : "Close"-->
               <button class="btn-submit congratsBtnClose" type="button">Fermer</button>
 
             </div>
-
-
 
           </div>
         </div>
@@ -242,5 +232,6 @@
     </footer>
 
     <script type="module" src="./js/main.js"></script>
+
   </body>
 </html>
