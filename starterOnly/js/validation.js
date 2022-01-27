@@ -1,13 +1,11 @@
 // DOM constants definitions
-
 const content = document.querySelector(".content");
-
 const formulary = document.querySelector("form");
 const formularyData = document.querySelectorAll(".formData");
 const firstName = document.querySelector("#first");
 const lastName = document.querySelector("#last");
 const email = document.querySelector("#email");
-const birthDate = document.querySelector("#birthdate"); //#ids of inputs
+const birthDate = document.querySelector("#birthdate");
 const numberOfContests = document.querySelector("#quantity");
 const location1 = document.querySelector("#location1");
 const location2 = document.querySelector("#location2");
@@ -17,17 +15,14 @@ const location5 = document.querySelector("#location5");
 const location6 = document.querySelector("#location6");
 const termsAndConditions = document.querySelector("#checkbox1");
 const buttonSubmit = document.querySelector(".btn-submit");
-
 const formError = document.querySelector(".formError");
-
+const dataSent = document.querySelector(".data-sent");
 // Regex const definition
 const regexName = /^[a-zA-Z-\s]+$/;
 const regexEmail = /([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+).([a-zA-Z]{2,5})/;
 const regexBirthDate = /^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
 const regexNumber = /^([0-9]|[1-9][0-9]|)$/;
-// To prevent name inputs to be autocompleted (our error message was hidden)
-firstName.setAttribute("autocomplete", "off");
-lastName.setAttribute("autocomplete", "off");
+
 // To prevent default submission of the formulary and thus allow our validate function to check it first
 formulary.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -62,7 +57,6 @@ email.addEventListener("input", function (e) {
     formularyData[2].setAttribute("data-error-visible", "true");
   }
 });
-
 
 // The big validation function that test all input values
 function validate() {
@@ -126,21 +120,12 @@ function validate() {
     numberOfErrors++;
   }
 
-
   //console.log(numberOfErrors);
 
   if (numberOfErrors > 0) {
     formError.style.opacity = "1";
   } else {
     formulary.style.display = "none";
-    document.querySelector(".data-sent").style.display = "flex";
-
-  console.log(numberOfErrors);
-
-  if (numberOfErrors > 0) {
-    buttonSubmit.setAttribute("value", "Formulaire non valide");
-  } else {
-    buttonSubmit.setAttribute("value", "Formulaire envoyé");
-
+    dataSent.style.display = "flex";
   }
 }
