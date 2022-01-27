@@ -50,22 +50,26 @@ let regexName = /^([a-zA-Z]{2,30}\s*)+/;
 let regexMail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
 let regexNombre = /^(0|[1-9]\d*)$/;
 let regexBirthdate = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
+let eventError = true;
 
-
-// Evenement pour le Prenom
+// Evenement pour le Prenom OK !
+eventError = true;
 first.addEventListener("input", function (e) {
   if (regexName.test(first.value) == true) {
     removeError(e.target.parentNode);
+    eventError = false;
   }
   else {
     displayError(e.target.parentNode, "le prénom doit comporter minimum 2 caractères");
   }
 });
 
-// Evenement pour le Nom
+// Evenement pour le Nom OK !
+eventError = true;
 last.addEventListener("input", function (e) {
   if (regexName.test(last.value) == true) {
     removeError(e.target.parentNode);
+    eventError = false;
   }
   else {
     displayError(e.target.parentNode, "le nom doit comporter minimum 2 caractères");
@@ -73,10 +77,12 @@ last.addEventListener("input", function (e) {
 });
 
 
-// Evenement pour l'email
+// Evenement pour l'email OK !
+eventError = true;
 email.addEventListener("input", function (e) {
   if (regexMail.test(email.value) == true) {
     removeError(e.target.parentNode);
+    eventError = false;
   }
   else {
     displayError(e.target.parentNode, "Veillez renseigner une adresse mail valide");
@@ -84,9 +90,15 @@ email.addEventListener("input", function (e) {
 });
 
 //Evenement pour le Nombre de tournois
+eventError = true;
+/*let x = 0, y >= 99;
+let resultat = x == y;
+console.log("le resultat est" + resultat);*/
+
 quantity.addEventListener("input", function (e) {
-  if (regexNombre.test(quantity.value) == true) {
+  if (quantity.value) {
     removeError(e.target.parentNode);
+    eventError = false;
   }
   else {
     displayError(e.target.parentNode, "Veillez renseigner le nombre de tournois que vous avez réalisé");
@@ -94,20 +106,19 @@ quantity.addEventListener("input", function (e) {
 });
 
 //Evenement pour la date d'anniversaire a terminer !!
+eventError = true;
 birthdate.addEventListener("input", function (e) {
   if (regexBirthdate.test(birthdate.value) == true) {
     removeError(e.target.parentNode);
+    eventError = false;
   }
   else {
     displayError(e.target.parentNode, "Veillez renseigner une date de naissance valide");
   }
 });
 
-// birthdate : une valeur numérique est saisie et verifier la comparaison des date en JavaScript (voir l'objet "date")
-
-// location : récupérer tous les éléments dans un tableau et créer une boucle qui vérifie qu'un bouton radio est bien sélectionné
-//
-//const locations = document.getElementsByName("location");
+// location OK !
+eventError = true;
 for (let i = 0; i < locations.length; i++) {
   locations[i].addEventListener("change", function (e) {
     let error = true;
@@ -117,6 +128,7 @@ for (let i = 0; i < locations.length; i++) {
         valeur = locations[u].value;
         console.log(valeur);
         removeError(e.target.parentNode);
+        eventError = false;
         break
       }
     }
@@ -126,20 +138,45 @@ for (let i = 0; i < locations.length; i++) {
 
   });
 
-  // la case des conditions générales est cochée, l'autre case est facultative / peut être laissée décochée (vérifier la première case est coché en JavaScript)
+  // la case des conditions générales est cochée, l'autre case est facultative  OK ! (Appelle l'event 6 fois ????)
+  eventError = true;
   checkbox1.addEventListener("input", function (e) {
     if (checkbox1) {
-      console.log("je vois tous.")
       removeError(e.target.parentNode);
+      eventError = false;
+      console.log(eventError);
     }
     else {
       displayError(e.target.parentNode, "cette case est obligatoire");
     }
   });
 }
-//validation du formulaire (idée : créer un tableau qui récupérer tous les validations et faire une boucle avec si if ok si erreur else afficher l'erreur), ajouter confirmation quand envoie (voir p.4 du doc google)
 
-//function validate() {}
+// Bonne pratique ???
+eventError = true;
+checkbox2.addEventListener("input", function (e) {
+  if (checkbox2.value = false) {
+    removeError(e.target.parentNode);
+    eventError = false;
+  }
+  else {
+    removeError(e.target.parentNode);
+    eventError = false;
+    console.log("lol");
+  }
+});
+//validation du formulaire OK !
+
+function validate() {
+  if (eventError == true) {
+    alert("Veillez renseigner tous les champs du formulaire");
+    return false;
+  }
+  else {
+    alert("Votre inscription est bien pris en compte")
+    return true;
+  }
+}
 
 /*form.addEventListener("submit", function (e) {
   e.preventDefault();
