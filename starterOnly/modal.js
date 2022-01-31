@@ -11,6 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const close = document.querySelector(".close");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -20,4 +21,29 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+// close modal event
+close.addEventListener("click", closeModal);
 
+// close modal form
+function closeModal() {
+  modalbg.style.display = "none";
+}
+
+  // first name verification
+
+let formGlobal = document.getElementById('formGlobal');
+
+formGlobal.first.addEventListener('change', function(){
+  validFirst(this);
+});
+
+const validFirst = (firstName) => {
+  let testFirst = (/^[a-zA-Z]/.test(firstName.value) && firstName.value.length>=2);
+  if(testFirst){
+    document.getElementById('firstSpan').innerHTML = ""
+  }
+  else{
+    document.getElementById('firstSpan').innerHTML = "veuillez renseigner un prénom valide de 2 caractères minimum"
+
+  }
+}
