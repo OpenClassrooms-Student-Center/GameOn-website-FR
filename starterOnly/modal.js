@@ -17,6 +17,7 @@ const first = document.getElementById("first");
 const last = document.getElementById("last");
 const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
+const today = new Date().toISOString().split("T")[0];
 const quantity = document.getElementById("quantity");
 const locations = document.getElementsByName("location");
 const checkbox1 = document.getElementById("checkbox1"); // Peux être qu'un tableau la aussi serai une bonne idée si je décide de rajouter "checkbox 2"
@@ -46,10 +47,16 @@ function removeError(input) {
   input.setAttribute("data-error-visible", false);
 }
 
+/*//fonction pour récuperer la valeur de quantity
+function numberOfTournaments() {
+  let valueNumber = (document.getElementById("quantity").value);
+  let numberOfTournamentsValid = valueNumber.length >= 0 || valueNumber.length <= 99;
+}*/
+
 let regexName = /^([a-zA-Z]{2,30}\s*)+/;
 let regexMail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
 let regexNombre = /^(0|[1-9]\d*)$/;
-let regexBirthdate = /^(?:(?:31(\/|-|\.)(?:0?[13578]|1[02]))\1|(?:(?:29|30)(\/|-|\.)(?:0?[13-9]|1[0-2])\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:29(\/|-|\.)0?2\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))$|^(?:0?[1-9]|1\d|2[0-8])(\/|-|\.)(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/;
+let regexBirthdate = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 let eventError = true;
 
 // Evenement pour le Prenom OK !
@@ -80,7 +87,7 @@ last.addEventListener("input", function (e) {
 // Evenement pour l'email OK !
 eventError = true;
 email.addEventListener("input", function (e) {
-  if (regexMail.test(email.value) == true) {
+  if (regexMail.test(email.value)) {
     removeError(e.target.parentNode);
     eventError = false;
   }
@@ -91,12 +98,9 @@ email.addEventListener("input", function (e) {
 
 //Evenement pour le Nombre de tournois
 eventError = true;
-/*let x = 0, y >= 99;
-let resultat = x == y;
-console.log("le resultat est" + resultat);*/
-
+let quantityValid = quantity.length > 0;
 quantity.addEventListener("input", function (e) {
-  if (quantity.value) {
+  if (quantityValid(quantity.value)) {
     removeError(e.target.parentNode);
     eventError = false;
   }
@@ -107,8 +111,9 @@ quantity.addEventListener("input", function (e) {
 
 //Evenement pour la date d'anniversaire a terminer !!
 eventError = true;
+birthdate.max = today;
 birthdate.addEventListener("input", function (e) {
-  if (regexBirthdate.test(birthdate.value) == true) {
+  if (regexBirthdate.test(birthdate)) {
     removeError(e.target.parentNode);
     eventError = false;
   }
