@@ -24,22 +24,27 @@ function launchModal() {
 
 document.getElementById("reverve").addEventListener("submit",function validate(e) {
   var inputs = document.getElementsByTagName("input");
-  
+  let errorForm = false;
   for ( let i = 0; i< inputs.length; i++) {
     console.log(inputs[i].value);
     console.log(inputs[i]);
+    let error ;
+    
     if (inputs[i].value == "") {
     
-      let error = "veuillez renseigner le champ"
+      error = "veuillez renseigner le champ"
       const input = document.getElementById(inputs[i].id);
       console.log(input);
       input.after(error);
+      errorForm = true;
       
-      
-    }
+    } 
     
   }
-
+  if (errorForm == true) {
+    e.preventDefault();
+    return false
+  }
 
   alert('Formulaire envoyé !');
 });
