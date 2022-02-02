@@ -96,11 +96,12 @@ email.addEventListener("input", function (e) {
   }
 });
 
-//Evenement pour le Nombre de tournois
+//Evenement pour le Nombre de tournois Ok !
 eventError = true;
-let quantityValid = quantity.length > 0;
 quantity.addEventListener("input", function (e) {
-  if (quantityValid(quantity.value)) {
+  let quantityValid = parseInt(quantity.value);
+  console.log(quantityValid);
+  if (quantityValid >= 0 && quantityValid <= 99) {
     removeError(e.target.parentNode);
     eventError = false;
   }
@@ -109,11 +110,11 @@ quantity.addEventListener("input", function (e) {
   }
 });
 
-//Evenement pour la date d'anniversaire a terminer !!
+//Evenement pour la date d'anniversaire a terminer !! transformer birthdate.value en number (parseInt ou recuperer la date de 01/01/1970) et comparer a "today" (propriétè qui le fais ? cherche dans la doc)
 eventError = true;
 birthdate.max = today;
 birthdate.addEventListener("input", function (e) {
-  if (regexBirthdate.test(birthdate)) {
+  if (birthdate.value < today) {
     removeError(e.target.parentNode);
     eventError = false;
   }
@@ -157,19 +158,6 @@ for (let i = 0; i < locations.length; i++) {
   });
 }
 
-// Bonne pratique ???
-eventError = true;
-checkbox2.addEventListener("input", function (e) {
-  if (checkbox2.value = false) {
-    removeError(e.target.parentNode);
-    eventError = false;
-  }
-  else {
-    removeError(e.target.parentNode);
-    eventError = false;
-    console.log("lol");
-  }
-});
 //validation du formulaire OK !
 
 function validate() {
