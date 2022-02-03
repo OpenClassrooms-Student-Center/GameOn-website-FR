@@ -106,7 +106,7 @@ export function formDataValidation(){
     
     //--------Result after testing each fields validity  
 
-        console.log(validationData);
+        //console.log(validationData);
         if (validationData == 0){
             return true;
         }else{

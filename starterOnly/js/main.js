@@ -13,7 +13,7 @@ modalForm.addEventListener("submit", e => {
   e.preventDefault();//stop form refresh by navigator
 
   if (formDataValidation()) {
-    console.log("formData validation true")
+    //console.log("formData validation true")
     openModal(); 
     openModalCongrats();
       
