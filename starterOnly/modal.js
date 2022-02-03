@@ -22,8 +22,9 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-document.getElementById("reverve").addEventListener("submit",function validate(e) {
-  var inputs = document.getElementsByTagName("input");
+const form = document.getElementById("reverve");
+form.addEventListener("submit",function validate(e) {
+  const inputs = form.getElementsByTagName("input");
   let asError = false;
   for ( let i = 0; i< inputs.length; i++) {
     console.log(inputs[i].value);
