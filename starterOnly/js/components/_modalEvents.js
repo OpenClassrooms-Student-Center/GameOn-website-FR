@@ -1,6 +1,7 @@
 ////////MODAL EVENTS : Open/Close on click
 
 //DOM elements 
+let bodyScroll = document.querySelector(".bodyScroll"); // body element
 let modalContainer = document.querySelector(".bground"); //windows with form and congrats
 let modalForm = document.querySelector("#modalForm"); //form element
 let modalCongrats = document.querySelector(".congrats"); // congrats element
@@ -20,10 +21,12 @@ export function openModal(){
 
 export function closeModal(){
     modalContainer.style.display = "none";
+    bodyScroll.style.overflow = "scroll"
     //console.log("closeModal OK");
 };
 
 export function openModalForm(){
+    bodyScroll.style.overflow = "hidden"
     modalForm.style.display = "block";
     modalCongrats.style.display = "none";
     modalForm.reset(); //clear all previous form data and error or other method

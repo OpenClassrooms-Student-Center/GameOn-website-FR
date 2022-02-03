@@ -90,7 +90,7 @@ export function formDataValidation(){
         } else {    
              hideTextError(location[0]);    
         };
-        //console.log("location checked :",validationData);
+
     
 
     //--------TGU and newsletter (checkboxes) : First checkbox must be checked        
@@ -102,7 +102,7 @@ export function formDataValidation(){
         } else {   
             hideTextError(right);    
         };
-        //console.log("TCU.checked :",validationData);
+
     
     //--------Result after testing each fields validity  
 

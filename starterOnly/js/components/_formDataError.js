@@ -9,18 +9,16 @@ const modalForm = document.querySelector(".modalForm");
 
 //----Show text error for each element
 export function showTextError(el){
-    //console.log(el,":show text error");
 
     // attribut data-error-visible="true"
     el.closest(".formData").dataset.errorVisible = true;
-    //console.log("erreur");
+    //console.log("error");
 };
 
 //----Hide text error for each element
 export function hideTextError(el){
-    //console.log(el ," :text error hide");
 
     // attribut data-error-visible=null
     el.closest(".formData").dataset.errorVisible = null; 
-    //console.log("pas d'erreur");
+    //console.log("no error");
 };
