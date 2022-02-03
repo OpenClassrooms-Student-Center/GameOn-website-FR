@@ -29,7 +29,7 @@ const formValidate = {
   first: {
     name: "first",
     type: "text",
-    regex: "[A-z]*",
+    regex: /[a-zA-Z]{2,}/,
     minlenght: 2,
     required: true,
     error: "Veuillez entrer 2 caractères ou plus pour ce champ."
@@ -37,7 +37,7 @@ const formValidate = {
   last: {
     name: "last",
     type: "text",
-    regex: "[A-z]*",
+    regex: /[a-zA-Z]{2,}/,
     minlenght: 2,
     required: true,
     error: "Veuillez entrer 2 caractères ou plus pour ce champ."
@@ -45,14 +45,14 @@ const formValidate = {
   email: {
     name: "email",
     type: "text",
-    regex: "[A-z]*",
+    regex: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
     required: true,
     error: "Veuillez entrer une adresse mail valide."
   },
   quantity: {
     name: "quantity",
     type: "number",
-    regex: "[0-9]{2}",
+    regex: /[0-9]{2}/,
     required: true,
     error: "Vous devez entrer un nombre."
   },
