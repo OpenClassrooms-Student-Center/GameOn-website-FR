@@ -17,11 +17,10 @@ const first = document.getElementById("first");
 const last = document.getElementById("last");
 const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
-const today = new Date().toISOString().split("T")[0];
 const quantity = document.getElementById("quantity");
 const locations = document.getElementsByName("location");
-const checkbox1 = document.getElementById("checkbox1"); // Peux être qu'un tableau la aussi serai une bonne idée si je décide de rajouter "checkbox 2"
-const checkbox2 = document.getElementById("checkbox2"); // Peux être qu'un tableau la aussi serai une bonne idée si je décide de rajouter "checkbox 2"
+const checkbox1 = document.getElementById("checkbox1");
+const checkbox2 = document.getElementById("checkbox2");
 
 
 // launch modal event
@@ -37,7 +36,7 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-//Fonction génèral pour l'ajout d'attribue
+//Fonction génèral pour l'ajout d'attribue css
 function displayError(input, errorMessage) {
   input.setAttribute("data-error-visible", true);
   input.setAttribute("data-error", errorMessage);
@@ -47,16 +46,10 @@ function removeError(input) {
   input.setAttribute("data-error-visible", false);
 }
 
-/*//fonction pour récuperer la valeur de quantity
-function numberOfTournaments() {
-  let valueNumber = (document.getElementById("quantity").value);
-  let numberOfTournamentsValid = valueNumber.length >= 0 || valueNumber.length <= 99;
-}*/
-
+//déclarations des varibles Regex
 let regexName = /^([a-zA-Z]{2,30}\s*)+/;
 let regexMail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
 let regexNombre = /^(0|[1-9]\d*)$/;
-let regexBirthdate = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 let eventError = true;
 
 // Evenement pour le Prenom OK !
@@ -100,7 +93,6 @@ email.addEventListener("input", function (e) {
 eventError = true;
 quantity.addEventListener("input", function (e) {
   let quantityValid = parseInt(quantity.value);
-  console.log(quantityValid);
   if (quantityValid >= 0 && quantityValid <= 99) {
     removeError(e.target.parentNode);
     eventError = false;
@@ -110,11 +102,14 @@ quantity.addEventListener("input", function (e) {
   }
 });
 
-//Evenement pour la date d'anniversaire a terminer !! transformer birthdate.value en number (parseInt ou recuperer la date de 01/01/1970) et comparer a "today" (propriétè qui le fais ? cherche dans la doc)
+//Evenement pour la date d'anniversaire OK !
 eventError = true;
+const today = new Date().toISOString().split("T")[0];
+timestamp = Date.parse(today);
 birthdate.max = today;
 birthdate.addEventListener("input", function (e) {
-  if (birthdate.value < today) {
+  let birthdateTime = Date.parse(birthdate.value);
+  if (birthdateTime < timestamp) {
     removeError(e.target.parentNode);
     eventError = false;
   }
@@ -150,7 +145,6 @@ for (let i = 0; i < locations.length; i++) {
     if (checkbox1) {
       removeError(e.target.parentNode);
       eventError = false;
-      console.log(eventError);
     }
     else {
       displayError(e.target.parentNode, "cette case est obligatoire");
@@ -170,48 +164,3 @@ function validate() {
     return true;
   }
 }
-
-/*form.addEventListener("submit", function (e) {
-  e.preventDefault();
-
-if (!first.value) {
-  erreur = "Veuillez rentrer un prénom de plus de 2 caractères";
-}
-
-if (!last.value) {
-  erreur = "Veuillez rentrer un nom de plus de 2 caractères";
-}
-
-if (!email.value) {
-  erreur = "Veuillez rentrer une adresse valide";
-}
-
-if (!birthdate.value) {
-  erreur = "Veuillez rentrer votre date de naissance";
-}
-
-if (!quantity.value) {
-  erreur = "Veuillez sélectionner une ville ";
-}
-
-if (!location.value) {
-  erreur = "Veuillez sélectionner une ville "; //pas a jour, comment faire pour récupérer le tableau ?
-}
-
-if (!checkbox1.value) {
-  erreur = "Veuillez acceptez les termes des conditions";
-}
-
-if (erreur) {
-  e.preventDefault();
-  //aller chercher la const formData pour lui indiqué erreur et lui changé sa (classe/input ???)
-  return false;
-}
-
-else {
-  alert('Merci, votre inscription est bien prise en compte !');
-}
-
-
-// trouver un moyen de conserver les données du formulaire !
-*/
