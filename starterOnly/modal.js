@@ -24,7 +24,7 @@ function launchModal() {
 
 document.getElementById("reverve").addEventListener("submit",function validate(e) {
   var inputs = document.getElementsByTagName("input");
-  let errorForm = false;
+  let asError = false;
   for ( let i = 0; i< inputs.length; i++) {
     console.log(inputs[i].value);
     console.log(inputs[i]);
@@ -36,12 +36,12 @@ document.getElementById("reverve").addEventListener("submit",function validate(e
       const input = document.getElementById(inputs[i].id);
       console.log(input);
       input.after(error);
-      errorForm = true;
+      asError = true;
       
     } 
     
   }
-  if (errorForm == true) {
+  if (asError == true) {
     e.preventDefault();
     return false
   }
