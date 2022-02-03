@@ -22,6 +22,53 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+
+// valid imput form
+
+const formValidate = {
+  first: {
+    name: "first",
+    type: "text",
+    regex: "[A-z]*",
+    minlenght: 2,
+    required: true,
+    error: "Veuillez entrer 2 caractères ou plus pour ce champ."
+  },
+  last: {
+    name: "last",
+    type: "text",
+    regex: "[A-z]*",
+    minlenght: 2,
+    required: true,
+    error: "Veuillez entrer 2 caractères ou plus pour ce champ."
+  },
+  email: {
+    name: "email",
+    type: "text",
+    regex: "[A-z]*",
+    required: true,
+    error: "Veuillez entrer une adresse mail valide."
+  },
+  quantity: {
+    name: "quantity",
+    type: "number",
+    regex: "[0-9]{2}",
+    required: true,
+    error: "Vous devez entrer un nombre."
+  },
+  checkbox1: {
+    name: "checkbox1",
+    type: "checkbox",
+    required: true,
+    error: "Vous devez vérifier que vous acceptez les termes et conditions."
+  },
+  checkbox2: {
+    name: "checkbox2",
+    type: "checkbox",
+    required: true
+  }
+};
+
 const form = document.getElementById("reverve");
 form.addEventListener("submit",function validate(e) {
   const inputs = form.getElementsByTagName("input");
