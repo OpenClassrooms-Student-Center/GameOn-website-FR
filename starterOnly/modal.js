@@ -23,14 +23,14 @@ function launchModal() {
 }
 
 document.getElementById("reverve").addEventListener("submit",function validate(e) {
-  var inputs = document.getElementsByTagName("input");
+  const inputs = document.getElementsByTagName("input");
   let errorForm = false;
   for ( let i = 0; i< inputs.length; i++) {
     console.log(inputs[i].value);
     console.log(inputs[i]);
     let error ;
     
-    if (inputs[i].value == "") {
+    if (inputs[i].value === "") {
     
       error = "veuillez renseigner le champ"
       const input = document.getElementById(inputs[i].id);
@@ -41,7 +41,7 @@ document.getElementById("reverve").addEventListener("submit",function validate(e
     } 
     
   }
-  if (errorForm == true) {
+  if (errorForm) {
     e.preventDefault();
     return false
   }
