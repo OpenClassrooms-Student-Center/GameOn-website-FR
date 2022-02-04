@@ -48,8 +48,8 @@ const formValidate = {
     errorCustom: "Veuillez entrer une adresse mail valide."
   },
   birthdate: {
-    name: birthdate,
-    regex: /^([0-9]{2}\/){2}[0-9]{4}$/g,
+    name: "birthdate",
+    regex: /^[0-9]{4}(-[0-9]{2}){2}$/,
     required: true,
     errorCustom: "Vous devez entrer votre date de naissance."
   },
@@ -80,8 +80,9 @@ form.addEventListener("submit",function validate(e) {
   for (let i = 0; i< inputs.length; i++) {
     let error;
     for(const item in formValidate){
-
-      if (inputs[i].name == formValidate[item].name){
+      
+      if (inputs[i].name === formValidate[item].name){
+        console.log(inputs[3].value)
         console.log(inputs[i].value);
         console.log("regex " + formValidate[item].regex.test(inputs[i].value ));
         if (!formValidate[item].regex.test(inputs[i].value)){
@@ -96,14 +97,6 @@ form.addEventListener("submit",function validate(e) {
       
       
     }
-    // if (inputs[i].value == "") {
-    
-    //   error = "veuillez renseigner le champ"
-    //   const input = document.getElementById(inputs[i].id);
-    //   input.after(error);
-    //   asError = true;
-      
-    // } 
     
   }
   if (asError == true) {
