@@ -47,6 +47,12 @@ const formValidate = {
     required: true,
     errorCustom: "Veuillez entrer une adresse mail valide."
   },
+  birthdate: {
+    name: birthdate,
+    regex: /^([0-9]{2}\/){2}[0-9]{4}$/g,
+    required: true,
+    errorCustom: "Vous devez entrer votre date de naissance."
+  },
   quantity: {
     name: "quantity",
     regex: /^[0-9]{1,2}$/g,
@@ -76,6 +82,7 @@ form.addEventListener("submit",function validate(e) {
     for(const item in formValidate){
 
       if (inputs[i].name == formValidate[item].name){
+        console.log(inputs[i].value);
         console.log(formValidate[item].regex.test(inputs[i].value ));
         if (formValidate[item].regex.test(inputs[i].value === false)){
           console.log("erreur");
