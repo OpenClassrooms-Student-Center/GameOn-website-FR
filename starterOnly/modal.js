@@ -43,7 +43,7 @@ const formValidate = {
   email: {
     name: "email",
 
-    regex: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
+    regex: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
     required: true,
     errorCustom: "Veuillez entrer une adresse mail valide."
   },
@@ -55,7 +55,7 @@ const formValidate = {
   },
   quantity: {
     name: "quantity",
-    regex: /^[0-9]{1,2}$/g,
+    regex: /^[0-9]{1,2}$/,
     required: true,
     errorCustom: "Vous devez entrer un nombre."
   },
@@ -74,17 +74,17 @@ const formValidate = {
 
 const form = document.getElementById("reverve");
 form.addEventListener("submit",function validate(e) {
-  const inputs = form.getElementsByTagName("input");
+  const inputs = form.getElementsByClassName("text-control");
   let asError = false;
-
+  console.log(inputs)
   for (let i = 0; i< inputs.length; i++) {
     let error;
     for(const item in formValidate){
 
       if (inputs[i].name == formValidate[item].name){
         console.log(inputs[i].value);
-        console.log(formValidate[item].regex.test(inputs[i].value ));
-        if (formValidate[item].regex.test(inputs[i].value === false)){
+        console.log("regex " + formValidate[item].regex.test(inputs[i].value ));
+        if (!formValidate[item].regex.test(inputs[i].value)){
           console.log("erreur");
           asError = true;
           console.log("asError " + asError)
