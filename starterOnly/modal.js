@@ -28,39 +28,36 @@ function launchModal() {
 const formValidate = {
   first: {
     name: "first",
-    type: "text",
-    regex: /[a-zA-Z]{2,}/,
-    minlenght: 2,
+    regex: /^[a-zA-Z]{2,}$/g,
+
     required: true,
-    error: "Veuillez entrer 2 caractères ou plus pour ce champ."
+    errorCustom: "Veuillez entrer 2 caractères ou plus pour ce champ."
   },
   last: {
     name: "last",
-    type: "text",
-    regex: /[a-zA-Z]{2,}/,
-    minlenght: 2,
+
+    regex: /^[a-zA-Z]{2,}$/g,
     required: true,
-    error: "Veuillez entrer 2 caractères ou plus pour ce champ."
+    errorCustom: "Veuillez entrer 2 caractères ou plus pour ce champ."
   },
   email: {
     name: "email",
-    type: "text",
-    regex: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+
+    regex: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
     required: true,
-    error: "Veuillez entrer une adresse mail valide."
+    errorCustom: "Veuillez entrer une adresse mail valide."
   },
   quantity: {
     name: "quantity",
-    type: "number",
-    regex: /[0-9]{2}/,
+    regex: /^[0-9]{1,2}$/g,
     required: true,
-    error: "Vous devez entrer un nombre."
+    errorCustom: "Vous devez entrer un nombre."
   },
   checkbox1: {
     name: "checkbox1",
     type: "checkbox",
     required: true,
-    error: "Vous devez vérifier que vous acceptez les termes et conditions."
+    errorCustom: "Vous devez vérifier que vous acceptez les termes et conditions."
   },
   checkbox2: {
     name: "checkbox2",
@@ -73,20 +70,33 @@ const form = document.getElementById("reverve");
 form.addEventListener("submit",function validate(e) {
   const inputs = form.getElementsByTagName("input");
   let asError = false;
-  for ( let i = 0; i< inputs.length; i++) {
-    console.log(inputs[i].value);
-    console.log(inputs[i]);
-    let error ;
-    
-    if (inputs[i].value == "") {
-    
-      error = "veuillez renseigner le champ"
-      const input = document.getElementById(inputs[i].id);
-      console.log(input);
-      input.after(error);
-      asError = true;
+
+  for (let i = 0; i< inputs.length; i++) {
+    let error;
+    for(const item in formValidate){
+
+      if (inputs[i].name == formValidate[item].name){
+        console.log(formValidate[item].regex.test(inputs[i].value ));
+        if (formValidate[item].regex.test(inputs[i].value === false)){
+          console.log("erreur");
+          asError = true;
+          console.log("asError " + asError)
+          const input = document.getElementById(inputs[i].id);
+          input.after(formValidate[item].errorCustom);
+
+        }
+      }
       
-    } 
+      
+    }
+    // if (inputs[i].value == "") {
+    
+    //   error = "veuillez renseigner le champ"
+    //   const input = document.getElementById(inputs[i].id);
+    //   input.after(error);
+    //   asError = true;
+      
+    // } 
     
   }
   if (asError == true) {
