@@ -20,6 +20,11 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form and reset data
 function launchModal() {
   formulary.reset();
+  formulary.style.display = "block"; // to be sure that the formulary is displayed in any cases
+  dataSent.style.display = "none"; // to remove data sent message if we want to do another registration
+  for (let step = 0; step < 5; step++) {
+    formularyData[step].removeAttribute("data-error-visible");
+  } // to remove borders by default instead of red or blue
   modalbg.style.display = "block";
 }
 
