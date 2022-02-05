@@ -82,16 +82,22 @@ form.addEventListener("submit",function validate(e) {
     for(const item in formValidate){
       
       if (inputs[i].name === formValidate[item].name){
-        console.log(inputs[3].value)
         console.log(inputs[i].value);
         console.log("regex " + formValidate[item].regex.test(inputs[i].value ));
         if (!formValidate[item].regex.test(inputs[i].value)){
           console.log("erreur");
           asError = true;
-          console.log("asError " + asError)
+          console.log("asError " + asError);
           const input = document.getElementById(inputs[i].id);
-          input.after(formValidate[item].errorCustom);
-
+          if (input.nextElementSibling == null) {
+            let p = document.createElement("p");
+            input.parentNode.appendChild(p);
+            console.log("p créé")
+          }
+          let pError = input.nextElementSibling;
+          console.log(pError);
+          console.log(formValidate[item].errorCustom)
+          pError.innerHTML = formValidate[item].errorCustom;
         }
       }
       
