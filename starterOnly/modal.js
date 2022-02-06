@@ -46,7 +46,7 @@ function removeError(input) {
   input.setAttribute("data-error-visible", false);
 }
 
-//déclarations des varibles Regex
+//déclarations des variables
 let regexName = /^([a-zA-Z]{2,30}\s*)+/;
 let regexMail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
 let regexNombre = /^(0|[1-9]\d*)$/;
@@ -103,10 +103,10 @@ quantity.addEventListener("input", function (e) {
 });
 
 //Evenement pour la date d'anniversaire OK !
-eventError = true;
 const today = new Date().toISOString().split("T")[0];
 timestamp = Date.parse(today);
 birthdate.max = today;
+eventError = true;
 birthdate.addEventListener("input", function (e) {
   let birthdateTime = Date.parse(birthdate.value);
   if (birthdateTime < timestamp) {
@@ -119,15 +119,14 @@ birthdate.addEventListener("input", function (e) {
 });
 
 // location OK !
-eventError = true;
 for (let i = 0; i < locations.length; i++) {
   locations[i].addEventListener("change", function (e) {
+    eventError = true;
     let error = true;
     for (let u = 0; u < locations.length; u++) {
       if (locations[u].checked) {
         error = false;
         valeur = locations[u].value;
-        console.log(valeur);
         removeError(e.target.parentNode);
         eventError = false;
         break
@@ -138,29 +137,54 @@ for (let i = 0; i < locations.length; i++) {
     }
 
   });
-
-  // la case des conditions générales est cochée, l'autre case est facultative  OK ! (Appelle l'event 6 fois ????)
-  eventError = true;
-  checkbox1.addEventListener("input", function (e) {
-    if (checkbox1) {
-      removeError(e.target.parentNode);
-      eventError = false;
-    }
-    else {
-      displayError(e.target.parentNode, "cette case est obligatoire");
-    }
-  });
 }
 
-//validation du formulaire OK !
+// la case des conditions générales est cochée, l'autre case est facultative  OK ! (Appelle l'event 6 fois ????)
+eventError = true;
+checkbox1.addEventListener("input", function (e) {
+  if (checkbox1) {
+    removeError(e.target.parentNode);
+    eventError = false;
+  }
+  else {
+    displayError(e.target.parentNode, "cette case est obligatoire");
+  }
+});
 
-function validate() {
-  if (eventError == true) {
+//validation du formulaire: faire un tableau pour recuperer toutes les infos de eventError dans les inputs !
+
+/*function validate(e) {
+  e.preventDefault();
+  alert("Votre inscription est bien pris en compte");
+
+  const first = document.getElementById("first").value;
+  const last = document.getElementById("last").value;
+  const email = document.getElementById("email").value;
+  const birthdate = document.getElementById("birthdate").value;
+  const quantity = document.getElementById("quantity").value;
+  const locations = document.getElementsByName("location").value;
+  const checkbox1 = document.getElementById("checkbox1").value;
+  const checkbox2 = document.getElementById("checkbox2").value;
+}*/
+
+document.forms["reserve"].addEventListener("submit", function (e) {
+
+  let erreur;
+
+  let inputs = this;
+
+  for (let i = 0; i < inputs.length; i++) {
+    if (!inputs[i].value) {
+      erreur = ("Veillez renseigner tous les champs du formulaire");
+    }
+  }
+
+  if (erreur) {
+    e.preventDefault();
     alert("Veillez renseigner tous les champs du formulaire");
     return false;
   }
   else {
-    alert("Votre inscription est bien pris en compte")
-    return true;
+    alert("Votre inscription est bien pris en compte");
   }
-}
+})
