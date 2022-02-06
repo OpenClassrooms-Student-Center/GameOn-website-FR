@@ -76,19 +76,22 @@ const form = document.getElementById("reverve");
 form.addEventListener("submit",function validate(e) {
   const inputs = form.getElementsByClassName("text-control");
   let asError = false;
-  console.log(inputs)
+  console.log(inputs);
+
   for (let i = 0; i< inputs.length; i++) {
-    let error;
     for(const item in formValidate){
-      
+     
       if (inputs[i].name === formValidate[item].name){
         console.log(inputs[i].value);
-        console.log("regex " + formValidate[item].regex.test(inputs[i].value ));
-        if (!formValidate[item].regex.test(inputs[i].value)){
+        console.log("regex " + formValidate[item].regex.test(inputs[i].value));
+        const input = document.getElementById(inputs[i].id);
+        const hasRegexValid = formValidate[item].regex.test(inputs[i].value)
+        console.log(hasRegexValid);
+
+        if (!formValidate[item].regex.test(inputs[i].value)) {
           console.log("erreur");
           asError = true;
           console.log("asError " + asError);
-          const input = document.getElementById(inputs[i].id);
           if (input.nextElementSibling == null) {
             let p = document.createElement("p");
             input.parentNode.appendChild(p);
@@ -98,17 +101,25 @@ form.addEventListener("submit",function validate(e) {
           console.log(pError);
           console.log(formValidate[item].errorCustom)
           pError.innerHTML = formValidate[item].errorCustom;
-        }
-      }
-      
-      
-    }
-    
-  }
+
+        } else if (formValidate[item].regex.test(inputs[i].value)) {
+          if (input.nextElementSibling == null) {
+            console.log("tout est ok");
+          }
+          else {
+            let pError = input.nextElementSibling;
+          pError.innerHTML = "";
+          console.log("effacement message erreur");
+          };
+          
+        };
+      };
+    };
+  };
   if (asError == true) {
     e.preventDefault();
     return false
-  }
+  };
 
   alert('Formulaire envoyé !');
 });
