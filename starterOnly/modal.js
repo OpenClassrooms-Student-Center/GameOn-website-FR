@@ -13,8 +13,6 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const closeBtn = document.querySelectorAll(".close");
 const formData = document.querySelectorAll(".formData");
 
-console.log(closeBtn);
-
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
