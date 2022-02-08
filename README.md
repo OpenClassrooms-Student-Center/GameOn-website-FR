@@ -1,6 +1,5 @@
 # PROJET OPENCLASSROOMS N°4 (Version 2) - GAMEON
 
-### Lien vers le site du projet : https://airesse.github.io/StephanieRoi_4_27092021/starterOnly/index.html
 
 
 ## I. Scénario du projet :
