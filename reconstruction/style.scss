@@ -18,7 +18,7 @@ body {
     display: flex;
     flex-direction: column;
     // elle est où cette image?
-    background-image: url("background.png");
+    // background-image: url("background.png");
     font-family: var(--font-default);
     font-size: 18px;
     max-width: 1300px;
@@ -30,39 +30,57 @@ p {
     padding: 0.5vw;
 }
 
-img {
-    padding-right: 1rem;
-}
-
 //topnav
 .topnav {
     overflow: hidden;
     margin: 3.5%;
+    // border: red solid 2px;
+    img {
+        padding-right: 1rem;
+        width: 100%;
+        object-fit: cover;
+    }
     &__header-logo {
+        width: 30%;
+        // border: red solid 2px;
         float: left;
     }
     &__main-navbar {
         float: right;
-    }
-    a {
-        float: left;
-        display: block;
-        color: #000000;
-        text-align: center;
-        padding: 12px 12px;
-        margin: 5px;
-        text-decoration: none;
-        font-size: 20px;
-        font-family: Roboto, sans-serif;
-        &:hover {
-            background-color: #ff0000;
-            color: #ffffff;
-            border-radius: 15px;
+        a {
+            float: left;
+            display: block;
+            color: #000000;
+            text-align: center;
+            padding: 12px 12px;
+            margin: 5px;
+            text-decoration: none;
+            // font-size: 20px;
+            //font à gérer ici:
+            font-size: min(1.4vw, 20px);
+            &:hover {
+                background-color: #ff0000;
+                color: #ffffff;
+                border-radius: 15px;
+                text-decoration: underline;
+            }
+            &:active {
+                background-color: #ff0000;
+                color: #ffffff;
+                border-radius: 15px;
+            }
         }
-        &:active {
+        font-family: Roboto,
+        sans-serif;
+        .active {
             background-color: #ff0000;
             color: #ffffff;
             border-radius: 15px;
+            text-decoration: underline;
+        }
+        // icone menu hamburger
+        .fa {
+            font-size: 50px;
         }
     }
     .icon {
@@ -72,12 +90,23 @@ img {
 
 //MQ Topnav
 @media screen and (max-width: 768px) {
+    .topnav {
+        border: blue solid 2px;
+        &__header-logo {
+            width: 50%;
+            //    border: green solid 2px;
+        }
+    }
     .topnav a {
         display: none;
     }
+    //icone logo hamburger
     .topnav a.icon {
         float: right;
         display: block;
+        color: red;
+        // border: green solid 2px;
+        padding: 0px;
     }
 }
 
@@ -100,11 +129,16 @@ img {
 @media screen and (max-width: 540px) {
     .topnav a {
         display: none;
+        .fa {
+            font-size: 30px;
+        }
     }
+    //  Icone logo hamburger
     .topnav a.icon {
         float: right;
         display: block;
-        margin-top: -15px;
+        // border: green solid 2px;
+        padding: 0px;
     }
 }
 

@@ -15,7 +15,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -27,21 +26,24 @@ p {
   padding: 0.5vw;
 }
 
-img {
-  padding-right: 1rem;
-}
-
 .topnav {
   overflow: hidden;
   margin: 3.5%;
 }
+.topnav img {
+  padding-right: 1rem;
+  width: 100%;
+  object-fit: cover;
+}
 .topnav__header-logo {
+  width: 30%;
   float: left;
 }
 .topnav__main-navbar {
   float: right;
+  font-family: Roboto, sans-serif;
 }
-.topnav a {
+.topnav__main-navbar a {
   float: left;
   display: block;
   color: #000000;
@@ -49,24 +51,40 @@ img {
   padding: 12px 12px;
   margin: 5px;
   text-decoration: none;
-  font-size: 20px;
-  font-family: Roboto, sans-serif;
+  font-size: min(1.4vw, 20px);
 }
-.topnav a:hover {
+.topnav__main-navbar a:hover {
+  background-color: #ff0000;
+  color: #ffffff;
+  border-radius: 15px;
+  text-decoration: underline;
+}
+.topnav__main-navbar a:active {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
 }
-.topnav a:active {
+.topnav__main-navbar .active {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
+  text-decoration: underline;
+}
+.topnav__main-navbar .fa {
+  font-size: 50px;
 }
 .topnav .icon {
   display: none;
 }
 
 @media screen and (max-width: 768px) {
+  .topnav {
+    border: blue solid 2px;
+  }
+  .topnav__header-logo {
+    width: 50%;
+  }
+
   .topnav a {
     display: none;
   }
@@ -74,6 +92,8 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
+    color: red;
+    padding: 0px;
   }
 }
 @media screen and (max-width: 768px) {
@@ -97,11 +117,14 @@ img {
   .topnav a {
     display: none;
   }
+  .topnav a .fa {
+    font-size: 30px;
+  }
 
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    padding: 0px;
   }
 }
 main {
