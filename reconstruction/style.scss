@@ -1,174 +1,343 @@
-:root {
-    --font-default: "DM Sans", Arial, Helvetica, sans-serif;
-    --font-slab: var(--font-default);
-    --modal-duration: 0.8s;
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-
-/* Landing Page */
-
-body {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    // elle est où cette image?
-    // background-image: url("background.png");
-    font-family: var(--font-default);
-    font-size: 18px;
-    max-width: 1300px;
-    margin: 0 auto;
-}
-
-p {
-    margin-bottom: 0;
-    padding: 0.5vw;
-}
-
-//topnav
-.topnav {
-    overflow: hidden;
-    margin: 3.5%;
-    // border: red solid 2px;
-    img {
-        padding-right: 1rem;
-        width: 100%;
-        object-fit: cover;
-    }
-    &__header-logo {
-        width: 30%;
-        // border: red solid 2px;
-        float: left;
-    }
-    &__main-navbar {
-        float: right;
-        a {
-            float: left;
-            display: block;
-            color: #000000;
-            text-align: center;
-            padding: 12px 12px;
-            margin: 5px;
-            text-decoration: none;
-            // font-size: 20px;
-            //font à gérer ici:
-            font-size: min(1.4vw, 20px);
-            &:hover {
-                background-color: #ff0000;
-                color: #ffffff;
-                border-radius: 15px;
-                text-decoration: underline;
-            }
-            &:active {
-                background-color: #ff0000;
-                color: #ffffff;
-                border-radius: 15px;
-            }
-        }
-        font-family: Roboto,
-        sans-serif;
-        .active {
-            background-color: #ff0000;
-            color: #ffffff;
-            border-radius: 15px;
-            text-decoration: underline;
-        }
-        // icone menu hamburger
-        .fa {
-            font-size: 50px;
-        }
-    }
-    .icon {
-        display: none;
-    }
-}
-
-//MQ Topnav
-@media screen and (max-width: 768px) {
-    .topnav {
-        border: blue solid 2px;
-        &__header-logo {
-            width: 50%;
-            //    border: green solid 2px;
-        }
-    }
-    .topnav a {
-        display: none;
-    }
-    //icone logo hamburger
-    .topnav a.icon {
-        float: right;
-        display: block;
-        color: red;
-        // border: green solid 2px;
-        padding: 0px;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .topnav.responsive {
-        position: relative;
-    }
-    .topnav.responsive .icon {
-        position: absolute;
-        right: 0;
-        top: 0;
-    }
-    .topnav.responsive a {
-        float: none;
-        display: block;
-        text-align: left;
-    }
-}
-
-@media screen and (max-width: 540px) {
-    .topnav a {
-        display: none;
-        .fa {
-            font-size: 30px;
-        }
-    }
-    //  Icone logo hamburger
-    .topnav a.icon {
-        float: right;
-        display: block;
-        // border: green solid 2px;
-        padding: 0px;
-    }
-}
-
-// ********************************************************************************************************************************************************
-// ********************************************************************************************************************************************************
-// ********************************************************************************************************************************************************
-main {
-    font-size: 130%;
-    font-weight: bolder;
-    color: black;
-    padding-top: 0.5vw;
-    padding-left: 2vw;
-    padding-right: 2vw;
-    margin: 1px 20px 15px;
-    border-radius: 2rem;
-    text-align: justify;
-}
-
-.modal-btn {
-    font-size: 145%;
-    background: #fe142f;
-    display: flex;
-    margin: auto;
-    padding: 2em;
-    color: #fff;
-    padding: 0.75rem 2.5rem;
-    border-radius: 1rem;
-    cursor: pointer;
-}
-
-.modal-btn:hover {
-    background: #3876ac;
-}
+                                                                                                                        :root {
+                                                                                                                           --font-default: "DM Sans", Arial, Helvetica, sans-serif;
+                                                                                                                           --font-slab: var(--font-default);
+                                                                                                                           --modal-duration: 0.8s;
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       * {
+                                                                                                                           box-sizing: border-box;
+                                                                                                                           margin: 0;
+                                                                                                                           padding: 0;
+                                                                                                                       }
+                                                                                                                       /* Landing Page */
+                                                                                                                       
+                                                                                                                       body {
+                                                                                                                           margin: 0;
+                                                                                                                           display: flex;
+                                                                                                                           flex-direction: column;
+                                                                                                                           // elle est où cette image?
+                                                                                                                           // background-image: url("background.png");
+                                                                                                                           font-family: var(--font-default);
+                                                                                                                           font-size: 18px;
+                                                                                                                           max-width: 1300px;
+                                                                                                                           margin: 0 auto;
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       p {
+                                                                                                                           margin-bottom: 0;
+                                                                                                                           padding: 0.5vw;
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       //topnav
+                                                                                                                       .topnav {
+                                                                                                                           overflow: hidden;
+                                                                                                                           margin: 3.5%;
+                                                                                                                           // border: red solid 2px;
+                                                                                                                           img {
+                                                                                                                               padding-right: 1rem;
+                                                                                                                               width: 100%;
+                                                                                                                               object-fit: cover;
+                                                                                                                           }
+                                                                                                                           &__header-logo {
+                                                                                                                               width: 30%;
+                                                                                                                               // border: red solid 2px;
+                                                                                                                               float: left;
+                                                                                                                           }
+                                                                                                                           &__main-navbar {
+                                                                                                                               float: right;
+                                                                                                                               a {
+                                                                                                                                   float: left;
+                                                                                                                                   display: block;
+                                                                                                                                   color: #000000;
+                                                                                                                                   text-align: center;
+                                                                                                                                   padding: 12px 12px;
+                                                                                                                                   text-decoration: none;
+                                                                                                                                   //font à gérer ici:
+                                                                                                                                   font-size: min(1.8vw, 20px);
+                                                                                                                                   //   font-size: max(2.3vw, 13px);
+                                                                                                                                   &:hover {
+                                                                                                                                       background-color: #ff0000;
+                                                                                                                                       color: #ffffff;
+                                                                                                                                       border-radius: 15px;
+                                                                                                                                       text-decoration: underline;
+                                                                                                                                   }
+                                                                                                                                   &:active {
+                                                                                                                                       background-color: #ff0000;
+                                                                                                                                       color: #ffffff;
+                                                                                                                                       border-radius: 15px;
+                                                                                                                                   }
+                                                                                                                               }
+                                                                                                                               font-family: Roboto,
+                                                                                                                               sans-serif;
+                                                                                                                               .active {
+                                                                                                                                   background-color: #ff0000;
+                                                                                                                                   color: #ffffff;
+                                                                                                                                   border-radius: 15px;
+                                                                                                                                   text-decoration: underline;
+                                                                                                                               }
+                                                                                                                               // icone menu hamburger
+                                                                                                                               .fa {
+                                                                                                                                   font-size: 50px;
+                                                                                                                                   padding: 4px;
+                                                                                                                               }
+                                                                                                                           }
+                                                                                                                           .icon {
+                                                                                                                               display: none;
+                                                                                                                           }
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       //MQ Topnav
+                                                                                                                       @media screen and (max-width: 768px) {
+                                                                                                                           .topnav {
+                                                                                                                               //    border: blue solid 2px;
+                                                                                                                               position: relative;
+                                                                                                                               &__main-navbar {
+                                                                                                                                   margin-top: 40px;
+                                                                                                                                   padding: 0px 0px;
+                                                                                                                                   width: 100%;
+                                                                                                                                   //  border: black solid;
+                                                                                                                               }
+                                                                                                                               &__header-logo {
+                                                                                                                                   width: 50%;
+                                                                                                                                   //    border: green solid 2px;
+                                                                                                                               }
+                                                                                                                           }
+                                                                                                                           .topnav a {
+                                                                                                                               display: none;
+                                                                                                                               font-size: 18px;
+                                                                                                                           }
+                                                                                                                           //icone logo hamburger
+                                                                                                                           .topnav a.icon {
+                                                                                                                               position: absolute;
+                                                                                                                               right: 0px;
+                                                                                                                               top: 0px;
+                                                                                                                               display: block;
+                                                                                                                               color: red;
+                                                                                                                               // border: green solid 2px;
+                                                                                                                               &:hover {
+                                                                                                                                   background-color: #ff0000;
+                                                                                                                                   color: #ffffff;
+                                                                                                                               }
+                                                                                                                           }
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       //   MQ géré par JS
+                                                                                                                       @media screen and (max-width: 768px) {
+                                                                                                                           .topnav.responsive {
+                                                                                                                               position: relative;
+                                                                                                                               // background-color: cadetblue;
+                                                                                                                           }
+                                                                                                                           .topnav.responsive .icon {
+                                                                                                                               position: absolute;
+                                                                                                                               right: 0px;
+                                                                                                                               top: 0px;
+                                                                                                                           }
+                                                                                                                           .topnav.responsive a {
+                                                                                                                               float: none;
+                                                                                                                               display: block;
+                                                                                                                               text-align: center;
+                                                                                                                           }
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       @media screen and (max-width: 540px) {
+                                                                                                                           .topnav {
+                                                                                                                               &__main-navbar {
+                                                                                                                                   margin-top: 50px;
+                                                                                                                                   //   border: cornflowerblue solid;
+                                                                                                                               }
+                                                                                                                           }
+                                                                                                                           .topnav a {
+                                                                                                                               display: none;
+                                                                                                                               font-size: 13px;
+                                                                                                                               //   taille logo menu hamburger
+                                                                                                                               .fa {
+                                                                                                                                   font-size: 40px;
+                                                                                                                               }
+                                                                                                                           }
+                                                                                                                           //  Icone logo hamburger
+                                                                                                                           .topnav a.icon {
+                                                                                                                               position: absolute;
+                                                                                                                               right: 0px;
+                                                                                                                               top: 0px;
+                                                                                                                               //    float: right;
+                                                                                                                               display: block;
+                                                                                                                               color: red;
+                                                                                                                               //    border: green solid 2px;
+                                                                                                                               &:hover {
+                                                                                                                                   background-color: #ff0000;
+                                                                                                                                   color: #ffffff;
+                                                                                                                               }
+                                                                                                                           }
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       // ********************************************************************************************************************************************************
+                                                                                                                       // ********************************************************************************************************************************************************
+                                                                                                                       // ********************************************************************************************************************************************************
+                                                                                                                       main {
+                                                                                                                           font-size: 130%;
+                                                                                                                           font-weight: bolder;
+                                                                                                                           color: black;
+                                                                                                                           padding-top: 0.5vw;
+                                                                                                                           padding-left: 2vw;
+                                                                                                                           padding-right: 2vw;
+                                                                                                                           margin: 1px 20px 15px;
+                                                                                                                           border-radius: 2rem;
+                                                                                                                           text-align: justify;
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       .modal-btn {
+                                                                                                                           font-size: 145%;
+                                                                                                                           background: #fe142f;
+                                                                                                                           display: flex;
+                                                                                                                           margin: auto;
+                                                                                                                           padding: 2em;
+                                                                                                                           color: #fff;
+                                                                                                                           padding: 0.75rem 2.5rem;
+                                                                                                                           border-radius: 1rem;
+                                                                                                                           cursor: pointer;
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       .modal-btn:hover {
+                                                                                                                           background: #3876ac;
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       //hero-section
+                                                                                                                       .hero-section {
+                                                                                                                           min-height: 93vh;
+                                                                                                                           border-radius: 10px;
+                                                                                                                           display: grid;
+                                                                                                                           grid-template-columns: repeat(12, 1fr);
+                                                                                                                           overflow: hidden;
+                                                                                                                           box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
+                                                                                                                           margin-bottom: 10px;
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       //hero-content
+                                                                                                                       .hero-content {
+                                                                                                                           padding: 51px 67px;
+                                                                                                                           grid-column: span 4;
+                                                                                                                           background: #232323;
+                                                                                                                           color: #fff;
+                                                                                                                           position: relative;
+                                                                                                                           text-align: left;
+                                                                                                                           //   min-width: 424px;
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       .hero-content::after {
+                                                                                                                           content: "";
+                                                                                                                           width: 100%;
+                                                                                                                           height: 100%;
+                                                                                                                           background: #232323;
+                                                                                                                           position: absolute;
+                                                                                                                           right: -80px;
+                                                                                                                           top: 0;
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       .hero-content>* {
+                                                                                                                           position: relative;
+                                                                                                                           z-index: 1;
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       //hrero-img
+                                                                                                                       .hero-img {
+                                                                                                                           grid-column: span 8;
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       .hero-img img {
+                                                                                                                           width: 100%;
+                                                                                                                           height: 100%;
+                                                                                                                           display: block;
+                                                                                                                           padding: 0;
+                                                                                                                           object-fit: cover;
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       //bouton signup
+                                                                                                                       // à rajouter avec button-submit
+                                                                                                                       .btn-signup {
+                                                                                                                           background: #fe142f;
+                                                                                                                           display: block;
+                                                                                                                           margin: 0 auto;
+                                                                                                                           border-radius: 7px;
+                                                                                                                           font-size: 1rem;
+                                                                                                                           padding: 12px 82px;
+                                                                                                                           color: #fff;
+                                                                                                                           cursor: pointer;
+                                                                                                                           border: 0;
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       .btn-signup {
+                                                                                                                           outline: none;
+                                                                                                                           text-transform: capitalize;
+                                                                                                                           font-size: 1.3rem;
+                                                                                                                           padding: 15px 23px;
+                                                                                                                           margin: 0;
+                                                                                                                           margin-top: 59px;
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       .hero-section>.btn-signup {
+                                                                                                                           display: none;
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       //hero-headline
+                                                                                                                       .hero-headline {
+                                                                                                                           //  font-size: 6rem;
+                                                                                                                           font-size: min(10vw, 96px);
+                                                                                                                           font-weight: normal;
+                                                                                                                           white-space: nowrap;
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       //hero-text
+                                                                                                                       .hero-text {
+                                                                                                                           width: 146%;
+                                                                                                                           font-weight: normal;
+                                                                                                                           margin-top: 57px;
+                                                                                                                           padding: 0;
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       //footer
+                                                                                                                       .footer {
+                                                                                                                           margin: 20px;
+                                                                                                                           padding: 10px;
+                                                                                                                           font-family: var(--font-slab);
+                                                                                                                       }
+                                                                                                                       
+                                                                                                                       @media screen and (max-width: 800px) {
+                                                                                                                           .hero-section {
+                                                                                                                               display: block;
+                                                                                                                               box-shadow: unset;
+                                                                                                                           }
+                                                                                                                           .hero-content {
+                                                                                                                               background: #fff;
+                                                                                                                               color: #000;
+                                                                                                                               padding: 20px;
+                                                                                                                           }
+                                                                                                                           .hero-content::after {
+                                                                                                                               content: unset;
+                                                                                                                           }
+                                                                                                                           .hero-content .btn-signup {
+                                                                                                                               display: none;
+                                                                                                                           }
+                                                                                                                           .hero-headline {
+                                                                                                                               //   font-size: 4.5rem;
+                                                                                                                               font-size: min(8vw, 96px);
+                                                                                                                               white-space: normal;
+                                                                                                                           }
+                                                                                                                           .hero-text {
+                                                                                                                               width: unset;
+                                                                                                                               //   font-size: 1.5rem;
+                                                                                                                               font-size: min(3vw, 24px);
+                                                                                                                           }
+                                                                                                                           .hero-img img {
+                                                                                                                               border-radius: 10px;
+                                                                                                                               margin-top: 40px;
+                                                                                                                           }
+                                                                                                                           .hero-section>.btn-signup {
+                                                                                                                               display: block;
+                                                                                                                               margin: 32px auto 10px;
+                                                                                                                               padding: 12px 35px;
+                                                                                                                           }
+                                                                                                                           .copyrights {
+                                                                                                                               margin-top: 50px;
+                                                                                                                               text-align: center;
+                                                                                                                           }
+                                                                                                                       }

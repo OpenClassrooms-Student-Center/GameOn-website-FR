@@ -49,9 +49,8 @@ p {
   color: #000000;
   text-align: center;
   padding: 12px 12px;
-  margin: 5px;
   text-decoration: none;
-  font-size: min(1.4vw, 20px);
+  font-size: min(1.8vw, 20px);
 }
 .topnav__main-navbar a:hover {
   background-color: #ff0000;
@@ -72,6 +71,7 @@ p {
 }
 .topnav__main-navbar .fa {
   font-size: 50px;
+  padding: 4px;
 }
 .topnav .icon {
   display: none;
@@ -79,7 +79,12 @@ p {
 
 @media screen and (max-width: 768px) {
   .topnav {
-    border: blue solid 2px;
+    position: relative;
+  }
+  .topnav__main-navbar {
+    margin-top: 40px;
+    padding: 0px 0px;
+    width: 100%;
   }
   .topnav__header-logo {
     width: 50%;
@@ -87,13 +92,19 @@ p {
 
   .topnav a {
     display: none;
+    font-size: 18px;
   }
 
   .topnav a.icon {
-    float: right;
+    position: absolute;
+    right: 0px;
+    top: 0px;
     display: block;
     color: red;
-    padding: 0px;
+  }
+  .topnav a.icon:hover {
+    background-color: #ff0000;
+    color: #ffffff;
   }
 }
 @media screen and (max-width: 768px) {
@@ -103,28 +114,39 @@ p {
 
   .topnav.responsive .icon {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 0px;
+    top: 0px;
   }
 
   .topnav.responsive a {
     float: none;
     display: block;
-    text-align: left;
+    text-align: center;
   }
 }
 @media screen and (max-width: 540px) {
+  .topnav__main-navbar {
+    margin-top: 50px;
+  }
+
   .topnav a {
     display: none;
+    font-size: 13px;
   }
   .topnav a .fa {
-    font-size: 30px;
+    font-size: 40px;
   }
 
   .topnav a.icon {
-    float: right;
+    position: absolute;
+    right: 0px;
+    top: 0px;
     display: block;
-    padding: 0px;
+    color: red;
+  }
+  .topnav a.icon:hover {
+    background-color: #ff0000;
+    color: #ffffff;
   }
 }
 main {
@@ -153,6 +175,143 @@ main {
 
 .modal-btn:hover {
   background: #3876ac;
+}
+
+.hero-section {
+  min-height: 93vh;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  overflow: hidden;
+  box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+}
+
+.hero-content {
+  padding: 51px 67px;
+  grid-column: span 4;
+  background: #232323;
+  color: #fff;
+  position: relative;
+  text-align: left;
+}
+
+.hero-content::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #232323;
+  position: absolute;
+  right: -80px;
+  top: 0;
+}
+
+.hero-content > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-img {
+  grid-column: span 8;
+}
+
+.hero-img img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  padding: 0;
+  object-fit: cover;
+}
+
+.btn-signup {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+}
+
+.btn-signup {
+  outline: none;
+  text-transform: capitalize;
+  font-size: 1.3rem;
+  padding: 15px 23px;
+  margin: 0;
+  margin-top: 59px;
+}
+
+.hero-section > .btn-signup {
+  display: none;
+}
+
+.hero-headline {
+  font-size: min(10vw, 96px);
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+.hero-text {
+  width: 146%;
+  font-weight: normal;
+  margin-top: 57px;
+  padding: 0;
+}
+
+.footer {
+  margin: 20px;
+  padding: 10px;
+  font-family: var(--font-slab);
+}
+
+@media screen and (max-width: 800px) {
+  .hero-section {
+    display: block;
+    box-shadow: unset;
+  }
+
+  .hero-content {
+    background: #fff;
+    color: #000;
+    padding: 20px;
+  }
+
+  .hero-content::after {
+    content: unset;
+  }
+
+  .hero-content .btn-signup {
+    display: none;
+  }
+
+  .hero-headline {
+    font-size: min(8vw, 96px);
+    white-space: normal;
+  }
+
+  .hero-text {
+    width: unset;
+    font-size: min(3vw, 24px);
+  }
+
+  .hero-img img {
+    border-radius: 10px;
+    margin-top: 40px;
+  }
+
+  .hero-section > .btn-signup {
+    display: block;
+    margin: 32px auto 10px;
+    padding: 12px 35px;
+  }
+
+  .copyrights {
+    margin-top: 50px;
+    text-align: center;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
