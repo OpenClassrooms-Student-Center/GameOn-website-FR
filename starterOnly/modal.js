@@ -160,7 +160,25 @@ function validateRadios() {
           if (checkbox[b].checked) {
             hasInputWarpsValid = true
             console.log('checkbox checked')
+            if (inputwarps[i].after == null) {
+              console.log("tout est ok");
+            }
+            else {
+              let pError = inputwarps[i].after;
+              pError.innerHTML = "";
+              console.log("effacement message erreur");
+            };
+          } else {
+            if (inputwarps[i].after == null) {
+              let p = document.createElement("p");
+              inputwarps[i].parentNode.appendChild(p);
+            }
+            let pError = inputwarps[i].after;
+            console.log(pError);
+            console.log(validCheckbox[item].error)
+            pError.innerHTML = validCheckbox[item].error;
           }
+
         }if (validCheckbox[item].name === checkbox[b].name && validCheckbox[item].required == false){
           hasInputWarpsValid = true
           console.log(checkbox[b].name + " pas requise")
