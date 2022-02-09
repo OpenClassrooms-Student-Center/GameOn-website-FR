@@ -214,7 +214,7 @@ main {
 
 //hero-section
 .hero-section {
-    //   min-height: 93vh;
+    // min-height: 93vh;
     border-radius: 10px;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -226,23 +226,26 @@ main {
 //hero-content
 .hero-content {
     //  padding: 51px 67px;
-    padding: 51px 0px 51px 15px;
+    padding: 51px 20px 51px 25px;
     grid-column: span 4;
     background: #232323;
     color: #fff;
     position: relative;
     text-align: left;
-    //   min-width: 424px;
+    // important sinon le h1 ne dépasse pas du bloc gris sur firefox
+    // min-width: 424px;
+    min-width: 100px;
 }
 
 .hero-content::after {
     content: "";
-    width: 100%;
-    height: 100%;
-    background: #232323;
+    // width: 100%;
+    // width: 20%;
+    // height: 100%;
+    // background: #232323;
     position: absolute;
-    right: -80px;
-    top: 0;
+    // right: -80px;
+    // top: 0;
 }
 
 .hero-content>* {
@@ -292,8 +295,8 @@ main {
 
 //hero-headline
 .hero-headline {
-    //  font-size: 6rem;
-    font-size: min(10vw, 70px);
+    // font-size: 6rem;
+    font-size: min(10vw, 90px);
     font-weight: normal;
     white-space: nowrap;
     span {

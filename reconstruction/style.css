@@ -190,22 +190,18 @@ main {
 }
 
 .hero-content {
-  padding: 51px 0px 51px 15px;
+  padding: 51px 20px 51px 25px;
   grid-column: span 4;
   background: #232323;
   color: #fff;
   position: relative;
   text-align: left;
+  min-width: 100px;
 }
 
 .hero-content::after {
   content: "";
-  width: 100%;
-  height: 100%;
-  background: #232323;
   position: absolute;
-  right: -80px;
-  top: 0;
 }
 
 .hero-content > * {
@@ -251,7 +247,7 @@ main {
 }
 
 .hero-headline {
-  font-size: min(10vw, 70px);
+  font-size: min(10vw, 90px);
   font-weight: normal;
   white-space: nowrap;
 }
