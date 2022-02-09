@@ -71,6 +71,22 @@ const formValidate = {
     required: true
   }
 };
+const validCheckbox = {
+  localisation: {
+    name: "location",
+    error: "Vous devez choisir une option.",
+    required: true
+  },
+  checkbox1: {
+    name: "checkbox1",
+    error: "Vous devez vérifier que vous acceptez les termes et conditions.",
+    required: true
+  },
+  checkbox2: {
+    name: "checkbox2",
+    required: false,
+  }
+}
 
 const form = document.getElementById("reverve");
 form.addEventListener("submit",function validate(e) {
@@ -127,37 +143,32 @@ form.addEventListener("submit",function validate(e) {
   alert('Formulaire envoyé !');
 });
 
-validChecbox = {
-  localisation: {
-    name: "location",
-    error: "Vous devez choisir une option.",
-    required: true
-  },
-  checkbox1: {
-    name: "checkbox1",
-    error: "Vous devez vérifier que vous acceptez les termes et conditions.",
-    required: true
-  },
-  checkbox2: {
-    name: "checkbox2",
-    required: false,
-  }
-}
 function validateRadios() {
   let formValid = true;
   let inputwarps = document.getElementsByClassName("inputWarp");
-
   console.log("validateRadios");
+
   for (let i = 0; i< inputwarps.length; i++) {
     const checkbox = inputwarps[i].getElementsByClassName("checkbox-input");
     let hasInputWarpsValid = false
-    for (let b = 0; b < checkbox.length; b++) {
 
-      if (checkbox[b].checked) {
-        hasInputWarpsValid = true
-        console.log('checkbox checked')
+    for (let b = 0; b < checkbox.length; b++) {
+      for (const item in validCheckbox) {
+        console.log(checkbox[b].name + " verification")
+        if (validCheckbox[item].name === checkbox[b].name && validCheckbox[item].required){
+          console.log(checkbox[b].name + " requise trouvé")
+          if (checkbox[b].checked) {
+            hasInputWarpsValid = true
+            console.log('checkbox checked')
+          }
+        }if (validCheckbox[item].name === checkbox[b].name && validCheckbox[item].required == false){
+          hasInputWarpsValid = true
+          console.log(checkbox[b].name + " pas requise")
+        }
+
       }
     }
+    
     console.log('hasInputWarpValid = ' + hasInputWarpsValid)
     if (!hasInputWarpsValid) {formValid = false};
     console.log("formValid = " + formValid)
