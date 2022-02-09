@@ -1,0 +1,830 @@
+/*RESET CSS------------------------------*/
+
+:root {
+  --font-default: "DM Sans", Arial, Helvetica, sans-serif;
+  --font-slab: var(--font-default);
+  --modal-duration: 0.8s;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  font-size: 17px; /*for footer*/
+}
+
+img {
+  object-fit: cover;
+}
+
+
+
+
+
+
+
+/* COMPUTER VERSION : Home Page ---------------------------------------- */
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: var(--font-default);
+  font-size: 18px; 
+  margin: 0 auto; 
+  /*max-width: 1500px;*/
+}
+
+.bodyScroll{
+  overflow: scroll;
+  height: 100%;
+}
+
+/*-----HEADER-----*/
+
+header {
+  overflow: hidden;
+  margin: 3.5% 3.5% 5% 3.5%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.header__logo img {
+    height: 55px;
+}
+
+header nav {
+    float: right;
+}
+
+header a {
+  float: left;
+  display: block;
+  color: #000000;
+  text-align: center;
+  padding: 12px 12px;
+  margin: 5px;
+  text-decoration: none;
+  font-family: Roboto, sans-serif;
+  font-size: 19px;
+  line-height: 23px;
+}
+
+header a:hover, header a.active {
+  background-color: #ff0000;
+  color: #ffffff;
+  border-radius: 8px;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+header a.icon{
+  text-decoration: none;
+}
+
+header .icon {
+  display: none;
+  color: red;
+  text-decoration: none;
+  font-size: 35px;
+}
+
+/*-----END of HEADER-----*/
+
+
+
+
+
+
+
+/*-----MAIN-----*/
+
+ main {
+  font-size: 130%;
+  font-weight: bolder;
+  color: black;
+  padding-top: 0.5vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  margin: 1px 20px 15px;
+  border-radius: 2rem;
+  text-align: justify;  
+}
+
+/*--------SECTION---------*/
+
+.section--hero{
+  width: 100%;
+  max-width: 1401px; 
+  /*min-height: 93vh;*/
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  overflow: hidden;
+  box-shadow: 0 10px 7px 2px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  
+}
+
+
+
+.section--hero-content {
+  /*margin: 2% auto;*/
+  width: 100%;
+  /*max-width: 500px;*/
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  position: relative;
+  color: #fff;
+  /*padding-top: 10px;*/
+  padding: 65px 67px;
+  grid-column: span 5;
+  text-align: left;
+  min-width: 424px;
+
+}
+
+.section--hero-content > * {
+  position: relative;
+  z-index: 1;  
+}
+
+.section--hero-headline {/*h1*/
+  font-size: 6.45rem;
+  font-weight: normal;
+  line-height: 1.3;
+  white-space: nowrap;
+  margin-top: 0; 
+}
+
+.section--hero-text {/*p*/
+  width: 110%;
+  font-weight: normal;
+  margin-top: 65px;
+  margin-bottom: 4rem;
+  padding: 0;
+  font-size: 25px;
+  line-height: 1.3;
+}
+
+
+/*--Backgound image--*/
+
+
+.section--hero-img {
+  grid-column: span 7; 
+}
+
+.section--hero-img img { 
+  height: 100%;
+  width: 100%;
+  display: block;
+  padding: 0;
+  object-fit: cover; 
+}
+
+
+
+/*--BUTTON "je m'inscris" --*/
+
+.btn-signup { 
+  outline: none;
+  text-transform: capitalize;
+  font-size: 24px;
+  padding: 15px 30px;
+  margin:auto;
+  margin-top: calc(-38%);
+  background: #fe142f;
+  color: #fff;
+  border-color: transparent;
+  border-radius: 0.9rem;
+  display: block;
+  grid-column: 1/4;
+  cursor: pointer;
+  z-index: 2;
+} 
+  
+
+.btn-signup:hover, .btn-submit:hover {
+  background: #3876ac;
+  border-color: #3876ac;
+}
+
+
+
+/*-----END of SECTION-----*/
+
+/*--Modal Windows--*/
+.bground {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;/*to scroll the form*/
+  background-color: rgba(255, 255, 255, 0.8);/* form with background "home page" */
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.content {
+  margin: 5% auto;
+  width: 100%;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  /*overflow: hidden;*/
+  position: relative; 
+  color: #fff;
+  padding-top: 10px;
+  /*height: 100%;*/
+}
+
+
+
+
+/*--Home page- Modale Open -Closing the modale windows with a click on the form's "icone" X*/
+/*(without validation with click on button--*/
+
+.close { /* "icone" X  ; .close= bground__content--span*/
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(0.7);
+}
+
+.close:before,.close:after { 
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 3px;
+  background-color: #fff;
+}
+
+.close:before {
+  transform: rotate(45deg);
+}
+
+.close:after {
+  transform: rotate(-45deg);
+}
+
+
+
+/*----- FORM Element-----*/
+
+
+.modal-body { /*container of the form*/
+  padding: 15px 8%;
+  margin: 15px auto;
+}
+
+/*FORM- global Formatting*/
+label {
+  font-family: var(--font-default);
+  font-size: 14px;
+  font-weight: 400;
+  display: inline-block;
+  margin-bottom: 17px;
+  /*margin-top: 13px;*/
+}
+
+input{
+  padding: 8px;
+  border: 0.8px solid #ccc;
+  outline: none;
+}
+
+.text-control { /* text written by user*/
+  margin: 0;
+  padding: 8px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 20px;
+  height: 48px;
+  outline:transparent solid 2px;
+}
+
+/*------------Data error*/
+
+input[data-error]::after {
+    content: attr(data-error);
+    font-size: small;
+    color: #e54858;
+} 
+
+.formData[data-error]::after {
+  content: attr(data-error);
+  font-size: small;
+  font-weight: 600;
+  color: #e54858;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: left;
+  line-height: 0.3;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.formData[data-error-visible="true"]::after {
+  opacity: 1;
+}
+
+.formData:not([data-error])::after {
+  display: block;
+  content: "";
+}
+
+.formData[data-error-visible="true"] .text-control {
+  outline: 2px solid #e54858;
+}
+
+
+/*--FORM PART 1: User Info--*/
+
+.form__label--quantityTitle{
+  margin-bottom: 17px;
+  margin-top: 25px;
+}
+
+/*--FORM PART 2 +3: User Location + Rights--*/
+.form__label--checkboxes{/*marge under chekboxes locations(part 2)*/
+  margin-bottom: 0;
+}
+
+.form__label--checkboxes-title{ /*part 2 title*/ 
+  line-height: 2.5;
+  font-size: 14px;
+  color: #fff;
+}
+
+.checkbox-label,.checkbox2-label {
+  position: relative;
+  margin-left: 36px;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.checkbox-label .checkbox-icon,
+.checkbox2-label .checkbox-icon {/*checkboxes part 2 (circle) + part of checkboxes part 3 (case)*/
+  display: block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #c4c4c4;
+  border-radius: 50%;
+  text-indent: 29px;
+  white-space: nowrap;
+  position: absolute;
+  left: -36px;
+  top: -1px;
+  transition: 0.3s;
+}
+
+.checkbox-label .checkbox-icon::after,
+.checkbox2-label .checkbox-icon::after { /*circle full in checkbox part2(circle) + case full in checkbox part 3*/
+  content: "";
+  width: 13px;
+  height: 13px;
+  background-color: #279e7a;
+  border: 2px solid #279e7a;
+  border-radius: 50%;
+  text-indent: 29px;
+  white-space: nowrap;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.3s;
+  opacity: 0;
+}
+
+ .checkbox-label .checkbox-title, .checkbox2-label .checkbox-title {
+  margin-left: -6px;
+  margin-right: 10px;
+ }
+
+.checkboxes:checked + .checkbox-label .checkbox-icon::after,
+.checkboxes:checked + .checkbox2-label .checkbox-icon::after {
+  opacity: 1;
+}
+
+.checkboxes:checked + .checkbox2-label .checkbox-icon {
+  background: #279e7a;
+  border: 2px solid #279e7a;
+}
+
+.checkboxes { /*formatting parts 2+3 :no rectangular/circle white "label"*/
+  display: none;
+}
+
+.checkbox2-label .checkbox-icon { /*complement checkboxes part3*/
+  border-radius: 4px;
+  border: 0;
+  background: #c4c4c4;
+}
+.checkbox2-label .checkbox-icon::after {
+  width: 7px;
+  height: 4px;
+  border-radius: 2px;
+  background: transparent;
+  border: 2px solid transparent;
+  border-bottom-color: #fff;
+  border-left-color: #fff;
+  transform: rotate(-55deg);
+  left: 21%;
+  top: 19%;
+}
+
+/* BUTTON "Go"*/
+.btn-submit{ 
+  color:white;
+  background-color: red;
+  border-color: red;
+  border-radius: 10px;
+  padding: 15px 70px;
+  margin-top: calc(18% - 40px);
+  margin-left: calc(50% - 130px); 
+}
+/*-----End of FORM element-----*/
+
+
+ /*----Congrats Element-----*/
+/*home page- modal open- validation ok*/
+.congrats { /*modal  windows "validation ok"*/
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+}
+
+.congrats-text {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 32px;
+  font-weight: 400;
+}
+
+.congratsBtnClose{
+  margin-top: 0;
+  margin-left: -1.4rem;
+}
+
+
+/* custom select styles */
+.custom-select {
+  position: relative;
+  font-family: Arial;
+  font-size: 1.1rem;
+  font-weight: normal;
+}
+
+.custom-select select {
+  display: none;
+}
+.select-selected {
+  background-color: #fff;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 10px;
+  right: 13px;
+  width: 11px;
+  height: 11px;
+  border: 3px solid transparent;
+  border-bottom-color: #f00;
+  border-left-color: #f00;
+  transform: rotate(-48deg);
+  border-radius: 5px 0 5px 0;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+  transform: rotate(135deg);
+  top: 13px;
+}
+
+.select-items div, .select-selected {
+  color: #000;
+  padding: 11px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  border-radius: 8px;
+  height: 48px;
+}
+
+/* Style items (options): */
+.select-items {
+  position: absolute;
+  background-color: #fff;
+  top: 89%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover,.same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/*custom select end */
+.text-label {
+  font-weight: normal;
+  font-size: 16px;
+}
+
+
+/*-----End of MAIN-----*/
+
+
+
+
+
+
+
+/*-----FOOTER-----*/
+
+footer {
+  margin: 1%;
+  padding:1.7%;
+  font-family: var(--font-slab);
+  color: #fe142f;
+  font-size: 1.4rem;
+  margin: 60px 0 30px;
+  font-weight: bolder;
+}
+
+
+/*-----End of Footer-----*/
+
+
+
+
+
+
+
+
+
+
+/*-----ANIMATIONS CSS-----*/
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/*End of COMPUTEUR VERSION : Home page*/
+
+
+
+
+
+
+
+
+
+
+
+
+/* MEDIAS QUERIES: Home Page */
+
+/*VERSION IPAD*/
+@media screen and (max-width: 1033px) {
+  
+
+  .header__logo img { /*logo "Game on"*/
+    height: 40px;
+    margin-top: 15px;
+  }
+
+  header nav .header__navbar, header nav .header__navbar--active {
+    margin-right: 65px;
+    font-size: 1.45em;
+  }
+
+  header a {
+    display: none;
+  }
+
+  .topnav a.icon { /*icon hamburger*/
+    color: red;
+    float: right;
+    display: flex;
+    background-color: white;
+  }
+
+  .topnav.responsive {
+    position: relative;    
+  }
+
+  .topnav.responsive a{ 
+    float: none;
+    display: flex;
+    flex-direction: column;
+    text-align: left;   
+  }
+
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: white;
+    background-color: red;
+    border-radius: 10px;
+  }
+
+
+  
+  .section--hero {
+    display: flex;
+    flex-direction: column;
+    box-shadow: unset;
+  }
+
+  
+  .section--hero-content {
+    background: #fff;
+    color: #000;
+    padding: 20px 0px;
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+  }
+
+  .section--hero-content::after {
+    content: unset;
+  }
+  
+  .section--hero-headline {
+    display: flex;
+    line-height: 1.2;
+    font-size: 5.1rem;
+    white-space: normal;
+    margin-top: 0;
+    margin-bottom: 50px;
+  }
+
+  .section--hero-text {
+    width: unset;
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 50px;
+  }
+
+  .section--hero-img img {
+    border-radius: 10px;
+    margin-top: 0;
+    margin-bottom: 50px;
+  }
+
+
+
+  .section--hero > .btn-signup { /*Format IPAD Button "Je M'inscris"*/
+    display: flex; 
+    margin:0 auto 20px auto;
+    padding: 15px 70px;
+    font-size: 27px;
+    border-radius: 15px;
+    z-index: 1;
+  }
+
+  footer {
+    margin-top: 0px;
+    margin-bottom: 30px;
+    text-align: center;
+  }
+}
+
+
+
+
+
+
+
+
+
+/*VERSION IPhone*/
+@media screen and (max-width: 768px) {
+  
+  header  { 
+    margin-right: 30px;
+  }
+
+  .header__logo img { /*logo "Game on"*/
+    height: 20px;
+    margin-top: 33px;
+    margin-left: 15px;
+  }
+
+  header nav .header__navbar, header nav .header__navbar--active {
+    margin-right: 50px;
+    font-size: 1rem;
+  }
+
+  header a .fa{ /*icon "hamburger"*/
+    font-size: x-large;
+    width: 19px;
+    margin-top: 10px;
+  }
+
+  .topnav.responsive .fa {
+    margin-top: 0;
+  }
+
+  .section--hero-headline {
+    line-height: 52px;
+    font-size: 40px;
+    font-weight: 500;
+    margin-bottom: 17px;
+    white-space: normal;
+    
+  }
+
+  .section--hero-text {
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.1em;
+    margin-top: 0;
+    margin-bottom: 36px;   
+  }
+
+  .section--hero-img img {
+    margin-top: 0;
+    margin-bottom: 50px;
+  }
+
+  .section--hero > .btn-signup { /*Format IPhone Button "Je M'inscris"*/
+    padding: 10px 40px;
+    font-size: 1.3rem;
+    border-radius: 15px;
+  }
+
+  footer {
+    margin: 29px 30px 26px 30px;  
+  }
+
+  footer p{
+    font-size: 13px;
+  }
+
+  
+
+  .bground { /*box Windows Modal*/
+    background-color: transparent;
+  }
+
+  .content { /*box (span"close" + modal form)*/
+    /*height: 100%;*/
+    margin-top: 120px;
+    max-width: 100vw;
+  }
+
+  .congrats{
+    height: 900px;
+  }
+
+}
+
+
+
+
+
+
+
+
+
