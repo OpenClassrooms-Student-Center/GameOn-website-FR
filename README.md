@@ -52,4 +52,4 @@ Le but est de décrire chaque fonction et chaque classe, ainsi que les parties d
 - [x] Mozilla
 
 
-- Projet à valider
+- [x] Projet validé lz 26/01/2022
