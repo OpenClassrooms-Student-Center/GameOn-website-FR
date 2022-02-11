@@ -120,7 +120,7 @@ form.addEventListener("submit",function validate(e) {
 
         } else if (formValidate[item].regex.test(inputs[i].value)) {
           console.log("regex ok");
-          if (input.nextElementSibling == null) {
+          if (input.nextElementSibling === null) {
             console.log("tout est ok");
           }
           else {
@@ -134,8 +134,7 @@ form.addEventListener("submit",function validate(e) {
     };
   };
   validateRadios();
-  console.log(validateRadios())
-  if (asError == true|| validateRadios() == false) {
+  if (asError || !validateRadios ) {
     e.preventDefault();
     return false
   };
