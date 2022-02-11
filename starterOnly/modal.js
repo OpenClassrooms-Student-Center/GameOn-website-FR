@@ -159,7 +159,7 @@ function validateRadios() {
           if (checkbox[b].checked) {
             hasInputWarpsValid = true
             console.log('checkbox checked')
-            if (inputwarps[i].after == null) {
+            if (inputwarps[i].after === null) {
               console.log("tout est ok");
             }
             else {
@@ -168,7 +168,7 @@ function validateRadios() {
               console.log("effacement message erreur");
             };
           } else {
-            if (inputwarps[i].after == null) {
+            if (inputwarps[i].after === null) {
               let p = document.createElement("p");
               inputwarps[i].parentNode.appendChild(p);
             }
@@ -178,7 +178,7 @@ function validateRadios() {
             pError.innerHTML = validCheckbox[item].error;
           }
 
-        }if (validCheckbox[item].name === checkbox[b].name && validCheckbox[item].required == false){
+        }if (validCheckbox[item].name === checkbox[b].name && !validCheckbox[item].required ){
           hasInputWarpsValid = true
           console.log(checkbox[b].name + " pas requise")
         }
