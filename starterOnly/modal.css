@@ -115,7 +115,8 @@ main {
 
 }
 
-.modal-btn {
+.modal-btn,
+.modal-btn2 {
   font-size: 145%;
   background: #fe142f;
   display: flex;
@@ -226,7 +227,16 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-
+.formEnd {
+  display: flex;
+  align-items: center;
+  height: 637px;
+  font-weight: normal;
+  font-size: 3rem;
+  padding: 1.8rem;
+  justify-content: center;
+  text-align: center;
+}
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
@@ -322,7 +332,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-close {
   background: #fe142f;
   display: block;
   margin: 0 auto;
