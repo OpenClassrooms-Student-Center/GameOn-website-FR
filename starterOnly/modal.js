@@ -13,6 +13,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const close = document.querySelector(".close");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -21,7 +22,10 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.style.display = "block";
 }
-
+//close modal
+close.addEventListener("click", function closingModal() {
+  modalbg.style.display = "none";
+});
 
 // valid imput form
 
@@ -160,7 +164,7 @@ function validateRadios() {
         if (validCheckbox[item].name === checkbox[b].name && validCheckbox[item].required){
           console.log(checkbox[b].name + " requise trouvé")
           if (checkbox[b].checked) {
-            hasInputWarpsValid = true
+            hasInputWarpsValid = true;
             console.log('checkbox checked')
           
           }
@@ -170,7 +174,7 @@ function validateRadios() {
           }
 
         } if (validCheckbox[item].name === checkbox[b].name && !validCheckbox[item].required ){
-          hasInputWarpsValid = true
+          hasInputWarpsValid = true;
           console.log(checkbox[b].name + " pas requise")
         }
 
