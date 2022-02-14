@@ -28,7 +28,7 @@ function launchModal() {
 const formValidate = {
   first: {
     name: "first",
-    regex: /^[a-zA-Z]{2,}$/g,
+    regex: /^[a-zA-Z]{2,}$/,
 
     required: true,
     errorCustom: "Veuillez entrer 2 caractères ou plus pour ce champ."
@@ -36,7 +36,7 @@ const formValidate = {
   last: {
     name: "last",
 
-    regex: /^[a-zA-Z]{2,}$/g,
+    regex: /^[a-zA-Z]{2,}$/,
     required: true,
     errorCustom: "Veuillez entrer 2 caractères ou plus pour ce champ."
   },
@@ -90,25 +90,25 @@ const validCheckbox = {
 
 const form = document.getElementById("reverve");
 form.addEventListener("submit",function validate(e) {
+  
   const inputs = form.getElementsByClassName("text-control");
   let asError = false;
   console.log(inputs);
 
   for (let i = 0; i< inputs.length; i++) {
+  
     for(const item in formValidate){
      
       if (inputs[i].name === formValidate[item].name){
         console.log(inputs[i].value);
         console.log("regex " + formValidate[item].regex.test(inputs[i].value));
         const input = document.getElementById(inputs[i].id);
-        const hasRegexValid = formValidate[item].regex.test(inputs[i].value);
-        console.log(hasRegexValid);
 
         if (!formValidate[item].regex.test(inputs[i].value)) {
           console.log("erreur");
           asError = true;
           console.log("asError " + asError);
-          if (input.nextElementSibling == null) {
+          if (input.nextElementSibling === null) {
             let p = document.createElement("p");
             input.parentNode.appendChild(p);
             console.log("p créé")
@@ -118,19 +118,18 @@ form.addEventListener("submit",function validate(e) {
           console.log(formValidate[item].errorCustom)
           pError.innerHTML = formValidate[item].errorCustom;
 
-        } else if (formValidate[item].regex.test(inputs[i].value)) {
+        } else {
           console.log("regex ok");
           if (input.nextElementSibling === null) {
             console.log("tout est ok");
-          }
-          else {
+          } else if (input.nextElementSibling.tagName === "P"){
             let pError = input.nextElementSibling;
-          pError.innerHTML = "";
-          console.log("effacement message erreur");
-          };
+            input.parentNode.removeChild(pError);
+            console.log("effacement message erreur");
+          }
           
-        };
-      };
+        }
+      }
     };
   };
   validateRadios();
@@ -150,6 +149,9 @@ function validateRadios() {
   for (let i = 0; i< inputwarps.length; i++) {
     const checkbox = inputwarps[i].getElementsByClassName("checkbox-input");
     let hasInputWarpsValid = false
+    if (inputwarps[i].lastElementChild.tagName === "P") {
+      inputwarps[i].removeChild(inputwarps[i].lastElementChild);
+    }
 
     for (let b = 0; b < checkbox.length; b++) {
       for (const item in validCheckbox) {
@@ -162,9 +164,8 @@ function validateRadios() {
           
           }
           if (!hasInputWarpsValid && inputwarps[i].lastElementChild.tagName !== "P") {
-            console.log(inputwarps[i].lastElementChild.tagName)
             let htmlContent = `<p> ${validCheckbox[item].error}</p>`;
-            let pError = inputwarps[i].insertAdjacentHTML('beforeend', htmlContent);
+            inputwarps[i].insertAdjacentHTML('beforeend', htmlContent);
           }
 
         } if (validCheckbox[item].name === checkbox[b].name && !validCheckbox[item].required ){
