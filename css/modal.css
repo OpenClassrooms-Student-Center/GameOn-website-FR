@@ -32,13 +32,15 @@ img {
 
 .topnav {
   overflow: hidden;
-  margin: 3.5%;
+  margin: 3% 0% 3% 0%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
-.header-logo {
-    float: left;
-}
+
 .main-navbar {
-    float: right;
+  color: #ff0000;
 }
 .topnav a {
   float: left;
@@ -56,12 +58,14 @@ img {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
+  text-decoration: underline;
 }
 
 .topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
+  text-decoration: underline #ffffff;
 }
 
 .topnav .icon {
@@ -69,19 +73,28 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
+    color: #ff0000;
   }
-}
-
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  .topnav a.icon:hover {
+    color: #ffffff;
+  }
+  .topnav {
+    z-index: 2;
+  }
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
-    right: 0;
+    right: 17px;
     top: 0;
+    color: #ffffff;
   }
   .topnav.responsive a {
     float: none;
@@ -90,16 +103,18 @@ img {
   }
 }
 
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
   }
-} 
+  .topnav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    z-index: 2;
+  }
+}
 
 main {
   font-size: 130%;
@@ -111,8 +126,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -170,7 +183,7 @@ main {
 }
 
 .content {
-  margin: 5% auto;
+  margin: 2% auto;
   width: 100%;
   max-width: 500px;
   animation-name: modalopen;
@@ -226,12 +239,15 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+.error {
+  margin-top: 5px;
+  color: #e54858;
+  font-size: 0.6em;
+}
+.invisible {
+  display: none;
+}
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -405,13 +421,13 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   overflow: hidden;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
+  object-fit: cover;
 }
 .hero-content {
   padding: 51px 67px;
@@ -436,7 +452,7 @@ input[data-error]::after {
   z-index: 1;
 }
 .hero-headline {
-  font-size: 6rem;
+  font-size: 85px;
   font-weight: normal;
   white-space: nowrap;
 }
@@ -444,7 +460,7 @@ input[data-error]::after {
   width: 146%;
   font-weight: normal;
   margin-top: 57px;
-  padding: 0;
+  padding-top: 10%;
 }
 .btn-signup {
   outline: none;
@@ -473,6 +489,33 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+#confirmation button {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1.3rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+}
+#confirmation {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-size: 2.3rem;
+  font-weight: normal;
+}
+.fermeture {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  height: 52vh;
+}
+.fermeture p {
+  margin-bottom: 70%;
+}
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
@@ -495,12 +538,12 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 4.3rem;
     white-space: normal;
   }
   .hero-text {
-    width: unset;
-    font-size: 1.5rem;
+    width: 100%;
+    font-size: 1.3rem;
   }
   .hero-img img {
     border-radius: 10px;
@@ -526,4 +569,3 @@ footer {
     opacity: 1;
   }
 }
-
