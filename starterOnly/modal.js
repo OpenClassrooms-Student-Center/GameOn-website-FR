@@ -134,6 +134,7 @@ form.addEventListener("submit",function validate(e) {
   };
   validateRadios();
   if (asError || !validateRadios ) {
+
     e.preventDefault();
     return false
   };
