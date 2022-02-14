@@ -25,6 +25,7 @@ const checkbox2 = document.getElementById("checkbox2");
 const btnSubmit = document.querySelector("input[type=submit]")
 
 
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal)); //les fonctions => n'ont pas de noms
 modalBtn2.forEach((btn) => btn.addEventListener("click", closeModal)); //les fonctions => n'ont pas de noms
@@ -155,20 +156,21 @@ checkbox1.addEventListener("input", function (e) {
 
 //validation du formulaire: faire un tableau pour recuperer toutes les infos de eventError dans les inputs !
 
-/*let inputs = [eventErrorFirst, eventErrorLast, eventErrorEmail, eventErrorBirthdate, eventErrorQuantity, eventErrorLocation, eventErrorCheckbox1]
+let inputs = [eventErrorFirst, eventErrorLast, eventErrorEmail, eventErrorBirthdate, eventErrorQuantity, eventErrorLocation, eventErrorCheckbox1]
+console.log(inputs)
 function validate() {
   for (let i in inputs) {
     if (!inputs[i].every()) {
       alert("Votre inscription est bien pris en compte"); // ajouter du texte avec javascript, lui dire qu'il est un enfant de ... , et penser a la lui mettre une class que j'aurais definie en CSS
     }
-    return false;
-    /*if (inputs[i].some()) {
+    if (inputs[i].some()) {
       alert("FAUX !");
     }
+    return false;
   }
-}*/
+}
 
-function validate() {
+/*function validate() {
 
   if (!eventErrorFirst) {
     btnSubmit.addEventListener("click", launchModal); {
@@ -185,7 +187,8 @@ function validate() {
       button.innerHTML = "Fermer";
       button.classList.add("btn-close");
       button.classList.add("modal-btn2");
-      modalBtn2.addEventListener("click", closeModal);
+      const btnClose = document.querySelector(".btn-close")
+      btnClose.addEventListener("click", closeModal);
       function closeModal() {
         modalbg.style.display = "none";
       }
@@ -197,4 +200,4 @@ function validate() {
     alert("FAUX !");
   }
   return false;
-}
+}*/
