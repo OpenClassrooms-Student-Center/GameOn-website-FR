@@ -97,7 +97,7 @@ p {
 //MQ Topnav
 @media screen and (max-width: 768px) {
     .topnav {
-        //    border: blue solid 2px;
+        // border: blue solid 2px;
         position: relative;
         img {
             margin-top: 20px;
@@ -106,7 +106,7 @@ p {
             margin-top: 40px;
             padding: 0px 0px;
             width: 100%;
-            //  border: black solid;
+            // border: black solid;
         }
         &__header-logo {
             width: 50%;
@@ -136,7 +136,16 @@ p {
 @media screen and (max-width: 768px) {
     .topnav.responsive {
         position: relative;
-        // background-color: cadetblue;
+        right: 0px;
+        top: 0px;
+        // height: 265px;
+    }
+    .topnav.responsive .menu-responsive {
+        position: fixed;
+        background-color: white;
+        margin-left: 1%;
+        width: 90%;
+        z-index: 2;
     }
     .topnav.responsive .icon {
         position: absolute;
@@ -266,9 +275,9 @@ main {
     object-fit: cover;
 }
 
-//bouton signup
-// à rajouter avec button-submit
-.btn-signup {
+.btn-submit,
+.btn-signup,
+.btn-closeThanks {
     background: #fe142f;
     display: block;
     margin: 0 auto;
@@ -362,6 +371,7 @@ footer {
         // font-size: 30px;
         white-space: normal;
         font-weight: bold;
+        // pour sauter une ligne sans utiliser la balise br
         span {
             display: inline;
         }
@@ -382,4 +392,213 @@ footer {
         margin-top: 50px;
         text-align: center;
     }
+}
+
+//********************************************************************************************************************************************************
+// FORMULAIRE--------------------***************************************************************************************************************************************************
+// ********************************************************************************************************************************************************
+//bground
+.bground {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(26, 39, 156, 0.4);
+}
+
+.bground-thanks {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(26, 39, 156, 0.4);
+}
+
+//content
+.content {
+    margin: 5% auto;
+    width: 100%;
+    max-width: 500px;
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+    background: #232323;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    padding-top: 10px;
+}
+
+//close
+.close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 32px;
+    height: 32px;
+    opacity: 1;
+    cursor: pointer;
+    transform: scale(0.7);
+}
+
+.close:before,
+.close:after {
+    position: absolute;
+    left: 15px;
+    content: " ";
+    height: 33px;
+    width: 3px;
+    background-color: #fff;
+}
+
+.close:before {
+    transform: rotate(45deg);
+}
+
+.close:after {
+    transform: rotate(-45deg);
+}
+
+//modal-body
+.modal-body {
+    padding: 15px 8%;
+    margin: 15px auto;
+}
+
+//formData
+.formData[data-error]::after {
+    content: attr(data-error);
+    font-size: 0.4em;
+    color: #e54858;
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    text-align: right;
+    line-height: 0.3;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.formData[data-error-visible="true"]::after {
+    opacity: 1;
+}
+
+.formData[data-error-visible="true"] .text-control {
+    border: 2px solid #e54858;
+}
+
+//text-label
+.text-label {
+    font-weight: normal;
+    font-size: 16px;
+}
+
+//label
+label {
+    font-family: var(--font-default);
+    font-size: 17px;
+    font-weight: normal;
+    display: inline-block;
+    margin-bottom: 11px;
+}
+
+//text-control
+.text-control {
+    margin: 0;
+    padding: 8px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 20px;
+    height: 48px;
+}
+
+//input
+input {
+    padding: 8px;
+    border: 0.8px solid #ccc;
+    outline: none;
+}
+
+//checkbox-input
+.checkbox-input {
+    display: none;
+}
+
+.checkbox-input:checked+.checkbox-label .checkbox-icon::after,
+.checkbox-input:checked+.checkbox2-label .checkbox-icon::after {
+    opacity: 1;
+}
+
+.checkbox-input:checked+.checkbox2-label .checkbox-icon {
+    background: #279e7a;
+}
+
+//checkbox-label
+.checkbox-label,
+.checkbox2-label {
+    position: relative;
+    margin-left: 36px;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.checkbox-label .checkbox-icon,
+.checkbox2-label .checkbox-icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #279e7a;
+    border-radius: 50%;
+    text-indent: 29px;
+    white-space: nowrap;
+    position: absolute;
+    left: -30px;
+    top: -1px;
+    transition: 0.3s;
+}
+
+.checkbox-label .checkbox-icon::after,
+.checkbox2-label .checkbox-icon::after {
+    content: "";
+    width: 13px;
+    height: 13px;
+    background-color: #279e7a;
+    border-radius: 50%;
+    text-indent: 29px;
+    white-space: nowrap;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.3s;
+    opacity: 0;
+}
+
+//fenêtre remerciement
+
+/* Hauteur de la fenêtre de remerciements */
+
+.contentThanks {
+    height: 857px;
+}
+
+
+/* Boutons "Je M'inscris", "C'est parti" et "Fermer" deviennent bleu au survol */
+
+.modal-btn:hover,
+.btn-submit:hover,
+.btn-closeThanks:hover {
+    background: #3876ac;
+}
+
+.btn-closeThanks {
+    margin-top: 330px;
 }
