@@ -53,13 +53,13 @@ function removeError(input) {
 //déclarations des variables
 let regexName = /^([a-zA-Z]{2,30}\s*)+/;
 let regexMail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
-
+let inputs = []
 // Evénement pour le Prénom OK !
-let eventErrorFirst = true;
+inputs[0] = true;
 first.addEventListener("input", function (e) {
   if (regexName.test(first.value) == true) {
     removeError(e.target.parentNode);
-    eventErrorFirst = false;
+    inputs[0] = false;
   }
   else {
     displayError(e.target.parentNode, "le prénom doit comporter minimum 2 caractères");
@@ -67,11 +67,11 @@ first.addEventListener("input", function (e) {
 });
 
 // Evénement pour le Nom OK !
-let eventErrorLast = true;
+inputs[1] = true;
 last.addEventListener("input", function (e) {
   if (regexName.test(last.value) == true) {
     removeError(e.target.parentNode);
-    eventErrorLast = false;
+    inputs[1] = false;
   }
   else {
     displayError(e.target.parentNode, "le nom doit comporter minimum 2 caractères");
@@ -80,11 +80,11 @@ last.addEventListener("input", function (e) {
 
 
 // Evénement pour l'email OK !
-let eventErrorEmail = true;
+inputs[2] = true;
 email.addEventListener("input", function (e) {
   if (regexMail.test(email.value)) {
     removeError(e.target.parentNode);
-    eventErrorEmail = false;
+    inputs[2] = false;
   }
   else {
     displayError(e.target.parentNode, "Veillez renseigner une adresse mail valide");
@@ -95,12 +95,12 @@ email.addEventListener("input", function (e) {
 const today = new Date().toISOString().split("T")[0];
 timestamp = Date.parse(today);
 birthdate.max = today;
-let eventErrorBirthdate = true;
+inputs[3] = true;
 birthdate.addEventListener("input", function (e) {
   let birthdateTime = Date.parse(birthdate.value);
   if (birthdateTime < timestamp) {
     removeError(e.target.parentNode);
-    eventErrorBirthdate = false;
+    inputs[3] = false;
   }
   else {
     displayError(e.target.parentNode, "Veillez renseigner une date de naissance valide");
@@ -108,12 +108,12 @@ birthdate.addEventListener("input", function (e) {
 });
 
 //Evénement pour le Nombre de tournois Ok !
-let eventErrorQuantity = true;
+inputs[4] = true;
 quantity.addEventListener("input", function (e) {
   let quantityValid = parseInt(quantity.value);
   if (quantityValid >= 0 && quantityValid <= 99) {
     removeError(e.target.parentNode);
-    eventErrorQuantity = false;
+    inputs[4] = false;
   }
   else {
     displayError(e.target.parentNode, "Veillez renseigner le nombre de tournois que vous avez réalisé");
@@ -122,7 +122,7 @@ quantity.addEventListener("input", function (e) {
 
 
 // Evénement pour la localisation OK !
-let eventErrorLocation = true;
+inputs[5] = true;
 for (let i = 0; i < locations.length; i++) {
   locations[i].addEventListener("change", function (e) {
     let error = true;
@@ -131,7 +131,7 @@ for (let i = 0; i < locations.length; i++) {
         error = false;
         valeur = locations[u].value;
         removeError(e.target.parentNode);
-        eventErrorLocation = false;
+        inputs[5] = false;
         break
       }
     }
@@ -143,11 +143,11 @@ for (let i = 0; i < locations.length; i++) {
 }
 
 // Evénement pour la conditions générales OK !
-let eventErrorCheckbox1 = true;
+inputs[6] = false;
 checkbox1.addEventListener("input", function (e) {
   if (checkbox1) {
     removeError(e.target.parentNode);
-    eventErrorCheckbox1 = false;
+    inputs[6] = true;
   }
   else {
     displayError(e.target.parentNode, "cette case est obligatoire");
@@ -156,18 +156,38 @@ checkbox1.addEventListener("input", function (e) {
 
 //validation du formulaire: faire un tableau pour recuperer toutes les infos de eventError dans les inputs !
 
-let inputs = [eventErrorFirst, eventErrorLast, eventErrorEmail, eventErrorBirthdate, eventErrorQuantity, eventErrorLocation, eventErrorCheckbox1]
+
 console.log(inputs)
 function validate() {
-  for (let i in inputs) {
-    if (!inputs[i].every()) {
-      alert("Votre inscription est bien pris en compte"); // ajouter du texte avec javascript, lui dire qu'il est un enfant de ... , et penser a la lui mettre une class que j'aurais definie en CSS
+  console.log(inputs)
+  if (inputs.every(elem => elem == false)) {
+    btnSubmit.addEventListener("click", launchModal); {
+      while (myForm.firstChild) {
+        myForm.removeChild(myForm.firstChild);
+      }
+
+      const p = document.createElement("p");
+      myForm.appendChild(p);
+      p.innerHTML = "Merci pour votre Inscription";
+      p.classList.add("formEnd");
+
+      const button = document.createElement("button");
+      myForm.appendChild(button);
+      button.innerHTML = "Fermer";
+      button.classList.add("btn-close");
+      button.classList.add("modal-btn2");
+      const btnClose = document.querySelector(".btn-close")
+      btnClose.addEventListener("click", closeModal);
+      function closeModal() {
+        modalbg.style.display = "none";
+      }
     }
-    if (inputs[i].some()) {
-      alert("FAUX !");
-    }
-    return false;
   }
+
+  if (inputs.some(elem => elem == true)) {
+    alert("Veillez renseigner tous les champs du formulaire");
+  }
+  return false;
 }
 
 /*function validate() {
@@ -177,6 +197,7 @@ function validate() {
       while (myForm.firstChild) {
         myForm.removeChild(myForm.firstChild);
       }
+
       const p = document.createElement("p");
       myForm.appendChild(p);
       p.innerHTML = "Merci pour votre Inscription";
