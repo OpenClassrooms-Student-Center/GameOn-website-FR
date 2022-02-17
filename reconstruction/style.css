@@ -356,7 +356,7 @@ footer {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
-.bground-thanks {
+.bloc-thanks {
   display: none;
   position: fixed;
   z-index: 1;
@@ -519,7 +519,7 @@ input {
 }
 
 /* Hauteur de la fenêtre de remerciements */
-.contentThanks {
+.containerThanks {
   height: 857px;
 }
 
@@ -532,6 +532,18 @@ input {
 
 .btn-closeThanks {
   margin-top: 330px;
+}
+
+.error input {
+  color: red;
+  border: 3px solid red;
+}
+
+.error span {
+  visibility: visible;
+  opacity: 1;
+  color: red;
+  font-size: 12px;
 }
 
 /*# sourceMappingURL=style.css.map */
