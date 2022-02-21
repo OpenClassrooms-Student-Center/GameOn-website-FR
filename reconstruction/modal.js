@@ -121,27 +121,28 @@ const errorDisplay = (tag, message, valid) => {
 
 };
 
-
 /**
- * CONTRÔLE DU PRENOM
+ * FONCTION POUR CONTRÔLE DU PRENOM ET DU NOM
  * Issues(1) Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
  */
-//Prénom
-const firstChecker = (value) => {
+const firstLastChecker = (value) => {
     //Observation de ce que récupère la fonction
     console.log(value);
     if (!value) {
         errorDisplay("first", "Le champ doit être rempli!");
         // alert("Mettez votre nom.");
         first = null;
+        last = null;
     } else if (value.length > 0 && (value.length < 3 || value.length > 20)) {
         //Le 3ème paramètre, on le passe que pour le mettre à true.
         errorDisplay("first", "Le pseudo doit faire entre 3 et 20 caractères");
         first = null;
+        last = null;
     } else if (!value.match(/^[a-zA-Z0-9_.-]*$/)) {
         errorDisplay("first", "Le pseudo ne doit pas contenir de caractères spéciaux");
         // Si tout ça c bon, je le rends valide
         first = null;
+        last = null
     } else {
         //ds ce cas on est ds le dernier else de notre fonction errorDisplay
         errorDisplay('first', "", true);
@@ -150,6 +151,7 @@ const firstChecker = (value) => {
         // sur tout ce qui est fonctionnel
         // Donc on va dire "First, on te passe la value":
         first = value;
+        last = value;
         //!!!Il faut se prémunir de qqchose: si jamais le first n'est pas bon, 
         //qu'on ne puisse pas envoyer le formulaire.
         // c à dire si l'utilisteur tape au début un bon pseudo
@@ -158,29 +160,21 @@ const firstChecker = (value) => {
     }
 }
 
+// let value = "";
+
+/**
+ * CONTRÔLE DU PRENOM
+ * Issues(1) Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
+ */
+//Prénom
+// firstLastChecker(value, first);
+
 /**
  * CONTRÔLE DU NOM
  * Issues(2) Le champ du nom de famille a un minimum de 2 caractères / n'est pas vide.
  */
 //Nom
-const lastChecker = (value) => {
-    //Observation de ce que récupère la fonction
-    console.log(value);
-    if (value == "") {
-        errorDisplay("last", "Le champ doit être rempli!");
-        // alert("Mettez votre nom.");
-        last = null;
-    } else if (value.length > 0 && (value.length < 3 || value.length > 20)) {
-        errorDisplay("last", "Le pseudo doit faire entre 3 et 20 caractères");
-        last = null;
-    } else if (!value.match(/^[a-zA-Z0-9_.-]*$/)) {
-        errorDisplay("last", "Le pseudo ne doit pas contenir de caractères spéciaux");
-        last = null;
-    } else {
-        errorDisplay('last', "", true);
-        last = value;
-    }
-}
+// firstLastChecker(value, last);
 
 /**
  * CONTRÔLE DE L'EMAIL
@@ -347,10 +341,10 @@ inputs.forEach((inputValue) => {
         // Du coup selon ce que fait l'utilisateur on fait un check:
         switch (e.target.id) {
             case "first":
-                firstChecker(e.target.value);
+                firstLastChecker(e.target.value);
                 break;
             case "last":
-                lastChecker(e.target.value);
+                firstLastChecker(e.target.value);
                 break;
             case "email":
                 emailChecker(e.target.value);
@@ -416,6 +410,7 @@ fullForm.addEventListener('submit', (e) => {
     // quantityChecker(number);
     // checkboxChecker(radioButton);
     // termsUseChecker(checkbox1);
+
 
     //si tous les champs sont corrects
     if (first && last && email && birthdate && number && radioButton && checkbox1) {
