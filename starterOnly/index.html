@@ -59,6 +59,7 @@
               action="index.html"
               method="get"
               onsubmit="return validate(event);"
+              novalidate
             >
               <div class="formData">
                 <label for="first">Prénom</label>
@@ -69,7 +70,10 @@
                   name="first"
                   minlength="2"
                   required="required"
-                /><br />
+                />
+                <div class="message-error" id="first-error">
+                  Veuillez entrer 2 caractères ou plus pour le champ du prenom.
+                </div>
               </div>
               <div class="formData">
                 <label for="last">Nom</label>
@@ -80,7 +84,10 @@
                   name="last"
                   minlength="2"
                   required="required"
-                /><br />
+                />
+                <div class="message-error" id="last-error">
+                  Veuillez entrer 2 caractères ou plus pour le champ du nom.
+                </div>
               </div>
               <div class="formData">
                 <label for="email">E-mail</label><br />
@@ -90,17 +97,23 @@
                   id="email"
                   name="email"
                   required="required"
-                /><br />
+                />
+                <div class="message-error" id="email-error">
+                  Veuillez entrer une adresse email valide!
+                </div>
               </div>
               <div class="formData">
-                <label for="birthdate">Date de naissance</label><br />
+                <label for="birthdate">Date de naissance</label>
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                  required="required"
-                /><br />
+                />
+                <div class="message-error" id="birthdate-error">
+                  Veuillez entrer une date de naissance respectant le format
+                  JJ/MM/AAAA.
+                </div>
               </div>
               <div class="formData">
                 <label for="quantity"
@@ -116,6 +129,9 @@
                   min="0"
                   max="99"
                 />
+                <div class="message-error" id="quantity-error">
+                  Veuillez entrer un nombre valide!
+                </div>
               </div>
               <p class="text-label">
                 A quel tournoi souhaitez-vous participer cette année ?
@@ -187,19 +203,27 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                <div class="message-error" id="location-error">
+                  veuillez choisir une ville!
+                </div>
               </div>
 
               <div class="formData">
                 <input
                   class="checkbox-input"
                   type="checkbox"
+                  name="checkbox1"
                   id="checkbox1"
                   checked
                 />
+
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
+                <div class="message-error" id="checkbox1-error">
+                  veuillez accepter les conditions d'utilisation!
+                </div>
                 <br />
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2" required>

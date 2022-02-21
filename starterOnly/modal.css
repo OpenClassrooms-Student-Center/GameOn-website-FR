@@ -503,6 +503,8 @@ footer {
   .hero-text {
     width: unset;
     font-size: 1.5rem;
+    text-align: center;
+    overflow: hidden;
   }
   .hero-img img {
     border-radius: 10px;
@@ -527,4 +529,15 @@ footer {
   to {
     opacity: 1;
   }
+}
+
+.message-error {
+  color: red;
+  display: none;
+  font-size: 12px;
+  padding: 10px;
+}
+
+input.error {
+  border: solid 2px red;
 }

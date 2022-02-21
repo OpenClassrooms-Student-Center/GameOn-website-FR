@@ -45,14 +45,20 @@ function validate(event) {
   const firstNameInput = document.querySelector("#first");
   const firstNameValue = firstNameInput.value;
   if (firstNameValue.length < 2) {
+    inputError(firstNameInput);
     return;
+  } else {
+    inputValid(firstNameInput);
   }
 
   // Last name
   const lastNameInput = document.querySelector("#last");
   const lastNameValue = lastNameInput.value;
   if (lastNameValue.length < 2) {
+    inputError(lastNameInput);
     return;
+  } else {
+    inputValid(lastNameInput);
   }
 
   // Email
@@ -60,14 +66,30 @@ function validate(event) {
   const emailValue = emailInput.value;
   const isEmailValid = validateEmail(emailValue);
   if (!isEmailValid) {
+    inputError(emailInput);
     return;
+  } else {
+    inputValid(emailInput);
+  }
+
+  // Birthdate
+  const birthdateInput = document.querySelector("#birthdate");
+  const birthdateValue = birthdateInput.value;
+  if (birthdateValue.length === 0) {
+    inputError(birthdateInput);
+    return;
+  } else {
+    inputValid(birthdateInput);
   }
 
   // Quantity
   const quantityInput = document.querySelector("#quantity");
   const quantityValue = quantityInput.value;
   if (quantityValue.length === 0) {
+    inputError(quantityInput);
     return;
+  } else {
+    inputValid(quantityInput);
   }
 
   // Location
@@ -82,14 +104,33 @@ function validate(event) {
   }
 
   if (!hasLocationChecked) {
+    inputError(locationInputs[0]);
     return;
+  } else {
+    inputValid(locationInputs[0]);
   }
 
   // Checkbox1
   const checkbox1Input = document.querySelector("#checkbox1");
   if (!checkbox1Input.checked) {
+    inputError(checkbox1Input);
     return;
+  } else {
+    inputValid(checkbox1Input);
   }
 
   closeModal();
+  alert("Merci!Votre réservation a été bien reçue");
+}
+
+function inputError(input) {
+  input.classList.add("error");
+  const spanError = document.querySelector(`#${input.name}-error`);
+  spanError.style.display = "block";
+}
+
+function inputValid(input) {
+  input.classList.remove("error");
+  const spanError = document.querySelector(`#${input.name}-error`);
+  spanError.style.display = "";
 }
