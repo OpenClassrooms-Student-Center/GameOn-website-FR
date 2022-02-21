@@ -14,6 +14,9 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const close = document.querySelector(".close");
+const formReverve = document.querySelector("#reverve");
+const sendConfirm = document.querySelector(".sendConfirm");
+sendConfirm.style.display = "none";
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -92,8 +95,10 @@ const validCheckbox = {
   }
 }
 
+
 const form = document.getElementById("reverve");
 form.addEventListener("submit",function validate(e) {
+ 
   
   const inputs = form.getElementsByClassName("text-control");
   let asError = false;
@@ -142,7 +147,8 @@ form.addEventListener("submit",function validate(e) {
     e.preventDefault();
     return false
   };
-
+  formReverve.style.display = "none";
+  sendConfirm.style.display = "block";
   alert('Formulaire envoyé !');
 });
 
