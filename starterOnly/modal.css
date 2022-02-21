@@ -99,6 +99,9 @@ img {
     display: block;
     margin-top: -15px;
   }
+  .hero-headline{
+    font-size: 3rem;
+  }
 } 
 
 main {
@@ -440,6 +443,14 @@ input[data-error]::after {
   font-weight: normal;
   white-space: nowrap;
 }
+@media screen and (max-width:970) {
+  .hero-headline{
+    font-size:5rem;
+    color: #e54858;
+    background-color: #279e7a;
+  }
+  
+}
 .hero-text {
   width: 146%;
   font-weight: normal;
@@ -495,8 +506,8 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
-    white-space: normal;
+    font-size: 3.5rem;
+    /* white-space: normal; */
   }
   .hero-text {
     width: unset;
