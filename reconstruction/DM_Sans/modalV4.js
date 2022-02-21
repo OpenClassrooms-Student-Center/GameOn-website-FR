@@ -1,5 +1,4 @@
 //MODAL OK + Ré organisation du code
-// + fonctions fléchées:OK
 
 /**
  * ATTRIBUTION DES CONSTANTES AUX ELEMENTS DU DOM
@@ -127,7 +126,7 @@ const errorDisplay = (tag, message, valid) => {
  * Issues(1) Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
  */
 //Prénom
-const firstChecker = (value) => {
+function firstChecker(value) {
     //Observation de ce que récupère la fonction
     console.log(value);
     if (!value) {
@@ -163,7 +162,7 @@ const firstChecker = (value) => {
  * Issues(2) Le champ du nom de famille a un minimum de 2 caractères / n'est pas vide.
  */
 //Nom
-const lastChecker = (value) => {
+function lastChecker(value) {
     //Observation de ce que récupère la fonction
     console.log(value);
     if (value == "") {
@@ -187,7 +186,7 @@ const lastChecker = (value) => {
  * Issues(3) L'adresse électronique est valide.
  */
 
-const emailChecker = (value) => {
+function emailChecker(value) {
     if (value == "") {
         errorDisplay("email", "Le champ doit être rempli!");
         // alert("Mettez votre nom.");
@@ -208,7 +207,7 @@ const emailChecker = (value) => {
  * CONTRÔLE DE LA DATE DE NAISSANCE
  */
 //Date de naissance
-const birthdayChecker = (value) => {
+function birthdayChecker(value) {
     let checkInput = value;
     let checkDate = value;
     let dateNow = Date.now();
@@ -243,7 +242,7 @@ const birthdayChecker = (value) => {
  */
 
 //Nombre de tournois
-const quantityChecker = (value) => {
+function quantityChecker(value) {
     if (value == "") {
         errorDisplay("number", "Le champ nombre de trournoi doit être rempli");
         number = null;
@@ -267,7 +266,7 @@ const quantityChecker = (value) => {
  * Issues(5) Un bouton radio est sélectionné.
  */
 // Quel tournoi?
-const checkboxChecker = (value) => {
+function checkboxChecker(value) {
     const checkRadioClass = document.querySelector(".location-formData");
     const checkRadioSpan = document.querySelector(".location-formData > span");
     console.log("Valeur de la checkbox:", value);
@@ -298,7 +297,7 @@ const checkboxChecker = (value) => {
 //Conditions d'utilisation
 console.log("valeur de checkbox 1er tps", checkbox1);
 
-const termsUseChecker = (value) => {
+function termsUseChecker(value) {
     console.log("test", value);
     if (!value) {
         errorDisplay("checkbox1", "Vous devez vérifier que vous acceptez les termes et conditions d'utilisation.");
@@ -408,28 +407,16 @@ fullForm.addEventListener('submit', (e) => {
     console.log("test lancement fonction submit");
     // empêche l'envoi du formulaire
     e.preventDefault();
-    // Appel des fonctions qui contrôlent
-    // firstChecker(first);
-    // lastChecker(last);
-    // emailChecker(email);
-    // birthdayChecker(birthdate);
-    // quantityChecker(number);
-    // checkboxChecker(radioButton);
-    // termsUseChecker(checkbox1);
+    firstChecker(first);
+    lastChecker(last);
+    emailChecker(email);
+    birthdayChecker(birthdate);
+    quantityChecker(number);
+    checkboxChecker(radioButton);
+    termsUseChecker(checkbox1);
 
     //si tous les champs sont corrects
     if (first && last && email && birthdate && number && radioButton && checkbox1) {
-        const data = {
-            first: first,
-            last: last,
-            email: email,
-            birthdate: birthdate,
-            number: number,
-            radioButton: radioButton,
-            checkbox1: checkbox1,
-        };
-        //Normalement, on devrait faire un post ici
-        console.log("Les données", data);
         alert("Inscription validée!");
         //Fermeture de la Modale
         closeWindow();
@@ -445,7 +432,6 @@ fullForm.addEventListener('submit', (e) => {
         function closeWindowThanks() {
             blocThanks.style.display = "none";
         }
-        location.reload();
 
     } else {
         alert("Remplir les champs correctement!");
