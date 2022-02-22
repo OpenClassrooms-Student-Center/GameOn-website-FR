@@ -12,6 +12,7 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
+const modalSubmit = document.querySelector(".btn-submit");
 const formData = document.querySelectorAll(".formData");
 const close = document.querySelector(".close");
 const formReverve = document.querySelector("#reverve");
@@ -98,7 +99,6 @@ const validCheckbox = {
 
 const form = document.getElementById("reverve");
 form.addEventListener("submit",function validate(e) {
- 
   
   const inputs = form.getElementsByClassName("text-control");
   let asError = false;
@@ -147,10 +147,29 @@ form.addEventListener("submit",function validate(e) {
     e.preventDefault();
     return false
   };
-  formReverve.style.display = "none";
-  sendConfirm.style.display = "block";
-  alert('Formulaire envoyé !');
+ 
+  e.preventDefault();
+  confirmMessage();
+  const modalBtnClose = document.querySelector(".btn-closeModal");
+  modalBtnClose.addEventListener("click", function closeComfirm() {
+    console.log("confirmation va être fermée");
+    modalbg.style.display ="none";
+    formReverve.style.display = "block"
+    sendConfirm.style.display = "none"
+    console.log("confirmation fermer");
+  });
+  console.log("fini");
 });
+function confirmMessage() {
+  console.log("modale de confirmation");
+  formReverve.style.display = "none";
+  console.log("formulaire fermer");
+  sendConfirm.style.display = "block";
+  console.log("message de confirmation");
+  
+  console.log("boutton de fermeture");
+  
+};
 
 function validateRadios() {
   let formValid = true;
