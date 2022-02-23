@@ -66,17 +66,6 @@ const formValidate = {
     regex: /^[0-9]{1,2}$/,
     required: true,
     errorCustom: "Vous devez entrer un nombre."
-  },
-  checkbox1: {
-    name: "checkbox1",
-    type: "checkbox",
-    required: true,
-    errorCustom: "Vous devez vérifier que vous acceptez les termes et conditions."
-  },
-  checkbox2: {
-    name: "checkbox2",
-    type: "checkbox",
-    required: true
   }
 };
 const validCheckbox = {
@@ -99,51 +88,38 @@ const validCheckbox = {
 
 const form = document.getElementById("reverve");
 form.addEventListener("submit",function validate(e) {
-  
   const inputs = form.getElementsByClassName("text-control");
   let asError = false;
-  console.log(inputs);
 
   for (let i = 0; i< inputs.length; i++) {
-  
     for(const item in formValidate){
      
       if (inputs[i].name === formValidate[item].name){
-        console.log(inputs[i].value);
-        console.log("regex " + formValidate[item].regex.test(inputs[i].value));
         const input = inputs[i];
 
         if (!formValidate[item].regex.test(inputs[i].value)) {
-          console.log("erreur");
           asError = true;
-          console.log("asError " + asError);
+        
           if (input.nextElementSibling === null) {
             let p = document.createElement("p");
             input.parentNode.appendChild(p);
-            console.log("p créé")
           }
+
           let pError = input.nextElementSibling;
-          console.log(pError);
-          console.log(formValidate[item].errorCustom)
           pError.innerHTML = formValidate[item].errorCustom;
 
         } else {
-          console.log("regex ok");
           if (input.nextElementSibling === null) {
-            console.log("tout est ok");
           } else if (input.nextElementSibling.tagName === "P"){
             let pError = input.nextElementSibling;
             input.parentNode.removeChild(pError);
-            console.log("effacement message erreur");
           }
-          
         }
       }
     };
   };
   validateRadios();
   if (asError || !validateRadios() ) {
-
     e.preventDefault();
     return false
   };
@@ -152,29 +128,21 @@ form.addEventListener("submit",function validate(e) {
   confirmMessage();
   const modalBtnClose = document.querySelector(".btn-closeModal");
   modalBtnClose.addEventListener("click", function closeComfirm() {
-    console.log("confirmation va être fermée");
     modalbg.style.display ="none";
     formReverve.style.display = "block"
     sendConfirm.style.display = "none"
-    console.log("confirmation fermer");
+
   });
-  console.log("fini");
+
 });
 function confirmMessage() {
-  console.log("modale de confirmation");
   formReverve.style.display = "none";
-  console.log("formulaire fermer");
   sendConfirm.style.display = "block";
-  console.log("message de confirmation");
-  
-  console.log("boutton de fermeture");
-  
 };
 
 function validateRadios() {
   let formValid = true;
   let inputwarps = document.getElementsByClassName("inputWarp");
-  console.log("validateRadios");
 
   for (let i = 0; i< inputwarps.length; i++) {
     const checkbox = inputwarps[i].getElementsByClassName("checkbox-input");
@@ -185,12 +153,11 @@ function validateRadios() {
 
     for (let j = 0; j < checkbox.length; j++) {
       for (const item in validCheckbox) {
-        console.log(checkbox[j].name + " verification")
+       
         if (validCheckbox[item].name === checkbox[j].name && validCheckbox[item].required){
-          console.log(checkbox[j].name + " requise trouvé")
+         
           if (checkbox[j].checked) {
             hasInputWarpsValid = true;
-            console.log('checkbox checked')
           
           }
           if (!hasInputWarpsValid && inputwarps[i].lastElementChild.tagName !== "P") {
@@ -200,15 +167,13 @@ function validateRadios() {
 
         } if (validCheckbox[item].name === checkbox[j].name && !validCheckbox[item].required ){
           hasInputWarpsValid = true;
-          console.log(checkbox[j].name + " pas requise")
         }
 
       }
     }
     
-    console.log('hasInputWarpValid = ' + hasInputWarpsValid)
     if (!hasInputWarpsValid) {formValid = false};
-    console.log("formValid = " + formValid)
+
   }
   return formValid;
 }
