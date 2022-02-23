@@ -183,12 +183,12 @@ function validateRadios() {
       inputwarps[i].removeChild(inputwarps[i].lastElementChild);
     }
 
-    for (let b = 0; b < checkbox.length; b++) {
+    for (let j = 0; j < checkbox.length; j++) {
       for (const item in validCheckbox) {
-        console.log(checkbox[b].name + " verification")
-        if (validCheckbox[item].name === checkbox[b].name && validCheckbox[item].required){
-          console.log(checkbox[b].name + " requise trouvé")
-          if (checkbox[b].checked) {
+        console.log(checkbox[j].name + " verification")
+        if (validCheckbox[item].name === checkbox[j].name && validCheckbox[item].required){
+          console.log(checkbox[j].name + " requise trouvé")
+          if (checkbox[j].checked) {
             hasInputWarpsValid = true;
             console.log('checkbox checked')
           
@@ -198,9 +198,9 @@ function validateRadios() {
             inputwarps[i].insertAdjacentHTML('beforeend', htmlContent);
           }
 
-        } if (validCheckbox[item].name === checkbox[b].name && !validCheckbox[item].required ){
+        } if (validCheckbox[item].name === checkbox[j].name && !validCheckbox[item].required ){
           hasInputWarpsValid = true;
-          console.log(checkbox[b].name + " pas requise")
+          console.log(checkbox[j].name + " pas requise")
         }
 
       }
