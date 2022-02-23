@@ -368,6 +368,19 @@ footer {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
+.modal-thanks {
+  color: white;
+}
+
+.btn-closeThanks {
+  margin-top: 350px;
+}
+
+.textThanks {
+  margin: 330px 50px 0 50px;
+  text-align: center;
+}
+
 .content {
   margin: 5% auto;
   width: 100%;
@@ -528,10 +541,6 @@ input {
 .btn-submit:hover,
 .btn-closeThanks:hover {
   background: #3876ac;
-}
-
-.btn-closeThanks {
-  margin-top: 330px;
 }
 
 .error input {
