@@ -142,7 +142,7 @@ form.addEventListener("submit",function validate(e) {
     };
   };
   validateRadios();
-  if (asError || !validateRadios ) {
+  if (asError || !validateRadios() ) {
 
     e.preventDefault();
     return false
@@ -210,6 +210,6 @@ function validateRadios() {
     if (!hasInputWarpsValid) {formValid = false};
     console.log("formValid = " + formValid)
   }
-  if (!formValid)return false;
+  return formValid;
 }
 
