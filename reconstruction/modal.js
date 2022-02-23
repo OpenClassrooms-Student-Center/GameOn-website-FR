@@ -18,7 +18,6 @@ const crossWindowThanks = document.querySelector(".closeThanks");
 const btnWindowThanks = document.querySelector(".btn-closeThanks");
 // // Formulaire
 const fullForm = document.querySelector("#form");
-console.log("Formulaire test", fullForm);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -95,7 +94,6 @@ const firstLastChecker = (value, tag) => {
     if (!value) {
         errorDisplay(tag, "Le champ doit être rempli!");
     } else if (value.length > 0 && (value.length < 3 || value.length > 20)) {
-        console.log("pas ok ok");
         //Le 3ème paramètre, on le passe que pour le mettre à true.
         errorDisplay(tag, "Le pseudo doit faire entre 3 et 20 caractères");
 
@@ -105,7 +103,6 @@ const firstLastChecker = (value, tag) => {
     } else {
         //ds ce cas on est ds le dernier else de notre fonction errorDisplay
         errorDisplay(tag, "", true);
-        console.log("action");
         return true;
     }
 };
@@ -131,28 +128,23 @@ const birthdayChecker = (value, tag) => {
     let checkDate = value;
     let dateNow = Date.now();
     let dateInput = Date.parse(checkDate);
-    console.log(dateNow);
-    console.log(dateInput);
+
 
     if (checkInput == "") {
         errorDisplay(tag, "Le champ date de naissance doit être rempli");
 
     } else if (!checkInput.match(/[0-9]/)) {
-        console.log("la date est vide", checkInput);
         errorDisplay(tag, "Vous devez entrer votre date de naissance.");
 
     } else {
         if (dateInput < dateNow) {
-            console.log("Ok");
             errorDisplay(tag, "", true);
             return true;
         } else {
-            console.log("pas Ok");
             errorDisplay(tag, "Date de naissance impossible");
 
         }
     }
-    console.log("date", checkInput);
 };
 //CHECK DE LA QUANTITE*****************************************************************************************************************************************************
 const quantityChecker = (value, tag) => {
@@ -160,15 +152,12 @@ const quantityChecker = (value, tag) => {
         errorDisplay(tag, "Le champ nombre de trournoi doit être rempli");
 
     } else if (!value.match(/^[0-9]+$/)) {
-        console.log("Pas un chiffre", value);
         errorDisplay(tag, "Veuillez entrer un chiffre");
 
     } else if (!value.match(/^[0-9][0-9]?$/)) {
-        console.log("Mauvaise quantité", value);
         errorDisplay(tag, "Le chiffre doit être compris entre 0 et 99.");
 
     } else {
-        console.log("Bonne quantité", value);
         errorDisplay(tag, "", true);
         return true;
     }
@@ -181,9 +170,6 @@ const quantityChecker = (value, tag) => {
 const checkboxChecker = (value) => {
     const checkRadioClass = document.querySelector(".location-formData");
     const checkRadioSpan = document.querySelector(".location-formData > span");
-    // console.log("Valeur de la checkbox:", value);
-    // console.log(checkRadioClass);
-    // console.log(checkRadioSpan);
 
     if (!value) {
         // Ajout de la classe "error" si c pas valide
@@ -191,14 +177,12 @@ const checkboxChecker = (value) => {
         // Ecriture du message d'erreur dans la balise span 
         checkRadioSpan.textContent = "Vous devez choisir une ville.";
         // radioButton = null;
-        console.log("checkboxChecker no", value);
     } else {
         // Suppression de la classe "error" si c valide 
         checkRadioClass.classList.remove("error");
         // Ecriture du message (vide) dans la balise span
         checkRadioSpan.textContent = "";
         // radioButton = value;
-        console.log("checkboxChecker OK", value);
         return true;
 
     }
@@ -209,17 +193,12 @@ const checkboxChecker = (value) => {
 //Conditions d'utilisation
 
 const termsUseChecker = (value, tag) => {
-    console.log("test", value);
     if (!value) {
         errorDisplay(tag, "Vous devez vérifier que vous acceptez les termes et conditions d'utilisation.");
     } else if (!document.getElementById("checkbox1").checked) {
-        console.log("décoché");
         errorDisplay(tag, "Vous devez vérifier que vous acceptez les termes et conditions d'utilisation.");
-        console.log("valeur de checkbox 2ème tps (dans le if)", checkbox1);
     } else {
-        console.log("coché");
         errorDisplay(tag, "", true);
-        console.log("valeur de checkbox 2ème tps (else)", checkbox1);
         return true;
     }
 };
@@ -239,11 +218,9 @@ const termsUseChecker = (value, tag) => {
 //FIRST
 //Récupération de l'id first dans le DOM
 let firstInput = document.getElementById("first");
-console.log("valeur de l'input", firstInput.value);
 
 //Ajout du listener sur l'élément et contrôle:
 firstInput.addEventListener('change', (e) => {
-    console.log("TARGET FIRST", e.target.value);
     //Fonction déclenchée au listener, en gros, dès que le firstname est 
     //modifié, qu'on appelle cette fonction.
     firstLastChecker(e.target.value, "first");
@@ -252,22 +229,18 @@ firstInput.addEventListener('change', (e) => {
 //LAST
 //Récupération de l'id last dans le DOM
 let lastInput = document.getElementById("last");
-console.log("valeur de l'input", lastInput.value);
 
 //Ajout du listener sur l'élément et contrôle:
 lastInput.addEventListener('change', (e) => {
-    console.log("TARGET LAST", e.target.value);
     //Fonction déclenchée au listener, en gros, dès que le firstname est 
     //modifié, qu'on appelle cette fonction.
     firstLastChecker(e.target.value, "last");
 });
 //EMAIL
 let emailInput = document.getElementById("email");
-console.log("valeur de l'input", emailInput.value);
 
 //Ajout du listener sur l'élément et contrôle:
 emailInput.addEventListener('change', (e) => {
-    console.log("TARGET EMAIL", e.target.value);
     //Fonction déclenchée au listener, en gros, dès que le firstname est 
     //modifié, qu'on appelle cette fonction.
     emailChecker(e.target.value, "email");
@@ -275,11 +248,9 @@ emailInput.addEventListener('change', (e) => {
 
 //DATE DE NAISSANCE
 let birthdayInput = document.getElementById("birthdate");
-console.log("valeur de l'input", birthdayInput.value);
 
 //Ajout du listener sur l'élément et contrôle:
 birthdayInput.addEventListener('change', (e) => {
-    console.log("TARGET BIRTHDAY", e.target.value);
     //Fonction déclenchée au listener, en gros, dès que le firstname est 
     //modifié, qu'on appelle cette fonction.
     birthdayChecker(e.target.value, "birthdate");
@@ -287,11 +258,9 @@ birthdayInput.addEventListener('change', (e) => {
 
 //NOMBRE DE TOURNOI
 let quantityInput = document.getElementById("quantity");
-console.log("valeur de l'input", quantityInput.value);
 
 //Ajout du listener sur l'élément et contrôle:
 quantityInput.addEventListener('input', (e) => {
-    console.log("TARGET QUANTITY", e.target.value);
     //Fonction déclenchée au listener, en gros, dès que le firstname est 
     //modifié, qu'on appelle cette fonction.
     quantityChecker(e.target.value, "number");
@@ -299,7 +268,6 @@ quantityInput.addEventListener('input', (e) => {
 //Conditions d'utilisation
 let choiceInput = document.getElementById("checkbox1");
 choiceInput.addEventListener('change', (e) => {
-    console.log("TARGET CONDITIONS D'UTILISATION", e.target.value);
     termsUseChecker(e.target.value, "checkbox1");
 });
 
@@ -308,43 +276,30 @@ let checkBoxValue = "";
 let checkBoxInput = document.querySelectorAll('input[type="radio"]');
 checkBoxInput.forEach((inputValue) => {
     inputValue.addEventListener('input', (e) => {
-        console.log(e.target.id);
         switch (e.target.id) {
             case "location1":
                 checkboxChecker(e.target.value);
-                console.log("Valeur de location1 ds le switch", e.target.value);
                 checkBoxValue = e.target.value;
-                console.log("Valeur de location1-checkBoxValue ds le switch", checkBoxValue);
                 break;
             case "location2":
                 checkboxChecker(e.target.value);
-                console.log("Valeur de location2 ds le switch", e.target.value);
                 checkBoxValue = e.target.value;
-                console.log("Valeur de location2-checkBoxValue ds le switch", checkBoxValue);
                 break;
             case "location3":
                 checkboxChecker(e.target.value);
-                console.log("Valeur de location3 ds le switch", e.target.value);
                 checkBoxValue = e.target.value;
-                console.log("Valeur de location3-checkBoxValue ds le switch", checkBoxValue);
                 break;
             case "location4":
                 checkboxChecker(e.target.value);
-                console.log("Valeur de location4 ds le switch", e.target.value);
                 checkBoxValue = e.target.value;
-                console.log("Valeur de location4-checkBoxValue ds le switch", checkBoxValue);
                 break;
             case "location5":
                 checkboxChecker(e.target.value);
-                console.log("Valeur de location5 ds le switch", e.target.value);
                 checkBoxValue = e.target.value;
-                console.log("Valeur de location5-checkBoxValue ds le switch", checkBoxValue);
                 break;
             case "location6":
                 checkboxChecker(e.target.value);
-                console.log("Valeur de location6 ds le switch", e.target.value);
                 checkBoxValue = e.target.value;
-                console.log("Valeur de location6-checkBoxValue ds le switch", checkBoxValue);
                 break;
             default:
                 null;
@@ -368,7 +323,6 @@ checkBoxInput.forEach((inputValue) => {
  */
 // Pour confirmer envoi du formulaire:
 fullForm.addEventListener('submit', (e) => {
-    console.log("test lancement fonction submit");
     // empêche l'envoi du formulaire
     e.preventDefault();
     // Récupération de la valeur au submit
@@ -377,10 +331,7 @@ fullForm.addEventListener('submit', (e) => {
     emailValue = emailInput.value;
     birthdayValue = birthdayInput.value;
     quantityValue = quantityInput.value;
-
-    console.log("Valeur finale du bouton radio: ", checkBoxValue);
     termsUseValue = choiceInput.value;
-    console.log("conditions d'utilisations: ", choiceInput.value);
 
     if (firstLastChecker(firstValue, "first") &&
         firstLastChecker(lastValue, "last") &&
