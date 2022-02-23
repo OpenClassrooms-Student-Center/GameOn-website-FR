@@ -1,6 +1,3 @@
-//MODAL OK + Ré organisation du code
-// + fonctions fléchées:OK
-
 /**
  * ATTRIBUTION DES CONSTANTES AUX ELEMENTS DU DOM
  */
@@ -34,11 +31,9 @@ const fullForm = document.querySelector("#form");
  */
 // -------GESTION DE LA MODALE-------------------------------------------------------
 //launch modal event (boutons "je m'inscris")
-//Ajout des EventListener aux boutons de l'index.html
 registrationBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
-//pour lancer le formulaire
 function launchModal() {
     modalFrame.style.display = "block";
 }
@@ -71,18 +66,14 @@ function windowThanks() {
 /**
  * MESSAGE D'ERREUR APPELÉ PAR LES FONCTIONS DE VALIDATION DES CHAMPS (INPUTS)
  */
+
 //fonction qui va gérer le contenu des inputs.
-//Elle prend 3 paramètres: Un tag, un message, puis elle va dire si valide ou pas
 const errorDisplay = (tag, message, valid) => {
-    //On passe un tag dynamique
     const container = document.querySelector("." + tag + "-formData");
     const span = document.querySelector("." + tag + "-formData > span");
-    //On vérifie si cette fonction est d'erreur ou pas d'erreur (est-ce qu'elle est valide)
     if (!valid) {
-        //3mn58
         container.classList.add("error");
         span.textContent = message;
-        //Et si c valide:
     } else {
         container.classList.remove("error");
         span.textContent = message;
@@ -94,14 +85,12 @@ const firstLastChecker = (value, tag) => {
     if (!value) {
         errorDisplay(tag, "Le champ doit être rempli!");
     } else if (value.length > 0 && (value.length < 3 || value.length > 20)) {
-        //Le 3ème paramètre, on le passe que pour le mettre à true.
         errorDisplay(tag, "Le pseudo doit faire entre 3 et 20 caractères");
 
     } else if (!value.match(/^[a-zA-Z0-9_.-]*$/)) {
         errorDisplay(tag, "Le pseudo ne doit pas contenir de caractères spéciaux");
 
     } else {
-        //ds ce cas on est ds le dernier else de notre fonction errorDisplay
         errorDisplay(tag, "", true);
         return true;
     }
@@ -116,7 +105,6 @@ const emailChecker = (value, tag) => {
         errorDisplay(tag, "Le mail n'est pas valide");
 
     } else {
-        //on fait disparaître le message d'erreur
         errorDisplay(tag, "", true);
         return true;
     }
@@ -172,17 +160,11 @@ const checkboxChecker = (value) => {
     const checkRadioSpan = document.querySelector(".location-formData > span");
 
     if (!value) {
-        // Ajout de la classe "error" si c pas valide
         checkRadioClass.classList.add("error");
-        // Ecriture du message d'erreur dans la balise span 
         checkRadioSpan.textContent = "Vous devez choisir une ville.";
-        // radioButton = null;
     } else {
-        // Suppression de la classe "error" si c valide 
         checkRadioClass.classList.remove("error");
-        // Ecriture du message (vide) dans la balise span
         checkRadioSpan.textContent = "";
-        // radioButton = value;
         return true;
 
     }
@@ -221,10 +203,9 @@ let firstInput = document.getElementById("first");
 
 //Ajout du listener sur l'élément et contrôle:
 firstInput.addEventListener('change', (e) => {
-    //Fonction déclenchée au listener, en gros, dès que le firstname est 
-    //modifié, qu'on appelle cette fonction.
     firstLastChecker(e.target.value, "first");
 });
+
 
 //LAST
 //Récupération de l'id last dans le DOM
@@ -232,48 +213,54 @@ let lastInput = document.getElementById("last");
 
 //Ajout du listener sur l'élément et contrôle:
 lastInput.addEventListener('change', (e) => {
-    //Fonction déclenchée au listener, en gros, dès que le firstname est 
-    //modifié, qu'on appelle cette fonction.
     firstLastChecker(e.target.value, "last");
 });
+
+
 //EMAIL
 let emailInput = document.getElementById("email");
 
 //Ajout du listener sur l'élément et contrôle:
 emailInput.addEventListener('change', (e) => {
-    //Fonction déclenchée au listener, en gros, dès que le firstname est 
-    //modifié, qu'on appelle cette fonction.
     emailChecker(e.target.value, "email");
 });
+
 
 //DATE DE NAISSANCE
 let birthdayInput = document.getElementById("birthdate");
 
 //Ajout du listener sur l'élément et contrôle:
 birthdayInput.addEventListener('change', (e) => {
-    //Fonction déclenchée au listener, en gros, dès que le firstname est 
-    //modifié, qu'on appelle cette fonction.
     birthdayChecker(e.target.value, "birthdate");
 });
+
+
 
 //NOMBRE DE TOURNOI
 let quantityInput = document.getElementById("quantity");
 
 //Ajout du listener sur l'élément et contrôle:
 quantityInput.addEventListener('input', (e) => {
-    //Fonction déclenchée au listener, en gros, dès que le firstname est 
-    //modifié, qu'on appelle cette fonction.
     quantityChecker(e.target.value, "number");
 });
-//Conditions d'utilisation
+
+
+
+//CONDITIONS D'UTILISATION
 let choiceInput = document.getElementById("checkbox1");
+
+//Ajout du listener sur l'élément et contrôle:
 choiceInput.addEventListener('change', (e) => {
     termsUseChecker(e.target.value, "checkbox1");
 });
 
+
+
 //CHOIX DU TOURNOI
 let checkBoxValue = "";
 let checkBoxInput = document.querySelectorAll('input[type="radio"]');
+
+//Ajout du listener
 checkBoxInput.forEach((inputValue) => {
     inputValue.addEventListener('input', (e) => {
         switch (e.target.id) {
@@ -369,3 +356,28 @@ fullForm.addEventListener('submit', (e) => {
     };
 
 });
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+/**
+ * SWITCH CLASS RESPONSIVE
+ * Lors du clic sur l'icône menu "fa-bars" :
+ * lancement de la fonction editNav qui switch entre la classe "topnav" et "topnav.responsive"
+ */
+
+//Pour gérer le responive de la nav-bar
+function editNav() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+        x.className += " responsive";
+    } else {
+        x.className = "topnav";
+    }
+}
