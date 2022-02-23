@@ -111,7 +111,7 @@ form.addEventListener("submit",function validate(e) {
       if (inputs[i].name === formValidate[item].name){
         console.log(inputs[i].value);
         console.log("regex " + formValidate[item].regex.test(inputs[i].value));
-        const input = document.getElementById(inputs[i].id);
+        const input = inputs[i];
 
         if (!formValidate[item].regex.test(inputs[i].value)) {
           console.log("erreur");
