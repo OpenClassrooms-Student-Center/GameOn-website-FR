@@ -45,9 +45,6 @@ closeBtn2.forEach((btn) => btn.addEventListener("click", closeModal));
 
 function launchModal() {
   modalbg.style.display = "block";
-<<<<<<< HEAD
-}
-=======
 }
 
 function closeModal() {
@@ -241,4 +238,3 @@ function launchSubmit(e) {
 
 }
 
->>>>>>> b1_conditions
