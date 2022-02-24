@@ -35,10 +35,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -55,12 +55,14 @@ img {
 .topnav a:hover {
   background-color: #ff0000;
   color: #ffffff;
+  text-decoration: underline;
   border-radius: 15px;
 }
 
-.topnav a.active {
+.topnav a:active {
   background-color: #ff0000;
   color: #ffffff;
+  text-decoration: underline;
   border-radius: 15px;
 }
 
@@ -69,7 +71,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
@@ -77,7 +81,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -90,16 +96,16 @@ img {
   }
 }
 
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
     margin-top: -15px;
   }
-} 
+}
 
 main {
   font-size: 130%;
@@ -111,8 +117,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -157,7 +161,8 @@ main {
   font-size: 16px;
 }
 
-.bground {
+.bground,
+.bground2 {
   display: none;
   position: fixed;
   z-index: 1;
@@ -169,7 +174,8 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
-.content {
+.content,
+.content2 {
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
@@ -181,6 +187,20 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+}
+
+.content2 {
+  height: 750px;
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.text_container {
+  height: 670px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .modal-body {
@@ -215,7 +235,7 @@ input {
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  text-align: left;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -226,12 +246,13 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+
+input[data-error="true"]::after {
+  content: attr(data-error);
+  font-size: 0.4em;
+  color: red;
+}
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -297,6 +318,8 @@ input[data-error]::after {
   top: 19%;
 }
 .close {
+  border: none;
+  background: #232323;
   position: absolute;
   right: 15px;
   top: 15px;
@@ -309,7 +332,7 @@ input[data-error]::after {
 .close:before,
 .close:after {
   position: absolute;
-  left: 15px;
+  top: 0;
   content: " ";
   height: 33px;
   width: 3px;
@@ -322,7 +345,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-exit {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -527,3 +551,68 @@ footer {
   }
 }
 
+/* Media queries supplémentaires pour améliorer le responsive */
+
+@media screen and (max-width: 768px) {
+  .topnav {
+    margin-bottom: 30px;
+  }
+
+  .header-logo {
+    width: 200px;
+    height: 40px;
+  }
+
+  .gameon_logo {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .topnav a.icon {
+    background: #fff;
+    color: #000000;
+  }
+
+  .topnav a.icon:hover {
+    background: #fff;
+    color: #000000;
+  }
+
+  .topnav a.icon:active {
+    background: #fff;
+    color: #000000;
+  }
+
+  .topnav a {
+    background-color: #ff0000;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 15px;
+  }
+
+  .hero-content {
+    margin: 0;
+    padding: 0;
+  }
+
+  .hero-headline {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  .hero-text {
+    width: 60%;
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 468px) and (max-width: 768px) {
+  .main-navbar {
+    clear: both;
+  }
+
+  .topnav a.icon {
+    border: 1px solid black;
+  }
+}
