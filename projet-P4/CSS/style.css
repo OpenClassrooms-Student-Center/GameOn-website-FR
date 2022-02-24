@@ -429,27 +429,6 @@ footer {
   margin: 15px auto;
 }
 
-.formData[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.4em;
-  color: #e54858;
-  display: block;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  text-align: right;
-  line-height: 0.3;
-  opacity: 0;
-  transition: 0.3s;
-}
-
-.formData[data-error-visible=true]::after {
-  opacity: 1;
-}
-
-.formData[data-error-visible=true] .text-control {
-  border: 2px solid #e54858;
-}
-
 .text-label {
   font-weight: normal;
   font-size: 16px;
@@ -478,10 +457,6 @@ input {
   outline: none;
 }
 
-/* /////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////// */
 .checkbox-label,
 .checkbox2-label {
   position: relative;
