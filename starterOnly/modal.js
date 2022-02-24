@@ -1,7 +1,7 @@
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
-    x.className += " responsive";
+    x.className += "responsive";
   } else {
     x.className = "topnav";
   }
@@ -31,5 +31,3 @@ function launchModal() {
 function closeModal() {
   bgModal.style.display = "none";
 }
-
-
