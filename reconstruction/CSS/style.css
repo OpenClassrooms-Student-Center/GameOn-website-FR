@@ -478,6 +478,56 @@ input {
   outline: none;
 }
 
+/* /////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////// */
+.checkbox-label,
+.checkbox2-label {
+  position: relative;
+  margin-top: -10px;
+  margin-left: 36px;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+/* Mise en forme des boutons radios */
+.checkbox-label .checkbox-icon,
+.checkbox2-label .checkbox-icon {
+  display: block;
+  text-align: center;
+  width: 25px;
+  height: 25px;
+  border: 1px solid #279e7a;
+  border-radius: 50%;
+  text-indent: 29px;
+  white-space: nowrap;
+  position: absolute;
+  left: -30px;
+  top: -1px;
+  transition: 0.3s;
+}
+
+.checkbox-label .checkbox-icon::after,
+.checkbox2-label .checkbox-icon::after {
+  content: "";
+  width: 17px;
+  height: 17px;
+  background-color: #279e7a;
+  border-radius: 50%;
+  text-indent: 29px;
+  white-space: nowrap;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  transition: 0.3s;
+  opacity: 0;
+}
+
+/* Mise en forme des cases à cocher
+"conditions d'utilisation" et "prochains évènements" */
+/* Désactivation des boutons-radios et cases à cocher natives */
 .checkbox-input {
   display: none;
 }
@@ -491,44 +541,24 @@ input {
   background: #279e7a;
 }
 
-.checkbox-label,
-.checkbox2-label {
-  position: relative;
-  margin-left: 36px;
-  font-size: 12px;
-  font-weight: normal;
-}
-
-.checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
-  display: block;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #279e7a;
-  border-radius: 50%;
-  text-indent: 29px;
-  white-space: nowrap;
-  position: absolute;
-  left: -30px;
-  top: -1px;
-  transition: 0.3s;
+  border-radius: 4px;
+  border: 0;
+  background: #c4c4c4;
 }
 
-.checkbox-label .checkbox-icon::after,
+/* Création des Coches "conditions d'utilisation" et "prochains évènements" */
 .checkbox2-label .checkbox-icon::after {
-  content: "";
-  width: 13px;
-  height: 13px;
-  background-color: #279e7a;
-  border-radius: 50%;
-  text-indent: 29px;
-  white-space: nowrap;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  transition: 0.3s;
-  opacity: 0;
+  width: 8px;
+  height: 4px;
+  border-radius: 2px;
+  background: transparent;
+  border: 2px solid transparent;
+  border-bottom-color: #fff;
+  border-left-color: #fff;
+  transform: rotate(-55deg);
+  left: 27%;
+  top: 25%;
 }
 
 /* Hauteur de la fenêtre de remerciements */
@@ -552,7 +582,7 @@ input {
   visibility: visible;
   opacity: 1;
   color: red;
-  font-size: 12px;
+  font-size: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */

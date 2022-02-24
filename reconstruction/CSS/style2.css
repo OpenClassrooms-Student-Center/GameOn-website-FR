@@ -1,0 +1,142 @@
+@charset "UTF-8";
+:root {
+    --font-default: "DM Sans", Arial, Helvetica, sans-serif;
+    --font-slab: var(--font-default);
+    --modal-duration: 0.8s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Landing Page */
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font-default);
+    font-size: 18px;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+label {
+    font-family: var(--font-default);
+    font-size: 17px;
+    font-weight: normal;
+    display: inline-block;
+    margin-bottom: 11px;
+}
+
+
+/* /////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////// */
+
+.checkbox-label,
+.checkbox2-label {
+    position: relative;
+    margin-top: -10px;
+    margin-left: 36px;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+
+/* Mise en forme des boutons radios */
+
+.checkbox-label .checkbox-icon,
+.checkbox2-label .checkbox-icon {
+    display: block;
+    text-align: center;
+    width: 25px;
+    height: 25px;
+    border: 1px solid #279e7a;
+    border-radius: 50%;
+    text-indent: 29px;
+    white-space: nowrap;
+    position: absolute;
+    left: -30px;
+    top: -1px;
+    transition: 0.3s;
+}
+
+.checkbox-label .checkbox-icon::after,
+.checkbox2-label .checkbox-icon::after {
+    content: "";
+    width: 17px;
+    height: 17px;
+    background-color: #279e7a;
+    border-radius: 50%;
+    text-indent: 29px;
+    white-space: nowrap;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: 0.3s;
+    opacity: 0;
+}
+
+
+/* Mise en forme des cases à cocher
+  "conditions d'utilisation" et "prochains évènements" */
+
+
+/* Désactivation des boutons-radios et cases à cocher natives */
+
+.checkbox-input {
+    display: none;
+}
+
+.checkbox-input:checked+.checkbox-label .checkbox-icon::after,
+.checkbox-input:checked+.checkbox2-label .checkbox-icon::after {
+    opacity: 1;
+}
+
+.checkbox-input:checked+.checkbox2-label .checkbox-icon {
+    background: #279e7a;
+}
+
+.checkbox2-label .checkbox-icon {
+    border-radius: 4px;
+    border: 0;
+    background: #c4c4c4;
+}
+
+
+/* Création des Coches "conditions d'utilisation" et "prochains évènements" */
+
+.checkbox2-label .checkbox-icon::after {
+    width: 8px;
+    height: 4px;
+    border-radius: 2px;
+    background: transparent;
+    border: 2px solid transparent;
+    border-bottom-color: #fff;
+    border-left-color: #fff;
+    transform: rotate(-55deg);
+    left: 27%;
+    top: 25%;
+}
+
+
+/* Point the arrow upwards when the select box is open (active): */
+
+
+/* Style items (options): */
+
+
+/* .select-items {
+    position: absolute;
+    background-color: #fff;
+    top: 89%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+} */
