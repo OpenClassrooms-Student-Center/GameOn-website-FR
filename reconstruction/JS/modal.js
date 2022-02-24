@@ -85,7 +85,7 @@ const firstLastChecker = (value, tag) => {
     if (!value) {
         errorDisplay(tag, "Le champ doit être rempli!");
     } else if (value.length > 0 && (value.length < 3 || value.length > 20)) {
-        errorDisplay(tag, "Le pseudo doit faire entre 3 et 20 caractères");
+        errorDisplay(tag, "Veuillez entrer 2 caractères ou plus");
 
     } else if (!value.match(/^[a-zA-Z0-9_.-]*$/)) {
         errorDisplay(tag, "Le pseudo ne doit pas contenir de caractères spéciaux");
@@ -161,7 +161,7 @@ const checkboxChecker = (value) => {
 
     if (!value) {
         checkRadioClass.classList.add("error");
-        checkRadioSpan.textContent = "Vous devez choisir une ville.";
+        checkRadioSpan.textContent = "Vous devez choisir une option.";
     } else {
         checkRadioClass.classList.remove("error");
         checkRadioSpan.textContent = "";
@@ -327,7 +327,7 @@ fullForm.addEventListener('submit', (e) => {
         quantityChecker(quantityValue, "number") &&
         checkboxChecker(checkBoxValue) &&
         termsUseChecker(termsUseValue, "checkbox1") == true) {
-        alert("Inscription validée!");
+        alert("Merci! Votre réservation a été reçue!");
         //Fermeture de la Modale
         closeWindow();
         // Effacement des champs du formulaire
