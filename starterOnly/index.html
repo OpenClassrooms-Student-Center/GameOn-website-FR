@@ -15,21 +15,20 @@
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
+        <img alt="logo" src="Logo.png" width="266" height="45" />
+      </div>
+      <div class="main-navbar">
+        
+        <a href="#" class="active"><span>Accueil</span></a>
+        <a href="#"><span>Détails de l'évènement</span></a>
+        <a href="#"><span>À propos</span></a>
+        <a href="#"><span>Contact</span></a>
+        <a href="#"><span>Évènements passés</span></a>
+        <a href="javascript:void(0);" class="icon" onclick="editNav()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
     </div>
-    <div class="main-navbar">
-      
-      <a href="#" class="active"><span>Accueil</span></a>
-      <a href="#"><span>Détails de l'évènement</span></a>
-      <a href="#"><span>À propos</span></a>
-      <a href="#"><span>Contact</span></a>
-      <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars"></i>
-      </a>
-    </div>
-    </div>
-  </div>
     <main>
       <div class="hero-section">
         <div class="hero-content">
@@ -58,6 +57,7 @@
           <span class="close"></span>
           <div class="modal-body">
             <form
+              id="form"
               name="reserve"
               action="index.html"
               method="get"
@@ -66,62 +66,41 @@
               <div
                 class="formData">
                 <label for="first">* Prénom</label><br>
-                <input
-                  class="text-control"
-                  type="text"
-                  id="first"
-                  name="first"
-                  minlength="2"
-                  required
-                /><br>
+                  <input class="text-control" type="text" id="first" name="first" minlength="2"  /><br>
+                  <!-- Input validity error message -->
+                  <small id="first-error" class="error-message">Veuillez renseigner au moins 2 caractères</small>
               </div>
               <div
                 class="formData">
                 <label for="last">* Nom</label><br>
-                <input
-                  class="text-control"
-                  type="text"
-                  id="last"
-                  name="last"
-                  required
-                /><br>
+                  <input class="text-control" type="text" id="last" name="last" minlength="2"  /><br>
+                  <!-- Input validity error message -->
+                  <small id="last-error" class="error-message">Veuillez renseigner au moins 2 caractères</small>
               </div>
               <div
-                class="formData">
+                class="formData" data-error="Veuillez entrée un email valid">
                 <label for="email">* E-mail</label><br>
-                <input
-                  class="text-control"
-                  type="email"
-                  id="email"
-                  name="email"
-                  required
-                /><br>
-              </div>
+                  <input class="text-control" type="email" id="email" name="email"  pattern="^\w+([\.-]?\w+)*@\w+\.\w+$" /><br>
+                  
+                  <!-- Input validity error message -->
+                  <small id="email-error" class="error-message">Veuillez renseigner une adresse mail valide</small>
               <div
-                class="formData">
+                class="formData" data-error="Vous devez entrer votre date de naissance.">
                 <label for="birthdate">* Date de naissance</label><br>
-                <input
-                  class="text-control"
-                  type="date"
-                  id="birthdate"
-                  name="birthdate"
-                  required
-                /><br>
+                  <input class="text-control" type="date" id="birthdate" name="birthdate" min="1900-01-01" max="2005-01-01"
+                    /><br>
+                  <!-- Input validity error message -->
+                  <small id="birthdate-error" class="error-message">Veuillez renseigner une date valide</small>
               </div>
               <div
                 class="formData">
-                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input 
-                  type="number" 
-                  class="text-control" 
-                  id="quantity" 
-                  name="quantity" 
-                  min="0" 
-                  max="99">
-              </div>
-              <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
+                <label for="quantity">* À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                  <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" ><br>
+                  <!-- Input validity error message -->
+                  <small id="quantity-error" class="error-message">Veuillez renseigner un nombre valide</small>
+              <p class="text-label">* A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                class="formData">
+                class="formData" data-error="Vous devez choisir une option.">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -188,21 +167,25 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                <!-- Input validity error message -->
+                <small  id="radio-error" class="error-message">Veuillez choisir une ville.</small>
               </div>
 
               <div
-                class="formData">
+                class="formData" data-error="Vous devez vérifier que vous acceptez les termes et conditions.">
                 <input
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
-                  required
+                  
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   * J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
+                <!-- Input validity error message -->
+                <small id="check-error" class="error-message">Veuillez valider les conditions d'utilisation.</small>
                 <input 
                   class="checkbox-input" 
                   type="checkbox" 
