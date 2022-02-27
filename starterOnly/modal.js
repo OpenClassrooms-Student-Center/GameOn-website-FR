@@ -27,9 +27,10 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 //close modal
-close.addEventListener("click", function closingModal() {
-  modalbg.style.display = "none";
-});
+// close.addEventListener("click", function closingModal() {
+//   modalbg.style.display = "none";
+// });
+close.addEventListener("click", closeConfirm);
 
 // valid imput form
 
@@ -127,14 +128,19 @@ form.addEventListener("submit",function validate(e) {
   e.preventDefault();
   confirmMessage();
   const modalBtnClose = document.querySelector(".btn-closeModal");
-  modalBtnClose.addEventListener("click", function closeComfirm() {
-    modalbg.style.display ="none";
-    formReverve.style.display = "block"
-    sendConfirm.style.display = "none"
-
-  });
-
+  modalBtnClose.addEventListener("click", closeConfirm);
+  // modalBtnClose.removeEventListener("click", closeConfirm);
 });
+
+function closeConfirm () {
+  console.log("fermeture de la modale");
+  modalbg.style.display ="none";
+  formReverve.style.display = "block";
+  sendConfirm.style.display = "none";
+  console.log("modale fermer");
+
+};
+
 function confirmMessage() {
   formReverve.style.display = "none";
   sendConfirm.style.display = "block";
