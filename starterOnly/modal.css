@@ -80,6 +80,7 @@ main {
   background: #232323;
   color: #fff;
   width: 50%;
+  height: auto;
   text-align: left;
   margin-bottom: 10px;
   border-radius: 10px;
@@ -105,12 +106,13 @@ main {
 
 .hero-img {
   width: 50%;
+  height: auto;
   border-radius: 10px;
 }
 .hero-img img {
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 0 10px 10px 0;
 }
 .modal-btn {
   font-size: 145%;
@@ -186,6 +188,9 @@ footer {
   .hero-headline{
     font-size: 70px;
   }
+  .hero-section{
+    height: 100%;
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -200,6 +205,7 @@ footer {
     color: #000;
     padding: 20px;
     width: 100%;
+    height:340px ;
   }
   .hero-content .btn-signup {
     display: none;
@@ -234,6 +240,7 @@ footer {
   @media screen and (max-width:768px) {
     .hero-headline{
       font-size: 60px;
+      font-weight: bold;
     }
   }
 
@@ -243,19 +250,33 @@ footer {
     float: right;
     display: block;
   }
+  .topnav{
+    gap: 0;
+  }
+  .header-logo img{
+   width: 200px;
+   height: 40px;
+  }
   .hero-content{
     padding: 20px 0 0 0;
     margin-bottom: 0;
+    height: 230px;
   }
   .hero-headline{
-    font-size: 44px;
+    font-size: 36px;
     font-weight: bold;
+    text-align: justify;
     
   }
   .hero-text{
     font-size: 16px;
     width: 100%;
     margin-top: 30px;
+    margin-bottom: 20px;
+    text-align: justify;
+  }
+  .hero-img img {
+    margin-top: 0;
   }
   .hero-img{
     margin: 0;
