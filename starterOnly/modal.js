@@ -18,6 +18,7 @@ const close = document.querySelector(".close");
 const formReverve = document.querySelector("#reverve");
 const sendConfirm = document.querySelector(".sendConfirm");
 sendConfirm.style.display = "none";
+const modalBtnClose = document.querySelector(".btn-closeModal");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -127,18 +128,16 @@ form.addEventListener("submit",function validate(e) {
  
   e.preventDefault();
   confirmMessage();
-  const modalBtnClose = document.querySelector(".btn-closeModal");
+ 
   modalBtnClose.addEventListener("click", closeConfirm);
-  // modalBtnClose.removeEventListener("click", closeConfirm);
+  
 });
 
 function closeConfirm () {
-  console.log("fermeture de la modale");
   modalbg.style.display ="none";
   formReverve.style.display = "block";
   sendConfirm.style.display = "none";
-  console.log("modale fermer");
-
+  modalBtnClose.removeEventListener("click", closeConfirm);
 };
 
 function confirmMessage() {
