@@ -14,7 +14,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -101,7 +100,14 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+  }
+  .hero-text {
+    width: 100%;
+    text-overflow: ellipsis;
+  }
+  .hero-content {
+    min-width: none;
+    max-width: 100%;
   }
 }
 
@@ -228,12 +234,7 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -420,9 +421,7 @@ input[data-error]::after {
   grid-column: span 4;
   background: #232323;
   color: #fff;
-  position: relative;
   text-align: left;
-  min-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -497,7 +496,7 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 4rem;
     white-space: normal;
   }
   .hero-text {
