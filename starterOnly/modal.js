@@ -12,8 +12,6 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const modalSubmit = document.querySelector(".btn-submit");
-const formData = document.querySelectorAll(".formData");
 const close = document.querySelector(".close");
 const formReverve = document.querySelector("#reverve");
 const sendConfirm = document.querySelector(".sendConfirm");
@@ -28,9 +26,6 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 //close modal
-// close.addEventListener("click", function closingModal() {
-//   modalbg.style.display = "none";
-// });
 close.addEventListener("click", closeConfirm);
 
 // valid imput form
@@ -90,6 +85,7 @@ const validCheckbox = {
 
 const form = document.getElementById("reverve");
 form.addEventListener("submit",function validate(e) {
+  e.preventDefault();
   const inputs = form.getElementsByClassName("text-control");
   let asError = false;
 
@@ -122,13 +118,10 @@ form.addEventListener("submit",function validate(e) {
   };
   validateRadios();
   if (asError || !validateRadios() ) {
-    e.preventDefault();
     return false
   };
- 
-  e.preventDefault();
+
   confirmMessage();
- 
   modalBtnClose.addEventListener("click", closeConfirm);
   
 });
