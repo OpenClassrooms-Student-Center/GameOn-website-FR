@@ -1,65 +1,82 @@
-.bground {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 100%;
-    overflow: auto;
-    background-color: rgba(26, 39, 156, 0.4);
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
 
-    .content {
-        margin: 5% auto;
-        width: 100%;
-        max-width: 500px;
-        animation-name: modalopen;
-        animation-duration: var(--modal-duration);
-        background: #232323;
-        border-radius: 10px;
-        overflow: hidden;
-        position: relative;
-        color: #fff;
-        padding-top: 10px;
-        
-        .modal-body {
-            padding: 15px 8%;
-            margin: 15px auto;
-        }
+.bground {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+
+  .content {
+    margin: 5% auto;
+    width: 100%;
+    min-height: 810px;
+    max-width: 500px;
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+    background: #232323;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    
+    
+    .modal-body {
+        padding: 15px 8%;
+        margin: 15px auto;
     }
+  }
 }
 @keyframes modalopen {
-    from {
-      opacity: 0;
-      transform: translateY(-150px);
-    }
-    to {
-      opacity: 1;
-    }
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
   }
+  to {
+    opacity: 1;
+  }
+}
 
 .close {
-    position: absolute;
-    right: 15px;
-    top: 15px;
-    width: 32px;
-    height: 32px;
-    opacity: 1;
-    cursor: pointer;
-    transform: scale(0.7);
-  }
-  .close:before,
-  .close:after {
-    position: absolute;
-    left: 15px;
-    content: " ";
-    height: 33px;
-    width: 3px;
-    background-color: #fff;
-  }
-  .close:before {
-    transform: rotate(45deg);
-  }
-  .close:after {
-    transform: rotate(-45deg);
-  }
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(0.7);
+}
+
+.close:before,
+.close:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 3px;
+  background-color: #fff;
+}
+
+.close:before {
+  transform: rotate(45deg);
+}
+
+.close:after {
+  transform: rotate(-45deg);
+}
+.sendConfirm {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

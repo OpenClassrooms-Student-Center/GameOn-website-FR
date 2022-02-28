@@ -104,12 +104,15 @@ form.addEventListener("submit",function validate(e) {
           }
 
           let pError = input.nextElementSibling;
+          pError.className = "formError"
+          pError.previousElementSibling.classList.add("inputError");
           pError.innerHTML = formValidate[item].errorCustom;
 
         } else {
           if (input.nextElementSibling === null) {
           } else if (input.nextElementSibling.tagName === "P"){
             let pError = input.nextElementSibling;
+            pError.previousElementSibling.classList.remove("inputError");
             input.parentNode.removeChild(pError);
           }
         }
@@ -161,6 +164,9 @@ function validateRadios() {
           if (!hasInputWarpsValid && inputwarps[i].lastElementChild.tagName !== "P") {
             let htmlContent = `<p> ${validCheckbox[item].error}</p>`;
             inputwarps[i].insertAdjacentHTML('beforeend', htmlContent);
+            let pError = inputwarps[i].lastElementChild;
+            pError.className = "formError";
+            pError.innerHTML = formValidate[item].errorCustom;
           }
 
         } if (validCheckbox[item].name === checkbox[j].name && !validCheckbox[item].required ){

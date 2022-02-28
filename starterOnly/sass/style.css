@@ -26,7 +26,7 @@ p {
 
 label {
   font-family: var(--font-default);
-  font-size: 17px;
+  font-size: 15px;
   font-weight: normal;
   display: inline-block;
   margin-bottom: 11px;
@@ -57,22 +57,25 @@ input {
   text-align: right;
   line-height: 0.3;
   opacity: 0;
-  transition: 0.3s;
 }
 
 .formData[data-error-visible=true]::after {
   opacity: 1;
 }
 
-.formData[data-error-visible=true] .text-control {
+.formData[data-error-visible=true] .text-control,
+.inputError {
   border: 2px solid #e54858;
 }
 
 /* */
-input[data-error]::after {
+input[data-error]::after,
+.formError {
   content: attr(data-error);
-  font-size: 0.4em;
+  font-size: 15px;
   color: red;
+  transition: 0.3s;
+  margin-top: 0;
 }
 
 .checkbox-label,
@@ -187,7 +190,8 @@ input[data-error]::after {
 }
 
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-closeModal {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -399,6 +403,12 @@ main {
     text-align: center;
   }
 }
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .bground {
   display: none;
   position: fixed;
@@ -413,6 +423,7 @@ main {
 .bground .content {
   margin: 5% auto;
   width: 100%;
+  min-height: 810px;
   max-width: 500px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
@@ -421,7 +432,6 @@ main {
   overflow: hidden;
   position: relative;
   color: #fff;
-  padding-top: 10px;
 }
 .bground .content .modal-body {
   padding: 15px 8%;
@@ -464,6 +474,14 @@ main {
 
 .close:after {
   transform: rotate(-45deg);
+}
+
+.sendConfirm {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer {

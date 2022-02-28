@@ -1,6 +1,6 @@
 label {
     font-family: var(--font-default);
-    font-size: 17px;
+    font-size: 15px;
     font-weight: normal;
     display: inline-block;
     margin-bottom: 11px;
@@ -18,7 +18,7 @@ label {
     font-size: 20px;
     height: 48px;
   }
-  .formData[data-error]::after {
+  .formData[data-error]::after{
     content: attr(data-error);
     font-size: 0.4em;
     color: #e54858;
@@ -28,19 +28,23 @@ label {
     text-align: right;
     line-height: 0.3;
     opacity: 0;
-    transition: 0.3s;
+    
   }
   .formData[data-error-visible="true"]::after {
     opacity: 1;
   }
-  .formData[data-error-visible="true"] .text-control {
+  .formData[data-error-visible="true"] .text-control,
+  .inputError{
     border: 2px solid #e54858;
   }
   /* */
-  input[data-error]::after {
+  input[data-error]::after,
+  .formError {
       content: attr(data-error);
-      font-size: 0.4em;
+      font-size: 15px;
       color: red;
+      transition: 0.3s;
+      margin-top: 0;
   } 
 
   .checkbox-label,
