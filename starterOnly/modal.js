@@ -15,14 +15,10 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const submitBtn = document.querySelectorAll(".btn-submit");
 const closeBtn = document.querySelectorAll(".close");
-const closeBtn2 = document.querySelectorAll(".btn-exit");
+const closeBtn2 = document.querySelectorAll(".close-reset");
+const closeBtn3 = document.querySelectorAll(".btn-exit");
 const modalbg2 = document.querySelector(".bground2");
 
-let myFirstName;
-let myLastName;
-let myMail;
-let myDate;
-let myNumber;
 let rightFirstName;
 let rightLastName;
 let rightMail;
@@ -31,12 +27,18 @@ let rightNumber;
 let rightRadio;
 let rightCu;
 
-
 // Fonctions de lancement et de fermeture déclenchées par un clic
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 submitBtn.forEach((btn) => btn.addEventListener("click", launchSubmit));
 closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
-closeBtn2.forEach((btn) => btn.addEventListener("click", closeModal));
+closeBtn2.forEach((btn) => btn.addEventListener("click", function () {
+  document.forms[0].reset();
+  closeModal();
+}));
+closeBtn3.forEach((btn) => btn.addEventListener("click", function () {
+  document.forms[0].reset();
+  closeModal();
+}));
 
 //Ici j'ai rajouté la fonction launchSubmit, qui doit être lancée "pour chaque" bouton Submit, 
 //cette fonction est détaillée plus bas. J'ai aussi ajouté les deux dernières fonctions de fermetures.
@@ -63,7 +65,7 @@ function closeModal() {
 // Si les deux conditions sont remplies, la fonction doit renvoyer "true", sinon, elle doit renvoyer "false" 
 
 function isMyFirstNameTrue(myFirstName) {
-  if ((myFirstName.length >= 2) && (!myFirstName.match(/^[\d]+$/))){
+  if ((myFirstName.length >= 2) && (!myFirstName.match(/^[\d]+$/))) {
     rightFirstName = true;
     document.getElementById("formData1").setAttribute("data-error", "false");
     document.getElementById("formData1").setAttribute("data-error-visible", "false");
@@ -72,128 +74,128 @@ function isMyFirstNameTrue(myFirstName) {
     document.getElementById("formData1").setAttribute("data-error", "Veuillez saisir un prénom valide");
     document.getElementById("formData1").setAttribute("data-error-visible", "true");
   }
-  
+
+}
+
+// Même principe avec le nom de famille que pour la fonction du prénom.
+
+function isMyLastNameTrue(myLastName) {
+  if ((myLastName.length >= 2) && (!myLastName.match(/^[\d]+$/))) {
+    rightLastName = true;
+    document.getElementById("formData2").setAttribute("data-error", "false");
+    document.getElementById("formData2").setAttribute("data-error-visible", "false");
+  } else {
+    rightLastName = false;
+    document.getElementById("formData2").setAttribute("data-error", "Veuillez saisir un nom valide");
+    document.getElementById("formData2").setAttribute("data-error-visible", "true");
   }
-  
-  // Même principe avec le nom de famille que pour la fonction du prénom.
-  
-  function isMyLastNameTrue(myLastName) {
-    if ((myLastName.length >= 2) && (!myLastName.match(/^[\d]+$/))){
-      rightLastName = true;
-      document.getElementById("formData2").setAttribute("data-error", "false");
-      document.getElementById("formData2").setAttribute("data-error-visible", "false");
+
+}
+
+// Ici, une seule condition de vérification de l'adresse e-mail qui est une regex. Celle-ci est délimitée 
+// par des parenthèses et des "slashs". Puis elle commence par "^" et se termine par "$" qui signale la 
+// fin de la ligne. Cette regex se divise en trois blocs délimités par des crochets : ce qui se situe avant 
+// l'arobase ("@"), ce qui se situe entre l'arobase et le point , et l'extension du nom de domaine après le
+// point . Dans chacun des trois blocs, nous avons le panel des caractères autorisés (ex : a-z pour dire que 
+// toutes les lettres sont autorisées de a à z). Juste après le crochet fermant, on exprime la quantité. Le 
+// "+" signifie : "un caractère ou plus". Les points ayant une signification particulière en regex, ils sont 
+// "échappés" par un "antislash".
+
+function isMailTrue(myMail) {
+  if (myMail.match(/^[a-zA-Z0-9_+\.]+@[a-zA-Z0-9]+\.[a-z]+$/)) {
+    rightMail = true;
+    document.getElementById("formData3").setAttribute("data-error", "false");
+    document.getElementById("formData3").setAttribute("data-error-visible", "false");
+  } else {
+    rightMail = false;
+    document.getElementById("formData3").setAttribute("data-error", "Veuillez saisir une adresse e-mail valide");
+    document.getElementById("formData3").setAttribute("data-error-visible", "true");
+  }
+
+}
+
+// Ici , on fait appel à une méthode (new Date ()) pour toujours obtenir la date d'aujourd'hui, qui sera 
+// exprimée en timespan. Le type "date" de notre champ nous permet de saisir une date facilement. Mais cette 
+// date ne s'exprime pas en timespan , nous devons donc la convertir avec la méthode Date.parse, en passant 
+// myDate (date saisie par l'utilisateur), comme paramètre , cette variable devient myFinalDate . Finalement, 
+// il suffit de comparer les deux dates obtenues pour que la fonction renvoie "true" seulement si la date 
+// saisie est antérieure à la date d'aujourd'hui.
+
+function isDateTrue(myDate) {
+
+  const todaysDate = new Date();
+  const myFinalDate = Date.parse(myDate);
+  if (todaysDate > myFinalDate) {
+    rightDate = true;
+    document.getElementById("formData4").setAttribute("data-error", "false");
+    document.getElementById("formData4").setAttribute("data-error-visible", "false");
+  } else {
+    rightDate = false;
+    document.getElementById("formData4").setAttribute("data-error", "Veuillez saisir une date de naissance valide");
+    document.getElementById("formData4").setAttribute("data-error-visible", "true");
+  }
+
+
+}
+
+// Ici , le champ est particulier puisque si aucun nombre n'était saisi, la fonction renvoyait "true".
+// Il a donc fallu rajouter une condition n'acceptant pas de champ vide. Le reste de la fonction est 
+// plutôt simple , il s'agit de saisir un nombre entre 0 et 99 pour que la fonction renvoie "true". 
+// L'objet "Number" précède (myNumber) pour être certain que la valeur saisie soit un "number" et non une 
+// chaîne de caractères.
+
+function isNumberTrue(myNumber) {
+  if (myNumber === "") {
+    rightNumber = false;
+    document.getElementById("formData5").setAttribute("data-error", "Veuillez saisir un nombre correct");
+    document.getElementById("formData5").setAttribute("data-error-visible", "true");
+  } else {
+    if (((Number(myNumber) > -1) && (Number(myNumber) < 100))) {
+      rightNumber = true;
+      document.getElementById("formData5").setAttribute("data-error", "false");
+      document.getElementById("formData5").setAttribute("data-error-visible", "false");
     } else {
-      rightLastName = false;
-      document.getElementById("formData2").setAttribute("data-error", "Veuillez saisir un nom valide");
-      document.getElementById("formData2").setAttribute("data-error-visible", "true");
-    }
-  
-  }
-  
-  // Ici, une seule condition de vérification de l'adresse e-mail qui est une regex. Celle-ci est délimitée 
-  // par des parenthèses et des "slashs". Puis elle commence par "^" et se termine par "$" qui signale la 
-  // fin de la ligne. Cette regex se divise en trois blocs délimités par des crochets : ce qui se situe avant 
-  // l'arobase ("@"), ce qui se situe entre l'arobase et le point , et l'extension du nom de domaine après le
-  // point . Dans chacun des trois blocs, nous avons le panel des caractères autorisés (ex : a-z pour dire que 
-  // toutes les lettres sont autorisées de a à z). Juste après le crochet fermant, on exprime la quantité. Le 
-  // "+" signifie : "un caractère ou plus". Les points ayant une signification particulière en regex, ils sont 
-  // "échappés" par un "antislash".
-  
-  function isMailTrue(myMail) {
-    if (myMail.match(/^[a-zA-Z0-9_+\.]+@[a-zA-Z0-9]+\.[a-z]+$/)) {
-      rightMail = true;
-      document.getElementById("formData3").setAttribute("data-error", "false");
-      document.getElementById("formData3").setAttribute("data-error-visible", "false");
-    } else {
-      rightMail = false;
-      document.getElementById("formData3").setAttribute("data-error", "Veuillez saisir une adresse e-mail valide");
-      document.getElementById("formData3").setAttribute("data-error-visible", "true");
-    }
-  
-  }
-  
-  // Ici , on fait appel à une méthode (new Date ()) pour toujours obtenir la date d'aujourd'hui, qui sera 
-  // exprimée en timespan. Le type "date" de notre champ nous permet de saisir une date facilement. Mais cette 
-  // date ne s'exprime pas en timespan , nous devons donc la convertir avec la méthode Date.parse, en passant 
-  // myDate (date saisie par l'utilisateur), comme paramètre , cette variable devient myFinalDate . Finalement, 
-  // il suffit de comparer les deux dates obtenues pour que la fonction renvoie "true" seulement si la date 
-  // saisie est antérieure à la date d'aujourd'hui.
-  
-  function isDateTrue(myDate) {
-  
-    const todaysDate = new Date ();
-    const myFinalDate = Date.parse(myDate);
-    if (todaysDate > myFinalDate) {
-      rightDate = true;
-      document.getElementById("formData4").setAttribute("data-error", "false");
-      document.getElementById("formData4").setAttribute("data-error-visible", "false");
-    } else {
-      rightDate = false;
-      document.getElementById("formData4").setAttribute("data-error", "Veuillez saisir une date de naissance valide");
-      document.getElementById("formData4").setAttribute("data-error-visible", "true");
-    }
-  
-  
-  }
-  
-  // Ici , le champ est particulier puisque si aucun nombre n'était saisi, la fonction renvoyait "true".
-  // Il a donc fallu rajouter une condition n'acceptant pas de champ vide. Le reste de la fonction est 
-  // plutôt simple , il s'agit de saisir un nombre entre 0 et 99 pour que la fonction renvoie "true". 
-  // L'objet "Number" précède (myNumber) pour être certain que la valeur saisie soit un "number" et non une 
-  // chaîne de caractères.
-  
-  function isNumberTrue(myNumber) {
-    if (myNumber === "") {
       rightNumber = false;
       document.getElementById("formData5").setAttribute("data-error", "Veuillez saisir un nombre correct");
       document.getElementById("formData5").setAttribute("data-error-visible", "true");
-    } else {
-      if (((Number(myNumber) > -1) && (Number(myNumber) < 100))) {
-        rightNumber = true;
-        document.getElementById("formData5").setAttribute("data-error", "false");
-        document.getElementById("formData5").setAttribute("data-error-visible", "false");
-      } else {
-        rightNumber = false;
-        document.getElementById("formData5").setAttribute("data-error", "Veuillez saisir un nombre correct");
-        document.getElementById("formData5").setAttribute("data-error-visible", "true");
-      }
     }
-  
   }
-  
-  // Voici encore une fonction simple , il s'agit simplement dé vérifier qu'une ville a 
-  // été cochée, donc que l'une des 6 locations soit checked. Voilà pourquoi l'opérateur logique entre 
-  // chaque location est || ("ou").
-  
-  function isRadioChecked() {
-    if ((location1.checked) || (location2.checked) || (location3.checked) || (location4.checked) || (location5.checked) || (location6.checked)) {
-      rightRadio = true;
-      document.getElementById("formData6").setAttribute("data-error", "false");
-      document.getElementById("formData6").setAttribute("data-error-visible", "false");
-    } else {
-      rightRadio = false;
-      document.getElementById("formData6").setAttribute("data-error", "Veuillez choisir une ville");
-      document.getElementById("formData6").setAttribute("data-error-visible", "true");
-    }
-  
+
+}
+
+// Voici encore une fonction simple , il s'agit simplement dé vérifier qu'une ville a 
+// été cochée, donc que l'une des 6 locations soit checked. Voilà pourquoi l'opérateur logique entre 
+// chaque location est || ("ou").
+
+function isRadioChecked() {
+  if ((location1.checked) || (location2.checked) || (location3.checked) || (location4.checked) || (location5.checked) || (location6.checked)) {
+    rightRadio = true;
+    document.getElementById("formData6").setAttribute("data-error", "false");
+    document.getElementById("formData6").setAttribute("data-error-visible", "false");
+  } else {
+    rightRadio = false;
+    document.getElementById("formData6").setAttribute("data-error", "Veuillez choisir une ville");
+    document.getElementById("formData6").setAttribute("data-error-visible", "true");
   }
-  
-  // Voici la dernière fonction. Elle concerne la checkbox1 (la checkbox2 étant facultative, acune condition
-  // n'y a été rattachée). Il s'agit simplement de vérifier si la case des conditions d'utilisation a été 
-  // cochée. 
-  
-  function isCuChecked() {
-    if (checkbox1.checked) {
-      rightCu = true;
-      document.getElementById("formData7").setAttribute("data-error", "false");
-      document.getElementById("formData7").setAttribute("data-error-visible", "false");
-    } else {
-      rightCu = false;
-      document.getElementById("formData7").setAttribute("data-error", "Veuillez lire et accepter les conditions d'utilisation");
-      document.getElementById("formData7").setAttribute("data-error-visible", "true");
-    }
-  
+
+}
+
+// Voici la dernière fonction. Elle concerne la checkbox1 (la checkbox2 étant facultative, acune condition
+// n'y a été rattachée). Il s'agit simplement de vérifier si la case des conditions d'utilisation a été 
+// cochée. 
+
+function isCuChecked() {
+  if (checkbox1.checked) {
+    rightCu = true;
+    document.getElementById("formData7").setAttribute("data-error", "false");
+    document.getElementById("formData7").setAttribute("data-error-visible", "false");
+  } else {
+    rightCu = false;
+    document.getElementById("formData7").setAttribute("data-error", "Veuillez lire et accepter les conditions d'utilisation");
+    document.getElementById("formData7").setAttribute("data-error-visible", "true");
   }
+
+}
 
 // Fonction principale au clic du bouton Submit ("C'est parti", après le formulaire). 
 
@@ -229,11 +231,10 @@ function launchSubmit(e) {
   // Pour cela , on fait disparaître le premier bloc "modalbg", pour faire apparaître le deuxième blog
   // "modalbg2".
 
-  if ((rightFirstName) && (rightLastName) && (rightMail) && 
-  (rightDate) && (rightNumber) && (rightRadio) && (rightCu)) {
-  modalbg.style.display = "none";
-  alert ("Merci ! Votre réservation a été reçue.");
-  modalbg2.style.display = "block";
+  if ((rightFirstName) && (rightLastName) && (rightMail) &&
+    (rightDate) && (rightNumber) && (rightRadio) && (rightCu)) {
+    modalbg.style.display = "none";
+    modalbg2.style.display = "block";
   }
 
 }
