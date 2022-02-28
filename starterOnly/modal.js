@@ -1,13 +1,23 @@
 import Inputs from './javaScript/Input.js';
 
+
 function editNav() {
-  var x = document.getElementById("myTopnav");
+  icon.style.display = "none";
+  const x = document.getElementById("myTopnav");
+  const aTab = document.querySelectorAll("a")
   if (x.className === "topnav") {
-    x.className += " responsive";
+    x.classList.add("responsive");
   } else {
     x.className = "topnav";
   }
+  aTab.forEach((a)=> a.addEventListener("click", () => { 
+    icon.style.display = "block";
+    x.classList.remove("responsive");
+  })
+  )
 }
+const icon = document.querySelector(".icon");
+icon.addEventListener("click", editNav);
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");

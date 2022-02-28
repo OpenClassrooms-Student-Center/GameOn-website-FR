@@ -24,6 +24,9 @@
     }
     .icon {
         display: none;
+        color: #ff0000;
+        vertical-align: middle;
+        text-align: center;
     }
 }
 
@@ -62,9 +65,6 @@
       display: block;
       text-align: left;
     }
-}
-  
-@media screen and (max-width: 540px) {
     .topnav a {
         display: none;
     }
@@ -72,6 +72,10 @@
     .topnav a.icon {
       float: right;
       display: block;
-      margin-top: -15px;
+      font-size: 2rem;
     }
+}
+  
+@media screen and (max-width: 540px) {
+   
 } 

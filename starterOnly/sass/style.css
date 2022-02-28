@@ -236,6 +236,9 @@ input[data-error]::after,
 }
 .topnav .icon {
   display: none;
+  color: #ff0000;
+  vertical-align: middle;
+  text-align: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -266,8 +269,7 @@ input[data-error]::after,
     display: block;
     text-align: left;
   }
-}
-@media screen and (max-width: 540px) {
+
   .topnav a {
     display: none;
   }
@@ -275,7 +277,7 @@ input[data-error]::after,
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    font-size: 2rem;
   }
 }
 main {
