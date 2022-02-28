@@ -27,11 +27,16 @@ form {
     overflow: hidden;
     position: relative;
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
     
     
     .modal-body {
         padding: 15px 8%;
         margin: 15px auto;
+        height: fit-content;
     }
   }
 }
@@ -74,9 +79,16 @@ form {
   transform: rotate(-45deg);
 }
 .sendConfirm {
-  height: fit-content;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  height: 100%;
+  bottom: 50%;
+  p{
+    font-size: 2rem;
+    text-align: center;
+  
+  }
+  .btn-closeModal {
+    position: relative;
+    bottom: -270px;
+  }
+ 
 }
