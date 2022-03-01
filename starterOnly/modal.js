@@ -24,6 +24,8 @@ const locations = document.getElementsByName("location");
 const checkbox1 = document.getElementById("checkbox1");
 const checkbox2 = document.getElementById("checkbox2");
 const btnSubmit = document.querySelector("input[type=submit]");
+const confirm = modalEnd();
+
 
 
 // launch modal event
@@ -32,7 +34,7 @@ modalBtn2.forEach((btn) => btn.addEventListener("click", closeModal)); //les fon
 
 // launch modal form
 function launchModal() {
-  modalBodyReset
+  displayForm();
   modalbg.style.display = "block";
 }
 // Close modal
@@ -51,23 +53,46 @@ function removeError(input) {
   input.setAttribute("data-error-visible", false);
 }
 
+//Fonction qui créer l'élément "p"
 function addElementP() {
   const p = document.createElement("p");
-  modalBody.appendChild(p);
   p.innerHTML = "Merci pour votre Inscription";
   p.classList.add("formEnd");
+  return p;
 }
 
+//Fonction qui créer l'élément "button"
 function addElementButton() {
   const button = document.createElement("button");
-  modalBody.appendChild(button);
   button.innerHTML = "Fermer";
   button.classList.add("btn-close");
   button.classList.add("modal-btn2");
+  button.addEventListener("click", closeModal);
+  return button;
 }
 
-function modalBodyReset() {
-  modalBody.reset()
+//Fonction qui créer la div "modalEnd" qui contient "p" & "button"
+function modalEnd() {
+  const div = document.createElement("div");
+  div.setAttribute("id", "confirmMessage");
+  div.style.display = "none"
+  let p = addElementP();
+  let button = addElementButton();
+  div.appendChild(p);
+  div.appendChild(button);
+  modalBody.appendChild(div);
+  return div;
+}
+
+//fonction qui change le display
+function displayForm() {
+  myForm.style.display = "block";
+  confirm.style.display = "none";
+}
+
+function displayConfirmMessage() {
+  myForm.style.display = "none";
+  confirm.style.display = "block";
 }
 
 //déclarations des variables
@@ -184,12 +209,7 @@ function validate() {
     //eclater le construction.
 
     myForm.reset();
-    myForm.style.display = "none";
-    addElementP();
-    addElementButton();
-    const btnClose = document.querySelector(".btn-close");
-    btnClose.addEventListener("click", closeModal);
-    //modalBodyReset();
+    displayConfirmMessage();
   }
 
   if (inputs.some(elem => elem == true)) {
