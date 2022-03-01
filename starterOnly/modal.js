@@ -11,6 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalBtn2 = document.querySelectorAll(".modal-btn2");
+const modalBody = document.querySelector(".modal-body");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
 const myForm = document.querySelector("form");
@@ -22,8 +23,7 @@ const quantity = document.getElementById("quantity");
 const locations = document.getElementsByName("location");
 const checkbox1 = document.getElementById("checkbox1");
 const checkbox2 = document.getElementById("checkbox2");
-const btnSubmit = document.querySelector("input[type=submit]")
-
+const btnSubmit = document.querySelector("input[type=submit]");
 
 
 // launch modal event
@@ -32,6 +32,7 @@ modalBtn2.forEach((btn) => btn.addEventListener("click", closeModal)); //les fon
 
 // launch modal form
 function launchModal() {
+  modalBodyReset
   modalbg.style.display = "block";
 }
 // Close modal
@@ -50,10 +51,30 @@ function removeError(input) {
   input.setAttribute("data-error-visible", false);
 }
 
+function addElementP() {
+  const p = document.createElement("p");
+  modalBody.appendChild(p);
+  p.innerHTML = "Merci pour votre Inscription";
+  p.classList.add("formEnd");
+}
+
+function addElementButton() {
+  const button = document.createElement("button");
+  modalBody.appendChild(button);
+  button.innerHTML = "Fermer";
+  button.classList.add("btn-close");
+  button.classList.add("modal-btn2");
+}
+
+function modalBodyReset() {
+  modalBody.reset()
+}
+
 //déclarations des variables
 let regexName = /^([a-zA-Z]{2,30}\s*)+/;
 let regexMail = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/g;
 let inputs = []
+
 // Evénement pour le Prénom OK !
 inputs[0] = true;
 first.addEventListener("input", function (e) {
@@ -156,32 +177,19 @@ checkbox1.addEventListener("input", function (e) {
 
 //validation du formulaire: faire un tableau pour recuperer toutes les infos de eventError dans les inputs !
 
-
-console.log(inputs)
 function validate() {
-  console.log(inputs)
   if (inputs.every(elem => elem == false)) {
-    btnSubmit.addEventListener("click", launchModal); {
-      while (myForm.firstChild) {
-        myForm.removeChild(myForm.firstChild);
-      }
+    //quand formulaire envoyé: reset le formulaire, passe moi le formulaire en "none"
+    //creer le "p" "button" dans class modal-body; les cachés dans la fonctions lauch-modal
+    //eclater le construction.
 
-      const p = document.createElement("p");
-      myForm.appendChild(p);
-      p.innerHTML = "Merci pour votre Inscription";
-      p.classList.add("formEnd");
-
-      const button = document.createElement("button");
-      myForm.appendChild(button);
-      button.innerHTML = "Fermer";
-      button.classList.add("btn-close");
-      button.classList.add("modal-btn2");
-      const btnClose = document.querySelector(".btn-close")
-      btnClose.addEventListener("click", closeModal);
-      function closeModal() {
-        modalbg.style.display = "none";
-      }
-    }
+    myForm.reset();
+    myForm.style.display = "none";
+    addElementP();
+    addElementButton();
+    const btnClose = document.querySelector(".btn-close");
+    btnClose.addEventListener("click", closeModal);
+    //modalBodyReset();
   }
 
   if (inputs.some(elem => elem == true)) {
@@ -190,35 +198,7 @@ function validate() {
   return false;
 }
 
-/*function validate() {
 
-  if (!eventErrorFirst) {
-    btnSubmit.addEventListener("click", launchModal); {
-      while (myForm.firstChild) {
-        myForm.removeChild(myForm.firstChild);
-      }
-
-      const p = document.createElement("p");
-      myForm.appendChild(p);
-      p.innerHTML = "Merci pour votre Inscription";
-      p.classList.add("formEnd");
-
-      const button = document.createElement("button");
-      myForm.appendChild(button);
-      button.innerHTML = "Fermer";
-      button.classList.add("btn-close");
-      button.classList.add("modal-btn2");
-      const btnClose = document.querySelector(".btn-close")
-      btnClose.addEventListener("click", closeModal);
-      function closeModal() {
-        modalbg.style.display = "none";
-      }
-    }
-  }
-  //alert("Votre inscription est bien pris en compte"); // ajouter du texte avec javascript, lui dire qu'il est un enfant de ... , et penser a la lui mettre une class que j'aurais definie en CSS
-
-  else {
-    alert("FAUX !");
-  }
-  return false;
-}*/
+//projet 6: organisation du projet important
+// fonction en javascript "jsnon.parse?" https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
+// faire atention au type de variable !
