@@ -1,3 +1,9 @@
+
+// Cette fonction permet que quelle que soit la classe attachée à l'Id "myTopnav" , on y ajoute la classe 
+// "responsive" permettant ainsi de créer des sélecteurs spécifiques lorsqu'il s'agit de traiter le 
+// menu de navigation dans des écrans inférieurs à 768px , en outre , elle permet que le nom de la classe
+// attachée à myTopnav soit toujours égal à "topnav" . 
+
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -19,6 +25,10 @@ const closeBtn2 = document.querySelectorAll(".close-reset");
 const closeBtn3 = document.querySelectorAll(".btn-exit");
 const modalbg2 = document.querySelector(".bground2");
 
+// Ci-dessous, je déclare - sans attribuer de valeur quelconque - les variables booléennes qui vont 
+// contenir les résultats des fonctions de vérification. Elles vont faire en sorte que la fonction renvoie
+// "true" ou "false". 
+
 let rightFirstName;
 let rightLastName;
 let rightMail;
@@ -27,7 +37,10 @@ let rightNumber;
 let rightRadio;
 let rightCu;
 
-// Fonctions de lancement et de fermeture déclenchées par un clic
+// Fonctions de lancement et de fermeture déclenchées par un clic.
+//Ici j'ai rajouté la fonction launchSubmit, qui doit être lancée "pour chaque" bouton Submit, 
+//cette fonction est détaillée plus bas. J'ai aussi ajouté les deux dernières fonctions de fermeture.
+
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 submitBtn.forEach((btn) => btn.addEventListener("click", launchSubmit));
 closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
@@ -40,10 +53,7 @@ closeBtn3.forEach((btn) => btn.addEventListener("click", function () {
   closeModal();
 }));
 
-//Ici j'ai rajouté la fonction launchSubmit, qui doit être lancée "pour chaque" bouton Submit, 
-//cette fonction est détaillée plus bas. J'ai aussi ajouté les deux dernières fonctions de fermetures.
-
-// Fonctions de lancement et de fermeture
+// Fonctions de lancement et de fermeture pour ouvrir et fermer le bloc du formulaire.
 
 function launchModal() {
   modalbg.style.display = "block";
@@ -62,7 +72,13 @@ function closeModal() {
 // En effet sans point d'exclamation, la regex ne doit inclure que des valeurs numériques. Le point
 // d'exclamation devant "myFirstName" signale l'inverse donc "pas que des valeurs numériques" ce qui évite
 // par exemple qu'une date soit saisie au lieu d'un véritable prénom.
-// Si les deux conditions sont remplies, la fonction doit renvoyer "true", sinon, elle doit renvoyer "false" 
+// Si les deux conditions sont remplies, la fonction doit renvoyer "true", sinon, elle doit renvoyer "false"
+
+// Pour toutes les fonctions conditionelles qui vont suivre : après que la variable de vérification a renvoyé
+// true ou false, les attributs des input changent , notamment au niveau du statut des erreurs . Une réponse
+// "false" aura un statut d'erreur "true" et "vice versa". Dans le cas d'une variable "true", on pourrait 
+// ne rien changer au statut d'erreur par défaut (false). Mais si jamais on se trompe, puis que l'on se 
+// corrige , il faut bien remettre à chaque fois le statut d'erreur à "false".
 
 function isMyFirstNameTrue(myFirstName) {
   if ((myFirstName.length >= 2) && (!myFirstName.match(/^[\d]+$/))) {
@@ -163,12 +179,13 @@ function isNumberTrue(myNumber) {
 
 }
 
-// Voici encore une fonction simple , il s'agit simplement dé vérifier qu'une ville a 
+// Voici encore une fonction simple , il s'agit simplement de vérifier qu'une ville a 
 // été cochée, donc que l'une des 6 locations soit checked. Voilà pourquoi l'opérateur logique entre 
 // chaque location est || ("ou").
 
 function isRadioChecked() {
-  if ((location1.checked) || (location2.checked) || (location3.checked) || (location4.checked) || (location5.checked) || (location6.checked)) {
+  if ((location1.checked) || (location2.checked) || (location3.checked) || (location4.checked) ||
+    (location5.checked) || (location6.checked)) {
     rightRadio = true;
     document.getElementById("formData6").setAttribute("data-error", "false");
     document.getElementById("formData6").setAttribute("data-error-visible", "false");
@@ -208,6 +225,9 @@ function isCuChecked() {
 // un champ du formulaire.
 // Il s'agit de vérifier si toutes les fonctions renvoient "true" avant de pouvoir envoyer le bloc de 
 // confirmation de l'inscription sur GameOn.
+// Le e.preventDefault() empêche que le bouton "submit" se comporte comme d'habitude, à savoir fermer 
+// la pop-up puisque tout est valide , et revenir à la page d'accueil par défaut. 
+// Alors que nous voulons qu'une pop-up de confirmation soit ouverte
 
 function launchSubmit(e) {
   e.preventDefault();
