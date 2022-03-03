@@ -102,7 +102,6 @@ p {
 }
 
 main {
-	font-size: 130%;
 	font-weight: bolder;
 	color: black;
 	padding-top: 0.5vw;
@@ -401,19 +400,16 @@ input[data-error]::after {
 	font-size: 16px;
 }
 .hero-section {
-	min-height: 93vh;
 	border-radius: 10px;
 	display: grid;
 	grid-template-columns: repeat(12, 1fr);
 	overflow: hidden;
 	box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
 	margin-bottom: 10px;
+	height: 70vh;
 }
 .hero-content {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-around;
-	padding: 51px 67px;
+	padding: 25px 25px 25px 60px;
 	grid-column: span 4;
 	background: #232323;
 	color: #fff;
@@ -442,7 +438,7 @@ input[data-error]::after {
 .hero-text {
 	width: 146%;
 	font-weight: normal;
-	padding: 0;
+	padding: 60px 0;
 }
 .btn-signup {
 	outline: none;
@@ -464,7 +460,7 @@ input[data-error]::after {
 	color: #fe142f;
 	padding: 0;
 	font-size: 1rem;
-	margin: 60px 0 30px;
+	margin: 30px 0 15px;
 	font-weight: bolder;
 }
 .hero-section > .btn-signup {
@@ -489,7 +485,6 @@ footer {
 		min-width: 0px;
 	}
 	.hero-text {
-		font-size: 20px;
 		width: 100%;
 	}
 	.hero-content::after {
@@ -515,10 +510,8 @@ footer {
 	.hero-section {
 		display: flex;
 		box-shadow: unset;
-		min-height: 80vh;
-		justify-content: space-around;
-		align-content: space-around;
 		flex-direction: column;
+		height: fit-content;
 	}
 	.hero-content {
 		background: #fff;
@@ -533,12 +526,14 @@ footer {
 		display: none;
 	}
 	.hero-headline {
-		font-size: 3.5rem;
+		font-size: 3rem;
 		white-space: normal;
+		font-weight: bold;
 	}
 	.hero-text {
 		width: unset;
-		font-size: 1.5rem;
+		font-size: 1rem;
+		padding: 0 10px;
 	}
 	.hero-img img {
 		margin: auto;
@@ -588,15 +583,15 @@ footer {
 		margin-top: 10px;
 	}
 	.hero-headline {
-		font-size: 2rem;
+		font-size: 2.5rem;
 		font-weight: bold;
 	}
 	.hero-text {
 		margin-top: 10px;
-		font-size: 0.7rem;
+		font-size: 1rem;
 	}
 	.hero-img img {
-		height: 30vh;
+		height: 40vh;
 	}
 	.hero-content {
 		max-width: 100%;
@@ -610,6 +605,33 @@ footer {
 	.text-control {
 		font-size: 12.5px;
 		height: 35px;
+	}
+}
+
+@media screen and (max-width: 450px) {
+	main {
+		height: 80vh;
+		margin: 1px 20px;
+	}
+	.hero-section {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-around;
+		height: 100%;
+	}
+
+	.hero-img img {
+		height: 35vh;
+		margin: auto;
+	}
+}
+
+@media screen and (max-width: 450px) {
+	.hero-headline {
+		font-size: 2rem;
+	}
+	.hero-img img {
+		padding: 0;
 	}
 }
 
