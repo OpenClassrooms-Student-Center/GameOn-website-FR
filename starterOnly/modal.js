@@ -204,10 +204,6 @@ checkbox1.addEventListener("input", function (e) {
 
 function validate() {
   if (inputs.every(elem => elem == false)) {
-    //quand formulaire envoyé: reset le formulaire, passe moi le formulaire en "none"
-    //creer le "p" "button" dans class modal-body; les cachés dans la fonctions lauch-modal
-    //eclater le construction.
-
     myForm.reset();
     displayConfirmMessage();
   }
@@ -217,8 +213,3 @@ function validate() {
   }
   return false;
 }
-
-
-//projet 6: organisation du projet important
-// fonction en javascript "jsnon.parse?" https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse
-// faire atention au type de variable !
