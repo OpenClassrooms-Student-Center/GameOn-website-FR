@@ -32,6 +32,21 @@ closeModalIcon.addEventListener("click", function () {
 });
 
 // Form on submit event
-modalForm.addEventListener("submit", function () {
-	return validate();
+modalForm.addEventListener("submit", function (e) {
+	e.preventDefault();
+	const firstname = document.getElementById("first").value;
+	const lastname = document.getElementById("last").value;
+	const email = document.getElementById("email").value;
+	const birthdate = document.getElementById("birthdate").value;
+	const quantityTournament = document.getElementById("quantity").value;
+	const placeTournament = document.querySelector('input[name="location"]:checked').value;
+	const checkboxConditions = document.getElementById("checkbox1").value;
+	console.log(firstname);
+	console.log(lastname);
+	console.log(email);
+	console.log(birthdate);
+	console.log(quantityTournament);
+	console.log(placeTournament);
+	console.log(checkboxConditions);
+	// return validate();
 });
