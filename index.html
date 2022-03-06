@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Reservation</title>
+	<!-- Fontawesome-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!--google font-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+	<!--styles-->
+	<link rel="stylesheet" href="css/modal.css" />
+</head>
+
+<body>
+	<div class="topnav" id="myTopnav">
+		<div class="header-logo">
+			<img alt="logo" src="images/Logo.png" />
+		</div>
+		<div class="main-navbar">
+			<a href="#" class="active"><span>Accueil</span></a>
+			<a href="#"><span>Détails de l'évènement</span></a>
+			<a href="#">
+				<span>À propos</span></a>
+			<a href="#"><span>Contact</span></a>
+			<a href="#"><span>Évènements passés</span></a>
+			<a href="javascript:void(0);" class="nav-icon">
+				<i class="fa fa-bars"></i>
+			</a>
+		</div>
+	</div>
+	<main>
+		<div class="hero-section">
+			<div class="hero-content">
+				<h1 class="hero-headline">
+					Marathon national<br>
+					de jeux vidéos
+				</h1>
+				<p class="hero-text">
+					Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux réservations... Places limitées !
+				</p>
+				<button class="btn-signup modal-btn">
+					je m'inscris
+				</button>
+			</div>
+			<div class="hero-img">
+				<img src="images/bg_img.jpg" alt="img" />
+			</div>
+			<button class="btn-signup modal-btn">
+				je m'inscris
+			</button>
+		</div>
+
+		<div class="bground">
+			<div class="content">
+				<span class="close"></span>
+				<div class="modal-body">
+					<form id="modal-form" name="reserve" action="index.html" method="get">
+						<div class="formData">
+							<label for="first">Prénom</label>
+							<input class="text-control" type="text" id="first" name="first" minlength="2" />
+						</div>
+						<div class="formData">
+							<label for="last">Nom</label>
+							<input class="text-control" type="text" id="last" name="last" />
+						</div>
+						<div class="formData">
+							<label for="email">E-mail</label>
+							<input class="text-control" type="email" id="email" name="email" />
+						</div>
+						<div class="formData">
+							<label for="birthdate">Date de naissance</label>
+							<input class="text-control" type="date" id="birthdate" name="birthdate" />
+						</div>
+						<div class="formData">
+							<label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label>
+							<input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+						</div>
+						<p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
+						<div class="formData">
+							<input class="checkbox-input" type="radio" id="location1" name="location"
+								value="New York" />
+							<label class="checkbox-label" for="location1">
+								<span class="checkbox-icon"></span>
+								New York
+							</label>
+							<input class="checkbox-input" type="radio" id="location2" name="location"
+								value="San Francisco" />
+							<label class="checkbox-label" for="location2">
+								<span class="checkbox-icon"></span>
+								San Francisco
+							</label>
+							<input class="checkbox-input" type="radio" id="location3" name="location" value="Seattle" />
+							<label class="checkbox-label" for="location3">
+								<span class="checkbox-icon"></span>
+								Seattle
+							</label>
+							<input class="checkbox-input" type="radio" id="location4" name="location" value="Chicago" />
+							<label class="checkbox-label" for="location4">
+								<span class="checkbox-icon"></span>
+								Chicago
+							</label>
+							<input class="checkbox-input" type="radio" id="location5" name="location" value="Boston" />
+							<label class="checkbox-label" for="location5">
+								<span class="checkbox-icon"></span>
+								Boston
+							</label>
+							<input class="checkbox-input" type="radio" id="location6" name="location"
+								value="Portland" />
+							<label class="checkbox-label" for="location6">
+								<span class="checkbox-icon"></span>
+								Portland
+							</label>
+						</div>
+
+						<div class="formData">
+							<input class="checkbox-input" type="checkbox" id="checkbox1" checked required />
+							<label class="checkbox2-label" for="checkbox1">
+								<span class="checkbox-icon"></span>
+								J'ai lu et accepté les conditions d'utilisation.
+							</label>
+							
+							<input class="checkbox-input" type="checkbox" id="checkbox2" />
+							<label class="checkbox2-label" for="checkbox2">
+								<span class="checkbox-icon"></span>
+								Je souhaite être prévenu des prochains évènements.
+							</label>
+							
+						</div>
+						<input class="button btn-submit" type="submit" value="C'est parti" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer>
+		<p class="copyrights">
+			Copyright 2014 - 2022, GameOn Inc.
+		</p>
+	</footer>
+	<script src="js/modal.js"></script>
+</body>
+
+</html>
