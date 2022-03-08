@@ -101,7 +101,6 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
 }
 
@@ -422,7 +421,6 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -502,9 +500,7 @@ footer {
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
-    text-align: center;
-    overflow: hidden;
+    font-size: 2rem;
   }
   .hero-img img {
     border-radius: 10px;
