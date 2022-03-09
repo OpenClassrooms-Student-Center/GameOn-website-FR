@@ -175,7 +175,7 @@ function validate(e){
 
     validationMsg.style.display = "block";
 
-    setTimeout(waitBeforeSubmit, 10000);
+    setTimeout(waitBeforeSubmit, 2500);
     function waitBeforeSubmit() {
       e.target.submit();
     }
