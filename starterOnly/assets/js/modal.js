@@ -84,7 +84,7 @@ function validateEmail() {
 
 // validate quantity
 function validateQuantity() {
-  if(quantity.value == "") {
+  if(quantity.value == "" || quantity.value > 99 || quantity.value < 0) {
     return false;
   } else {
     return true;
