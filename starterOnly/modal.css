@@ -67,32 +67,6 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .topnav a {
-    display: none;
-  }
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .topnav.responsive {
-    position: relative;
-  }
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
 @media screen and (max-width: 540px) {
   .topnav a {
     display: none;
@@ -515,6 +489,17 @@ footer {
   .copyrights {
     margin-top: 50px;
     text-align: center;
+  }
+}
+
+@media screen and (min-width: 801px) {
+  .hero-content {
+    background: #232323;
+    color: #fff;
+    padding: 30px;
+  }
+  .hero-content::after {
+    content: unset;
   }
 }
 
