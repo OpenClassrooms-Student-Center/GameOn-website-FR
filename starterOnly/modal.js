@@ -20,4 +20,16 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+const modalClose = document.querySelector(".close");
+//modalClose.style.backgroundColor = "red";
+/* modalClose.addEventListener("click", function () {
+  alert("Vous allez fermé le bouton !");
+  modalClose.close("inchis");
+}); */
 
+//fermer la croix de la fenetre du formulaire
+document
+  .getElementById("closeform")
+  .addEventListener("click", function (closeModal) {
+    modalbg.style.display = "none";
+  });
