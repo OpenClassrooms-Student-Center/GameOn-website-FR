@@ -23,6 +23,32 @@ body {
   margin: 0 auto;
 }
 
+.modal-body {
+  display: block;
+}
+
+.validation-text {
+  color: white;
+  text-align: center;
+  margin-top: 300px;
+  margin-bottom: 250px;
+  display: none;
+}
+
+button.btn-close {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 15px;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+  margin-bottom: 50px;
+  display: none;
+}
+
 p {
   margin-bottom: 0;
   padding: 0.5vw;
