@@ -12,12 +12,14 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalClose = document.querySelectorAll(".close");
+const btnClose = document.querySelectorAll('.btn-close');
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // close modal event
 modalClose.forEach((btn) => btn.addEventListener("click", closeModal));
+btnClose.forEach((btn) => btn.addEventListener("click", closeModal));
 
 // launch modal form
 function launchModal() {
@@ -124,3 +126,10 @@ function checkCheckbox() {
         return false 
 }  
 }
+
+document.querySelector(".bground").addEventListener('submit', function(evt){
+  evt.preventDefault();
+  document.getElementById('modal-body').style.display = 'none';
+  document.getElementById('validation-text').style.display = 'block';
+  document.getElementById('btn-close').style.display = 'block';
+})
