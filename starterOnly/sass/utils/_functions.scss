@@ -1,0 +1,8 @@
+
+@function px2vh($nb-pixel) {
+    @return ($nb-pixel/1024*100vh);
+}
+
+@function px2percent($nb-pixel, $container-width) {
+    @return ($nb-pixel/$container-width * 100%);
+}

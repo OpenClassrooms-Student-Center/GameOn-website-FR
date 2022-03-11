@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveSassCompile.settings.formats":[
+			// This is Default.
+			{
+				"format": "expanded",
+				"extensionName": ".css",
+				"savePath": "~/../public/css"
+			}
+		],
+		"liveSassCompile.settings.autoprefix": [
+			"> 1%",
+			"last 2 versions"
+		]
+	}
+}

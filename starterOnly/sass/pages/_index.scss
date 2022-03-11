@@ -1,0 +1,265 @@
+.pitch {
+    margin-top: 8.5rem;
+    margin-left: 100px;
+    margin-right: 100px;
+    border-radius: 8px;
+    width: px2percent(1240, 1440);
+    height: 66rem;
+    background-color: $color_black;
+    overflow: hidden;
+    box-shadow: 0px 12px 12px rgba(0, 0, 0, 0.25);
+    position: relative;
+}
+.title {
+    padding-top: 5rem;
+    margin-left: 56px;
+    width: px2percent(890,1240);
+    position: relative;
+    z-index: 1;
+    line-height: 12.5rem;
+    font-size: 9.6rem;
+    font-weight: 500;
+    color: $color-white;
+}
+.subtitle {
+    margin-top: 7rem;
+    margin-left: 56px;
+    width: px2percent(430, 1240);
+    position: relative;
+    z-index: 1;
+    color: $color-white;
+    font-size: 2.4rem;
+    font-weight: 400;
+}
+.background-picture {
+    height: 66rem;
+    position: absolute;
+    top:0;
+    right:0;
+    z-index: 0;
+}
+.subscription-launch-button {
+    margin-top: 7rem;
+    margin-left: 56px;
+    padding: 11px 30px 11px 30px;
+    display: inline-block;
+    font-size: 2.5rem;
+    font-weight: 500;
+    font-style: normal;
+    background-color: $color-red;
+    color: $color-white;
+    border-radius: 0.8rem;
+    border:none;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.lightbox {
+    visibility: hidden;
+    opacity: 0;
+    position:absolute;
+    top:0; left: 0;
+    bottom: 0; right :0;
+    background-color: $color-grey;
+    background: rgba(196, 196, 196, .7);
+    opacity: 1;
+    display:flex;
+    justify-content: center;
+    z-index: 1;
+}
+
+
+.modal {
+    margin-top: 8.7rem;
+    width: px2percent(536,1440);
+    height: 85rem;
+    position: relative;
+    border-radius: 0.8rem;
+    background-color: $color-black;
+    color: $color-white;
+    &_header {
+        height: 3.6rem;
+        position: relative;
+        &_modal-quit-icon {
+            position: absolute;
+            top: 2.4rem;
+            right: 2.4rem;
+            font-size: 4.6rem;
+            line-height: 1.7rem;
+            color:white;
+            text-decoration: none;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    &_main {
+        padding-left: 3.9rem;  
+        padding-right: 3.9rem;    
+        font-size: 0; // to avaoid white spaces
+    }
+}
+
+.subscription_form {
+    &_label {
+        margin-top: 0.8rem;
+        display: block;
+        line-height: 1.4rem;
+        font-size: 1.4rem;
+        font-weight: 400;
+    }
+    &_input {
+        margin-top: 0.7rem;
+        width:100%;
+        height: 6.4rem;
+        border: 1px solid #C4C4C4;
+        border-radius: 0.8rem;
+        font-size: 1.8rem;
+        line-height: 1.8rem;
+        font-weight: 400;
+        &:hover {
+            cursor: text;
+        }
+    }
+    &_error-message {
+        margin-top: 0.2rem;
+        font-size: 1.1rem;
+        height: 1.1rem;
+        line-height: 1.1rem;
+        color: $color-warning;
+    }
+    &_input-location{
+        margin-top: 0.8rem;
+    }
+    &_input-radio{
+        appearance: none;
+        &:checked + label:before,
+        &:checked + label:after {
+            border-color: $color-green; 
+        }
+        &_label {
+            margin-right: 2.8rem;
+            margin-bottom: 1.0rem;
+            font-size: 1.2rem;
+            line-height: 1.2rem;
+            font-weight: 400;
+            display: inline-block;
+            vertical-align: middle;
+            position: relative;
+           
+            &:hover {
+                cursor: pointer;
+            }
+            &:before{
+                content: "";
+                display: inline-block;
+                vertical-align: middle;
+                top: 0; 
+                left: 0;
+                width: 26px;
+                height: 26px;
+                margin-right: 6px;
+                border-radius: 50%;
+                border:  0.1rem solid $color-grey;
+            }
+            &:after {
+                content: "";
+                display: inline-block;
+                position: absolute;
+                top: 4px;
+                left:4px;
+                width: 0;
+                height: 0;
+                border-radius: 50%;
+                border:  (26-8)/2*1px solid $color-black;
+            }
+        }
+    }
+    &_input-checkbox{
+        appearance: none;
+        &:checked + label > &_label_icon-check {
+            background-color: $color-green; 
+            color: $color-white;
+        }
+        &_label {
+            margin-top: 0.2rem;
+            margin-right: 1.4rem;
+            font-size: 1.2rem;
+            line-height: 2.6rem;
+            font-weight: 400;
+            display: inline-block;
+            position: relative;
+            &:hover {
+                cursor: pointer;
+            }
+            &_icon-check {
+                display: inline-block;
+                position: relative;
+                width: 2.6rem;
+                height: 2.6rem;
+                margin-right: 0.6rem;
+                border-radius: 6px;
+                background-color: $color-grey;
+                color: $color-grey;
+                font-size: 1.4rem;
+                padding-left: (26-14)/2*1px;
+            }
+        }
+    }
+    &_submit {
+        margin-top: 1.6rem;
+        display: flex;
+        justify-content: space-around;
+        &_button {
+            padding: 11px 56px 11px 56px;
+            font-size: 1.4rem;
+            font-weight: 500;
+            font-style: normal;
+            background-color: $color-red;
+            color: $color-white;
+            border-radius: 0.8rem;
+            border:none;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.--erroneous {
+    border-color: $color-warning;
+}
+
+.modal_confirmation {
+    display: none;
+    &_content {
+        height: 74.6rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &_message {
+            width: px2percent(270, 458);
+            text-align: center;
+            font-size: 3.6rem;
+            line-height: 5.6rem;
+        }
+    }
+    &_close {
+        display: flex;
+        justify-content: space-around;
+        &_button {
+            padding: 11px 56px 11px 56px;
+            font-size: 1.4rem;
+            font-weight: 500;
+            font-style: normal;
+            background-color: $color-red;
+            color: $color-white;
+            border-radius: 0.8rem;
+            border:none;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
