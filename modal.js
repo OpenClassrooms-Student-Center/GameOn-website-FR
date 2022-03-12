@@ -127,6 +127,7 @@ function checkCheckbox() {
 }  
 }
 
+// Display validation message
 document.querySelector(".bground").addEventListener('submit', function(evt){
   evt.preventDefault();
   document.getElementById('modal-body').style.display = 'none';
