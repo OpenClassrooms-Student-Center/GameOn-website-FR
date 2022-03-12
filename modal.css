@@ -59,7 +59,6 @@ img {
 }
 
 .topnav {
-  overflow: hidden;
   margin: 3.5%;
 }
 
@@ -69,6 +68,10 @@ img {
 
 .main-navbar {
   float: right;
+}
+
+.main-navbar a:hover {
+  text-decoration: underline;
 }
 
 .topnav a {
@@ -138,18 +141,16 @@ input:focus {
   opacity: 1;
 }
 
-@media screen and (max-width: 768px) {
-  .topnav a {
-    display: none;
+@media screen and (max-width: 1130px) {
+
+  .logo {
+    height: 35px;
   }
 
-  .topnav a.icon {
-    float: right;
-    display: block;
+  .main-navbar a:hover {
+    text-decoration: none;
   }
-}
 
-@media screen and (max-width: 768px) {
   .topnav.responsive {
     position: relative;
   }
@@ -165,11 +166,7 @@ input:focus {
     display: block;
     text-align: left;
   }
-}
 
-
-
-@media screen and (max-width: 540px) {
   .topnav a {
     display: none;
   }
@@ -433,7 +430,7 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 
-.btn-submit,
+.button,
 .btn-signup {
   background: #fe142f;
   display: block;
@@ -556,7 +553,7 @@ input[data-error]::after {
 }
 
 .hero-headline {
-  font-size: 6rem;
+  font-size: 5rem;
   font-weight: normal;
   white-space: nowrap;
 }
@@ -586,6 +583,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 
 .copyrights {
@@ -606,7 +604,7 @@ footer {
   margin: 0 20px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 955px) {
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -627,8 +625,17 @@ footer {
   }
 
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 3rem;
     white-space: normal;
+  }
+
+  .logo {
+    margin-left: 30px;
+    height: 30px;
+  }
+
+  .topnav a.icon {
+    margin-top: -8px;
   }
 
   .hero-text {
@@ -650,6 +657,45 @@ footer {
   .copyrights {
     margin-top: 50px;
     text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .topnav a {
+    display: none;
+  }
+
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+
+  .hero-section {
+    min-height: 0vh;
+  }
+
+}
+
+@media screen and (max-width: 570px) {
+
+  .content {
+    margin: 80px auto;
+  }
+
+  .hero-headline {
+    font-size: 1.9rem;
+  }
+
+  .hero-text {
+    font-size: 19px;
+  }
+
+  .hero-content {
+    min-width: 100%;
+  }
+
+  .topnav {
+    margin-top: 30px;
   }
 }
 

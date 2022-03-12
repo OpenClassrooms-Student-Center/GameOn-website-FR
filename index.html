@@ -14,7 +14,7 @@
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
+      <img class="logo" alt="logo" src="Logo.png"/>
     </div>
     <div class="main-navbar">
       
@@ -26,7 +26,6 @@
       <a href="javascript:void(0);" class="icon" onclick="editNav()">
         <i class="fa fa-bars"></i>
       </a>
-    </div>
     </div>
   </div>
     <main>
@@ -64,7 +63,6 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
             >
               <div
                 class="formData">
@@ -218,10 +216,10 @@
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
-                  required="required"
+                  required
                   checked
                 />
-                <label class="checkbox1-label" for="checkbox1" required>
+                <label class="checkbox1-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label><div id="checkbox-error"></div>  
@@ -234,7 +232,6 @@
                 <br>
               </div>
               <input
-                class="btn-submit"
                 type="submit"
                 class="button"
                 value="C'est parti"
