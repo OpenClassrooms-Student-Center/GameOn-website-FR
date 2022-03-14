@@ -1,0 +1,61 @@
+
+
+// hero btn
+.modal-btn {
+    font-size: 145%;
+    background: #fe142f;
+    display: flex;
+    margin: auto;
+    padding: 2em;
+    color: #fff;
+    padding: 0.75rem 2.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+  
+.modal-btn:hover {
+    background: #3876ac;
+}
+.btn-signup {
+    outline: none;
+    text-transform: capitalize;
+    font-size: 1.3rem;
+    padding: 15px 23px;
+    margin: 0;
+    margin-top: 59px;
+  }
+
+//modal btn
+
+.button {
+    background: #fe142f;
+    margin-top: 0.5em;
+    padding: 1em;
+    color: #fff;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+}
+  
+.button:hover {
+    background: #3876ac;
+}
+
+.btn-submit,
+.btn-signup,
+.btn-closeModal {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 42px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+}
+.btn-signup {
+    margin: 0px;
+    width: 40%;
+    min-width: 170px;
+}
