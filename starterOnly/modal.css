@@ -78,6 +78,10 @@ img {
   display: none;
 }
 
+.hidden {
+  display: none;
+}
+
 @media screen and (max-width: 1055px) {
   .topnav a {
     display: none;
@@ -208,7 +212,7 @@ main {
 
 label {
   font-family: var(--font-default);
-  font-size: 17px;
+  font-size: 14px;
   font-weight: normal;
   display: inline-block;
   margin-bottom: 11px;
@@ -281,7 +285,7 @@ input[data-error]::after {
 
 .checkbox-label .checkbox-icon::after,
 .checkbox2-label .checkbox-icon::after {
-  /* content: ""; */
+  content: ""; 
   width: 13px;
   height: 13px;
   background-color: #279e7a;
@@ -441,7 +445,7 @@ input[data-error]::after {
 /* custom select end */
 .text-label {
   font-weight: normal;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .hero-section {
