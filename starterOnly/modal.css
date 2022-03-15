@@ -188,6 +188,27 @@ main {
   margin: 15px auto;
 }
 
+.modal-body-success {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  height: 80vh;
+
+  font-family: 'DM Sans';
+  font-size: 36px;
+  font-weight: 400;
+  text-align: center;
+  padding-top: 50%;
+}
+
+.modal-body-success .button-close {
+  align-self: flex-end;
+  text-align: center;
+  width: 50%;
+}
+
 label {
   font-family: var(--font-default);
   font-size: 17px;
@@ -215,7 +236,6 @@ input {
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -226,12 +246,6 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -322,7 +336,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.button-close {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -526,4 +541,19 @@ footer {
     opacity: 1;
   }
 }
+
+@keyframes modalclose {
+  from {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+}
+
 
