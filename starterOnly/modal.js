@@ -46,86 +46,97 @@ function validate() {
   let valid = true;
   valid = valid && checkFirstName();
   valid = valid && checklastName();
+  valid = valid && checkemailValid();
+  valid = valid && checkbirthValid();
+  valid = valid && checkquantityTournaments();
+  valid = valid && checkBoxCity();
   if (valid) {
     modalbg.style.display = "none";
     thankBg.style.display = "block";
+    //document.querySelector("input").style.borderColor = "#FF0000";
   }
-
   return false;
 }
 // Dedicated functions to check the form validity, validation de la form
 
 /** Check if the first name lenght is equal or upper than 2 and return a boolean */
 function checkFirstName() {
-  const firstName = document.getElementById("first").value;
+  const firstName = document.getElementById("first");
   const firstErrorMsg = document.querySelector(".firstErrorMsg");
-  const isFirstNameValid = firstName.trim().length >= 2;
+  const isFirstNameValid = firstName.value.trim().length >= 2;
 
   if (isFirstNameValid) {
     firstErrorMsg.classList.add("hidden");
+    firstName.setCustomValidity("");
   } else {
     firstErrorMsg.classList.remove("hidden");
+    firstName.setCustomValidity("Invalid field."); //transform in the invalid input, for css
   }
   return isFirstNameValid;
 }
 
 /**Check lastName */
 function checklastName() {
-  let lastName = document.getElementById("last").value;
+  let lastName = document.getElementById("last");
   const lastErrorMsg = document.querySelector(".lastErrorMsg");
-  const isLastNameValid = lastName.trim().length >= 2;
+  const isLastNameValid = lastName.value.trim().length >= 2;
 
   if (isLastNameValid) {
     lastErrorMsg.classList.add("hidden");
+    lastName.setCustomValidity("");
   } else {
     lastErrorMsg.classList.remove("hidden");
+    lastName.setCustomValidity("Invalid field.");
   }
   return isLastNameValid;
 }
 
 /**Check email */
 function checkemailValid() {
-  let emailValid = document.getElementById("email").value;
+  let emailValid = document.getElementById("email");
   let regExMail =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-  let $emailErrorMsg = document.querySelector(".emailErrorMsg");
-  let isEmailValid = regExMail.test(emailValid);
+  let emailErrorMsg = document.querySelector(".emailErrorMsg");
+  let isEmailValid = regExMail.test(emailValid.value);
 
   if (isEmailValid) {
     emailErrorMsg.classList.add("hidden");
+    emailValid.setCustomValidity("");
   } else {
     emailErrorMsg.classList.remove("hidden");
+    emailValid.setCustomValidity("Invalid field.");
   }
   return isEmailValid;
 }
 
 /**Check birthday */
 function checkbirthValid() {
-  let birthValid = document.getElementById("birthdate").value;
-  //var dateControl = document.querySelector('input[type="datetime-local"');
-  // calculez data inferiuoara de ziua de azi
-  const regExAge = /(19\d\d|20[0-3])(-\d\d){2}/;
+  let birthValid = document.getElementById("birthdate");
+  let validDate = Date.parse(birthValid.value);
+  let isDateValid = validDate < Date.now();
   const ageErrorMsg = document.querySelector(".ageErrorMsg");
-  const isDateValid = regExAge.test(birthValid);
-
   if (isDateValid) {
     ageErrorMsg.classList.add("hidden");
+    birthValid.setCustomValidity("");
   } else {
     ageErrorMsg.classList.remove("hidden");
+    birthValid.setCustomValidity("Invalid field.");
   }
   return isDateValid;
 }
 
 /**Check quantityCity */
 function checkquantityTournaments() {
-  let quantityTournaments = document.getElementById("quantity").value;
+  let quantityTournaments = document.getElementById("quantity");
   const tournamentErrorMsg = document.querySelector(".tournamentErrorMsg");
-  const isTournamentNumberIsValid = quantityTournaments.length > 0;
+  const isTournamentNumberIsValid = quantityTournaments.value.length > 0;
 
   if (isTournamentNumberIsValid) {
     tournamentErrorMsg.classList.add("hidden");
+    quantityTournaments.setCustomValidity("");
   } else {
     tournamentErrorMsg.classList.remove("hidden");
+    quantityTournaments.setCustomValidity("Invalid field.");
   }
   return isTournamentNumberIsValid;
 }
@@ -136,13 +147,15 @@ function checkBoxCity() {
   const CityRadiosErrorMsg = document.querySelector(".CityRadiosErrorMsg");
   let isCityRadiosNumberValid = false;
 
-  for (let i = 0; i < $cityRadios.length; i++) {
+  for (let i = 0; i < cityRadios.length; i++) {
     if (cityRadios[i].checked) {
       CityRadiosErrorMsg.classList.add("hidden");
       isCityRadiosNumberValid = true;
+      cityRadios.setCustomValidity("");
       break;
     } else {
       CityRadiosErrorMsg.classList.remove("hidden");
+      cityRadios.setCustomValidity("Invalid field.");
     }
   }
   return isCityRadiosNumberValid;
