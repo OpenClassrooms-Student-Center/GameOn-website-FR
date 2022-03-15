@@ -179,7 +179,7 @@ main {
   font-size: 16px;
 }
 
-.bground {
+.bground{
   display: none;
   position: fixed;
   z-index: 1;
@@ -203,6 +203,16 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+}
+
+.content-thank{
+height: 694.93px;
+}
+
+.text-thank{
+text-align: center;
+padding-bottom: 285px;
+padding-top: 200px;
 }
 
 .modal-body {
