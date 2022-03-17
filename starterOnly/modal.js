@@ -42,6 +42,7 @@ document.getElementById("closethanks").addEventListener("click", function () {
   modalbg.style.display = "none";
 });
 
+// Dedicated functions to check the form validity, validation de la form
 function validate() {
   let valid = true;
   valid = valid && checkFirstName();
@@ -49,15 +50,13 @@ function validate() {
   valid = valid && checkemailValid();
   valid = valid && checkbirthValid();
   valid = valid && checkquantityTournaments();
-  //valid = valid && checkBoxCity();
+  valid = valid && checkBoxCity();
   if (valid) {
     modalbg.style.display = "none";
     thankBg.style.display = "block";
-    //document.querySelector("input").style.borderColor = "#FF0000";
   }
   return false;
 }
-// Dedicated functions to check the form validity, validation de la form
 
 /** Check if the first name lenght is equal or upper than 2 and return a boolean */
 function checkFirstName() {
@@ -143,24 +142,15 @@ function checkquantityTournaments() {
 
 /**Check RadioCity */
 function checkBoxCity() {
-  const cityRadios = document.querySelectorAll("#city-radios .checkbox-input");
+  //récupére tous les boutons radios en fonction de leur attribut name, qui est identique
+  let selectedCheckbox = document.querySelector("input[name=location]:checked");
   const cityRadiosErrorMsg = document.querySelector(".CityRadiosErrorMsg");
-  //let isCityRadiosNumberValid = false;
-  //let = valeur;
 
-  //écupére tous les boutons radios en fonction de leur attribut name, qui est identique
-  let valeur = document.querySelector("input[name=location]:checked").value;
-
-  for (let i = 0; i < cityRadios.length; i++) {
-    if (cityRadios[i].checked) {
-      valeur = cityRadios[i].value;
-      cityRadiosErrorMsg.classList.add("hidden");
-      //isCityRadiosNumberValid = true;
-      cityRadios.setCustomValidity("Invalid field.");
-    } else {
-      cityRadiosErrorMsg.classList.remove("hidden");
-      cityRadios.setCustomValidity("");
-    }
+  if (selectedCheckbox != null) {
+    return true;
+  } else {
+    //ajoute le message d'erreur
+    cityRadiosErrorMsg.classList.remove("hidden");
+    return false;
   }
-  return isCityRadiosNumberValid;
 }
