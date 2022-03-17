@@ -51,6 +51,7 @@ function validate() {
   valid = valid && checkbirthValid();
   valid = valid && checkquantityTournaments();
   valid = valid && checkBoxCity();
+  valid = valid && caseErrorMsg();
   if (valid) {
     modalbg.style.display = "none";
     thankBg.style.display = "block";
@@ -151,6 +152,22 @@ function checkBoxCity() {
   } else {
     //ajoute le message d'erreur
     cityRadiosErrorMsg.classList.remove("hidden");
+    return false;
+  }
+}
+
+/**Check RadioCity */
+function caseErrorMsg() {
+  console.log("intrat in functie");
+  let selectedCase = document.querySelector("input[name=condition]:checked");
+  const radiosErrorMsg = document.querySelector(".errorMsg");
+
+  if (selectedCase != null) {
+    console.log("este selectat");
+    radiosErrorMsg.classList.add("hidden");
+    return true;
+  } else {
+    radiosErrorMsg.classList.remove("hidden");
     return false;
   }
 }
