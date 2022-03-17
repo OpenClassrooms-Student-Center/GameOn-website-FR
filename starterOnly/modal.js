@@ -144,17 +144,16 @@ function checkquantityTournaments() {
 /**Check RadioCity */
 function checkBoxCity() {
   const cityRadios = document.querySelectorAll("#city-radios .checkbox-input");
-  const CityRadiosErrorMsg = document.querySelector(".CityRadiosErrorMsg");
+  const cityRadiosErrorMsg = document.querySelector(".CityRadiosErrorMsg");
   let isCityRadiosNumberValid = false;
 
   for (let i = 0; i < cityRadios.length; i++) {
     if (cityRadios[i].checked) {
-      CityRadiosErrorMsg.classList.add("hidden");
+      cityRadiosErrorMsg.classList.add("hidden");
       isCityRadiosNumberValid = true;
       cityRadios.setCustomValidity("");
-      break;
     } else {
-      CityRadiosErrorMsg.classList.remove("hidden");
+      cityRadiosErrorMsg.classList.remove("hidden");
       cityRadios.setCustomValidity("Invalid field.");
     }
   }
