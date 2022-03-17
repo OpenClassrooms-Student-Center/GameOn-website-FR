@@ -49,7 +49,7 @@ function validate() {
   valid = valid && checkemailValid();
   valid = valid && checkbirthValid();
   valid = valid && checkquantityTournaments();
-  valid = valid && checkBoxCity();
+  //valid = valid && checkBoxCity();
   if (valid) {
     modalbg.style.display = "none";
     thankBg.style.display = "block";
@@ -145,16 +145,21 @@ function checkquantityTournaments() {
 function checkBoxCity() {
   const cityRadios = document.querySelectorAll("#city-radios .checkbox-input");
   const cityRadiosErrorMsg = document.querySelector(".CityRadiosErrorMsg");
-  let isCityRadiosNumberValid = false;
+  //let isCityRadiosNumberValid = false;
+  //let = valeur;
+
+  //écupére tous les boutons radios en fonction de leur attribut name, qui est identique
+  let valeur = document.querySelector("input[name=location]:checked").value;
 
   for (let i = 0; i < cityRadios.length; i++) {
     if (cityRadios[i].checked) {
+      valeur = cityRadios[i].value;
       cityRadiosErrorMsg.classList.add("hidden");
-      isCityRadiosNumberValid = true;
-      cityRadios.setCustomValidity("");
+      //isCityRadiosNumberValid = true;
+      cityRadios.setCustomValidity("Invalid field.");
     } else {
       cityRadiosErrorMsg.classList.remove("hidden");
-      cityRadios.setCustomValidity("Invalid field.");
+      cityRadios.setCustomValidity("");
     }
   }
   return isCityRadiosNumberValid;
