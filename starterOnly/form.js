@@ -1,5 +1,5 @@
-//Global Form Validation
-const form = document.querySelector("form");
+import { closeModal } from './modal.js';
+import { thanks } from './modal.js';
 
 // First name not null and at least 2 char
 function firstValidation() {
@@ -60,9 +60,9 @@ function emailValidation() {
 
 // Valid birthdate
 function birthdateValidation() {
-	const regex = /(19\d\d|200[0-4])\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
+	const regex = /(19\d\d|200[0-4])-(0[1-9]|1[012])-(0[1-9]|[12][0-9]|3[01])$/;
 	const inputValue = document.getElementById("birthdate").value;
-	bool = regex.test(inputValue);
+	let bool = regex.test(inputValue);
 	if (bool) {
 		const elt = document.getElementById("birthdate-error");
 		elt.style.display = "none";

@@ -1,16 +1,9 @@
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
+const navBtn = document.querySelectorAll(".nav-btn");
+const navMenu = document.getElementById("nav-responsive");
 
 // Listener for closing the modal
 const closeBtn = document.querySelector(".close");
@@ -18,6 +11,25 @@ const bgModal = document.querySelector(".bground");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+navBtn.forEach((btn) => btn.addEventListener("click", navModal));
+
+// Boolean to show or not the Nav menu
+let bool = 1;
+
+function navModal() {
+  console.log("test");
+  if (bool) {
+    navMenu.style.display = "block";
+    let element = document.getElementById("top-menu-id");
+    element.classList.add("top-menu");
+    bool = 0;
+  } else {
+    navMenu.style.display = "none";
+    let element = document.getElementById("top-menu-id");
+    element.classList.remove("top-menu");
+    bool = 1;
+  }
+}
 
 // Close modal event
 closeBtn.addEventListener("click", closeModal);
@@ -28,7 +40,7 @@ function launchModal() {
 }
 
 // close modal form
-function closeModal() {
+export function closeModal() {
   bgModal.style.display = "none";
 }
 
@@ -41,7 +53,7 @@ var modal = document.getElementById("myModal");
 var span = document.getElementsByClassName("close2")[0];
 
 // When the user clicks on the button, open the modal
-function thanks() {
+export function thanks() {
   modal.style.display = "block";
 }
 

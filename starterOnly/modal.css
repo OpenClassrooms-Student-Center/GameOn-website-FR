@@ -68,9 +68,15 @@ img {
 }
 
 @media screen and (max-width: 540px) {
-  .topnav a {
+  #nav-responsive {
     display: none;
   }
+
+  .top-menu {
+    position: relative;
+    top: -50px;
+  }
+
   .topnav a.icon {
     float: right;
     display: block;
