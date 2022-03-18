@@ -4,17 +4,16 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description"
-  content = "GameOn, spécialisée dans les conférences et les concours de jeux.">
+  <meta name="description" content="GameOn, spécialisée dans les conférences et les concours de jeux.">
   <title>Reservation</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <link rel="stylesheet" href="modal.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" />
-  <link rel="icon" type="image/png" sizes="16x16"  href="/images/favicon.PNG">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="theme-color" content="#ffffff">
- 
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.PNG">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+
 </head>
 
 <body>
@@ -63,7 +62,7 @@
         <div class="content">
           <span class="close" id="closeform"></span>
           <div class="modal-body">
-            <form novalidate name="reserve" action="index.html" method="get" class="registrationForm"
+            <form novalidate id="reserve" action="index.html" method="get" class="registrationForm"
               onsubmit="return validate();">
               <div class="formData">
                 <label>Prénom</label><br>
@@ -72,7 +71,7 @@
               </div>
               <div class="formData">
                 <label>Nom</label><br>
-                <input class="text-control" type="text" id="last" name="last"/><br>
+                <input class="text-control" type="text" id="last" name="last" /><br>
                 <span class="msg hidden lastErrorMsg">Veuillez entrer 2 caractères ou plus pour le champ du nom</span>
               </div>
               <div class="formData">
@@ -84,17 +83,17 @@
               </div>
               <div class="formData">
                 <label>Date de naissance</label><br>
-                <input class="text-control" type="date" id="birthdate" name="birthdate"  /><br>
+                <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
                 <span class="msg hidden ageErrorMsg">Veuillez entrer une date inferieure à aujourd'hui</span>
               </div>
               <div class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" >
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
                 <span class="msg hidden tournamentErrorMsg">Vous devez choisir une option.</span>
               </div>
               <label class="text-label">A quel tournoi souhaitez-vous participer cette année ?</label>
               <div class="formData" id="city-radios">
-                <input class="checkbox-input" type="radio" id="location1" name="location" value="New York"/>
+                <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
                   New York</label>
@@ -122,9 +121,9 @@
               </div>
 
               <div class="formData">
-                <input class="checkbox-input" type="checkbox" id="checkbox1" name ="condition" checked />
+                <input class="checkbox-input" type="checkbox" name="condition" id="checkbox1" />
                 <label class="checkbox2-label" for="checkbox1">
-                  <span class="checkbox-icon"></span>
+                  <span class="checkbox-icon condition"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>

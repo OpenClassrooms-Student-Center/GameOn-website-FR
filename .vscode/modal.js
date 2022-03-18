@@ -10,6 +10,8 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn"); // bouton j'imscrit
+const formData = document.querySelectorAll(".formData");
+const formBtn = document.querySelector(".inscription");
 const thankBtn = document.querySelectorAll(".thank-btn"); //bouton du modal merci "fermer"
 const thankBg = document.querySelector(".bground-thank"); //modal merci
 const registrationForm = document.querySelector(".registrationForm"); //validation
@@ -32,13 +34,6 @@ document.getElementById("closeform").addEventListener("click", function () {
 document.querySelector(".button-thank").addEventListener("click", function () {
   thankBg.style.display = "none";
   modalbg.style.display = "none";
-  document.getElementById("reserve").reset();
-  //window.location.reload();
-});
-
-//add validate on clinck for checkbox2, condition
-document.querySelector("#checkbox1").addEventListener("change", function () {
-  caseErrorMsg();
 });
 
 // fermer thanks via croix
@@ -50,13 +45,13 @@ document.getElementById("closethanks").addEventListener("click", function () {
 // Dedicated functions to check the form validity, validation de la form
 function validate() {
   let valid = true;
-  valid = valid & checkFirstName();
-  valid = valid & checklastName();
-  valid = valid & checkemailValid();
-  valid = valid & checkbirthValid();
-  valid = valid & checkquantityTournaments();
-  valid = valid & checkBoxCity();
-  valid = valid & caseErrorMsg();
+  valid = valid && checkFirstName();
+  valid = valid && checklastName();
+  valid = valid && checkemailValid();
+  valid = valid && checkbirthValid();
+  valid = valid && checkquantityTournaments();
+  valid = valid && checkBoxCity();
+  valid = valid && caseErrorMsg();
   if (valid) {
     modalbg.style.display = "none";
     thankBg.style.display = "block";
@@ -68,8 +63,7 @@ function validate() {
 function checkFirstName() {
   const firstName = document.getElementById("first");
   const firstErrorMsg = document.querySelector(".firstErrorMsg");
-  const regPatern = /^[[A-Za-z\é\è\ê\ç\ë\à\-]{2,20}$/g;
-  const isFirstNameValid = regPatern.test(firstName.value);
+  const isFirstNameValid = firstName.value.trim().length >= 2;
 
   if (isFirstNameValid) {
     firstErrorMsg.classList.add("hidden");
@@ -85,10 +79,12 @@ function checkFirstName() {
 function checklastName() {
   let lastName = document.getElementById("last");
   const lastErrorMsg = document.querySelector(".lastErrorMsg");
-  const regPatern = /^[[A-Za-z\é\è\ê\ç\ë\à\-]{2,20}$/g;
+  //const LastNameValid = lastName.value.trim().length >= 2;
+  const regPatern = /^[A-Za-z\é\è\ê\ç\ë\-]+$/;
   let isLastNameValid = regPatern.test(lastName.value);
 
   if (isLastNameValid) {
+    console.log("aici e cortect");
     lastErrorMsg.classList.add("hidden");
     lastName.setCustomValidity("");
   } else {
@@ -155,7 +151,6 @@ function checkBoxCity() {
   const cityRadiosErrorMsg = document.querySelector(".CityRadiosErrorMsg");
 
   if (selectedCheckbox != null) {
-    cityRadiosErrorMsg.classList.add("hidden");
     return true;
   } else {
     //ajoute le message d'erreur
@@ -166,15 +161,13 @@ function checkBoxCity() {
 
 /**Check RadioCity */
 function caseErrorMsg() {
-  let selectedCase = document.querySelector("input[name=condition]");
+  let selectedCase = document.querySelector("input[name=condition]:checked");
   const radiosErrorMsg = document.querySelector(".errorMsg");
 
-  if (selectedCase.checked) {
+  if (selectedCase != null) {
     radiosErrorMsg.classList.add("hidden");
-    selectedCase.setCustomValidity("");
     return true;
   } else {
-    selectedCase.setCustomValidity("Invalid field.");
     radiosErrorMsg.classList.remove("hidden");
     return false;
   }
