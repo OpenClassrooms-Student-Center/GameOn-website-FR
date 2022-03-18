@@ -3,29 +3,43 @@ const form = document.querySelector("form");
 
 // First name not null and at least 2 char
 function firstValidation() {
+	let regex = /^[a-zA-Z ]{2,30}$/;
 	const inputValue = document.getElementById("first").value;
-	if (inputValue !== null && inputValue.length >= 2) {
-		const elt = document.getElementById("first-error");
-		elt.style.display = "none";
-		return true;
+	if (regex.test(inputValue)) {
+		if (inputValue !== null && inputValue.length >= 2) {
+			const elt = document.getElementById("first-error");
+			elt.style.display = "none";
+			return true;
+		} else {
+			const elt = document.getElementById("first-error");
+			elt.style.display = "block";
+			return false;
+		}
 	} else {
-		const elt = document.getElementById("first-error");
-		elt.style.display = "block";
-		return false;
+			const elt = document.getElementById("first-error");
+			elt.style.display = "block";
+			return false;
 	}
 }
 
 // Last name not null and at least 2 char
 function lastValidation() {
+	let regex = /^[a-zA-Z ]{2,30}$/;
 	const inputValue = document.getElementById("last").value;
-	if (inputValue !== null && inputValue.length >= 2) {
-		const elt = document.getElementById("last-error");
-		elt.style.display = "none";
-		return true;
+	if (regex.test(inputValue)) {
+		if (inputValue !== null && inputValue.length >= 2) {
+			const elt = document.getElementById("last-error");
+			elt.style.display = "none";
+			return true;
+		} else {
+			const elt = document.getElementById("last-error");
+			elt.style.display = "block";
+			return false;
+		}
 	} else {
-		const elt = document.getElementById("last-error");
-		elt.style.display = "block";
-		return false;
+			const elt = document.getElementById("last-error");
+			elt.style.display = "block";
+			return false;
 	}
 }
 
