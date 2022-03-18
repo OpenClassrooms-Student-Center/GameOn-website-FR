@@ -60,7 +60,7 @@ function emailValidation() {
 
 // Valid birthdate
 function birthdateValidation() {
-	const regex = /^(19|20)[0-9]{2}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
+	const regex = /(19\d\d|200[0-4])\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$/;
 	const inputValue = document.getElementById("birthdate").value;
 	bool = regex.test(inputValue);
 	if (bool) {
