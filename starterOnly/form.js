@@ -12,7 +12,7 @@ function firstValidation() {
 		const elt = document.getElementById("first-error");
 		elt.style.display = "block";
 		return false;
-		}
+	}
 }
 
 // Last name not null and at least 2 char
@@ -26,22 +26,22 @@ function lastValidation() {
 		const elt = document.getElementById("last-error");
 		elt.style.display = "block";
 		return false;
-		}
+	}
 }
 
 // Email in a valid format
 function emailValidation() {
-	const regex = /^([a-z0-9_\.-]+\@[\da-z\.-]+\.[a-z\.]{2,6})$/;
+	let regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 	const inputValue = document.getElementById("email").value;
 	if (regex.test(inputValue)) {
 		const elt = document.getElementById("email-error");
 		elt.style.display = "none";
 		return true;
-		} else {
-			const elt = document.getElementById("email-error");
-			elt.style.display = "block";
-			return false;
-		}
+	} else {
+		const elt = document.getElementById("email-error");
+		elt.style.display = "block";
+		return false;
+	}
 }
 
 // Valid birthdate
@@ -58,7 +58,7 @@ function birthdateValidation() {
 		elt.style.display = "block";
 		return false;
 	}
-} 
+}
 
 // Valid number
 function quantityValidation() {
@@ -68,11 +68,11 @@ function quantityValidation() {
 		const elt = document.getElementById("quantity-error");
 		elt.style.display = "none";
 		return true;
-		} else {
-			const elt = document.getElementById("quantity-error");
-			elt.style.display = "block";
-			return false;
-		}
+	} else {
+		const elt = document.getElementById("quantity-error");
+		elt.style.display = "block";
+		return false;
+	}
 }
 
 // One radio button is selected
@@ -92,16 +92,16 @@ function locationValidation() {
 
 // Checkbox value returned
 function checkboxValidation() {
-  const inputValue = document.getElementById("checkbox1").checked;
-	if (inputValue){
+	const inputValue = document.getElementById("checkbox1").checked;
+	if (inputValue) {
 		const elt = document.getElementById("check-error");
 		elt.style.display = "none";
 		return true;
-		} else {
-			const elt = document.getElementById("check-error");
-			elt.style.display = "block";
-			return false;
-		}
+	} else {
+		const elt = document.getElementById("check-error");
+		elt.style.display = "block";
+		return false;
+	}
 }
 
 document
@@ -112,7 +112,7 @@ document
 		isValid &= firstValidation();
 		isValid &= lastValidation();
 		isValid &= emailValidation();
-		isValid &= birthdateValidation(); 
+		isValid &= birthdateValidation();
 		isValid &= quantityValidation();
 		isValid &= locationValidation();
 		isValid &= checkboxValidation();
