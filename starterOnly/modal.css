@@ -157,6 +157,7 @@ main {
   font-size: 16px;
 }
 
+.bground1,
 .bground {
   display: none;
   position: fixed;
@@ -182,10 +183,29 @@ main {
   color: #fff;
   padding-top: 10px;
 }
-
+.content1 {
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
+}
+.modal-body1 {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.confirm1{
+  align-self: center;
+}
+.modal-btn1{
+  align-self: flex-end;
 }
 
 label {
@@ -215,7 +235,7 @@ input {
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  text-align: left;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -226,8 +246,8 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
+
+/* input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
@@ -252,6 +272,9 @@ input[data-error]::after {
   left: -30px;
   top: -1px;
   transition: 0.3s;
+}
+.no-bottom{
+  margin-bottom: 0px;
 }
 .checkbox-label .checkbox-icon::after,
 .checkbox2-label .checkbox-icon::after {
