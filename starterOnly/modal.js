@@ -7,7 +7,10 @@ function editNav() {
   }
 }
 
-// DOM Elements
+/* Les elements DOM
+ *
+ *
+ */
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn"); // bouton j'imscrit
 const thankBtn = document.querySelectorAll(".thank-btn"); //bouton du modal merci "fermer"
@@ -23,17 +26,22 @@ function launchModal() {
   thankBg.style.display = "none";
 }
 
-//fermer la croix de la fenetre du formulaire
+/* Les elements DOM
+ *@param{span} closeform - Le span qui va fermer la croix de la fenetre du formulaire
+ *
+ */
 document.getElementById("closeform").addEventListener("click", function () {
   modalbg.style.display = "none";
 });
 
-// fermer thanks via "fermer"
+/* Les elements DOM
+ *@param{bouton} button-thank - Le bouton qui va fermer "thanks" via "fermer"
+ *
+ */
 document.querySelector(".button-thank").addEventListener("click", function () {
   thankBg.style.display = "none";
   modalbg.style.display = "none";
   document.getElementById("reserve").reset();
-  //window.location.reload();
 });
 
 //add validate on clinck for checkbox2, condition
@@ -47,7 +55,7 @@ document.getElementById("closethanks").addEventListener("click", function () {
   modalbg.style.display = "none";
 });
 
-// Dedicated functions to check the form validity, validation de la form
+// La fonction dedié pour la validation de la form
 function validate() {
   let valid = true;
   valid = valid & checkFirstName();
@@ -64,7 +72,7 @@ function validate() {
   return false;
 }
 
-/** Check if the first name lenght is equal or upper than 2 and return a boolean */
+/**  La verification et validation du Prenom  FirstName , la longeur min 2 caracteres, sans caracteres speciaux, les accents accepteés, la fonction return un boolean */
 function checkFirstName() {
   const firstName = document.getElementById("first");
   const firstErrorMsg = document.querySelector(".firstErrorMsg");
@@ -76,7 +84,8 @@ function checkFirstName() {
     firstName.setCustomValidity("");
   } else {
     firstErrorMsg.classList.remove("hidden");
-    firstName.setCustomValidity("Invalid field."); //transform in the invalid input, for css
+    //la transformation in input invalid, pour activer les styles du css, qui va colorer le background du input
+    firstName.setCustomValidity("Invalid field.");
   }
   return isFirstNameValid;
 }
