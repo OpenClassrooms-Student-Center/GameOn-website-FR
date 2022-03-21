@@ -14,7 +14,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -30,28 +29,25 @@ img {
   padding-right: 1rem;
 }
 
+/* HEADER */
+
 .topnav {
-  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
   margin: 3.5%;
 }
-.header-logo {
-    float: left;
-}
 .main-navbar {
-    float: right;
+  display: flex;
 }
 .topnav a {
-  float: left;
-  display: block;
   color: #000000;
   text-align: center;
-  padding: 12px 12px;
+  padding: 12px;
   margin: 5px;
   text-decoration: none;
   font-size: 20px;
   font-family: Roboto, sans-serif;
 }
-
 .topnav a:hover {
   background-color: #ff0000;
   color: #ffffff;
@@ -68,38 +64,46 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
+@media screen and (min-width: 826px) and (max-width: 1110px) {
+  .topnav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .header-logo {
+    margin-bottom: 20px;
   }
 }
 
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
+@media screen and (max-width: 825px) {
+  .topnav a {
+    display: none;
+  }
+  .topnav a.icon {
+    display: flex;
     position: absolute;
     right: 0;
     top: 0;
+  }
+  .topnav {
+    position: relative;
   }
   .topnav.responsive a {
     float: none;
     display: block;
     text-align: left;
   }
-}
-
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
+  .main-navbar {
+    flex-direction: column;
   }
-} 
+}
+@media screen and (max-width: 545px) {
+  .topnav {
+    flex-direction: column;
+  }
+  .header-logo {
+    margin-bottom: 20px;
+  }
+}
 
 main {
   font-size: 130%;
@@ -111,8 +115,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -226,12 +228,6 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -322,7 +318,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-close-form {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -420,7 +417,6 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -478,7 +474,7 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 1000px) {
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -497,10 +493,12 @@ footer {
   .hero-headline {
     font-size: 4.5rem;
     white-space: normal;
+    text-align: center;
   }
   .hero-text {
     width: unset;
     font-size: 1.5rem;
+    text-align: center;
   }
   .hero-img img {
     border-radius: 10px;
@@ -516,7 +514,18 @@ footer {
     text-align: center;
   }
 }
-
+@media screen and (max-width: 500px) {
+  .hero-headline {
+    font-size: 2.5rem;
+  }
+  .hero-text {
+    display: none;
+  }
+  img {
+    width: 13rem;
+    padding-top: 0.25rem;
+  }
+}
 @keyframes modalopen {
   from {
     opacity: 0;
@@ -527,3 +536,26 @@ footer {
   }
 }
 
+.error-alert-message {
+  color: red;
+  font-size: 14px;
+}
+
+/* Validation du formulaire */
+.validation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 680px;
+}
+.validation-container {
+  display: none;
+}
+
+.btn-close-form {
+  position: relative;
+  top: 15rem;
+}
+
+/* Burger Menu */
