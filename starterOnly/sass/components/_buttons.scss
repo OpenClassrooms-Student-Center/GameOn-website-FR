@@ -1,30 +1,42 @@
-button, .button {
-  background: #fe142f;
+@use "../abstracts" as a;
+
+button,
+.button {
+  background: a.$primary;
   margin-top: 0.5em;
   padding: 1em;
   color: #fff;
   border-radius: 15px;
   cursor: pointer;
-  font-size: 16px;  
+  font-size: 16px;
   border: none;
   &:hover {
-    background: #3876ac;
+    background: a.$secondary;
   }
 }
 
-.btn-submit,
-.btn-signup {
+.btn-submit {
   display: block;
   margin: auto;
   border-radius: 7px;
-  font-size: 1rem;
   border: none;
+  font-size: 1.3rem;
+  padding: 15px 23px;
+  margin-top: 20px;
+
 }
 .modal-btn {
-  font-size: 145%;
-  background: #fe142f;
+  font-size: 25px;
   display: flex;
-  margin: auto;
-  padding: 0.75rem 2.5rem;
+  padding: 1rem 2.5rem;
   border-radius: 1rem;
+  @include a.tablette-only {
+    font-size: 18px;
+    position: absolute;
+    bottom: -540px;
+    margin: auto;
+  }
+  @include a.mobile-only {
+    bottom: -340px;
+  }
 }

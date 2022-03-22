@@ -1,7 +1,9 @@
+@use '../abstracts' as a;
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.6em;
-  color: #fe142f;
+  color: a.$primary;
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
@@ -9,6 +11,9 @@
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
+  @include a.mobile-only {
+    font-size: 0.5em; 
+  }
 }
 
 .formData[data-error-visible="true"]::after {
@@ -16,7 +21,7 @@
 }
 
 .formData[data-error-visible="true"] .text-control {
-  border: 2px solid #fe142f;
+  border: 2px solid a.$primary;
   transform: scale(1.02);
 }
 

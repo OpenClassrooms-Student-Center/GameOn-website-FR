@@ -1,4 +1,3 @@
-// DOM elements -- representation objet des données qui composent la structure et le contenu d'un document sur le web
 const modalForm = document.querySelector(".bground");
 const modalContent = document.querySelector(".content");
 const modalConfirmBtn = document.querySelector(".confirm-modal-btn");
@@ -12,170 +11,98 @@ const quantityInput = document.getElementById("quantity");
 const locationInput = document.querySelectorAll(".checkbox-input[type=radio]");
 const checkboxInput = document.getElementById("checkbox1");
 const detailsModal = document.querySelector(".confirm_modal");
+const modalbg = document.querySelector(".bground");
+const Comfirm = document.querySelector('.thank');
 
-// constante messages d'erreurs -- la valeur d'une constante ne peut pas être modifiée
 const errorMessages = {
-	lastName: "Veuillez entrer un nom comportant 2 caractères ou plus.",
-	firstName: "Veuillez entrer un prénom comportant 2 caractères ou plus.",
-	email: "Veuillez entrer une adresse email valide.",
-	birthdate: "Veuillez entrer une date de naissance valide.",
-	quantity: "Veuillez entrer un nombre valide.",
-	location: "Veuillez choisir une ville.",
-	checkbox: "Veuillez accepter les conditions d'utilisations.",
+  lastName: "Veuillez entrer un nom comportant 2 caractères ou plus.",
+  firstName: "Veuillez entrer un prénom comportant 2 caractères ou plus.",
+  email: "Veuillez entrer une adresse email valide.",
+  birthdate: "Veuillez entrer une date de naissance valide.",
+  quantity: "Veuillez entrer un nombre valide.",
+  location: "Veuillez choisir une ville.",
+  checkbox: "Veuillez accepter les conditions d'utilisations.",
 };
-//invalid alert
-function isInvalid(element, message) {
-	// parentNode renvoie le parent du nœud spécifié
-	let target = element.parentNode;
-    
-    // Ajoute un nouvel attribut ou change la valeur d'un attribut existant pour l'élément spécifié.
-	target.setAttribute("data-error-visible", true);
-	target.setAttribute("data-error", message);
-	//start function invalidAnimation
-	invalidAnimation();
-}
-// animation quand le formulaire est invalide
-function invalidAnimation() {
-	//ajout de la class content_animated_invalid
-	modalContent.classList.add('content_animated_invalid');
-}
-// function formulaire valide
-function isValid() {
-	// Appel la function getConfirm() 
-	getConfirm();
-	// Modal disparait
-	modalForm.style.display = "none";
+
+function validateInput() {
+  let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(
+    emailInput.value
+  );
+  let qtyRegex = /^[0-9]+$/.test(quantityInput.value);
+  let FirstNameRegex = /^[A-Za-z]{2}/.test(firstNameInput.value);
+  let lastNameRegex = /^[A-Za-z]{2}/.test(lastNameInput.value);
+  let dateRegex = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/.test(
+    birthdateInput.value
+  );
+  let locaValue = document.querySelectorAll(
+    ".checkbox-input[type=radio]:checked"
+  );
+  let locaInput = document.getElementById('location1');
+  
+  // si ma variable FirstNameRegex et egale a faux alors return false et affiche erreur
+  if (FirstNameRegex == false) {
+    firstNameInput.parentNode.setAttribute("data-error-visible", true);
+    firstNameInput.parentNode.setAttribute(
+      "data-error",
+      errorMessages.firstName
+    );
+    return false;
+  }
+  // si ma variable LastNameRegex et egale a faux alors return false et affiche erreur
+  if (lastNameRegex == false) {
+    lastNameInput.parentNode.setAttribute("data-error-visible", true);
+    lastNameInput.parentNode.setAttribute("data-error", errorMessages.lastName);
+    return false;
+  }
+  // si ma variable emailRegex et egale a faux alors return false et affiche erreur
+  if (emailRegex == false) {
+    emailInput.parentNode.setAttribute("data-error-visible", true);
+    emailInput.parentNode.setAttribute("data-error", errorMessages.email);
+    return false;
+  }
+  // si ma variable locaValue et egale a 0 alors return false et affiche erreur
+  if (locaValue.length == 0) {
+    locaInput.parentNode.setAttribute("data-error-visible", true);
+    locaInput.parentNode.setAttribute("data-error", errorMessages.location);
+    return false;
+  } 
+  // si ma variable atyRegex et egale a faux alors return false et affiche erreur
+  if (qtyRegex == false) {
+    quantityInput.parentNode.setAttribute("data-error-visible", true);
+    quantityInput.parentNode.setAttribute("data-error", errorMessages.quantity);
+    return false;
+  }
+  // si ma variable dateRegex et egale a faux alors return false et affiche erreur
+  if (dateRegex == false) {
+    birthdateInput.parentNode.setAttribute("data-error-visible", true);
+    birthdateInput.parentNode.setAttribute(
+      "data-error",
+      errorMessages.birthdate
+    );
+    return false;
+    // Sinon return True
+  } else return true;
 }
 
-// Function getConfirm
-function getConfirm() {
-	// déclaration variables = recuperation de données saisie dans les inputs
-	let firstName = firstNameInput.value;
-	let lastName = lastNameInput.value;
-	let email = emailInput.value;
-	let birthdate = birthdateInput.value;
-	let quantity = quantityInput.value;
-	let city = locationInput.value;
-	// modal avec resumer des saisies
-	detailsModal.style.display ="block";
-	// récuperation du contenu des inputs afficher dans la modal
-	document.getElementById("data_firstName").innerHTML = "Nom : " + firstName;
-	document.getElementById("data_lastName").innerHTML = "Prénom : " + lastName;
-	document.getElementById("data_email").innerHTML = "email : " + email;
-	document.getElementById("data_birth").innerHTML = "date de naissance : " + birthdate;
-	document.getElementById("data_qty").innerHTML = "Nombre de tournois auquel vous avez participer :" + quantity;
-	document.getElementById("data_city"). innerHTML = "Ville dans la quelle vous souhaiter participer : " + city;
-}
-// toast formulaire envoyer.
-function launch_toast() {
-    let x = document.getElementById("toast")
-    x.className = "show";
-    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 5000);
-	detailsModal.style.display = "none";
-}
-//supprimer les alerts
-function removeAlerts() {
-	let invalidFields = document.querySelectorAll(
-		'.formData[data-error-visible="true"]'
-	);
-	for (let field of invalidFields) {
-		field.setAttribute("data-error-visible", false);
-		field.setAttribute("data-error", "");
-	}
-}
-
-// verification prenom
-function firstValidation() {
-	let inputValue = firstNameInput.value;
-	if (inputValue !== null && inputValue.length >= 2) return true;
-	else return false;
-}
-
-// verification nom de famille
-function lastValidation() {
-	let inputValue = lastNameInput.value;
-	if (inputValue !== null && inputValue.length >= 2) return true;
-	else return false;
-}
-
-//verification email
-function emailValidation() {
-	let regex = /^\S+@\S+\.\S+$/;
-	return regex.test(emailInput.value);
-}
-
-//verification naissance
-function birthdateValidation() {
-	let birthdate = new Date(birthdateInput.value);
-	let today = new Date();
-	if (birthdate.toString() !== "Invalid Date") {
-		if (
-			birthdate.getDate() >= today.getDate() &&
-			birthdate.getMonth() == today.getMonth() &&
-			birthdate.getFullYear() == today.getFullYear()
-		) {
-			return false;
-		} else {
-			return true;
-		}
-	} else {
-		return false;
-	}
-}
-
-// verification nombre
-function quantityValidation() {
-	let regex = /^[0-9]+$/;
-	return regex.test(quantityInput.value);
-}
-
-// verification localisation
-function locationValidation() {
-	for (let radio of locationInput) {
-		if (radio.checked === true) return true;
-	}
-	return false;
-}
-
-//verification checkbox
-function checkboxValidation() {
-	return checkboxInput.checked;
-}
-
-// verification globale
 function validate(event) {
-	event.preventDefault();
-	let isValidInput = true;
-	removeAlerts();
-	if (!firstValidation()) {
-		isValidInput = false;
-		isInvalid(firstNameInput, errorMessages.firstName);
-	}
-	if (!lastValidation()) {
-		isValidInput = false;
-		isInvalid(lastNameInput, errorMessages.lastName);
-	}
-	if (!emailValidation()) {
-		isValidInput = false;
-		isInvalid(emailInput, errorMessages.email);
-	}
-	if (!birthdateValidation()) {
-		isValidInput = false;
-		isInvalid(birthdateInput, errorMessages.birthdate);
-	}
-	if (!quantityValidation()) {
-		isValidInput = false;
-		isInvalid(quantityInput, errorMessages.quantity);
-	}
-	if (!locationValidation()) {
-		isValidInput = false;
-		isInvalid(locationInput, errorMessages.location);
-	}
-	if (!checkboxValidation()) {
-		isValidInput = false;
-		isInvalid(checkboxInput, errorMessages.checkbox);
-	}
-	if (isValidInput) {
-		isValid();
-	}
+  // Ne recharge pas 
+  event.preventDefault();
+  // variable -> input avec erreur
+  let invalidFields = document.querySelectorAll(
+    '.formData[data-error-visible="true"]'
+  );
+  // pour chaque input invalid qui devient valid retire l'erreur
+  for (let field of invalidFields) {
+    field.setAttribute("data-error-visible", false);
+    field.setAttribute("data-error", "");
+  }
+  // Si retourne faux alors lancer animation
+  if (!validateInput() !== false) {
+    modalContent.classList.add("content_animated_invalid");
+  }
+  // Si retourne vraix alors affiche confirmation et form reset
+  if (!validateInput() !== true) {
+    Comfirm.style.transform = 'scale(1)';
+    form.reset();
+  }
 }
