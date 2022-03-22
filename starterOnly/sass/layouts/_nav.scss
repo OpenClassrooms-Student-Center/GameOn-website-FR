@@ -1,0 +1,67 @@
+@use "../abstracts" as a;
+
+.topnav {
+  overflow: hidden;
+  margin: 3.5%;
+
+  .header-logo {
+    float: left;
+  }
+  .main-navbar {
+    float: right;
+
+    a {
+      float: left;
+      display: block;
+      color: #000000;
+      text-align: center;
+      padding: 12px 12px;
+      margin: 5px;
+      text-decoration: none;
+      font-size: 20px;
+      font-family: Roboto, sans-serif;
+      @include a.tablette-only {
+        display: none;
+      }
+
+      &:hover {
+        background-color: a.$primary;
+        color: #ffffff;
+        border-radius: 15px;
+      }
+    }
+
+    .active {
+      background-color: a.$primary;
+      color: #ffffff;
+      border-radius: 15px;
+    }
+
+    .icon {
+      display: none;
+      @include a.tablette-only {
+        float: right;
+        display: block;
+      }
+      @include a.mobile-only {
+        margin-top: -15px;
+      }
+    }
+  }
+}
+
+@include a.tablette-only {
+  .responsiv {
+    position: relative;
+    .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  }
+}
