@@ -3,40 +3,54 @@
 .topnav {
   overflow: hidden;
   margin: 3.5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  a {
-    color: #000000;
-    text-align: center;
-    padding: 12px 12px;
-    margin: 5px;
-    text-decoration: none;
-    font-size: 20px;
-    font-family: Roboto, sans-serif;
-    @include a.mobile-only {
-      display: none;
+
+  .header-logo {
+    float: left;
+  }
+  .main-navbar {
+    float: right;
+
+    a {
+      float: left;
+      display: block;
+      color: #000000;
+      text-align: center;
+      padding: 12px 12px;
+      margin: 5px;
+      text-decoration: none;
+      font-size: 20px;
+      font-family: Roboto, sans-serif;
+      @include a.tablette-only {
+        display: none;
+      }
+
+      &:hover {
+        background-color: a.$primary;
+        color: #ffffff;
+        border-radius: 15px;
+      }
     }
-    &:hover {
-      background-color: #ff0000;
+
+    .active {
+      background-color: a.$primary;
       color: #ffffff;
       border-radius: 15px;
     }
-  }
-  .active {
-    background-color: #ff0000;
-    color: #ffffff;
-    border-radius: 15px;
-  }
-  .icon {
-    display: none;
-    @include a.mobile-only {
-      display: block;
+
+    .icon {
+      display: none;
+      @include a.tablette-only {
+        float: right;
+        display: block;
+      }
+      @include a.mobile-only {
+        margin-top: -15px;
+      }
     }
   }
 }
 
-@include a.mobile-only {
+@include a.tablette-only {
   .responsiv {
     position: relative;
     .icon {

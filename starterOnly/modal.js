@@ -46,3 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+function validClose() {
+  let Comfirm = document.querySelector('.thank');
+  Comfirm.style.transform = 'scale(0)';
+}

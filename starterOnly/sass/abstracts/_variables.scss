@@ -2,7 +2,14 @@
 
 $font: "DM Sans", Arial, Helvetica, sans-serif;
 
+//-----Breakpoints
+
 $breakpoints: (
-    smartphone: 768px,
-    tablette: 992px,
+    smartphone: 540px,
+    tablette: 768px,
 );
+
+//-----Colors
+
+$primary: #fe142f;
+$secondary: #3876ac;

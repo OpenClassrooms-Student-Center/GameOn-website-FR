@@ -1,5 +1,6 @@
 @use "variables" as a;
 
+//------- responsiv
 @mixin mobile-only {
   @media screen and (max-width: map-get(a.$breakpoints, smartphone)) {
     @content;
@@ -10,6 +11,7 @@
     @content;
   }
 }
+//-----Animations 
 
 @mixin modalOpenAnimation {
   @keyframes modalopen {
