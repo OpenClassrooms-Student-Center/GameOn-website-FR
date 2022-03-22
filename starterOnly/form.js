@@ -38,7 +38,8 @@ function validateInput() {
     ".checkbox-input[type=radio]:checked"
   );
   let locaInput = document.getElementById('location1');
-
+  
+  // si ma variable FirstNameRegex et egale a faux alors return false et affiche erreur
   if (FirstNameRegex == false) {
     firstNameInput.parentNode.setAttribute("data-error-visible", true);
     firstNameInput.parentNode.setAttribute(
@@ -47,31 +48,31 @@ function validateInput() {
     );
     return false;
   }
-
+  // si ma variable LastNameRegex et egale a faux alors return false et affiche erreur
   if (lastNameRegex == false) {
     lastNameInput.parentNode.setAttribute("data-error-visible", true);
     lastNameInput.parentNode.setAttribute("data-error", errorMessages.lastName);
     return false;
   }
-
+  // si ma variable emailRegex et egale a faux alors return false et affiche erreur
   if (emailRegex == false) {
     emailInput.parentNode.setAttribute("data-error-visible", true);
     emailInput.parentNode.setAttribute("data-error", errorMessages.email);
     return false;
   }
-
+  // si ma variable locaValue et egale a 0 alors return false et affiche erreur
   if (locaValue.length == 0) {
     locaInput.parentNode.setAttribute("data-error-visible", true);
     locaInput.parentNode.setAttribute("data-error", errorMessages.location);
     return false;
   } 
-
+  // si ma variable atyRegex et egale a faux alors return false et affiche erreur
   if (qtyRegex == false) {
     quantityInput.parentNode.setAttribute("data-error-visible", true);
     quantityInput.parentNode.setAttribute("data-error", errorMessages.quantity);
     return false;
   }
-
+  // si ma variable dateRegex et egale a faux alors return false et affiche erreur
   if (dateRegex == false) {
     birthdateInput.parentNode.setAttribute("data-error-visible", true);
     birthdateInput.parentNode.setAttribute(
@@ -79,21 +80,27 @@ function validateInput() {
       errorMessages.birthdate
     );
     return false;
+    // Sinon return True
   } else return true;
 }
 
 function validate(event) {
+  // Ne recharge pas 
   event.preventDefault();
+  // variable -> input avec erreur
   let invalidFields = document.querySelectorAll(
     '.formData[data-error-visible="true"]'
   );
+  // pour chaque input invalid qui devient valid retire l'erreur
   for (let field of invalidFields) {
     field.setAttribute("data-error-visible", false);
     field.setAttribute("data-error", "");
   }
+  // Si retourne faux alors lancer animation
   if (!validateInput() !== false) {
     modalContent.classList.add("content_animated_invalid");
   }
+  // Si retourne vraix alors affiche confirmation et form reset
   if (!validateInput() !== true) {
     Comfirm.style.transform = 'scale(1)';
     form.reset();
