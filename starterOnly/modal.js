@@ -68,6 +68,7 @@ function validate() {
   if (valid) {
     modalbg.style.display = "none";
     thankBg.style.display = "block";
+    addFirstNameModal();
   }
   return false;
 }
@@ -187,4 +188,11 @@ function caseErrorMsg() {
     radiosErrorMsg.classList.remove("hidden");
     return false;
   }
+}
+
+/** Ajouter le prenom et email a la modale de remerciement */
+function addFirstNameModal() {
+  let firstName = document.getElementById("first");
+  let text = document.getElementById("firstNameMerci");
+  text.innerText = firstName.value;
 }
