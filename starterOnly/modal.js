@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalbg = document.querySelector(".bground");
   const modalBtn = document.querySelectorAll(".modal-btn");
   const modalCloseBtn = document.querySelectorAll(".close");
-  const keyCodes = { escape: 27 }
+  const keyCodes = 'Escape';
   
   const openModal = function () {
     modalbg.classList.add('openModal');
@@ -39,9 +39,10 @@ document.addEventListener("DOMContentLoaded", () => {
       closeModal();
     }
   });
+  
   // fermeture de la modal avec la touche echap
-  document.addEventListener("keydown", (e) => {
-    if (e.which === keyCodes.escape) {
+  document.addEventListener("keyup", (e) => {
+    if (e.key === keyCodes) {
       closeModal();
     }
   });
