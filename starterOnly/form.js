@@ -25,17 +25,19 @@ const errorMessages = {
 
 function validateInput() {
   let emailRegex = /^(\w[-\.]?)*@(\w[-]?)*(\.\w{2,3})$/.test(emailInput.value);
-  let qtyRegex = /^[0-9]*$/.test(quantityInput.value);
+  let qtyRegex = /^[\d]{1,}$/.test(quantityInput.value);
   // \w pour tout les charactère alphanumerique  et \d? pour chiffre possible ex: Jean-paul 2
-  let FirstNameRegex = /^[a-zA-Z]{2,}[-]?([\w]+)?([-\d])?/.test(firstNameInput.value);
-  let lastNameRegex = /^[a-zA-Z]{2,}[-]?([\w]+)?([-\d])?/.test(lastNameInput.value);
+  let FirstNameRegex = /^[a-zA-Z]{2,}[-]?([\w]+)?([-\d])?/.test(
+    firstNameInput.value
+  );
+  let lastNameRegex = /^[a-zA-Z]{2,}[-]?([\w]+)?([-\d])?/.test(
+    lastNameInput.value
+  );
   let dateRegex =
     /^((\d{4}|\d{2})-(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[0-1]))$|^((0[1-9]|1[0-9]|2[0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}|\d{2}))$/.test(
       birthdateInput.value
     );
-  
-  console.log(birthdateInput.value);
-  console.log(dateRegex);
+
   let locationValue = document.querySelector(
     ".checkbox-input[type=radio]:checked"
   );
@@ -69,15 +71,16 @@ function validateInput() {
     return false;
   }
   // si ma variable atyRegex et egale a faux alors return false et affiche erreur
-  if (qtyRegex === false) {
+
+  if (qtyRegex === false || qtyRegex === undefined) {
     quantityInput.parentNode.setAttribute("data-error-visible", true);
     quantityInput.parentNode.setAttribute("data-error", errorMessages.quantity);
     return false;
   }
-  if(!checkboxInput === checkboxInput.checked){
+  if (!checkboxInput === checkboxInput.checked) {
     checkboxInput.parentNode.setAttribute("data-error-visible", true);
     checkboxInput.parentNode.setAttribute("data-error", errorMessages.checkbox);
-    return false
+    return false;
   }
   // si ma variable dateRegex et egale a faux alors return false et affiche erreur
   if (dateRegex === false) {
@@ -101,14 +104,15 @@ function validate(event) {
   // pour chaque input invalid qui devient valid retire l'erreur
   for (let field of invalidFields) {
     field.setAttribute("data-error-visible", false);
+    field.setAttribute("data-valid-visible", true)
     field.setAttribute("data-error", "");
   }
   // Si retourne faux alors lancer animation
-  if (!validateInput() !== false) {
+  if (validateInput() === false) {
     modalContent.classList.add("content_animated_invalid");
   }
   // Si retourne vraix alors affiche confirmation et form reset
-  if (!validateInput() !== true) {
+  if (validateInput() === true) {
     Comfirm.style.transform = "scale(1)";
     form.reset();
   }
