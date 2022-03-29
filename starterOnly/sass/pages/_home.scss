@@ -14,7 +14,7 @@ main {
   border-radius: 2rem;
   text-align: justify;
   .hero-section {
-    min-height: 93vh;
+    min-height: 63vh;
     border-radius: 10px;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -24,7 +24,7 @@ main {
     @include a.tablette-only {
       display: block;
       box-shadow: unset;
-      min-height: 73vh;
+      min-height: 65vh;
     }
     .hero-content {
       padding: 51px 67px;
@@ -86,6 +86,10 @@ main {
         padding: 0;
         @include a.tablette-only {
           border-radius: 10px;
+          height: 45vh;
+        }
+        @include a.mobile-only {
+          height: 30vh;
         }
       }
     }

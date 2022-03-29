@@ -10,6 +10,9 @@
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
   transition: 1s;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   @include a.mobile-only {
     top: 65px;
     background-color: transparent;
