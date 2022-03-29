@@ -43,9 +43,6 @@
         float: right;
         display: block;
       }
-      @include a.mobile-only {
-        margin-top: -15px;
-      }
     }
   }
 }

@@ -70,11 +70,6 @@ img {
     display: block;
   }
 }
-@media screen and (max-width: 540px) {
-  .topnav .main-navbar .icon {
-    margin-top: -15px;
-  }
-}
 
 @media screen and (max-width: 768px) {
   .responsiv {

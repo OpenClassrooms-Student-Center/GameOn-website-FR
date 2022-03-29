@@ -6,18 +6,17 @@ function editNav() {
     x.className = "topnav";
   }
 }
-
 document.addEventListener("DOMContentLoaded", () => {
   const modalbg = document.querySelector(".bground");
   const modalBtn = document.querySelectorAll(".modal-btn");
   const modalCloseBtn = document.querySelectorAll(".close");
   const keyCodes = 'Escape';
   
-  const openModal = function () {
+  const openModal = () => {
     modalbg.classList.add('openModal');
     modalbg.classList.replace('closeModal', 'openModal' );
   };
-  const closeModal = function () {
+  const closeModal = () => {
     modalbg.classList.add('closeModal');
     modalbg.classList.replace('openModal', 'closeModal');
   };
@@ -51,4 +50,6 @@ document.addEventListener("DOMContentLoaded", () => {
 function validClose() {
   let Comfirm = document.querySelector('.thank');
   Comfirm.style.transform = 'scale(0)';
+  
 }
+

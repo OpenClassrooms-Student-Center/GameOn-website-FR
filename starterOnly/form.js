@@ -11,7 +11,7 @@ const quantityInput = document.getElementById("quantity");
 const locationInput = document.querySelectorAll(".checkbox-input[type=radio]");
 const checkboxInput = document.getElementById("checkbox1");
 const detailsModal = document.querySelector(".confirm_modal");
-const Comfirm = document.querySelector('.thank');
+const Comfirm = document.querySelector(".thank");
 
 const errorMessages = {
   lastName: "Veuillez entrer un nom comportant 2 caractères ou plus.",
@@ -24,23 +24,23 @@ const errorMessages = {
 };
 
 function validateInput() {
-  let emailRegex = /^(\w[-\.]?)*@(\w[-]?)*(\.\w{2,3})$/.test(
-    emailInput.value
-  );
-  let qtyRegex = /^[0-9]+$/.test(quantityInput.value);
+  let emailRegex = /^(\w[-\.]?)*@(\w[-]?)*(\.\w{2,3})$/.test(emailInput.value);
+  let qtyRegex = /^[0-9]*$/.test(quantityInput.value);
   // \w pour tout les charactère alphanumerique  et \d? pour chiffre possible ex: Jean-paul 2
-  let FirstNameRegex = /^[a-zA-Z]{2}([-\d])?$/.test(firstNameInput.value);
-  let lastNameRegex = /^[a-zA-Z]{2}([-\d])?$/.test(lastNameInput.value);
-  let dateRegex = /^(\d{4}(-)\d{2}(-)\d{2})$/.test(
-    birthdateInput.value
-  );
+  let FirstNameRegex = /^[a-zA-Z]{2,}[-]?([\w]+)?([-\d])?/.test(firstNameInput.value);
+  let lastNameRegex = /^[a-zA-Z]{2,}[-]?([\w]+)?([-\d])?/.test(lastNameInput.value);
+  let dateRegex =
+    /^((\d{4}|\d{2})-(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[0-1]))$|^((0[1-9]|1[0-9]|2[0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}|\d{2}))$/.test(
+      birthdateInput.value
+    );
+  
   console.log(birthdateInput.value);
   console.log(dateRegex);
   let locationValue = document.querySelector(
     ".checkbox-input[type=radio]:checked"
   );
-  let locaInput = document.getElementById('location1');
-  
+  let locaInput = document.getElementById("location1");
+
   // si ma variable FirstNameRegex et egale a faux alors return false et affiche erreur
   if (FirstNameRegex === false) {
     firstNameInput.parentNode.setAttribute("data-error-visible", true);
@@ -67,12 +67,17 @@ function validateInput() {
     locaInput.parentNode.setAttribute("data-error-visible", true);
     locaInput.parentNode.setAttribute("data-error", errorMessages.location);
     return false;
-  } 
+  }
   // si ma variable atyRegex et egale a faux alors return false et affiche erreur
   if (qtyRegex === false) {
     quantityInput.parentNode.setAttribute("data-error-visible", true);
     quantityInput.parentNode.setAttribute("data-error", errorMessages.quantity);
     return false;
+  }
+  if(!checkboxInput === checkboxInput.checked){
+    checkboxInput.parentNode.setAttribute("data-error-visible", true);
+    checkboxInput.parentNode.setAttribute("data-error", errorMessages.checkbox);
+    return false
   }
   // si ma variable dateRegex et egale a faux alors return false et affiche erreur
   if (dateRegex === false) {
@@ -87,7 +92,7 @@ function validateInput() {
 }
 
 function validate(event) {
-  // Ne recharge pas 
+  // Ne recharge pas
   event.preventDefault();
   // variable -> input avec erreur
   let invalidFields = document.querySelectorAll(
@@ -104,7 +109,7 @@ function validate(event) {
   }
   // Si retourne vraix alors affiche confirmation et form reset
   if (!validateInput() !== true) {
-    Comfirm.style.transform = 'scale(1)';
+    Comfirm.style.transform = "scale(1)";
     form.reset();
   }
 }
