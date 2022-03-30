@@ -1,0 +1,21 @@
+.sidebar {
+  position: fixed;
+  display: none;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 211px;
+  z-index: 1000;
+  transition-duration: 0.3s;
+  transform: translate3d(211px, 0, 0);
+  .sidebar-wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    height: calc(100% + 400px);
+    fill: #323a44;
+    z-index: -1;
+  }
+}
