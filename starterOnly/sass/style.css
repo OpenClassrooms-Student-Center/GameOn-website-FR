@@ -31,11 +31,32 @@ img {
   overflow: hidden;
   margin: 3.5%;
 }
+@media screen and (max-width: 992px) {
+  .topnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
 .topnav .header-logo {
   float: left;
 }
 .topnav .main-navbar {
   float: right;
+}
+@media screen and (max-width: 992px) {
+  .topnav .main-navbar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
 }
 .topnav .main-navbar a {
   float: left;
@@ -48,9 +69,11 @@ img {
   font-size: 20px;
   font-family: Roboto, sans-serif;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   .topnav .main-navbar a {
-    display: none;
+    color: #ffffff;
+    width: 90%;
+    cursor: pointer;
   }
 }
 .topnav .main-navbar a:hover {
@@ -58,22 +81,35 @@ img {
   color: #ffffff;
   border-radius: 15px;
 }
-.topnav .main-navbar .active {
+.topnav .closebtn {
+  display: none !important;
+}
+@media screen and (max-width: 992px) {
+  .topnav .closebtn {
+    display: block !important;
+  }
+}
+.topnav .active {
   background-color: #fe142f;
   color: #ffffff;
   border-radius: 15px;
 }
-.topnav .main-navbar .icon {
+.topnav .icon {
   display: none;
+  cursor: pointer;
 }
-@media screen and (max-width: 768px) {
-  .topnav .main-navbar .icon {
+@media screen and (max-width: 992px) {
+  .topnav .icon {
     float: right;
     display: block;
   }
 }
 
-@media screen and (max-width: 768px) {
+.openNav {
+  width: 250px !important;
+}
+
+@media screen and (max-width: 992px) {
   .responsiv {
     position: relative;
   }
@@ -140,7 +176,7 @@ button:hover,
   border-radius: 0.6rem;
   margin-top: 5rem;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   .modal-btn {
     font-size: 18px;
     position: absolute;
@@ -927,7 +963,7 @@ main .hero-section {
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   main .hero-section {
     display: block;
     box-shadow: unset;
@@ -942,7 +978,7 @@ main .hero-section .hero-content {
   position: relative;
   text-align: left;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   main .hero-section .hero-content {
     background: #fff;
     color: #000;
@@ -959,7 +995,7 @@ main .hero-section .hero-content::after {
   right: -80px;
   top: 0;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   main .hero-section .hero-content::after {
     content: unset;
   }
@@ -973,7 +1009,7 @@ main .hero-section .hero-content .hero-headline {
   font-weight: normal;
   white-space: nowrap;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   main .hero-section .hero-content .hero-headline {
     font-size: 2.2rem;
     white-space: normal;
@@ -985,7 +1021,7 @@ main .hero-section .hero-content .hero-text {
   margin-top: 57px;
   padding: 0;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   main .hero-section .hero-content .hero-text {
     width: unset;
     font-size: 1rem;
@@ -1003,7 +1039,7 @@ main .hero-section .hero-img img {
      object-fit: cover;
   padding: 0;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   main .hero-section .hero-img img {
     border-radius: 10px;
     height: 45vh;

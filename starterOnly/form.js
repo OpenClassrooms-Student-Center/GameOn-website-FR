@@ -18,24 +18,27 @@ const errorMessages = {
   firstName: "Veuillez entrer un prénom comportant 2 caractères ou plus.",
   email: "Veuillez entrer une adresse email valide.",
   birthdate: "Veuillez entrer une date de naissance valide.",
+  legalage: "Vous n'avez pas l'age requis",
   quantity: "Veuillez entrer un nombre valide.",
   location: "Veuillez choisir une ville.",
   checkbox: "Veuillez accepter les conditions d'utilisations.",
 };
 
 function validateInput() {
-  let emailRegex = /^(\w[-\.]?)*@[\w]{1,}(\.\w{2,3})$/.test(emailInput.value);
+  let birthdate = new Date(birthdateInput.value);
+  let today = new Date();
+  let emailRegex = /^(\w[-\.]?)*@[\w]{1,}(\.\w{2,3}){1,2}$/.test(
+    emailInput.value
+  );
   let qtyRegex = /^[\d]{1,}$/.test(quantityInput.value);
   // \w pour tout les charactère alphanumerique  et \d? pour chiffre possible ex: Jean-paul 2
-  let FirstNameRegex = /^[a-zA-Z]{2,}[-]?([\w]+)?([-\d])?/.test(
-    firstNameInput.value
-  );
-  let lastNameRegex = /^[a-zA-Z]{2,}[-]?([\w]+)?([-\d])?/.test(
-    lastNameInput.value
-  );
-  let dateRegex =
-    /^((\d{4}|\d{2})-(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[0-1]))$|^((0[1-9]|1[0-9]|2[0-9]|3[0-1])-(0[1-9]|1[0-2])-(\d{4}|\d{2}))$/.test(
-      birthdateInput.value
+  let FirstNameRegex =
+    /^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]{2,}[-]?([\w]+)?([-\d])?/.test(
+      firstNameInput.value
+    );
+  let lastNameRegex =
+    /^[a-zA-ZáàâäãåçéèêëíìîïñóòôöõúùûüýÿæœÁÀÂÄÃÅÇÉÈÊËÍÌÎÏÑÓÒÔÖÕÚÙÛÜÝŸÆŒ]{2,}[-]?([\w]+)?([-\d])?/.test(
+      lastNameInput.value
     );
 
   let locationValue = document.querySelector(
@@ -90,15 +93,10 @@ function validateInput() {
     checkboxInput.parentNode.setAttribute("data-error", errorMessages.checkbox);
     return false;
   }
-  // si ma variable dateRegex et egale a faux alors return false et affiche erreur
-  if (dateRegex === false) {
+  if (birthdate.getFullYear() >= today.getFullYear() - 10) {
     birthdateInput.parentNode.setAttribute("data-error-visible", true);
-    birthdateInput.parentNode.setAttribute(
-      "data-error",
-      errorMessages.birthdate
-    );
+    birthdateInput.parentNode.setAttribute("data-error", errorMessages.legalage);
     return false;
-    // Sinon return True
   } else return true;
 }
 
