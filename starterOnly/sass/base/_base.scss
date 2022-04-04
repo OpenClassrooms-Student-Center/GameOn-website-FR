@@ -1,0 +1,26 @@
+@use "../abstracts" as a;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: a.$font;
+  font-size: 18px;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+a {
+  text-decoration: none;
+}
+
+p {
+  padding: 0.5vw;
+}
+
+img {
+  padding-right: 1rem;
+}

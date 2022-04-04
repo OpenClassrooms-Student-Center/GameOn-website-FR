@@ -1,0 +1,89 @@
+@use "../abstracts" as a;
+
+.topnav {
+  overflow: hidden;
+  margin: 3.5%;
+  @include a.tablette-only {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header-logo {
+    float: left;
+  }
+  .main-navbar {
+    float: right;
+    @include a.tablette-only {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 5;
+      top: 0;
+      left: 0;
+      background-color: #111;
+      overflow-x: hidden;
+      transition: 0.5s;
+      padding-top: 60px;
+    }
+    a {
+      float: left;
+      display: block;
+      color: #000000;
+      text-align: center;
+      padding: 12px 12px;
+      margin: 5px;
+      text-decoration: none;
+      font-size: 20px;
+      font-family: Roboto, sans-serif;
+      @include a.tablette-only {
+        color: #ffffff;
+        width: 90%;
+        cursor: pointer;
+      }
+      &:hover {
+        background-color: a.$primary;
+        color: #ffffff;
+        border-radius: 15px;
+      }
+    }
+  }
+  .closebtn {
+    display: none !important;
+    @include a.tablette-only {
+      display: block !important;
+    }
+  }
+  .active {
+    background-color: a.$primary;
+    color: #ffffff;
+    border-radius: 15px;
+  }
+  .icon {
+    display: none;
+    cursor: pointer;
+    @include a.tablette-only {
+      float: right;
+      display: block;
+    }
+  }
+}
+
+.openNav {
+  width: 250px !important;
+}
+
+@include a.tablette-only {
+  .responsiv {
+    position: relative;
+    .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+  }
+}

@@ -1,0 +1,46 @@
+@use "../abstracts" as a;
+
+button,
+.button {
+  background: a.$primary;
+  margin-top: 0.5em;
+  padding: 1em;
+  color: #fff;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 16px;
+  border: none;
+  &:hover {
+    background: a.$secondary;
+  }
+}
+
+.btn-submit {
+  display: block;
+  margin: auto;
+  border-radius: 7px;
+  border: none;
+  font-size: 1.3rem;
+  padding: 15px 23px;
+  margin-top: 20px;
+
+}
+.modal-btn {
+  font-size: 25px;
+  padding: 1rem 2.5rem;
+  border-radius: 0.6rem;
+  margin-top: 35rem;
+  margin-left: 5rem;
+  position: absolute;
+  @include a.tablette-only {
+    font-size: 18px;
+    margin: 0;
+    bottom: 3rem;
+    left: 36%;
+
+  }
+  @include a.mobile-only{
+    left: 25%
+  }
+
+}

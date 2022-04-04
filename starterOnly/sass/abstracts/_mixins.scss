@@ -1,0 +1,73 @@
+@use "variables" as a;
+
+//------- responsiv
+@mixin mobile-only {
+  @media screen and (max-width: map-get(a.$breakpoints, smartphone)) {
+    @content;
+  }
+}
+@mixin tablette-only {
+  @media screen and (max-width: map-get(a.$breakpoints, tablette)) {
+    @content;
+  }
+}
+//-----Animations 
+
+@mixin modalOpenAnimation {
+  @keyframes modalopen {
+    from {
+      opacity: 0;
+      transform: translateY(-150px);
+    }
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+@mixin invalidAnimation {
+  @keyframes invalidFormAnimation {
+    0% {
+      transform: translate(20px, 0%);
+    }
+    20% {
+      transform: translate(-20px, 0%);
+    }
+    40% {
+      transform: translate(20px, 0%);
+    }
+    60% {
+      transform: translate(-20px, 0%);
+    }
+    80% {
+      transform: translate(20px, 0%);
+    }
+    100% {
+      transform: translate(0px, 0%);
+    }
+  }
+}
+
+@mixin closeModal {
+    @keyframes fade-out {
+        0% {
+            opacity: 1;
+            background-color: transparent;
+        }
+        50%{
+            transform: scale(1.1);
+            background-color: transparent;
+        }
+        70%{
+            opacity: 1;
+            background-color: transparent;
+        }
+        100% {
+            background-color: transparent;
+            transform: scale(0);
+            opacity: 0;
+            visibility: hidden;
+            display: none;
+        }
+    }
+}
