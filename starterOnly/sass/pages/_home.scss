@@ -14,7 +14,7 @@ main {
   border-radius: 2rem;
   text-align: justify;
   .hero-section {
-    min-height: 63vh;
+    min-height: 68vh;
     border-radius: 10px;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -24,7 +24,7 @@ main {
     @include a.tablette-only {
       display: block;
       box-shadow: unset;
-      min-height: 740px;
+      position: relative;
     }
     .hero-content {
       padding: 51px 67px;
@@ -59,6 +59,7 @@ main {
         font-size: 6rem;
         font-weight: normal;
         white-space: nowrap;
+        margin-top: 0;
         @include a.tablette-only {
           font-size: 2.2rem;
           white-space: normal;
@@ -89,11 +90,10 @@ main {
         padding: 0;
         @include a.tablette-only {
           border-radius: 10px;
-          height: 45vh;
+          height: 40vh;
+          margin-top: 1rem;
         }
-        @include a.mobile-only {
-          height: 30vh;
-        }
+
       }
     }
   }

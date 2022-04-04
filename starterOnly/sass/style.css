@@ -17,7 +17,6 @@ a {
 }
 
 p {
-  margin-bottom: 0;
   padding: 0.5vw;
 }
 
@@ -169,22 +168,23 @@ button:hover,
 
 .modal-btn {
   font-size: 25px;
-  display: flex;
   padding: 1rem 2.5rem;
   border-radius: 0.6rem;
-  margin-top: 5rem;
+  margin-top: 35rem;
+  margin-left: 5rem;
+  position: absolute;
 }
 @media screen and (max-width: 992px) {
   .modal-btn {
     font-size: 18px;
-    position: absolute;
-    bottom: -500px;
-    margin: auto;
+    margin: 0;
+    bottom: 3rem;
+    left: 36%;
   }
 }
 @media screen and (max-width: 540px) {
   .modal-btn {
-    bottom: -350px;
+    left: 25%;
   }
 }
 
@@ -953,7 +953,7 @@ main {
   text-align: justify;
 }
 main .hero-section {
-  min-height: 63vh;
+  min-height: 68vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -965,7 +965,7 @@ main .hero-section {
   main .hero-section {
     display: block;
     box-shadow: unset;
-    min-height: 740px;
+    position: relative;
   }
 }
 main .hero-section .hero-content {
@@ -1006,6 +1006,7 @@ main .hero-section .hero-content .hero-headline {
   font-size: 6rem;
   font-weight: normal;
   white-space: nowrap;
+  margin-top: 0;
 }
 @media screen and (max-width: 992px) {
   main .hero-section .hero-content .hero-headline {
@@ -1045,11 +1046,7 @@ main .hero-section .hero-img img {
 @media screen and (max-width: 992px) {
   main .hero-section .hero-img img {
     border-radius: 10px;
-    height: 45vh;
-  }
-}
-@media screen and (max-width: 540px) {
-  main .hero-section .hero-img img {
-    height: 30vh;
+    height: 40vh;
+    margin-top: 1rem;
   }
 }/*# sourceMappingURL=style.css.map */
