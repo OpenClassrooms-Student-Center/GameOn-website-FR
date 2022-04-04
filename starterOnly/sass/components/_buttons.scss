@@ -34,10 +34,10 @@ button,
   @include a.tablette-only {
     font-size: 18px;
     position: absolute;
-    bottom: -540px;
+    bottom: -460px;
     margin: auto;
   }
   @include a.mobile-only {
-    bottom: -276px;
+    bottom: -330px;
   }
 }

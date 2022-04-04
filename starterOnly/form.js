@@ -95,7 +95,10 @@ function validateInput() {
   }
   if (birthdate.getFullYear() >= today.getFullYear() - 10) {
     birthdateInput.parentNode.setAttribute("data-error-visible", true);
-    birthdateInput.parentNode.setAttribute("data-error", errorMessages.legalage);
+    birthdateInput.parentNode.setAttribute(
+      "data-error",
+      errorMessages.legalage
+    );
     return false;
   } else return true;
 }
