@@ -14,6 +14,7 @@ function closeNav() {
 }
 
 
+
 const opensidebar = document.querySelector('.openNav');
 const navbar = document.querySelector(".main-navbar");
 const modalbg = document.querySelector(".bground");
