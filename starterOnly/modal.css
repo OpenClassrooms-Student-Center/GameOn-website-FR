@@ -215,7 +215,7 @@ input {
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  text-align: left;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -332,6 +332,11 @@ input[data-error]::after {
   color: #fff;
   cursor: pointer;
   border: 0;
+}
+.validmessage{
+  max-width: 360px;
+  max-height: 600px;
+  margin: 70% 10%;
 }
 /* custom select styles */
 .custom-select {
@@ -526,4 +531,3 @@ footer {
     opacity: 1;
   }
 }
-

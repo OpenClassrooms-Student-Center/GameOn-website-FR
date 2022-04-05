@@ -19,7 +19,7 @@ const lastName = document.getElementById('last');
 const email = document.getElementById('email');
 const birthdate = document.getElementById('birthdate');
 const tournamentParticipation = document.getElementById('quantity');
-//const tournamentSelection = document.querySelectorAll('checkbox-input');
+const tournamentSelection = document.querySelectorAll('input[name="location"]');
 const conditionCheckBox = document.getElementById('checkbox1');
 
 
@@ -52,8 +52,11 @@ lastName.addEventListener("change", () => checkLastName());
 email.addEventListener("change", () => checkEmail());
 birthdate.addEventListener("change", () => checkBirthdate());
 tournamentParticipation.addEventListener("change", () => checkTournamentParticipation());
-//tournamentSelection.addEventListener("change", () =>checkTournamentSelection());
 conditionCheckBox.addEventListener("change", () =>checkconditionCheckBox());
+
+for (const tournamentSelected of tournamentSelection){
+  tournamentSelected.addEventListener('change', () => checkTournamentSelection());
+}
 
 //checking input 
 function checkFirstName(){
@@ -69,10 +72,10 @@ function checkFirstName(){
   else{
     formData[0].setAttribute("data-error-visible", "true");
     formData[0].setAttribute("data-error", "Veuillez entrer un prénom valide.");
-    return false;
-    
+    return false;    
   }
 }
+
 function checkLastName(){
   if (lastName.value.length == 0){
     formData[1].setAttribute("data-error-visible", "true");
@@ -89,6 +92,7 @@ function checkLastName(){
     return false;
   }
 }
+
 function checkEmail(){
   if (email.value.length == 0){
     formData[2].setAttribute("data-error-visible", "true");
@@ -105,6 +109,7 @@ function checkEmail(){
     return false;
   }
 }
+
 function checkBirthdate(){
   if(birthdate.value == 0){
     console.log('date vide')
@@ -113,7 +118,7 @@ function checkBirthdate(){
     return false;
   }
   else if (birthdate.value.match(birthdateReg)){
-    console.log('true')
+    console.log('date valide')
     formData[3].setAttribute("data-error-visible", "false");
     return true;
   }
@@ -124,16 +129,16 @@ function checkBirthdate(){
     return false;
   }
 }
+
 function checkTournamentParticipation(){
-  console.log(tournamentParticipation.value);
   if(tournamentParticipation.value === ''){
-    console.log('empty')
+    console.log(' tournament participation empty')
     formData[4].setAttribute("data-error-visible", "true");
-    formData[4].setAttribute("data-error", "Veuillez renseigner ce champ");
+    formData[4].setAttribute("data-error", "Veuillez entrer un nombre de participation valide.");
     return false;
   }
   else if (tournamentParticipation.value.match(numberReg)){
-    console.log('true')
+    console.log('nombre participation valide')
     formData[4].setAttribute("data-error-visible", "false");
     return true;
   }
@@ -144,20 +149,28 @@ function checkTournamentParticipation(){
     return false;
   }
 }
-/*function checkTournamentSelection(){
-  if (tournamentSelection.checked != null){
-    console.log('true')
-    formData[5].setAttribute("data-error-visible", "false");
-    return true;
-  }
-  else{
-    console.log('false')
-    formData[5].setAttribute("data-error", "Veuillez choisir un tournoi.");
-    return false;
 
+function checkTournamentSelection(){
+  let tournamentChecked = false;
+  document.querySelectorAll('input[name="location"]').forEach(radio => {
+    if (radio.checked){
+      console.log("radio check");
+      tournamentChecked = true;
+    }
+  })
+    if(tournamentChecked){
+      console.log("un tournoi a été selectionné");
+      return true;
+    }
+    else{
+    console.log('pas de tournoi selectionné');
+    formData[5].setAttribute("data-error-visible", "true");
+    formData[5].setAttribute("data-error", "Veuillez sélectionner un tournoi");
+    return false;
+    }
   }
-}
-*/
+
+
 function checkconditionCheckBox(){
   if(conditionCheckBox.checked === true){
     console.log('checked')
@@ -165,30 +178,39 @@ function checkconditionCheckBox(){
   }
   else{
     console.log('not checked');
+    formData[6].setAttribute("data-error-visible", "true");
     formData[6].setAttribute("data-error", "Veuillez accepter les conditions d'utilisations"); 
     return false;
   }
 }
-//(5) Un bouton radio est sélectionné.
-//(6) La case des conditions générales est cochée, l'autre case est facultative / peut être laissée décochée.
-//Conserver les données du formulaire (ne pas effacer le formulaire) lorsqu'il ne passe pas la validation.
-//form validation
-function validate(){
+
+function resetForm(){
+  location.reload(true);
+}
+function formSend(){
+  let validationMessage = document.querySelector('.modal-body');
+  validationMessage.innerHTML ="<p class='validmessage'> Merci pour votre inscription</p><button onclick='resetForm()' class='button btn-submit'>Fermer</button>";
+}
+
+function validate(event){
+  event.preventDefault();
   if(
     checkFirstName() &&
     checkLastName() &&
     checkEmail() &&
     checkBirthdate() &&
     checkTournamentParticipation() &&
- //   checkTournamentSelection() &&
+    checkTournamentSelection() &&
     checkconditionCheckBox()
     ){
-      console.log("formulaire rempli correctement");
-    return true;
-
+      
+    formSend();
+    console.log("formulaire rempli correctement");
+      return true;
   }
   else{
     console.log("formulaire mal rempli");
     return false;
+    
   }
 }
