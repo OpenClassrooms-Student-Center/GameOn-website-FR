@@ -159,6 +159,7 @@ function checkTournamentSelection(){
     }
   })
     if(tournamentChecked){
+      formData[5].setAttribute("data-error-visible", "false");
       console.log("un tournoi a été selectionné");
       return true;
     }
