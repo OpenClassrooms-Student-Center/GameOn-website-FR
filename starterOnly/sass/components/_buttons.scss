@@ -37,10 +37,8 @@ button,
     margin: 0;
     bottom: 3rem;
     left: 36%;
-
   }
   @include a.mobile-only{
     left: 25%
   }
-
 }
