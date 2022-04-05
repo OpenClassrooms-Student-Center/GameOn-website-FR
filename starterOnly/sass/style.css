@@ -27,19 +27,9 @@ img {
 .topnav {
   overflow: hidden;
   margin: 3.5%;
-}
-@media screen and (max-width: 992px) {
-  .topnav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-}
-.topnav .header-logo {
-  float: left;
-}
-.topnav .main-navbar {
-  float: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 @media screen and (max-width: 992px) {
   .topnav .main-navbar {
@@ -56,8 +46,7 @@ img {
   }
 }
 .topnav .main-navbar a {
-  float: left;
-  display: block;
+  display: inline-block;
   color: #000000;
   text-align: center;
   padding: 12px 12px;
@@ -97,7 +86,6 @@ img {
 }
 @media screen and (max-width: 992px) {
   .topnav .icon {
-    float: right;
     display: block;
   }
 }
@@ -116,7 +104,6 @@ img {
     top: 0;
   }
   .responsiv a {
-    float: none;
     display: block;
     text-align: left;
   }

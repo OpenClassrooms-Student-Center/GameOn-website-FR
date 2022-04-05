@@ -3,16 +3,13 @@
 .topnav {
   overflow: hidden;
   margin: 3.5%;
-  @include a.tablette-only {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .header-logo {
-    float: left;
-  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+
   .main-navbar {
-    float: right;
+
     @include a.tablette-only {
       height: 100%;
       width: 0;
@@ -26,8 +23,8 @@
       padding-top: 60px;
     }
     a {
-      float: left;
-      display: block;
+      
+      display: inline-block;
       color: #000000;
       text-align: center;
       padding: 12px 12px;
@@ -62,7 +59,7 @@
     display: none;
     cursor: pointer;
     @include a.tablette-only {
-      float: right;
+      
       display: block;
     }
   }
@@ -81,7 +78,7 @@
       top: 0;
     }
     a {
-      float: none;
+      
       display: block;
       text-align: left;
     }
