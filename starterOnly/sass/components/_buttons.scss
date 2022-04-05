@@ -14,7 +14,6 @@ button,
     background: a.$secondary;
   }
 }
-
 .btn-submit {
   display: block;
   margin: auto;
@@ -23,22 +22,20 @@ button,
   font-size: 1.3rem;
   padding: 15px 23px;
   margin-top: 20px;
-
 }
 .modal-btn {
   font-size: 25px;
   padding: 1rem 2.5rem;
   border-radius: 0.6rem;
-  margin-top: 35rem;
-  margin-left: 5rem;
   position: absolute;
+  left: 5rem;
+  bottom: 5rem;
+  white-space: nowrap;
   @include a.tablette-only {
-    font-size: 18px;
-    margin: 0;
-    bottom: 3rem;
-    left: 36%;
-  }
-  @include a.mobile-only{
-    left: 25%
+    margin: auto;
+    margin-bottom:0;
+    left: 0;
+    position: relative;
+    
   }
 }

@@ -8,7 +8,7 @@ body {
   flex-direction: column;
   font-family: "DM Sans", Arial, Helvetica, sans-serif;
   font-size: 18px;
-  max-width: 1600px;
+  max-width: 1300px;
   margin: 0 auto;
 }
 
@@ -170,21 +170,17 @@ button:hover,
   font-size: 25px;
   padding: 1rem 2.5rem;
   border-radius: 0.6rem;
-  margin-top: 35rem;
-  margin-left: 5rem;
   position: absolute;
+  left: 5rem;
+  bottom: 5rem;
+  white-space: nowrap;
 }
 @media screen and (max-width: 992px) {
   .modal-btn {
-    font-size: 18px;
-    margin: 0;
-    bottom: 3rem;
-    left: 36%;
-  }
-}
-@media screen and (max-width: 540px) {
-  .modal-btn {
-    left: 25%;
+    margin: auto;
+    margin-bottom: 0;
+    left: 0;
+    position: relative;
   }
 }
 
@@ -955,33 +951,35 @@ main {
 main .hero-section {
   min-height: 68vh;
   border-radius: 10px;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   overflow: hidden;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
 }
 @media screen and (max-width: 992px) {
   main .hero-section {
-    display: block;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
     box-shadow: unset;
     position: relative;
   }
 }
 main .hero-section .hero-content {
   padding: 51px 67px;
-  grid-column: span 4;
   background: #232323;
   color: #fff;
   position: relative;
   text-align: left;
+  width: 35%;
 }
 @media screen and (max-width: 992px) {
   main .hero-section .hero-content {
     background: #fff;
     color: #000;
     padding: 0px;
-    height: 155px;
+    width: 100%;
   }
 }
 main .hero-section .hero-content::after {
@@ -1015,7 +1013,7 @@ main .hero-section .hero-content .hero-headline {
   }
 }
 main .hero-section .hero-content .hero-text {
-  width: 146%;
+  width: 100%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
@@ -1027,8 +1025,26 @@ main .hero-section .hero-content .hero-text {
     margin-top: 15px;
   }
 }
+main .hero-section .content_btn {
+  position: relative;
+  order: -1;
+}
+@media screen and (max-width: 992px) {
+  main .hero-section .content_btn {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    order: 1;
+    margin-top: 95px;
+  }
+}
 main .hero-section .hero-img {
-  grid-column: span 8;
+  width: 65%;
+}
+@media screen and (max-width: 992px) {
+  main .hero-section .hero-img {
+    width: 100%;
+  }
 }
 @media screen and (max-width: 540px) {
   main .hero-section .hero-img {
