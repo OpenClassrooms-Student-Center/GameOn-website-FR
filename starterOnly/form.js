@@ -133,15 +133,16 @@ function validateInput() {
   }
 
   /** ⁡⁢⁣⁣​‌‍‍𝙎𝙞 𝙗𝙞𝙧𝙩𝙝𝙙𝙖𝙩𝙚 𝙚𝙨𝙩 𝙞𝙣𝙛𝙚𝙧𝙞𝙚𝙪𝙧 𝙖𝙪 𝟭𝟬 𝙙𝙚𝙧𝙣𝙞𝙚𝙧𝙚 𝙖𝙣𝙣é𝙚 𝙧𝙚𝙩𝙤𝙪𝙧𝙣𝙚 𝙛𝙖𝙡𝙨𝙚 𝙚𝙩 𝙢𝙚𝙨𝙨𝙖𝙜𝙚 𝙙'𝙚𝙧𝙧𝙚𝙪𝙧​⁡ **/
-
+  console.log(birthdate);
   if (birthdate.getFullYear() >= today.getFullYear() - 10) {
     birthdateInput.parentNode.setAttribute("data-error-visible", true);
-    birthdateInput.parentNode.setAttribute(
-      "data-error",
-      errorMessages.legalage
-    );
+    birthdateInput.parentNode.setAttribute("data-error", errorMessages.legalage);
     return false;
-  } else return true;
+  } else if(isNaN(birthdate.getFullYear()) === true || isNaN(birthdate.getMonth()) === true || isNaN(birthdate.getDay()) === true ) {
+    birthdateInput.parentNode.setAttribute("data-error-visible", true);
+    birthdateInput.parentNode.setAttribute("data-error", errorMessages.birthdate);
+  }
+  else return true;
 }
 /**============================================
  *!               Function onSubmit

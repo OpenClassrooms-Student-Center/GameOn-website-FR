@@ -7,9 +7,7 @@
   justify-content: space-between;
   align-items: center;
 
-
   .main-navbar {
-
     @include a.tablette-only {
       height: 100%;
       width: 0;
@@ -23,7 +21,6 @@
       padding-top: 60px;
     }
     a {
-      
       display: inline-block;
       color: #000000;
       text-align: center;
