@@ -6,7 +6,8 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
 const form = document.getElementById("form");
-const validationMsg = document.getElementById("validationMsg");
+const thanks = document.getElementById("thanks");
+const btnCloseThanks = document.querySelector(".btn-close"); 
 const firstName = document.forms["reserve"]["first"];
 const lastName = document.forms["reserve"]["last"];
 const birthdate = document.forms["reserve"]["birthdate"];
@@ -21,22 +22,30 @@ const location6 = document.getElementById("location6");
 const checkbox1 = document.getElementById("checkbox1");
 const checkbox2 = document.getElementById("checkbox2");
 
-
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+
+  // display form
+  form.style.display = "block";
+
+  // hidden thanks msg
+  thanks.style.display = "none";
 }
 
-// close modal event
-closeBtn.addEventListener("click", closeModal);
+// launch modal event
+modalBtn.forEach((btn) => btn.addEventListener("click", function() {
+  form.reset()
+  launchModal()
+}));
 
 // close modal form
 function closeModal() {
   modalbg.style.display = "none";
 }
+
+// close modal event
+closeBtn.addEventListener("click", closeModal);
 
 // pull down the burger menu
 function editNav() {
@@ -172,12 +181,13 @@ function validate(e){
   }
   
   if (isValid) {
+    // Hidden form
+    form.style.display = "none";
 
-    validationMsg.style.display = "block";
+    // display thanks msg
+    thanks.style.display = "block";
 
-    setTimeout(waitBeforeSubmit, 2500);
-    function waitBeforeSubmit() {
-      e.target.submit();
-    }
+    // close thanks msg
+    btnCloseThanks.addEventListener("click", closeModal);
   }
 }

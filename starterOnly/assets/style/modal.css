@@ -311,7 +311,7 @@ input {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup, .btn-close {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -323,10 +323,14 @@ input {
   border: 0;
 }
 
-.validationMsg {
-  display: none;
-  color: #11e7a7;
-  margin-bottom: 1rem;
+.thanks {
+  display: none;  
+}
+
+.thanks_msg {
+  text-align: center;
+  padding: 15rem 3rem;
+  font-size: 36px;
 }
 
 /* custom select styles */
