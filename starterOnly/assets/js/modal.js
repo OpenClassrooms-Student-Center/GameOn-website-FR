@@ -77,7 +77,11 @@ function validateLastName() {
 
 // validate birthdate
 function validateBirthdate() {
-  if(birthdate.value == "") {
+  const birth = new Date(birthdate.value)
+  const ageDate = new Date(Date.now() - birth.getTime());
+  const age = ageDate.getUTCFullYear() - 1970;
+
+  if(birthdate.value == "" || age < 18) {
     return false;
   } else {
     return true; 
