@@ -1,0 +1,135 @@
+@use '../abstracts' as a;
+.bground {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+  transition: 1s;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  @include a.mobile-only {
+    top: 65px;
+    background-color: transparent;
+  }
+
+  &.openModal {
+    display: block;
+    .content {
+      animation-name: modalopen;
+      animation-duration: 0.8s;
+      @include a.modalOpenAnimation;
+    }
+  }
+  &.closeModal {
+    display: block;
+    animation: fade-out 0.8s forwards;
+    @include a.closeModal;
+  }
+
+  .content {
+    margin: 5% auto;
+    width: 100%;
+    max-width: 500px;
+    background: #232323;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    padding-top: 10px;
+    @include a.mobile-only {
+      margin: 0;
+      border-radius: 10px 10px 0px 0px;
+    }
+    &.content_animated_invalid {
+      animation: invalidFormAnimation 0.5s forwards;
+      @include a.invalidAnimation;
+    }
+
+    .close {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      width: 32px;
+      height: 32px;
+      z-index: 3;
+      opacity: 1;
+      cursor: pointer;
+      transform: scale(0.7);
+      &:before,
+      &:after {
+        position: absolute;
+        left: 15px;
+        content: " ";
+        height: 33px;
+        width: 3px;
+        background-color: #fff;
+      }
+      &::after {
+        transform: rotate(-45deg);
+      }
+      &::before {
+        transform: rotate(45deg);
+      }
+    }
+    .thank {
+      position: absolute;
+      background-color: #232323;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      transform: scale(0);
+      transition: 0.8s;
+      left: 0;
+      top: 0;
+      .thank-txt {
+        margin-top: 60%;
+        text-align: center;
+        font-size: 50px;
+      }
+      .btn-thank-close {
+        width: 200px;
+        margin-bottom: 0;
+        position: absolute;
+        left: 30%;
+        bottom: 10px;
+      }
+    }
+    .modal-body {
+      padding: 15px 8%;
+      margin: 15px auto;
+      @include a.mobile-only {
+        padding-bottom: 50px;
+      }
+      label {
+        font-family: a.$font;
+        font-size: 17px;
+        font-weight: normal;
+        display: inline-block;
+        margin-bottom: 11px;
+        @include a.mobile-only {
+          font-size: 15px;
+        }
+      }
+
+      input {
+        padding: 8px;
+        outline: none;
+      }
+
+      .text-control {
+        margin: 0;
+        padding: 8px;
+        width: 100%;
+        border-radius: 8px;
+        font-size: 20px;
+        height: 48px;
+      }
+    }
+  }
+}
