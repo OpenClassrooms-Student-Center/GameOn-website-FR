@@ -81,9 +81,8 @@ function validateInput() {
       errorMessages.firstName
     );
     return false;
-  } else if (FirstNameRegex === true) {
-    firstNameInput.parentNode.setAttribute("data-valid-visible", true);
-  }
+  } else firstNameInput.parentNode.setAttribute("data-valid-visible", true);
+  
 
   /** ⁡⁢⁣⁣​‌‍‍𝙨𝙞 𝙢𝙖 𝙫𝙖𝙧𝙞𝙖𝙗𝙡𝙚 𝙇𝙖𝙨𝙩𝙉𝙖𝙢𝙚𝙍𝙚𝙜𝙚𝙭 𝙚𝙩 𝙚𝙜𝙖𝙡𝙚 𝙖 𝙛𝙖𝙪𝙭 𝙖𝙡𝙤𝙧𝙨 𝙧𝙚𝙩𝙪𝙧𝙣 𝙛𝙖𝙡𝙨𝙚 𝙚𝙩 𝙖𝙛𝙛𝙞𝙘𝙝𝙚 𝙚𝙧𝙧𝙚𝙪𝙧​⁡ **/
 
@@ -91,9 +90,8 @@ function validateInput() {
     lastNameInput.parentNode.setAttribute("data-error-visible", true);
     lastNameInput.parentNode.setAttribute("data-error", errorMessages.lastName);
     return false;
-  } else if (lastNameRegex === true) {
-    lastNameInput.parentNode.setAttribute("data-valid-visible", true);
-  }
+  } else lastNameInput.parentNode.setAttribute("data-valid-visible", true);
+  
 
   /** ⁡⁢⁣⁣​‌‍‍𝙨𝙞 𝙢𝙖 𝙫𝙖𝙧𝙞𝙖𝙗𝙡𝙚 𝙚𝙢𝙖𝙞𝙡𝙍𝙚𝙜𝙚𝙭 𝙚𝙩 𝙚𝙜𝙖𝙡𝙚 𝙖 𝙛𝙖𝙪𝙭 𝙖𝙡𝙤𝙧𝙨 𝙧𝙚𝙩𝙪𝙧𝙣 𝙛𝙖𝙡𝙨𝙚 𝙚𝙩 𝙖𝙛𝙛𝙞𝙘𝙝𝙚 𝙚𝙧𝙧𝙚𝙪𝙧​⁡ **/
 
@@ -101,9 +99,8 @@ function validateInput() {
     emailInput.parentNode.setAttribute("data-error-visible", true);
     emailInput.parentNode.setAttribute("data-error", errorMessages.email);
     return false;
-  } else if (emailRegex === true) {
-    emailInput.parentNode.setAttribute("data-valid-visible", true);
-  }
+  } else emailInput.parentNode.setAttribute("data-valid-visible", true);
+  
 
   /** ⁡⁢⁣⁣​‌‍‍𝙨𝙞 𝙢𝙖 𝙫𝙖𝙧𝙞𝙖𝙗𝙡𝙚 𝙡𝙤𝙘𝙖𝙑𝙖𝙡𝙪𝙚 𝙚𝙨𝙩 𝙣𝙪𝙡𝙡 𝙤𝙪 𝙪𝙣𝙙𝙚𝙛𝙞𝙣𝙚𝙙  𝙖𝙡𝙤𝙧𝙨 𝙧𝙚𝙩𝙪𝙧𝙣 𝙛𝙖𝙡𝙨𝙚 𝙚𝙩 𝙖𝙛𝙛𝙞𝙘𝙝𝙚 𝙚𝙧𝙧𝙚𝙪𝙧​⁡ **/
 
@@ -119,9 +116,8 @@ function validateInput() {
     quantityInput.parentNode.setAttribute("data-error-visible", true);
     quantityInput.parentNode.setAttribute("data-error", errorMessages.quantity);
     return false;
-  } else if (qtyRegex === true || qtyRegex !== undefined) {
-    quantityInput.parentNode.setAttribute("data-valid-visible", true);
-  }
+  } else quantityInput.parentNode.setAttribute("data-valid-visible", true);
+  
 
   /** ⁡⁢⁣⁣​‌‍‍𝙎𝙞 𝘾𝙝𝙚𝙘𝙠𝙗𝙤𝙭𝙄𝙣𝙥𝙪𝙩 𝙚𝙨𝙩 𝙙𝙞𝙛𝙛𝙚𝙧𝙚𝙣𝙩 𝙙𝙚 .𝙘𝙝𝙚𝙘𝙠𝙚𝙙 𝙖𝙡𝙤𝙧𝙨 𝙖𝙛𝙛𝙞𝙘𝙝𝙚 𝙚𝙧𝙧𝙚𝙪𝙧 𝙚𝙩 𝙧𝙚𝙩𝙪𝙧𝙣𝙚 𝙛𝙖𝙡𝙨𝙚​⁡ **/
 
