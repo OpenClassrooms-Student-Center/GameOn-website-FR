@@ -59,20 +59,12 @@ function editNav() {
 
 // validate firstName
 function validateFirstName() {
-  if(firstName.value == "" || firstName.value.length < 2) {
-    return false;
-  } else {
-    return true;
-  }
+  return !(firstName.value == "" || firstName.value.length < 2);
 }
 
 // validate lastName
 function validateLastName() {
-  if(lastName.value == "" || lastName.value.length < 2) {
-    return false;
-  } else {
-    return true; 
-  }
+  return !(lastName.value == "" || lastName.value.length < 2);
 }
 
 // validate birthdate
@@ -81,11 +73,7 @@ function validateBirthdate() {
   const ageDate = new Date(Date.now() - birth.getTime());
   const age = ageDate.getUTCFullYear() - 1970;
 
-  if(birthdate.value == "" || age < 18) {
-    return false;
-  } else {
-    return true; 
-  }
+  return !(birthdate.value == "" || age < 18);
 }
 
 // validate email
@@ -97,21 +85,13 @@ function validateEmail() {
 
 // validate quantity
 function validateQuantity() {
-  if(quantity.value == "" || quantity.value > 99 || quantity.value < 0) {
-    return false;
-  } else {
-    return true;
-  }
+  return !(quantity.value == "" || quantity.value > 99 || quantity.value < 0);
 } 
 
 // validate radio
 function validateRadioBtn() {
-  if(location1.checked || location2.checked || location3.checked ||
-      location4.checked || location5.checked || location6.checked) {
-    return true;
-  } else {
-    return false;
-  }
+  return location1.checked || location2.checked || location3.checked ||
+      location4.checked || location5.checked || location6.checked;
 }
 
 // validate checkbox
