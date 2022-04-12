@@ -32,8 +32,7 @@ const errorMessages = {
  *!                  Function validation des inputs
  *=============================================**/
 function validateInput() {
-
-  // 𝙑𝙖𝙡𝙚𝙪𝙧 𝙙𝙚 𝙡'𝙞𝙣𝙥𝙪𝙩 𝙗𝙞𝙧𝙩𝙝𝙙𝙖𝙩𝙚 
+  // 𝙑𝙖𝙡𝙚𝙪𝙧 𝙙𝙚 𝙡'𝙞𝙣𝙥𝙪𝙩 𝙗𝙞𝙧𝙩𝙝𝙙𝙖𝙩𝙚
   let birthdate = new Date(birthdateInput.value);
   // ⁡⁢⁣⁣​‌‍‍𝘿𝙖𝙩𝙚 𝙖𝙘𝙩𝙪𝙚𝙡𝙡𝙚​⁡
   let today = new Date();
@@ -85,7 +84,7 @@ function validateInput() {
   } else if (FirstNameRegex === true) {
     firstNameInput.parentNode.setAttribute("data-valid-visible", true);
   }
-  
+
   /** ⁡⁢⁣⁣​‌‍‍𝙨𝙞 𝙢𝙖 𝙫𝙖𝙧𝙞𝙖𝙗𝙡𝙚 𝙇𝙖𝙨𝙩𝙉𝙖𝙢𝙚𝙍𝙚𝙜𝙚𝙭 𝙚𝙩 𝙚𝙜𝙖𝙡𝙚 𝙖 𝙛𝙖𝙪𝙭 𝙖𝙡𝙤𝙧𝙨 𝙧𝙚𝙩𝙪𝙧𝙣 𝙛𝙖𝙡𝙨𝙚 𝙚𝙩 𝙖𝙛𝙛𝙞𝙘𝙝𝙚 𝙚𝙧𝙧𝙚𝙪𝙧​⁡ **/
 
   if (lastNameRegex === false) {
@@ -136,13 +135,22 @@ function validateInput() {
   console.log(birthdate);
   if (birthdate.getFullYear() >= today.getFullYear() - 10) {
     birthdateInput.parentNode.setAttribute("data-error-visible", true);
-    birthdateInput.parentNode.setAttribute("data-error", errorMessages.legalage);
+    birthdateInput.parentNode.setAttribute(
+      "data-error",
+      errorMessages.legalage
+    );
     return false;
-  } else if(isNaN(birthdate.getFullYear()) === true || isNaN(birthdate.getMonth()) === true || isNaN(birthdate.getDay()) === true ) {
+  } else if (
+    isNaN(birthdate.getFullYear()) === true ||
+    isNaN(birthdate.getMonth()) === true ||
+    isNaN(birthdate.getDay()) === true
+  ) {
     birthdateInput.parentNode.setAttribute("data-error-visible", true);
-    birthdateInput.parentNode.setAttribute("data-error", errorMessages.birthdate);
-  }
-  else return true;
+    birthdateInput.parentNode.setAttribute(
+      "data-error",
+      errorMessages.birthdate
+    );
+  } else return true;
 }
 /**============================================
  *!               Function onSubmit
