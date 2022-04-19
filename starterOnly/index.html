@@ -12,10 +12,14 @@
     />
   </head>
   <body>
+
+    <!-- Nav bar -->
     <div class="topnav" id="myTopnav">
+
       <div class="header-logo">
       <img alt="logo" src="Logo.png" width="auto" height="auto" />
-    </div>
+      </div>
+
     <div class="main-navbar">
       
       <a href="#" class="active"><span>Accueil</span></a>
@@ -23,13 +27,17 @@
       <a href="#"><span>À propos</span></a>
       <a href="#"><span>Contact</span></a>
       <a href="#"><span>Évènements passés</span></a>
+
       <a href="javascript:void(0);" class="icon" onclick="editNav()">
         <i class="fa fa-bars"></i>
       </a>
     </div>
-    </div>
+
   </div>
+
     <main>
+
+      <!-- Main content -->
       <div class="hero-section">
         <div class="hero-content">
           <h1 class="hero-headline">
@@ -52,16 +60,23 @@
         </button>
       </div>
 
+      <!-- Modal -->
+
       <div class="bground">
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
+
+            <!-- Register form - main -->
             <form
               name="reserve"
               action="index.html"
               method="get"
               onsubmit="return validate();"
             >
+
+              <!-- Inputs & labels -->
+              
               <div
                 class="formData">
                 <label>Prénom</label><br>
@@ -73,6 +88,7 @@
                   minlength="2"
                 /><br>
               </div>
+
               <div
                 class="formData">
                 <label>Nom</label><br>
@@ -83,6 +99,7 @@
                   name="last"
                 /><br>
               </div>
+
               <div
                 class="formData">
                 <label>E-mail</label><br>
@@ -93,6 +110,7 @@
                   name="email"
                 /><br>
               </div>
+
               <div
                 class="formData">
                 <label>Date de naissance</label><br>
@@ -103,12 +121,15 @@
                   name="birthdate"
                 /><br>
               </div>
+
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
+
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
+
               <div
                 class="formData">
                 <input
@@ -205,16 +226,22 @@
                 class="button"
                 value="C'est parti"
               />
+
             </form>
-          </div>
-        </div>
-      </div>
+          </div> <!-- End .modal-body -->
+        </div> <!-- End .content -->
+      </div> <!-- End .bground -->
+
     </main>
+
+    <!-- Footer -->
     <footer>
       <p class="copyrights">
         Copyright 2014 - 2022, GameOn Inc.
       </p>
     </footer>
+
+    <!-- JS script - modal register form -->
     <script src="modal.js"></script>
   </body>
 </html>
