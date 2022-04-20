@@ -208,6 +208,21 @@ input {
   font-size: 20px;
   height: 48px;
 }
+
+.error-message {
+  color: red;
+  font-size: 0.6rem;
+  display: none;
+}
+
+#validate-message {
+  width: 100%;
+  text-align: center;
+  font-size: 0.6rem;
+  margin-bottom: 0.8em;
+  display: none;
+}
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -333,6 +348,38 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+#thank-form {
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #232323;
+  display: none;
+  font-size: 1.3rem;
+  font-weight: 300;
+}
+
+#btn-close-modal {
+  background: #fe142f;
+  display: block;
+  border-radius: 8px;
+  font-size: 1rem;
+  padding: 12px 80px;
+  color: rgb(255, 255, 255);
+  position: absolute;
+  right: 50%;
+  bottom: -7px;
+  transform: translate(50%, -50%);
+  cursor: pointer;
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;
