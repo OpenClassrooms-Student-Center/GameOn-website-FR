@@ -502,6 +502,18 @@ footer {
   font-family: var(--font-slab);
 }
 
+/* Media queries */
+/* Breakpoints */
+/* Desktop : >=769px*/
+/* Tablet : 481px - 768px*/
+/* Mobile : 320px - 480px*/
+
+/* Desktop 769px — 1024px: Small screens, laptops*/
+@media screen and (max-width: 1024px) {
+  .topnav {
+    flex-direction: column;
+  }
+}
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
