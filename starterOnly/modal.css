@@ -2,12 +2,22 @@
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
   --modal-duration: 0.8s;
+  --background-red: #fe142f;
+  --background-blue: #3876ac;
+  --background-grey: #c4c4c4;
+  --background-darkgrey: #232323;
+  --borderColor-red: #f00;
+  --color-error: #fe142f;
+  --color-checkbox: #279e7a;
+  --color-copyrights: #fe142f;
 }
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
 /* Landing Page */
 
 body {
@@ -95,7 +105,7 @@ main {
 
 .modal-btn {
   font-size: 145%;
-  background: #fe142f;
+  background: var(--background-red);
   display: flex;
   margin: auto;
   padding: 2em;
@@ -112,7 +122,7 @@ main {
 /* Modal form */
 
 .button {
-  background: #fe142f;
+  background: var(--background-red);
   margin-top: 0.5em;
   padding: 1em;
   color: #fff;
@@ -122,7 +132,7 @@ main {
 }
 
 .button:hover {
-  background: #3876ac;
+  background: var(--background-blue);
 }
 
 .smFont {
@@ -183,7 +193,7 @@ input {
 }
 
 .error-message {
-  color: red;
+  color: var(--color-error);
   font-size: 0.6rem;
   display: none;
 }
@@ -199,7 +209,8 @@ input {
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
-  color: #e54858;
+  /* color: #e54858; */
+  color: var(--color-error);
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
@@ -212,7 +223,8 @@ input {
   opacity: 1;
 }
 .formData[data-error-visible="true"] .text-control {
-  border: 2px solid #e54858;
+  /* border: 2px solid #e54858; */
+  border: 2px solid var(--color-error);
 }
 
 .checkbox-label,
@@ -241,7 +253,7 @@ input {
   content: "";
   width: 13px;
   height: 13px;
-  background-color: #279e7a;
+  background-color: var(--color-checkbox);
   border-radius: 50%;
   text-indent: 29px;
   white-space: nowrap;
@@ -260,12 +272,12 @@ input {
   opacity: 1;
 }
 .checkbox-input:checked + .checkbox2-label .checkbox-icon {
-  background: #279e7a;
+  background: var(--color-checkbox);
 }
 .checkbox2-label .checkbox-icon {
   border-radius: 4px;
   border: 0;
-  background: #c4c4c4;
+  background: var(--background-grey);
 }
 .checkbox2-label .checkbox-icon::after {
   width: 7px;
@@ -307,7 +319,7 @@ input {
 }
 .btn-submit,
 .btn-signup {
-  background: #fe142f;
+  background: var(--background-red);
   display: block;
   margin: 0 auto;
   border-radius: 7px;
@@ -329,14 +341,14 @@ input {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-color: #232323;
+  background-color: var(--background-darkgrey);
   display: none;
   font-size: 1.3rem;
   font-weight: 300;
 }
 
 #btn-close-modal {
-  background: #fe142f;
+  background: var(--background-red);
   display: block;
   border-radius: 8px;
   font-size: 1rem;
@@ -373,8 +385,8 @@ input {
   width: 11px;
   height: 11px;
   border: 3px solid transparent;
-  border-bottom-color: #f00;
-  border-left-color: #f00;
+  border-bottom-color: var(--borderColor-red);
+  border-left-color: var(--borderColor-red);
   transform: rotate(-48deg);
   border-radius: 5px 0 5px 0;
 }
@@ -600,7 +612,7 @@ footer {
     padding: 0.5em;
   }
   .hero-headline {
-    font-size: 2.5rem;
+    font-size: 2rem;
     white-space: normal;
   }
   .hero-text {
