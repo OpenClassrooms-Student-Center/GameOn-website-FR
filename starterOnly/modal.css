@@ -77,6 +77,10 @@ img {
   color: #ff0000;
 }
 
+.icon:hover i {
+  color: #ffffff;
+}
+
 main {
   width: 100%;
   height: 100%;
@@ -284,7 +288,7 @@ input {
   opacity: 1;
   cursor: pointer;
   transform: scale(0.7);
-  z-index: 20; /* above */
+  z-index: 11;
 }
 .close:before,
 .close:after {
@@ -418,15 +422,16 @@ input {
 }
 .hero-section {
   height: 100%;
-  width: 100%;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
+  width: 100%;
   background-color: #232323;
   overflow: hidden;
 }
 .hero-content {
+  min-width: 350px;
   padding: 51px 67px;
   grid-column: span 4;
   background: #232323;
@@ -434,15 +439,7 @@ input {
   position: relative;
   text-align: left;
 }
-/* .hero-content::after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  background: #232323;
-  position: absolute;
-  right: -80px;
-  top: 0;
-} */
+
 .hero-content > * {
   position: relative;
   z-index: 1;
@@ -466,9 +463,11 @@ input {
   margin: 0;
   margin-top: 59px;
 }
+
 .hero-img {
   grid-column: span 8;
 }
+
 .hero-img img {
   width: 100%;
   height: 100%;
@@ -477,12 +476,14 @@ input {
   object-fit: cover;
   object-position: 30%;
 }
+
 .copyrights {
   color: #fe142f;
   padding: 0;
   font-size: 1rem;
   font-weight: bolder;
 }
+
 .hero-section > .btn-signup {
   display: none;
 }
