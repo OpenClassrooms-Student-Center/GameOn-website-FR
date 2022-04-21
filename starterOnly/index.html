@@ -2,20 +2,26 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Reservation</title>
+    <title>GameOn</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="modal.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans"
       rel="stylesheet"
     />
+
+    <link rel="stylesheet" href="modal.css" />
+
   </head>
   <body>
-    <div class="topnav" id="myTopnav">
+
+    <!-- Nav bar -->
+    <nav class="topnav" id="myTopnav">
+
       <div class="header-logo">
       <img alt="logo" src="Logo.png" width="auto" height="auto" />
-    </div>
+      </div>
+
     <div class="main-navbar">
       
       <a href="#" class="active"><span>Accueil</span></a>
@@ -23,13 +29,17 @@
       <a href="#"><span>À propos</span></a>
       <a href="#"><span>Contact</span></a>
       <a href="#"><span>Évènements passés</span></a>
+
       <a href="javascript:void(0);" class="icon" onclick="editNav()">
         <i class="fa fa-bars"></i>
       </a>
     </div>
-    </div>
-  </div>
+
+  </nav>
+
     <main>
+
+      <!-- Main content -->
       <div class="hero-section">
         <div class="hero-content">
           <h1 class="hero-headline">
@@ -52,19 +62,25 @@
         </button>
       </div>
 
+      <!-- Modal -->
+
       <div class="bground">
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
+
+            <!-- Register form - main -->
             <form
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+              onsubmit="validate();"
             >
+
+              <!-- Inputs & Labels -->
               <div
                 class="formData">
-                <label>Prénom</label><br>
+                <label for="first">Prénom</label><br>
                 <input
                   class="text-control"
                   type="text"
@@ -72,41 +88,46 @@
                   name="first"
                   minlength="2"
                 /><br>
+                <div class="error-message"></div>
               </div>
               <div
                 class="formData">
-                <label>Nom</label><br>
+                <label for="last">Nom</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
                 /><br>
+                <div class="error-message"></div>
               </div>
               <div
                 class="formData">
-                <label>E-mail</label><br>
+                <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
                   type="email"
                   id="email"
                   name="email"
                 /><br>
+                <div class="error-message"></div>
               </div>
               <div
                 class="formData">
-                <label>Date de naissance</label><br>
+                <label for="birthdate">Date de naissance</label><br>
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
                 /><br>
+                <div class="error-message"></div>
               </div>
               <div
                 class="formData">
-                <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <div class="error-message"></div>
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
@@ -177,6 +198,7 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
+                <div class="error-message"></div>
               </div>
 
               <div
@@ -187,34 +209,53 @@
                   id="checkbox1"
                   checked
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
+                <div class="error-message"></div>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je Je souhaite être prévenu des prochains évènements.
                 </label>
-                <br>
+
+                <!-- Commit success message - clearance validation message -->
+                <div id="validate-message">
+                  <p>Votre inscription a été validée</p>
+                </div>
               </div>
+              
               <input
-                class="btn-submit"
+                class="btn-submit button"
                 type="submit"
-                class="button"
                 value="C'est parti"
               />
+              <!-- Thanks message register done if reclick -->
+              <div id="thank-form">
+                <div>
+                  <p>Merci pour <br>votre inscription</p>
+                </div>
+
+                <div><span id="btn-close-modal">Fermer</span></div>
+              </div>
+
             </form>
-          </div>
-        </div>
-      </div>
+          </div> <!-- End .modal-body -->
+        </div> <!-- End .content -->
+      </div> <!-- End bground -->
+      
     </main>
+
+    <!-- Footer -->
     <footer>
       <p class="copyrights">
         Copyright 2014 - 2022, GameOn Inc.
       </p>
     </footer>
+
+    <!-- JS script -->
     <script src="modal.js"></script>
   </body>
 </html>
