@@ -13,7 +13,7 @@
 body {
   width: 100%;
   font-family: var(--font-default);
-  font-size: 18px;
+  font-size: 1.125rem;
   max-width: 1300px;
   margin: auto;
   display: flex;
@@ -418,7 +418,7 @@ input {
 /* custom select end */
 .text-label {
   font-weight: normal;
-  font-size: 16px;
+  font-size: 1rem;
 }
 .hero-section {
   height: 100%;
@@ -452,7 +452,7 @@ input {
 .hero-text {
   width: 100%;
   font-weight: normal;
-  margin-top: 57px;
+  margin-top: 3.55em;
   padding: 0;
 }
 .btn-signup {
@@ -517,15 +517,15 @@ footer {
 
 /* Tablet : 481px - 768px*/
 @media screen and (max-width: 768px) {
-  .header-logo img {
-    width: 170px;
-  }
   body {
     overflow-y: auto;
   }
+  .header-logo img {
+    width: 170px;
+  }
   .topnav {
     width: 100%;
-    padding: 0 20px;
+    padding: 0 1.25;
     flex-direction: row;
     justify-content: space-between;
   }
@@ -545,7 +545,7 @@ footer {
     float: none;
     display: block;
     text-align: left;
-    border-radius: 20px;
+    border-radius: 1.25em;
     color: white;
   }
   .hero-section {
@@ -556,6 +556,7 @@ footer {
     background: #fff;
     color: #000;
     padding: 20px;
+    min-width: 0;
   }
   .hero-content::after {
     content: unset;
@@ -564,12 +565,13 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 3rem;
     white-space: normal;
   }
   .hero-text {
     width: unset;
     font-size: 1.5rem;
+    margin-top: 1em;
   }
   .hero-img img {
     border-radius: 10px;
@@ -577,8 +579,8 @@ footer {
   }
   .hero-section > .btn-signup {
     display: block;
-    margin: 32px auto 10px;
-    padding: 12px 35px;
+    margin: 2em auto 0.625em;
+    padding: 0.75em 2.1875em;
   }
 
 }
@@ -591,13 +593,16 @@ footer {
   .topnav a {
     display: none;
   }
+  .hero-content {
+    padding: 0.5em;
+  }
   .hero-headline {
     font-size: 2.5rem;
     white-space: normal;
   }
   .hero-text {
     font-size: 1rem;
-    margin-top: 10px;
+    margin-top: 0.625em;
   }
 }
 
