@@ -6,7 +6,7 @@
   --background-blue: #3876ac;
   --background-grey: #c4c4c4;
   --background-darkgrey: #232323;
-  --borderColor-red: #f00;
+  --color-primary: #ff0000;
   --color-error: #fe142f;
   --color-checkbox: #279e7a;
   --color-copyrights: #fe142f;
@@ -67,24 +67,24 @@ img {
 }
 
 .topnav a:hover {
-  background-color: #ff0000;
+  background-color: var(--color-primary);
   color: #ffffff;
   border-radius: 15px;
 }
 
 .topnav a.active {
-  background-color: #ff0000;
+  background-color: var(--color-primary);
   color: #ffffff;
   border-radius: 15px;
 }
 
 .topnav .icon {
   display: none;
-  color: #ff0000;
+  color: var(--color-primary);
 }
 
 .icon i {
-  color: #ff0000;
+  color: var(--color-primary);
 }
 
 .icon:hover i {
@@ -385,8 +385,8 @@ input {
   width: 11px;
   height: 11px;
   border: 3px solid transparent;
-  border-bottom-color: var(--borderColor-red);
-  border-left-color: var(--borderColor-red);
+  border-bottom-color: var(--color-primary);
+  border-left-color: var(--color-primary);
   transform: rotate(-48deg);
   border-radius: 5px 0 5px 0;
 }
