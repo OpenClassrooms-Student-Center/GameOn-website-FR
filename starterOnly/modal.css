@@ -300,7 +300,7 @@ input {
   opacity: 1;
   cursor: pointer;
   transform: scale(0.7);
-  z-index: 11;
+  z-index: 20;
 }
 .close:before,
 .close:after {
@@ -559,6 +559,13 @@ footer {
     text-align: left;
     border-radius: 1.25em;
     color: white;
+  }
+  .main-navbar{
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 30;
+    border-radius: 15px;
   }
   .hero-section {
     display: block;

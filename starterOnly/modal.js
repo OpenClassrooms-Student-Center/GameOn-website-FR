@@ -1,9 +1,33 @@
+// edit nav btn  - toggle nav
+
+// function editNav() {
+//   var x = document.getElementById("myTopnav");
+//   if (x.className === "topnav") {
+//     x.className += " responsive";
+//   } else {
+//     x.className = "topnav";
+//   }
+// }
+
 function editNav() {
-  var x = document.getElementById("myTopnav");
+  const x = document.getElementById("myTopnav"); // find better name "x"
+  const menuTopNav = document.getElementsByClassName("icon");
+  const iconNav = document.getElementById("iconNav");
+  const myNavbar = document.getElementById("myNavbar"); // scrolling menu
+
+  // console.log(x);
   if (x.className === "topnav") {
     x.className += " responsive";
+    menuTopNav[0].style.backgroundColor = "#ff0000"; // red
+    menuTopNav[0].style.borderRadius = "15px";
+    iconNav.style.color = "white";
+    myNavbar.style.backgroundColor = "#303030"; // grey
   } else {
     x.className = "topnav";
+    menuTopNav[0].style.backgroundColor = "transparent";
+    menuTopNav[0].style.borderRadius = "0";
+    iconNav.style.color = "#ff0000";
+    myNavbar.style.backgroundColor = "transparent";
   }
 }
 
