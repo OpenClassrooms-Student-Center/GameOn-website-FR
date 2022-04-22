@@ -14,7 +14,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -35,10 +34,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -68,38 +67,29 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+@media screen and (max-width: 540px) {
+  #nav-responsive {
+    display: none;
+  }
+
+  .top-menu {
+    position: relative;
+    top: -50px;
+  }
+
   .topnav a.icon {
     float: right;
     display: block;
   }
-}
-
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
+  .hero-text {
+    width: 100%;
+    text-overflow: ellipsis;
   }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
+  .hero-content {
+    min-width: none;
+    max-width: 100%;
   }
 }
-
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} 
 
 main {
   font-size: 130%;
@@ -111,8 +101,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -226,12 +214,7 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -387,7 +370,7 @@ input[data-error]::after {
   top: 89%;
   left: 0;
   right: 0;
-  z-index: 99;
+  z-index: 50;
 }
 
 /* Hide the items when the select box is closed: */
@@ -418,9 +401,7 @@ input[data-error]::after {
   grid-column: span 4;
   background: #232323;
   color: #fff;
-  position: relative;
   text-align: left;
-  min-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -495,7 +476,7 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 4rem;
     white-space: normal;
   }
   .hero-text {
@@ -517,6 +498,17 @@ footer {
   }
 }
 
+@media screen and (min-width: 801px) {
+  .hero-content {
+    background: #232323;
+    color: #fff;
+    padding: 30px;
+  }
+  .hero-content::after {
+    content: unset;
+  }
+}
+
 @keyframes modalopen {
   from {
     opacity: 0;
@@ -526,4 +518,51 @@ footer {
     opacity: 1;
   }
 }
+/* Alerts */
+.error-message {
+  display: none;
+  color: red;
+  margin-top: 0.2em;
+  font-size: 0.8rem;
+}
 
+/* Validation Modal */
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 99; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  color: red;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 3px solid red;
+  border-radius: 15px;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close2 {
+  color: red;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close2:hover,
+.close2:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
