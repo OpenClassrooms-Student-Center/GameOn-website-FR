@@ -25,6 +25,6 @@ closeBtn.addEventListener("click", (event) => {
   window.setTimeout(function() {
       // close modal form
       modalbg.style.display = "none";
-  }, 1000)
+  }, 400)
 });
 

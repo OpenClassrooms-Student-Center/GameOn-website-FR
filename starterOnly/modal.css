@@ -297,6 +297,10 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
+
+/*
+** MODAL CLOSE BUTTON **
+*/
 .close {
   position: absolute;
   right: 15px;
@@ -305,7 +309,11 @@ input[data-error]::after {
   height: 32px;
   opacity: 1;
   cursor: pointer;
+}
+/* animation scaling on hover */
+.close:hover {
   transform: scale(0.7);
+  transition : all 0.25s ease-out;
 }
 .close:before,
 .close:after {
@@ -322,6 +330,13 @@ input[data-error]::after {
 .close:after {
   transform: rotate(-45deg);
 }
+/* animation rotating on hover */
+.close:hover:before,
+.close:hover:after {
+  transform: rotate(90deg);
+  transition : all 0.25s ease-out;
+}
+
 .btn-submit,
 .btn-signup {
   background: #fe142f;
