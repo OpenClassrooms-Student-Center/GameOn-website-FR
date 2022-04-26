@@ -11,7 +11,7 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body onload="document.reserve.email.focus()">
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
       <img alt="logo" src="Logo.png" width="auto" height="auto" />
@@ -60,7 +60,7 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+              onsubmit="validate(document.reserve.email.focus());"
             >
               <div
                 class="formData">
@@ -71,6 +71,7 @@
                   id="first"
                   name="first"
                   minlength="2"
+                  required
                 /><br>
               </div>
               <div
@@ -81,6 +82,8 @@
                   type="text"
                   id="last"
                   name="last"
+                  minlength="2"
+                  required
                 /><br>
               </div>
               <div
@@ -91,6 +94,7 @@
                   type="email"
                   id="email"
                   name="email"
+                  required
                 /><br>
               </div>
               <div
