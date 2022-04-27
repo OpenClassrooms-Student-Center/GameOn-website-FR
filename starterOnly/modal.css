@@ -88,7 +88,6 @@ img {
 }
 
 
-
 @media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
@@ -438,7 +437,7 @@ input[data-error]::after {
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
+  width: 100%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
@@ -496,7 +495,7 @@ footer {
     white-space: normal;
   }
   .hero-text {
-    width: unset;
+    /* width: unset; */
     font-size: 1.5rem;
   }
   .hero-img img {
