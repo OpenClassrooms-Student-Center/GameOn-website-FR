@@ -32,7 +32,9 @@ img {
 
 .topnav {
   overflow: hidden;
-  margin: 3.5%;
+  margin-top: 3.5%;
+  margin-left: 3.5%;
+  margin-bottom: 3.5%;
 }
 .header-logo {
     float: left;
@@ -62,6 +64,8 @@ img {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
+  text-decoration: underline 1px ;
+  text-underline-offset: 4px;
 }
 
 .topnav .icon {
@@ -69,10 +73,23 @@ img {
 }
 
 @media screen and (max-width: 768px) {
+  .img{
+    width: 103px;
+    height: 19px;
+    margin-top: 33px;
+    margin-left: 30px;
+  }
+  .main-navbar{
+    flex-direction: column;
+    align-items: flex-end;
+  }
   .topnav a {display: none;}
   .topnav a.icon {
-    float: right;
+    position: absolute;
+    right: 16px;
+    top: 14px;
     display: block;
+    color: #ff0000;
   }
 }
 
@@ -82,23 +99,56 @@ img {
     position: absolute;
     right: 0;
     top: 0;
+    width: 50px;  
   }
+  .topnav a.icon:hover{
+    background-color: transparent;
+  } 
   .topnav.responsive a {
     float: none;
     display: block;
     text-align: left;
+    width: 230px;  
   }
 }
 
 
 
  @media screen and (max-width: 540px) {
+   .topnav{
+     margin: 0px;
+   }
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    margin-top: 5px;
   }
+  .hero-section h1.hero-headline{
+    font-size: 2.5rem;
+    width: 92%;
+  }
+  .header-logo img{
+    width: 108px;
+    height: 19px;
+    margin-top: 33px;
+    margin-left: 30px;
+  }
+  .hero-content{
+    width: 375px;
+  }
+  .hero-section p.hero-text{
+    font-size: 0.85rem;
+    margin-top: 22px;
+    width: 85%;
+  }
+  .hero-section .hero-img img{
+    width: 100%;
+  }
+  .hero-section .hero-content{
+    width: 400px;
+  }
+
 } 
 
 main {
@@ -412,6 +462,7 @@ input[data-error]::after {
   overflow: hidden;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
+  height: 657px;
 }
 .hero-content {
   padding: 51px 67px;
@@ -438,12 +489,14 @@ input[data-error]::after {
 .hero-headline {
   font-size: 6rem;
   font-weight: normal;
-  white-space: nowrap;
+  width: 882px;
+  height: 240px;
+  display: block;
 }
 .hero-text {
   width: 146%;
   font-weight: normal;
-  margin-top: 57px;
+  margin-top: 73px;
   padding: 0;
 }
 .btn-signup {
@@ -452,7 +505,7 @@ input[data-error]::after {
   font-size: 1.3rem;
   padding: 15px 23px;
   margin: 0;
-  margin-top: 59px;
+  margin-top: 84px;
 }
 .hero-img {
   grid-column: span 8;
@@ -478,15 +531,33 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 992px) {
+  main{
+    margin-left: 0px;
+    margin-right: 0px;display: flex;
+    justify-content: center;
+    padding: 0px;
+  }
+  .main-navbar{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
+    height: auto;
+    width: 100%;
+    padding-left: 30px;
+    padding-right: 30px;
+    
   }
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px;
+    width: 100%;
   }
   .hero-content::after {
     content: unset;
@@ -497,14 +568,18 @@ footer {
   .hero-headline {
     font-size: 4.5rem;
     white-space: normal;
+    width: 100%;
+    height: auto;
   }
   .hero-text {
-    width: unset;
+    width: 100%;
     font-size: 1.5rem;
+    margin-top: 35px;
   }
   .hero-img img {
     border-radius: 10px;
-    margin-top: 40px;
+    margin-top: 36px;
+    width: 100%;
   }
   .hero-section > .btn-signup {
     display: block;
@@ -514,6 +589,7 @@ footer {
   .copyrights {
     margin-top: 50px;
     text-align: center;
+    margin-top: 0px;
   }
 }
 
