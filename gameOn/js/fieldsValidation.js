@@ -3,10 +3,12 @@ const lastName = document.getElementById('last');
 const email = document.getElementById('email');
 const birthDate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
-const locations = document.getElementById('location');
+const cities = document.getElementById('cities')
+// const location = document.getElementsByName('location').checked;
 const nameRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+$/;
 // const mailRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,3}+$/;
 const mailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
 
 // validate firstName
 function validateFirstName() {
@@ -70,11 +72,12 @@ function validateParticiaptionsNumber() {
 
 // validate location
 function validateLocation() {
-    locations.parentElement.setAttribute('data-error-visible', 'true')
-    if (locations.value = true) {
-        locations.parentElement.setAttribute('data-error-visible', 'false')
+    // if (location1 || location2 || location3 || location4 || location5 || location6) {
+        if (location) {
+        cities.setAttribute('data-error-visible', 'false')
         return true;
     }
+    cities.setAttribute('data-error-visible', 'true')
     return false;
 }
 
@@ -85,5 +88,5 @@ lastName.addEventListener('focusout', validateLastName)
 email.addEventListener('focusout', validateEmail)
 birthDate.addEventListener('focusout', validateBirthDate)
 quantity.addEventListener('focusout', validateParticiaptionsNumber)
-locations.addEventListener('focusout', validateLocation)
+cities.addEventListener('change', validateLocation)
 
