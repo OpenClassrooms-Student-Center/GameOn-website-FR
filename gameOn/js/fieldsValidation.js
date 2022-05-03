@@ -3,6 +3,7 @@ const lastName = document.getElementById('last');
 const email = document.getElementById('email');
 const birthDate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
+const locations = document.getElementById('location');
 const nameRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+$/;
 // const mailRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,3}+$/;
 const mailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -55,8 +56,8 @@ function validateBirthDate() {
     return true;
 }
 
-// validate tournamentsNumber
-function validateTournamentsNumber() {
+// validate particiaptionsNumber
+function validateParticiaptionsNumber() {
     if (quantity.value.length ===0 || isNaN(quantity.value) === true || quantity.value < 0) {
         quantity.parentElement.setAttribute('data-error-visible', 'true')
         quantity.style.border = "3px solid red";
@@ -67,11 +68,22 @@ function validateTournamentsNumber() {
     return true;
 }
 
+// validate location
+function validateLocation() {
+    locations.parentElement.setAttribute('data-error-visible', 'true')
+    if (locations.value = true) {
+        locations.parentElement.setAttribute('data-error-visible', 'false')
+        return true;
+    }
+    return false;
+}
+
 
 // events
 firstName.addEventListener('focusout', validateFirstName)
 lastName.addEventListener('focusout', validateLastName)
 email.addEventListener('focusout', validateEmail)
 birthDate.addEventListener('focusout', validateBirthDate)
-quantity.addEventListener('focusout', validateTournamentsNumber)
+quantity.addEventListener('focusout', validateParticiaptionsNumber)
+locations.addEventListener('focusout', validateLocation)
 
