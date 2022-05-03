@@ -55,7 +55,7 @@ function validateBirthDate() {
     return true;
 }
 
-// validate quantity
+// validate tournamentsNumber
 function validateTournamentsNumber() {
     if (quantity.value.length ===0 || isNaN(quantity.value) === true || quantity.value < 0) {
         quantity.parentElement.setAttribute('data-error-visible', 'true')
