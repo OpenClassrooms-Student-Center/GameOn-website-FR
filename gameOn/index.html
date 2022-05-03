@@ -60,10 +60,10 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="validate(document.getElementById('email'));"
+              onsubmit=""
             >
               <div
-                class="formData">
+                class="formData" data-error="Vous devez renseigner ce champs avec au moins 2 caractères" data-error-visible="false">
                 <label>Prénom</label><br>
                 <input
                   class="text-control"
@@ -71,11 +71,10 @@
                   id="first"
                   name="first"
                   minlength="2"
-                  required
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData" data-error="Vous devez renseigner ce champs avec au moins 2 caractères" data-error-visible="false">
                 <label>Nom</label><br>
                 <input
                   class="text-control"
@@ -83,33 +82,30 @@
                   id="last"
                   name="last"
                   minlength="2"
-                  required
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData" data-error="Vous devez renseigner une adresse mail valide" data-error-visible="false">
                 <label>E-mail</label><br>
                 <input
                   class="text-control"
                   type="email"
                   id="email"
                   name="email"
-                  required
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData" data-error="Vous devez renseigner votre date de naissance" data-error-visible="false">
                 <label>Date de naissance</label><br>
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                  required
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData" data-error="Vous devez renseigner une valeur numérique" data-error-visible="false">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input 
                   type="number" 
@@ -118,19 +114,17 @@
                   name="quantity" 
                   min="0" 
                   max="99" 
-                  required
                 />
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                class="formData">
+                class="formData" data-error="Vous devez choisir une ville" data-error-visible="false">
                 <input
                   class="checkbox-input"
                   type="radio"
                   id="location1"
                   name="location"
                   value="New York"
-                  required
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -194,13 +188,12 @@
               </div>
 
               <div
-                class="formData">
+                class="formData" data-error="Vous devez accepter les conditions d'utilisation" data-error-visible="false">
                 <input
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
                   checked
-                  required
                 />
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
@@ -235,5 +228,6 @@
       </p>
     </footer>
     <script src="./js/modal.js"></script>
+    <script src="./js/fieldsValidation.js"></script>
   </body>
 </html>
