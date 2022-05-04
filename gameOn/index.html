@@ -57,6 +57,7 @@
           <span class="close"></span>
           <div class="modal-body">
             <form
+              id="form"
               name="reserve"
               action="index.html"
               method="get"
@@ -118,7 +119,7 @@
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                class="formData" id="cities" data-error="Vous devez sélectionner une ville" data-error-visible="true">
+                class="formData" id="cities" data-error="Vous devez sélectionner une ville" data-error-visible="false">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -218,6 +219,17 @@
                 value="C'est parti"
               />
             </form>
+          </div>
+        </div>
+      </div>
+      <!-- Confirm Modal -->
+      <div class="confirm-bground">
+        <div class="confirm-content">
+          <span class="close confirm-cross"></span>
+          <div class="confirm-body">
+            <p> Merci pour </p>
+            <p> votre inscription </p>
+            <button class="btn-submit confirm-close"> Fermer </button>
           </div>
         </div>
       </div>

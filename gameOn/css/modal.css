@@ -211,7 +211,7 @@ input {
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  text-align: left;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -474,6 +474,54 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+
+/* confirm modal */
+.confirm-bground {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+
+.confirm-content {
+  margin: 5% auto;
+  width: 100%;
+  height: 800px;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+}
+
+.confirm-body {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  padding: 15px 8%;
+  margin: 15px auto;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.confirm-body button {
+  position: absolute;
+  bottom: 20px;
+}
+
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;

@@ -4,7 +4,8 @@ const email = document.getElementById('email');
 const birthDate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
 const cities = document.getElementById('cities')
-// const location = document.getElementsByName('location').checked;
+const locations = document.getElementsByName('location');
+const checkbox = document.getElementById('checkbox1');
 const nameRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+$/;
 // const mailRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,3}+$/;
 const mailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -72,21 +73,59 @@ function validateParticiaptionsNumber() {
 
 // validate location
 function validateLocation() {
-    // if (location1 || location2 || location3 || location4 || location5 || location6) {
-        if (location) {
-        cities.setAttribute('data-error-visible', 'false')
+    for (let i = 0; i < locations.length; i++) {
+        if (locations[i].checked) {
+            cities.setAttribute('data-error-visible', 'false')
+            return true;
+        }
+    }
+cities.setAttribute('data-error-visible', 'true')
+return false;
+}
+
+// validate terms
+function validateTerms() {
+    if (checkbox.checked) {
+        checkbox.parentElement.setAttribute('data-error-visible', 'false')
         return true;
     }
-    cities.setAttribute('data-error-visible', 'true')
+    checkbox.parentElement.setAttribute('data-error-visible', 'true')
     return false;
 }
 
 
 // events
-firstName.addEventListener('focusout', validateFirstName)
-lastName.addEventListener('focusout', validateLastName)
-email.addEventListener('focusout', validateEmail)
-birthDate.addEventListener('focusout', validateBirthDate)
-quantity.addEventListener('focusout', validateParticiaptionsNumber)
-cities.addEventListener('change', validateLocation)
+firstName.addEventListener('focusout', validateFirstName);
+lastName.addEventListener('focusout', validateLastName);
+email.addEventListener('focusout', validateEmail);
+birthDate.addEventListener('focusout', validateBirthDate);
+quantity.addEventListener('focusout', validateParticiaptionsNumber);
+cities.addEventListener('change', validateLocation);
+checkbox.addEventListener('change', validateTerms);
+
+
+// validate form
+function validateForm() {
+    if (validateFirstName() === true &&
+    validateLastName() === true &&
+    validateEmail() === true &&
+    validateBirthDate() === true &&
+    validateParticiaptionsNumber() === true &&
+    validateLocation() === true &&
+    validateTerms() === true) {
+        return true;
+    }
+    return false;
+}
+
+// check all fields
+function checkAllFields() {
+    validateFirstName()
+    validateLastName()
+    validateEmail()
+    validateBirthDate()
+    validateParticiaptionsNumber()
+    validateLocation()
+    validateTerms()
+}
 
