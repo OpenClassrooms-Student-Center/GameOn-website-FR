@@ -8,13 +8,13 @@ function editNav() {
 }
 
 // DOM Elements
-const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
-const modalCross = document.querySelector(".close");
+const modalbg = document.querySelector('.bground');
+const modalBtn = document.querySelectorAll('.modal-btn');
+const formData = document.querySelectorAll('.formData');
+const modalCross = document.querySelector('.close');
 const form = document.getElementById('form');
 const modalConfirm = document.querySelector('.confirm-bground');
-const confirmCross = document.querySelector(".confirm-cross");
+const confirmCross = document.querySelector('.confirm-cross');
 const confirmClose = document.querySelector('.confirm-close');
 const textControl = document.getElementsByClassName('text-control');
 
