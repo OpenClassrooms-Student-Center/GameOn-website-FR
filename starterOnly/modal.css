@@ -76,30 +76,7 @@ img {
   }
 }
 
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
 
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} 
 
 main {
   font-size: 130%;
@@ -147,12 +124,15 @@ main {
   border-radius: 15px;
   cursor: pointer;
   font-size: 16px;
+  text-align: center;
 }
 
 .button:hover {
   background: #3876ac;
 }
-
+.button input {
+  text-align: center;
+}
 .smFont {
   font-size: 16px;
 }
@@ -167,6 +147,9 @@ main {
   width: 100%;
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .content {
@@ -180,12 +163,16 @@ main {
   overflow: hidden;
   position: relative;
   color: #fff;
-  padding-top: 10px;
+  height: 90%;
+  overflow-y: auto;
 }
 
 .modal-body {
-  padding: 15px 8%;
-  margin: 15px auto;
+  padding: 20px;
+  padding: 50px;
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
 
 label {
@@ -216,7 +203,6 @@ input {
   margin-top: 7px;
   margin-bottom: 7px;
   text-align: right;
-  line-height: 0.3;
   opacity: 1;
   transition: 0.3s;
   border: 1px solid;
@@ -225,6 +211,25 @@ input {
 
 .formData[data-error] .text-control {
   border: 2px solid #e54858;
+}
+
+.confirmation {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.confirmation[hide] {
+  display: none;
+}
+.confirmation .confirmation__message{
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 /* 
 input[data-error]::after {
@@ -305,6 +310,7 @@ input[data-error]::after {
   opacity: 1;
   cursor: pointer;
   transform: scale(0.7);
+  z-index: 100;
 }
 .close:before,
 .close:after {
@@ -332,6 +338,7 @@ input[data-error]::after {
   color: #fff;
   cursor: pointer;
   border: 0;
+  text-align: center;
 }
 /* custom select styles */
 .custom-select {
@@ -473,6 +480,10 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+
+#form-modal[hide] {
+  display: none;
+}
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
@@ -526,13 +537,39 @@ footer {
     opacity: 1;
   }
 }
-@keyframes modalclose {
-  from {
-    opacity: 1;
-    transform: translateY(-150px);
+
+@media screen and (max-width: 768px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
   }
-  to {
-    opacity: 0;
-    transform: translateY(0);
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .bground {
+    align-items: flex-end;
+    justify-content: flex-end;
+    background-color: transparent;
+  }
+  .content {
+    height: calc(100% - 51px);
+    margin: 0;
   }
 }
+
+
+
+ @media screen and (max-width: 540px) {
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+    margin-top: -15px;
+  }
+
+
+} 

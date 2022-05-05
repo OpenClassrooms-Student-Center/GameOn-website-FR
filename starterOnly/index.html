@@ -53,7 +53,7 @@
 
     <div class="bground">
       <div class="content">
-        <span class="close" id="close-modal"></span>
+        <span class="close close-modal"></span>
         <div class="modal-body">
           <form name="reserve" id="form-modal">
             <div class="formData">
@@ -120,6 +120,14 @@
             </div>
             <input class="btn-submit" type="submit" class="button" value="C'est parti" />
           </form>
+          <div class="confirmation" id="conf-modal" hide>
+            <div class="confirmation__message">
+              <h2>Merci ! Votre réservation a été reçue</h2>
+            </div>
+            <div class="confirmation__footer">
+              <button class="btn-submit close-modal">Fermer</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

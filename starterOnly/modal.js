@@ -11,16 +11,17 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.getElementById('form-modal');
-const closeModal = document.getElementById('close-modal');
+const closeModal = document.querySelectorAll(".close-modal");
 
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+closeModal.forEach((btn) => btn.addEventListener("click", () => modalbg.style.display = "none"));
 
 
 // launch modal form
 function launchModal() {
-  modalbg.style.display = "block";
+  modalbg.style.display = "flex";
 }
 
 formData.onsubmit = async (e) => { // Function Asynchrone
@@ -70,7 +71,10 @@ formData.onsubmit = async (e) => { // Function Asynchrone
 
     e.target[i].parentNode.setAttribute('data-error', getErrorText(i))
   }
-
+  if(errors.length === 0) {
+    formData.setAttribute('hide', "true");
+    document.getElementById('conf-modal').removeAttribute('hide');
+  }
 }
 
 const clearErrorForm = (e) => {
@@ -92,9 +96,4 @@ const getErrorText = (name) => {
     case 'location': return 'Vous devez choisir une option';
     case 'checkbox1': return 'Vous devez vérifier que vous acceptez les termes et conditions';
   }
-}
-
-// Fermeture du modal
-closeModal.onclick = () => {
-  modalbg.style.display = "none";
 }
