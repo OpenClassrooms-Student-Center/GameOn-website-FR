@@ -213,7 +213,7 @@ function validTickbox() {
 
 // 
 let modalOneBtn = document.getElementById("envoyer"); 
-let modalOne = document.getElementById("formulaire"); 
+let modalOne = document.getElementById("form"); 
 let modalHot = document.querySelector(".modalHot");
 
 modalOneBtn.addEventListener("click", ouverturemodalHot);
