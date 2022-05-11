@@ -8,12 +8,15 @@ function editNav() {
 }
 
 // DOM Elements
+
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const submitBtn = document.querySelector(".btn-submit");
 const formBody = document.getElementsByName("reserve");
+
 // objet contenant les champs du formulaire
+
 const form = {
   first: document.getElementById("first"),
   last: document.getElementById("last"),
@@ -23,7 +26,9 @@ const form = {
   city: document.querySelectorAll("input[type=radio]"),
   terms: document.getElementById("checkbox1")
 };
+
 // objet qui créé la div qui va afficher le message d'erreur
+
 const errorMsg = {
   first: document.createElement("div"),
   last: document.createElement("div"),
@@ -33,7 +38,9 @@ const errorMsg = {
   city: document.createElement("div"),
   terms: document.createElement("div")
 };
+
 // expression reguliere pour valider les differentes chaines de caractères
+
 const regex = {
   mail: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,
   name: /^[a-zA-ZÀ-Ÿà-ÿ]+([\s\'\.\-][a-zA-ZÀ-Ÿà-ÿ]+)?([\s\'\.\-][a-zA-ZÀ-Ÿà-ÿ]+)*$/,
@@ -56,12 +63,14 @@ closeModalBtn.addEventListener("click", function () {
 });
 
 // application du style pour les msg d'erreur
+
 for (const property in errorMsg) {
   errorMsg[property].style.color = "#FF4E60";
   errorMsg[property].style.fontSize = "12px";
 }
 
 // validation d'un champ de texte
+
 function validText(entry, regex, container, msg, index, msg2) {
   formData[index].appendChild(container);
   if(entry.length < 2 && msg2.length > 0){
@@ -78,6 +87,7 @@ function validText(entry, regex, container, msg, index, msg2) {
 }
 
 // validation de la date de naissance
+
 function isDateValid() {
   let date = new Date(form.birthdate.value).getTime();
   let year = form.birthdate.value.substring(0, 2);
@@ -92,6 +102,7 @@ function isDateValid() {
 }
 
 // validation de la selection de la ville
+
 function isCityValid() {
   formData[5].appendChild(errorMsg.city);
   for (let i = 0; i < form.city.length; i++) {
@@ -105,10 +116,10 @@ function isCityValid() {
 }
 
 // validation des conditions d'utilisation
+
 function isTermsValid() {
   const checkbox = document.getElementsByClassName("checkbox2-label");
   checkbox[0].appendChild(errorMsg.terms);
-  //formData[6].appendChild(errorMsg.terms);
   if (form.terms.checked) {
     errorMsg.terms.innerHTML = "";
     return true;
@@ -119,6 +130,7 @@ function isTermsValid() {
 }
 
 // affichage des remerciements
+
 function displayThanks(){
   formBody[0].style.display = "none";
   const modalBody = document.getElementsByClassName("modal-body");
@@ -136,12 +148,14 @@ function displayThanks(){
 }
 
 // envoie du formulaire
+
 function validate(){
   formBody[0].submit();
   return true;
 }
 
 // evenement qui va verifier tous les champs au clic
+
 submitBtn.addEventListener("click", function(event){
   event.preventDefault();
   if (validText(form.first.value, regex.name, errorMsg.first, "Veuillez saisir un prénom correct.", 0, "prénom")
