@@ -14,7 +14,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
+  /* background-image: url("background.png"); */
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -22,6 +22,8 @@ body {
 }
 
 p {
+  display: flex;
+  justify-content: center;
   margin-bottom: 0;
   padding: 0.5vw;
 }
@@ -219,6 +221,7 @@ input {
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
+  text-align: left;
 }
 .formData[data-error-visible="true"]::after {
   opacity: 1;
@@ -226,12 +229,13 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
+
+
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
-} */
+}
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -473,11 +477,13 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
   margin: 0 20px;
 }
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -516,6 +522,80 @@ footer {
     text-align: center;
   }
 }
+
+/* media screen max-width: 320px */
+@media screen and (min-device-width: 320px) and (max-device-width: 768px)  {
+  /* img logo */
+  img {
+    padding-right: 1rem;
+    width: 6rem;
+  }
+
+  /*  */
+  .main-navbar {
+    float: right;
+    width: 9rem;
+  }
+
+  /*  */
+  /* i.fa.fa-bars:hover {
+    visibility: hidden;
+  } */
+  i.fa.fa-bars {
+    margin-top: 20px;
+  }
+
+  .topnav a:hover {
+    background-color: #ff0000;
+    color: #ffffff;
+    border-radius: 10px;
+  }
+
+  .hero-section {
+    display: block;
+    box-shadow: unset;
+  }
+  .hero-content {
+    background: #fff;
+    color: #000;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 10px;
+    min-width: 0px;
+  }
+  .hero-content::after {
+    content: unset;
+  }
+  .hero-content .btn-signup {
+    display: none;
+  }
+  .hero-headline {
+    font-size: 2.2rem;
+    white-space: normal;
+  }
+
+  /* hero text */
+  .hero-text {
+    margin-top: 0.5rem;
+    width: unset;
+    font-size: 1rem;
+  }
+  .hero-img img {
+    border-radius: 10px;
+    margin-top: 0px;
+  }
+  .hero-section > .btn-signup {
+    display: block;
+    margin: 32px auto 10px;
+    padding: 12px 35px;
+  }
+  .copyrights {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 60%;
+  }
+}
+
 
 @keyframes modalopen {
   from {
