@@ -36,13 +36,12 @@ formData.onsubmit = async (e) => { // Function Asynchrone
   const getValue = (name) => e.target[name].value; 
   const getCheckbox = (name) => e.target[name].checked;
 
-  
 
-  if(!getValue('first').length > 0) {
+  if(String(getValue('first')).trim().length < 2) {
     errors.push('first');
   }  
 
-  if(!getValue('last').length > 0) {
+  if(String(getValue('last')).trim().length < 2) {
     errors.push('last');
   }
 
@@ -87,6 +86,7 @@ const clearErrorForm = (e) => {
   }
 
 }
+
 const getErrorText = (name) => {
   switch(name) {
     case 'first': return 'Veuillez entrer 2 caractères ou plus pour le champ du Prénom';
