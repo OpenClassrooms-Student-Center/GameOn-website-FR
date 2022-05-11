@@ -40,7 +40,7 @@ formData.onsubmit = async (e) => { // Function Asynchrone
   if(String(getValue('first')).trim().length < 2) {
     errors.push('first');
   }  
-
+ 
   if(String(getValue('last')).trim().length < 2) {
     errors.push('last');
   }
