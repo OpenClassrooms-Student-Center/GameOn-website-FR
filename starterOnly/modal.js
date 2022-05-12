@@ -25,6 +25,8 @@ function launchModal() {
 }
 
 formData.onsubmit = async (e) => { // Function Asynchrone
+  let emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+  let nameRegex = /^[A-Za-z]+$/g;
   // Annuler la redirection par défaut
   e.preventDefault();
   // Nettoyer toutes les erreurs du formulaire
@@ -36,16 +38,17 @@ formData.onsubmit = async (e) => { // Function Asynchrone
   const getValue = (name) => e.target[name].value; 
   const getCheckbox = (name) => e.target[name].checked;
 
+  
 
-  if(String(getValue('first')).trim().length < 2) {
+  if(!getValue('first').length > 0 || getValue('first').match(nameRegex) === null) {
     errors.push('first');
   }  
- 
-  if(String(getValue('last')).trim().length < 2) {
+
+  if(!getValue('last').length > 0 || getValue('last').match(nameRegex) === null) {
     errors.push('last');
   }
 
-  if(getValue('email') === "") {
+  if(getValue('email') === "" || getValue('email').match(emailRegex) === null) {
     errors.push('email');
   }
 
@@ -70,6 +73,7 @@ formData.onsubmit = async (e) => { // Function Asynchrone
 
     e.target[i].parentNode.setAttribute('data-error', getErrorText(i))
   }
+
   if(errors.length === 0) {
     formData.setAttribute('hide', "true");
     document.getElementById('conf-modal').removeAttribute('hide');
@@ -86,11 +90,10 @@ const clearErrorForm = (e) => {
   }
 
 }
-
 const getErrorText = (name) => {
   switch(name) {
-    case 'first': return 'Veuillez entrer 2 caractères ou plus pour le champ du Prénom';
-    case 'last': return 'Veuillez entrer 2 caractères ou plus pour le champ du Nom';
+    case 'first': return 'Veuillez entrer 2 caractères ou plus pour le champ du Prénom (alphabet uniquement)';
+    case 'last': return 'Veuillez entrer 2 caractères ou plus pour le champ du Nom (alphabet uniquement)';
     case 'email': return 'Veuillez entrer une adresse mail';
     case 'birthdate': return 'Vous devez entrer votre date de naissance';
     case 'location': return 'Vous devez choisir une option';
