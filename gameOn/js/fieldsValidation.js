@@ -3,12 +3,11 @@ const lastName = document.getElementById('last');
 const email = document.getElementById('email');
 const birthDate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
-const cities = document.getElementById('cities')
+const cities = document.getElementById('cities');
 const locations = document.getElementsByName('location');
 const checkbox = document.getElementById('checkbox1');
 const nameRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+$/;
-// const mailRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ0-9]+@[a-zA-Z]+\.[a-zA-Z]{2,}+$/;
-const mailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+const mailRegex = /^([a-zA-ZÀ-ÖØ-öø-ÿ0-9.!#$%&'*+/=?^_`{|}~-])+@([a-zA-Z0-9-])+\.([a-zA-Z0-9-]{2,})+$/;
 
 
 // validate firstName
