@@ -31,6 +31,11 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = "none";
   modalConfirm.style.display = "none";
+  form.reset();
+  for (i = 0; i < textControl.length; i++) {
+    textControl[i].style.border = 'none';
+    textControl[i].parentElement.setAttribute('data-error-visible', 'false');
+  }
 }
 
 // close modal event
@@ -43,7 +48,7 @@ form.addEventListener('submit', function(e) {
       displayConfirmation();
       form.reset();
       for (i = 0; i < textControl.length; i++) {
-      textControl[i].style.border = 'none';
+        textControl[i].style.border = 'none';
       }
   } else {
   checkAllFields();
