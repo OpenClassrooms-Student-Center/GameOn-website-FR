@@ -48,18 +48,31 @@ function validateEmail() {
 
 // validate birthDate
 function validateBirthDate() {
-    if (birthDate.value.length !==10) {
-        birthDate.parentElement.setAttribute('data-error-visible', 'true')
-        birthDate.style.border = "3px solid red";
-        return false;
+    if (birthDate.value.length ==10) {
+        let today = new Date();
+        let vbirthDate = birthDate.value;
+        let birthDay = new Date(vbirthDate);
+        let age = today.getFullYear() - birthDay.getFullYear();
+        let m = today.getMonth() - birthDay.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDay.getDate())) {
+            age--;
+        }
+        if (age < 16) {
+            birthDate.parentElement.setAttribute('data-error-visible', 'true')
+            birthDate.style.border = "3px solid red";
+            return false;
+        }
+        birthDate.parentElement.setAttribute('data-error-visible', 'false')
+        birthDate.style.border = "3px solid green";
+        return true;
     }
-    birthDate.parentElement.setAttribute('data-error-visible', 'false')
-    birthDate.style.border = "3px solid green";
-    return true;
+    birthDate.parentElement.setAttribute('data-error-visible', 'true')
+    birthDate.style.border = "3px solid red";
+    return false;
 }
 
-// validate particiaptionsNumber
-function validateParticiaptionsNumber() {
+// validate participationsNumber
+function validateParticipationsNumber() {
     if (quantity.value.length ===0 || isNaN(quantity.value) === true || quantity.value < 0) {
         quantity.parentElement.setAttribute('data-error-visible', 'true')
         quantity.style.border = "3px solid red";
@@ -98,7 +111,7 @@ firstName.addEventListener('focusout', validateFirstName);
 lastName.addEventListener('focusout', validateLastName);
 email.addEventListener('focusout', validateEmail);
 birthDate.addEventListener('focusout', validateBirthDate);
-quantity.addEventListener('focusout', validateParticiaptionsNumber);
+quantity.addEventListener('focusout', validateParticipationsNumber);
 cities.addEventListener('change', validateLocation);
 checkbox.addEventListener('change', validateTerms);
 
@@ -109,7 +122,7 @@ function validateForm() {
     validateLastName() === true &&
     validateEmail() === true &&
     validateBirthDate() === true &&
-    validateParticiaptionsNumber() === true &&
+    validateParticipationsNumber() === true &&
     validateLocation() === true &&
     validateTerms() === true) {
         return true;
@@ -123,7 +136,7 @@ function checkAllFields() {
     validateLastName()
     validateEmail()
     validateBirthDate()
-    validateParticiaptionsNumber()
+    validateParticipationsNumber()
     validateLocation()
     validateTerms()
 }
