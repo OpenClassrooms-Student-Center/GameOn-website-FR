@@ -470,6 +470,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 .copyrights {
   color: #fe142f;
@@ -491,14 +492,21 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+  main {
+    margin: 15px;
+  }
+  .header-logo img {
+    height: 35px;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
+    min-height: 0;
   }
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 15px 0;
   }
   .hero-content::after {
     content: unset;
@@ -507,12 +515,15 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 2.2rem;
     white-space: normal;
+    line-height: 1;
+    font-weight: bold;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 1em;
+    margin-top: 15px;
   }
   .hero-img img {
     border-radius: 10px;
