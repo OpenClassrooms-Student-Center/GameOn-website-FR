@@ -61,6 +61,7 @@
               name="reserve"
               action="index.html"
               method="get"
+              novalidate
             >
               <div
                 class="formData" data-error="Vous devez renseigner ce champs avec au moins 2 caractères" data-error-visible="false">
@@ -70,7 +71,6 @@
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
                 /><br>
               </div>
               <div
@@ -81,7 +81,6 @@
                   type="text"
                   id="last"
                   name="last"
-                  minlength="2"
                 /><br>
               </div>
               <div
@@ -112,8 +111,6 @@
                   class="text-control" 
                   id="quantity" 
                   name="quantity" 
-                  min="0" 
-                  max="99" 
                 />
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>

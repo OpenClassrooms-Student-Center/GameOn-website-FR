@@ -42,7 +42,7 @@ modalCross.forEach((btn) => btn.addEventListener("click", closeModal));
 // submit form
 form.addEventListener('submit', function(e) {
   e.preventDefault();
-  if (validateForm() === true) {
+  if (validateForm()) {
       displayConfirmation();
       form.reset();
       for (i = 0; i < textControl.length; i++) {

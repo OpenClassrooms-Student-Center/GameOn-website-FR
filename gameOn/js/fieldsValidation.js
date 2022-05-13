@@ -9,7 +9,6 @@ const checkbox = document.getElementById('checkbox1');
 const nameRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+$/;
 const mailRegex = /^([a-zA-ZÀ-ÖØ-öø-ÿ0-9.!#$%&'*+/=?^_`{|}~-])+@([a-zA-Z0-9-])+\.([a-zA-Z0-9-]{2,})+$/;
 
-
 // validate firstName
 function validateFirstName() {
     if (firstName.value.length < 2 || firstName.value === '' || !firstName.value.match(nameRegex)) {
@@ -22,7 +21,11 @@ function validateFirstName() {
     return true;
 }
 
-// validate lastName
+    /**
+     * Validate lastname according to regex
+     * @param {string} lastName - The lastname to be validated
+     * Returns true if lastName is valid, and false otherwise.
+     */
 function validateLastName() {
     if (lastName.value.length < 2 || lastName.value === '' || !lastName.value.match(nameRegex)) {
         lastName.parentElement.setAttribute('data-error-visible', 'true')
@@ -118,13 +121,13 @@ checkbox.addEventListener('change', validateTerms);
 
 // validate form
 function validateForm() {
-    if (validateFirstName() === true &&
-    validateLastName() === true &&
-    validateEmail() === true &&
-    validateBirthDate() === true &&
-    validateParticipationsNumber() === true &&
-    validateLocation() === true &&
-    validateTerms() === true) {
+    if (validateFirstName() &&
+    validateLastName() &&
+    validateEmail() &&
+    validateBirthDate() &&
+    validateParticipationsNumber() &&
+    validateLocation() &&
+    validateTerms()) {
         return true;
     }
     return false;
