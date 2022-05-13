@@ -1,6 +1,7 @@
 'use strict';
 
 const firstName = document.getElementById('first');
+const regName = new RegExp(/^[a-zA-Z]+ [a-zA-Z]+$/);
 /* const lastName = document.getElementById('last');
 const email = document.getElementById('email');
 const quantity = document.getElementById('quantity');
@@ -15,10 +16,7 @@ const input = document.getElementsByClassName('text-control');
 const isRequired = (value) => value === '' ? false : true;
 const isBetween = (length, min, max) => length < min || length > max ? false : true;
 
-const isNameValid = (name) => {
-  const regName = '/^[\p{L}\'][\p{L}\'-]*[\p{L}]$/u';
-  return regName.test(name);
-};
+const isNameValid = (name) => name === regName ? regName.test(name) : false;
 
 /*
 const isEmailValid = (email) => {
@@ -27,41 +25,31 @@ const isEmailValid = (email) => {
 };
 */
 
-const showError = (input, message) => {
-  // get the form-field element
-  const formField = input.parentElement;
-  // add the error class
-  formField.setAttribute('data-error', 'roipoljhljbjkhbv');
-  formField.setAttribute('data-error-visible', 'true');
-
-  // show the error message
-  const small = formField.createElement('small');
-  formField.appendChild(small);
-  const error = formField.querySelector('small');
-  error.textContent = message;
-};
-
 const checkFirstName = () =>{
   const valid = false;
   const min = 2;
   const max = 25;
+  const formField = firstName.parentElement;
   const first = firstName.value.trim();
 
   if (!isRequired(first)) {
-    showError(firstName, 'Ce champs ne pas être vide');
+    formField.setAttribute('data-error', 'Ce champs ne pas être vide');
+    formField.setAttribute('data-error-visible', 'true');
   } else if (!isNameValid(first)) {
-    showError(firstName, 'Votre prenom n\'est pas valide.');
-  }
-  else if (!isBetween(first.length, min, max)) {
-    showError(firstName, `il doit y avoir entre ${min} et ${max} lettres.`);
+    formField.setAttribute('data-error', 'Votre prenom n\'est pas valide.');
+    formField.setAttribute('data-error-visible', 'true');
+  } else if (!isBetween(first.length, min, max)) {
+    formField.setAttribute('data-error', `il doit y avoir entre ${min} et ${max} lettres.`);
+    formField.setAttribute('data-error-visible', 'true');
   } else {
-    return true;
+    valid = true;
   }
   return valid;
 };
 
+/** @return {function}  */
 function validate() {
-  if(checkFirstName) {
+  if (checkFirstName) {
     return true;
   }
   return false;

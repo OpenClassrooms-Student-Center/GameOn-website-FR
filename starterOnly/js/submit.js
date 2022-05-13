@@ -1,19 +1,17 @@
 'use strict';
-import 'form.js';
 
-const form = document.getElementById('form');
+const form = document.querySelector('form');
 /**
  * {*}
  */
 form.addEventListener('submit', function(e) {
-  /**
-   * @objet
-   */
   e.preventDefault();
-
+  const isUserFirstNameValid = checkFirstName();
+  const isFormValid = isUserFirstNameValid;
   // submit to the server if the form is valid
-  if (validate()) {
-    window.redirect('index.html');
+  if (isFormValid) {
+    alert('sucess');
   }
 });
+
 

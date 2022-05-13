@@ -18,14 +18,14 @@ modalClose.forEach((span) => span.addEventListener('click', closeModal));
 /**
  * Lauch modal
 */
-export function launchModal() {
+function launchModal() {
   modalbg.style.display = 'block';
 }
 
 /**
  * Close Modal
 */
-export function closeModal() {
+function closeModal() {
   modalbg.style.display = 'none';
 }
 
@@ -34,7 +34,7 @@ export function closeModal() {
  *
  *  {editNav}
  */
-export function editNav() {
+function editNav() {
   const x = document.getElementById('myTopnav');
   if (x.className === 'topnav') {
     x.className += ' responsive';
@@ -45,9 +45,7 @@ export function editNav() {
 /**
  * return @console
  */
-export function hi() {
-  console.log('Hi from module 1.');
-}
+
 
 /* window.onclick = function(event) {
   if (event.target == modalbg) {
