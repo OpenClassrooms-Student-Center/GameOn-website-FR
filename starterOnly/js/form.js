@@ -6,12 +6,9 @@ const email = document.getElementById('email');
 const birthdate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
 const input = document.querySelectorAll('#citiesContests .checkbox-input');
+const checkCgu = document.getElementById('checkbox1');
+/* const checkboxPub = document.getElementById('checkbox2'); */
 
-/*
-const checkboxPolicy = document.getElementById('checkbox1');
-const checkboxPub = document.getElementById('checkbox2');
-const input = document.getElementsByClassName('text-control');
-*/
 
 const isRequired = (value) => value === '' ? false : true;
 
@@ -26,9 +23,9 @@ const isEmailValid = (email) => {
 };
 
 const isDateValid = (date) => {
-  const regDate = new RegExp(
-      /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[1-9]|2[1-9])$/);
-  return regDate.test(date);
+  const regDate = 
+  /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
+  return date.match(regDate);
 };
 
 
@@ -42,8 +39,10 @@ const checkFirstName = () =>{
   } else if (!isNameValid(first)) {
     formField.setAttribute('data-error', 'Votre prenom n\'est pas valide.');
     formField.setAttribute('data-error-visible', 'true');
+    return false;
   } else {
-    return displaySucess();
+    firstName.style.border = '2px solid #00c040';
+    return true;
   }
 };
 
@@ -57,8 +56,10 @@ const checkLastName = () =>{
   } else if (!isNameValid(last)) {
     formField.setAttribute('data-error', 'Votre nom n\'est pas valide.');
     formField.setAttribute('data-error-visible', 'true');
+    return false;
   } else {
-    return displaySucess();
+    lastName.style.border = '2px solid #00c040';
+    return true;
   }
 };
 
@@ -72,8 +73,10 @@ const checkEmail = () =>{
   } else if (!isEmailValid(mail)) {
     formField.setAttribute('data-error', 'Votre email n\'est pas valide.');
     formField.setAttribute('data-error-visible', 'true');
+    return false;
   } else {
-    return displaySucess();
+    email.style.border = '2px solid #00c040';
+    return true;
   }
 };
 
@@ -87,8 +90,10 @@ const checkDate = () =>{
   } else if (!isDateValid(bday)) {
     formField.setAttribute('data-error', 'Votre format attendu dd/mm/aaaa.');
     formField.setAttribute('data-error-visible', 'true');
+    return false;
   } else {
-    return displaySucess();
+    birthdate.style.border = '2px solid #00c040';
+    return true;
   }
 };
 
@@ -98,11 +103,12 @@ const checkNumbContest = () =>{
 
   if (!isRequired(contest)) {
     formField.setAttribute(
-        'data-error', 'Merci de remplir ce champs, même à 0.'
-    );
+        'data-error', 'Merci de remplir ce champs, même à 0.');
     formField.setAttribute('data-error-visible', 'true');
+    return false;
   } else {
-    return displaySucess();
+    quantity.style.border = '2px solid #00c040';
+    return true;
   }
 };
 
@@ -117,7 +123,22 @@ const checkSelectCity = () =>{
   if (c == -1) {
     formField.setAttribute('data-error', 'Merci de séléctionner une ville.');
     formField.setAttribute('data-error-visible', 'true');
+    return false;
   } else {
-    return displaySucess();
+    return true;
+  }
+};
+
+
+const checkCgukBoxes = () => {
+  const formField = checkCgu.parentElement;
+  const cgu = checkCgu.checked;
+  if (!cgu) {
+    formField.setAttribute(
+        'data-error', 'Merci de valider les conditions d\'utilisation.');
+    formField.setAttribute('data-error-visible', 'true');
+    return false;
+  } else {
+    return true;
   }
 };

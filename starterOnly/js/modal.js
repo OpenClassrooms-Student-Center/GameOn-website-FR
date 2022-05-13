@@ -4,7 +4,7 @@ const modalbg = document.querySelector('.bground');
 const modalBtn = document.querySelectorAll('.modal-btn');
 const modalClose = document.querySelectorAll('.close');
 const modalSucess = document.getElementById('sucess');
-const formModale = document.querySelector('form');
+
 /**
  * lauch modal event
 */
@@ -29,15 +29,6 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = 'none';
 }
-
-/**
- * Modal Sucess
-*/
-function displaySucess() {
-  modalSucess.style.display = 'flex';
-  formModale.style.display= 'none';
-};
-
 
 /**
  *
