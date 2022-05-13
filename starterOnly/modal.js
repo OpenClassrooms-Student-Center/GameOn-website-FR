@@ -7,19 +7,19 @@ function editNav() {
   }
 }
 
-// DOM Elements
+// Variables DOM
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.getElementById('form-modal');
 const closeModal = document.querySelectorAll(".close-modal");
 
 
-// launch modal event
+// Evènements
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 closeModal.forEach((btn) => btn.addEventListener("click", () => modalbg.style.display = "none"));
 
 
-// launch modal form
+// AFfichage du modal
 function launchModal() {
   modalbg.style.display = "flex";
 }
@@ -27,12 +27,13 @@ function launchModal() {
 formData.onsubmit = async (e) => { // Function Asynchrone
   let emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
   let nameRegex = /^[A-Za-z]+$/g;
+  let numberRegex = /^[0-9]*$/g
   // Annuler la redirection par défaut
   e.preventDefault();
   // Nettoyer toutes les erreurs du formulaire
   clearErrorForm(e);
   // Tableau des erreurs
-  const errors = [];
+  let errors = [];
 
   // Récupère moi la valeur du formulaire à l'aide de son nom ou la checkbox
   const getValue = (name) => e.target[name].value; 
@@ -55,7 +56,9 @@ formData.onsubmit = async (e) => { // Function Asynchrone
   if(getValue('birthdate') === "") {
     errors.push('birthdate');
   }
-
+  if(getValue('quantity') === "" || getValue('quantity').match(numberRegex) === null) {
+    errors.push('quantity');
+  }
   if(getValue('location') === "") {
     errors.push('location');
   }
@@ -97,6 +100,7 @@ const getErrorText = (name) => {
     case 'email': return 'Veuillez entrer une adresse mail';
     case 'birthdate': return 'Vous devez entrer votre date de naissance';
     case 'location': return 'Vous devez choisir une option';
+    case 'quantity': return 'Veuillez entrer une valeur numérique';
     case 'checkbox1': return 'Vous devez vérifier que vous acceptez les termes et conditions';
   }
 }

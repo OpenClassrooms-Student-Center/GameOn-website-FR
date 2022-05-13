@@ -74,7 +74,7 @@
             </div>
             <div class="formData">
               <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-              <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+              <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" value="0">
             </div>
             <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
             <div class="formData">
@@ -119,6 +119,7 @@
             </div>
             <input class="btn-submit" type="submit" class="button" value="C'est parti" />
           </form>
+          <!-- Balise de confirmation (Retour utilisateur) -->
           <div class="confirmation" id="conf-modal" hide>
             <div class="confirmation__message">
               <h2>Merci ! Votre réservation a été reçue</h2>
@@ -127,6 +128,7 @@
               <button class="btn-submit close-modal">Fermer</button>
             </div>
           </div>
+
         </div>
       </div>
   </main>
