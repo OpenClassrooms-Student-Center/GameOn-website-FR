@@ -5,11 +5,9 @@ const lastName = document.getElementById('last');
 const email = document.getElementById('email');
 const birthdate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
+const input = document.querySelectorAll('#citiesContests .checkbox-input');
+
 /*
-
-
-const parentCheckBox = document.getElementById('parentCheckBox');
-const location = document.querySelectorAll('#parentCheckBox .checkbox-input');
 const checkboxPolicy = document.getElementById('checkbox1');
 const checkboxPub = document.getElementById('checkbox2');
 const input = document.getElementsByClassName('text-control');
@@ -22,11 +20,11 @@ const isNameValid = function(name) {
   return regName.test(name);
 };
 
-
 const isEmailValid = (email) => {
   const regEmail = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
   return regEmail.test(email);
 };
+
 const isDateValid = (date) => {
   const regDate = new RegExp(
       /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[1-9]|2[1-9])$/);
@@ -48,6 +46,7 @@ const checkFirstName = () =>{
     return displaySucess();
   }
 };
+
 const checkLastName = () =>{
   const formField = lastName.parentElement;
   const last = lastName.value.trim();
@@ -85,7 +84,7 @@ const checkDate = () =>{
   if (!isRequired(bday)) {
     formField.setAttribute('data-error', 'Merci de remplir ce champs.');
     formField.setAttribute('data-error-visible', 'true');
-  } else if (!isEmailValid(bday)) {
+  } else if (!isDateValid(bday)) {
     formField.setAttribute('data-error', 'Votre format attendu dd/mm/aaaa.');
     formField.setAttribute('data-error-visible', 'true');
   } else {
@@ -98,7 +97,25 @@ const checkNumbContest = () =>{
   const contest = quantity.value.trim();
 
   if (!isRequired(contest)) {
-    formField.setAttribute('data-error', 'Merci de remplir ce champs.');
+    formField.setAttribute(
+        'data-error', 'Merci de remplir ce champs, même à 0.'
+    );
+    formField.setAttribute('data-error-visible', 'true');
+  } else {
+    return displaySucess();
+  }
+};
+
+const checkSelectCity = () =>{
+  const formField = document.getElementById('citiesContests');
+  let c = -1;
+  for (let i = 0; i < input.length; i++) {
+    if (input[i].checked) {
+      c = i;
+    }
+  }
+  if (c == -1) {
+    formField.setAttribute('data-error', 'Merci de séléctionner une ville.');
     formField.setAttribute('data-error-visible', 'true');
   } else {
     return displaySucess();

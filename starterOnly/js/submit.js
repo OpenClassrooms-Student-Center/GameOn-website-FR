@@ -13,7 +13,8 @@ form.addEventListener('submit', function(e) {
     checkLastName() ||
     checkEmail()||
     checkDate() ||
-    checkNumbContest()) {
+    checkNumbContest() ||
+    checkSelectCity()) {
     displaySucess();
   }
 });
