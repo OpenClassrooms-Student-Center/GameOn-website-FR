@@ -1,11 +1,13 @@
 'use strict';
 
 const firstName = document.getElementById('first');
-const regName = new RegExp(/^[a-zA-Z]+ [a-zA-Z]+$/);
-/* const lastName = document.getElementById('last');
+const lastName = document.getElementById('last');
 const email = document.getElementById('email');
-const quantity = document.getElementById('quantity');
 const birthdate = document.getElementById('birthdate');
+const quantity = document.getElementById('quantity');
+/*
+
+
 const parentCheckBox = document.getElementById('parentCheckBox');
 const location = document.querySelectorAll('#parentCheckBox .checkbox-input');
 const checkboxPolicy = document.getElementById('checkbox1');
@@ -14,51 +16,91 @@ const input = document.getElementsByClassName('text-control');
 */
 
 const isRequired = (value) => value === '' ? false : true;
-const isBetween = (length, min, max) => length < min || length > max ? false : true;
 
-const isNameValid = (name) => name === regName ? regName.test(name) : false;
+const isNameValid = function(name) {
+  const regName = new RegExp(/([A-Z])\w+/);
+  return regName.test(name);
+};
 
-/*
+
 const isEmailValid = (email) => {
-  const regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const regEmail = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
   return regEmail.test(email);
 };
-*/
+const isDateValid = (date) => {
+  const regDate = new RegExp(
+      /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(0[1-9]|1[1-9]|2[1-9])$/);
+  return regDate.test(date);
+};
+
 
 const checkFirstName = () =>{
-  const valid = false;
-  const min = 2;
-  const max = 25;
   const formField = firstName.parentElement;
   const first = firstName.value.trim();
 
   if (!isRequired(first)) {
-    formField.setAttribute('data-error', 'Ce champs ne pas être vide');
+    formField.setAttribute('data-error', 'Merci de remplir ce champs.');
     formField.setAttribute('data-error-visible', 'true');
   } else if (!isNameValid(first)) {
     formField.setAttribute('data-error', 'Votre prenom n\'est pas valide.');
     formField.setAttribute('data-error-visible', 'true');
-  } else if (!isBetween(first.length, min, max)) {
-    formField.setAttribute('data-error', `il doit y avoir entre ${min} et ${max} lettres.`);
+  } else {
+    return displaySucess();
+  }
+};
+const checkLastName = () =>{
+  const formField = lastName.parentElement;
+  const last = lastName.value.trim();
+
+  if (!isRequired(last)) {
+    formField.setAttribute('data-error', 'Merci de remplir ce champs.');
+    formField.setAttribute('data-error-visible', 'true');
+  } else if (!isNameValid(last)) {
+    formField.setAttribute('data-error', 'Votre nom n\'est pas valide.');
     formField.setAttribute('data-error-visible', 'true');
   } else {
-    valid = true;
+    return displaySucess();
   }
-  return valid;
 };
 
-/** @return {function}  */
-function validate() {
-  if (checkFirstName) {
-    return true;
+const checkEmail = () =>{
+  const formField = email.parentElement;
+  const mail = email.value.trim();
+
+  if (!isRequired(mail)) {
+    formField.setAttribute('data-error', 'Merci de remplir ce champs.');
+    formField.setAttribute('data-error-visible', 'true');
+  } else if (!isEmailValid(mail)) {
+    formField.setAttribute('data-error', 'Votre email n\'est pas valide.');
+    formField.setAttribute('data-error-visible', 'true');
+  } else {
+    return displaySucess();
   }
-  return false;
 };
 
-// REGEXP VARIABLES
+const checkDate = () =>{
+  const formField = birthdate.parentElement;
+  const bday = birthdate.value.trim();
 
+  if (!isRequired(bday)) {
+    formField.setAttribute('data-error', 'Merci de remplir ce champs.');
+    formField.setAttribute('data-error-visible', 'true');
+  } else if (!isEmailValid(bday)) {
+    formField.setAttribute('data-error', 'Votre format attendu dd/mm/aaaa.');
+    formField.setAttribute('data-error-visible', 'true');
+  } else {
+    return displaySucess();
+  }
+};
 
-// const regEmail =
-// new RegExp('/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/');
-// const valideDate= new Date("dd/mm/yyyy");
+const checkNumbContest = () =>{
+  const formField = quantity.parentElement;
+  const contest = quantity.value.trim();
 
+  if (!isRequired(contest)) {
+    formField.setAttribute('data-error', 'Merci de remplir ce champs.');
+    formField.setAttribute('data-error-visible', 'true');
+  } else {
+    return displaySucess();
+  }
+};

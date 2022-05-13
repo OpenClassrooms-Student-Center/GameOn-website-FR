@@ -3,7 +3,8 @@
 const modalbg = document.querySelector('.bground');
 const modalBtn = document.querySelectorAll('.modal-btn');
 const modalClose = document.querySelectorAll('.close');
-
+const modalSucess = document.getElementById('sucess');
+const formModale = document.querySelector('form');
 /**
  * lauch modal event
 */
@@ -30,6 +31,15 @@ function closeModal() {
 }
 
 /**
+ * Modal Sucess
+*/
+function displaySucess() {
+  modalSucess.style.display = 'flex';
+  formModale.style.display= 'none';
+};
+
+
+/**
  *
  *
  *  {editNav}
@@ -42,10 +52,6 @@ function editNav() {
     x.className = 'topnav';
   }
 }
-/**
- * return @console
- */
-
 
 /* window.onclick = function(event) {
   if (event.target == modalbg) {

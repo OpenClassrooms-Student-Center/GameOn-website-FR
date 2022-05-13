@@ -323,7 +323,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.close_sucess {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -348,6 +349,20 @@ input[data-error]::after {
 .select-selected {
   background-color: #fff;
 }
+/* modal Sucess */
+#sucess{
+  display: none;
+  flex-direction: column;
+  height: 700px;
+  justify-content: space-between;
+}
+#sucess h2{
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 70%;
+  text-align: center;
+}
+
 
 /* Style the arrow inside the select element: */
 .select-selected:after {
