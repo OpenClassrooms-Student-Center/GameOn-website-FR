@@ -41,11 +41,11 @@ formData.onsubmit = async (e) => { // Function Asynchrone
 
   
 
-  if(!getValue('first').length > 0 || getValue('first').match(nameRegex) === null) {
+  if(!getValue('first').length > 2 || getValue('first').match(nameRegex) === null) {
     errors.push('first');
   }  
 
-  if(!getValue('last').length > 0 || getValue('last').match(nameRegex) === null) {
+  if(!getValue('last').length > 2 || getValue('last').match(nameRegex) === null) {
     errors.push('last');
   }
 
