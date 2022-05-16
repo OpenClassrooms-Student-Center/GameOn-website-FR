@@ -14,7 +14,8 @@ const isRequired = (value) => value === '' ? false : true;
 
 // user name
 const isNameValid = function(name) {
-  const regName = new RegExp(/([A-Z])\w+/);
+  const regName = new RegExp(
+      /^[\w'\-,.][^0-9_!¡?÷?¿/\\+=@#$%ˆ&*(){}|~<>;:[\]]{2,}$/);
   return regName.test(name);
 };
 
