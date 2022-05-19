@@ -167,8 +167,6 @@ const validateForm = (event) => {
 
 // 
 const confirmForm = () => {
-
-  console.log("Validations effectuées");
   form.style.display = "none";
   const endModal = document.getElementById("end-modal");
   const confirmButton = document.getElementById("mess-end");
