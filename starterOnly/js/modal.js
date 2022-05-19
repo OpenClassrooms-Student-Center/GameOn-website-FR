@@ -43,6 +43,13 @@ function editNav() {
     x.className = 'topnav';
   }
 }
+/**
+ * Modal Sucesss
+*/
+function displaySucess() {
+  modalSucess.style.display = 'flex';
+  form.style.display= 'none';
+};
 
 /* window.onclick = function(event) {
   if (event.target == modalbg) {

@@ -3,14 +3,6 @@
 const form = document.querySelector('form');
 
 /**
- * Modal Sucesss
-*/
-function displaySucess() {
-  modalSucess.style.display = 'flex';
-  form.style.display= 'none';
-};
-
-/**
  * {*}
  */
 
