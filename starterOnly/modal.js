@@ -14,7 +14,7 @@ const formData = document.querySelectorAll(".formData");
 const modalClose = document.querySelector(".close");
 const submitBtn = document.querySelector(".btn-submit");
 
-/* Récupération de tous les champs du formulaire ainsi que l'assignation à une constante */
+// user inputs 
 const firstNameInput = document.getElementById("first");
 const lastNameInput = document.getElementById("last");
 const emailInput = document.getElementById("email");
@@ -62,16 +62,18 @@ modalClose.addEventListener("click", closeModalForm);
   modalbg.style.display = "none";
 });
 
+// form contain user input 
 const form = document.getElementById("reserveForm");
 
 form.addEventListener("submit", (event) => validateForm(event));
 
   
 const validateForm = (event) => {
-  // la fonction preventDefault() annule l'action de l'évènement :
-  // ex : lorsque l'on va appuyer sur le bouton submit, le fomulaire ne s'enverra pas
+
+  // cancels the action of the event
   event.preventDefault();
 
+  // user data
   data = {
     firstName: firstNameInput.value,
     lastName: lastNameInput.value,
@@ -80,11 +82,13 @@ const validateForm = (event) => {
     birthdate: birthdateInput.value,
   };
 
+
+  // return true if one of radioInput is checked
   const isRadioChecked = Array.from(radioInput).filter(
     (radioBtn) => radioBtn.checked
   );
 
-  // Initialisation d'une liste d'erreurs vide
+
   const errors = [];
 
   // firstname
@@ -129,10 +133,12 @@ const validateForm = (event) => {
     ? errors.push([emailInput, "Veuillez entrer une adresse mail valide."])
     : null;
 
-  // T.O.U
+  // terms of use
   !checkbox1.checked
     ? errors.push([touInput, "Veuillez accepter les conditions d'utilisation."])
     : null;
+
+    console.log('is Radio cheched ?', isRadioChecked)
 
   /* Radios */
   !isRadioChecked || isRadioChecked.length <= 0
@@ -154,14 +160,14 @@ const validateForm = (event) => {
   console.log(errors);
   console.log(data);
 
-  if (errors.length <= 0) {
+  if (!errors.length ) {
     confirmForm(event);
   }
 };
 
-// envoi confirmation
-const confirmForm = (event) => {
-  event.preventDefault();
+// 
+const confirmForm = () => {
+
   console.log("Validations effectuées");
   form.style.display = "none";
   const endModal = document.getElementById("end-modal");
@@ -171,5 +177,5 @@ const confirmForm = (event) => {
   endModal.style.paddingBottom = "16px";
 
   confirmButton.addEventListener("click", () => form.submit());
-  modalclose.addEventListener("click", () => form.submit());
+  modalClose.addEventListener("click", () => form.submit());
 };
