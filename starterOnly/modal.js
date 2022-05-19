@@ -138,7 +138,7 @@ const validateForm = (event) => {
     ? errors.push([touInput, "Veuillez accepter les conditions d'utilisation."])
     : null;
 
-    console.log('is Radio cheched ?', isRadioChecked)
+    console.log('is Radio checked ?', isRadioChecked)
 
   /* Radios */
   !isRadioChecked || isRadioChecked.length <= 0
@@ -165,7 +165,8 @@ const validateForm = (event) => {
   }
 };
 
-// 
+
+// confirm user data and cose modal form 
 const confirmForm = () => {
   form.style.display = "none";
   const endModal = document.getElementById("end-modal");
