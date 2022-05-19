@@ -67,6 +67,25 @@ img {
   display: none;
 }
 
+.end-modal {
+  display: none;
+  max-block-size: 60%;
+  margin-top: 5em;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+  text-align: center;
+  }
+
+.end-modal p {
+  margin-bottom: 130%;
+}
+
+/* error message */
+.checkbox-input {
+  display: block;
+}
+
+
 @media screen and (max-width: 768px) {
   .topnav a {display: none;}
   .topnav a.icon {
