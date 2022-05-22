@@ -20,9 +20,18 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-function close_modal(){
+function close_modal(v){
   modalbg.style.display="none";
-  document.querySelector('.signup-success').style.display = "flex";
+  if(v){
+    document.querySelector('#first').value="";
+    document.querySelector('#last').value = "";
+    document.querySelector("#email").value="";
+    document.querySelector('#birthdate').value="";
+    document.querySelector('#quantity').value="";
+    document.querySelectorAll('input[name="location"]').forEach((value) => {value.checked=false});
+    valid = [false,false,false,false,false,false,true];
+    document.querySelector('.signup-success').style.display = "flex";
+  }
 }
 
 function close_signup_success(){
@@ -39,7 +48,7 @@ function validate(){
   let v  = true;
   valid.forEach((input) => {v?(v=input):(v=false)});
   console.log(v);
-  v?close_modal():display_error();
+  v?close_modal(v):display_error();
 }
 
 formData[0].oninput = function(){
@@ -53,7 +62,7 @@ formData[1].oninput = function(){
 }
 
 formData[2].oninput = function(){
-  let expRegu = /^([^\+{}()\[\]\!\*\/\=\^\#\@\&\?\:\;\$\%\²\|\'\"]+)(.?)([^\+{}()\[\]\!\*\/\=\^\#\@\&\?\:\;\$\%\²\|\'\"]*)@([^\+{}()\[\]\!\*\/\=\^\#\@\&\?\:\;\$\%\²\|\'\"]+)\.([^\+{}()\[\]\!\*\/\=\^\#\@\&\?\:\;\$\%\²\|\'\"(0-9)]{2,3})$/;
+  let expRegu = /^([^\+{}()\[\]\!\*\/\=\^\#\@\&\?\:\;\$\%\²\|\'\"\\]+)(\.?)([^\+{}()\[\]\!\*\/\=\^\#\@\&\?\:\;\$\%\²\|\'\"\\]+)@([^\+{}()\[\]\!\*\/\=\^\#\@\&\?\:\;\$\%\²\|\'\"(0-9)]+)\.([^\+{}()\[\]\!\*\/\=\^\#\@\&\?\:\;\$\%\²\|\'\"(0-9)]{2,3})$/;
   let v=expRegu.test(document.querySelector("#email").value);
   valid[2]=v;
   formData[2].dataset['errorVisible'] = !valid[2];
