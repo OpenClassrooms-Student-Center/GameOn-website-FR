@@ -28,3 +28,47 @@ modalBtnClose.forEach((btnClose) => btnClose.addEventListener("click", closeModa
 function closeModal(){ // fonction qui arrete l'affichage du modal
   modalbg.style.display ="none"; 
 }
+
+
+
+// Formulaire
+
+// Element
+let myFirstname = document.getElementById('first');
+let myLastname = document.getElementById('last');
+let myEmail = document.getElementById('email');
+
+// Validation
+
+let btnSubmit = document.querySelector('.btn-submit');
+
+btnSubmit.addEventListener("click", function(event){
+  event.preventDefault();
+  checkName();
+
+});
+function checkName(){
+  if (myFirstname.value == "" || myFirstname.value.length < 2 ){
+    myFirstname.style.border = "2px solid red";
+    return false;
+  }
+  if (myLastname.value == "" || myLastname.value.length < 2 ){
+    myLastname.style.border = "2px solid red";
+    return false;
+  }
+}
+/*
+function validate(){
+  if(myFirstname==""){
+    alert("Entrez un prenom");
+    return false;
+  }
+  else{
+    return true;
+  }
+}
+/*
+function not_validate(){
+
+}
+*/
