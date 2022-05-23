@@ -181,6 +181,7 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+  
 }
 
 .modal-body {
@@ -527,3 +528,12 @@ footer {
   }
 }
 
+@keyframes modelclose {
+  from{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+}
