@@ -23,6 +23,7 @@ const quantityInput = document.getElementById("quantity");
 const touInput = document.getElementById("checkbox1");
 const radioInput = document.querySelectorAll(".radio-input");
 
+
 /**
  * reset form data
  */
@@ -40,18 +41,9 @@ const launchModal = () => {
 }
 
 
-// Close modal form*
-const closeModalForm =()=>{
-  modalbg.style.display = "none";
-}
-
-
  
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-modalClose.addEventListener("click", closeModalForm);
-
-
 
 /**
  * The function `closeModal` is used to reset data form 
@@ -67,30 +59,61 @@ const form = document.getElementById("reserveForm");
 
 form.addEventListener("submit", (event) => validateForm(event));
 
-  
-const validateForm = (event) => {
+/**
+ * Check if one of city is selected 
+ * @returns boolean 
+ */
+const isCitySelected = () =>{
+  // return true if one of radioInput is checked
+ return Array.from(radioInput).filter(
+    (radioBtn) => radioBtn.checked
+  );
+}
 
-  // cancels the action of the event
-  event.preventDefault();
+/**
+ * Get user data
+ * @returns data for user input form
+ */
+const userInput =()=>{
+ let data = {};
 
-  // user data
-  data = {
+  data = 
+  {
     firstName: firstNameInput.value,
     lastName: lastNameInput.value,
     email: emailInput.value,
     quantity: quantityInput.value,
     birthdate: birthdateInput.value,
-  };
 
+   };
+return data
+}
 
-  // return true if one of radioInput is checked
-  const isRadioChecked = Array.from(radioInput).filter(
-    (radioBtn) => radioBtn.checked
-  );
+/**Display errors message 
+ * @param [] errors 
+ */
+const displayErrorMessage = errors =>{
+  errors.map((error) => {
+    const element = error[0];
+    const errorMessage = error[1];
+    element.parentNode.setAttribute("data-error-visible", true);
+    element.parentNode.setAttribute("data-error", errorMessage);
+  });
+}
 
+  
+/**
+ * check if form valid and display error message if exist 
+ * @param {*} event 
+ */
+const validateForm = (event) => {
+
+  //stop event propagation
+  event.preventDefault();
 
   const errors = [];
-
+  const data = userInput();
+ 
   // firstname
   data.firstName.length < 2
     ? errors.push([
@@ -138,28 +161,24 @@ const validateForm = (event) => {
     ? errors.push([touInput, "Veuillez accepter les conditions d'utilisation."])
     : null;
 
-    console.log('is Radio checked ?', isRadioChecked)
+    
 
   /* Radios */
-  !isRadioChecked || isRadioChecked.length <= 0
+  !isCitySelected() || isCitySelected().length <= 0
     ? errors.push([radioInput[0], "Veuillez séléctionner une ville."])
     : null;
 
   formData.forEach((element) => {
     element.setAttribute("data-error-visible", false);
     element.setAttribute("data-error", "");
+  
   });
 
-  errors.forEach((error) => {
-    const element = error[0];
-    const errorMessage = error[1];
-    element.parentNode.setAttribute("data-error-visible", true);
-    element.parentNode.setAttribute("data-error", errorMessage);
-  });
+ displayErrorMessage(errors);
+  // console.log(errors);
+  // console.log(data);
 
-  console.log(errors);
-  console.log(data);
-
+  // if no error we confirm the form
   if (!errors.length ) {
     confirmForm(event);
   }
@@ -167,7 +186,10 @@ const validateForm = (event) => {
 
 
 // confirm user data and cose modal form 
-const confirmForm = () => {
+const confirmForm = (event) => {
+
+  //stop event propagation
+  event.preventDefault();
   form.style.display = "none";
   const endModal = document.getElementById("end-modal");
   const confirmButton = document.getElementById("mess-end");
@@ -176,5 +198,5 @@ const confirmForm = () => {
   endModal.style.paddingBottom = "16px";
 
   confirmButton.addEventListener("click", () => form.submit());
-  modalClose.addEventListener("click", () => form.submit());
+  modalClose.addEventListener("close", () => form.submit());
 };
