@@ -1,3 +1,4 @@
+
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -13,6 +14,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalClose = document.querySelector(".close");
 const submitBtn = document.querySelector(".btn-submit");
+
 
 // user inputs 
 const firstNameInput = document.getElementById("first");
