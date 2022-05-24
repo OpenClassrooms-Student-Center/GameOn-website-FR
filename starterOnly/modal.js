@@ -79,11 +79,11 @@ const userInput =()=>{
 
   data = 
   {
-    firstName: firstNameInput.value,
-    lastName: lastNameInput.value,
-    email: emailInput.value,
-    quantity: quantityInput.value,
-    birthdate: birthdateInput.value,
+    firstName: firstNameInput.value.trim(),
+    lastName: lastNameInput.value.trim(),
+    email: emailInput.value.trim(),
+    quantity: quantityInput.value.trim(),
+    birthdate: birthdateInput.value.trim(),
 
    };
 return data
@@ -93,6 +93,8 @@ return data
  * @param [] errors 
  */
 const displayErrorMessage = errors =>{
+  console.log("errors length => ", errors.length)
+  if(errors.length != null)
   errors.map((error) => {
     const element = error[0];
     const errorMessage = error[1];
@@ -104,14 +106,16 @@ const displayErrorMessage = errors =>{
  const checkInputValues = ( data)=>{
 
    let errors = [];
+
+   const regexText = /^[a-z ,.'-]+$/i;
    
   // firstName
-  (data.firstName.length < 2) ? 
-  errors.push([firstNameInput, "Vous devez renseigner un prénom valide (2 caractères ou plus)." ]) 
+  !regexText.test(data.firstName) || data.firstName?.length < 2 
+  ? errors.push([firstNameInput, "Vous devez renseigner un prénom valide (2 caractères ou plus)." ]) 
   : null
 
   // lastname
-  data.lastName.length < 2
+  !regexText.test(data.lastName) || data.lastName.length < 2
     ? errors.push([
         lastNameInput,
         "Vous devez renseigner un nom valide (2 caractères ou plus).",
