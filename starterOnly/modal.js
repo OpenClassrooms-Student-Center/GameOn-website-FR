@@ -101,26 +101,14 @@ const displayErrorMessage = errors =>{
   });
 }
 
-  
-/**
- * check if form valid and display error message if exist 
- * @param {*} event 
- */
-const validateForm = (event) => {
+ const checkInputValues = ( data)=>{
 
-  //stop event propagation
-  event.preventDefault();
-
-  const errors = [];
-  const data = userInput();
- 
-  // firstname
-  data.firstName.length < 2
-    ? errors.push([
-        firstNameInput,
-        "Vous devez renseigner un prénom valide (2 caractères ou plus).",
-      ])
-    : null;
+   let errors = [];
+   
+  // firstName
+  (data.firstName.length < 2) ? 
+  errors.push([firstNameInput, "Vous devez renseigner un prénom valide (2 caractères ou plus)." ]) 
+  : null
 
   // lastname
   data.lastName.length < 2
@@ -130,6 +118,15 @@ const validateForm = (event) => {
       ])
     : null;
 
+  // Email
+  const emailRegex =
+  /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  !data.email.match(emailRegex)
+    ? errors.push([emailInput, "Veuillez entrer une adresse mail valide."])
+    : null;
+
+    
   // birthDate
   const currentDate = new Date(Date.now());
   const selectedDate = new Date(data.birthdate);
@@ -148,25 +145,36 @@ const validateForm = (event) => {
       ])
     : null;
 
-  // Email
-  const emailRegex =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-  !data.email.match(emailRegex)
-    ? errors.push([emailInput, "Veuillez entrer une adresse mail valide."])
-    : null;
-
   // terms of use
   !checkbox1.checked
-    ? errors.push([touInput, "Veuillez accepter les conditions d'utilisation."])
-    : null;
+  ? errors.push([touInput, "Veuillez accepter les conditions d'utilisation."])
+  : null;
 
-    
+  
 
-  /* Radios */
-  !isCitySelected() || isCitySelected().length <= 0
-    ? errors.push([radioInput[0], "Veuillez séléctionner une ville."])
-    : null;
+/* Radios */
+!isCitySelected() || isCitySelected().length <= 0
+  ? errors.push([radioInput[0], "Veuillez séléctionner une ville."])
+  : null;
+
+
+  return errors
+   }
+
+  
+/**
+ * check if form valid and display error message if exist 
+ * @param {*} event 
+ */
+const validateForm = (event) => {
+
+  //stop event propagation
+  event.preventDefault();
+
+ 
+  const data = userInput();
+ 
+ const errors =  checkInputValues (data)
 
   formData.forEach((element) => {
     element.setAttribute("data-error-visible", false);
@@ -175,8 +183,6 @@ const validateForm = (event) => {
   });
 
  displayErrorMessage(errors);
-  // console.log(errors);
-  // console.log(data);
 
   // if no error we confirm the form
   if (!errors.length ) {
