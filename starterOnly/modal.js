@@ -103,6 +103,12 @@ const displayErrorMessage = errors =>{
   });
 }
 
+
+/**
+ * Check user inputs 
+ * @param {*} data 
+ * @returns []:errors || null
+ */
  const checkInputValues = ( data)=>{
 
    let errors = [];
@@ -163,7 +169,8 @@ const displayErrorMessage = errors =>{
 
 
   return errors
-   }
+
+ }
 
   
 /**
@@ -194,8 +201,10 @@ const validateForm = (event) => {
   }
 };
 
-
-// confirm user data and cose modal form 
+/**
+ * Confirm user data and cose modal form and display end modal thanks
+ * @param {*} event 
+ */
 const confirmForm = (event) => {
 
   //stop event propagation
@@ -203,9 +212,17 @@ const confirmForm = (event) => {
   form.style.display = "none";
   const endModal = document.getElementById("end-modal");
   const confirmButton = document.getElementById("mess-end");
+  const thanksMessage = document.querySelector('.end-modal>p')
+  console.log("thanks => :", thanksMessage)
+
+  console.log("fermer button style: ", confirmButton)
 
   endModal.style.display = "block";
-  endModal.style.paddingBottom = "16px";
+  endModal.style.paddingBottom = "32px";
+  thanksMessage.style.display="flex"
+  thanksMessage.style.justifyContent="center"
+
+
 
   confirmButton.addEventListener("click", () => form.submit());
   modalClose.addEventListener("close", () => form.submit());
