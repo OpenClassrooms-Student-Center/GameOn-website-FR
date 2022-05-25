@@ -550,10 +550,11 @@ margin-top: 10px;
   .hero-headline {
     font-size: 4.5rem;
     white-space: normal;
+    overflow-wrap: anywhere
   }
   .hero-text {
-    width: unset;
     font-size: 1.5rem;
+    overflow-wrap: anywhere
   }
   .hero-img img {
     border-radius: 10px;
@@ -564,6 +565,21 @@ margin-top: 10px;
     margin: 32px auto 10px;
     padding: 12px 35px;
   }
+
+  .end-modal{
+    display: none;
+    width: auto;
+    height: auto;
+}
+.end-modal p {
+    font-size:large;
+    padding: auto;
+    margin: auto;
+    height: 20vh;
+}
+.end-modal button{
+    margin-top: 5px;
+}
   .copyrights {
     margin-top: 50px;
     text-align: center;
@@ -597,6 +613,25 @@ margin-top: 10px;
     width: unset;
     font-size: 1.2rem;
   }
+  .end-modal{
+    display: none;
+    width: auto;
+    height: auto;
+}
+.end-modal p {
+    font-size:medium;
+    padding: auto;
+    margin: auto;
+    height: 1vh;
+}
+.end-modal button{
+    margin-top: 5px;
+}
+  .copyrights {
+    margin-top: auto;
+    text-align: center;
+    font-size: medium;
+  }
 }
 
  @media screen and (max-width: 540px) {
@@ -614,16 +649,46 @@ margin-top: 10px;
     margin-top: -10px;
   }
 
+  .hero-content {
+    min-width: 320px;
+  }
+
   .hero-content h1 {
     font-size:2rem;
+    font-weight: bolder;
 
   }
   .hero-text {
+    display: flex;
+    flex-wrap: wrap;
     width: unset;
-    font-size: 1rem;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+    font-size:auto;
+    font-size: small;
+  }
+  
+.end-modal{
+    display: none;
+    width: auto;
+    height: auto;
+}
+.end-modal p {
+    font-size: small;
+    padding: auto;
+    margin: auto;
+    height: 1vh;
+}
+.end-modal button{
+    margin-top: 5px;
+}
+  footer {
+    padding-left: 1vw;
+    padding-right: 1vw;
+    margin: 0 20px;
+  }
+  .copyrights {
+    font-size: x-small;
+    margin-top: auto;
+    text-align: center;
   }
 } 
 
