@@ -106,7 +106,8 @@ function checkEmailInput(input, errorMessage){
 
 //email input definition
 
-document.querySelector('#email').addEventListener("blur", (e) => {email = checkEmailInput(e.target, "Veuillez entrer un mail valide")})
+document.querySelector('#email').addEventListener("blur", (e) =>
+{email = checkEmailInput(e.target, "Veuillez entrer un mail valide")})
 
 
 //BIRTHDAYINPUT
@@ -130,7 +131,8 @@ function checkBirthInput(input, errorMessage){
 }
 
 //birthday input definition
-document.querySelector('#birthdate').addEventListener("blur", (e) => {borthday = checkBirthInput(e.target, "Veuillez saisir votre date de naissance")})
+document.querySelector('#birthdate').addEventListener("blur", (e) =>
+{borthday = checkBirthInput(e.target, "Veuillez saisir votre date de naissance")})
 
 //QUANTITYINPUT
 
@@ -151,7 +153,8 @@ function checkQuantityInput(input, errorMessage){
 }
 
 //quantity input definition
-document.querySelector('#quantity').addEventListener("blur", (e) => {quantity = checkQuantityInput(e.target, "Veuillez saisir un nombre")})
+document.querySelector('#quantity').addEventListener("blur", (e) =>
+{quantity = checkQuantityInput(e.target, "Veuillez saisir un nombre")})
 
 //CITYINPUT
 
