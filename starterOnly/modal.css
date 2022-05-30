@@ -102,7 +102,7 @@ header
         right: 0;
         left: 0;
 
-        z-index: 1000;
+        z-index: 110;
     }
     .logo
     {
@@ -152,7 +152,7 @@ header
         /* left: 0; */
         right: 0 ;
 
-        z-index: 1000;
+        z-index: 100;
     }
     /* on clock les icones quand on à cliqué sur l'icone burger */
     .topnav.responsive a 
@@ -380,74 +380,12 @@ img
     }
 }
 
-
-/* .modal-btn
-{
-    font-size: 145%;
-    background: #fe142f;
-    display: flex;
-    margin: auto;
-    padding: 2em;
-    color: #fff;
-    padding: 0.75rem 2.5rem;
-    border-radius: 1rem;
-    cursor: pointer;
-}
-.modal-btn:hover
-{
-    background: #3876ac;
-}
-.btn-valider
-{
-    font-size: 145%;
-    background: #fe142f;
-    display: flex;
-    margin: auto;
-    padding: 2em;
-    color: #fff;
-    padding: 0.75rem 2.5rem;
-    border-radius: 1rem;
-    cursor: pointer;
-}
-.modal-btn
-{
-    font-size: 145%;
-    background: #fe142f;
-    display: flex;
-    margin: auto;
-    padding: 2em;
-    color: #fff;
-    padding: 0.75rem 2.5rem;
-    border-radius: 1rem;
-    cursor: pointer;
-}
-.modal-btn:hover
-{
-    background: #3876ac;
-} */
-/* Modal form */
-/* .button
-{
-    background: #fe142f;
-    margin-top: 0.5em;
-    padding: 1em;
-    color: #fff;
-    border-radius: 15px;
-    cursor: pointer;
-    font-size: 16px;
-} */
-
-/* .button:hover
-{
-     background: #3876ac;
-} */
-
 /* background du modal */
 .bground
 {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 150;
     left: 0;
     top: 0;
     height: 100%;
@@ -461,7 +399,7 @@ img
     background: #232323;
     width: 100%;
     max-width: 500px;
-    margin: 5% auto;
+    margin: 130px auto;
     border-radius: 10px;
     position: relative;
     color: #fff;
@@ -482,6 +420,7 @@ img
         opacity: 1;
     }
 }
+/* bouton X pour fermer le modal */
 .close
 {
     position: absolute;
@@ -491,7 +430,7 @@ img
     outline: 0;
     background-color: rgba(0, 0, 0, 0);
     color: white;
-    font-size: 30px;
+    font-size: 13px;
 }
 @media screen and (min-width: 768px)
 {
@@ -500,6 +439,7 @@ img
         position: absolute;
         top: 26px;
         right: 26px;
+        font-size: 17px;
     }
 }
 
@@ -518,6 +458,13 @@ img
     margin-bottom: 17px;
     display: flex;
     flex-direction: column;
+}
+.formData-1>p
+{
+    color: #FF4E60;
+    font-family: 'Roboto', sans-serif; 
+    font-size: 10px;
+    font-weight: 400;
 }
 .formData-1>input
 {
@@ -760,7 +707,7 @@ img
     }
 }
 
-
+/* bouton valider du formulaire */
 .btn-valider
 {
     background: #fe142f;
@@ -816,9 +763,4 @@ img
 .ml-auto
 {
     margin-left: auto;
-}
-.justify-content-between
-{
-    display: flex;
-    justify-content: space-between;
 }

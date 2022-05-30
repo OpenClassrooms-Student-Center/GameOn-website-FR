@@ -85,14 +85,14 @@
                 <!-- <span class="close test">close</span> -->
                 <button class="close" onclick="closeModal()"><i class="fas fa-times"></i></button>
 
-                <form class="modal-form" name="reserve" action="index.html" method="get" onsubmit="return validate();">
+                <form class="modal-form" id="form-valid" name="reserve" action="index.html" method="get" onsubmit="return validateForm();">
 
                     <!-- zone champs de texte -->
                     <div class="formData-1">
 
                         <label for="first">Prénom</label>
                         <input class="text-control" type="text" id="first" name="first" minlength="2"/>
-                        <p class="err-prenom"></p>
+                        <p class="err-first"></p>
 
                         <label for="last">Nom</label>
                         <input class="text-control" type="text" id="last" name="last"/>
@@ -107,7 +107,8 @@
                         <p class="err-date"></p>
 
                         <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label>
-                        <input class="text-control" type="number" id="quantity" name="quantity" min="0" max="99">
+                        <!-- <input class="text-control" type="number" id="quantity" name="quantity" min="0" max="99"> -->
+                        <input class="text-control" type="number" id="quantity" name="quantity">
                         <p class="err-nombre"></p>
         
                     </div>
@@ -161,7 +162,7 @@
                     <div class="formData-3">
 
                         <label class="checkbox">
-                            <input type="checkbox" name="cgu" value="Portland" required>
+                            <input type="checkbox" name="cgu" value="Portland">
                             <span class="checkmark"></span>
                             J'ai lu et accepté les conditions d'utilisation.
                         </label>   
