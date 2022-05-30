@@ -9,12 +9,23 @@ function editNav() {
 
 // DOM Elements
 let formContent = document.getElementById("reserve");     //form content
+const modalBtn = document.querySelectorAll(".modal-btn");   //open modal button
+const modalbg = document.querySelector(".bground");         //modal
+const closeBtn = document.querySelector(".close");        //close btn modal
+const modalSubmit = document.querySelector(".btn-submit");  //modal submit button
+const modalSuccess = document.getElementById("modalSuccess");//modal success
 
+const firstName = document.getElementById("first");         //firtname input
+const lastName = document.getElementById("last");           //lastname input
+const email = document.getElementById("email");             //email input
+const birthdate = document.getElementById("birthdate");     //birthdate input
+const quantity = document.getElementById("quantity");       //quantity input
+const city = document.getElementById("location1");          //city input
+const conditionAcceptation = document.getElementById("checkbox1");     //conditions input
 
 
 // ____________________FORM
-const modalBtn = document.querySelectorAll(".modal-btn");   //open modal button
-const modalbg = document.querySelector(".bground");         //modal
+
 
 // LAUNCH FORM
 
@@ -36,14 +47,16 @@ function closeModal() {
 // close modal event
 closeBtn.addEventListener("click", closeModal);
 
-// btn de fermeture de la modale
-const closeBtn = document.querySelector(".close");
-
-// btn de validation de formulaire
-const submitFormBtn = document.querySelector(".btn-submit");
-
 
 // ____________________INPUTS
+
+// datas validation initialisation
+firstName.valid = false;
+lastName.valid = false;
+email.valid = false;
+birthdate.valid = false;
+quantity.valid = false;
+city.valid = false;
 
 // default messages
 const firstNameMessage = "Le prénom doit comporter au moins 2 caractères alphabétiques";
@@ -55,18 +68,28 @@ const cityMessage = "Vous devez selectionner une ville !";
 const acceptationMessage =  "Vous devez accepter les conditions d'utilisation !";
 const requiredFieldsMessage =  "Vous devez compléter tous les champs obligatoires !";
 
+// allInputs
+
+
 // SUBMIT
-const modalSubmit = document.querySelector(".btn-submit");  //modal submit button
-const modalSuccess = document.getElementById("modalSuccess");//modal success
 
 btn-submit.addEventListener("submit", function(e) {
   e.preventDefault();
-const firstName = document.getElementById("first");         //firtname input
-const lastName = document.getElementById("last");           //lastname input
-const email = document.getElementById("email");             //email input
-const birthdate = document.getElementById("birthdate");     //birthdate input
-const quantity = document.getElementById("quantity");       //quantity input
-const city = document.getElementById("location1");          //city input
-const conditionAcceptation = document.getElementById("checkbox1");     //conditions input
+
 });
 
+// firstName
+
+//email
+
+
+
+function checkTextInput(input, tailleMin, errorMessage) {
+  const regText = /[A-Za-z]/;
+  let isOK = false;
+  if (regText.test(input.value) && input.value.length >= tailleMin) {
+input.parentNode.dataset.errorVisible = false;
+isOK = true
+return isOK
+  }
+}

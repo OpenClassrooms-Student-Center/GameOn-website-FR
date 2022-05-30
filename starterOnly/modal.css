@@ -1,14 +1,15 @@
+/**************** LANDING PAGE ****************/
 :root {
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
   --modal-duration: 0.8s;
 }
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-/* Landing Page */
 
 body {
   margin: 0;
@@ -30,16 +31,21 @@ img {
   padding-right: 1rem;
 }
 
+/**************** HEADER / NAV MENU ****************/
+
 .topnav {
   overflow: hidden;
   margin: 3.5%;
 }
+
 .header-logo {
     float: left;
 }
+
 .main-navbar {
     float: right;
 }
+
 .topnav a {
   float: left;
   display: block;
@@ -68,6 +74,8 @@ img {
   display: none;
 }
 
+/*** HEADER / NAV MENU/Responsive ***/
+
 @media screen and (max-width: 768px) {
   .topnav a {display: none;}
   .topnav a.icon {
@@ -90,8 +98,6 @@ img {
   }
 }
 
-
-
  @media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
@@ -100,6 +106,8 @@ img {
     margin-top: -15px;
   }
 } 
+
+/**************** MAIN CONTENT ****************/
 
 main {
   font-size: 130%;
@@ -131,13 +139,9 @@ main {
   background: #3876ac;
 }
 
-.footer {
-  margin: 20px;
-  padding: 10px;
-  font-family: var(--font-slab);
-}
 
-/* Modal form */
+
+/*** MAIN CONTENT/Modal ***/
 
 .button {
   background: #fe142f;
@@ -195,11 +199,13 @@ label {
   display: inline-block;
   margin-bottom: 11px;
 }
+
 input {
   padding: 8px;
   border: 0.8px solid #ccc;
   outline: none;
 }
+
 .text-control {
   margin: 0;
   padding: 8px;
@@ -208,6 +214,9 @@ input {
   font-size: 20px;
   height: 48px;
 }
+
+/**** MAIN CONTENT/Error control ***/
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -227,11 +236,11 @@ input {
   border: 2px solid #e54858;
 }
  
-input[data-error]::after {
+/*input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
-} 
+} */
 
 .checkbox-label,
 .checkbox2-label {
@@ -400,6 +409,7 @@ input[data-error]::after {
 .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
 }
+
 /* custom select end */
 .text-label {
   font-weight: normal;
@@ -474,11 +484,23 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+
+/**************** FOOTER ****************/
+
+.footer {
+  margin: 20px;
+  padding: 10px;
+  font-family: var(--font-slab);
+}
+
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+/**************** MAIN CONTENT/Responsive ****************/
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -527,4 +549,6 @@ footer {
     opacity: 1;
   }
 }
+
+
 
