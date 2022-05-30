@@ -26,6 +26,10 @@ const modalBtn = document.querySelectorAll(".btn-signup");
 
 const formData = document.querySelectorAll(".formData");
 
+
+
+
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -36,3 +40,10 @@ function launchModal()
 }
 
 
+
+
+// close le modal avec X
+function closeModal()
+{
+    modalbg.style.display = "none";
+}

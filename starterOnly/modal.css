@@ -1,7 +1,3 @@
-:root
-{
-    --modal-duration: 0.8s;
-}
 *
 {
     box-sizing: border-box;
@@ -187,26 +183,6 @@ header
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ---------- MAIN ---------- */
 main
 {
@@ -217,14 +193,6 @@ main
     border-radius: 2rem;
     text-align: justify;
 }
-/* 
-hero-section
-hero-content
-hero-text
-btn-signup modal-btn
-hero-img
-*/
-
 .hero-section
 {
     max-width: 1240px;
@@ -373,16 +341,13 @@ img
     background: #fe142f;
     border-radius: 7px;
     font-family: 'DM Sans', sans-serif;
-    /* font-weight: 400; */
     font-size: 14px ;
     margin: auto;
-    /* padding: 12px 82px; */
     color: #fff;
     cursor: pointer;
     border: 0;
     outline: none;
     text-transform: capitalize;
-    /* font-size: 1.3rem; */
     padding: 6px 32px;
     margin-top: 25px;
 }
@@ -414,7 +379,9 @@ img
         margin-top: 73px;
     }
 }
-.modal-btn
+
+
+/* .modal-btn
 {
     font-size: 145%;
     background: #fe142f;
@@ -442,42 +409,6 @@ img
     border-radius: 1rem;
     cursor: pointer;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .modal-btn
 {
     font-size: 145%;
@@ -493,295 +424,367 @@ img
 .modal-btn:hover
 {
     background: #3876ac;
-}
-
-
-
-/* Modal form */
-
-.button {
-  background: #fe142f;
-  margin-top: 0.5em;
-  padding: 1em;
-  color: #fff;
-  border-radius: 15px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.button:hover {
-  background: #3876ac;
-}
-
-.smFont {
-  font-size: 16px;
-}
-
-.bground {
-  display: none;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
-}
-
-.content {
-  margin: 5% auto;
-  width: 100%;
-  max-width: 500px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
-  background: #232323;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
-  color: #fff;
-  padding-top: 10px;
-}
-
-.modal-body {
-  padding: 15px 8%;
-  margin: 15px auto;
-}
-
-label {
-  font-family: var(--font-default);
-  font-size: 17px;
-  font-weight: normal;
-  display: inline-block;
-  margin-bottom: 11px;
-}
-input {
-  padding: 8px;
-  border: 0.8px solid #ccc;
-  outline: none;
-}
-.text-control {
-  margin: 0;
-  padding: 8px;
-  width: 100%;
-  border-radius: 8px;
-  font-size: 20px;
-  height: 48px;
-}
-.formData[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.4em;
-  color: #e54858;
-  display: block;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  text-align: right;
-  line-height: 0.3;
-  opacity: 0;
-  transition: 0.3s;
-}
-.formData[data-error-visible="true"]::after {
-  opacity: 1;
-}
-.formData[data-error-visible="true"] .text-control {
-  border: 2px solid #e54858;
-}
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
 } */
-.checkbox-label,
-.checkbox2-label {
-  position: relative;
-  margin-left: 36px;
-  font-size: 12px;
-  font-weight: normal;
-}
-.checkbox-label .checkbox-icon,
-.checkbox2-label .checkbox-icon {
-  display: block;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #279e7a;
-  border-radius: 50%;
-  text-indent: 29px;
-  white-space: nowrap;
-  position: absolute;
-  left: -30px;
-  top: -1px;
-  transition: 0.3s;
-}
-.checkbox-label .checkbox-icon::after,
-.checkbox2-label .checkbox-icon::after {
-  content: "";
-  width: 13px;
-  height: 13px;
-  background-color: #279e7a;
-  border-radius: 50%;
-  text-indent: 29px;
-  white-space: nowrap;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  transition: 0.3s;
-  opacity: 0;
-}
-.checkbox-input {
-  display: none;
-}
-.checkbox-input:checked + .checkbox-label .checkbox-icon::after,
-.checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
-  opacity: 1;
-}
-.checkbox-input:checked + .checkbox2-label .checkbox-icon {
-  background: #279e7a;
-}
-.checkbox2-label .checkbox-icon {
-  border-radius: 4px;
-  border: 0;
-  background: #c4c4c4;
-}
-.checkbox2-label .checkbox-icon::after {
-  width: 7px;
-  height: 4px;
-  border-radius: 2px;
-  background: transparent;
-  border: 2px solid transparent;
-  border-bottom-color: #fff;
-  border-left-color: #fff;
-  transform: rotate(-55deg);
-  left: 21%;
-  top: 19%;
-}
-.close {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  width: 32px;
-  height: 32px;
-  opacity: 1;
-  cursor: pointer;
-  transform: scale(0.7);
-}
-.close:before,
-.close:after {
-  position: absolute;
-  left: 15px;
-  content: " ";
-  height: 33px;
-  width: 3px;
-  background-color: #fff;
-}
-.close:before {
-  transform: rotate(45deg);
-}
-.close:after {
-  transform: rotate(-45deg);
-}
-
-/* custom select styles */
-.custom-select {
-  position: relative;
-  font-family: Arial;
-  font-size: 1.1rem;
-  font-weight: normal;
-}
-
-.custom-select select {
-  display: none;
-}
-.select-selected {
-  background-color: #fff;
-}
-
-/* Style the arrow inside the select element: */
-.select-selected:after {
-  position: absolute;
-  content: "";
-  top: 10px;
-  right: 13px;
-  width: 11px;
-  height: 11px;
-  border: 3px solid transparent;
-  border-bottom-color: #f00;
-  border-left-color: #f00;
-  transform: rotate(-48deg);
-  border-radius: 5px 0 5px 0;
-}
-
-/* Point the arrow upwards when the select box is open (active): */
-.select-selected.select-arrow-active:after {
-  transform: rotate(135deg);
-  top: 13px;
-}
-
-.select-items div,
-.select-selected {
-  color: #000;
-  padding: 11px 16px;
-  border: 1px solid transparent;
-  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
-  cursor: pointer;
-  border-radius: 8px;
-  height: 48px;
-}
-
-/* Style items (options): */
-.select-items {
-  position: absolute;
-  background-color: #fff;
-  top: 89%;
-  left: 0;
-  right: 0;
-  z-index: 99;
-}
-
-/* Hide the items when the select box is closed: */
-.select-hide
-{
-    display: none;
-}
-
-.select-items div:hover,
-.same-as-selected
-{
-  background-color: rgba(0, 0, 0, 0.1);
-}
-/* custom select end */
-.text-label {
-  font-weight: normal;
-  font-size: 16px;
-}
-
-
-
-
-.btn-submit
+/* Modal form */
+/* .button
 {
     background: #fe142f;
+    margin-top: 0.5em;
+    padding: 1em;
+    color: #fff;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+} */
+
+/* .button:hover
+{
+     background: #3876ac;
+} */
+
+/* background du modal */
+.bground
+{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: auto;
+    background-color: rgba(26, 39, 156, 0.4);
+}
+/* fenetre de contenu du modal */
+.content
+{
+    background: #232323;
+    width: 100%;
+    max-width: 500px;
+    margin: 5% auto;
+    border-radius: 10px;
+    position: relative;
+    color: #fff;
+    padding-top: 10px;
+
+    animation-name: modalopen;
+    animation-duration: 800ms;
+}
+@keyframes modalopen
+{
+    from
+    {
+        opacity: 0;
+        transform: translateY(-150px);
+    }
+    to
+    {
+        opacity: 1;
+    }
+}
+.close
+{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: 0;
+    outline: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: white;
+    font-size: 30px;
+}
+@media screen and (min-width: 768px)
+{
+    .close
+    {
+        position: absolute;
+        top: 26px;
+        right: 26px;
+    }
+}
+
+
+
+
+/* formumlaire du modal*/
+.modal-form
+{
+    padding: 15px 8%;
+    margin: 15px auto;
+}
+/* 1ere zone de form */
+.formData-1
+{
+    margin-bottom: 17px;
+    display: flex;
+    flex-direction: column;
+}
+.formData-1>input
+{
+    height: 50;
+    font-size: 19px;
+    border-radius: 8px;
+    padding-left: 17px;
+    outline: none;
+}
+.formData-1>label
+{
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 13px;
+    margin-bottom: 17px;
+    width: 100%;
+}
+@media screen and (min-width: 768px)
+{
+    .formData-1>input
+    {
+        height: 65px;
+    }  
+}
+/* 2eme zone de form */
+.formData-2
+{
+    margin-bottom: 17px;
+    display: flex;
+    flex-direction: column; 
+}
+.formData-2>p
+{
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    width: 100%;
+
+    margin-bottom: 17px;
+}
+.formData-2>div
+{
+    width: fit-content;
+    display: flex;
+    align-items: center;
+}
+.formData-2>div>label
+{
+    font-family: 'Roboto', sans-serif;;
+    font-weight: 400;
+    font-size: 12px;
+}
+/* boutons radios bord vert et point vert */
+.radios
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+/* Customize the label (the container) */
+.radios>.container
+{
+    width: fit-content;
+    display: block;
+    display: flex;
+    align-items: center;
+
+    line-height: 25px;
+
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 20px;
+    margin-right: 10px;
+    cursor: pointer;
+
+    font-family: 'Roboto', sans-serif;;
+    font-weight: 400;
+    font-size: 12px;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+/* Hide the browser's default radio button */
+.radios>.container input
+{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+/* Create a custom radio button */
+.radio-span
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    border: 1px solid #279E7A;
+    border-radius: 50%;
+}
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .radio-span
+{
+    /* background-color: #279E7A; */
+    /* border: 1px solid red; */
+}
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .radio-span
+{
+    /* background-color: red; */
+    /* border: 1px solid red; */
+}
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.radio-span:after
+{
+    content: "";
+    position: absolute;
+    display: none;  
+}
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .radio-span:after
+{
+    display: block;
+}
+/* Style the indicator (dot/circle) */
+.container .radio-span:after
+{
+    top: 3px;
+    left: 3px;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: #279E7A;
+}
+
+/* boutons checkbox vert et V blanc */
+/* Customize the label (the container) */
+.checkbox
+{
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    line-height: 25px;
+
+    font-family: 'Roboto', sans-serif;;
+    font-weight: 400;
+    font-size: 12px;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+/* Hide the browser's default checkbox */
+.checkbox input 
+{
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+/* Create a custom checkbox */
+.checkmark
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #C4C4C4;
+    border-radius: 6px;
+
+    display: flex;
+    justify-content: center;
+}
+@media screen and (min-width: 768px)
+{
+    .checkmark
+    {
+        top: 0;
+        left: 0;
+        height: 26px;
+        width: 26px;
+    }
+}
+/* On mouse-over, add a grey background color */
+.checkbox:hover input ~ .checkmark
+{
+    background-color: #C4C4C4;
+}
+/* When the checkbox is checked, add a blue background */
+.checkbox input:checked ~ .checkmark
+{
+    background-color: #279E7A;
+}
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after
+{
+    content: "";
+    position: absolute;
+    display: none;
+}
+/* Show the checkmark when checked */
+.checkbox input:checked ~ .checkmark:after
+{
+    display: block;
+}
+/* Style the checkmark/indicator */
+.checkbox .checkmark:after
+{
+    top: 4px;
+    width: 9px;
+    height: 6px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(-45deg) scaleX(-1);
+    -ms-transform: rotate(-45deg) scaleX(-1);
+    transform: rotate(-45deg) scaleX(-1);
+    
+}
+@media screen and (min-width: 768px)
+{
+    .checkbox .checkmark:after
+    {
+        top: 7px;
+        width: 11px;
+        height: 7px;
+        border: solid white;
+        border-width: 0 3px 3px 0;
+    }
+}
+
+
+.btn-valider
+{
+    background: #fe142f;
+    color: #fff;
+
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+
     display: block;
     margin: 0 auto;
     border-radius: 7px;
-    font-size: 1rem;
-    padding: 12px 82px;
-    color: #fff;
+    padding: 6px 35px;
+   
     cursor: pointer;
     border: 0;
 }
-
-
-
-
-
-
-
-
-
-
-
+@media screen and (min-width: 768px)
+{
+    .btn-valider
+    {
+        padding: 8px 55px;
+    }
+}
 
 
 /* ---------- FOOTER ---------- */
@@ -810,53 +813,6 @@ input[data-error]::after {
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-@keyframes modalopen
-{
-    from
-    {
-        opacity: 0;
-        transform: translateY(-150px);
-    }
-    to
-    {
-        opacity: 1;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-.d-none
-{
-    display: none;
-}
 .ml-auto
 {
     margin-left: auto;
