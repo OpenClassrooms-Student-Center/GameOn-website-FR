@@ -25,26 +25,28 @@
 <body>
 
     <!-- HEADER -->
-    <!-- <header class="topnav" id="myTopnav"> -->
-    <header class="topnav">
+    <header>
 
-        <div class="header-logo test ">
-            <img alt="logo" src="Logo.png" width="auto" height="auto" />
-        </div>
+        <!-- logo -->
+        <a class="" href="#home"><img class="logo" alt="logo" src="Logo.png"/></a>
 
-        <nav class="main-navbar test">
-            
-            <!-- <a href="#" class="active"><span>Accueil</span></a> -->
-            <a href="#"><span>Détails de l'évènement</span></a>
-            <a href="#"><span>À propos</span></a>
-            <a href="#"><span>Contact</span></a>
-            <a href="#"><span>Évènements passés</span></a>
-            <a href="javascript:void(0);" class="icon" onclick="editNav()">
-                <i class="fa fa-bars"></i>
-            </a>
+        <!-- menu -->
+        <nav class="ml-auto topnav" id="myTopnav">
+            <!-- liens -->
+            <a class="menu-link" href="#"><span>Détails de l'évènement</span></a>
+            <a class="menu-link" href="#"><span>À propos</span></a>
+            <a class="menu-link" href="#"><span>Contact</span></a>
+            <a class="menu-link" href="#"><span>Évènements passés</span></a>
         </nav>
 
-    </header>
+        <!-- burger -->
+        <a class="icon" href="javascript:void(0);" onclick="navMenu()">
+            <i class="fa fa-bars"></i>
+        </a>
+
+    </header> 
+
+    <div class="spacer"></div>
 
     <!-- MAIN -->
     <main>
@@ -60,15 +62,15 @@
 
                 <p class="hero-text">Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux réservations... Places limitées !</p>
 
-                <button class="btn-signup modal-btn">je m'inscris</button>
+                <button class="btn-signup">je m'inscris</button>
 
             </div>
 
-            <div class="hero-img">
-                <img src="./bg_img.jpg" alt="img" />
+            <div class="hero-img ">
+                <img class="" src="./bg_img.jpg" alt="img" />
             </div>
 
-            <button class="btn-signup modal-btn">je m'inscris</button>
+            <button class="btn-signup">je m'inscris</button>
 
         </div>
 
@@ -181,7 +183,7 @@
 
                         </div>
 
-                        <input class="btn-submit" type="submit" class="button" value="C'est parti"/>
+                        <input class="btn-valider" type="submit" class="button" value="C'est parti"/>
 
                     </form>
 
