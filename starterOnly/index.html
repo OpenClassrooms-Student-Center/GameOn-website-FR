@@ -12,6 +12,7 @@
     />
   </head>
   <body>
+    <!-- Nav Menu -->
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
       <img alt="logo" src="Logo.png" width="auto" height="auto" />
@@ -30,6 +31,7 @@
     </div>
   </div>
     <main>
+      <!-- Main content -->
       <div class="hero-section">
         <div class="hero-content">
           <h1 class="hero-headline">
@@ -52,16 +54,21 @@
         </button>
       </div>
 
+ <!-- Modal Form -->
       <div class="bground">
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
+
+             <!-- Form novalidate for full JS control -->
             <form
               name="reserve"
               action="index.html"
               method="get"
               onsubmit="return validate();"
             >
+
+              <!-- First Name -->
               <div
                 class="formData">
                 <label>Prénom</label><br>
@@ -73,6 +80,8 @@
                   minlength="2"
                 /><br>
               </div>
+
+               <!-- Last Name -->
               <div
                 class="formData">
                 <label>Nom</label><br>
@@ -83,8 +92,9 @@
                   name="last"
                 /><br>
               </div>
-              <div
-                class="formData">
+
+              <!-- Email -->
+              <div class="formData">
                 <label>E-mail</label><br>
                 <input
                   class="text-control"
@@ -93,8 +103,9 @@
                   name="email"
                 /><br>
               </div>
-              <div
-                class="formData">
+
+              <!-- Birthdate -->
+              <div class="formData">
                 <label>Date de naissance</label><br>
                 <input
                   class="text-control"
@@ -103,11 +114,14 @@
                   name="birthdate"
                 /><br>
               </div>
-              <div
-                class="formData">
+
+              <!-- Quantity -->
+              <div class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
+
+              <!-- City Selection -->
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
                 class="formData">
@@ -179,6 +193,7 @@
                 >
               </div>
 
+              <!-- Terms acceptation -->
               <div
                 class="formData">
                 <input
@@ -199,17 +214,27 @@
                 </label>
                 <br>
               </div>
+              <div class="formData">
+                <input class="btn-submit" type="submit" class="button" value="C'est parti" />
+             </div>
+            </br>
+            </form>
+
+               <!-- Modal Success Message -->
+          <div id="modalSuccess">
+            <span>Merci pour <br/>votre inscription</span>
               <input
                 class="btn-submit"
                 type="submit"
                 class="button"
                 value="C'est parti"
               />
-            </form>
           </div>
         </div>
       </div>
     </main>
+
+    <!-- Footer -->
     <footer>
       <p class="copyrights">
         Copyright 2014 - 2022, GameOn Inc.
