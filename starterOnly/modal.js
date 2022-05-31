@@ -132,7 +132,7 @@ function checkBirthInput(input, errorMessage){
 
 //birthday input definition
 document.querySelector('#birthdate').addEventListener("blur", (e) =>
-{borthday = checkBirthInput(e.target, "Veuillez saisir votre date de naissance")})
+{birthday = checkBirthInput(e.target, "Veuillez saisir votre date de naissance")})
 
 //QUANTITYINPUT
 
@@ -181,7 +181,7 @@ function checkCityInput(inputName, errorMessage){
 function checkRequiredInput(inputName, errorMessage){
   // création d'un tableau lié aux inputs dont name = checkbox
   let inputs = Array.from(document.querySelectorAll("input[name='checkbox']"))
-   // boucle = si index = 0, que la longueur est moins que l'index 0, ajouter +1 à l'index
+   // boucle = si index = 0, que la longueur est moins que l'index 0, ajouter +1 à l'index pour éviter de tourner en boucle
   for (let index = 0; index < inputs.length ; index ++){
     const input = inputs[index];
     // Si un input est coché alors changement de l'errorcheck css + return = true
