@@ -162,10 +162,3 @@ function validateForm(event)
     }
 }
 
-
-
-
-
-// (2) Utiliser du JavaScript pur (pas de jQuery) pour terminer le formulaire :
-
-// Le formulaire doit être valide quand l'utilisateur clique sur "Submit"
