@@ -153,7 +153,7 @@ function validateForm(event)
     }
     document.getElementById("err-cgu").innerHTML = message;
 
-    // tout est ok on ferme le formulaire et on affiche le emssage de confirmation
+    // tout est ok on ferme le formulaire et on affiche le message de confirmation
     if (firstnameValid == true && lastnameValid == true && emailValid == true && quantityValid == true && cityValid == true && cguValid == true )
     {
         alert("le form est validé");
