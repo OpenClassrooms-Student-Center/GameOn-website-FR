@@ -82,34 +82,35 @@
 
             <div class="content">
 
-                <!-- <span class="close test">close</span> -->
+                <!-- boutton pour fermer le modal -->
                 <button class="close" onclick="closeModal()"><i class="fas fa-times"></i></button>
 
-                <form class="modal-form" id="form-valid" name="reserve" action="index.html" method="get" onsubmit="return validateForm();">
+                <!-- formulaire d'inscription -->
+                <form class="modal-form" id="form-valid" name="myForm" action="" method="get" onsubmit="return validateForm(event);">
 
                     <!-- zone champs de texte -->
                     <div class="formData-1">
 
-                        <label for="first">Prénom</label>
-                        <input class="text-control" type="text" id="first" name="first" minlength="2"/>
-                        <p class="err-first"></p>
+                        <label for="firstname">Prénom</label>
+                        <input class="text-control" type="text" id="firstname" name="first"/>
+                        <p class="err" id="err-firstname"></p>
 
-                        <label for="last">Nom</label>
-                        <input class="text-control" type="text" id="last" name="last"/>
-                        <p class="err-nom"></p>
+                        <label for="lastname">Nom</label>
+                        <input class="text-control" type="text" id="lastname" name="last"/>
+                        <p class="err" id="err-lastname"></p>
 
                         <label for="email">E-mail</label>
-                        <input class="text-control" type="email" id="email" name="email"/>
-                        <p class="err-mail"></p>
+                        <input class="text-control" type="text" id="email" name="email"/>
+                        <p class="err" id="err-email"></p>
 
                         <label for="birthdate">Date de naissance</label>
                         <input class="text-control" type="date" id="birthdate" name="birthdate"/>
-                        <p class="err-date"></p>
+                        <p class="err" id="err-date"></p>
 
                         <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label>
                         <!-- <input class="text-control" type="number" id="quantity" name="quantity" min="0" max="99"> -->
                         <input class="text-control" type="number" id="quantity" name="quantity">
-                        <p class="err-nombre"></p>
+                        <p class="err" id="err-quantity"></p>
         
                     </div>
 
@@ -118,57 +119,61 @@
 
                         <p>A quel tournoi souhaitez-vous participer cette année ?</p>
 
-                        <div class="radios">
-                            <label class="container">
-                                <input type="radio" name="location" value="New York">
+                        <div class="radios" id="radios">
+                            <label class="container" for="location-1">
+                                <input type="radio" name="location" id="location-1" value="New York">
                                 <span class="radio-span"></span>
                                 New York
                             </label>
 
-                            <label class="container">
-                                <input type="radio" name="location" value="San Francisco">
+                            <label class="container" for="location-2">
+                                <input type="radio" name="location" id="location-2" value="San Francisco">
                                 <span class="radio-span"></span>
                                 San Francisco
                             </label>
 
-                            <label class="container">
-                                <input type="radio" name="location" value="Seattle">
+                            <label class="container" for="location-3">
+                                <input type="radio" name="location" id="location-3" value="Seattle">
                                 <span class="radio-span"></span>
                                 Seattle
                             </label>
 
-                            <label class="container">
-                                <input type="radio" name="location" value="Chicago">
+                            <label class="container" for="location-4">
+                                <input type="radio" name="location" id="location-4" value="Chicago">
                                 <span class="radio-span"></span>
                                 Chicago
                             </label>
 
-                            <label class="container">
-                                <input type="radio" name="location"value="Boston">
+                            <label class="container" for="location-5">
+                                <input type="radio" name="location" id="location-5" value="Boston">
                                 <span class="radio-span"></span>
                                 Boston
                             </label>
 
-                            <label class="container">
-                                <input type="radio" name="location" value="Portland">
+                            <label class="container" for="location-6">
+                                <input type="radio" name="location" id="location-6" value="Portland">
                                 <span class="radio-span"></span>
                                 Portland
                             </label>
                         </div>  
+
+                        <p class="err" id="err-location"></p>
 
                     </div>
 
                     <!-- zone imput checkbox -->
                     <div class="formData-3">
 
-                        <label class="checkbox">
-                            <input type="checkbox" name="cgu" value="Portland">
+                        <label class="checkbox" for="cgu">
+                            <input type="checkbox" name="cgu" id="cgu" value="Portland">
                             <span class="checkmark"></span>
                             J'ai lu et accepté les conditions d'utilisation.
-                        </label>   
+                        </label>
 
-                        <label class="checkbox">
-                            <input type="checkbox" name="newsletter" value="Portland">
+                        <p class="err" id="err-cgu"></p>
+
+                        <label class="checkbox pt-2" for="newsletter">
+                            <input type="checkbox" name="newsletter" id="newsletter" value="Portland">
                             <span class="checkmark"></span>
                             Je Je souhaite être prévenu des prochains évènements.
                         </label>  
@@ -178,6 +183,15 @@
                     <input class="btn-valider button" type="submit" value="C'est parti"/>
 
                 </form>
+
+                <!-- Message de confirmation -->
+                <div id="confirmation">
+
+                    <p class="text-center">Merci ! Votre réservation a été reçue.</p>
+
+                    <button id="btn-close" onclick="closeModal()">Fermer</button>
+                
+                </div>
 
             </div>
 

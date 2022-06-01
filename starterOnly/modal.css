@@ -459,13 +459,6 @@ img
     display: flex;
     flex-direction: column;
 }
-.formData-1>p
-{
-    color: #FF4E60;
-    font-family: 'Roboto', sans-serif; 
-    font-size: 10px;
-    font-weight: 400;
-}
 .formData-1>input
 {
     height: 50;
@@ -706,7 +699,13 @@ img
         border-width: 0 3px 3px 0;
     }
 }
-
+.err
+{
+    color: #FF4E60;
+    font-family: 'Roboto', sans-serif !important; 
+    font-size: 10px !important;
+    font-weight: 400 !important;
+}
 /* bouton valider du formulaire */
 .btn-valider
 {
@@ -721,7 +720,8 @@ img
     margin: 0 auto;
     border-radius: 7px;
     padding: 6px 35px;
-   
+    margin-top: 20px;
+
     cursor: pointer;
     border: 0;
 }
@@ -730,6 +730,54 @@ img
     .btn-valider
     {
         padding: 8px 55px;
+    }
+}
+/* une fois le formulaire remplis et valide */
+#confirmation
+{
+    padding-top: 18px;
+    padding-bottom: 18px;
+    display: none;
+}
+#confirmation>p
+{
+    margin-top: 20vh;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 36px;
+}
+@media screen and (min-width: 768px)
+{
+    #confirmation>p
+    {
+        margin-top: 30vh;
+    }
+}
+#btn-close
+{
+    background: #fe142f;
+    color: #fff;
+
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+
+    display: block;
+    margin: 0 auto;
+    border-radius: 7px;
+
+    padding: 6px 35px;
+    margin-top: 20vh;
+
+    cursor: pointer;
+    border: 0;
+}
+@media screen and (min-width: 768px)
+{
+    #btn-close
+    {
+        padding: 8px 55px;
+        margin-top: 30vh;
     }
 }
 
@@ -763,4 +811,16 @@ img
 .ml-auto
 {
     margin-left: auto;
+}
+.pt-2
+{
+    margin-top: 1em;
+}
+.d-none
+{
+    display: none;
+}
+.text-center
+{
+    text-align: center;
 }
