@@ -7,17 +7,10 @@ function editNav() {
   }
 }
 
-// DOM Elements
-
+// DOM ELEMENTS
 const modalBtn = document.querySelectorAll(".modal-btn");   //open modal button
-const formData = document.querySelectorAll(".formData");  //all inputs
 const modalbg = document.querySelector(".bground");         //modal
 const closeBtn = document.querySelector(".close");        //close btn modal
-const modalSubmit = document.querySelector(".btn-submit");  //modal submit button
-const modalSuccess = document.getElementById("modalSuccess");//modal success
-
-
-// ____________________FORM
 
 
 // LAUNCH FORM
@@ -41,162 +34,136 @@ function closeModal() {
 closeBtn.addEventListener("click", closeModal);
 
 
-// ____________________INPUTS
+// INPUTS
 
-// datas validation initialisation
-let firstName = false;
-let lastName = false;
-let email = false;
-let birthdate = false;
-let quantity = false;
-let city = false;
+// POUR TOUS LES INPUTS
 
-//TEXTINPUTS
-
-//fonction globale pour les textes
-
-function checkTextInput(input, tailleMin, errorMessage){
-  const regText = /[A-Za-z]/;
-  let isOK = false;
-  // pour les champs qui comportent A-Z/a-z dont la valeur = input ET plus de 2 en TailleMin alors le message error est false et le return is true
-  if (regText.test(input.value) && input.value.length >= tailleMin) {
-    // l'errorvisible dans les datas du parent de l'input est false = non affichage
-    input.parentNode.dataset.errorVisible = false;
-    isOk = true
-    return isOK
-    // Pour les autres champs, l'error est true et le return est false
+// firstName
+const regText = /[a-zA-ZÀ-ÿ]/;
+const firstName = document.querySelector("#first");
+firstName.addEventListener('input', function() {
+  console.log(firstName.value.length);
+  console.log(regText.test);
+  if (regText.test(firstName.value) && firstName.value.length > 2) {
+    firstName.parentNode.dataset.errorVisible = false;
+    return true
   } else {
-     // l'error dans les datas du parent est = errorMessage
-    input.parentNode.dataset.error = errorMessage;
-    // l'errorvisible dans les datas du parent de l'input est true = affichage
-    input.parentNode.dataset.errorVisible = true;
-    isOk = false
-    return isOK
+    firstName.parentNode.dataset.error = "Le prénom doit avoir 2 caractères ou plus";
+    firstName.parentNode.dataset.errorVisible = true;
+    return false
   }
-}
+  }
+);
 
-//firtname input definition
-// l'événement type blur de selecteur #first est = checkTextInput(input, tailleMin, errorMessage)
+// lastName
 
-document.querySelector('#first').addEventListener("blur", (e) =>
-{firstName = checkTextInput(e.target, 2, "Le prenom doit avoir 2 caractères ou plus")})
-
-//lastname input definition
-// l'événement type blur de selecteur #last est = checkTextInput(input, tailleMin, errorMessage)
-
-document.querySelector('#last').addEventListener("blur", (e) =>
-{lastName = checkTextInput(e.target, 2, "Le nom doit avoir 2 caractères ou plus")})
-
-//EMAILINPUT
-
-function checkEmailInput(input, errorMessage){
-  const regEmail = /^[\w\-\+]+(\.[\w\-]+)*@[\w\-]+(\.[\w\-]+)*\.[\w\-]{2,4}$/;
-  let isOk = regEmail.test(input.value);
-  // si isOK est falsa OU la valeur du champ est vide
-  if (!isOk || input.value == "") {
-        // affichage de error message car errorvisible= true
-    input.parentNode.dataset.error = errorMessage;
-    input.parentNode.dataset.errorVisible = true;
-// sinon errorvisible = false = non affichage
+const lastName = document.querySelector("#last");
+lastName.addEventListener('input', function() {
+  console.log(lastName.value.length);
+  console.log(regText.test);
+  if (regText.test(lastName.value) && lastName.value.length > 2) {
+    lastName.parentNode.dataset.errorVisible = false;
+    return true
   } else {
-    input.parentNode.dataset.errorVisible = false;
+    lastName.parentNode.dataset.error = "Le nom doit avoir 2 caractères ou plus";
+    lastName.parentNode.dataset.errorVisible = true;
+    return false
   }
-  return isOk;
-}
+  }
+);
 
-//email input definition
-
-document.querySelector('#email').addEventListener("blur", (e) =>
-{email = checkEmailInput(e.target, "Veuillez entrer un mail valide")})
-
-
-//BIRTHDAYINPUT
-
-
-function checkBirthInput(input, errorMessage){
-  //Date.parse analyse la représentation textuelle d'une date, et renvoie le nombre de millisecondes depuis le 1er janvier 1970, 00:00:00 UTC jusqu'à cette date ou NaN si la chaîne n'est pas reconnue ou décrit une date invalide
-  let date = Date.parse(input.value)
-  // La fonction isNaN() permet de déterminer si une valeur est NaN
-  let isOk = !isNaN(date);
-  // si isOK est falsa OU la valeur du champ est vide
-  if (!isOk || input.value == "") {
-    // affichage de error message car errorvisible= true
-    input.parentNode.dataset.error = errorMessage;
-    input.parentNode.dataset.errorVisible = true;
+// email
+const regEmail = /^[\w\-\+]+(\.[\w\-]+)*@[\w\-]+(\.[\w\-]+)*\.[\w\-]{2,4}$/;
+const email = document.querySelector("#email");
+email.addEventListener('input', function() {
+  console.log(email.value.length);
+  console.log(regText.test);
+  if (regEmail.test(email.value)) {
+    email.parentNode.dataset.errorVisible = false;
+    return true
   } else {
-    // sinon errorvisible = false = non affichage
-    input.parentNode.dataset.errorVisible = false;
+    email.parentNode.dataset.error = "Veuillez entrer un mail valide";
+    email.parentNode.dataset.errorVisible = true;
+    return false
   }
-  return isOk;
-}
+  }
+);
 
-//birthday input definition
-document.querySelector('#birthdate').addEventListener("blur", (e) =>
-{birthday = checkBirthInput(e.target, "Veuillez saisir votre date de naissance")})
+// birthDate
 
-//QUANTITYINPUT
-
-function checkQuantityInput(input, errorMessage){
-  //L' expression RegExp [0-9] est utilisée pour rechercher n'importe quel chiffre entre les crochets
-  const regNumber = /^[0-9]+$/;
-  let isOk = regNumber.test(input.value);
-    // si isOK est falsa OU la valeur du champ est vide
-  if (!isOk || input.value == "") {
-    // affichage de error message car errorvisible= true
-    input.parentNode.dataset.error = errorMessage;
-    input.parentNode.dataset.errorVisible = true;
+const birthDate = document.querySelector("#birthdate");
+birthDate.addEventListener('input', function() {
+  console.log(birthDate.value);
+  if (birthDate.value == "") {
+    birthDate.parentNode.dataset.error = "Veuillez saisir votre date de naissance";
+    birthDate.parentNode.dataset.errorVisible = true;
+    return false 
   } else {
-    // sinon errorvisible = false = non affichag
-    input.parentNode.dataset.errorVisible = false;
+    birthDate.parentNode.dataset.errorVisible = false;
+    return true
   }
-  return isOk;
-}
-
-//quantity input definition
-document.querySelector('#quantity').addEventListener("blur", (e) =>
-{quantity = checkQuantityInput(e.target, "Veuillez saisir un nombre")})
-
-//CITYINPUT
-
-function checkCityInput(inputName, errorMessage){
-  // création d'un tableau qui prend tous les inputs dont name = location
-  let inputs = Array.from(document.querySelectorAll("input[name='location']"))
-    // boucle = si index = 0, que la longueur est moins que l'index 0, ajouter +1 à l'index
-  for (let index = 0; index < inputs.length ; index ++){
-    // input = tous les index dans le tableau Inputs
-    const input = inputs[index];
-    // Si un input est coché alors return = true
-    if(input.checked) {
-    return true;
-    }
   }
-  // sinon affichage error car errorvisible = true / return = false
-  inputName.dataset.error = errorMessage;
-  inputName.dataset.errorVisible = true;
-  return false;
-}
+);
 
-
-//REQUIREDINPUT
-function checkRequiredInput(inputName, errorMessage){
-  // création d'un tableau lié aux inputs dont name = checkbox
-  let inputs = Array.from(document.querySelectorAll("input[name='checkbox']"))
-   // boucle = si index = 0, que la longueur est moins que l'index 0, ajouter +1 à l'index pour éviter de tourner en boucle
-  for (let index = 0; index < inputs.length ; index ++){
-    const input = inputs[index];
-    // Si un input est coché alors changement de l'errorcheck css + return = true
-    if(input.checked) {
-    let errorCheck = document.querySelector('.errorCheck')
-    errorCheck.style.color = 'inherit';
-    return true;
-    }
+// concours A MODFIER
+// (4) Pour le nombre de concours, une valeur numérique est saisie.
+const regNumber = /^[0-9]$/;
+const quantity = document.querySelector("#quantity");
+quantity.addEventListener('input', function() {
+  console.log(quantity.value);
+  if (regNumber.test(quantity.value) && (quantity.value === "" || parseInt(quantity.value) <= 20)) {
+    quantity.parentNode.dataset.errorVisible = false;
+    return true
+  } else {
+    quantity.parentNode.dataset.error = "Veuillez saisir un nombre";
+    quantity.parentNode.dataset.errorVisible = true;
+    return false 
   }
-  // sinon errorcheck est en couleur rouge + alert + return = false
-  let errorCheck = document.querySelector('.errorCheck')
-  errorCheck.style.color = 'red';
-  alert("Veuillez cocher la case des conditions d'utilisations")
-  return false;
-}
+  }
+);
 
-// ____________________VALIDATION
 
+// radio A MODFIER
+// (5) Un bouton radio est sélectionné.
+const radio = document.querySelectorAll("input[name='location']");
+radio.addEventListener('click', function() {
+  console.log(radio.value);
+  if (radio.value == 1) {
+    radio.parentNode.dataset.errorVisible = true;
+    return false 
+  } else {
+    radio.parentNode.dataset.errorVisible = false;
+    return true
+  }
+  }
+);
+
+// required A MODFIER
+// (6) La case des conditions générales est cochée, l'autre case est facultative / peut être laissée décochée.
+
+const checkbox = document.querySelectorAll("checkbox1");
+checkbox.addEventListener('click', function() {
+  console.log(checkbox.value);
+  if (checkbox.checked) {
+    checkbox.parentNode.dataset.errorVisible = true;
+    return false 
+  } else {
+    checkbox.parentNode.dataset.error = "Veuillez cocher la case des conditions d'utilisations";
+    checkbox.parentNode.dataset.errorVisible = false;
+    return true
+  }
+  }
+);
+
+// Submit A MODFIER
+const modalSubmit = document.querySelector(".btn-submit");  //modal submit button
+const modalSuccess = document.getElementById(".modalSuccess");  //modal success
+modalSubmit.addEventListener('click', function(e) {
+  e.preventDefault();
+  if (firstName && lastName && email && birthDate && quantity && checkbox) {
+  modalSuccess () 
+    modalbg.style.display = 'none';
+  } else {
+    alert('');
+  }
+});
