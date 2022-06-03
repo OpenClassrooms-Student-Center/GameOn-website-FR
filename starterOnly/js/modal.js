@@ -118,3 +118,5 @@ function checkBirthdate(){
       myQuantity.style.border = "none";
     }
   }
+
+  
