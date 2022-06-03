@@ -1,3 +1,6 @@
+/**
+ * Manage responsive for top Bar navigation
+ */
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
