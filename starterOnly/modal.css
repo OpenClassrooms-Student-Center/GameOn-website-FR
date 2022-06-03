@@ -67,7 +67,6 @@ img {
   display: none;
 }
 
-
 main {
   font-size: 130%;
   font-weight: bolder;
@@ -78,8 +77,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
