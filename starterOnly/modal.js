@@ -36,29 +36,27 @@ closeBtn.addEventListener("click", closeModal);
 
 // INPUTS
 
-// POUR TOUS LES INPUTS
-
-
-
 // declaration /firstName
 const firstName = document.querySelector("#first");
 
 // function check /firstname
 function checkFirstName (firstName) {
   const regText = /[a-zA-ZÀ-ÿ]/;
-  if (regText.test(firstName.value) && firstName.value.length > 2) {
+  console.log(firstName.value);
+  if (regText.test(firstName.value) && firstName.value.length >= 2){
     firstName.parentNode.dataset.errorVisible = false;
+    console.log('true')
     return true
   } else {
     firstName.parentNode.dataset.error = "Le prénom doit avoir 2 caractères ou plus";
     firstName.parentNode.dataset.errorVisible = true;
+    console.log('false')
     return false
   }
 };
 
 // call event /firstname
-firstName.addEventListener('input', function() {
-  console.log(firstName.value);
+firstName.addEventListener('blur', function() {
   checkFirstName(firstName);
   });
 
@@ -68,7 +66,8 @@ const lastName = document.querySelector("#last");
 
 // function check /lastName
 function checkLastName (lastName) {
-  if (regText.test(lastName.value) && lastName.value.length > 2) {
+  const regText = /[a-zA-ZÀ-ÿ]/;
+  if (regText.test(lastName.value) && lastName.value.length >= 2) {
     lastName.parentNode.dataset.errorVisible = false;
     return true
   } else {
@@ -79,9 +78,9 @@ function checkLastName (lastName) {
 };
 
 // call event /lastname
-lastName.addEventListener('input', function() {
+lastName.addEventListener('blur', function() {
   console.log(lastName.value.length);
-  checkLastName (lastName);
+  checkLastName(lastName);
 });
 
 
@@ -91,7 +90,7 @@ const email = document.querySelector("#email");
 // function check /email
 function checkEmail (email) {
   const regEmail = /^[\w\-\+]+(\.[\w\-]+)*@[\w\-]+(\.[\w\-]+)*\.[\w\-]{2,4}$/;
-  if (regEmail.test(checkEmail.value)) {
+  if (regEmail.test(email.value)) {
     email.parentNode.dataset.errorVisible = false;
     return true
   } else {
@@ -102,9 +101,9 @@ function checkEmail (email) {
 };
 
 // call event /email
-email.addEventListener('input', function() {
+email.addEventListener('blur', function() {
   console.log(email.value);
-  checkEmail (email);
+  checkEmail(email);
 });
 
 // declaration /birthDate
@@ -122,9 +121,9 @@ function checkBirthDate (birthDate) {
   }};
 
  // call event /birthDate
- birthDate.addEventListener('input', function() {
+ birthDate.addEventListener('blur', function() {
   console.log(birthDate.value);
-  checkBirthDate (birthDate);
+  checkBirthDate(birthDate);
  });
 
 
@@ -146,8 +145,9 @@ function checkQuantity (quantity) {
   }};
 
 // call event /quantity
-  quantity.addEventListener('input', function() {
+  quantity.addEventListener('blur', function() {
     console.log(quantity.value);
+    checkQuantity(quantity);
   });
 
 
@@ -157,21 +157,23 @@ const radio = document.querySelectorAll("input[name='location']");
 
 // function check /radio
 function checkRadio (radio) {
+  console.log('coucou');
   for (i = 0; i < radio.length; i++) {
-  if (radio[i].value == "") {
-    radio.parentNode.dataset.errorVisible = true;
-    return false 
-  } else {
+  if (radio[i].checked) {
     radio.parentNode.dataset.errorVisible = false;
     return true
+  } else {
+    radio.parentNode.dataset.error = "Veuillez cocher une ville";
+    radio.parentNode.dataset.errorVisible = true;
+    return false 
   }
 }};
 
 // call event /radio
-radio.addEventListener('click', function() {
-  console.log(radio[i].value);
-  checkRadio (radio);
-});
+// radio.addEventListener('click', function() {
+//   
+//   checkRadio(radio);
+// });
 
 // declaration /checkbox
 // (6) La case des conditions générales est cochée, l'autre case est facultative / peut être laissée décochée.
@@ -191,40 +193,47 @@ function checkCheckbox (checkbox) {
 };
 
 // call event /checkbox
-checkbox.addEventListener('click', function() {
-  console.log(checkbox.value); });
+// checkbox.addEventListener('click', function() {
+//   console.log(checkbox.value);
+//   checkCheckbox(checkbox);
+//  });
 
+
+// VALIDATION
 
 // declaration /submit
 const modalSubmit = document.querySelector(".btn-submit");  //modal submit button
 
 // function check /submit
-function validateModalSubmit (modalSubmit) {
-  modalSubmit.preventDefault();
-  if (checkFirstName(firstName.value) && checkLastName(lastName.value) && checkEmail(email.value) 
-  && checkBirthDate(birthDate.value) && checkQuantity(quantity.value) && checkRadio(radio.value) 
-  && checkCheckbox(checkbox.value)) {
+function validateModalSubmit () {
+  console.log('test1')
+  if (checkFirstName(firstName) && checkLastName(lastName) 
+  && checkEmail(email) && checkBirthDate(birthDate) 
+  && checkQuantity(quantity) && checkRadio(radio) && checkCheckbox(checkbox)) {
+    console.log('validé')
   modalSuccess ()
   } else {
+    alert('Veuillez remplir les champs correctement')
     // afficher error visible des inputs qui sont false
   }
 };
 
 // call event /submit
-modalSubmit.addEventListener('click', function() {
-  console.log()
-  validateModalSubmit (modalSubmit);
+modalSubmit.addEventListener('click', function(e) {
+  console.log('coucou bouton')
+  e.preventDefault();
+  validateModalSubmit();
 });
 
 // declaration /modal success
 const supprModal = document.querySelector("modal-body");
 
 // function check /modal success
-function modalSuccess () {
+function modalSuccess (supprModal) {
   supprModal.parentNode.removeChild(supprModal);
   //ajouter le texte "Votre inscription a été prise en compte" en white et bold
   // réduire la hauteur de la modale
-  // garder le bouton submit et changer le texte "c'est parti" ou "fermer"
+  // garder le bouton submit et changer le texte "c'est parti" par "fermer"
 };
 
 // call event / modal success
