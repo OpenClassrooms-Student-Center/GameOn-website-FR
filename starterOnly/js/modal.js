@@ -93,26 +93,15 @@ function checkBirthdate(){
   const currentDay = new Date();
   
   // calculs
-  const ageYear = currentDay.getFullYear() - birthdate.getFullYear(); // year
-  let ageMonth = currentDay.getMonth() - birthdate.getMonth(); // month
+  const currentYear = currentDay.getFullYear();
+  const userYear = birthdate.getFullYear();
 
 
-  if(ageYear <= 17)
-  {
+  if(currentYear < userYear){
     myBirthday.style.border = "2px solid red";
     return false;
   }
-    else if(ageYear = 17 && ageMonth < 0){
-      myBirthday.style.border = "2px solid red";
-      return false;
-    }
     else{
       myBirthday.style.border = "none";
-    } 
-  }
-
-  // quantity
-
-  function checkQuantity(){
-    
-  }
+    }
+  } 
