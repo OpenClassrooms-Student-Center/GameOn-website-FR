@@ -105,3 +105,16 @@ function checkBirthdate(){
       myBirthday.style.border = "none";
     }
   } 
+
+  //quantity
+
+  myQuantity
+  function checkQuantity(){
+    if(myQuantity.value ==""){
+      myQuantity.style.border = "2px solid red";
+      return false;
+    }
+    else{
+      myQuantity.style.border = "none";
+    }
+  }
