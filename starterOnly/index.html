@@ -25,7 +25,12 @@
         <a href="#"><span>À propos</span></a>
         <a href="#"><span>Contact</span></a>
         <a href="#"><span>Évènements passés</span></a>
-        <a href="javascript:void(0);" class="icon" onclick="editNav()">
+        <a
+          href="javascript:void(0);"
+          class="icon"
+          aria-label="menu"
+          onclick="editNav()"
+        >
           <i class="fa fa-bars"></i>
         </a>
       </div>
@@ -71,6 +76,7 @@
             aria-label="Fermer"
             title="Fermer la fenêtre modale"
             data-dismiss="dialog"
+            tabindex="0"
           ></span>
           <div class="modal-body">
             <form
@@ -78,11 +84,12 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+              novalidate
             >
               <div class="formData">
                 <label for="first">Prénom</label><br />
                 <input
+                  form="reserve"
                   class="text-control"
                   type="text"
                   id="first"
@@ -93,6 +100,7 @@
               <div class="formData">
                 <label for="last">Nom</label><br />
                 <input
+                  form="reserve"
                   class="text-control"
                   type="text"
                   id="last"
@@ -102,6 +110,7 @@
               <div class="formData">
                 <label for="email">E-mail</label><br />
                 <input
+                  form="reserve"
                   class="text-control"
                   type="email"
                   id="email"
@@ -111,6 +120,7 @@
               <div class="formData">
                 <label for="birthdate">Date de naissance</label><br />
                 <input
+                  form="reserve"
                   class="text-control"
                   type="date"
                   id="birthdate"
@@ -123,6 +133,7 @@
                   ?</label
                 ><br />
                 <input
+                  form="reserve"
                   type="number"
                   class="text-control"
                   id="quantity"
@@ -137,6 +148,7 @@
                 </legend>
                 <div class="formData">
                   <input
+                    form="reserve"
                     class="checkbox-input"
                     type="radio"
                     id="location1"
@@ -144,10 +156,16 @@
                     value="New York"
                   />
                   <label class="checkbox-label" for="location1">
-                    <span class="checkbox-icon"></span>
+                    <span
+                      class="checkbox-icon"
+                      role="radio"
+                      aria-label="New York"
+                      tabindex="0"
+                    ></span>
                     New York</label
                   >
                   <input
+                    form="reserve"
                     class="checkbox-input"
                     type="radio"
                     id="location2"
@@ -155,10 +173,16 @@
                     value="San Francisco"
                   />
                   <label class="checkbox-label" for="location2">
-                    <span class="checkbox-icon"></span>
+                    <span
+                      class="checkbox-icon"
+                      role="radio"
+                      aria-label="San Francisco"
+                      tabindex="0"
+                    ></span>
                     San Francisco</label
                   >
                   <input
+                    form="reserve"
                     class="checkbox-input"
                     type="radio"
                     id="location3"
@@ -166,10 +190,16 @@
                     value="Seattle"
                   />
                   <label class="checkbox-label" for="location3">
-                    <span class="checkbox-icon"></span>
+                    <span
+                      class="checkbox-icon"
+                      role="radio"
+                      aria-label="Seattle"
+                      tabindex="0"
+                    ></span>
                     Seattle</label
                   >
                   <input
+                    form="reserve"
                     class="checkbox-input"
                     type="radio"
                     id="location4"
@@ -177,10 +207,16 @@
                     value="Chicago"
                   />
                   <label class="checkbox-label" for="location4">
-                    <span class="checkbox-icon"></span>
+                    <span
+                      class="checkbox-icon"
+                      role="radio"
+                      aria-label="Chicago"
+                      tabindex="0"
+                    ></span>
                     Chicago</label
                   >
                   <input
+                    form="reserve"
                     class="checkbox-input"
                     type="radio"
                     id="location5"
@@ -188,10 +224,16 @@
                     value="Boston"
                   />
                   <label class="checkbox-label" for="location5">
-                    <span class="checkbox-icon"></span>
+                    <span
+                      class="checkbox-icon"
+                      role="radio"
+                      aria-label="Boston"
+                      tabindex="0"
+                    ></span>
                     Boston</label
                   >
                   <input
+                    form="reserve"
                     class="checkbox-input"
                     type="radio"
                     id="location6"
@@ -199,22 +241,47 @@
                     value="Portland"
                   />
                   <label class="checkbox-label" for="location6">
-                    <span class="checkbox-icon"></span>
+                    <span
+                      class="checkbox-icon"
+                      role="radio"
+                      aria-label="Portland"
+                      tabindex="0"
+                    ></span>
                     Portland</label
                   >
                 </div>
               </fieldset>
 
               <div class="formData">
-                <input class="checkbox-input" type="checkbox" id="checkbox1" />
+                <input
+                  class="checkbox-input"
+                  type="checkbox"
+                  id="checkbox1"
+                  form="reserve"
+                />
                 <label class="checkbox2-label" for="checkbox1">
-                  <span class="checkbox-icon"></span>
+                  <span
+                    class="checkbox-icon"
+                    role="checkbox"
+                    aria-label="conditions d'utilisations"
+                    tabindex="0"
+                  ></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br />
-                <input class="checkbox-input" type="checkbox" id="checkbox2" />
+                <input
+                  class="checkbox-input"
+                  type="checkbox"
+                  id="checkbox2"
+                  form="reserve"
+                />
                 <label class="checkbox2-label" for="checkbox2">
-                  <span class="checkbox-icon"></span>
+                  <span
+                    class="checkbox-icon"
+                    role="checkbox"
+                    aria-label="newsletter"
+                    tabindex="0"
+                  ></span>
                   Je Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br />
@@ -232,6 +299,7 @@
     <footer>
       <p class="copyrights">Copyright 2014 - 2022, GameOn Inc.</p>
     </footer>
-    <script src="modal.js"></script>
+    <script type="module" src="./validation.js"></script>
+    <script type="module" src="./modal.js"></script>
   </body>
 </html>
