@@ -40,21 +40,31 @@
             Vous aimez jouer ? Notre prochain évènement gaming est ouvert
             aux réservations... Places limitées !
           </p>
-          <button class="btn-signup modal-btn">
+          <button class="btn-signup modal-btn"
+          aria-haspopup="dialog"
+          aria-controls="dialog"
+          type="button">
             je m'inscris
           </button>
         </div>
         <div class="hero-img">
           <img src="./bg_img.jpg" alt="img" />
         </div>
-        <button class="btn-signup modal-btn">
+        <button class="btn-signup modal-btn"
+          aria-haspopup="dialog"
+          aria-controls="dialog"
+          type="button">
           je m'inscris
         </button>
       </div>
 
       <div class="bground">
         <div class="content">
-          <span class="close"></span>
+          <span class="close"
+          role="button"
+              aria-label="Fermer"
+              title="Fermer la fenêtre modale"
+              data-dismiss="dialog"></span>
           <div class="modal-body">
             <form
               name="reserve"
