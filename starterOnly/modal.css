@@ -203,6 +203,7 @@ input {
 }
 .text-control {
   margin: 0;
+  margin-bottom: 0.75rem;
   padding: 8px;
   width: 100%;
   border-radius: 8px;
@@ -242,7 +243,7 @@ input[data-error]::after {
 }
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
-  display: block;
+  display: inline-block;
   width: 20px;
   height: 20px;
   border: 2px solid #279e7a;
@@ -335,6 +336,9 @@ input[data-error]::after {
   border: 0;
 }
 /* custom select styles */
+fieldset {
+  border: 0;
+}
 .custom-select {
   position: relative;
   font-family: Arial;
