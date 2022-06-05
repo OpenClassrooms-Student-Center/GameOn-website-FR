@@ -158,7 +158,7 @@ main {
   font-size: 16px;
 }
 
-.bground {
+.modal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -170,7 +170,7 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
-.content {
+.modal-content {
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
@@ -290,7 +290,7 @@ input {
   left: 21%;
   top: 19%;
 }
-.close {
+.modal-close {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -300,8 +300,8 @@ input {
   cursor: pointer;
   transform: scale(0.7);
 }
-.close:before,
-.close:after {
+.modal-close:before,
+.modal-close:after {
   position: absolute;
   left: 15px;
   content: ' ';
@@ -309,10 +309,10 @@ input {
   width: 3px;
   background-color: #fff;
 }
-.close:before {
+.modal-close:before {
   transform: rotate(45deg);
 }
-.close:after {
+.modal-close:after {
   transform: rotate(-45deg);
 }
 .btn-submit,
@@ -474,6 +474,47 @@ footer {
   padding-left: 2vw;
   padding-right: 2vw;
   margin: 0 20px;
+}
+/* Success Modal */
+.successModal {
+  display: none;
+  height: 100%;
+}
+/* .successModal .modal-mask {
+  z-index: 20;
+} */
+.successModal .modal-content {
+  position: absolute;
+  z-index: 21;
+  height: 100%;
+  overflow-y: hidden;
+  top: 12%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 8px 8px 0 0;
+}
+.successModal .modal-body {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+.successModal h3 {
+  max-width: 85%;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: auto;
+}
+.successModal h3 span {
+  display: block;
+  color: #c4c4c4;
+  line-height: 3rem;
+  margin-bottom: 1.5rem;
+}
+.successModal button {
+  margin-top: auto;
+  margin-bottom: 3rem;
 }
 @media screen and (max-width: 800px) {
   .hero-section {
