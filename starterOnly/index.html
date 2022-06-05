@@ -86,8 +86,8 @@
               method="get"
               novalidate
             >
-              <div class="formData">
-                <label for="first">Prénom</label><br />
+              <div class="formData" data-error data-error-visible>
+                <label for="first">Prénom</label>
                 <input
                   form="reserve"
                   class="text-control"
@@ -95,43 +95,43 @@
                   id="first"
                   name="first"
                   minlength="2"
-                /><br />
+                />
               </div>
               <div class="formData">
-                <label for="last">Nom</label><br />
+                <label for="last">Nom</label>
                 <input
                   form="reserve"
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
-                /><br />
+                />
               </div>
               <div class="formData">
-                <label for="email">E-mail</label><br />
+                <label for="email">E-mail</label>
                 <input
                   form="reserve"
                   class="text-control"
                   type="email"
                   id="email"
                   name="email"
-                /><br />
+                />
               </div>
               <div class="formData">
-                <label for="birthdate">Date de naissance</label><br />
+                <label for="birthdate">Date de naissance</label>
                 <input
                   form="reserve"
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                /><br />
+                />
               </div>
               <div class="formData">
                 <label for="quantity"
                   >À combien de tournois GameOn avez-vous déjà participé
                   ?</label
-                ><br />
+                >
                 <input
                   form="reserve"
                   type="number"
@@ -268,7 +268,6 @@
                   ></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
-                <br />
                 <input
                   class="checkbox-input"
                   type="checkbox"
@@ -284,7 +283,6 @@
                   ></span>
                   Je Je souhaite être prévenu des prochains évènements.
                 </label>
-                <br />
               </div>
               <input
                 class="btn-submit button"

@@ -1,4 +1,5 @@
-// eslint-disable-next-line import/extensions
+/* eslint-disable import/extensions */
+import { delErrMsg } from './message.js';
 import { valid, validate } from './validation.js';
 /**
  * @const  {HTMLFormElement}  reserve  inscription form
@@ -54,7 +55,7 @@ valid function on each change. */
 document.querySelectorAll('input[form="reserve"]').forEach((el) => {
   // NodeList is an Array-like object
   // @ts-ignore
-  el.addEventListener('input', () => valid(el));
+  el.addEventListener('blur', () => valid(el));
 });
 /* The above code is adding an event listener to each of the radio buttons. When the user presses the
 enter or space key, the radio button is checked. */
@@ -123,4 +124,8 @@ reserve.addEventListener('submit', (ev) => {
   closeModal();
   // @ts-ignore
   reserve.reset();
+  document.querySelectorAll('input[form="reserve"]').forEach((el) => {
+    // @ts-ignore
+    delErrMsg(el);
+  });
 });
