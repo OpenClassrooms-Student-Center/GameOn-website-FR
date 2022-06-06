@@ -25,6 +25,51 @@ function editNav() {
     x.className = 'topnav';
   }
 }
+/**
+ * It traps the focus inside the dialog box
+ * @param  {HTMLElement} el - The element that will be focused on when the dialog is opened.
+ */
+function trapFocus(el) {
+  /**
+   *
+   * @const focusableElts
+   * @type {Array.<HTMLElement>}
+   */
+  const focusableElts = Array.from(
+    el.querySelectorAll(
+      'input,span[role=radio],span[role=checkbox],button[type=submit],button[data-dismiss=dialog],span[data-dismiss="dialog"]'
+    )
+  );
+  /**
+   *
+   * @const firstFocusableElt
+   * @type {HTMLElement}
+   */
+  const firstFocusableElt = focusableElts[0];
+  /**
+   *
+   * @const lastFocusableElt
+   * @type {HTMLElement}
+   */
+  const lastFocusableElt = focusableElts[focusableElts.length - 1];
+  el.addEventListener('keydown', (ev) => {
+    const isTabPressed = ev.key === 'Tab' || ev.code === '9';
+    if (!isTabPressed) {
+      return;
+    }
+    if (ev.shiftKey) {
+      if (document.activeElement === firstFocusableElt) {
+        /* shift + tab */
+        lastFocusableElt.focus();
+        ev.preventDefault();
+      }
+    } else if (document.activeElement === lastFocusableElt) {
+      /* tab */
+      firstFocusableElt.focus();
+      ev.preventDefault();
+    }
+  });
+}
 function closeModal() {
   modal.removeAttribute('style');
   modal.setAttribute('aria-hidden', 'true');
@@ -46,6 +91,7 @@ function setToOpenModal(el) {
     elt.addEventListener('click', closeModal)
   );
   modal = el;
+  trapFocus(el);
 }
 /**
  * When the user clicks the button, the modal background is displayed
