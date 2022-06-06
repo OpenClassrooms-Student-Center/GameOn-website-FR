@@ -17,14 +17,6 @@ let previousActiveElement = null;
  * 'responsive' to the class name. Otherwise, set the class name to 'topnav'
  */
 
-function editNav() {
-  const x = document.getElementById('myTopnav');
-  if (x.className === 'topnav') {
-    x.className += ' responsive';
-  } else {
-    x.className = 'topnav';
-  }
-}
 /**
  * It traps the focus inside the dialog box
  * @param  {HTMLElement} el - The element that will be focused on when the dialog is opened.
