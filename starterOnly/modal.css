@@ -527,3 +527,15 @@ footer {
   }
 }
 
+
+
+.error-message{
+  font-size:12px;
+  font-weight:400;
+  color: rgb(238, 157, 5);
+  margin-bottom: 10px;
+}
+
+.formData{
+  margin-top: 15px;
+}

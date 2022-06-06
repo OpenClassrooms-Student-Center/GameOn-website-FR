@@ -58,61 +58,83 @@
           <div class="modal-body">
             <form
               name="reserve"
+              id="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
             >
               <div
                 class="formData">
-                <label>Prénom</label><br>
+                <label
+                for="first">
+                  Prénom
+                </label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="first"
                   name="first"
                   minlength="2"
+                  required
                 /><br>
+                <span class="error-firstname error-message"></span>
               </div>
               <div
                 class="formData">
-                <label>Nom</label><br>
+                <label
+                for="last">
+                  Nom
+                </label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
+                  required
                 /><br>
+                <span class="error-lastname error-message"></span>
               </div>
               <div
                 class="formData">
-                <label>E-mail</label><br>
+                <label
+                for="email">
+                  E-mail
+                </label><br>
                 <input
                   class="text-control"
                   type="email"
                   id="email"
                   name="email"
+                  required
                 /><br>
+                <span class="error-mail error-message" aria-live="polite"></span>
+
               </div>
               <div
                 class="formData">
                 <label>Date de naissance</label><br>
+            
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
+                  required
                 /><br>
+                <span class="error-birthday error-message" aria-live="polite"></span>
               </div>
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                <span class="error-count error-message"></span>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <span class="error-number error-message" aria-live="polite"></span>
               </div>
-              <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
+
               <div
                 class="formData">
+              <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
                 <input
-                  class="checkbox-input"
+                  class="checkbox-input location"
                   type="radio"
                   id="location1"
                   name="location"
@@ -123,7 +145,7 @@
                   New York</label
                 >
                 <input
-                  class="checkbox-input"
+                  class="checkbox-input location"
                   type="radio"
                   id="location2"
                   name="location"
@@ -134,7 +156,7 @@
                   San Francisco</label
                 >
                 <input
-                  class="checkbox-input"
+                  class="checkbox-input location"
                   type="radio"
                   id="location3"
                   name="location"
@@ -145,7 +167,7 @@
                   Seattle</label
                 >
                 <input
-                  class="checkbox-input"
+                  class="checkbox-input location"
                   type="radio"
                   id="location4"
                   name="location"
@@ -156,7 +178,7 @@
                   Chicago</label
                 >
                 <input
-                  class="checkbox-input"
+                  class="checkbox-input location"
                   type="radio"
                   id="location5"
                   name="location"
@@ -167,7 +189,7 @@
                   Boston</label
                 >
                 <input
-                  class="checkbox-input"
+                  class="checkbox-input location"
                   type="radio"
                   id="location6"
                   name="location"
@@ -176,7 +198,8 @@
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
                   Portland</label
-                >
+                ><br />
+              <span class="error-location error-message"></span><br/>
               </div>
 
               <div
@@ -191,11 +214,13 @@
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
+                <span class="error-condition error-message"></span><br/>
+
                 <br>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
-                  Je Je souhaite être prévenu des prochains évènements.
+                  Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
               </div>
