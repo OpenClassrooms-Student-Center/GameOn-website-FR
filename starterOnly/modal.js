@@ -5,7 +5,7 @@ import { valid, validate } from './validation.js';
  */
 const reserve = document.querySelector('#reserve');
 /**
- * @const {HTMLButtonElement}  .modal-btn  modal buttons
+ * @const {HTMLButtonElement}  modal-btn  modal buttons
  */
 const modalBtn = document.querySelectorAll('button[aria-haspopup="dialog"]');
 
