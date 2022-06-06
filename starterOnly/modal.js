@@ -1,5 +1,4 @@
 /* eslint-disable import/extensions */
-import { delErrMsg } from './message.js';
 import { valid, validate } from './validation.js';
 /**
  * @const  {HTMLFormElement}  reserve  inscription form
@@ -71,9 +70,10 @@ function closeModal() {
     .querySelector('span[data-dismiss="dialog"]')
     .removeEventListener('click', closeModal);
   modal.lastElementChild.removeEventListener('click', closeModal);
-  // restoring focus
-  previousActiveElement.focus();
-  modal = null;
+  // eslint-disable-next-line no-unused-expressions
+  modal && modal.id === 'successModal'
+    ? window.location.reload()
+    : (previousActiveElement.focus(), (modal = null));
 }
 function setToOpenModal(el) {
   el.setAttribute('style', 'display: block');
@@ -223,10 +223,4 @@ reserve.addEventListener('submit', (ev) => {
   closeModal();
   // @ts-ignore
   displaySuccessModal(data.first, data.last);
-  // @ts-ignore
-  reserve.reset();
-  document.querySelectorAll('input[form="reserve"]').forEach((el) => {
-    // @ts-ignore
-    delErrMsg(el);
-  });
 });
