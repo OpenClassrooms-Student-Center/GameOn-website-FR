@@ -213,8 +213,8 @@ function validateModalSubmit () {
     console.log('validé')
   modalSuccess ()
   } else {
-    alert('Veuillez remplir les champs correctement')
     // afficher error visible des inputs qui sont false
+    modalSuccess (supprModal)
   }
 };
 
@@ -230,7 +230,7 @@ const supprModal = document.querySelector("modal-body");
 
 // function check /modal success
 function modalSuccess (supprModal) {
-  supprModal.parentNode.removeChild(supprModal);
+  supprModal.removeChild(child);
   //ajouter le texte "Votre inscription a été prise en compte" en white et bold
   // réduire la hauteur de la modale
   // garder le bouton submit et changer le texte "c'est parti" par "fermer"
