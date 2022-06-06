@@ -56,11 +56,10 @@ img {
   display: none;
   color: #000000;
   text-align: center;
-  padding: 10px 14px;
+  padding: 12px 14px;
   text-decoration: none;
   font-size: 20px;
   font-weight: 500;
-  /* font-family: var(--font-default); */
 }
 
 .topnav a:hover,
@@ -80,15 +79,18 @@ img {
 .topnav.responsive {
   position: relative;
 }
-.topnav.responsive .icon {
-  position: absolute;
-  right: 0;
-  top: 0;
-}
 .topnav.responsive a {
   float: none;
   display: block;
   text-align: left;
+  margin-right: 50px;
+  margin-bottom: 5px;
+}
+.topnav.responsive a.icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 0;
 }
 /* End Main navigation */
 
@@ -106,6 +108,7 @@ main {
   display: block;
   background: #fe142f;
   color: #fff;
+  font-family: var(--font-default);
   font-size: 1rem;
   font-weight: 500;
   text-transform: capitalize;
@@ -386,7 +389,6 @@ fieldset {
   margin-top: auto;
   margin-bottom: 3rem;
 }
-
 /* End SuccessModal */
 /* End Main section */
 
@@ -423,6 +425,9 @@ footer {
     display: block;
     color: #000000;
     font-size: 1.2rem;
+  }
+  .topnav a.active {
+    margin: 0;
   }
   .topnav a.icon {
     display: none;
