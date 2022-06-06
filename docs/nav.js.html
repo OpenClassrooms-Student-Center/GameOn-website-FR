@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: nav.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,42 +17,46 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: nav.js</h1>
 
     
 
 
 
     
-
-
-    <h3> </h3>
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
     <section>
-        <article><h1>Projet GameOn</h1>
-<ol>
-<li>Forkez ce repo ;</li>
-<li>Il est conseillé d'utiliser VisualStudio Code et vous pouvez utiliser Docker, mais ce n'est pas obligatoire ;</li>
-<li>Il n'y a aucune dépendance ;</li>
-<li>Vous ne devez utiliser que du CSS personnalisé et du JavaScript pur, sans jQuery, Bootstrap ou autre librairie.</li>
-</ol></article>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
+ * The function is called when the user clicks on the hamburger icon. The function toggles the class of
+ * the navbar to responsive
+ */
+function editNav() {
+  const myTopnav = document.getElementById('myTopnav');
+  myTopnav.classList.toggle('responsive');
+}
+/**
+ * It takes an element as an argument, removes the active class from all of its siblings, and adds the
+ * active class to itself
+ * @param  {HTMLAnchorElement}  el - the element that was clicked
+ */
+function setActive(el) {
+  [...el.parentElement.children].forEach((sib) => {
+    if (sib.classList.contains('active')) {
+      sib.classList.remove('active');
+    }
+  });
+  el.classList.add('active');
+}
+document.querySelector('.icon').addEventListener('click', editNav);
+/* The above code is adding an event listener to each link in the navbar. When the link is clicked, the
+setActive function is called. */
+document.querySelectorAll('.main-navbar a+a').forEach((el) => {
+  // @ts-ignore
+  el.addEventListener('click', () => setActive(el));
+});
+</code></pre>
+        </article>
     </section>
-
-
 
 
 

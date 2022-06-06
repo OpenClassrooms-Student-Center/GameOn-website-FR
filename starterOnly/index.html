@@ -13,6 +13,7 @@
       href="https://fonts.googleapis.com/css?family=DM+Sans"
       rel="stylesheet"
     />
+    <script src="./nav.js" defer></script>
   </head>
   <body>
     <div class="topnav" id="myTopnav">
@@ -20,19 +21,14 @@
         <img alt="logo" src="Logo.png" width="250" height="45" />
       </div>
       <div class="main-navbar">
+        <a href="#" class="icon" aria-label="menu">
+          <i class="fa fa-bars"></i>
+        </a>
         <a href="#" class="active"><span>Accueil</span></a>
         <a href="#"><span>Détails de l'évènement</span></a>
         <a href="#"><span>À propos</span></a>
         <a href="#"><span>Contact</span></a>
         <a href="#"><span>Évènements passés</span></a>
-        <a
-          href="javascript:void(0);"
-          class="icon"
-          aria-label="menu"
-          onclick="editNav()"
-        >
-          <i class="fa fa-bars"></i>
-        </a>
       </div>
     </div>
     <main>
@@ -47,7 +43,7 @@
             réservations... Places limitées !
           </p>
           <button
-            class="btn-signup modal-btn"
+            class="button btn-signup"
             aria-haspopup="dialog"
             aria-controls="dialog"
             type="button"
@@ -59,7 +55,7 @@
           <img src="./bg_img.jpg" alt="img" />
         </div>
         <button
-          class="btn-signup modal-btn"
+          class="button btn-signup"
           aria-haspopup="dialog"
           aria-controls="dialog"
           type="button"
@@ -292,11 +288,9 @@
                   Je Je souhaite être prévenu des prochains évènements.
                 </label>
               </div>
-              <input
-                class="btn-submit button"
-                type="submit"
-                value="C'est parti"
-              />
+              <button class="button btn-submit" type="submit">
+                C'est parti
+              </button>
             </form>
           </div>
         </div>
