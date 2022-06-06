@@ -39,6 +39,8 @@ let myLastname = document.getElementById('last');
 let myEmail = document.getElementById('email');
 let myBirthday = document.getElementById('birthdate');
 let myQuantity = document.getElementById('quantity');
+let myLocalisation = document.getElementsByName("location");
+let myCheckbox = document.getElementById('checkbox1');
 
 // Validation
 
@@ -51,6 +53,8 @@ btnSubmit.addEventListener("click", function(event){
   checkEmail(myEmail);
   checkBirthdate();
   checkQuantity();
+  checkLocation();
+  checkCheckBox();
 });
 
 // Check Name
@@ -107,7 +111,7 @@ function checkBirthdate(){
   } 
 
   //quantity
-
+  
   myQuantity
   function checkQuantity(){
     if(myQuantity.value ==""){
@@ -119,4 +123,30 @@ function checkBirthdate(){
     }
   }
 
-  
+  //Localisation
+  function checkLocation(){
+    let valid = false;
+    for(let i=0; i<myLocalisation.length;i++){
+      if(myLocalisation[i].checked)
+      {
+        valid = true;
+        break;
+      }
+    }
+    if(valid == false){
+      alert("Vous devez choisir une localisation");
+    }
+}
+
+//Checkbox
+function checkCheckBox(){
+  let cbValid = false;
+
+  if(myCheckbox.checked){
+    cbValid = true;
+  }
+
+  if(cbValid == false){
+    alert("Vous devez accepter les conditions d'utilisation !");
+}
+}
