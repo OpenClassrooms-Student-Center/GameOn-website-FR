@@ -41,16 +41,16 @@ const firstName = document.querySelector("#first");
 
 // function check /firstname
 function checkFirstName (firstName) {
-  const regText = /[a-zA-ZÀ-ÿ]/;
+  const regText = /[a-zA-ZÀ-ÿ]{2,}/;
   console.log(firstName.value);
-  if (regText.test(firstName.value) && firstName.value.length >= 2){
+  if (regText.test(firstName.value)){
     firstName.parentNode.dataset.errorVisible = false;
-    console.log('true')
+    console.log('firstName OK')
     return true
   } else {
     firstName.parentNode.dataset.error = "Le prénom doit avoir 2 caractères ou plus";
     firstName.parentNode.dataset.errorVisible = true;
-    console.log('false')
+    console.log('firstName notOK')
     return false
   }
 };
@@ -66,13 +66,15 @@ const lastName = document.querySelector("#last");
 
 // function check /lastName
 function checkLastName (lastName) {
-  const regText = /[a-zA-ZÀ-ÿ]/;
-  if (regText.test(lastName.value) && lastName.value.length >= 2) {
+  const regText = /[a-zA-ZÀ-ÿ]{2,}/;
+  if (regText.test(lastName.value)) {
     lastName.parentNode.dataset.errorVisible = false;
+    console.log('lastName OK')
     return true
   } else {
     lastName.parentNode.dataset.error = "Le nom doit avoir 2 caractères ou plus";
     lastName.parentNode.dataset.errorVisible = true;
+    console.log('lastName notOK')
     return false
   }
 };
@@ -92,10 +94,12 @@ function checkEmail (email) {
   const regEmail = /^[\w\-\+]+(\.[\w\-]+)*@[\w\-]+(\.[\w\-]+)*\.[\w\-]{2,4}$/;
   if (regEmail.test(email.value)) {
     email.parentNode.dataset.errorVisible = false;
+    console.log('email OK')
     return true
   } else {
     email.parentNode.dataset.error = "Veuillez entrer un mail valide";
     email.parentNode.dataset.errorVisible = true;
+    console.log('email notOK')
     return false
   }
 };
@@ -109,14 +113,17 @@ email.addEventListener('blur', function() {
 // declaration /birthDate
 const birthDate = document.querySelector("#birthdate");
 
+
 // function check /birthDate
 function checkBirthDate (birthDate) {
-  if (birthDate.value == "") {
+  if (birthDate.value === "") {
     birthDate.parentNode.dataset.error = "Veuillez saisir votre date de naissance";
     birthDate.parentNode.dataset.errorVisible = true;
+    console.log('birthDate OK')
     return false 
   } else {
     birthDate.parentNode.dataset.errorVisible = false;
+    console.log('birthDate notOK')
     return true
   }};
 
@@ -135,12 +142,14 @@ const quantity = document.querySelector("#quantity");
 
 function checkQuantity (quantity) {
   const regNumber = /^[0-9]$/;
-  if (regNumber.test(quantity.value) && (quantity.value === "" || parseInt(quantity.value) <= 20)) {
+  if (regNumber.test(quantity.value) && (quantity.value === "" || parseInt(quantity.value) <= 99)) {
     quantity.parentNode.dataset.errorVisible = false;
+    console.log('quantity OK')
     return true
   } else {
     quantity.parentNode.dataset.error = "Veuillez saisir un nombre";
     quantity.parentNode.dataset.errorVisible = true;
+    console.log('quantity notOK')
     return false 
   }};
 
@@ -153,18 +162,19 @@ function checkQuantity (quantity) {
 
 // declaration /radio
 // (5) Un bouton radio est sélectionné.
-const radio = document.querySelectorAll("input[name='location']");
+const radio = document.querySelector("input[name='location']");
 
 // function check /radio
 function checkRadio (radio) {
-  console.log('coucou');
   for (i = 0; i < radio.length; i++) {
   if (radio[i].checked) {
-    radio.parentNode.dataset.errorVisible = false;
+    radio.parentNode.dataset.errorVisible = true;
+    console.log('radio OK')
     return true
   } else {
     radio.parentNode.dataset.error = "Veuillez cocher une ville";
     radio.parentNode.dataset.errorVisible = true;
+    console.log('radio notOK')
     return false 
   }
 }};
@@ -184,10 +194,12 @@ const checkbox = document.querySelector("checkbox1");
 function checkCheckbox (checkbox) {
   if (checkbox.checked) {
     checkbox.parentNode.dataset.errorVisible = true;
+    console.log('checkbox OK')
     return false 
   } else {
     checkbox.parentNode.dataset.error = "Veuillez cocher la case des conditions d'utilisations";
     checkbox.parentNode.dataset.errorVisible = false;
+    console.log('checkbox notOK')
     return true
   }
 };
@@ -206,35 +218,52 @@ const modalSubmit = document.querySelector(".btn-submit");  //modal submit butto
 
 // function check /submit
 function validateModalSubmit () {
-  console.log('test1')
   if (checkFirstName(firstName) && checkLastName(lastName) 
   && checkEmail(email) && checkBirthDate(birthDate) 
   && checkQuantity(quantity) && checkRadio(radio) && checkCheckbox(checkbox)) {
-    console.log('validé')
-  modalSuccess ()
+    console.log('formulaire validé')
+    modalSuccess ()
   } else {
+    console.log('formulaire invalidé')
     // afficher error visible des inputs qui sont false
-    modalSuccess (supprModal)
+    alert('Veuillez remplir les champs correctement');
+    //afficher les textes rouges error
   }
 };
 
 // call event /submit
 modalSubmit.addEventListener('click', function(e) {
-  console.log('coucou bouton')
+  console.log(modalSubmit.value)
   e.preventDefault();
   validateModalSubmit();
 });
 
 // declaration /modal success
-const supprModal = document.querySelector("modal-body");
+const modalSuccess = document.querySelector("modal-body");
 
 // function check /modal success
-function modalSuccess (supprModal) {
-  supprModal.removeChild(child);
+function launchModalSuccess (modalSuccess) {
+  modalbg.style.display = "none";
+  // créer une nouvelle modale
+  let newModal = document.createElement('div');
+  modalSuccess.appendChild(newModal)
+  newModal.style.fontSize = '25px';
+  newModal.style.color = 'white';
+  newModal.style.fontWeight = "bold";
+  newModal.style.display = 'block'
+  newModal.style.textAlign = 'center'
+  newModal.style.padding = "20px"
   //ajouter le texte "Votre inscription a été prise en compte" en white et bold
-  // réduire la hauteur de la modale
-  // garder le bouton submit et changer le texte "c'est parti" par "fermer"
+  newModal.textContent = "Votre inscription a été prise en compte"
+  // ajouter un bouton
+  let newButton = document.createElement('div')
+  newButton.className = 'button btn-submit';
+  newButton.textContent = "Retour";
+  newButton.style.width = "50%";
+  modalSuccess.appendChild(newButton);
 };
 
 // call event / modal success
-
+newButton.addEventListener("click", function(){
+  modalbg.style.display = 'none';
+});
