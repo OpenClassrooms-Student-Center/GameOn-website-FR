@@ -210,5 +210,5 @@ const confirmForm = (event) => {
   thanksMessage.style.justifyContent = "center";
 
   confirmButton.addEventListener("click", () => form.submit());
-  modalClose.addEventListener("close", () => form.submit());
+  modalClose.addEventListener("click", () => form.submit());
 };
