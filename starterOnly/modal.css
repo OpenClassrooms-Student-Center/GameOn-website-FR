@@ -14,6 +14,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
+  font-family:"DM Sans", Arial, Helvetica, sans-serif;
   font-size: 18px;
   max-width: 1300px;
   margin: 0 auto;
@@ -97,6 +98,7 @@ main {
 .footer {
   margin: 20px;
   padding: 10px;
+  font-family: var(--font-slab);
 }
 
 /* Modal form */
@@ -151,8 +153,9 @@ main {
 }
 
 label {
-  font-family: var(--font-default);
+  font-family:"DM Sans", Arial, Helvetica, sans-serif;
   font-size: 17px;
+  font-weight: normal;
   display: inline-block;
   margin-bottom: 11px;
 }
@@ -503,7 +506,6 @@ margin-top: 10px;
 }
 .end-modal p {
     font-size:large;
-    padding: auto;
     margin: auto;
     height: 20vh;
 }
@@ -550,7 +552,6 @@ margin-top: 10px;
 }
 .end-modal p {
     font-size:medium;
-    padding: auto;
     margin: auto;
     height: 1vh;
 }
@@ -592,7 +593,6 @@ margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
     width: unset;
-    font-size:auto;
     font-size: small;
   }
   
@@ -603,7 +603,6 @@ margin-top: 10px;
 }
 .end-modal p {
     font-size: small;
-    padding: auto;
     margin: auto;
     height: 1vh;
 }
