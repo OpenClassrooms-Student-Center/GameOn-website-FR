@@ -31,12 +31,18 @@ const options = document.getElementById("options");
 const cgu = document.getElementById("checkbox1");
 
 // EVENEMENTS MODAL
+// focus first input
+const focusInput = () => {
+  firstName.focus();
+};
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  focusInput()
 }
 
 // close modal event
