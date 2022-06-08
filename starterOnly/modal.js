@@ -116,15 +116,16 @@ const birthDate = document.querySelector("#birthdate");
 
 // function check /birthDate
 function checkBirthDate (birthDate) {
-  if (birthDate.value === "") {
+  const regDate = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
+  if (regDate.test(birthDate.value)) {
+    birthDate.parentNode.dataset.errorVisible = false;
+    console.log('birthDate OK')
+    return true
+  } else {
     birthDate.parentNode.dataset.error = "Veuillez saisir votre date de naissance";
     birthDate.parentNode.dataset.errorVisible = true;
-    console.log('birthDate OK')
-    return false 
-  } else {
-    birthDate.parentNode.dataset.errorVisible = false;
     console.log('birthDate notOK')
-    return true
+    return false
   }};
 
  // call event /birthDate
@@ -162,54 +163,60 @@ function checkQuantity (quantity) {
 
 // declaration /radio
 // (5) Un bouton radio est sélectionné.
-const radio = document.querySelector("input[name='location']");
+const radio = document.querySelectorAll("input[name='location']");
 
 // function check /radio
-function checkRadio (radio) {
-  for (i = 0; i < radio.length; i++) {
-  if (radio[i].checked) {
-    radio.parentNode.dataset.errorVisible = true;
-    console.log('radio OK')
-    return true
-  } else {
-    radio.parentNode.dataset.error = "Veuillez cocher une ville";
-    radio.parentNode.dataset.errorVisible = true;
-    console.log('radio notOK')
-    return false 
+function checkRadio () {
+  for (let radioEntry of radio.entries()) {
+    // const radios = document.querySelector('input[name="location"]:checked');
+  // console.log(radios);
+    console.log(radioEntry[1])
+    if (radioEntry[1].checked) {
+      console.log(radioEntry[1].parentNode)
+      radioEntry[1].parentNode.dataset.errorVisible = false;
+      console.log(radioEntry[1])
+      console.log('radio OK')
+      return true 
+    }
   }
-}};
-
-// call event /radio
-// radio.addEventListener('click', function() {
-//   
-//   checkRadio(radio);
-// });
+  let firstRadio = document.querySelector("input[name='location']")
+  firstRadio.parentNode.dataset.errorVisible = true;
+  firstRadio.parentNode.dataset.error = "Veuillez sélectionner un choix.";
+  console.log('radio notOK')
+  return false
+};
+  // for (i = 0; i < radio.length; i++) {
+  //   console.log('radio coucou')
+  // if (radio[i].checked) {
+  //   radioError.radio.dataset.errorVisible = false;
+  //   console.log('radio OK')
+  //   return true
+  // } else {
+  //   radioError.radio.dataset.error = "Veuillez sélectionner un choix.";
+  //   radioError.radio.dataset.errorVisible = true;
+  //   console.log('radio notOK')
+  //   return false 
+  // }
 
 // declaration /checkbox
 // (6) La case des conditions générales est cochée, l'autre case est facultative / peut être laissée décochée.
 
-const checkbox = document.querySelector("checkbox1");
+const checkbox = document.querySelector("#checkbox1");
 
 // function check /checkbox
-function checkCheckbox (checkbox) {
+function checkCheckbox () {
+  console.log('checkbox coucou')
   if (checkbox.checked) {
-    checkbox.parentNode.dataset.errorVisible = true;
+    checkbox.parentNode.dataset.errorVisible = false;
     console.log('checkbox OK')
-    return false 
+    return true
   } else {
     checkbox.parentNode.dataset.error = "Veuillez cocher la case des conditions d'utilisations";
-    checkbox.parentNode.dataset.errorVisible = false;
+    checkbox.parentNode.dataset.errorVisible = true;
     console.log('checkbox notOK')
-    return true
+    return false
   }
 };
-
-// call event /checkbox
-// checkbox.addEventListener('click', function() {
-//   console.log(checkbox.value);
-//   checkCheckbox(checkbox);
-//  });
-
 
 // VALIDATION
 
@@ -217,10 +224,10 @@ function checkCheckbox (checkbox) {
 const modalSubmit = document.querySelector(".btn-submit");  //modal submit button
 
 // function check /submit
+ 
 function validateModalSubmit () {
-  if (checkFirstName(firstName) && checkLastName(lastName) 
-  && checkEmail(email) && checkBirthDate(birthDate) 
-  && checkQuantity(quantity) && checkRadio(radio) && checkCheckbox(checkbox)) {
+  if (checkFirstName(firstName) && checkLastName(lastName) && checkEmail(email) 
+  && checkBirthDate(birthDate) && checkQuantity(quantity) && checkRadio() && checkCheckbox()) {
     console.log('formulaire validé')
     modalSuccess ()
   } else {
@@ -244,15 +251,16 @@ const modalSuccess = document.querySelector("modal-body");
 // function check /modal success
 function launchModalSuccess (modalSuccess) {
   modalbg.style.display = "none";
+  // clear function
   // créer une nouvelle modale
   let newModal = document.createElement('div');
-  modalSuccess.appendChild(newModal)
   newModal.style.fontSize = '25px';
   newModal.style.color = 'white';
   newModal.style.fontWeight = "bold";
   newModal.style.display = 'block'
   newModal.style.textAlign = 'center'
   newModal.style.padding = "20px"
+  modalSuccess.appendChild(newModal)
   //ajouter le texte "Votre inscription a été prise en compte" en white et bold
   newModal.textContent = "Votre inscription a été prise en compte"
   // ajouter un bouton
