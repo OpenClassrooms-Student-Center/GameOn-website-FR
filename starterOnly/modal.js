@@ -168,8 +168,6 @@ const radio = document.querySelectorAll("input[name='location']");
 // function check /radio
 function checkRadio () {
   for (let radioEntry of radio.entries()) {
-    // const radios = document.querySelector('input[name="location"]:checked');
-  // console.log(radios);
     console.log(radioEntry[1])
     if (radioEntry[1].checked) {
       console.log(radioEntry[1].parentNode)
@@ -185,37 +183,25 @@ function checkRadio () {
   console.log('radio notOK')
   return false
 };
-  // for (i = 0; i < radio.length; i++) {
-  //   console.log('radio coucou')
-  // if (radio[i].checked) {
-  //   radioError.radio.dataset.errorVisible = false;
-  //   console.log('radio OK')
-  //   return true
-  // } else {
-  //   radioError.radio.dataset.error = "Veuillez sélectionner un choix.";
-  //   radioError.radio.dataset.errorVisible = true;
-  //   console.log('radio notOK')
-  //   return false 
-  // }
-
+  
 // declaration /checkbox
 // (6) La case des conditions générales est cochée, l'autre case est facultative / peut être laissée décochée.
 
-const checkbox = document.querySelector("#checkbox1");
+const checkbox1 = document.querySelector("#checkbox1");
 
 // function check /checkbox
-function checkCheckbox () {
-  console.log('checkbox coucou')
-  if (checkbox.checked) {
-    checkbox.parentNode.dataset.errorVisible = false;
-    console.log('checkbox OK')
-    return true
+function checkCheckbox (){
+  console.log(checkbox1);
+  if (checkbox1.checked) {
+    checkbox1.parentNode.dataset.errorVisible = false;
+    console.log('checkbox1 OK')
+    return true 
   } else {
-    checkbox.parentNode.dataset.error = "Veuillez cocher la case des conditions d'utilisations";
-    checkbox.parentNode.dataset.errorVisible = true;
-    console.log('checkbox notOK')
+    checkbox1.parentNode.dataset.errorVisible = true;
+    checkbox1.parentNode.dataset.error = "Veuillez cocher la case des conditions d'utilisations";
+    console.log('checkbox1 notOK')
     return false
-  }
+ }
 };
 
 // VALIDATION
@@ -224,17 +210,16 @@ function checkCheckbox () {
 const modalSubmit = document.querySelector(".btn-submit");  //modal submit button
 
 // function check /submit
- 
+
 function validateModalSubmit () {
   if (checkFirstName(firstName) && checkLastName(lastName) && checkEmail(email) 
   && checkBirthDate(birthDate) && checkQuantity(quantity) && checkRadio() && checkCheckbox()) {
     console.log('formulaire validé')
-    modalSuccess ()
+    modalbg.style.display = "none";
+    launchModalSuccess ()
   } else {
     console.log('formulaire invalidé')
-    // afficher error visible des inputs qui sont false
-    alert('Veuillez remplir les champs correctement');
-    //afficher les textes rouges error
+    // afficher tous les else des fonctions en même temps
   }
 };
 
@@ -246,11 +231,11 @@ modalSubmit.addEventListener('click', function(e) {
 });
 
 // declaration /modal success
-const modalSuccess = document.querySelector("modal-body");
+const modalSuccess = document.querySelector(".content");
 
 // function check /modal success
-function launchModalSuccess (modalSuccess) {
-  modalbg.style.display = "none";
+function launchModalSuccess () {
+  console.log('launchmodal')
   // clear function
   // créer une nouvelle modale
   let newModal = document.createElement('div');
@@ -261,6 +246,7 @@ function launchModalSuccess (modalSuccess) {
   newModal.style.textAlign = 'center'
   newModal.style.padding = "20px"
   modalSuccess.appendChild(newModal)
+  console.log('launchmodal')
   //ajouter le texte "Votre inscription a été prise en compte" en white et bold
   newModal.textContent = "Votre inscription a été prise en compte"
   // ajouter un bouton
@@ -269,9 +255,10 @@ function launchModalSuccess (modalSuccess) {
   newButton.textContent = "Retour";
   newButton.style.width = "50%";
   modalSuccess.appendChild(newButton);
+  console.log('launchmodal')
 };
 
 // call event / modal success
 newButton.addEventListener("click", function(){
-  modalbg.style.display = 'none';
+  //modalbg.style.display = 'none';
 });
