@@ -208,6 +208,7 @@ function checkCheckbox (){
 
 // declaration /submit
 const modalSubmit = document.querySelector(".btn-submit");  //modal submit button
+const modal = document.querySelector(".form");
 
 // function check /submit
 
@@ -215,7 +216,7 @@ function validateModalSubmit () {
   if (checkFirstName(firstName) && checkLastName(lastName) && checkEmail(email) 
   && checkBirthDate(birthDate) && checkQuantity(quantity) && checkRadio() && checkCheckbox()) {
     console.log('formulaire validé')
-    modalbg.style.display = "none";
+    modal.style.display = "none";
     launchModalSuccess ()
   } else {
     console.log('formulaire invalidé')
@@ -231,34 +232,19 @@ modalSubmit.addEventListener('click', function(e) {
 });
 
 // declaration /modal success
-const modalSuccess = document.querySelector(".content");
+const modalSucces = document.querySelector(".content")
 
 // function check /modal success
 function launchModalSuccess () {
-  console.log('launchmodal')
-  // clear function
   // créer une nouvelle modale
-  let newModal = document.createElement('div');
-  newModal.style.fontSize = '25px';
+  let newModal = document.createElement('p');
+  newModal.style.fontSize = '18px';
   newModal.style.color = 'white';
   newModal.style.fontWeight = "bold";
   newModal.style.display = 'block'
   newModal.style.textAlign = 'center'
-  newModal.style.padding = "20px"
-  modalSuccess.appendChild(newModal)
-  console.log('launchmodal')
+  newModal.style.padding = "20px 40px 80px 20px"
+  modalSucces.appendChild(newModal)
   //ajouter le texte "Votre inscription a été prise en compte" en white et bold
-  newModal.textContent = "Votre inscription a été prise en compte"
-  // ajouter un bouton
-  let newButton = document.createElement('div')
-  newButton.className = 'button btn-submit';
-  newButton.textContent = "Retour";
-  newButton.style.width = "50%";
-  modalSuccess.appendChild(newButton);
-  console.log('launchmodal')
+  newModal.textContent = "Votre inscription a été prise en compte."
 };
-
-// call event / modal success
-newButton.addEventListener("click", function(){
-  //modalbg.style.display = 'none';
-});

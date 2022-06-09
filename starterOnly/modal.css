@@ -77,14 +77,17 @@ img {
 /*** HEADER / NAV MENU/Responsive ***/
 
 @media screen and (max-width: 768px) {
+.topnav {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
   }
 }
-
-@media screen and (max-width: 768px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
@@ -96,6 +99,25 @@ img {
     display: block;
     text-align: left;
   }
+
+  .main-navbar {
+    z-index: 2;
+    background-color: white;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .main-navbar a:nth-of-type(2),
+  .main-navbar a:nth-of-type(3),
+  .main-navbar a:nth-of-type(4),
+  .main-navbar a:nth-of-type(5){
+    border: solid 0.5px #d2d2d2;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
 }
 
  @media screen and (max-width: 540px) {
@@ -103,7 +125,6 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
 } 
 
@@ -540,6 +561,7 @@ footer {
   }
 }
 
+
 @keyframes modalopen {
   from {
     opacity: 0;
@@ -551,4 +573,4 @@ footer {
 }
 
 
-
+/**************** Responsive ups ****************/
