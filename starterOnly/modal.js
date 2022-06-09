@@ -108,6 +108,12 @@ const checkInputValues = (data) => {
   let errors = [];
 
   const regexText = /^[a-z ,.'-]+$/i;
+  // Email
+  const emailRegex =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+  // Number
+  const numberRegex = /\d+/;
 
   // firstName
   !regexText.test(data.firstName) || data.firstName?.length < 2
@@ -125,10 +131,6 @@ const checkInputValues = (data) => {
       ])
     : null;
 
-  // Email
-  const emailRegex =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
   !data.email.match(emailRegex)
     ? errors.push([emailInput, "Veuillez entrer une adresse mail valide."])
     : null;
@@ -140,9 +142,6 @@ const checkInputValues = (data) => {
   !data.birthdate || selectedDate.getFullYear() > currentDate.getFullYear() - 18
     ? errors.push([birthdateInput, "La date n'est pas valide."])
     : null;
-
-  // Number
-  const numberRegex = /\d+/;
 
   !data.quantity.match(numberRegex) || data.quantity < 0 || data.quantity > 100
     ? errors.push([
@@ -176,6 +175,7 @@ const validateForm = (event) => {
 
   const errors = checkInputValues(data);
 
+  // initialize errors message for all inputs form 
   formData.forEach((element) => {
     element.setAttribute("data-error-visible", false);
     element.setAttribute("data-error", "");
