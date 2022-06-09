@@ -98,7 +98,7 @@ main {
 .footer {
   margin: 20px;
   padding: 10px;
-  font-family: var(--font-slab);
+  font-family: "DM Sans", Arial, Helvetica, sans-serif;
 }
 
 /* Modal form */
@@ -298,7 +298,6 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
-
 
 /* custom select end */
 .text-label {
