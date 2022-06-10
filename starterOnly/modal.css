@@ -103,9 +103,6 @@ img {
   .main-navbar {
     z-index: 2;
     background-color: white;
-    position: absolute;
-    right: 0;
-    top: 0;
   }
 
   .main-navbar a:nth-of-type(2),
