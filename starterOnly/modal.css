@@ -12,7 +12,6 @@
 }
 
 body {
-  margin: 0;
   display: flex;
   flex-direction: column;
   background-image: url("background.png");
@@ -88,12 +87,13 @@ img {
     display: block;
   }
 }
-  .topnav.responsive {position: relative;}
+
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
     top: 0;
   }
+
   .topnav.responsive a {
     float: none;
     display: block;
@@ -103,6 +103,9 @@ img {
   .main-navbar {
     z-index: 2;
     background-color: white;
+    right: 0;
+    top: 15px;
+    position: absolute;
   }
 
   .main-navbar a:nth-of-type(2),
@@ -134,7 +137,7 @@ main {
   padding-top: 0.5vw;
   padding-left: 2vw;
   padding-right: 2vw;
-  margin: 1px 20px 15px;
+  margin: 1px 10px 15px 10px;
   border-radius: 2rem;
   text-align: justify;
 
@@ -537,7 +540,6 @@ footer {
   }
   .hero-headline {
     font-size: 4.5rem;
-    white-space: normal;
   }
   .hero-text {
     width: unset;
@@ -558,6 +560,34 @@ footer {
   }
 }
 
+
+@media screen and (max-width: 540px) {
+
+  main {
+    margin-bottom: -50px;
+  }
+
+  .hero-content {
+    padding: 5px;
+    text-align: justify;
+  }
+
+  .hero-headline {
+    font-size: 2.8rem;
+  }
+
+  .hero-text {
+    font-size: 1.4rem;
+  }
+
+  .content {
+    margin-top: 150px;
+  }
+
+  .copyrights{
+    font-size: 0.6em;
+  }
+}
 
 @keyframes modalopen {
   from {
