@@ -74,9 +74,6 @@ img {
     float: right;
     display: block;
   }
-}
-
-@media screen and (max-width: 768px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
@@ -91,13 +88,11 @@ img {
 }
 
 
-
- @media screen and (max-width: 540px) {
+@media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
 } 
 
@@ -215,7 +210,7 @@ input {
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  text-align: left;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -226,12 +221,12 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
+
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
-} */
+}
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -441,7 +436,7 @@ input[data-error]::after {
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
+  width: 100%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
@@ -478,6 +473,54 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+
+/* confirm modal */
+.confirm-bground {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+
+.confirm-content {
+  margin: 5% auto;
+  width: 100%;
+  height: 800px;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+}
+
+.confirm-body {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  padding: 15px 8%;
+  margin: 15px auto;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.confirm-body button {
+  position: absolute;
+  bottom: 20px;
+}
+
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -487,6 +530,7 @@ footer {
     background: #fff;
     color: #000;
     padding: 20px;
+    min-width: 200px;
   }
   .hero-content::after {
     content: unset;
@@ -495,7 +539,7 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 4rem;
     white-space: normal;
   }
   .hero-text {
@@ -516,6 +560,12 @@ footer {
     text-align: center;
   }
 }
+
+@media screen and (max-width: 540px) {
+  .hero-headline {
+    font-size: 2.5rem;
+  }
+} 
 
 @keyframes modalopen {
   from {
