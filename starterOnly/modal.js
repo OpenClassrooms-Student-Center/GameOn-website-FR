@@ -224,3 +224,6 @@ const validForm = (e) => {
 
 document.querySelector(".btn-submit").
  addEventListener("click", validForm)
+
+document.querySelector(".btn-submit").
+ addEventListener("click", validForm)
