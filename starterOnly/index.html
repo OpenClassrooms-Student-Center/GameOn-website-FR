@@ -55,8 +55,18 @@
       <div class="bground">
         <div class="content">
           <span class="close"></span>
-          <div class="modal-body">
+          <div 
+            class="form-confirmation">
+                <span>Merci ! Votre réservation a été reçue.</span>
+                <div>
+                  <button  onClick="closeModal()" class="btn-signup">
+                    Retour
+                  </button>
+                </div>
+            </div>
+          <div class="modal-body form-isnotvalid">
             <form
+            class=""
               name="reserve"
               id="reserve"
               action="index.html"
@@ -111,7 +121,7 @@
               </div>
               <div
                 class="formData">
-                <label>Date de naissance</label><br>
+                <label for="birthdate">Date de naissance</label><br>
             
                 <input
                   class="text-control"
@@ -124,7 +134,7 @@
               </div>
               <div
                 class="formData">
-                <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <span class="error-count error-message"></span>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
                 <span class="error-number error-message" aria-live="polite"></span>

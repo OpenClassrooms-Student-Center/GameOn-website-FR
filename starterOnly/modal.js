@@ -58,15 +58,18 @@ const errorMessage = {
 }
 
 
+
 /****
+ * ************************************************************************************************
  * FONCTION DE CHECK DES DONNEES SAISIE
+ * ************************************************************************************************
  */
 
 //Check si la string est supérieur ou égale à 2 charactère
 //Si string.length est supérieur ou egale à 2 charactère return true
 //Sinon return false
 const validName = (string) => {
-  if ((string.length >=2) && (string != "")){
+  if ((string.length >=2) && (string.length)){
     return true
   } else false
 };
@@ -91,7 +94,6 @@ const checkBirthday = (date) => {
 
 // check si le user à selectionné au moins une des prochaines compéitions. 
 const checkSelectedContest = () =>{
-  console.log(locationContest)
   for( radio of locationContest){
     if (radio.checked) {
       document.querySelector('.error-location').innerHTML = "";
@@ -112,14 +114,7 @@ const checkboxIsChecked = () =>{
   }
 }
 
-/***
- * ECOUETEUR D'EVENEMENT SUR LES INPUTS DU FORMULAIRE
- */
-// on ecoute sur la valuer de l'input firstname => si il fait moins de deux characters,
-// on modifie le style de l'input pour le passer en rouger et on affiche un message      
-// d'erreur sous l'input
-// Si jamais la valeur devient valide on suprimme les changement de css utilisé pour affiché les erreurs.. 
-firstname.addEventListener("change", (event) => {
+const handleFirstnameInput = (event) =>{
   if (!validName(event.target.value)){
     firstname.style.border = '3px solid #fe142f';
     document.querySelector('.error-firstname').innerHTML = errorMessage.name
@@ -128,13 +123,9 @@ firstname.addEventListener("change", (event) => {
     firstname.style.border = 'none';
     document.querySelector('.error-firstname').innerHTML = "";
   }
-})
+}
 
-// on ecoute sur la value de l'input lastname => si il fait moins de deux characters,
-// on modifie le style de l'input pour le passer en rouger et on affiche un message      
-// d'erreur sous l'input
-// Si jamais la valeur devient valide on suprimme les changement de css utilisé pour affiché les erreurs.. 
-lastName.addEventListener("change", (event) => {
+const handleLastnameInput = (event) =>{ 
   if (!validName(event.target.value)) {
     lastName.style.border = '3px solid #fe142f';
     document.querySelector('.error-lastname').innerHTML = errorMessage.name
@@ -143,13 +134,9 @@ lastName.addEventListener("change", (event) => {
     lastName.style.border = 'none';
     document.querySelector('.error-lastname').innerHTML = "";
   }
-})
+}
 
-// on ecoute sur la value de l'input mail => si il n'est pas conforme à la regex,
-// on modifie le style de l'input pour le passer en rouger et on affiche un message      
-// d'erreur sous l'input
-// Si jamais la valeur devient valide on suprimme les changement de css utilisé pour affiché les erreurs..
-mail.addEventListener("change", (event) => {
+const handleMailInput = (event) => {
   if (!regexEmail.test(event.target.value)) {
     mail.style.border = '3px solid #fe142f';
     document.querySelector('.error-mail').innerHTML = errorMessage.mail
@@ -157,14 +144,10 @@ mail.addEventListener("change", (event) => {
     mail.style.border = 'none';
     document.querySelector('.error-mail').innerHTML = "";
   };
-})
 
-// on ecoute sur la value de l'input numberOfContest => si il ne trouve pas de checkbox cochée,
-// on modifie le style de l'input pour le passer en rouger et on affiche un message      
-// d'erreur sous l'input
-// Si jamais une checkbox es cochée, on suprimme les changement de css utilisé pour affiché les erreurs.
-numberOfContest.addEventListener("change", (event)=> {
-  console.log(event.target.value)
+}
+
+const handleContestInput = (event) => {
   if (!regexNumber.test(event.target.value)){
     numberOfContest.style.border = '3px solid #fe142f';
     document.querySelector('.error-number').innerHTML = errorMessage.count;
@@ -172,11 +155,41 @@ numberOfContest.addEventListener("change", (event)=> {
     numberOfContest.style.border = 'none';
     document.querySelector('.error-number').innerHTML = "";
   }
-})
+}
+
+/************************************************************************************************
+ * ECOUETEUR D'EVENEMENT SUR LES INPUTS DU FORMULAIRE
+ * ************************************************************************************************
+ */
+// on ecoute sur la valuer de l'input firstname => si il fait moins de deux characters,
+// on modifie le style de l'input pour le passer en rouger et on affiche un message      
+// d'erreur sous l'input
+// Si jamais la valeur devient valide on suprimme les changement de css utilisé pour affiché les erreurs.. 
+firstname.addEventListener("change", handleFirstnameInput);
+
+// on ecoute sur la value de l'input lastname => si il fait moins de deux characters,
+// on modifie le style de l'input pour le passer en rouger et on affiche un message      
+// d'erreur sous l'input
+// Si jamais la valeur devient valide on suprimme les changement de css utilisé pour affiché les erreurs.. 
+lastName.addEventListener("change", handleLastnameInput);
+
+// on ecoute sur la value de l'input mail => si il n'est pas conforme à la regex,
+// on modifie le style de l'input pour le passer en rouger et on affiche un message      
+// d'erreur sous l'input
+// Si jamais la valeur devient valide on suprimme les changement de css utilisé pour affiché les erreurs..
+mail.addEventListener("change", handleMailInput);
+
+// on ecoute sur la value de l'input numberOfContest => si il ne trouve pas de checkbox cochée,
+// on modifie le style de l'input pour le passer en rouger et on affiche un message      
+// d'erreur sous l'input
+// Si jamais une checkbox es cochée, on suprimme les changement de css utilisé pour affiché les erreurs.
+numberOfContest.addEventListener("change", handleContestInput);
 
 
 /*** 
+ * ************************************************************************************************
  * FOCNTION UTLTISER A LA SOUMISSION DU FORMULAIRE. 
+ * ************************************************************************************************
  */
 // fonction qui empêche la validation du formulaire si un des champs ne correspond pas a ce qui est attendu
 const validForm = (e) => {
@@ -184,7 +197,7 @@ const validForm = (e) => {
   checkboxIsChecked();
   checkSelectedContest();
   
-  // si une toutes les conditions sont respectées ca passe et on display le message de validation
+  // si une toutes les conditions sont respectées ca passe
   if ((validName(firstname.value)) && 
       (validName(lastName.value)) &&   
       (regexEmail.test(mail.value))&&
@@ -193,9 +206,11 @@ const validForm = (e) => {
       ){
         birthday.style.border = 'none';
         document.querySelector('.error-birthday').innerHTML = "";
-        console.log('all test is good')
+        //console.log('all test is good')
+        document.querySelector(".form-isnotvalid").style.display = "none";
+        document.querySelector(".form-confirmation").style.display = "block";
 
-    } else {
+    } else {//les verifications sont fausses, on affiche les erreurs
       // si le user n'est pas agé d'au moins 13 ans on affiche une erreur sous l'input birthday
       if (!checkBirthday(birthday)) {
         birthday.style.border = '3px solid #fe142f';
@@ -206,8 +221,6 @@ const validForm = (e) => {
       }
     }
 }
-
-
 
 document.querySelector(".btn-submit").
  addEventListener("click", validForm)
