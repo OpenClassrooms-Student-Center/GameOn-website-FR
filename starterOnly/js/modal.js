@@ -12,6 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalBtnClose = document.querySelectorAll(".close"); // creation d'un dom element sur l'element tout les element de la classe "close"
 const formData = document.querySelectorAll(".formData");
+const modalbgEnd = document.querySelector(".bgroundClose");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -42,10 +43,21 @@ let myQuantity = document.getElementById('quantity');
 let myLocalisation = document.getElementsByName("location");
 let myCheckbox = document.getElementById('checkbox1');
 
+//Element Error message
+let myFirstnameError = document.getElementById('error__message__first');
+let myLastnameError = document.getElementById('error__message__last');
+let myEmailError = document.getElementById('error__message__email');
+let myBirthdayError = document.getElementById('error__message__birthday');
+let myQuantityError = document.getElementById('error__message__quantity');
+let myLocalisationError = document.getElementById('error__message__localisation');
+let myCheckboxError = document.getElementById('error__message__checkbox');
+
+
+// Error
+let errors= 0;
+
 // Validation
-
 let btnSubmit = document.querySelector('.btn-submit');
-
 btnSubmit.addEventListener("click", function(event){
   event.preventDefault();
   checkName();
@@ -55,27 +67,50 @@ btnSubmit.addEventListener("click", function(event){
   checkQuantity();
   checkLocation();
   checkCheckBox();
+  if(
+    checkName() == true && 
+    checkLastName() == true && 
+    checkEmail(myEmail)== true && 
+    checkBirthdate() == true && 
+    checkQuantity() == true &&
+    checkLocation() == true &&
+    checkCheckBox() == true
+  ){
+    alert("oui");
+    modalbg.style.display = "none";
+    modalbgEnd.style.display = "block";
+  }
 });
 
-// Check Name
+// validator
+
+
+// Check first Name
 function checkName(){
-  if (myFirstname.value == "" || myFirstname.value.length < 2 ){
+   if (myFirstname.value == "" || myFirstname.value.length < 2 ){
     myFirstname.style.border = "2px solid red";
+    myFirstnameError.style.visibility = "visible";
     return false;
   }
   else{
      myFirstname.style.border = "none";
+     myFirstnameError.style.visibility = "hidden";
      return true;
   }
+  console.log(errors);
 }
 // Check Last Name
 function checkLastName(){
   if (myLastname.value == "" || myLastname.value.length < 2 ){
     myLastname.style.border = "2px solid red";
+    myLastnameError.style.visibility = "visible";
+    errors = 1;
     return false;
   }
   else{
     myLastname.style.border = "none";
+    myLastnameError.style.visibility = "hidden";
+    errors = 0;
     return true;
   }
 }
@@ -85,9 +120,13 @@ function checkEmail(myEmail) {
 let emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
   if(emailRegExp.test(myEmail.value)){
     myEmail.style.border = "none";
+    myEmailError.style.visibility = "hidden";
+    return true;
   }
   else{
     myEmail.style.border = "2px solid red";
+    myEmailError.style.visibility = "visible";
+    return false;
   }
 }  // date 
 
@@ -103,10 +142,13 @@ function checkBirthdate(){
 
   if(currentYear < userYear){
     myBirthday.style.border = "2px solid red";
+    myBirthdayError.style.visibility = "visible";
     return false;
   }
-    else{
+  else{
       myBirthday.style.border = "none";
+      myBirthdayError.style.visibility = "none";
+      return true;
     }
   } 
 
@@ -116,10 +158,13 @@ function checkBirthdate(){
   function checkQuantity(){
     if(myQuantity.value ==""){
       myQuantity.style.border = "2px solid red";
+      myQuantityError.style.visibility = "visible";
       return false;
     }
     else{
       myQuantity.style.border = "none";
+      myQuantityError.style.visibility = "none";
+      return true;
     }
   }
 
@@ -130,23 +175,26 @@ function checkBirthdate(){
       if(myLocalisation[i].checked)
       {
         valid = true;
-        break;
+        myLocalisationError.style.visibility = "none";
+        return true;
       }
     }
     if(valid == false){
-      alert("Vous devez choisir une localisation");
+      myLocalisationError.style.visibility = "visible";
+      return false;
     }
 }
 
 //Checkbox
 function checkCheckBox(){
   let cbValid = false;
-
   if(myCheckbox.checked){
+    myCheckboxError.style.visibility = "none";
     cbValid = true;
+    return true;
   }
-
   if(cbValid == false){
-    alert("Vous devez accepter les conditions d'utilisation !");
-}
+    myCheckboxError.style.visibility = "visible";
+    return false;
+  }
 }
