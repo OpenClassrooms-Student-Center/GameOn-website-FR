@@ -18,6 +18,8 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  document.querySelector(".form-isnotvalid").style.display = "block";
+  document.querySelector(".form-confirmation").style.display = "none";
 }
 
 
@@ -39,7 +41,7 @@ const firstname = document.getElementById('first');
 const lastname = document.getElementById('last');
 const mail = document.getElementById('email');
 const birthday = document.getElementById('birthdate');
-const numberOfContest= document.getElementById('quantity')
+const numberOfContest= document.getElementById('quantity');
 const locationContest = document.querySelectorAll(".location");
 const checkboxRequired = document.getElementById("checkbox1");
 const form = document.getElementById("reserve");
@@ -55,7 +57,7 @@ const errorMessage = {
   count : "Veuillez enter un nombre entier",
   contest : "Veuillez choisir une des prochaines conmpétitions",
   checkboxRequired : "Vous devez vérifier que vous accepter les conditions générales d'utilisations",
-}
+};
 
 
 
@@ -79,9 +81,9 @@ const validName = (string) => {
 //si il est plus jeune la fonction renvoi false. 
 const checkBirthday = (date) => {
   let currentDate = new Date(); // date et heure à laquelle la fonction est appellé
-  let userBirth = new Date(date.value) // date de naissance de l'utilisateur
-  let diff = currentDate - userBirth // on calcule la différence entre les 2 dates
-  const test = new Date(diff)
+  let userBirth = new Date(date.value);// date de naissance de l'utilisateur
+  let diff = currentDate - userBirth; // on calcule la différence entre les 2 dates
+  const test = new Date(diff);
   let year = test.getFullYear();
 
   let userAge = Math.abs(year - 1970);
@@ -117,7 +119,7 @@ const checkboxIsChecked = () =>{
 const handleFirstnameInput = (event) =>{
   if (!validName(event.target.value)){
     firstname.style.border = '3px solid #fe142f';
-    document.querySelector('.error-firstname').innerHTML = errorMessage.name
+    document.querySelector('.error-firstname').innerHTML = errorMessage.name;
     console.log('false')
   }else {
     firstname.style.border = 'none';
@@ -128,7 +130,7 @@ const handleFirstnameInput = (event) =>{
 const handleLastnameInput = (event) =>{ 
   if (!validName(event.target.value)) {
     lastname.style.border = '3px solid #fe142f';
-    document.querySelector('.error-lastname').innerHTML = errorMessage.name
+    document.querySelector('.error-lastname').innerHTML = errorMessage.name;
     console.log('false')
   } else {
     lastname.style.border = 'none';
@@ -139,7 +141,7 @@ const handleLastnameInput = (event) =>{
 const handleMailInput = (event) => {
   if (!regexEmail.test(event.target.value)) {
     mail.style.border = '3px solid #fe142f';
-    document.querySelector('.error-mail').innerHTML = errorMessage.mail
+    document.querySelector('.error-mail').innerHTML = errorMessage.mail;
   } else {
     mail.style.border = 'none';
     document.querySelector('.error-mail').innerHTML = "";
@@ -193,7 +195,7 @@ numberOfContest.addEventListener("change", handleContestInput);
  */
 // fonction qui empêche la validation du formulaire si un des champs ne correspond pas a ce qui est attendu
 const validForm = (e) => {
-  e.preventDefault() // on empêche le rechargement de la page afin de garder les données saisie
+  e.preventDefault(); // on empêche le rechargement de la page afin de garder les données saisie
   checkboxIsChecked();
   checkSelectedContest();
   
@@ -218,12 +220,12 @@ const validForm = (e) => {
 
       if (!validName(firstname.value)){
         firstname.style.border = '3px solid #fe142f';
-        document.querySelector('.error-firstname').innerHTML = errorMessage.name
+        document.querySelector('.error-firstname').innerHTML = errorMessage.name;
       }
 
       if (!validName(lastname.value)){
         lastname.style.border = '3px solid #fe142f';
-        document.querySelector('.error-lastname').innerHTML = errorMessage.name
+        document.querySelector('.error-lastname').innerHTML = errorMessage.name;
       }
       if (!regexNumber.test(numberOfContest.value)){
         numberOfContest.style.border = '3px solid #fe142f';
@@ -232,12 +234,12 @@ const validForm = (e) => {
 
       if (!regexEmail.test(mail.value)) {
         mail.style.border = '3px solid #fe142f';
-        document.querySelector('.error-mail').innerHTML = errorMessage.mail
+        document.querySelector('.error-mail').innerHTML = errorMessage.mail;
       } 
   }
 }
-document.querySelector(".btn-submit").
- addEventListener("click", validForm)
+document.querySelector(".form-signup").
+ addEventListener("submit", validForm);
 
  document.querySelector(".back-btn").
- addEventListener("click", closeModal)
+ addEventListener("click", closeModal);
