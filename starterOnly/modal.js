@@ -36,7 +36,7 @@ closeButton.addEventListener("click", closeModal)
 
 // select DOM element
 const firstname = document.getElementById('first');
-const lastName = document.getElementById('last');
+const lastname = document.getElementById('last');
 const mail = document.getElementById('email');
 const birthday = document.getElementById('birthdate');
 const numberOfContest= document.getElementById('quantity')
@@ -127,11 +127,11 @@ const handleFirstnameInput = (event) =>{
 
 const handleLastnameInput = (event) =>{ 
   if (!validName(event.target.value)) {
-    lastName.style.border = '3px solid #fe142f';
+    lastname.style.border = '3px solid #fe142f';
     document.querySelector('.error-lastname').innerHTML = errorMessage.name
     console.log('false')
   } else {
-    lastName.style.border = 'none';
+    lastname.style.border = 'none';
     document.querySelector('.error-lastname').innerHTML = "";
   }
 }
@@ -171,7 +171,7 @@ firstname.addEventListener("change", handleFirstnameInput);
 // on modifie le style de l'input pour le passer en rouger et on affiche un message      
 // d'erreur sous l'input
 // Si jamais la valeur devient valide on suprimme les changement de css utilisé pour affiché les erreurs.. 
-lastName.addEventListener("change", handleLastnameInput);
+lastname.addEventListener("change", handleLastnameInput);
 
 // on ecoute sur la value de l'input mail => si il n'est pas conforme à la regex,
 // on modifie le style de l'input pour le passer en rouger et on affiche un message      
@@ -199,7 +199,7 @@ const validForm = (e) => {
   
   // si une toutes les conditions sont respectées ca passe
   if ((validName(firstname.value)) && 
-      (validName(lastName.value)) &&   
+      (validName(lastname.value)) &&   
       (regexEmail.test(mail.value))&&
       (regexNumber.test(numberOfContest.value))&&
       (checkBirthday(birthday))
@@ -207,19 +207,37 @@ const validForm = (e) => {
         birthday.style.border = 'none';
         document.querySelector('.error-birthday').innerHTML = "";
         document.querySelector(".form-isnotvalid").style.display = "none";
-        document.querySelector(".form-confirmation").style.display = "block";
+        document.querySelector(".form-confirmation").style.display = "flex";
 
     } else {//les verifications sont fausses, on affiche les erreurs
       // si le user n'est pas agé d'au moins 13 ans on affiche une erreur sous l'input birthday
       if (!checkBirthday(birthday)) {
         birthday.style.border = '3px solid #fe142f';
         document.querySelector('.error-birthday').innerHTML = errorMessage.birthday;
-      } else {
-        birthday.style.border = 'none';
-        document.querySelector('.error-birthday').innerHTML = "";
       }
-    }
-}
 
+      if (!validName(firstname.value)){
+        firstname.style.border = '3px solid #fe142f';
+        document.querySelector('.error-firstname').innerHTML = errorMessage.name
+      }
+
+      if (!validName(lastname.value)){
+        lastname.style.border = '3px solid #fe142f';
+        document.querySelector('.error-lastname').innerHTML = errorMessage.name
+      }
+      if (!regexNumber.test(numberOfContest.value)){
+        numberOfContest.style.border = '3px solid #fe142f';
+        document.querySelector('.error-number').innerHTML = errorMessage.count;
+      }
+
+      if (!regexEmail.test(mail.value)) {
+        mail.style.border = '3px solid #fe142f';
+        document.querySelector('.error-mail').innerHTML = errorMessage.mail
+      } 
+  }
+}
 document.querySelector(".btn-submit").
  addEventListener("click", validForm)
+
+ document.querySelector(".back-btn").
+ addEventListener("click", closeModal)

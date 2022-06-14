@@ -114,6 +114,9 @@ main {
 
 }
 
+.responsive-btn{
+  display: none !important;
+}
 .modal-btn {
   font-size: 145%;
   background: #fe142f;
@@ -332,6 +335,8 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -492,6 +497,11 @@ footer {
   main{
     margin : 0
   }
+
+
+.responsive-btn{
+  display: block !important;
+}
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -550,7 +560,7 @@ footer {
 .error-message{
   font-size:12px;
   font-weight:400;
-  color: rgb(238, 157, 5);
+  color: rgb(238, 40, 5);
   margin-bottom: 10px;
 }
 
@@ -561,4 +571,13 @@ footer {
 .form-confirmation{
   padding : 100px 30px;
   display:none;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center ;
+}
+
+.back-btn{
+  border: 0;
+  width: 30%;
+  margin: 50px auto;
 }

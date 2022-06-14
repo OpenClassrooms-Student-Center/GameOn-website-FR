@@ -46,7 +46,7 @@
         <div class="hero-img">
           <img src="./bg_img.jpg" alt="img" />
         </div>
-        <button class="btn-signup modal-btn">
+        <button class="btn-signup modal-btn responsive-btn">
           je m'inscris
         </button>
       </div>
@@ -57,14 +57,17 @@
           <div 
             class="form-confirmation">
                 <span>Merci ! Votre réservation a été reçue.</span>
+                <button class="button back-btn">
+                  Retour
+                </button>
             </div>
           <div class="modal-body form-isnotvalid">
             <form
-            class=""
+              class="form-signup"
               name="reserve"
               id="reserve"
               action="index.html"
-              method="get"
+              method="post"
             >
               <div
                 class="formData">
@@ -78,7 +81,6 @@
                   id="first"
                   name="first"
                   minlength="2"
-                  required
                 /><br>
                 <span class="error-firstname error-message"></span>
               </div>
@@ -93,7 +95,6 @@
                   type="text"
                   id="last"
                   name="last"
-                  required
                 /><br>
                 <span class="error-lastname error-message"></span>
               </div>
@@ -108,7 +109,6 @@
                   type="email"
                   id="email"
                   name="email"
-                  required
                 /><br>
                 <span class="error-mail error-message" aria-live="polite"></span>
 
@@ -122,7 +122,6 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                  required
                 /><br>
                 <span class="error-birthday error-message" aria-live="polite"></span>
               </div>
@@ -176,7 +175,8 @@
                   id="location4"
                   name="location"
                   value="Chicago"
-                />
+            class=""
+            />
                 <label class="checkbox-label" for="location4">
                   <span class="checkbox-icon"></span>
                   Chicago</label
