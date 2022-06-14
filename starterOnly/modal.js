@@ -206,7 +206,6 @@ const validForm = (e) => {
       ){
         birthday.style.border = 'none';
         document.querySelector('.error-birthday').innerHTML = "";
-        //console.log('all test is good')
         document.querySelector(".form-isnotvalid").style.display = "none";
         document.querySelector(".form-confirmation").style.display = "block";
 
@@ -221,9 +220,6 @@ const validForm = (e) => {
       }
     }
 }
-
-document.querySelector(".btn-submit").
- addEventListener("click", validForm)
 
 document.querySelector(".btn-submit").
  addEventListener("click", validForm)
