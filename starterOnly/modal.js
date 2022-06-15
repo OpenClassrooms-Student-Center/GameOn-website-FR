@@ -8,9 +8,9 @@ function editNav() {
 }
 
 // DOM ELEMENTS
-const modalBtn = document.querySelectorAll(".modal-btn");   //open modal button
-const modalbg = document.querySelector(".bground");         //modal
-const closeBtn = document.querySelector(".close");        //close btn modal
+const modalBtn = document.querySelectorAll(".modal-btn"); //open modal button
+const modalbg = document.querySelector(".bground"); //modal
+const closeBtn = document.querySelector(".close"); //close btn modal
 
 
 // LAUNCH FORM
@@ -40,10 +40,10 @@ closeBtn.addEventListener("click", closeModal);
 const firstName = document.querySelector("#first");
 
 // function check /firstname
-function checkFirstName (firstName) {
+function checkFirstName(firstName) {
   const regText = /[a-zA-ZÀ-ÿ]{2,}/;
   console.log(firstName.value);
-  if (regText.test(firstName.value)){
+  if (regText.test(firstName.value)) {
     firstName.parentNode.dataset.errorVisible = false;
     console.log('firstName OK')
     return true
@@ -56,16 +56,16 @@ function checkFirstName (firstName) {
 };
 
 // call event /firstname
-firstName.addEventListener('blur', function() {
+firstName.addEventListener('blur', function () {
   checkFirstName(firstName);
-  });
+});
 
 
 // declaration /lastName
 const lastName = document.querySelector("#last");
 
 // function check /lastName
-function checkLastName (lastName) {
+function checkLastName(lastName) {
   const regText = /[a-zA-ZÀ-ÿ]{2,}/;
   if (regText.test(lastName.value)) {
     lastName.parentNode.dataset.errorVisible = false;
@@ -80,7 +80,7 @@ function checkLastName (lastName) {
 };
 
 // call event /lastname
-lastName.addEventListener('blur', function() {
+lastName.addEventListener('blur', function () {
   console.log(lastName.value.length);
   checkLastName(lastName);
 });
@@ -90,7 +90,7 @@ lastName.addEventListener('blur', function() {
 const email = document.querySelector("#email");
 
 // function check /email
-function checkEmail (email) {
+function checkEmail(email) {
   const regEmail = /^[\w\-\+]+(\.[\w\-]+)*@[\w\-]+(\.[\w\-]+)*\.[\w\-]{2,4}$/;
   if (regEmail.test(email.value)) {
     email.parentNode.dataset.errorVisible = false;
@@ -105,7 +105,7 @@ function checkEmail (email) {
 };
 
 // call event /email
-email.addEventListener('blur', function() {
+email.addEventListener('blur', function () {
   console.log(email.value);
   checkEmail(email);
 });
@@ -115,7 +115,7 @@ const birthDate = document.querySelector("#birthdate");
 
 
 // function check /birthDate
-function checkBirthDate (birthDate) {
+function checkBirthDate(birthDate) {
   const regDate = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
   if (regDate.test(birthDate.value)) {
     birthDate.parentNode.dataset.errorVisible = false;
@@ -126,13 +126,14 @@ function checkBirthDate (birthDate) {
     birthDate.parentNode.dataset.errorVisible = true;
     console.log('birthDate notOK')
     return false
-  }};
+  }
+};
 
- // call event /birthDate
- birthDate.addEventListener('blur', function() {
+// call event /birthDate
+birthDate.addEventListener('blur', function () {
   console.log(birthDate.value);
   checkBirthDate(birthDate);
- });
+});
 
 
 // declaration /quantity
@@ -141,7 +142,7 @@ const quantity = document.querySelector("#quantity");
 
 // function check /quantity
 
-function checkQuantity (quantity) {
+function checkQuantity(quantity) {
   const regNumber = /^[0-9]$/;
   if (regNumber.test(quantity.value) && (quantity.value === "" || parseInt(quantity.value) <= 99)) {
     quantity.parentNode.dataset.errorVisible = false;
@@ -151,14 +152,15 @@ function checkQuantity (quantity) {
     quantity.parentNode.dataset.error = "Veuillez saisir un nombre";
     quantity.parentNode.dataset.errorVisible = true;
     console.log('quantity notOK')
-    return false 
-  }};
+    return false
+  }
+};
 
 // call event /quantity
-  quantity.addEventListener('blur', function() {
-    console.log(quantity.value);
-    checkQuantity(quantity);
-  });
+quantity.addEventListener('blur', function () {
+  console.log(quantity.value);
+  checkQuantity(quantity);
+});
 
 
 // declaration /radio
@@ -166,7 +168,7 @@ function checkQuantity (quantity) {
 const radio = document.querySelectorAll("input[name='location']");
 
 // function check /radio
-function checkRadio () {
+function checkRadio() {
   for (let radioEntry of radio.entries()) {
     console.log(radioEntry[1])
     if (radioEntry[1].checked) {
@@ -174,7 +176,7 @@ function checkRadio () {
       radioEntry[1].parentNode.dataset.errorVisible = false;
       console.log(radioEntry[1])
       console.log('radio OK')
-      return true 
+      return true
     }
   }
   let firstRadio = document.querySelector("input[name='location']")
@@ -183,49 +185,56 @@ function checkRadio () {
   console.log('radio notOK')
   return false
 };
-  
+
 // declaration /checkbox
 // (6) La case des conditions générales est cochée, l'autre case est facultative / peut être laissée décochée.
 
 const checkbox1 = document.querySelector("#checkbox1");
 
 // function check /checkbox
-function checkCheckbox (){
+function checkCheckbox() {
   console.log(checkbox1);
   if (checkbox1.checked) {
     checkbox1.parentNode.dataset.errorVisible = false;
     console.log('checkbox1 OK')
-    return true 
+    return true
   } else {
     checkbox1.parentNode.dataset.errorVisible = true;
     checkbox1.parentNode.dataset.error = "Veuillez cocher la case des conditions d'utilisations";
     console.log('checkbox1 notOK')
     return false
- }
+  }
 };
 
 // VALIDATION
 
 // declaration /submit
-const modalSubmit = document.querySelector(".btn-submit");  //modal submit button
+const modalSubmit = document.querySelector(".btn-submit"); //modal submit button
 const modal = document.querySelector(".form");
 
 // function check /submit
 
-function validateModalSubmit () {
-  if (checkFirstName(firstName) && checkLastName(lastName) && checkEmail(email) 
-  && checkBirthDate(birthDate) && checkQuantity(quantity) && checkRadio() && checkCheckbox()) {
+function validateModalSubmit() {
+  if (checkFirstName(firstName) && checkLastName(lastName) && checkEmail(email) &&
+    checkBirthDate(birthDate) && checkQuantity(quantity) && checkRadio() && checkCheckbox()) {
     console.log('formulaire validé')
     modal.style.display = "none";
-    launchModalSuccess ()
+    launchModalSuccess()
   } else {
     console.log('formulaire invalidé')
     // afficher tous les else des fonctions en même temps
+    checkFirstName(firstName);
+    checkLastName(lastName);
+    checkEmail(email);
+    checkBirthDate(birthDate);
+    checkQuantity(quantity);
+    checkRadio();
+    checkCheckbox();
   }
 };
 
 // call event /submit
-modalSubmit.addEventListener('click', function(e) {
+modalSubmit.addEventListener('click', function (e) {
   console.log(modalSubmit.value)
   e.preventDefault();
   validateModalSubmit();
@@ -235,7 +244,7 @@ modalSubmit.addEventListener('click', function(e) {
 const modalSucces = document.querySelector(".content")
 
 // function check /modal success
-function launchModalSuccess () {
+function launchModalSuccess() {
   // créer une nouvelle modale
   let newModal = document.createElement('p');
   newModal.style.fontSize = '18px';
