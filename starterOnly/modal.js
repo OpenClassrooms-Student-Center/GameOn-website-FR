@@ -41,39 +41,42 @@ form.addEventListener("submit", (e) => {
 // Control of datas:
 // FirstName: 2 caracter and not empty
 const inputsText = document.querySelectorAll(".text-control");
-let firstName;
+let firstName, lastName;
 
 const firstNameChecker = (value) => {
-  const container = document.querySelector(".formData");
-  console.log(container); //pourquoi ça marche alors que je suis dans document
+  const containerFN = document.querySelector(".formData");
+  // est ce que mon containerFN existe que dans la fonction
+  //firstNameChecker ou partout
+  console.log(containerFN); //pourquoi ça marche alors que je suis dans document
   // et qu'il y a plusieurs .formData
   if (value.length > 0 && value.length < 2) {
-    container.classList.add("error");
+    containerFN.classList.add("error");
     firstName = null;
   } else if (value == null || value == "") {
-    container.classList.add("error");
+    containerFN.classList.add("error");
     firstName = null;
   } else {
-    container.classList.remove("error");
+    containerFN.classList.remove("error");
     firstName = value;
   }
 };
 
 const lastNameChecker = (value) => {
-  const container = document.querySelector(".formData ");
-  console.log(container);
-  // if (value.length > 0 && value.length < 2) {
-  //   container.classList.add("error");
-  //   firstName = null;
-  // } else if (value == null || value == "") {
-  //   container.classList.add("error");
-  //   firstName = null;
-  // } else {
-  //   container.classList.remove("error");
-  //   firstName = value;
-  // }
-  // console.log(value);
+  const containerLN = document.querySelector("#lastName");
+  //est-ce que ça me sélectionne l'input ou toute la div?
+  //est-ce génant pour l'application des classes error?
+  if (value.length > 0 && value.length < 2) {
+    containerLN.classList.add("error");
+    lastName = null;
+  } else if (value == null || value == "") {
+    containerLN.classList.add("error");
+    lastName = null;
+  } else {
+    containerLN.classList.remove("error");
+    lastName = value;
+  }
 };
+
 const emailChecker = (value) => {
   console.log(value);
 };
