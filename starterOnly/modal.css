@@ -222,6 +222,10 @@ input {
   opacity: 0;
   transition: 0.3s;
 }
+.error {
+  background-color: #f00;
+}
+
 .formData[data-error-visible="true"]::after {
   opacity: 1;
 }
