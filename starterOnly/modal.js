@@ -9,37 +9,61 @@ function editNav() {
 
 // DOM ELEMENTS
 const modalBtn = document.querySelectorAll(".modal-btn"); //open modal button
-const modalbg = document.querySelector(".bground"); //modal
+const modalbg = document.querySelector(".bground"); //modal background
 const closeBtn = document.querySelector(".close"); //close btn modal
+const firstName = document.querySelector("#first"); //input firstname
+const lastName = document.querySelector("#last"); //input lastname
+const email = document.querySelector("#email"); //input email
+const birthDate = document.querySelector("#birthdate"); //input birthdate
+const quantity = document.querySelector("#quantity"); //input quantity
+const radio = document.querySelectorAll("input[name='location']"); //radio button
+const checkbox1 = document.querySelector("#checkbox1"); //checkbox button
+const modalSucces = document.querySelector(".content") //new modal 
+const modalSubmit = document.querySelector(".btn-submit"); //modal submit button
+const modal = document.querySelector(".form"); //modal form
 
+// MODAL EVENTS
 
-// LAUNCH FORM
-
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-// launch modal form
+// function /launch modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
 
-// CLOSE FORM
+// event /launch modal 
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// close modal form
+
+// function /close modal form
 function closeModal() {
   modalbg.style.display = "none";
 }
 
-// close modal event
+// event /close modal
 closeBtn.addEventListener("click", closeModal);
 
 
-// INPUTS
+// INPUTS CHECKINS
 
-// declaration /firstName
-const firstName = document.querySelector("#first");
+// EXAMPLE JS LOGICAL BUILDING
+// ------------FUNCTION
+// function checkInput (input variable choosing above) {
+// const regEx = min 2 letters or max 99 choices, ...
+// console.log(variable.value) > show the value of variable
+// IF (regEx.text of value of variable is OK) {
+// don't show the "errorVisible" defined in css (=false)
+// console.log(variable is OK) > show that variable is OK
+// send true for the return and close the function
+// } ELSE { show the "errorVisible" css and add the red error text
+// console.log(variable is not OK) - show that variable is not OK
+// send false for the return and close the function }
 
-// function check /firstname
+// ------------EVENT ON FUNCTION
+// variable.addEventListener('blur', function () {
+// console.log(variable.value);
+// function checkInput(input variable choosing above)});
+
+
+// function /firstname
 function checkFirstName(firstName) {
   const regText = /[a-zA-ZÀ-ÿ]{2,}/;
   console.log(firstName.value);
@@ -55,16 +79,14 @@ function checkFirstName(firstName) {
   }
 };
 
-// call event /firstname
+// event /firstname
 firstName.addEventListener('blur', function () {
+  console.log(firstName.value);
   checkFirstName(firstName);
 });
 
 
-// declaration /lastName
-const lastName = document.querySelector("#last");
-
-// function check /lastName
+// function /lastName
 function checkLastName(lastName) {
   const regText = /[a-zA-ZÀ-ÿ]{2,}/;
   if (regText.test(lastName.value)) {
@@ -79,17 +101,14 @@ function checkLastName(lastName) {
   }
 };
 
-// call event /lastname
+// event /lastname
 lastName.addEventListener('blur', function () {
-  console.log(lastName.value.length);
+  console.log(lastName.value);
   checkLastName(lastName);
 });
 
 
-// declaration /email
-const email = document.querySelector("#email");
-
-// function check /email
+// function /email
 function checkEmail(email) {
   const regEmail = /^[\w\-\+]+(\.[\w\-]+)*@[\w\-]+(\.[\w\-]+)*\.[\w\-]{2,4}$/;
   if (regEmail.test(email.value)) {
@@ -104,17 +123,14 @@ function checkEmail(email) {
   }
 };
 
-// call event /email
+// event /email
 email.addEventListener('blur', function () {
   console.log(email.value);
   checkEmail(email);
 });
 
-// declaration /birthDate
-const birthDate = document.querySelector("#birthdate");
 
-
-// function check /birthDate
+// function /birthDate
 function checkBirthDate(birthDate) {
   const regDate = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
   if (regDate.test(birthDate.value)) {
@@ -129,18 +145,14 @@ function checkBirthDate(birthDate) {
   }
 };
 
-// call event /birthDate
+// event /birthDate
 birthDate.addEventListener('blur', function () {
   console.log(birthDate.value);
   checkBirthDate(birthDate);
 });
 
 
-// declaration /quantity
-// (4) Pour le nombre de concours, une valeur numérique est saisie.
-const quantity = document.querySelector("#quantity");
-
-// function check /quantity
+// function /quantity
 
 function checkQuantity(quantity) {
   const regNumber = /^[0-9]$/;
@@ -156,20 +168,17 @@ function checkQuantity(quantity) {
   }
 };
 
-// call event /quantity
+// event /quantity
 quantity.addEventListener('blur', function () {
   console.log(quantity.value);
   checkQuantity(quantity);
 });
 
 
-// declaration /radio
-// (5) Un bouton radio est sélectionné.
-const radio = document.querySelectorAll("input[name='location']");
-
-// function check /radio
-function checkRadio() {
-  for (let radioEntry of radio.entries()) {
+// function /radio 
+for (let radioEntry of radio.entries()) {
+  // check a stactic nodelist(by queryselectorALL) for checking all radio button in FOR loop
+  function checkRadio() {
     console.log(radioEntry[1])
     if (radioEntry[1].checked) {
       console.log(radioEntry[1].parentNode)
@@ -179,6 +188,7 @@ function checkRadio() {
       return true
     }
   }
+  // new variable to show the error message if no button are selected
   let firstRadio = document.querySelector("input[name='location']")
   firstRadio.parentNode.dataset.errorVisible = true;
   firstRadio.parentNode.dataset.error = "Veuillez sélectionner un choix.";
@@ -186,12 +196,9 @@ function checkRadio() {
   return false
 };
 
-// declaration /checkbox
-// (6) La case des conditions générales est cochée, l'autre case est facultative / peut être laissée décochée.
 
-const checkbox1 = document.querySelector("#checkbox1");
 
-// function check /checkbox
+// function /checkbox
 function checkCheckbox() {
   console.log(checkbox1);
   if (checkbox1.checked) {
@@ -208,21 +215,20 @@ function checkCheckbox() {
 
 // VALIDATION
 
-// declaration /submit
-const modalSubmit = document.querySelector(".btn-submit"); //modal submit button
-const modal = document.querySelector(".form");
-
-// function check /submit
+// function /submit
 
 function validateModalSubmit() {
+  // check of each function input of the form
   if (checkFirstName(firstName) && checkLastName(lastName) && checkEmail(email) &&
     checkBirthDate(birthDate) && checkQuantity(quantity) && checkRadio() && checkCheckbox()) {
     console.log('formulaire validé')
+    // display none the modal
     modal.style.display = "none";
+    // launch new modal
     launchModalSuccess()
   } else {
     console.log('formulaire invalidé')
-    // afficher tous les else des fonctions en même temps
+    // else show all errorVisible of each else functions
     checkFirstName(firstName);
     checkLastName(lastName);
     checkEmail(email);
@@ -233,19 +239,16 @@ function validateModalSubmit() {
   }
 };
 
-// call event /submit
+// event /submit
 modalSubmit.addEventListener('click', function (e) {
   console.log(modalSubmit.value)
   e.preventDefault();
   validateModalSubmit();
 });
 
-// declaration /modal success
-const modalSucces = document.querySelector(".content")
-
-// function check /modal success
+// function /new modal
 function launchModalSuccess() {
-  // créer une nouvelle modale
+  // create a new modal in a variable
   let newModal = document.createElement('p');
   newModal.style.fontSize = '18px';
   newModal.style.color = 'white';
@@ -253,7 +256,7 @@ function launchModalSuccess() {
   newModal.style.display = 'block'
   newModal.style.textAlign = 'center'
   newModal.style.padding = "20px 40px 80px 20px"
+  // show the new modal
   modalSucces.appendChild(newModal)
-  //ajouter le texte "Votre inscription a été prise en compte" en white et bold
   newModal.textContent = "Votre inscription a été prise en compte."
 };
