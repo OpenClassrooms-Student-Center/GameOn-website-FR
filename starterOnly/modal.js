@@ -1,5 +1,4 @@
 // DOM Elements
-const test;
 const modalBg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
@@ -28,10 +27,10 @@ modalClosure.addEventListener("click", closeModal);
 // la validation du formulaire? ou est-ce que mes Checker suffise au contrôle?
 function validate() {
   if (checkboxCGU.checked) {
-    // note pour moi: pour l'instant: si la box checkbox est validée
+    // note pour moi: pour l'instant: si la checkboxCGU est validée
     // un message s'affiche en alert et
     // alors on peut envoyer le formulaire : return true
-    // TODO:  faire le contrôle des données sont ok
+    // TODO:  faire le contrôle des données, si les données sont ok, formulaire valide.
     // et dire ce qu'il faut envoyé et où
     alert("ça marche");
     return true;
@@ -52,7 +51,9 @@ form.addEventListener("submit", (e) => {
 //------------------------Datas controls-------------------
 // Control of datas class text-control:
 const inputsText = document.querySelectorAll(".text-control");
+// une liste de 5 eléments
 let firstName, lastName, email, birthdate, quantity;
+// des variables vides
 
 const firstNameChecker = (value) => {
   const containerFN = document.querySelector(".formData");
@@ -142,55 +143,110 @@ inputsText.forEach((input) => {
     }
   });
 });
-//Ici on écoute sur l'input dans lequel on travaille,
+//Ici , pour chaque inputs test, on écoute sur l'input dans lequel on travaille,
+//On cible id, et on récupère la valeur donnée, puis on sort (break) et on
+// continue pour l'input text suivant.
+//  Pour chaque cas, on apprlique une vérification
 //je veux créer une fonction qui contrôle/vérifie les datas pour chaque
 //input, (fonction blablaChecker écrite juste avant et appeler pour chaque cas)
 //
 
 // Control of datas class checkbox-label:
 const inputsCheckbox = document.querySelectorAll(".checkbox-input");
-console.log(inputsCheckbox);
-let place;
+let place, checkboxNewsVar;
 
 // checké une location,
 // si la checkbox est validé, rajouté la donnée dans le tableau
-// les CGU doivent etre checked sinon error
-// la newletter peut être checké
+inputsCheckbox.forEach((input) => {
+  input.addEventListener("click", (e) => {
+    switch (e.target.id) {
+      case "location1":
+        if (location1.checked) {
+          place = e.target.value;
+        }
+        break;
+      case "location2":
+        if (location2.checked) {
+          place = e.target.value;
+        }
+        break;
+      case "location3":
+        if (location3.checked) {
+          place = e.target.value;
+        }
+        break;
+      case "location4":
+        if (location4.checked) {
+          place = e.target.value;
+        }
+        break;
+      case "location5":
+        if (location5.checked) {
+          place = e.target.value;
+        }
+        break;
+      case "location6":
+        if (location6.checked) {
+          place = e.target.value;
+        }
+        break;
+      case "checkboxCGU":
+        if (checkboxCGU.checked) {
+          // rien ne se passe, THOMAS: à quoi sert le required du html si je met
+          //tout ce code?
+        } else {
+          alert("cochezzzzzz les CGU !!!!!!!");
+        }
+        break;
+      case "checkboxNews":
+        if (checkboxNews.checked) {
+          checkboxNewsVar = true;
+        } else {
+          checkboxNewsVar = false;
+        } // notons que si l'utilisateurs ne coche et décoche pas la newsletter,
+        // alors la checkboxVar restera undefined
+        // Thomas est -ce qu'on peut utiliser la donnée de undefined comme false?
+        break;
+      default:
+        null;
+    }
+  });
+});
 
-function locationChoosen() {
-  // ou
-  // const locationChoosen= ()=>{}
-  if (location1.checked) {
-    alert("c'est coché");
-  } else {
-    alert("c'est pas coché");
-  }
-}
-
-inputsCheckbox.forEach((input) => {});
-// }= (e) => {
+// function locationChoosen() {
+//   // ou
+//   // const locationChoosen= ()=>{}
 //   if (location1.checked) {
-//     location = e.value;
-//   }
-//   console.log(location);
-// };
-// // inputsCheckbox.forEach((elementIC) => {
-// //   elementIC.addEventListener("i", (e) => {
-// //   }
-// // });
-// function validate() {
-//   if (checkboxCGU.checked) {
-//     // note pour moi: pour l'instant: si la box checkbox est validée
-//     // un message s'affiche en alert et
-//     // alors on peut envoyer le formulaire : return true
-//     // TODO:  faire le contrôle des données sont ok
-//     // et dire ce qu'il faut envoyé et où
-//     alert("ça marche");
-//     return true;
+//     alert("c'est coché");
 //   } else {
-//     alert("veuillez cocher les CGU");
-//     // sinon on indique de ne pas envoyer le formulaire
-//     return false;
+//     alert("c'est pas coché");
+//   }
+// }
+
+// inputsCheckbox.forEach((input) => {});
+// // }= (e) => {
+// //   if (location1.checked) {
+// //     location = e.value;
+// //   }
+// //   console.log(location);
+// // };
+// // // inputsCheckbox.forEach((elementIC) => {
+// // //   elementIC.addEventListener("i", (e) => {
+// // //   }
+// // // });
+// // function validate() {
+// //   if (checkboxCGU.checked) {
+// //     // note pour moi: pour l'instant: si la box checkbox est validée
+// //     // un message s'affiche en alert et
+// //     // alors on peut envoyer le formulaire : return true
+// //     // TODO:  faire le contrôle des données sont ok
+// //     // et dire ce qu'il faut envoyé et où
+// //     alert("ça marche");
+// //     return true;
+// //   } else {
+// //     alert("veuillez cocher les CGU");
+// //     // sinon on indique de ne pas envoyer le formulaire
+// //     return false;
 
 function editNav() {
   var x = document.getElementById("myTopnav");
