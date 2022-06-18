@@ -66,7 +66,7 @@
                 <label for="first">Prénom</label><br>
                 <input class="text-control" type="text" id="first" name="first"/>
                 <div class="error__message">
-                    <p id="error__message__first">Non</p>
+                    <p id="error__message__first" class="oui">Non</p>
                 </div>
                 <br>
               </div>
@@ -137,7 +137,7 @@
                   Portland
                 </label>
                 <div class="error__message">
-                  <p id="error__message__localisation">Non</p>
+                  <p id="error__message__localisation" class="oui">Non</p>
                 </div>
               </div>
               <!-- CHECKBOXS -->
@@ -164,15 +164,19 @@
           </div>
         </div>
       </div>
-      <div class="bgroundClose">
+      <div class="bground" id="close">
         <div class="content">
-        <span class="close" id="close-end"></span>
-        <form name="reserve" action="index.html" method="get" onsubmit="return validate();"></form>
-        <div class="modal-body">
-          <p id="moday-body__end__message">Merci pour votre inscription</p>
+          <span class="close"></span>
+          <div class="modal-body">
+            <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
+              <div class="message">
+                <h1>Merci de vous etre inscris</h1>
+              </div>
+            </form>
           </div>
-          <input class="btn-submit"  class="button" value="C'est parti" />
+        </div>
       </div>
+        
     </main>
     <!-- FOOTER -->
     <footer>

@@ -465,10 +465,11 @@ footer {
 
 .error__message{
    font-size: x-small;
-   padding: 0;
    color: red;
-   visibility: hidden;
 }
-.bgroundClose{
+#close{
+    display: none;
+}
+.oui{
     display: none;
 }
