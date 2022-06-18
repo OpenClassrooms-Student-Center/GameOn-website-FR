@@ -225,6 +225,7 @@ input {
 .error {
   background-color: #f00;
 }
+/* classe made by Sandrine,TODO: to remove once true style applied*/
 
 .formData[data-error-visible="true"]::after {
   opacity: 1;

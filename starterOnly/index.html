@@ -74,7 +74,9 @@
                   id="firstName"
                   name="first"
                   minlength="2"
-                /><br />
+                />
+                <small>error message</small>
+                <br />
               </div>
 
               <div class="formData">
@@ -85,7 +87,9 @@
                   id="lastName"
                   name="last"
                   minlength="=2"
-                /><br />
+                />
+                <small> error message </small>
+                <br />
               </div>
 
               <div class="formData">
@@ -95,7 +99,9 @@
                   type="email"
                   id="email"
                   name="email"
-                /><br />
+                />
+                <small> error message</small>
+                <br />
               </div>
               <div class="formData">
                 <label for="birthdate">Date de naissance</label><br />
@@ -120,10 +126,16 @@
                   max="99"
                 />
               </div>
-              <p class="text-label">
-                A quel tournoi souhaitez-vous participer cette année ?
-              </p>
+              <!-- Thomas: Pour la div ci-dessous, parce que je ne trouvais pas ça logique,
+              j'ai transformé <p> en <label> et je l'ai mis dans la div formData et pas avant
+                Est-ce qu'on peut mettre plusieurs éléments dans "for"? -->
               <div class="formData">
+                <label
+                  for="location1, location2, location3, location4, location5, location6"
+                  class="text-label"
+                >
+                  A quel tournoi souhaitez-vous participer cette année ?
+                </label>
                 <input
                   class="checkbox-input"
                   type="radio"
