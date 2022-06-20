@@ -573,7 +573,8 @@ footer {
   .hero__content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px;
+    min-width: auto;
   }
   .hero__content::after {
     content: unset;
@@ -585,7 +586,7 @@ footer {
   }
   .hero__content__text {
     width: unset;
-    font-size: 14px;
+    font-size: 15px;
   }
   .hero__img img {
     border-radius: 10px;
@@ -666,7 +667,7 @@ footer {
   color: red;
 }
 
-.oui {
+.error {
   display: none;
 }
 

@@ -92,12 +92,12 @@ btnSubmit.addEventListener("click", function(event){
 function checkName(){
    if (myFirstname.value == "" || myFirstname.value.length < 2 ){
     myFirstname.style.border = "2px solid red";
-    myFirstnameError.classList.remove("oui");
+    myFirstnameError.classList.remove("error");
     return false;
   }
   else{
      myFirstname.style.border = "none";
-      myFirstnameError.classList.add("oui");
+      myFirstnameError.classList.add("error");
      return true;
   }
   console.log(errors);
@@ -106,13 +106,13 @@ function checkName(){
 function checkLastName(){
   if (myLastname.value == "" || myLastname.value.length < 2 ){
     myLastname.style.border = "2px solid red";
-    myLastnameError.style.visibility = "visible";
+    myLastnameError.classList.remove("error");
     errors = 1;
     return false;
   }
   else{
     myLastname.style.border = "none";
-    myLastnameError.style.visibility = "hidden";
+    myLastnameError.classList.add("error");
     errors = 0;
     return true;
   }
@@ -123,12 +123,12 @@ function checkEmail(myEmail) {
 let emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$', 'g');
   if(emailRegExp.test(myEmail.value)){
     myEmail.style.border = "none";
-    myEmailError.style.visibility = "hidden";
+    myEmailError.classList.add("error");
     return true;
   }
   else{
     myEmail.style.border = "2px solid red";
-    myEmailError.style.visibility = "visible";
+    myEmailError.classList.remove("error");
     return false;
   }
 }  // date 
@@ -145,12 +145,12 @@ function checkBirthdate(){
 
   if(currentYear < userYear){
     myBirthday.style.border = "2px solid red";
-    myBirthdayError.style.visibility = "visible";
+    myBirthdayError.classList.remove("error");
     return false;
   }
   else{
       myBirthday.style.border = "none";
-      myBirthdayError.style.visibility = "none";
+      myBirthdayError.classList.add("error");
       return true;
     }
   } 
@@ -161,12 +161,12 @@ function checkBirthdate(){
   function checkQuantity(){
     if(myQuantity.value ==""){
       myQuantity.style.border = "2px solid red";
-      myQuantityError.style.visibility = "visible";
+      myQuantityError.classList.remove("error");
       return false;
     }
     else{
       myQuantity.style.border = "none";
-      myQuantityError.style.visibility = "none";
+      myQuantityError.classList.add("error");
       return true;
     }
   }
@@ -179,30 +179,27 @@ function checkBirthdate(){
       if(myLocalisation[i].checked)
       {
         valid = true;
-        myLocalisationError.classList.add("oui");
-        console.log("salut");
+        myLocalisationError.classList.add("error");
         return true;
       }
     }
     if(valid == false){
-      myLocalisationError.classList.remove("oui");
-      console.log("s");
+      myLocalisationError.classList.remove("error");
       return false;
     }
           console.log("sdfsd");
-
 }
 
 //Checkbox
 function checkCheckBox(){
   let cbValid = false;
   if(myCheckbox.checked){
-    myCheckboxError.style.visibility = "none";
+    myCheckboxError.classList.add("error");
     cbValid = true;
     return true;
   }
   if(cbValid == false){
-    myCheckboxError.style.visibility = "visible";
+    myCheckboxError.classList.remove("error");
     return false;
   }
 }
