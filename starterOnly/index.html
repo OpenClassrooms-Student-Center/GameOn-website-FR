@@ -75,8 +75,8 @@
                   name="first"
                   minlength="2"
                 />
-                <small>error message</small>
-                <br />
+              
+                <br class="formData" error="Le message ici : "/>
               </div>
 
               <div class="formData">
@@ -100,7 +100,6 @@
                   id="email"
                   name="email"
                 />
-                <small> error message</small>
                 <br />
               </div>
               <div class="formData">
@@ -124,16 +123,16 @@
                   name="quantity"
                   min="0"
                   max="99"
-                />
+                /> </br>
               </div>
               <!-- Thomas: Pour la div ci-dessous, parce que je ne trouvais pas ça logique,
-              j'ai transformé <p> en <label> et je l'ai mis dans la div formData et pas avant
+              j'ai transformé <p> en <label> et je l'ai mis dans la div formData et pas avant, comme elle
+              était. J'ai aussi enlévé la 'classe : "text-label" ' qui était dans ce <p>
                 Est-ce qu'on peut mettre plusieurs éléments dans "for"? -->
               <div class="formData">
                 <label
                   for="location1, location2, location3, location4, location5, location6"
-                  class="text-label"
-                >
+                class="text-label">
                   A quel tournoi souhaitez-vous participer cette année ?
                 </label>
                 <input
