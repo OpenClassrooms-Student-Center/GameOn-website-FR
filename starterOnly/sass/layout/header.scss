@@ -47,7 +47,9 @@
         justify-content: space-between;
         align-items: center;
     }
-
+    .topnav__logo img{
+        width: 60%;
+    }
     .topnav a {
         display: none;
     }

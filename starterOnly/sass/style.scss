@@ -2,7 +2,17 @@
 @import "./layout/header.scss";
 @import "./components/button.scss";
 
-
+@mixin btn-form{
+        background: #fe142f;
+        display: block;
+        margin: 0 auto;
+        border-radius: 7px;
+        font-size: 1rem;
+        padding: 12px 82px;
+        color: #fff;
+        cursor: pointer;
+        border: 0;
+}
 
 main {
     font-size: 130%;
@@ -56,7 +66,6 @@ main {
     position: relative;
     color: #fff;
     padding-top: 10px;
-
 }
 
 .modal-body {
@@ -403,19 +412,20 @@ footer {
     }
     
     .hero__content__headline {
-        font-size: 4rem;
+        font-size: 34px;
         width: 100%;
         white-space: inherit;
     }
 
     .hero__content__text {
         width: unset;
-        font-size: 1.5rem;
+        font-size: 14px;
     }
 
-    .hero-img img {
+    .hero__img img {
         border-radius: 10px;
         margin-top: 40px;
+        
     }
 
     .hero__section>.btn-signup {
@@ -467,9 +477,29 @@ footer {
    font-size: x-small;
    color: red;
 }
-#close{
-    display: none;
-}
 .oui{
     display: none;
+}
+.confirmation{
+    display: none;
+    position: fixed;
+    z-index: 3;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #232323;
+    color: white;
+    text-align: center;
+    &__content{
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        top: 50%;
+        &__btn{
+            @include btn-form;
+            position: relative;
+            top: 30%;
+        }
+    }
 }

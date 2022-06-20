@@ -12,7 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalBtnClose = document.querySelectorAll(".close"); // creation d'un dom element sur l'element tout les element de la classe "close"
 const formData = document.querySelectorAll(".formData");
-const modalbgEnd = document.querySelector('#close');
+
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -81,7 +81,7 @@ btnSubmit.addEventListener("click", function(event){
   }
   else{
     modalbg.style.display = "none";
-    modalbgEnd.style.display = "block";
+    modalConfirmation.style.display = "block";
   }
 });
 
@@ -205,4 +205,18 @@ function checkCheckBox(){
     myCheckboxError.style.visibility = "visible";
     return false;
   }
+}
+
+//  CONFIRMATION
+const modalConfirmation = document.querySelector(".confirmation");
+const modalConfirmationCrossClose = document.querySelectorAll(".close");
+modalConfirmationBtnClose = document.querySelectorAll("#confirmation__close");
+
+// close modal event
+modalConfirmationCrossClose.forEach((btnClose) => btnClose.addEventListener("click", closeConfirmation)); // creation d'un event pour fermer le modal
+modalConfirmationBtnClose.forEach((btnClose2) => btnClose2.addEventListener("click", closeConfirmation)); // creation d'un event pour fermer le modal
+
+// close modal form
+function closeConfirmation(){ // fonction qui arrete l'affichage du modal
+  modalConfirmation.style.display ="none"; 
 }

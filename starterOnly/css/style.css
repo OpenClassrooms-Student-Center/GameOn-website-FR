@@ -92,6 +92,9 @@ img {
         -ms-flex-align: center;
             align-items: center;
   }
+  .topnav__logo img {
+    width: 60%;
+  }
   .topnav a {
     display: none;
   }
@@ -576,15 +579,15 @@ footer {
     content: unset;
   }
   .hero__content__headline {
-    font-size: 4rem;
+    font-size: 34px;
     width: 100%;
     white-space: inherit;
   }
   .hero__content__text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 14px;
   }
-  .hero-img img {
+  .hero__img img {
     border-radius: 10px;
     margin-top: 40px;
   }
@@ -663,11 +666,41 @@ footer {
   color: red;
 }
 
-#close {
+.oui {
   display: none;
 }
 
-.oui {
+.confirmation {
   display: none;
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #232323;
+  color: white;
+  text-align: center;
+}
+
+.confirmation__content {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 50%;
+}
+
+.confirmation__content__btn {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+  position: relative;
+  top: 30%;
 }
 /*# sourceMappingURL=style.css.map */
