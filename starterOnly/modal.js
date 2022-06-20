@@ -24,22 +24,21 @@ const modal = document.querySelector(".form"); //modal form
 
 // MODAL EVENTS
 
+// event /launch modal 
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
 // function /launch modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
 
-// event /launch modal 
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
+// event /close modal
+closeBtn.addEventListener("click", closeModal);
 
 // function /close modal form
 function closeModal() {
   modalbg.style.display = "none";
 }
-
-// event /close modal
-closeBtn.addEventListener("click", closeModal);
 
 
 // INPUTS CHECKINS
@@ -153,7 +152,6 @@ birthDate.addEventListener('blur', function () {
 
 
 // function /quantity
-
 function checkQuantity(quantity) {
   const regNumber = /^[0-9]$/;
   if (regNumber.test(quantity.value) && (quantity.value === "" || parseInt(quantity.value) <= 99)) {
@@ -176,9 +174,9 @@ quantity.addEventListener('blur', function () {
 
 
 // function /radio 
-for (let radioEntry of radio.entries()) {
-  // check a stactic nodelist(by queryselectorALL) for checking all radio button in FOR loop
-  function checkRadio() {
+// check a stactic nodelist(by queryselectorALL) for checking all radio button in FOR loop
+function checkRadio() {
+  for (let radioEntry of radio.entries()) {
     console.log(radioEntry[1])
     if (radioEntry[1].checked) {
       console.log(radioEntry[1].parentNode)
@@ -188,14 +186,13 @@ for (let radioEntry of radio.entries()) {
       return true
     }
   }
-  // new variable to show the error message if no button are selected
   let firstRadio = document.querySelector("input[name='location']")
+  // new variable to show the error message if no button are selected
   firstRadio.parentNode.dataset.errorVisible = true;
   firstRadio.parentNode.dataset.error = "Veuillez sélectionner un choix.";
   console.log('radio notOK')
   return false
 };
-
 
 
 // function /checkbox
@@ -216,7 +213,6 @@ function checkCheckbox() {
 // VALIDATION
 
 // function /submit
-
 function validateModalSubmit() {
   // check of each function input of the form
   if (checkFirstName(firstName) && checkLastName(lastName) && checkEmail(email) &&
