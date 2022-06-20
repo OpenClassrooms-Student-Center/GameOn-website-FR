@@ -35,26 +35,34 @@ const firstNameChecker = (value) => {
   // Thomas: Il y a plusieurs .formData et comment je fait pour attraper le second?
   if (value.length > 0 && value.length < 2) {
     containerFN.setAttribute("data-error-visible", true);
+    containerFN.setAttribute(
+      "data-error",
+      "Il faut ajouter plus de caractères"
+    );
     // containerFN.classList.add("error");
     firstName = null;
     A = 0;
   } else if (value == null || value == "") {
-    containerFN.classList.add("erreur");
+    containerFN.setAttribute("data-error-visible", true);
+    containerFN.setAttribute(
+      "data-error",
+      "Il ne faut pas effacer le champs et lui mettre une valeur quand même"
+    );
     firstName = null;
     A = 0;
   } else {
-    containerFN.classList.remove("erreur");
+    containerFN.removeAttribute("data-error-visible", false);
     firstName = value;
     A = 1;
   }
 };
 
 const lastNameChecker = (value) => {
-  const containerLN = document.querySelector("#lastName");
+  const containerLN = document.querySelector(".formData");
   //est-ce que ça me sélectionne l'input ou toute la div? = l'input
   //THOMAS: est-ce génant pour l'application des classes css error?
   if (value.length > 0 && value.length < 2) {
-    containerLN.classList.add("erreur");
+    containerLN.setAttribute("data-error-visible", true);
     // pour appliquer set Attribute, il faut appeler le selectionner le .formdata
     // document
     //   .querySelector(".formData #lastName")
@@ -126,20 +134,22 @@ inputsText.forEach((input) => {
     }
   });
 });
-//Ici , pour chaque inputs test, on écoute sur l'input dans lequel on travaille,
-//On cible id, et on récupère la valeur donnée, puis on sort (break) et on
+//Ici , pour chaque inputs test, on écoute sur l'input dans lequel on travaille
+// On switch en ciblant id, sur chaque id, on joue la fonction checker
+// et on récupère la valeur dans les données ecoutées de l'id, puis on sort (break) et on
 // continue pour l'input text suivant.
-//  Pour chaque cas, on apprlique une vérification
-//je veux créer une fonction qui contrôle/vérifie les datas pour chaque
-//input, (fonction blablaChecker écrite juste avant et appeler pour chaque cas)
-//
+//  Pour chaque cas, la fonction checker apprlique une vérification
+// ((je veux créer une fonction qui contrôle/vérifie les datas pour chaque
+//input, (fonction blablaChecker écrite juste avant et appeler pour chaque cas)))
 
 // Control of datas class checkbox-label (radio and checkbox):
 const inputsCheckbox = document.querySelectorAll(".checkbox-input");
-let place, checkboxNewsVar, E;
+let place;
+let checkboxNewsVar = false;
+let E;
 
 // checké une location,
-// si la checkbox est validé, rajouté la donnée dans le tableau
+// si la checkbox est validé, mémoriser la donnée dans une variable
 inputsCheckbox.forEach((input) => {
   input.addEventListener("click", (e) => {
     switch (e.target.id) {
@@ -188,14 +198,11 @@ inputsCheckbox.forEach((input) => {
       case "checkboxNews":
         if (checkboxNews.checked) {
           checkboxNewsVar = true;
-        }
-        if (!checkboxNews.checked || checkboxNewsVar == undefined) {
-          checkboxNewsVar = false;
         } else {
           checkboxNewsVar = false;
         } // notons que si l'utilisateurs ne coche et décoche pas la newsletter,
-        // alors la checkboxVar restera undefined
-        // Thomas est -ce qu'on peut utiliser la donnée de undefined comme false?
+        // alors la checkboxVar restera undefined, du coup je lui ai mis la valeur
+        // false par défaut quand j'ai défini la variable.
         break;
       default:
         null;
@@ -212,11 +219,10 @@ inputsCheckbox.forEach((input) => {
 //tout ce code?
 function validate() {
   if (A + B + C + D + E == 5 && checkboxCGU.checked) {
-    // note pour moi: pour l'instant: si la checkboxCGU est validée
-    // un message s'affiche en alert et
+    // note pour moi: pour l'instant: si les checkers A, B,C,D,E et la checkboxCGU sont ok
+    // un message ok s'affiche en alert et
     // alors on peut envoyer le formulaire : return true
-    // TODO:  faire le contrôle des données, si les données sont ok, formulaire valide.
-    // et dire ce qu'il faut envoyé et où
+    // TODO:  dire ce qu'il faut envoyé et où
     alert("ça marche");
     return true;
   } else {
@@ -227,8 +233,9 @@ function validate() {
 }
 
 //prevent de Default behaviour on validation while coding:
-//empêche la fermeture de la modale au clic 'je m'inscris':
-// TODO: to remove when code will be ready.
+//empêche la fermeture et la réinitialisation de la modale au clic 'je m'inscris':
+// TODO: to place in the case the form is validated and sent (or to remove
+// if we are no more need to preven this behavious when code will be ready).
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 });

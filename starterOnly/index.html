@@ -74,9 +74,10 @@
                   id="firstName"
                   name="first"
                   minlength="2"
+                  required
                 />
-              
-                <br class="formData" error="Le message ici : "/>
+                <span class="error-msg" data-error="message suivant :"</span>
+                <br/>
               </div>
 
               <div class="formData">
@@ -87,6 +88,7 @@
                   id="lastName"
                   name="last"
                   minlength="=2"
+                  required
                 />
                 <small> error message </small>
                 <br />
@@ -99,6 +101,7 @@
                   type="email"
                   id="email"
                   name="email"
+                  required
                 />
                 <br />
               </div>
@@ -123,6 +126,7 @@
                   name="quantity"
                   min="0"
                   max="99"
+                  required
                 /> </br>
               </div>
               <!-- Thomas: Pour la div ci-dessous, parce que je ne trouvais pas ça logique,
@@ -211,7 +215,7 @@
                   checked
                   required
                 />
-                <label class="checkbox2-label" for="checkboxCGU" required>
+                <label class="checkbox2-label" for="checkboxCGU" >
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
