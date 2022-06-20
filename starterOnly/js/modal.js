@@ -66,7 +66,7 @@ btnSubmit.addEventListener("click", function(event){
   let email = checkEmail(myEmail);
   let birthday  = checkBirthdate();
   let quantity = checkQuantity();
-  let localisation = checkQuantity();
+  let localisation = checkLocation();
   let checkbox = checkCheckBox();
   if(
     name == false || 
@@ -173,7 +173,7 @@ function checkBirthdate(){
 
   //Localisation
   function checkLocation(){
-    console.log("sdfsd");
+    console.log("sdpfsd");
     let valid = false;
     for(let i=0; i<myLocalisation.length;i++){
       if(myLocalisation[i].checked)
