@@ -217,9 +217,7 @@ input {
 }
 .formData[data-error]::after {
   content: attr(data-error);
-  /* todo: est-ce que ça Insert the value 
-  of the data-error attribute in parenthesis after each class .formData : */
-  font-size: 0.4em;
+  font-size: 0.6em;
   color: #e54858;
   display: block;
   margin-top: 7px;
@@ -233,9 +231,7 @@ input {
   background-color: #f00;
 }
 /* classe made by Sandrine,TODO: to remove once true style applied*/
-small {
-  visibility: hidden;
-}
+
 .formData {
   margin-bottom: 20px;
 }

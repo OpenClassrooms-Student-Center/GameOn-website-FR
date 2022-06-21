@@ -74,13 +74,12 @@
                   id="firstName"
                   name="first"
                   minlength="2"
-                  required
+                  
                 />
-                <span class="error-msg" data-error="message suivant :"</span>
                 <br/>
               </div>
 
-              <div class="formData">
+              <div class="formData LN">
                 <label for="lastName">Nom</label><br />
                 <input
                   class="text-control"
@@ -88,9 +87,8 @@
                   id="lastName"
                   name="last"
                   minlength="=2"
-                  required
+                  
                 />
-                <small> error message </small>
                 <br />
               </div>
 
@@ -101,7 +99,7 @@
                   type="email"
                   id="email"
                   name="email"
-                  required
+                  
                 />
                 <br />
               </div>
@@ -126,19 +124,17 @@
                   name="quantity"
                   min="0"
                   max="99"
-                  required
+                  
                 /> </br>
               </div>
               <!-- Thomas: Pour la div ci-dessous, parce que je ne trouvais pas ça logique,
-              j'ai transformé <p> en <label> et je l'ai mis dans la div formData et pas avant, comme elle
-              était. J'ai aussi enlévé la 'classe : "text-label" ' qui était dans ce <p>
+              j'ai mis <p>  dans la div formData et pas avant, comme elle
+              était. J'ai aussi reparamétré le css de la 'classe : "text-label" 
                 Est-ce qu'on peut mettre plusieurs éléments dans "for"? -->
               <div class="formData">
-                <label
-                  for="location1, location2, location3, location4, location5, location6"
-                class="text-label">
+                <p class="text-label">
                   A quel tournoi souhaitez-vous participer cette année ?
-                </label>
+              </p>
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -220,11 +216,15 @@
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br />
-
+                </div>
+                <!-- Les 2 checckbos étaient dans la même div, j'en ai rajouté une
+                pour affiché l'erreur en dessous des CGU à l'écriture -->
+                <div class="formData">
                 <input
                   class="checkbox-input"
                   type="checkbox"
                   id="checkboxNews"
+                  
                 />
                 <label class="checkbox2-label" for="checkboxNews">
                   <span class="checkbox-icon"></span>

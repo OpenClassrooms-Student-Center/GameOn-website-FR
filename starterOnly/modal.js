@@ -4,6 +4,18 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const form = document.querySelector("form");
 
+// container who get the formData class to show the error flag, for data control
+const containerQ = document.querySelector("#quantity").parentNode;
+const containerE = document.querySelector("#email").parentNode;
+const containerLN = document.querySelector("#lastName").parentNode;
+const containerFN = document.querySelector(".formData");
+
+let A = 0;
+let B = 0;
+let C = 0;
+let D = 0;
+let E = 0;
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
@@ -25,28 +37,28 @@ modalClosure.addEventListener("click", closeModal);
 const inputsText = document.querySelectorAll(".text-control");
 // une liste de 5 eléments
 let firstName, lastName, email, birthdate, quantity;
-let A, B, C, D;
+
 // des variables vides
 
 const firstNameChecker = (value) => {
-  const containerFN = document.querySelector(".formData");
   // Thomas: est ce que mon containerFN existe que dans la fonction firstNameChecker ou partout
   // pourquoi ça marche alors que je suis dans 'document' ? = prend la première itérance et la sélectionne
-  // Thomas: Il y a plusieurs .formData et comment je fait pour attraper le second?
+  // Thomas: Il y a plusieurs .formData et comment je fait pour attraper le second? = j'utilise la prop .parentNode
   if (value.length > 0 && value.length < 2) {
     containerFN.setAttribute("data-error-visible", true);
     containerFN.setAttribute(
       "data-error",
-      "Il faut ajouter plus de caractères"
+      "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
     );
     // containerFN.classList.add("error");
     firstName = null;
     A = 0;
-  } else if (value == null || value == "") {
+  } else if (value == null || value == "" || !value) {
+    // ou mettre que !value
     containerFN.setAttribute("data-error-visible", true);
     containerFN.setAttribute(
       "data-error",
-      "Il ne faut pas effacer le champs et lui mettre une valeur quand même"
+      "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
     );
     firstName = null;
     A = 0;
@@ -58,11 +70,14 @@ const firstNameChecker = (value) => {
 };
 
 const lastNameChecker = (value) => {
-  const containerLN = document.querySelector(".formData");
   //est-ce que ça me sélectionne l'input ou toute la div? = l'input
   //THOMAS: est-ce génant pour l'application des classes css error?
   if (value.length > 0 && value.length < 2) {
     containerLN.setAttribute("data-error-visible", true);
+    containerLN.setAttribute(
+      "data-error",
+      "Veuillez entrer 2 caractères ou plus pour le champ du nom."
+    );
     // pour appliquer set Attribute, il faut appeler le selectionner le .formdata
     // document
     //   .querySelector(".formData #lastName")
@@ -70,24 +85,31 @@ const lastNameChecker = (value) => {
     lastName = null;
     B = 0;
   } else if (value == null || value == "") {
-    containerLN.classList.add("erreur");
+    containerLN.setAttribute("data-error-visible", true);
+    containerLN.setAttribute(
+      "data-error",
+      "Veuillez entrer 2 caractères ou plus pour le champ du nom."
+    );
     lastName = null;
     B = 0;
   } else {
-    containerLN.classList.remove("erreur");
+    containerLN.removeAttribute("data-error-visible", false);
     lastName = value;
     B = 1;
   }
 };
 
 const emailChecker = (value) => {
-  const containerE = document.querySelector("#email");
   if (!value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/i)) {
-    containerE.classList.add("erreur");
+    containerE.setAttribute("data-error-visible", true);
+    containerE.setAttribute(
+      "data-error",
+      "Veuillez entrer une adresse email valide."
+    );
     email = null;
     C = 0;
   } else {
-    containerE.classList.remove("erreur");
+    containerE.removeAttribute("data-error-visible", false);
     email = value;
     C = 1;
   }
@@ -99,13 +121,16 @@ const birthdateChecker = (value) => {
 };
 
 const quantityChecker = (value) => {
-  const containerQ = document.querySelector("#quantity");
   if (!value.match(/^[0-9]{0,1}[0-9]$/i)) {
-    containerQ.classList.add("erreur");
+    containerQ.setAttribute("data-error-visible", true);
+    containerQ.setAttribute(
+      "data-error",
+      "Vous devez choisir une valeur numérique entre 0 et 99."
+    );
     quantity = null;
     D = 0;
   } else {
-    containerQ.classList.remove("erreur");
+    containerQ.removeAttribute("data-error-visible", false);
     quantity = value;
     D = 1;
   }
@@ -129,6 +154,7 @@ inputsText.forEach((input) => {
       case "quantity":
         quantityChecker(e.target.value);
         break;
+
       default:
         null;
     }
@@ -144,55 +170,76 @@ inputsText.forEach((input) => {
 
 // Control of datas class checkbox-label (radio and checkbox):
 const inputsCheckbox = document.querySelectorAll(".checkbox-input");
+const inputsRadio = document.getElementsByName("location");
+const containerR = document.getElementsByName("location").parentNode;
+
 let place;
 let checkboxNewsVar = false;
-let E;
 
 // checké une location,
 // si la checkbox est validé, mémoriser la donnée dans une variable
-inputsCheckbox.forEach((input) => {
+inputsRadio.forEach((input) => {
   input.addEventListener("click", (e) => {
     switch (e.target.id) {
       case "location1":
         if (location1.checked) {
           place = e.target.value;
           E = 1;
+          location1.parentNode.removeAttribute("data-error-visible", false);
         }
-        break;
       case "location2":
         if (location2.checked) {
           place = e.target.value;
           E = 1;
+          location1.parentNode.removeAttribute("data-error-visible", false);
         }
-        break;
       case "location3":
         if (location3.checked) {
           place = e.target.value;
           E = 1;
+          location1.parentNode.removeAttribute("data-error-visible", false);
         }
-        break;
       case "location4":
         if (location4.checked) {
           place = e.target.value;
           E = 1;
+          location1.parentNode.removeAttribute("data-error-visible", false);
         }
-        break;
       case "location5":
         if (location5.checked) {
           place = e.target.value;
           E = 1;
+          location1.parentNode.removeAttribute("data-error-visible", false);
         }
-        break;
       case "location6":
         if (location6.checked) {
           place = e.target.value;
           E = 1;
+          location1.parentNode.removeAttribute("data-error-visible", false);
         }
-        break;
+      default:
+        null;
+      // location1.parentNode.setAttribute("data-error-visible", true);
+      // location1.parentNode.setAttribute(
+      //   "data-error",
+      //   "Vous devez choisir une place."
+      // );
+      // impossible de mettre le message d'erreur s'il n'y a pas eu de submit avant
+    }
+  });
+});
+inputsCheckbox.forEach((input) => {
+  input.addEventListener("click", (e) => {
+    switch (e.target.id) {
       case "checkboxCGU":
         if (checkboxCGU.checked) {
+          checkboxCGU.parentNode.removeAttribute("data-error-visible", false);
         } else {
-          alert("cochezzzzzz les CGU !!!!!!!");
+          checkboxCGU.parentNode.setAttribute("data-error-visible", true);
+          checkboxCGU.parentNode.setAttribute(
+            "data-error",
+            "Vous devez vérifier que vous acceptez les termes et conditions ."
+          );
         }
         break;
       case "checkboxNews":
@@ -217,17 +264,68 @@ inputsCheckbox.forEach((input) => {
 // la validation du formulaire? ou est-ce que mes Checker suffise au contrôle?
 // THOMAS: à quoi sert le required du html si je met
 //tout ce code?
+// function validate() {
+//   if (A + B + C + D + E == 5 && checkboxCGU.checked) {
+//     // note pour moi: pour l'instant: si les checkers A, B,C,D,E et la checkboxCGU sont ok
+//     // un message ok s'affiche en alert et
+//     //  on peut envoyer le formulaire : return true
+//     // TODO:  dire ce qu'il faut envoyé et où
+//     alert("ça marche");
+//     return true;
+//   } else {
+//     if (!E) {
+//       location1.parentNode.setAttribute("data-error-visible", true);
+//       location1.parentNode.setAttribute(
+//         "data-error",
+//         "Vous devez choisir une option."
+//       );
+//     }
+
+//     alert("y a un problème");
+//     // sinon on indique de ne pas envoyer le formulaire
+//     return false;
+//   }
+// }
 function validate() {
+  if (A + B + C + D + E < 5) {
+    if (!E) {
+      location1.parentNode.setAttribute("data-error-visible", true);
+      location1.parentNode.setAttribute(
+        "data-error",
+        "Vous devez choisir une option."
+      );
+    }
+    if (!D) {
+      containerQ.setAttribute("data-error-visible", true);
+      containerQ.setAttribute("data-error", "Vous devez choisir une quantité.");
+    }
+    if (!C) {
+      containerE.setAttribute("data-error-visible", true);
+      containerE.setAttribute(
+        "data-error",
+        "Vous devez entrer une adresse email."
+      );
+    }
+    if (!B) {
+      containerLN.setAttribute("data-error-visible", true);
+      containerLN.setAttribute("data-error", "Vous devez entrer un nom.");
+    }
+    if (!A) {
+      containerFN.setAttribute("data-error-visible", true);
+      containerFN.setAttribute("data-error", "Vous devez entrer un prénom.");
+    }
+    alert("Il y a un ou plusieurs problèmes, corrigez les champs indiqués.");
+    return false;
+  }
   if (A + B + C + D + E == 5 && checkboxCGU.checked) {
     // note pour moi: pour l'instant: si les checkers A, B,C,D,E et la checkboxCGU sont ok
     // un message ok s'affiche en alert et
-    // alors on peut envoyer le formulaire : return true
+    //  on peut envoyer le formulaire : return true
     // TODO:  dire ce qu'il faut envoyé et où
     alert("ça marche");
     return true;
   } else {
-    alert("y a un problème");
-    // sinon on indique de ne pas envoyer le formulaire
+    alert("Il y a un autre problème, contactez l'administrateur du site.");
     return false;
   }
 }
