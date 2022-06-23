@@ -97,7 +97,6 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
 } 
 
@@ -115,6 +114,9 @@ main {
 
 }
 
+.responsive-btn{
+  display: none !important;
+}
 .modal-btn {
   font-size: 145%;
   background: #fe142f;
@@ -333,6 +335,8 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -412,6 +416,7 @@ input[data-error]::after {
   overflow: hidden;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
+  text-overflow: ellipsis;
 }
 .hero-content {
   padding: 51px 67px;
@@ -439,7 +444,11 @@ input[data-error]::after {
   font-size: 6rem;
   font-weight: normal;
   white-space: nowrap;
+
+  
 }
+
+
 .hero-text {
   width: 146%;
   font-weight: normal;
@@ -469,7 +478,7 @@ input[data-error]::after {
   font-size: 1rem;
   margin: 60px 0 30px;
   font-weight: bolder;
-}
+}.main-navbar 
 .hero-section > .btn-signup {
   display: none;
 }
@@ -478,7 +487,21 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+@media screen and (max-width: 1000px){
+  .hero-headline{
+    font-size:4.5rem;
+  }
+}
 @media screen and (max-width: 800px) {
+  main{
+    margin : 0
+  }
+
+
+.responsive-btn{
+  display: block !important;
+}
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -486,7 +509,7 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 15px 10px;
   }
   .hero-content::after {
     content: unset;
@@ -495,12 +518,15 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     white-space: normal;
+    width: 80%;
+
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    width: 80%;
+    font-size: 1rem;
   }
   .hero-img img {
     border-radius: 10px;
@@ -527,3 +553,31 @@ footer {
   }
 }
 
+
+/***
+* CSS utilisé pour le style du message d'erreur
+*/
+.error-message{
+  font-size:12px;
+  font-weight:400;
+  color: rgb(238, 40, 5);
+  margin-bottom: 10px;
+}
+
+.formData{
+  margin-top: 15px;
+}
+
+.form-confirmation{
+  padding : 100px 30px;
+  display:none;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center ;
+}
+
+.back-btn{
+  border: 0;
+  width: 30%;
+  margin: 50px auto;
+}
