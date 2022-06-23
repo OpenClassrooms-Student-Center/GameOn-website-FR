@@ -185,6 +185,21 @@ main {
   padding-top: 10px;
 }
 
+/* .content[data-success] {
+  content: attr(data-success);
+  font-size: 25px;
+  display: block;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  margin: auto;
+  color: #fff;
+  text-align: center;
+  opacity: 0;
+}
+.content[data-success-visible="true"]::after {
+  opacity: 1; 
+}*/
+
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
@@ -226,14 +241,6 @@ input {
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
-}
-.erreur {
-  background-color: #f00;
-}
-/* classe made by Sandrine,TODO: to remove once true style applied*/
-
-.formData {
-  margin-bottom: 20px;
 }
 .formData[data-error-visible="true"]::after {
   opacity: 1;

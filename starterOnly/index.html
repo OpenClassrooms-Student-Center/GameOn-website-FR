@@ -66,7 +66,7 @@
               method="get"
               onsubmit="return validate();"
             >
-              <div class="formData">
+              <div class="formData" data-error="&nbsp;" >
                 <label for="firstName">Prénom</label><br />
                 <input
                   class="text-control"
@@ -79,7 +79,7 @@
                 <br/>
               </div>
 
-              <div class="formData LN">
+              <div class="formData" data-error="&nbsp;">
                 <label for="lastName">Nom</label><br />
                 <input
                   class="text-control"
@@ -92,7 +92,7 @@
                 <br />
               </div>
 
-              <div class="formData">
+              <div class="formData" data-error="&nbsp;" >
                 <label for="email">E-mail</label><br />
                 <input
                   class="text-control"
@@ -103,7 +103,7 @@
                 />
                 <br />
               </div>
-              <div class="formData">
+              <div class="formData" data-error="&nbsp;" >
                 <label for="birthdate">Date de naissance</label><br />
                 <input
                   class="text-control"
@@ -112,7 +112,7 @@
                   name="birthdate"
                 /><br />
               </div>
-              <div class="formData">
+              <div class="formData" data-error="&nbsp;" >
                 <label for="quantity"
                   >À combien de tournois GameOn avez-vous déjà participé
                   ?</label
@@ -131,7 +131,7 @@
               j'ai mis <p>  dans la div formData et pas avant, comme elle
               était. J'ai aussi reparamétré le css de la 'classe : "text-label" 
                 Est-ce qu'on peut mettre plusieurs éléments dans "for"? -->
-              <div class="formData">
+              <div class="formData" data-error="&nbsp;" >
                 <p class="text-label">
                   A quel tournoi souhaitez-vous participer cette année ?
               </p>
@@ -203,7 +203,7 @@
                 >
               </div>
 
-              <div class="formData">
+              <div class="formData" data-error="&nbsp;" >
                 <input
                   class="checkbox-input"
                   type="checkbox"
@@ -219,7 +219,7 @@
                 </div>
                 <!-- Les 2 checckbos étaient dans la même div, j'en ai rajouté une
                 pour affiché l'erreur en dessous des CGU à l'écriture -->
-                <div class="formData">
+                <div class="formData" data-error="&nbsp;" >
                 <input
                   class="checkbox-input"
                   type="checkbox"

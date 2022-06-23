@@ -1,15 +1,25 @@
 // DOM Elements
 const modalBg = document.querySelector(".bground");
+const modalContent = document.querySelector(".content");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const form = document.querySelector("form");
 
-// container who get the formData class to show the error flag, for data control
+// DOM selection of a container whose got the formData class to show the
+// error flag when we are data controling
 const containerQ = document.querySelector("#quantity").parentNode;
 const containerE = document.querySelector("#email").parentNode;
 const containerLN = document.querySelector("#lastName").parentNode;
 const containerFN = document.querySelector(".formData");
+// .parentNode allows us to catch the parent of an ID for instance,
+// here we can apply the data-error (from css) attribute link to the formData class.
 
+// const today and birthdate.max will not allow the user to use a future day as birthdate.
+const today = new Date().toISOString().split("T")[0];
+birthdate.max = today;
+
+// Those variable are useful for a second confirmation while we are using
+// the validate() function.
 let A = 0;
 let B = 0;
 let C = 0;
@@ -32,29 +42,30 @@ function closeModal() {
 // >play of function:
 modalClosure.addEventListener("click", closeModal);
 
-//------------------------Datas controls-------------------
-// Control of datas class text-control (text and number in input):
+//------------------------Datas controls on text-------------------
+// This first control allows the user to correct his inputs when typing in.
+
+// Control of datas, using .text-control class (text and number in input):
 const inputsText = document.querySelectorAll(".text-control");
-// une liste de 5 eléments
-let firstName, lastName, email, birthdate, quantity;
+// 5 empty elements created with the user datas:
+let firstName, lastName, email, birthday, quantity;
 
-// des variables vides
-
+//Then all the checker function:
 const firstNameChecker = (value) => {
-  // Thomas: est ce que mon containerFN existe que dans la fonction firstNameChecker ou partout
-  // pourquoi ça marche alors que je suis dans 'document' ? = prend la première itérance et la sélectionne
-  // Thomas: Il y a plusieurs .formData et comment je fait pour attraper le second? = j'utilise la prop .parentNode
   if (value.length > 0 && value.length < 2) {
     containerFN.setAttribute("data-error-visible", true);
     containerFN.setAttribute(
       "data-error",
       "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
     );
-    // containerFN.classList.add("error");
+    // In purpose to apply [data-error] and [data-error-visible] attributes
+    // we are using setAttribute method. For doing so, we had previously selected
+    // the .formData class div (so called containerFN).
+
     firstName = null;
     A = 0;
   } else if (value == null || value == "" || !value) {
-    // ou mettre que !value
+    // TODO : ou mettre que !value
     containerFN.setAttribute("data-error-visible", true);
     containerFN.setAttribute(
       "data-error",
@@ -70,18 +81,12 @@ const firstNameChecker = (value) => {
 };
 
 const lastNameChecker = (value) => {
-  //est-ce que ça me sélectionne l'input ou toute la div? = l'input
-  //THOMAS: est-ce génant pour l'application des classes css error?
   if (value.length > 0 && value.length < 2) {
     containerLN.setAttribute("data-error-visible", true);
     containerLN.setAttribute(
       "data-error",
       "Veuillez entrer 2 caractères ou plus pour le champ du nom."
     );
-    // pour appliquer set Attribute, il faut appeler le selectionner le .formdata
-    // document
-    //   .querySelector(".formData #lastName")
-    //   .setAttribute("formData[data-error-visible]", true);
     lastName = null;
     B = 0;
   } else if (value == null || value == "") {
@@ -117,11 +122,11 @@ const emailChecker = (value) => {
 // email regex from : https://regexr.com/3e48o
 
 const birthdateChecker = (value) => {
-  birthdate = value;
+  birthday = value;
 };
 
 const quantityChecker = (value) => {
-  if (!value.match(/^[0-9]{0,1}[0-9]$/i)) {
+  if (!value.match(/^[1-9][0-9]?$/i)) {
     containerQ.setAttribute("data-error-visible", true);
     containerQ.setAttribute(
       "data-error",
@@ -135,6 +140,7 @@ const quantityChecker = (value) => {
     D = 1;
   }
 };
+// quantity regex from :
 
 inputsText.forEach((input) => {
   input.addEventListener("input", (e) => {
@@ -168,6 +174,7 @@ inputsText.forEach((input) => {
 // ((je veux créer une fonction qui contrôle/vérifie les datas pour chaque
 //input, (fonction blablaChecker écrite juste avant et appeler pour chaque cas)))
 
+//-------------------- Data control on radio and checkbox--------------------------
 // Control of datas class checkbox-label (radio and checkbox):
 const inputsCheckbox = document.querySelectorAll(".checkbox-input");
 const inputsRadio = document.getElementsByName("location");
@@ -318,16 +325,31 @@ function validate() {
     return false;
   }
   if (A + B + C + D + E == 5 && checkboxCGU.checked) {
+    // fonction allgood à écrire
     // note pour moi: pour l'instant: si les checkers A, B,C,D,E et la checkboxCGU sont ok
     // un message ok s'affiche en alert et
     //  on peut envoyer le formulaire : return true
     // TODO:  dire ce qu'il faut envoyé et où
     alert("ça marche");
+    modalContent.setAttribute("data-success-visible", true);
+    modalContent.setAttribute("data-success", "VOus avez gagné");
+    //allgood();
     return true;
   } else {
     alert("Il y a un autre problème, contactez l'administrateur du site.");
     return false;
   }
+}
+
+function allgood() {
+  Document.modalContent.removeChild(".modal-body");
+  modalContent.setAttribute("data-success-visible", true);
+  modalContent.setAttribute("data-success", "VOus avez gagné");
+  //prends le format de la modal
+  //vide la modal (supprimer la div modal-body) attention, la modal disparaitra pour toujours
+  //affiche le message de victoire comme le message d'erreur(écrire le message d'erreur)
+  // OU fait apparaître une modale cachée qui valide le succès
+  // OU supprimer le modal-body et créer un paragraphe de victoire avec js
 }
 
 //prevent de Default behaviour on validation while coding:
