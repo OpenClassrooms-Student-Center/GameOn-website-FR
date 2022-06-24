@@ -40,7 +40,6 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-
 // INPUTS CHECKINS
 
 // EXAMPLE JS LOGICAL BUILDING
