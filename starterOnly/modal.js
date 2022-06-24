@@ -65,22 +65,18 @@ function closeModal() {
 // function /firstname
 function checkFirstName(firstName) {
   const regText = /[a-zA-ZÀ-ÿ]{2,}/;
-  console.log(firstName.value);
   if (regText.test(firstName.value)) {
     firstName.parentNode.dataset.errorVisible = false;
-    console.log('firstName OK')
     return true
   } else {
     firstName.parentNode.dataset.error = "Le prénom doit avoir 2 caractères ou plus";
     firstName.parentNode.dataset.errorVisible = true;
-    console.log('firstName notOK')
     return false
   }
 };
 
 // event /firstname
 firstName.addEventListener('blur', function () {
-  console.log(firstName.value);
   checkFirstName(firstName);
 });
 
@@ -90,19 +86,16 @@ function checkLastName(lastName) {
   const regText = /[a-zA-ZÀ-ÿ]{2,}/;
   if (regText.test(lastName.value)) {
     lastName.parentNode.dataset.errorVisible = false;
-    console.log('lastName OK')
     return true
   } else {
     lastName.parentNode.dataset.error = "Le nom doit avoir 2 caractères ou plus";
     lastName.parentNode.dataset.errorVisible = true;
-    console.log('lastName notOK')
     return false
   }
 };
 
 // event /lastname
 lastName.addEventListener('blur', function () {
-  console.log(lastName.value);
   checkLastName(lastName);
 });
 
@@ -112,19 +105,16 @@ function checkEmail(email) {
   const regEmail = /^[\w\-\+]+(\.[\w\-]+)*@[\w\-]+(\.[\w\-]+)*\.[\w\-]{2,4}$/;
   if (regEmail.test(email.value)) {
     email.parentNode.dataset.errorVisible = false;
-    console.log('email OK')
     return true
   } else {
     email.parentNode.dataset.error = "Veuillez entrer un mail valide";
     email.parentNode.dataset.errorVisible = true;
-    console.log('email notOK')
     return false
   }
 };
 
 // event /email
 email.addEventListener('blur', function () {
-  console.log(email.value);
   checkEmail(email);
 });
 
@@ -134,19 +124,16 @@ function checkBirthDate(birthDate) {
   const regDate = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
   if (regDate.test(birthDate.value)) {
     birthDate.parentNode.dataset.errorVisible = false;
-    console.log('birthDate OK')
     return true
   } else {
     birthDate.parentNode.dataset.error = "Veuillez saisir votre date de naissance";
     birthDate.parentNode.dataset.errorVisible = true;
-    console.log('birthDate notOK')
     return false
   }
 };
 
 // event /birthDate
 birthDate.addEventListener('blur', function () {
-  console.log(birthDate.value);
   checkBirthDate(birthDate);
 });
 
@@ -156,19 +143,16 @@ function checkQuantity(quantity) {
   const regNumber = /^[0-9]$/;
   if (regNumber.test(quantity.value) && (quantity.value === "" || parseInt(quantity.value) <= 99)) {
     quantity.parentNode.dataset.errorVisible = false;
-    console.log('quantity OK')
     return true
   } else {
     quantity.parentNode.dataset.error = "Veuillez saisir un nombre";
     quantity.parentNode.dataset.errorVisible = true;
-    console.log('quantity notOK')
     return false
   }
 };
 
 // event /quantity
 quantity.addEventListener('blur', function () {
-  console.log(quantity.value);
   checkQuantity(quantity);
 });
 
@@ -177,35 +161,36 @@ quantity.addEventListener('blur', function () {
 // check a stactic nodelist(by queryselectorALL) for checking all radio button in FOR loop
 function checkRadio() {
   for (let radioEntry of radio.entries()) {
-    console.log(radioEntry[1])
     if (radioEntry[1].checked) {
-      console.log(radioEntry[1].parentNode)
       radioEntry[1].parentNode.dataset.errorVisible = false;
-      console.log(radioEntry[1])
-      console.log('radio OK')
       return true
     }
   }
   let firstRadio = document.querySelector("input[name='location']")
   // new variable to show the error message if no button are selected
   firstRadio.parentNode.dataset.errorVisible = true;
-  firstRadio.parentNode.dataset.error = "Veuillez sélectionner un choix.";
-  console.log('radio notOK')
+  firstRadio.parentNode.dataset.error = "Veuillez sélectionner un choix";
   return false
 };
 
 
 // function /checkbox
 function checkCheckbox() {
-  console.log(checkbox1);
   if (checkbox1.checked) {
-    checkbox1.parentNode.dataset.errorVisible = false;
-    console.log('checkbox1 OK')
+    // let errorCheck = document.querySelector('.errorCheck')
+    // errorCheck.parentNode.dataset.errorVisible = false;
     return true
   } else {
-    checkbox1.parentNode.dataset.errorVisible = true;
-    checkbox1.parentNode.dataset.error = "Veuillez cocher la case des conditions d'utilisations";
-    console.log('checkbox1 notOK')
+    // errorCheck.parentNode.dataset.errorVisible = true;
+    // errorCheck.parentNode.dataset.error = "Veuillez cocher la case des conditions d'utilisations";
+
+    let errorCheck = document.querySelector(".errorCheck")
+    errorCheck.textContent = "Veuillez cocher la case des conditions d'utilisations";
+    errorCheck.style.color = '#e54858';
+    errorCheck.style.fontSize = '0.4em';
+    errorCheck.style.textAlign = 'left';
+    errorCheck.style.display = 'block';
+    errorCheck.style.marginBottom = '-20px';
     return false
   }
 };
@@ -217,13 +202,11 @@ function validateModalSubmit() {
   // check of each function input of the form
   if (checkFirstName(firstName) && checkLastName(lastName) && checkEmail(email) &&
     checkBirthDate(birthDate) && checkQuantity(quantity) && checkRadio() && checkCheckbox()) {
-    console.log('formulaire validé')
     // display none the modal
     modal.style.display = "none";
     // launch new modal
     launchModalSuccess()
   } else {
-    console.log('formulaire invalidé')
     // else show all errorVisible of each else functions
     checkFirstName(firstName);
     checkLastName(lastName);
@@ -237,7 +220,6 @@ function validateModalSubmit() {
 
 // event /submit
 modalSubmit.addEventListener('click', function (e) {
-  console.log(modalSubmit.value)
   e.preventDefault();
   validateModalSubmit();
 });
@@ -246,13 +228,25 @@ modalSubmit.addEventListener('click', function (e) {
 function launchModalSuccess() {
   // create a new modal in a variable
   let newModal = document.createElement('p');
-  newModal.style.fontSize = '18px';
+  newModal.style.height = '600px';
+  newModal.style.fontSize = '30px';
   newModal.style.color = 'white';
-  newModal.style.fontWeight = "bold";
-  newModal.style.display = 'block'
-  newModal.style.textAlign = 'center'
-  newModal.style.padding = "20px 40px 80px 20px"
+  newModal.style.fontWeight = "100";
+  newModal.style.display = 'block';
+  newModal.style.textAlign = 'center';
+  newModal.style.padding = "250px 136px 0 136px";
   // show the new modal
   modalSucces.appendChild(newModal)
-  newModal.textContent = "Votre inscription a été prise en compte."
+  newModal.textContent = "Merci pour votre inscription"
+  // button 
+  let buttonBack = document.createElement('div');
+  buttonBack.className = 'button btn-submit';
+  buttonBack.textContent = "Fermer";
+  buttonBack.style.width = "40%";
+  buttonBack.style.fontWeight = "100";
+  buttonBack.style.marginBottom = "20px";
+  modalSucces.appendChild(buttonBack)
+  buttonBack.addEventListener("click", function () {
+    modalbg.style.display = "none";
+  })
 };
