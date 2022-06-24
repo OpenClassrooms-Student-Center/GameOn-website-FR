@@ -46,21 +46,26 @@
             réservations... Places limitées !
           </p>
           <button class="btn-signup modal-btn">je m'inscris</button>
-          <!-- Ouvre la modale pour s'inscrire en desktop-->
+          <!-- Modal opener in desktop mode-->
         </div>
         <div class="hero-img">
           <img src="./bg_img.jpg" alt="img" />
         </div>
         <button class="btn-signup modal-btn">je m'inscris</button>
-        <!-- Ouvre la modale pour s'inscrire en mobile-->
+        <!-- Modal opener in mobile mode-->
       </div>
 
       <!-- ****************** Beginning of MODAL inscription ********************-->
       <div class="bground">
         <div class="content">
           <span class="closeModal"></span>
+          <div class="modal-confirmation">
+            <h4> Merci, votre inscription est enregistrée.</h4>
+            <button class="btn-submit modal-btn modal-confirmation-close">Fermer</button>
+          </div>
           <div class="modal-body">
             <form
+              id="reserveForm"
               name="reserve"
               action="index.html"
               method="get"
@@ -127,10 +132,6 @@
                   
                 /> </br>
               </div>
-              <!-- Thomas: Pour la div ci-dessous, parce que je ne trouvais pas ça logique,
-              j'ai mis <p>  dans la div formData et pas avant, comme elle
-              était. J'ai aussi reparamétré le css de la 'classe : "text-label" 
-                Est-ce qu'on peut mettre plusieurs éléments dans "for"? -->
               <div class="formData" data-error="&nbsp;" >
                 <p class="text-label">
                   A quel tournoi souhaitez-vous participer cette année ?
@@ -217,8 +218,9 @@
                 </label>
                 <br />
                 </div>
-                <!-- Les 2 checckbos étaient dans la même div, j'en ai rajouté une
-                pour affiché l'erreur en dessous des CGU à l'écriture -->
+                <!-- I add a div, to have one checkbox a div, and now 
+                  the error appear while typing just behind the div, it seems
+                  better for the user -->
                 <div class="formData" data-error="&nbsp;" >
                 <input
                   class="checkbox-input"
@@ -240,9 +242,10 @@
               />
             </form>
           </div>
+        
         </div>
       </div>
-      <!-- End of modal -->
+    <!--------- End of modal---------->
     </main>
 
     <!-- ****************** FOOTER ********************-->

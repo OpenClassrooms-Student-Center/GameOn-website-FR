@@ -4,6 +4,11 @@ const modalContent = document.querySelector(".content");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const form = document.querySelector("form");
+const modalConfirmation = document.querySelector(".modal-confirmation");
+const modalBody = document.querySelector(".modal-body");
+const btnModalConfirmation = document.querySelector(
+  ".modal-confirmation-close"
+);
 
 // DOM selection of a container whose got the formData class to show the
 // error flag when we are data controling
@@ -31,6 +36,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalBg.style.display = "block";
+  modalConfirmation.style.display = "none";
 }
 
 //Close modal with X button
@@ -126,7 +132,7 @@ const birthdateChecker = (value) => {
 };
 
 const quantityChecker = (value) => {
-  if (!value.match(/^[1-9][0-9]?$/i)) {
+  if (!value.match(/^[0-9][0-9]?$/i)) {
     containerQ.setAttribute("data-error-visible", true);
     containerQ.setAttribute(
       "data-error",
@@ -331,9 +337,15 @@ function validate() {
     //  on peut envoyer le formulaire : return true
     // TODO:  dire ce qu'il faut envoyé et où
     alert("ça marche");
-    modalContent.setAttribute("data-success-visible", true);
-    modalContent.setAttribute("data-success", "VOus avez gagné");
-    //allgood();
+
+    modalBody.style.display = "none";
+    modalConfirmation.style.display = "flex";
+    document.querySelector("#reserveForm").reset();
+    A = 0;
+    B = 0;
+    C = 0;
+    D = 0;
+    E = 0;
     return true;
   } else {
     alert("Il y a un autre problème, contactez l'administrateur du site.");
@@ -341,16 +353,10 @@ function validate() {
   }
 }
 
-function allgood() {
-  Document.modalContent.removeChild(".modal-body");
-  modalContent.setAttribute("data-success-visible", true);
-  modalContent.setAttribute("data-success", "VOus avez gagné");
-  //prends le format de la modal
-  //vide la modal (supprimer la div modal-body) attention, la modal disparaitra pour toujours
-  //affiche le message de victoire comme le message d'erreur(écrire le message d'erreur)
-  // OU fait apparaître une modale cachée qui valide le succès
-  // OU supprimer le modal-body et créer un paragraphe de victoire avec js
-}
+btnModalConfirmation.addEventListener("click", (e) => {
+  modalBg.style.display = "none";
+  modalBody.style.display = "block";
+});
 
 //prevent de Default behaviour on validation while coding:
 //empêche la fermeture et la réinitialisation de la modale au clic 'je m'inscris':
@@ -359,6 +365,12 @@ function allgood() {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 });
+
+// form.addEventListener("submit", myFunction);
+
+// function myFunction() {
+//   document.getElementById("reserveForm").reset();
+// }
 
 function editNav() {
   var x = document.getElementById("myTopnav");
