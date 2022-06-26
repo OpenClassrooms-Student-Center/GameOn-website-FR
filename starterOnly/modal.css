@@ -75,6 +75,13 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
+    color: #ff0000;
+  }
+  .topnav a.active {
+    color: #ffffff;
+  }
+  .topnav a.icon {
+    color: #ffffff;
   }
 }
 
@@ -101,7 +108,10 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    color: #ff0000;
+  }
+  .topnav a.icon:hover {
+    color: #ffffff;
   }
 }
 
@@ -191,7 +201,7 @@ main {
 }
 @media screen and (max-width: 540px) {
   .content {
-    margin-top: 102px;
+    margin-top: 87px;
   }
 }
 
@@ -204,17 +214,18 @@ main {
   padding-top: 10px;
   font-size: 25px;
   display: none;
-  /* animation-name: modalconfirm;
-  animation-duration: var(--modal-duration); */
-  /* transform: scale(0, 0);
-  opacity: 0; */
   margin: auto;
   text-align: center;
   flex-direction: column;
   justify-content: space-around;
   padding: 15px 8%;
   margin: 15px auto;
-  min-height: 600px;
+  min-height: 80vh;
+}
+@media screen and (max-width: 540px) {
+  .modal-confirmation {
+    min-height: 90vh;
+  }
 }
 
 /* button.modal-confirmation-close {
@@ -223,12 +234,6 @@ main {
 h4 {
   align-self: stretch;
 } */
-
-.modal-confirmation[data-success-visible="true"]::after {
-  transform: scale(1, 1);
-  display: block;
-  opacity: 1;
-}
 
 .modal-body {
   padding: 15px 8%;
@@ -265,7 +270,7 @@ input {
   margin-top: 7px;
   margin-bottom: 7px;
   text-align: right;
-  line-height: 0.3;
+  line-height: 0.9;
   opacity: 0;
   transition: 0.3s;
 }

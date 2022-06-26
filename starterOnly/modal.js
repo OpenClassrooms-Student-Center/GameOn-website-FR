@@ -23,8 +23,8 @@ const containerFN = document.querySelector(".formData");
 const today = new Date().toISOString().split("T")[0];
 birthdate.max = today;
 
-// Those variable are useful for a second confirmation while we are using
-// the validate() function.
+// Those variable are useful for a second confirmation while
+// validate() function is doing its job.
 let A = 0;
 let B = 0;
 let C = 0;
@@ -44,6 +44,7 @@ const modalClosure = document.querySelector(".closeModal");
 // >function:
 function closeModal() {
   modalBg.style.display = "none";
+  modalBody.style.display = "block";
 }
 // >play of function:
 modalClosure.addEventListener("click", closeModal);
@@ -53,7 +54,7 @@ modalClosure.addEventListener("click", closeModal);
 
 // Control of datas, using .text-control class (text and number in input):
 const inputsText = document.querySelectorAll(".text-control");
-// 5 empty elements created with the user datas:
+// 5 empty variables created to save the user datas:
 let firstName, lastName, email, birthday, quantity;
 
 //Then all the checker function:
@@ -64,14 +65,24 @@ const firstNameChecker = (value) => {
       "data-error",
       "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
     );
+    firstName = null;
+    A = 0;
     // In purpose to apply [data-error] and [data-error-visible] attributes
     // we are using setAttribute method. For doing so, we had previously selected
     // the .formData class div (so called containerFN).
-
+    // then we save the result in varibale firstname (to save data users) and A (to pass validate()).
+  } else if (value.match(/^((\s{2,99})+.)|(\s{2,99})|.+(\s{2,99})+.$/)) {
+    containerFN.setAttribute("data-error-visible", true);
+    containerFN.setAttribute(
+      "data-error",
+      "Veillez à ne pas entrer deux espaces consécutifs."
+    );
     firstName = null;
     A = 0;
+    // regex control with: https://regex101.com/r/0filKf/1
+    // This regex controls two whitespace character (from 2 to 99).
+    // at the beginning of name OR only whitespace OR whitespaces in the middle of name
   } else if (value == null || value == "" || !value) {
-    // TODO : ou mettre que !value
     containerFN.setAttribute("data-error-visible", true);
     containerFN.setAttribute(
       "data-error",
@@ -95,11 +106,19 @@ const lastNameChecker = (value) => {
     );
     lastName = null;
     B = 0;
-  } else if (value == null || value == "") {
+  } else if (value == null || value == "" || !value) {
     containerLN.setAttribute("data-error-visible", true);
     containerLN.setAttribute(
       "data-error",
       "Veuillez entrer 2 caractères ou plus pour le champ du nom."
+    );
+    lastName = null;
+    B = 0;
+  } else if (value.match(/^((\s{2,99})+.)|(\s{2,99})|.+(\s{2,99})+.$/)) {
+    containerLN.setAttribute("data-error-visible", true);
+    containerLN.setAttribute(
+      "data-error",
+      "Veillez à ne pas entrer deux espaces consécutifs."
     );
     lastName = null;
     B = 0;
@@ -130,9 +149,10 @@ const emailChecker = (value) => {
 const birthdateChecker = (value) => {
   birthday = value;
 };
+// No control because it was not a necessary value in specsheet.
 
 const quantityChecker = (value) => {
-  if (!value.match(/^[0-9][0-9]?$/i)) {
+  if (value < 0 || (value >= 99) | !value) {
     containerQ.setAttribute("data-error-visible", true);
     containerQ.setAttribute(
       "data-error",
@@ -146,7 +166,6 @@ const quantityChecker = (value) => {
     D = 1;
   }
 };
-// quantity regex from :
 
 inputsText.forEach((input) => {
   input.addEventListener("input", (e) => {
@@ -172,13 +191,10 @@ inputsText.forEach((input) => {
     }
   });
 });
-//Ici , pour chaque inputs test, on écoute sur l'input dans lequel on travaille
-// On switch en ciblant id, sur chaque id, on joue la fonction checker
-// et on récupère la valeur dans les données ecoutées de l'id, puis on sort (break) et on
-// continue pour l'input text suivant.
-//  Pour chaque cas, la fonction checker apprlique une vérification
-// ((je veux créer une fonction qui contrôle/vérifie les datas pour chaque
-//input, (fonction blablaChecker écrite juste avant et appeler pour chaque cas)))
+// For each inputs, with .text-control class, we are listening the "input" or the change of its value.
+// We switch by targeting ID, On each ID, we are playing the checker function on value of the ID case.
+// we break and we playing the next case.
+// On each case, the checker function playing is own control.
 
 //-------------------- Data control on radio and checkbox--------------------------
 // Control of datas class checkbox-label (radio and checkbox):
@@ -189,8 +205,8 @@ const containerR = document.getElementsByName("location").parentNode;
 let place;
 let checkboxNewsVar = false;
 
-// checké une location,
-// si la checkbox est validé, mémoriser la donnée dans une variable
+// control of place
+// Once the checkbox is valid, we stock the data in a variable
 inputsRadio.forEach((input) => {
   input.addEventListener("click", (e) => {
     switch (e.target.id) {
@@ -232,12 +248,9 @@ inputsRadio.forEach((input) => {
         }
       default:
         null;
-      // location1.parentNode.setAttribute("data-error-visible", true);
-      // location1.parentNode.setAttribute(
-      //   "data-error",
-      //   "Vous devez choisir une place."
-      // );
-      // impossible de mettre le message d'erreur s'il n'y a pas eu de submit avant
+      // due to Radio system, it's either one or another value,
+      // So it's unecessary to add a error message, except in case of an empty submit before,
+      // then, we need to remove the attribute.
     }
   });
 });
@@ -255,14 +268,16 @@ inputsCheckbox.forEach((input) => {
           );
         }
         break;
+      //CGU have to be checked, it's checked in advance,
+      // in case the user remove the checked, an error message will appear.
       case "checkboxNews":
         if (checkboxNews.checked) {
           checkboxNewsVar = true;
         } else {
           checkboxNewsVar = false;
-        } // notons que si l'utilisateurs ne coche et décoche pas la newsletter,
-        // alors la checkboxVar restera undefined, du coup je lui ai mis la valeur
-        // false par défaut quand j'ai défini la variable.
+        }
+        // NewsVar, the checkbobNewsVar have a default false value in case the user
+        // doesn't checked the box
         break;
       default:
         null;
@@ -271,34 +286,10 @@ inputsCheckbox.forEach((input) => {
 });
 
 //the form should be valid when submit:
-//THOMAS: La soumission est faite directement dans le html (si j'ai bien compris)?
-//Du coup je n'ai pas à jouer la fonction
-//THOMAS: Est ce que je dois rajouter un contrôle au moment de
-// la validation du formulaire? ou est-ce que mes Checker suffise au contrôle?
-// THOMAS: à quoi sert le required du html si je met
-//tout ce code?
-// function validate() {
-//   if (A + B + C + D + E == 5 && checkboxCGU.checked) {
-//     // note pour moi: pour l'instant: si les checkers A, B,C,D,E et la checkboxCGU sont ok
-//     // un message ok s'affiche en alert et
-//     //  on peut envoyer le formulaire : return true
-//     // TODO:  dire ce qu'il faut envoyé et où
-//     alert("ça marche");
-//     return true;
-//   } else {
-//     if (!E) {
-//       location1.parentNode.setAttribute("data-error-visible", true);
-//       location1.parentNode.setAttribute(
-//         "data-error",
-//         "Vous devez choisir une option."
-//       );
-//     }
+// The submission function is played in the html, in <form>
+// An additional control is done in the function validate with ABC variables
+// filled earlier
 
-//     alert("y a un problème");
-//     // sinon on indique de ne pas envoyer le formulaire
-//     return false;
-//   }
-// }
 function validate() {
   if (A + B + C + D + E < 5) {
     if (!E) {
@@ -327,25 +318,26 @@ function validate() {
       containerFN.setAttribute("data-error-visible", true);
       containerFN.setAttribute("data-error", "Vous devez entrer un prénom.");
     }
-    alert("Il y a un ou plusieurs problèmes, corrigez les champs indiqués.");
     return false;
   }
   if (A + B + C + D + E == 5 && checkboxCGU.checked) {
-    // fonction allgood à écrire
-    // note pour moi: pour l'instant: si les checkers A, B,C,D,E et la checkboxCGU sont ok
-    // un message ok s'affiche en alert et
-    //  on peut envoyer le formulaire : return true
-    // TODO:  dire ce qu'il faut envoyé et où
-    alert("ça marche");
-
     modalBody.style.display = "none";
     modalConfirmation.style.display = "flex";
     document.querySelector("#reserveForm").reset();
+    // previous part cleans inputs
+    // next part cleans user datas
     A = 0;
     B = 0;
     C = 0;
     D = 0;
     E = 0;
+    firstName = null;
+    lastName = null;
+    email = null;
+    birthdate = null;
+    quantity = null;
+    place = null;
+    checkboxNewsVar = null;
     return true;
   } else {
     alert("Il y a un autre problème, contactez l'administrateur du site.");
@@ -358,19 +350,24 @@ btnModalConfirmation.addEventListener("click", (e) => {
   modalBody.style.display = "block";
 });
 
-//prevent de Default behaviour on validation while coding:
-//empêche la fermeture et la réinitialisation de la modale au clic 'je m'inscris':
+//prevent Default behaviour on validation while coding: modal closing, modal initialisation
+// with click,
 // TODO: to place in the case the form is validated and sent (or to remove
-// if we are no more need to preven this behavious when code will be ready).
+// if we are no more need to prevent this behavious when code will be ready).
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 });
 
-// form.addEventListener("submit", myFunction);
-
-// function myFunction() {
-//   document.getElementById("reserveForm").reset();
-// }
+// next function avoid the default behavious of navigator and its buble error message.
+for (var i = 0; i < form.length; i++) {
+  form[i].addEventListener(
+    "invalid",
+    function (e) {
+      e.preventDefault();
+    },
+    true
+  );
+}
 
 function editNav() {
   var x = document.getElementById("myTopnav");
