@@ -11,7 +11,7 @@ const btnModalConfirmation = document.querySelector(
 );
 
 // DOM selection of a container whose got the formData class to show the
-// error flag when we are data controling
+// error flag when we are data controling, in order to show the error message
 const containerQ = document.querySelector("#quantity").parentNode;
 const containerE = document.querySelector("#email").parentNode;
 const containerLN = document.querySelector("#lastName").parentNode;
