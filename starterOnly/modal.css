@@ -56,6 +56,9 @@ img {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+  text-underline-position: under;
 }
 
 .topnav a.active {
@@ -405,7 +408,6 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
