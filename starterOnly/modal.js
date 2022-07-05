@@ -29,7 +29,17 @@ const location5 = document.getElementById("location5")
 const location6 = document.getElementById("location6")
 const radios = document.getElementsByName("location")
 const errLoc = document.getElementById("errorLocation")
-
+const condition1 = document.getElementById("checkbox2")
+const errconditions = document.getElementById("errorAcceptedPolicy")
+const birthDate = document.getElementById("birthdate")
+const errBirth = document.getElementById("errorBirthdate")
+let checkedLoc = false
+let checkedName = false
+let checkedLast = false
+let checkedMail = false
+let checkedBirth = false
+let checkedQ = false
+let checkedCond = false
 
 //TODO 1 !!!
 // launch modal event
@@ -59,7 +69,9 @@ function validateName(firstName){
     errorFirst.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ Prénom";
     errorFirst.style.display = "block";
     errorFirst.style.color = "red";
+    checkedName = false;
   }else{
+    checkedName = true
     errorFirst.style.display = "none";
   }
 }
@@ -74,7 +86,9 @@ function validateLast(lastName){
     errorLast.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ Nom";
     errorLast.style.display = "block";
     errorLast.style.color = "red";
+    checkedLast = false;
   }else{
+    checkedLast = true;
     errorLast.style.display ="none";
   }
 }
@@ -89,7 +103,9 @@ function validateEmail(valEmail){
     errorEmail.innerHTML = "Veuillez entrer une adresse e-mail valide";
     errorEmail.style.display = "block";
     errorEmail.style.color = "red";
+    checkedMail = false;
   }else{
+    checkedMail = true;
     errorEmail.style.display ="none";
   }
 }
@@ -97,15 +113,39 @@ email.addEventListener("input", function(e){
   validateEmail(e.target.value)
 })
 
+// create a function to validation the birthdate
+
+function validateBirth(){
+  let birth = document.getElementById("birthdate").value;
+  var now = new Date();
+  if (birth > now){
+    errBirth.innerHTML="Veuillez saisir une date de naissance valide"
+    errBirth.style.display = "block"
+    errBirth.style.color = "red"
+    checkedBirth = false;
+  }else{
+    errBirth.style.display="none";
+    checkedBirth = true
+  }
+}
+
+birthDate.addEventListener("input",function(e){
+  validateBirth(e.target.value);
+})
+
+
+
 // create a function to validate the email
 
 function validateQuantity(valQ){
-  if (valQ === "" || !(/^[0-9]{1,3}/.test(valQ))){
+  if (valQ === "" || !(/^[0-9]{0,3}/.test(valQ))){
     errorQuantity.innerHTML = "Veuillez un nombre valide";
     errorQuantity.style.display = "block";
-    errorQuantity.style.color = "red"
+    errorQuantity.style.color = "red";
+    checkedQ = false;
   }else{
-    errorQuantity.style.display = "none"
+    checkedQ =true;
+    errorQuantity.style.display = "none";
   }
 }
 quantity.addEventListener("input",function(e){
@@ -114,23 +154,79 @@ quantity.addEventListener("input",function(e){
 
 // create a function to validation radio buttons
 
-//function checkradio(){
-  //var ischecked = fasle;
-    //for (var i = 0; i < radios.length; i++) {
-      //if(radios[i].checked){
-        //ischecked = true;
-        //errLoc.style.display = "none"
-        //break;
-        //}
-      //}
-   //}
-   //if (!ischecked) {
-    //errLoc.innerHTML = "Veuillez choisir un lieu"
-    //errLoc.style.display = "block";
-    //errLoc.style.color = "red"
-   //}
+function validationLocation(e){
+  if(e.target.checked){
+    errLoc.style.display="none";
+  }else{
+    errLoc.innerHTML="Veuillez sélectionner un lieu";
+    errLoc.style.display="block";
+    errLoc.style.color="red";
+  }
+}
+
+radios.forEach(radio =>{
+  radio.addEventListener("input",function(e){
+    console.log("test",e.target.checked)
+    checkedLoc=true
+    validationLocation(e);
+  })
+})
+
+//creat a function to validate general condition
+
+function validateCondition(valC){
+  if(valC.target.checked){
+    errconditions.style.display="none";
+    checkedCond = false
+  }else{
+    checkedCond = true
+    errconditions.innerHTML="Veuillez accepter les conditions d'utilisation";
+    errconditions.style.display="block";
+    errconditions.style.color="red"
+  }
+}
+
+condition1.addEventListener("input",function(e){
+  validateCondition(e.target.value)
+})
 
 
-//preventDefault
+//fonctionnement du bouton d'envoi
+
+btnSubmit.addEventListener("click",function(e){
+  // à mettre apres chaque if e.preventDefault();
+  validationLocation(e);
+  if(!checkedName){
+    e.preventDefault();
+    validateName(e)
+  }
+  if(!checkedLast){
+    e.preventDefault();
+    validateLast(e)
+  }
+  if(!checkedMail){
+    e.preventDefault();
+    validateEmail(e)
+  }
+  if(!checkedBirth){
+    e.preventDefault();
+    validateBirth(e)
+  }
+  if(!checkedQ){
+    e.preventDefault();
+    validateQuantity(e)
+  }
+  if(!checkedLoc){
+    e.preventDefault();
+    validationLocation(e)
+  }
+  if(checkedCond){
+    e.preventDefault();
+    validateCondition(e)
+  }
+})
+
+
+
 
 
