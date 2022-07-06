@@ -10,7 +10,7 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
+const forms = document.querySelectorAll(".formData");
 const modalBtnClose = document.querySelectorAll(".close"); // Ajout d'un sélecteur sur tous les élements de la classe "close"
 const btnSubmit = document.getElementById("btn-submit");
 const first = document.getElementById("first");
@@ -48,6 +48,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  document.getElementById("valid-form").style.display = "none";
 }
 
 //ajout évenement sur la classe close
@@ -56,7 +57,9 @@ modalBtnClose.forEach((btnClose) => btnClose.addEventListener("click", closeModa
 //close modal form
 function closeModal() {
   modalbg.style.display = "none";
+  
 }
+
 
 //TODO2 !!!
 
@@ -94,6 +97,7 @@ function validateLast(lastName){
   }else{
     checkedLast = true;
     errorLast.style.display ="none";
+
   }
 }
 last.addEventListener("input", function(e){
@@ -113,6 +117,7 @@ function validateEmail(valEmail){
   }else{
     checkedMail = true;
     errorEmail.style.display ="none";
+    email.style.border = "none"
   }
 }
 email.addEventListener("input", function(e){
@@ -124,7 +129,17 @@ email.addEventListener("input", function(e){
 function validateBirth(){
   let birth = document.getElementById("birthdate").value;
   var now = new Date();
-  if (birth > now){
+        var month = now.getMonth();
+        var day = now.getDate();
+        var year = now.getFullYear();
+  var date = year+"-"+month+"-"+day;
+  console.log(birth)
+  console.log(month)
+  console.log(day)
+  console.log(year)
+  console.log(now)
+  
+  if (birth > date){
     errBirth.innerHTML="Veuillez saisir une date de naissance valide"
     errBirth.style.display = "block"
     errBirth.style.color = "red"
@@ -134,6 +149,7 @@ function validateBirth(){
   }else{
     errBirth.style.display="none";
     checkedBirth = true
+    birth.style.border = "none"
   }
 }
 
@@ -205,9 +221,10 @@ condition1.addEventListener("input",function(e){
 
 //fonctionnement du bouton d'envoi
 
+
+
 btnSubmit.addEventListener("click",function(e){
   // à mettre apres chaque if e.preventDefault();
-  validationLocation(e);
   if(!checkedName){
     e.preventDefault();
     validateName(e)
@@ -236,7 +253,10 @@ btnSubmit.addEventListener("click",function(e){
     e.preventDefault();
     validateCondition(e)
   }
-})
+  if(checkedName && checkedLast&& checkedMail && checkedBirth && checkedQ && checkedLoc && checkedCond && !clicked){
+    document.getElementById("valid-form").style.display = "block"
+
+}})
 
 
 

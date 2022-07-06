@@ -59,7 +59,6 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return confirm('Nous avons bien reçu votre réservation!');"
             >
               <div
                 class="formData">
@@ -106,6 +105,7 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
+                  max="2020-01-01"
                 /><br>
                 <span class="error" id="errorBirthdate"></span>
                 <br />
@@ -219,6 +219,15 @@
                 value="C'est parti"
               />
               </div>
+            <div id="valid-form">
+            <h2>Merci pour votre inscription</h2>
+            <input
+              id="btn-submit"
+              type="submit"
+              class="button"
+              value="Fermer"
+            />            
+            </div>
             </form>
           </div>
         </div>
