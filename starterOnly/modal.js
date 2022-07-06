@@ -69,6 +69,8 @@ function validateName(firstName){
     errorFirst.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ Prénom";
     errorFirst.style.display = "block";
     errorFirst.style.color = "red";
+    errorFirst.style.fontSize = "12px"
+    first.style.borderColor = "red"
     checkedName = false;
   }else{
     checkedName = true
@@ -86,6 +88,8 @@ function validateLast(lastName){
     errorLast.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ Nom";
     errorLast.style.display = "block";
     errorLast.style.color = "red";
+    errorLast.style.fontSize = "12px"
+    last.style.borderColor = "red"
     checkedLast = false;
   }else{
     checkedLast = true;
@@ -103,6 +107,8 @@ function validateEmail(valEmail){
     errorEmail.innerHTML = "Veuillez entrer une adresse e-mail valide";
     errorEmail.style.display = "block";
     errorEmail.style.color = "red";
+    errorEmail.style.fontSize = "12px"
+    email.style.borderColor = "red"
     checkedMail = false;
   }else{
     checkedMail = true;
@@ -122,6 +128,8 @@ function validateBirth(){
     errBirth.innerHTML="Veuillez saisir une date de naissance valide"
     errBirth.style.display = "block"
     errBirth.style.color = "red"
+    errBirth.style.fontSize = "12px"
+    birth.style.borderColor = "red"
     checkedBirth = false;
   }else{
     errBirth.style.display="none";
@@ -142,6 +150,8 @@ function validateQuantity(valQ){
     errorQuantity.innerHTML = "Veuillez un nombre valide";
     errorQuantity.style.display = "block";
     errorQuantity.style.color = "red";
+    errorQuantity.style.fontSize = "12px"
+    quantity.style.borderColor = "red"
     checkedQ = false;
   }else{
     checkedQ =true;
@@ -161,6 +171,7 @@ function validationLocation(e){
     errLoc.innerHTML="Veuillez sélectionner un lieu";
     errLoc.style.display="block";
     errLoc.style.color="red";
+    errLoc.style.fontSize = "12px"
   }
 }
 
@@ -183,6 +194,7 @@ function validateCondition(valC){
     errconditions.innerHTML="Veuillez accepter les conditions d'utilisation";
     errconditions.style.display="block";
     errconditions.style.color="red"
+    errconditions.style.fontSize = "12px"
   }
 }
 
