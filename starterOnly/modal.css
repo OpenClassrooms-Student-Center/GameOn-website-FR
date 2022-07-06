@@ -17,7 +17,7 @@ body {
   background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
-  max-width: 1300px;
+  max-width: 95%;
   margin: 0 auto;
   margin-left: 4%;
   margin-right: 2%;
