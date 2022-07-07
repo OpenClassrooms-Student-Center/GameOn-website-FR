@@ -59,6 +59,7 @@
               name="reserve"
               action="index.html"
               method="get"
+              onsubmit="return validate(event)"
             >
               <div
                 class="formData">
@@ -219,18 +220,21 @@
                 value="C'est parti"
               />
               </div>
-            <div id="valid-form">
-            <h2>Merci pour votre inscription</h2>
-            <input
-              id="btn-submit"
-              type="submit"
-              class="button"
-              value="Fermer"
-            />            
-            </div>
             </form>
           </div>
         </div>
+      </div>
+      <div class="confirm-modal">
+        <div class="modal-body">
+          <div class="content">
+            <span class="confirm-close close"></span>
+            <p class="confirm-modal-message">Merci ! Votre réservation a été reçue.</p>
+            <div class="button-position">
+            <button id ="btn-submit-2" type="submit" class="button">Fermer</button>
+            </div>
+          </div>
+        </div>
+      </div>   
       </div>
     </main>
     <footer>

@@ -161,6 +161,7 @@ main {
   border-radius: 15px;
   cursor: pointer;
   font-size: 16px;
+
 }
 
 .button:hover {
@@ -183,6 +184,30 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
+.modal-body{
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-bottom: 5%;
+}
+
+.confirm-modal {
+  display: none;
+	position: fixed;
+	z-index: 1;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	overflow: auto;
+	background-color: rgba(26, 39, 156, 0.4);
+  margin-bottom: 5%
+  ;
+}
+.confirm-modal-message {
+	min-height: 7px;
+	padding: 78% 5%;
+}
+
 .content {
   margin: 15% auto;
   width: 100%;
@@ -196,18 +221,6 @@ main {
   color: #fff;
   padding-top: 10px;
 }
-
-@media screen and (max-width: 768px){
-  .content{
-    
-  }
-}
-
-.modal-body {
-  padding: 15px 8%;
-  margin: 15px auto;
-}
-
 
 label {
   font-family: var(--font-default);
@@ -553,6 +566,7 @@ footer {
   }
   .button-position {
     text-align: center;
+    margin-bottom: 5%;
   }
   .button{
     background: #fe142f;
