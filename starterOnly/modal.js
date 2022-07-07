@@ -39,6 +39,11 @@ function closeModal()
 {
   modalbg.style.display = "none";
   document.getElementById('myForm').reset();
+  const resetError = document.querySelectorAll('.error_detection');
+  for (i = 0; i < counterDetec; i++)
+  {
+    resetError[i].innerHTML = '';
+  }
 }
 
 // Close Modal event
@@ -134,5 +139,16 @@ function validate()
   //VALIDATION OK
     
     return true;
+<<<<<<< Updated upstream
+=======
+  }
+
+}
+document.querySelector('#first').setCustomValidity('');
+
+
+ 
+
+>>>>>>> Stashed changes
 
 }
