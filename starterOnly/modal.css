@@ -8,9 +8,11 @@
   margin: 0;
   padding: 0;
 }
+
+
+/**** Additionnal CSS ****/
+
 /* Landing Page */
-<<<<<<< Updated upstream
-=======
 .error_detection {
   color: red;
   font-size: 12px;
@@ -110,7 +112,6 @@
 
 
 /**** END ADDITIONNAL CSS **/
->>>>>>> Stashed changes
 
 body {
   margin: 0;
@@ -121,6 +122,8 @@ body {
   font-size: 18px;
   max-width: 1300px;
   margin: 0 auto;
+  height: 100%;
+  padding: 0;
 }
 
 p {
@@ -170,13 +173,21 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+
+@media screen and (max-width: 830px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
   }
+  .topnav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
+
 
 @media screen and (max-width: 768px) {
   .topnav.responsive {position: relative;}
@@ -507,7 +518,7 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
+  
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -538,7 +549,7 @@ input[data-error]::after {
   z-index: 1;
 }
 .hero-headline {
-  font-size: 6rem;
+  font-size: 5rem;
   font-weight: normal;
   white-space: nowrap;
 }
@@ -558,12 +569,14 @@ input[data-error]::after {
 }
 .hero-img {
   grid-column: span 8;
+  min-height: 100px;
 }
 .hero-img img {
   width: 100%;
   height: 100%;
   display: block;
   padding: 0;
+  min-height: 100px;
 }
 .copyrights {
   color: #fe142f;

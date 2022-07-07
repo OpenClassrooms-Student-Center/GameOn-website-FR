@@ -139,16 +139,5 @@ function validate()
   //VALIDATION OK
     
     return true;
-<<<<<<< Updated upstream
-=======
   }
 
-}
-document.querySelector('#first').setCustomValidity('');
-
-
- 
-
->>>>>>> Stashed changes
-
-}
