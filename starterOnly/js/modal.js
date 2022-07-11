@@ -173,7 +173,6 @@ function checkBirthdate(){
 
   //Localisation
   function checkLocation(){
-    console.log("sdpfsd");
     let valid = false;
     for(let i=0; i<myLocalisation.length;i++){
       if(myLocalisation[i].checked)
@@ -187,7 +186,6 @@ function checkBirthdate(){
       myLocalisationError.classList.remove("error");
       return false;
     }
-          console.log("sdfsd");
 }
 
 //Checkbox

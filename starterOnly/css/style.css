@@ -82,9 +82,6 @@ img {
 
 @media screen and (max-width: 768px) {
   .topnav {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
             justify-content: space-between;
@@ -115,11 +112,31 @@ img {
     top: 0;
   }
   .topnav.responsive a {
-    float: none;
     display: block;
+    float: none;
     text-align: left;
   }
 }
+
+/*
+@media screen and (max-width: 768px) {
+    .topnav.responsive {
+        position: relative;
+    }
+
+    .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+}
+
 
 /*
 @media screen and (max-width: 540px) {

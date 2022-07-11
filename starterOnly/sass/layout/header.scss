@@ -39,28 +39,48 @@
 }
 
 // BREAK
-
+// HEADER
 @media screen and (max-width: 768px) {
-
-    .topnav{
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .topnav__logo img{
-        width: 60%;
-    }
-    .topnav a {
-        display: none;
-    }
-
-    .topnav a.icon {
-        float: right;
-        display: block;
-        color: red;
-    }
+ .topnav{
+     justify-content: space-between;
+     align-items: center;
+     &__logo img{
+         width: 60%;
+     }
+     a{
+         display: none;
+     }
+     a.icon{
+         float: right;
+         display: block;
+         color: red;
+     }
+ }   
 }
 
+// RESPONSIVE LINK
+@media screen and (max-width: 768px) {
+    .topnav.responsive{
+        position: relative;
+        .icon{
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+        a{
+            display: block;
+            float: none;
+            text-align: left;
+        }
+    }
+
+
+}
+
+
+
+
+/*
 @media screen and (max-width: 768px) {
     .topnav.responsive {
         position: relative;
