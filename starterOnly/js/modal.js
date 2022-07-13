@@ -205,7 +205,7 @@ function checkCheckBox(){
 //  CONFIRMATION
 const modalConfirmation = document.querySelector(".confirmation");
 const modalConfirmationCrossClose = document.querySelectorAll(".close");
-modalConfirmationBtnClose = document.querySelectorAll("#confirmation__close");
+const modalConfirmationBtnClose = document.querySelectorAll("#confirmation__close");
 
 // close modal event
 modalConfirmationCrossClose.forEach((btnClose) => btnClose.addEventListener("click", closeConfirmation)); // creation d'un event pour fermer le modal
