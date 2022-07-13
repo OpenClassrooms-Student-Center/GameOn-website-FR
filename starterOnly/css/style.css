@@ -586,6 +586,7 @@ footer {
     display: block;
     -webkit-box-shadow: unset;
             box-shadow: unset;
+    min-height: 0vh;
   }
   .hero__content {
     background: #fff;

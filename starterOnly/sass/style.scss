@@ -402,6 +402,7 @@ footer {
     .hero{
         display: block;
         box-shadow: unset;
+        min-height: 0vh;
         &__content{
             background: #fff;
             color: #000;
