@@ -35,15 +35,16 @@ function closeModal(){ // fonction qui arrete l'affichage du modal
 // Formulaire
 
 // Element
+let submitValues = document.getElementById('form');
 let myFirstname = document.getElementById('first');
 let myLastname = document.getElementById('last');
 let myEmail = document.getElementById('email');
 let myBirthday = document.getElementById('birthdate');
 let myQuantity = document.getElementById('quantity');
-let myLocalisation = document.querySelectorAll(".checkbox-input");
+let myLocalisation = document.getElementsByName("location"); 
 let myCheckbox = document.getElementById('checkbox1');
 
-//Element Error message
+//Element message d'erreur
 let myFirstnameError = document.getElementById('error__message__first');
 let myLastnameError = document.getElementById('error__message__last');
 let myEmailError = document.getElementById('error__message__email');
@@ -80,14 +81,13 @@ btnSubmit.addEventListener("click", function(event){
     
   }
   else{
+    submitValues.reset(); // réinitialise les valeurs du formulaire 
     modalbg.style.display = "none";
     modalConfirmation.style.display = "block";
   }
 });
 
 // validator
-
-
 // Check first Name
 function checkName(){
    if (myFirstname.value == "" || myFirstname.value.length < 2 ){
@@ -100,7 +100,6 @@ function checkName(){
       myFirstnameError.classList.add("error");
      return true;
   }
-  console.log(errors);
 }
 // Check Last Name
 function checkLastName(){
@@ -134,21 +133,23 @@ let emailRegExp = new RegExp('^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2
 }  // date 
 
 function checkBirthdate(){
-  // take current date and user birthday
-  const birthdate = new Date(myBirthday.value);
-  const currentDay = new Date();
-  
-  // calculs
-  const currentYear = currentDay.getFullYear();
-  const userYear = birthdate.getFullYear();
+    // prendre la date d'aujourd'hui et la date saisie par l'utilisateur
 
+    const birthdate = new Date(myBirthday.value);
+    const currentDay = new Date();
 
-  if(currentYear < userYear){
-    myBirthday.style.border = "2px solid red";
-    myBirthdayError.classList.remove("error");
-    return false;
-  }
-  else{
+    // prend l'annee en cours et celle saisie par l'utilisateur
+
+    const userCurrentYear = birthdate.getFullYear();
+    const currentYear = currentDay.getFullYear();
+
+    if((birthdate =="Invalid Date") || (userCurrentYear > currentYear))
+    {
+      myBirthday.style.border = "2px solid red";
+      myBirthdayError.classList.remove("error");
+      return false;
+    }
+    else{
       myBirthday.style.border = "none";
       myBirthdayError.classList.add("error");
       return true;
@@ -156,7 +157,7 @@ function checkBirthdate(){
   } 
 
   //quantity
-  
+
   myQuantity
   function checkQuantity(){
     if(myQuantity.value ==""){
@@ -174,19 +175,22 @@ function checkBirthdate(){
   //Localisation
   function checkLocation(){
     let valid = false;
-    for(let i=0; i<myLocalisation.length;i++){
-      if(myLocalisation[i].checked)
-      {
-        valid = true;
-        myLocalisationError.classList.add("error");
-        return true;
+    for(let i=0;i<myLocalisation.length;i++){
+      if(myLocalisation[i].checked){
+        valid=true;   
+        break;
       }
     }
-    if(valid == false){
+    if(valid){
+      myLocalisationError.classList.add("error");
+      return true;
+    }
+    else{
       myLocalisationError.classList.remove("error");
       return false;
     }
-}
+
+  }
 
 //Checkbox
 function checkCheckBox(){
@@ -213,5 +217,5 @@ modalConfirmationBtnClose.forEach((btnClose2) => btnClose2.addEventListener("cli
 
 // close modal form
 function closeConfirmation(){ // fonction qui arrete l'affichage du modal
-  modalConfirmation.style.display ="none"; 
+  modalConfirmation.style.display ="none";
 }

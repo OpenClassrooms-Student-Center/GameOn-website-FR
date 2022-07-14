@@ -23,7 +23,6 @@ body {
           flex-direction: column;
   background-image: url("background.png");
   font-family: var(--font-default);
-  font-size: 18px;
   max-width: 1300px;
   margin: 0 auto;
 }
@@ -61,8 +60,7 @@ img {
   margin: 5px;
   text-decoration: none;
   font-size: 20px;
-  font-family: Roboto,
- sans-serif;
+  font-family: Roboto, sans-serif;
 }
 
 .topnav a:hover {
