@@ -175,6 +175,7 @@ main {
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
+  min-height: 80vh;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
   background: #232323;
@@ -183,6 +184,15 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+}
+
+#confirmation-modal {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: normal;
+  text-align: center;
+  display: none;
 }
 
 .modal-body {
@@ -336,6 +346,21 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+.btn-thanks {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+  position: absolute;
+  bottom: 20px;
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;
