@@ -32,14 +32,18 @@ img {
 
 .topnav {
   overflow: hidden;
-  margin: 3.5%;
+  padding: 30px;
+  background-color: white;
 }
+
 .header-logo {
   float: left;
 }
+
 .main-navbar {
   float: right;
 }
+
 .topnav a {
   float: left;
   display: block;
@@ -76,9 +80,7 @@ img {
     float: right;
     display: block;
   }
-}
 
-@media screen and (max-width: 768px) {
   .topnav.responsive {
     position: relative;
   }
@@ -86,6 +88,7 @@ img {
     position: absolute;
     right: 0;
     top: 0;
+    margin: 35px;
   }
   .topnav.responsive a {
     float: none;
@@ -95,13 +98,35 @@ img {
 }
 
 @media screen and (max-width: 540px) {
+  .header-logo img {
+    padding-top: 10px;
+    width: 150px;
+  }
+
+  .main-navbar {
+    width: 100%;
+  }
+
+  .header-logo {
+    position: absolute;
+    z-index: -1;
+  }
+
+  .topnav {
+    z-index: 3;
+  }
+
   .topnav a {
     display: none;
+    margin: 0;
   }
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+  }
+
+  .topnav.responsive .icon {
+    margin: 30px;
   }
 }
 
@@ -172,10 +197,10 @@ main {
 }
 
 .content {
-  margin: 5% auto;
+  margin: 1% auto;
   width: 100%;
   max-width: 500px;
-  min-height: 80vh;
+  min-height: 98vh;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
   background: #232323;
@@ -361,6 +386,16 @@ input[data-error]::after {
   bottom: 20px;
 }
 
+@media screen and (max-width: 540px) {
+  .content {
+    margin-top: 110px;
+  }
+
+  .bground {
+    background-color: white;
+  }
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -542,6 +577,22 @@ footer {
   .copyrights {
     margin-top: 50px;
     text-align: center;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .hero-headline {
+    font-size: 2.8rem;
+    font-weight: bold;
+  }
+
+  .hero-text {
+    margin-top: 30px;
+    font-size: 1.2rem;
+  }
+
+  .hero-content {
+    padding: 0;
   }
 }
 

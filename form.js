@@ -16,7 +16,6 @@ buttonSubmit.addEventListener("click", validateForm);
 
 function validateForm(e) {
   e.preventDefault();
-  e.stopPropagation();
 
   let valid = true;
 
@@ -44,7 +43,7 @@ function clearErrorMessage(element) {
   element.parentElement.setAttribute("data-error", "");
 }
 
-// set data-error attribute
+// add data-error attribute
 function addErrorAttribute(element) {
   element.parentElement.setAttribute("data-error-visible", "true");
 }
@@ -52,6 +51,7 @@ function addErrorAttribute(element) {
 // write a personnalized error message
 function writeErrorMessage(element, message) {
   element.parentElement.setAttribute("data-error", message);
+  console.log(element);
 }
 
 // all personalized error messages
@@ -90,6 +90,7 @@ for (let field of fields) {
 function closeThanksModal() {
   confirmationModal.style.display = "none";
   modalbg.style.display = "none";
+  body.style.overflow = "auto";
 }
 
 // close confirmation event
