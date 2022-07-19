@@ -1,0 +1,28 @@
+.modal-btn {
+    font-size: 145%;
+    background: #fe142f;
+    display: flex;
+    margin: auto;
+    padding: 2em;
+    color: #fff;
+    padding: 0.75rem 2.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.modal-btn:hover {
+    background: #3876ac;
+}
+.button {
+    background: #fe142f;
+    margin-top: 0.5em;
+    padding: 1em;
+    color: #fff;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.button:hover {
+    background: #3876ac;
+}

@@ -1,0 +1,38 @@
+:root {
+  --font-default: "DM Sans", Arial, Helvetica, sans-serif;
+  --font-slab: var(--font-default);
+  --modal-duration: 0.8s;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Landing Page */
+body {
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background-image: url("background.png");
+  font-family: var(--font-default);
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+p {
+  margin-bottom: 0;
+  padding: 0.5vw;
+}
+
+img {
+  padding-right: 1rem;
+}
+/*# sourceMappingURL=base.css.map */
