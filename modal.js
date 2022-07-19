@@ -3,7 +3,6 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelectorAll(".close")[0];
-const form = document.querySelectorAll("form")[0];
 const body = document.querySelectorAll("body")[0];
 
 // change to responsive navbar

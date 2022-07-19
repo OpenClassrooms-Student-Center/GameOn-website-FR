@@ -2,21 +2,21 @@
 const confirmationModal = document.getElementById("confirmation-modal");
 const closeThanksBtn = document.querySelectorAll(".close-thanks-modal");
 const mainModal = document.getElementsByClassName("content")[0];
+const form = document.getElementById("reserve");
 const buttonSubmit = document.getElementById("btn-submit");
-let fields = document.querySelectorAll("form input[required]");
-let locations = document.querySelectorAll("input[type=radio]");
-let firstname = document.getElementById("firstname");
-let lastname = document.getElementById("lastname");
-let birthdate = document.getElementById("birthdate");
-let email = document.getElementById("email");
-let conditionsUtilisation = document.getElementById("conditionsUtilisation");
+const fields = document.querySelectorAll("form input[required]");
+const locations = document.querySelectorAll("input[type=radio]");
+const firstname = document.getElementById("firstname");
+const lastname = document.getElementById("lastname");
+const birthdate = document.getElementById("birthdate");
+const email = document.getElementById("email");
+const nbrTurnement = document.getElementById("quantity");
+const conditionsUtilisation = document.getElementById("conditionsUtilisation");
 
 // validate form
-buttonSubmit.addEventListener("click", validateForm);
+form.addEventListener("submit", validateForm);
 
-function validateForm(e) {
-  e.preventDefault();
-
+function validateForm(event) {
   let valid = true;
 
   for (let field of fields) {
@@ -34,6 +34,8 @@ function validateForm(e) {
     mainModal.style.display = "none";
     confirmationModal.style.display = "flex";
     form.reset();
+  } else {
+    event.preventDefault();
   }
 }
 
@@ -51,7 +53,6 @@ function addErrorAttribute(element) {
 // write a personnalized error message
 function writeErrorMessage(element, message) {
   element.parentElement.setAttribute("data-error", message);
-  console.log(element);
 }
 
 // all personalized error messages
@@ -68,20 +69,72 @@ function udapteAttribute(element) {
     element.target.removeAttribute("required");
   }
 }
-
 for (let location of locations) {
   location.addEventListener("change", udapteAttribute);
   writeErrorMessage(location, "Vous devez choisir une option");
 }
 
-// check fields validity (without needing to press submit button)
-for (let field of fields) {
-  field.addEventListener("input", function () {
-    if (!field.checkValidity()) {
-      addErrorAttribute(field);
-      addErrorMessages();
+// check fields without needing to press submit button
+
+firstname.addEventListener("input", function (e) {
+  if (!e.target.checkValidity()) {
+    addErrorAttribute(e.target);
+    writeErrorMessage(firstname, "Veuillez entrer 2 caractères ou plus.");
+  } else {
+    clearErrorMessage(e.target);
+  }
+});
+
+lastname.addEventListener("input", function (e) {
+  if (!e.target.checkValidity()) {
+    addErrorAttribute(e.target);
+    writeErrorMessage(lastname, "Veuillez entrer 2 caractères ou plus.");
+  } else {
+    clearErrorMessage(e.target);
+  }
+});
+
+birthdate.addEventListener("input", function (e) {
+  if (!e.target.checkValidity()) {
+    addErrorAttribute(e.target);
+    writeErrorMessage(birthdate, "Vous devez entrer votre date de naissance.");
+  } else {
+    clearErrorMessage(e.target);
+  }
+});
+
+email.addEventListener("input", function (e) {
+  if (!e.target.checkValidity()) {
+    addErrorAttribute(e.target);
+  } else {
+    clearErrorMessage(e.target);
+  }
+});
+
+nbrTurnement.addEventListener("input", function (e) {
+  if (!e.target.checkValidity()) {
+    addErrorAttribute(e.target);
+  } else {
+    clearErrorMessage(e.target);
+  }
+});
+
+conditionsUtilisation.addEventListener("change", function (e) {
+  if (!e.target.checkValidity()) {
+    addErrorAttribute(e.target);
+    writeErrorMessage(conditionsUtilisation, "Vous devez vérifier que vous acceptez les termes et conditions.");
+  } else {
+    clearErrorMessage(e.target);
+  }
+});
+
+for (let location of locations) {
+  location.addEventListener("change", function (e) {
+    if (!e.target.checkValidity()) {
+      addErrorAttribute(e.target);
+      writeErrorMessage(location, "Vous devez choisir une option");
     } else {
-      clearErrorMessage(field);
+      clearErrorMessage(e.target);
     }
   });
 }
