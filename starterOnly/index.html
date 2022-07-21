@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <title>Reservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="modal.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
@@ -60,7 +61,6 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
             >
               <div
                 class="formData">
@@ -101,6 +101,7 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
+                  onfocus="this.max=new Date().toISOString().split('T')[0]"
                 /><br>
               </div>
               <div
@@ -110,7 +111,7 @@
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                class="formData">
+                class="formData" id="citiesContests">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -206,6 +207,13 @@
                 value="C'est parti"
               />
             </form>
+            <div id="sucess">
+              <h2>Merci pour 
+              </br>
+                votre inscription
+              </h2>
+              <button onclick="closeModal()" class="close_sucess">Fermer</button>
+            </div>
           </div>
         </div>
       </div>
@@ -215,6 +223,9 @@
         Copyright 2014 - 2022, GameOn Inc.
       </p>
     </footer>
-    <script src="modal.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/form.js"></script>
+    <script src="js/submit.js"></script>
+    
   </body>
 </html>
