@@ -18,7 +18,7 @@ const closeBtn = document.getElementById("close");
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // Lauch close modal event
-closeBtn.addEventListener("click", closeModal, false); 
+closeBtn.addEventListener("click", closeModal, false);
 
 // launch modal form
 function launchModal() {
@@ -32,7 +32,7 @@ function closeModal() {
 
 // Function validate form 
 function validate() {
-  event.preventDefault() // Disable default behavior of form 
+  event.preventDefault() // Disable default behavior of form.
   alert("Merci! Votre réservation a été reçue."); // Alert to show réservation is done 
   closeModal(); // Close the form 
 }
