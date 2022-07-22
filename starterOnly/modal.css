@@ -197,10 +197,17 @@ label {
   display: inline-block;
   margin-bottom: 11px;
 }
+
 input {
   padding: 8px;
   border: 0.8px solid #ccc;
   outline: none;
+}
+input:invalid {
+  border: 2px solid red;
+}
+input:valid {
+  border: 2px solid green;
 }
 .text-control {
   margin: 0;
