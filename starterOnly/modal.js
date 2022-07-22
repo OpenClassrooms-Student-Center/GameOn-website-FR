@@ -29,3 +29,10 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = "none";
 }
+
+// Function validate form 
+function validate() {
+  event.preventDefault()
+  console.log("test");
+}
+
