@@ -32,6 +32,7 @@ function closeModal() {
 
 // Function validate form 
 function validate() {
+  alert("Merci! Votre réservation a été reçue.");
   event.preventDefault()
   console.log("test");
 }
