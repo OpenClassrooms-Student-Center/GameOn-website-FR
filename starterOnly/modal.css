@@ -491,34 +491,8 @@ footer {
   margin: 0 20px;
 }
 
-/** RESPONSIVE MODIFICATION **/
-@media screen and (max-width: 1100px) {
-  .hero-section h1 {
-    font-size: 4.5rem;
-  }
 
-  .hero-content {
-    min-width: 350px;
-  }
 
-  .main-navbar {
-    width: 100%;
-    margin-top: 4%;
-  }
-}
-@media screen and (max-width: 700px) {
-  .hero-section h1 {
-    font-size: 2.5rem;
-  }
-}
-@media screen and (max-width: 800px) {
-  .main-navbar {
-    width: 100%;
-    margin-top: -55px;
-  }
-}
-
-/** END RESPONSIVE MODIFICATION **/
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -558,6 +532,57 @@ footer {
   }
 }
 
+
+
+
+/** RESPONSIVE MODIFICATION **/
+
+h1,p{
+    transition: all 0.25s ease-in-out 0.25s;
+}
+@media screen and (max-width: 1100px) {
+  .hero-section h1 {
+    font-size: 4.5rem;
+  }
+
+  .hero-content {
+    min-width: 350px;
+  }
+
+  .main-navbar {
+    width: 100%;
+    margin-top: 4%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .hero-section h1 {
+    font-size: 2.5rem;
+    text-align:center;
+  }
+  .hero-text {
+    text-align: center;
+  }
+  main {
+    padding-left: 0;
+    padding-right: 0;
+    margin: 0;
+  }
+  .hero-img img { 
+    border-radius: 0px;
+  }
+
+}
+@media screen and (max-width: 800px) {
+  .main-navbar {
+    width: 100%;
+    margin-top: -55px;
+  }
+}
+
+/** END RESPONSIVE MODIFICATION **/
+
+
+
 @keyframes modalopen {
   from {
     opacity: 0;
@@ -567,3 +592,6 @@ footer {
     opacity: 1;
   }
 }
+
+
+
