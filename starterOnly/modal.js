@@ -1,9 +1,13 @@
 function editNav() {
   var x = document.getElementById("myTopnav");
+  var y = document.querySelector(".header-logo");
+
   if (x.className === "topnav") {
     x.className += " responsive";
+    y.style.display = "none";
   } else {
     x.className = "topnav";
+    y.style.display = "block";
   }
 }
 
