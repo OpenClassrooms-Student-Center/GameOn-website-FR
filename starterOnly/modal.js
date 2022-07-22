@@ -11,14 +11,17 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-// Found closeBtn by ID since ID should be unique we avoid some problem like a other element which would have the same class
+
+// Found button by ID
 const closeBtn = document.getElementById("close");
-
-
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-// Lauch close modal event
-closeBtn.addEventListener("click", closeModal, false);
+const btnSubmit = document.getElementById("btn-submit");
+// DOM Elements for FORM Check
+const form = document.getElementsByTagName("form")[0];
+const inputFirst = document.getElementById("close");
+const inputLast = document.getElementById("last");
+const inputEmail = document.getElementById("email");
+const inputBirthdate = document.getElementById("birhtdate");
+const checkBox1 = document.getElementById("checkbox1");
 
 // launch modal form
 function launchModal() {
@@ -30,10 +33,36 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-// Function validate form 
-function validate() {
-  event.preventDefault() // Disable default behavior of form.
-  alert("Merci! Votre réservation a été reçue."); // Alert to show réservation is done 
-  closeModal(); // Close the form 
+function stateCheckBox() {
+  // Check if i can enable the button submit by checking if "checkbox" is checked
+    if (checkBox1.checked) {
+      btnSubmit.classList.remove("btn-disabled");
+      return true;
+    } else {
+      btnSubmit.classList.add("btn-disabled");
+      return false;
+    }
 }
+
+// Function validate form
+function validate() {
+  event.preventDefault(); // Avoid default behavior of form
+  if (stateCheckBox() == true)
+  {
+    alert("Merci! Votre réservation a été reçue."); // Alert to show réservation is done
+  }
+  else 
+  {
+    alert("Vous devez accepter les conditions d'utilisation pour valider le formulaire !");
+  }
+  //
+  // closeModal(); // Close the form
+}
+
+// Lauch CheckBox Check
+checkBox1.addEventListener("click", stateCheckBox);
+// launch modal event
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+// Lauch close modal event
+closeBtn.addEventListener("click", closeModal);
 
