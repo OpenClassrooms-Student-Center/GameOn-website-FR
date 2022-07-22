@@ -32,8 +32,8 @@ function closeModal() {
 
 // Function validate form 
 function validate() {
-  alert("Merci! Votre réservation a été reçue.");
-  event.preventDefault()
-  console.log("test");
+  event.preventDefault() // Disable default behavior of form 
+  alert("Merci! Votre réservation a été reçue."); // Alert to show réservation is done 
+  closeModal(); // Close the form 
 }
 
