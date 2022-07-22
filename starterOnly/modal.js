@@ -3,7 +3,7 @@ function editNav() {
   var y = document.querySelector(".header-logo");
 
   if (x.className === "topnav") {
-    x.className += " responsive";
+    x.className += " responsive fixnavbar";
     y.style.display = "none";
   } else {
     x.className = "topnav";

@@ -59,14 +59,18 @@ img {
   border-radius: 15px;
 }
 
+
+
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (min-width: 800px) {
 .topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
 }
-
-.topnav .icon {
-  display: none;
 }
 
 @media screen and (max-width: 800px) {
@@ -491,8 +495,6 @@ footer {
   margin: 0 20px;
 }
 
-
-
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -532,13 +534,21 @@ footer {
   }
 }
 
-
-
+@keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 /** RESPONSIVE MODIFICATION **/
 
-h1,p{
-    transition: all 0.25s ease-in-out 0.25s;
+h1,
+p {
+  transition: all 0.25s ease-in-out 0.25s;
 }
 @media screen and (max-width: 1100px) {
   .hero-section h1 {
@@ -557,7 +567,7 @@ h1,p{
 @media screen and (max-width: 700px) {
   .hero-section h1 {
     font-size: 2.5rem;
-    text-align:center;
+    text-align: center;
   }
   .hero-text {
     text-align: center;
@@ -567,31 +577,20 @@ h1,p{
     padding-right: 0;
     margin: 0;
   }
-  .hero-img img { 
+  .hero-img img {
     border-radius: 0px;
   }
-
 }
 @media screen and (max-width: 800px) {
   .main-navbar {
     width: 100%;
-    margin-top: -55px;
+    margin-top: -50px;
   }
+}
+
+
+.fixnavbar .main-navbar {
+  margin-top: 0px;
 }
 
 /** END RESPONSIVE MODIFICATION **/
-
-
-
-@keyframes modalopen {
-  from {
-    opacity: 0;
-    transform: translateY(-150px);
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-
-
