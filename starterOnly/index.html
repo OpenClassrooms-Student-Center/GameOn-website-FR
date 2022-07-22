@@ -57,7 +57,7 @@
     </div>
     <div class="bground">
       <div class="content">
-        <span class="close"></span>
+        <span id="close" class="close"></span>
         <div class="modal-body">
           <form name="reserve" action="index.html" onsubmit="return validate();">
             <div class="formData">
@@ -89,7 +89,7 @@
                 À combien de tournois GameOn avez-vous déjà participé ?
               </label>
               <br />
-              <input type="number" class="text-control" id="quantity" name="quantity" value="0" min="0" max="99" />
+              <input type="number" class="text-control" id="quantity" name="quantity" value="0" min="0" max="99" required />
             </div>
             <p class="text-label">
               A quel tournoi souhaitez-vous participer cette année ?
@@ -127,7 +127,7 @@
               </label>
             </div>
             <div class="formData">
-              <input class="checkbox-input" type="checkbox" id="checkbox1" checked disabled />
+              <input class="checkbox-input" type="checkbox" id="checkbox1"/>
               <label class="checkbox2-label" for="checkbox1">
                 <span class="checkbox-icon"></span>
                 J'ai lu et accepté les conditions d'utilisation.
@@ -140,7 +140,7 @@
               </label>
               <br />
             </div>
-            <input class="btn-submit" type="submit" value="C'est parti" />
+            <input id="btn-submit" class="btn-submit btn-disabled" type="submit" value="C'est parti" />
           </form>
         </div>
       </div>
