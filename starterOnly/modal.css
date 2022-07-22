@@ -206,9 +206,7 @@ input {
 input:invalid {
   border: 2px solid red;
 }
-input:valid {
-  border: 2px solid green;
-}
+
 .text-control {
   margin: 0;
   padding: 8px;
