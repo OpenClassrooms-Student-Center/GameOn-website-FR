@@ -592,5 +592,8 @@ p {
 .fixnavbar .main-navbar {
   margin-top: 0px;
 }
+.fixnavbar .main-navbar {
+  border-bottom: 2px solid red;
+}
 
 /** END RESPONSIVE MODIFICATION **/
