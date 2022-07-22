@@ -20,3 +20,8 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+// Function validate form 
+function validate() {
+  event.preventDefault()
+  console.log("test");
+}
