@@ -15,9 +15,9 @@ const formData = document.querySelectorAll(".formData");
 // Found button by ID
 const closeBtn = document.getElementById("close");
 const btnSubmit = document.getElementById("btn-submit");
+
 // DOM Elements for FORM Check
-const form = document.getElementsByTagName("form")[0];
-const inputFirst = document.getElementById("close");
+const inputFirst = document.getElementById("first");
 const inputLast = document.getElementById("last");
 const inputEmail = document.getElementById("email");
 const inputBirthdate = document.getElementById("birhtdate");
@@ -48,7 +48,7 @@ function stateCheckBox() {
 function validate() {
   event.preventDefault(); // Avoid default behavior of form
 
-  // We check only State of checkbox 
+  // We check only State of checkbox since default behavior of HTML required and minlength do the job and prevent from sending form
   if (stateCheckBox() == true)
   {
     alert("Merci! Votre réservation a été reçue."); // Alert to show réservation is done
@@ -60,10 +60,19 @@ function validate() {
   }
 }
 
-// Lauch CheckBox Check each time we click on the Checkbox1 (T.O.S)
-checkBox1.addEventListener("click", stateCheckBox);
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-// Lauch close modal event
-closeBtn.addEventListener("click", closeModal);
+function Main() {
+  // launch modal event
+  modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
+  // Lauch close modal event
+  closeBtn.addEventListener("click", closeModal);
+
+  // Lauch CheckBox Check each time we click on the Checkbox1 (T.O.S)
+  checkBox1.addEventListener("click", stateCheckBox);
+
+  // Custom message for input 
+  customMessageInput();
+}
+
+
+Main();
