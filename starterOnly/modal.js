@@ -44,40 +44,20 @@ function stateCheckBox() {
   }
 }
 
-function CustomMessageError() {
+// Set custom error message
+function customMessageInput(elementID,Message) {
 
-  setCustomMessageError(
-    inputBirthdate,
-    "Vous devez entrer votre date de naissance."
-  );
-  setCustomMessageError(
-    inputFirst,
-    "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
-  );
-  setCustomMessageError(
-    inputLast,
-    "Veuillez entrer 2 caractères ou plus pour le champ du nom."
-  );
-
-  setCustomMessageError(
-    inputEmail,
-    "Veuillez entrer un email au bon format."
-  );
-
-
-}
-// Function set custom message
-function setCustomMessageError(TargetID, Message) {
-  TargetID.addEventListener("input", () => {
-    TargetID.setCustomValidity("");
-    TargetID.checkValidity();
+  elementID.addEventListener('input', () => {
+    elementID.setCustomValidity('');
+    elementID.checkValidity();
   });
 
-  TargetID.addEventListener("invalid", () => {
-    TargetID.setCustomValidity(Message);
+  elementID.addEventListener('invalid', () => {
+    elementID.setCustomValidity(Message);
   });
-}
+  
 
+}
 // Function validate form
 function validate() {
   event.preventDefault(); // Avoid default behavior of form
@@ -86,10 +66,9 @@ function validate() {
   if (stateCheckBox() == true) {
     alert("Merci! Votre réservation a été reçue."); // Alert to show réservation is done
     closeModal(); // Close the form
-  } else {
-    alert(
-      "Vous devez accepter les conditions d'utilisation pour valider le formulaire !"
-    );
+  }
+  else {
+    alert("Vous devez accepter les conditions d'utilisation pour valider le formulaire !");
   }
 }
 
@@ -103,9 +82,13 @@ function Main() {
   // Lauch CheckBox Check each time we click on the Checkbox1 (T.O.S)
   checkBox1.addEventListener("click", stateCheckBox);
 
-  // Custom message for input
-  CustomMessageError();
+  // Custom message for input 
+  customMessageInput(inputFirst,"Veuillez entrer 2 caractères ou plus pour le champ du prénom.");
+  customMessageInput(inputLast, "Veuillez entrer 2 caractères ou plus pour le champ du nom.");
+  customMessageInput(inputEmail, "Veuillez entrer un email au bon format.");
+  customMessageInput(inputBirthdate, "Vous devez entrer votre date de naissance.");
 
 }
+
 
 Main();
