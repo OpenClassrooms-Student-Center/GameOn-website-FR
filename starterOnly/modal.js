@@ -35,13 +35,47 @@ function closeModal() {
 
 // Check if i can enable the button submit by checking if "checkbox" is checked
 function stateCheckBox() {
-    if (checkBox1.checked) {
-      btnSubmit.classList.remove("btn-disabled");
-      return true;
-    } else {
-      btnSubmit.classList.add("btn-disabled");
-      return false;
-    }
+  if (checkBox1.checked) {
+    btnSubmit.classList.remove("btn-disabled");
+    return true;
+  } else {
+    btnSubmit.classList.add("btn-disabled");
+    return false;
+  }
+}
+
+function CustomMessageError() {
+
+  setCustomMessageError(
+    inputBirthdate,
+    "Vous devez entrer votre date de naissance."
+  );
+  setCustomMessageError(
+    inputFirst,
+    "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
+  );
+  setCustomMessageError(
+    inputLast,
+    "Veuillez entrer 2 caractères ou plus pour le champ du nom."
+  );
+
+  setCustomMessageError(
+    inputEmail,
+    "Veuillez entrer un email au bon format."
+  );
+
+
+}
+// Function set custom message
+function setCustomMessageError(TargetID, Message) {
+  TargetID.addEventListener("input", () => {
+    TargetID.setCustomValidity("");
+    TargetID.checkValidity();
+  });
+
+  TargetID.addEventListener("invalid", () => {
+    TargetID.setCustomValidity(Message);
+  });
 }
 
 // Function validate form
@@ -49,14 +83,13 @@ function validate() {
   event.preventDefault(); // Avoid default behavior of form
 
   // We check only State of checkbox since default behavior of HTML required and minlength do the job and prevent from sending form
-  if (stateCheckBox() == true)
-  {
+  if (stateCheckBox() == true) {
     alert("Merci! Votre réservation a été reçue."); // Alert to show réservation is done
     closeModal(); // Close the form
-  }
-  else 
-  {
-    alert("Vous devez accepter les conditions d'utilisation pour valider le formulaire !");
+  } else {
+    alert(
+      "Vous devez accepter les conditions d'utilisation pour valider le formulaire !"
+    );
   }
 }
 
@@ -70,9 +103,9 @@ function Main() {
   // Lauch CheckBox Check each time we click on the Checkbox1 (T.O.S)
   checkBox1.addEventListener("click", stateCheckBox);
 
-  // Custom message for input 
-  customMessageInput();
-}
+  // Custom message for input
+  CustomMessageError();
 
+}
 
 Main();
