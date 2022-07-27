@@ -8,6 +8,14 @@
   margin: 0;
   padding: 0;
 }
+
+/*--- Field Error ---*/
+.errorField{
+  color: #ff0000;
+  font-size: 0.7rem;
+  display:none;
+} 
+
 /* Landing Page */
 
 body {
@@ -207,7 +215,13 @@ input {
   border-radius: 8px;
   font-size: 20px;
   height: 48px;
+/* mettre border: none lorsque qu'il n'y a pas d'erreur*/
+  border: none;
 }
+
+
+
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -226,12 +240,13 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
+
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
-} */
+}
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
