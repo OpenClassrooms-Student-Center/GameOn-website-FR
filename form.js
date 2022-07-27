@@ -17,6 +17,7 @@ const conditionsUtilisation = document.getElementById("conditionsUtilisation");
 form.addEventListener("submit", validateForm);
 
 function validateForm(e) {
+  e.preventDefault();
   let valid = true;
 
   for (let field of fields) {
@@ -34,8 +35,6 @@ function validateForm(e) {
     mainModal.style.display = "none";
     confirmationModal.style.display = "flex";
     form.reset();
-  } else {
-    e.preventDefault();
   }
 }
 
