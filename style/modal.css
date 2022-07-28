@@ -14,7 +14,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -32,14 +31,18 @@ img {
 
 .topnav {
   overflow: hidden;
-  margin: 3.5%;
+  padding: 30px;
+  background-color: white;
 }
+
 .header-logo {
-    float: left;
+  float: left;
 }
+
 .main-navbar {
-    float: right;
+  float: right;
 }
+
 .topnav a {
   float: left;
   display: block;
@@ -69,19 +72,22 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
   }
-}
 
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
     top: 0;
+    margin: 35px;
   }
   .topnav.responsive a {
     float: none;
@@ -90,16 +96,38 @@ img {
   }
 }
 
+@media screen and (max-width: 540px) {
+  .header-logo img {
+    padding-top: 10px;
+    width: 150px;
+  }
 
+  .main-navbar {
+    width: 100%;
+  }
 
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+  .header-logo {
+    position: absolute;
+    z-index: -1;
+  }
+
+  .topnav {
+    z-index: 3;
+  }
+
+  .topnav a {
+    display: none;
+    margin: 0;
+  }
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
-} 
+
+  .topnav.responsive .icon {
+    margin: 30px;
+  }
+}
 
 main {
   font-size: 130%;
@@ -111,8 +139,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -170,9 +196,10 @@ main {
 }
 
 .content {
-  margin: 5% auto;
+  margin: 1% auto;
   width: 100%;
   max-width: 500px;
+  min-height: 98vh;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
   background: #232323;
@@ -181,6 +208,15 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+}
+
+#confirmation-modal {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: normal;
+  text-align: center;
+  display: none;
 }
 
 .modal-body {
@@ -215,7 +251,7 @@ input {
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  text-align: left;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -226,12 +262,13 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
+
 input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+  content: attr(data-error);
+  font-size: 0.4em;
+  color: red;
+}
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -333,6 +370,31 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+.btn-thanks {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+  position: absolute;
+  bottom: 20px;
+}
+
+@media screen and (max-width: 540px) {
+  .content {
+    margin-top: 110px;
+  }
+
+  .bground {
+    background-color: white;
+  }
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -517,6 +579,22 @@ footer {
   }
 }
 
+@media screen and (max-width: 540px) {
+  .hero-headline {
+    font-size: 2.8rem;
+    font-weight: bold;
+  }
+
+  .hero-text {
+    margin-top: 30px;
+    font-size: 1.2rem;
+  }
+
+  .hero-content {
+    padding: 0;
+  }
+}
+
 @keyframes modalopen {
   from {
     opacity: 0;
@@ -526,4 +604,3 @@ footer {
     opacity: 1;
   }
 }
-
