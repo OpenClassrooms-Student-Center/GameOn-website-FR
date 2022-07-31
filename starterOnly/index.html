@@ -55,45 +55,57 @@
       <div class="bground">
         <div class="content">
           <span class="close"></span>
+          <div 
+            class="formConfirmation">
+            <span>Merci ! Votre réservation a été reçue.</span>
+          </div>
           <div class="modal-body">
             <!-- dans le form on le return en argument afin de récupérer les différent champ du form -->
             <form name="reserve" action="index.html" method="get" onsubmit="validate(this)">
               <div
-                class="formData">
+                class="formData"
+                data-error="Veuillez entrer 2 caractères ou plus pour le champ du Prénom."
+                data-error-visible="false"
+              >
                 <label for="first">Prénom</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="first"
                   name="first"
-                
+                  minlength="2"
                 /><br>
-                <p class="errorField" id="error-firstName"></p>
               </div>
               <div
-                class="formData">
+                class="formData"
+                data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom."
+                data-error-visible="false"
+                >
                 <label for="last">Nom</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
+                  minlength="2"
                 /><br>
-                <p class="errorField" id="error-lastName"></p>
               </div>
               <div
-                class="formData">
+                class="formData"
+                data-error="Veuillez entrer une adresse Email valide."
+                data-error-visible="false">
                 <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
-                  
+                  type="email"
                   id="email"
                   name="email"
                 /><br>
-                <p class="errorField" id="error-email"></p>
               </div>
               <div
-                class="formData">
+                class="formData"
+                data-error="Veuillez entrer une date de naissance valide."
+                data-error-visible="false">
                 <label for="birthday">Date de naissance</label><br>
                 <input
                   class="text-control"
@@ -101,17 +113,22 @@
                   id="birthday"
                   name="birthday"
                 /><br>
-                <p class="errorField" id="error-birthday"></p>
               </div>
               <div
-                class="formData">
+                class="formData"
+                id="tournois"
+                data-error="Veuillez entrer un nombre de tournois."
+                data-error-visible="false">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
-                <p class="errorField" id="error-number"></p>
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                class="formData">
+                class="formData"
+                id="checkbox"
+                data-error="Veuillez selectionner une Ville"
+                data-error-visible="false"
+                >
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -179,9 +196,11 @@
                   Portland</label
                 >
               </div>
-              <p class="errorField" id="error-Checkbox"></p>
               <div
-                class="formData">
+                class="formData"
+                id="conditionGeneral"
+                data-error="Veuillez accepter les conditions générale"
+                data-error-visible="false">
                 <input
                   class="checkbox-input"
                   type="checkbox"
@@ -196,7 +215,7 @@
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
-                  Je Je souhaite être prévenu des prochains évènements.
+                  Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
               </div>

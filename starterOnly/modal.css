@@ -9,13 +9,6 @@
   padding: 0;
 }
 
-/*--- Field Error ---*/
-.errorField{
-  color: #ff0000;
-  font-size: 0.7rem;
-  display:none;
-} 
-
 /* Landing Page */
 
 body {
@@ -220,7 +213,11 @@ input {
 }
 
 
-
+.formConfirmation {
+    padding: 3rem 8%;
+    margin: 15px auto;
+    display: none;
+}
 
 .formData[data-error]::after {
   content: attr(data-error);
