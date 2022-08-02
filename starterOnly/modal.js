@@ -21,6 +21,8 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  chkBox = false;
+  boxCondition = false;
 }
 
 // Ferme la modal
@@ -34,24 +36,24 @@ closeBtn.addEventListener("click", closeModal);
 // bloque L'action submit et garde en mémoire la selection.
 form[0].addEventListener('submit', (e) => {
   e.preventDefault();
+
 })
 
-function validationForm() {
-  
-}
+
 
 // Validation du Form
 function validate(form) {
-  if (form === true) {
-  
-}
   // On test la condition si elle est true ou false. Ce qui donnera la condition tertiaire.
-  let firstName = form["first"].value && form["first"].value.length >= 2;
+  let withSpace = form["first"].value;
+  let withoutSpace = withSpace.trim();
+  let firstName = withoutSpace && withoutSpace.length >= 2;
   // Condition tertiaire si FirstName est true alors envoie la function getMessageHide : false getMessageError
   //firstName ? getMessageHide("error-firstName", form["first"].getAttribute("id")) : getMessageError("il faut 2 lettres ou plus", "error-firstName", form["first"].getAttribute("id"));
   firstName ? form["first"].parentNode.setAttribute("data-error-visible", "false") : form["first"].parentNode.setAttribute("data-error-visible", "true");
 
-  let lastName = form["last"].value &&  form["last"].value.length >= 2;
+  let withSpace2 = form["last"].value;
+  let withoutSpace2 = withSpace2.trim();
+  let lastName = withoutSpace2 && withoutSpace2.length >= 2;
   //lastName ? getMessageHide("error-lastName", form["last"].getAttribute("id")) : getMessageError("il faut 2 lettres ou plus", "error-lastName", form["last"].getAttribute("id"));
   lastName ? form["last"].parentNode.setAttribute("data-error-visible", "false") : form["last"].parentNode.setAttribute("data-error-visible", "true");
 
@@ -107,10 +109,11 @@ function validate(form) {
         case "Portland":
           chkBxError.setAttribute("data-error-visible", "false");
           chkBox = box[i].checked;
-          break; 
+          break;
         default:
           chkBxError.setAttribute("data-error-visible", "true");
       }
+      console.log(chkBox);
     } else {
       chkBxError.setAttribute("data-error-visible", "true");
     } 
@@ -141,9 +144,11 @@ function validate(form) {
   ) {
     document.querySelector(".modal-body").style.display = "none";
     document.querySelector(".formConfirmation").style.display = "block";
+    
+  } else {
+    document.querySelector(".modal-body").style.display = "block";
+    document.querySelector(".formConfirmation").style.display = "none";
   }
-   
-
 
   
 }
