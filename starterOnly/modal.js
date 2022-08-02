@@ -1,3 +1,5 @@
+
+
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -20,6 +22,7 @@ const modalButton = document.querySelectorAll(".modal-btn");
 function launchModal() {
   modalBackground.style.display = "block";
 }
+
 
 //boucle modalButton qui demarre l'evenement avec un click
 modalButton.forEach((btn) => btn.addEventListener("click", launchModal));
