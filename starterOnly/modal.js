@@ -7,17 +7,33 @@ function editNav() {
   }
 }
 
-// DOM Elements
-const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
 
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// launch modal form
+
+
+// affichage du formulaire
+// selection des class concernées pour l'affichage formulaire
+const modalBackground = document.querySelector(".bground");
+const modalButton = document.querySelectorAll(".modal-btn");
+
+//fonction qui change le style css de la class bground en bloc
 function launchModal() {
-  modalbg.style.display = "block";
+  modalBackground.style.display = "block";
 }
 
+//boucle modalButton qui demarre l'evenement avec un click
+modalButton.forEach((btn) => btn.addEventListener("click", launchModal));
+
+//fermeture du formulaire
+
+// selection des class concernées pour la fermeture
+const closeMod = document.querySelector(".close")
+
+//fonction fermeture du formulaire
+function closeModal(){
+  modalBackground.style.display = "none";
+}
+
+//evenement qui ferme
+closeMod.addEventListener("click", closeModal)
 

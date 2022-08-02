@@ -61,16 +61,22 @@
               action="index.html"
               method="get"
               onsubmit="return validate();"
+              id="subscribe" 
+              
             >
+            <!-- rajout id -->
+
+
               <div
                 class="formData">
-                <label>Prénom</label><br>
+                <label>Prénom</label><br> <!-- nommer la classe exp first-->
                 <input
                   class="text-control"
                   type="text"
                   id="first"
                   name="first"
                   minlength="2"
+                  placeholder="Exemple : Laurent"
                 /><br>
               </div>
               <div
@@ -81,6 +87,7 @@
                   type="text"
                   id="last"
                   name="last"
+                  placeholder="Exemple : DUJARDIN"
                 /><br>
               </div>
               <div
@@ -91,6 +98,7 @@
                   type="email"
                   id="email"
                   name="email"
+                  placeholder="Exemple : laurentdujardin@gmail.com"
                 /><br>
               </div>
               <div
