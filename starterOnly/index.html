@@ -69,7 +69,7 @@
 
               <div
                 class="formData">
-                <label>Prénom</label><br> <!-- nommer la classe exp first-->
+                <label for="first">Prénom</label><br> <!-- nommer la classe exp first-->
                 <input
                   class="text-control"
                   type="text"
@@ -78,10 +78,11 @@
                   minlength="2"
                   placeholder="Exemple : Laurent"
                 /><br>
+                <p>Votre prénom doit contenir 2 lettres minimum</p>
               </div>
               <div
                 class="formData">
-                <label>Nom</label><br>
+                <label for="last">Nom</label><br>
                 <input
                   class="text-control"
                   type="text"
@@ -89,10 +90,11 @@
                   name="last"
                   placeholder="Exemple : DUJARDIN"
                 /><br>
+                <p>Votre prénom doit contenir 2 lettres minimum</p>
               </div>
               <div
                 class="formData">
-                <label>E-mail</label><br>
+                <label for="mail">E-mail</label><br>
                 <input
                   class="text-control"
                   type="email"
@@ -100,21 +102,32 @@
                   name="email"
                   placeholder="Exemple : laurentdujardin@gmail.com"
                 /><br>
+                <p>Veuillez saisir une adresse mail valide merci.</p>
               </div>
               <div
                 class="formData">
-                <label>Date de naissance</label><br>
+                <label for="birthdate">Date de naissance</label><br>
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
                 /><br>
+                <p>Veuillez ajouter une date de naissance au format JJ/MM/AAAA Merci</p>
               </div>
               <div
                 class="formData">
-                <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                <input 
+                type="number" 
+                class="text-control" 
+                id="quantity" 
+                name="quantity" 
+                min="0" 
+                max="99"
+                placeholder="2"
+                />
+                
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
