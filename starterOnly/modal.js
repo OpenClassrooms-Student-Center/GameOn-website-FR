@@ -33,18 +33,11 @@ function closeModal(){
   modalbg.style.display = "none";
 }
 
-//evenement qui ferme
+//evenement qui ferme le modal
 closeMod.addEventListener("click", closeModal)
 
-//IMPUT création des variables pour lier l'html
-
-let firstName     = document.querySelector('#first');
-let lastName      = document.querySelector('#last');
-let email         = document.querySelector('#email');
-let birthdate     = document.querySelector('#birthdate');
-let quantity      = document.querySelector('#quantity');
-let avertissement = document.querySelectorAll('.avertissement')
 
 
-avertissement.style.display = "none";
+
+
 
