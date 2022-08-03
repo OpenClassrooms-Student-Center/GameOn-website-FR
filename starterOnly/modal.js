@@ -1,5 +1,7 @@
+
+
 function editNav() {
-  var x = document.getElementById("myTopnav");
+  var x = document.querySelector("myTopnav");
   if (x.className === "topnav") {
     x.className += " responsive";
   } else {
@@ -8,9 +10,9 @@ function editNav() {
 }
 
 // DOM Elements
-const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
+const modalbg   = document.querySelector(".bground");
+const modalBtn  = document.querySelectorAll(".modal-btn");
+const formData  = document.querySelectorAll(".formData");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -19,5 +21,23 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.style.display = "block";
 }
+
+
+//fermeture du formulaire
+
+// selection des class concernées pour la fermeture
+const closeMod = document.querySelector(".close")
+
+//fonction fermeture du formulaire
+function closeModal(){
+  modalbg.style.display = "none";
+}
+
+//evenement qui ferme le modal
+closeMod.addEventListener("click", closeModal)
+
+
+
+
 
 
