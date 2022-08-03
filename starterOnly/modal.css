@@ -31,14 +31,11 @@ img {
 }
 
 .topnav {
-  overflow: hidden;
-  margin: 3.5%;
-}
-.header-logo {
-    float: left;
-}
-.main-navbar {
-    float: right;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  align-items: center;
+  padding: 2.8rem;
 }
 .topnav a {
   float: left;
@@ -73,15 +70,29 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
+    color: #fe142f;
+    font-size: 8vw;
+    margin-top: -2rem;
+  }
+
+  .topnav a:hover {
+    background: none;
+    color: #fe142f;
+  }
+
+  .main-navbar {
+    margin-top: 1.5rem;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {position: relative; display: block; padding-top: 4rem;}
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
     top: 0;
+    margin: 2.3rem 3.1rem;
+    background: none;
   }
   .topnav.responsive a {
     float: none;
@@ -92,14 +103,18 @@ img {
 
 
 
- @media screen and (max-width: 540px) {
+@media screen and (max-width: 540px) {
+  .header-logo img {
+    width: 200px;
+  }
+
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
-} 
+}
+
 
 main {
   font-size: 130%;
@@ -414,7 +429,7 @@ input[data-error]::after {
   margin-bottom: 10px;
 }
 .hero-content {
-  padding: 51px 67px;
+  padding: 50px 50px;
   grid-column: span 4;
   background: #232323;
   color: #fff;
@@ -422,7 +437,7 @@ input[data-error]::after {
   text-align: left;
   min-width: 424px;
 }
-.hero-content::after {
+/* .hero-content::after {
   content: "";
   width: 100%;
   height: 100%;
@@ -430,13 +445,13 @@ input[data-error]::after {
   position: absolute;
   right: -80px;
   top: 0;
-}
+} */
 .hero-content > * {
   position: relative;
   z-index: 1;
 }
 .hero-headline {
-  font-size: 6rem;
+  font-size: 5rem;
   font-weight: normal;
   white-space: nowrap;
 }
@@ -462,6 +477,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 .copyrights {
   color: #fe142f;
@@ -527,3 +543,10 @@ footer {
   }
 }
 
+
+
+.formConfirmation {
+    padding: 3rem 8%;
+    margin: 15px auto;
+    display: none;
+}
