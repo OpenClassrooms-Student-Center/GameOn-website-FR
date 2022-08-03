@@ -21,8 +21,9 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
-  chkBox = false;
-  boxCondition = false;
+  document.querySelector(".modal-body").style.display = "block";
+  document.querySelector(".formConfirmation").style.display = "none";
+
 }
 
 // Ferme la modal
@@ -144,7 +145,14 @@ function validate(form) {
   ) {
     document.querySelector(".modal-body").style.display = "none";
     document.querySelector(".formConfirmation").style.display = "block";
-    
+        let reset = document.querySelectorAll("input");
+    for (let i = 0; i < reset.length; i++) {
+      if (reset[i].type !== "submit") {
+        reset[i].value = "";
+      }
+    }
+        chkBox = false;
+        boxCondition = false;
   } else {
     document.querySelector(".modal-body").style.display = "block";
     document.querySelector(".formConfirmation").style.display = "none";
