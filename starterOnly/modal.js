@@ -46,13 +46,67 @@ let birthdate     = document.querySelector('#birthdate');
 let quantity      = document.querySelector('#quantity');
 let avertissements = document.querySelectorAll('.avertissement');
 
-avertissements.forEach(function (avertissement){
-  console.log(avertissement)
+avertissements.forEach(function (avertissement){ 
   avertissement.style.display = "none";
 }) 
 
+firstName.addEventListener('input', function(e) {
+  const value = e.target.value;
+  const avert  = firstName.closest('.formData').querySelector('.avertissement');
+  const avertform  = firstName.closest('.formData').querySelector('.text-control');
+  const regexFirst = /^[a-zA-Z ]{2,30}$/;
+  if (!regexFirst.test(value))
+  {
+    avert.style.display = 'block'
+    avert.style.color = 'red'
+    avertform.style.border = '3px solid #FF3012';
+    avertform.style.backgroundColor = '#ff0202bd'
+    }else
+  {
+    avert.style.display ='none';
+    avertform.style.border = '3px solid #13FA39';
+    avertform.style.backgroundColor = '#D6F4DC';
+  }
+})
+
+lastName.addEventListener('input', function(e) {
+  const value = e.target.value;
+  const avert  = lastName.closest('.formData').querySelector('.avertissement');
+  const avertform  = lastName.closest('.formData').querySelector('.text-control');
+  const regexFirst = /^[a-zA-Z ]{2,30}$/;
+  if (!regexFirst.test(value))
+  {
+    avert.style.display = 'block'
+    avert.style.color = 'red'
+    avertform.style.border = '3px solid #FF3012';
+    avertform.style.backgroundColor = '#ff0202bd'; 
+  
+    }else
+  {
+    avert.style.display ='none';
+    avertform.style.border = '3px solid #13FA39';
+    avertform.style.backgroundColor = '#D6F4DC';
+  }
+})
 
 
-
-
-
+  email.addEventListener('input', function(e)
+  {
+    const value = e.target.value;
+    const avert  = email.closest('.formData').querySelector('.avertissement');
+    const avertform  = email.closest('.formData').querySelector('.text-control');
+    const regexmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if(!regexmail.test(value))
+    {
+    avert.style.display = 'block'
+    avert.style.color = 'red'
+    avertform.style.border = '3px solid #FF3012';
+    avertform.style.backgroundColor = '#ff0202bd'; 
+      
+      }else
+      {
+        avert.style.display ='none';
+        avertform.style.border = '3px solid #13FA39';
+        avertform.style.backgroundColor = '#D6F4DC';
+      }
+  })
