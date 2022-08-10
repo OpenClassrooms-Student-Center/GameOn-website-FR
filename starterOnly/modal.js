@@ -110,3 +110,45 @@ lastName.addEventListener('input', function(e) {
         avertform.style.backgroundColor = '#D6F4DC';
       }
   })
+
+  birthdate.addEventListener('input', function(e)
+  {
+    const value = e.target.value;
+    const avert  = birthdate.closest('.formData').querySelector('.avertissement');
+    const avertform  = birthdate.closest('.formData').querySelector('.text-control');
+    const regexbirthdate = /^(0?[1-9]|1[0-2])[\/](0?[1-9]|[12]\d|3[01])[\/](19|20)\d{2}$/;
+    if(regexbirthdate.test(value))
+    {
+    avert.style.display = 'block'
+    avert.style.color = 'red'
+    avertform.style.border = '3px solid #FF3012';
+    avertform.style.backgroundColor = '#ff0202bd'; 
+      
+      }else
+      {
+        avert.style.display ='none';
+        avertform.style.border = '3px solid #13FA39';
+        avertform.style.backgroundColor = '#D6F4DC';
+      }
+  })
+
+  quantity.addEventListener('input', function(e)
+  {
+    const value = e.target.value;
+    const avert  = quantity.closest('.formData').querySelector('.avertissement');
+    const avertform  =  quantity.closest('.formData').querySelector('.text-control');
+    const regexquantity = /^[0-99][0-9]?$/;
+    if(!regexquantity.test(value))
+    {
+    avert.style.display = 'block'
+    avert.style.color = 'red'
+    avertform.style.border = '3px solid #FF3012';
+    avertform.style.backgroundColor = '#ff0202bd'; 
+
+      }else
+      {
+        avert.style.display ='none';
+        avertform.style.border = '3px solid #13FA39';
+        avertform.style.backgroundColor = '#D6F4DC';
+      }
+  })
