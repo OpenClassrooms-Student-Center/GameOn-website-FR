@@ -39,18 +39,19 @@ closeMod.addEventListener("click", closeModal)
 
 //IMPUT création des variables pour lier l'html
 
-let firstName     = document.querySelector('#first');
-let lastName      = document.querySelector('#last');
-let email         = document.querySelector('#email');
-let birthdate     = document.querySelector('#birthdate');
-let quantity      = document.querySelector('#quantity');
+let firstName      = document.querySelector('#first');
+let lastName       = document.querySelector('#last');
+let email          = document.querySelector('#email');
+let birthdate      = document.querySelector('#birthdate');
+let quantity       = document.querySelector('#quantity');
 let avertissements = document.querySelectorAll('.avertissement');
+
 
 avertissements.forEach(function (avertissement){ 
   avertissement.style.display = "none";
 }) 
 
-firstName.addEventListener('input', function(e) {
+firstName.addEventListener('change', function(e) {
   const value = e.target.value;
   const avert  = firstName.closest('.formData').querySelector('.avertissement');
   const avertform  = firstName.closest('.formData').querySelector('.text-control');
@@ -69,7 +70,7 @@ firstName.addEventListener('input', function(e) {
   }
 })
 
-lastName.addEventListener('input', function(e) {
+lastName.addEventListener('change', function(e) {
   const value = e.target.value;
   const avert  = lastName.closest('.formData').querySelector('.avertissement');
   const avertform  = lastName.closest('.formData').querySelector('.text-control');
@@ -90,7 +91,9 @@ lastName.addEventListener('input', function(e) {
 })
 
 
-  email.addEventListener('input', function(e)
+
+
+  email.addEventListener('change', function(e)
   {
     const value = e.target.value;
     const avert  = email.closest('.formData').querySelector('.avertissement');
@@ -111,7 +114,7 @@ lastName.addEventListener('input', function(e) {
       }
   })
 
-  birthdate.addEventListener('input', function(e)
+  birthdate.addEventListener('change', function(e)
   {
     const value = e.target.value;
     const avert  = birthdate.closest('.formData').querySelector('.avertissement');
@@ -132,7 +135,7 @@ lastName.addEventListener('input', function(e) {
       }
   })
 
-  quantity.addEventListener('input', function(e)
+  quantity.addEventListener('change', function(e)
   {
     const value = e.target.value;
     const avert  = quantity.closest('.formData').querySelector('.avertissement');
@@ -152,3 +155,5 @@ lastName.addEventListener('input', function(e) {
         avertform.style.backgroundColor = '#D6F4DC';
       }
   })
+
+  
