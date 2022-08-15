@@ -247,9 +247,9 @@ birthdate.addEventListener('change', function(){
 submitButton.addEventListener('click', function ()
 {
 	
-let formValid = parseInt(isFirstNameValid() && isLastNameValid() && isEmailValid() && isBirthdateValid() && isQantityValid() && isCityValid())
+const formValid = parseInt(isFirstNameValid() && isLastNameValid() && isEmailValid() && isBirthdateValid() && isQantityValid() && isCityValid())
 	// event.preventDefault() 
-if (formValid == true)
+if ( formValid <= 6)
 {
 	return alert("test valide");
 	
