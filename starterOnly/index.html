@@ -22,7 +22,7 @@
       <a href="#">À propos</a>
       <a href="#">Contact</a>
       <a href="#">Évènements passés</a>
-      <a href="#" class="icon"><i class="fa fa-bars"></i></a>
+      <a href="javascript:void(0);" class="icon"><i class="fa fa-bars"></i></a>
     </div>
   </nav>
   </header>
@@ -39,14 +39,14 @@
           aux réservations... Places limitées !
         </p>
         <button class="btn-signup modal-btn">
-          je m'inscris
+          Je m'inscris
         </button>
       </div>
       <div class="hero-img">
-        <img src="./bg_img.jpg" alt="img" />
+        <img src="bg_img.jpg" alt="img" />
       </div>
       <button class="btn-signup modal-btn">
-        je m'inscris
+        Je m'inscris
       </button>
     </div>
 
@@ -56,35 +56,35 @@
         <span class="close"></span>
         <div class="modal-body">
           <!-- FORM -->
-          <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
+          <form id="form" name="reserve" action="index.html" method="get" onsubmit="return validate();">
             <!-- FIRSTNAME -->
-            <div class="formData" >
-              <label>Prénom</label><br>
-              <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
+            <div class="formData" data-error="Vous devez entrez 2 caractères minimum" data-error-visible="false">
+              <label for="first">Prénom</label><br>
+              <input class="text-control" type="text" id="first" name="first" minlength="2" placeholder="Prénom" required/><br>
             </div>
             <!-- LASTNAME -->
-            <div class="formData" >
-              <label>Nom</label><br>
-              <input class="text-control" type="text" id="last" name="last" /><br>
+            <div class="formData" data-error="Vous devez entrez 2 caractères minimum" data-error-visible="false">
+              <label for="last">Nom</label><br>
+              <input class="text-control" type="text" id="last" name="last" placeholder="Nom" required/><br>
             </div>
             <!-- EMAIL -->
-            <div class="formData" >
+            <div class="formData" data-error="Vous devez entrez une adresse email valide" data-error-visible="false">
               <label for="email">E-mail</label><br>
-              <input class="text-control" type="email" id="email" name="email" /><br>
+              <input class="text-control" type="email" id="email" name="email" placeholder="exemple@gmail.com" required/><br>
             </div>
             <!-- BIRTHDATE -->
-            <div class="formData" >
+            <div class="formData" data-error="Vous devez entrez votre date de naissance" data-error-visible="false" >
               <label for="birthdate">Date de naissance</label><br>
-              <input class="text-control" type="date" id="birthdate" name="birthdate"/><br>
+              <input class="text-control" type="date" id="birthdate" name="birthdate" required/><br>
             </div>
             <!-- TOURNAMENTS -->
-            <div class="formData" >
+            <div class="formData" data-error="Vous devez entrez une valeur numérique" data-error-visible="false" >
               <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-              <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+              <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
             </div>
             <!-- LOCATIONS -->
             <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
-            <div class="formData" >
+            <div class="formData" id="allLocations" data-error="Vous devez sélectionner une ville" data-error-visible="false" >
               <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
               <label class="checkbox-label" for="location1">
                 <span class="checkbox-icon"></span>
@@ -111,7 +111,7 @@
                 Portland</label>
             </div>
             <!-- TERMS -->
-            <div class="formData">
+            <div class="formData" data-error="Vous devez accepter les conditons d'utilisation" data-error-visible="false">
               <input class="checkbox-input" type="checkbox" id="checkbox1" checked />
               <label class="checkbox2-label" for="checkbox1" required>
                 <span class="checkbox-icon"></span>
@@ -150,8 +150,9 @@
       Copyright 2014 - 2022, GameOn Inc.
     </p>
   </footer>
-  <script src="modal.js"></script>
-  <script src="confirmation.js"></script>
+  <script src="./modal.js"></script>
+  <script src="./confirmation.js"></script>
+  <script src="./validation.js"></script>
 </body>
 
 </html>
