@@ -25,6 +25,7 @@ function isLongEnough(currentLength, minimumLength) {
     return currentLength >= minimumLength;
 }
 
+
 // firstname check
 function checkFirstName() {
     if(isLongEnough(firstName.value.length, 2) && firstName.value.trim() !== '' && firstName.value.match(stringRegex)) {

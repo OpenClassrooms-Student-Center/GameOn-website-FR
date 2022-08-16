@@ -2,8 +2,10 @@ function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
     x.className += " responsive";
+    document.getElementById("hero").style.marginTop = "280px";
   } else {
     x.className = "topnav";
+    document.getElementById("hero").style.marginTop = "0";
   }
 }
 
