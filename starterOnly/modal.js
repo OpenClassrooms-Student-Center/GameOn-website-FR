@@ -56,78 +56,6 @@ avertissements.forEach(function (avertissement){
 	avertissement.style.display = "none";
 }) 
 
-// vérification regex
-
-function isFirstNameValid()
-	{
-		const regexFirst = /^[a-zA-Z ]{2,30}$/;
-
-		if (!regexFirst.test(firstName.value))
-		{
-			return false;
-		}
-
-		return true;
-	}
-
-function isLastNameValid()
-	{
-		const regexLast = /^[a-zA-Z ]{2,30}$/;
-
-		if (!regexLast.test(lastName.value))
-		{
-			return false;
-		}
-
-		return true;
-	}
-
-function isEmailValid()
-	{
-		const regexmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-		if (!regexmail.test(email.value))
-		{
-			return false;
-		}
-
-		return true;
-	}
-
-function isBirthdateValid()
-{
-	const regexbirthdate = /^(0?[1-9]|1[0-2])[\/](0?[1-9]|[12]\d|3[01])[\/](19|20)\d{2}$/;
-
-	if (!regexbirthdate.test(birthdate.value))
-	{
-		return false;
-	}
-
-	return true;
-}
-
-function isQantityValid()
-{
-	const regexquantity = /^[0-99][0-9]?$/;
-	if(!regexquantity.test(quantity.value))
-	{
-		return false;
-	}
-	return true;
-}
-
-function isCityValid()
-	{
-		let isValid = false;
-		cities.forEach(city =>
-			{
-				if (city.checked)
-				{
-					isValid = true
-				}
-			})
-			return isValid
-	}
 
 // fonction permet de revenir à l'élément parent puis retrouver la class concernée
 
@@ -240,6 +168,80 @@ birthdate.addEventListener('change', function(){
 	}
 	})
 
+// vérification regex
+
+function isFirstNameValid()
+	{
+		const regexFirst = /^[a-zA-Z ]{2,30}$/;
+
+		if (!regexFirst.test(firstName.value))
+		{
+			return false;
+		}
+
+		return true;
+	}
+	console.log(firstName)
+	console.log(isFirstNameValid())
+
+function isLastNameValid()
+	{
+		const regexLast = /^[a-zA-Z ]{2,30}$/;
+
+		if (!regexLast.test(lastName.value))
+		{
+			return false;
+		}
+
+		return true;
+	}
+
+function isEmailValid()
+	{
+		const regexmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+		if (!regexmail.test(email.value))
+		{
+			return false;
+		}
+
+		return true;
+	}
+
+function isBirthdateValid()
+{
+	const regexbirthdate = /^(0?[1-9]|1[0-2])[\/](0?[1-9]|[12]\d|3[01])[\/](19|20)\d{2}$/;
+
+	if (!regexbirthdate.test(birthdate.value))
+	{
+		return false;
+	}
+
+	return true;
+}
+
+function isQantityValid()
+{
+	const regexquantity = /^[0-99][0-9]?$/;
+	if(!regexquantity.test(quantity.value))
+	{
+		return false;
+	}
+	return true;
+}
+
+function isCityValid()
+	{
+		let isValid = false;
+		cities.forEach(city =>
+			{
+				if (city.checked)
+				{
+					isValid = true
+				}
+			})
+			return isValid
+	}
 
 	
 // validation du formulaire
@@ -247,14 +249,17 @@ birthdate.addEventListener('change', function(){
 submitButton.addEventListener('click', function ()
 {
 	
-const formValid = parseInt(isFirstNameValid() && isLastNameValid() && isEmailValid() && isBirthdateValid() && isQantityValid() && isCityValid())
+let formValid = (isFirstNameValid() && isLastNameValid() && isEmailValid() && isBirthdateValid() && isQantityValid() && isCityValid())
 	// event.preventDefault() 
-if ( formValid <= 6)
+	console.log(formValid)
+if (formValid )
 {
+
 	return alert("test valide");
 	
 }else 
 {
+	
 	return alert("le test n'est pas bon")
 }
 
