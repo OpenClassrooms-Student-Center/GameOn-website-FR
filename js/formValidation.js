@@ -105,7 +105,9 @@ function checkCheckBox() {
 // locations check
 function checkLocations() {
     allLocations.setAttribute('data-error-visible', 'true');
+    /* Loop into all locations */
     for (let i = 0; i < locations.length; i++) {
+        /* if there is a location who's checked the, we return true */
         if (locations[i].checked) {
             allLocations.setAttribute('data-error-visible', 'false');
             return true;
