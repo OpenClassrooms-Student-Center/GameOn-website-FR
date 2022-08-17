@@ -26,6 +26,7 @@ avertissements.forEach(function (avertissement){
 	avertissement.style.display = "none";
 }) 
 
+// ecoute de l'entree et diffusion du message d'erreur
 firstName.addEventListener('change', function() 
 {	
 	hideError(firstName);
@@ -87,7 +88,7 @@ agreement.addEventListener('change', function ()
 	}
 })
 
-
+// validation du formulaire complet
 submitButton.addEventListener('click', function (e)
 {
 	e.preventDefault();
@@ -123,7 +124,7 @@ submitButton.addEventListener('click', function (e)
 	showConfirmation();
 })
 
-
+// fermeture du modal
 function closeModal(){
 	modalbg.style.display = "none";
 }
@@ -137,11 +138,13 @@ function editNav() {
 	}
 }
 
+//retour au parent formData + recherche avertissement et text control
 function findEl(el, needle)
 {
 	return el.closest('.formData').querySelector(needle);
 }
 
+// fonction pour les message erreurs
 function hideError(el)
 {
 	const avert = findEl(el, '.avertissement');
@@ -156,6 +159,7 @@ function hideError(el)
 	}
 }
 
+// function de validation du contenu des champs
 function isAgreementValid()
 {
 	return agreement.checked;	
@@ -226,10 +230,12 @@ function isCityValid()
 	return isValid
 }
 
+// fonction demarrage modal
 function launchModal() {
 	modalbg.style.display = "block";
 }
 
+//fonction message erreur
 function showError(el)
 {
 	const avert = findEl(el, '.avertissement');
@@ -241,9 +247,9 @@ function showError(el)
 		avertform.style.backgroundColor = '#ff0202bd'		
 	}
 }
-
+// fonction affichage modale validation
 function showConfirmation()
 {
 	document.querySelector('.modal-body').innerHTML = '<h3>Merci pour votre inscription</h3>'
-	document.querySelector('.modal-body h3').style.cssText = `padding: 200px 0px; text-align: center`
+	document.querySelector('.modal-body h3').style.cssText = `padding: 300px 0px; text-align: center`
 }
