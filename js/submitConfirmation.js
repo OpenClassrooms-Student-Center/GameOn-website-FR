@@ -4,7 +4,9 @@ const closeBtnConfirmation = document.getElementById('close-btn-confirmation');
 
 // Display popup on submit
 function displayPopupSubmit() {
+    // Hiding the modal
     modalbg.style.display = 'none';
+    // Display the success popup
     popupSubmit[0].style.display = 'block';
 }
 
@@ -18,5 +20,6 @@ function closeSubmit() {
     quantity.style.border = 'none';
 }
 
+// Buttons to close the popup
 closePopupSubmit[0].addEventListener('click', closeSubmit);
 closeBtnConfirmation.addEventListener('click', closeSubmit);

@@ -30,7 +30,7 @@ function isLongEnough(currentLength, minimumLength) {
 function checkFirstName() {
     if(isLongEnough(firstName.value.length, 2) && firstName.value.trim() !== '' && firstName.value.match(stringRegex)) {
         first.parentElement.setAttribute('data-error-visible', 'false');
-        first.style.border = 'solid #279e7a 0.19rem';
+        first.style.border = 'solid #279e7a 2px';
         return true;
     }
 
@@ -43,12 +43,12 @@ function checkFirstName() {
 function checkLastName() {
     if(isLongEnough(lastName.value.length, 2) && lastName.value.trim() !== '' && lastName.value.match(stringRegex)) {
         last.parentElement.setAttribute('data-error-visible', 'false');
-        last.style.border = 'solid #279e7a 0.19rem';
+        last.style.border = 'solid #279e7a 2px';
         return true;
     }
 
     lastName.parentElement.setAttribute('data-error-visible', 'true');
-    lastName.style.border = '2px solid #e54858';
+    lastName.style.border = 'solid #e54858 2px';
     return false;
 }
 
@@ -56,12 +56,12 @@ function checkLastName() {
 function checkEmail() {
     if(isStringMatchRegexFormat(birthdate.value, birthdateRegex)) {
         email.parentElement.setAttribute('data-error-visible', 'false');
-        email.style.border = 'solid #279e7a 0.19rem';
+        email.style.border = 'solid #279e7a 2px';
         return true;
     }
 
     email.parentElement.setAttribute('data-error-visible', 'true');
-    email.style.border = '2px solid #e54858';
+    email.style.border = 'solid #e54858 2px';
     return false;
 }
 
@@ -69,12 +69,12 @@ function checkEmail() {
 function checkBirthdate() {
     if (isStringMatchRegexFormat(birthdate.value, birthdateRegex)) {
         birthdate.parentElement.setAttribute('data-error-visible', 'false');
-        birthdate.style.border = 'solid #279e7a 0.19rem';
+        birthdate.style.border = 'solid #279e7a 2px';
         return true;
     }
     
     birthdate.parentElement.setAttribute('data-error-visible', 'true');
-    birthdate.style.border = '2px solid #e54858';
+    birthdate.style.border = 'solid #e54858 2px';
     return false;
 }
 
@@ -82,12 +82,12 @@ function checkBirthdate() {
 function checkQuantity() {
     if(isStringMatchRegexFormat(quantity.value, integerRegex)) {
         quantity.parentElement.setAttribute('data-error-visible', 'false');
-        quantity.style.border = 'solid #279e7a 0.19rem';
+        quantity.style.border = 'solid #279e7a 2px';
         return true;
     }
     
     quantity.parentElement.setAttribute('data-error-visible', 'true');
-    quantity.style.border = '2px solid #e54858';
+    quantity.style.border = 'solid #e54858 2px';
     return false;
 }
 
