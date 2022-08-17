@@ -1,16 +1,18 @@
 // DOM Elements
-const modalbg   	= document.querySelector(".bground");
-const modalBtn  	= document.querySelectorAll(".modal-btn");
-const formData  	= document.querySelectorAll(".formData");
-let firstName      	= document.querySelector('#first');
-let lastName       	= document.querySelector('#last');
-let email          	= document.querySelector('#email');
-let birthdate      	= document.querySelector('#birthdate');
-let quantity       	= document.querySelector('#quantity');
-let avertissements 	= document.querySelectorAll('.avertissement');
-let submitButton   	= document.querySelector('.btn-submit');
-let cities         	= document.querySelectorAll(`input[name="location"]`);
-const closeMod 		= document.querySelector(".close")
+const modalbg   		= document.querySelector(".bground");
+const modalBtn  		= document.querySelectorAll(".modal-btn");
+const formData  		= document.querySelectorAll(".formData");
+const firstName    		= document.querySelector('#first');
+const lastName     		= document.querySelector('#last');
+const email        		= document.querySelector('#email');
+const birthdate    		= document.querySelector('#birthdate');
+const quantity     		= document.querySelector('#quantity');
+const avertissements	= document.querySelectorAll('.avertissement');
+const submitButton   	= document.querySelector('.btn-submit');
+const cities         	= document.querySelectorAll(`input[name="location"]`);
+const city         		= document.querySelector(`input[name="location"]`);
+const agreement 		= document.getElementById('checkbox1');
+const closeMod 			= document.querySelector(".close")
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -26,63 +28,62 @@ avertissements.forEach(function (avertissement){
 
 firstName.addEventListener('change', function() 
 {	
-	const avert = findEl(firstName, '.avertissement');
-	const avertform = findEl(firstName, '.text-control');
-	hidenError(avert, avertform);
+	hideError(firstName);
 	
 	if (!isFirstNameValid())
 	{
-		showError(avert, avertform);
+		showError(firstName);
 	}
 })
 
 lastName.addEventListener('change', function () 
 {
-	const avert = findEl(lastName, '.avertissement');
-	const avertform = findEl(lastName, '.text-control');
-	hidenError(avert, avertform);
+	hideError(lastName);
 	
 	if (!isLastNameValid())
 	{
-		showError(avert, avertform);
+		showError(lastName);
 	}
 })
 
 
 email.addEventListener('change', function ()
 {
-	const avert = findEl(email, '.avertissement');
-	const avertform = findEl(email, '.text-control');
-	hidenError(avert, avertform);
+	hideError(email);
 	
 	if (!isEmailValid())
 	{
-		showError(avert, avertform);
+		showError(email);
 	}
 })
 
 birthdate.addEventListener('change', function ()
 {
-	console.log('&&', birthdate.value)
-	const avert = findEl(birthdate, '.avertissement');
-	const avertform = findEl(birthdate, '.text-control');
-	hidenError(avert, avertform);
+	hideError(birthdate);
 		
 	if (!isBirthdateValid())
 	{
-		showError(avert, avertform);
+		showError(birthdate);
 	}
 })
 
 quantity.addEventListener('change', function()
 {
-	const avert  = quantity.closest('.formData').querySelector('.avertissement');
-	const avertform  =  quantity.closest('.formData').querySelector('.text-control');
-	hidenError(avert, avertform);
+	hideError(quantity);
 		
 	if (!isQuantityValid())
 	{
-		showError(avert, avertform);
+		showError(quantity);
+	}
+})
+
+agreement.addEventListener('change', function ()
+{
+	hideError(agreement);
+		
+	if (!isAgreementValid())
+	{
+		showError(agreement);
 	}
 })
 
@@ -90,23 +91,36 @@ quantity.addEventListener('change', function()
 submitButton.addEventListener('click', function (e)
 {
 	e.preventDefault();
-	let formValid = (isFirstNameValid() && isLastNameValid() && isEmailValid() && isBirthdateValid() && isQuantityValid() && isCityValid())
-	console.log('FN', isFirstNameValid())
-	console.log('LN', isLastNameValid())
-	console.log('EM', isEmailValid())
-	console.log('BI', isBirthdateValid())
-	console.log('QTY', isQuantityValid())
-	console.log('CIT', isCityValid())
-		
-	console.log(formValid)
-		
-	// if (formValid)
-	// {
-	// 	return alert("test valide");
-	// }else 
-	// {
-	// 	return alert("le test n'est pas bon");
-	// }
+	hideError(city);
+
+	if (!isCityValid())
+	{
+		showError(city)
+	}
+	
+	if (!(isFirstNameValid()
+		&& isLastNameValid()
+		&& isEmailValid()
+		&& isBirthdateValid()
+		&& isQuantityValid()
+		&& isCityValid()
+		&& isAgreementValid())
+	) {
+		return;
+	}
+
+	console.log('le formulaire est valide',  {
+		"firstName": firstName.value,
+		"lastName": lastName.value,
+		"email": email.value,
+		"birthdate": birthdate.value,
+		"quantity": quantity.value,
+		"city": city.value,
+		"agreement": agreement.value,
+
+	})
+
+	showConfirmation();
 })
 
 
@@ -126,14 +140,25 @@ function editNav() {
 function findEl(el, needle)
 {
 	return el.closest('.formData').querySelector(needle);
-	//return el.closest('.formData').querySelector('.avertissement');
 }
 
-function hidenError(avert, avertform)
+function hideError(el)
 {
-	avert.style.display ='none';
+	const avert = findEl(el, '.avertissement');
+	const avertform = findEl(el, '.text-control');
+
+	avert.style.display = 'none';
+	
+	if (avertform)
+	{
 		avertform.style.border = '3px solid #13FA39';
 		avertform.style.backgroundColor = '#D6F4DC';
+	}
+}
+
+function isAgreementValid()
+{
+	return agreement.checked;	
 }
 
 function isFirstNameValid() 
@@ -150,7 +175,7 @@ function isNameValid(value)
 {
 	const regexFirst = /^[a-zA-Z ]{2,30}$/;
 
-	return regexFirst.test(value);
+	return regexFirst.test(value.trim(' '));
 }
 
 function isEmailValid()
@@ -192,23 +217,33 @@ function isCityValid()
 {
 	let isValid = false;
 	cities.forEach(city =>
+	{
+		if (city.checked)
 		{
-			if (city.checked)
-			{
-				isValid = true
-			}
-		})
-		return isValid
+			isValid = true
+		}
+	})
+	return isValid
 }
 
 function launchModal() {
 	modalbg.style.display = "block";
 }
 
-function showError(avert, avertform)
+function showError(el)
 {
-	  avert.style.display = 'block'
-		avert.style.color = 'red'
+	const avert = findEl(el, '.avertissement');
+	const avertform = findEl(el, '.text-control');
+	
+	avert.style.display = 'block'
+	if (avertform) {
 		avertform.style.border = '3px solid #FF3012';
 		avertform.style.backgroundColor = '#ff0202bd'		
+	}
+}
+
+function showConfirmation()
+{
+	document.querySelector('.modal-body').innerHTML = '<h3>Merci pour votre inscription</h3>'
+	document.querySelector('.modal-body h3').style.cssText = `padding: 200px 0px; text-align: center`
 }
