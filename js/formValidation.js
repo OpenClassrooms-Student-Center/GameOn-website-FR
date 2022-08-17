@@ -151,7 +151,7 @@ function formValidation() {
 form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (formValidation() == true) {
-        // Modal display
+        displayPopupSubmit();
         document.querySelector('form').reset();
     } else {
         forAllFieldsValidation();
