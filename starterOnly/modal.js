@@ -87,19 +87,23 @@ function hidenError(avert, avertform)
 }
 
 // affiche ou cache le message erreur et modifie la présentation
-	
+
 firstName.addEventListener('change', function() 
 {	
 	const avert = findAvertissement(firstName);
 	const avertform = fAvertissement(firstName);
+	console.log(firstName.value)
+
 
 	if (!isFirstNameValid())
 	{
 		showError(avert, avertform);
+		return false
 		
 		}else
 	{
 		hidenError(avert, avertform);
+		return true
 		
 	}
 })
@@ -169,7 +173,7 @@ birthdate.addEventListener('change', function(){
 	})
 
 // vérification regex
-
+console.log(isFirstNameValid())
 function isFirstNameValid()
 	{
 		const regexFirst = /^[a-zA-Z ]{2,30}$/;
@@ -177,12 +181,14 @@ function isFirstNameValid()
 		if (!regexFirst.test(firstName.value))
 		{
 			return false;
+		}else{
+			return true;
 		}
 
-		return true;
+		
 	}
-	console.log(firstName)
-	console.log(isFirstNameValid())
+	
+	
 
 function isLastNameValid()
 	{
@@ -243,16 +249,20 @@ function isCityValid()
 			return isValid
 	}
 
-	
+	console.log(isCityValid())
+
 // validation du formulaire
+
+// event.preventDefault() 
 
 submitButton.addEventListener('click', function ()
 {
 	
 let formValid = (isFirstNameValid() && isLastNameValid() && isEmailValid() && isBirthdateValid() && isQantityValid() && isCityValid())
-	// event.preventDefault() 
+	
 	console.log(formValid)
-if (formValid )
+	
+if (formValid)
 {
 
 	return alert("test valide");
@@ -260,7 +270,9 @@ if (formValid )
 }else 
 {
 	
-	return alert("le test n'est pas bon")
+	return alert("le test n'est pas bon");
+	
+	
 }
 
 })
