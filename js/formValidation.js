@@ -35,7 +35,7 @@ function checkFirstName() {
     }
 
     firstName.parentElement.setAttribute('data-error-visible', 'true');
-    firstName.style.border = '2px solid #e54858';
+    firstName.style.border = 'solid #e54858 2px';
     return false;
 }
 
@@ -121,11 +121,13 @@ function checkLocations() {
 function formFieldsValidation(element, method, event) {
     element.addEventListener(event, method);
 }
+// Add an event on the defocus (usefull for classic inputs)
 formFieldsValidation(firstName, checkFirstName, 'focusout');
 formFieldsValidation(lastName, checkLastName, 'focusout');
 formFieldsValidation(email, checkEmail, 'focusout');
 formFieldsValidation(birthdate, checkBirthdate, 'focusout');
 formFieldsValidation(quantity, checkQuantity, 'focusout');
+// Add an event on the change (usefull on checkbox or radio buttons)
 formFieldsValidation(allLocations, checkLocations, 'change');
 formFieldsValidation(checkbox1, checkCheckBox, 'change');
 
@@ -142,6 +144,7 @@ function forAllFieldsValidation() {
 
 // form validation check
 function formValidation() {
+    // We take every fields check and return true if all fields are ok
     if (checkFirstName() === true && checkLastName() === true && checkEmail() === true && checkBirthdate() === true &&
         checkQuantity() === true && checkLocations() === true && checkCheckBox() === true) {
         return true;
@@ -153,9 +156,11 @@ function formValidation() {
 form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (formValidation() == true) {
+        /* If the form validation is ok we display the popup success and reset the form */
         displayPopupSubmit();
         document.querySelector('form').reset();
     } else {
+        // Re check of all fields
         forAllFieldsValidation();
     }
 });
