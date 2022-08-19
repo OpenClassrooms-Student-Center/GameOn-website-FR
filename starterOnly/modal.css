@@ -173,8 +173,10 @@ main {
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
+  -webkit-animation-name: modalopen;
+          animation-name: modalopen;
+  -webkit-animation-duration: var(--modal-duration);
+          animation-duration: var(--modal-duration);
   background: #232323;
   border-radius: 10px;
   overflow: hidden;
@@ -306,8 +308,17 @@ input[data-error]::after {
   cursor: pointer;
   transform: scale(0.7);
 }
-.close:before,
-.close:after {
+.close:hover {
+  transform: scale(0.8);
+}
+.close-anim {
+  -webkit-animation-name: modalclose;
+          animation-name: modalclose;
+  -webkit-animation-duration: 0.4;
+          animation-duration: 0.4;
+}
+.close::before,
+.close::after {
   position: absolute;
   left: 15px;
   content: " ";
@@ -315,10 +326,10 @@ input[data-error]::after {
   width: 3px;
   background-color: #fff;
 }
-.close:before {
+.close::before {
   transform: rotate(45deg);
 }
-.close:after {
+.close::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
@@ -349,7 +360,7 @@ input[data-error]::after {
 }
 
 /* Style the arrow inside the select element: */
-.select-selected:after {
+.select-selected::after {
   position: absolute;
   content: "";
   top: 10px;
@@ -364,7 +375,7 @@ input[data-error]::after {
 }
 
 /* Point the arrow upwards when the select box is open (active): */
-.select-selected.select-arrow-active:after {
+.select-selected.select-arrow-active::after {
   transform: rotate(135deg);
   top: 13px;
 }
@@ -517,6 +528,16 @@ footer {
   }
 }
 
+@-webkit-keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes modalopen {
   from {
     opacity: 0;
@@ -524,6 +545,29 @@ footer {
   }
   to {
     opacity: 1;
+  }
+}
+
+@-webkit-keyframes modalclose {
+  from {
+    opacity: 1;
+  }
+  to {
+    transform: translateY(150px);
+    opacity: 0;
+  }
+}
+
+@keyframes modalclose {
+  0% {
+    opacity: 1;
+  }
+  40% {
+    transform: translateY(-40px);
+  }
+  100% {
+    transform: translateY(150px);
+    opacity: 0;
   }
 }
 

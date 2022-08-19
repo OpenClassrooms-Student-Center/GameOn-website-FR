@@ -9,6 +9,7 @@ function editNav() {
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
+const modalContent = document.querySelector(".content");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const closeModalBtn = document.querySelector(".close");
 const formData = document.querySelectorAll(".formData");
@@ -21,12 +22,19 @@ closeModalBtn.addEventListener("click", closeModal);
 
 // launch modal form
 function launchModal() {
+  if (modalContent.classList.contains('close-anim')) {
+    modalContent.classList.remove('close-anim')
+  }
   modalbg.style.display = "block";
 }
 
 // close modal form
 function closeModal() {
-  modalbg.style.display = "none";
+  modalContent.classList.add('close-anim');
+  setTimeout(() => {
+    modalbg.style.display = "none";
+    console.log('1');
+  }, 500);
 }
 
 
