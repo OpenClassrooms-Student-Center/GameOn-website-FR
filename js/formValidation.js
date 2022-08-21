@@ -11,9 +11,13 @@ const input = document.getElementsByClassName('text-control');
 const form = document.getElementById('form');
 
 // Regex
+// This regex is usefull to check a string
 const stringRegex = /^[a-zA-ZÀ-ÖØ-öø-ÿ]+$/;
+// This regex is usefull to check birthdate format
 const birthdateRegex = /^(19|20)\d{2}[-](0?[1-9]|1[012])[-](0[1-9]|[12]\d|3[01])$/;
+// This regex is usefull to check email format
 const mailRegex = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
+// This regex is usefull to check an integer format
 const integerRegex = /^\+?(0|[1-9]\d*)$/;
 
 // Utils
@@ -28,87 +32,119 @@ function isLongEnough(currentLength, minimumLength) {
 
 // firstname check
 function checkFirstName() {
+    /* We will check if the fistname length is at least 2 or more + remove spaces and check it's different than empty + the firstname value match 
+    is our function */
     if(isLongEnough(firstName.value.length, 2) && firstName.value.trim() !== '' && firstName.value.match(stringRegex)) {
+        // if this is valid, set the data attribute to false
         first.parentElement.setAttribute('data-error-visible', 'false');
+        // then add the border green
         first.style.border = 'solid #279e7a 2px';
         return true;
     }
 
+    // if it's not valid, set the data attribute to true
     firstName.parentElement.setAttribute('data-error-visible', 'true');
+    // then add the border red
     firstName.style.border = 'solid #e54858 2px';
     return false;
 }
 
 // lastname check
 function checkLastName() {
+    /* We will check if the lastname length is at least 2 or more + remove spaces and check it's different than empty + the firstname value match 
+    is our function */
     if(isLongEnough(lastName.value.length, 2) && lastName.value.trim() !== '' && lastName.value.match(stringRegex)) {
+        // if this is valid, set the data attribute to false
         last.parentElement.setAttribute('data-error-visible', 'false');
+        // then add the border green
         last.style.border = 'solid #279e7a 2px';
         return true;
     }
 
+    // if it's not valid, set the data attribute to true
     lastName.parentElement.setAttribute('data-error-visible', 'true');
+    // then add the border red
     lastName.style.border = 'solid #e54858 2px';
     return false;
 }
 
 // email check
 function checkEmail() {
+    // We will check if the email is valid compared to the regex
     if(isStringMatchRegexFormat(birthdate.value, birthdateRegex)) {
+        // if this is valid, set the data attribute to false
         email.parentElement.setAttribute('data-error-visible', 'false');
+        // then add the border green
         email.style.border = 'solid #279e7a 2px';
         return true;
     }
 
+    // if it's not valid, set the data attribute to true
     email.parentElement.setAttribute('data-error-visible', 'true');
+    // then add the border red
     email.style.border = 'solid #e54858 2px';
     return false;
 }
 
 // birthday check
 function checkBirthdate() {
+    // We will check if the birthdate is valid compared to the regex
     if (isStringMatchRegexFormat(birthdate.value, birthdateRegex)) {
+        // if this is valid, set the data attribute to false
         birthdate.parentElement.setAttribute('data-error-visible', 'false');
+        // then add the border green
         birthdate.style.border = 'solid #279e7a 2px';
         return true;
     }
     
+    // if it's not valid, set the data attribute to true
     birthdate.parentElement.setAttribute('data-error-visible', 'true');
+    // then add the border green
     birthdate.style.border = 'solid #e54858 2px';
     return false;
 }
 
 // quantity check
 function checkQuantity() {
+    // We will check if the quantiy is valid compared to the regex
     if(isStringMatchRegexFormat(quantity.value, integerRegex)) {
+        // if this is valid, set the data attribute to false
         quantity.parentElement.setAttribute('data-error-visible', 'false');
+        // then add the border green
         quantity.style.border = 'solid #279e7a 2px';
         return true;
     }
     
+    // if it's not valid, set the data attribute to true
     quantity.parentElement.setAttribute('data-error-visible', 'true');
+    // then add the border green
     quantity.style.border = 'solid #e54858 2px';
     return false;
 }
 
 // terms of use check
 function checkCheckBox() {
+    // We will check if the checkbox is checked
     if(checkbox1.checked === true) {
+        // if this is valid, set the data attribute to false
         checkbox1.parentElement.setAttribute('data-error-visible', 'false');
         return true;
     }
 
+    // if it's not valid, set the data attribute to true
     checkbox1.parentElement.setAttribute('data-error-visible', 'true');
     return false;
 }
 
 // locations check
 function checkLocations() {
+    // By default we set the data error visible to false
     allLocations.setAttribute('data-error-visible', 'true');
     /* Loop into all locations */
     for (let i = 0; i < locations.length; i++) {
-        /* if there is a location who's checked the, we return true */
+        /* if there is a location who's checked, we return true */
         if (locations[i].checked) {
+            // Then we set the data error visible to true
             allLocations.setAttribute('data-error-visible', 'false');
             return true;
         }
