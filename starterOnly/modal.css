@@ -14,7 +14,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -166,7 +165,11 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  background-color: #fff;
+  -webkit-animation-name: modalopenBGanim;
+          animation-name: modalopenBGanim;
+  -webkit-animation-duration: 0.4s;
+          animation-duration: 0.4s;
 }
 
 .content {
@@ -204,21 +207,25 @@ input {
 }
 .text-control {
   margin: 0;
-  padding: 8px;
+  padding: 12px 20px;
   width: 100%;
   border-radius: 8px;
   font-size: 20px;
   height: 48px;
 }
+.formData {
+  min-height: 110px;
+}
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
+  width: 100%;
+  font-size: 0.5em;
   color: #e54858;
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
-  line-height: 0.3;
+  text-align: left;
+  line-height: 1;
   opacity: 0;
   transition: 0.3s;
 }
@@ -344,6 +351,11 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+.btn-submit:disabled {
+  cursor: not-allowed;
+  background: #bbb;
+  color: dimgrey;
+}
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -416,7 +428,7 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
+  min-height: 460px;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -466,13 +478,15 @@ input[data-error]::after {
   margin-top: 59px;
 }
 .hero-img {
-  grid-column: span 8;
+  grid-column: 6/13;
 }
 .hero-img img {
   width: 100%;
   height: 100%;
   display: block;
   padding: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .copyrights {
   color: #fe142f;
@@ -509,6 +523,9 @@ footer {
     font-size: 4.5rem;
     white-space: normal;
   }
+  .hero-headline > span {
+    display: block;
+  }
   .hero-text {
     width: unset;
     font-size: 1.5rem;
@@ -542,6 +559,24 @@ footer {
   from {
     opacity: 0;
     transform: translateY(-150px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes modalopenBGanim {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalopenBGanim {
+  from {
+    opacity: 0;
   }
   to {
     opacity: 1;
