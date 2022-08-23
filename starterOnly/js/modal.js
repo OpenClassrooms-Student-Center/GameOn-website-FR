@@ -15,14 +15,10 @@ const closeBtn = document.querySelector(".close"); // TODO: increase specificity
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-closeBtn.addEventListener("click", closeModal);
+closeBtn.addEventListener("click", () => modalbg.style.display = "none");
+
 
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
-}
-
-// close modal form
-function closeModal() {
-  modalbg.style.display = "none";
 }
