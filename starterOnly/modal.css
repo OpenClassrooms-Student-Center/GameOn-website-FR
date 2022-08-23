@@ -533,7 +533,7 @@ footer {
   }
   .hero-text {
     width: unset;
-    font-size: 0.7rem;
+    font-size: 1.5rem;
     font-weight: 600;
     margin:20px 110px 0px 0px;
   }
@@ -562,11 +562,15 @@ footer {
     opacity: 1;
   }
 }
-
+@media screen and (max-width: 1000px)
+{
+  h1.hero-headline {
+    font-size: 70px;
+  }
+}
 @media screen and (max-width: 540px)
 {
   .text-control {
-   
     padding: 8px;
     border-radius: 8px;
     font-size: 16px;
@@ -586,11 +590,21 @@ footer {
     font-size: 10px;
   }
   .bground{
-    margin-top: 20px;
-    
+    margin-top: 30px;
+    background-color: transparent;  
+  }
+  .bground .modal-body{
+    height: calc(100vh - 40px);
   }
   .btn-submit{
     padding: 10px 70px;
+  }
+
+  h1.hero-headline {
+    font-size: 35px;
+  }
+  .hero-text{
+    font-size: 12px;
   }
     
   }
