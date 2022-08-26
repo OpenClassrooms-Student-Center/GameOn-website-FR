@@ -1,4 +1,4 @@
-const popupSubmit = document.getElementsByClassName('container-popup-confirmation');
+const popupSubmit = document.getElementsByClassName('bg-popup');
 const closePopupSubmit = document.getElementsByClassName('close-popup');
 const closeBtnConfirmation = document.getElementById('close-btn-confirmation');
 

@@ -200,7 +200,46 @@ main {
   width: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.8);
-  
+}
+
+.bg-popup {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.container-popup {
+  margin: 74px auto;
+  width: 100%;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  padding: 15px 8%;
+  margin: 15px auto;
+  height: 80vh;
+}
+
+.popup-content p {
+  text-align: center;
 }
 
 .content {
@@ -595,27 +634,6 @@ footer {
   }
 }
 
-
-.container-popup-confirmation {
-  display: none;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 99;
-}
-
-.popup-confirmation {
-  width: 100%;
-  bottom: 0;
-  position: fixed;
-  background-color: #232323;
-  height: 100vh;
-}
-
 .close-popup {
   position: absolute;
   right: 15px;
@@ -658,14 +676,13 @@ footer {
 }
 
 #close-btn-confirmation {
-  position: relative;
-  bottom: 60px;
+  position: absolute;
+  bottom: 50px;
   outline: none;
   border: none;
   font-size: 14px;
   background: #fe142f;
   display: flex;
-  margin: auto;
   padding: 12px 40px;
   color: #fff;
   border-radius: 8px;
