@@ -7,29 +7,42 @@ const quantity = document.getElementById('quantity');
 const locations = document.querySelectorAll('input[type="radio"]');
 const checkbox = document.getElementById('checkbox1');
 
+const showError = (element, errorMessage) => {        
+    if(element.parentElement.getElementsByTagName('small').length === 0) {
+        const error = document.createElement('small');
+        error.style.display = "block";
+        error.style.color = 'red';
+        element.parentElement.appendChild(error).textContent = errorMessage;
+    }
+};
+
 function validate() {
     event.preventDefault();
-    // const valid = true;
+    let valid = true;
     // alert(firstName.value.length);
 
     if(firstName.value.length >= 2 && firstName.value.length != "") {
     } else {
-        console.error('fname must be longer than 1');
+        showError(firstName, 'fname must be longer than 1');
+        valid = false;
     }
 
     if(lastName.value.length >= 2 && lastName.value.length != "") {
     } else {
-        console.error('lname must be longer than 1');
+        showError(lastName, 'lname must be longer than 1');
+        valid = false;
     }
 
     if(email.value.indexOf('@') != -1) {
     } else {
-        console.error('email must be valid');
+        showError(email, 'email must be valid');
+        valid = false;
     }
 
-    if(!isNaN(quantity)) {
+    if(!isNaN(quantity.value)) {
     } else {
-        console.error('quantity must be a number');
+        showError(quantity, 'quantity must be a number');
+        valid = false;
     }
 
     let checked = false;
@@ -38,11 +51,12 @@ function validate() {
             checked = true;
         }
     }
-    if(!checked) { console.error('Must choose location'); }
+    if(!checked) { showError(locations[0], 'Must choose location'); }
 
     if(checkbox.checked) {
     } else {
-        console.error('Must approve checkbox');
+        showError(checkbox, 'Must approve checkbox');
+        valid = false;
     }
 
     let date = new Date(birthdate);
@@ -50,7 +64,12 @@ function validate() {
     } else {
         console.log(birthdate.value.toString());
         console.log(date);
-        console.error('birthday must be a date');
+        showError(birthdate, 'birthday must be a date');
+        // valid = false;
     }
+
+    if(valid) {
+        console.log('Form is valid');
+    } else console.log('Form is invalid'); 
 
 }
