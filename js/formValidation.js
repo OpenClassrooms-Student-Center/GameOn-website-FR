@@ -39,6 +39,7 @@ function checkFirstName() {
         first.parentElement.setAttribute('data-error-visible', 'false');
         // then add the border green
         first.style.border = 'solid #279e7a 2px';
+        /* TODO: use addclass */
         return true;
     }
 
@@ -46,6 +47,7 @@ function checkFirstName() {
     firstName.parentElement.setAttribute('data-error-visible', 'true');
     // then add the border red
     firstName.style.border = 'solid #e54858 2px';
+    /* TODO: use addclass */
     return false;
 }
 
@@ -58,6 +60,7 @@ function checkLastName() {
         last.parentElement.setAttribute('data-error-visible', 'false');
         // then add the border green
         last.style.border = 'solid #279e7a 2px';
+        /* TODO: use addclass */
         return true;
     }
 
@@ -65,6 +68,7 @@ function checkLastName() {
     lastName.parentElement.setAttribute('data-error-visible', 'true');
     // then add the border red
     lastName.style.border = 'solid #e54858 2px';
+    /* TODO: use addclass */
     return false;
 }
 
@@ -76,6 +80,7 @@ function checkEmail() {
         email.parentElement.setAttribute('data-error-visible', 'false');
         // then add the border green
         email.style.border = 'solid #279e7a 2px';
+        /* TODO: use addclass */
         return true;
     }
 
@@ -83,6 +88,7 @@ function checkEmail() {
     email.parentElement.setAttribute('data-error-visible', 'true');
     // then add the border red
     email.style.border = 'solid #e54858 2px';
+    /* TODO: use addclass */
     return false;
 }
 
@@ -94,12 +100,13 @@ function checkBirthdate() {
         birthdate.parentElement.setAttribute('data-error-visible', 'false');
         // then add the border green
         birthdate.style.border = 'solid #279e7a 2px';
+        /* TODO: use addclass */
         return true;
     }
     
     // if it's not valid, set the data attribute to true
     birthdate.parentElement.setAttribute('data-error-visible', 'true');
-    // then add the border green
+    // then add the border red
     birthdate.style.border = 'solid #e54858 2px';
     return false;
 }
@@ -117,8 +124,9 @@ function checkQuantity() {
     
     // if it's not valid, set the data attribute to true
     quantity.parentElement.setAttribute('data-error-visible', 'true');
-    // then add the border green
+    // then add the border red
     quantity.style.border = 'solid #e54858 2px';
+    /* TODO: use addclass */
     return false;
 }
 

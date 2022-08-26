@@ -671,3 +671,11 @@ footer {
   border-radius: 8px;
   cursor: pointer;
 }
+
+.border-green {
+  border: solid #279e7a 2px;
+}
+
+.border-red {
+  border: solid #e54858 2px;
+}
