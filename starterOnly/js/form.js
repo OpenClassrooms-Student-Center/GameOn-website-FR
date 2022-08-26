@@ -1,5 +1,4 @@
 const firstName = document.getElementById('first');
-console.log(firstName);
 const lastName = document.getElementById('last');
 const email = document.getElementById('email');
 const birthdate = document.getElementById('birthdate');
@@ -7,69 +6,88 @@ const quantity = document.getElementById('quantity');
 const locations = document.querySelectorAll('input[type="radio"]');
 const checkbox = document.getElementById('checkbox1');
 
-const showError = (element, errorMessage) => {        
-    if(element.parentElement.getElementsByTagName('small').length === 0) {
-        const error = document.createElement('small');
-        error.style.display = "block";
-        error.style.color = 'red';
-        element.parentElement.appendChild(error).textContent = errorMessage;
-    }
-};
+// const formArray = {
+//     firstName: document.getElementById('first'),
+//     lastName: document.getElementById('last'),
+//     email: document.getElementById('email'),
+//     birthdate: document.getElementById('birthdate'),
+//     quantity: document.getElementById('quantity'),
+//     location: document.querySelectorAll('input[type="radio"]'),
+//     termsOfService: document.getElementById('checkbox1')
+// };
 
-function validate() {
-    event.preventDefault();
-    let valid = true;
-    // alert(firstName.value.length);
-
-    if(firstName.value.length >= 2 && firstName.value.length != "") {
-    } else {
+const checkFirstName = () => {
+    if(firstName.value.length < 2 || firstName.value.length == "") {
         showError(firstName, 'fname must be longer than 1');
         valid = false;
     }
+}
 
-    if(lastName.value.length >= 2 && lastName.value.length != "") {
-    } else {
+const checkLastName = () => {
+    if(lastName.value.length < 2 || lastName.value.length == "") {
         showError(lastName, 'lname must be longer than 1');
         valid = false;
     }
+}
 
-    if(email.value.indexOf('@') != -1) {
-    } else {
+const checkEmail = () => {
+    if(email.value.indexOf('@') == -1) {
         showError(email, 'email must be valid');
         valid = false;
     }
+}
 
-    if(!isNaN(quantity.value)) {
-    } else {
+const checkTournamentQuantity = () => {
+    if(isNaN(quantity.value) || quantity.value === '') {
         showError(quantity, 'quantity must be a number');
         valid = false;
     }
+}
 
+const checkLocation = () => {
     let checked = false;
+
     for(let location of locations) {
         if(location.checked) {
             checked = true;
         }
     }
-    if(!checked) { showError(locations[0], 'Must choose location'); }
 
-    if(checkbox.checked) {
-    } else {
+    if(!checked) { 
+        showError(locations[0], 'Must choose location'); 
+        valid = false;
+    }
+}
+
+const checkTermsOfService = () => {
+    if(!checkbox.checked) {
         showError(checkbox, 'Must approve checkbox');
         valid = false;
     }
+}
+
+function validate() {
+    event.preventDefault();
+    let valid = true;
 
     let date = new Date(birthdate);
-    if(date instanceof Date && !isNaN(date)) {
-    } else {
+    if(!date instanceof Date || isNaN(date)) {
         console.log(birthdate.value.toString());
         console.log(date);
         showError(birthdate, 'birthday must be a date');
         // valid = false;
     }
 
+    checkFirstName();
+    checkLastName();
+    checkEmail();
+    checkTournamentQuantity();
+    checkLocation();
+    checkTermsOfService();
+
     if(valid) {
         console.log('Form is valid');
     } else console.log('Form is invalid'); 
 
+    return valid;
 }
