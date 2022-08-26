@@ -38,16 +38,16 @@ function checkFirstName() {
         // if this is valid, set the data attribute to false
         first.parentElement.setAttribute('data-error-visible', 'false');
         // then add the border green
-        first.style.border = 'solid #279e7a 2px';
-        /* TODO: use addclass */
+        first.classList.remove('border-red');
+        first.classList.add('border-green');
         return true;
     }
 
     // if it's not valid, set the data attribute to true
     firstName.parentElement.setAttribute('data-error-visible', 'true');
     // then add the border red
-    firstName.style.border = 'solid #e54858 2px';
-    /* TODO: use addclass */
+    firstName.classList.remove('border-green');
+    firstName.classList.add('border-red');
     return false;
 }
 
@@ -59,36 +59,36 @@ function checkLastName() {
         // if this is valid, set the data attribute to false
         last.parentElement.setAttribute('data-error-visible', 'false');
         // then add the border green
-        last.style.border = 'solid #279e7a 2px';
-        /* TODO: use addclass */
+        last.classList.remove('border-red');
+        last.classList.add('border-green');
         return true;
     }
 
     // if it's not valid, set the data attribute to true
     lastName.parentElement.setAttribute('data-error-visible', 'true');
     // then add the border red
-    lastName.style.border = 'solid #e54858 2px';
-    /* TODO: use addclass */
+    lastName.classList.remove('border-green');
+    lastName.classList.add('border-red');
     return false;
 }
 
 // email check
 function checkEmail() {
     // We will check if the email is valid compared to the regex
-    if(isStringMatchRegexFormat(birthdate.value, birthdateRegex)) {
+    if(isStringMatchRegexFormat(email.value, mailRegex)) {
         // if this is valid, set the data attribute to false
         email.parentElement.setAttribute('data-error-visible', 'false');
         // then add the border green
-        email.style.border = 'solid #279e7a 2px';
-        /* TODO: use addclass */
+        email.classList.remove('border-red');
+        email.classList.add('border-green');
         return true;
     }
 
     // if it's not valid, set the data attribute to true
     email.parentElement.setAttribute('data-error-visible', 'true');
     // then add the border red
-    email.style.border = 'solid #e54858 2px';
-    /* TODO: use addclass */
+    email.classList.remove('border-green');
+    email.classList.add('border-red');
     return false;
 }
 
@@ -99,15 +99,16 @@ function checkBirthdate() {
         // if this is valid, set the data attribute to false
         birthdate.parentElement.setAttribute('data-error-visible', 'false');
         // then add the border green
-        birthdate.style.border = 'solid #279e7a 2px';
-        /* TODO: use addclass */
+        birthdate.classList.remove('border-red');
+        birthdate.classList.add('border-green');
         return true;
     }
     
     // if it's not valid, set the data attribute to true
     birthdate.parentElement.setAttribute('data-error-visible', 'true');
     // then add the border red
-    birthdate.style.border = 'solid #e54858 2px';
+    birthdate.classList.remove('border-green');
+    birthdate.classList.add('border-red');
     return false;
 }
 
@@ -118,15 +119,17 @@ function checkQuantity() {
         // if this is valid, set the data attribute to false
         quantity.parentElement.setAttribute('data-error-visible', 'false');
         // then add the border green
-        quantity.style.border = 'solid #279e7a 2px';
+        quantity.classList.remove('border-red');
+        quantity.classList.add('border-green');
+        
         return true;
     }
     
     // if it's not valid, set the data attribute to true
     quantity.parentElement.setAttribute('data-error-visible', 'true');
     // then add the border red
-    quantity.style.border = 'solid #e54858 2px';
-    /* TODO: use addclass */
+    quantity.classList.remove('border-green');
+    quantity.classList.add('border-red');
     return false;
 }
 
