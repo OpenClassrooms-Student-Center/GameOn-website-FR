@@ -5,6 +5,7 @@ const birthdate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
 const locations = document.querySelectorAll('input[type="radio"]');
 const checkbox = document.getElementById('checkbox1');
+
 let valid = true;
 
 const checkFirstName = () => {
@@ -41,13 +42,14 @@ const checkLocation = () => {
     for(let location of locations) {
         if(location.checked) {
             checked = true;
+            break;
         }
     }
 
     if(!checked) { 
         showError(locations[0], 'Vous devez choisir une option.'); 
         valid = false;
-    } else clearError(locations);
+    } else clearError(locations[0]);
 }
 
 const checkTermsOfService = () => {
@@ -64,11 +66,11 @@ const checkBirthdayDate = () => {
         console.log(date);
         showError(birthdate, 'Vous devez entrer votre date de naissance.');
         // valid = false;
-    } else clearError(birthdate);
+    } /*else clearError(birthdate);*/
 };
 
 function validate(event) {
-    event.preventDefault();
+    valid = true;
 
     checkFirstName();
     checkLastName();
@@ -77,10 +79,12 @@ function validate(event) {
     checkLocation();
     checkTermsOfService();
 
+    console.log(`form is ${valid ? 'valid' : 'invalid'}`);
+
     if(valid) {
         showValidationMessage();
         showCloseButton();
-    }
+    } else { event.preventDefault(); }
 
-    return valid;
+    // return false;
 }
