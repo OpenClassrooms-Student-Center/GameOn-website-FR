@@ -1,7 +1,6 @@
 //-----------------------------------------------//
 //------ FORMULAIRE ECOUTE ET VALIDATION ------//
 
-//test
 //On écoute l'évenement du DOM chargé
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -16,21 +15,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //Récupération date Actuel
   let dateActu = new Date()
-  let dateMin = dateActu.getFullYear() - 18
+
+  console.log(dateActu);
+  console.log(dateActu.toLocaleDateString());
+
 
 
   //Regex----expression réguliere
   let emailReg = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/
   let nameReg = /^[a-zA-Z\s,.'-]+([-'\s][a-zA-Z\s,.'-])?/
 
-  //erreur
-  let error = true
-
-
   //remise a vide du form
   let majForm = (val) => {
     document.getElementById(val).textContent = ''
-    error = true
   }
 
   //Fonction de message d'erreur
@@ -69,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
       errorMsg('lastNameErrorMsg', 'Champ requis !', 'red')
       return false
     }
-    else if (lastName.value.length < 2) {  // si value envoi est vide et <2
+    else if (lastName.value.length < 2) {
       errorMsg('lastNameErrorMsg', 'Merci de entrer 2 caractères minimum !', 'red')
       return false
     }
@@ -122,7 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       majForm("emailErrorMsg")
       return true
-
     }
 
   }
@@ -132,27 +128,30 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
 
-  /*
+
   //-----------------------------//
   // Vérification de la date
   const birthValidation = () => {
-    dateOfBirth.addEventListener('input', function () {
-      console.log(this.value.slice(0, 10).split('-'));
-      let yearOfBirth = (this.value.slice(0, 10).split('-'))[0]
-      console.log(yearOfBirth);
-      if (yearOfBirth > dateMin) {
-        errorMsg("birthErrorMsg", 'il faut avoir 18 ans le jour du tournoi', 'red')
-        error = true
-      } else {
-        console.log('tu aura donc 18ans le jour du tournoi');
-        majForm("birthErrorMsg")
-        error = false
-      }
-    })
+    let birthdate = new Date(dateOfBirth.value)
+
+    if (dateOfBirth.value === '') {
+      errorMsg("birthErrorMsg", 'Champ requis !', 'red')
+    }
+    // Vérification d'une date futur
+    else if (birthdate > dateActu) {
+      console.log('date superieur');
+      errorMsg("birthErrorMsg", 'Merci de renseigner une date valide !', 'purple')
+      return false
+    } else {
+      majForm("birthErrorMsg")
+      return true
+    }
+
   }
-  //birthValidation()
 
+  dateOfBirth.addEventListener('input', function () { birthValidation() })
 
+  /*
   //------------------------------------//
   // Vérification du nombre de tournoi
   const quantityValidation = () => {
@@ -193,12 +192,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   */
-  // erreur
-  if (!error) {
-    return false;
-
-  }
-
 
   //-------------------------------------------------------------------------------//
   //Récupérer et analyser les données saisies par l’utilisateur dans le formulaire
@@ -206,8 +199,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".btn-submit").addEventListener("click", (e) => {
       e.preventDefault() //stop l envoi du formulaire
       console.log('click');
-
-
 
       // HTML cllection
       let form = e.target.closest('form').elements
@@ -226,22 +217,12 @@ document.addEventListener("DOMContentLoaded", () => {
       //console.log(error);
 
 
-      //----------------------------------------//
-      //Execute les fonctions de vérification au clic
-      //nameValidation(firstName, 'firstNameErrorMsg')
-      //nameValidation(lastName, 'lastNameErrorMsg')
-      //emailValidation()
-      //quantityValidation()
-      //tournamentValidation()
+      if (validationFirstName() && validationLastName() && emailValidation() && birthValidation()) {
 
-
-
-      if (validationFirstName() && validationLastName() && emailValidation()) {
-        // et que les champ ne sont pas vide
         console.log('ok pour submit');
         console.table(orderContact)
 
-        //orderValidation(orderContact) 
+        //formSubmit(orderContact) 
         console.log('Bonne chance' + ' ' + orderContact.prénom);
       } else {
         console.log('error formulaire');
