@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   //Vérification du champ prénom
-  const validationPrenom = () => {
+  const validationFirstName = () => {
     if (firstName.value === "") {
       errorMsg('firstNameErrorMsg', 'Champ requis !', 'red')
       return false
@@ -59,12 +59,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   firstName.addEventListener('input', function () {
-    validationPrenom()
+    validationFirstName()
   })
 
 
   //Vérification du champ nom
-  const validationNom = () => {
+  const validationLastName = () => {
     if (lastName.value === "") {
       errorMsg('lastNameErrorMsg', 'Champ requis !', 'red')
       return false
@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   lastName.addEventListener('input', function () {
-    validationNom()
+    validationLastName()
   })
 
   /*
@@ -236,7 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-      if (validationPrenom() && validationNom() && emailValidation()) {
+      if (validationFirstName() && validationLastName() && emailValidation()) {
         // et que les champ ne sont pas vide
         console.log('ok pour submit');
         console.table(orderContact)
