@@ -111,24 +111,28 @@ document.addEventListener("DOMContentLoaded", () => {
   nameValidation(firstName, 'firstNameErrorMsg')
   nameValidation(lastName, 'lastNameErrorMsg')
 
+  */
   
   //----------------------------//
   // Vérification de l'email
   const emailValidation = () => {
-    mail.addEventListener('input', function () {
       if (emailReg.test(mail.value) == false) {
         errorMsg("emailErrorMsg", 'Merci de renseigner une adresse mail valide !', 'purple')
-        return true
+        return false
       } else {
         majForm("emailErrorMsg")
-        return false
+        return true
 
       }
-    })
+    
   }
-  emailValidation()
 
+  mail.addEventListener('input', function () {
+    emailValidation()
+  })
   
+
+  /*
   //-----------------------------//
   // Vérification de la date
   const birthValidation = () => {
@@ -232,7 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-      if (validationPrenom() && validationNom()) {
+      if (validationPrenom() && validationNom() && emailValidation()) {
         // et que les champ ne sont pas vide
         console.log('ok pour submit');
         console.table(orderContact)
