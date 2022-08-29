@@ -5,45 +5,34 @@ const birthdate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
 const locations = document.querySelectorAll('input[type="radio"]');
 const checkbox = document.getElementById('checkbox1');
-
-console.log(document.getElementsByClassName('modal-body'));
-
-// const formArray = {
-//     firstName: document.getElementById('first'),
-//     lastName: document.getElementById('last'),
-//     email: document.getElementById('email'),
-//     birthdate: document.getElementById('birthdate'),
-//     quantity: document.getElementById('quantity'),
-//     location: document.querySelectorAll('input[type="radio"]'),
-//     termsOfService: document.getElementById('checkbox1')
-// };
+let valid = true;
 
 const checkFirstName = () => {
     if(firstName.value.length < 2 || firstName.value.length == "") {
         showError(firstName, 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.');
         valid = false;
-    }
+    } else clearError(firstName);
 }
 
 const checkLastName = () => {
     if(lastName.value.length < 2 || lastName.value.length == "") {
         showError(lastName, 'Veuillez entrer 2 caractères ou plus pour le champ du nom.');
         valid = false;
-    }
+    } else clearError(lastName);
 }
 
 const checkEmail = () => {
     if(email.value.indexOf('@') == -1) {
         showError(email, 'Veuillez entrer une adresse mail valide.');
         valid = false;
-    }
+    } else clearError(email);
 }
 
 const checkTournamentQuantity = () => {
     if(isNaN(quantity.value) || quantity.value === '') {
         showError(quantity, 'Veuillez induquer le nombre de tournois.');
         valid = false;
-    }
+    } else clearError(quantity);
 }
 
 const checkLocation = () => {
@@ -58,14 +47,14 @@ const checkLocation = () => {
     if(!checked) { 
         showError(locations[0], 'Vous devez choisir une option.'); 
         valid = false;
-    }
+    } else clearError(locations);
 }
 
 const checkTermsOfService = () => {
     if(!checkbox.checked) {
         showError(checkbox, 'Vous devez vérifier que vous acceptez les termes et conditions.');
         valid = false;
-    }
+    } else clearError(checkbox);
 }
 
 const checkBirthdayDate = () => {
@@ -75,12 +64,11 @@ const checkBirthdayDate = () => {
         console.log(date);
         showError(birthdate, 'Vous devez entrer votre date de naissance.');
         // valid = false;
-    }
+    } else clearError(birthdate);
 };
 
-function validate() {
+function validate(event) {
     event.preventDefault();
-    let valid = true;
 
     checkFirstName();
     checkLastName();
