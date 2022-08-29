@@ -73,7 +73,7 @@
                   name="first"
                   minlength="2"
                 /><br>
-                <span id="firstNameErrorMsg"></span>
+                <span class="error" id="firstNameErrorMsg"></span>
               </div>
               <div
                 class="formData">
@@ -84,7 +84,7 @@
                   id="last"
                   name="last"
                 /><br>
-                <span id="lastNameErrorMsg"></span>
+                <span class="error" id="lastNameErrorMsg"></span>
               </div>
               <div
                 class="formData">
@@ -95,7 +95,7 @@
                   id="email"
                   name="email"
                 /><br>
-                <span id="emailErrorMsg"></span>
+                <span class="error" id="emailErrorMsg"></span>
               </div>
               <div
                 class="formData">
@@ -106,13 +106,13 @@
                   id="birthdate"
                   name="birthdate"
                 /><br>
-                <span id="birthErrorMsg"></span>
+                <span class="error" id="birthErrorMsg"></span>
               </div>
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
-                <span>error msg</span>
+                <span class="error" id="quantityErrorMsg"></span>
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
@@ -182,7 +182,7 @@
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
                   Portland</label
-                >
+                >  <span class="error" id="tournamentErrorMsg"></span>
               </div>
 
               <div
