@@ -163,7 +163,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Ecoute quantity
   quantity.addEventListener('change', function () { quantityValidation() })
 
-  /*
+
   //-----------------------------------//
   // Vérification du tournoi souhaité
   const tournamentValidation = () => {
@@ -180,13 +180,19 @@ document.addEventListener("DOMContentLoaded", () => {
     // Vérification si checked
     if (!checked) {
       errorMsg("tournamentErrorMsg", 'Veuillez choisir un tournoi', 'red')
+      return false
     } else {
       majForm("tournamentErrorMsg")
+      return true
     }
   }
 
+  // Ecoute
+  for (let i = 0; i < tournament.length; i++) {
+    tournament[i].addEventListener('change', function () { tournamentValidation() })
+  }
 
-  */
+
 
   //-------------------------------------------------------------------------------//
   //Récupérer et analyser les données saisies par l’utilisateur dans le formulaire
@@ -212,7 +218,7 @@ document.addEventListener("DOMContentLoaded", () => {
       //console.log(error);
 
 
-      if (validationFirstName() && validationLastName() && emailValidation() && birthValidation() && quantityValidation()) {
+      if (validationFirstName() && validationLastName() && emailValidation() && birthValidation() && quantityValidation() && tournamentValidation()) {
 
         console.log('ok pour submit');
         console.table(orderContact)
