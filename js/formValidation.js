@@ -87,7 +87,7 @@ function checkEmail() {
     // if it's not valid, set the data attribute to true
     email.parentElement.setAttribute('data-error-visible', 'true');
     // then add the border red
-    email.classList.remove('border-green');c
+    email.classList.remove('border-green');
     email.classList.add('border-red');
     return false;
 }
@@ -166,7 +166,7 @@ function checkLocations() {
 
 // Form fields validation
 function formFieldsValidation(element, method, event) {
-    element.addEventListener(event, e);
+    element.addEventListener(event, method);
 }
 // Add an event on the defocus (usefull for classic inputs)
 formFieldsValidation(firstName, checkFirstName, 'focusout');
