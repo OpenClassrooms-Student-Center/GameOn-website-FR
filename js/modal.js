@@ -2,11 +2,9 @@ function editNav() {
   const myTopNav = document.getElementById("myTopnav");
   if (myTopNav.className === "topnav") {
     myTopNav.className += " responsive";
-    dropDownMenu.className += " responsive";
     document.getElementById("hero").style.marginTop = "280px";
   } else {
     myTopNav.className = "topnav";
-    dropDownMenu.className += "topnav";
     document.getElementById("hero").style.marginTop = "0";
   }
 }
