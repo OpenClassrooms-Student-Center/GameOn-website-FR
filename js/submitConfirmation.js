@@ -7,7 +7,7 @@ function displayPopupSubmit() {
     // Hiding the modal
     modalbg.style.display = 'none';
     // Display the success popup
-    popupSubmit[0].style.display = 'block';
+    popupSubmit[0].style.display = 'block'
 }
 
 // Close popup
