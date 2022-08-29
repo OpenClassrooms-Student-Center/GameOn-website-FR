@@ -16,10 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
   //Récupération date Actuel
   let dateActu = new Date()
 
-  console.log(dateActu);
-  console.log(dateActu.toLocaleDateString());
-
-
 
   //Regex----expression réguliere
   let emailReg = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/
@@ -151,24 +147,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
   dateOfBirth.addEventListener('input', function () { birthValidation() })
 
-  /*
+
   //------------------------------------//
   // Vérification du nombre de tournoi
   const quantityValidation = () => {
-    quantity.addEventListener('change', function () {
-      console.log(this.value);
-      if (quantity.value === "") {
-        errorMsg("quantityErrorMsg", 'Champ requis', 'red')
-        error = true
-      } else {
-        majForm("quantityErrorMsg")
-        error = false
-      }
-    })
+    if (quantity.value === "") {
+      errorMsg("quantityErrorMsg", 'Champ requis', 'red')
+      return false
+    } else {
+      majForm("quantityErrorMsg")
+      return true
+    }
+
   }
-  // ne pas oublier d'appeler la fonction
+  // Ecoute quantity
+  quantity.addEventListener('change', function () { quantityValidation() })
 
-
+  /*
   //-----------------------------------//
   // Vérification du tournoi souhaité
   const tournamentValidation = () => {
@@ -217,7 +212,7 @@ document.addEventListener("DOMContentLoaded", () => {
       //console.log(error);
 
 
-      if (validationFirstName() && validationLastName() && emailValidation() && birthValidation()) {
+      if (validationFirstName() && validationLastName() && emailValidation() && birthValidation() && quantityValidation()) {
 
         console.log('ok pour submit');
         console.table(orderContact)
