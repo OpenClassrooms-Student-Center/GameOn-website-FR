@@ -1,7 +1,7 @@
 //-----------------------------------------------//
 //------ FORMULAIRE ECOUTE ET VALIDATION ------//
 
-
+//test
 //On écoute l'évenement du DOM chargé
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -112,25 +112,25 @@ document.addEventListener("DOMContentLoaded", () => {
   nameValidation(lastName, 'lastNameErrorMsg')
 
   */
-  
+
   //----------------------------//
   // Vérification de l'email
   const emailValidation = () => {
-      if (emailReg.test(mail.value) == false) {
-        errorMsg("emailErrorMsg", 'Merci de renseigner une adresse mail valide !', 'purple')
-        return false
-      } else {
-        majForm("emailErrorMsg")
-        return true
+    if (emailReg.test(mail.value) == false) {
+      errorMsg("emailErrorMsg", 'Merci de renseigner une adresse mail valide !', 'purple')
+      return false
+    } else {
+      majForm("emailErrorMsg")
+      return true
 
-      }
-    
+    }
+
   }
 
   mail.addEventListener('input', function () {
     emailValidation()
   })
-  
+
 
   /*
   //-----------------------------//
