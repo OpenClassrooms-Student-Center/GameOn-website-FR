@@ -69,7 +69,9 @@ const checkBirthdayDate = () => {
     } /*else clearError(birthdate);*/
 };
 
-function validate(event) {
+
+
+const validate = (event) => {
     valid = true;
 
     checkFirstName();

@@ -27,7 +27,7 @@ p {
 }
 
 img {
-  width: 50%; /* Modified */
+  width: auto; /* Modified */
   height: auto; /* Modified */
   padding-right: 1rem;
 }
@@ -481,6 +481,9 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+  .header-logo img {
+   width: 50%; /* Modified */
+  }
   .hero-section {
     display: block;
     box-shadow: unset;

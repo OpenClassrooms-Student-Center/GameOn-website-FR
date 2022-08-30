@@ -9,6 +9,10 @@ const showValidationMessage = () => {
     document.querySelector('.modal-body').appendChild(validationMessage);
 };
 
+const disableCheckboxTransition = () => {
+    document.querySelectorAll('span.checkbox-icon')
+            .forEach((element) => element.style.transitionDuration = "0s");
+};
 
 const showCloseButton = () => {
     const closeValidationButton = document.createElement('button');
@@ -16,9 +20,4 @@ const showCloseButton = () => {
     closeValidationButton.classList.add('btn-submit');
     closeValidationButton.addEventListener("click", () => modalbg.style.display = "none");
     document.querySelector('.modal-body').appendChild(closeValidationButton);
-};
-
-const disableCheckboxTransition = () => {
-    document.querySelectorAll('span.checkbox-icon')
-            .forEach((element) => element.style.transitionDuration = "0s");
 };

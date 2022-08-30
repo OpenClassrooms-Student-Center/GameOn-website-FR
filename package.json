@@ -1,0 +1,22 @@
+{
+  "name": "proet-4",
+  "version": "1.0.0",
+  "description": "Projet 4 OCR",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KevinLeFaucheur/GameOn-website-FR.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KevinLeFaucheur/GameOn-website-FR/issues"
+  },
+  "homepage": "https://github.com/KevinLeFaucheur/GameOn-website-FR#readme",
+  "devDependencies": {
+    "webpack-cli": "^4.10.0"
+  }
+}
