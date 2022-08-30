@@ -9,14 +9,15 @@ const checkbox = document.getElementById('checkbox1');
 let valid = true;
 
 const checkFirstName = () => {
-    if(firstName.value.length < 2 || firstName.value.length == "") {
+    // if(firstName.value.length < 2 || firstName.value.length == "") {
+    if(!isLettersOnly(firstName.value.trim())) {
         showError(firstName, 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.');
         valid = false;
     } else clearError(firstName);
 }
 
 const checkLastName = () => {
-    if(lastName.value.length < 2 || lastName.value.length == "") {
+    if(!isLettersOnly(lastName.value.trim())) {
         showError(lastName, 'Veuillez entrer 2 caractères ou plus pour le champ du nom.');
         valid = false;
     } else clearError(lastName);
@@ -69,7 +70,9 @@ const checkBirthdayDate = () => {
     } /*else clearError(birthdate);*/
 };
 
-
+const isLettersOnly = (string) => {
+    return /^[a-z][a-z]+$/i.test(string);
+};
 
 const validate = (event) => {
     valid = true;
