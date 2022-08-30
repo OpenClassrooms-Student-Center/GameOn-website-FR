@@ -189,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
       majForm("checkedCGErrorMsg")
       return true
     }else{
-      errorMsg("checkedCGErrorMsg", 'Veuillez choisir un tournoi', 'red')
+      errorMsg("checkedCGErrorMsg", `Merci d'accepter les conditions générales !`, 'red')
     }
   }
   
