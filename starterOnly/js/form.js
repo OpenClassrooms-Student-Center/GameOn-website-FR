@@ -9,7 +9,6 @@ const checkbox = document.getElementById('checkbox1');
 let valid = true;
 
 const checkFirstName = () => {
-    // if(firstName.value.length < 2 || firstName.value.length == "") {
     if(!isLettersOnly(firstName.value.trim())) {
         showError(firstName, 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.');
         valid = false;
