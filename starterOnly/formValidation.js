@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const dateOfBirth = document.getElementById('birthdate')
   const quantity = document.getElementById('quantity')
   const tournament = document.querySelectorAll('input[name = "location"]')
-  
+
   //Récupération date Actuel
   let dateActu = new Date()
 
@@ -29,6 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById(name).textContent = txt
     document.getElementById(name).style.color = color
   }
+
 
   //Vérification du champ prénom
   const validationFirstName = () => {
@@ -49,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   // Ecoute
-  firstName.addEventListener('input', function () {validationFirstName()})
+  firstName.addEventListener('input', function () { validationFirstName() })
 
 
   //Vérification du champ nom
@@ -71,7 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   // Ecoute
-  lastName.addEventListener('input', function () {validationLastName()})
+  lastName.addEventListener('input', function () { validationLastName() })
 
   /*
   //-----------------------------------//
@@ -113,7 +114,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   }
   // Ecoute
-  mail.addEventListener('input', function () {emailValidation()})
+  mail.addEventListener('input', function () { emailValidation() })
 
   //-----------------------------//
   // Vérification de la date
@@ -184,15 +185,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //------------------------------------//
   // Vérification checkbox condition general
-  const conditionValidation = () =>{
-    if(checkbox1.checked){
+  const conditionValidation = () => {
+    if (checkbox1.checked) {
       majForm("checkedCGErrorMsg")
       return true
-    }else{
+    } else {
       errorMsg("checkedCGErrorMsg", `Merci d'accepter les conditions générales !`, 'red')
     }
   }
-  
+
 
   //-------------------------------------------------------------------------------//
   //Récupérer et analyser les données saisies par l’utilisateur dans le formulaire
@@ -215,14 +216,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
       }
       console.log(orderContact);
-      
+
 
       // Vérification des champs au clic
       validationFirstName()
       validationLastName()
       emailValidation()
       conditionValidation()
-      
+
 
       if (validationFirstName() && validationLastName() && emailValidation() && birthValidation() && quantityValidation() && tournamentValidation() && conditionValidation()) {
 
