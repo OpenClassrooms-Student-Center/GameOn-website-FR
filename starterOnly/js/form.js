@@ -84,7 +84,7 @@ function validate(event) {
     if(valid) {
         showValidationMessage();
         showCloseButton();
-    } else { event.preventDefault(); }
+    } /*else { event.preventDefault(); }*/
 
     // return false;
 }

@@ -1,0 +1,8 @@
+.validation-message {
+    position: absolute;
+    width: 84%;
+    top: 42%;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 500;
+}

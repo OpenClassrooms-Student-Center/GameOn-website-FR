@@ -27,6 +27,8 @@ p {
 }
 
 img {
+  width: 50%; /* Modified */
+  height: auto; /* Modified */
   padding-right: 1rem;
 }
 
@@ -405,7 +407,7 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
+  /* min-height: 93vh; */  /* Modified */
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -420,7 +422,7 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
+  /* min-width: 424px; */   /* Modified */
 }
 .hero-content::after {
   content: "";
@@ -443,7 +445,7 @@ input[data-error]::after {
 .hero-text {
   width: 146%;
   font-weight: normal;
-  margin-top: 57px;
+  margin-top: 3vh;  /* Modified */
   padding: 0;
 }
 .btn-signup {
@@ -486,7 +488,7 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0;  /* Modified */
   }
   .hero-content::after {
     content: unset;
@@ -495,12 +497,12 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 2rem;   /* Modified */
     white-space: normal;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 0.8rem;   /* Modified */
   }
   .hero-img img {
     border-radius: 10px;
