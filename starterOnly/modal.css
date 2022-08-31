@@ -82,6 +82,23 @@ img {
   padding-left: 7px;
 }
 
+#display-confirm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#display-confirm h2 {
+  color: rgb(11, 254, 35);
+}
+#display-confirm p {
+  color: rgb(255, 255, 255);
+}
+
+#logo-confirm {
+  color: #45217b;
+}
+
 main {
   font-size: 130%;
   font-weight: bolder;
