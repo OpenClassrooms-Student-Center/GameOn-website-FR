@@ -30,8 +30,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById(name).style.color = color
   }
 
-
-  //Vérification du champ prénom
+  /**
+   * 
+   * @returns boolean
+   * 
+   */// Vérification du champ prénom
   const validationFirstName = () => {
     if (firstName.value === "") {
       errorMsg('firstNameErrorMsg', 'Champ requis !', 'red')
@@ -78,7 +81,6 @@ document.addEventListener("DOMContentLoaded", () => {
   //-----------------------------------//
   // fonction validation prenom et nom
   const nameValidation = (name, errorName) => {
-    name.addEventListener('input', function () {
       if (name.value === "") {
         errorMsg(errorName, 'Champ requis !', 'red')
         error = true
@@ -94,7 +96,6 @@ document.addEventListener("DOMContentLoaded", () => {
         majForm(errorName)
         error = false
       }
-    })
   }
   nameValidation(firstName, 'firstNameErrorMsg')
   nameValidation(lastName, 'lastNameErrorMsg')
@@ -104,7 +105,11 @@ document.addEventListener("DOMContentLoaded", () => {
   //----------------------------//
   // Vérification de l'email
   const emailValidation = () => {
-    if (emailReg.test(mail.value) == false) {
+    if (mail.value === '') {
+      errorMsg("emailErrorMsg", 'Champ requis !', 'red')
+      return false
+    }
+    else if (emailReg.test(mail.value) == false) {
       errorMsg("emailErrorMsg", 'Merci de renseigner une adresse mail valide !', 'purple')
       return false
     } else {
@@ -194,7 +199,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-
+  // Ecoute
+  document.getElementById('checkbox1').addEventListener('change', function () { conditionValidation() })
   //-------------------------------------------------------------------------------//
   //Récupérer et analyser les données saisies par l’utilisateur dans le formulaire
   let formListener = () => {
@@ -222,6 +228,9 @@ document.addEventListener("DOMContentLoaded", () => {
       validationFirstName()
       validationLastName()
       emailValidation()
+      birthValidation()
+      quantityValidation()
+      tournamentValidation()
       conditionValidation()
 
 
@@ -230,7 +239,9 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log('ok pour submit');
         console.table(orderContact)
 
-        //formSubmit(orderContact) 
+        //on efface id=val
+        //on insert message de confirmation
+        formSubmit()
         console.log('Bonne chance' + ' ' + orderContact.prénom);
       } else {
         console.log('error formulaire');
@@ -242,6 +253,30 @@ document.addEventListener("DOMContentLoaded", () => {
 
   formListener()
 
+  // Récupération de tout les éléments du modal
+  const display = document.getElementById('val')
+
+  //-----------------------------------------------//
+  //-- Fonction d'affichage message confirmation
+  const formSubmit = () => {
+    //éfface l'intérieur du modal
+    display.style.display = 'none'
+    //insert bloc html
+    display.insertAdjacentHTML('beforebegin',
+      `
+    <div id='display-confirm'>
+      <h2>Félicitation ${firstName.value}</h2>
+      <p>Ton inscription est validée !</p>
+      <br />
+      <p>Prochaine étape ....</p>
+      <br />
+      <img id="logo-confirm" src="Logo.png" alt="img" />
+      <br />
+    </div>
+    `
+    )
+
+  }
 
 })
 
