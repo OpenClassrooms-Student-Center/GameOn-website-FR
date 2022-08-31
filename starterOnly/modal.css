@@ -28,6 +28,7 @@ p {
 
 img {
   padding-right: 1rem;
+  object-fit: cover;
 }
 
 .topnav {
@@ -106,7 +107,7 @@ main {
   padding-top: 0.5vw;
   padding-left: 2vw;
   padding-right: 2vw;
-  margin: 1px 20px 15px;
+  /*margin: 1px 20px 15px;*/
   border-radius: 2rem;
   text-align: justify;
 }
@@ -401,7 +402,7 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
+  /*min-height: 93vh;*/
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -483,7 +484,7 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 13px; /* a voir */
   }
   .hero-content::after {
     content: unset;
@@ -492,12 +493,15 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 2.5rem;
+    font-weight: 800;
     white-space: normal;
   }
   .hero-text {
+    max-width: 80%;
     width: unset;
     font-size: 1.5rem;
+    margin-top: 28px; /* a voir */
   }
   .hero-img img {
     border-radius: 10px;
@@ -534,7 +538,7 @@ footer {
     display: none;
   }
   .topnav a.icon {
-    float: right;
+    float: left;
     display: block;
   }
 }
@@ -546,7 +550,10 @@ footer {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    margin-top: 3px;
+  }
+  .main-navbar {
+    float: left; /* voir coté de nav*/
   }
 }
 
