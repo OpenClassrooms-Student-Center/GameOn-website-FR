@@ -16,8 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let dateActu = new Date()
 
   //Regex----expression réguliere
-  let emailReg = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,}$/
-  let nameReg = /^[a-zA-Z\s,.'-]+([-'\s][a-zA-Z\s,.'-])?/
+  let emailReg = /^[^\s@]+@([^\s@.,]+\.)+[^\s@.,]{2,3}$/
+  let nameReg = /^[a-zA-Z,.'-]+([-'\s][a-zA-Z\s,.'-])?/
 
   //remise a vide du form
   let majForm = (val) => {
@@ -76,31 +76,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   // Ecoute
   lastName.addEventListener('input', function () { validationLastName() })
-
-  /*
-  //-----------------------------------//
-  // fonction validation prenom et nom
-  const nameValidation = (name, errorName) => {
-      if (name.value === "") {
-        errorMsg(errorName, 'Champ requis !', 'red')
-        error = true
-      }
-      else if (name.value.length < 2) {  // si value envoi est vide et <2
-        errorMsg(errorName, 'Merci de entrer 2 caractères minimum !', 'red')
-        error = true
-      }
-      else if (nameReg.test(name.value) == false) {   // et si methode test de regex renvoie false
-        errorMsg(errorName, 'Format invalide !', 'purple')
-        error = true
-      } else {
-        majForm(errorName)
-        error = false
-      }
-  }
-  nameValidation(firstName, 'firstNameErrorMsg')
-  nameValidation(lastName, 'lastNameErrorMsg')
-
-  */
 
   //----------------------------//
   // Vérification de l'email
@@ -235,18 +210,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
       if (validationFirstName() && validationLastName() && emailValidation() && birthValidation() && quantityValidation() && tournamentValidation() && conditionValidation()) {
-
-        console.log('ok pour submit');
-        console.table(orderContact)
-
-        //on efface id=val
-        //on insert message de confirmation
         formSubmit()
-        console.log('Bonne chance' + ' ' + orderContact.prénom);
       } else {
         console.log('error formulaire');
       }
-
     })
 
   }
