@@ -196,7 +196,7 @@ function validate() {
         checkQuantity() === true && checkLocations() === true && checkCheckBox() === true) {
         
         console.log("The form has been validated!");
-
+        
         return true;
     }
     return false;
