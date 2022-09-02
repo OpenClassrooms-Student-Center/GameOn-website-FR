@@ -55,18 +55,28 @@ function validate() {
 
 
   // Check the first name.
-  if (firstName.value.length < 2) {
+  const name_regex = /^[A-zÀ-ú]+$/;
+
+  if (!name_regex.test(firstName.value) || firstName.value.length < 2) {
 
     errorMessage(firstName, "Ce champ doit contenir au minimum 2 caractères !");
     return false;
 
+  } else {
+
+      firstName.style.background = "green";
+
   }
 
   // Check the last name.
-  if (lastName.value.length < 2) {
+  if (!name_regex.test(lastName.value) || lastName.value.length < 2) {
 
     errorMessage(lastName, "Ce champ doit contenir au minimum 2 caractères !");
     return false;
+
+  } else {
+
+    lastName.style.background = "green";
 
   }
 
@@ -78,6 +88,10 @@ function validate() {
     errorMessage(email, "Ce champ doit contenir une adresse email valide !");
     return false;
 
+  } else {
+
+    email.style.background = "green";
+
   }
 
   // Check the date of birth.
@@ -88,6 +102,10 @@ function validate() {
     errorMessage(birthdate, "Entrez vôtre date de naissance !");
     return false;
 
+  } else {
+
+    birthdate.style.background = "green";
+
   }
 
   // Check that there is a numeric value for <<tournament number>>
@@ -95,6 +113,10 @@ function validate() {
 
     errorMessage(quantity, "Ce champ doit être une valeur numérique entier !");
     return false;
+
+  } else {
+
+    quantity.style.background = "green";
 
   }
 
@@ -104,7 +126,7 @@ function validate() {
   for (let i = 0; i < locations.length; i++) {
 
     if (locations[i].checked) {
-      checked = true
+      checked = true;
       break
     }
 
