@@ -190,10 +190,13 @@ function forAllFieldsValidation() {
 }
 
 // form validation check
-function formValidation() {
+function validate() {
     // We take every fields check and return true if all fields are ok
     if (checkFirstName() === true && checkLastName() === true && checkEmail() === true && checkBirthdate() === true &&
         checkQuantity() === true && checkLocations() === true && checkCheckBox() === true) {
+        
+        console.log("The form has been validated!");
+
         return true;
     }
     return false;
@@ -202,10 +205,10 @@ function formValidation() {
 // submit form
 form.addEventListener('submit', function (e) {
     e.preventDefault();
-    if (formValidation() == true) {
+    if (validate() == true) {
         /* If the form validation is ok we display the popup success and reset the form */
         displayPopupSubmit();
-        document.querySelector('form').reset();
+        form.reset();
     } else {
         // Re check of all fields
         forAllFieldsValidation();
