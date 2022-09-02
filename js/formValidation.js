@@ -29,46 +29,41 @@ function isLongEnough(currentLength, minimumLength) {
     return currentLength >= minimumLength;
 }
 
-
-// firstname check
-function checkFirstName() {
-    /* We will check if the fistname length is at least 2 or more + remove spaces and check it's different than empty + the firstname value match 
+function checkSimpleString(field) {
+    /* We will check if the string length is at least 2 or more + remove spaces and check it's different than empty + the string value match 
     is our function */
-    if(isLongEnough(firstName.value.length, 2) && firstName.value.trim() !== '' && firstName.value.match(stringRegex)) {
+    if(isLongEnough(field.value.length, 2) && field.value.match(stringRegex)) {
         // if this is valid, set the data attribute to false
-        first.parentElement.setAttribute('data-error-visible', 'false');
+        field.parentElement.setAttribute('data-error-visible', 'false');
         // then add the border green
-        first.classList.remove('border-red');
-        first.classList.add('border-green');
+        field.classList.remove('border-red');
+        field.classList.add('border-green');
         return true;
     }
 
     // if it's not valid, set the data attribute to true
-    firstName.parentElement.setAttribute('data-error-visible', 'true');
+    field.parentElement.setAttribute('data-error-visible', 'true');
     // then add the border red
-    firstName.classList.remove('border-green');
-    firstName.classList.add('border-red');
+    field.classList.remove('border-green');
+    field.classList.add('border-red');
+    return false;
+}
+
+// firstname check
+function checkFirstName() {
+    if(checkSimpleString(firstName) === true) {
+        return true;
+    }
+
     return false;
 }
 
 // lastname check
 function checkLastName() {
-    /* We will check if the lastname length is at least 2 or more + remove spaces and check it's different than empty + the firstname value match 
-    is our function */
-    if(isLongEnough(lastName.value.length, 2) && lastName.value.trim() !== '' && lastName.value.match(stringRegex)) {
-        // if this is valid, set the data attribute to false
-        last.parentElement.setAttribute('data-error-visible', 'false');
-        // then add the border green
-        last.classList.remove('border-red');
-        last.classList.add('border-green');
+    if(checkSimpleString(lastName) === true) {
         return true;
     }
 
-    // if it's not valid, set the data attribute to true
-    lastName.parentElement.setAttribute('data-error-visible', 'true');
-    // then add the border red
-    lastName.classList.remove('border-green');
-    lastName.classList.add('border-red');
     return false;
 }
 
