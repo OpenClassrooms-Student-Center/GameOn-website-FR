@@ -7,7 +7,7 @@ function editNav() {
   }
 }
 
-// DOM Elements
+// Elements du DOM
 const modalbg = document.querySelector(".bground");
 const closeBtn = document.querySelectorAll(".close");
 const modalBtn = document.querySelectorAll(".modal-btn");
@@ -23,52 +23,82 @@ const form = document.getElementById("reserve");
 const submit = document.getElementById("submit");
 
 
-/* FUNCTION */
+/* FONCTIONS */
 
-// launch modal form.
+// Ouvre le formulaire.
 function launchModal() {
   modalbg.style.display = "block";
 }
 
-// close modal form.
+// Ferme le formulaire
 function closeModal() {
   modalbg.style.display = "none";
 }
 
-// Create an error message
+
+
+// Créer un message d'erreur, prend en paramètre l'élément sur lequel le message doit être affiché, puis le message qui doit être affiché.
 function errorMessage(element, message) {
+
+  // Créer un nouveau element <p>.
   const newP = document.createElement("p");
+
+  // Ajoute la classe error à l'élément crée.
   newP.classList.add("error");
+
+  // Ajoute le message à l'élément crée.
   newP.textContent = message;
+
+  // Change la couleur d'arrière-plan de l'élément qui reçois l'erreur.
   element.style.background = "indianred";
 
-  //element.parentNode.appendChild(newP);
+  // Ajoute l'élément <p> précédemment créé à l'élément qui doit afficher l'erreur.
   element.parentNode.insertBefore(newP, element);
 
 }
 
 
+
+// Vérifie si le formulaire est correct à la soumission du formulaire.
 function validate() {
 
-  // Delete all error message
+  // Regex pour le champ nom et prénom.
+  const name_regex = /^[A-zÀ-ú]+$/;
+
+  // Regex pour le champ email.
+  const mail_regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+  // Regex pour la date de naissance
+  const date_regex = /^\d{4}-\d{2}-\d{2}$/;
+
+  // Variable pour les champs localisations
+  let checked = false;
+
+
+  // Supprime tous les messages d'erreur déjà present.
   document.querySelectorAll(".error").forEach(e => e.remove());
 
 
-  // Check the first name.
-  const name_regex = /^[A-zÀ-ú]+$/;
-
+  // Vérifie le champ prénom, si le champ ne passe pas le teste de regex ou s'il y a moin de 2 caractères,
+  // alors on affiche un message d'erreur, et on empêche la soumission du formulaire.
   if (!name_regex.test(firstName.value) || firstName.value.length < 2) {
 
+    // Appel de la fonction errorMessage, avec en paramètre l'élément du champ prénom et le message a affiché.
     errorMessage(firstName, "Ce champ doit contenir au minimum 2 caractères !");
+
+    // on empêche la soumission du formulaire
     return false;
 
+    // Sinon...
   } else {
 
-      firstName.style.background = "green";
+    // On change l'arrière-plan du champ correcte.
+    firstName.style.background = "green";
 
   }
 
-  // Check the last name.
+
+  // Pareil que pour le champ prénom, on vérifie le champ nom avec les mêmes conditions.
   if (!name_regex.test(lastName.value) || lastName.value.length < 2) {
 
     errorMessage(lastName, "Ce champ doit contenir au minimum 2 caractères !");
@@ -80,10 +110,9 @@ function validate() {
 
   }
 
-  // Check the email validation.
-  const pattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-  if (!pattern.test(email.value)) {
+  // Vérifie le champ email, avec un test pour le regex.
+  if (!mail_regex.test(email.value)) {
 
     errorMessage(email, "Ce champ doit contenir une adresse email valide !");
     return false;
@@ -94,9 +123,8 @@ function validate() {
 
   }
 
-  // Check the date of birth.
-  const date_regex = /^\d{4}-\d{2}-\d{2}$/;
 
+  // Vérifie la date de naissance, avec un test pour le regex.
   if (!date_regex.test(birthdate.value)) {
 
     errorMessage(birthdate, "Entrez vôtre date de naissance !");
@@ -108,7 +136,10 @@ function validate() {
 
   }
 
-  // Check that there is a numeric value for <<tournament number>>
+
+  // Vérifie que le nombre de tournois et bien une valeur numérique entière.
+  // Number.isInteger() permet de déterminer si l'argument est un nombre entier.
+  // parseFloat() permet de transformer une chaîne de caractères en un nombre flottant.
   if (!Number.isInteger(parseFloat(quantity.value)) || quantity.value < 0) {
 
     errorMessage(quantity, "Ce champ doit être une valeur numérique entier !");
@@ -120,18 +151,22 @@ function validate() {
 
   }
 
-  // Check that a radio button for <<location>> is selected.
-  let checked = false;
 
+  // Vérifie si une localisation est cochée.
+  // On boucle sur tous les boutons radio pour les localisations
   for (let i = 0; i < locations.length; i++) {
 
+    // Si une des localisations est cochée
     if (locations[i].checked) {
+
+      // la variable checked devient true
       checked = true;
       break
     }
 
   }
 
+  // Si la variable checked est false, alors aucune localisation n'est cochée
   if (!checked) {
 
     errorMessage(document.getElementById("location1"), "Une localisation doit être sélectionner !");
@@ -139,7 +174,8 @@ function validate() {
 
   }
 
-  // Check that the Terms and Conditions box is checked.
+
+  // Vérifie si les conditions d'utilisation sont cochée.
   if (!condition.checked) {
 
     errorMessage(condition, "Vous devez accepté les conditions d'utilisation !")
@@ -147,16 +183,24 @@ function validate() {
 
   }
 
+  /* Si tout est OK */
+
+  // On empêche le rafraichissement de la page.
   event.preventDefault();
 
+  // On décale les champs du formulaire à gauche pour les cacher.
   formData.forEach(e => e.style.transform = "translateX(-9999px)");
+
 
   const elemValidation = document.createElement("p");
   elemValidation.classList.add("valide");
   elemValidation.textContent = "Merci pour votre inscription";
-
   form.appendChild(elemValidation);
+
+  // On change la valeur du bouton du formulaire pour afficher "Fermer".
   submit.value = "Fermer";
+
+  // On ajoute à celui-ci l'évènement pour fermer le formulaire.
   submit.addEventListener("click", closeModal);
 
 }
@@ -164,8 +208,8 @@ function validate() {
 
 /* Event */
 
-// launch modal event
+// Évènement pour ouvrir le formulaire.
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// close modal event
+// Évènement pour fermer le formulaire.
 closeBtn.forEach((closeBtn) => closeBtn.addEventListener("click", closeModal));
