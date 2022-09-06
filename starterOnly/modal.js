@@ -11,7 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-
+const modalCloseBtnList = document.querySelectorAll(".bground .close");
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -21,3 +21,15 @@ function launchModal() {
 }
 
 
+/**
+ * Close modal function
+ */
+const closeModal = () =>  {
+  modalbg.style.display = "none";
+};
+
+/**
+ * Add listner for
+ * Cross button and Close Button (issue-4)
+ */
+modalCloseBtnList.forEach((btn) => btn.addEventListener("click", closeModal));
