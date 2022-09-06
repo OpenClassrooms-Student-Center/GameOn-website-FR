@@ -32,4 +32,4 @@ const closeModal = () =>  {
  * Add listner for
  * Cross button and Close Button (issue-4)
  */
-modalCloseBtn.forEach((btn) => btn.addEventListener("click", closeModal));
+modalCloseBtnList.forEach((btn) => btn.addEventListener("click", closeModal));
