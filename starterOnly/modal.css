@@ -165,13 +165,13 @@ main {
   top: 0;
   height: 100%;
   width: 100%;
-  overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
 }
 
 .content {
   margin: 5% auto;
   width: 100%;
+  min-height: 90%;
   max-width: 500px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
@@ -215,7 +215,7 @@ input {
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  /* text-align: right; */
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -403,6 +403,14 @@ input[data-error]::after {
 .text-label {
   font-weight: normal;
   font-size: 16px;
+}
+.confirm-message {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(8%,-50%);
+  width: 86%;
+  text-align: center;
 }
 .hero-section {
   min-height: 93vh;
