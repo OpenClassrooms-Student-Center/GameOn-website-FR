@@ -8,7 +8,8 @@
   margin: 0;
   padding: 0;
 }
-/* Landing Page */
+/**************************/
+/*---- Landing Page ----*/
 
 body {
   margin: 0;
@@ -492,13 +493,17 @@ footer {
   padding-right: 2vw;
   margin: 30px 20px;
 }
+
+/********************************************/
+/*--------- RESPONSIVE DESIGN -------------*/
+
 @media screen and (max-width: 1200px) {
   nav {
     padding-left: 55px;
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 992px) {
   .topnav .icon {
     color: red;
   }
@@ -551,7 +556,7 @@ footer {
     max-width: 80%;
     width: unset;
     font-size: 1.5rem;
-    margin-top: 28px; /* a voir */
+    margin-top: 28px;
   }
   .hero-img img {
     border-radius: 10px;
@@ -568,8 +573,8 @@ footer {
     text-align: center;
   }
 }
-/************************/
-/* responsive design */
+/**********************************/
+/*---------- Tablette -----------*/
 
 @media screen and (max-width: 768px) {
   .topnav.responsive .icon {
@@ -594,6 +599,9 @@ footer {
   }
 }
 
+/**********************************/
+/*-------- Smartphone -----------*/
+
 @media screen and (max-width: 540px) {
   .topnav a {
     display: none;
@@ -604,7 +612,7 @@ footer {
     margin-top: 3px;
   }
   .main-navbar {
-    float: right; /* voir coté de nav*/
+    float: right;
   }
   .main-navbar a {
     font-size: medium;
