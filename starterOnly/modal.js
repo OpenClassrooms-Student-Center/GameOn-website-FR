@@ -10,6 +10,7 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
+const form = document.querySelector("form[name='reserve']");
 const formData = document.querySelectorAll(".formData");
 const modalCloseBtnList = document.querySelectorAll(".bground .close");
 // launch modal event
@@ -24,12 +25,117 @@ function launchModal() {
 /**
  * Close modal function
  */
-const closeModal = () =>  {
-  modalbg.style.display = "none";
-};
+const closeModal = () =>  modalbg.style.display = "none";
 
 /**
  * Add listner for
  * Cross button and Close Button (issue-4)
  */
-modalCloseBtn.forEach((btn) => btn.addEventListener("click", closeModal));
+modalCloseBtnList.forEach((btn) => btn.addEventListener("click", closeModal));
+
+/**
+ * Check if element is not Empty or null
+
+ * @return string  : error message
+ */
+const isEmpty = (element) => {
+  if (element === '' || element === null) return 'Ne dois pas etre vide';
+};
+
+/**
+ * Check if element is too short
+
+ * @return string  : error message
+ */
+const asLenght = (element, min = 1) => {
+  const elementLength = element.length;
+  if (elementLength < min && elementLength != 0) return `Dois avoir plus de ${min} charactères.`;
+};
+
+/**
+ * Check if element is too short
+
+ * @return string  : error message
+ */
+const validRegex = (element, regToMatch) => {
+  const regex = new RegExp(regToMatch);
+  const test = regex.test(element.value.trim());
+  if (!test) return `${element.name} n'est pas valide.`;
+};
+
+/**
+ * Check if element is a integer
+
+ * @return string  : error message
+ */
+const isInteger = (element) => {
+  if (!Number.isInteger(parseInt(element))) return "Doit etre un entier.";
+};
+
+/**
+ * Check if element group is checked
+
+ * @return string  : error message
+ */
+const isChecked= (element) => {
+  let checked = false;
+  for (let i = 0; i < element.length; i++) {
+    const input = element[i];
+    if (input.name === 'cgu' && !input.checked) return "Lire et accepter les conditions d'utilisation";
+    if (input.checked) checked = true;
+  }
+
+  if (!checked) return "Sélectionner un tournois."
+}
+
+/**
+ * Check if form is valid or add error messages
+ */
+const validateForm = (element) => {
+  const input = element.querySelectorAll('input');
+
+  let error = isEmpty(input[0].value.trim());
+  switch ( input[0].name ) {
+    case "first":
+    case "last":
+      error = (!error)? asLenght(input[0].value.trim(), 2): error;
+      break;
+    case "email":
+      error = (!error)? validRegex(input[0], /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/): error;
+      break;
+    case "birthdate":
+      error = (!error)? validRegex(input[0], /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/): error;
+      break;
+    case "quantity":
+      error = (!error)? isInteger(input[0].value.trim()): error;
+      break;
+    case "location":
+      error = isChecked(input);
+      break;
+    case "cgu":
+      error = isChecked(input);
+    default:
+      break;
+  }
+
+  if (error != null) {
+    element.dataset.error = error;
+    element.dataset.errorVisible = true;
+
+  } else {
+    element.dataset.error = '';
+    element.dataset.errorVisible = false;
+  }
+};
+
+/**
+ * Add listner for form submit 
+ */
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const formDataElements = e.target.querySelectorAll(".formData");
+  for (let i = 0; i < formDataElements.length; i++) {
+    validateForm(formDataElements[i]);
+  }
+});
+
