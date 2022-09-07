@@ -49,7 +49,7 @@ const isEmpty = (element) => {
  */
 const asLenght = (element, min = 1) => {
   const elementLength = element.length;
-  if (elementLength < min && elementLength != 0) return `Dois avoir plus de ${min} charactères.`;
+  if (elementLength < min && elementLength != 0) return `Veuillez entrer ${min} caractères ou plus pour le champ du nom.`;
 };
 
 /**
@@ -81,11 +81,11 @@ const isChecked= (element) => {
   let checked = false;
   for (let i = 0; i < element.length; i++) {
     const input = element[i];
-    if (input.name === 'cgu' && !input.checked) return "Lire et accepter les conditions d'utilisation";
+    if (input.name === 'cgu' && !input.checked) return "Vous devez vérifier que vous acceptez les termes et conditions.";
     if (input.checked) checked = true;
   }
 
-  if (!checked) return "Sélectionner un tournois."
+  if (!checked) return "Vous devez choisir une option."
 }
 
 /**
