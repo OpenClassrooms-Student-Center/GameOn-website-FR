@@ -28,8 +28,7 @@ function launchModal() {
 const closeModal = () =>  modalbg.style.display = "none";
 
 /**
- * Add listner for
- * Cross button and Close Button (issue-4)
+ * Add listner for Close Button
  */
 modalCloseBtnList.forEach((btn) => btn.addEventListener("click", closeModal));
 
@@ -121,12 +120,26 @@ const validateForm = (element) => {
   if (error != null) {
     element.dataset.error = error;
     element.dataset.errorVisible = true;
+    return true;
 
   } else {
-    element.dataset.error = '';
+    element.removeAttribute('data-error');
     element.dataset.errorVisible = false;
+    return false;
   }
 };
+
+/**
+ * Create comfirm message
+ * after validation
+ */
+const confimMessage = (message) => {
+  form.style.display = "none";
+  const messageElement = document.createElement("p");
+  messageElement.classList.add('confirm-message');
+  messageElement.innerHTML = message;
+  document.querySelector(".modal-body").append(messageElement);
+}
 
 /**
  * Add listner for form submit 
@@ -134,8 +147,10 @@ const validateForm = (element) => {
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   const formDataElements = e.target.querySelectorAll(".formData");
+  let error;
   for (let i = 0; i < formDataElements.length; i++) {
-    validateForm(formDataElements[i]);
+    error = validateForm(formDataElements[i]);
   }
+  if (!error) confimMessage("Merci !<br> Votre réservation a été reçue.");
 });
 
