@@ -1,3 +1,5 @@
+@import url("https://necolas.github.io/normalize.css/latest/normalize.css");
+
 :root {
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
