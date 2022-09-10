@@ -253,7 +253,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const display = document.getElementById('val')
     display.style.display = 'none'
     display.insertAdjacentHTML('beforebegin',
-      // Bloc confirmation maquette
       `
     <div id='display-confirm'>
       <h2>Merci pour <br/> votre inscriprtion</h2>
@@ -266,27 +265,6 @@ document.addEventListener("DOMContentLoaded", () => {
       onclick="window.location.reload();"
     />
     `
-
-      /*// Bloc confirmation personnalisé
-      `
-    <div id='display-confirm'>
-      <h2>Félicitation ${firstName.value}</h2>
-      <p>Ton inscription est validée !</p>
-      <br />
-      <p>Prochaine étape ....</p>
-      <br />
-      <img id="logo-confirm" src="Logo.png" alt="img" />
-      <br />
-    </div>
-    <input
-      class="btn-submit"
-      type="submit"
-      name="button"
-      value="Fermer"
-      onclick="window.location.reload();"
-    />
-    `*/
-
     )
 
   }
