@@ -51,26 +51,22 @@ document.addEventListener("DOMContentLoaded", () => {
       firstName.style.border = '2px solid red'
       return false
     }
-    else if (firstName.value.length < 2) {  // si value envoi est vide et <2
+    else if (firstName.value.length < 2) {
       errorMsg('firstNameErrorMsg', 'Merci de entrer 2 caractères minimum !', 'red')
       firstName.style.border = '2px solid red'
       return false
     }
-    else if (nameReg.test(firstName.value) == false) {   // et si methode test de regex renvoie false
-      errorMsg('firstNameErrorMsg', 'Format invalide !', 'purple')
-      firstName.style.border = '2px solid purple'
+    else if (nameReg.test(firstName.value) == false) {
+      errorMsg('firstNameErrorMsg', 'Format invalide !', 'red')
+      firstName.style.border = '2px solid red'
       return false
     } else {
       majForm('firstNameErrorMsg')
-      // commenter pour choisir bordure verte ou rien
       firstName.style.border = '2px solid #00FF00'
       //firstName.style.border = 'none'
       return true
     }
   }
-  // Ecoute
-  firstName.addEventListener('input', function () { validationFirstName() })
-
 
   /**
    * Vérification du champ nom
@@ -87,8 +83,8 @@ document.addEventListener("DOMContentLoaded", () => {
       lastName.style.border = '2px solid red'
       return false
     }
-    else if (nameReg.test(lastName.value) == false) {   // et si methode test de regex renvoie false
-      errorMsg('lastNameErrorMsg', 'Format invalide !', 'purple')
+    else if (nameReg.test(lastName.value) == false) {
+      errorMsg('lastNameErrorMsg', 'Format invalide !', 'red')
       lastName.style.border = '2px solid purple'
       return false
     } else {
@@ -97,8 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
       return true
     }
   }
-  // Ecoute
-  lastName.addEventListener('input', function () { validationLastName() })
 
   /**
    * Vérification de l'email
@@ -111,8 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
       return false
     }
     else if (emailReg.test(mail.value) == false) {
-      errorMsg("emailErrorMsg", 'Merci de renseigner une adresse mail valide !', 'purple')
-      mail.style.border = '2px solid purple'
+      errorMsg("emailErrorMsg", 'Merci de renseigner une adresse mail valide !', 'red')
+      mail.style.border = '2px solid red'
       return false
     } else {
       majForm("emailErrorMsg")
@@ -121,8 +115,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
   }
-  // Ecoute
-  mail.addEventListener('input', function () { emailValidation() })
 
   /**
    * Vérification de la date
@@ -135,11 +127,10 @@ document.addEventListener("DOMContentLoaded", () => {
       errorMsg("birthErrorMsg", 'Champ requis !', 'red')
       dateOfBirth.style.border = '2px solid red'
     }
-    // Vérification d'une date futur
     else if (birthdate > dateActu) {
       console.log('date superieur');
-      errorMsg("birthErrorMsg", 'Merci de renseigner une date valide !', 'purple')
-      dateOfBirth.style.border = '2px solid purple'
+      errorMsg("birthErrorMsg", 'Merci de renseigner une date valide !', 'red')
+      dateOfBirth.style.border = '2px solid red'
       return false
     } else {
       majForm("birthErrorMsg")
@@ -148,8 +139,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
   }
-  // Ecoute
-  dateOfBirth.addEventListener('input', function () { birthValidation() })
 
   /**
    * Vérification du nombre de tournoi
@@ -162,15 +151,12 @@ document.addEventListener("DOMContentLoaded", () => {
       return false
     } else {
       majForm("quantityErrorMsg")
-      // commenter pour choisir bordure verte ou rien
-      quantity.style.border = '2px solid #00FF00'  //choix 1
-      //quantity.style.border = 'none'              //choix 2
+      quantity.style.border = '2px solid #00FF00'
+      //quantity.style.border = 'none'              
       return true
     }
 
   }
-  // Ecoute quantity
-  quantity.addEventListener('change', function () { quantityValidation() })
 
   /**
    * Vérification checkbox choix du tournoi
@@ -197,10 +183,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Ecoute
-  for (let i = 0; i < tournament.length; i++) {
-    tournament[i].addEventListener('change', function () { tournamentValidation() })
-  }
 
   /**
    * Vérification checkbox condition general
@@ -214,8 +196,16 @@ document.addEventListener("DOMContentLoaded", () => {
       errorMsg("checkedCGErrorMsg", `Merci d'accepter les conditions générales !`, 'red')
     }
   }
-
-  // Ecoute
+  //-------------------------------------//
+  // Ecoute réactive de tout les champs
+  firstName.addEventListener('input', function () { validationFirstName() })
+  lastName.addEventListener('input', function () { validationLastName() })
+  mail.addEventListener('input', function () { emailValidation() })
+  dateOfBirth.addEventListener('input', function () { birthValidation() })
+  quantity.addEventListener('change', function () { quantityValidation() })
+  for (let i = 0; i < tournament.length; i++) {
+    tournament[i].addEventListener('change', function () { tournamentValidation() })
+  }
   document.getElementById('checkbox1').addEventListener('change', function () { conditionValidation() })
 
 
@@ -224,12 +214,7 @@ document.addEventListener("DOMContentLoaded", () => {
    */
   let formListener = () => {
     document.querySelector(".btn-submit").addEventListener("click", (e) => {
-      e.preventDefault() //stop l envoi du formulaire
-
-      /*// HTML cllection
-      let form = e.target.closest('form').elements
-      console.log(form);
-      console.log(form['last'].nextElementSibling);  // VOIR en enlevant les <br */
+      e.preventDefault()
 
       // creation objet contact
       let orderContact = {
@@ -261,16 +246,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   formListener()
 
-  // Récupération de tout les éléments du modal
-  const display = document.getElementById('val')
-
   /**
    * Affichage du message de confirmation
    */
   const formSubmit = () => {
-    //éfface l'intérieur du modal
+    const display = document.getElementById('val')
     display.style.display = 'none'
-    //insert bloc html
     display.insertAdjacentHTML('beforebegin',
       // Bloc confirmation maquette
       `
