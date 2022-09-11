@@ -10,6 +10,8 @@ const locationInputs = Array.from(document.querySelectorAll('.location-input'));
 const conditionsInput = document.querySelector('#checkbox1');
 const newsletterInput = document.querySelector('#checkbox2');
 
+const successMessage = document.querySelector('.success-message')
+
 // REGEXP 
 const nameRegExp = /^[a-zéèôöîïûùü' -]{2,50}$/i;
 const emailRegExp = /^[a-z0-9.-_]+[@]{1}[a-z0-9.-_]+[.]{1}[a-z]{2,10}$/i;
@@ -135,6 +137,8 @@ function validate(){
         (locationInputs.find(input => input.checked === true)).checked = false;
         newsletterInput.checked = false;
 
+        form.style.opacity = "0";
+        successMessage.style.display = "block";
 
     } else {
         console.log('formulaire non valide')
