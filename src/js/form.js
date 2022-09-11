@@ -5,6 +5,7 @@ const lastNameInput = document.querySelector('#lastname');
 const emailInput = document.querySelector('#email');
 const birthDateInput = document.querySelector('#birthdate');
 const quantityInput = document.querySelector('#quantity');
+const locationPick = document.querySelector('.location-pick')
 const locationInputs = Array.from(document.querySelectorAll('.location-input'));
 const conditionsInput = document.querySelector('#checkbox1');
 const newsletterInput = document.querySelector('#checkbox2');
@@ -35,7 +36,6 @@ form.addEventListener('submit', (e) => {
     e.preventDefault()
     validate()
 })
-
 
 // FUNCTIONS 
 function checkInput(input, regex){
@@ -72,11 +72,11 @@ function checkLocation(arrayOfInputs){
     let locationPicked = ''
     const locationPickedInput = arrayOfInputs.find(input => input.checked === true);
     if(!locationPickedInput){
-        console.log('aucune ville choisie')
+        locationPick.setAttribute('data-error-visible', true);
         return false
     } else {
         locationPicked = locationPickedInput.value;
-        console.log(`La ville choisie est ${locationPicked}`)
+        locationPick.setAttribute('data-error-visible', false);
         return true
     }
 
@@ -100,6 +100,12 @@ function checkNewsletter(){
 }
 
 function validate(){
+    checkInput(firstNameInput, nameRegExp)
+    checkInput(lastNameInput, nameRegExp)
+    checkInput(emailInput, emailRegExp)
+    checkDateInput(birthDateInput)
+    checkLocation(locationInputs)
+    checkConditions()
     if(
         checkInput(firstNameInput, nameRegExp) &&
         checkInput(lastNameInput, nameRegExp) &&

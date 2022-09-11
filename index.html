@@ -58,7 +58,7 @@
             <form id="form">
               <div
                 class="formData"
-                data-error="">
+                data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom.">
                 <label for="firstname">Prénom</label><br>
                 <input
                   class="text-control"
@@ -70,7 +70,7 @@
               </div>
               <div
                 class="formData"
-                data-error="">
+                data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom.">
                 <label for="lastname">Nom</label><br>
                 <input
                   class="text-control"
@@ -81,7 +81,7 @@
               </div>
               <div
                 class="formData"
-                data-error="">
+                data-error="Vous devez renseigner une adresse email valide.">
                 <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
@@ -92,7 +92,7 @@
               </div>
               <div
                 class="formData"
-                data-error="">
+                data-error="Vous devez entrer votre date de naissance.">
                 <label for="birthdate">Date de naissance</label><br>
                 <input
                   class="text-control"
@@ -103,13 +103,14 @@
               </div>
               <div
                 class="formData"
-                data-error="">
+                data-error="Vous devez renseigner une valeur comprise entre 0 et 100.">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" value="0">
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                class="formData">
+                class="formData location-pick"
+                data-error="Vous devez choisir une ville.">
                 <input
                   class="checkbox-input location-input"
                   type="radio"
@@ -179,7 +180,8 @@
               </div>
 
               <div
-                class="formData">
+                class="formData"
+                data-error="Vous devez accepter les termes et conditions.">
                 <input class="checkbox-input" type="checkbox" id="checkbox1" checked/>
                 <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
