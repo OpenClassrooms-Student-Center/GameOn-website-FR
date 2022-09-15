@@ -23,9 +23,18 @@ function launchModal() {
 
 
 /**
- * Close modal function
+ * Close modal function & reset form
  */
-const closeModal = () =>  modalbg.style.display = "none";
+const closeModal = () => {
+  form.reset()
+  modalbg.style.display = "none"
+  const confirmMessage = document.querySelector(".modal-body .confirm-message");
+  if (confirmMessage) {
+    confirmMessage.remove();
+    form.style.display = "block";
+  }
+
+};
 
 /**
  * Add listner for Close Button
@@ -52,7 +61,7 @@ const asLenght = (element, min = 1) => {
 };
 
 /**
- * Check if element is too short
+ * Check if element is valid with regex
 
  * @return string  : error message
  */
@@ -154,3 +163,10 @@ form.addEventListener("submit", (e) => {
   if (!error) confimMessage("Merci !<br> Votre réservation a été reçue.");
 });
 
+/**
+ * Add listner for focusout
+ */
+ form.addEventListener("focusout", (e) => {
+  e.preventDefault();
+  validateForm(e.target.parentNode);
+});
