@@ -105,6 +105,11 @@ img {
     overflow: auto;
     padding-top: 80px;
   }
+
+  .bground .content {
+    margin: 0;
+    border-radius: 10px 10px 0 0;
+  }
 }
 
  @media screen and (max-width: 540px) {
