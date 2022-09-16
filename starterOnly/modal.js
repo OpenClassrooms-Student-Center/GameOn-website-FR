@@ -28,3 +28,12 @@ modalCloseButton.addEventListener("click", closeModal)
 function closeModal() {
   modalbg.style.display = "none"
 }
+
+// Modal Form validation status
+let firstNameIsValid = null
+let lastNameIsValid = null
+let emailIsValid = null
+let tournamentQuantityIsValid = null
+let tournamentLocationIsValid = null
+let TOSAcceptedIsValid = true
+
