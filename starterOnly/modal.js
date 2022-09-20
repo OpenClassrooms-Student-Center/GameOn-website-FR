@@ -20,6 +20,8 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   //block = view
   modalbg.style.display = "block";
+  reservation.style.display = "none"
+  form.style.display = "block"
 }
 // close modal form
 closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
@@ -59,6 +61,9 @@ const quantityError = document.getElementById("quantityErrorMsg")
 const locationError = document.getElementById("locationErrorMsg")
 const validationError = document.getElementById("validationErrorMsg")
 
+// Reservation complete
+const reservation = document.getElementById("reservation")
+const numbers = /^[0-9]+$/;
 
 
 form.addEventListener('submit', (e) => {
@@ -80,66 +85,65 @@ function validate(){
 
 
   if(firstName.value == "" || firstName.value == null ||  firstName.value.length <2) {
-    firstError.innerText = "Le champ prénom doit avoir un minimum de 2 caractères"
+    firstError.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
   } else {
     isFirst = true
+    firstError.innerText = ""
   }
 
   if(lastName.value == "" || lastName.value == null ||  lastName.value.length <2) {
-    lastError.innerText = "Le champ nom doit avoir un minimum de 2 caractères"
+    lastError.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du nom."
   } else {
     isLast = true
+    lastError.innerText = ""
   }
 
   if(email.value == "" || email.value == null) {
-    emailError.innerText = "Le champ email doit être valide"
+    emailError.innerText = "Veuillez entrer une adresse mail valide."
   } else {
     isEmail = true
+    emailError.innerText = ""
   }
 
   if(birthDate.value == null) {
-    birthError.innerText = "Veuillez renseigner votre date de naissance"
+    birthError.innerText = "Vous devez entrer votre date de naissance."
   } else {
     isBirth = true
+    birthError.innerText = ""
   }
 
-  // if(quantity.value == numbers) {
-  //   quantityError.innerText = "Un nombre doit être saisi"
-  // } else {
-  //   isQuantity = true
-  // }
+  if(!quantity.value == (numbers) || quantity.value == "" || quantity.value == null) {
+    quantityError.innerText = "Vous devez saisir un nombre"
+  } else {
+    isQuantity = true
+    quantityError.innerText = ""
+  }
   
   if(loc1.checked || loc2.checked || loc3.checked || loc4.checked || loc5.checked || loc6.checked) {
     isRadio = true
+    locationError.innerText = ""
   } else {
-    locationError.innerText = "Veuillez sélectionner une ville"
+    locationError.innerText = "Vous devez choisir une option."
   }
 
   if(checkbox.checked) {
     isCheckbox = true
+    validationError.innerText = ""
   } else {
-    validationError.innerText = "Vous devez lire et accepter les conditions d'utilisation"
+    validationError.innerText = "Vous devez vérifier que vous acceptez les termes et conditions."
   }
 
 
   // check that all values are correct
 
-  if((isFirst && isLast && isEmail && isBirth && isQuantity && isRadio && isCheckbox) == true) {
+  if((isFirst && isLast && isEmail && isQuantity && isRadio && isCheckbox) == true) {
+    form.style.display = "none"
+    reservation.style.display = "flex"  
+    
     console.log("ok")
   } else {
     console.log("error")
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
