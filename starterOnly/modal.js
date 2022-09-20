@@ -63,7 +63,11 @@ const validationError = document.getElementById("validationErrorMsg")
 
 // Reservation complete
 const reservation = document.getElementById("reservation")
-const numbers = /^[0-9]+$/;
+
+
+// Regex 
+const numbers = new RegExp(/^[0-9]{2}$/);
+const letters = new RegExp(/^[a-zA-ZÀ-ÿ_-]{2,50}$/);
 
 
 form.addEventListener('submit', (e) => {
@@ -84,14 +88,14 @@ function validate(){
   let isCheckbox;
 
 
-  if(firstName.value == "" || firstName.value == null ||  firstName.value.length <2) {
+  if(!letters.test(firstName.value) || firstName.value == "" || firstName.value == null ||  firstName.value.length <2) {
     firstError.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
   } else {
     isFirst = true
     firstError.innerText = ""
   }
 
-  if(lastName.value == "" || lastName.value == null ||  lastName.value.length <2) {
+  if(!letters.test(firstName.value) || lastName.value == "" || lastName.value == null ||  lastName.value.length <2) {
     lastError.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du nom."
   } else {
     isLast = true
@@ -112,7 +116,7 @@ function validate(){
     birthError.innerText = ""
   }
 
-  if(!quantity.value == (numbers) || quantity.value == "" || quantity.value == null) {
+  if(!numbers.test(quantity.value) || quantity.value == "" || quantity.value == null) {
     quantityError.innerText = "Vous devez saisir un nombre"
   } else {
     isQuantity = true
