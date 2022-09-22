@@ -21,4 +21,5 @@ function closeModal() {
   modalbg.style.display = "none";
   form.style.opacity = "1";
   successMessage.style.display = "none";
+  successCloseBtn.style.display = "none";
 }

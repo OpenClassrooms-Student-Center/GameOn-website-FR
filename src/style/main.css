@@ -528,11 +528,23 @@ footer {
 
 .success-message {
   display: none;
+  flex-direction: column;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
   width: 80%;
+}
+
+.succes-close-button {
+  display: none;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
 }
 
