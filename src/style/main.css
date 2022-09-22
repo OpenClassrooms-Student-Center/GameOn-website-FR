@@ -14,7 +14,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -28,6 +27,9 @@ p {
 
 img {
   padding-right: 1rem;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .topnav {
@@ -97,7 +99,7 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    /* margin-top: -15px; */
   }
 } 
 
@@ -210,7 +212,7 @@ input {
 }
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
+  font-size: 0.6em;
   color: #e54858;
   display: block;
   margin-top: 7px;
@@ -420,7 +422,7 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
+  /* min-width: 424px; */
 }
 .hero-content::after {
   content: "";
@@ -436,12 +438,12 @@ input[data-error]::after {
   z-index: 1;
 }
 .hero-headline {
-  font-size: 6rem;
+  font-size: 4.5rem;
   font-weight: normal;
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
+  width: 150%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
@@ -484,6 +486,7 @@ footer {
     box-shadow: unset;
   }
   .hero-content {
+    width: 80%;
     background: #fff;
     color: #000;
     padding: 20px;
@@ -495,11 +498,12 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     white-space: normal;
   }
   .hero-text {
-    width: unset;
+    margin: 0;
+    width: 100%;
     font-size: 1.5rem;
   }
   .hero-img img {
@@ -525,5 +529,27 @@ footer {
   to {
     opacity: 1;
   }
+}
+
+.success-message {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 80%;
+}
+
+.succes-close-button {
+  display: none;
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: none;
+  padding: 12px 25px;
+  border-radius: 5px;
 }
 
