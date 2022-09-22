@@ -44,29 +44,29 @@ function checkInput(input, regex){
     if(regex.test(input.value)){
         input.parentNode.removeAttribute('data-error-visible')
         return true;
-    } else {
-        input.parentNode.setAttribute('data-error-visible', true)
-        return false;
-    }
+    } 
+    input.parentNode.setAttribute('data-error-visible', true)
+    return false;
 }
+
 function checkDateInput(input){
     let currentDate = Date.parse(new Date());
     let datePicked = Date.parse(input.value);
     if(isNaN(datePicked) || datePicked > currentDate){
         input.parentNode.setAttribute('data-error-visible', true);
         return false;
-    } else {
-        input.parentNode.setAttribute('data-error-visible', false);
-        return true;
     }
+    input.parentNode.setAttribute('data-error-visible', false);
+    return true;
 }
+
 function checkQuantity(input){
     if(input.value < 0 || input.value > 100){
         input.parentNode.setAttribute('data-error-visible', true);
         return false;
     } 
-        input.parentNode.setAttribute('data-error-visible', false);
-        return true;
+    input.parentNode.setAttribute('data-error-visible', false);
+    return true;
 }
 
 function checkLocation(arrayOfInputs){
@@ -75,29 +75,26 @@ function checkLocation(arrayOfInputs){
     if(!locationPickedInput){
         locationPick.setAttribute('data-error-visible', true);
         return false
-    } else {
-        locationPicked = locationPickedInput.value;
-        locationPick.setAttribute('data-error-visible', false);
-        return true
     }
-
+    locationPicked = locationPickedInput.value;
+    locationPick.setAttribute('data-error-visible', false);
+    return true
 }
+
 function checkConditions(){
     if(conditionsInput.checked === false){
         conditionsInput.parentNode.setAttribute('data-error-visible', true)
         return false;
-    } else {
-        conditionsInput.parentNode.setAttribute('data-error-visible', false)
-        return true;
     }
+    conditionsInput.parentNode.setAttribute('data-error-visible', false)
+    return true;
 }
 
 function checkNewsletter(){
     if(newsletterInput.checked === true){
         return true;
-    } else {
-        return false;
     }
+    return false;
 }
 
 function validate(){
