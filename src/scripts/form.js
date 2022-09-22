@@ -64,10 +64,9 @@ function checkQuantity(input){
     if(input.value < 0 || input.value > 100){
         input.parentNode.setAttribute('data-error-visible', true);
         return false;
-    } else {
+    } 
         input.parentNode.setAttribute('data-error-visible', false);
         return true;
-    }
 }
 
 function checkLocation(arrayOfInputs){
