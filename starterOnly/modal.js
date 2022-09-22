@@ -36,7 +36,6 @@ function closeModal() {
 }
 
 
-
 // Créer un message d'erreur, prend en paramètre l'élément sur lequel le message doit être affiché, puis le message qui doit être affiché.
 function errorMessage(element, message) {
 
@@ -185,23 +184,27 @@ function validate() {
 
   /* Si tout est OK */
 
-  // On empêche le rafraichissement de la page.
-  event.preventDefault();
+  if (submit.value === "Fermer") {
 
-  // On décale les champs du formulaire à gauche pour les cacher.
-  formData.forEach(e => e.style.transform = "translateX(-9999px)");
+    return true;
+
+  } else {
+
+    // On décale les champs du formulaire à gauche pour les cacher.
+    formData.forEach(e => e.style.transform = "translateX(-9999px)");
 
 
-  const elemValidation = document.createElement("p");
-  elemValidation.classList.add("valide");
-  elemValidation.textContent = "Merci pour votre inscription";
-  form.appendChild(elemValidation);
+    const elemValidation = document.createElement("p");
+    elemValidation.classList.add("valide");
+    elemValidation.textContent = "Merci pour votre inscription";
+    form.appendChild(elemValidation);
 
-  // On change la valeur du bouton du formulaire pour afficher "Fermer".
-  submit.value = "Fermer";
+    // On change la valeur du bouton du formulaire pour afficher "Fermer".
+    submit.value = "Fermer";
 
-  // On ajoute à celui-ci l'évènement pour fermer le formulaire.
-  submit.addEventListener("click", closeModal);
+    return false;
+
+  }
 
 }
 
