@@ -1,0 +1,75 @@
+#toaster {
+	display: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	width: auto;
+	height: auto;
+	padding: 1rem 1.5rem;
+	border-radius: 4px;
+	transform-origin: top;
+	z-index: 9999;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+		translate: 0 200px;
+	}
+
+	50% {
+		scale: 1 1.2;
+	}
+
+	80% {
+		translate: 0;
+		opacity: 1;
+	}
+
+	90% {
+		scale: 1 0.8;
+	}
+
+	100% {
+		scale: 1 1;
+	}
+}
+
+@keyframes fadeOut {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+		translate: 0 -100px;
+	}
+}
+
+#toaster.success {
+	background-color: rgba(0, 128, 0, 0.8);
+}
+
+#toaster.error {
+	background-color: rgba(255, 0, 0, 0.8);
+}
+
+#toaster.warning {
+	background-color: rgba(255, 255, 0, 0.8);
+}
+
+#toaster.info {
+	background-color: rgba(0, 0, 255, 0.8);
+}
+
+#toaster p {
+	color: white;
+	font-size: 2vw;
+	text-align: center;
+	margin: auto;
+}
+
+#toaster.show {
+	display: block;
+	animation: fadeOut 1s 3s cubic-bezier(0.56, 0.37, 0.85, 0.69) forwards,
+		fadeIn 1s cubic-bezier(0.92, 0.67, 0.52, 1.01);
+}
