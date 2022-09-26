@@ -183,6 +183,11 @@ main {
   padding-top: 10px;
 }
 
+.bground[closing] {
+  animation-name: modalclose;
+  animation-duration: var(--modal-duration);
+}
+
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
@@ -527,3 +532,12 @@ footer {
   }
 }
 
+@keyframes modalclose {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+}
