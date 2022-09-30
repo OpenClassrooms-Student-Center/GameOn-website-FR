@@ -159,8 +159,12 @@ function openThankYouModal() {
  * @param {number} birhtdate
  * @returns boolean
  */
-function birthdateValidation(birhtdate) {
+function birthdateValidation(birth) {
 	const today = new Date();
-	const birthDate = new Date(birhtdate);
-	return birhtdate < today;
+	const birthdate = new Date(birth);
+	return birthdate < today;
+}
+
+function toggleBodyOverflow() {
+	document.body.style.overflow = document.body.style.overflow === "hidden" ? "auto" : "hidden";
 }
