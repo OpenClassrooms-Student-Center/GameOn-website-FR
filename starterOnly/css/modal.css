@@ -46,7 +46,7 @@ img {
 .topnav a {
 	float: left;
 	display: block;
-	color: #000000;
+	color: #000;
 	text-align: center;
 	padding: 12px 12px;
 	margin: 5px;
@@ -56,15 +56,16 @@ img {
 }
 
 .topnav a:hover {
-	background-color: #ff0000;
-	color: #ffffff;
+	background-color: #f00;
+	color: #fff;
 	border-radius: 15px;
 }
 
 .topnav a.active {
-	background-color: #ff0000;
-	color: #ffffff;
+	background-color: #f00;
+	color: #fff;
 	border-radius: 15px;
+	text-decoration: underline;
 }
 
 .topnav .icon {
