@@ -114,7 +114,7 @@ function validateForm(e) {
 		isValid = false;
 	}
 	// check if birthdate is empty
-	if (birthdate.value.trim() === "") {
+	if (birthdate.value.trim() === "" || !birthdateValidation(birthdate.value)) {
 		showError(birthdate, "Birthdate is required");
 		isValid = false;
 	}
@@ -156,4 +156,15 @@ function toaster(type, message) {
 	setTimeout(() => {
 		toaster.className = toaster.className.replace("show", "");
 	}, 5000);
+}
+
+/**
+ *
+ * @param {number} birhtdate
+ * @returns boolean
+ */
+function birthdateValidation(birhtdate) {
+	const today = new Date();
+	const birthDate = new Date(birhtdate);
+	return birhtdate < today;
 }
