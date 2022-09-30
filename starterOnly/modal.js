@@ -22,6 +22,18 @@ const inputs = document.getElementsByTagName("input");
 let firstNameRegex = /^[a-zA-Z]+$/;
 let lastNameRegex = /^[a-zA-Z]+$/;
 
+//DOM errors
+
+
+const errorFirstName = document.getElementById("error-first");
+const errorLastName = document.getElementById("error-last");
+const errorEmail = document.getElementById("error-email");
+const errorBirthdate = document.getElementById("error-birthdate");
+const errorQuantity = document.getElementById("error-quantity");
+const checkIcon = document.querySelector(".checkbox-input");    
+const errorCity = document.getElementById("errorCity");
+const errorConditionUser = document.getElementById("errorConditionUser");
+let error = O;
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
