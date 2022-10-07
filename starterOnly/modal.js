@@ -13,6 +13,7 @@ const modalbg = document.querySelector('.bground');
 const modalBtn = document.querySelectorAll('.modal-btn');
 const formData = document.querySelectorAll('.formData');
 const closeBtn = document.querySelector('.close');
+const overlay = document.querySelector('.overlay');
 
 // Launch modal event
 modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
@@ -28,4 +29,4 @@ function closeModal() {
 }
 
 // Close modal event
-[modalbg, closeBtn].forEach((closer) => closer.addEventListener('click', closeModal));
+[overlay, closeBtn].forEach((closer) => closer.addEventListener('click', closeModal));

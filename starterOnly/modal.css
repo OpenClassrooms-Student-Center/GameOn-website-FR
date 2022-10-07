@@ -529,3 +529,10 @@ footer {
 		opacity: 1;
 	}
 }
+
+.overlay {
+	background-color: transparent;
+	height: 100vh;
+	width: 100vw;
+	position: fixed;
+}
