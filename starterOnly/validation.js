@@ -1,19 +1,113 @@
 const form = document.getElementById('form');
-const firstName = document.getElementById('first');
-const lastName = document.getElementById('last');
+const firstName = document.getElementById('firstName');
+const lastName = document.getElementById('lastName');
 const email = document.getElementById('email');
-const birthdate = document.getElementById('birthdate');
-const quantity = document.getElementById('quantity');
-const geoloc = document.querySelector('checkbox-input');
+const turnaments = document.getElementById('turnaments');
+const conditions = document.getElementById('conditions-checkbox');
+
+const isEmail = (email) => {
+	return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+		email
+	);
+};
+
+const checkEmail = () => {
+	const emailValue = email.value.trim();
+
+	if (emailValue === '') {
+		console.log("L'adresse e-mail ne doit pas être vide !");
+		return false;
+	} else if (!isEmail(emailValue)) {
+		console.log("L'adresse e-mail n'est pas valide !");
+		return false;
+	} else {
+		console.log('E-mail validé !');
+		return true;
+	}
+};
+
+const checkFirstName = () => {
+	const firstNameValue = firstName.value.trim();
+
+	if (firstNameValue === '') {
+		console.log('Le prénom ne doit pas être vide !');
+		return false;
+	} else if (firstNameValue.length < 2) {
+		console.log('Le prénom doit contenir au moins 2 caractères !');
+		return false;
+	} else {
+		console.log('Prénom Validé');
+		return true;
+	}
+};
+
+const checkLastName = () => {
+	const lastNameValue = lastName.value.trim();
+
+	if (lastNameValue === '') {
+		console.log('Le nom ne doit pas être vide !');
+		return false;
+	} else if (lastNameValue.length < 2) {
+		console.log('Le nom doit contenir au moins 2 caractères');
+		return false;
+	} else {
+		console.log('Nom validé !');
+		return true;
+	}
+};
+
+const checkTurnaments = () => {
+	const turnamentsValue = turnaments.value.trim();
+
+	if (turnamentsValue === '') {
+		console.log('Le nombre de tournois doit être précisé !');
+		return false;
+	} else {
+		console.log('Nombre de tournois validé !');
+		return true;
+	}
+};
+
+const checkLocation = () => {
+	const locations = document.getElementsByName('location');
+
+	let i = 0;
+
+	while (i < locations.length) {
+		if (locations[i].checked) {
+			i++;
+			console.log('Option validé !');
+			return true;
+		} else {
+			console.log('Il faut choisir une option !');
+			return false;
+		}
+	}
+};
+
+function checkConditions() {
+	if (!conditions.checked) {
+		console.log('Il valider les conditions !');
+		return false;
+	} else {
+		console.log(`Merci d'avoir validé les conditions !`);
+		return true;
+	}
+}
+
+const validate = () => {
+	checkFirstName();
+	checkLastName();
+	checkEmail();
+	checkTurnaments();
+	checkLocation();
+	checkConditions();
+};
 
 form.addEventListener('submit', (e) => {
-	e.preventDefault();
-
-	validate();
-
-	console.log('Validé !');
+	if (checkEmail() === true && checkFirstName() === true && checkLastName() === true) {
+		return;
+	} else {
+		e.preventDefault();
+	}
 });
-
-const validate = function () {
-	console.log('test');
-};
