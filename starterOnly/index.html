@@ -57,31 +57,33 @@
       <div class="content">
         <span class="close"></span>
         <div class="modal-body">
-          <form id="form" name="reserve" action="index.html" method="GET">
-
-            <div class="formData">
-              <label for="first">Prénom</label><br>
-              <input class="text-control" type="text" id="first" name="first" minlength="2" required /><br>
+          <form id="form" name="reserve" action="index.html" method="GET" onsubmit="return validate();">
+            <div class="formData"">
+              <label for=" first">Prénom</label><br>
+              <input class="text-control" type="text" id="firstName" name="firstName"
+                onfocusout="checkFirstName()" /><br>
             </div>
 
             <div class="formData">
               <label for="last">Nom</label><br>
-              <input class="text-control" type="text" id="last" name="last" required /><br>
+              <input class="text-control" type="text" id="lastName" name="lastName" onfocusout="checkLastName()" /><br>
             </div>
 
             <div class="formData">
               <label for="email">E-mail</label><br>
-              <input data-error class="text-control" type="email" id="email" name="email" required /><br>
+              <input data-error class="text-control" type="email" id="email" name="email"
+                onfocusout="checkEmail()" /><br>
             </div>
 
             <div class="formData">
               <label for="birthdate">Date de naissance</label><br>
-              <input class="text-control" type="date" id="birthdate" name="birthdate" required /><br>
+              <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
             </div>
 
             <div class="formData">
-              <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-              <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
+              <label for="turnaments">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+              <input type="number" class="text-control" id="turnaments" name="turnaments" min="0" max="99"
+                onfocusout="checkTurnaments()">
             </div>
 
             <p class="text-label">À quel tournoi souhaitez-vous participer cette année ?</p>
@@ -113,20 +115,22 @@
             </div>
 
             <div class="formData">
-              <input class="checkbox-input" type="checkbox" id="checkbox1" />
-              <label class="checkbox2-label" for="checkbox1" required>
+              <input class="checkbox-input" type="checkbox" id="conditions-checkbox" onclick="checkConditions()" />
+              <label class="checkbox2-label" for="conditions-checkbox">
                 <span class="checkbox-icon"></span>
                 J'ai lu et accepté les conditions d'utilisation.
               </label>
               <br>
 
-              <input class="checkbox-input" type="checkbox" id="checkbox2" />
-              <label class="checkbox2-label" for="checkbox2">
+              <input class="checkbox-input" type="checkbox" id="event-checkbox" />
+              <label class="checkbox2-label" for="event-checkbox">
                 <span class="checkbox-icon"></span>
                 Je souhaite être prévenu des prochains évènements.
               </label>
               <br>
             </div>
+
+            <p class="success-message">GG</p>
 
             <input class="btn-submit" type="submit" class="button" value="C'est parti" />
 
