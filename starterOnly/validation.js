@@ -87,7 +87,7 @@ const checkLocation = () => {
 
 function checkConditions() {
 	if (!conditions.checked) {
-		console.log('Il valider les conditions !');
+		console.log('Il faut valider les conditions !');
 		return false;
 	} else {
 		console.log(`Merci d'avoir validé les conditions !`);
@@ -105,9 +105,15 @@ const validate = () => {
 };
 
 form.addEventListener('submit', (e) => {
-	if (checkEmail() === true && checkFirstName() === true && checkLastName() === true) {
-		return;
-	} else {
+	if (
+		checkEmail() == false ||
+		checkFirstName() == false ||
+		checkLastName() == false ||
+		checkEmail() == false ||
+		checkTurnaments() == false ||
+		checkLocation() == false ||
+		checkConditions() == false
+	) {
 		e.preventDefault();
 	}
 });
