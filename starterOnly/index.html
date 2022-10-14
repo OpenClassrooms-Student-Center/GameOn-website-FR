@@ -77,7 +77,8 @@
 
             <div class="formData">
               <label for="birthdate">Date de naissance</label><br>
-              <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
+              <input class="text-control" type="date" id="birthdate" name="birthdate"
+                onfocusout="checkBirthdate()" /><br>
             </div>
 
             <div class="formData">
@@ -130,7 +131,10 @@
               <br>
             </div>
 
-            <p class="success-message">GG</p>
+            <div class="error-form">
+              <p class="error-conditions">- Il faut accepter les conditions d'utilisation</p>
+              <p class="error-location">- Merci d'indiquer le lieu du tournoi auquel vous avez participé</p>
+            </div>
 
             <input class="btn-submit" type="submit" class="button" value="C'est parti" />
 
