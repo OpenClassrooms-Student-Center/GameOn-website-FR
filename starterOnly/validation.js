@@ -2,6 +2,7 @@ const form = document.getElementById('form');
 const firstName = document.getElementById('firstName');
 const lastName = document.getElementById('lastName');
 const email = document.getElementById('email');
+const birthdate = document.getElementById('birthdate');
 const turnaments = document.getElementById('turnaments');
 const conditions = document.getElementById('conditions-checkbox');
 
@@ -9,21 +10,6 @@ const isEmail = (email) => {
 	return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
 		email
 	);
-};
-
-const checkEmail = () => {
-	const emailValue = email.value.trim();
-
-	if (emailValue === '') {
-		console.log("L'adresse e-mail ne doit pas être vide !");
-		return false;
-	} else if (!isEmail(emailValue)) {
-		console.log("L'adresse e-mail n'est pas valide !");
-		return false;
-	} else {
-		console.log('E-mail validé !');
-		return true;
-	}
 };
 
 const checkFirstName = () => {
@@ -52,6 +38,33 @@ const checkLastName = () => {
 		return false;
 	} else {
 		console.log('Nom validé !');
+		return true;
+	}
+};
+
+const checkEmail = () => {
+	const emailValue = email.value.trim();
+
+	if (emailValue === '') {
+		console.log("L'adresse e-mail ne doit pas être vide !");
+		return false;
+	} else if (!isEmail(emailValue)) {
+		console.log("L'adresse e-mail n'est pas valide !");
+		return false;
+	} else {
+		console.log('E-mail validé !');
+		return true;
+	}
+};
+
+const checkBirthdate = () => {
+	const birthdateValue = birthdate.value.trim();
+
+	if (birthdateValue === '') {
+		console.log('La date de naissance ne doit pas être vide !');
+		return false;
+	} else {
+		console.log('Date de naissance validé !');
 		return true;
 	}
 };
@@ -99,6 +112,7 @@ const validate = () => {
 	checkFirstName();
 	checkLastName();
 	checkEmail();
+	checkBirthdate();
 	checkTurnaments();
 	checkLocation();
 	checkConditions();
@@ -106,10 +120,10 @@ const validate = () => {
 
 form.addEventListener('submit', (e) => {
 	if (
-		checkEmail() == false ||
 		checkFirstName() == false ||
 		checkLastName() == false ||
 		checkEmail() == false ||
+		checkBirthdate() == false ||
 		checkTurnaments() == false ||
 		checkLocation() == false ||
 		checkConditions() == false
