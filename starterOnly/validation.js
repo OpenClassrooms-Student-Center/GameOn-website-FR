@@ -145,5 +145,9 @@ form.addEventListener('submit', (e) => {
 		checkConditions() == false
 	) {
 		e.preventDefault();
+	} else {
+		e.preventDefault();
+		document.querySelector('.content').style.display = 'none';
+		modalEnd.style.visibility = 'visible';
 	}
 });

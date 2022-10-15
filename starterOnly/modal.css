@@ -160,7 +160,7 @@ main {
 }
 
 .bground {
-	/* display: none; */
+	display: none;
 	position: fixed;
 	z-index: 1;
 	left: 0;
@@ -188,6 +188,22 @@ main {
 .modal-body {
 	padding: 14px 7%;
 	margin: 15px auto;
+}
+
+.modal-end {
+	visibility: hidden;
+	/* display: none; */
+	height: 300px;
+	width: 600px;
+	background-color: #232323;
+	color: white;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 label {
