@@ -527,3 +527,9 @@ footer {
   }
 }
 
+.warning-text {
+    color: #fe142f;
+    font-size: .85rem;
+    margin-top: 0.25rem;
+    padding: 0;
+}
