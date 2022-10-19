@@ -56,7 +56,12 @@ function validate(e) {
     }
 
     if (Object.values(res).every((e) => e == true)) {
-        modalForm.submit();
+        (async() => {
+            closeModal();
+            validationMessage();
+            await waiting(2500);
+            modalForm.submit();
+        })();
     }
     else {
         Object.values(res).map((e) => {
@@ -129,6 +134,24 @@ function cleanWarning() {
     let allWarning = document.querySelectorAll(".warning-text");
 
     Array.from(allWarning).map((e) => e.remove());
+}
+
+function validationMessage() {
+    let validMsg = document.createElement("div");
+        validMsg.innerText = "Merci ! Votre réservation a été reçue.";
+        validMsg.classList.add("validation-message");
+
+    document.querySelector("main").appendChild(validMsg);
+    
+    setTimeout(() => {
+        validMsg.style.opacity = "100%";
+    }, 0);
+}
+
+function waiting(time) {
+    return new Promise(resolve => {
+        setTimeout(resolve, time);
+    });
 }
 
 // Event listener.

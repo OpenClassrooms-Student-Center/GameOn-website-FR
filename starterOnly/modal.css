@@ -533,3 +533,22 @@ footer {
     margin-top: 0.25rem;
     padding: 0;
 }
+
+.validation-message {
+    height: 4rem;
+    width: 35rem;
+    position: fixed;
+    left: 50%;
+    bottom: 1rem;
+    transform: translateX(-50%);
+    border-radius: 0.65rem;
+    color: #0f5132;
+    background-color: #d1e7dd;
+    border-color: #badbcc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .95rem;
+    opacity: 0;
+    transition: opacity 0.3s linear 0.5s;
+}
