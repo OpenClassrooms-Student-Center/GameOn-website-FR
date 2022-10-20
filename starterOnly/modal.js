@@ -11,6 +11,8 @@ const birthDate = document.querySelector("#birthdate");
 const participation = document.querySelector("#quantity");
 const locations = document.querySelectorAll("#locations > input");
 const terms = document.querySelector("#checkbox1");
+const nav = document.getElementById("myTopnav");
+const contentModal = document.querySelector(".content")
 
 // regex
 const regText = new RegExp(/^[^\s][a-zA-ZÀ-ȕ\s]{1,}$/);
@@ -18,18 +20,18 @@ const regMail = new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
 const regNum = new RegExp(/^[0-9]{1,4}$/);
 
 function editNav() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
+    if (nav.className === "topnav") {
+        nav.className += " responsive";
     } 
     else {
-        x.className = "topnav";
+        nav.className = "topnav";
     }
 }
 
 // launch modal form
 function launchModal() {
     modalbg.style.display = "block";
+    window.scrollTo(0, 0);
 }
 
 // close modal function
@@ -56,12 +58,7 @@ function validate(e) {
     }
 
     if (Object.values(res).every((e) => e == true)) {
-        (async() => {
-            closeModal();
-            validationMessage();
-            await waiting(2500);
-            modalForm.submit();
-        })();
+        validationMessage();
     }
     else {
         Object.values(res).map((e) => {
@@ -137,24 +134,40 @@ function cleanWarning() {
 }
 
 function validationMessage() {
-    let validMsg = document.createElement("div");
-        validMsg.innerText = "Merci ! Votre réservation a été reçue.";
-        validMsg.classList.add("validation-message");
+    let contentHeight = contentModal.offsetHeight;
+    let btnSubmit = document.querySelector(".btn-submit");
+    let textLabel = document.querySelector(".text-label");
 
-    document.querySelector("main").appendChild(validMsg);
-    
-    setTimeout(() => {
-        validMsg.style.opacity = "100%";
-    }, 0);
-}
+    // fixing the content height before hiding all the inputs
+    contentModal.style.height = contentHeight + "px";
 
-function waiting(time) {
-    return new Promise(resolve => {
-        setTimeout(resolve, time);
+    // hiding inputs
+    Array.from(formData).map((e) => e.style.display = "none");
+
+    // changing data
+    textLabel.innerHTML = "Merci pour<br> votre inscription";
+    textLabel.classList.add("text-label-valid");
+    btnSubmit.value = "Fermer";
+
+    // fix elements
+    document.querySelector(".modal-body").style.height = "100%";
+    document.querySelector(".modal-body").style.margin = "0";
+    document.querySelector("#bookingForm").style.height = "100%";
+    modalForm.classList.add("d-flex", "flex-column");
+
+    btnSubmit.addEventListener("click", () => {
+        modalForm.submit();
     });
 }
 
+function onStart() {
+    // adapt the top margin on load
+    let navStyle = window.getComputedStyle(nav);
+    contentModal.style.marginTop = (nav.offsetHeight + parseInt(navStyle.marginTop) + parseInt(navStyle.marginBottom)) + "px";
+}
+
 // Event listener.
+document.addEventListener("DOMContentLoaded", onStart);
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 closeModalBtn.forEach((e) => e.addEventListener("click", closeModal));
 modalForm.addEventListener("submit", validate);
