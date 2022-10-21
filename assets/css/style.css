@@ -11,7 +11,6 @@
 }
 
 /* Landing Page */
-
 body {
     margin: 0;
     display: flex;
@@ -111,8 +110,6 @@ img {
     }
 }
 
-
-
 @media screen and (max-width: 540px) {
     .topnav a {
         display: none;
@@ -159,7 +156,6 @@ main {
 }
 
 /* Modal form */
-
 .button {
     background: #fe142f;
     margin-top: 0.5em;
