@@ -55,7 +55,7 @@ img {
     display: block;
     color: #000000;
     text-align: center;
-    padding: 12px 9px;
+    padding: 12px 12px;
     margin: 2px;
     text-decoration: none;
     font-size: 20px;
@@ -72,6 +72,9 @@ img {
     background-color: #ff0000;
     color: #ffffff;
     border-radius: 15px;
+    text-decoration: underline;
+    text-underline-offset: 0.35rem;
+    text-decoration-thickness: 5%;
 }
 
 .topnav .icon {
@@ -109,7 +112,11 @@ img {
         z-index: 4;
     }
 }
-
+@media screen and (min-width:527px) and (max-width: 768px) {
+    .topnav.responsive a:first-child {
+        padding-right: 3rem;
+    }
+}
 @media screen and (max-width: 540px) {
     .topnav a {
         display: none;
