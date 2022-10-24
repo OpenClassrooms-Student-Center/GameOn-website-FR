@@ -1,5 +1,29 @@
-# Projet GameOn
-1. Forkez ce repo ;
-2. Il est conseillé d'utiliser VisualStudio Code et vous pouvez utiliser Docker, mais ce n'est pas obligatoire ;
-3. Il n'y a aucune dépendance ;
-4. Vous ne devez utiliser que du CSS personnalisé et du JavaScript pur, sans jQuery, Bootstrap ou autre librairie.
+# P4 GameOn
+
+## Créez une landing page avec Javascript
+
+forked from OpenClassrooms-Student-Center/GameOn-website-FR
+
+## Tech
+
+[![forthebadge](https://forthebadge.com/images/badges/uses-html.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/uses-css.svg)](https://forthebadge.com)
+[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
+
+## Installation
+
+Cloner le repository https://github.com/kriss57/GameOn-website-FR.git.
+
+```sh
+git clone https://github.com/kriss57/GameOn-website-FR.git
+```
+
+Switcher de la branch master a mod-code.
+
+```sh
+git checkout mod-code
+```
+
+## License
+
+OpenClassrooms-Student-Center

@@ -8,16 +8,17 @@
   margin: 0;
   padding: 0;
 }
-/* Landing Page */
+/**************************/
+/*---- Landing Page ----*/
 
 body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
+  /*background-image: url("background.png");*/
   font-family: var(--font-default);
   font-size: 18px;
-  max-width: 1300px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
@@ -28,17 +29,29 @@ p {
 
 img {
   padding-right: 1rem;
+  object-fit: cover;
 }
 
 .topnav {
   overflow: hidden;
   margin: 3.5%;
 }
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .header-logo {
-    float: left;
+  margin-top: 45px;
+  margin-left: 105px;
+}
+.header-logo img {
+  width: 100%;
+  height: 50px;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -63,60 +76,61 @@ img {
   color: #ffffff;
   border-radius: 15px;
 }
+.topnav a.active span {
+  border-bottom: 1px solid #ffffff;
+}
 
 .topnav .icon {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
+.error {
+  font-size: 17px;
 }
 
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
+#checkedCGErrorMsg {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 7px;
 }
 
+#display-confirm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
+#display-confirm h2 {
+  /*color: rgb(11, 254, 35);*/
+  text-align: center;
+  height: 680px;
+  display: flex;
+  align-items: center;
+  font-weight: 200;
+}
+#display-confirm p {
+  color: rgb(255, 255, 255);
+}
 
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} 
+#logo-confirm {
+  color: #45217b;
+}
 
 main {
   font-size: 130%;
   font-weight: bolder;
+  width: 85%;
+  text-align: center;
   color: black;
-  padding-top: 0.5vw;
-  padding-left: 2vw;
-  padding-right: 2vw;
-  margin: 1px 20px 15px;
+  padding-top: 30px;
+  margin: auto;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
-  font-size: 145%;
+  font-size: 50px;
+  width: 200px;
   background: #fe142f;
   display: flex;
   margin: auto;
@@ -405,7 +419,6 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -449,7 +462,7 @@ input[data-error]::after {
 .btn-signup {
   outline: none;
   text-transform: capitalize;
-  font-size: 1.3rem;
+  font-size: 24px;
   padding: 15px 23px;
   margin: 0;
   margin-top: 59px;
@@ -460,8 +473,10 @@ input[data-error]::after {
 .hero-img img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   display: block;
   padding: 0;
+  padding-left: 79px;
 }
 .copyrights {
   color: #fe142f;
@@ -476,18 +491,56 @@ input[data-error]::after {
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
-  margin: 0 20px;
+  margin: 30px 20px;
 }
-@media screen and (max-width: 800px) {
+
+/********************************************/
+/*--------- RESPONSIVE DESIGN -------------*/
+
+@media screen and (max-width: 1200px) {
+  nav {
+    padding-left: 55px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .topnav .icon {
+    color: red;
+  }
+  .header-logo {
+    margin-top: 23px;
+    margin-left: 60px;
+  }
+  .header-logo img {
+    height: 25px;
+    margin-top: 18px;
+  }
+  main {
+    padding: 0;
+    display: flex;
+    justify-content: space-around;
+  }
+
   .hero-section {
     display: block;
     box-shadow: unset;
+    margin-bottom: 0;
   }
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0;
   }
+  .btn-signup {
+    font-size: 15px;
+  }
+  .modal-btn {
+    width: 150px;
+  }
+  footer {
+    margin: 0;
+  }
+
   .hero-content::after {
     content: unset;
   }
@@ -495,25 +548,120 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 2.5rem;
+    font-weight: 800;
     white-space: normal;
   }
   .hero-text {
+    max-width: 80%;
     width: unset;
     font-size: 1.5rem;
+    margin-top: 28px;
   }
   .hero-img img {
     border-radius: 10px;
-    margin-top: 40px;
+    margin-top: 45px;
+    padding: 0;
   }
   .hero-section > .btn-signup {
     display: block;
-    margin: 32px auto 10px;
+    margin: 40px auto 10px;
     padding: 12px 35px;
   }
   .copyrights {
-    margin-top: 50px;
+    margin-top: 30px;
     text-align: center;
+  }
+}
+/**********************************/
+/*---------- Tablette -----------*/
+
+@media screen and (max-width: 768px) {
+  .topnav.responsive {
+    padding-right: 50px;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 27px;
+    top: 27px;
+  }
+  .topnav.responsive a {
+    position: relative;
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav a {
+    display: none;
+  }
+  .topnav a.icon {
+    float: left;
+    display: block;
+  }
+  nav {
+    padding-left: 22px;
+  }
+}
+
+/**********************************/
+/*-------- Smartphone -----------*/
+
+@media screen and (max-width: 540px) {
+  nav {
+    padding-left: 10px;
+  }
+  .topnav a {
+    display: none;
+  }
+  .topnav a.icon {
+    float: left;
+    display: block;
+    margin-top: 3px;
+  }
+  .topnav.responsive {
+    padding-right: 0;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 13px;
+    top: 13px;
+  }
+  .main-navbar {
+    float: right;
+  }
+  .main-navbar a {
+    font-size: medium;
+  }
+  .header-logo {
+    margin-top: 7px;
+    margin-left: 30px;
+  }
+  .hero-headline {
+    font-size: 35px;
+    font-weight: 800;
+    white-space: normal;
+  }
+  .hero-text {
+    max-width: 80%;
+    width: unset;
+    font-size: 12px;
+    margin-top: 28px; /* a voir */
+  }
+  .content {
+    margin: 19% auto;
+    width: 100%;
+    max-width: 500px;
+    animation-name: modalopen;
+    animation-duration: var(--modal-duration);
+    background: #232323;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    color: #fff;
+    padding-top: 10px;
+  }
+  #display-confirm h2 {
+    height: 500px;
   }
 }
 
@@ -526,4 +674,3 @@ footer {
     opacity: 1;
   }
 }
-
