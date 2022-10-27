@@ -16,7 +16,7 @@
 <body>
   <div class="topnav" id="myTopnav">
     <div class="header-logo">
-      <img alt="logo" src="Logo.png" />
+      <img alt="logo GameOn" src="Logo.png" />
     </div>
     <div class="main-navbar">
       <a href="#" class="active"><span>Accueil</span></a>
@@ -24,8 +24,10 @@
       <a href="#"><span>À propos</span></a>
       <a href="#"><span>Contact</span></a>
       <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars"></i>
+      <a  class="icon" >
+        <div href="javascript:void(0);" class="menu-btn" onclick="editNav()">
+          <div class="menu-btn__burger"></div>
+        </div>
       </a>
     </div>
   </div>
@@ -119,7 +121,7 @@
               </div>
             </div>
 
-            <div id="checkboxData" class="formData" data-error="Veuillez cocher les conditions d'utilisation">
+            <div id="checkboxData" class="formData" data-error="Veuillez lire et accepter les conditions d'utilisation">
               <input class="checkbox-input" type="checkbox" id="checkbox1" required />
               <label class="checkbox2-label" for="checkbox1">
                 <span class="checkbox-icon"></span>
@@ -139,7 +141,7 @@
         <div class="successModal hidden">
           <div class="successModal-text">
             <h2>Votre réservation a été enregistrée.</h2>
-            <p>Merci de votre soutien</p>
+            <p>Merci de votre soutien 💪</p>
           </div>
           <input class="btn-submit" type="submit" value="Fermer" onclick="closeModal();" />
         </div>

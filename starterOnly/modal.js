@@ -11,6 +11,7 @@ const radioChecked = document.querySelectorAll("input[name=location]");
 const inputSelection = document.getElementsByName("input");
 const formSelection = document.getElementById("submissionform");
 const modalBody = document.querySelector(".modal-body");
+const menuBtn = document.querySelector('.menu-btn');
 
 // responsive navigation menu
 function editNav() {
@@ -201,3 +202,19 @@ function closeModal() {
     }, 1000);
   }
 }
+
+// burger button animation
+let menuOpen = false;
+menuBtn.addEventListener('click', () => {
+  if(!menuOpen) {
+    menuBtn.classList.add('open');
+    setTimeout(() => {
+    menuOpen = true;
+    }, 800)
+  } else {
+    menuBtn.classList.remove('open');
+    setTimeout(() => {
+      menuOpen = false;
+    }, 800)
+  }
+});
