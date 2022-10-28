@@ -50,7 +50,11 @@ $closeBtns.forEach(($btn) => {
 
 // listen for submit event
 
-if ($form) { $form.addEventListener("submit", validateform) } else { throw new Error("Form not found"); }
+if ($form) {
+	$form.addEventListener("submit", validateform);
+} else {
+	throw new Error("Form not found");
+}
 
 /**
  * @description
@@ -76,7 +80,8 @@ function launchModal() {
  * @returns boolean
  */
 function validateemail(email: string): boolean {
-	const re = /\S+@\S+\.\S+/;
+	// const re = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,}$/g;
+	const re = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,63})$/;
 	return re.test(email);
 }
 
@@ -105,7 +110,7 @@ function showError($input: HTMLInputElement, message: string) {
 
 	// add the data-error attribute to the parent element
 	$formControl?.setAttribute("data-error", message);
-	$formControl?.setAttribute("data-error-visible", 'true');
+	$formControl?.setAttribute("data-error-visible", "true");
 }
 
 /**
@@ -119,45 +124,46 @@ function validateform(e: SubmitEvent) {
 	let isValid = true;
 	// check if $firstname is empty
 	if ($firstname && $firstname?.value.trim().length < 2) {
-		showError($firstname, "First name is required");
+		showError($firstname, "Le prénom est requis");
 		isValid = false;
 	}
 	// check if $lastname is empty
 	if ($lastname && $lastname.value.trim().length < 2) {
-		showError($lastname, "Last name is required");
+		showError($lastname, "Le nom de famille est requis");
 		isValid = false;
 	}
 	// check if $email is empty or invalid
 	if ($email && ($email.value.trim().length < 2 || !validateemail($email?.value || ""))) {
-		showError($email, "A correct email is required");
+		showError($email, "Un email valide est requis");
 		isValid = false;
 	}
 	// check if $birthdate is empty
 	if ($birthdate && ($birthdate.value.trim() === "" || !birthdateValidation($birthdate.value))) {
-		showError($birthdate, "birthdate is required");
+		showError($birthdate, "Une date de naissance valide est requise");
 		isValid = false;
 	}
 	// check if $quantity is empty
 	if ($quantity && ($quantity.value.trim() === "" || isNaN(+$quantity?.value))) {
-		showError($quantity, "quantity is required");
+		showError($quantity, "Une quantité valide est requise");
 		isValid = false;
 	}
 	// check if at least one location is checked
 	let locationChecked = Array.from($locations).some((location) => location.checked);
 
 	if (!locationChecked) {
-		showError($locations[0], "Location is required");
+		showError($locations[0], "Une ville est requise");
 		isValid = false;
 	}
 
 	// check if $conditions is checked
 	if ($conditions && !$conditions?.checked) {
-		showError($conditions, "conditions is required");
+		showError($conditions, "Vous devez accepter les conditions d'utilisation");
 		isValid = false;
 	}
 
 	if (isValid) {
 		closeModal(e.target as HTMLElement);
+		$form?.reset();
 		openThankYouModal();
 	}
 }
