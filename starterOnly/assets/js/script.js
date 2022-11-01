@@ -113,8 +113,10 @@ function checkLocation(inputs) {
 // ckeck if terms checkbox is checked or not.
 function checkTerms(input) {
     let errorMsg = "Veuillez lire et accepté les conditions d'utilisation.";
+    
+    input.parentNode.style.padding = "1rem 0";
 
-    return (input.checked) ? true : { target: input.parentNode, errMsg: errorMsg };
+    return (input.checked) ? true : { target: input.labels[0], errMsg: errorMsg };
 }
 
 // show an error message.
