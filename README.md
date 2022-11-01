@@ -1,9 +1,9 @@
 <div align="center">
-  <img width="200" src="./assets/img/Logo.png" alt="GameOn logo">
+  <img width="200" src="./starterOnly/assets/img/Logo.png" alt="GameOn logo">
 </div>
 <h1 align="center" style="margin-top: 0px;">Projet 4</h1>
 
-<img width="100%" src="./assets/img/16395717662959_HomePage.png" alt="GameOn website" align="center">
+<img width="100%" src="./starterOnly/assets/img/16395717662959_HomePage.png" alt="GameOn website" align="center">
 
 ## Objectif
 Compléter la partie Front-End. Ton travail consiste à ajouter le code JavaScript manquant pour que le formulaire soit pleinement fonctionnel.
