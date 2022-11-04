@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" />
 
   <script src="modal.js" defer></script>
+  <script src="form.js" defer></script>
 </head>
 
 <body>
@@ -58,7 +59,7 @@
       <div class="content">
         <span class="close"></span>
         <div class="modal-body">
-          <form name="reserve" id="submissionform" action="index.html" method="get" novalidate>
+          <form name="reserve" id="submissionform" action="index.html" method="post" novalidate>
             <div class="formData field" data-error="Veuillez entrer un prénom valide">
               <label for="first">Prénom</label><br>
               <input class="text-control" type="text" id="first" name="first" /><br>
@@ -140,8 +141,8 @@
         </div>
         <div class="successModal hidden">
           <div class="successModal-text">
-            <h2>Votre réservation a été enregistrée.</h2>
-            <p>Merci de votre soutien 💪</p>
+            <h2>Merci pour</h2>
+            <h2>votre inscription</h2>
           </div>
           <input class="btn-submit" type="submit" value="Fermer" onclick="closeModal();" />
         </div>

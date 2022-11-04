@@ -22,6 +22,10 @@ body {
   justify-content: space-between;
   overflow: visible;
 }
+body.hiddenScrollbar {
+  overflow: hidden;
+  padding-right: 15px;
+}
 
 p {
   margin-bottom: 0;
@@ -87,7 +91,6 @@ img {
   width: 40px;
   height: 40px;
   cursor: pointer;
-  transition: all var(--modal-duration) ease-in-out;
 }
 .menu-btn__burger,
 .menu-btn__burger::before,
@@ -98,7 +101,6 @@ img {
   height: 6px;
   background-color: currentColor;
   border-radius: 5px;
-  transition: all var(--modal-duration) ease-in-out;
 }
 .menu-btn__burger::before {
   transform: translate(-20px, -12px);
@@ -376,18 +378,19 @@ input[data-error]::after {
 
 .successModal {
   height: 700px;
-  padding: 0 40px;
-  text-align: justify;
+  padding: 40px 40px 40px;
+  text-align: center;
   display: flex;
   flex-flow: column wrap;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 }
 
 .successModal-text {
   display: flex; 
   flex-flow: column wrap;
-  gap: 20px;
+  position: relative;
+  top: 35%;
 }
 
 .hidden {
