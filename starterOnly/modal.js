@@ -1,5 +1,5 @@
 // DOM Elements
-const burgerNav = document.getElementById("myTopnav");
+const burgerNav = document.querySelector("#myTopnav");
 const modalbg = document.querySelector(".bground");
 const formDisplay = document.querySelector(".content");
 const modalBtn = document.querySelectorAll(".modal-btn");

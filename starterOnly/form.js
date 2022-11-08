@@ -8,7 +8,7 @@ const formSelection = document.getElementById("submissionform");
 // Regex elements
 const birthDateRegex =
   /(200[0-4]|19[2-9]\d)\-(1[0-2]|0[1-9])\-(3[0-1]|[0-2]\d)/;
-const nameRegex = /^[a-zA-Z\u00e0-\u00ff]+(([-' ])?[a-zA-Z\u00e0-\u00ff])+$/;
+const nameRegex = /^[a-zA-Z\u00c0-\u00ff]+(([-' ])?[a-zA-Z\u00c0-\u00ff])+$/;
 const emailRegex =
   /(^[a-z\d]+[\.\-\_]?[a-z\d]+)@([a-z\d]+[.\-]?[a-z\d]+)\.[a-z]+$/;
 const quantityRegex = /^\d?\d$/;
@@ -90,9 +90,7 @@ function isFormDataValid() {
 
   for (const [key, value] of regexTestArray) {
     if (!value) {
-      document
-        .getElementById(key)
-        .parentNode.setAttribute("data-error-visible", "true");
+      document.getElementById(key).parentNode.setAttribute("data-error-visible", "true");
       isValid = false;
     }
   }
