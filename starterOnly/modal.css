@@ -251,11 +251,11 @@ input {
 }
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.7em;
+  font-size: 0.6em;
   color: #e54858;
   display: none;
   margin: 1rem 0;
-  text-align: right;
+  text-align: left;
   opacity: 0;
   transition: 0.3s;
 }
