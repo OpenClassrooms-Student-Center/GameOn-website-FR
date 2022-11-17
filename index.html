@@ -56,28 +56,28 @@
         <div class="modal-body">
           <!--<form name="reserve" action="index.html" method="get" onsubmit="return validate();"> -->
           <form id="form">
-            <div class="formData" data-error="">
+            <div class="formData" data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom.">
               <label for="firstname">Prénom</label><br>
               <input class="text-control" type="text" id="firstname" name="firstname" minlength="2" /><br>
             </div>
-            <div class="formData" data-error="">
+            <div class="formData" data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom.">
               <label for="lastname">Nom</label><br>
               <input class="text-control" type="text" id="lastname" name="lastname" /><br>
             </div>
-            <div class="formData" data-error="">
+            <div class="formData" data-error="Vous devez entrer une adresse email valide.">
               <label for="email">E-mail</label><br>
               <input class="text-control" type="email" id="email" name="email" /><br>
             </div>
-            <div class="formData" data-error="">
+            <div class="formData" data-error="Vous devez entrer votre date de naissance.">
               <label for="birthdate">Date de naissance</label><br>
               <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
             </div>
-            <div class="formData" data-error="">
+            <div class="formData" data-error="Vous devez renseigner une valeur comprise entre 0 et 100.">
               <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
               <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" value="0">
             </div>
             <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
-            <div class="formData location-choice">
+            <div class="formData location-choice" data-error="Vous devez choisir une ville.">
               <input class="checkbox-input location" type="radio" id="location1" name="location" value="New York" />
               <label class="checkbox-label" for="location1">
                 <span class="checkbox-icon"></span>
@@ -105,7 +105,7 @@
                 Portland</label>
             </div>
 
-            <div class="formData">
+            <div class="formData" date-error="Vous devez vérifier que vous acceptez les termes et conditions.">
               <input class="checkbox-input" type="checkbox" id="checkbox1" checked />
               <label class="checkbox2-label" for="checkbox1" required>
                 <span class="checkbox-icon"></span>
