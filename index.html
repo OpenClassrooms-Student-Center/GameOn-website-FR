@@ -58,11 +58,11 @@
           <form id="form">
             <div class="formData" data-error="">
               <label for="firstname">Prénom</label><br>
-              <input class="text-control" type="text" id="first" name="firstname" minlength="2" /><br>
+              <input class="text-control" type="text" id="firstname" name="firstname" minlength="2" /><br>
             </div>
             <div class="formData" data-error="">
               <label for="lastname">Nom</label><br>
-              <input class="text-control" type="text" id="last" name="lastname" /><br>
+              <input class="text-control" type="text" id="lastname" name="lastname" /><br>
             </div>
             <div class="formData" data-error="">
               <label for="email">E-mail</label><br>
@@ -74,10 +74,10 @@
             </div>
             <div class="formData" data-error="">
               <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-              <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+              <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" value="0">
             </div>
             <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
-            <div class="formData">
+            <div class="formData location-choice">
               <input class="checkbox-input location" type="radio" id="location1" name="location" value="New York" />
               <label class="checkbox-label" for="location1">
                 <span class="checkbox-icon"></span>
@@ -119,7 +119,7 @@
               </label>
               <br>
             </div>
-            <input class="btn-submit buton" type="submit" value="C'est parti" />
+            <input class="btn-submit button" type="submit" value="C'est parti" />
           </form>
         </div>
       </div>
