@@ -5,7 +5,7 @@ const lastName = document.querySelector("#lastname");
 const email = document.querySelector("#email");
 const birthDate = document.querySelector("#birthdate");
 const quantity = document.querySelector("#quantity");
-const locationChoice = document.querySelector("#location-choice");
+const locationChoice = document.querySelector(".location-choice");
 const locations = Array.from(document.querySelectorAll(".location"));
 const terms = document.querySelector("#checkbox1");
 const newsletter = document.querySelector("#checkbox2");
@@ -29,11 +29,11 @@ email.addEventListener("change", () => {
 
 //"blur": Supprime le focus d'une saisie de texte
 birthDate.addEventListener("blur", () => {
-  verifyInput(birthDate);
+  verifyDate(birthDate);
 });
 
 quantity.addEventListener("change", () => {
-  verifyInput(quantity);
+  verifyQuantity(quantity);
 });
 
 // FORM
@@ -47,75 +47,76 @@ form.addEventListener("submit", (e) => {
 //Fonction des champs et des regex
 function verifyInput(input, regex) {
   if (regex.test(input.value)) {
-    input.parentNode.removeAttribute("data-error");
+    input.parentNode.removeAttribute("data-error-visible");
     return true;
   }
-  input.parentNode.setAttribute("data-error", true);
+  input.parentNode.setAttribute("data-error-visible", true);
   return false;
 }
 
 //Fonction pour la date
 function verifyDate(input) {
-  const currentDate = Date.parse(new Date());
-  const dateIndicated = Date.parse(input.value);
+  let currentDate = Date.parse(new Date());
+  let dateIndicated = Date.parse(input.value);
   if (isNaN(dateIndicated) || dateIndicated > currentDate) {
-    input.parentNode.setAttribute("data-error", true);
+    input.parentNode.setAttribute("data-error-visible", true);
     return false;
-  } else {
-    input.parentNode.setAttribute("data-error", false);
-    return true;
   }
+  input.parentNode.setAttribute("data-error-visible", false);
+  return true;
 }
 
 //Fonction pour la quantité
 function verifyQuantity(input) {
   if (input.value < 0 || input.value > 100) {
-    input.parentNode.setAttribute("data-error", true);
+    input.parentNode.setAttribute("data-error-visible", true);
     return false;
-  } else {
-    input.parentNode.setAttribute("data-error", false);
-    return true;
   }
+  input.parentNode.setAttribute("data-error-visible", false);
+  return true;
 }
 
 //Fonction pour la localisation
 function verifyLocation(arrayInputs) {
-  let locationIndicated = "";
+  const locationIndicated = "";
   const locationIndicatedInput = arrayInputs.find(
     (input) => input.checked === true
   );
   if (!locationIndicatedInput) {
-    console.log("choisir une ville svp");
+    locationChoice.setAttribute("data-error-visible", true);
     return false;
-  } else {
-    locationIndicated = locationIndicatedInput.value;
-    console.log(`La ville séléctionnée est ${locationIndicated}`);
-    return true;
   }
+  locationIndicated = locationIndicatedInput.value;
+  locationChoice.setAttribute("data-error-visible", false);
+  return true;
 }
 
 //Fonction des conditions générales d'utiisation
 function verifyTerms() {
   if (terms.checked === false) {
-    terms.parentNode.setAttribute("data-error", true);
+    terms.parentNode.setAttribute("data-error-visible", true);
     return false;
-  } else {
-    terms.parentNode.setAttribute("data-error", false);
-    return true;
   }
+  terms.parentNode.setAttribute("data-error-visible", false);
+  return true;
 }
 
 //Fonction pour la newsletter
 function verifyNewsletter() {
   if (newsletter.checked === true) {
     return true;
-  } else {
-    return false;
   }
+  return false;
 }
 
 //Fonction pour la validation de tous les champs du formulaire
 function validate() {
+  verifyInput(firstName, nameRegex);
+  verifyInput(lastName, nameRegex);
+  verifyInput(email, emailRegex);
+  verifyDate(birthDate);
+  verifyLocation(locations);
+  verifyTerms();
   if (
     verifyInput(firstName, nameRegex) &&
     verifyInput(lastName, nameRegex) &&
