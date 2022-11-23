@@ -76,7 +76,7 @@ img {
   }
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
@@ -88,16 +88,17 @@ img {
     display: block;
     text-align: left;
   }
-}
+} */
 
 
 
- @media screen and (max-width: 540px) {
+ @media screen and (max-width: 768px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    color: red;
+    /* margin-top: -15px; */
   }
 } 
 
@@ -141,16 +142,25 @@ main {
 
 .button {
   background: #fe142f;
-  margin-top: 0.5em;
-  padding: 1em;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
   color: #fff;
-  border-radius: 15px;
   cursor: pointer;
-  font-size: 16px;
+  border: 0;
 }
 
 .button:hover {
   background: #3876ac;
+}
+
+.button-close{
+  position: absolute;
+  top: 500%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .smFont {
@@ -186,6 +196,23 @@ main {
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
+}
+
+.message_validation {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.message_validation p {
+  text-align: center;
+}
+
+.confirmation {
+  transform: scale(0);
 }
 
 label {
@@ -526,4 +553,11 @@ footer {
     opacity: 1;
   }
 }
+
+#data_missing, #last_missing, #email_missing, #birthdate_missing, #quantity_missing, #location_missing, #checkbox_missing {
+    font-size: 15px;
+    color: red;
+}
+
+
 
