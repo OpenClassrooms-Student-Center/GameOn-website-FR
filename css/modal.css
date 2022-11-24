@@ -33,6 +33,9 @@ img {
 .topnav {
   overflow: hidden;
   margin: 3.5%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .header-logo {
     float: left;
@@ -67,6 +70,7 @@ img {
 }
 
 @media screen and (max-width: 768px) {
+  .topnav {flex-wrap: wrap;}
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
@@ -95,7 +99,6 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
 } 
 
@@ -192,6 +195,10 @@ label {
   font-weight: normal;
   display: inline-block;
   margin-bottom: 11px;
+}
+
+.margin-tournois{
+  margin-top: 0.5rem;
 }
 input {
   padding: 8px;
@@ -477,6 +484,11 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+
+  .header-logo img {
+    width: 150px;
+  }
+
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -493,7 +505,9 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    width: 100%;
+    flex-wrap: wrap;
+    font-size: 2.5rem;
     white-space: normal;
   }
   .hero-text {
