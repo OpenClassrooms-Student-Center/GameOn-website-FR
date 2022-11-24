@@ -59,8 +59,6 @@ img {
 }
 
 .topnav a.active {
-  background-color: #ff0000;
-  color: #ffffff;
   border-radius: 15px;
 }
 
