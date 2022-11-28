@@ -34,7 +34,7 @@ img {
   overflow: hidden;
   margin: 3.5%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 }
 .header-logo {

@@ -10,7 +10,24 @@ const input = document.getElementsByClassName('text-control');
 const form = document.getElementById('form');
 
 
-function checkFirstName(){
+function checkForm() {
+
+    let isFirstNameOk = checkLenght(firstName, 2)
+    let isLastNameOk = checkLenght(lastName, 2)
 
 }
+
+function checkLenght (element,lenght){
+    if (element.value.lenght < lenght){
+        firstName.style.border = '2px solid #e54858';
+        
+        return false;
+        
+    }
+    first.style.border = 'solid #279e7a 0.19rem';
+    return true;
+}
+
+form.addEventListener('submit', checkForm);
+
 
