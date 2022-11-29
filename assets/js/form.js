@@ -5,10 +5,15 @@ const lastName = document.querySelector("#lastname");
 const email = document.querySelector("#email");
 const birthDate = document.querySelector("#birthdate");
 const quantity = document.querySelector("#quantity");
-const locationChoice = document.querySelector(".location-choice");
-const locations = Array.from(document.querySelectorAll(".location"));
+const locationCity = document.querySelector(".location-city");
+const locations = Array.from(document.querySelectorAll(".location-input"));
 const terms = document.querySelector("#checkbox1");
 const newsletter = document.querySelector("#checkbox2");
+
+const successConfirmation = document.querySelector(".success-confirmation");
+const successConfirmationClose = document.querySelector(
+  ".success-confirmation-close"
+);
 
 /********************* REGEX **********************/
 const nameRegex = /^[a-zéèôöîïûùü' -]{2,50}$/i;
@@ -24,7 +29,7 @@ lastName.addEventListener("change", () => {
 });
 
 email.addEventListener("change", () => {
-  verifyInput(email, nameRegex);
+  verifyInput(email, emailRegex);
 });
 
 //"blur": Supprime le focus d'une saisie de texte
@@ -78,16 +83,16 @@ function verifyQuantity(input) {
 
 //Fonction pour la localisation
 function verifyLocation(arrayInputs) {
-  const locationIndicated = "";
-  const locationIndicatedInput = arrayInputs.find(
+  let selectedLocation = "";
+  const selectedLocationInput = arrayInputs.find(
     (input) => input.checked === true
   );
-  if (!locationIndicatedInput) {
-    locationChoice.setAttribute("data-error-visible", true);
+  if (!selectedLocationInput) {
+    locationCity.setAttribute("data-error-visible", true);
     return false;
   }
-  locationIndicated = locationIndicatedInput.value;
-  locationChoice.setAttribute("data-error-visible", false);
+  selectedLocation = selectedLocationInput.value;
+  locationCity.setAttribute("data-error-visible", false);
   return true;
 }
 
@@ -126,7 +131,7 @@ function validate() {
     verifyTerms()
   ) {
     // Création d'un objet pour contenir les valeurs des inputs
-    let submittedData = {
+    let dataSent = {
       firstname: firstName.value,
       lastname: lastName.value,
       email: email.value,
@@ -135,7 +140,7 @@ function validate() {
       location: locations.find((input) => input.checked === true).value,
       newsletter: verifyNewsletter(),
     };
-    console.log(submittedData, "formulaire OK");
+    console.log(dataSent, "formulaire OK");
 
     // Effacement des valeurs des inputs
     firstName.value = "";
@@ -145,6 +150,10 @@ function validate() {
     quantity.value = 0;
     locations.find((input) => input.checked === true).checked = false;
     newsletter.checked = false;
+
+    form.style.opacity = "0";
+    successConfirmation.style.display = "block";
+    successConfirmationClose.style.display = "block";
   } else {
     console.log("formulaire KO");
   }
