@@ -24,31 +24,45 @@ function checkForm(e) {
 
 function checkLength(element, length) {
   if (element.value.length < length) {
-    firstName.parentElement.setAttribute('data-error-visible', 'true');
-    lastName.parentElement.setAttribute('data-error-visible', 'true');
+    firstName.parentElement.setAttribute("data-error-visible", "true");
+    lastName.parentElement.setAttribute("data-error-visible", "true");
 
     return false;
   }
-  lastName.parentElement.setAttribute('data-error-visible', 'false');
-  firstName.parentElement.setAttribute('data-error-visible', 'false');
-  lastName.style.border = 'solid #279e7a 0.19rem';
-  firstName.style.border = 'solid #279e7a 0.19rem';
+  lastName.parentElement.setAttribute("data-error-visible", "false");
+  firstName.parentElement.setAttribute("data-error-visible", "false");
+  lastName.style.border = "solid #279e7a 0.19rem";
+  firstName.style.border = "solid #279e7a 0.19rem";
   return true;
 }
 
 function checkEmail() {
-  const regex = (/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/i);
+  const regex =
+    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/i;
 
   if (email.value.match(regex)) {
-      email.parentElement.setAttribute('data-error-visible', 'false');
-      email.style.border = 'solid #279e7a 0.19rem';
-      return true;
+    email.parentElement.setAttribute("data-error-visible", "false");
+    email.style.border = "solid #279e7a 0.19rem";
+    return true;
   }
-  email.parentElement.setAttribute('data-error-visible', 'true');
-  email.style.border = '2px solid #e54858';
+  email.parentElement.setAttribute("data-error-visible", "true");
+  email.style.border = "2px solid #e54858";
   return false;
+}
+
+function checkBirthdate() {
+  if (birthdate.value.length !== 10) {
+    console.log("zut");
+
+    birthdate.parentElement.setAttribute("data-error-visible", "false");
+    email.style.border = "solid #279e7a 0.19rem";
+    return false;
+  }
+  birthdate.parentElement.setAttribute("data-error-visible", "true");
+  birthdate.style.border = "2px solid #e54858";
+  return true;
 }
 
 form.addEventListener("submit", checkForm);
 form.addEventListener("focusout", checkEmail);
-
+form.addEventListener("focusout", checkBirthdate);
