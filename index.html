@@ -53,41 +53,40 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
-            <form
-              name="reserve"
-              action="index.html"
-              method="get"
-              onsubmit="return validate();"
-            >
+            <form id="form" name="reserve" action="index.html" method="get">
               <div
-                class="formData">
-                <label>Prénom</label><br>
+                class="formData" data-error="Vous devez entrer 2 caractères ou plus." data-error-visible="false">
+                <label for="first">Prénom</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="first"
                   name="first"
                   minlength="2"
+                  placeholder="Prénom"
                 /><br>
               </div>
               <div
-                class="formData">
-                <label>Nom</label><br>
+                class="formData" data-error="Vous devez entrer 2 caractères ou plus." data-error-visible="false">
+                <label for="last">Nom</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
+                  minlength="2"
+                  placeholder="Nom"
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData" data-error="Vous devez entrer une adresse email valide." data-error-visible="false">
                 <label>E-mail</label><br>
                 <input
                   class="text-control"
                   type="email"
                   id="email"
                   name="email"
+                  placeholder="exemple@email.com"
                 /><br>
               </div>
               <div
@@ -103,7 +102,7 @@
               <div
                 class="formData">
                 <label class="margin-tournois">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <input placeholder="0" type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
@@ -212,7 +211,7 @@
         Copyright 2014 - 2022, GameOn Inc.
       </p>
     </footer>
-    <script src="./js/modal.js" defer></script>
-    <script src="./js/formValidation.js" defer></script>
+    <script src="./js/modal.js"></script>
+    <script src="./js/formValidation.js"></script>
   </body>
   </html>
