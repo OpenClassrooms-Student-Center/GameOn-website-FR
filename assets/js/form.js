@@ -11,9 +11,6 @@ const terms = document.querySelector("#checkbox1");
 const newsletter = document.querySelector("#checkbox2");
 
 const successConfirmation = document.querySelector(".success-confirmation");
-const successConfirmationClose = document.querySelector(
-  ".success-confirmation-close"
-);
 
 /********************* REGEX **********************/
 const nameRegex = /^[a-zéèôöîïûùü' -]{2,50}$/i;
@@ -153,7 +150,6 @@ function validate() {
 
     form.style.opacity = "0";
     successConfirmation.style.display = "block";
-    successConfirmationClose.style.display = "block";
   } else {
     console.log("formulaire KO");
   }

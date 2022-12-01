@@ -30,5 +30,4 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = "none";
   successConfirmation.style.display = "none";
-  successConfirmationClose.style.display = "none";
 }
