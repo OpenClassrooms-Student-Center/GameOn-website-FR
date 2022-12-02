@@ -58,9 +58,12 @@ function verifyInput(input, regex) {
 
 //Fonction pour la date
 function verifyDate(input) {
-  let currentDate = Date.parse(new Date());
-  let dateIndicated = Date.parse(input.value);
-  if (isNaN(dateIndicated) || dateIndicated > currentDate) {
+  const currentDate = new Date(Date.now());
+  const dateIndicated = new Date(input.value);
+  if (
+    !input.value ||
+    dateIndicated.getFullYear() > currentDate.getFullYear() - 15
+  ) {
     input.parentNode.setAttribute("data-error-visible", true);
     return false;
   }
@@ -70,7 +73,7 @@ function verifyDate(input) {
 
 //Fonction pour la quantité
 function verifyQuantity(input) {
-  if (input.value < 0 || input.value > 100) {
+  if (!input.value || input.value < 0 || input.value > 100) {
     input.parentNode.setAttribute("data-error-visible", true);
     return false;
   }
