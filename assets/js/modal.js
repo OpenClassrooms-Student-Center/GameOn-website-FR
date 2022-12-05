@@ -1,3 +1,4 @@
+/********************* NAV **********************/
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -10,16 +11,13 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const closeModalBtn = document.querySelector(".close");
-
-const formData = document.querySelectorAll(".formData");
+const closeModalX = document.querySelector(".close");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // eventlistener
-closeModalBtn.addEventListener("click", closeModal);
-// successConfirmationClose.addEventListener("click", closeModal);
+closeModalX.addEventListener("click", closeModal);
 
 // launch modal form
 function launchModal() {
@@ -29,5 +27,7 @@ function launchModal() {
 //close modal
 function closeModal() {
   modalbg.style.display = "none";
+  //form.style.opacity: Pr afficher la pop up successConfirmation
+  form.style.opacity = "1";
   successConfirmation.style.display = "none";
 }
