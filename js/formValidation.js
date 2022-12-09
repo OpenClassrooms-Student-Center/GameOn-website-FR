@@ -9,10 +9,20 @@ const checkbox1 = document.getElementById("checkbox1");
 const input = document.getElementsByClassName("text-control");
 const form = document.getElementById("form");
 
+// FORM FIELDS EVENTS
+
+function formFieldsValidation(element, method, event) {
+  element.addEventListener(event, method);
+}
+formFieldsValidation(firstName, checkForm, 'focusout');
+formFieldsValidation(lastName, checkForm, 'focusout');
+formFieldsValidation(email, checkEmail, 'focusout');
+formFieldsValidation(birthdate, checkBirthdate, 'focusout');
+formFieldsValidation(quantity, checkTournamentsQuantity, 'focusout');
+formFieldsValidation(allLocations, checkLocations, 'change');
+
 function checkForm(e) {
   e.preventDefault();
-
-  console.log("Statut");
 
   let isFirstNameOk = checkLength(firstName, 2);
   let isLastNameOk = checkLength(lastName, 2);
@@ -20,33 +30,32 @@ function checkForm(e) {
   if (isFirstNameOk && isLastNameOk) {
     console.log("c'est good");
   }
+
 }
 
 function checkLength(element, length) {
-  if (element.value.length < length) {
-    firstName.parentElement.setAttribute("data-error-visible", "true");
-    lastName.parentElement.setAttribute("data-error-visible", "true");
+  const formData = element.parentElement;
 
+  if (element.value.length < length || first.value === '') {
+    formData.setAttribute("data-error-visible", "true");
     return false;
   }
-  lastName.parentElement.setAttribute("data-error-visible", "false");
-  firstName.parentElement.setAttribute("data-error-visible", "false");
-  lastName.style.border = "solid #279e7a 0.19rem";
-  firstName.style.border = "solid #279e7a 0.19rem";
+
+  formData.setAttribute("data-error-visible", "false");
   return true;
 }
 
+
 function checkEmail() {
-  const regex =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))/i;
+  const regex = 
+  /^[\w._%+-]+@[\w.-]+\.[A-Za-z]{2,}$/
 
   if (email.value.match(regex)) {
     email.parentElement.setAttribute("data-error-visible", "false");
-    email.style.border = "solid #279e7a 0.19rem";
     return true;
   }
   email.parentElement.setAttribute("data-error-visible", "true");
-  email.style.border = "2px solid #e54858";
+
   return false;
 }
 
@@ -54,15 +63,33 @@ function checkBirthdate() {
   if (birthdate.value.length !== 10) {
     console.log("zut");
 
-    birthdate.parentElement.setAttribute("data-error-visible", "false");
-    email.style.border = "solid #279e7a 0.19rem";
+    birthdate.parentElement.setAttribute("data-error-visible", "true");
     return false;
   }
-  birthdate.parentElement.setAttribute("data-error-visible", "true");
-  birthdate.style.border = "2px solid #e54858";
+  birthdate.parentElement.setAttribute("data-error-visible", "false");
   return true;
 }
 
-form.addEventListener("submit", checkForm);
+function checkTournamentsQuantity() {
+  if (quantity.value.length === 0 || quantity.value < 0) {
+      quantity.parentElement.setAttribute('data-error-visible', 'true');
+      return false;
+  }
+  quantity.parentElement.setAttribute('data-error-visible', 'false');
+  return true;
+}
+
+function checkCheckBox() {
+  if (checkbox1.checked === false) {
+      checkbox1.parentElement.setAttribute('data-error-visible', 'true');
+      return false;
+  }
+  checkbox1.parentElement.setAttribute('data-error-visible', 'false');
+  return true;
+}
+
+// form.addEventListener("focusout", checkForm);
 form.addEventListener("focusout", checkEmail);
 form.addEventListener("focusout", checkBirthdate);
+form.addEventListener("change", checkCheckBox);
+// form.addEventListener("focusout", checkLocations);
