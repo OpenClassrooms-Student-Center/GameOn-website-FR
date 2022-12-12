@@ -108,10 +108,32 @@ function verifyTerms() {
 
 //Fonction pour la newsletter
 function verifyNewsletter() {
-  if (newsletter.checked === true) {
-    return true;
+  return !!newsletter.checked;
+}
+
+function clearFormValues() {
+  firstName.value = "";
+  lastName.value = "";
+  email.value = "";
+  birthDate.value = "";
+  quantity.value = 0;
+  locations.find((input) => input.checked === true).checked = false;
+  newsletter.checked = false;
+
+  form.style.opacity = "0";
+  successConfirmation.style.display = "block";
+}
+
+function data() {
+  return {
+    firstname: firstName.value,
+    lastname: lastName.value,
+    email: email.value,
+    birthdate: birthDate.value,
+    quantity: quantity.value,
+    location: locations.find((input) => input.checked === true).value,
+    newsletter: verifyNewsletter(),
   }
-  return false;
 }
 
 //Fonction pour la validation de tous les champs du formulaire
@@ -130,30 +152,11 @@ function validate() {
     verifyLocation(locations) &&
     verifyTerms()
   ) {
-    // Création d'un objet pour contenir les valeurs des inputs
-    let dataSent = {
-      firstname: firstName.value,
-      lastname: lastName.value,
-      email: email.value,
-      birthdate: birthDate.value,
-      quantity: quantity.value,
-      location: locations.find((input) => input.checked === true).value,
-      newsletter: verifyNewsletter(),
-    };
+    let dataSent = data(); // Création d'un objet pour contenir les valeurs des inputs
     console.log(dataSent, "formulaire OK");
-
-    // Effacement des valeurs des inputs
-    firstName.value = "";
-    lastName.value = "";
-    email.value = "";
-    birthDate.value = "";
-    quantity.value = 0;
-    locations.find((input) => input.checked === true).checked = false;
-    newsletter.checked = false;
-
-    form.style.opacity = "0";
-    successConfirmation.style.display = "block";
-  } else {
+    clearFormValues(); // Effacement des valeurs des inputs
+  }
+  else {
     console.log("formulaire KO");
   }
 }
