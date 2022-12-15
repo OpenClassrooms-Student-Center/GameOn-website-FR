@@ -14,29 +14,53 @@ const form = document.getElementById("form");
 function formFieldsValidation(element, method, event) {
   element.addEventListener(event, method);
 }
-formFieldsValidation(firstName, checkForm, 'focusout');
-formFieldsValidation(lastName, checkForm, 'focusout');
-formFieldsValidation(email, checkEmail, 'focusout');
-formFieldsValidation(birthdate, checkBirthdate, 'focusout');
-formFieldsValidation(quantity, checkTournamentsQuantity, 'focusout');
-formFieldsValidation(allLocations, checkLocations, 'change');
+formFieldsValidation(firstName, checkFirstName, "focusout");
+formFieldsValidation(lastName, checkLastName, "focusout");
+formFieldsValidation(email, checkEmail, "focusout");
+formFieldsValidation(birthdate, checkBirthdate, "focusout");
+formFieldsValidation(quantity, checkTournamentsQuantity, "focusout");
+forAllFieldsValidation(checkbox1, checkCheckBox, "change");
+forAllFieldsValidation(locations, checkRadio, "change");
+formFieldsValidation(form, validate, "submit");
 
-function checkForm(e) {
-  e.preventDefault();
-
-  let isFirstNameOk = checkLength(firstName, 2);
-  let isLastNameOk = checkLength(lastName, 2);
-
-  if (isFirstNameOk && isLastNameOk) {
+function validate(evt) {
+  evt.preventDefault();
+  if (
+    checkFirstName() &&
+    checkLastName() &&
+    checkEmail() &&
+    checkBirthdate() &&
+    checkTournamentsQuantity() &&
+    checkCheckBox() &&
+    checkRadio()
+  ) {
     console.log("c'est good");
+    displayModalSubmit();
+    return true;
   }
-
+  evt.preventDefault();
+  return false;
 }
 
-function checkLength(element, length) {
-  const formData = element.parentElement;
+// let isFirstNameOk = checkLength(firstName, 2);
+// let isLastNameOk = checkLength(lastName, 2);
 
-  if (element.value.length < length || first.value === '') {
+function checkFirstName() {
+  const formData = firstName.parentElement;
+
+  if (firstName.value.length < 2) {
+    formData.setAttribute("data-error-visible", "true");
+    return false;
+  }
+
+  formData.setAttribute("data-error-visible", "false");
+  return true;
+}
+
+function checkLastName() {
+  const formData = lastName.parentElement;
+
+  if (lastName.value.length < 2) {
     formData.setAttribute("data-error-visible", "true");
     return false;
   }
@@ -47,8 +71,7 @@ function checkLength(element, length) {
 
 
 function checkEmail() {
-  const regex = 
-  /^[\w._%+-]+@[\w.-]+\.[A-Za-z]{2,}$/
+  const regex = /^[\w._%+-]+@[\w.-]+\.[A-Za-z]{2,}$/;
 
   if (email.value.match(regex)) {
     email.parentElement.setAttribute("data-error-visible", "false");
@@ -60,7 +83,8 @@ function checkEmail() {
 }
 
 function checkBirthdate() {
-  if (birthdate.value.length !== 10) {
+  const date = Date.parse(birthdate.value);
+  if (isNaN(date)) {
     console.log("zut");
 
     birthdate.parentElement.setAttribute("data-error-visible", "true");
@@ -71,25 +95,40 @@ function checkBirthdate() {
 }
 
 function checkTournamentsQuantity() {
-  if (quantity.value.length === 0 || quantity.value < 0) {
-      quantity.parentElement.setAttribute('data-error-visible', 'true');
-      return false;
+  const qty = Number.parseInt(quantity.value);
+  if (!Number.isInteger(qty) || qty.value < 1) {
+    quantity.parentElement.setAttribute("data-error-visible", "true");
+    return false;
   }
-  quantity.parentElement.setAttribute('data-error-visible', 'false');
+  quantity.parentElement.setAttribute("data-error-visible", "false");
   return true;
 }
 
 function checkCheckBox() {
   if (checkbox1.checked === false) {
-      checkbox1.parentElement.setAttribute('data-error-visible', 'true');
-      return false;
+    checkbox1.parentElement.setAttribute("data-error-visible", "true");
+    return false;
   }
-  checkbox1.parentElement.setAttribute('data-error-visible', 'false');
+  checkbox1.parentElement.setAttribute("data-error-visible", "false");
   return true;
 }
 
-// form.addEventListener("focusout", checkForm);
-form.addEventListener("focusout", checkEmail);
-form.addEventListener("focusout", checkBirthdate);
-form.addEventListener("change", checkCheckBox);
-// form.addEventListener("focusout", checkLocations);
+function checkRadio() {
+  const isOneChecked = document.querySelector("input[type='radio']:checked");
+  if (isOneChecked === false) {
+    checkbox1.parentElement.setAttribute("data-error-visible", "true");
+    return false;
+  }
+  checkbox1.parentElement.setAttribute("data-error-visible", "false");
+  return true;
+}
+
+// function forAllFieldsValidation() {
+//   checkFirstName()
+//   checkLastName()
+//   checkEmail()
+//   checkBirthdate()
+//   checkTournamentsQuantity()
+//   checkRadio()
+//   checkCheckBox()
+// }
