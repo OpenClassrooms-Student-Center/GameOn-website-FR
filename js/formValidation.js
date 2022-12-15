@@ -3,13 +3,17 @@ const lastName = document.getElementById("last");
 const email = document.getElementById("email");
 const quantity = document.getElementById("quantity");
 const birthdate = document.getElementById("birthdate");
-const allLocations = document.getElementById("allLocations");
-const locations = document.querySelectorAll("#allLocations .checkbox-input");
+const allLocations = document.getElementById("AllLocations");
+// const locations = document.querySelectorAll("#allLocations .checkbox-input");
 const checkbox1 = document.getElementById("checkbox1");
 const input = document.getElementsByClassName("text-control");
 const form = document.getElementById("form");
 
 // FORM FIELDS EVENTS
+
+/* 
+Ajout d'un addEventListener sur un élément HTML
+*/
 
 function formFieldsValidation(element, method, event) {
   element.addEventListener(event, method);
@@ -19,31 +23,25 @@ formFieldsValidation(lastName, checkLastName, "focusout");
 formFieldsValidation(email, checkEmail, "focusout");
 formFieldsValidation(birthdate, checkBirthdate, "focusout");
 formFieldsValidation(quantity, checkTournamentsQuantity, "focusout");
-forAllFieldsValidation(checkbox1, checkCheckBox, "change");
-forAllFieldsValidation(locations, checkRadio, "change");
+formFieldsValidation(checkbox1, checkCheckBox, "change");
 formFieldsValidation(form, validate, "submit");
+document.querySelectorAll("input[type='radio']").forEach(elt => formFieldsValidation(elt, radioChecked , "click"));
 
 function validate(evt) {
-  evt.preventDefault();
-  if (
-    checkFirstName() &&
-    checkLastName() &&
-    checkEmail() &&
-    checkBirthdate() &&
-    checkTournamentsQuantity() &&
-    checkCheckBox() &&
-    checkRadio()
-  ) {
-    console.log("c'est good");
-    displayModalSubmit();
-    return true;
+let isFirstNameOk = checkFirstName();
+let isLastNameOk = checkLastName();
+let isEmailOK = checkEmail();
+let isBirthdateOk= checkBirthdate();
+let isQtyOk = checkTournamentsQuantity();
+let isRadioOk = checkRadio();
+let ischeckBoxOk = checkCheckBox();
+ 
+  if (isFirstNameOk && isLastNameOk && isEmailOK && isBirthdateOk && isQtyOk && isRadioOk && ischeckBoxOk) {
+    alert("Votre demande a été reçue");
+  } else {
+    evt.preventDefault();
   }
-  evt.preventDefault();
-  return false;
 }
-
-// let isFirstNameOk = checkLength(firstName, 2);
-// let isLastNameOk = checkLength(lastName, 2);
 
 function checkFirstName() {
   const formData = firstName.parentElement;
@@ -85,7 +83,6 @@ function checkEmail() {
 function checkBirthdate() {
   const date = Date.parse(birthdate.value);
   if (isNaN(date)) {
-    console.log("zut");
 
     birthdate.parentElement.setAttribute("data-error-visible", "true");
     return false;
@@ -96,7 +93,7 @@ function checkBirthdate() {
 
 function checkTournamentsQuantity() {
   const qty = Number.parseInt(quantity.value);
-  if (!Number.isInteger(qty) || qty.value < 1) {
+  if (!Number.isInteger(qty) || qty < 1) {
     quantity.parentElement.setAttribute("data-error-visible", "true");
     return false;
   }
@@ -105,7 +102,7 @@ function checkTournamentsQuantity() {
 }
 
 function checkCheckBox() {
-  if (checkbox1.checked === false) {
+  if (!checkbox1.checked) {
     checkbox1.parentElement.setAttribute("data-error-visible", "true");
     return false;
   }
@@ -115,20 +112,17 @@ function checkCheckBox() {
 
 function checkRadio() {
   const isOneChecked = document.querySelector("input[type='radio']:checked");
-  if (isOneChecked === false) {
-    checkbox1.parentElement.setAttribute("data-error-visible", "true");
+  if (!isOneChecked) {
+    document.getElementById("AllLocations").setAttribute("data-error-visible", "true");
     return false;
   }
-  checkbox1.parentElement.setAttribute("data-error-visible", "false");
+  document.getElementById("AllLocations").setAttribute("data-error-visible", "false");
   return true;
 }
 
-// function forAllFieldsValidation() {
-//   checkFirstName()
-//   checkLastName()
-//   checkEmail()
-//   checkBirthdate()
-//   checkTournamentsQuantity()
-//   checkRadio()
-//   checkCheckBox()
-// }
+/* bouton radio coché n'implique plus de message d'erreur*/
+function radioChecked(){
+  document.getElementById("AllLocations").setAttribute("data-error-visible", "false");
+
+
+}

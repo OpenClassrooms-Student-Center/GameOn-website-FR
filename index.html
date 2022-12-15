@@ -72,13 +72,13 @@
               <label>Date de naissance</label><br>
               <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
             </div>
-            <div class="formData">
+            <div class="formData" data-error="Vous devez entrer une quantité." data-error-visible="false">
               <label class="margin-tournois">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
               <input placeholder="0" type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
             </div>
 
 
-            <div class="formData" id="allLocations" data-error="Veuillez sélectionner une ville."
+            <div class="formData" data-error="Vous devez entrer une ville." data-error-visible="false" id="allLocations" data-error="Veuillez sélectionner une ville."
               data-error-visible="false">
 
 
@@ -131,7 +131,7 @@
       </div>
     </div>
     <!-- CONFIRMATION SUBMIT -->
-    <div class="container-confirmation-submit">
+    <!-- <div class="container-confirmation-submit">
       <div class="submitted-form">
         <span class="close-modal-submit"></span>
         <p>
@@ -142,7 +142,7 @@
         <button id="close-btn-confirmation"> Fermer
         </button>
       </div>
-    </div>
+    </div> -->
   </main>
   <footer>
     <p class="copyrights">
@@ -151,7 +151,7 @@
   </footer>
   <script src="./js/modal.js"></script>
   <script src="./js/formValidation.js"></script>
-  <script src="./js/confirm.js"></script>
+  <!-- <script src="./js/confirm.js"></script> -->
 </body>
 
 </html>
