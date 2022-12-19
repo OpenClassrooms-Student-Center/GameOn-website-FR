@@ -1,18 +1,19 @@
+/* 
+Objets au sein de variables qui récuperent les éléments du DOM.
+*/
+
 const firstName = document.getElementById("first");
 const lastName = document.getElementById("last");
 const email = document.getElementById("email");
 const quantity = document.getElementById("quantity");
 const birthdate = document.getElementById("birthdate");
 const allLocations = document.getElementById("AllLocations");
-// const locations = document.querySelectorAll("#allLocations .checkbox-input");
 const checkbox1 = document.getElementById("checkbox1");
 const input = document.getElementsByClassName("text-control");
 const form = document.getElementById("form");
 
-// FORM FIELDS EVENTS
-
 /* 
-Ajout d'un addEventListener sur un élément HTML
+Ajout d'un addEventListener sur un élément HTML.
 */
 
 function formFieldsValidation(element, method, event) {
@@ -25,6 +26,11 @@ formFieldsValidation(birthdate, checkBirthdate, "focusout");
 formFieldsValidation(quantity, checkTournamentsQuantity, "focusout");
 formFieldsValidation(checkbox1, checkCheckBox, "change");
 formFieldsValidation(form, validate, "submit");
+
+/* 
+Selection pour chacun des inputs de type radio.
+*/
+
 document
   .querySelectorAll("input[type='radio']")
   .forEach((elt) => formFieldsValidation(elt, radioChecked, "click"));
@@ -38,6 +44,7 @@ function validate(evt) {
   let isRadioOk = checkRadio();
   let ischeckBoxOk = checkCheckBox();
 
+  /* Si toutes les conditions sont vérifiées alors envoi le formulaire */
   if (
     isFirstNameOk &&
     isLastNameOk &&
@@ -47,11 +54,15 @@ function validate(evt) {
     isRadioOk &&
     ischeckBoxOk
   ) {
+    /* Affiche un message d'alerte quand l'envoi est réussi */
+
     alert("Votre demande a été reçue");
   } else {
     evt.preventDefault();
   }
 }
+
+/* Fonctions qui vérifient les conditions de validation */
 
 function checkFirstName() {
   const formData = firstName.parentElement;
@@ -133,6 +144,7 @@ function checkRadio() {
 }
 
 /* bouton radio coché n'implique plus de message d'erreur*/
+
 function radioChecked() {
   document
     .getElementById("AllLocations")
