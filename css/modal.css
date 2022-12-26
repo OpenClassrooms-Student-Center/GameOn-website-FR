@@ -447,12 +447,22 @@ input[data-error]::after {
     font-size: 4.5rem;
   }
 }
+@media screen and (max-width: 768px) {
+  h1.hero-headline{
+    font-size: 3rem;
+  }
+}
 
 .hero-text {
   width: 146%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
+}
+@media screen and (max-width: 992px) {
+  .hero-text{
+    margin-top: 20px;
+  }
 }
 .btn-signup {
   outline: none;
@@ -495,7 +505,7 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px;
   }
   .hero-content::after {
     content: unset;
