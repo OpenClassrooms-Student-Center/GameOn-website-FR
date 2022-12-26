@@ -34,6 +34,11 @@ img {
   overflow: hidden;
   margin: 3.5%;
 }
+@media screen and (max-width: 992px) {
+  .topnav{
+    margin: 5%;
+  }
+}
 .header-logo {
     float: left;
 }
@@ -45,8 +50,7 @@ img {
   display: block;
   color: #000000;
   text-align: center;
-  padding: 12px 12px;
-  margin: 5px;
+  padding: 12px;
   text-decoration: none;
   font-size: 20px;
   font-family: Roboto, sans-serif;
@@ -99,7 +103,6 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
 } 
 
@@ -113,9 +116,13 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
+@media screen and (max-width: 992px) {
+  main {
+    padding: 0px;
+    margin: 2% 5%;
+  }
+} 
 
 .modal-btn {
   font-size: 145%;
@@ -462,6 +469,7 @@ input[data-error]::after {
 @media screen and (max-width: 992px) {
   .hero-text{
     margin-top: 20px;
+    text-align: justify;
   }
 }
 .btn-signup {
