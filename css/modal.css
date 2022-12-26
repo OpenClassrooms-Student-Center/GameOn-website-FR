@@ -29,6 +29,11 @@ p {
 img {
   padding-right: 1rem;
 }
+@media screen and (max-width: 340px) {
+  img{
+    width: 210px;
+  }
+}
 
 .topnav {
   overflow: hidden;
@@ -466,7 +471,7 @@ input[data-error]::after {
   margin-top: 57px;
   padding: 0;
 }
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 768px) {
   .hero-text{
     margin-top: 20px;
     text-align: justify;
