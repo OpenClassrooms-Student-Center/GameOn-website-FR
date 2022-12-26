@@ -68,7 +68,7 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
@@ -76,8 +76,10 @@ img {
   }
 }
 
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+@media screen and (max-width: 992px) {
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -420,7 +422,6 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -440,6 +441,13 @@ input[data-error]::after {
   font-weight: normal;
   white-space: nowrap;
 }
+
+@media screen and (max-width: 992px) {
+  h1.hero-headline{
+    font-size: 4.5rem;
+  }
+}
+
 .hero-text {
   width: 146%;
   font-weight: normal;
@@ -462,6 +470,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 .copyrights {
   color: #fe142f;
