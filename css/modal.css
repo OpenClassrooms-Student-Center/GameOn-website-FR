@@ -460,7 +460,7 @@ input[data-error]::after {
 }
 @media screen and (max-width: 768px) {
   h1.hero-headline{
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 }
 
