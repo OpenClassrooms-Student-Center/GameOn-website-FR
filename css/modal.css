@@ -453,29 +453,55 @@ input[data-error]::after {
   white-space: nowrap;
 }
 
+h1.hero-headline{
+  font-size: 6rem;
+  font-weight: normal;
+  white-space: nowrap;
+  overflow: visible;
+  position: absolute;
+}
+
 @media screen and (max-width: 992px) {
   h1.hero-headline{
     font-size: 4.5rem;
+    position: absolute;
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
   h1.hero-headline{
-    font-size: 2.5rem;
+    font-size: 3rem;
+    position: relative;
   }
 }
+@media screen and (max-width: 450px) {
+  h1.hero-headline{
+    font-size: 2rem;
+    position: relative;
+    white-space: normal;
+  }
+}
+
 
 .hero-text {
   width: 146%;
   font-weight: normal;
-  margin-top: 57px;
+  margin-top: 280px;
   padding: 0;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
+  .hero-text{
+    margin-top: 220px;
+    text-align: justify;
+  }
+}
+
+@media screen and (max-width: 800px) {
   .hero-text{
     margin-top: 20px;
     text-align: justify;
   }
 }
+
 .btn-signup {
   outline: none;
   text-transform: capitalize;
