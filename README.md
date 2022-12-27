@@ -4,4 +4,5 @@ Création d'une landing page avec Javascript.
 2. annimation des boutons de la barre de navigation.  
 3. mise en place des expressions régulières pour le paramétrages des éléments nécessaires à l'inscription.  
 4. affichage d'un message de validation si le formulaire est correct.  
-5. affichage d'un message d'erreur si le formulaire est incorrect.  6. assurer la fermuture de la modale.
+5. affichage d'un message d'erreur si le formulaire est incorrect.  
+6. assurer la fermuture de la modale.
