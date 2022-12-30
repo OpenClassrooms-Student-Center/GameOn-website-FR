@@ -1,0 +1,19 @@
+{
+  "name": "gameon",
+  "version": "1.0.0",
+  "description": "Création d'une landing page avec Javascript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zicaa/GameOn.git"
+  },
+  "author": "Nausicaa CRESTA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zicaa/GameOn/issues"
+  },
+  "homepage": "https://github.com/Zicaa/GameOn#readme"
+}
