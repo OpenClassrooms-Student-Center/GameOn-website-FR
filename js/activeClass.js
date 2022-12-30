@@ -1,7 +1,7 @@
 // Je récupère les éléments du DOM et les stocke dans des variables
 const navbar=document.querySelector("main-navbar");
 const links=document.querySelectorAll("a");
-console.log(navbar);
+console.log(navbar); // Test
 
 // Je crée un tableau qui contient tous mes liens 
 // grâce à forEach et je parcours les éléments
