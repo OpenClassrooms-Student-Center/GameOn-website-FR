@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/Zicaa/GameOn/issues"
   },
-  "homepage": "https://github.com/Zicaa/GameOn#readme"
+  "homepage": "https://github.com/Zicaa/GameOn#readme",
+  "devDependencies": {
+    "install": "^0.13.0",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
 }

@@ -1,3 +1,16 @@
+// Nabar qui se déploie/replie
+function editNav() {
+    let navbar = document.getElementById("myTopnav");
+  
+    if (navbar.className === "topnav") {
+      navbar.className += " responsive";
+  
+    } else {
+      navbar.className = "topnav";
+    }
+  }
+  
+
 // Je récupère les éléments du DOM et les stocke dans des variables
 const navbar=document.querySelector("main-navbar");
 const links=document.querySelectorAll("a");
