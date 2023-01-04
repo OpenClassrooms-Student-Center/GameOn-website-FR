@@ -13,10 +13,9 @@ function editNav() {
 
 // Je récupère les éléments du DOM et les stocke dans des variables
 const navbar=document.querySelector("main-navbar");
-const links=document.querySelectorAll("a");
+const links=document.querySelectorAll("a"); // Je crée un tableau qui contient tous mes liens 
 console.log(navbar); // Test
 
-// Je crée un tableau qui contient tous mes liens 
 // grâce à forEach et je parcours les éléments
 links.forEach(a => {
     // J'ajoute un écouteur d'évènement sur chaque lien qui déclenche la fonction au click

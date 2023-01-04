@@ -59,3 +59,21 @@ const errorValidation = document.getElementById ('error-validation');
 
 const confirmation = document.getElementById ('confirmation');
 const confirmationButtonClose = document.getElementsByClassName('btn-close');
+
+//  Traitement du formulaire
+
+function validate () {
+  let firstChecked;
+
+  if (!firstname.value.match(/(.*[a-z]){2}/i) || firstname.value == ' ' || firstname.value == null || firstname.value.length < 2) {
+    errorFirst.innerText = 'Veuillez entrer 2 caractères ou plus pour le champ du Prénom.';
+    errorFirst.style.color = 'red';
+    errorFirst.style.fontSize = '0.8rem';
+    errorFirst.style.marginTop = '10px';
+    firstname.style.border = 'solid red 2px';
+  } else {
+    errorFirst.style.display = 'none';
+    firstname.style.border = 'none';
+    firstChecked = true;
+  };
+};
