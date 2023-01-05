@@ -41,39 +41,50 @@ const location4 = document.getElementById ('location4');
 const location5 = document.getElementById ('location5');
 const location6 = document.getElementById ('location6');
 
-const dateFormat = /^\d{2}[./-]\d{2}[./-]\d{4}$/;
-const numbers = /^[0-9]+$/;
+// Gestion des erreurs du formulaire
 
-// Validation du formulaire
-
-const validate = document.getElementById ('checkbox1')
-const errorFirst = document.getElementById ('error-first');
-const errorLast = document.getElementById ('error-last');
-const errorMail = document.getElementById ('error-mail');
-const errorBirth = document.getElementById ('error-birth');
-const errorQuantity = document.getElementById ('error-quantity');
-const errorCity = document.getElementById ('error-city');
-const errorValidation = document.getElementById ('error-validation');
-
-//  Confirmation du formulaire
-
-const confirmation = document.getElementById ('confirmation');
-const confirmationButtonClose = document.getElementsByClassName('btn-close');
+const checkBox = document.getElementById ('checkbox1')
+const firstError = document.getElementById ('first-error');
+const lastError = document.getElementById ('last-error');
+const emailError = document.getElementById ('email-error');
+const birthdateError = document.getElementById ('birthdate-error');
+const quantityError = document.getElementById ('quantity-error');
+const locationError = document.getElementById ('location-error');
+const validationError = document.getElementById ('validation-error');
 
 //  Traitement du formulaire
 
 function validate () {
-  let firstChecked;
 
-  if (!firstname.value.match(/(.*[a-z]){2}/i) || firstname.value == ' ' || firstname.value == null || firstname.value.length < 2) {
-    errorFirst.innerText = 'Veuillez entrer 2 caractères ou plus pour le champ du Prénom.';
-    errorFirst.style.color = 'red';
-    errorFirst.style.fontSize = '0.8rem';
-    errorFirst.style.marginTop = '10px';
-    firstname.style.border = 'solid red 2px';
+  // Vérification du prénom
+  let firstValidate;
+
+  if (!firstname.value.match(/^[a-z ,.'-]+$/i) || firstname.value == ' ' || firstname.value == null || firstname.value.length < 2) {
+    firstError.innerText = 'Veuillez renseigner 2 caractères ou plus pour le champ du Prénom.';
+    firstError.style.color = 'red';
+    firstError.style.fontSize = '0.8rem';
+    firstError.style.marginTop = '10px';
+    firstError.style.border = 'solid red 2px';
   } else {
-    errorFirst.style.display = 'none';
-    firstname.style.border = 'none';
-    firstChecked = true;
+    firstError.style.display = 'none';
+    firstError.style.border = 'none';
+    firstValidate = true;
   };
+
+  // Vérification du nom
+  let lastValidate;
+
+  if (!lastname.value.match(/^[a-z ,.'-]+$/i) || lastname.value == ' ' || lastname.value == null || lastname.value.length < 2) {
+    lastError.innerText = 'Veuillez renseigner 2 caractères ou plus pour votre nom de famille.';
+    lastError.style.color = 'red';
+    lastError.style.fontSize = '0.8rem';
+    lastError.style.marginTop = '10px';
+    lastError.style.border = 'solid red 2px';
+  } else {
+    lastError.style.display = 'none';
+    lastError.style.border = 'none';
+    lastValidate = true;
+  };
+
+
 };
