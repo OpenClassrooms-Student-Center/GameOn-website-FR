@@ -52,6 +52,12 @@ const quantityError = document.getElementById ('quantity-error');
 const locationError = document.getElementById ('location-error');
 const validationError = document.getElementById ('validation-error');
 
+// Désactivation du traitement par défaut du button submit
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+})
+
 //  Traitement du formulaire
 
 function validate () {
