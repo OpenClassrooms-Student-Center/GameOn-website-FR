@@ -41,6 +41,12 @@ const location4 = document.getElementById ('location4');
 const location5 = document.getElementById ('location5');
 const location6 = document.getElementById ('location6');
 
+// Désactivation du traitement par défaut du button submit
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+})
+
 // Gestion des erreurs du formulaire
 
 const validation = document.getElementById ('checkbox1')
@@ -51,12 +57,8 @@ const birthdateError = document.getElementById ('birthdate-error');
 const quantityError = document.getElementById ('quantity-error');
 const locationError = document.getElementById ('location-error');
 const validationError = document.getElementById ('validation-error');
-
-// Désactivation du traitement par défaut du button submit
-
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-})
+const confirmation = document.getElementById ('confirmation');
+const confirmationCloseBtn = document.getElementsByClassName('btn-close');
 
 //  Traitement du formulaire
 
@@ -98,7 +100,7 @@ if (!lastname.value.match(/^[a-z ,.'-]+$/i) || lastname.value == ' ' || lastname
 
 let mailValidate;
 
-if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)){
+if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value) || lastname.value == ' ' || lastname.value == null){
     emailError.innerText = 'Adresse mail invalide';
     emailError.style.color = 'red';
     emailError.style.fontSize = '0.8rem';
@@ -118,8 +120,8 @@ if (!birthdate.value.match(/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$
   birthdateError.innerText = 'Date de naissance incorrecte';
   birthdateError.style.color = 'red';
   birthdateError.style.fontSize = '0.8rem';
+  birthdateError.style.fontWeight = 'bold';
   birthdateError.style.marginTop = '10px';
-  birthdateError.style.border = 'solid red 2px';
 } else {
   birthdateError.style.display = 'none';
   birthdateError.style.border = 'none';
@@ -171,14 +173,14 @@ let conditionsChecked;
     conditionsChecked = true;
   };
 
-  // #4 Confirmation when submit succeed
+  // Confirmation inscription réussie
 
-  if (firstValidate == true && lastValidate == true && mailValidate == true && quantityValidate == true && radioChecked == true && conditionsChecked == true && birthValidate == true) {
+  if (firstValidate == true && lastValidate == true && mailValidate == true && birthValidate == true && quantityValidate == true && radioChecked == true && conditionsChecked == true) {
     form.style.display = "none";
     confirmation.style.display = "flex";
   };
 
-  // #4 Close confirmation form
+  // Fermeture de la modale de confirmation
 confirmationCloseBtn[0].addEventListener("click", closeModal);
 
 };
