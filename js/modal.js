@@ -92,5 +92,36 @@ function validate () {
     lastValidate = true;
   };
 
+  // Vérification de l'e-mail
+
+  let mailValidate;
+
+  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)){
+    emailError.innerText = 'Veuillez renseigner une addresse mail valide';
+    emailError.style.color = 'red';
+    emailError.style.fontSize = '0.8rem';
+    emailError.style.marginTop = '10px';
+    emailError.style.border = 'solid red 2px';
+} else {
+    emailError.style.display = 'none';
+    emailError.style.border = 'none';
+    mailValidate = true;
+};
+
+ // Vérification de la date de naissance
+
+let birthValidate;
+
+if (!birthdate.value.match(/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/)) { 
+  birthdateError.innerText = 'Veuillez remplir votre date danniversaire';
+  birthdateError.style.color = 'red';
+  birthdateError.style.fontSize = '0.8rem';
+  birthdateError.style.marginTop = '10px';
+  birthdateError.style.border = 'solid red 2px';
+  } else {
+  birthdateError.style.display = 'none';
+  birthdateError.style.border = 'none';
+  birthValidate = true;      
+  }
 
 };
