@@ -43,7 +43,7 @@ const location6 = document.getElementById ('location6');
 
 // Gestion des erreurs du formulaire
 
-const checkBox = document.getElementById ('checkbox1')
+const validation = document.getElementById ('checkbox1')
 const firstError = document.getElementById ('first-error');
 const lastError = document.getElementById ('last-error');
 const emailError = document.getElementById ('email-error');
@@ -62,11 +62,12 @@ form.addEventListener('submit', (e) => {
 
 function validate () {
 
-  // Vérification du prénom
-  let firstValidate;
+// Vérification du prénom
 
-  if (!firstname.value.match(/^[a-z ,.'-]+$/i) || firstname.value == ' ' || firstname.value == null || firstname.value.length < 2) {
-    firstError.innerText = 'Veuillez renseigner 2 caractères ou plus pour le champ du Prénom.';
+let firstValidate;
+
+if (!firstname.value.match(/^[a-z ,.'-]+$/i) || firstname.value == ' ' || firstname.value == null || firstname.value.length < 2) {
+    firstError.innerText = 'Veuillez renseigner 2 caractères ou plus pour votre Prénom.';
     firstError.style.color = 'red';
     firstError.style.fontSize = '0.8rem';
     firstError.style.marginTop = '10px';
@@ -75,12 +76,13 @@ function validate () {
     firstError.style.display = 'none';
     firstError.style.border = 'none';
     firstValidate = true;
-  };
+};
 
-  // Vérification du nom
-  let lastValidate;
+// Vérification du nom
 
-  if (!lastname.value.match(/^[a-z ,.'-]+$/i) || lastname.value == ' ' || lastname.value == null || lastname.value.length < 2) {
+let lastValidate;
+
+if (!lastname.value.match(/^[a-z ,.'-]+$/i) || lastname.value == ' ' || lastname.value == null || lastname.value.length < 2) {
     lastError.innerText = 'Veuillez renseigner 2 caractères ou plus pour votre nom de famille.';
     lastError.style.color = 'red';
     lastError.style.fontSize = '0.8rem';
@@ -90,14 +92,14 @@ function validate () {
     lastError.style.display = 'none';
     lastError.style.border = 'none';
     lastValidate = true;
-  };
+};
 
-  // Vérification de l'e-mail
+// Vérification de l'e-mail
 
-  let mailValidate;
+let mailValidate;
 
-  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)){
-    emailError.innerText = 'Veuillez renseigner une addresse mail valide';
+if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value)){
+    emailError.innerText = 'Adresse mail invalide';
     emailError.style.color = 'red';
     emailError.style.fontSize = '0.8rem';
     emailError.style.marginTop = '10px';
@@ -113,15 +115,70 @@ function validate () {
 let birthValidate;
 
 if (!birthdate.value.match(/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/)) { 
-  birthdateError.innerText = 'Veuillez remplir votre date danniversaire';
+  birthdateError.innerText = 'Date de naissance incorrecte';
   birthdateError.style.color = 'red';
   birthdateError.style.fontSize = '0.8rem';
   birthdateError.style.marginTop = '10px';
   birthdateError.style.border = 'solid red 2px';
-  } else {
+} else {
   birthdateError.style.display = 'none';
   birthdateError.style.border = 'none';
   birthValidate = true;      
-  }
+};
+
+// Vérification du nombre de tournois
+
+let quantityValidate;
+
+if (!quantity.value.match(/^[0-9]+$/)) { 
+  quantityError.innerText = 'Vous devez indiquer un nombre';
+  quantityError.style.color = 'red';
+  quantityError.style.fontSize = '0.8rem';
+  quantityError.style.marginTop = '10px';
+  quantity.style.border = 'solid red 2px';
+} else {
+  quantityError.style.display = 'none';
+  quantity.style.border = 'none';
+  quantityValidate = true;
+};
+
+// Choix des villes
+
+let radioChecked;
+
+if (!location1.checked && !location2.checked && !location3.checked && !location4.checked && !location5.checked && !location6.checked) { 
+  locationError.innerText = 'Veuillez choisir une ville';
+  locationError.style.color = 'red';
+  locationError.style.fontSize = '0.8rem';
+  locationError.style.marginTop = '10px';          
+} else {
+  locationError.style.display = 'none';
+  radioChecked = true;
+};
+
+// Validation des conditions
+
+let conditionsChecked;
+
+  if (!validation.checked) {
+    validationError.innerText = 'Veuillez accepter les termes et conditions générales';
+    validationError.style.color = 'red';
+    validationError.style.fontSize = '0.8rem';
+    validationError.style.marginTop = '10px';
+    validationError.style.marginBottom = '20px';
+  } else {
+    validationError.style.display = 'none';
+    conditionsChecked = true;
+  };
+
+  // #4 Confirmation when submit succeed
+
+  if (firstValidate == true && lastValidate == true && mailValidate == true && quantityValidate == true && radioChecked == true && conditionsChecked == true && birthValidate == true) {
+    form.style.display = "none";
+    confirmation.style.display = "flex";
+  };
+
+  // #4 Close confirmation form
+confirmationCloseBtn[0].addEventListener("click", closeModal);
 
 };
