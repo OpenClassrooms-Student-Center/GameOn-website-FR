@@ -77,7 +77,7 @@ if (!firstname.value.match(/^[a-z ,.'-]+$/i) || firstname.value == ' ' || firstn
     firstname.style.background = '#fe142f'
   } else {
     firstname.style.border = 'none';
-    firstname.style.background = 'white';
+    firstname.style.background = '#279e7a';
     firstError.style.display = 'none';
     firstValidate = true;
 };
@@ -91,7 +91,11 @@ if (!lastname.value.match(/^[a-z ,.'-]+$/i) || lastname.value == ' ' || lastname
     lastError.style.color = '#fe142f';
     lastError.style.fontSize = '12px';
     lastError.style.marginTop = '10px';
+    lastname.style.border = 'solid #fe142f 2px'
+    lastname.style.background = '#fe142f'
   } else {
+    lastname.style.border = 'none';
+    lastname.style.background = '#279e7a';
     lastError.style.display = 'none';
     lastValidate = true;
 };
@@ -105,7 +109,11 @@ if (!/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-
     emailError.style.color = '#fe142f';
     emailError.style.fontSize = '12px';
     emailError.style.marginTop = '10px';
+    email.style.border = 'solid #fe142f 2px'
+    email.style.background = '#fe142f'
 } else {
+    email.style.border = 'none';
+    email.style.background = '#279e7a';
     emailError.style.display = 'none';
     mailValidate = true;
 };
@@ -119,7 +127,11 @@ if (!birthdate.value.match(/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$
   birthdateError.style.color = '#fe142f';
   birthdateError.style.fontSize = '12px';
   birthdateError.style.marginTop = '10px';
+  birthdate.style.border = 'solid #fe142f 2px'
+  birthdate.style.background = '#fe142f'
 } else {
+  birthdate.style.border = 'none';
+  birthdate.style.background = '#279e7a';
   birthdateError.style.display = 'none';
   birthValidate = true;      
 };
@@ -133,7 +145,11 @@ if (!quantity.value.match(/^[0-9]+$/)) {
   quantityError.style.color = '#fe142f';
   quantityError.style.fontSize = '12px';
   quantityError.style.marginTop = '10px';
+  quantity.style.border = 'solid #fe142f 2px'
+  quantity.style.background = '#fe142f'
 } else {
+  quantity.style.border = 'none';
+  quantity.style.background = '#279e7a';
   quantityError.style.display = 'none';
   quantityValidate = true;
 };
@@ -146,7 +162,7 @@ if (!location1.checked && !location2.checked && !location3.checked && !location4
   locationError.innerText = 'Veuillez choisir une ville';
   locationError.style.color = '#fe142f';
   locationError.style.fontSize = '12px';
-  locationError.style.marginTop = '10px';          
+  locationError.style.marginTop = '10px';         
 } else {
   locationError.style.display = 'none';
   radioChecked = true;
@@ -156,7 +172,7 @@ if (!location1.checked && !location2.checked && !location3.checked && !location4
 
 let conditionsChecked;
 
-  if (!validation.unchecked) {
+  if (!validation.checked) {
     validationError.innerText = 'Veuillez accepter les termes et conditions générales';
     validationError.style.color = '#fe142f';
     validationError.style.fontSize = '12px';
