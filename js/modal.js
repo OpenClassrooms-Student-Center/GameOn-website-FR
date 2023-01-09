@@ -73,7 +73,11 @@ if (!firstname.value.match(/^[a-z ,.'-]+$/i) || firstname.value == ' ' || firstn
     firstError.style.color = '#fe142f';
     firstError.style.fontSize = '12px';
     firstError.style.marginTop = '10px';
+    firstname.style.border = 'solid #fe142f 2px'
+    firstname.style.background = '#fe142f'
   } else {
+    firstname.style.border = 'none';
+    firstname.style.background = 'white';
     firstError.style.display = 'none';
     firstValidate = true;
 };
@@ -96,7 +100,7 @@ if (!lastname.value.match(/^[a-z ,.'-]+$/i) || lastname.value == ' ' || lastname
 
 let mailValidate;
 
-if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value) || email.value == ' ' || email.value == null){
+if (!/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/.test(email.value) || email.value == ' ' || email.value == null){
     emailError.innerText = 'Veuillez renseigner une adresse mail valide';
     emailError.style.color = '#fe142f';
     emailError.style.fontSize = '12px';
