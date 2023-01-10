@@ -92,6 +92,7 @@ img {
     position: absolute;
     right: 0;
     top: 0;
+    color: #f00;
   }
   .topnav.responsive a {
     float: none;
@@ -608,8 +609,8 @@ footer {
 /* Confirmation message */
 
 #confirmation {
-  height: 754px;
-  width: 66%;
+  height: 700px;
+  width: 75%;
   margin: auto;
   display: none;
   flex-direction: column;
@@ -619,13 +620,12 @@ footer {
 #confirmation h1 {
   text-align: center;
   font-size: 2rem;
-  color: #3876ac;
 }
 
 #confirmation .btn-close {
   position: absolute;
-  bottom: 200px;
-  left : 45%;
+  bottom: 210px;
+  left : 210px;
   background: #fe142f;
   padding: 1em;
   color: #fff;

@@ -68,7 +68,7 @@ function validate () {
 
 let firstValidate;
 
-if (!firstname.value.match(/^[a-z ,.'-]+$/i) || firstname.value == ' ' || firstname.value == null || firstname.value.length < 2) {
+if (!firstname.value.match(/^[A-ZÀÄÉÈËÏÖÜÇ][A-Za-zàäéèêëïöüç]+$/i) || firstname.value == ' ' || firstname.value == null || firstname.value.length < 2) {
     firstError.innerText = 'Prénom incomplet ou mal orthographié';
     firstError.style.color = '#fe142f';
     firstError.style.fontSize = '12px';
@@ -86,7 +86,7 @@ if (!firstname.value.match(/^[a-z ,.'-]+$/i) || firstname.value == ' ' || firstn
 
 let lastValidate;
 
-if (!lastname.value.match(/^[a-z ,.'-]+$/i) || lastname.value == ' ' || lastname.value == null || lastname.value.length < 2) {
+if (!lastname.value.match(/^[A-ZÀÄÉÈËÏÖÜÇ][A-Za-zàäéèêëïöüç]+$/i) || lastname.value == ' ' || lastname.value == null || lastname.value.length < 2) {
     lastError.innerText = 'Nom incomplet ou mal orthographié';
     lastError.style.color = '#fe142f';
     lastError.style.fontSize = '12px';
