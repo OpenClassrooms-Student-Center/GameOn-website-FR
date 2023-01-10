@@ -165,26 +165,6 @@ main {
   background: #3876ac;
 }
 
-#confirmation {
-  height: 754px;
-  width: 66%;
-  margin: auto;
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-}
-
-#confirmation h1 {
-  text-align: center;
-  font-size: 2rem;
-}
-
-#confirmation .btn-close {
-  position: absolute;
-  bottom: 20px;
-  left : 32%;
-}
-
 .footer {
   margin: 20px;
   padding: 10px;
@@ -625,3 +605,35 @@ footer {
   }
 }
 
+/* Confirmation message */
+
+#confirmation {
+  height: 754px;
+  width: 66%;
+  margin: auto;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#confirmation h1 {
+  text-align: center;
+  font-size: 2rem;
+  color: #3876ac;
+}
+
+#confirmation .btn-close {
+  position: absolute;
+  bottom: 200px;
+  left : 45%;
+  background: #fe142f;
+  padding: 1em;
+  color: #fff;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#confirmation .btn-close:hover {
+  background: #3876ac;
+}

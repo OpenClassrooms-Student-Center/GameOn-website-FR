@@ -69,15 +69,15 @@ function validate () {
 let firstValidate;
 
 if (!firstname.value.match(/^[a-z ,.'-]+$/i) || firstname.value == ' ' || firstname.value == null || firstname.value.length < 2) {
-    firstError.innerText = 'Veuillez renseigner au moins 2 caractères pour votre prénom.';
+    firstError.innerText = 'Prénom incomplet ou mal orthographié';
     firstError.style.color = '#fe142f';
     firstError.style.fontSize = '12px';
     firstError.style.marginTop = '10px';
     firstname.style.border = 'solid #fe142f 2px'
-    firstname.style.background = '#fe142f'
+    firstname.style.backgroundColor = '#fe142f'
   } else {
     firstname.style.border = 'none';
-    firstname.style.background = '#279e7a';
+    firstname.style.backgroundColor = 'white'
     firstError.style.display = 'none';
     firstValidate = true;
 };
@@ -87,15 +87,15 @@ if (!firstname.value.match(/^[a-z ,.'-]+$/i) || firstname.value == ' ' || firstn
 let lastValidate;
 
 if (!lastname.value.match(/^[a-z ,.'-]+$/i) || lastname.value == ' ' || lastname.value == null || lastname.value.length < 2) {
-    lastError.innerText = 'Veuillez renseigner au moins 2 caractères pour votre nom.';
+    lastError.innerText = 'Nom incomplet ou mal orthographié';
     lastError.style.color = '#fe142f';
     lastError.style.fontSize = '12px';
     lastError.style.marginTop = '10px';
     lastname.style.border = 'solid #fe142f 2px'
-    lastname.style.background = '#fe142f'
+    lastname.style.backgroundColor = '#fe142f'
   } else {
     lastname.style.border = 'none';
-    lastname.style.background = '#279e7a';
+    lastname.style.backgroundColor = 'white'
     lastError.style.display = 'none';
     lastValidate = true;
 };
@@ -105,15 +105,15 @@ if (!lastname.value.match(/^[a-z ,.'-]+$/i) || lastname.value == ' ' || lastname
 let mailValidate;
 
 if (!/^[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/.test(email.value) || email.value == ' ' || email.value == null){
-    emailError.innerText = 'Veuillez renseigner une adresse mail valide';
+    emailError.innerText = 'Adresse mail invalide';
     emailError.style.color = '#fe142f';
     emailError.style.fontSize = '12px';
     emailError.style.marginTop = '10px';
     email.style.border = 'solid #fe142f 2px'
-    email.style.background = '#fe142f'
+    email.style.backgroundColor = '#fe142f'
 } else {
     email.style.border = 'none';
-    email.style.background = '#279e7a';
+    email.style.backgroundColor = 'white'
     emailError.style.display = 'none';
     mailValidate = true;
 };
@@ -128,10 +128,10 @@ if (!birthdate.value.match(/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$
   birthdateError.style.fontSize = '12px';
   birthdateError.style.marginTop = '10px';
   birthdate.style.border = 'solid #fe142f 2px'
-  birthdate.style.background = '#fe142f'
+  birthdate.style.backgroundColor = '#fe142f'
 } else {
   birthdate.style.border = 'none';
-  birthdate.style.background = '#279e7a';
+  email.style.backgroundColor = 'white'
   birthdateError.style.display = 'none';
   birthValidate = true;      
 };
@@ -141,15 +141,15 @@ if (!birthdate.value.match(/^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$
 let quantityValidate;
 
 if (!quantity.value.match(/^[0-9]+$/)) { 
-  quantityError.innerText = 'Veuillez indiquer un nombre de tournois';
+  quantityError.innerText = 'Indiquer un nombre de tournois';
   quantityError.style.color = '#fe142f';
   quantityError.style.fontSize = '12px';
   quantityError.style.marginTop = '10px';
   quantity.style.border = 'solid #fe142f 2px'
-  quantity.style.background = '#fe142f'
+  quantity.style.backgroundColor = '#fe142f'
 } else {
   quantity.style.border = 'none';
-  quantity.style.background = '#279e7a';
+  email.style.backgroundColor = 'white'
   quantityError.style.display = 'none';
   quantityValidate = true;
 };
@@ -159,7 +159,7 @@ if (!quantity.value.match(/^[0-9]+$/)) {
 let radioChecked;
 
 if (!location1.checked && !location2.checked && !location3.checked && !location4.checked && !location5.checked && !location6.checked) { 
-  locationError.innerText = 'Veuillez choisir une ville';
+  locationError.innerText = 'Choisir au une ville';
   locationError.style.color = '#fe142f';
   locationError.style.fontSize = '12px';
   locationError.style.marginTop = '10px';         
@@ -173,7 +173,7 @@ if (!location1.checked && !location2.checked && !location3.checked && !location4
 let conditionsChecked;
 
   if (!validation.checked) {
-    validationError.innerText = 'Veuillez accepter les termes et conditions générales';
+    validationError.innerText = 'Accepter les termes et conditions générales';
     validationError.style.color = '#fe142f';
     validationError.style.fontSize = '12px';
     validationError.style.marginTop = '10px';
