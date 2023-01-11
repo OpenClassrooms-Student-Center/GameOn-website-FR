@@ -70,6 +70,7 @@
                   type="text"
                   id="firstName"
                   name="first"
+                  required
                   minlength="2"
                 /><br>
               </div>
@@ -81,6 +82,8 @@
                   type="text"
                   id="lastName"
                   name="last"
+                  required
+                  minlength="2"                  
                 /><br>
               </div>
               <div
@@ -91,6 +94,7 @@
                   type="email"
                   id="email"
                   name="email"
+                  required
                 /><br>
               </div>
               <div
@@ -101,12 +105,20 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
+                  required
                 /><br>
               </div>
               <div
                 class="formData">
                 <label for="participationsNumber">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="participationsNumber" name="participationsNumber" min="0" max="99">
+                <input 
+                    type="number" 
+                    class="text-control" 
+                    id="participationsNumber" 
+                    name="participationsNumber" 
+                    min="0" max="99"
+                    required
+                >
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
@@ -186,8 +198,9 @@
                   type="checkbox"
                   id="checkbox1"
                   checked
+                  required
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
