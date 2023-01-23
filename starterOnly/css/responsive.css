@@ -30,13 +30,20 @@
       line-height: 0.4;
       text-align: left;
     }
+  
+    .submitted-form{
+       margin-top: 70px;
+    }
   }  
   
   @media screen and (max-width: 800px) {
     .header-logo img {
       width: 150px;
     }
-  
+    .main-navbar{
+      margin-left: 30px;
+    }
+
     .hero-section {
       display: block;
       box-shadow: unset;
@@ -85,4 +92,20 @@
       margin-top: 50px;
       text-align: center;
     }
+  }
+
+
+  
+  @media screen and (min-width: 801px) {
+    .header-logo img {
+      width:200px;
+    }
+  
+    .hero-headline {
+      width: 100%;
+      flex-wrap: wrap;
+     font-size: 4.8rem;
+    }
+    
+
   }
