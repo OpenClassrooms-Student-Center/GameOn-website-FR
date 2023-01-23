@@ -1,43 +1,6 @@
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-
-// DOM Elements
-const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
-const closeBtn = document.getElementsByClassName('close');
+// grap elements 
 const form = document.getElementById('form');
 const inputs = Array.from(document.forms.reserve.querySelectorAll('input'));
-
-//modal functionalities (launch, close)
-
-// 1-- launch modal inscription form
-modalBtn.forEach((btn) => btn.addEventListener('click', function(){
-        modalbg.style.display = 'block';
-}));
-
-// 2-- close modal form
-closeBtn[0].addEventListener('click', function(){
-         modalbg.style.display = 'none';
-});
-
-
-
-// nav editing responsive 
-function editNav() {
-  var x = document.getElementById('myTopnav');
-  if (x.className === 'topnav') {
-    x.className += ' responsive';
-  } else {
-    x.className = 'topnav';
-  }
-}
 
 
 // function that validate  user  input 'firstName' ===> return true if valid or false if invalid "
