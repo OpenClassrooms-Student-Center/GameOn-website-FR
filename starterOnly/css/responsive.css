@@ -34,8 +34,9 @@
     .submitted-form{
        margin-top: 70px;
     }
-  }  
-  
+  } 
+
+  /* Tablets */
   @media screen and (max-width: 800px) {
     .header-logo img {
       width: 150px;
@@ -92,10 +93,13 @@
       margin-top: 50px;
       text-align: center;
     }
+    .content{
+      margin-top: 70px;
+    }
   }
 
 
-  
+  /* desktop */
   @media screen and (min-width: 801px) {
     .header-logo img {
       width:200px;

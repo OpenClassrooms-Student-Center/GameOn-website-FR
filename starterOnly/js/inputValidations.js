@@ -9,17 +9,17 @@ const firstNameValidation = () => {
 
     if  (firstName.value.trim() === '' ) {
         firstName.parentElement.setAttribute('data-error-visible', 'true');
-        firstName.parentElement.setAttribute("data-error", "Veuillez entrer votre prenom ");
+        firstName.parentElement.setAttribute("data-error", "Veuillez entrer votre prénom ");
         return false;
     }
     if (!firstName.value.match(/^[a-zA-ZÀ-ÖØ-öø-ÿ]+$/)){
         firstName.parentElement.setAttribute('data-error-visible', 'true');
-        firstName.parentElement.setAttribute("data-error", "Veuillez ne pas entrer special characters au nombre");
+        firstName.parentElement.setAttribute("data-error", "Veuillez ne pas entrer de caractères spéciaux ou de nombres");
         return false;
     }
     if (firstName.value.trim().length < 2 ){
         firstName.parentElement.setAttribute('data-error-visible', 'true');
-        firstName.parentElement.setAttribute("data-error", "Veuillez entrer au moin 2 caractères ");
+        firstName.parentElement.setAttribute("data-error", "Veuillez entrer au moins 2 caractères ");
         return false;
     } 
         firstName.parentElement.setAttribute('data-error-visible', 'false');
@@ -38,12 +38,12 @@ const  lastNameValidation = () => {
     }
     if (!lastName.value.match(/^[a-zA-ZÀ-ÖØ-öø-ÿ]+$/)){
         lastName.parentElement.setAttribute('data-error-visible', 'true');
-        lastName.parentElement.setAttribute("data-error", "Veuillez ne pas entrer special characters au nombre");
+        lastName.parentElement.setAttribute("data-error", "Veuillez ne pas entrer de caractères speciaux  ou de nombres");
         return false;
     }
     if (lastName.value.trim().length < 2 ) {
         lastName.parentElement.setAttribute('data-error-visible', 'true');
-        lastName.parentElement.setAttribute("data-error", "Veuillez entrer au moin 2 caractères ");
+        lastName.parentElement.setAttribute("data-error", "Veuillez entrer au moins 2 caractères");
         return false;
     } 
         lastName.parentElement.setAttribute('data-error-visible', 'false');
@@ -63,7 +63,7 @@ const  emailValidation= () => {
     }
     if (!email.value.trim().match(emailRegex)) {
         email.parentElement.setAttribute('data-error-visible', 'true');
-        email.parentElement.setAttribute("data-error", "Veuillez entrer une  email valid");
+        email.parentElement.setAttribute("data-error", "Veuillez entrer un  email valide");
         return false;
     }
         email.parentElement.setAttribute('data-error-visible', 'false');
@@ -109,12 +109,12 @@ const quantityValidation = () => {
 
     if ((quantity.value.trim().length === 0 )|| (isNaN(quantity.value.trim() === true)) ){
         quantity.parentElement.setAttribute('data-error-visible', 'true');
-        quantity.parentElement.setAttribute("data-error", "Veuillez entrer une nombre");
+        quantity.parentElement.setAttribute("data-error", "Veuillez entrer un nombre");
         return false;
     }
     if (quantity.value.trim() < 0 || quantity.value.trim() >= 99){
         quantity.parentElement.setAttribute('data-error-visible', 'true');
-        quantity.parentElement.setAttribute("data-error", "veuillez entrer une nombre entre 0 et 99");
+        quantity.parentElement.setAttribute("data-error", "veuillez entrer un nombre entre 0 et 99");
         return false;
     }
         quantity.parentElement.setAttribute('data-error-visible', 'false');
@@ -129,10 +129,11 @@ const quantityValidation = () => {
 
     if(getSelectedValue != null) {   
            allLocations.setAttribute('data-error-visible', 'false');
+           allLocations.removeAttribute('data-error');
            return true;
     }  
            allLocations.setAttribute('data-error-visible', 'true');
-           allLocations.setAttribute("data-error", "veuillez choisir une location");
+           allLocations.setAttribute("data-error", "veuillez choisir une option");
            return false;
 }
 
