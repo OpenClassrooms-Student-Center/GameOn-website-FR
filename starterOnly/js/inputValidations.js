@@ -193,11 +193,20 @@ const formValidation= () => (firstNameValidation() && lastNameValidation() && em
                             && quantityValidation() &&  locationsValidation()  && termsValidation ()) 
                             ? true : false;
 
+// function that store dataobject  in localstorage
+const handlingData = ()=>{
+    let inputValues_serialized = JSON.stringify(inputValues);
+    localStorage.setItem('inputValues', inputValues_serialized );
+    console.log(localStorage);
+    let inputValues_deserialized = JSON.parse(localStorage.getItem("inputValues"));
+    console.log(inputValues_deserialized );
+}
+
 // submit form valid 
 form.addEventListener('submit', function (e) {
     e.preventDefault();
     if (formValidation()) {
-        console.log(inputValues);//objet that contains valid input fields 
+        handlingData();
         displayModalSubmit();//function to display  submitted modal
         form.reset();//reset the form 
     } else {
