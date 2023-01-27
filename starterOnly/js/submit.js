@@ -4,7 +4,6 @@ const closeIcon = document.getElementsByClassName('confirmation-icon');
 const confirmationBtn = document.getElementById('btn-confirmation');
 
 // confirmation modal functionalities (launch ,close)
-
 // 1-- launch submitted model 
 const  displayModalSubmit = () => {
            modalbg.style.display = 'none';
