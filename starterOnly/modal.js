@@ -21,3 +21,14 @@ function launchModal() {
 }
 
 
+
+// // // // // // // 
+
+const closeBtn = document.getElementsByClassName('close');
+
+// CLOSE MODAL
+function closeModal() {
+  modalbg.style.display = 'none';
+}
+closeBtn[0].addEventListener('click', closeModal);
+
