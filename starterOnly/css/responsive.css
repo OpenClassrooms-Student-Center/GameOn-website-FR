@@ -1,6 +1,6 @@
  /* MEDIA QUERIES */
   /* MOBILE */
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 599px) {
     .topnav {
       flex-wrap: wrap;
     }
@@ -37,7 +37,7 @@
   } 
 
   /* Tablets */
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 820px) {
     .header-logo img {
       width: 150px;
     }
@@ -100,16 +100,8 @@
 
 
   /* desktop */
-  @media screen and (min-width: 801px) {
+  @media screen and (min-width: 821px) {
     .header-logo img {
       width:200px;
     }
-  
-    .hero-headline {
-      width: 100%;
-      flex-wrap: wrap;
-     font-size: 4.8rem;
-    }
-    
-
   }

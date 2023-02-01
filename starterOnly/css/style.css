@@ -445,7 +445,7 @@ input[data-error]::after {
 }
 
 .hero-headline {
-  font-size: 4em;
+  font-size: 4.8rem;
   font-weight: normal;
   width: 100%;
   white-space: nowrap;

@@ -2,13 +2,14 @@
 <html lang="fr">
 
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" >
   <title> Réservation de Jeux Marathon</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" >
+  <link rel="stylesheet" href="css/style.css" >
+  <link rel="stylesheet" href="css/responsive.css" >
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" >
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
 </head>
 
 <body>
@@ -16,7 +17,7 @@
   <header>
     <nav class="topnav" id="myTopnav">
       <div class="header-logo">
-        <img alt="logo" src="images/Logo.png" />
+        <img alt="logo" src="./images/Logo.png" >
       </div>
       <div class="main-navbar">
         <a href="#" class="active"><span>Accueil</span></a>
@@ -48,7 +49,7 @@
         </button>
       </div>
       <div class="hero-img">
-        <img src="images/bg_img.jpg" alt="img" />
+        <img src="./images/bg_img.jpg" alt="img" >
       </div>
       <button class="btn-signup modal-btn">
         Je m'inscris
@@ -72,7 +73,8 @@
                        id="first" 
                        name="first" 
                        minlength="2"
-                       placeholder="Prénom" /><br>
+                       placeholder="Prénom" 
+                       autocomplete="off"><br>
             </div>
 
             <!--  input field for last name -->
@@ -82,7 +84,8 @@
                        type="text" 
                        id="last" 
                        name="last" 
-                       placeholder="Nom" /><br>
+                       placeholder="Nom"
+                       autocomplete="off" ><br>
             </div>
                
             <!-- input field for email-->
@@ -92,7 +95,8 @@
                      type="email" 
                      id="email" 
                      name="email" 
-                     placeholder="exemple@email.com" /><br>
+                     placeholder="exemple@email.com"
+                     autocomplete="off" ><br>
             </div>
 
             <!--input field for date of birth-->
@@ -101,7 +105,7 @@
               <input class="text-control" 
                      type="date" 
                      id="birthdate" 
-                     name="birthdate" /><br>
+                     name="birthdate" ><br>
             </div>
 
             <!-- input field for number of tournaments -->
@@ -112,7 +116,8 @@
                      id="quantity" 
                      name="quantity" 
                      min="0" max="99" 
-                     placeholder="0">
+                     placeholder="0"
+                     autocomplete="off">
             </div>
 
             <!-- input field for choosing location -->
@@ -123,7 +128,7 @@
                      type="radio" 
                      id="location1" 
                      name="location" 
-                     value="New York" />
+                     value="New York" >
               <label class="checkbox-label" 
                      for="location1">
                     <span class="checkbox-icon"></span>
@@ -134,7 +139,7 @@
                      type="radio"  
                      id="location2" 
                      name="location" 
-                     value="San Francisco" />
+                     value="San Francisco" >
               <label class="checkbox-label" for="location2">
                     <span class="checkbox-icon"></span>
                     San Francisco
@@ -144,7 +149,7 @@
                     type="radio" 
                     id="location3" 
                     name="location" 
-                    value="Seattle" />
+                    value="Seattle" >
               <label class="checkbox-label" for="location3">
                     <span class="checkbox-icon"></span>
                     Seattle
@@ -154,7 +159,7 @@
                     type="radio" 
                     id="location4" 
                     name="location" 
-                    value="Chicago" />
+                    value="Chicago" >
               <label class="checkbox-label" for="location4">
                     <span class="checkbox-icon"></span>
                     Chicago
@@ -164,7 +169,7 @@
                      type="radio" 
                      id="location5" 
                      name="location" 
-                     value="Boston" />
+                     value="Boston" >
               <label class="checkbox-label" for="location5">
                     <span class="checkbox-icon"></span>
                     Boston
@@ -174,7 +179,7 @@
                      type="radio" 
                      id="location6" 
                      name="location" 
-                     value="Portland" />
+                     value="Portland" >
               <label class="checkbox-label" for="location6">
                     <span class="checkbox-icon"></span>
                     Portland
@@ -186,7 +191,7 @@
           
               <input class="checkbox-input" 
                      type="checkbox" 
-                     id="checkbox1" />
+                     id="checkbox1" >
               <label class="checkbox2-label" for="checkbox1">
                     <span class="checkbox-icon"></span>
                     J'ai lu et accepté les conditions d'utilisation.
@@ -194,7 +199,7 @@
               <br>
               <input class="checkbox-input" 
                      type="checkbox" 
-                     id="checkbox2" />
+                     id="checkbox2" >
               <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
@@ -203,7 +208,7 @@
             </div>
 
             <!-- input field for submit buttom -->
-            <input class="btn-submit" type="submit" value="C'est parti"/>
+            <input class="btn-submit" type="submit" value="C'est parti">
           </form>
 
         </div>

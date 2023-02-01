@@ -52,4 +52,26 @@ const removeError = (element) => {
         element.parentElement.removeAttribute('data-error') ; 
 }
 
+//isValidBirthdate is a function that evaluate the age of user
+//true if age between 16 & 65 else false
+     const isValidBirthdate = (birthdate) => {
+     const date = new Date(birthdate);
+         if (!(date instanceof Date) || isNaN(date)) {
+            return false;
+         }
+         const now = Date.now();
+         const convertYear = 365.25 * 24 * 60 * 60 * 1000;//convert year to mille second
+         const age = Math.trunc((now - date) / convertYear);
+         return (age >= 16 && age <= 65);
+    };
 
+// excute functions that check the validation of input fields
+const executeValidationFun = () =>{
+        firstNameValidation() 
+        lastNameValidation() 
+        emailValidation() 
+        birthdateValidation() 
+        quantityValidation()
+        locationsValidation() 
+        termsValidation();
+}
