@@ -187,6 +187,7 @@ main {
 .content {
 	margin: 5% auto;
 	width: 100%;
+	min-height: 80vh;
 	max-width: 500px;
 	animation-name: modalopen;
 	animation-duration: var(--modal-duration);
@@ -228,14 +229,14 @@ input {
 
 .formData[data-error]::after {
 	content: attr(data-error);
-	font-size: 0.4em;
+	font-size: 0.55em;
 	color: #e54858;
 	display: block;
 	margin-top: 7px;
-	margin-bottom: 7px;
-	text-align: right;
+	margin-bottom: 10px;
+	text-align: left;
 	line-height: 0.3;
-	opacity: 0;
+	opacity: 1;
 	transition: 0.3s;
 }
 
@@ -247,8 +248,7 @@ input {
 	border: 2px solid #e54858;
 }
 
-/* 
-input[data-error]::after {
+/* input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
