@@ -178,30 +178,43 @@ main {
 	z-index: 1;
 	left: 0;
 	top: 0;
-	height: 100%;
+	height: 100vh;
 	width: 100%;
 	overflow: auto;
 	background-color: rgba(26, 39, 156, 0.4);
 }
 
-.content {
-	margin: 5% auto;
-	width: 100%;
-	min-height: 80vh;
+.modal {
 	max-width: 500px;
+	min-height: 100%;
+	margin: 5% auto;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: auto 1fr;
+	background-color: #232323;
+	border-radius: 10px;
 	animation-name: modalopen;
 	animation-duration: var(--modal-duration);
-	background: #232323;
-	border-radius: 10px;
-	overflow: hidden;
-	position: relative;
-	color: #fff;
-	padding-top: 10px;
 }
 
-.modal-body {
-	padding: 15px 8%;
-	margin: 15px auto;
+.modal-content {
+	padding: 15px 35px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal-header {
+	display: flex;
+	justify-content: flex-end;
+}
+
+@media only screen and (max-width: 768px) {
+	.modal {
+		max-width: 100%;
+		margin: 0;
+		border-radius: 0;
+	}
 }
 
 label {
@@ -210,6 +223,7 @@ label {
 	font-weight: normal;
 	display: inline-block;
 	margin-bottom: 11px;
+	color: white;
 }
 
 input {
@@ -325,33 +339,26 @@ input {
 	top: 19%;
 }
 
-.close {
-	position: absolute;
-	right: 15px;
-	top: 15px;
-	width: 32px;
-	height: 32px;
-	opacity: 1;
+.btn-close {
+	height: 30px;
+	background: transparent;
+	border: none;
 	cursor: pointer;
-	transform: scale(0.7);
 }
 
-.close:before,
-.close:after {
-	position: absolute;
-	left: 15px;
-	content: " ";
-	height: 33px;
-	width: 3px;
-	background-color: #fff;
+.bar {
+	display: block;
+	width: 25px;
+	height: 3px;
+	background-color: white;
+	border-radius: 3px;
 }
 
-.close:before {
-	transform: rotate(45deg);
+.bar:nth-child(1) {
+	transform: rotate(45deg) translate(-2px, 7px);
 }
-
-.close:after {
-	transform: rotate(-45deg);
+.bar:nth-child(2) {
+	transform: rotate(-45deg) translate(-5px, -4px);
 }
 
 .btn-submit,
@@ -439,6 +446,7 @@ input {
 .text-label {
 	font-weight: normal;
 	font-size: 16px;
+	color: white;
 }
 
 .hero-section {
@@ -519,6 +527,11 @@ input {
 
 .hero-section>.btn-signup {
 	display: none;
+}
+
+h2.success {
+	color: white;
+	font-size: clamp(20px, 3vw, 30px);
 }
 
 footer {

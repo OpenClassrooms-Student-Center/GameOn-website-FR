@@ -47,6 +47,7 @@ form.addEventListener("submit", (e) => {
 	if (isValid) {
 		const message = document.createElement("h2");
 		message.textContent = "Merci ! Votre réservation a été reçue.";
+		message.classList.add("success");
 		form.replaceWith(message);
 	}
 });
