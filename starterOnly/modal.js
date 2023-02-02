@@ -11,7 +11,6 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const closeBtnModal = document.querySelector(".btn-close");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
 
 const form = document.querySelector("form");
 const firstname = document.getElementById("first");
@@ -39,6 +38,8 @@ function closeModal() {
 	modalbg.style.display = "none";
 }
 
+const formData = new FormData();
+
 form.addEventListener("submit", (e) => {
 	e.preventDefault();
 
@@ -49,6 +50,10 @@ form.addEventListener("submit", (e) => {
 		message.textContent = "Merci ! Votre réservation a été reçue.";
 		message.classList.add("success");
 		form.replaceWith(message);
+
+		for (const pair of formData.entries()) {
+			console.log(pair);
+		}
 	}
 });
 
@@ -73,6 +78,7 @@ function checkFirstname() {
 		setError(firstname, "Le prénom doit contenir au minimum 2 caractères");
 		return false;
 	} else {
+		formData.append("firstname", firstnameValue),
 		setSuccess(firstname);
 		return true;
 	}
@@ -88,6 +94,7 @@ function checkLastname() {
 		return false;
 	} else {
 		setSuccess(lastname);
+		formData.append("lastname", lastnameValue);
 		return true;
 	}
 }
@@ -102,6 +109,7 @@ function checkEmail() {
 		return false;
 	} else {
 		setSuccess(email);
+		formData.append("email", emailValue);
 		return true;
 	}
 }
@@ -113,6 +121,7 @@ function checkBirthdate() {
 		return false;
 	} else {
 		setSuccess(birthdate);
+		formData.append("birthdate", birthdateValue);
 		return true;
 	}
 }
@@ -127,17 +136,19 @@ function checkParticipation() {
 		return false;
 	} else {
 		setSuccess(qtyParticipation);
+		formData.append("participation", qtyParticipationValue);
 		return true;
 	}
 }
 
 function checkLocation() {
-	const isChecked = checkRadio([...locationParticipation]);
+	const { isChecked, elementRadio } = checkRadio([...locationParticipation]);
 	if (!isChecked) {
 		setError(locationParticipation[0], "Choisissez le lieu du tournoi");
 		return false;
 	} else {
-		setSuccess(locationParticipation[0]);
+		setSuccess(elementRadio);
+		formData.append("location", elementRadio.value);
 		return true;
 	}
 }
@@ -148,8 +159,22 @@ function checkTerms() {
 		return false;
 	} else {
 		setSuccess(terms);
+		const obj = { term: true, newletter: newletter.checked };
+		Object.keys(obj).forEach((key) => formData.append(key, obj[key]));
 		return true;
 	}
+}
+
+/**
+ * @param {NodeListOf<HTMLInputElement>} elements
+ * @return {{isChecked: boolean, elementRadio: HTMLInputElement | null}
+ */
+function checkRadio(elements) {
+	for (const radio of elements) {
+		if (radio.checked) return { isChecked: true, elementRadio: radio };
+	}
+
+	return { isChecked: false, elementRadio: null };
 }
 
 /**
@@ -194,16 +219,4 @@ function setSuccess(element) {
 		formControl.setAttribute("data-error", ""); // or removeAttribute()
 		element.setAttribute("data-error-visible", false);
 	}
-}
-
-/**
- * @param {NodeListOf<HTMLInputElement>} elements
- * @return {boolean}
- */
-function checkRadio(elements) {
-	for (const radio of elements) {
-		if (radio.checked) return true;
-	}
-
-	return false;
 }
