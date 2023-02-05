@@ -73,7 +73,7 @@ img {
 	display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 840px) {
 	.topnav a {
 		display: none;
 	}
@@ -84,7 +84,7 @@ img {
 	}
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 840px) {
 	.topnav.responsive {
 		position: relative;
 	}
@@ -243,13 +243,11 @@ input {
 
 .formData[data-error]::after {
 	content: attr(data-error);
-	font-size: 0.55em;
+	font-size: 0.6em;
 	color: #e54858;
 	display: block;
 	margin-top: 7px;
 	margin-bottom: 10px;
-	text-align: left;
-	line-height: 0.3;
 	opacity: 1;
 	transition: 0.3s;
 }
