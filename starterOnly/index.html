@@ -30,6 +30,7 @@
     </div>
   </div>
     <main>
+      <!-- Hero -->
       <div class="hero-section">
         <div class="hero-content">
           <h1 class="hero-headline">
@@ -51,7 +52,7 @@
           je m'inscris
         </button>
       </div>
-
+<!-- MODALE -->
       <div class="bground">
         <div class="content">
           <span class="close"></span>
@@ -60,8 +61,8 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
-            >
+              onsubmit="return validate();">
+              <!-- First Name-->
               <div
                 class="formData">
                 <label>Prénom</label><br>
@@ -73,6 +74,7 @@
                   minlength="2"
                 /><br>
               </div>
+              <!-- Last Name-->
               <div
                 class="formData">
                 <label>Nom</label><br>
@@ -83,6 +85,7 @@
                   name="last"
                 /><br>
               </div>
+              <!-- E-Mail-->
               <div
                 class="formData">
                 <label>E-mail</label><br>
@@ -93,6 +96,7 @@
                   name="email"
                 /><br>
               </div>
+              <!-- Birth-->
               <div
                 class="formData">
                 <label>Date de naissance</label><br>
@@ -103,6 +107,7 @@
                   name="birthdate"
                 /><br>
               </div>
+              <!-- Events-->
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
@@ -195,7 +200,7 @@
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
-                  Je Je souhaite être prévenu des prochains évènements.
+                  Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
               </div>
@@ -215,6 +220,7 @@
         Copyright 2014 - 2022, GameOn Inc.
       </p>
     </footer>
-    <script src="modal.js"></script>
+    <script src="./js/modal.js"></script>
+    <script src="./js/formFieldsValidation.js"></script>
   </body>
 </html>
