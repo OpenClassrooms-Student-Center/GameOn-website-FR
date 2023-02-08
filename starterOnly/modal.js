@@ -1,5 +1,5 @@
 function editNav() {
-	var x = document.getElementById("myTopnav");
+	let x = document.getElementById("myTopnav");
 	if (x.className === "topnav") {
 		x.className += " responsive";
 	} else {
@@ -52,10 +52,6 @@ form.addEventListener("submit", (e) => {
 		message.textContent = "Merci ! Votre réservation a été reçue.";
 		message.classList.add("success");
 		form.replaceWith(message);
-
-		for (const pair of formData.entries()) {
-			console.log(pair);
-		}
 		// form.submit();
 	}
 });
@@ -274,7 +270,7 @@ function validate() {
 function setError(element, message) {
 	const formControl = element.parentElement;
 	formControl.setAttribute("data-error", message);
-	element.setAttribute("data-error-visible", true);
+	formControl.setAttribute("data-error-visible", true);
 }
 
 /**
@@ -285,7 +281,6 @@ function setSuccess(element) {
 	const formControl = element.parentElement;
 
 	if (formControl.hasAttribute("data-error")) {
-		formControl.setAttribute("data-error", ""); // or removeAttribute()
-		element.setAttribute("data-error-visible", false);
+		formControl.removeAttribute("data-error");
 	}
 }

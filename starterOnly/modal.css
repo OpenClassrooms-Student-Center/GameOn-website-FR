@@ -154,6 +154,12 @@ main {
 
 /* Modal form */
 
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
 .button {
 	background: #fe142f;
 	margin-top: 0.5em;
@@ -185,12 +191,11 @@ main {
 }
 
 .modal {
+	display: flex;
+	flex-direction: column;
 	max-width: 500px;
 	min-height: 100%;
 	margin: 5% auto;
-	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: auto 1fr;
 	background-color: #232323;
 	border-radius: 10px;
 	animation-name: modalopen;
@@ -199,6 +204,7 @@ main {
 
 .modal-content {
 	padding: 15px 35px;
+	flex-grow: 1;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -222,7 +228,6 @@ label {
 	font-size: 17px;
 	font-weight: normal;
 	display: inline-block;
-	margin-bottom: 11px;
 	color: white;
 }
 
@@ -246,25 +251,14 @@ input {
 	font-size: 0.6em;
 	color: #e54858;
 	display: block;
-	margin-top: 7px;
-	margin-bottom: 10px;
-	opacity: 1;
+	margin-top: 5px;
 	transition: 0.3s;
 }
 
-.formData[data-error-visible="true"]::after {
-	opacity: 1;
-}
-
-.formData[data-error-visible="true"] .text-control {
+.formData[data-error] .text-control {
 	border: 2px solid #e54858;
 }
 
-/* input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
 .checkbox-label,
 .checkbox2-label {
 	position: relative;
@@ -529,7 +523,7 @@ input {
 
 h2.success {
 	color: white;
-	font-size: clamp(20px, 3vw, 30px);
+	font-size: clamp(25px, 3vw, 30px);
 }
 
 footer {
