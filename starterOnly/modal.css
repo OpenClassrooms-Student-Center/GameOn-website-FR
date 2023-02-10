@@ -358,45 +358,6 @@ footer {
   margin: 0 20px;
 }
 
-@media screen and (max-width: 800px) {
-  section {
-    display: block;
-    box-shadow: unset;
-  }
-  .hero-content {
-    background: #fff;
-    color: #000;
-    padding: 20px 0 0 0;
-  }
-  .hero-content::after {
-    content: unset;
-  }
-  .hero-content .btn-signup {
-    display: none;
-  }
-  .hero-headline {
-    font-size: 3rem;
-    white-space: normal;
-  }
-  .hero-text {
-    width: 100%;
-    font-size: 0.7rem;
-  }
-  .hero-img img {
-    border-radius: 10px;
-    margin-top: 40px;
-  }
-  section > .btn-signup {
-    display: block;
-    margin: 32px auto 10px;
-    padding: 12px 35px;
-  }
-  .copyrights {
-    margin-top: 50px;
-    text-align: center;
-  }
-}
-
 @media screen and (max-width: 1005px) {
   header img {
     margin-left: 10px;
@@ -426,9 +387,52 @@ footer {
   }
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 800px) {
+  section {
+    display: block;
+    box-shadow: unset;
+  }
+  .hero-content {
+    background: #fff;
+    color: #000;
+    padding: 20px 0 0 0;
+  }
+  .hero-content::after {
+    content: unset;
+  }
+  .hero-content .btn-signup {
+    display: none;
+  }
+  .hero-headline {
+    font-size: 3rem;
+    white-space: normal;
+  }
+  .hero-text {
+    width: 100%;
+    font-size: 1rem;
+  }
+  .hero-img img {
+    border-radius: 10px;
+    margin-top: 40px;
+  }
+  section > .btn-signup {
+    display: block;
+    margin: 32px auto 10px;
+    padding: 12px 35px;
+  }
+  .copyrights {
+    margin-top: 50px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 500px) {
   .hero-headline {
     font-size: 2.1rem;
+  } 
+  .hero-text {
+    width: 100%;
+    font-size: 0.7rem;
   }
 }
 
