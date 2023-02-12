@@ -21,3 +21,8 @@ function launchModal() {
 }
 
 
+var span = document.getElementsByClassName("close")[0];
+
+span.onclick = function () {
+  modalbg.style.display = "none";
+}
