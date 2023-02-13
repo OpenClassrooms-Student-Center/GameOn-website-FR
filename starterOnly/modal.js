@@ -24,5 +24,6 @@ function launchModal() {
 var span = document.getElementsByClassName("close")[0];
 
 span.onclick = function () {
+  document.getElementById("myForm").reset();
   modalbg.style.display = "none";
 }
