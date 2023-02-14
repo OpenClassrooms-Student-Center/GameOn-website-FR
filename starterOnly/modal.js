@@ -51,8 +51,8 @@ form.addEventListener("submit", (e) => {
 		const message = document.createElement("h2");
 		message.textContent = "Merci ! Votre réservation a été reçue.";
 		message.classList.add("success");
-		form.replaceWith(message);
 		// form.submit();
+		form.replaceWith(message);
 	}
 });
 
@@ -61,7 +61,7 @@ form.addEventListener("submit", (e) => {
  * @function
  * @param {string} value La valeur à vérifier.
  * @returns {boolean} Retourne `true` si la chaine est vide, `false` sinon.
- * 
+ *
  * @example
  * console.log(isEmpty("")) // true
  * console.log(isEmpty("truc")) // false
@@ -83,7 +83,7 @@ const isEmail = (value) => /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(value);
 
 /**
  * Vérifie la validité du champ `firstname`.
- * @returns {boolean} - Retourne `true` si l'entré `firstname` est valide, `false` sinon.
+ * @returns {boolean} Retourne `true` si l'entré `firstname` est valide, `false` sinon.
  */
 function checkFirstname() {
 	const firstnameValue = firstname.value.trim();
@@ -270,7 +270,6 @@ function validate() {
 function setError(element, message) {
 	const formControl = element.parentElement;
 	formControl.setAttribute("data-error", message);
-	formControl.setAttribute("data-error-visible", true);
 }
 
 /**
