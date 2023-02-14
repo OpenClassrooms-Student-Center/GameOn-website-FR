@@ -56,13 +56,13 @@ const quantity = document.getElementById("quantity");
 ************/
 
 // set error message to "true"
-const displayError = (element, message) => {
+function displayError(element, message) {
   element.setAttribute('data-error', message)
   element.setAttribute('data-error-visible', true)
 }
 
 // Function for remove one error msg
-const removeError = (element) => {
+function removeError(element) {
   element.removeAttribute('data-error')
   element.removeAttribute('data-error-visible')
 }
@@ -76,7 +76,7 @@ const removeError = (element) => {
 // regex
 const emailRegex = /^[a-zA-Z][a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}$/
 
-const isValid = () => {
+function isValid() {
   // first name validation 
   if (firstName.value === "" || firstName.value.length < 2) {
     displayError(formData[0], 'Veuillez renseigner votre prénom')
@@ -97,6 +97,7 @@ const isValid = () => {
   }
 } 
 
+// check function onClick
 form.addEventListener("click", isValid);
 
 // form preventDefault
