@@ -7,31 +7,56 @@ function editNav() {
   }
 }
 
-// DOM Elements
-const modalbg = document.querySelector(".bground")
-
 /******
 *
-  MODAL
+  MODAL 1 & 2
 *
 ******/
 
-// launch modal event
+////////////////////////
+// MODAL #1 - FORM
+////////////////////////
+
+// get form modal from the DOM
+const modalbg = document.querySelector("#formModal")
+
+// launch form modal event
 const modalBtn = document.querySelectorAll(".modal-btn")
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal))
 
-// launch modal form
+// display form modal
 function launchModal() {
   modalbg.style.display = "block"
 }
 
-// close modal event
-const closeBtn = document.querySelector(".close")
-closeBtn.addEventListener("click", closeModal)
+// close form modal event
+const closeFormBtn = document.querySelector(".close")
+closeFormBtn.addEventListener("click", closeModal)
 
 // close modal form
 function closeModal() {
   modalbg.style.display = "none"
+}
+
+/////////////////////////////
+// MODAL #2 - COMFIRMATION
+/////////////////////////////
+
+// get confirmation modal from the DOM
+const confirmModal = document.querySelector("#confirmationModal")
+
+// display confirmation modal 
+function displayConfirmModal() {
+  confirmModal.style.display = "block"
+}
+
+// close confirmation modal with "OK" button
+const okBtn = document.querySelector("#okBtn")
+okBtn.addEventListener("click", closeconfirmModal)
+
+// close function
+function closeconfirmModal() {
+  confirmModal.style.display = "none"
 }
 
 /******
@@ -131,7 +156,7 @@ function isValid() {
   // check if checkboxCondition is checked,
   // if checked, conditionIsChecked = true
   if(checkboxCondition.checked) {
-    conditionIsChecked = true;
+    conditionIsChecked = true
   }
   // check if conditionIsChecked is different of true
   if(!conditionIsChecked) {
@@ -140,14 +165,41 @@ function isValid() {
   else{
     removeError(formData[6])
   }
+  return true
 } 
 
-// check function isValid onClick
-form.addEventListener("click", isValid);
+// check function isValid onClick and return errors 
+form.addEventListener("click", isValid)
+
+/***********
+ * 
+ * SUBMIT FORM
+ * 
+************/
 
 // form preventDefault
-form.addEventListener('submit', e => {
-	e.preventDefault()
+form.addEventListener("submit", event => {
+	if (isValid = false) {
+    event.preventDefault()
+  }
+  else {
+    event.preventDefault()
+    // display confirmation modal
+    formValidation()
+  }
 });
 
+/***********
+ * 
+ * SHOW NEW CONFIRMATION MODAL 
+ * 
+************/
 
+function formValidation() {
+  // close form modal
+  closeModal()
+  // display confirmation modal
+  displayConfirmModal()
+  // reset form
+  form.reset()
+}

@@ -52,7 +52,7 @@
         </button>
       </div>
 
-      <div class="bground">
+      <div id="formModal" class="bground">
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
@@ -61,6 +61,7 @@
               name="reserve"
               action="index.html"
               method="get"
+              onsubmit="formValidation();"
             >
               <div class="formData">
                 <label for="firstName">Prénom</label><br>
@@ -218,6 +219,15 @@
           </div>
         </div>
       </div>
+      <!-- confirmation modal -->
+      <div id="confirmationModal" class="bground">
+        <div class="content">
+          <div class="modal-body"></div>
+            <h2>Merci pour votre inscription</h2>
+            <button id="okBtn" class="btn-submit">OK</button>
+        </div>
+      </div>
+      <!-- /confirmation modal -->
     </main>
     <footer>
       <p class="copyrights">
