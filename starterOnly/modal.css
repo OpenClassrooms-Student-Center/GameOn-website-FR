@@ -67,7 +67,7 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
@@ -75,7 +75,7 @@ img {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 800px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
@@ -564,6 +564,24 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+
+  .topnav {
+    position: fixed;
+    z-index: 999;
+    background: white;
+    margin: 0;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .header-logo img {
+    max-width: 200px;
+  }
+
+  main, #confirmationModal, #formModal {
+    margin-top: 5rem;
+  }
+
   .hero-section {
     display: block;
     box-shadow: unset;
