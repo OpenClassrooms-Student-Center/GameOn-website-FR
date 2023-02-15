@@ -136,9 +136,6 @@ main {
   font-family: var(--font-slab);
 }
 
-/* Modal form */
-
-
 /* modal confirmationModal */
 #confirmationModal h2 {
   text-align: center;
@@ -222,6 +219,7 @@ main {
   }
 }
 
+/* Modal form */
 
 .button {
   background: #fe142f;
