@@ -1,14 +1,14 @@
 function editNav() {
-  var x = document.getElementById("myTopnav");
+  var x = document.getElementById("myTopnav")
   if (x.className === "topnav") {
-    x.className += " responsive";
+    x.className += " responsive"
   } else {
-    x.className = "topnav";
+    x.className = "topnav"
   }
 }
 
 // DOM Elements
-const modalbg = document.querySelector(".bground");
+const modalbg = document.querySelector(".bground")
 
 /******
 *
@@ -17,21 +17,21 @@ const modalbg = document.querySelector(".bground");
 ******/
 
 // launch modal event
-const modalBtn = document.querySelectorAll(".modal-btn");
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+const modalBtn = document.querySelectorAll(".modal-btn")
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal))
 
 // launch modal form
 function launchModal() {
-  modalbg.style.display = "block";
+  modalbg.style.display = "block"
 }
 
 // close modal event
-const closeBtn = document.querySelector(".close");
-closeBtn.addEventListener("click", closeModal);
+const closeBtn = document.querySelector(".close")
+closeBtn.addEventListener("click", closeModal)
 
 // close modal form
 function closeModal() {
-  modalbg.style.display = "none";
+  modalbg.style.display = "none"
 }
 
 /******
@@ -41,13 +41,15 @@ function closeModal() {
 ******/
 
 // DOM
-const form = document.getElementById("form");
-const formData = document.querySelectorAll(".formData");
-const firstName = document.querySelector("#firstName");
-const lastName = document.querySelector("#lastName");
-const email = document.querySelector("#email");
-const birthdate = document.getElementById("birthdate");
-const quantity = document.getElementById("quantity");
+const form = document.getElementById("form")
+const formData = document.querySelectorAll(".formData")
+const firstName = document.querySelector("#firstName")
+const lastName = document.querySelector("#lastName")
+const email = document.querySelector("#email")
+const birthdate = document.querySelector("#birthdate")
+const quantity = document.querySelector("#quantity")
+const tournamentLocation = document.getElementsByName("location")
+const checkboxCondition = document.getElementById("checkbox1")
 
 /***********
  * 
@@ -95,9 +97,52 @@ function isValid() {
   } else {
     removeError(formData[2])
   }
+  // birthdate validation 
+  if (birthdate.value === "") {
+    displayError(formData[3], 'Veuillez renseigner votre date de naissance')
+  } else {
+    removeError(formData[3])
+  }
+  // quantity of tournament(s) validation 
+  if (quantity.value === "") {
+    displayError(formData[4], 'Veuillez renseigner ce champs par un chiffre')
+  } else {
+    removeError(formData[4])
+  }
+  // radio buttons 
+  // define radioIsChecked variable
+  let radioIsChecked
+  // check for each radio button if checked, 
+  // then define the condition for radioIsChecked = true
+  tournamentLocation.forEach((radio) => {
+    if(radio.checked) {
+      radioIsChecked = true;
+    }
+  });
+  // let's check if radioIsChecked is different of true 
+  if(!radioIsChecked) {
+    displayError(formData[5], 'Veuillez renseigner ce champs par un chiffre')
+  }
+  else {
+    removeError(formData[5])
+  } 
+  // declare conditionIsChecked variable
+  let conditionIsChecked
+  // check if checkboxCondition is checked,
+  // if checked, conditionIsChecked = true
+  if(checkboxCondition.checked) {
+    conditionIsChecked = true;
+  }
+  // check if conditionIsChecked is different of true
+  if(!conditionIsChecked) {
+    displayError(formData[6], `Veuillez accepter les conditions d'utilisations`)
+  }
+  else{
+    removeError(formData[6])
+  }
 } 
 
-// check function onClick
+// check function isValid onClick
 form.addEventListener("click", isValid);
 
 // form preventDefault
