@@ -103,6 +103,15 @@ function removeError(element) {
 // regex
 const emailRegex = /^[a-zA-Z][a-zA-Z0-9\-\_\.]+@[a-zA-Z0-9]{2,}\.[a-zA-Z0-9]{2,}$/
 
+// set current date
+const today = new Date()
+// get day, month, year
+let day = today.getDate();
+let month = today.getMonth() + 1
+let year = today.getFullYear()
+// set new date format
+let currentDate = `${year}-${0}${month}-${day}`
+
 function isValid() {
   // first name validation 
   if (firstName.value === "" || firstName.value.length < 2) {
@@ -122,10 +131,14 @@ function isValid() {
   } else {
     removeError(formData[2])
   }
-  // birthdate validation 
+  // birthdate validation
   if (birthdate.value === "") {
     displayError(formData[3], 'Veuillez renseigner votre date de naissance')
-  } else {
+  } 
+  else if (birthdate.value >= currentDate) {
+    displayError(formData[3], 'Vous ne pouvez pas être né dans le futur !')
+  }
+  else {
     removeError(formData[3])
   }
   // quantity of tournament(s) validation 
