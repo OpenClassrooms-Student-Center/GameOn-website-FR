@@ -165,10 +165,9 @@ function isValid() {
   else{
     removeError(formData[6])
   }
-  return true
 } 
 
-// check function isValid onClick and return errors 
+// check function isValid onClick and display errors 
 form.addEventListener("click", isValid)
 
 /***********
@@ -177,7 +176,7 @@ form.addEventListener("click", isValid)
  * 
 ************/
 
-// form preventDefault
+// check if isValid = true
 form.addEventListener("submit", event => {
 	if (isValid = false) {
     event.preventDefault()
