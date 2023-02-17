@@ -187,7 +187,7 @@ input {
 }
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.8em;
+  font-size: 0.7em;
   color: #e54858;
   display: block;
   margin-top: 7px;
