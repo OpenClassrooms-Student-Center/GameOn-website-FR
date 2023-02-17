@@ -3,6 +3,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalSubmit = document.getElementsByClassName('container-confirmation-submit');
+const modalContainer = document.querySelector('.modal-container');
 
 // handle modal menu
 function editNav() {
@@ -22,12 +23,20 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-// Close modal form on click on X
-function closeModal() {
+// close modal form on click on X
+function closeForm() {
   modalbg.style.display = "none";
 }
 
-console.log(form);
 
+// show modal confirmation after submit the form
+function confirmationModal() {
+  modalContainer.style.display = "block";
+}
+
+// hide modal confirmation after click on submit button or icon close
+function hideModal() {
+  modalContainer.style.display = "none";
+}
 
 

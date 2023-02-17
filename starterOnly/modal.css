@@ -122,6 +122,44 @@ button:hover {
   padding-top: 10px;
 }
 
+
+.modal-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 4;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #333333d3;
+}
+
+.confirme {
+  margin: 5% auto;
+  width: 100%;
+  height: 500px;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: auto;
+  text-align: center;
+  top: 20%;
+}
+
 form {
   padding: 15px 8%;
   margin: 15px auto;
@@ -433,6 +471,10 @@ footer {
   .hero-text {
     width: 100%;
     font-size: 0.7rem;
+  }
+  .confirme {
+    height: 100vh;
+    top:0;
   }
 }
 

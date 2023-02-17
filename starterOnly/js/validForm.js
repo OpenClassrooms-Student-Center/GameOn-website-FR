@@ -59,13 +59,15 @@ function isEmail() {
   email.style.border = "2px solid #e54858";
   return false;
 }
- 
+
 // birthdate input validation
 function isBirthdate() {
-  if (!birthdate.value.match(/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/) || birthdate.value > new Date().toISOString().slice(0, 10) ) {
+  if (
+    !birthdate.value.match(/^([0-9]{4})-([0-9]{2})-([0-9]{2})$/) ||
+    birthdate.value > new Date().toISOString().slice(0, 10)
+  ) {
     birthdate.parentElement.setAttribute("data-error-visible", "true");
     birthdate.style.border = "2px solid #e54858";
-    
 
     return false;
   }
@@ -79,7 +81,8 @@ function isTournamentsQuantity() {
   if (
     quantity.value.trim().length === 0 ||
     isNaN(quantity.value.trim()) === true ||
-    quantity.value.trim() < 0
+    quantity.value.trim() < 0 ||
+    quantity.value.trim() > 99
   ) {
     quantity.parentElement.setAttribute("data-error-visible", "true");
     quantity.style.border = "2px solid #e54858";
@@ -156,8 +159,18 @@ form.addEventListener("submit", function (e) {
   e.preventDefault();
   if (formValidation() == true) {
     document.querySelector("form").reset();
-    closeModal();
+    closeForm();
+    confirmationModal();
   } else {
     checkAllinput();
   }
 });
+
+
+
+
+
+
+
+
+
