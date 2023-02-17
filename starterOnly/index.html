@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <meta charset="utf-8" />
-    <title>GameOn - Reservation</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="modal.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=DM+Sans"
+    >
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans"
-      rel="stylesheet"
-    />
+    >
+    <link rel="stylesheet" href="modal.css">
+    <title>GameOn - Reservation</title>
   </head>
   <body>
     <div class="modal-container">
-    <div class="overlay modal-trigger"></div>
-    <div class="confirme"><span class="close" onclick="hideModal()"></span><h1>Merci pour votre inscription</h1><button onclick="hideModal()" class="btn-submit">Fermer</button></div>
+      <div class="overlay modal-trigger"></div>
+      <div class="confirme">
+        <span class="close" onclick="hideModal()"></span>
+        <p>Merci pour votre inscription</p>
+        <button onclick="hideModal()" class="btn-submit">Fermer</button>
+      </div>
     </div>
     <header class="topnav" id="myTopnav">
       <figure class="header-logo">
-        <img alt="logo" src="../img/Logo.png" />
+        <img alt="logo" src="../img/Logo.png">
       </figure>
       <nav>
         <a href="#"><span>Détails de l'évènement</span></a>
@@ -34,10 +39,10 @@
       </nav>
     </header>
     <main>
-      <section class="section-auto-fit">
+      <div class="section-auto-fit">
         <article class="hero-content">
           <h1 class="hero-headline">
-            Marathon national<br />
+            Marathon national<br>
             de jeux vidéos
           </h1>
           <p class="hero-text">
@@ -47,20 +52,25 @@
           <button class="btn-signup modal-btn">je m'inscris</button>
         </article>
         <figure class="hero-img">
-          <img src="../img/bg_img.jpg" alt="img" />
+          <img src="../img/bg_img.jpg" alt="img">
         </figure>
         <button class="btn-signup modal-btn">je m'inscris</button>
-      </section>
-      <section class="bground">
+      </div>
+      <div class="bground">
         <div class="content">
           <span class="close" onclick="toggleModal()"></span>
-          <form novalidate id="form" name="reserve" action="index.html" method="get">
+          <form
+            novalidate
+            id="form"
+            name="reserve"
+            action="index.html"
+            method="get">
             <span
               class="formData"
               data-error="Vous devez entrer 2 caractères ou plus."
               data-error-visible="false"
             >
-              <label for="first">Prénom</label><br />
+              <label for="first">Prénom</label><br>
               <input
                 class="text-control success"
                 type="text"
@@ -68,28 +78,28 @@
                 name="first"
                 minlength="2"
                 placeholder="Prénom"
-              /><br />
+              ><br>
             </span>
             <span
               class="formData"
               data-error="Vous devez entrer 2 caractères ou plus."
               data-error-visible="false"
             >
-              <label for="last">Nom</label><br />
+              <label for="last">Nom</label><br>
               <input
                 class="text-control"
                 type="text"
                 id="last"
                 name="last"
                 placeholder="Nom"
-              /><br />
+              ><br>
             </span>
             <div
               class="formData"
               data-error="Vous devez entrer une adresse email valide."
               data-error-visible="false"
             >
-              <label for="email">E-mail</label><br />
+              <label for="email">E-mail</label><br>
               <input
                 class="text-control"
                 type="email"
@@ -97,20 +107,20 @@
                 name="email"
                 placeholder="exemple@email.com"
                 required
-              /><br />
+              ><br>
             </div>
             <div
               class="formData"
               data-error="Vous devez entrer votre date de naissance."
               data-error-visible="false"
             >
-              <label for="birthdate">Date de naissance</label><br />
+              <label for="birthdate">Date de naissance</label><br>
               <input
                 class="text-control"
                 type="date"
                 id="birthdate"
                 name="birthdate"
-              /><br />
+              ><br>
             </div>
             <div
               class="formData"
@@ -119,7 +129,7 @@
             >
               <label for="quantity"
                 >À combien de tournois GameOn avez-vous déjà participé ?</label
-              ><br />
+              ><br>
               <input
                 type="number"
                 class="text-control"
@@ -128,7 +138,7 @@
                 placeholder="0"
                 min="0"
                 max="99"
-              />
+              >
             </div>
             <p>Quelles villes ?</p>
             <div
@@ -143,7 +153,7 @@
                 id="location1"
                 name="location"
                 value="New York"
-              />
+              >
               <label class="checkbox-label" for="location1">
                 <span class="checkbox-icon"></span>
                 New York</label
@@ -154,7 +164,7 @@
                 id="location2"
                 name="location"
                 value="San Francisco"
-              />
+              >
               <label class="checkbox-label" for="location2">
                 <span class="checkbox-icon"></span>
                 San Francisco</label
@@ -165,7 +175,7 @@
                 id="location3"
                 name="location"
                 value="Seattle"
-              />
+              >
               <label class="checkbox-label" for="location3">
                 <span class="checkbox-icon"></span>
                 Seattle</label
@@ -176,7 +186,7 @@
                 id="location4"
                 name="location"
                 value="Chicago"
-              />
+              >
               <label class="checkbox-label" for="location4">
                 <span class="checkbox-icon"></span>
                 Chicago</label
@@ -187,7 +197,7 @@
                 id="location5"
                 name="location"
                 value="Boston"
-              />
+              >
               <label class="checkbox-label" for="location5">
                 <span class="checkbox-icon"></span>
                 Boston</label
@@ -198,7 +208,7 @@
                 id="location6"
                 name="location"
                 value="Portland"
-              />
+              >
               <label class="checkbox-label" for="location6">
                 <span class="checkbox-icon"></span>
                 Portland</label
@@ -209,24 +219,23 @@
               data-error="Vous devez accepter les conditions d'utilisation."
               data-error-visible="false"
             >
-              <input class="checkbox-input" type="checkbox" id="checkbox1" />
+              <input class="checkbox-input" type="checkbox" id="checkbox1">
               <label class="checkbox2-label" for="checkbox1">
                 <span class="checkbox-icon"></span>
                 J'ai lu et accepté les conditions d'utilisation.
               </label>
-              <br />
-              <input class="checkbox-input" type="checkbox" id="checkbox2" />
+              <br>
+              <input class="checkbox-input" type="checkbox" id="checkbox2">
               <label class="checkbox2-label" for="checkbox2">
                 <span class="checkbox-icon"></span>
                 Je souhaite être prévenu des prochains évènements.
               </label>
-              <br />
+              <br>
             </div>
-
             <button class="btn-submit">C'est parti</button>
           </form>
         </div>
-      </section>
+      </div>
     </main>
     <footer>
       <p class="copyrights">&copy; Copyright 2014 - 2022, GameOn Inc.</p>
