@@ -32,7 +32,7 @@ let copyForm = null;
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 function launchModal() {
-	modalbg.style.display = "block";
+	modalbg.classList.add("modal-active");
 
 	if (copyForm) {
 		modaleContent.appendChild(copyForm);
@@ -44,7 +44,7 @@ function launchModal() {
 closeBtnModal.addEventListener("click", closeModal);
 
 function closeModal() {
-	modalbg.style.display = "none";
+	modalbg.classList.remove("modal-active");
 }
 
 const formData = new FormData();
