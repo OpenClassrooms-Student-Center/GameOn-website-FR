@@ -166,11 +166,3 @@ form.addEventListener("submit", function (e) {
   }
 });
 
-
-
-
-
-
-
-
-

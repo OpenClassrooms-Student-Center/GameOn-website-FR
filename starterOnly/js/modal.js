@@ -37,6 +37,7 @@ function confirmationModal() {
 // hide modal confirmation after click on submit button or icon close
 function hideModal() {
   modalContainer.style.display = "none";
+  window.location.reload();
 }
 
 

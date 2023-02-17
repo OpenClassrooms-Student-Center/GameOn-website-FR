@@ -54,7 +54,7 @@
       <section class="bground">
         <div class="content">
           <span class="close" onclick="toggleModal()"></span>
-          <form id="form" name="reserve" action="index.html" method="get">
+          <form novalidate id="form" name="reserve" action="index.html" method="get">
             <span
               class="formData"
               data-error="Vous devez entrer 2 caractères ou plus."
@@ -96,6 +96,7 @@
                 id="email"
                 name="email"
                 placeholder="exemple@email.com"
+                required
               /><br />
             </div>
             <div
@@ -125,6 +126,8 @@
                 id="quantity"
                 name="quantity"
                 placeholder="0"
+                min="0"
+                max="99"
               />
             </div>
             <p>Quelles villes ?</p>
