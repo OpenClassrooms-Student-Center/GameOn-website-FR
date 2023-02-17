@@ -312,11 +312,7 @@ input[data-error]::after {
   border: 0;
 }
 
-/* .text-label {
-  font-weight: normal;
-  font-size: 16px;
-} */
-section {
+.layout {
   min-height: 93vh;
   border-radius: 10px;
   display: grid;
@@ -387,7 +383,7 @@ section {
   margin: 60px 0 30px;
   font-weight: bolder;
 }
-section > .btn-signup {
+.layout > .btn-signup {
   display: none;
 }
 footer {
@@ -426,7 +422,7 @@ footer {
 }
 
 @media screen and (max-width: 800px) {
-  section {
+  .layout {
     display: block;
     box-shadow: unset;
   }
@@ -453,7 +449,7 @@ footer {
     border-radius: 10px;
     margin-top: 40px;
   }
-  section > .btn-signup {
+  .layout > .btn-signup {
     display: block;
     margin: 32px auto 10px;
     padding: 12px 35px;

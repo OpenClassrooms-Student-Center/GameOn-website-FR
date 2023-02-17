@@ -4,14 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=DM+Sans"
-    >
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    >
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=DM+Sans">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="modal.css">
     <title>GameOn - Reservation</title>
   </head>
@@ -20,7 +14,7 @@
       <div class="overlay modal-trigger"></div>
       <div class="confirme">
         <span class="close" onclick="hideModal()"></span>
-        <p>Merci pour votre inscription</p>
+        <h3>Merci pour votre inscription</h3>
         <button onclick="hideModal()" class="btn-submit">Fermer</button>
       </div>
     </div>
@@ -39,7 +33,7 @@
       </nav>
     </header>
     <main>
-      <div class="section-auto-fit">
+      <div class="section-auto-fit layout">
         <article class="hero-content">
           <h1 class="hero-headline">
             Marathon national<br>
@@ -58,13 +52,14 @@
       </div>
       <div class="bground">
         <div class="content">
-          <span class="close" onclick="toggleModal()"></span>
+          <span class="close" onclick="closeForm()"></span>
           <form
             novalidate
             id="form"
             name="reserve"
             action="index.html"
-            method="get">
+            method="get"
+          >
             <span
               class="formData"
               data-error="Vous devez entrer 2 caractères ou plus."
