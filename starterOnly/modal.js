@@ -9,6 +9,8 @@ function editNav() {
 
 // Elements du DOM
 const modalbg = document.querySelector(".bground");
+const modal = document.querySelector(".modal");
+const modaleContent = document.querySelector(".modal-content");
 const closeBtnModal = document.querySelector(".btn-close");
 const modalBtn = document.querySelectorAll(".modal-btn");
 
@@ -20,6 +22,10 @@ const birthdate = document.getElementById("birthdate");
 const qtyParticipation = document.getElementById("quantity");
 const locationParticipation = document.querySelectorAll(".location");
 const [terms, newletter] = document.querySelectorAll(".terms");
+/** @type {HTMLTitleElement} */
+let successTitle = null;
+/** @type {HTMLFormElement} */
+let copyForm = null;
 
 
 // Événement d'ouvrir de la modale
@@ -27,6 +33,11 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 function launchModal() {
 	modalbg.style.display = "block";
+
+	if (copyForm) {
+		modaleContent.appendChild(copyForm);
+		successTitle.remove();
+	}
 }
 
 // Événement de fermeture de la modale
@@ -51,8 +62,12 @@ form.addEventListener("submit", (e) => {
 		const message = document.createElement("h2");
 		message.textContent = "Merci ! Votre réservation a été reçue.";
 		message.classList.add("success");
-		// form.submit();
-		form.replaceWith(message);
+
+		successTitle = message;
+		modaleContent.appendChild(message);
+		form.reset();
+		copyForm = form;
+		form.remove();
 	}
 });
 

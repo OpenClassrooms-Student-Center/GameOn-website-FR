@@ -477,7 +477,7 @@ input {
 }
 
 .hero-headline {
-	font-size: 6rem;
+	font-size: clamp(40px, 10vw, 96px);
 	font-weight: normal;
 	white-space: nowrap;
 }
@@ -507,6 +507,7 @@ input {
 	height: 100%;
 	display: block;
 	padding: 0;
+	object-fit: cover;
 }
 
 .copyrights {
