@@ -1,3 +1,10 @@
+// DOM Elements
+const modalbg = document.querySelector(".bground");
+const modalBtn = document.querySelectorAll(".modal-btn");
+const formData = document.querySelectorAll(".formData");
+const modalSubmit = document.getElementsByClassName('container-confirmation-submit');
+
+// handle modal menu
 function editNav() {
   var menuIcon = document.getElementById("myTopnav");
   if (menuIcon.className === "topnav") {
@@ -7,16 +14,10 @@ function editNav() {
   }
 }
 
-// DOM Elements
-const modalbg = document.querySelector(".bground");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
-
-
-// launch modal event
+// handle modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// launch modal form
+// handle modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
@@ -25,4 +26,8 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = "none";
 }
+
+console.log(form);
+
+
 

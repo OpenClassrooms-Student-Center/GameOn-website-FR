@@ -13,7 +13,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -84,7 +83,7 @@ main {
   background: #3876ac;
 }
 
-.button {
+button {
   background: #fe142f;
   margin-top: 0.5em;
   padding: 1em;
@@ -93,7 +92,7 @@ main {
   cursor: pointer;
   font-size: 16px;
 }
-.button:hover {
+button:hover {
   background: #3876ac;
 }
 
@@ -150,7 +149,7 @@ input {
 }
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
+  font-size: 0.8em;
   color: #e54858;
   display: block;
   margin-top: 7px;
@@ -166,12 +165,12 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
+
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
-} */
+}
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -261,6 +260,7 @@ input[data-error]::after {
 .close:after {
   transform: rotate(-45deg);
 }
+
 .btn-submit,
 .btn-signup {
   background: #fe142f;
@@ -274,10 +274,10 @@ input[data-error]::after {
   border: 0;
 }
 
-.text-label {
+/* .text-label {
   font-weight: normal;
   font-size: 16px;
-}
+} */
 section {
   min-height: 93vh;
   border-radius: 10px;
