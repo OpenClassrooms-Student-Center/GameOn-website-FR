@@ -22,8 +22,8 @@ const birthdate = document.getElementById("birthdate");
 const qtyParticipation = document.getElementById("quantity");
 const locationParticipation = document.querySelectorAll(".location");
 const [terms, newletter] = document.querySelectorAll(".terms");
-/** @type {HTMLTitleElement} */
-let successTitle = null;
+/** @type {HTMLElement} */
+let successBox = null;
 /** @type {HTMLFormElement} */
 let copyForm = null;
 
@@ -36,7 +36,7 @@ function launchModal() {
 
 	if (copyForm) {
 		modaleContent.appendChild(copyForm);
-		successTitle.remove();
+		successBox.remove();
 	}
 }
 
@@ -49,6 +49,32 @@ function closeModal() {
 
 const formData = new FormData();
 
+function successMessage() {
+	// Créer un nouveau DocumentFragment
+	const fragment = document.createDocumentFragment();
+
+	// Créer un nouvel élément div
+	const div = document.createElement('div');
+	div.className = 'success';
+
+	// Créer un nouvel élément h2 pour le titre
+	const h2 = document.createElement('h2');
+	h2.className = 'success-title';
+	h2.textContent = 'Merci ! Votre réservation a été reçue.';
+	div.appendChild(h2);
+
+	// Créer un nouvel élément button pour le bouton "Fermer"
+	const button = document.createElement('button');
+	button.className = 'success-close';
+	button.textContent = 'Fermer';
+	button.addEventListener('click', closeModal);
+	div.appendChild(button);
+
+	// Ajouter l'élément div au fragment
+	fragment.appendChild(div);
+	return div;
+}
+
 /* Submit/Soumission
 
 	Si la fonction "validate()" retourne "true" un message de confirmation apparaitra et les données du formulaire seront affiché dans la console (sous forme de tableau, un input = un tableau)
@@ -59,12 +85,10 @@ form.addEventListener("submit", (e) => {
 	const isValid = validate();
 
 	if (isValid) {
-		const message = document.createElement("h2");
-		message.textContent = "Merci ! Votre réservation a été reçue.";
-		message.classList.add("success");
+		const success = successMessage();
+		successBox = success;
+		modaleContent.appendChild(success);
 
-		successTitle = message;
-		modaleContent.appendChild(message);
 		form.reset();
 		copyForm = form;
 		form.remove();

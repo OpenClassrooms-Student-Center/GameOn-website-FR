@@ -206,8 +206,6 @@ form {
 	padding: 15px 35px;
 	flex-grow: 1;
 	display: flex;
-	justify-content: center;
-	align-items: center;
 }
 
 .modal-header {
@@ -261,7 +259,7 @@ input {
 
 .formData[data-error]::after {
 	content: attr(data-error);
-	font-size: 0.6em;
+	font-size: 14px;
 	color: #e54858;
 	display: block;
 	margin-top: 5px;
@@ -535,9 +533,27 @@ input {
 	display: none;
 }
 
-h2.success {
+.success {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.success-title {
 	color: white;
 	font-size: clamp(25px, 3vw, 30px);
+}
+
+.success-close {
+	background-color: red;
+	padding: 10px 25px;
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	border-radius: 5px;
+	cursor: pointer;
 }
 
 footer {
