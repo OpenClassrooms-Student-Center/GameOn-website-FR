@@ -68,6 +68,16 @@ img {
   display: none;
 }
 
+#errorEmail, 
+#errorLast,
+#errorDate,
+#errorQuantity,
+#errorRadio,
+#errorCheckbox,
+#errorFirst {
+  color: red;
+}
+
 @media screen and (max-width: 768px) {
   .topnav a {display: none;}
   .topnav a.icon {
