@@ -180,8 +180,9 @@ function isValid() {
   }
 } 
 
-// check function isValid onClick and display errors 
-form.addEventListener("click", isValid)
+// display if there're errors onClick 
+const submitBtn = document.getElementById('btn-submit')
+submitBtn.addEventListener("click", isValid)
 
 /***********
  * 
@@ -191,7 +192,7 @@ form.addEventListener("click", isValid)
 
 // check if isValid = true
 form.addEventListener("submit", event => {
-	if (isValid = false) {
+	if (!isValid) {
     event.preventDefault()
   }
   else {

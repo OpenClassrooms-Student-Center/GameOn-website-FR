@@ -418,6 +418,11 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+.btn-submit[disabled="true"] {
+  background: #c4c4c4;
+  color: #ddd;
+  content: 'blabla';
+}
 /* custom select styles */
 .custom-select {
   position: relative;
