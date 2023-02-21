@@ -5,11 +5,18 @@ const email = document.getElementById('email');
 const birthdate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
 
+const checkbox = document.getElementById('checkbox1');
+
+const radio = document.querySelectorAll('.checkbox-input[type="radio"]');
+console.log(radio);
+
+// REGEX
 const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ\-\' ]{2,}$/;
-const regex2 =  /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+const regex2 =  /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/; 
+//Regex2 has been made using the RFC 3696 syntax  = https://fr.wikipedia.org/wiki/Adresse_%C3%A9lectronique#Syntaxe_exacte
 const regex3 =  /^[0-9]{4}[-]{1}[0-9]{2}[-]{1}[0-9]{2}$/g;
 
-
+const form = document.querySelector('form');
 
 // FIRST AND LAST NAME
 
@@ -60,7 +67,7 @@ function checkBirthdate() {
     console.log(birthdate.value)
     if (birthdate.value.trim().length < 2 || birthdate.value.trim() === "" || !birthdate.value.match(regex3)) {
         birthdate.parentElement.setAttribute('data-error-visible', 'true');
-        birthdate.parentElement.setAttribute('data-error', 'Veuillez entrer une adresse date de naissance valide <br> Vous devez etre majeur');
+        birthdate.parentElement.setAttribute('data-error', 'Veuillez entrer une adresse date de naissance valide. Vous devez etre majeur');
         birthdate.style.border = '2px solid #e54858';
         return false;
     }
@@ -84,6 +91,40 @@ function checkQuantity() {
     return true;
 }
 
+// CHECKBOX
+
+function checkCheckbox() {
+    console.log(checkbox1.checked)
+    if (checkbox1.checked === false) {
+        checkbox1.parentElement.setAttribute('data-error-visible', 'true');
+        checkbox1.parentElement.setAttribute('data-error', 'Veuillez sélectionner les conditions d\'utilisation.');
+        checkbox1.style.border = '2px solid #e54858';
+        return false;
+    }
+    checkbox1.parentElement.setAttribute('data-error-visible', 'false');
+    checkbox1.style.border = 'none';
+    return true;
+}
+
+
+// RADIO BUTTONS
+function validLocation() {
+    let radioButton = document.querySelector('input[name = "location"]:checked');
+  
+    if(radioButton == null){ 
+        const radioError = document.getElementById('location1');
+        radioError.parentElement.setAttribute('data-error-visible', 'true');
+        radioError.parentElement.setAttribute('data-error', 'Veuillez sélectionner une ville');
+        radioError.style.border = '2px solid #e54858';
+        return false;
+      }
+      radioButton.parentElement.setAttribute('data-error-visible', 'false');
+      radioButton.style.border = 'none';
+      return true;
+  }
+
+
+
 
 // FORM FIELDS EVENTS
 function formFieldsValidation(element, method, event) {
@@ -94,16 +135,26 @@ formFieldsValidation(lastName, checkLastName, 'focusout');
 formFieldsValidation(email, checkEmail, 'focusout');
 formFieldsValidation(birthdate, checkBirthdate, 'focusout');
 formFieldsValidation(quantity, checkQuantity, 'focusout');
+formFieldsValidation(checkbox1, checkCheckbox, 'click');
+radio.forEach(element => {
+    formFieldsValidation(element, validLocation, 'change');   
+});
 
 
-function formValidation() {
+function validate(event) {
+    event.preventDefault();
     if (checkFirstName() === true &&
         checkLastName() === true &&
         checkEmail() === true &&
         checkBirthdate() === true &&
-        checkQuantity() === true ) {
-        return true;
+        checkQuantity() === true &&
+        checkCheckbox() === true &&
+        validLocation () === true) {
+        //return true;
     }
     return false;
 }
 
+form.addEventListener('submit', function (event) {
+validate(event)
+});
