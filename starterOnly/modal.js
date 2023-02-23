@@ -42,7 +42,7 @@ function addModal(e) {
   const formData = new FormData(myForm);
   const first = formData.get('first');
   const numberFirst = first.length;
-  var dataFirst = new Boolean(false);
+  var dataFirst = false;
   if (!numberFirst) {
     eltFirst.innerHTML = "Entrez votre prénom svp";
   }
@@ -50,12 +50,13 @@ function addModal(e) {
     eltFirst.innerHTML = "Prénom invalid";
   }
   else if (numberFirst >= 2 ) {
-    var dataFirst = new Boolean(true);
+    var dataFirst = true;
     eltFirst.innerHTML = "";
   }
  
   const last = formData.get('last');
   const numberLast = last.length;
+  var dataLast = false;
   if (!numberLast) {
     eltLast.innerHTML = "Entrez votre nom svp";
   }
@@ -63,10 +64,13 @@ function addModal(e) {
     eltLast.innerHTML = "Nom invalid";
   }
   else if (numberLast >= 2 ) {
+    var dataLast = true;
     eltLast.innerHTML = "";
   }
   
   const email = formData.get('email');
+  var dataEmail = false;
+
   if (!email) {
     eltEmail.innerHTML = "Entrez votre email svp";
   }
@@ -74,10 +78,12 @@ function addModal(e) {
     eltEmail.innerHTML = "Email invalid";
   }
   else {
+    var dataEmail = true;
     eltEmail.innerHTML = "";
   }
 
   const birthdate = formData.get('birthdate');
+  var dataBirth  = false;
   let dateBirth = new Date(birthdate);
   let dateNow = new Date();
   console.log("dateBirth", dateBirth);
@@ -91,11 +97,15 @@ function addModal(e) {
     eltDate.innerHTML = "Date invalid";
   }
   else {
+    var dataBirth  = true;
     eltDate.innerHTML = "";
   }
   
   const quantity = formData.get('quantity');
+  var dataQuantity  = false;
+  
     if (Number.isInteger, quantity) {
+      var dataQuantity = true;
       eltQuantity.innerHTML = "";
     }
     else {
@@ -104,7 +114,9 @@ function addModal(e) {
     }
     
   console.log('myFirst', {first, last, email, birthdate, quantity });
+  
   var radios = document.getElementsByName('location');
+  var dataRadio = false;
   for(var i = 0; i < radios.length; i++){
    if(radios[i].checked){
       var count1 = {
@@ -116,21 +128,37 @@ function addModal(e) {
     eltRadio.innerHTML = "Entrez un choix svp";
   }
   else{
+    var dataRadio = true;
     eltRadio.innerHTML = "";
-
   }
   var checkbox1 = document.getElementById('checkbox1');
+  var dataCheckbox1 = false;
+  
   var checkbox2 = document.getElementById('checkbox2');
   if (checkbox1.checked) {
+  var dataCheckbox1 = true;
     eltCheckbox.innerHTML = "";
   }
   else {
     eltCheckbox.innerHTML = "Vous devez selectionner cette case";
   }
-  if(dataFirst){
-    alert(dataFirst);
-  }
-  else {
-    alert(dataFirst);
+console.log('test général',dataFirst ,dataLast, dataEmail, dataBirth, dataQuantity, dataRadio, dataCheckbox1);
+if(dataFirst && dataLast && dataEmail && dataBirth && dataQuantity && dataRadio && dataCheckbox1) {
+  const modalbgBis = document.querySelector(".bgroundBis");
+  modalForm.reset();
+  modalbgBis.style.display = "block";
+  modalbg.style.display = "none";
+  // alert('result is true.');
+  document.getElementById("modal-btn-bis").addEventListener("click", endModal);
+
+  function endModal() {
+    modalbgBis.style.display = "none";
   }
 }
+else{
+  alert('result is false.');
+}
+
+}
+
+

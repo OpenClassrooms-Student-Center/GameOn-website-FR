@@ -178,6 +178,17 @@ main {
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
 }
+.bgroundBis {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
 
 .content {
   margin: 5% auto;
@@ -197,6 +208,20 @@ main {
   padding: 15px 8%;
   margin: 15px auto;
 }
+.modal-body-bis {
+  display: flex;
+  width: 38%;
+  height: 80vh;
+  margin: auto;
+  padding-bottom: 20px;
+  border-radius: 8px;
+  flex-direction: column;
+}
+.textBis{
+  margin: auto; /* Important */
+  text-align: center;
+}
+
 
 label {
   font-family: var(--font-default);
@@ -536,4 +561,3 @@ footer {
     opacity: 1;
   }
 }
-
