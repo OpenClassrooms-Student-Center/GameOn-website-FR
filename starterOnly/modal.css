@@ -93,12 +93,36 @@ img {
 
 
  @media screen and (max-width: 540px) {
+
+
+  .topnav {
+      display: flex;
+      justify-content: space-around;
+     padding-left: 2vw;
+     padding-right: 2vw;
+     font-size: 2.5rem;
+      } 
+
+      .content {
+        margin: 5% auto;
+        width: 100%;
+        animation-name: modalopen;
+        animation-duration: var(--modal-duration);
+        background: #232323;
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        color: #fff;
+        padding-top: 10px;
+      }
+    
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
     margin-top: -15px;
   }
+
 } 
 
 main {
@@ -137,7 +161,6 @@ main {
   font-family: var(--font-slab);
 }
 
-/* Modal form */
 
 .button {
   background: #fe142f;
@@ -157,6 +180,13 @@ main {
   font-size: 16px;
 }
 
+.message-alert {
+  display: none;
+  font-size: 10px;
+  color: #f75252;
+  margin-top: 7px;
+}
+
 .bground {
   display: none;
   position: fixed;
@@ -168,6 +198,8 @@ main {
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
 }
+
+
 
 .content {
   margin: 5% auto;
@@ -226,12 +258,7 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -296,6 +323,7 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
+
 .close {
   position: absolute;
   right: 15px;
@@ -306,6 +334,7 @@ input[data-error]::after {
   cursor: pointer;
   transform: scale(0.7);
 }
+
 .close:before,
 .close:after {
   position: absolute;
@@ -333,6 +362,7 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -458,6 +488,7 @@ input[data-error]::after {
   grid-column: span 8;
 }
 .hero-img img {
+ object-fit: cover;
   width: 100%;
   height: 100%;
   display: block;
@@ -478,6 +509,7 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -503,6 +535,7 @@ footer {
     font-size: 1.5rem;
   }
   .hero-img img {
+    
     border-radius: 10px;
     margin-top: 40px;
   }
@@ -526,4 +559,3 @@ footer {
     opacity: 1;
   }
 }
-
