@@ -14,24 +14,19 @@
   <body>
     <div class="topnav" id="myTopnav">
     
-      <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
-    
-    </div>
+          <div class="header-logo"><img alt="logo" src="Logo.png" /></div>
 
-    <div class="main-navbar">
-      
-      <a href="#" class="active"><span>Accueil</span></a>
-      <a href="#"><span>Détails de l'évènement</span></a>
-      <a href="#"><span>À propos</span></a>
-      <a href="#"><span>Contact</span></a>
-      <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars"></i>
-      </a>
+          <div class="main-navbar">
+              <a href="#" class="active"><span>Accueil</span></a>
+              <a href="#"><span>Détails de l'évènement</span></a>
+              <a href="#"><span>À propos</span></a>
+              <a href="#"><span>Contact</span></a>
+              <a href="#"><span>Évènements passés</span></a>
+              <a href="javascript:void(0);" class="icon" onclick="editNav()">
+              <i class="fa fa-bars"></i></a>
+          </div>
     </div>
-    </div>
-  </div>
+    <!-- </div> -->
     <main>
       <div class="hero-section">
         <div class="hero-content">
@@ -127,12 +122,10 @@
 
                
               <div
-                class="formData"  id="affMercii" display = "">
+                class="formData"  id="affMercii">
+
                 <p class="text-Merci"></p> 
               </div>   
-
-         <!--        <p class="text-label"> 2 A quel tournoi souhaitez-vous participer cette année ?</p> 
- -->
 
               <div
                 class="formData"  id="myQuantity">
@@ -224,8 +217,9 @@
                   type="checkbox"
                   id="checkbox1"
                   checked
+                  required
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1" >
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
@@ -247,9 +241,8 @@
 
            <input
 
-             class="btn-submit"
+             class="btn-submit buton "
              type="submit"
-            class="button" 
             value="C'est parti"
           />
             </form>   
@@ -263,5 +256,13 @@
       </p>
     </footer>
     <script src="modal.js"></script>
+    <p>
+      <a href="http://jigsaw.w3.org/css-validator/check/referer">
+          <img style="border:0;width:88px;height:31px"
+              src="http://jigsaw.w3.org/css-validator/images/vcss"
+              alt="CSS Valide !" />
+      </a>
+  </p>
   </body>
+  
 </html>
