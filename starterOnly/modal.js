@@ -40,12 +40,11 @@ function validate()
     4000);
   }
 
-  function createSpan(errorMessage) {
+  function createSpan(errorMessage, formData) {
     const error = document.createElement("span");
     error.textContent = errorMessage;
     error.style.color = "#cc0000";
     error.style.fontSize = "1rem";
-    const formData = document.querySelector(".modal-body .formData");
     const span = formData.appendChild(error);
 
     removeSpan(span);
@@ -57,7 +56,19 @@ function validate()
   if (!first.match(/^[a-zA-Z]{2,}$/)) {
 
     let errorMessage = "Le prénom doit contenir que des lettres et en avoir au moins 2";
-    createSpan(errorMessage);
+    const formData = document.querySelector(".modal-body .formData:nth-child(1)");
+    createSpan(errorMessage, formData);
+
+    return false;
+  }
+
+  // last input validation
+  let last = document.getElementById("last").value;
+
+  if (!last.match(/^[a-zA-Z]{2,}$/)) {
+    let errorMessage = "Le nom doit contenir que des lettres et en avoir au moins 2";
+    const formData = document.querySelector(".modal-body .formData:nth-child(2)");
+    createSpan(errorMessage, formData);
 
     return false;
   }
