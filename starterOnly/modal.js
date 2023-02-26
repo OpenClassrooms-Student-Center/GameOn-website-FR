@@ -29,7 +29,7 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-// validation inputs
+// inputs validation
 function validate()
 {
 
@@ -53,7 +53,7 @@ function validate()
   // first input validation
   let first = document.getElementById("first").value;
 
-  if (!first.match(/^[a-zA-Z]{2,}$/)) {
+  if (!first.match(/^[a-z]{2,}$/i)) {
 
     let errorMessage = "Le prénom doit contenir que des lettres et en avoir au moins 2";
     const formData = document.querySelector(".modal-body .formData:nth-child(1)");
@@ -65,11 +65,24 @@ function validate()
   // last input validation
   let last = document.getElementById("last").value;
 
-  if (!last.match(/^[a-zA-Z]{2,}$/)) {
+  if (!last.match(/^[a-z]{2,}$/i)) {
     let errorMessage = "Le nom doit contenir que des lettres et en avoir au moins 2";
     const formData = document.querySelector(".modal-body .formData:nth-child(2)");
     createSpan(errorMessage, formData);
 
     return false;
   }
+
+  // email validation
+  let email = document.getElementById("email").value;
+
+  if (!email.match(/^[\w\-.]{2,}@[a-zA-Z]{2,}\.[a-zA-Z]{2,4}$/)) {
+    let errorMessage = "Veuillez entrer une adresse email valide";
+    const formData = document.querySelector(".modal-body .formData:nth-child(3)");
+    createSpan(errorMessage, formData);
+
+    return false;
+  }
+
 }
+                                                               
