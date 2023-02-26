@@ -6,8 +6,13 @@ function editNav() {
     x.className = "topnav";
   }
 }
+// function validate() {
+// alert('Il s\'agit de la validation du formylaire')
+// }
+
 // DOM Elements
 const modalbg = document.querySelector(".bground");
+const modalbgBis = document.querySelector(".bgroundBis");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 let eltEmail = document.getElementById('errorEmail');
@@ -27,25 +32,30 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-var span = document.getElementsByClassName("close")[0];
+var span0 = document.getElementsByClassName("close")[0];
+var span1 = document.getElementsByClassName("close")[1];
 const modalForm = document.getElementById("myForm");
 
-span.onclick = function () {
+span0.onclick = function () {
   modalForm.reset();
+  modalbgBis.style.display = "none";
   modalbg.style.display = "none";
 }
-
+span1.onclick = function () {
+  modalForm.reset();
+  modalbgBis.style.display = "none";
+  modalbg.style.display = "none";
+}
 modalForm.addEventListener('submit', addModal);
+// function validate() {
+
 function addModal(e) {
   e.preventDefault();
+  
   const formData = new FormData(myForm);
   const first = formData.get('first');
   const numberFirst = first.length;
-<<<<<<< HEAD
   var dataFirst = false;
-=======
-  const dataFirst = false;
->>>>>>> fd5d8fa (vérification des X (close))
   if (!numberFirst) {
     eltFirst.innerHTML = "Entrez votre prénom svp";
   }
@@ -53,13 +63,10 @@ function addModal(e) {
     eltFirst.innerHTML = "Prénom invalid";
   }
   else if (numberFirst >= 2 ) {
-<<<<<<< HEAD
     var dataFirst = true;
-=======
->>>>>>> fd5d8fa (vérification des X (close))
     eltFirst.innerHTML = "";
-    return  dataFirst == true;
   }
+ 
   const last = formData.get('last');
   const numberLast = last.length;
   var dataLast = false;
@@ -73,6 +80,7 @@ function addModal(e) {
     var dataLast = true;
     eltLast.innerHTML = "";
   }
+  
   const email = formData.get('email');
   var dataEmail = false;
 
@@ -86,6 +94,7 @@ function addModal(e) {
     var dataEmail = true;
     eltEmail.innerHTML = "";
   }
+
   const birthdate = formData.get('birthdate');
   var dataBirth  = false;
   let dateBirth = new Date(birthdate);
@@ -116,16 +125,14 @@ function addModal(e) {
       eltQuantity.innerHTML = "Entrez un chiffre svp";
 
     }
-<<<<<<< HEAD
     
-  console.log('myFirst', {first, last, email, birthdate, quantity });
   
-=======
->>>>>>> fd5d8fa (vérification des X (close))
   var radios = document.getElementsByName('location');
   var dataRadio = false;
+  var location = "";
   for(var i = 0; i < radios.length; i++){
    if(radios[i].checked){
+    location = radios[i].value
       var count1 = {
         i
       }
@@ -138,26 +145,24 @@ function addModal(e) {
     var dataRadio = true;
     eltRadio.innerHTML = "";
   }
-
+  
   var checkbox1 = document.getElementById('checkbox1');
-<<<<<<< HEAD
   var dataCheckbox1 = false;
   
   var checkbox2 = document.getElementById('checkbox2');
-=======
->>>>>>> fd5d8fa (vérification des X (close))
   if (checkbox1.checked) {
   var dataCheckbox1 = true;
     eltCheckbox.innerHTML = "";
-
   }
   else {
     eltCheckbox.innerHTML = "Vous devez selectionner cette case";
   }
-<<<<<<< HEAD
 console.log('test général',dataFirst ,dataLast, dataEmail, dataBirth, dataQuantity, dataRadio, dataCheckbox1);
 if(dataFirst && dataLast && dataEmail && dataBirth && dataQuantity && dataRadio && dataCheckbox1) {
-  const modalbgBis = document.querySelector(".bgroundBis");
+  console.log('Vos données sont valid');
+  console.log('data:', {first, last, email, birthdate, quantity, location});
+
+
   modalForm.reset();
   modalbgBis.style.display = "block";
   modalbg.style.display = "none";
@@ -169,19 +174,9 @@ if(dataFirst && dataLast && dataEmail && dataBirth && dataQuantity && dataRadio 
   }
 }
 else{
-  alert('result is false.');
+  console.log('result is false.');
 }
 
 }
 
-
-=======
-  // if(datafirst){
-  //   alert(dataFirst);
-  // }
-  // else {
-  //   alert(dataFirst);
-
-  // }
-}
->>>>>>> fd5d8fa (vérification des X (close))
+// }
