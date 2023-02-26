@@ -87,12 +87,24 @@ function validate()
     return false;
   }
 
-  // birthDate validation
+  // birthdate validation
   let birthDate = document.getElementById("birthdate").value;
 
-  if (!birthDate.match(/^[\d]{2}\/[\d]{2}\/[\d]{4}$/)) {
-    let errorMessage = "Veuillez renseigner votre date de naissance au format : jj/mm/aaaa";
+  if (!birthDate.match(/^[\d]{4}-[\d]{2}-[\d]{2}$/)) {
+    let errorMessage = "Veuillez renseigner votre date de naissance";
     const formData = document.querySelector(".modal-body .formData:nth-child(4)");
+
+    createSpan(errorMessage, formData);
+
+    return false;
+  }
+
+  // quantity participation validation
+  let quantity = document.getElementById("quantity").value;
+
+  if (!quantity.match(/^[\d]{1,2}$/)) {
+    let errorMessage = "Veuillez saisir des chiffres entre 0 et 99";
+    const formData = document.querySelector(".modal-body .formData:nth-child(5)");
 
     createSpan(errorMessage, formData);
 
