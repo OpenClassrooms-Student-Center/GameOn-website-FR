@@ -57,6 +57,7 @@ function validate()
 
     let errorMessage = "Le prénom doit contenir que des lettres et en avoir au moins 2";
     const formData = document.querySelector(".modal-body .formData:nth-child(1)");
+
     createSpan(errorMessage, formData);
 
     return false;
@@ -68,6 +69,7 @@ function validate()
   if (!last.match(/^[a-z]{2,}$/i)) {
     let errorMessage = "Le nom doit contenir que des lettres et en avoir au moins 2";
     const formData = document.querySelector(".modal-body .formData:nth-child(2)");
+
     createSpan(errorMessage, formData);
 
     return false;
@@ -77,8 +79,21 @@ function validate()
   let email = document.getElementById("email").value;
 
   if (!email.match(/^[\w\-.]{2,}@[a-zA-Z]{2,}\.[a-zA-Z]{2,4}$/)) {
-    let errorMessage = "Veuillez entrer une adresse email valide";
+    let errorMessage = "Veuillez saisir une adresse email valide";
     const formData = document.querySelector(".modal-body .formData:nth-child(3)");
+
+    createSpan(errorMessage, formData);
+
+    return false;
+  }
+
+  // birthDate validation
+  let birthDate = document.getElementById("birthdate").value;
+
+  if (!birthDate.match(/^[\d]{2}\/[\d]{2}\/[\d]{4}$/)) {
+    let errorMessage = "Veuillez renseigner votre date de naissance au format : jj/mm/aaaa";
+    const formData = document.querySelector(".modal-body .formData:nth-child(4)");
+
     createSpan(errorMessage, formData);
 
     return false;
