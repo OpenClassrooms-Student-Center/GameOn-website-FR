@@ -29,6 +29,20 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
+// select location
+let locationList = document.querySelectorAll("input[name='location']");
+
+function selectCheckbox() 
+{
+  for (i = 0; i < locationList.length; i++) {
+    let location = locationList[i];
+
+    if(location.checked == true) {
+      location.setAttribute("checked","checked");
+    }
+  }
+}
+
 // inputs validation
 function validate()
 {
@@ -109,6 +123,18 @@ function validate()
     createSpan(errorMessage, formData);
 
     return false;
+  }
+  
+  // checkbox validation
+  let selectedLocation = document.querySelectorAll(".modal-body .formData:nth-child(7) input[checked]");
+
+  if (selectedLocation.length == 0) {
+      let errorMessage = "Veuillez cocher un tournoi";
+      const formData = document.querySelector(".modal-body .formData:nth-child(7)");
+  
+      createSpan(errorMessage, formData);
+  
+      return false;
   }
 
 }
