@@ -1,11 +1,4 @@
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
+"use strict";
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
@@ -13,16 +6,20 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
 
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+// functions
+function editNav() {
+  let x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
 
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
-
-// close modal event
-closeBtn.addEventListener("click", closeModal);
 
 // close modal
 function closeModal() {
@@ -30,112 +27,130 @@ function closeModal() {
 }
 
 // select location
-let locationList = document.querySelectorAll("input[name='location']");
-
-function selectCheckbox() 
+function selectLocation() 
 {
-  for (i = 0; i < locationList.length; i++) {
+  const locationList = document.querySelectorAll("input[name='location']");
+  
+  let i = 0;
+  for (i ; i < locationList.length; i++) {
     let location = locationList[i];
 
     if(location.checked == true) {
       location.setAttribute("checked","checked");
+
     }
   }
+}
+
+// hide effects error
+function removeErrorMessage(span, field) {
+  setTimeout(() => {
+    span.style.display = "none";
+    field.style.border = "none";
+  }, 
+  5000);
+}
+
+// effects error
+function errorMessage(message, formData, field) 
+{
+  const spanElt = document.createElement("span");
+  spanElt.textContent = message;
+  spanElt.style.color = "#cc0000";
+  spanElt.style.fontSize = "1rem";
+  const span = formData.appendChild(spanElt);
+  field.style.border = "3px solid #cc0000";
+
+  removeErrorMessage(span, field);
 }
 
 // inputs validation
 function validate()
 {
 
-  function removeSpan(span) {
-    setTimeout(() => {
-      span.style.display = "none";
-    }, 
-    4000);
-  }
+  const selectedLocation = document.querySelectorAll(".modal-body .formData:nth-child(7) input[checked]");
+  const terms = document.getElementById("checkbox1");
 
-  function createSpan(errorMessage, formData) {
-    const error = document.createElement("span");
-    error.textContent = errorMessage;
-    error.style.color = "#cc0000";
-    error.style.fontSize = "1rem";
-    const span = formData.appendChild(error);
-
-    removeSpan(span);
-  }
-
+  let first = document.getElementById("first");
+  let last = document.getElementById("last");
+  let email = document.getElementById("email");
+  let birthDate = document.getElementById("birthdate");
+  let quantity = document.getElementById("quantity");
+  
   // first input validation
-  let first = document.getElementById("first").value;
+  if (!first.value.match(/^[a-z]{2,}$/i)) {
 
-  if (!first.match(/^[a-z]{2,}$/i)) {
-
-    let errorMessage = "Le prénom doit contenir que des lettres et en avoir au moins 2";
+    let message = "Le prénom doit contenir que des lettres et en avoir au moins 2";
     const formData = document.querySelector(".modal-body .formData:nth-child(1)");
 
-    createSpan(errorMessage, formData);
+    errorMessage(message, formData, first);
 
     return false;
   }
 
   // last input validation
-  let last = document.getElementById("last").value;
-
-  if (!last.match(/^[a-z]{2,}$/i)) {
-    let errorMessage = "Le nom doit contenir que des lettres et en avoir au moins 2";
+  if (!last.value.match(/^[a-z]{2,}$/i)) {
+    let message = "Le nom doit contenir que des lettres et en avoir au moins 2";
     const formData = document.querySelector(".modal-body .formData:nth-child(2)");
 
-    createSpan(errorMessage, formData);
+    errorMessage(message, formData, last);
 
     return false;
   }
 
   // email validation
-  let email = document.getElementById("email").value;
-
-  if (!email.match(/^[\w\-.]{2,}@[a-zA-Z]{2,}\.[a-zA-Z]{2,4}$/)) {
-    let errorMessage = "Veuillez saisir une adresse email valide";
+  if (!email.value.match(/^[\w\-.]{2,}@[a-zA-Z]{2,}\.[a-zA-Z]{2,4}$/)) {
+    let message = "Veuillez saisir une adresse email valide";
     const formData = document.querySelector(".modal-body .formData:nth-child(3)");
 
-    createSpan(errorMessage, formData);
+    errorMessage(message, formData, email);
 
     return false;
   }
 
   // birthdate validation
-  let birthDate = document.getElementById("birthdate").value;
-
-  if (!birthDate.match(/^[\d]{4}-[\d]{2}-[\d]{2}$/)) {
-    let errorMessage = "Veuillez renseigner votre date de naissance";
+  if (!birthDate.value.match(/^[\d]{4}-[\d]{2}-[\d]{2}$/)) {
+    let message = "Veuillez renseigner votre date de naissance";
     const formData = document.querySelector(".modal-body .formData:nth-child(4)");
 
-    createSpan(errorMessage, formData);
+    errorMessage(message, formData, birthDate);
 
     return false;
   }
 
   // quantity participation validation
-  let quantity = document.getElementById("quantity").value;
-
-  if (!quantity.match(/^[\d]{1,2}$/)) {
-    let errorMessage = "Veuillez saisir des chiffres entre 0 et 99";
+  if (!quantity.value.match(/^[\d]{1,2}$/)) {
+    let message = "Veuillez saisir des chiffres entre 0 et 99";
     const formData = document.querySelector(".modal-body .formData:nth-child(5)");
 
-    createSpan(errorMessage, formData);
+    errorMessage(message, formData, quantity);
 
     return false;
   }
-  
-  // checkbox validation
-  let selectedLocation = document.querySelectorAll(".modal-body .formData:nth-child(7) input[checked]");
 
+  // location validation
   if (selectedLocation.length == 0) {
-      let errorMessage = "Veuillez cocher un tournoi";
-      const formData = document.querySelector(".modal-body .formData:nth-child(7)");
-  
-      createSpan(errorMessage, formData);
-  
-      return false;
+    let message = "Veuillez cocher un tournoi";
+    const formData = document.querySelector(".modal-body .formData:nth-child(7)");
+
+    errorMessage(message, formData, formData);
+
+    return false;
   }
 
+  // terms validation
+  if (!terms.checked) {
+    let message = "Veuillez accepter les conditions générales";
+    const formData = document.querySelector(".modal-body .formData:nth-child(8)");
+
+    errorMessage(message, formData, formData);
+
+    return false;
+  }
 }
-                                                               
+
+// launch modal event
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
+// close modal event
+closeBtn.addEventListener("click", closeModal);
