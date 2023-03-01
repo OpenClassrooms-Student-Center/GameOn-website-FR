@@ -576,7 +576,6 @@ footer {
   .topnav {
     display: flex;
     justify-content: space-between;
-    align-items: center;
   }
   .header-logo img {
     width: 100px;
