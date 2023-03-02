@@ -57,9 +57,11 @@
           <span class="close"></span>
           <div class="modal-body">
             <form
+              id="myForm"
               name="reserve"
               action="index.html"
               method="get"
+              oninvalid="false"
               onsubmit="return validate()"
             >
               <div
@@ -68,12 +70,10 @@
                 <input
                   class="text-control"
                   type="text"
-                  id="first "
+                  id="first"
                   name="first"
-                  minlength="2"
-                  required
                 /><br>
-                <span class="erreur"></span>
+                <p class="erreur"></p>
               </div>
               <div
                 class="formData">
@@ -83,8 +83,6 @@
                   type="text"
                   id="last"
                   name="last"
-                  minlength="2"
-                  required
                 /><br>
                 <span class="erreur"></span>
               </div>
@@ -96,6 +94,7 @@
                   type="email"
                   id="email"
                   name="email"
+                  oninvalid="false"
                 /><br>
                 <span class="erreur"></span>
               </div>
@@ -185,7 +184,8 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
-                <span class="erreur"></span>
+                <br>
+                <span class="erreur" id="Checked"></span>
               </div>
 
               <div
@@ -215,7 +215,7 @@
                 class="button"
                 value="C'est parti"
               />
-              <span id="erreur"></span>
+              <span id="erreurForm"></span>
             </form>
           </div>
         </div>

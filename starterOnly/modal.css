@@ -208,7 +208,18 @@ input {
   font-size: 20px;
   height: 48px;
 }
-.formData[data-error]::after {
+.erreurMessage > .erreur {
+  color: red;
+  font-size: 17px;
+}
+.erreurMessage > input{
+  border: 2px solid red;
+}
+.success > input {
+  border: 2px solid rgb(0, 236, 0);
+}
+
+/* .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
   color: #e54858;
@@ -225,9 +236,9 @@ input {
 }
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
-}
-/* 
-input[data-error]::after {
+} */
+
+/* input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
