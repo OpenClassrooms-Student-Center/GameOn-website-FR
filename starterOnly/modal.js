@@ -52,6 +52,15 @@ function colorValidInput(element, validate) {
     }
 }
 
+/** cleanStyleInput
+ * Clean the style of an input
+ * @param {Element to clean style} element 
+ */
+function cleanStyleInput(element) {
+    element.style.backgroundColor = '#fff';
+    element.style.border = 'none';
+}
+
 /** printErrorMessage
  * Print an error message under the not validate input
  * @param {Element not validate} element 
@@ -300,39 +309,71 @@ function checkTOS(element) {
     return retValue;
 }
 
-/**
- * 
+/** resetModal
+ * Reset the modal to autorize inscription of a new person
+ */
+function resetModal() {
+    const parentElement = form.parentNode;
+    let validMessage = parentElement.querySelector('.valid_mess');
+    let validLink = parentElement.querySelector('.valid_link');
+
+    if(validMessage) {
+        validMessage.style.display = "none";
+    }
+    if(validLink) {
+        validLink.style.display = "none";
+    }
+    form.style.display = "inline-block";
+    form.reset();
+}
+
+/** modalValidMessage
+ * Mask the form and print a valid message
  */
 function modalValidMessage() {
     form.style.display = "none";
 
     const parentElement = form.parentNode;
-    let validMessage = parentElement.querySelector('.valid');
+    let validMessage = parentElement.querySelector('.valid_mess');
+    let validLink = parentElement.querySelector('.valid_link');
 
     if(validMessage) {
         validMessage.style.display = 'inline-block';
     } else {
-        let validMessage = document.createElement("div");
+        let message = document.createElement("div");
 
-        validMessage.style.color = "green";
-        validMessage.style.display = "inline-block";
-        validMessage.style.padding = "12px 2px 2px 12px";
-        validMessage.style.fontSize = "1.2em";
-        validMessage.style.backgroundColor = '#a7daa7';
-        validMessage.style.border = '5px solid #0b520b';
+        message.style.color = "green";
+        message.style.display = "inline-block";
+        message.style.padding = "12px 24px 12px 24px";
+        message.style.fontSize = "1.2em";
+        message.style.backgroundColor = '#a7daa7';
+        message.style.border = '5px solid #0b520b';
+        message.style.borderRadius = "20px";
 
-        validMessage.innerHTML = "<p>Formulaire validé</p>";
+        message.innerHTML = "Merci ! Votre réservation a été reçue.";
 
-        pError.classList.add('valid');
-        parentElement.appendChild(pError);
+        message.classList.add('valid_mess');
+        parentElement.appendChild(message);
     }
-}
 
-/**
- * 
- */
-function resetModal() {
-    
+    if(validLink) {
+        validLink.style.display = "inline-block";
+    } else {
+        let resetLink = document.createElement("p");
+
+        resetLink.style.textDecoration = "underline";
+        resetLink.style.color = "green";
+        resetLink.style.display = "inline-block";
+        resetLink.style.margin = "8px 0 0 12px";
+        resetLink.style.fontSize = "0.8em";
+        resetLink.style.cursor = "pointer";
+        resetLink.innerHTML = "Voulez-vous inscrire une autre personne ?";
+
+        resetLink.classList.add('valid_link');
+        parentElement.appendChild(resetLink);
+
+        resetLink.addEventListener("click", resetModal);
+    }
 }
 
 /** validate
@@ -355,7 +396,13 @@ function validate() {
 
     if(formValid) {
         console.log('Formulaire complet');
-        // closeModal();
+        modalValidMessage();
+        cleanStyleInput(firstName);
+        cleanStyleInput(lastName);
+        cleanStyleInput(eMail);
+        cleanStyleInput(birthdate);
+        cleanStyleInput(nbTournament);
+        cleanStyleInput(loc_form);
     }
     return formValid;
 }
