@@ -60,3 +60,14 @@ const preventDefaultBehaviour = (e) => {
 form.addEventListener("submit", (e) => {
   preventDefaultBehaviour(e)
 })
+
+
+///////////////////////////////////////////
+
+// Check form data
+
+const checkData = () => {
+  formData.forEach((data)=> console.log(data))
+}
+
+submitBtn.addEventListener("click", checkData)
