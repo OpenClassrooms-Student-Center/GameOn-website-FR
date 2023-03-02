@@ -27,8 +27,7 @@ function closeModal() {
 }
 
 // select location
-function selectLocation() 
-{
+function selectLocation() {
   const locationList = document.querySelectorAll("input[name='location']");
   
   let i = 0;
@@ -52,83 +51,101 @@ function removeErrorMessage(span, field) {
 }
 
 // effects error
-function errorMessage(message, formData, field) 
-{
+function errorMessage(message, formData, field) {
   const spanElt = document.createElement("span");
   spanElt.textContent = message;
   spanElt.style.color = "#cc0000";
   spanElt.style.fontSize = "1rem";
   const span = formData.appendChild(spanElt);
-  field.style.border = "3px solid #cc0000";
+  field.style.border = "2px solid #cc0000";
 
   removeErrorMessage(span, field);
 }
 
-// inputs validation
-function validate()
-{
+// first input validation
+function firstValidation() {
+  let firstField = document.getElementById("first");
 
-  const selectedLocation = document.querySelectorAll(".modal-body .formData:nth-child(7) input[checked]");
-  const terms = document.getElementById("checkbox1");
-
-  let first = document.getElementById("first");
-  let last = document.getElementById("last");
-  let email = document.getElementById("email");
-  let birthDate = document.getElementById("birthdate");
-  let quantity = document.getElementById("quantity");
-  
-  // first input validation
-  if (!first.value.match(/^[a-z]{2,}$/i)) {
-
+  if (!firstField.value.match(/^[a-z]{2,}$/i)) {
     let message = "Le prénom doit contenir que des lettres et en avoir au moins 2";
     const formData = document.querySelector(".modal-body .formData:nth-child(1)");
 
-    errorMessage(message, formData, first);
+    errorMessage(message, formData, firstField);
 
     return false;
   }
 
-  // last input validation
-  if (!last.value.match(/^[a-z]{2,}$/i)) {
+  return true;
+}
+
+// last input validation
+function lastValidation() {
+  let lastField = document.getElementById("last");
+
+  if (!lastField.value.match(/^[a-z]{2,}$/i)) {
     let message = "Le nom doit contenir que des lettres et en avoir au moins 2";
     const formData = document.querySelector(".modal-body .formData:nth-child(2)");
 
-    errorMessage(message, formData, last);
+    errorMessage(message, formData, lastField);
 
     return false;
   }
 
-  // email validation
-  if (!email.value.match(/^[\w\-.]{2,}@[a-zA-Z]{2,}\.[a-zA-Z]{2,4}$/)) {
+  return true;
+}
+
+// email validation
+function emailValidation() {
+  let emailField = document.getElementById("email");
+
+  if (!emailField.value.match(/^[\w\-.]{2,}@[a-zA-Z]{2,}\.[a-zA-Z]{2,4}$/)) {
     let message = "Veuillez saisir une adresse email valide";
     const formData = document.querySelector(".modal-body .formData:nth-child(3)");
 
-    errorMessage(message, formData, email);
+    errorMessage(message, formData, emailField);
 
     return false;
   }
 
-  // birthdate validation
-  if (!birthDate.value.match(/^[\d]{4}-[\d]{2}-[\d]{2}$/)) {
+  return true;
+}
+
+// birthdate validation
+function birthdateValidation() {
+  let birthdateField = document.getElementById("birthdate");
+
+  if (!birthdateField.value.match(/^[\d]{4}-[\d]{2}-[\d]{2}$/)) {
     let message = "Veuillez renseigner votre date de naissance";
     const formData = document.querySelector(".modal-body .formData:nth-child(4)");
 
-    errorMessage(message, formData, birthDate);
+    errorMessage(message, formData, birthdateField);
 
     return false;
   }
 
-  // quantity participation validation
-  if (!quantity.value.match(/^[\d]{1,2}$/)) {
+  return true;
+}
+
+// quantity participation validation
+function quantityValidation() {
+  let quantityField = document.getElementById("quantity");
+  
+  if (!quantityField.value.match(/^[\d]{1,2}$/)) {
     let message = "Veuillez saisir des chiffres entre 0 et 99";
     const formData = document.querySelector(".modal-body .formData:nth-child(5)");
 
-    errorMessage(message, formData, quantity);
+    errorMessage(message, formData, quantityField);
 
     return false;
   }
 
-  // location validation
+  return true;
+}
+
+// location validation
+function locationValidation() {
+  const selectedLocation = document.querySelectorAll(".modal-body .formData:nth-child(7) input[checked]");
+  
   if (selectedLocation.length == 0) {
     let message = "Veuillez cocher un tournoi";
     const formData = document.querySelector(".modal-body .formData:nth-child(7)");
@@ -138,13 +155,36 @@ function validate()
     return false;
   }
 
-  // terms validation
+  return true;
+}
+
+// terms validation
+function termsValidation() {
+  const terms = document.getElementById("checkbox1");
+  
   if (!terms.checked) {
     let message = "Veuillez accepter les conditions générales";
     const formData = document.querySelector(".modal-body .formData:nth-child(8)");
 
     errorMessage(message, formData, formData);
 
+    return false;
+  }
+
+  return true;
+}
+
+// inputs validation
+function validate() {
+  let first = firstValidation();
+  let last = lastValidation();
+  let email = emailValidation();
+  let birthdate = birthdateValidation();
+  let quantity = quantityValidation();
+  let location = locationValidation();
+  let terms = termsValidation();
+
+  if (!first || !last || !email || !birthdate || !quantity || !location || !terms) {
     return false;
   }
 }
