@@ -38,6 +38,7 @@ const mail = document.getElementById('email');
 const birthdate = document.getElementById('birthdate');
 const quantity = document.getElementById('quantity');
 const btnRadio = document.querySelectorAll('input[type=radio]');
+const conditionG = document.getElementById('checkbox1');
 const checked = document.getElementById('Checked');
 
 const mailValid = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
@@ -57,6 +58,7 @@ const setError = (element, message) => {
   formData.classList.add('erreurMessage');
   formData.classList.remove('success');
 }
+
 const setSuccess = element => {
   const formData = element.parentElement;
   const errorDisplay = formData.querySelector('.erreur');
@@ -74,21 +76,18 @@ const validate = () => {
   const mailValue = mail.value.trim();
   const birthdateValue = birthdate.value.trim();
   const quantityValue = quantity.value.trim();
-  const btnRadioValue = btnRadio.value;
   
-
-
   if(firstNameValue == "") {
     setError(firstName, 'Le prénom est requis');
   } else if (firstNameValue.length < 2) {
-    setError(firstName, "Le prénom doit contenir au moins 2 caractères.");
+    setError(firstName, "Veuillez entrer 2 caractères ou plus pour le champ du prénom.");
   } else {
     setSuccess(firstName);
   }
   if(lastNameValue == "") {
     setError(lastName, 'Le nom est requis');
   } else if (lastNameValue.length < 2) {
-    setError(lastName, "Le nom doit contenir au moins 2 caractères.");
+    setError(lastName, "Veuillez entrer 2 caractères ou plus pour le champ du nom.");
   } else {
     setSuccess(lastName);
   }
@@ -100,7 +99,7 @@ const validate = () => {
     setSuccess(mail);
   }
   if(birthdateValue == "") {
-    setError(birthdate, 'Veuillez renseigner ce champ.');
+    setError(birthdate, "Vous devez entrer votre date de naissance.");
   } else {
     setSuccess(birthdate);
   }
@@ -109,10 +108,11 @@ const validate = () => {
   } else {
     setSuccess(quantity);
   }
-  checkedTrue();
+  radioCheckedTrue();
+  generalCheckedTrue();
 }
 
-const checkedTrue = () => {
+const radioCheckedTrue = () => {
   const btnRadio = document.querySelectorAll('input[type=radio]');
   let isFormValid = false;
 
@@ -126,6 +126,19 @@ const checkedTrue = () => {
   if(isFormValid) {
     setSuccess(checked);
   } else {
-    setError(checked, "Veuillez sélectionner au moins 1 évènement")
+    setError(checked, "Vous devez choisir une option.");
+  }
+}
+
+const generalCheckedTrue = () => {
+  const conditionG = document.getElementById('checkbox1');
+  const check = document.getElementById('check');
+  let checkedCondition = false;
+
+  if(conditionG.checked) {
+    checkedCondition = true;
+    setSuccess(check);
+  } else {
+    setError(check, "Vous devez vérifier que vous acceptez les termes et conditions.");
   }
 }
