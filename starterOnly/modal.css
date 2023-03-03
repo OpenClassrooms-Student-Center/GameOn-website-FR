@@ -67,7 +67,6 @@ img {
 .topnav .icon {
   display: none;
 }
-
 #errorEmail, 
 #errorLast,
 #errorDate,
@@ -221,7 +220,6 @@ main {
   margin: auto; /* Important */
   text-align: center;
 }
-
 
 label {
   font-family: var(--font-default);
@@ -561,3 +559,4 @@ footer {
     opacity: 1;
   }
 }
+
