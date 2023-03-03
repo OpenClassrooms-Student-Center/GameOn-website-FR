@@ -224,6 +224,29 @@ main {
   margin: 15px auto;
 }
 
+
+.nonActif {
+  visibility: hidden;
+  
+}
+
+
+ #affMercii {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+
+ }
+
+ .closeButon {
+ position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+ }
+
+
 label {
   font-family: var(--font-default);
   font-size: 17px;

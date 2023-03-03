@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <title>Reservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="../Styles/modal.css" />
+    <link rel="stylesheet" href="modal.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans"
@@ -14,7 +14,7 @@
   <body>
     <div class="topnav" id="myTopnav">
     
-          <div class="header-logo"><img alt="logo" src="../Image/Logo.png" /></div>
+          <div class="header-logo"><img alt="logo" src="Logo.png" /></div>
 
           <div class="main-navbar">
               <a href="#" class="active"><span>Accueil</span></a>
@@ -43,7 +43,7 @@
           </button> 
         </div>
         <div class="hero-img">
-          <img src="../Image/bg_img.jpg" alt="img" />
+          <img src="bg_img.jpg" alt="img" />
         </div>
        <button class="btn-signup modal-btn">
           je m'inscris
@@ -58,7 +58,7 @@
         </div>
     <!--      <span class="close"></span> -->
           <div class="modal-body">
-            <form
+            <form  
               name="reserve"
               action="index.html"
               method="get"
@@ -121,11 +121,10 @@
               </div>
 
                
-              <div
+              <!-- <div
                 class="formData"  id="affMercii">
-
                 <p class="text-Merci"></p> 
-              </div>   
+              </div>    -->
 
               <div
                 class="formData"  id="myQuantity">
@@ -245,8 +244,16 @@
              type="submit"
             value="C'est parti"
           />
-            </form>   
+            </form>  
           </div>
+             <div
+                class="formData"  id="affMercii">
+                <p class="text-Merci"></p> 
+              </div> 
+
+              <button  class="btn-submit closeButon "> 
+                Fermer</button> 
+       
         </div>
       </div>
     </main>

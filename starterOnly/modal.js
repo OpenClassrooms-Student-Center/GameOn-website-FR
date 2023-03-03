@@ -17,6 +17,9 @@ const inputValidation = document.querySelector('form');
 const formulaire = document.querySelector('form');
 formulaire.addEventListener("submit", checkValidationsForm)
 
+//  btnFermer bouton pour fermer la modale
+const btnFermer =  document.querySelector('.closeButon');
+
 
 // msg erreur affiché pour chaque input
 const msgUtilisateur = document.querySelectorAll('.message-alert');
@@ -34,8 +37,8 @@ const msgUtilisateur = document.querySelectorAll('.message-alert');
  function launchModal() {
   modalbg.style.display = "block";
   // inputValidation.addEventListener('submit', validSaisie)
+  btnFermer.classList.add("nonActif")
   inputValidation.addEventListener('submit', checkValidationsForm)
-
 }
 
 
@@ -50,11 +53,11 @@ const msgUtilisateur = document.querySelectorAll('.message-alert');
      //retourne un tableau de propriétés
     const keys = Object.keys(InputValidity)
   
+
     // failedInputs contient input de InputValidity
     // qui ont échoué au test de validité , c'est à dire qui sont à false
     const failedInputs = keys.filter(key => !InputValidity[key]) 
     console.log("!!!! failedInputs", failedInputs)
-
 
       if (failedInputs.length)
        {
@@ -69,22 +72,25 @@ const msgUtilisateur = document.querySelectorAll('.message-alert');
           console.log("Données envoyées avec succès")
 
           e.preventDefault();
+          formulaire.classList.add("nonActif")
+          var SaisieIncomplete6 =  document.querySelector('#myOption'); 
+          SaisieIncomplete6.style.opacity = 0;  
+          var SaisieIncomplete7 =  document.querySelector('#Conditions'); 
+          SaisieIncomplete7.style.opacity = 0;
+          btnFermer.classList.remove("nonActif")
       
-var SaisieIncomplete1 =  document.querySelector('.formData:nth-child(1)'); 
-SaisieIncomplete1.style.opacity = 0;
-var SaisieIncomplete2 =  document.querySelector('.formData:nth-child(2)'); 
-SaisieIncomplete2.style.opacity = 0;
-var SaisieIncomplete3 =  document.querySelector('.formData:nth-child(3)'); 
-SaisieIncomplete3.style.opacity = 0;
-var SaisieIncomplete4 =  document.querySelector('.formData:nth-child(4)'); 
-SaisieIncomplete4.style.opacity = 0;
-var SaisieIncomplete5 =  document.querySelector('#myQuantity'); 
-SaisieIncomplete5.style.opacity = 0;
+// var SaisieIncomplete1 =  document.querySelector('.formData:nth-child(1)'); 
+// SaisieIncomplete1.style.opacity = 0;
+// var SaisieIncomplete2 =  document.querySelector('.formData:nth-child(2)'); 
+// SaisieIncomplete2.style.opacity = 0;
+// var SaisieIncomplete3 =  document.querySelector('.formData:nth-child(3)'); 
+// SaisieIncomplete3.style.opacity = 0;
+// var SaisieIncomplete4 =  document.querySelector('.formData:nth-child(4)'); 
+// SaisieIncomplete4.style.opacity = 0;
+// var SaisieIncomplete5 =  document.querySelector('#myQuantity'); 
+// SaisieIncomplete5.style.opacity = 0;
 
-var SaisieIncomplete6 =  document.querySelector('#myOption'); 
-SaisieIncomplete6.style.opacity = 0;  
-var SaisieIncomplete7 =  document.querySelector('#Conditions'); 
-SaisieIncomplete7.style.opacity = 0;
+
 
 
           var effTextLabel =  document.querySelector('.text-label'); 
@@ -101,17 +107,17 @@ SaisieIncomplete7.style.opacity = 0;
           // affichageMerciInscription.setAttribute ("text-align",  center)
           affichageMerciInscription.style.display = "";
           
-          // const inputValidation = document.querySelector('form');
-          const btnFermer =  document.querySelector('.btn-submit');
+
           
-          btnFermer.value = "Fermer";
-          //   inputFermerApresMerci.removeEventListener('submit', fermerModal); 
+          // Fermeture de la modal";
+
+          btnFermer.addEventListener('click', fermerModal); 
           
           // --------------------------------------------------
           // event  fermer activer ou non modale aprés message merci ----------------------------
           
           
-          inputValidation.addEventListener('submit', fermerModal);
+          // !!! inputValidation.addEventListener('submit', fermerModal);
           
           // reset du formulaire
           document.reserve.reset();
@@ -453,27 +459,29 @@ function editNav() {
 
   //    let SaisieIncomplete1 =  document.querySelector(`.formData:nth-child(${index})`); 
 
-    var SaisieIncomplete1 =  document.querySelector('.formData:nth-child(1)');
-      SaisieIncomplete1.style.opacity = 1;
-      var SaisieIncomplete2 =  document.querySelector('.formData:nth-child(2)'); 
-      SaisieIncomplete2.style.opacity = 1;
-      var SaisieIncomplete3 =  document.querySelector('.formData:nth-child(3)'); 
-      SaisieIncomplete3.style.opacity = 1;
-      var SaisieIncomplete4 =  document.querySelector('.formData:nth-child(4)'); 
-      SaisieIncomplete4.style.opacity = 1;
-      var SaisieIncomplete5 =  document.querySelector('#myQuantity'); 
-      SaisieIncomplete5.style.opacity = 1;
+    // var SaisieIncomplete1 =  document.querySelector('.formData:nth-child(1)');
+    //   SaisieIncomplete1.style.opacity = 1;
+    //   var SaisieIncomplete2 =  document.querySelector('.formData:nth-child(2)'); 
+    //   SaisieIncomplete2.style.opacity = 1;
+    //   var SaisieIncomplete3 =  document.querySelector('.formData:nth-child(3)'); 
+    //   SaisieIncomplete3.style.opacity = 1;
+    //   var SaisieIncomplete4 =  document.querySelector('.formData:nth-child(4)'); 
+    //   SaisieIncomplete4.style.opacity = 1;
+    //   var SaisieIncomplete5 =  document.querySelector('#myQuantity'); 
+    //   SaisieIncomplete5.style.opacity = 1;
 
 
-      var SaisieIncomplete6 =  document.querySelector('#myOption'); 
-      SaisieIncomplete6.style.opacity = 1;  
-      var SaisieIncomplete7 =  document.querySelector('#Conditions'); 
+       var SaisieIncomplete6 =  document.querySelector('#myOption'); 
+       SaisieIncomplete6.style.opacity = 1;  
+       var SaisieIncomplete7 =  document.querySelector('#Conditions'); 
       SaisieIncomplete7.style.opacity = 1; 
 
-      const btnFermer =  document.querySelector('.btn-submit');
-      const inputCloseButton = document.querySelector('form');
-      btnFermer.value = "C'est parti";
+      // const btnFermer =  document.querySelector('.btn-submit');
+      // const inputCloseButton = document.querySelector('form');
+      // btnFermer.value = "C'est parti";
 
+        formulaire.classList.remove("nonActif")
+        btnFermer.classList.add("nonActif")
         InputValidity.checkPrenom =  false,
         InputValidity.checkNom = false,
         InputValidity.checkEmail = false,
@@ -484,7 +492,7 @@ function editNav() {
       document.reserve.reset();
       affichageMerciInscription.innerHTML = "";
       affichageMerciInscription.style.display =  "none";
-      inputValidation.removeEventListener('submit', fermerModal);
+      // !!! inputValidation.removeEventListener('submit', fermerModal);
       modalbg.style.display = "none";
     }
 
