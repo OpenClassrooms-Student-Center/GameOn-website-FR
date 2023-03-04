@@ -51,6 +51,22 @@ const closeModal = () => {
   handleListernerOnClick(isModalOpen);
 };
 
+// click out of the box
+
+const clickTarget = (e) => {
+  if (e.target.getAttribute("class") == "bground") {
+    closeModal();
+  }
+};
+
+const handleListernerOnClick = (isModalOpen) => {
+  if (isModalOpen) {
+    window.addEventListener("click", clickTarget);
+  } else if (!isModalOpen) {
+    window.removeEventListener("click", clickTarget);
+  }
+};
+
 // click on cross
 
 crossCloseModalBtn.addEventListener("click", closeModal);
