@@ -10,11 +10,14 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const closeModalBtn = document.querySelector(".close");
+const crossCloseModalBtn = document.querySelector(".close");
+const endModalBtn = document.querySelector(".btn-close");
 const formData = document.querySelectorAll(".formData");
 const submitBtn = document.querySelector(".btn-submit");
 const form = document.querySelector("form");
 const errorMessage = document.querySelectorAll(".error");
+const validate = document.querySelector(".validate");
+let isModalOpen = false;
 
 // Regex
 
@@ -31,6 +34,10 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  form.style.display = "block";
+  validate.style.display = "none";
+  isModalOpen = true;
+  handleListernerOnClick(isModalOpen);
 }
 
 ////////////////////////////////////////////
@@ -39,26 +46,18 @@ function launchModal() {
 
 const closeModal = () => {
   modalbg.style.display = "none";
-};
-
-// click out of the box
-
-const clickTarget = (e) => {
-  if (
-    e.target.getAttribute("class") == "bground" &&
-    modalbg.style.display == "block"
-  ) {
-    closeModal();
-  }
+  validate.style.display = "none";
+  isModalOpen = false;
+  handleListernerOnClick(isModalOpen);
 };
 
 // click on cross
 
-closeModalBtn.addEventListener("click", closeModal);
+crossCloseModalBtn.addEventListener("click", closeModal);
 
-window.addEventListener("click", (e) => {
-  clickTarget(e.target);
-});
+// click on end button
+
+endModalBtn.addEventListener("click", closeModal);
 
 ////////////////////////////////////////////
 
@@ -187,6 +186,9 @@ const validation = (checkPass) => {
   if (!checkPass) {
     return;
   }
+
+  form.style.display = "none";
+  validate.style.display = "block";
 };
 
 form.addEventListener("submit", (e) => {
