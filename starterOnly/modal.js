@@ -170,7 +170,6 @@ const checkValidity = (
 
   if (numberTournament && numRegex.test(numberTournament)) {
     errorMessage[4].style.display = "none";
-    console.log(parseInt(numberTournament));
   } else {
     checkPass = false;
     errorMessage[4].style.display = "block";
