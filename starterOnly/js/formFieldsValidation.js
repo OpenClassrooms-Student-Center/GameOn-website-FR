@@ -10,11 +10,13 @@ const checkbox = document.getElementById('checkbox1');
 const radio = document.querySelectorAll('.checkbox-input[type="radio"]');
 console.log(radio);
 
+const reserve = document.querySelector('form')
+
 // REGEX
 const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ\-\' ]{2,}$/;
-const regex2 =  /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/; 
+const regex2 = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 //Regex2 has been made using the RFC 3696 syntax  = https://fr.wikipedia.org/wiki/Adresse_%C3%A9lectronique#Syntaxe_exacte
-const regex3 =  /^[0-9]{4}[-]{1}[0-9]{2}[-]{1}[0-9]{2}$/g;
+const regex3 = /^[0-9]{4}[-]{1}[0-9]{2}[-]{1}[0-9]{2}$/g;
 
 const form = document.querySelector('form');
 
@@ -110,21 +112,18 @@ function checkCheckbox() {
 // RADIO BUTTONS
 function validLocation() {
     let radioButton = document.querySelector('input[name = "location"]:checked');
-  
-    if(radioButton == null){ 
+
+    if (radioButton == null) {
         const radioError = document.getElementById('location1');
         radioError.parentElement.setAttribute('data-error-visible', 'true');
         radioError.parentElement.setAttribute('data-error', 'Veuillez sélectionner une ville');
         radioError.style.border = '2px solid #e54858';
         return false;
-      }
-      radioButton.parentElement.setAttribute('data-error-visible', 'false');
-      radioButton.style.border = 'none';
-      return true;
-  }
-
-
-
+    }
+    radioButton.parentElement.setAttribute('data-error-visible', 'false');
+    radioButton.style.border = 'none';
+    return true;
+}
 
 // FORM FIELDS EVENTS
 function formFieldsValidation(element, method, event) {
@@ -137,24 +136,48 @@ formFieldsValidation(birthdate, checkBirthdate, 'focusout');
 formFieldsValidation(quantity, checkQuantity, 'focusout');
 formFieldsValidation(checkbox1, checkCheckbox, 'click');
 radio.forEach(element => {
-    formFieldsValidation(element, validLocation, 'change');   
+    formFieldsValidation(element, validLocation, 'change');
 });
 
 
 function validate(event) {
     event.preventDefault();
-    if (checkFirstName() === true &&
-        checkLastName() === true &&
-        checkEmail() === true &&
-        checkBirthdate() === true &&
-        checkQuantity() === true &&
-        checkCheckbox() === true &&
-        validLocation () === true) {
-        //return true;
+    let formIsValid = true;
+    if (checkFirstName() === false) {
+        formIsValid = false;
     }
-    return false;
+    if (checkLastName() === false) {
+        formIsValid = false;
+    }
+    if (checkEmail() === false) {
+        formIsValid = false;
+    }
+    if (checkBirthdate() === false) {
+        formIsValid = false;
+    }
+    if (checkQuantity() === false) {
+        formIsValid = false;
+    }
+    if (checkCheckbox() === false) {
+        formIsValid = false;
+    }
+    if (validLocation() === false) {
+        formIsValid = false;
+    }
+    return formIsValid;
 }
 
-form.addEventListener('submit', function (event) {
-validate(event)
-});
+reserve.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+ const isvalid = validate(e);
+
+    if (isvalid === true) {
+        sendForm();
+    }
+})
+
+function sendForm() {
+    const modal = document.querySelector('.modal-body');
+    modal.innerHTML = "<h1 class='succes'>Merci pour votre inscritpion</h1>"
+}
