@@ -17,6 +17,8 @@ const submitBtn = document.querySelector(".btn-submit");
 const form = document.querySelector("form");
 const errorMessage = document.querySelectorAll(".error");
 const validate = document.querySelector(".validate");
+const navBar = document.querySelector(".main-navbar");
+const menuIcon = document.querySelector(".icon");
 let isModalOpen = false;
 let heroSection = document.querySelector(".hero-section");
 let header = document.querySelector("header");
@@ -31,6 +33,22 @@ const numRegex = new RegExp("^[0-9]+$");
 
 ////////////////////////////////////////////
 
+// open menu on display mobile
+
+menuIcon.addEventListener("click", () => {
+  navBar.classList.toggle("open");
+});
+
+// remove mobile nav style if screen is resize
+
+window.addEventListener("resize", (e) => {
+  if (e.currentTarget.innerWidth > 1000) {
+    navBar.classList.remove("open");
+  }
+});
+
+////////////////////////////////////////////
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -42,8 +60,11 @@ function launchModal() {
   isModalOpen = true;
   handleListernerOnClick(isModalOpen);
   heroSection.setAttribute("class", "select-hide");
-  header.setAttribute("class", "select-hide");
   footer.setAttribute("class", "select-hide");
+
+  if (window.innerWidth > 1000) {
+    header.setAttribute("class", "select-hide");
+  }
 }
 
 ////////////////////////////////////////////
