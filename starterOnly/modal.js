@@ -18,6 +18,9 @@ const form = document.querySelector("form");
 const errorMessage = document.querySelectorAll(".error");
 const validate = document.querySelector(".validate");
 let isModalOpen = false;
+let heroSection = document.querySelector(".hero-section");
+let header = document.querySelector("header");
+let footer = document.querySelector("footer");
 
 // Regex
 
@@ -38,6 +41,9 @@ function launchModal() {
   validate.style.display = "none";
   isModalOpen = true;
   handleListernerOnClick(isModalOpen);
+  heroSection.setAttribute("class", "select-hide");
+  header.setAttribute("class", "select-hide");
+  footer.setAttribute("class", "select-hide");
 }
 
 ////////////////////////////////////////////
@@ -49,6 +55,9 @@ const closeModal = () => {
   validate.style.display = "none";
   isModalOpen = false;
   handleListernerOnClick(isModalOpen);
+  heroSection.setAttribute("class", "hero-section");
+  header.setAttribute("class", "");
+  footer.setAttribute("class", "");
 };
 
 // click out of the box
