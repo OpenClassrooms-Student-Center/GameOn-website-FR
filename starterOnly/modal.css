@@ -169,7 +169,7 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
-.content {
+.content{
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
@@ -182,8 +182,23 @@ main {
   color: #fff;
   padding-top: 10px;
 }
+.validData {
+  margin: 5% auto;
+  width: 100%;
+  height: 900px;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+}
 
-.modal-body {
+.modal-body,
+.modal-confirm {
   padding: 15px 8%;
   margin: 15px auto;
 }
@@ -209,14 +224,17 @@ input {
   height: 48px;
 }
 .erreurMessage > .erreur {
-  color: red;
-  font-size: 17px;
+  color: #e54858;
+  font-size: 12px;
 }
 .erreurMessage > input{
-  border: 2px solid red;
+  border: 2px solid #e54858;
 }
 .success > input {
-  border: 2px solid rgb(0, 236, 0);
+  border: 2px solid #279e7a;
+}
+.hidden {
+  visibility: hidden;
 }
 
 /* .formData[data-error]::after {
@@ -414,6 +432,15 @@ input {
 .text-label {
   font-weight: normal;
   font-size: 16px;
+}
+.textValid {
+  width: 55%;
+  font-size: 35px;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .hero-section {
   min-height: 93vh;

@@ -12,7 +12,7 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
+var formData = document.querySelectorAll(".formData");
 //je cible le bouton de fermeture de la modale
 const modalBtnClose = document.querySelector(".close");
 
@@ -40,6 +40,9 @@ const quantity = document.getElementById('quantity');
 const btnRadio = document.querySelectorAll('input[type=radio]');
 const conditionG = document.getElementById('checkbox1');
 const checked = document.getElementById('Checked');
+const submitBtn = document.getElementById('submitBtn');
+const textLabel = document.querySelector('.text-label');
+
 
 const mailValid = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
 const quantityValid = /^[1-9]$/;
@@ -47,8 +50,10 @@ const quantityValid = /^[1-9]$/;
 form.addEventListener('submit', function(e) {
   e.preventDefault();
   
-  validate();
+  // validate();
+  validData();
 });
+
 
 const setError = (element, message) => {
   const formData = element.parentElement;
@@ -59,7 +64,7 @@ const setError = (element, message) => {
   formData.classList.remove('success');
 }
 
-const setSuccess = element => {
+const setSuccess = (element) => {
   const formData = element.parentElement;
   const errorDisplay = formData.querySelector('.erreur');
 
@@ -67,8 +72,6 @@ const setSuccess = element => {
   formData.classList.add('success');
   formData.classList.remove('erreurMessage');
 }
-
-
 
 const validate = () => {
   const firstNameValue = firstName.value.trim();
@@ -110,6 +113,7 @@ const validate = () => {
   }
   radioCheckedTrue();
   generalCheckedTrue();
+
 }
 
 const radioCheckedTrue = () => {
@@ -142,3 +146,38 @@ const generalCheckedTrue = () => {
     setError(check, "Vous devez vérifier que vous acceptez les termes et conditions.");
   }
 }
+
+
+const validData = () => {
+  var dataValid = false;
+  var verifChamps = 0;
+  const verif = document.querySelectorAll('.formData');
+  for(let i = 0; i < verif.length; i++){
+    if(verif[i].classList.contains("success")){
+      verifChamps += 1;
+      if(verifChamps == 7){
+        dataValid = true;
+        modalSuccess();
+      } else {
+        validate();
+      }
+    } 
+  }
+}
+
+const modalSuccess = () => {
+  const modalValid = document.querySelectorAll('.success');
+  for(let i = 0; i < modalValid.length; i++) {
+    modalValid[i].classList.add('hidden');
+  }
+  textLabel.classList.add('textValid');
+  textLabel.innerHTML = "Merci pour votre inscription";
+  submitBtn.value = "Fermer";
+
+  if(submitBtn.value == "Fermer") {
+    submitBtn.addEventListener('click', function() {
+      closeModal();
+    });
+  }
+}
+

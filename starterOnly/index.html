@@ -62,7 +62,7 @@
               action="index.html"
               method="get"
               oninvalid="false"
-              onsubmit="return validate()"
+              onsubmit="validate()"
             >
               <div
                 class="formData">
@@ -73,7 +73,7 @@
                   id="first"
                   name="first"
                 /><br>
-                <p class="erreur"></p>
+                <span class="erreur"></span>
               </div>
               <div
                 class="formData">
@@ -211,12 +211,11 @@
                 <span class="erreur"></span>
               </div>
               <input
+                id="submitBtn"
                 class="btn-submit"
                 type="submit"
-                class="button"
                 value="C'est parti"
               />
-              <span id="erreurForm"></span>
             </form>
           </div>
         </div>
