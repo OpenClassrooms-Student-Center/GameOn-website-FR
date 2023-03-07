@@ -248,10 +248,10 @@ input {
   color: #e54858;
   display: block;
   margin-top: 7px;
-  margin-bottom: 7px;
-  text-align: right;
+  margin-bottom: 17px;
+  text-align: left;
   line-height: 0.3;
-  opacity: 0;
+  opacity: 1;
   transition: 0.3s;
 }
 .formData[data-error-visible="true"]::after {
@@ -261,18 +261,12 @@ input {
   border: 2px solid #e54858;
 }
 
-input[data-error]::after {
+/* input[data-error]::after {
   content: attr(data-error);
+  font-family: "Roboto", Arial, Helvetica, sans-serif;
   font-size: 0.4em;
   color: red;
-}
-
-.error {
-  display: none;
-  font-size: 12px;
-  color: rgb(255, 48, 48);
-  margin-bottom: 5px;
-}
+} */
 
 /* Style checkbox and radio */
 
@@ -583,7 +577,6 @@ input[data-error]::after {
     text-align: center;
   }
 }
-
 
 /* Apparition modal */
 
