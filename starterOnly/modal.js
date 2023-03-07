@@ -113,11 +113,11 @@ const handleData = (e) => {
   e.preventDefault();
 
   // Collect forms values
-  let first = document.forms["reserve"]["first"].value;
-  let last = document.forms["reserve"]["last"].value;
-  let email = document.forms["reserve"]["email"].value;
-  let birthdate = document.forms["reserve"]["birthdate"].value;
-  let numberTournament = document.forms["reserve"]["quantity"].value;
+  let first = document.forms["reserve"]["first"];
+  let last = document.forms["reserve"]["last"];
+  let email = document.forms["reserve"]["email"];
+  let birthdate = document.forms["reserve"]["birthdate"];
+  let numberTournament = document.forms["reserve"]["quantity"];
   let selectedTournament = isChecked("radio", "reserve", "location");
   let isTermsCheck = document.forms["reserve"]["terms"].checked;
 
@@ -160,66 +160,97 @@ const checkValidity = (
 
   // Check 2 or more character on first and last name
 
-  if (first.length < 2) {
+  if (!first.validity.valid) {
     checkPass = false;
-    errorMessage[0].style.display = "block";
-  } else {
-    errorMessage[0].style.display = "none";
-  }
 
-  if (last.length < 2) {
-    checkPass = false;
-    errorMessage[1].style.display = "block";
+    formData[0].setAttribute(
+      "data-error",
+      "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
+    );
+    formData[0].setAttribute("data-error-visible", true);
   } else {
-    errorMessage[1].style.display = "none";
+    formData[0].setAttribute("data-error", "");
+    formData[0].setAttribute("data-error-visible", false);
+  }
+  if (!last.validity.valid) {
+    checkPass = false;
+    formData[1].setAttribute(
+      "data-error",
+      "Veuillez entrer 2 caractères ou plus pour le champ du nom."
+    );
+    formData[1].setAttribute("data-error-visible", true);
+  } else {
+    formData[1].setAttribute("data-error", "");
+    formData[1].setAttribute("data-error-visible", false);
   }
 
   // Check email can exist
 
-  if (!emailRegex.test(email)) {
+  if (!emailRegex.test(email) && !email.validity.valid) {
     checkPass = false;
-    errorMessage[2].style.display = "block";
+    formData[2].setAttribute(
+      "data-error",
+      "Veuillez entrer une adresse electronique valide exemple@exemple.com"
+    );
+    formData[2].setAttribute("data-error-visible", true);
   } else {
-    errorMessage[2].style.display = "none";
+    formData[2].setAttribute("data-error", "");
+    formData[2].setAttribute("data-error-visible", false);
   }
 
   // Check birthdate exist and is between 1900 and 2023
 
   if (
-    !birthdate ||
-    parseInt(birthdate.split("-")[0]) < 1900 ||
-    parseInt(birthdate.split("-")[0]) > 2023
+    parseInt(birthdate.value.split("-")[0]) < 1900 ||
+    parseInt(birthdate.value.split("-")[0]) > 2023 ||
+    !birthdate.validity.valid
   ) {
     checkPass = false;
-    errorMessage[3].style.display = "block";
+    formData[3].setAttribute(
+      "data-error",
+      "Vous devez entrer une date de naissance valide."
+    );
+    formData[3].setAttribute("data-error-visible", true);
   } else {
-    errorMessage[3].style.display = "none";
+    formData[3].setAttribute("data-error", "");
+    formData[3].setAttribute("data-error-visible", false);
   }
 
   // Check if numberTournament is a number
 
-  if (numberTournament && numRegex.test(numberTournament)) {
-    errorMessage[4].style.display = "none";
-  } else {
+  if (!numberTournament.validity.valid) {
     checkPass = false;
-    errorMessage[4].style.display = "block";
+    formData[4].setAttribute(
+      "data-error",
+      "Veuillez entrer un nombre entre 0 et 99."
+    );
+    formData[4].setAttribute("data-error-visible", true);
+  } else {
+    formData[4].setAttribute("data-error", "");
+    formData[4].setAttribute("data-error-visible", false);
   }
-
   // Check selectedTournament exist
 
   if (!selectedTournament) {
     checkPass = false;
-    errorMessage[5].style.display = "block";
+    formData[5].setAttribute("data-error", "Veuillez choisir une option");
+    formData[5].setAttribute("data-error-visible", true);
   } else {
-    errorMessage[5].style.display = "none";
+    formData[5].setAttribute("data-error", "");
+    formData[5].setAttribute("data-error-visible", false);
   }
 
   // Check if terms is checked
   if (!isTermsCheck) {
     checkPass = false;
-    errorMessage[6].style.display = "block";
+    formData[6].setAttribute(
+      "data-error",
+      "Vous devez vérifier que vous acceptez les termes et conditions."
+    );
+    formData[6].setAttribute("data-error-visible", true);
   } else {
-    errorMessage[6].style.display = "none";
+    formData[6].setAttribute("data-error", "");
+    formData[6].setAttribute("data-error-visible", false);
   }
 
   validation(checkPass);
