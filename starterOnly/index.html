@@ -74,7 +74,7 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
-            <form name="reserve" action="index.html" method="get">
+            <form novalidate name="reserve" action="index.html" method="get">
               <div class="formData">
                 <label for="first">Prénom</label><br />
                 <input
@@ -82,11 +82,10 @@
                   type="text"
                   id="first"
                   name="first"
+                  minlength="2"
+                  data-error-visible="false"
+                  required
                 /><br />
-                <span class="error"
-                  >Veuillez entrer 2 caractères ou plus pour le champ du
-                  prénom.</span
-                >
               </div>
               <div class="formData">
                 <label for="last">Nom</label><br />
@@ -95,24 +94,22 @@
                   type="text"
                   id="last"
                   name="last"
+                  data-error-visible="false"
+                  required
                 /><br />
-                <span class="error"
-                  >Veuillez entrer 2 caractères ou plus pour le champ du
-                  nom.</span
-                >
               </div>
               <div class="formData">
                 <label for="email">E-mail</label><br />
                 <input
                   class="text-control"
-                  type="text"
+                  type="email"
                   id="email"
                   name="email"
+                  data-error-visible="false"
+                  data-error="Veuillez entrer une adresse electronique valide
+                  exemple@exemple.com"
+                  required
                 /><br />
-                <span class="error"
-                  >Veuillez entrer une adresse electronique valide
-                  exemple@exemple.com</span
-                >
               </div>
               <div class="formData">
                 <label for="birthdate">Date de naissance</label><br />
@@ -121,10 +118,9 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
+                  data-error-visible="false"
+                  required
                 /><br />
-                <span class="error"
-                  >Vous devez entrer votre date de naissance.</span
-                >
               </div>
               <div class="formData">
                 <label for="quantity"
@@ -132,16 +128,16 @@
                   ?</label
                 ><br />
                 <input
-                  type="text"
+                  type="number"
                   class="text-control"
                   id="quantity"
                   name="quantity"
-                  maxlength="2"
+                  min="0"
+                  max="100"
+                  data-error-visible="false"
+                  required
                 />
               </div>
-              <span class="error"
-                >Veuillez entrer un nombre entre 0 et 99.</span
-              >
               <p class="text-label">
                 A quel tournoi souhaitez-vous participer cette année ?
               </p>
@@ -152,6 +148,7 @@
                   id="location1"
                   name="location"
                   value="New York"
+                  data-error-visible="false"
                   checked
                 />
                 <label class="checkbox-label" for="location1">
@@ -213,7 +210,6 @@
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >
-                <span class="error">Veuillez choisir une option</span>
               </div>
 
               <div class="formData">
@@ -222,6 +218,8 @@
                   type="checkbox"
                   id="checkbox1"
                   name="terms"
+                  data-error-visible="false"
+                  required
                   checked
                 />
                 <label class="checkbox2-label" for="checkbox1">
@@ -229,10 +227,7 @@
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br />
-                <span class="error"
-                  >Vous devez vérifier que vous acceptez les termes et
-                  conditions.</span
-                >
+
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
