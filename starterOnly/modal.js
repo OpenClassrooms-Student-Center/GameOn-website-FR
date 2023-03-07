@@ -174,17 +174,55 @@ function termsValidation() {
   return true;
 }
 
+// hide form fields
+function hideFields() {
+  const form = document.querySelector("form[name='reserve']");
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const fields = Object.values(formData);
+
+    fields.forEach((field) => {
+      field.style.display = "none";
+    });
+
+    successMessage(form);
+  });
+}
+
+// modal success message
+function successMessage(form) {
+  const successMessage = document.querySelector("form p");
+
+  successMessage.textContent = "Merci pour votre inscription";
+  successMessage.style.fontSize = "1.8rem";
+  successMessage.style.textAlign = "center";
+  successMessage.style.padding = "290px 60px 290px 60px";
+
+  document.querySelector(".btn-submit").value = "Fermer";
+
+  // close modal success message
+  form.addEventListener("submit", (event) => {
+    closeModal();
+    
+  });
+}
+
 // inputs validation
 function validate() {
-  let first = firstValidation();
-  let last = lastValidation();
-  let email = emailValidation();
-  let birthdate = birthdateValidation();
-  let quantity = quantityValidation();
-  let location = locationValidation();
-  let terms = termsValidation();
 
-  if (!first || !last || !email || !birthdate || !quantity || !location || !terms) {
+  let first = firstValidation(),
+      last = lastValidation(),
+      email = emailValidation(),
+      birthdate = birthdateValidation(),
+      quantity = quantityValidation(),
+      location = locationValidation(),
+      terms = termsValidation();
+  
+  if (first && last && email && birthdate && quantity && location && terms) {
+    hideFields();
+
+  } 
+  else {
     return false;
   }
 }
@@ -194,3 +232,5 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // close modal event
 closeBtn.addEventListener("click", closeModal);
+
+
