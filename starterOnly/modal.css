@@ -221,16 +221,20 @@ input {
   font-size: 20px;
   height: 48px;
 }
+/* Affichage du texte en rouge */
 .erreurMessage > .erreur {
   color: #e54858;
   font-size: 12px;
 }
+/* Affichage d'une bordure rouge en cas d'erreur de saisie */
 .erreurMessage > input{
   border: 2px solid #e54858;
 }
+/* Affichage d'une bordure verte en cas de succès */
 .success > input {
   border: 2px solid #279e7a;
 }
+/* rendre invisible après la soumission  */
 .hidden {
   visibility: hidden;
 }
@@ -589,7 +593,6 @@ footer {
     width: 40%;
     padding-left: 15px;
   }
-
 }
 
 @keyframes modalopen {
