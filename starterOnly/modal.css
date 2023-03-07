@@ -167,14 +167,6 @@ main {
   background: #3876ac;
 }
 
-/* Footer */
-
-.footer {
-  margin: 20px;
-  padding: 10px;
-  font-family: var(--font-slab);
-}
-
 /* Modal form */
 
 .button {
@@ -459,6 +451,9 @@ input[data-error]::after {
   font-weight: normal;
   font-size: 16px;
 }
+
+/* Hero banner style */
+
 .hero-section {
   min-height: 660px;
   border-radius: 10px;
@@ -519,6 +514,18 @@ input[data-error]::after {
   padding: 0;
   object-fit: cover;
 }
+
+.hero-section > .btn-signup {
+  display: none;
+}
+
+/* Footer */
+
+.footer {
+  margin: 0 20px;
+  padding: 10px 2vw;
+  font-family: var(--font-slab);
+}
 .copyrights {
   color: #fe142f;
   padding: 0;
@@ -526,14 +533,9 @@ input[data-error]::after {
   margin: 60px 0 30px;
   font-weight: bolder;
 }
-.hero-section > .btn-signup {
-  display: none;
-}
-footer {
-  padding-left: 2vw;
-  padding-right: 2vw;
-  margin: 0 20px;
-}
+
+/* Responsive hero banner and footer  */
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -581,6 +583,9 @@ footer {
     text-align: center;
   }
 }
+
+
+/* Apparition modal */
 
 @keyframes modalopen {
   from {
