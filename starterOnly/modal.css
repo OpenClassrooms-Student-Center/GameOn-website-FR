@@ -565,7 +565,7 @@ footer {
     text-align: center;
   }
 }
-/* je redefini le responsive selon la maquette fourni */
+/* je redefini le responsive mobile selon la maquette fourni */
 @media screen and (max-width: 540px){
   .hero-section {
     margin-bottom: 0;
