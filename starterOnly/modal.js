@@ -29,7 +29,6 @@ let footer = document.querySelector("footer");
 const emailRegex = new RegExp(
   "^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$"
 );
-const numRegex = new RegExp("^[0-9]+$");
 
 ////////////////////////////////////////////
 
