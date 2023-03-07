@@ -478,6 +478,7 @@ input {
   font-weight: normal;
   white-space: nowrap;
 }
+
 .hero-text {
   width: 146%;
   font-weight: normal;
@@ -516,7 +517,15 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav a.active{
+    margin: 0;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -552,6 +561,31 @@ footer {
   .copyrights {
     margin-top: 50px;
     text-align: center;
+  }
+}
+@media screen and (max-width: 540px){
+  .hero-content{
+    min-width: 320px;
+    text-align: left;
+    padding: 0 0 10px 0;
+  }
+  .hero-headline{
+    font-size: 2rem;
+  }
+  .hero-text{
+    font-size: .7rem;
+    margin-top: 20px;
+  }
+  .hero-img img {
+    margin: 10px 0 0;
+  }
+  .copyrights {
+    margin-top: -70px;
+    font-size: 10px;
+  }
+  .header-logo img {
+    width: 40%;
+    padding-left: 15px;
   }
 }
 

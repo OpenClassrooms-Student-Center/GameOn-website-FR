@@ -50,7 +50,6 @@ const quantityValid = /^[1-9]$/;
 form.addEventListener('submit', function(e) {
   e.preventDefault();
   
-  // validate();
   validData();
 });
 
@@ -155,8 +154,11 @@ const validData = () => {
   for(let i = 0; i < verif.length; i++){
     if(verif[i].classList.contains("success")){
       verifChamps += 1;
-      if(verifChamps == 7){
+      if(verifChamps == verif.length){
         dataValid = true;
+        const dataFormValid = new FormData(form);
+        const formJson = JSON.stringify(Object.fromEntries(dataFormValid));
+        localStorage.setItem("dataFormValid", formJson);
         modalSuccess();
       } else {
         validate();
@@ -177,6 +179,7 @@ const modalSuccess = () => {
   if(submitBtn.value == "Fermer") {
     submitBtn.addEventListener('click', function() {
       closeModal();
+      localStorage.removeItem("dataFormValid");
     });
   }
 }
