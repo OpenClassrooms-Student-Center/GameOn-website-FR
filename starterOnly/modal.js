@@ -7,6 +7,7 @@ const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
 
 // functions
+
 function editNav() {
   let x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -196,7 +197,7 @@ function successMessage(form) {
   successMessage.textContent = "Merci pour votre inscription";
   successMessage.style.fontSize = "1.8rem";
   successMessage.style.textAlign = "center";
-  successMessage.style.padding = "290px 60px 290px 60px";
+  successMessage.style.padding = "280px 60px 280px 60px";
 
   document.querySelector(".btn-submit").value = "Fermer";
 
