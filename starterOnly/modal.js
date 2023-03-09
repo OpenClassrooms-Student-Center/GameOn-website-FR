@@ -41,8 +41,13 @@ menuIcon.addEventListener("click", () => {
 // remove mobile nav style if screen is resize
 
 window.addEventListener("resize", (e) => {
-  if (e.currentTarget.innerWidth > 1000) {
-    navBar.classList.remove("open");
+  if (isModalOpen) {
+    if (e.currentTarget.innerWidth > 1000) {
+      navBar.classList.remove("open");
+      header.setAttribute("class", "select-hide");
+    } else if (e.currentTarget.innerWidth < 1000) {
+      header.setAttribute("class", "");
+    }
   }
 });
 
