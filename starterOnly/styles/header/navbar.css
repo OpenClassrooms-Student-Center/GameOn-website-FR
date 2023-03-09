@@ -21,6 +21,9 @@
   align-items: flex-end;
   justify-content: baseline;
 }
+nav {
+  display: block;
+}
 .topnav a {
   float: left;
   display: block;
@@ -83,8 +86,17 @@
 }
 
 @media screen and (max-width: 540px) {
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
   .topnav a {
-    display: none;
+    position: relative;
+    top: 40px;
+    text-align: end;
+    padding-right: 20px;
   }
   .topnav a.icon {
     float: right;
