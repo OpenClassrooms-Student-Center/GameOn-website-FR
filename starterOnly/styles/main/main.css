@@ -1,0 +1,190 @@
+@import "./modal.css";
+@import "./form.css";
+
+main {
+  font-size: 130%;
+  font-weight: bolder;
+  color: black;
+  padding-top: 0.5vw;
+  padding-left: 2vw;
+  padding-right: 2vw;
+  margin: 1px 20px 15px;
+  border-radius: 2rem;
+  text-align: justify;
+}
+@media screen and (max-width: 500px) {
+  main {
+    padding: 0.5vw 0px 0px 0px;
+    margin: 0;
+  }
+  .hero-section {
+    padding: 0.5vw 2vw 0px 2vw;
+  }
+}
+
+/* Modal btn style and effect */
+
+.modal-btn {
+  font-size: 145%;
+  background: #fe142f;
+  display: flex;
+  margin: auto;
+  padding: 2em;
+  color: #fff;
+  padding: 0.75rem 2.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.modal-btn:hover {
+  background: #3876ac;
+}
+
+/* Modal form */
+
+.button {
+  background: #fe142f;
+  margin-top: 0.5em;
+  padding: 1em;
+  color: #fff;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.button:hover {
+  background: #3876ac;
+}
+
+.smFont {
+  font-size: 16px;
+}
+
+/* Hero banner style */
+
+.hero-section {
+  min-height: 660px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  overflow: hidden;
+  box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 10px;
+}
+.hero-content {
+  padding: 51px 67px;
+  grid-column: span 4;
+  background: #232323;
+  color: #fff;
+  position: relative;
+  text-align: left;
+  min-width: 424px;
+}
+
+@media screen and (max-width: 800px) {
+  .hero-content {
+    min-width: 0px;
+  }
+}
+.hero-content::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: #232323;
+  position: absolute;
+  right: -80px;
+  top: 0;
+}
+.hero-content > * {
+  position: relative;
+  z-index: 1;
+}
+.hero-headline {
+  font-size: 6rem;
+  font-weight: normal;
+  white-space: nowrap;
+}
+.hero-text {
+  width: 146%;
+  font-weight: normal;
+  margin-top: 57px;
+  padding: 0;
+}
+.btn-signup {
+  outline: none;
+  text-transform: capitalize;
+  font-size: 1.3rem;
+  padding: 15px 23px;
+  margin: 0;
+  margin-top: 59px;
+}
+.hero-img {
+  grid-column: span 8;
+}
+.hero-img img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  padding: 0;
+  object-fit: cover;
+}
+
+@media screen and (max-width: 800px) {
+  .hero-img {
+    padding: 0 20px;
+  }
+}
+
+.hero-section > .btn-signup {
+  display: none;
+}
+
+/* Responsive hero banner  */
+
+@media screen and (max-width: 800px) {
+  .hero-section {
+    display: block;
+    box-shadow: unset;
+  }
+  .hero-content {
+    background: #fff;
+    color: #000;
+    padding: 20px;
+  }
+  .hero-content::after {
+    content: unset;
+  }
+  .hero-content .btn-signup {
+    display: none;
+  }
+  .hero-headline {
+    font-size: 2.5rem;
+    white-space: normal;
+  }
+
+  .hero-headline br {
+    display: none;
+  }
+  .hero-text {
+    width: unset;
+    font-size: 0.9rem;
+
+    width: 100%;
+
+    margin-top: 17px;
+    padding: 0;
+  }
+  .hero-img img {
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  .hero-section > .btn-signup {
+    display: block;
+    margin: 32px auto 10px;
+    padding: 12px 35px;
+  }
+  .copyrights {
+    margin-top: 50px;
+    text-align: center;
+  }
+}

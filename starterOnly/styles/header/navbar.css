@@ -1,0 +1,94 @@
+/* Navigation style and effect on hover/active */
+
+.topnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  margin: 3.5%;
+}
+.header-logo {
+  float: left;
+  align-self: baseline;
+}
+.main-navbar {
+  position: relative;
+  float: right;
+}
+.main-navbar.open ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: baseline;
+}
+.topnav a {
+  float: left;
+  display: block;
+  color: #000000;
+  text-align: center;
+  padding: 12px 12px;
+  margin: 5px;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: Roboto, sans-serif;
+}
+
+.topnav a:hover {
+  background-color: #ff0000;
+  color: #ffffff;
+  border-radius: 15px;
+}
+
+.topnav a.active {
+  background-color: #ff0000;
+  color: #ffffff;
+  border-radius: 15px;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+/* Handle the mobile nav icon */
+
+.icon {
+  cursor: pointer;
+  display: none;
+  color: red;
+}
+
+@media screen and (max-width: 1000px) {
+  nav ul {
+    display: none;
+  }
+  .topnav .icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: white;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+    margin-top: -15px;
+  }
+}
