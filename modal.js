@@ -43,12 +43,13 @@ function closeModal() {
  * @param {Status of the input, true for valid, else false} validate 
  */
 function colorValidInput(element, validate) {
-    if(validate) { // Validate green
-        element.style.backgroundColor = '#a7daa7';
-        element.style.border = '5px solid #0b520b';
-    } else { // Not Validate red
-        element.style.backgroundColor = '#ffdddd';
-        element.style.border = '5px solid #7c1717';
+    let style_error = 'input_error'
+
+    if(validate && element.classList.contains(style_error)) {
+        element.classList.remove(style_error);
+    }
+    else if(!validate && !element.classList.contains(style_error)) {
+        element.classList.add(style_error);
     }
 }
 
@@ -56,9 +57,16 @@ function colorValidInput(element, validate) {
  * Clean the style of an input
  * @param {Element to clean style} element 
  */
-function cleanStyleInput(element) {
-    element.style.backgroundColor = '#fff';
-    element.style.border = 'none';
+function cleanInput(element) {
+    if(element.classList.contains('input_valid')) {
+        element.classList.remove('input_valid');
+    }
+    if(element.classList.contains('input_error')) {
+        element.classList.remove('input_error');
+    }
+
+    if(element.oninput) {element.oninput = null;}
+    hideErrorMessage(element);
 }
 
 /** printErrorMessage
@@ -68,22 +76,15 @@ function cleanStyleInput(element) {
  */
 function printErrorMessage(element, texte) {
     const parentElement = element.parentNode;
-    let errorMessage = parentElement.querySelector('.error');
+    let errorMessage = parentElement.querySelector('.error_message');
 
     if(errorMessage) {
-        errorMessage.style.display = 'inline-block';
+        errorMessage.style.display = 'block';
         errorMessage.innerText = texte;
     } else {
-        let pError = document.createElement("p");
-
-        pError.style.color = "red";
-        pError.style.display = "inline-block";
-        pError.style.padding = "0 0 2px 12px";
-        pError.style.fontSize = ".6em";
-
+        let pError = document.createElement('p');
         pError.innerText = texte;
-
-        pError.classList.add('error');
+        pError.classList.add('error_message');
         parentElement.appendChild(pError);
     }
 }
@@ -94,7 +95,7 @@ function printErrorMessage(element, texte) {
  */
 function hideErrorMessage(element) {
     const parentElement = element.parentNode;
-    let errorMessage = parentElement.querySelector('.error');
+    let errorMessage = parentElement.querySelector('.error_message');
 
     if(errorMessage) {
         errorMessage.style.display = 'none';
@@ -103,7 +104,13 @@ function hideErrorMessage(element) {
 
 // Add listener to prevent default action
 form.addEventListener("submit", (event) => {event.preventDefault();});
+firstName.addEventListener("invalid", (event) => {event.preventDefault();});
+lastName.addEventListener("invalid", (event) => {event.preventDefault();});
 eMail.addEventListener("invalid", (event) => {event.preventDefault();});
+birthdate.addEventListener("invalid", (event) => {event.preventDefault();});
+nbTournament.addEventListener("invalid", (event) => {event.preventDefault();});
+loc_form.addEventListener("invalid", (event) => {event.preventDefault();});
+checkBoxTOS.addEventListener("invalid", (event) => {event.preventDefault();});
 
 // Add listener to color birthdate if invalid and prevent default
 birthdate.addEventListener("invalid", (event) => {
@@ -135,10 +142,13 @@ nbTournament.addEventListener('keydown', (evt) => {
 
 // Add listener to change the color of TOS checkbox if it's checked or not
 checkBoxTOS.addEventListener("change", (evt) => {
-    if(!evt.target.checked) {
-        evt.target.nextElementSibling.children[0].style.backgroundColor = "#c4c4c4";
-    } else {
-        evt.target.nextElementSibling.children[0].style.backgroundColor = "#279e7a";
+    if(!evt.target.checked 
+        && !evt.target.nextElementSibling.children[0].classList.contains('error_checkbox')) {
+        evt.target.nextElementSibling.children[0].classList.add('error_checkbox');
+    }
+    else if(evt.target.checked 
+        && evt.target.nextElementSibling.children[0].classList.contains('error_checkbox')) {
+        evt.target.nextElementSibling.children[0].classList.remove('error_checkbox');
     }
 });
 
@@ -280,11 +290,7 @@ function checkSelectionList(divInput) {
         retValue = true;
     }
     // Adapt the style of the div
-    divInput.style.borderRadius = "15px";
-    for(const elm of divInput.getElementsByTagName('label'))
-    {
-        elm.style.color = "black";
-    }
+    divInput.style.borderRadius = "8px";
 
     return retValue;
 }
@@ -298,10 +304,15 @@ function checkTOS(element) {
     let retValue = true;
 
     if(!element.checked) {
-        element.nextElementSibling.children[0].style.backgroundColor = "#b61a1a";
+        if(!element.nextElementSibling.children[0].classList.contains('error_checkbox')) {
+            element.nextElementSibling.children[0].classList.add('error_checkbox');
+        }
         printErrorMessage(element, "Vous devez vérifier que vous acceptez les termes et conditions.");
         retValue = false;
     } else {
+        if(element.nextElementSibling.children[0].classList.contains('error_checkbox')) {
+            element.nextElementSibling.children[0].classList.remove('error_checkbox');
+        }
         hideErrorMessage(element);
         retValue = true;
     }
@@ -316,12 +327,16 @@ function resetModal() {
     const parentElement = form.parentNode;
     let validMessage = parentElement.querySelector('.valid_mess');
     let validLink = parentElement.querySelector('.valid_link');
+    let validButton = parentElement.querySelector('.valid_button');
 
     if(validMessage) {
         validMessage.style.display = "none";
     }
     if(validLink) {
         validLink.style.display = "none";
+    }
+    if(validButton) {
+        validButton.style.display = "none";
     }
     form.style.display = "inline-block";
     form.reset();
@@ -336,21 +351,14 @@ function modalValidMessage() {
     const parentElement = form.parentNode;
     let validMessage = parentElement.querySelector('.valid_mess');
     let validLink = parentElement.querySelector('.valid_link');
+    let validButton = parentElement.querySelector('.valid_button');
 
     if(validMessage) {
         validMessage.style.display = 'inline-block';
     } else {
         let message = document.createElement("div");
-
-        message.style.color = "green";
-        message.style.display = "inline-block";
-        message.style.padding = "12px 24px 12px 24px";
-        message.style.fontSize = "1.2em";
-        message.style.backgroundColor = '#a7daa7';
-        message.style.border = '5px solid #0b520b';
-        message.style.borderRadius = "20px";
-
-        message.innerHTML = "Merci ! Votre réservation a été reçue.";
+        message.classList.add('message_form_valid');
+        message.innerHTML = "Merci pour votre inscription";
 
         message.classList.add('valid_mess');
         parentElement.appendChild(message);
@@ -360,19 +368,24 @@ function modalValidMessage() {
         validLink.style.display = "inline-block";
     } else {
         let resetLink = document.createElement("p");
-
-        resetLink.style.textDecoration = "underline";
-        resetLink.style.color = "green";
-        resetLink.style.display = "inline-block";
-        resetLink.style.margin = "8px 0 0 12px";
-        resetLink.style.fontSize = "0.8em";
-        resetLink.style.cursor = "pointer";
+        resetLink.classList.add('link_new_form')
         resetLink.innerHTML = "Voulez-vous inscrire une autre personne ?";
-
         resetLink.classList.add('valid_link');
         parentElement.appendChild(resetLink);
 
         resetLink.addEventListener("click", resetModal);
+    }
+
+    if(validButton) {
+        validButton.style.display = 'inline-block';
+    } else {
+        let closeButton = document.createElement("p");
+        closeButton.classList.add('valid_form_button')
+        closeButton.innerHTML = "Fermer";
+        closeButton.classList.add('valid_button');
+        parentElement.appendChild(closeButton);
+
+        closeButton.addEventListener("click", closeModal);
     }
 }
 
@@ -397,12 +410,21 @@ function validate() {
     if(formValid) {
         console.log('Formulaire complet');
         modalValidMessage();
-        cleanStyleInput(firstName);
-        cleanStyleInput(lastName);
-        cleanStyleInput(eMail);
-        cleanStyleInput(birthdate);
-        cleanStyleInput(nbTournament);
-        cleanStyleInput(loc_form);
+        cleanInput(firstName);
+        cleanInput(lastName);
+        cleanInput(eMail);
+        cleanInput(birthdate);
+        cleanInput(nbTournament);
+        cleanInput(loc_form);
+    } else {
+        // Add Event listener on inputs
+        if(!firstName.oninput) {firstName.oninput = function(event) {checkName(firstName);}};
+        if(!lastName.oninput) {lastName.oninput = function(event) {checkName(lastName);}};
+        if(!eMail.oninput) {eMail.oninput = function(event) {checkEmail(eMail);}};
+        if(!birthdate.oninput) {birthdate.oninput = function(event) {checkDate(birthdate, minAge, maxAge);}};
+        if(!nbTournament.oninput) {nbTournament.oninput = function(event) {checkNumber(nbTournament);}};
+        if(!loc_form.oninput) {loc_form.oninput = function(event) {checkSelectionList(loc_form);}};
+        if(!checkBoxTOS.oninput) {checkBoxTOS.oninput = function(event) {checkTOS(checkBoxTOS);}};
     }
     return formValid;
 }
