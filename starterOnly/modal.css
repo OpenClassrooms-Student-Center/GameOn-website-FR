@@ -466,6 +466,12 @@ input {
   text-align: left;
   min-width: 424px;
 }
+
+@media screen and (max-width: 800px) {
+  .hero-content {
+    min-width: 0px;
+  }
+}
 .hero-content::after {
   content: "";
   width: 100%;
@@ -507,6 +513,12 @@ input {
   display: block;
   padding: 0;
   object-fit: cover;
+}
+
+@media screen and (max-width: 800px) {
+  .hero-img {
+    padding: 0 20px;
+  }
 }
 
 .hero-section > .btn-signup {
