@@ -73,6 +73,13 @@
   border: 0;
 }
 
+/* Validation style */
+
+.validate h3 {
+  margin: 275px auto;
+  text-align: center;
+}
+
 /* Hide the items when the select box is closed: */
 .select-hide {
   display: none;
