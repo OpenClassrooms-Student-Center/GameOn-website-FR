@@ -188,6 +188,12 @@ main {
   margin: 15px auto;
 }
 
+.confirm-message {
+  display: grid;
+  place-content: center;
+  height: 80vh;
+}
+
 label {
   font-family: var(--font-default);
   font-size: 17px;
@@ -321,7 +327,7 @@ input[data-error]::after {
 .close:after {
   transform: rotate(-45deg);
 }
-.btn-submit,
+.btn-submit, btn-confirm,
 .btn-signup {
   background: #fe142f;
   display: block;

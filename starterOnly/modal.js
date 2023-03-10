@@ -8,13 +8,10 @@ function editNav() {
   }
 }
 
-function validate() {
-  document.querySelector(".content").querySelector(".modal-body").removeChild;
-}
-
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
+const modalBody = document.querySelector(".modal-body");
 const form = document.forms["signup-form"];
 const formData = document.querySelectorAll(".formData");
 const firstName = document.getElementById("first");
@@ -41,11 +38,34 @@ const errorMessages = {
 // disable HTML5 validation
 form.setAttribute("novalidate", "");
 
+function validate() {
+  form.style.display = "none";
+  createConfirmation();
+}
+
+function createConfirmation() {
+  let confirmContainer = document.createElement("div");
+  let confirmMessage = document.createElement("p");
+  let confirmButton = document.createElement("button");
+  confirmMessage.innerText = "Merci pour votre incription";
+  confirmButton.innerText = "Fermer";
+  confirmButton.setAttribute("onClick", "hideModal()");
+  confirmButton.classList.add("button");
+  confirmButton.classList.add("btn-submit");
+  confirmMessage.classList.add("confirm-message");
+  confirmContainer.appendChild(confirmMessage);
+  confirmContainer.appendChild(confirmButton);
+  modalBody.appendChild(confirmContainer);
+
+  // document.querySelector(".btn-submit").addEventListener("click", hideModal); //fixme
+}
+
 // launch modal form
 modalBtn.forEach((btn) => btn.addEventListener("click", showModal));
 
 // close modal form
 document.querySelector(".close").addEventListener("click", hideModal);
+
 
 // form validation
 form.addEventListener("submit", (e) => {
@@ -55,7 +75,6 @@ form.addEventListener("submit", (e) => {
 });
 
 function formValidation() {
-
   nameFieldsValidation(firstName);
   nameFieldsValidation(lastName);
 
@@ -84,13 +103,21 @@ function formValidation() {
 ///// helper functions ///////
 /////////////////////////////
 
+// show modal
 function showModal() {
   modalbg.style.display = "block";
+
+  // if validation already succeeded once form is set to display none
+  if (form.style.display == "none") {
+    form.style.display = "block";
+  }
 }
 
+// hide modal and clear inputs
 function hideModal() {
   modalbg.style.display = "none";
-  removeDataAttribute(formData);
+  removeDataAttribute(formData); // FIXME - obligé avec form.reset() ? Ou doublon ?
+  modalBody.removeChild(document.querySelector(".confirm-message").parentElement);
   form.reset();
 }
 
