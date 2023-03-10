@@ -45,7 +45,6 @@ const textLabel = document.querySelector('.text-label');
 
 //définition d'une REGEX pour la saisie de l'email 
 const mailValid = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
-// const quantityValid = /^[1-9]$/;
 
 //Ecouteur d'évènement sur la soumission du formulaire
 form.addEventListener('submit', function(e) {
@@ -81,7 +80,7 @@ const setSuccess = (element) => {
   const errorDisplay = formData.querySelector('.erreur');
 
    //en cas de succès pas de message spécifique donc j'initialise innerHTML avec une string vide
-  errorDisplay.innerText = "";
+  errorDisplay.innerHTML = "";
   // j'ajoute une classe à formData pour customiser l'apparence du succès
   formData.classList.add('success');
   // je supprime la classe d'erreur'en cas de succès
@@ -137,7 +136,7 @@ const validate = () => {
   }
   //Je défini les conditions d'erreur et affiche le ou les messages associé
   //grace à mes 2 fonctions anonymes setError et setSuccess
-  if(quantityValue == "") {
+  if(quantityValue == "" || quantityValue < 0) {
     setError(quantity, 'Veuillez saisir un chiffre');
   } else {
     setSuccess(quantity);
