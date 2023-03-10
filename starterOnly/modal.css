@@ -200,6 +200,13 @@ input {
   border: 0.8px solid #ccc;
   outline: none;
 }
+
+/* ADD MESSAGE ERRORS FORM */
+.errors {
+  color: #ff0000;
+  font-size: 13px;
+}
+
 .text-control {
   margin: 0;
   padding: 8px;
@@ -226,12 +233,6 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
 .checkbox-label,
 .checkbox2-label {
   position: relative;
