@@ -47,6 +47,9 @@ nav ul {
   text-underline-offset: 5px;
 }
 
+nav span {
+  pointer-events: none;
+}
 /* Handle the mobile nav icon */
 
 .icon {
