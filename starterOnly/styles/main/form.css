@@ -28,10 +28,9 @@ input {
   font-size: 0.4em;
   color: #e54858;
   display: block;
-  margin-top: 7px;
-  margin-bottom: 17px;
+  margin: 7px 0;
   text-align: left;
-  line-height: 0.3;
+  line-height: 0.8rem;
   opacity: 1;
   transition: 0.3s;
 }
