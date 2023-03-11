@@ -18,6 +18,7 @@ const form = document.querySelector("form");
 const errorMessage = document.querySelectorAll(".error");
 const validate = document.querySelector(".validate");
 const navBar = document.querySelector(".main-navbar");
+const navBarBtn = document.querySelectorAll(".main-navbar ul li");
 const menuIcon = document.querySelector(".icon");
 let isModalOpen = false;
 let heroSection = document.querySelector(".hero-section");
@@ -110,6 +111,20 @@ crossCloseModalBtn.addEventListener("click", closeModal);
 // click on end button
 
 endModalBtn.addEventListener("click", closeModal);
+
+////////////////////////////////////////////
+
+// Handle Navigation
+
+const handleLinkNavigation = (e) => {
+  navBarBtn.forEach((btn) => btn.childNodes[1].setAttribute("class", ""));
+
+  e.target.setAttribute("class", "active");
+};
+
+navBarBtn.forEach((btn) =>
+  btn.addEventListener("click", (e) => handleLinkNavigation(e))
+);
 
 ////////////////////////////////////////////
 
