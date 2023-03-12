@@ -48,16 +48,24 @@ form.addEventListener('submit', function(event) {
   event.preventDefault();
 
   if (firstInput.value = "" || firstInput.value.length <2 ){
+    firstInput.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
     return false;
   }
   
   if (lastInput.value = "" || lastInput.value.length <2){
+    firstInput.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
     return false;
   }
 
   if (emailInput.value = ""){
     return false;
   }
+
+  if (dateInput.value = ""){
+    dateInput.textContent = 'Vous devez entrer votre date de naissance.';
+    return false;
+  }
+
 
   if (!quantityInput.isInteger()){
     quantityInput.value = "";
