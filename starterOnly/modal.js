@@ -42,6 +42,8 @@ let lastInput = document.querySelectorAll("#last");
 let emailInput = document.querySelectorAll("#email");
 let dateInput = document.querySelectorAll("#date");
 let quantityInput = document.querySelectorAll("#quantity");
+const formSubmit = document.getElementById('formModal');
+const confirmation = confirm('Votre formulaire a été soumis avec succès!');
 
 const form = document.querySelector('form');
 form.addEventListener('submit', function(event) {
@@ -74,6 +76,9 @@ form.addEventListener('submit', function(event) {
 
   // Si les données sont valides, soumettre le formulaire
   form.submit();
+  if (confirmation) {
+    formModal.submit();
+  }
 });
 
 
