@@ -21,7 +21,9 @@ const birthDate = document.getElementById("birthdate");
 const tournaments = document.getElementById("quantity");
 const cities = document.getElementsByName("location");
 const terms = document.getElementById("checkbox1");
+const submitBtn = document.querySelectorAll(".btn-submit");
 ///////
+let isFormValid = false;
 const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 const regexNames = /^[A-Za-z][A-Za-z'-]+([ A-Za-z][A-Za-z'-]+)*/;
 const errorMessages = {
@@ -39,25 +41,30 @@ const errorMessages = {
 form.setAttribute("novalidate", "");
 
 function validate() {
-  form.style.display = "none";
-  createConfirmation();
+  if (isFormValid) {
+    form.style.display = "none";
+    createConfirmation();
+    removeAllDataAttributes(formData);
+  }
 }
 
 function createConfirmation() {
   let confirmContainer = document.createElement("div");
   let confirmMessage = document.createElement("p");
   let confirmButton = document.createElement("button");
+
   confirmMessage.innerText = "Merci pour votre incription";
+  confirmMessage.classList.add("confirm-message");
+
   confirmButton.innerText = "Fermer";
   confirmButton.setAttribute("onClick", "hideModal()");
   confirmButton.classList.add("button");
   confirmButton.classList.add("btn-submit");
-  confirmMessage.classList.add("confirm-message");
+
   confirmContainer.appendChild(confirmMessage);
   confirmContainer.appendChild(confirmButton);
-  modalBody.appendChild(confirmContainer);
 
-  // document.querySelector(".btn-submit").addEventListener("click", hideModal); //fixme
+  modalBody.appendChild(confirmContainer);
 }
 
 // launch modal form
@@ -66,39 +73,26 @@ modalBtn.forEach((btn) => btn.addEventListener("click", showModal));
 // close modal form
 document.querySelector(".close").addEventListener("click", hideModal);
 
-
 // form validation
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  removeDataAttribute(formData);
-  formValidation();
-});
-
-function formValidation() {
   nameFieldsValidation(firstName);
   nameFieldsValidation(lastName);
+  emailFieldValidation();
+  birthdateFieldValidation();
+  tournamentsFieldValidation();
+  citiesValidation();
+  termsValidation();
 
-  if (email.value === "") {
-    errorHandler(email, errorMessages.emptyField);
-  } else if (!email.value.match(regexEmail)) {
-    errorHandler(email, errorMessages.textFormat);
-  }
+  validate();
+});
 
-  if (birthDate.value === "")
-    errorHandler(birthDate, errorMessages.birthdateMissing);
 
-  if (tournaments.value === "" || isNaN(tournaments.value)) {
-    errorHandler(tournaments, errorMessages.tournamentsValue);
-  }
-
-  if (isCityMissing()) {
-    errorHandler(cities[0], errorMessages.citiesNotSelected);
-  }
-
-  if (!terms.checked) {
-    errorHandler(terms, errorMessages.termsNotChecked);
-  }
-}
+firstName.addEventListener("change", () => nameFieldsValidation(firstName));
+lastName.addEventListener("change", () => nameFieldsValidation(lastName));
+email.addEventListener("change", () => emailFieldValidation());
+birthDate.addEventListener("change", () => birthdateFieldValidation());
+tournaments.addEventListener("change", () => tournamentsFieldValidation());
 
 ///// helper functions ///////
 /////////////////////////////
@@ -116,31 +110,71 @@ function showModal() {
 // hide modal and clear inputs
 function hideModal() {
   modalbg.style.display = "none";
-  removeDataAttribute(formData); // FIXME - obligé avec form.reset() ? Ou doublon ?
-  modalBody.removeChild(document.querySelector(".confirm-message").parentElement);
+  removeAllDataAttributes(formData); // FIXME - obligé avec form.reset() ? Ou doublon ?
+  modalBody.removeChild(
+    document.querySelector(".confirm-message").parentElement
+  );
   form.reset();
 }
 
 function errorHandler(input, text) {
   input.parentElement.setAttribute("data-error", text);
   input.parentElement.setAttribute("data-error-visible", "true");
+  isFormValid = false;
 }
 
-function removeDataAttribute(data) {
+function removeAllDataAttributes(data) {
   for (let i = 0; i < data.length; i++) {
     data[i].removeAttribute("data-error");
     data[i].removeAttribute("data-error-visible");
   }
 }
 
+function removeDataAttribute(input) {
+  input.parentElement.removeAttribute("data-error");
+  input.parentElement.removeAttribute("data-error-visible");
+}
+
 function nameFieldsValidation(input) {
-  if (input.value === "") {
-    errorHandler(input, errorMessages.emptyField);
-  } else if (input.value.length == 1) {
-    errorHandler(input, errorMessages.nameLength);
-  } else if (!input.value.match(regexNames)) {
-    errorHandler(input, errorMessages.textFormat);
+  removeDataAttribute(input);
+
+  if (input.value === "") return errorHandler(input, errorMessages.emptyField);
+  if (input.value.length == 1)
+    return errorHandler(input, errorMessages.nameLength);
+  if (!input.value.match(regexNames))
+    return errorHandler(input, errorMessages.textFormat);
+
+  return (isFormValid = true);
+}
+
+function emailFieldValidation() {
+  removeDataAttribute(email);
+
+  if (email.value === "") {
+    return errorHandler(email, errorMessages.emptyField);
   }
+  if (!email.value.match(regexEmail)) {
+    return errorHandler(email, errorMessages.textFormat);
+  }
+
+  return (isFormValid = true);
+}
+
+function birthdateFieldValidation() {
+  removeDataAttribute(birthDate);
+  if (birthDate.value === "") {
+    return errorHandler(birthDate, errorMessages.birthdateMissing);
+  }
+
+  return (isFormValid = true);
+}
+
+function tournamentsFieldValidation() {
+  removeDataAttribute(tournaments);
+  if (tournaments.value === "" || isNaN(tournaments.value)) {
+    return errorHandler(tournaments, errorMessages.tournamentsValue);
+  }
+  return (isFormValid = true);
 }
 
 function isCityMissing() {
@@ -149,4 +183,20 @@ function isCityMissing() {
     if (cities[i].checked) isSelected = true;
   }
   return !isSelected;
+}
+
+function citiesValidation() {
+  if (isCityMissing()) {
+    removeDataAttribute(cities);
+    return errorHandler(cities[0], errorMessages.citiesNotSelected);
+  }
+  return (isFormValid = true);
+}
+
+function termsValidation() {
+  if (terms.checked) {
+    isFormValid = true;
+  } else {
+    errorHandler(terms, errorMessages.termsNotChecked);
+  }
 }
