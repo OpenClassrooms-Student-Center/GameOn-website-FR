@@ -22,7 +22,8 @@ const tournaments = document.getElementById("quantity");
 const cities = document.getElementsByName("location");
 const terms = document.getElementById("checkbox1");
 const submitBtn = document.querySelectorAll(".btn-submit");
-///////
+
+// Variables
 let isFormValid = false;
 const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 const regexNames = /^[A-Za-z][A-Za-z'-]+([ A-Za-z][A-Za-z'-]+)*/;
@@ -40,33 +41,6 @@ const errorMessages = {
 // disable HTML5 validation
 form.setAttribute("novalidate", "");
 
-function validate() {
-  if (isFormValid) {
-    form.style.display = "none";
-    createConfirmation();
-    removeAllDataAttributes(formData);
-  }
-}
-
-function createConfirmation() {
-  let confirmContainer = document.createElement("div");
-  let confirmMessage = document.createElement("p");
-  let confirmButton = document.createElement("button");
-
-  confirmMessage.innerText = "Merci pour votre incription";
-  confirmMessage.classList.add("confirm-message");
-
-  confirmButton.innerText = "Fermer";
-  confirmButton.setAttribute("onClick", "hideModal()");
-  confirmButton.classList.add("button");
-  confirmButton.classList.add("btn-submit");
-
-  confirmContainer.appendChild(confirmMessage);
-  confirmContainer.appendChild(confirmButton);
-
-  modalBody.appendChild(confirmContainer);
-}
-
 // launch modal form
 modalBtn.forEach((btn) => btn.addEventListener("click", showModal));
 
@@ -76,6 +50,10 @@ document.querySelector(".close").addEventListener("click", hideModal);
 // form validation
 form.addEventListener("submit", (e) => {
   e.preventDefault();
+  validate().then(confirmationScreen());
+});
+
+async function validate() {
   nameFieldsValidation(firstName);
   nameFieldsValidation(lastName);
   emailFieldValidation();
@@ -83,9 +61,7 @@ form.addEventListener("submit", (e) => {
   tournamentsFieldValidation();
   citiesValidation();
   termsValidation();
-
-  validate();
-});
+}
 
 firstName.addEventListener("change", () => nameFieldsValidation(firstName));
 lastName.addEventListener("change", () => nameFieldsValidation(lastName));
@@ -120,7 +96,7 @@ function hideModal() {
 function errorHandler(input, text) {
   input.parentElement.setAttribute("data-error", text);
   input.parentElement.setAttribute("data-error-visible", "true");
-  isFormValid = false;
+  return (isFormValid = false);
 }
 
 function removeAllDataAttributes(data) {
@@ -185,9 +161,9 @@ function citiesValidation() {
     }
   }
 
-  !isSelected
-    ? errorHandler(cities[0], errorMessages.citiesNotSelected)
-    : (isFormValid = true);
+  isSelected
+    ? (isFormValid = true)
+    : errorHandler(cities[0], errorMessages.citiesNotSelected);
 }
 
 function termsValidation() {
@@ -196,5 +172,32 @@ function termsValidation() {
   } else {
     errorHandler(terms, errorMessages.termsNotChecked);
     return (isFormValid = false);
+  }
+}
+
+function createConfirmation() {
+  let confirmContainer = document.createElement("div");
+  let confirmMessage = document.createElement("p");
+  let confirmButton = document.createElement("button");
+
+  confirmMessage.innerText = "Merci pour votre incription";
+  confirmMessage.classList.add("confirm-message");
+
+  confirmButton.innerText = "Fermer";
+  confirmButton.setAttribute("onClick", "hideModal()");
+  confirmButton.classList.add("button");
+  confirmButton.classList.add("btn-submit");
+
+  confirmContainer.appendChild(confirmMessage);
+  confirmContainer.appendChild(confirmButton);
+
+  modalBody.appendChild(confirmContainer);
+}
+
+function confirmationScreen() {
+  if (isFormValid) {
+    form.style.display = "none";
+    createConfirmation();
+    removeAllDataAttributes(formData);
   }
 }
