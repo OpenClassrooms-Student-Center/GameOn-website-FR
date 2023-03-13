@@ -192,6 +192,7 @@ function hideFields() {
 
 // modal success message
 function successMessage(form) {
+  
   const successMessage = document.querySelector("form p");
 
   successMessage.textContent = "Merci pour votre inscription";
@@ -204,8 +205,9 @@ function successMessage(form) {
   // close modal success message
   form.addEventListener("submit", (event) => {
     closeModal();
-    
+    form.reset();
   });
+  
 }
 
 // inputs validation
