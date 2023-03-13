@@ -70,10 +70,10 @@ birthDate.addEventListener("change", () => birthdateFieldValidation());
 tournaments.addEventListener("change", () => tournamentsFieldValidation());
 
 cities.forEach((city) =>
-  city.addEventListener("input", () => citiesValidation())
+  city.addEventListener("change", () => citiesValidation())
 );
 
-terms.addEventListener("input", () => termsValidation());
+terms.addEventListener("change", () => termsValidation());
 
 ///// helper functions ///////
 /////////////////////////////
@@ -105,17 +105,17 @@ function errorHandler(input, text) {
   return;
 }
 
+function removeDataAttribute(input) {
+  input.parentElement.removeAttribute("data-error");
+  input.parentElement.removeAttribute("data-error-visible");
+  isFormValid = true;
+}
+
 function removeAllDataAttributes(data) {
   for (let i = 0; i < data.length; i++) {
     data[i].removeAttribute("data-error");
     data[i].removeAttribute("data-error-visible");
   }
-}
-
-function removeDataAttribute(input) {
-  input.parentElement.removeAttribute("data-error");
-  input.parentElement.removeAttribute("data-error-visible");
-  isFormValid = true;
 }
 
 function nameFieldsValidation(input) {
@@ -174,10 +174,12 @@ function citiesValidation() {
 
 function termsValidation() {
   if (!terms.checked) {
-    isFormValid = false;
-    errorHandler(terms, errorMessages.termsNotChecked);
-    return;
+    return errorHandler(terms, errorMessages.termsNotChecked);
   }
+  if (!isFormValid) {
+    return (isFormValid = false);
+  }
+
   removeDataAttribute(terms);
 }
 
@@ -203,6 +205,7 @@ function createConfirmation() {
 function confirmationScreen() {
   if (!isFormValid) return;
 
+  console.trace(isFormValid);
   form.style.display = "none";
   createConfirmation();
   removeAllDataAttributes(formData);
