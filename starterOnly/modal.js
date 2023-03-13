@@ -98,7 +98,7 @@ const validate = () => {
   const quantityValue = quantity.value.trim();
   
   //Je défini les conditions d'erreur et affiche le ou les messages associé
-  //grace à mes 2 fonctions anonymes setError et setSuccess
+  //grace à mes 2 fonctions anonymes setError et setSuccess pour chacun de mes champs.
   if(firstNameValue == "") {
     setError(firstName, 'Le prénom est requis');
   } else if (firstNameValue.length < 2) {
@@ -106,8 +106,7 @@ const validate = () => {
   } else {
     setSuccess(firstName);
   }
-  //Je défini les conditions d'erreur et affiche le ou les messages associé
-  //grace à mes 2 fonctions anonymes setError et setSuccess
+ 
   if(lastNameValue == "") {
     setError(lastName, 'Le nom est requis');
   } else if (lastNameValue.length < 2) {
@@ -115,8 +114,7 @@ const validate = () => {
   } else {
     setSuccess(lastName);
   }
-  //Je défini les conditions d'erreur et affiche le ou les messages associé
-  //grace à mes 2 fonctions anonymes setError et setSuccess
+  
   if(mailValue == "") {
     setError(mail, 'L\'adresse email est requise');
     //ici je teste si les valeurs saisies sont conformes à ma REGEX défini plus haut
@@ -127,15 +125,14 @@ const validate = () => {
     // si conforme et que le champ n'est pas vide alors j'affiche le succès 
     setSuccess(mail);
   }
-  //Je défini les conditions d'erreur et affiche le ou les messages associé
-  //grace à mes 2 fonctions anonymes setError et setSuccess
+  
+  //axe d'amélioration
   if(birthdateValue == "") {
     setError(birthdate, "Vous devez entrer votre date de naissance.");
   } else {
     setSuccess(birthdate);
   }
-  //Je défini les conditions d'erreur et affiche le ou les messages associé
-  //grace à mes 2 fonctions anonymes setError et setSuccess
+  
   if(quantityValue == "" || quantityValue < 0) {
     setError(quantity, 'Veuillez saisir un chiffre');
   } else {
@@ -211,12 +208,9 @@ const validData = () => {
       if(verifChamps == verif.length){
         // alors je défini dataValid à true
         dataValid = true;
-        //je défini une variable dataFormValid comme étant un nouvel objet de mon formulaire 
-        const dataFormValid = new FormData(form);
-        // Je transforme les données saisies en JSON et stocke le tout dans une variable
-        const formJson = JSON.stringify(Object.fromEntries(dataFormValid));
-        // Je stocke ensuite ma variable dans le localStorage 
-        localStorage.setItem("dataFormValid", formJson);
+
+        //C'est ici qu'on récupèrera les données coté back-end
+
         // je renvoie vers une fonction qui affichera une modale de succès d'envoie des données 
         modalSuccess();
       } else {
@@ -248,8 +242,8 @@ const modalSuccess = () => {
     submitBtn.addEventListener('click', function() {
       // j'appelle ma fonction de fermeture de la modale  
       closeModal();
-      // je supprime les données du localStorage 
-      localStorage.removeItem("dataFormValid");
+      // Je recharge la page 
+      window.location.reload();
     });
   }
 }
