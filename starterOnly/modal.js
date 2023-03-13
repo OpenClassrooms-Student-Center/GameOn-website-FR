@@ -68,7 +68,12 @@ lastName.addEventListener("change", () => nameFieldsValidation(lastName));
 email.addEventListener("change", () => emailFieldValidation());
 birthDate.addEventListener("change", () => birthdateFieldValidation());
 tournaments.addEventListener("change", () => tournamentsFieldValidation());
-cities.addEventListener("input", () => citiesValidation());
+
+cities.forEach((city) =>
+  city.addEventListener("input", () => citiesValidation())
+);
+
+terms.addEventListener("input", () => termsValidation());
 
 ///// helper functions ///////
 /////////////////////////////
@@ -96,7 +101,8 @@ function hideModal() {
 function errorHandler(input, text) {
   input.parentElement.setAttribute("data-error", text);
   input.parentElement.setAttribute("data-error-visible", "true");
-  return (isFormValid = false);
+  isFormValid = false;
+  return;
 }
 
 function removeAllDataAttributes(data) {
@@ -109,23 +115,24 @@ function removeAllDataAttributes(data) {
 function removeDataAttribute(input) {
   input.parentElement.removeAttribute("data-error");
   input.parentElement.removeAttribute("data-error-visible");
+  isFormValid = true;
 }
 
 function nameFieldsValidation(input) {
-  removeDataAttribute(input);
-
-  if (input.value === "") return errorHandler(input, errorMessages.emptyField);
-  if (input.value.length == 1)
+  if (input.value === "") {
+    return errorHandler(input, errorMessages.emptyField);
+  }
+  if (input.value.length == 1) {
     return errorHandler(input, errorMessages.nameLength);
-  if (!input.value.match(regexNames))
+  }
+  if (!input.value.match(regexNames)) {
     return errorHandler(input, errorMessages.textFormat);
+  }
 
-  return (isFormValid = true);
+  removeDataAttribute(input);
 }
 
 function emailFieldValidation() {
-  removeDataAttribute(email);
-
   if (email.value === "") {
     return errorHandler(email, errorMessages.emptyField);
   }
@@ -133,23 +140,21 @@ function emailFieldValidation() {
     return errorHandler(email, errorMessages.textFormat);
   }
 
-  return (isFormValid = true);
+  removeDataAttribute(email);
 }
 
 function birthdateFieldValidation() {
-  removeDataAttribute(birthDate);
   if (birthDate.value === "") {
     return errorHandler(birthDate, errorMessages.birthdateMissing);
   }
-  return (isFormValid = true);
+  removeDataAttribute(birthDate);
 }
 
 function tournamentsFieldValidation() {
-  removeDataAttribute(tournaments);
   if (tournaments.value === "" || isNaN(tournaments.value)) {
     return errorHandler(tournaments, errorMessages.tournamentsValue);
   }
-  return (isFormValid = true);
+  removeDataAttribute(tournaments);
 }
 
 function citiesValidation() {
@@ -158,6 +163,7 @@ function citiesValidation() {
     if (cities[i].checked) {
       removeDataAttribute(cities[0]);
       isSelected = true;
+      return;
     }
   }
 
@@ -167,12 +173,12 @@ function citiesValidation() {
 }
 
 function termsValidation() {
-  if (terms.checked) {
-    return (isFormValid = true);
-  } else {
+  if (!terms.checked) {
+    isFormValid = false;
     errorHandler(terms, errorMessages.termsNotChecked);
-    return (isFormValid = false);
+    return;
   }
+  removeDataAttribute(terms);
 }
 
 function createConfirmation() {
@@ -195,9 +201,9 @@ function createConfirmation() {
 }
 
 function confirmationScreen() {
-  if (isFormValid) {
-    form.style.display = "none";
-    createConfirmation();
-    removeAllDataAttributes(formData);
-  }
+  if (!isFormValid) return;
+
+  form.style.display = "none";
+  createConfirmation();
+  removeAllDataAttributes(formData);
 }

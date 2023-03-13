@@ -522,9 +522,9 @@ footer {
     color: #000;
     padding: 0px;
   }
-  /* .hero-content::after {
+  .hero-content::after {
     content: unset;
-  } */
+  }
   .hero-content .btn-signup {
     display: none;
   }
