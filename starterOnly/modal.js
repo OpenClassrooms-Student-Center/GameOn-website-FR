@@ -180,11 +180,12 @@ function tournamentsFieldValidation() {
 
 function citiesValidation() {
   let isSelected = false;
-  for (let i = 0; i < cities.length; i++) {
-    if (cities[i].checked) {
-      (isSelected = true);
+  cities.forEach((city) => {
+    if (city.checked) {
+      isSelected = true;
     }
-  }
+  });
+
   if (!isSelected) {
     isCitiesValid = false;
     return errorHandler(cities[0], errorMessages.citiesNotSelected);
@@ -230,7 +231,7 @@ function createConfirmation() {
   confirmButton.innerText = "Fermer";
   confirmButton.setAttribute("onClick", "hideModal()");
   confirmButton.classList.add("button");
-  confirmButton.classList.add("btn-submit");
+  confirmButton.classList.add("btn-confirm");
 
   confirmContainer.appendChild(confirmMessage);
   confirmContainer.appendChild(confirmButton);
