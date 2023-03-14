@@ -28,9 +28,13 @@ p {
 
 img {
   padding-right: 1rem;
+  width: 80%;
 }
 
 .topnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   overflow: hidden;
   margin: 3.5%;
 }
@@ -45,10 +49,10 @@ img {
   display: block;
   color: #000000;
   text-align: center;
-  padding: 12px 12px;
+  padding: 10px 10px;
   margin: 5px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 18px;
   font-family: Roboto, sans-serif;
 }
 
@@ -73,6 +77,8 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
+    color: red;
+    font-size: 20px;
   }
 }
 
@@ -97,7 +103,7 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    /* margin-top: -15px; */
   }
 } 
 
@@ -420,7 +426,7 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
+  /* min-width: 424px; */
 }
 .hero-content::after {
   content: "";
@@ -479,6 +485,9 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+  .main-navbar a{
+    font-size: 14px;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -497,6 +506,7 @@ footer {
   .hero-headline {
     font-size: 4.5rem;
     white-space: normal;
+    margin-top: 20px;
   }
   .hero-text {
     width: unset;

@@ -1,34 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
   <head>
     <meta charset="utf-8" />
     <title>Reservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="modal.css" />
+    
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" /> -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans"
       rel="stylesheet"
     />
   </head>
+
   <body>
-    <div class="topnav" id="myTopnav">
-      <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
-    </div>
-    <div class="main-navbar">
-      
-      <a href="#" class="active"><span>Accueil</span></a>
-      <a href="#"><span>Détails de l'évènement</span></a>
-      <a href="#"><span>À propos</span></a>
-      <a href="#"><span>Contact</span></a>
-      <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars"></i>
-      </a>
-    </div>
-    </div>
-  </div>
+
+    <header> <!--ajout balise header -->
+      <div class="topnav" id="myTopnav">
+        <div class="header-logo">
+           <img alt="logo" src="Logo.png" /> <!--suppression des attributs width et height -->
+        </div>
+
+        <div class="main-navbar"> <!-- supprimer le menu accueil -->
+          <a href="#" class="active" ><span>Détails de l'évènement</span></a>
+          <a href="#"><span>À propos</span></a>
+          <a href="#"><span>Contact</span></a>
+          <a href="#"><span>Évènements passés</span></a>
+          <a href="javascript:void(0);" class="icon" onclick="editNav()">
+                <i class="fa fa-bars"></i>
+          </a>
+        </div>
+      </div>
+      <!-- suppression /div suplementaire -->
+    </header>
+
     <main>
       <div class="hero-section">
         <div class="hero-content">
@@ -42,7 +49,7 @@
           </p>
           <button class="btn-signup modal-btn">
             je m'inscris
-          </button>
+          </button> 
         </div>
         <div class="hero-img">
           <img src="./bg_img.jpg" alt="img" />
@@ -209,7 +216,9 @@
           </div>
         </div>
       </div>
+
     </main>
+    
     <footer>
       <p class="copyrights">
         Copyright 2014 - 2022, GameOn Inc.
