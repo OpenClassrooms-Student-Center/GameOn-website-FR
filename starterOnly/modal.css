@@ -201,6 +201,13 @@ input {
   outline: none;
 }
 
+/* ADD MSG CONFIRMATION SUBMIT */
+#confirmation-submit {
+  display: none;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
 /* ADD MESSAGE ERRORS FORM */
 .errors {
   color: #ff0000;
@@ -527,4 +534,8 @@ footer {
     opacity: 1;
   }
 }
+
+
+
+
 

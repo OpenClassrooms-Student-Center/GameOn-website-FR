@@ -35,19 +35,14 @@ closeModalBtn.addEventListener("click", () => {
 
 // create a function containing functions that will check all the fields of the form
 function validate() {
-  validateFirst();
-  validateLast();
-  validateEmail();
-  validateBirthdate();
-  validateQuantity();
-  validateLocation();
-  validateConditions();
-
+  // #4 Add confirmation when submit successfully
+  const confirmationSubmit = document.getElementById("confirmation-submit");
   if (validateFirst() && validateLast() && validateEmail() && validateBirthdate() && validateQuantity() && validateLocation() && validateConditions() === true) {
-    alert("Merci ! Votre réservation a été reçue.");
+    form.style.display = "none";
+    confirmationSubmit.style.display = "block";
+    return true;
   }
 }
-
 
 // variable that will contain the complete form
 const form = document.getElementById('form');
