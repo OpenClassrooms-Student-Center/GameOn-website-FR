@@ -44,7 +44,7 @@ function validate() {
   validateConditions();
 
   if (validateFirst() && validateLast() && validateEmail() && validateBirthdate() && validateQuantity() && validateLocation() && validateConditions() === true) {
-    alert("ok");
+    alert("Merci ! Votre réservation a été reçue.");
   }
 }
 
