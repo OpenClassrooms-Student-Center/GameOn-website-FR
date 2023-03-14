@@ -1,5 +1,11 @@
+const modalbg = document.querySelector('.bground');
+
 // launch modal form
 export function launchModal () {
-    const modalbg = document.querySelector('.bground')
-    modalbg.style.display = 'block'
+    modalbg.style.display = 'block';
+}
+
+// close modal form
+export function closeModal () {
+    modalbg.style.display = 'none';
 }
