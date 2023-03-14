@@ -37,6 +37,13 @@ const errorMessages = {
   termsNotChecked:
     "Vous devez vérifier que vous acceptez les termes et conditions.",
 };
+let isFirstNameValid,
+  isLastNameValid,
+  isEmailValid,
+  isBirthdateValid,
+  isTournamentsValid,
+  isCitiesValid,
+  isTermsValid;
 
 // disable HTML5 validation
 form.setAttribute("novalidate", "");
@@ -61,6 +68,7 @@ async function validate() {
   tournamentsFieldValidation();
   citiesValidation();
   termsValidation();
+  formValidation();
 }
 
 firstName.addEventListener("change", () => nameFieldsValidation(firstName));
@@ -101,14 +109,12 @@ function hideModal() {
 function errorHandler(input, text) {
   input.parentElement.setAttribute("data-error", text);
   input.parentElement.setAttribute("data-error-visible", "true");
-  isFormValid = false;
   return;
 }
 
 function removeDataAttribute(input) {
   input.parentElement.removeAttribute("data-error");
   input.parentElement.removeAttribute("data-error-visible");
-  isFormValid = true;
 }
 
 function removeAllDataAttributes(data) {
@@ -129,31 +135,46 @@ function nameFieldsValidation(input) {
     return errorHandler(input, errorMessages.textFormat);
   }
 
+  if (input == firstName) {
+    isFirstNameValid = true;
+  }
+  if (input == lastName) {
+    isLastNameValid = true;
+  }
+
   removeDataAttribute(input);
 }
 
 function emailFieldValidation() {
   if (email.value === "") {
+    isEmailValid = false;
     return errorHandler(email, errorMessages.emptyField);
   }
   if (!email.value.match(regexEmail)) {
+    isEmailValid = false;
     return errorHandler(email, errorMessages.textFormat);
   }
 
+  isEmailValid = true;
   removeDataAttribute(email);
 }
 
 function birthdateFieldValidation() {
   if (birthDate.value === "") {
+    isBirthdateValid = false;
     return errorHandler(birthDate, errorMessages.birthdateMissing);
   }
+
+  isBirthdateValid = true;
   removeDataAttribute(birthDate);
 }
 
 function tournamentsFieldValidation() {
   if (tournaments.value === "" || isNaN(tournaments.value)) {
+    isTournamentsValid = false;
     return errorHandler(tournaments, errorMessages.tournamentsValue);
   }
+  isTournamentsValid = true;
   removeDataAttribute(tournaments);
 }
 
@@ -161,26 +182,41 @@ function citiesValidation() {
   let isSelected = false;
   for (let i = 0; i < cities.length; i++) {
     if (cities[i].checked) {
-      removeDataAttribute(cities[0]);
-      isSelected = true;
-      return;
+      (isSelected = true);
     }
   }
+  if (!isSelected) {
+    isCitiesValid = false;
+    return errorHandler(cities[0], errorMessages.citiesNotSelected);
+  }
 
-  isSelected
-    ? (isFormValid = true)
-    : errorHandler(cities[0], errorMessages.citiesNotSelected);
+  isCitiesValid = true;
+  removeDataAttribute(cities[0]);
 }
 
 function termsValidation() {
   if (!terms.checked) {
+    isTermsValid = false;
     return errorHandler(terms, errorMessages.termsNotChecked);
   }
-  if (!isFormValid) {
-    return (isFormValid = false);
-  }
-
+  isTermsValid = true;
   removeDataAttribute(terms);
+}
+
+function formValidation() {
+  if (
+    isFirstNameValid &&
+    isLastNameValid &&
+    isEmailValid &&
+    isBirthdateValid &&
+    isTournamentsValid &&
+    isCitiesValid &&
+    isTermsValid
+  ) {
+    isFormValid = true;
+  } else {
+    isFormValid = false;
+  }
 }
 
 function createConfirmation() {
@@ -205,7 +241,6 @@ function createConfirmation() {
 function confirmationScreen() {
   if (!isFormValid) return;
 
-  console.trace(isFormValid);
   form.style.display = "none";
   createConfirmation();
   removeAllDataAttributes(formData);
