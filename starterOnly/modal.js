@@ -33,61 +33,58 @@ modalClose.onclick = function(){
 // valider le formulaire //
 
 function validate(event){
-  event.preventDefault();
+  /*try{
+    event.preventDefault();
     console.log("toto");
-};
-      // valider le first name //
-    function validateFirstName(){
-      var firstName = document.querySelector("#first");
-      const messageErrorFirstName = document.querySelector("#errorFirstName");
-      firstName.addEventListener("input", function(){
-        if(firstName.value === "" || firstName.value.length < 2){
-          messageErrorFirstName.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du prénom.";
-          messageErrorFirstName.style.color ="red";
-          return false;
-        } else {
-        messageErrorFirstName.innerText = "";
-        return true;
-        }
-      });  
-    };
-    validateFirstName();
+  }catch(er){
+    console.log(er);
+  }*/
+  event.preventDefault();
+  validateFirstName();
+  validateName();
+  validateEmail();
+}
+// 
 
-    // valider le name //
+// messages d'erreur //
 
-    function validateName(){
-      var name = document.querySelector("#last");
-      const messageErrorName = document.querySelector("#errorName");
-      name.addEventListener("input", function(){
-        if(name.value === "" || name.value.length < 2){
-          messageErrorName.innerText = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
-          messageErrorName.style.color ="red";
-          return false;
-        } else {
-        messageErrorName.innerText = "";
-        return true;
-        }
-      });  
-    };
-    validateName();
+const errorMessageFirstName = document.querySelector("#errorFirstName");
+const errorMessageName = document.querySelector("#errorName");
+const errorMessageEmail = document.querySelector("#errorEmail");
+const errorMessageCheckbox = document.querySelector("#errorCheckbox");
+const errorMessageTerms = document.querySelector("#errorCheckboxTerms");
+// valider le first name //
 
-    // valider l'email //
+function validateFirstName(){
+  const firstName = document.getElementById("first");
+    if (!firstName.checkValidity()) {
+      errorMessageFirstName.innerHTML = " Le champ Prénom a un minimum de 2 caractères";
+      errorMessageFirstName.style.color= "red";
+    }else{
+      errorMessageFirstName.innerHTML = "";
+    }
+}
 
-    function validateEmail(){
-      var email = document.querySelector("#email");
-      const messageErrorEmail = document.querySelector("#errorEmail");
-      email.addEventListener("input", function(){
-        if(!email.value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/) || email.value === ""){
-          messageErrorEmail.innerText = "Veuillez entrer un email valide.";
-          messageErrorEmail.style.color ="red";
-          return false;
-        } else {
-        messageErrorEmail.innerText = "";
-        return true;
-        }
-      });  
-    };
-    validateEmail();
+function validateName(){
+  const Name = document.getElementById("last");
+    if (!Name.checkValidity()) {
+      errorMessageName.innerHTML = " Le champ Prénom a un minimum de 2 caractères";
+      errorMessageName.style.color= "red";
+    }else{
+      errorMessageName.innerHTML = "";
+    }
+}
+
+function validateEmail(){
+  const email = document.getElementById("email");
+    if (!email.validity.patternMismatch) {
+      errorMessageEmail.innerHTML = "";
+    }else{
+      errorMessageEmail.innerHTML = "L'adresse mail doit être valide";
+      errorMessageEmail.style.color= "red";
+    }
+}
+
 
     // valider une option //
     function validateCheckbox(){
@@ -105,7 +102,7 @@ function validate(event){
         }
       }
     };
-    validateCheckbox();
+    
 
     function validateCheckboxTerms(){
       const radioButtons = document.querySelector('#checkbox1');
@@ -122,7 +119,7 @@ function validate(event){
 
         }); 
       };      
-    validateCheckboxTerms();
+    
 
 
 
