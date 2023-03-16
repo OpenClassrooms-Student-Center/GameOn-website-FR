@@ -82,8 +82,6 @@ img {
   border-bottom:2px solid white;
 }
 
-
-
 .topnav .icon {
   display: none;
 }
@@ -136,7 +134,10 @@ img {
   border-radius: 1rem;
   cursor: pointer;
 }
-
+.confirm-msg,
+.modal-btn-responsive{
+  display:none;
+}
 .modal-btn:hover {
   background: #3876ac;
 }
@@ -240,12 +241,9 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+
+
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -548,6 +546,9 @@ footer {
     display: block;
     margin: 32px auto 10px;
     padding: 12px 35px;
+  }
+  .modal-btn{
+    display:none;
   }
   .copyrights {
     margin-top: 50px;
