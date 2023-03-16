@@ -61,7 +61,7 @@ function validate() {
     confirmationSubmit.style.display = "block";
     confirmationSubmit.style.textAlign = "center";
     confirmationSubmit.style.marginBottom = "30px"; 
-    confirmationSubmit.innerHTML = "Merci ! <br>Votre réservation a été reçue."
+    confirmationSubmit.innerHTML = "Merci !<br>Votre réservation a été reçue."
     closeModalBtn.style.display = "block";
     closeModalBtn.style.marginBottom = "20px"; 
     return true;
@@ -89,8 +89,8 @@ function removeError(element) {
 
 
 // Check firstname length characters
+const first = document.getElementById('first');
 function validateFirst() {
-  const first = document.getElementById('first');
   if (first.value.length == '' || first.value.length < 2) {
     displayError(formData[0], 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.');
   } else {
@@ -100,8 +100,8 @@ function validateFirst() {
 }
 
 // Check lastname length characters
+const last = document.getElementById('last');
 function validateLast() {
-  const last = document.getElementById('last');
   if (last.value.length == '' || last.value.length < 2) {
     displayError(formData[1], 'Veuillez entrer 2 caractères ou plus pour le champ du nom.')
   } else {
@@ -111,8 +111,8 @@ function validateLast() {
 }
 
 // Check if valid e-mail format
+const email = document.getElementById('email');
 function validateEmail() {
-  const email = document.getElementById('email');
   let regexEmail = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
   if (regexEmail.test(email.value) == false) {
     displayError(formData[2], 'Veuillez renseigner une adresse mail valide.')
@@ -135,8 +135,8 @@ function validateBirthdate() {
 }
 
 // Checks if valid number format
+const quantity = document.getElementById('quantity');
 function validateQuantity() {
-  const quantity = document.getElementById('quantity');
   let regexQuantity = /^[0-9]{1,2}$/;
   if (regexQuantity.test(quantity.value) == false) {
     displayError(formData[4], 'Veuillez indiquer un nombre de tournoi.')
