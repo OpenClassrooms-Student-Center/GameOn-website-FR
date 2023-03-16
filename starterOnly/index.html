@@ -29,7 +29,7 @@
     </div>
     </div>
   </div>
-    <main>
+    <main class="main">
       <div class="hero-section">
         <div class="hero-content">
           <h1 class="hero-headline">
@@ -47,9 +47,6 @@
         <div class="hero-img">
           <img src="./bg_img.jpg" alt="img" />
         </div>
-        <!-- <button class="btn-signup modal-btn">
-          je m'inscris
-        </button> -->
       </div>
 
       <div class="bground">
@@ -61,6 +58,7 @@
               action="index.html"
               method="post"
               onsubmit="return validate();"
+              id="modalefield"
             >
               <div
                 class="formData">
@@ -179,8 +177,7 @@
                 >
               </div>
 
-              <div
-                class="formData">
+              <div class="formData">
                 <input
                   class="checkbox-input"
                   type="checkbox"
@@ -207,6 +204,19 @@
               />
             </form>
           </div>
+        </div>
+      </div>
+      <div class="bground">
+        <div class="content">
+          <div class="confirm-msg">
+            <p>Merci Pour <br> votre inscription.</p>
+          </div>
+          <input
+                  class="btn-submit"
+                  type="submit"
+                  class="button"
+                  value="fermer"
+                />
         </div>
       </div>
     </main>
