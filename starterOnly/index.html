@@ -12,12 +12,11 @@
     />
   </head>
   <body>
-    <div class="topnav" id="myTopnav">
+    <header class="topnav" id="myTopnav"> <!-- header instead div -->
       <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
+      <img alt="Logo-GameOn" src="Logo.png"/>
     </div>
     <div class="main-navbar">
-      
       <a href="#" class="active"><span>Accueil</span></a>
       <a href="#"><span>Détails de l'évènement</span></a>
       <a href="#"><span>À propos</span></a>
@@ -27,7 +26,7 @@
         <i class="fa fa-bars"></i>
       </a>
     </div>
-    </div>
+    </header>
   </div>
     <main>
       <div class="hero-section">
@@ -73,7 +72,6 @@
                   name="first"
                   minlength="2"
                 /><br>
-                <span class="errors first-error"></span>
               </div>
               <div
                 class="formData">
@@ -85,7 +83,6 @@
                   name="last"
                   minlength="2"
                 /><br>
-                <span class="errors last-error"></span>
               </div>
               <div
                 class="formData">
@@ -96,7 +93,6 @@
                   id="email"
                   name="email"
                 /><br>
-                <span class="errors email-error"></span>
               </div>
               <div
                 class="formData">
@@ -107,14 +103,12 @@
                   id="birthdate"
                   name="birthdate"
                 /><br>
-                <span class="errors birthdate-error"></span>
               </div>
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
                 <br>
-                <span class="errors quantity-error"></span>
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
@@ -186,9 +180,7 @@
                   Portland</label
                 >
                 <br>
-                <span class="errors location-error"></span>
               </div>
-
               <div
                 class="formData">
                 <input
@@ -202,11 +194,10 @@
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
-                <span class="errors checkbox1-error"></span>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
-                  Je souhaite être prévenu des prochains évènements.
+                  Je souhaite être prévenu des prochains évènements. <!-- remove error double "Je" -->
                 </label>
                 <br>
               </div>
@@ -218,11 +209,15 @@
               />
             </form>
           </div>
-          <!-- message validation after submit -->
-          <div id="confirmation-submit"> 
-            Merci ! 
-            <br>Votre réservation a bien été reçue.
-          </div>
+          <!-- Message validation after submit -->
+            <div id="confirmation-submit"> 
+            </div>
+            <input
+            id="close-btn"
+            class="btn-submit"
+            type="button"
+            value="Fermer"
+          />
         </div>
       </div>
     </main>
