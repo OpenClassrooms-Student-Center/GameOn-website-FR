@@ -26,27 +26,27 @@ const formQuantity = document.forms["reserve"]["quantity"]; // Champ input nombr
 const formfieldsObjects = [ // Tableau d'objets contenant les champs input du formulaire
   {
     "formfield": formName,  // Champ input prénom
-    "conditon": formName.value == "" || formName.value.length < 2,  // Condition de validation du champ input
+    "condition": formName.value == "" || formName.value.length < 2,  // Condition de validation du champ input
     "message": 'Mettez votre prénom.' // Message d'erreur
   },
   {
     "formfield": formQuantity,
-    "conditon": formQuantity.value == "",
+    "condition": formQuantity.value == "",
     "message": 'Merci de compléter le formulaire avec le nombre de participation à nos tournois.'
   },
   {
     "formfield": formEmail,
-    "conditon": !regexpEmail.test(formEmail.value),
+    "condition": !regexpEmail.test(formEmail.value),
     "message": 'Mettez une adresse e-mail valide.'
   },
   {
     "formfield": formLastName,
-    "conditon": formLastName.value == "" || formLastName.value.length < 2,
+    "condition": formLastName.value == "" || formLastName.value.length < 2,
     "message": 'Veuillez entrer 2 caractères ou plus pour le champ du nom.'
   },
   {
     "formfield": formBirthDate,
-    "conditon": formBirthDate.value === false,
+    "condition": formBirthDate.value !== true,
     "message": 'Vous devez entrer votre date de naissance.'
   }
 ]
@@ -76,13 +76,13 @@ function closeForm() {
 //// SOUMISSION DE LA MODALE
 
 // Événement d'envoi du formulaire
-document.forms["reserve"].addEventListener("submit", confirmValidation);
+//document.forms["reserve"].addEventListener("submit", confirmValidation);
 
 function confirmValidation() {
-  if (validate()) {
+  
     innermodalBody.innerHTML= "";
     innermodalBody.innerHTML = `<p class="confirm-msg">Merci ! Votre réservation a été reçue.</p>`;
-  }
+  
 }
 
 // Fonction de validation des données des champs input
@@ -91,8 +91,10 @@ function validate() {
   formIsTrue = true;
   
   for (let i = 0; i < formfieldsObjects.length; i++) {  // Boucle sur le tableau d'objets contenant les champs input du formulaire
-     //if (document.getElementById("error")){document.getElementById("error").remove()}
-     if (formfieldsObjects[i].conditon) {  // Si la condition de validation du champ input est fausse      
+    // if (formIsTrue === false) {
+    //   formfieldsObjects[i].formfield.nextElementSibling.innerHTML = "";
+    // }
+    if (formfieldsObjects[i].condition) {  // Si la condition de validation du champ input est fausse         
        formfieldsObjects[i].formfield.style.border = errorBorder;
        formfieldsObjects[i].formfield.insertAdjacentHTML("afterend", `<p id="error" >${formfieldsObjects[i].message}</p>`);
        formfieldsObjects[i].formfield.focus();
