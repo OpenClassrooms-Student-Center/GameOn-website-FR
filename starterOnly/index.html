@@ -51,17 +51,17 @@
           je m'inscris
         </button>
       </div>
-
+<!-- Modal -->
       <div class="bground">
         <div class="content">
-          <span class="close"></span>
+          <span class=" close  "></span>
           <div class="modal-body">
             <form
               name="reserve"
               action="index.html"
               method="post"
-              onsubmit="return validate();"
-              id="modalefield"
+              onsubmit="return validate()"
+              id="modalefields"
             >
               <div
                 class="formData">
@@ -72,7 +72,7 @@
                   id="first"
                   name="first"
                   minlength="2"
-                /><br>
+                />
               </div>
               <div
                 class="formData">
@@ -82,7 +82,7 @@
                   type="text"
                   id="last"
                   name="last"
-                /><br>
+                />
               </div>
               <div
                 class="formData">
@@ -92,7 +92,7 @@
                   type="email"
                   id="email"
                   name="email"
-                /><br>
+                />
               </div>
               <div
                 class="formData">
@@ -102,7 +102,7 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                /><br>
+                />
               </div>
               <div
                 class="formData">
@@ -199,17 +199,16 @@
                 </label>
                 <br>
               </div>
-              <input
-                class="btn-submit"
+              <button
+                class="button btn-submit"
                 type="submit"
-                class="button"
-                value="C'est parti"
-              />
+              >              C'est parti
+            </button>
             </form>
-            <div class="confirm-msg">
-              <p>Merci Pour <br> votre inscription.</p>
-            </div>
-            <button class="btn-signup modal-btn modal-btn-close">
+            
+            
+            
+            <button class=" modal-btn modal-btn-close">
               Fermer
             </button>
           </div>

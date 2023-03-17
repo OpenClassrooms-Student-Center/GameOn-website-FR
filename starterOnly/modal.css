@@ -20,7 +20,7 @@ body {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  background-image: url("background.png");
+
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1440px;
@@ -138,6 +138,12 @@ img {
 .modal-btn-responsive{
   display:none;
 }
+
+.modal-btn-close
+{
+display:none;
+
+}
 .modal-btn:hover {
   background: #3876ac;
 }
@@ -201,6 +207,10 @@ img {
   margin: 15px auto;
 }
 
+.formData  p {
+  color:red;
+  font-size:0.8rem
+}
 label {
   font-family: var(--font-default);
   font-size: 17px;
@@ -575,5 +585,26 @@ footer {
   }
   to {
     opacity: 1;
+  }
+}
+@-webkit-keyframes modalclose {
+  from {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes modalclose {
+  from {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
   }
 }
