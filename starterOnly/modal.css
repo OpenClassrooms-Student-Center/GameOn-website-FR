@@ -143,15 +143,13 @@ img {
 
 ]
 
-.modal-btn-close
-{
-display:none;
 
-}
 .modal-btn:hover {
   background: #3876ac;
 }
-
+.modal-btn-close{
+display:none;
+}
 .footer {
   margin: 20px;
   padding: 10px;
