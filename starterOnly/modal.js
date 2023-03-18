@@ -47,25 +47,27 @@ let lastInput = document.getElementById("last");
 let emailInput = document.getElementById("email");
 let dateInput = document.getElementById("birthdate");
 let quantityInput = document.getElementById("quantity");
+let checkInput = document.getElementById("checkbox1");
 let erreurFirstInput = document.getElementById("erreurFirst");
 let erreurLastInput = document.getElementById("erreurLast");
 let erreurEmailInput = document.getElementById("erreurEmail");
 let erreurDateInput = document.getElementById("erreurDate");
-let erreurQuantityInput = document.getElementById("erreurQuantity")
+let erreurQuantityInput = document.getElementById("erreurQuantity");
+let erreurCheckboxInput = document.getElementById("erreurCheckbox");
 const formSubmit = document.getElementById('formModal');
 // const confirmation = confirm('Votre formulaire a été soumis avec succès!');
 const form = document.querySelector('form');
 form.addEventListener('submit', function(event) {
   event.preventDefault();
   let erreurForm = false;
-  if (firstInput.value == "" || firstInput.length <2){
+  if (firstInput.value == "" || firstInput.value.length <2){
     erreurFirstInput.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
     erreurForm = true;
   }else{
     erreurFirstInput.innerHTML='';
   }
   
-  if (lastInput.value == "" || lastInput.length <2){
+  if (lastInput.value == "" || lastInput.value.length <2){
     erreurLastInput.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
     erreurForm = true;
   }else{
@@ -100,6 +102,13 @@ form.addEventListener('submit', function(event) {
     erreurForm = true;
   }else{
     erreurQuantityInput.innerHTML = '';
+  }
+
+  if(!checkInput.checked){
+    erreurCheckboxInput.innerHTML = 'Veuillez cocher une case';
+    erreurForm = true;
+  }else{
+    erreurCheckboxInput.innerHTML = '';
   }
 
   // Si les données sont valides, soumettre le formulaire
