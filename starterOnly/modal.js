@@ -13,6 +13,11 @@ function isEmailValid(email) {
   return regex.test(email);
 }
 
+function validate(){
+  
+}
+
+
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
@@ -37,47 +42,72 @@ function closeModal() {
 
 //Verification de la validité du formulaire
 
-let firstInput = document.querySelectorAll("#first");
-let lastInput = document.querySelectorAll("#last");
-let emailInput = document.querySelectorAll("#email");
-let dateInput = document.querySelectorAll("#date");
-let quantityInput = document.querySelectorAll("#quantity");
+let firstInput = document.getElementById("first");
+let lastInput = document.getElementById("last");
+let emailInput = document.getElementById("email");
+let dateInput = document.getElementById("birthdate");
+let quantityInput = document.getElementById("quantity");
+let erreurFirstInput = document.getElementById("erreurFirst");
+let erreurLastInput = document.getElementById("erreurLast");
+let erreurEmailInput = document.getElementById("erreurEmail");
+let erreurDateInput = document.getElementById("erreurDate");
+let erreurQuantityInput = document.getElementById("erreurQuantity")
 const formSubmit = document.getElementById('formModal');
-const confirmation = confirm('Votre formulaire a été soumis avec succès!');
-
+// const confirmation = confirm('Votre formulaire a été soumis avec succès!');
 const form = document.querySelector('form');
 form.addEventListener('submit', function(event) {
   event.preventDefault();
-
-  if (firstInput.value = "" || firstInput.value.length <2 ){
-    firstInput.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
-    return false;
+  let erreurForm = false;
+  if (firstInput.value == "" || firstInput.length <2){
+    erreurFirstInput.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
+    erreurForm = true;
+  }else{
+    erreurFirstInput.innerHTML='';
   }
   
-  if (lastInput.value = "" || lastInput.value.length <2){
-    firstInput.textContent = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
-    return false;
+  if (lastInput.value == "" || lastInput.length <2){
+    erreurLastInput.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ du nom.';
+    erreurForm = true;
+  }else{
+    erreurLastInput.innerHTML='';
   }
 
-  if (emailInput.value = ""){
-    return false;
+  if (!isEmailValid(emailInput.value)){
+    erreurEmailInput.innerHTML = 'Veuillez entrer une email valide';
+    erreurForm = true;
+  }else{
+    erreurEmailInput.innerHTML ='';
   }
 
-  if (dateInput.value = ""){
-    dateInput.textContent = 'Vous devez entrer votre date de naissance.';
-    return false;
+  if (dateInput.value == ""){
+    erreurDate.innerHTML = 'Vous devez entrer votre date de naissance.';
+    erreurForm = true;
+  }else if (dateInput.value != ""){
+    let birthdate = new Date(dateInput.value);
+    let year = birthdate.getFullYear();
+    let todayYear = new Date().getFullYear();
+    let age = todayYear - year;
+    if(age < 16){
+      erreurDate.innerHTML = 'Vous n\'avez pas l\'âge minimum requis';
+      erreurForm = true;
+    }else{
+      erreurDateInput.innerHTML='';
+    }
   }
-
-
-  if (!quantityInput.isInteger()){
-    quantityInput.value = "";
-    return false;
+  
+  if(quantityInput.value == ""){ 
+    erreurQuantityInput.innerHTML = 'Veuillez entrer un nombre';
+    erreurForm = true;
+  }else{
+    erreurQuantityInput.innerHTML = '';
   }
 
   // Si les données sont valides, soumettre le formulaire
-  form.submit();
-  if (confirmation) {
-    formModal.submit();
+  if (!erreurForm){
+    form.submit();
+    if (confirmation) {
+      formModal.submit();
+    }
   }
 });
 
