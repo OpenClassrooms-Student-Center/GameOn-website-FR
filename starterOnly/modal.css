@@ -134,10 +134,14 @@ img {
   border-radius: 1rem;
   cursor: pointer;
 }
-.confirm-msg,
+.confirmMsg,
 .modal-btn-responsive{
   display:none;
 }
+
+.confirmMsg[
+
+]
 
 .modal-btn-close
 {
