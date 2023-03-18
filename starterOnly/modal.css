@@ -17,7 +17,7 @@ body {
   background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
-  max-width: 1300px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
@@ -138,6 +138,12 @@ main {
 }
 
 /* Modal form */
+.formValidate{
+  display: none;
+}
+.formContainer{
+  display: block;
+}
 
 .button {
   background: #fe142f;
@@ -226,12 +232,6 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
 
 .message-erreur{
   font-size: 0.4em;
@@ -326,6 +326,18 @@ input[data-error]::after {
 .close:after {
   transform: rotate(-45deg);
 }
+
+.btn-submit-validate{
+    background: #fe142f;
+    margin-top: 0.5em;
+    padding: 1em;
+    color: #fff;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    display: none;
+}
+
 .btn-submit,
 .btn-signup {
   background: #fe142f;
@@ -484,6 +496,10 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+  main{
+    display: flex;
+    flex-direction: column;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -492,6 +508,10 @@ footer {
     background: #fff;
     color: #000;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
   }
   .hero-content::after {
     content: unset;
@@ -500,12 +520,12 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 2.5rem;
     white-space: normal;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 0.9rem;
   }
   .hero-img img {
     border-radius: 10px;

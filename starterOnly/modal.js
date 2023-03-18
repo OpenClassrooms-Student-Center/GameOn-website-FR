@@ -48,6 +48,8 @@ let emailInput = document.getElementById("email");
 let dateInput = document.getElementById("birthdate");
 let quantityInput = document.getElementById("quantity");
 let checkInput = document.getElementById("checkbox1");
+let formPageValidate = document.getElementsByClassName("formValidate");
+let formPageContainer = document.getElementsByClassName("formContainer");
 let erreurFirstInput = document.getElementById("erreurFirst");
 let erreurLastInput = document.getElementById("erreurLast");
 let erreurEmailInput = document.getElementById("erreurEmail");
@@ -114,9 +116,9 @@ form.addEventListener('submit', function(event) {
   // Si les données sont valides, soumettre le formulaire
   if (!erreurForm){
     form.submit();
-    if (confirmation) {
-      formModal.submit();
-    }
+    formPageContainer.display = none;
+    formPageValidate.display =block;
+    formModal.submit();
   }
 });
 
