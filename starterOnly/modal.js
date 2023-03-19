@@ -55,18 +55,30 @@ const formfieldsObjects = [
   },
   { // Objet Date de naissance
     formfield: formBirthDate,
-    condition: () => formBirthDate.value === "" || !validateBirthdate(),
+    condition: () =>!validateBirthdate(),  // Vérifier si la date de naissance est valide (fonction validateBirthdate
     message: "Veuillez entrer votre date de naissance."
   },
   { // Objet Localisation
-    formfield: formLocation,
-    condition: () => formLocation.checked === false,
-    message: "Veuillez sélectionner une ville"
+    formfield: formLocation,     
+    condition: () => { 
+          let locIstrue = 0;  // Initialiser la variable à 0
+          for (let i = 0; i < formLocation.length; i++) {  // Vérifier si une ville est sélectionnée dans la liste
+            if (formLocation[i].checked) {
+              locIstrue++;  // Incrémenter la variable si une ville est sélectionnée      
+            }
+          if (locIstrue = 0) {
+              return false;  // Retourner faux si aucune ville n'est sélectionnée
+          } else {
+              return true;  // Retourner vrai si une ville est sélectionnée            }
+          }
+        }
+    },
+    message: "Veuillez sélectionner une ville."
   },
   { // Objet Conditions générales
     formfield: formTerms,
-    condition: () => formTerms.checked === false,
-    message: "Veuillez Valider les conditions générales d'utilisation."
+    condition: () => formTerms.checked !== true,  // Vérifier si les conditions générales sont cochées
+    message: "Vous devez vérifier que vous acceptez les termes et conditions."
   }
 ];
 
@@ -107,7 +119,7 @@ document.forms["reserve"].addEventListener(   // Fonction de validation des donn
 // Fonction de confirmation de la modale
 function confirmValidation() {
   if (validate()) {
-    innermodalBody.getElementsByTagName("form")[0].style.display = "none";
+    document.forms["reserve"].style.display = "none";
     modalSubmissionDiv.style.display = "block";
   }
 }
@@ -121,7 +133,7 @@ let formIsTrue = true;
 // Fonction de validation des données des champs input
 function validateBirthdate() {
   // Convertir la date de naissance en objet Date
-  this.BirthDate = new Date(formBirthDate.value);
+  this.BirthDate = new Date(formBirthDate.value  );
 
   // Vérifier si la date est valide
   if (isNaN(this.BirthDate.getTime())) {
@@ -130,14 +142,17 @@ function validateBirthdate() {
 
   // Vérifier si l'utilisateur a plus de 18 ans
   const today = new Date();
-  const age = today.getFullYear() - this.BirthDate.getFullYear();
-
-  if (today.getMonth() < dob.getMonth() || (today.getMonth() === dob.getMonth() && today.getDate() < dob.getDate())) {
-    return false  // L'utilisateur n'a pas encore eu son anniversaire cette année
+  let age = today.getFullYear() - this.BirthDate.getFullYear();
+  const m = today.getMonth() - this.BirthDate.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < this.BirthDate.getDate())) {
+    age--;
   }
-
-  return age >= 18;
+  if (age < 18) {
+    return false;
+  }
+  return true;
 }
+
 
 function validate() {
   let formIsTrue = true;
@@ -148,15 +163,18 @@ function validate() {
   for (let i = 0; i < formfieldsObjects.length; i++) {
     let condition = formfieldsObjects[i].condition();
     let message = formfieldsObjects[i].message;
-    let formField = formfieldsObjects[i].formfield;
+    
     if (condition) {
-      formField.setAttribute("data-error", message);
-      formField.childlement.setAttribute("data-error-visible", "true");
-      formField.focus();
+      console.log(validateBirthdate());
+      formfieldsObjects[i].formfield.parentElement.setAttribute("data-error", message);
+      formfieldsObjects[i].formfield.parentElement.setAttribute("data-error-visible", "true");
+      formfieldsObjects[i].formfield.focus();
       formIsTrue = false;
     } else {
-      formField.removeAttribute("data-error");
-      formField.childlement.removeAttribute("data-error-visible");
+      console.log("formOk = " + formfieldsObjects[i].message);
+      
+      formfieldsObjects[i].formfield.parentElement.removeAttribute("data-error");
+      formfieldsObjects[i].formfield.parentElement.setAttribute("data-error-visible", "false");
     }
   }
   return formIsTrue;
