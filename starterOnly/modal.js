@@ -48,6 +48,12 @@ let emailInput = document.getElementById("email");
 let dateInput = document.getElementById("birthdate");
 let quantityInput = document.getElementById("quantity");
 let checkInput = document.getElementById("checkbox1");
+let locationInput1 = document.getElementById("location1");
+let locationInput2 = document.getElementById("location2");
+let locationInput3 = document.getElementById("location3");
+let locationInput4 = document.getElementById("location4");
+let locationInput5 = document.getElementById("location5");
+let locationInput6 = document.getElementById("location6");
 let formPageValidate = document.getElementsByClassName("formValidate");
 let formPageContainer = document.getElementsByClassName("formContainer");
 let erreurFirstInput = document.getElementById("erreurFirst");
@@ -56,12 +62,14 @@ let erreurEmailInput = document.getElementById("erreurEmail");
 let erreurDateInput = document.getElementById("erreurDate");
 let erreurQuantityInput = document.getElementById("erreurQuantity");
 let erreurCheckboxInput = document.getElementById("erreurCheckbox");
+let erreurRadioInput = document.getElementById("erreurRadio");
 const formSubmit = document.getElementById('formModal');
 // const confirmation = confirm('Votre formulaire a été soumis avec succès!');
 const form = document.querySelector('form');
 form.addEventListener('submit', function(event) {
   event.preventDefault();
   let erreurForm = false;
+  
   if (firstInput.value == "" || firstInput.value.length <2){
     erreurFirstInput.innerHTML = 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.';
     erreurForm = true;
@@ -111,6 +119,13 @@ form.addEventListener('submit', function(event) {
     erreurForm = true;
   }else{
     erreurCheckboxInput.innerHTML = '';
+  }
+
+  if (!locationInput1.checked && !locationInput2.checked && !locationInput3.checked && !locationInput4.checked && !locationInput5.checked && !locationInput6.checked){
+    erreurRadioInput.innerHTML = 'Veuillez cocher une case';
+    erreurForm = true;
+  }else{
+    erreurRadioInput.innerHTML = '';
   }
 
   // Si les données sont valides, soumettre le formulaire
