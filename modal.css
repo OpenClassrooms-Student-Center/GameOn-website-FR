@@ -82,45 +82,19 @@ img {
   border-bottom:2px solid white;
 }
 
+button.btn-responsive{
+  display:none;
+}
 .topnav .icon {
   display: none;
 }
-
-@media screen and (max-width: 768px) {
-  .topnav a {
-    display: none;
-  }
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-  .topnav.responsive {
-    position: relative;
-  }
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
-@media screen and (max-width: 540px) {
-  .topnav a {
-    display: none;
-  }
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
+.modal-submission
+{
+  display:none;
 }
 
 
+.btn-responsive,
 .modal-btn {
   font-size: 145%;
   background: #fe142f;
@@ -134,21 +108,12 @@ img {
   border-radius: 1rem;
   cursor: pointer;
 }
-.modal-submission,
-.modal-btn-responsive{
-  display:none;
-}
-
-.confirmMsg[
-
-]
-
 
 .modal-btn:hover {
   background: #3876ac;
 }
 .modal-btn-close{
-display:none;
+  display:none;
 }
 .footer {
   margin: 20px;
@@ -254,8 +219,6 @@ input {
   border: 2px solid #e54858;
 }
 
-
-
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -359,6 +322,7 @@ input {
   -ms-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
+.btn-responsive,
 .btn-submit,
 .btn-signup {
   background: #fe142f;
@@ -371,6 +335,7 @@ input {
   cursor: pointer;
   border: 0;
 }
+
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -447,7 +412,7 @@ input {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
+ 
   border-radius: 10px;
   display: -ms-grid;
   display: grid;
@@ -525,6 +490,7 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -566,7 +532,48 @@ footer {
     margin-top: 50px;
     text-align: center;
   }
+  button.btn-responsive{
+    display:block;
+    margin:0 auto
+  }
 }
+  
+@media screen and (max-width: 768px) {
+  .topnav a {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  
+}
+
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+    margin-top: -15px;
+  }
+}
+
+
 
 @-webkit-keyframes modalopen {
   from {

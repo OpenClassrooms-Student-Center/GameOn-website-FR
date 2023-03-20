@@ -46,10 +46,11 @@
       <div class="hero-img">
         <img src="./bg_img.jpg" alt="img" />
       </div>
-      <button class=" modal-btn modal-btn-responsive">
-        je m'inscris
-      </button>
+      
     </div>
+    <button class=" button  btn-signup btn-responsive">
+      je m'inscris
+    </button>
     <!-- Modal -->
     <div class="bground"> 
       <div class="content"> <!-- Modal content -->
@@ -72,14 +73,12 @@
               <label for="birthdate">Date de naissance</label><br>
               <input class="text-control" type="date" id="birthdate" name="birthdate" />
             </div>
-
-
             <div class="formData">        
               <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>   
               <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
             </div>
             <div class="formData">
-              <label class="text-label">A quel tournoi souhaitez-vous participer cette année ?</label>
+              <label class="text-label" for="location">A quel tournoi souhaitez-vous participer cette année ?</label>
 
               <input class="checkbox-input radio" type="radio" checked id="location1" name="location" value="New York" />
               <label class="checkbox-label"  for="location1">
@@ -119,18 +118,19 @@
                 Je souhaite être prévenu des prochains évènements.
               </label>
               <br>
+              
             </div>
-            <button class="button btn-submit" type="submit"> C'est parti </button>
+            <button class="button modal-btn btn-submit" type="submit"> C'est parti </button>
           </form>
           <div class="modal-submission">
             <p id="submission-msg">Merci pour <br> votre participation.</p>
           </div>
-
-          <button class=" modal-btn modal-btn-close">
+          <button class=" button modal-btn modal-btn-close">
             Fermer
           </button>
         </div>
-
+        <button class="button modal-btn-close" type="submit"> Fermer </button>
+          
       </div>
     </div>
 

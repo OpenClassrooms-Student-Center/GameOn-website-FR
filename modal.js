@@ -24,7 +24,7 @@ const formLastName = document.forms["reserve"]["last"]; // Champ input nom
 const formEmail = document.forms["reserve"]["email"]; // Champ input e-mail
 const formBirthDate = document.forms["reserve"]["birthdate"]; // Champ input date de naissance
 const formQuantity = document.forms["reserve"]["quantity"]; // Champ input nombre de tournois
-const formLocation = document.querySelectorAll(".radio"); // Champ input ville
+const formLocation = document.getElementsByClassName(".radio"); // Champ input ville
 const formTerms = document.forms["reserve"]["checkbox1"]; // Champ input conditions générales
 
 //Régex pour la validation de l'email
@@ -63,21 +63,19 @@ const formfieldsObjects = [
     condition: () => !formTerms.checked,  // Vérifier si les conditions générales sont cochées
     message: "Vous devez vérifier que vous acceptez les termes et conditions."
   },
-  { // Objet Localisation
-    formfield: formLocation,     
-    condition: () => { 
-          let locIstrue = false ;  // Initialiser la variable à 0
-          for (location.checked in formLocation) {  // Vérifier si une ville est sélectionnée dans la liste
-            locIstrue = true;  // modifie la variable si une ville est sélectionnée      
-          }
-          if (locIstrue === false) {
-            return false;  // Retourner faux si aucune ville n'est sélectionnée
-          } else {
-            return true;  // Retourner vrai si une ville est sélectionnée            }
-          } 
+  { // Objet Localisation qui est un tableau d'objets
+    formfield: formLocation,        
+    condition: () => {  // Vérifier si une ville est sélectionnée
+      let locationIsTrue = false;
+      for (let i = 0; i < formLocation.length; i++) {
+        if (formLocation[i].checked) {
+          locationIsTrue = true;
+        }
+      }
+      return !locationIsTrue;
     },
     message: "Veuillez sélectionner une ville."
-  },
+  }
 ];
 
 //////////////////////////////////////////////// GESTION MODALE //////////////////////////////////////////
