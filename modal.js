@@ -24,7 +24,7 @@ const formLastName = document.forms["reserve"]["last"]; // Champ input nom
 const formEmail = document.forms["reserve"]["email"]; // Champ input e-mail
 const formBirthDate = document.forms["reserve"]["birthdate"]; // Champ input date de naissance
 const formQuantity = document.forms["reserve"]["quantity"]; // Champ input nombre de tournois
-const formLocation = document.querySelectorAll("location"); // Champ input ville
+const formLocation = document.querySelectorAll(".radio"); // Champ input ville
 const formTerms = document.forms["reserve"]["checkbox1"]; // Champ input conditions générales
 
 //Régex pour la validation de l'email
@@ -38,16 +38,6 @@ const formfieldsObjects = [
     condition: () => formName.value === "" || formName.value.length < 2,
     message: "Mettez votre prénom."
   },
-  {  // Objet Objet Quantité
-    formfield: formQuantity,
-    condition: () => formQuantity.value === "",
-    message: "Merci de compléter le formulaire avec le nombre de participation à nos tournois."
-  },
-  { // Objet Email
-    formfield: formEmail,
-    condition: () => !regexpEmail.test(formEmail.value),
-    message: "Mettez une adresse e-mail valide."
-  },
   { // Objet Nom de Famille
     formfield: formLastName,
     condition: () => formLastName.value === "" || formLastName.value.length < 2,
@@ -58,26 +48,33 @@ const formfieldsObjects = [
     condition: () =>!validateBirthdate(),  // Vérifier si la date de naissance est valide (fonction validateBirthdate
     message: "Veuillez entrer votre date de naissance."
   },
-  
+  {  // Objet Objet Quantité
+    formfield: formQuantity,
+    condition: () => formQuantity.value === "",
+    message: "Merci de compléter le formulaire avec le nombre de participation à nos tournois."
+  },
+  { // Objet E-mail
+    formfield: formEmail,
+    condition: () => !regexpEmail.test(formEmail.value),
+    message: "Veuillez entrer une adresse e-mail valide."
+  }, 
   { // Objet Conditions générales
     formfield: formTerms,
-    condition: () => formTerms.checked !== true,  // Vérifier si les conditions générales sont cochées
+    condition: () => !formTerms.checked,  // Vérifier si les conditions générales sont cochées
     message: "Vous devez vérifier que vous acceptez les termes et conditions."
   },
   { // Objet Localisation
     formfield: formLocation,     
     condition: () => { 
-          let locIstrue = true;  // Initialiser la variable à 0
-          for (let i = 0; i < formLocation.length; i++) {  // Vérifier si une ville est sélectionnée dans la liste
-            if (formLocation[i].checked) {
-              locIstrue = false;  // Incrémenter la variable si une ville est sélectionnée      
-            }}
-          if (locIstrue = false) {
-              return false;  // Retourner faux si aucune ville n'est sélectionnée
-          } else {
-              return true;  // Retourner vrai si une ville est sélectionnée            }
+          let locIstrue = false ;  // Initialiser la variable à 0
+          for (location.checked in formLocation) {  // Vérifier si une ville est sélectionnée dans la liste
+            locIstrue = true;  // modifie la variable si une ville est sélectionnée      
           }
-        
+          if (locIstrue === false) {
+            return false;  // Retourner faux si aucune ville n'est sélectionnée
+          } else {
+            return true;  // Retourner vrai si une ville est sélectionnée            }
+          } 
     },
     message: "Veuillez sélectionner une ville."
   },
@@ -166,13 +163,13 @@ function validate() {
     let message = formfieldsObjects[i].message;
     
     if (condition) {
-      console.log("formNotOk = " + formfieldsObjects[i].formfield);
+      console.log("formNotOk = " + formfieldsObjects[i].message);
       formfieldsObjects[i].formfield.parentElement.setAttribute("data-error", message);
       formfieldsObjects[i].formfield.parentElement.setAttribute("data-error-visible", "true");
       formfieldsObjects[i].formfield.focus();
       formIsTrue = false;
     } else {
-      console.log("formOk = " + formfieldsObjects[i].formfield.value);
+      console.log("formOk = " +  formfieldsObjects[i].formfield.value);
       
       formfieldsObjects[i].formfield.parentElement.removeAttribute("data-error");
       formfieldsObjects[i].formfield.parentElement.setAttribute("data-error-visible", "false");
