@@ -134,7 +134,7 @@ img {
   border-radius: 1rem;
   cursor: pointer;
 }
-.confirmMsg,
+.modal-submission,
 .modal-btn-responsive{
   display:none;
 }
