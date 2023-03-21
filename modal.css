@@ -20,7 +20,6 @@ body {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1440px;
@@ -48,6 +47,7 @@ img {
   padding-right: 1rem;
 }
 
+/* barre de navigation */
 .topnav {
   overflow: hidden;
   margin: 3.5%;
@@ -84,7 +84,7 @@ img {
 .btn-responsive {
   display: none;
 }
-.topnav .icon {
+a.icon {
   display: none;
 }
 .modal-submission {
@@ -485,14 +485,13 @@ footer {
     display: block;
     margin: 0 auto;
   }
-}
-
-.topnav a {
-  display: none;
-}
+  .topnav a{
+    display:none
+  }
 .topnav a.icon {
   float: right;
   display: block;
+  
 }
 .topnav.responsive {
   position: relative;
@@ -507,7 +506,7 @@ footer {
   display: block;
   text-align: left;
 }
-
+}
 @media screen and (max-width: 540px) {
   .topnav a {
     display: none;
@@ -515,7 +514,7 @@ footer {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    
   }
 }
 

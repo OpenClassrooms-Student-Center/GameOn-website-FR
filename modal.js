@@ -7,7 +7,8 @@ const innermodalBody = document.querySelector(".modal-body");  // Corps de la mo
 
 //Récupération  des boutons de la modale
 const modalBtn = document.querySelectorAll(".modal-btn"); // Bouton d'ouverture de la modale
-const closeModal = document.querySelector(".close",".modal-btn-close"); // Bouton de fermeture de la modale
+const closeModal = document.querySelector(".close"); // Bouton de fermeture de la modale
+const closeModal2 = document.querySelector(".modal-btn-close"); // Bouton de fermeture de la modale
 const btnsubmit = document.querySelector(".btn-submit");  // Bouton d'envoi du formulaire
 
 
@@ -88,6 +89,7 @@ function launchModal() {// Lancement de la modale
 
 // Événement de fermeture de la modale
 closeModal.addEventListener("click", closeForm);
+closeModal2.addEventListener("click", closeForm);
 
 function closeForm() {// Fermeture de la modale
 
@@ -109,7 +111,7 @@ document.forms["reserve"].addEventListener(   // Fonction de validation des donn
 // Fonction de confirmation de la modale
 function confirmValidation() {
   
-  if (validate()) {
+  if (true) {
     innermodalBody.style.display = "none";
     modalSubmissionDiv.style.display = "flex";
   }

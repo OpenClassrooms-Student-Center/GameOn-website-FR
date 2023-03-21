@@ -1,9 +1,12 @@
 function editNav() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-      x.className += " responsive";
+    var NavBar = document.getElementById("myTopnav");
+    var iconNavBar = document.getElementById("iconNavBar");
+    if (NavBar.className === "topnav") {
+      NavBar.className += " responsive";
+      iconNavBar.style.display = "block";
     } else {
-      x.className = "topnav";
+      NavBar.className = "topnav";
+      iconNavBar.style.display = "none";
     }
   }
 
