@@ -48,7 +48,7 @@
       </div>
       
     </div>
-    <button class=" button  btn-signup btn-responsive">
+    <button class=" button  modal-btn btn-signup btn-responsive">
       je m'inscris
     </button>
     <!-- Modal -->
@@ -56,14 +56,14 @@
       <div class="content"> <!-- Modal content -->
         <span class=" close  "></span>
         <div class="modal-body"><!-- Modal body -->
-          <form name="reserve" action="index.html" method="post" onsubmit="return validate()" id="modalefields">  <!-- Modal form -->
+          <form name="reserve" action="index.html" method="post" id="modalefields">  <!-- Modal form -->
             <div class="formData">
               <label for="first">Prénom</label><br>
               <input class="text-control" type="text" id="first" name="first" minlength="2" />
             </div>
             <div class="formData">
               <label for="last">Nom</label><br>
-              <input class="text-control" type="text" id="last" name="last" />
+              <input class="text-control" type="text" id="last" name="last" onfocus=""/>
             </div>
             <div class="formData">
               <label for="email">E-mail</label><br>
@@ -77,10 +77,10 @@
               <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>   
               <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
             </div>
-            <div class="formData">
+            <div class="formData"  id="formDataRadio">
               <label class="text-label" for="location">A quel tournoi souhaitez-vous participer cette année ?</label>
 
-              <input class="checkbox-input radio" type="radio" checked id="location1" name="location" value="New York" />
+              <input class="checkbox-input radio" type="radio"  id="location1" name="location" value="New York" />
               <label class="checkbox-label"  for="location1">
                 <span class="checkbox-icon"></span>
                 New York</label>
@@ -121,16 +121,18 @@
               
             </div>
             <button class="button modal-btn btn-submit" type="submit"> C'est parti </button>
-          </form>
-          <div class="modal-submission">
+          </form>       
+        </div>
+        <div class="modal-submission">
+          <div class="modal-submission-div">  
             <p id="submission-msg">Merci pour <br> votre participation.</p>
           </div>
           <button class=" button modal-btn modal-btn-close">
             Fermer
           </button>
-        </div>
-        <button class="button modal-btn-close" type="submit"> Fermer </button>
           
+      </div>
+        
       </div>
     </div>
 

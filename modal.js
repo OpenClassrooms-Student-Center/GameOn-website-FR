@@ -7,7 +7,7 @@ const innermodalBody = document.querySelector(".modal-body");  // Corps de la mo
 
 //Récupération  des boutons de la modale
 const modalBtn = document.querySelectorAll(".modal-btn"); // Bouton d'ouverture de la modale
-const closeModal = document.querySelector(".close", "modal-btn-close"); // Bouton de fermeture de la modale
+const closeModal = document.querySelector(".close",".modal-btn-close"); // Bouton de fermeture de la modale
 const btnsubmit = document.querySelector(".btn-submit");  // Bouton d'envoi du formulaire
 
 
@@ -19,13 +19,14 @@ const modalSubmissionDiv = document.querySelector(".modal-submission"); // Div d
 //////////////////////////////////////////////// ELEMENTS A VERIFIER //////////////////////////////////////////
 
 // Récupération des valeurs des éléments du formulaire
-const formName = document.forms["reserve"]["first"];  // Champ input prénom
-const formLastName = document.forms["reserve"]["last"]; // Champ input nom
-const formEmail = document.forms["reserve"]["email"]; // Champ input e-mail
-const formBirthDate = document.forms["reserve"]["birthdate"]; // Champ input date de naissance
-const formQuantity = document.forms["reserve"]["quantity"]; // Champ input nombre de tournois
-const formLocation = document.getElementsByClassName(".radio"); // Champ input ville
-const formTerms = document.forms["reserve"]["checkbox1"]; // Champ input conditions générales
+const inputFirstName = document.forms["reserve"]["first"];  // Champ input prénom
+const inputLastName = document.forms["reserve"]["last"]; // Champ input nom
+const inputEmail = document.forms["reserve"]["email"]; // Champ input e-mail
+const inputBirthdate = document.forms["reserve"]["birthdate"]; // Champ input date de naissance
+const InputChallengeNb = document.forms["reserve"]["quantity"]; // Champ input nombre de tournois
+const listLocations = document.querySelectorAll('input[type="radio"][name="location"]')
+const formLocations = document.querySelector('input.radio')
+const inputTerms = document.forms["reserve"]["checkbox1"]; // Champ input conditions générales
 
 //Régex pour la validation de l'email
 const regexpEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -34,48 +35,41 @@ const regexpEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
 
 const formfieldsObjects = [
   {   // Objet Prénom
-    formfield: formName,
-    condition: () => formName.value === "" || formName.value.length < 2,
+    formfield: inputFirstName,
+    condition: () => inputFirstName.value === "" || inputFirstName.value.length < 2,
     message: "Mettez votre prénom."
   },
   { // Objet Nom de Famille
-    formfield: formLastName,
-    condition: () => formLastName.value === "" || formLastName.value.length < 2,
+    formfield: inputLastName,
+    condition: () => inputLastName.value === "" || inputLastName.value.length < 2,
     message: "Veuillez entrer 2 caractères ou plus pour le champ du nom."
   },
   { // Objet Date de naissance
-    formfield: formBirthDate,
+    formfield: inputBirthdate,
     condition: () =>!validateBirthdate(),  // Vérifier si la date de naissance est valide (fonction validateBirthdate
     message: "Veuillez entrer votre date de naissance."
   },
   {  // Objet Objet Quantité
-    formfield: formQuantity,
-    condition: () => formQuantity.value === "",
+    formfield: InputChallengeNb,
+    condition: () => InputChallengeNb.value === "",
     message: "Merci de compléter le formulaire avec le nombre de participation à nos tournois."
   },
   { // Objet E-mail
-    formfield: formEmail,
-    condition: () => !regexpEmail.test(formEmail.value),
+    formfield: inputEmail,
+    condition: () => !regexpEmail.test(inputEmail.value),
     message: "Veuillez entrer une adresse e-mail valide."
   }, 
   { // Objet Conditions générales
-    formfield: formTerms,
-    condition: () => !formTerms.checked,  // Vérifier si les conditions générales sont cochées
+    formfield: inputTerms,
+    condition: () => !inputTerms.checked,  // Vérifier si les conditions générales sont cochées
     message: "Vous devez vérifier que vous acceptez les termes et conditions."
   },
-  { // Objet Localisation qui est un tableau d'objets
-    formfield: formLocation,        
-    condition: () => {  // Vérifier si une ville est sélectionnée
-      let locationIsTrue = false;
-      for (let i = 0; i < formLocation.length; i++) {
-        if (formLocation[i].checked) {
-          locationIsTrue = true;
-        }
-      }
-      return !locationIsTrue;
-    },
+  { // Objet Localisation 
+    formfield: formLocations,        
+    condition: () =>  // Vérifier si une ville est sélectionnée
+      !validateLocation(),  // Vérifier si une ville est sélectionnée (fonction validateLocation
     message: "Veuillez sélectionner une ville."
-  }
+  },
 ];
 
 //////////////////////////////////////////////// GESTION MODALE //////////////////////////////////////////
@@ -87,6 +81,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 function launchModal() {// Lancement de la modale
   modalbg.style.display = "block";
+  inputFirstName.focus();
 }
 
 //// FERMETURE MODALE
@@ -112,24 +107,40 @@ document.forms["reserve"].addEventListener(   // Fonction de validation des donn
 );
 
 // Fonction de confirmation de la modale
-// Fonction de confirmation de la modale
 function confirmValidation() {
+  
   if (validate()) {
-    document.forms["reserve"].style.display = "none";
-    modalSubmissionDiv.style.display = "block";
+    innermodalBody.style.display = "none";
+    modalSubmissionDiv.style.display = "flex";
   }
 }
 
 
 //////////////////////////////////////////////// GESTION DU FORMULAIRE //////////////////////////////////////////
 
-let formIsTrue = true;
+
 
 
 // Fonction de validation des données des champs input
-function validateBirthdate() {
-  // Convertir la date de naissance en objet Date
-  this.BirthDate = new Date(formBirthDate.value  );
+function validateLocation() {
+  let selectedLocation = 0;
+
+  for (let location of  listLocations ) {
+    console.log(location.value)
+    if (location.checked) {
+    selectedLocation++;
+    
+  }}
+  if (selectedLocation === 0) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
+function validateBirthdate() {   
+    // Convertir la date de naissance en objet Date
+  this.BirthDate = new Date(inputBirthdate.value  );
 
   // Vérifier si la date est valide
   if (isNaN(this.BirthDate.getTime())) {
@@ -152,10 +163,6 @@ function validateBirthdate() {
 
 function validate() {
   let formIsTrue = true;
-  
-
-
-
   for (let i = 0; i < formfieldsObjects.length; i++) {
     let condition = formfieldsObjects[i].condition();
     let message = formfieldsObjects[i].message;
