@@ -111,7 +111,7 @@ document.forms["reserve"].addEventListener(   // Fonction de validation des donn
 // Fonction de confirmation de la modale
 function confirmValidation() {
   
-  if (true) {
+  if (validate()) {
     innermodalBody.style.display = "none";
     modalSubmissionDiv.style.display = "flex";
   }

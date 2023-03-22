@@ -569,7 +569,7 @@ footer {
   background-color: red;
   color: white;
 }
-}
+
 @media screen and (max-width: 540px) {
   .topnav a {
     display: none;
