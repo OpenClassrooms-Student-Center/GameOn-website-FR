@@ -1,12 +1,13 @@
 function editNav() {
     var NavBar = document.getElementById("myTopnav");
-    var iconNavBar = document.getElementById("iconNavBar");
+    var iconNavBar = document.getElementById("IconNavBar::active");
     if (NavBar.className === "topnav") {
       NavBar.className += " responsive";
-      iconNavBar.style.display = "block";
+      iconNavBar.style.color = "white";
+      
     } else {
       NavBar.className = "topnav";
-      iconNavBar.style.display = "none";
+      
     }
   }
 
