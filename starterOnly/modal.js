@@ -1,7 +1,7 @@
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
-    x.className += "responsive";
+    x.className += " responsive";
   } else {
     x.className = "topnav";
   }
@@ -10,6 +10,7 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
+const modalThx = document.querySelector(".thx-modal");
 const closeBtn = document.querySelectorAll(".close");
 const submitBtn = document.getElementsByClassName(".btn-submit");
 
@@ -20,15 +21,15 @@ const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
 const city = document.querySelectorAll(".location");
-const location1 = document.getElementById("location1");
-const location2 = document.getElementById("location2");
-const location3 = document.getElementById("location3");
-const location4 = document.getElementById("location4");
-const location5 = document.getElementById("location5");
-const location6 = document.getElementById("location6");
-const checkbox1 = document.getElementById("checkbox1");
-const checkbox2 = document.getElementById("checkbox2");
+const cityName = document.getElementsByName("location");
+const locationChecked = undefined;
+// const checkbox = document.getElementById("checkbox1");
+// const checkbox2 = document.getElementById("checkbox2");
 
+// modal validation
+const userNames = document.getElementById("user-name");
+const userEmail = document.getElementById("user-email");
+const userCity = document.getElementById("user-city");
 
 // launch modal event
 modalBtn.forEach((btn) =>
@@ -40,53 +41,99 @@ modalBtn.forEach((btn) =>
 closeBtn.forEach((btn) =>
   btn.addEventListener("click", function () {
     modalbg.style.display = "none";
+    modalThx.style.display = "none";
   })
 );
 
-// submitBtn.forEach((btn) => btn.addEventListener("submit", getFormData()));
+// regex conditions
+const nameRegex = new RegExp("^[a-zA-ZÀ-ÿ\\s]{2,}$");
+const emailRegex = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-z]{2,4}$");
+const birthdateRegex = new RegExp("^[0-9]{4}-[0-9]{2}-[0-9]{2}$");
+const quantityRegex = new RegExp("^[0-9]{1,2}$");
 
-// // submitBtn.addEventListener("click", getFormData());
+// regex function
+function testRegexOnInput(input, regex, length, error) {
+  const value = input.value.trim();
+  if (regex.test(value) && input.value.length >= length) {
+    console.log(regex.test(value));
+    error.dataset.errorVisible = "false";
+    return true;
+  } else {
+    error.dataset.errorVisible = "true";
+    return false;
+  }
+}
 
-// function getFormData() {
-//   var data = new FormData(document.getElementById("formulaire"));
-//   for (var value of data.values()) {
-//     console.log(value);
-//   }
-//   return false
-//   // const data = {};
-//   // for (let i = 0; i < formData.length; i++) {
-//   //   const input = formData[i].querySelector("input");
-//   //   data[input.name] = input.value;
-//   // }
-//   // console.log(data);
-//   // return data;
-// }
+function testInputLocation(input) {
+  let hasOneCheck = false;
+  console.log(input);
+  input.dataset.errorVisible = "false";
+  for (let i = 0; i < cityName.length; i++) {
+    if (cityName[i].checked) {
+      this.locationChecked = cityName[i].value;
+      hasOneCheck = true;
+    }
+  }
+  if (!hasOneCheck) {
+    input.dataset.errorVisible = "true";
+    return false;
+  }
+  return true;
+}
 
-form.addEventListener("submit", function (e) {
+// listen to input
+form.firstName.addEventListener("input", () => {
+  testRegexOnInput(form.firstName, nameRegex, 2, this.firstName);
+});
+form.lastName.addEventListener("input", () => {
+  testRegexOnInput(form.lastName, nameRegex, 2, this.lastName);
+});
+form.email.addEventListener("input", () => {
+  testRegexOnInput(form.email, emailRegex, 2, this.email);
+});
+form.birthdate.addEventListener("input", () => {
+  testRegexOnInput(form.birthdate, birthdateRegex, 10, this.birthdate);
+});
+form.quantity.addEventListener("input", () => {
+  testRegexOnInput(form.quantity, quantityRegex, 1, this.quantity);
+});
+
+cityName.forEach((location) => {
+  location.addEventListener("input", () => {
+    testInputLocation(location);
+  });
+});
+
+// test regex on input
+
+form.addEventListener("submit", (e) => {
   e.preventDefault();
+  if (
+    testRegexOnInput(form.firstName, nameRegex, 2, this.firstName) &&
+    testRegexOnInput(form.lastName, nameRegex, 2, this.lastName) &&
+    testRegexOnInput(form.email, emailRegex, 2, this.email) &&
+    testRegexOnInput(form.birthdate, birthdateRegex, 10, this.birthdate) &&
+    testRegexOnInput(form.quantity, quantityRegex, 1, this.quantity)
+  ) {
+    const user = {
+      firstName: form.firstName.value,
+      lastName: form.lastName.value,
+      email: form.email.value,
+      city: this.locationChecked,
+    };
 
-  console.log("submit", firstName.value, lastName.value, email.value);
+    modalbg.style.display = "none";
 
-  // const fullNameInput = formFields.fullName;
-  // const emailInput = formFields[1];
+    console.log(userNames);
 
-  // console.log(fullNameInput.value); // output: 'foo bar'
-  // console.log(emailInput.value); // output: 'foo@bar.com'
+    userNames.innerHTML = user.firstName + " " + user.lastName;
+    userEmail.innerHTML = user.email;
+    userCity.innerHTML = user.city;
+    
+    modalThx.style.display = "block";
 
-  console.log(e);
-  var data = new FormData(e.target);
-
-  console.log(form.first, data, e.target);
-  console.log(e.target.children);
-
-  // Object.values(e.target).forEach((key, i) => {
-  //   console.log(key);
-  //   if ( key === "formData") console.log(key, key.value, i);
-  // });
-
-  // e.target.children.forEach((input) => {
-  //   if (input.getElementsByClassName("formData")) {
-  //     console.log(input);
-  //   }
-  // });
+    form.reset();
+  } else {
+    console.log("error");
+  }
 });
