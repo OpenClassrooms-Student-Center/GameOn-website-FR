@@ -1,1 +1,12 @@
 @import "./navbar.css";
+.topnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  margin: 3.5%;
+}
+.header-logo img {
+  width: 100%;
+  height: 100%;
+}

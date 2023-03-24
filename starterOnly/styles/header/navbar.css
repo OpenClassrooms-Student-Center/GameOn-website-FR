@@ -1,22 +1,10 @@
 /* Navigation style and effect on hover/active */
 
-.topnav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  overflow: hidden;
-  margin: 3.5%;
-}
-.header-logo img {
-  width: 100%;
-  height: 100%;
-}
-
 .main-navbar.open ul {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  justify-content: baseline;
+  justify-content: flex-end;
 }
 nav ul {
   display: flex;
