@@ -23,8 +23,6 @@ const quantity = document.getElementById("quantity");
 const city = document.querySelectorAll(".location");
 const cityName = document.getElementsByName("location");
 const locationChecked = undefined;
-// const checkbox = document.getElementById("checkbox1");
-// const checkbox2 = document.getElementById("checkbox2");
 
 // modal validation
 const userNames = document.getElementById("user-name");
@@ -55,7 +53,6 @@ const quantityRegex = new RegExp("^[0-9]{1,2}$");
 function testRegexOnInput(input, regex, length, error) {
   const value = input.value.trim();
   if (regex.test(value) && input.value.length >= length) {
-    console.log(regex.test(value));
     error.dataset.errorVisible = "false";
     return true;
   } else {
@@ -66,7 +63,6 @@ function testRegexOnInput(input, regex, length, error) {
 
 function testInputLocation(input) {
   let hasOneCheck = false;
-  console.log(input);
   input.dataset.errorVisible = "false";
   for (let i = 0; i < cityName.length; i++) {
     if (cityName[i].checked) {
@@ -124,16 +120,12 @@ form.addEventListener("submit", (e) => {
 
     modalbg.style.display = "none";
 
-    console.log(userNames);
-
     userNames.innerHTML = user.firstName + " " + user.lastName;
     userEmail.innerHTML = user.email;
     userCity.innerHTML = user.city;
-    
+
     modalThx.style.display = "block";
 
     form.reset();
-  } else {
-    console.log("error");
   }
 });
