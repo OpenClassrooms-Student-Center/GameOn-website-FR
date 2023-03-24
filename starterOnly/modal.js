@@ -22,6 +22,7 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+// zssszzss
 // close modal event
 modalClose.forEach((btn) => btn.addEventListener("click", closeModal));
 
