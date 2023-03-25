@@ -129,17 +129,17 @@ main {
   object-fit: cover;
 }
 
-@media screen and (max-width: 800px) {
-  .hero-img {
-    padding: 0 20px;
-  }
-}
-
 .hero-section > .btn-signup {
   display: none;
 }
 
 /* Responsive hero banner  */
+
+@media screen and (max-width: 970px) {
+  .hero-headline {
+    font-size: 4rem;
+  }
+}
 
 @media screen and (max-width: 800px) {
   .hero-section {
@@ -173,6 +173,9 @@ main {
 
     margin-top: 17px;
     padding: 0;
+  }
+  .hero-img {
+    padding: 0 20px;
   }
   .hero-img img {
     border-radius: 10px;
