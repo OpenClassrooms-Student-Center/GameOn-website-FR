@@ -243,7 +243,7 @@ const checkValidity = (
     checkPass = false;
     formData[4].setAttribute(
       "data-error",
-      "Veuillez entrer un nombre entre 0 et 99."
+      "Veuillez entrer un nombre entre 0 et 100."
     );
     formData[4].setAttribute("data-error-visible", true);
   } else {
