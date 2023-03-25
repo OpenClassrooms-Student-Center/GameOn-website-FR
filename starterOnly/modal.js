@@ -1,12 +1,3 @@
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
-}
-
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
@@ -20,10 +11,12 @@ const validate = document.querySelector(".validate");
 const navBar = document.querySelector(".main-navbar");
 const navBarBtn = document.querySelectorAll(".main-navbar ul li");
 const menuIcon = document.querySelector(".icon");
-let isModalOpen = false;
 let heroSection = document.querySelector(".hero-section");
 let header = document.querySelector("header");
 let footer = document.querySelector("footer");
+
+// Variable
+let isModalOpen = false;
 
 // Regex
 
@@ -142,7 +135,7 @@ const handleData = (e) => {
   let selectedTournament = isChecked("radio", "reserve", "location");
   let isTermsCheck = document.forms["reserve"]["terms"].checked;
 
-  checkValidity(
+  isFormValid(
     first,
     last,
     email,
@@ -168,7 +161,7 @@ const isChecked = (type, form, input) => {
 
 // Control all form values to display or not the error message
 
-const checkValidity = (
+const isFormValid = (
   first,
   last,
   email,
@@ -274,12 +267,12 @@ const checkValidity = (
     formData[6].setAttribute("data-error-visible", false);
   }
 
-  validation(checkPass);
+  handleValidation(checkPass);
 };
 
 // if valid send form and display thanks on modal
 
-const validation = (checkPass) => {
+const handleValidation = (checkPass) => {
   if (!checkPass) {
     return;
   }
