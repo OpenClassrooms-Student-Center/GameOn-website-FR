@@ -41,13 +41,6 @@ input {
   border: 2px solid #e54858;
 }
 
-/* input[data-error]::after {
-  content: attr(data-error);
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-  font-size: 0.4em;
-  color: red;
-} */
-
 /* Style checkbox and radio */
 
 .checkbox-label,
