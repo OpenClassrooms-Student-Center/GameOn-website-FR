@@ -35,10 +35,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -68,8 +68,24 @@ img {
   display: none;
 }
 
+.thanks-modal {
+  position: absolute;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 36px;
+  color: #fff;
+  z-index: 100;
+  background: #232323;
+  width: 100%;
+  height: 100%;
+}
+
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
@@ -77,7 +93,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -90,16 +108,16 @@ img {
   }
 }
 
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
     margin-top: -15px;
   }
-} 
+}
 
 main {
   font-size: 130%;
@@ -111,11 +129,9 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
-.modal-btn {
+.open-modal-btn {
   font-size: 145%;
   background: #fe142f;
   display: flex;
@@ -127,7 +143,7 @@ main {
   cursor: pointer;
 }
 
-.modal-btn:hover {
+.open-modal-btn:hover {
   background: #3876ac;
 }
 
@@ -157,7 +173,7 @@ main {
   font-size: 16px;
 }
 
-.bground {
+.modal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -180,7 +196,6 @@ main {
   overflow: hidden;
   position: relative;
   color: #fff;
-  padding-top: 10px;
 }
 
 .modal-body {
@@ -215,7 +230,7 @@ input {
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  text-align: left;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -226,11 +241,10 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
+/* input[data-error]::after {
+  content: attr(data-error);
+  font-size: 0.4em;
+  color: red;
 } */
 .checkbox-label,
 .checkbox2-label {
@@ -296,7 +310,8 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
-.close {
+.close-modal-btn,
+.close-thanks-modal-btn {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -306,8 +321,10 @@ input[data-error]::after {
   cursor: pointer;
   transform: scale(0.7);
 }
-.close:before,
-.close:after {
+.close-modal-btn:before,
+.close-modal-btn:after,
+.close-thanks-modal-btn:before,
+.close-thanks-modal-btn:after {
   position: absolute;
   left: 15px;
   content: " ";
@@ -315,13 +332,15 @@ input[data-error]::after {
   width: 3px;
   background-color: #fff;
 }
-.close:before {
+.close-modal-btn:before,
+.close-thanks-modal-btn:before {
   transform: rotate(45deg);
 }
-.close:after {
+.close-modal-btn:after,
+.close-thanks-modal-btn:after {
   transform: rotate(-45deg);
 }
-.btn-submit,
+.submit-modal-form-btn,
 .btn-signup {
   background: #fe142f;
   display: block;
@@ -332,6 +351,20 @@ input[data-error]::after {
   color: #fff;
   cursor: pointer;
   border: 0;
+}
+
+.close-thanks-modal-btn {
+  position: relative;
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+  bottom: 10px;
 }
 /* custom select styles */
 .custom-select {
@@ -462,6 +495,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 .copyrights {
   color: #fe142f;
@@ -491,6 +525,7 @@ footer {
   .hero-content::after {
     content: unset;
   }
+
   .hero-content .btn-signup {
     display: none;
   }
@@ -526,4 +561,3 @@ footer {
     opacity: 1;
   }
 }
-
