@@ -96,8 +96,6 @@ img {
   }
 }
 
-
-
  @media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
@@ -117,8 +115,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -145,7 +141,7 @@ main {
 
 /* Modal form */
 
-.button {
+/* .button {
   background: #fe142f;
   margin-top: 0.5em;
   padding: 1em;
@@ -157,7 +153,7 @@ main {
 
 .button:hover {
   background: #3876ac;
-}
+} */
 
 .smFont {
   font-size: 16px;
@@ -206,6 +202,27 @@ input {
   border: 0.8px solid #ccc;
   outline: none;
 }
+
+.msgErr{
+  color: #e54858;
+  font-size: 14px;
+}
+
+#myform{
+  display:block;
+}
+#fermer{
+  display: none;
+}
+#msgConfirmation{
+  font-size: 45px;
+  font-weight: normal;
+  padding: 300px 40px;
+  display: flex;
+  text-align: center;
+  display: none;
+}
+
 .text-control {
   margin: 0;
   padding: 8px;
@@ -215,10 +232,12 @@ input {
   height: 48px;
 }
 .formData[data-error]::after {
+/* .formData::after { */
   content: attr(data-error);
+  /* content: "helloooo"; */
   font-size: 0.4em;
   color: #e54858;
-  display: block;
+  display: block; /*contents pour etre visible*/
   margin-top: 7px;
   margin-bottom: 7px;
   text-align: right;
@@ -242,7 +261,7 @@ input[data-error]::after {
 .checkbox2-label {
   position: relative;
   margin-left: 36px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: normal;
 }
 .checkbox-label .checkbox-icon,
@@ -339,6 +358,11 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+.btn-submit:hover {
+  background: #3876ac;
+}
+
+
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -534,6 +558,15 @@ footer {
   }
   to {
     opacity: 1;
+  }
+}
+@keyframes modalclose {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-150px);
   }
 }
 
