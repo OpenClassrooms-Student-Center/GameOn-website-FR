@@ -22,61 +22,44 @@ function launchModal() {
 
 
 
-// #1 close modal form
+// Elements form
+const form = document.getElementById('form');
 const closeModalCross = document.querySelector(".close");
+const first = document.getElementById('first');
+const last = document.getElementById('last');
+const email = document.getElementById('email');
+const birthdate = document.getElementById('birthdate');
+const quantity = document.getElementById('quantity');
+const radios = document.querySelectorAll('.checkbox-input[type=radio]');
+const conditions = document.querySelector('#checkbox1:checked');
+const confirmationSubmit = document.getElementById('confirmation-submit');
+const closeModalBtn = document.querySelector("#close-btn");
 
+// event listener allows to attach a callback function which gets triggered once the form is submitted
+form.addEventListener('submit', (e) => {
+  // page doesn't refresh when we click on submit
+  e.preventDefault();
+});
+
+// #1 close modal form
 closeModalCross.addEventListener("click", () => {
   modalbg.style.display = "none";
 });
 
-
-
 // #2 Implement form entries and #3 Add validation or error messages
 
-// variable that will contain the complete form
-const form = document.getElementById('form');
-
-// event listener allows to attach a callback function which gets triggered once the form is submitted
-form.addEventListener('submit', (e) => {
-  // page doesn't refresh when we click on submit,
-  e.preventDefault();
-});
-
-// create a function containing functions that will check all the fields of the form
-function validate() {
-
-  validateFirst();
-  validateLast();
-  validateEmail();
-  validateBirthdate();
-  validateQuantity();
-  validateLocation();
-  validateConditions();
-
-  // #4 Add confirmation when submit successfully
-  const confirmationSubmit = document.getElementById('confirmation-submit');
-  
-  if (validateFirst() && validateLast() && validateEmail() && validateBirthdate() && validateQuantity() && validateLocation() && validateConditions() === true) {
-    form.style.display = "none";
-    confirmationSubmit.style.display = "block";
-    confirmationSubmit.style.textAlign = "center";
-    confirmationSubmit.style.marginBottom = "30px"; 
-    confirmationSubmit.innerHTML = "Merci !<br>Votre réservation a été reçue."
-    closeModalBtn.style.display = "block";
-    closeModalBtn.style.marginBottom = "20px"; 
-    return true;
-  }
-}
-
 // close modal form with "close" red button when submit successfully
-const closeModalBtn = document.querySelector("#close-btn");
 closeModalBtn.style.display = "none";
 closeModalBtn.addEventListener("click", () => {
   modalbg.style.display = "none";
+  form.style.display = "block";
+  form.reset(); // reset form after comfirmation submit
+  confirmationSubmit.style.display = "none";
+  closeModalBtn.style.display = "none";
 });
 
 
-// function display error message
+// function display error message, style in modal.css ".formData[data-error]::after" & ".formData[data-error-visible="true"]::after"
 function displayError(element, message) {
   element.setAttribute('data-error', message)
   element.setAttribute('data-error-visible', true)
@@ -89,7 +72,6 @@ function removeError(element) {
 
 
 // Check firstname length characters
-const first = document.getElementById('first');
 function validateFirst() {
   if (first.value.length == '' || first.value.length < 2) {
     displayError(formData[0], 'Veuillez entrer 2 caractères ou plus pour le champ du prénom.');
@@ -100,7 +82,6 @@ function validateFirst() {
 }
 
 // Check lastname length characters
-const last = document.getElementById('last');
 function validateLast() {
   if (last.value.length == '' || last.value.length < 2) {
     displayError(formData[1], 'Veuillez entrer 2 caractères ou plus pour le champ du nom.')
@@ -111,7 +92,6 @@ function validateLast() {
 }
 
 // Check if valid e-mail format
-const email = document.getElementById('email');
 function validateEmail() {
   let regexEmail = /^[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$/;
   if (regexEmail.test(email.value) == false) {
@@ -123,7 +103,6 @@ function validateEmail() {
 }
 
 // Check if valid birthdate format
-const birthdate = document.getElementById('birthdate');
 function validateBirthdate() {
   let regexBirthdate = /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/;
   if (birthdate.value == '' && regexBirthdate.test(birthdate.value) == false) {
@@ -135,7 +114,6 @@ function validateBirthdate() {
 }
 
 // Checks if valid number format
-const quantity = document.getElementById('quantity');
 function validateQuantity() {
   let regexQuantity = /^[0-9]{1,2}$/;
   if (regexQuantity.test(quantity.value) == false) {
@@ -147,7 +125,6 @@ function validateQuantity() {
 }
 
 // Checks if the user has selected a location
-const radios = document.querySelectorAll('.checkbox-input[type=radio]');
 let radio = "";
 function validateLocation() {
   for(let i = 0 ; i < radios.length; i++) {
@@ -163,12 +140,35 @@ function validateLocation() {
 }
 
 // Checks if the user has checked conditions
-const conditions = document.querySelector('#checkbox1:checked');
 function validateConditions() {
   if (conditions.checked !== true) {
     displayError(formData[6], 'Veuillez accepter les conditions d\'utilisations.')
   } else {
     removeError(formData[6])
+    return true;
+  }
+}
+
+
+// #4 Add confirmation when submit successfully
+// create a function containing functions that will check all the fields of the form
+function validate() {
+  validateFirst();
+  validateLast();
+  validateEmail();
+  validateBirthdate();
+  validateQuantity();
+  validateLocation();
+  validateConditions();
+  
+  if (validateFirst() && validateLast() && validateEmail() && validateBirthdate() && validateQuantity() && validateLocation() && validateConditions() == true) {
+    form.style.display = "none";
+    confirmationSubmit.style.display = "block";
+    confirmationSubmit.style.textAlign = "center";
+    confirmationSubmit.style.marginBottom = "30px"; 
+    confirmationSubmit.innerHTML = "Merci !<br>Votre réservation a été reçue."
+    closeModalBtn.style.display = "block";
+    closeModalBtn.style.marginBottom = "20px";
     return true;
   }
 }
