@@ -32,9 +32,6 @@ img {
 }
 
 .topnav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   overflow: hidden;
   margin: 3.5%;
 }
@@ -52,7 +49,7 @@ img {
   padding: 10px 10px;
   margin: 5px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 20px;
   font-family: Roboto, sans-serif;
 }
 
@@ -60,50 +57,20 @@ img {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
+  text-decoration: underline;
+  text-underline-offset: 6px;
 }
 
-.topnav a.active {
+.topnav a:active {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
+  text-decoration: underline;
 }
 
 .topnav .icon {
   display: none;
 }
-
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    color: red;
-    font-size: 20px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    /* margin-top: -15px; */
-  }
-} 
 
 main {
   font-size: 130%;
@@ -231,13 +198,12 @@ input {
   font-size: 20px;
   height: 48px;
 }
-.formData[data-error]::after {
-/* .formData::after { */
+/* .formData[data-error]::after {
+ .formData::after { 
   content: attr(data-error);
-  /* content: "helloooo"; */
   font-size: 0.4em;
   color: #e54858;
-  display: block; /*contents pour etre visible*/
+  display: block; 
   margin-top: 7px;
   margin-bottom: 7px;
   text-align: right;
@@ -251,7 +217,6 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
@@ -264,12 +229,16 @@ input[data-error]::after {
   font-size: 14px;
   font-weight: normal;
 }
+.checkbox-label .checkbox-icon:hover {
+  border: 1px solid  #279e7a;
+}
+
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
   display: block;
   width: 20px;
   height: 20px;
-  border: 2px solid #279e7a;
+  border: 1px solid #fff;
   border-radius: 50%;
   text-indent: 29px;
   white-space: nowrap;
@@ -302,7 +271,7 @@ input[data-error]::after {
   opacity: 1;
 }
 .checkbox-input:checked + .checkbox2-label .checkbox-icon {
-  background: #279e7a;
+  background: #279e7a;  
 }
 .checkbox2-label .checkbox-icon {
   border-radius: 4px;
@@ -466,7 +435,7 @@ input[data-error]::after {
   z-index: 1;
 }
 .hero-headline {
-  font-size: 6rem;
+  font-size: 5.7rem;
   font-weight: normal;
   white-space: nowrap;
 }
@@ -492,6 +461,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  margin-top: 0;
 }
 .copyrights {
   color: #fe142f;
@@ -508,9 +478,22 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+
+@media screen and (max-width: 1000px) {
+  .hero-headline {
+  font-size: 4.7rem;
+  }
+  .hero-text {
+    font-size: 20px;
+  }
+  img{
+    margin-top: 10px;
+    width : 70%;
+  }
+}
+@media screen and (max-width: 900px) {
   .main-navbar a{
-    font-size: 14px;
+    font-size: 18px;
   }
   .hero-section {
     display: block;
@@ -519,7 +502,7 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px;
   }
   .hero-content::after {
     content: unset;
@@ -550,6 +533,52 @@ footer {
     text-align: center;
   }
 }
+@media screen and (max-width: 768px) {
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+    color: red;
+    font-size: 20px;
+  }
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  .space-bar{
+    display: flex;
+    justify-content: flex-end;
+    gap: 50px;
+  }
+}
+@media screen and (max-width: 540px) {
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  .hero-headline {
+    font-size: 2.5rem;
+    }
+  .hero-text {
+      font-size: 16px;
+    }
+  .copyrights{
+      font-size: 12px;
+    }
+    img{
+      margin-top: 13px;
+      width : 50%;
+    }
+} 
 
 @keyframes modalopen {
   from {
