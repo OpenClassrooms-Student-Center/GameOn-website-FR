@@ -487,6 +487,7 @@ footer {
     background: #fff;
     color: #000;
     padding: 20px;
+    min-width: 300px;
   }
   .hero-content::after {
     content: unset;
@@ -495,7 +496,7 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     white-space: normal;
   }
   .hero-text {
