@@ -40,6 +40,9 @@ img {
 }
 .main-navbar {
     float: right;
+    display: flex;
+    gap: 30px;
+    justify-content: flex-end;
 }
 .topnav a {
   float: left;
@@ -552,11 +555,9 @@ footer {
     display: block;
     text-align: left;
   }
-
-  .space-bar{
+  .topnav {
     display: flex;
-    justify-content: flex-end;
-    gap: 50px;
+    justify-content: space-between;
   }
 }
 @media screen and (max-width: 540px) {
@@ -564,6 +565,10 @@ footer {
   .topnav a.icon {
     float: right;
     display: block;
+  }
+  .topnav.responsive a {
+    font-size: 14px;
+    padding: 10px 0px;
   }
   .hero-headline {
     font-size: 2.5rem;
