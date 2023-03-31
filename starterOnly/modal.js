@@ -12,7 +12,8 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalClose = document.querySelectorAll(".close");
-const modalBtnSubmit = document.querySelectorAll(".btn-submit");
+const modalBtnSubmit = document.querySelector(".btn-submit");
+const formModal = document.querySelector(".formModal");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -30,15 +31,47 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-//submit modal event
-//modalBtnSubmit.forEach((input) => input.addEventListener("click", submitModal));
-
 //submit modal form
 function submitModal(event) {
   event.preventDefault();
-  for (let i = 0 ; i < formData.length; i++) {
-    formData[i].style.display = "none";
+  //if form valid
+  if(validateForm()) {
+    //hide form
+    for (let i = 0 ; i < formData.length; i++) {
+      formData[i].style.display = "none";
+    }
+    //thank message
+    let thanks = document.querySelector(".validMessage");
+    thanks.style.display = "flex";
+    //if click second time close modal and reload
+    modalBtnSubmit.removeEventListener('click', submitModal);
+    modalBtnSubmit.addEventListener('click', function() {
+      closeModal();
+      location.reload();
+    });
   }
-  let thanks = document.querySelector(".validMessage");
-  thanks.style.display = "flex";
+}
+
+//check if form valide
+function validateForm() {
+  const formInputs = document.querySelectorAll(".formData input");
+  console.log(formInputs);
+  /*let isValid = true;
+
+  formInputs.forEach(input => {
+    if (!input.checkValidity()) {
+      console.log("je suis la!");
+      isValid = false;
+    }
+  });
+  console.log(isValid);
+  return isValid;*/
+
+  for (let i = 0; i < formInputs.length; i++) {
+    if (!formInputs[i].checkValidity()) {
+      console.log("je suis la!");
+      return false;
+    }
+  }
+  return true;
 }
