@@ -44,6 +44,7 @@ img {
     gap: 30px;
     justify-content: flex-end;
 }
+
 .topnav a {
   float: left;
   display: block;
@@ -465,6 +466,7 @@ input[data-error]::after {
   display: block;
   padding: 0;
   margin-top: 0;
+  object-fit: cover;
 }
 .copyrights {
   color: #fe142f;

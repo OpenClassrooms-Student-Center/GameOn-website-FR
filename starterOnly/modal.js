@@ -1,5 +1,5 @@
 function editNav() {
-  var x = document.getElementById("myTopnav");
+  const x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
     x.className += " responsive";
   } else {
@@ -10,7 +10,6 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn"); //boutton je m'inscrit
-const formData = document.querySelectorAll(".formData");
 const essayer = document.getElementById('essayer');//boutton c'est partie
 const myform = document.getElementById('myform');// ma form qui contient tout les champs
 const btnFermer = document.getElementById('fermer');// boutton fermer
@@ -105,23 +104,21 @@ function validateFirstName(){
     msgErrFirstname.innerHTML="le Prenom est requis !";
     firstIsValid = false;
   }
-  else if (firstName.value.trim().length <= 2){//Le champ a un minimum de 2 caractères
+  else if (firstName.value.trim().length < 2){//Le champ a un minimum de 2 caractères
     firstName.style.border = '2px solid #e54858';
     msgErrFirstname.innerHTML="Le prénom doit contenir au moins 2 caractères !";
     firstIsValid = false;
   }
-  else if(!firstName.value.match(patternName)){//pas de chiffres et caracteres speciaux
-    console.log('hello is false');
-    firstName.style.border = '2px solid #e54858';
-    msgErrFirstname.innerHTML="veuillez sasir un prenom valid !";
-    firstIsValid = false;
-  }
-  else{ 
+  else if(firstName.value.match(patternName)){ 
     firstName.style.border = "none";
     msgErrFirstname.innerHTML = "";
     firstIsValid = true;
   }
-  console.log('test firstname :'+firstIsValid);
+  else{//pas de chiffres ni caracteres speciaux
+    firstName.style.border = '2px solid #e54858';
+    msgErrFirstname.innerHTML="veuillez sasir un prénom valid !";
+    firstIsValid = false;
+  }
 }
 // fonction de verification du champ nom
 function validateLastName(){
@@ -134,22 +131,21 @@ function validateLastName(){
 
     lastIsValid = false;
   }
-  else if (lastName.value.trim().length <= 2){//Le champ a un minimum de 2 caractères
+  else if (lastName.value.trim().length < 2){//Le champ a un minimum de 2 caractères
     lastName.style.border = '2px solid #e54858';
     msgErrLastname.innerHTML="Le nom doit contenir au moins 2 caractères !";
     lastIsValid = false;
   }
-  else if(!lastName.value.match(patternName)){//pas de chiffres et caracteres speciaux
-    lastName.style.border = '2px solid #e54858';
-    msgErrLastname.innerHTML="veuillez sasir un nom valid !";
-    lastIsValid = false;
-  }
-  else{ 
+  else if(lastName.value.match(patternName)){ 
     lastName.style.border = "none";
     msgErrLastname.innerHTML = "";
     lastIsValid = true;
   }
-  console.log('test lastname : '+lastIsValid);
+  else{//pas de chiffres et caracteres speciaux
+    lastName.style.border = '2px solid #e54858';
+    msgErrLastname.innerHTML="veuillez sasir un nom valid !";
+    lastIsValid = false;
+  }
 }
 // fonction de verification d'adresse mail
 function validateMail(){
@@ -166,7 +162,6 @@ function validateMail(){
     msgErrEmail.innerHTML="veuillez saisir une adresse mail valide !"; 
     mailIsValid = false;
   }
-  console.log('test mail : '+mailIsValid);
 }
 // fonction de verification de date de naissance
 function validateBirthdate(){
@@ -182,7 +177,6 @@ function validateBirthdate(){
     msgErrBirthdate.innerHTML="";
     birthdateIsvalid = true;
   }
-  console.log('test date : '+birthdateIsvalid);
 }
 // verification que au mois un concours est saisie
 function validateNbrConcours(){
@@ -198,38 +192,35 @@ function validateNbrConcours(){
     msgErrQuantity.innerHTML="";
     quantityIsvalid = true;
   }
-  console.log('test nbr concours : '+ quantityIsvalid);
 }
 // verifier que au moin une location est choisie
 function validateLocation(){
   const Location = document.querySelectorAll('input[type=radio]');
   const msgErrLocation = document.getElementById('msgErr-location');
-  for(let i=0 ; i< Location.length; i++){
-    if(Location[i].checked){
+  for (const el of Location) {
+    if(el.checked){
       TestCheked = true;
     }
   }
-  if( !TestCheked ){
+  if( TestCheked ){
+    msgErrLocation.innerHTML="";
+  }
+  else{
     msgErrLocation.innerHTML="Vous devez selectionner un tournois !";
     TestCheked = false;
   }
-  else{
-    msgErrLocation.innerHTML="";
-  }
-  console.log('test location : '+TestCheked);
 }
 // verifier que les conditions d'utilisations sont acceptés
 function validateCondition(){
   const CheckCondition = document.getElementById('checkbox1');
   const msgErrCondition = document.getElementById('msgErr-condition');
 
-  if(!CheckCondition.checked){
-    msgErrCondition.innerHTML="Vous devez vérifier que vous acceptez les termes et conditions";
-    conditionIsvalis = false;
-  }
-  else{
+  if(CheckCondition.checked){
     msgErrCondition.innerHTML="";
     conditionIsvalis = true;
+  }
+  else{
+    msgErrCondition.innerHTML="Vous devez vérifier que vous acceptez les termes et conditions";
+    conditionIsvalis = false;
   } 
-  console.log('test condition : '+ conditionIsvalis);
 }
