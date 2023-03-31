@@ -500,7 +500,8 @@ footer {
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 13px;
+    margin-top: 17px;
   }
   .hero-img img {
     border-radius: 10px;
@@ -526,4 +527,3 @@ footer {
     opacity: 1;
   }
 }
-
