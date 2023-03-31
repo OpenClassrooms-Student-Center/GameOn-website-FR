@@ -20,6 +20,7 @@ function sendSubscription() {
       email: event.target.querySelector("#email").value,
       birthdate: new Date(event.target.querySelector("#birthdate").value),
       quantity: parseInt(event.target.querySelector("#quantity").value),
+      location: event.target.querySelector("[for=location]").value,
     }
     console.log({ subscription })
   })
