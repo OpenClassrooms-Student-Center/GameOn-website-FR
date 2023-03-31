@@ -52,3 +52,5 @@ modalClose.forEach((btn) => btn.addEventListener("click", closeModal));
 function closeModal() {
   modalbg.style.display = "none";
 }
+
+// TODO: CSS Mobile + desktop
