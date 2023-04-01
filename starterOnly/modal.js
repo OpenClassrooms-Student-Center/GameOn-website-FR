@@ -54,24 +54,59 @@ function submitModal(event) {
 
 //check if form valide
 function validateForm() {
+  //get DOM element
   const formInputs = document.querySelectorAll(".formData input");
+  const checkBox1 = document.getElementById("checkbox1");
   console.log(formInputs);
-  /*let isValid = true;
 
-  formInputs.forEach(input => {
-    if (!input.checkValidity()) {
-      console.log("je suis la!");
-      isValid = false;
+  let isValid = true;
+  let cityChecked = false;      //for input type radio
+  //check if each input are correct
+  formInputs.forEach((input) => {
+    switch (input.type) {
+      //first name and last name
+      case 'text':
+        if (input.value.trim() === '') {
+          isValid = false;
+        }
+        break;
+      //email
+      case 'email':
+        if (!input.value.includes('@')) {
+          isValid = false;
+        }
+        break;
+      //date of birth
+      case 'date':
+        if (input.value === '') {
+          isValid = false;
+        }
+        break;
+      //how many GameON event did you participeted
+      case 'number':
+        if (input.value === '' || isNaN(input.value)) {
+          isValid = false;
+        }
+        break;
+      //in which city's event do you wish to participate 
+      case 'radio':
+        if (input.checked) {
+          cityChecked = true;
+        }
+        break
+      // term of use agreament checked
+      case 'checkbox':
+        if (input === checkBox1 && !input.checked) {
+          isValid = false;
+        }
+        break;
     }
   });
-  console.log(isValid);
-  return isValid;*/
 
-  for (let i = 0; i < formInputs.length; i++) {
-    if (!formInputs[i].checkValidity()) {
-      console.log("je suis la!");
-      return false;
-    }
+  if (!cityChecked) {
+    isValid = false;
   }
-  return true;
+
+  console.log(isValid);
+  return isValid;
 }
