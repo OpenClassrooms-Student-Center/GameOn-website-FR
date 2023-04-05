@@ -15,13 +15,38 @@ const modalClose = document.querySelector(".close");
 const modalSubmit = document.querySelector(".btn-submit");
 const modalBody = document.querySelector(".modal-body");
 const modalCloseThanks = document.querySelector(".btn-close");
+const formulaire = document.querySelector("form");
+const contentForm = document.querySelector(".content");
+const thanksMessageWindow = document.querySelector(".thanks_message");
+const boutonFermer = document.querySelector(".btn-close");
+console.log(formulaire);
 
+// messages d'erreur //
+const errorMessageFirstName = document.querySelector("#errorFirstName");
+const errorMessageName = document.querySelector("#errorName");
+const errorMessageEmail = document.querySelector("#errorEmail");
+const errorMessageCheckbox = document.querySelector("#errorCheckbox");
+const errorMessageTerms = document.querySelector("#errorCheckboxTerms");
+
+
+// declarer les variables des inputs
+const firstName = document.querySelector("#first");
+const lastName = document.querySelector("#last");
+const email = document.querySelector("#email");
+const boxChecked = document.querySelectorAll('input[name="location"]');
+const radioButtons = document.querySelector('#checkbox1');
+
+
+// OUVERTURE - FERMETURE DE LA MODAL
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal(event) {
   modalbg.style.display = "block";
+  thanksMessageWindow.style.display = "none";
+
+
   event.preventDefault();
 }
 
@@ -30,77 +55,39 @@ modalClose.onclick = function(){
   modalbg.style.display = "none";  
 }
 
+// fonction fermeture et reinitialisation depuis la modal remerciement  
+
+// function closeMessage (){
+//   modalbg.style.display = "none"; 
+//   formulaire.style.display ="block";
+//   formulaire.reset();
+//   }
+
+
+
 // page de remerciement 
 function thanksMessage(){
-  // recupération du corps du formulaire
-  const contentForm = document.querySelector(".modal-body");
-  contentForm.innerHTML = "";
 
-  // création de la div contenant le message
-  const thanksMessageWindow = document.createElement("div");
-  thanksMessageWindow.classList.add("content");
+  thanksMessageWindow.style.display = "block";
 
-  // création du message
-  const thanksMessage = document.createElement("p");
-  thanksMessage.innerHTML = "merci pour votre inscription";
-  thanksMessage.style.fontSize = "30px";
-
-  // création du bouton
-  const boutonFermer = document.createElement("button");
-  boutonFermer.innerText = "fermer";
-  boutonFermer.classList.add("btn-submit");
-  boutonFermer.onclick = function(){
-    modalbg.style.display = "none";
-  }
-
-  // rattacher les elements à l'element parent (modal-body pour la fenetre)
-  // (modal-body parent de la fenetre)
-  // (fenetre parente du bouton et du message)
-  contentForm.appendChild(thanksMessageWindow);
-  thanksMessageWindow.appendChild(thanksMessage);
-  thanksMessageWindow.appendChild(boutonFermer);
+  boutonFermer.addEventListener('click', function(){
+    modalbg.style.display = "none"; 
+    formulaire.style.display ="block";
+    formulaire.reset();
+  });
+  
 }
 
-// valider le formulaire //
 
-function validate(event){
-  /*try{
-    event.preventDefault();
-    console.log("toto");
-  }catch(er){
-    console.log(er);
-  }*/
 
-  // declaration des fonctions de validation 
+// valider le prénom  //
+firstName.addEventListener('blur', function(){
   validateFirstName();
-  validateName();
-  validateEmail();
-  validateCheckbox();
-  validateCheckboxTerms();
 
-  // condition de validation du formulaire si tout est true 
-  if(  validateFirstName() == true && validateName() == true && validateEmail() == true && validateCheckbox() == true && validateCheckboxTerms() == true){
-    thanksMessage();
-  }else{
-    event.preventDefault();
-    return false;
-  }
-}
-
-
-// messages d'erreur //
-
-const errorMessageFirstName = document.querySelector("#errorFirstName");
-const errorMessageName = document.querySelector("#errorName");
-const errorMessageEmail = document.querySelector("#errorEmail");
-const errorMessageCheckbox = document.querySelector("#errorCheckbox");
-const errorMessageTerms = document.querySelector("#errorCheckboxTerms");
-
-// valider le first name //
-
+})
 function validateFirstName(){
   const firstName = document.getElementById("first");
-    if (!firstName.checkValidity()) {
+      if (!firstName.checkValidity()){
       errorMessageFirstName.innerHTML = " Le champ Prénom a un minimum de 2 caractères";
       errorMessageFirstName.style.color= "red";
       return false;
@@ -110,11 +97,14 @@ function validateFirstName(){
     }
 }
 
-    // valider le nom  //
+// valider le nom  //
 
+lastName.addEventListener('blur', function(){
+  validateName();
+})
 function validateName(){
-  const Name = document.getElementById("last");
-    if (!Name.checkValidity()) {
+  const lastName = document.getElementById("last");
+    if (!lastName.checkValidity()) {
       errorMessageName.innerHTML = " Le champ Prénom a un minimum de 2 caractères";
       errorMessageName.style.color= "red";
       return false;
@@ -124,22 +114,23 @@ function validateName(){
     }
 }
 
-    // valider Email//
-
+// valider Email//
+email.addEventListener('blur', function(){
+  validateEmail();
+})
 function validateEmail(){
   const email = document.getElementById("email");
-    if (!email.validity.patternMismatch) {
-      errorMessageEmail.innerHTML = "";
-      return true;
-    }else{
+    if(email.value === "" || email.validity.patternMismatch){
       errorMessageEmail.innerHTML = "L'adresse mail doit être valide";
       errorMessageEmail.style.color= "red";
       return false;
+    }else{
+      errorMessageEmail.innerHTML = "";
+      return true;
     }
 }
 
-
-  // valider une option //
+// valider une option //
 
 function validateCheckbox(){
   // recucperer les name des checkbox
@@ -165,8 +156,10 @@ function validateCheckbox(){
   }
 };
 
-  // valider les conditions //
-
+// valider les conditions //
+radioButtons.addEventListener('blur', function(){
+  validateCheckboxTerms();
+})
 function validateCheckboxTerms(){
   const radioButtons = document.querySelector('#checkbox1');
     if (!radioButtons.checked) {
@@ -181,8 +174,22 @@ function validateCheckboxTerms(){
 };      
 
 
+// VALIDATION DU FORMULAIRE //
 
+function validate(event){
+  event.preventDefault();
 
+  // condition de validation du formulaire si tout est true 
+    const isValideFirstName = validateFirstName();
+    const isValideName = validateName();
+    const isValideEmail = validateEmail();
+    const isValideCheckbox = validateCheckbox();
+    const isValideCheckboxTerms = validateCheckboxTerms();
+    if(isValideFirstName && isValideName && isValideEmail && isValideCheckbox && isValideCheckboxTerms){
+      thanksMessage();
+      formulaire.style.display ="none";
+    }
+  }
 
 
 
