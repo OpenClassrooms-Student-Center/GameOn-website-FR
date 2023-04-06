@@ -208,9 +208,17 @@ input {
   font-size: 20px;
   height: 48px;
 }
-.formData[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.4em;
+
+.formData{
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.data-error{
+  position: absolute;
+  right: 0;
+  
+  font-size: 10px;
   color: #e54858;
   display: block;
   margin-top: 7px;
@@ -218,12 +226,15 @@ input {
   text-align: right;
   line-height: 0.3;
   opacity: 0;
-  transition: 0.3s;
+  transition: opacity 1s linear;
 }
-.formData[data-error-visible="true"]::after {
+
+.data-error-visible{
   opacity: 1;
+  transition: opacity 1s linear;
 }
-.formData[data-error-visible="true"] .text-control {
+
+.text-control-boder-red {
   border: 2px solid #e54858;
 }
 /* 
@@ -238,7 +249,7 @@ input[data-error]::after {
   margin-left: 36px;
   font-size: 12px;
   font-weight: normal;
-}
+  }
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
   display: block;
@@ -270,7 +281,7 @@ input[data-error]::after {
   opacity: 0;
 }
 .checkbox-input {
-  display: none;
+  display : none;
 }
 .checkbox-input:checked + .checkbox-label .checkbox-icon::after,
 .checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
