@@ -13,9 +13,11 @@ function sendSubscription() {
   subscribeForm.addEventListener("submit", (event) => {
     event.preventDefault();
 
+    // validation conditions d'utilisations par JS
     if(!event.target.querySelector("#conditions").checked)
     {
-        alert("Vous devez accepter les conditions d'utilisations.");
+        alert("Vous devez vérifier que vous accepter les termes et conditions.");
+        return
     }
 
     // Creation of subscription object
@@ -30,7 +32,7 @@ function sendSubscription() {
       conditions: event.target.querySelector("#conditions").checked,
       newsletter: event.target.querySelector("#newsletter").checked,
     }
-    console.log({ subscription })
+    console.log({subscription})
     return subscription
   })
 }
