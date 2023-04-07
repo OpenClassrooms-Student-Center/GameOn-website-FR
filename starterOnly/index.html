@@ -3,31 +3,32 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Reservation</title>
+  <title>GameOn</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="stylesheet" href="modal.css" />
+  <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Roboto:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap"
+    rel="stylesheet">
 </head>
 
 <body>
-  <div class="topnav" id="myTopnav">
-    <div class="header-logo">
+  <header class="navbar">
+    <div class="navbar__logo">
       <img alt="logo" src="Logo.png" width="auto" height="auto" />
     </div>
-    <div class="main-navbar">
+    <div class="navbar__wrapper">
 
-      <a href="#" class="welcome"><span>Accueil</span></a>
-      <a href="#"><span>Détails de l'évènement</span></a>
-      <a href="#"><span>À propos</span></a>
-      <a href="#"><span>Contact</span></a>
-      <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
+      <a href="#" class="navbar__link"><span>Détails de l'évènement</span></a>
+      <a href="#" class="navbar__link"><span>À propos</span></a>
+      <a href="#" class="navbar__link"><span>Contact</span></a>
+      <a href="#" class="navbar__link"><span>Évènements passés</span></a>
+      <a href="javascript:void(0);" class="navbar__dropdown" onclick="editNav()">
         <i class="fa fa-bars"></i>
       </a>
     </div>
-  </div>
-  </div>
+  </header>
   <main>
     <div class="hero-section">
       <div class="hero-content">
@@ -55,7 +56,8 @@
       <div class="content">
         <span class="close"></span>
         <div class="modal-body">
-          <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
+          <form name="reserveForm" id="reserveForm" action="input type='submit'" method=" post"
+            onsubmit="return validate();">
             <div class="formData">
               <label>Prénom</label><br>
               <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
@@ -78,28 +80,28 @@
             </div>
             <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
             <div class="formData">
-              <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
-              <label class="checkbox-label" for="location">
+              <input class="checkbox-input" type="radio" id="newyork" name="location" value="New York" />
+              <label class="checkbox-label" for="newyork">
                 <span class="checkbox-icon"></span>
                 New York</label>
-              <input class="checkbox-input" type="radio" id="location2" name="location" value="San Francisco" />
-              <label class="checkbox-label" for="location">
+              <input class="checkbox-input" type="radio" id="sanfrancisco" name="location" value="San Francisco" />
+              <label class="checkbox-label" for="sanfrancisco">
                 <span class="checkbox-icon"></span>
                 San Francisco</label>
-              <input class="checkbox-input" type="radio" id="location3" name="location" value="Seattle" />
-              <label class="checkbox-label" for="location">
+              <input class="checkbox-input" type="radio" id="seattle" name="location" value="Seattle" />
+              <label class="checkbox-label" for="seattle">
                 <span class="checkbox-icon"></span>
                 Seattle</label>
-              <input class="checkbox-input" type="radio" id="location4" name="location" value="Chicago" />
-              <label class="checkbox-label" for="location">
+              <input class="checkbox-input" type="radio" id="chicago" name="location" value="Chicago" />
+              <label class="checkbox-label" for="chicago">
                 <span class="checkbox-icon"></span>
                 Chicago</label>
-              <input class="checkbox-input" type="radio" id="location5" name="location" value="Boston" />
-              <label class="checkbox-label" for="location">
+              <input class="checkbox-input" type="radio" id="boston" name="location" value="Boston" />
+              <label class="checkbox-label" for="boston">
                 <span class="checkbox-icon"></span>
                 Boston</label>
-              <input class="checkbox-input" type="radio" id="location6" name="location" value="Portland" />
-              <label class="checkbox-label" for="location">
+              <input class="checkbox-input" type="radio" id="portland" name="location" value="Portland" />
+              <label class="checkbox-label" for="portland">
                 <span class="checkbox-icon"></span>
                 Portland</label>
             </div>
@@ -118,7 +120,7 @@
               </label>
               <br>
             </div>
-            <input class="btn-submit" type="submit" class="button" value="C'est parti" />
+            <input class="btn-submit" formaction="" type="submit" class="button" value="C'est parti" />
           </form>
         </div>
       </div>
