@@ -45,8 +45,10 @@ function validateFirstName() {
   let validationFirstBool = true;
   if(firstName.value.length <= 2 || firstName.value.match(/^\s*$/g) || firstName.value.match('[0-9]')) {
     validationFirstBool = false;
+    document.querySelector('.firstname').setAttribute('data-error-visible', true);
   } else {
     validationFirstBool = true;
+    document.querySelector('.firstname').setAttribute('data-error-visible', false);
   }
 
   return validationFirstBool;
@@ -60,8 +62,10 @@ function validateLastName(){
   let validationLastNameBool = true;
   if(lastName.value.length <= 2 || lastName.value.match(/^\s*$/g) || lastName.value.match('[0-9]')) {
     validationLastNameBool = false;
+    document.querySelector('.lastname').setAttribute('data-error-visible', true);
   } else {
     validationLastNameBool = true;
+    document.querySelector('.lastname').setAttribute('data-error-visible', false);
   }
 
   return validationLastNameBool;
@@ -75,8 +79,10 @@ function validateEmail(){
   let validationEmailBool = true;
   if(!email.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || email.value.match(/^\s*$/g)) {
     validationEmailBool = false;
+    document.querySelector('.email').setAttribute('data-error-visible', true);
   } else {
     validationEmailBool = true;
+    document.querySelector('.email').setAttribute('data-error-visible', false);
   }
 
   return validationEmailBool;
@@ -93,8 +99,10 @@ function validateBirthdate() {
 
   if(enterDate === today || birthdate.value === ""){
     validationBirthdateBool = false;
+    document.querySelector('.birthdate').setAttribute('data-error-visible', true);
   } else {
     validationBirthdateBool = true;
+    document.querySelector('.birthdate').setAttribute('data-error-visible', false);
   }
 
   return validationBirthdateBool;  
@@ -109,8 +117,10 @@ function validateQuantity(){
 
   if(quantity.value === ""){
     validationQuantity = false;
+    document.querySelector('.formData.quantity').setAttribute('data-error-visible', true);
   } else {
     validationQuantity = true;
+    document.querySelector('.formData.quantity').setAttribute('data-error-visible', false);
   }
 
   return validationQuantity;
@@ -125,8 +135,10 @@ function validateConditions() {
 
   if(!conditions.checked){
     validationConditionsBool = false;
+    document.querySelector('.conditions').setAttribute('data-error-visible', true);
   } else {
     validationConditionsBool = true;
+    document.querySelector('.conditions').setAttribute('data-error-visible', false);
   }
 
   return validationConditionsBool;
@@ -140,13 +152,16 @@ function validateLocation() {
     if(locationRadio[i].checked === true) {
       oneIsCheck = true;
       whichIsChecked = locationRadio[i].value;
+      document.querySelector('.location').setAttribute('data-error-visible', false);
+    } else {
+      document.querySelector('.location').setAttribute('data-error-visible', true);
     }
   }
 
   return [oneIsCheck, whichIsChecked];
 }
 
-buttonSubmit.addEventListener('click', validateAllData);
+//buttonSubmit.addEventListener('click', validate);
 
 function validate(){
   let verifyFirst = validateFirstName();

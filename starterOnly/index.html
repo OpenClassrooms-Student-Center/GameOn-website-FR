@@ -62,7 +62,8 @@
               method="get"
               onsubmit="return validate();"
             >
-              <div class="formData">
+              <div class="formData firstname"
+              data-error="Veuillez entrer 2 caractères ou plus, sans chiffre.">
                 <label for="first">Prénom</label><br>
                 <input
                   class="text-control"
@@ -70,11 +71,11 @@
                   id="first"
                   name="first"
                   minlength="2"
-                  required
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData lastname"
+                data-error="Veuillez entrer 2 caractères ou plus, sans chiffre.">
                 <label for="last">Nom</label><br>
                 <input
                   class="text-control"
@@ -82,39 +83,41 @@
                   id="last"
                   name="last"
                   minlength="2"
-                  required
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData email"
+                data-error="Veuillez entrer une adresse mail valide."
+                >
                 <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
                   type="email"
                   id="email"
                   name="email"
-                  required
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData birthdate"
+                data-error="Vous devez entrer votre date de naissance.">
                 <label for="birthdate">Date de naissance</label><br>
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                  required
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData quantity"
+                data-error="Veuillez saisir un chiffre.">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                class="formData">
+                class="formData location"
+                data-error="Vous devez choisir une option.">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -183,7 +186,8 @@
                 >
               </div>
 
-              <div class="formData">
+              <div class="formData conditions"
+              data-error="Vous devez vérifer que vous acceptez les termes et conditions.">
                 <input
                   class="checkbox-input"
                   name="conditions"
