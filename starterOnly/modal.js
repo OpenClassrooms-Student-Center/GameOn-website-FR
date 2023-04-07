@@ -14,7 +14,8 @@ const essayer = document.getElementById('essayer');//boutton c'est partie
 const myform = document.getElementById('myform');// ma form qui contient tout les champs
 const btnFermer = document.getElementById('fermer');// boutton fermer
 const msgConfirmation = document.getElementById('msgConfirmation');//message de confirmation apres envoi du formulaire
-
+const msgErr = document.querySelectorAll('.msgErr')//le span message d'erreur
+const TextControl = document.querySelectorAll('.text-control')
 const close = document.querySelector(".close");// la croix pour fermer la fenetre
 const content = document.querySelector(".content");
 
@@ -24,6 +25,7 @@ const lastName = document.getElementById("last");
 const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
 const quantity = document.getElementById("quantity");
+const CheckCondition = document.getElementById('checkbox1');
 
 //variable de verification si données saisie sont valide
 let firstIsValid = false;
@@ -45,12 +47,14 @@ function launchModal() {
   essayer.style.display = "block";
   btnFermer.style.display = 'none';
   msgConfirmation.style.display = 'none';
-  //initialisation des champs a null
-  firstName.value = "";
-  lastName.value = "";
-  email.value = "";
-  birthdate.value = "";
-  quantity.value = "";
+  
+  myform.reset();//initialisation des champs a null
+  for(let i=0; i<7; i++){// pour ne pas pas laisser le msg erreur affiché
+     msgErr[i].innerHTML="";
+    }
+  for(let i=0; i<5; i++){// remettre la couleur de la bordure des inputs a none
+      TextControl[i].style.border="none"; 
+     }
 }
 //close modal event
 close.addEventListener("click",closeModal);
@@ -70,7 +74,7 @@ function closeModal(){
 firstName.addEventListener('input',validateFirstName);
 lastName.addEventListener('input',validateLastName);
 email.addEventListener('input',validateMail);
-birthdate.addEventListener('change',validateBirthdate);//verifier la date
+birthdate.addEventListener('change',validateBirthdate);
 quantity.addEventListener('input',validateNbrConcours);
 
 // lorsque je clique sur le boutton "c'est parti" je verifie encore la validité des données saisie
@@ -97,7 +101,7 @@ function validate(){
 // fonction de verification du champ prenom
 function validateFirstName(){
   const msgErrFirstname = document.getElementById("msgErr-firstname");
-  const patternName = /^[A-Za-z\- ]+$/;
+  const patternName = /^[a-zA-Z]+(?:[- ]?[a-zA-Z]+)*\s*$/;
 
   if(firstName.value.trim() ==""){ // le champ ne dois pas etre vide
     firstName.style.border = '2px solid #e54858';
@@ -116,14 +120,14 @@ function validateFirstName(){
   }
   else{//pas de chiffres ni caracteres speciaux
     firstName.style.border = '2px solid #e54858';
-    msgErrFirstname.innerHTML="veuillez sasir un prénom valid !";
+    msgErrFirstname.innerHTML="veuillez sasir un prénom valide !";
     firstIsValid = false;
   }
 }
 // fonction de verification du champ nom
 function validateLastName(){
   const msgErrLastname = document.getElementById("msgErr-lastname");//le span pour afficher le message d'erreur
-  const patternName = /^[A-Za-z\- ]+$/;
+  const patternName = /^[a-zA-Z]+(?:[- ]?[a-zA-Z]+)*\s*$/;
 
   if(lastName.value.trim() ==""){ // le champ ne dois pas etre vide
     lastName.style.border = '2px solid #e54858';
@@ -143,7 +147,7 @@ function validateLastName(){
   }
   else{//pas de chiffres et caracteres speciaux
     lastName.style.border = '2px solid #e54858';
-    msgErrLastname.innerHTML="veuillez sasir un nom valid !";
+    msgErrLastname.innerHTML="veuillez sasir un nom valide !";
     lastIsValid = false;
   }
 }
@@ -212,7 +216,6 @@ function validateLocation(){
 }
 // verifier que les conditions d'utilisations sont acceptés
 function validateCondition(){
-  const CheckCondition = document.getElementById('checkbox1');
   const msgErrCondition = document.getElementById('msgErr-condition');
 
   if(CheckCondition.checked){
@@ -220,7 +223,7 @@ function validateCondition(){
     conditionIsvalis = true;
   }
   else{
-    msgErrCondition.innerHTML="Vous devez vérifier que vous acceptez les termes et conditions";
+    msgErrCondition.innerHTML="Vous devez acceptez les conditions d'utilisation";
     conditionIsvalis = false;
   } 
 }
