@@ -1,15 +1,15 @@
 function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
+  var x = document.querySelector(".navbar");
+  if (x.className === "navbar") {
     x.className += " responsive";
   } else {
-    x.className = "topnav";
+    x.className = "navbar";
   }
 }
 
 // function for suscribe form
 function sendSubscription() {
-  const subscribeForm = document.querySelector(".formData")
+  const subscribeForm = document.querySelector("#reserveForm")
   subscribeForm.addEventListener("submit", (event) => {
     event.preventDefault();
     // Creation of subscription object
@@ -20,7 +20,7 @@ function sendSubscription() {
       email: event.target.querySelector("#email").value,
       birthdate: new Date(event.target.querySelector("#birthdate").value),
       quantity: parseInt(event.target.querySelector("#quantity").value),
-      location: event.target.querySelector("[for=location]").value,
+      location: event.target.querySelector("[name=location]").value,
     }
     console.log({ subscription })
   })
