@@ -33,6 +33,7 @@ function sendSubscription() {
       newsletter: event.target.querySelector("#newsletter").checked,
     }
     console.log({subscription})
+    alert("Merci ! Votre réservation a été reçue.");
     return subscription
   })
 }
