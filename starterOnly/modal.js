@@ -1,17 +1,23 @@
 function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
+  var x = document.querySelector(".navbar");
+  if (x.className === "navbar") {
     x.className += " responsive";
   } else {
-    x.className = "topnav";
+    x.className = "navbar";
   }
 }
 
 // function for suscribe form
 function sendSubscription() {
-  const subscribeForm = document.querySelector(".formData")
+  const subscribeForm = document.querySelector("#reserveForm")
   subscribeForm.addEventListener("submit", (event) => {
     event.preventDefault();
+
+    if(!event.target.querySelector("#conditions").checked)
+    {
+        alert("Vous devez accepter les conditions d'utilisations.");
+    }
+
     // Creation of subscription object
     const subscription = {
       firstName: event.target.querySelector("#first").value,
@@ -20,9 +26,12 @@ function sendSubscription() {
       email: event.target.querySelector("#email").value,
       birthdate: new Date(event.target.querySelector("#birthdate").value),
       quantity: parseInt(event.target.querySelector("#quantity").value),
-      location: event.target.querySelector("[for=location]").value,
+      location: event.target.querySelector("input[name='location']:checked").value,
+      conditions: event.target.querySelector("#conditions").checked,
+      newsletter: event.target.querySelector("#newsletter").checked,
     }
     console.log({ subscription })
+    return subscription
   })
 }
 
