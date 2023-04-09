@@ -147,21 +147,40 @@ function validateConditions() {
 //function to verify if location radio is checked
 function validateLocation() {
   let oneIsCheck = false;
-  let whichIsChecked = "";
   for(let i = 0 ; i < locationRadio.length ; i++){
     if(locationRadio[i].checked === true) {
       oneIsCheck = true;
-      whichIsChecked = locationRadio[i].value;
       document.querySelector('.location').setAttribute('data-error-visible', false);
     } else {
       document.querySelector('.location').setAttribute('data-error-visible', true);
     }
   }
 
-  return [oneIsCheck, whichIsChecked];
+  return oneIsCheck;
 }
 
-//buttonSubmit.addEventListener('click', validate);
+function validationMessage(){
+  launchModal();
+  document.querySelector('form').style.display = 'none';
+
+  let confirmationMessageBloc = document.createElement('div');
+  confirmationMessageBloc.classList.add('confimationMessageBloc')
+  confirmationMessageBloc.innerHTML = `
+    <p class=""> Merci pour<br>votre inscription </p>
+    <button class="btn-signup modal-btn close-confirmation-btn">
+      Fermer
+    </button>
+  `;
+
+  document.querySelector('.modal-body').append(confirmationMessageBloc);
+  var closeBtnConfirmation = () => {
+    modalbg.style.display = 'none';
+    window.location.href="./index.html";
+  }
+
+  document.querySelector('.close-confirmation-btn').addEventListener('click', closeBtnConfirmation);
+  document.querySelector('.close').addEventListener('click', closeBtnConfirmation);
+}
 
 function validate(){
   let verifyFirst = validateFirstName();
@@ -172,6 +191,12 @@ function validate(){
   let verifyConditions = validateConditions();
   let verifyLocation = validateLocation();
 
-  return verifyFirst && verifyLast && verifyEmail && verifyBirthdate && verifyQuantity && verifyConditions && verifyLocation[0];
+  let verifyAll = verifyFirst && verifyLast && verifyEmail && verifyBirthdate && verifyQuantity && verifyConditions && verifyLocation[0];
+
+  return verifyAll;
 }
 
+let url_active = window.location.search;
+if(url_active !== ""){
+  validationMessage();
+}

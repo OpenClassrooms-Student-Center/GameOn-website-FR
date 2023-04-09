@@ -35,10 +35,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -90,8 +90,6 @@ img {
   }
 }
 
-
-
  @media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
@@ -111,8 +109,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -494,7 +490,7 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 40px;
     white-space: normal;
   }
   .hero-text {
@@ -524,5 +520,31 @@ footer {
   }
   to {
     opacity: 1;
+  }
+}
+
+.confimationMessageBloc{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 66vh;
+}
+
+.confimationMessageBloc p {
+  font-size: 36px;
+  font-weight: 400;
+  font-family: 'DM Sans';
+  text-align: center;
+}
+
+.confimationMessageBloc button {
+  position: absolute;
+  bottom: 30px;
+}
+
+@media (max-width:425px){
+  .confimationMessageBloc {
+    height: 88vh;
   }
 }
