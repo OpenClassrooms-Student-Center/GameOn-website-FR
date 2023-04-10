@@ -37,10 +37,10 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-//firstname entries validation event
+//firstname validation event
 firstName.addEventListener('change', validateFirstName);
 
-//function to validate the firstname
+//firstname validation function
 function validateFirstName() {
   let validationFirstBool = true;
   if(firstName.value.length <= 2 || firstName.value.match(/^\s*$/g) || firstName.value.match('[0-9]')) {
@@ -54,10 +54,10 @@ function validateFirstName() {
   return validationFirstBool;
 }
 
-//lastname entries validate event
+//lastname validation event
 lastName.addEventListener('change', validateLastName);
 
-//function to validate the lastname
+//lastname validation function
 function validateLastName(){
   let validationLastNameBool = true;
   if(lastName.value.length <= 2 || lastName.value.match(/^\s*$/g) || lastName.value.match('[0-9]')) {
@@ -71,10 +71,10 @@ function validateLastName(){
   return validationLastNameBool;
 }
 
-//email entries validate event
+//email validation event
 email.addEventListener('change', validateEmail);
 
-//function to validate the email address
+//email validation function
 function validateEmail(){
   let validationEmailBool = true;
   if(!email.value.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/) || email.value.match(/^\s*$/g)) {
@@ -88,10 +88,10 @@ function validateEmail(){
   return validationEmailBool;
 }
 
-//birthdate entries validate event
+//birthdate validation event
 birthdate.addEventListener('change', validateBirthdate);
 
-//function to validate the birthdate
+//birthdate validation function
 function validateBirthdate() {
   let enterDate = birthdate.value.split('-').reverse().join('')
   let today = new Date().toLocaleDateString().split('/').join('');
@@ -108,10 +108,10 @@ function validateBirthdate() {
   return validationBirthdateBool;  
 }
 
-//quantity entires validate event
+//quantity validation event
 quantity.addEventListener('change', validateQuantity);
 
-//function to validate the quantity of martahon already be
+//quantity validation function
 function validateQuantity(){
   let validationQuantity = true;
 
@@ -126,10 +126,10 @@ function validateQuantity(){
   return validationQuantity;
 }
 
-//conditions button validate event
+//conditions checkbox validation event
 conditions.addEventListener('change', validateConditions);
 
-//function to validate if conditions checkbox if checked or not
+//conditions checkbox validation function
 function validateConditions() {
   let validationConditionsBool = true;
 
@@ -144,12 +144,15 @@ function validateConditions() {
   return validationConditionsBool;
 }
 
-//function to verify if location radio is checked
+//location radio validation function
 function validateLocation() {
   let oneIsCheck = false;
   for(let i = 0 ; i < locationRadio.length ; i++){
     if(locationRadio[i].checked === true) {
       oneIsCheck = true;
+    }
+
+    if(oneIsCheck) {
       document.querySelector('.location').setAttribute('data-error-visible', false);
     } else {
       document.querySelector('.location').setAttribute('data-error-visible', true);
@@ -159,6 +162,22 @@ function validateLocation() {
   return oneIsCheck;
 }
 
+//function that will check all infos when the submit button is clicked
+function validate(){
+  let verifyFirst = validateFirstName();
+  let verifyLast = validateLastName();
+  let verifyEmail = validateEmail();
+  let verifyBirthdate = validateBirthdate();
+  let verifyQuantity = validateQuantity();
+  let verifyConditions = validateConditions();
+  let verifyLocation = validateLocation();
+
+  let verifyAll = verifyFirst && verifyLast && verifyEmail && verifyBirthdate && verifyQuantity && verifyConditions && verifyLocation[0];
+
+  return verifyAll;
+}
+
+//show confirmation message function
 function validationMessage(){
   launchModal();
   document.querySelector('form').style.display = 'none';
@@ -180,20 +199,6 @@ function validationMessage(){
 
   document.querySelector('.close-confirmation-btn').addEventListener('click', closeBtnConfirmation);
   document.querySelector('.close').addEventListener('click', closeBtnConfirmation);
-}
-
-function validate(){
-  let verifyFirst = validateFirstName();
-  let verifyLast = validateLastName();
-  let verifyEmail = validateEmail();
-  let verifyBirthdate = validateBirthdate();
-  let verifyQuantity = validateQuantity();
-  let verifyConditions = validateConditions();
-  let verifyLocation = validateLocation();
-
-  let verifyAll = verifyFirst && verifyLast && verifyEmail && verifyBirthdate && verifyQuantity && verifyConditions && verifyLocation[0];
-
-  return verifyAll;
 }
 
 let url_active = window.location.search;
