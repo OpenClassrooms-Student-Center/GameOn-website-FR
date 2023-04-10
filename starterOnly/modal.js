@@ -172,7 +172,7 @@ function validate(){
   let verifyConditions = validateConditions();
   let verifyLocation = validateLocation();
 
-  let verifyAll = verifyFirst && verifyLast && verifyEmail && verifyBirthdate && verifyQuantity && verifyConditions && verifyLocation[0];
+  let verifyAll = verifyFirst && verifyLast && verifyEmail && verifyBirthdate && verifyQuantity && verifyConditions && verifyLocation;
 
   return verifyAll;
 }
