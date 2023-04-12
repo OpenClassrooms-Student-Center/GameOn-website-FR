@@ -99,7 +99,7 @@ img {
     display: block;
     margin-top: -15px;
   }
-} 
+}
 
 main {
   font-size: 130%;
@@ -200,6 +200,13 @@ input {
   border: 0.8px solid #ccc;
   outline: none;
 }
+.input-valid {
+  border: 2px solid green;
+}
+.input-invalid {
+  border: 2px solid red;
+}
+
 .text-control {
   margin: 0;
   padding: 8px;
@@ -226,7 +233,7 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
+/*
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
@@ -526,4 +533,3 @@ footer {
     opacity: 1;
   }
 }
-
