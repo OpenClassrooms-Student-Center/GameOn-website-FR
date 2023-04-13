@@ -62,30 +62,30 @@ closeBtn.addEventListener("click", function() {
 // const birthdateInput = document.querySelector("[name=birthdate]");
 // const quantityInput = document.querySelector("[name=quantity]");
 
-const inputsObject = {
-  first: {
-    regex: /\w{2,}/,
-    message: "doit contenir au moins 2 caractères"
-  },
-  last: {
-    regex: /\w{2,}/,
-    message: "doit contenir au moins 2 caractères"
-  },
-  email: {
-    regex: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-    message: "doit contenir une adresse électronique valide"
-  },
-  birthdate: {
-    regex: /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/,
-    message: "doit contenir une date valide"
-  },
-  quantity: {
-    regex: /\d+/,
-    message: "doit contenir une valeur numérique"
-  }
-}
-regex = /\w{2,}/;
-const inputs = document.querySelectorAll(".formData");
+// const inputsObject = {
+//   first: {
+//     regex: /\w{2,}/,
+//     message: "doit contenir au moins 2 caractères"
+//   },
+//   last: {
+//     regex: /\w{2,}/,
+//     message: "doit contenir au moins 2 caractères"
+//   },
+//   email: {
+//     regex: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+//     message: "doit contenir une adresse électronique valide"
+//   },
+//   birthdate: {
+//     regex: /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/,
+//     message: "doit contenir une date valide"
+//   },
+//   quantity: {
+//     regex: /\d+/,
+//     message: "doit contenir une valeur numérique"
+//   }
+// }
+
+// const inputs = document.querySelectorAll(".formData");
 
 // inputs.forEach(input => {
 //   // const inputLabel = input.querySelector("label").innerText;
@@ -122,25 +122,52 @@ const inputs = document.querySelectorAll(".formData");
 //   })
 // });
 
-const input = document.querySelector(".formData");
-const inputName = input.querySelector("input");
-const inputSpan = document.createElement("span");
-console.log(input);
-console.log(inputName);
+const formEntries = document.querySelectorAll(".formData");
 
-inputName.addEventListener("focus", function() {
-  inputSpan.innerText = "";
-})
 
-inputName.addEventListener("blur", function() {
-  inputName.classList.remove("input-valid", "input-invalid");
-  inputSpan.classList.add("form-warning");
 
-  if (inputName.value.match(regex)) {
-    inputName.classList.add("input-valid");
-  } else {
-    inputName.classList.add("input-invalid");
-    inputSpan.innerText = "Le champs doit contenir 2 caractères";
-    input.appendChild(inputSpan);
-  }
-})
+formEntries.forEach(formEntry => {
+  let regex = "";
+  let spanMessage = "";
+  const input = formEntry.querySelector("input");
+  const inputName = input.id;
+  const inputSpan = document.createElement("span");
+
+  switch (inputName) {
+    case "first":
+      case "last":
+        regex = /\w{2,}/;
+        spanMessage = "Le champ doit contenir au moins 2 caractères";
+        break;
+        case "email":
+          regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+          spanMessage = "L'adresse mail doit être valide";
+          break;
+          case "birthdate":
+            regex = /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/;
+            spanMessage = "doit contenir une date valide";
+      break;
+      case "quantity":
+        regex = /\d+/;
+        spanMessage = "Le champ doit contenir une valeur numérique";
+        break;
+      }
+
+      input.addEventListener("focus", function() {
+        inputSpan.innerText = "";
+      })
+
+      input.addEventListener("blur", function() {
+        console.log(input.value);
+    input.classList.remove("input-valid", "input-invalid");
+    inputSpan.classList.add("form-warning");
+
+    if (input.value.match(regex)) {
+      input.classList.add("input-valid");
+    } else {
+      input.classList.add("input-invalid");
+      inputSpan.innerText = spanMessage;
+      formEntry.appendChild(inputSpan);
+    }
+  })
+});
