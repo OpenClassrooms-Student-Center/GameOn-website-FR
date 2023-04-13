@@ -87,29 +87,60 @@ const inputsObject = {
 regex = /\w{2,}/;
 const inputs = document.querySelectorAll(".formData");
 
-inputs.forEach(input => {
-  // const inputLabel = input.querySelector("label").innerText;
-  // console.log(inputLabel);
-  const inputName = input.querySelector("input");
-  // console.log(inputName);
+// inputs.forEach(input => {
+//   // const inputLabel = input.querySelector("label").innerText;
+//   // console.log(inputLabel);
+//   console.log(input);
+//   const inputName = input.querySelector("input");
+//   // console.log(inputName);
 
-  // console.log(inputsObject.inputName.id.value);
-  inputName.addEventListener("blur", function() {
-    inputName.classList.remove("input-valid", "input-invalid");
-    const inputElement = document.createElement("span");
+//   // console.log(inputsObject.inputName.id.value);
+//   inputName.addEventListener("focus", function() {
+//     inputName.removeChild("span");
+//   })
 
-    // console.log(inputsObject.inputName.id);
-    // console.log(inputName.id.innerText);
+//   inputName.addEventListener("blur", function() {
+//     inputName.classList.remove("input-valid", "input-invalid");
+//     const inputElement = document.createElement("span")
+//     inputElement.classList.add("form-warning");
 
-    if (inputName.value.match(regex)) {
-      inputName.classList.add("input-valid");
-      inputs.removeChild("span");
+//     // console.log(inputsObject.inputName.id);
+//     // console.log(inputName.id.innerText);
 
-    } else {
-      input.removeChild(inputElement);
-      inputName.classList.add("input-invalid");
-      inputElement.innerText = `Le champ doit contenir au minimum 2 caractères`
-      input.appendChild(inputElement);
-    }
-  })
-});
+//     if (inputName.value.match(regex)) {
+//       inputName.classList.add("input-valid");
+//       // input.removeChild("span");
+
+//     } else {
+//       // input.removeChild(inputElement);
+//       const span = input.getElementsByTagName("span");
+//       input.removeChild(span);
+//       inputName.classList.add("input-invalid");
+//       inputElement.innerText = `Le champ doit contenir au minimum 2 caractères`
+//       input.appendChild(inputElement);
+//     }
+//   })
+// });
+
+const input = document.querySelector(".formData");
+const inputName = input.querySelector("input");
+const inputSpan = document.createElement("span");
+console.log(input);
+console.log(inputName);
+
+inputName.addEventListener("focus", function() {
+  inputSpan.innerText = "";
+})
+
+inputName.addEventListener("blur", function() {
+  inputName.classList.remove("input-valid", "input-invalid");
+  inputSpan.classList.add("form-warning");
+
+  if (inputName.value.match(regex)) {
+    inputName.classList.add("input-valid");
+  } else {
+    inputName.classList.add("input-invalid");
+    inputSpan.innerText = "Le champs doit contenir 2 caractères";
+    input.appendChild(inputSpan);
+  }
+})

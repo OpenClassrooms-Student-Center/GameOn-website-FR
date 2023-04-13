@@ -206,7 +206,9 @@ input {
 .input-invalid {
   border: 2px solid red;
 }
-
+.form-warning {
+  font-size: 12px;
+}
 .text-control {
   margin: 0;
   padding: 8px;
