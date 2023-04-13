@@ -27,147 +27,67 @@ closeBtn.addEventListener("click", function() {
   modalbg.style.display = "none";
 });
 
-
-
-
-// function testInput(inputName) {
-  //   inputName.addEventListener("blur", function() {
-    //     inputName.classList.remove("input-valid", "input-invalid");
-    //     // console.log(inputName);
-    //     if (inputName.value.match(regex)) {
-      //       inputName.classList.add("input-valid");
-
-      //     } else {
-        //       inputName.classList.add("input-invalid");
-        //       inputDiv = document.querySelector(".formData");
-
-        //       const inputElement = document.createElement("span");
-        //       spanMessage = `Le champ doit contenir au minimum 2 caractères`;
-        //       inputElement.innerText = spanMessage;
-        //       inputDiv.appendChild(inputElement);
-        //       // console.log(inputElement.innerText);
-        //     };
-        //   });
-        // };
-
-        // testInput(firstInput);
-        // testInput(lastInput);
-        // testInput(emailInput);
-        // testInput(birthdateInput);
-        // testInput(quantityInput);
-
-// const firstInput = document.querySelector("[name=first]");
-// const lastInput = document.querySelector("[name=last]");
-// const emailInput = document.querySelector("[name=email]");
-// const birthdateInput = document.querySelector("[name=birthdate]");
-// const quantityInput = document.querySelector("[name=quantity]");
-
-// const inputsObject = {
-//   first: {
-//     regex: /\w{2,}/,
-//     message: "doit contenir au moins 2 caractères"
-//   },
-//   last: {
-//     regex: /\w{2,}/,
-//     message: "doit contenir au moins 2 caractères"
-//   },
-//   email: {
-//     regex: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-//     message: "doit contenir une adresse électronique valide"
-//   },
-//   birthdate: {
-//     regex: /^(0?[1-9]|[12][0-9]|3[01])[\/\-](0?[1-9]|1[012])[\/\-]\d{4}$/,
-//     message: "doit contenir une date valide"
-//   },
-//   quantity: {
-//     regex: /\d+/,
-//     message: "doit contenir une valeur numérique"
-//   }
-// }
-
-// const inputs = document.querySelectorAll(".formData");
-
-// inputs.forEach(input => {
-//   // const inputLabel = input.querySelector("label").innerText;
-//   // console.log(inputLabel);
-//   console.log(input);
-//   const inputName = input.querySelector("input");
-//   // console.log(inputName);
-
-//   // console.log(inputsObject.inputName.id.value);
-//   inputName.addEventListener("focus", function() {
-//     inputName.removeChild("span");
-//   })
-
-//   inputName.addEventListener("blur", function() {
-//     inputName.classList.remove("input-valid", "input-invalid");
-//     const inputElement = document.createElement("span")
-//     inputElement.classList.add("form-warning");
-
-//     // console.log(inputsObject.inputName.id);
-//     // console.log(inputName.id.innerText);
-
-//     if (inputName.value.match(regex)) {
-//       inputName.classList.add("input-valid");
-//       // input.removeChild("span");
-
-//     } else {
-//       // input.removeChild(inputElement);
-//       const span = input.getElementsByTagName("span");
-//       input.removeChild(span);
-//       inputName.classList.add("input-invalid");
-//       inputElement.innerText = `Le champ doit contenir au minimum 2 caractères`
-//       input.appendChild(inputElement);
-//     }
-//   })
-// });
-
+// stpckage dans un array de tous les champs de formulaire avec la classe .formData
 const formEntries = document.querySelectorAll(".formData");
 
-
-
+// itération sur tous les champs de formulaire
 formEntries.forEach(formEntry => {
+  // création des variables regex et spanMessage
   let regex = "";
   let spanMessage = "";
+  // sélection du champ input
   const input = formEntry.querySelector("input");
+  // récupération de l'id du champ
   const inputName = input.id;
+  // création de l'élément span qui viendra nous indiquer l'erreur sur le champ de formulaire
   const inputSpan = document.createElement("span");
 
+  // en fonction de l'inputName, les variables regex et spanMessage prendront des valeurs différentes:
   switch (inputName) {
     case "first":
-      case "last":
-        regex = /\w{2,}/;
-        spanMessage = "Le champ doit contenir au moins 2 caractères";
-        break;
-        case "email":
-          regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-          spanMessage = "L'adresse mail doit être valide";
-          break;
-          case "birthdate":
-            regex = /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/;
-            spanMessage = "doit contenir une date valide";
-      break;
-      case "quantity":
-        regex = /\d+/;
-        spanMessage = "Le champ doit contenir une valeur numérique";
-        break;
-      }
+    case "last":
+      regex = /\w{2,}/;
+      spanMessage = "Le champ doit contenir au moins 2 caractères";
+    break;
+    case "email":
+      regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      spanMessage = "L'adresse mail doit être valide";
+    break;
+    case "birthdate":
+      regex = /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/;
+      spanMessage = "doit contenir une date valide";
+    break;
+    case "quantity":
+      regex = /\d+/;
+      spanMessage = "Le champ doit contenir une valeur numérique";
+    break;
+  }
 
-      input.addEventListener("focus", function() {
-        inputSpan.innerText = "";
-      })
+  // ajout d'un listener au focus sur le champ input
+  input.addEventListener("focus", function() {
+    // au focus, on vient vider le texte de l'élément span
+    inputSpan.innerText = "";
+  })
 
-      input.addEventListener("blur", function() {
-        console.log(input.value);
+  // lorsque l'on quitte le champ input:
+  input.addEventListener("blur", function() {
+    // réinitialisation des classes input-valid ou input-invalid du champ input
     input.classList.remove("input-valid", "input-invalid");
-    inputSpan.classList.add("form-warning");
 
+    // si la valeur de l'input correspond au format attendu, validé par une regex:
     if (input.value.match(regex)) {
+      // ajout de la classe "input-valid" au champ input pour souligner la validité
       input.classList.add("input-valid");
+    // si la valeur ne correspond pas:
     } else {
+      // ajout de la classe "input-invalid" au champ pour souligner l'invalidité
       input.classList.add("input-invalid");
+      // définition de la valeur du texte de l'élément span
       inputSpan.innerText = spanMessage;
+      // affichage de l'élément span sous l'input du formulaire
       formEntry.appendChild(inputSpan);
+      // ajout de la classe form-warning à l'élément span que nous avons créé
+      inputSpan.classList.add("form-warning");
     }
   })
 });
