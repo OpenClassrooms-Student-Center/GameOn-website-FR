@@ -20,83 +20,117 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-// close modal when click on span class "close" by changing display mode
 
-const closeBtn = document.querySelector(".close");
-closeBtn.addEventListener("click", function() {
+// -------------------------------            Issue #1              ----------------------------------//
+// ------------  close modal when click on span class "close" by changing display mode  ---------------//
+
+// creating a function that changes the display value
+function closeModal() {
   modalbg.style.display = "none";
-});
-
-// // stockage dans un array de tous les champs de formulaire avec la classe .formData
-// const formEntries = document.querySelectorAll(".formData");
-
-// // itération sur tous les champs de formulaire
-// formEntries.forEach(formEntry => {
-//   // création des variables regex et spanMessage
-//   let regex = "";
-//   let spanMessage = "";
-//   // sélection du champ input
-//   const input = formEntry.querySelector("input");
-//   // récupération de l'id du champ
-//   const inputName = input.id;
-//   // création de l'élément span qui viendra nous indiquer l'erreur sur le champ de formulaire
-//   const inputSpan = document.createElement("span");
-
-//   // en fonction de l'inputName, les variables regex et spanMessage prendront des valeurs différentes:
-//   switch (inputName) {
-//     case "first":
-//     case "last":
-//       regex = /\w{2,}/;
-//       spanMessage = "Le champ doit contenir au moins 2 caractères";
-//     break;
-//     case "email":
-//       regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-//       spanMessage = "L'adresse mail doit être valide";
-//     break;
-//     case "birthdate":
-//       regex = /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/;
-//       spanMessage = "doit contenir une date valide";
-//     break;
-//     case "quantity":
-//       regex = /\d+/;
-//       spanMessage = "Le champ doit contenir une valeur numérique";
-//     break;
-//   }
-
-//   // ajout d'un listener au focus sur le champ input
-//   input.addEventListener("focus", function() {
-//     // au focus, on vient vider le texte de l'élément span
-//     inputSpan.innerText = "";
-//   })
-
-//   // lorsque l'on quitte le champ input:
-//   input.addEventListener("blur", function() {
-//     // réinitialisation des classes input-valid ou input-invalid du champ input
-//     input.classList.remove("input-valid", "input-invalid");
-
-//     // si la valeur de l'input correspond au format attendu, validé par une regex:
-//     if (input.value.match(regex)) {
-//       // ajout de la classe "input-valid" au champ input pour souligner la validité
-//       input.classList.add("input-valid");
+}
+// select the close button by className
+const closeBtn = document.querySelector(".close");
+// on click, calling closeModal() function
+closeBtn.addEventListener("click", closeModal);
 
 
-//     // si la valeur ne correspond pas:
-//     } else {
-//       // ajout de la classe "input-invalid" au champ pour souligner l'invalidité
-//       input.classList.add("input-invalid");
-//       // définition de la valeur du texte de l'élément span
-//       inputSpan.innerText = spanMessage;
-//       // affichage de l'élément span sous l'input du formulaire
-//       formEntry.appendChild(inputSpan);
-//       // ajout de la classe form-warning à l'élément span que nous avons créé
-//       inputSpan.classList.add("form-warning");
-//     }
-//   })
-// });
 
-const first = document.querySelector("#first");
-const last = document.querySelector("#last");
-const email = document.querySelector("#email");
-const birthdate = document.querySelector("#birthdate");
-const quantity = document.querySelector("#quantity");
-console.log(first);
+
+// -------------------------------            Issue #2              ----------------------------------//
+// ------------           form inputs must be valid when clicking on "Submit"           ---------------//
+
+// Select all form entries
+const form = document.querySelector("form");
+
+// Select submit button
+const submit = document.querySelector(".btn-submit");
+
+// By default, disable Submit button
+submit.disabled = true;
+
+// Cancel default behaviour of Submit button
+
+submit.addEventListener("click", function(event) {
+  event.preventDefault();
+})
+
+
+
+
+// ------------                       validates form entries                           ---------------//
+
+
+
+// function to validate "first" entry
+function validateFirst() {
+  const first = form.first;
+  let namesRegex = /\w{2,}/;
+  // checking if input value match the regex pattern, if so return true
+  return namesRegex.test(first.value);
+}
+// validateFirst();
+
+
+function validateLast() {
+  const last = form.last;
+  let namesRegex = /\w{2,}/;
+  return namesRegex.test(last.value);
+}
+
+function validateEmail() {
+  const email = form.email;
+  let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  return emailRegex.test(email.value);
+}
+
+function validateBirthdate() {
+  const birthdate = form.birthdate;
+  let dateRegex = /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/;
+  return dateRegex.test(birthdate.value);
+}
+
+function validateQuantity() {
+  const quantity = form.quantity;
+  let quantityRegex = /^\d+$/;
+  return quantityRegex.test(quantity.value);
+}
+
+// function to validate if a location is checked
+function validateLocation() {
+  // selecting all the input of type radio
+  const locations = document.querySelectorAll("[type=radio]");
+  //looping on all radio buttons to check if one is checked
+  for (const location of locations) {
+    if (location.checked) {
+      // if so return true
+      return true;
+    }
+  }
+  return false;
+}
+
+function validateTOU() {
+  // selecting the checkbox input managing the terms of use
+  const terms = document.querySelector("#checkbox1");
+  // checking if this is checked, if so return true
+  return terms.checked;
+}
+
+function validateForm() {
+  validateFirst();
+  validateLast();
+  validateEmail();
+  validateBirthdate();
+  validateQuantity();
+  validateLocation();
+  validateTOU();
+  // select the "Submit button"
+  // disable button if all input are not valid
+  if (validateFirst() && validateLast() && validateEmail() && validateBirthdate() && validateQuantity() && validateLocation() && validateTOU()) {
+    submit.disabled = false;
+  } else {
+    submit.disabled = true;
+  }
+};
+
+form.addEventListener("input", validateForm);
