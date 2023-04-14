@@ -56,42 +56,44 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
-            <form
+            <form 
+              id="form"
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
             >
               <div
                 class="formData">
-                <label for="first">Prénom</label><br>
+                <label for="firstname">Prénom</label><br>
                 <input
                   class="text-control"
                   type="text"
-                  id="first"
-                  name="first"
-                  minlength="2"
+                  id="firstname"
+                  name="firstname"
                 /><br>
+                <span class="errorMessage" id="errorFirstname"></span>
               </div>
               <div
                 class="formData">
-                <label for="last">Nom</label><br>
+                <label for="lastname">Nom</label><br>
                 <input
                   class="text-control"
                   type="text"
-                  id="last"
-                  name="last"
+                  id="lastname"
+                  name="lastname"
                 /><br>
+                <span class="errorMessage" id="errorLastname"></span>
               </div>
               <div
                 class="formData">
                 <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
-                  type="email"
+                  type="text"
                   id="email"
                   name="email"
                 /><br>
+                <span class="errorMessage" id="errorEmail"></span>
               </div>
               <div
                 class="formData">
@@ -102,11 +104,13 @@
                   id="birthdate"
                   name="birthdate"
                 /><br>
+                <span class="errorMessage" id="errorBirthdate"></span>
               </div>
               <div
                 class="formData">
-                <label for="location1">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                <input type="number" class="text-control" id="quantity" name="quantity" >
+                <span class="errorMessage" id="errorQuantity"></span>
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
@@ -118,7 +122,7 @@
                   name="location"
                   value="New York"
                 />
-                <label for="location2" class="checkbox-label" for="location1">
+                <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
                   New York</label
                 >
@@ -129,7 +133,7 @@
                   name="location"
                   value="San Francisco"
                 />
-                <label for="location3" class="checkbox-label" for="location2">
+                <label class="checkbox-label" for="location2">
                   <span class="checkbox-icon"></span>
                   San Francisco</label
                 >
@@ -140,7 +144,7 @@
                   name="location"
                   value="Seattle"
                 />
-                <label for="location4" class="checkbox-label" for="location3">
+                <label class="checkbox-label" for="location3">
                   <span class="checkbox-icon"></span>
                   Seattle</label
                 >
@@ -151,7 +155,7 @@
                   name="location"
                   value="Chicago"
                 />
-                <label for="location5" class="checkbox-label" for="location4">
+                <label class="checkbox-label" for="location4">
                   <span class="checkbox-icon"></span>
                   Chicago</label
                 >
@@ -162,7 +166,7 @@
                   name="location"
                   value="Boston"
                 />
-                <label for="location6" class="checkbox-label" for="location5">
+                <label class="checkbox-label" for="location5">
                   <span class="checkbox-icon"></span>
                   Boston</label
                 >
@@ -176,7 +180,8 @@
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
                   Portland</label
-                >
+                ><br>
+                <span class="errorMessage" id="errorLocation"></span>
               </div>
 
               <div
@@ -187,15 +192,17 @@
                   id="checkbox1"
                   checked
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
+                <span class="errorMessage" id="errorConditionOfuse">
+                </span>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
-                  Je Je souhaite être prévenu des prochains évènements.
+                  Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
               </div>
