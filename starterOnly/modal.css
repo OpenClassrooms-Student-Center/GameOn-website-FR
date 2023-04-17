@@ -200,15 +200,19 @@ input {
   border: 0.8px solid #ccc;
   outline: none;
 }
-.input-valid {
+
+.valid {
   border: 2px solid green;
 }
-.input-invalid {
+.invalid {
   border: 2px solid red;
 }
 .form-warning {
   font-size: 12px;
+  color: red;
 }
+
+
 .text-control {
   margin: 0;
   padding: 8px;
@@ -347,8 +351,6 @@ input[data-error]::after {
   background: #f26d7c69;
   cursor: not-allowed;
 }
-
-
 /* custom select styles */
 .custom-select {
   position: relative;
