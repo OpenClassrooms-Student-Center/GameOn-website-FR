@@ -364,7 +364,6 @@ function invalidInputHighlight(input) {
 
 formEntries.forEach(formEntry => {
   const input = formEntry.querySelector("input");
-  // console.log(input);
   const inputName = input.id;
   const inputSpan = document.createElement("span");
   let errorMessage = "";
@@ -413,10 +412,11 @@ formEntries.forEach(formEntry => {
     errorMessage = "Vous devez choisir une option."
     const radioButtons = document.querySelectorAll("[type=radio]");
     for (const btn of radioButtons) {
-        submit.addEventListener("click", function(event) {
+        submit.addEventListener("click", function() {
         if (btn.checked) {
           isValid[inputName] = true;
-          // errorMessage = "";
+          errorMessage = "";
+          return true;
         } else {
           inputSpan.innerText = errorMessage;
           inputSpan.classList.add("form-warning");
@@ -442,7 +442,7 @@ formEntries.forEach(formEntry => {
         inputSpan.classList.add("form-warning");
       }
     });
-    input.addEventListener("click", function() {
+    input.addEventListener("change", function() {
       if (this.checked) {
         inputSpan.innerText = "";
       }
@@ -457,9 +457,8 @@ formEntries.forEach(formEntry => {
 
 submit.addEventListener("click", function(event) {
   event.preventDefault();
+  console.log(isValid);
   Object.entries(isValid).forEach(entry => {
-    console.log(entry[1]);
-    console.log(entry[0]);
     if (!entry[1]) {
       invalidInputHighlight(document.getElementById(entry[0]));
     };
