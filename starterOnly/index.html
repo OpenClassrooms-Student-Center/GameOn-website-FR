@@ -61,9 +61,10 @@
               name="reserve"
               action="index.html"
               method="get"
+              onsubmit="validate()"
             >
               <div
-                class="formData">
+                class="formData firstname">
                 <label for="firstname">Prénom</label><br>
                 <input
                   class="text-control"
@@ -74,7 +75,7 @@
                 <span class="errorMessage" id="errorFirstname"></span>
               </div>
               <div
-                class="formData">
+                class="formData lastname">
                 <label for="lastname">Nom</label><br>
                 <input
                   class="text-control"
@@ -85,7 +86,7 @@
                 <span class="errorMessage" id="errorLastname"></span>
               </div>
               <div
-                class="formData">
+                class="formData email">
                 <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
@@ -96,7 +97,7 @@
                 <span class="errorMessage" id="errorEmail"></span>
               </div>
               <div
-                class="formData">
+                class="formData birthdate">
                 <label for="birthdate">Date de naissance</label><br>
                 <input
                   class="text-control"
@@ -107,14 +108,14 @@
                 <span class="errorMessage" id="errorBirthdate"></span>
               </div>
               <div
-                class="formData">
+                class="formData quantity">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" >
                 <span class="errorMessage" id="errorQuantity"></span>
               </div>
-              <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
+              <p class="text-label" id="textLabel">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                class="formData">
+                class="formData city">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -185,7 +186,7 @@
               </div>
 
               <div
-                class="formData">
+                class="formData userConditions">
                 <input
                   class="checkbox-input"
                   type="checkbox"
@@ -197,7 +198,7 @@
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
-                <span class="errorMessage" id="errorConditionOfuse">
+                <span class="errorMessage" id="errorConditionOfUse">
                 </span>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
                 <label class="checkbox2-label" for="checkbox2">
@@ -208,6 +209,7 @@
               </div>
               <input
                 class="btn-submit"
+                id="submitBtn"
                 type="submit"
                 class="button"
                 value="C'est parti"
