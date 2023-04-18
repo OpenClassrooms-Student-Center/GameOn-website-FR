@@ -170,6 +170,8 @@ main {
 }
 .confirm {
   display: none;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -231,6 +233,9 @@ input {
   border-radius: 8px;
   font-size: 20px;
   height: 48px;
+}
+.text-confirm {
+  text-align: center;
 }
 .formData[data-error]::after {
   content: attr(data-error);
@@ -477,7 +482,6 @@ input[data-error]::after {
 }
 .btn-signup {
   outline: none;
-  text-transform: capitalize;
   font-size: 1.3rem;
   padding: 15px 23px;
   margin: 0;
@@ -491,6 +495,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 .copyrights {
   color: #fe142f;
