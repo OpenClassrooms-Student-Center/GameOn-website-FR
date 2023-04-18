@@ -73,7 +73,7 @@ formEntries.forEach(formEntry => {
   let errorMessage = "";
 
   if (inputName !== "location1" && inputName !== "checkbox1") {
-    input.addEventListener("blur", function() {
+    input.addEventListener("input", function() {
       switch (inputName) {
         case "first":
         case "last":
@@ -96,6 +96,7 @@ formEntries.forEach(formEntry => {
       if (regex.test(input.value)) {
         validInputHighlight(input);
         isValid[inputName] = true;
+        inputSpan.innerText = "";
       } else {
         invalidInputHighlight(input);
         inputSpan.innerText = errorMessage;
@@ -113,7 +114,6 @@ formEntries.forEach(formEntry => {
     for (const btn of radioButtons) {
         submit.addEventListener("click", function() {
         if (btn.checked) {
-          console.log(btn);
           isValid[inputName] = true;
           errorMessage = "";
         } else {
@@ -144,25 +144,14 @@ formEntries.forEach(formEntry => {
       }
     })
   }
-  input.addEventListener("focus", function() {
-    inputSpan.innerText = "";
-  })
 });
 
 submit.addEventListener("click", function(event) {
   event.preventDefault();
-  console.log(isValid);
-  let isTrue = false;
-  for (let i = 0; i < Object.values(isValid).length; i++) {
-    if (!Object.values(isValid)[i]) {
-      console.log(Object.entries(isValid)[i]);
-      isTrue = false;
-      invalidInputHighlight(document.getElementById(Object.keys(isValid)[i]));
-    } else {
-      isTrue = true
-    }
-    console.log(isTrue);
+  for (const [key, value] of Object.entries(isValid)) {
+    value ? validInputHighlight(document.getElementById(key)) : invalidInputHighlight(document.getElementById(key));
   }
+  const isTrue = Object.values(isValid).every(value => value)
   if (isTrue) {
     closeModal();
     launchConfirm();
