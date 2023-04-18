@@ -61,6 +61,9 @@ function validInputHighlight(input) {
 function invalidInputHighlight(input) {
   input.style.border = "2px solid red";
 }
+function emptyForm() {
+  form.reset();
+}
 
 formEntries.forEach(formEntry => {
   const input = formEntry.querySelector("input");
@@ -110,6 +113,7 @@ formEntries.forEach(formEntry => {
     for (const btn of radioButtons) {
         submit.addEventListener("click", function() {
         if (btn.checked) {
+          console.log(btn);
           isValid[inputName] = true;
           errorMessage = "";
         } else {
@@ -162,5 +166,6 @@ submit.addEventListener("click", function(event) {
   if (isTrue) {
     closeModal();
     launchConfirm();
+    emptyForm();
   }
 });
