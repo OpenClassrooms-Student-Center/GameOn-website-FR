@@ -202,7 +202,7 @@ input {
   font-size: 20px;
   height: 48px;
 }
-.formData[data-error]::after {
+/* .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
   color: #e54858;
@@ -219,7 +219,7 @@ input {
 }
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
-}
+} */
 
 .checkbox-label,
 .checkbox2-label {
@@ -324,6 +324,7 @@ input {
   border: 0;
 }
 
+/* custom bouton modal quand il a la valeur "Fermer"  */
 .btn-submit[value="Fermer"] {
   position: absolute;
   bottom: 20px;
