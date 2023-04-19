@@ -212,3 +212,38 @@ const validateForm = () => {
     }
   }
 };
+
+// je creer une fonction anonyme modalSuccess
+const modalSuccess = () => {
+  // je récupère tous les élements qui ont la class .success
+  const success = document.querySelectorAll(".success");
+  // je créer une boucle pour passer sur chacun des éléments
+  for (let i = 0; i < success.length; i++) {
+    // j'ajoute la class hidden à tous les éléments qui ont la class .success
+    success[i].classList.add("hidden");
+  }
+  // je récupère l'élément text-label
+  const label = document.querySelector(".text-label");
+  // j'ajoute le message avec innerHTML
+  label.innerHTML = `Merci pour <br> votre inscription!`;
+
+  // je récupère l'élément button
+  const btnSubmit = document.querySelector(".btn-submit");
+  // et je modifie sa valeur
+  btnSubmit.value = "Fermer";
+
+  label.classList.add("textFinal");
+  const modalBody = document.querySelector(".modal-body");
+  modalBody.classList.add("newModal");
+
+  // je vérifie que la valeur du bouton soit "Fermer"
+  if (btnSubmit.value == "Fermer") {
+    // si oui, au click, j'appel la fonction closeModal()
+    btnSubmit.addEventListener("click", function () {
+      closeModal();
+      // une fois la modal fermée, je raffraichit la page
+      window.location.reload();
+    });
+  }
+};
+
