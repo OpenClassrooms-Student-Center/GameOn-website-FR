@@ -36,7 +36,6 @@ closeModal.addEventListener("click", closeModalWindow)
 
 
 function closeModalWindow() {
-  console.log ("zizi")
   modalbg.style.display = "none";
 }
 
