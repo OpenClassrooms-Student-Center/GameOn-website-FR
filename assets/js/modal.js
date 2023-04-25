@@ -40,6 +40,7 @@ const quantity = document.getElementById("quantity");
 const checkbox = document.getElementById("checkbox1");
 const checkedCity = document.getElementById("checked");
 
+// je reçupère mon formulaire et le place un écouteur d'evenement sur le submit
 form.addEventListener("submit", (event) => {
   // stop le comportement par défaut du navigateur
   event.preventDefault();
@@ -95,6 +96,7 @@ const validate = () => {
   }
   // Idem que pour firstName
   if (birthdate.value.trim() == "") {
+    // Axe d'amélioration : Ajout d'une REGEX pour la saisie de la date de naissance
     error(birthdate, "Veuillez saisir votre date de naissance.");
   } else {
     success(birthdate);
@@ -104,7 +106,7 @@ const validate = () => {
     error(quantity, "Veuillez saisir votre nombre de participations.");
     // Je specifie que le champ doit contenir un chiffre qui doit être à minima : 0
   } else if (quantity.value.trim() < 0) {
-    error(quantity, "Veuillez saisir votre nombre de participations.");
+    error(quantity, "Veuillez saisir votre nombre de participations supérieur à ou égale à 0.");
   } else {
     success(quantity);
   }
@@ -203,6 +205,7 @@ const validateForm = () => {
     if (formData.length == data) {
       // je passe la variable valide à True
       valide = true;
+      // J'envoie les données en back-end
       // et j'appel ma nouvelle modal : modalSuccess()
       modalSuccess();
     }
@@ -232,8 +235,11 @@ const modalSuccess = () => {
   // et je modifie sa valeur
   btnSubmit.value = "Fermer";
 
+  // j'ajoute la class textFinal au label
   label.classList.add("textFinal");
+  // je récupère l'élément modal-body
   const modalBody = document.querySelector(".modal-body");
+  // j'ajoute la class newModal au modal-body
   modalBody.classList.add("newModal");
 
   // je vérifie que la valeur du bouton soit "Fermer"
@@ -246,4 +252,5 @@ const modalSuccess = () => {
     });
   }
 };
+
 

@@ -29,16 +29,18 @@ p {
 img {
   padding-right: 1rem;
 }
-
+/* Affichage de la bordure rouge si erreur dans le formulaire */
 .error > input {
   border: solid 2px red;
 }
 
+/* Affichage texte en rouge si erreur dans le formulaire */
 .error > span {
   color: red;
   font-size: 12px;
 }
 
+/* Affiche la bordure verte si le formulaire est correctement rempli */
 .success > input {
   border: solid 2px green;
 }
@@ -47,6 +49,7 @@ img {
   text-align: start;
 }
 
+/* Rend invisible après soumission du formulaire */
 .hidden {
   display: none;
 }
