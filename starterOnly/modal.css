@@ -201,6 +201,13 @@ input {
   color: red;
 }
 
+.topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
 /* .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -480,11 +487,19 @@ footer {
 
 
 @media screen and (max-width: 900px) {
+
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+
   .topnav.responsive a {
     float: none;
     display: block;
     text-align: left;
   }
+
   .topnav a.active{
     margin: 0;
   }
@@ -532,6 +547,13 @@ footer {
 }
 
 @media screen and (max-width: 540px){
+
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+
   .hero-section {
     margin-bottom: 0;
     min-height: 80vh;
