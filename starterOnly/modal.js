@@ -16,11 +16,14 @@ const closeBtn = document.querySelector(".close");
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
+
+
+
+
 
 // close modal event
 closeBtn.addEventListener("click", closeModal);
@@ -29,8 +32,6 @@ closeBtn.addEventListener("click", closeModal);
 function closeModal() {
   modalbg.style.display = "none";
 }
-
-
 
 // récupération des id des inputs
 const form = document.getElementById("form");
@@ -43,7 +44,7 @@ const conditionOfUse = document.getElementById("checkbox1");
 const errorMessage = document.getElementsByClassName("errorMessage");
 const submitBtn = document.getElementById("submitBtn");
 const textLabel = document.getElementById("textLabel");
-console.log(textLabel);
+
 
 // fonction de validation du formulaire
 form.addEventListener("submit", function (e) {
@@ -70,7 +71,7 @@ const validate = () => {
   const successEmail = document.querySelector(".email");
   const successBirthdate = document.querySelector(".birthdate");
   const successQuantity = document.querySelector(".quantity");
-  let validRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,10}$/;
+  let validRegex = /^[a-zA-Z0-9._+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,10}$/;
 
 
   // conditions d'erreurs si le champs prénom est vide
@@ -207,6 +208,7 @@ const radioChecked = () => {
 // création de la fonction callback pour les conditions d'utilisation
 const conditionOfUseChecked = () => {
   const errorConditionOfUse = document.getElementById("errorConditionOfUse");
+  // on récupère notre champs conditions d'utilisateion
   const userConditions = document.querySelector(".userConditions");
 
   // on vérifie que l'élément checkbox1 soit coché grâce à la propriété checked
@@ -279,3 +281,4 @@ const modalSuccess = () => {
     })
   }
 }
+
