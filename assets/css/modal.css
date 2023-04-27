@@ -17,7 +17,7 @@ body {
   background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
-  max-width: 1300px;
+  max-width: 1440px;
   margin: 0 auto;
 }
 
@@ -29,17 +29,45 @@ p {
 img {
   padding-right: 1rem;
 }
+/* Affichage de la bordure rouge si erreur dans le formulaire */
+.error > input {
+  border: solid 2px red;
+}
+
+/* Affichage texte en rouge si erreur dans le formulaire */
+.error > span {
+  color: red;
+  font-size: 12px;
+}
+
+/* Affiche la bordure verte si le formulaire est correctement rempli */
+.success > input {
+  border: solid 2px green;
+}
+
+.styleCondition {
+  text-align: start;
+}
+
+/* Rend invisible après soumission du formulaire */
+.hidden {
+  visibility:hidden;
+}
+/* 
+.newModal {
+  height: 60vh;
+} */
 
 .topnav {
   overflow: hidden;
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
-}
+  float: right;
+  }
 .topnav a {
   float: left;
   display: block;
@@ -68,38 +96,7 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
 
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} 
 
 main {
   font-size: 130%;
@@ -111,11 +108,10 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
+  position: absolute;
   font-size: 145%;
   background: #fe142f;
   display: flex;
@@ -184,6 +180,7 @@ main {
 }
 
 .modal-body {
+  position: relative;
   padding: 15px 8%;
   margin: 15px auto;
 }
@@ -208,30 +205,8 @@ input {
   font-size: 20px;
   height: 48px;
 }
-.formData[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.4em;
-  color: #e54858;
-  display: block;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  text-align: right;
-  line-height: 0.3;
-  opacity: 0;
-  transition: 0.3s;
-}
-.formData[data-error-visible="true"]::after {
-  opacity: 1;
-}
-.formData[data-error-visible="true"] .text-control {
-  border: 2px solid #e54858;
-}
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -297,6 +272,7 @@ input[data-error]::after {
   top: 19%;
 }
 .close {
+  z-index: 1;
   position: absolute;
   right: 15px;
   top: 15px;
@@ -333,6 +309,15 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+/* custom bouton modal quand il a la valeur "Fermer"  */
+.btn-submit[value="Fermer"] {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translate(-50%, -20%);
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -404,8 +389,18 @@ input[data-error]::after {
   font-weight: normal;
   font-size: 16px;
 }
+
+.textFinal {
+  width: 70%;
+  text-align: center;
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 .hero-section {
-  min-height: 93vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -449,7 +444,7 @@ input[data-error]::after {
 .btn-signup {
   outline: none;
   text-transform: capitalize;
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   padding: 15px 23px;
   margin: 0;
   margin-top: 59px;
@@ -478,7 +473,30 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+
+/* ---------------------RESPONSIVE----------------------- */
+/* TABLETTE */
+@media screen and (max-width: 900px) {
+  .topnav a {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  .topnav.responsive {
+    position: relative;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -502,18 +520,92 @@ footer {
     width: unset;
     font-size: 1.5rem;
   }
-  .hero-img img {
+
+
+  .hero-img  img {
     border-radius: 10px;
-    margin-top: 40px;
   }
   .hero-section > .btn-signup {
     display: block;
-    margin: 32px auto 10px;
-    padding: 12px 35px;
+    position: relative;
+    bottom: 11%;
+    left: 50%;
+    transform: translateX(-50%);
   }
+
+
   .copyrights {
-    margin-top: 50px;
-    text-align: center;
+    position: relative;
+    bottom: 40px;
+    margin-top: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+}
+
+/* MOBILE */
+
+@media screen and (max-width: 540px) {
+  .content{
+    margin: 15% auto ;
+  }
+  .topnav a {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+    margin-top: -15px;
+  }
+
+  .hero-section {
+    min-height: 50vh;
+  }
+
+  .header-logo > img {
+    width: 180px;
+    padding-left: 15px;
+  }
+
+  .fa {
+    margin-top: 10px;
+    color: red;
+  }
+
+  .hero-content {
+    min-width: 217px;
+    text-align: left;
+    padding: 0 0 10px 0;
+  }
+
+  .hero-headline {
+    font-size: 30px;
+  }
+
+  .hero-text {
+    margin-top: 30px;
+    font-size: 0.8rem;
+  }
+
+  .btn-signup{
+    font-size: 1.3rem;
+  }
+
+  .hero-section > .btn-signup {
+    width: 60%;
+    left: 50%;
+    transform: translateX(-80%);
+    margin: 20px auto 10px;
+  }
+
+  .copyrights {
+    width: 70%;
+    font-size: .6rem;
+    bottom: 10px;
+    margin-top: 70px;
+    left: 60%;
+    transform: translateX(-50%);
   }
 }
 
@@ -526,4 +618,3 @@ footer {
     opacity: 1;
   }
 }
-
