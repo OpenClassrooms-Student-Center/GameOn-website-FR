@@ -51,12 +51,12 @@ img {
 
 /* Rend invisible après soumission du formulaire */
 .hidden {
-  display: none;
+  visibility:hidden;
 }
-
+/* 
 .newModal {
   height: 60vh;
-}
+} */
 
 .topnav {
   overflow: hidden;
@@ -67,7 +67,7 @@ img {
 }
 .main-navbar {
   float: right;
-}
+  }
 .topnav a {
   float: left;
   display: block;
@@ -205,24 +205,7 @@ input {
   font-size: 20px;
   height: 48px;
 }
-/* .formData[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.4em;
-  color: #e54858;
-  display: block;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  text-align: right;
-  line-height: 0.3;
-  opacity: 0;
-  transition: 0.3s;
-}
-.formData[data-error-visible="true"]::after {
-  opacity: 1;
-}
-.formData[data-error-visible="true"] .text-control {
-  border: 2px solid #e54858;
-} */
+
 
 .checkbox-label,
 .checkbox2-label {
@@ -408,13 +391,16 @@ input {
 }
 
 .textFinal {
+  width: 70%;
   text-align: center;
-  font-size: 3rem;
-  margin-top: 50%;
+  font-size: 2rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .hero-section {
-  height: 70vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -541,7 +527,7 @@ footer {
   }
   .hero-section > .btn-signup {
     display: block;
-    position: absolute;
+    position: relative;
     bottom: 11%;
     left: 50%;
     transform: translateX(-50%);
@@ -549,7 +535,7 @@ footer {
 
 
   .copyrights {
-    position: absolute;
+    position: relative;
     bottom: 40px;
     margin-top: 70px;
     left: 50%;
@@ -574,11 +560,11 @@ footer {
   }
 
   .hero-section {
-    min-height: 75vh;
+    min-height: 50vh;
   }
 
   .header-logo > img {
-    width: 20vh;
+    width: 180px;
     padding-left: 15px;
   }
 
@@ -588,13 +574,13 @@ footer {
   }
 
   .hero-content {
-    min-width: 320px;
+    min-width: 217px;
     text-align: left;
     padding: 0 0 10px 0;
   }
 
   .hero-headline {
-    font-size: 35px;
+    font-size: 30px;
   }
 
   .hero-text {
@@ -602,19 +588,23 @@ footer {
     font-size: 0.8rem;
   }
 
+  .btn-signup{
+    font-size: 1.3rem;
+  }
+
   .hero-section > .btn-signup {
     width: 60%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-80%);
     margin: 20px auto 10px;
   }
 
   .copyrights {
     width: 70%;
-    position: absolute;
+    font-size: .6rem;
     bottom: 10px;
     margin-top: 70px;
-    left: 50%;
+    left: 60%;
     transform: translateX(-50%);
   }
 }

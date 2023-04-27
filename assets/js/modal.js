@@ -25,7 +25,7 @@ function launchModal() {
 closeBtn.addEventListener("click", closeModal);
 // Ajoute un évenement au Click sur le bouton Close et appel la fonction closeModal
 
-// close modal form
+// Et j'applique un display none sur la modal 
 function closeModal() {
   modalbg.style.display = "none";
 }
@@ -53,6 +53,9 @@ form.addEventListener("submit", (event) => {
 // Et je transforme le type html en text, précement en email, pour prioriser la regex
 const regexMail = /^[A-Za-z0-9.-_]+[@]{1}[A-Za-z0-9.-_]+[.]{1}[a-z0-9]{2,15}$/;
 
+// création d'une REGEX pour la saisie des noms et prénoms
+const regexNames= /^[A-Za-zéÉèÈêÊëË-]+$/;
+
 // je créer ma fonction de validation des données
 const validate = () => {
   // si la valeur de firstName est vide en surprimant les espaces avec la fonction trim()
@@ -62,10 +65,11 @@ const validate = () => {
     error(firstName, "Ce champs est requis.");
     // Je specifie que si la valeur du champ a moins de deux caractères et sans espaces, le message erreur apparait
   } else if (firstName.value.trim().length < 2) {
-    error(
-      firstName,
-      "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
-    );
+    error(firstName, "Veuillez entrer 2 caractères ou plus pour le champ du prénom.");
+    // Je teste le champs avec la REGEX, 
+    // et avec le ! je spécifie que si la valeur du champs ne correspond pas à la REGEX, le message d'erreur apparait
+  } else if (!regexNames.test(firstName.value.trim())) {
+    error(firstName, "Le champ du prénom ne peut contenir que des lettres et des traits d'union.");
   } else {
     // si il n'y a aucune erreur dans la fonction error() j'appel la fonction success()
     success(firstName);
@@ -74,10 +78,10 @@ const validate = () => {
   if (lastName.value.trim() == "") {
     error(lastName, "Ce champs est requis.");
   } else if (lastName.value.trim().length < 2) {
-    error(
-      lastName,
-      "Veuillez entrer 2 caractères ou plus pour le champ du nom."
-    );
+    error(lastName, "Veuillez entrer 2 caractères ou plus pour le champ du nom.");
+    // Je teste le champs avec la REGEX, de la même manière que pour firstName
+  } else if (!regexNames.test(lastName.value.trim())) {
+    error(lastName, "Le champ du nom ne peut contenir que des lettres et des traits d'union.");
   } else {
     success(lastName);
   }
