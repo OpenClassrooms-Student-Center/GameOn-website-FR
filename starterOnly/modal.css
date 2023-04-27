@@ -68,39 +68,6 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} 
-
 main {
   font-size: 130%;
   font-weight: bolder;
@@ -208,7 +175,40 @@ input {
   font-size: 20px;
   height: 48px;
 }
-.formData[data-error]::after {
+
+.errorMessage {
+  font-size: 12px;
+  color: red;
+}
+
+.errorInput > input {
+  border: 2px solid red;
+}
+
+.successInput > input {
+  border: 2px solid green;
+}
+
+.city, .userConditions {
+  border: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.textValid {
+  color: red;
+}
+
+.topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+/* .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
   color: #e54858;
@@ -225,7 +225,7 @@ input {
 }
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
-}
+} */
 /* 
 input[data-error]::after {
     content: attr(data-error);
@@ -401,8 +401,14 @@ input[data-error]::after {
 }
 /* custom select end */
 .text-label {
+  display: flex;
+  justify-content: center;
   font-weight: normal;
-  font-size: 16px;
+  color: white;
+  width: 75%;
+  margin: auto;
+  padding-bottom: 5%;
+  font-size: .8em;
 }
 .hero-section {
   min-height: 93vh;
@@ -478,7 +484,25 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+
+
+@media screen and (max-width: 900px) {
+
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  .topnav a.active{
+    margin: 0;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -512,8 +536,66 @@ footer {
     padding: 12px 35px;
   }
   .copyrights {
-    margin-top: 50px;
+    margin-top: 30px;
     text-align: center;
+  }
+
+  .errorMessage {
+    font-size: 14px;
+    color: red;
+  }
+}
+
+@media screen and (max-width: 540px){
+
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+
+  .hero-section {
+    margin-bottom: 0;
+    min-height: 80vh;
+  }
+  
+  .hero-content{
+    min-width: 320px;
+    text-align: left;
+    padding: 0 0 10px 0;
+  }
+  .hero-headline{
+    font-size: 2rem;
+  }
+  .hero-text{
+    font-size: .7rem;
+    margin-top: 20px;
+  }
+  .hero-img img {
+    margin: 10px 0 0;
+  }
+  .copyrights {
+    font-size: 10px;
+  }
+  .header-logo img {
+    width: 40%;
+    padding-left: 15px;
+  }
+
+  .errorMessage {
+    font-size: 12px;
+    color: red;
+  }
+
+  .text-label {
+    display: flex;
+    justify-content: center;
+    font-weight: normal;
+    color: white;
+    width: 75%;
+    margin: auto;
+    padding-bottom: 5%;
+    font-size: .7em;
   }
 }
 
