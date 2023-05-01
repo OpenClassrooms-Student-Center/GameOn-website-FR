@@ -10,6 +10,14 @@
 }
 /* Landing Page */
 
+::-webkit-input-placeholder {
+  font-size: 70%;
+  color: #ccc8c8;
+
+}
+.invalid {
+  
+}
 body {
   margin: 0;
   display: flex;
@@ -113,6 +121,11 @@ main {
   text-align: justify;
 
 
+}
+
+.form-message {
+  font-size: 70%;
+  color: #fe142f;
 }
 
 .modal-btn {
@@ -232,6 +245,7 @@ input[data-error]::after {
     font-size: 0.4em;
     color: red;
 } */
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -306,6 +320,7 @@ input[data-error]::after {
   cursor: pointer;
   transform: scale(0.7);
 }
+
 .close:before,
 .close:after {
   position: absolute;

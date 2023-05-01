@@ -16,8 +16,25 @@ const formData = document.querySelectorAll(".formData");
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
+
 function launchModal() {
   modalbg.style.display = "block";
 }
 
+// ##################################################################################################
 
+// #1: fermer la modale (ajouter la fonctionnalité au bouton x)
+
+function hideModal() {
+  modalbg.style.display = "none";
+}
+
+let spanClose = document.querySelector(".close");
+spanClose.addEventListener("click", (e) => {
+  let target = e.target;
+  if (target === spanClose) {
+    hideModal();
+  }
+});
+
+// ##################################################################################################
