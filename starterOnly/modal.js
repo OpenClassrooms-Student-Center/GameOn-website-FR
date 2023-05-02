@@ -325,4 +325,81 @@ function Validator(formSelector) {
   //console.log(this); //=== instance Validator
   // console.log(formRules); (part !) => done!
 
+  // ##################################################################################################
+    // ##################################################################################################
+    // ISSUE #4: Ajouter confirmation quand envoi réussi
+    // ##################################################################################################
+  
+    //(3): handle submit event:
+    formElement.onsubmit = function (event) {
+      event.preventDefault();
+  
+      console.log(_this);
+      //this.onSubmit();
+      //console.log(this.onSubmit);
+  
+      //return;
+      let inputs = formElement.querySelectorAll("[name][data-rules]");
+      let isValid = true;
+  
+      for (let input of inputs) {
+        //console.log(inputs.value);
+        //console.log(inputs.name);
+  
+        // handleValidate({
+        //   target: input});
+        // this function above needs event.target === element
+        //
+        if (!handleValidate({ target: input })) {
+          isValid = false;
+        }
+      }
+      // console.log(isValid);
+      // submit => when form is valid === true
+      if (isValid) {
+        if (typeof _this.onSubmit === "function") {
+          let enableInputs = formElement.querySelectorAll("[name]");
+          let formValues = Array.from(enableInputs).reduce(function (
+            values,
+            input
+          ) {
+            switch (input.type) {
+              case "radio":
+                // values[input.name] = formElement.querySelector(
+                //   'input[name="' + input.name
+                // );
+                values[input.name] = document.querySelector(
+                  `input[name="${input.name}"]:checked`
+                ).value;
+                // console.log(input.name);
+                // debugger;
+                break;
+              case "checkbox":
+                if (!input.matches(":checked")) {
+                  values[input.name] = "";
+                  return validatorRules;
+                }
+                if (!Array.isArray([input.name])) {
+                  values[input.name] = [];
+                }
+                values[input.name].push(input.value);
+                break;
+              default:
+                values[input.name] = input.value;
+            }
+            return values;
+          },
+          {});
+  
+          // callback onSubmit() & return values of inputs of form...
+          _this.onSubmit(formValues);
+          setTimeout(successMessage.classList.add("show"), 1000);
+        } else {
+          formElement.submit();
+          setTimeout(successMessage.classList.add("show"), 1000);
+        }
+      }
+    };
+  
+    // ##################################################################################################
 }
