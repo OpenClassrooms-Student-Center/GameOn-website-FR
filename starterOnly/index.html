@@ -14,21 +14,18 @@
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
+        <img alt="logo" src="Logo.png"/>
+      </div>
+      <nav class="main-navbar">
+        <a href="#" class="active"><span>Accueil</span></a>
+        <a href="#"><span>Détails de l'évènement</span></a>
+        <a href="#"><span>À propos</span></a>
+        <a href="#"><span>Contact</span></a>
+        <a href="#"><span>Évènements passés</span></a>
+        <a href="#" class="icon"><i class="fa fa-bars"></i></a>
+      </nav>
     </div>
-    <div class="main-navbar">
 
-      <a href="#" class="active"><span>Accueil</span></a>
-      <a href="#"><span>Détails de l'évènement</span></a>
-      <a href="#"><span>À propos</span></a>
-      <a href="#"><span>Contact</span></a>
-      <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
-        <i class="fa fa-bars"></i>
-      </a>
-    </div>
-    </div>
-  </div>
     <main>
       <div class="hero-section">
         <div class="hero-content">
@@ -60,8 +57,7 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
-            >
+              onsubmit="return validate();">
               <div
                 class="formData">
                 <label for="first">Prénom</label><br>
@@ -105,7 +101,12 @@
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity">
+                <input
+                  type="number"
+                  class="text-control"
+                  id="quantity"
+                  name="quantity"
+                /><br>
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
@@ -178,14 +179,12 @@
                 >
                 <br>
               </div>
-
               <div
                 class="formData">
                 <input
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox1"
-
                 />
                 <label class="checkbox2-label" for="checkbox1" value="TOU" checked="true" required>
                   <span class="checkbox-icon"></span>
@@ -207,22 +206,16 @@
                 value="C'est parti"
               />
             </form>
+            <div class="modal-confirm">
+              <br>
+              <p class="text-control text-confirm">Merci !
+                <br>Votre réservation a été reçue.</p>
+              <br>
+              <button class="btn-close modal-btn">Fermer</button>
+            </div>
           </div>
         </div>
       </div>
-
-      <div class="confirm">
-        <div class="content">
-          <span class="close"></span>
-          <div class="modal-body">
-            <br>
-            <p class="text-control text-confirm">Merci !
-              <br>Votre réservation a été reçue.</p>
-            <br>
-          </div>
-        </div>
-      </div>
-
     </main>
     <footer>
       <p class="copyrights">
