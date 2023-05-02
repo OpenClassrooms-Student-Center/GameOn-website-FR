@@ -15,9 +15,7 @@
   color: #ccc8c8;
 
 }
-.invalid {
-  
-}
+
 body {
   margin: 0;
   display: flex;
@@ -121,6 +119,35 @@ main {
   text-align: justify;
 
 
+}
+
+.success_text {
+  display: none;
+  text-align: center;
+  font-weight: bold;
+  background-color: #279e31;
+  color: #fff !important;
+  font-size: 0.8em;
+  border-radius: 5px;
+  padding: 20px;
+}
+.success_text.show {
+  display: block;
+}
+
+input:focus {
+  border: 1px solid;
+  border-color: #c4c4c4;
+  outline: 1px solid #719ECE!important;
+  outline-offset: 1px;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+.invalid input {
+  border: 1px solid;
+  border-color: #c4c4c4;
+  outline: 1px solid #fe142f !important;
+  outline-offset: 1px;
 }
 
 .form-message {
