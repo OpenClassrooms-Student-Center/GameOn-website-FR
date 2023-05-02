@@ -108,7 +108,87 @@ function Validator(formSelector) {
     according to input name then: create functions to validate each rule (function's job)
     */
 
-  
+  // ##################################################################################################
+  // ##################################################################################################
+  // ISSUE #3: Ajouter validation ou messages d'erreur
+  // ##################################################################################################
+
+  /**
+   * (2.2) => functions to validate each RULE expected as in HTML since beginning
+   */
+  /************************************************************************ */
+
+  /**
+   * hello! here is our CONVENTION to create rules:
+   * - err -> return `error message`,
+   * - no err -> return `undefined`,
+   */
+
+  let validatorRules = {
+    required: function (value) {
+      return value ? undefined : `Veuillez entrer ce champ`;
+    },
+    email: function (value) {
+      let regex =
+        /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+      return regex.test(value)
+        ? undefined
+        : `Veuillez entrer une adresse email`;
+    },
+    // eg: min: 2 => need to push 2 into the value? => nested function
+    min: function (min) {
+      return function (value) {
+        return value.length >= min
+          ? undefined
+          : `Veuillez entrer au moins ${min} caractères`;
+      };
+    },
+    /** max: function (max) {
+      //eg: min: 2 => need to push 2 into the value? => nested function 
+      return function (value) {
+        return value.length <= max ? undefined : "Veuillez entrer au maximum ${max} caractères";
+      }
+    }, */
+    integerNumber: function (value) {
+      let regex = /^(\d?[1-9]|[1-9]0)$/;
+      return regex.test(value)
+        ? undefined
+        : `Veuillez indiquer un nombre entier entre 0 et 99`;
+    },
+
+    birthday: function (value) {
+      value = new Date(value);
+      let currentDate = new Date();
+      return value < currentDate
+        ? undefined
+        : `Veuillez indiquer une date de naissance`;
+    },
+
+    checked: function (value) {
+      if (value) {
+        return undefined;
+      } else {
+        return `Vous devez verifier que vous acceptez les termes et conditions`;
+      }
+    },
+    radio: function (value) {
+      //console.log(value);
+      //debugger;
+
+      let checkedRadio = document.querySelector(
+        'input[name="location"]:checked'
+      );
+      value = checkedRadio;
+      //console.log(checkedRadio);
+      if (!value) {
+        //console.log(value);
+        //debugger;
+        return undefined;
+      } else {
+        return `Veuillez selectionner une ville`;
+      }
+    },
+  };
 
   /**
    * (2.3) => steps to get to (1.2) then (1.1)
