@@ -37,11 +37,11 @@ function hideModal() {
   // let allInputs = document.querySelectorAll("input:not(input[type=submit])");
   // allInputs.forEach((singleInput) => (singleInput.value = ""));
 
-  // delete all error messages     
+  // delete all error messages
   let allErrors = document.querySelectorAll(".form-message");
   allErrors.forEach((singleError) => (singleError.innerText = ""));
 
-  // remove all `invalid` class after close form   
+  // remove all `invalid` class after close form
   let allClassesInvalid = document.querySelectorAll(".invalid");
   allClassesInvalid.forEach((singleClassInvalid) =>
     singleClassInvalid.classList.remove("invalid")
@@ -133,15 +133,21 @@ function Validator(formSelector) {
    */
 
   let validatorRules = {
-    required: function (value) {
-      return value ? undefined : `Veuillez entrer ce champ`;
+    firstRequired: function (value) {
+      return value ? undefined : `Veuillez entrer un prénom`;
+    },
+    lastRequired: function (value) {
+      return value ? undefined : `Veuillez entrer un nom`;
+    },
+    emailRequired: function (value) {
+      return value ? undefined : `Veuillez entrer une adresse email`;
     },
     email: function (value) {
       let regex =
         /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
       return regex.test(value)
         ? undefined
-        : `Veuillez entrer une adresse email`;
+        : `Veuillez entrer une adresse email!`;
     },
     // eg: min: 2 => need to push 2 into the value? => nested function
     min: function (min) {
@@ -157,6 +163,9 @@ function Validator(formSelector) {
         return value.length <= max ? undefined : "Veuillez entrer au maximum ${max} caractères";
       }
     }, */
+    numberRequired: function (value) {
+      return value ? undefined : `Veuillez indiquer une valeur`;
+    },
     integerNumber: function (value) {
       let regex = /^(\d?[1-9]|[1-9]0)$/;
       return regex.test(value)
@@ -164,12 +173,16 @@ function Validator(formSelector) {
         : `Veuillez indiquer un nombre entier entre 0 et 99`;
     },
 
+    birthdayRequired: function (value) {
+      return value ? undefined : `Veuillez indiquer une date de naissance`;
+    },
+
     birthday: function (value) {
       value = new Date(value);
       let currentDate = new Date();
       return value < currentDate
         ? undefined
-        : `Veuillez indiquer une date de naissance`;
+        : `Veuillez indiquer une date de naissance valide`;
     },
 
     checked: function (value) {

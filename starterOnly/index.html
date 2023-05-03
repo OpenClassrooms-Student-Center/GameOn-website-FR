@@ -71,7 +71,7 @@
                   type="text"
                   id="first"
                   name="first"
-                  data-rules="required|min:2"
+                  data-rules="firstRequired|min:2"
                   minlength="2"
                   placeholder="Khanh"
                 /><br />
@@ -84,7 +84,7 @@
                   type="text"
                   id="last"
                   name="last"
-                  data-rules="required|min:2"
+                  data-rules="lastRequired|min:2"
                   placeholder="Truong"
                 /><br />
                 <span class="form-message"></span>
@@ -96,7 +96,7 @@
                   type="email"
                   id="email"
                   name="email"
-                  data-rules="required|email"
+                  data-rules="emailRequired|email"
                   placeholder="abby79truong@gmail.com"
                 /><br />
                 <span class="form-message"></span>
@@ -108,7 +108,7 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                  data-rules="required|birthday"
+                  data-rules="birthdayRequired|birthday"
                 /><br />
                 <span class="form-message"></span>
               </div>
@@ -117,7 +117,6 @@
                   >À combien de tournois GameOn avez-vous déjà participé
                   ?</label
                 ><br />
-                <span class="form-message"></span>
                 <input
                   type="number"
                   class="text-control"
@@ -125,7 +124,7 @@
                   name="quantity"
                   min="0"
                   max="99"
-                  data-rules="required|integerNumber"
+                  data-rules="numberRequired|integerNumber"
                   placeholder="saisiez une valeur numérique"
                 /><br />
                 <span class="form-message"></span>
