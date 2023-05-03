@@ -54,9 +54,7 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
-            <p class="success_text">
-              Merci ! Votre réservation a été reçue.
-            </p>
+            <p class="success_text">Merci ! Votre réservation a été reçue.</p>
             <form
               name="reserve"
               action="index.html"
@@ -204,7 +202,7 @@
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
                   Portland</label
-                ><br>
+                ><br />
                 <span class="form-message"></span>
               </div>
 
@@ -215,26 +213,26 @@
                   id="checkbox1"
                   name="cgu"
                   checked
-                  data-rules="checked"
-                  value="cgu"
+                  data-rules="checkedRequired"
+                  value="checkedOn"
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
-                  J'ai lu et accepté les conditions d'utilisation.
-                </label><br>
+                  J'ai lu et accepté les conditions d'utilisation. </label
+                ><br />
                 <span class="form-message"></span>
                 <br />
                 <input
                   class="checkbox-input"
                   type="checkbox"
                   id="checkbox2"
-                  data-rules="checked"
-                  name = "membership"
-                  value="membership"
+                  data-rules="checkedOptional"
+                  name="membership"
+                  value="checkedOn"
                 />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
-                  Je Je souhaite être prévenu des prochains évènements.
+                  Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br />
               </div>

@@ -185,12 +185,24 @@ function Validator(formSelector) {
         : `Veuillez indiquer une date de naissance valide`;
     },
 
-    checked: function (value) {
-      let checkedBox = document.querySelector("input:checked");
-      let test = value == checkedBox.value;
-      return test
-        ? `ok`
+    checkedRequired: function (value = false) {
+      console.log("test value of checked box :>> ", value);
+      let checkedBox = document.querySelector(`input[name="cgu"]:checked`); // `!! ici => problem!` => solved!
+      console.log("value returned of checkedBox :>> ", checkedBox);
+      value == checkedBox;
+      return value
+        ? undefined
         : `Vous devez verifier que vous acceptez les termes et conditions`;
+    },
+
+    checkedOptional: function (value = false) {
+      console.log("test value of checked box :>> ", value);
+      let checkedBox = document.querySelector(
+        `input[name="membership"]:checked`
+      ); // `!! ici => problem!` => solved!
+      console.log("value returned of checkedBox :>> ", checkedBox);
+      value == checkedBox;
+      return value ? undefined : "";
     },
 
     radio: function (value) {
@@ -199,10 +211,10 @@ function Validator(formSelector) {
       ).value;
       // console.log(checkedRadio);
       // debugger;
-      let content = value == checkedRadio;
+      value == checkedRadio;
       // console.log(content);
       // debugger;
-      return content ? `ok` : `Veuillez selectionner une ville`;
+      return value ? undefined : `Veuillez selectionner une ville`;
 
       // console.log(content);
       // debugger;
@@ -370,12 +382,15 @@ function Validator(formSelector) {
       //? perform the check ONLY on the selected radio button, and ignore the others
 
       //? 1. Identify the selected radio button
-      // const radioButtonSelectedLocation = document.querySelector('input[name="location"]:checked');
+      //const radioButtonSelectedLocation = document.querySelector('input[name="location"]:checked');
       const radioButtonSelectedLocation =
         input.type === "radio" && input.checked;
+      //check if input type checkbox has an attribute "checked"
+
+      const checkedCheckbox = input.type === "checkbox" && input.checked;
 
       //? 2. if The radio button is not the selected one, we didn't make the verification
-      if (radioButtonSelectedLocation) {
+      if (radioButtonSelectedLocation && checkedCheckbox) {
         if (handleValidate({ target: input })) {
           isValid = true;
         }
@@ -412,12 +427,6 @@ function Validator(formSelector) {
             console.log("input reçus est de type radio", input);
           switch (input.type) {
             case "radio":
-              // console.log("J'entre dans le switch radio")
-              // console.log("input");
-              // values[input.name] = formElement.querySelector(
-              //   'input[name="' + input.name
-              // );
-
               const inputValue = (values[input.name] = document.querySelector(
                 `input[name="location"]:checked`
               ).value);
@@ -426,24 +435,26 @@ function Validator(formSelector) {
 
               break;
             case "checkbox":
-              if (!input.matches(":selected")) {
+              if (!input.matches(":checked")) {
                 console.log("values 434 :>> ", values);
-                values[input.name] = "";
                 return validatorRules;
               }
-              if (!Array.isArray([input.name])) {
-                console.log("values 439 :>> ", values);
-                values[input.name] = [];
+
+              if (input.matches(":checked") && input.name === "cgu") {
+                values[input.name] = document.querySelector(
+                  `input[name="cgu"]:checked`
+                ).value;
               }
-              console.log("values 442 :>> ", values);
-              console.log("input.name :>> ", input.name);
-              console.log("values undefined :>> ", values[input.name]);
-              values[input.name].push(input.value);
+
+              if (input.matches(":checked") && input.name === "membership") {
+                values[input.name] = document.querySelector(
+                  `input[name="membership"]:checked`
+                ).value;
+              }
 
               break;
             default:
               // console.log("input");
-
               values[input.name] = input.value;
           }
           return values;

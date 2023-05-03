@@ -1,5 +1,5 @@
 let form = new Validator("#formModal");
 
-form.onSubmit = function (formData) {
+form.onSubmit = (formData) => {
     console.log(formData);
 };
