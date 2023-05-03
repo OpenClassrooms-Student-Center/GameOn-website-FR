@@ -109,8 +109,8 @@ function Validator(formSelector) {
   let formRules = {};
   /**
      *  expectations: get rules in this format of formRules: 
-     * first: 'required|first',
-     * email: 'required|email',
+     * first: 'firstRequired|min:2',
+     * email: 'emailRequired|email',
      * ...
      * => need to: get out formRules with the above format & its rules 
     according to input name then: create functions to validate each rule (function's job)
@@ -186,28 +186,26 @@ function Validator(formSelector) {
     },
 
     checked: function (value) {
-      if (value) {
-        return undefined;
-      } else {
-        return `Vous devez verifier que vous acceptez les termes et conditions`;
-      }
+      let checkedBox = document.querySelector("input:checked");
+      let test = value == checkedBox.value;
+      return test
+        ? `ok`
+        : `Vous devez verifier que vous acceptez les termes et conditions`;
     },
-    radio: function (value) {
-      //console.log(value);
-      //debugger;
 
+    radio: function (value) {
       let checkedRadio = document.querySelector(
         'input[name="location"]:checked'
-      );
-      value = checkedRadio;
-      //console.log(checkedRadio);
-      if (!value) {
-        //console.log(value);
-        //debugger;
-        return undefined;
-      } else {
-        return `Veuillez selectionner une ville`;
-      }
+      ).value;
+      // console.log(checkedRadio);
+      // debugger;
+      let content = value == checkedRadio;
+      // console.log(content);
+      // debugger;
+      return content ? `ok` : `Veuillez selectionner une ville`;
+
+      // console.log(content);
+      // debugger;
     },
   };
 
@@ -283,6 +281,7 @@ function Validator(formSelector) {
     // function to execute validation:
     // (!!.1)  => get rules (key & functions) out based on events
     function handleValidate(event) {
+      console.log("event du handleValidate :>> ", event);
       //expectation => check if err => return err messages:
       //console.log(event.target); // => get element targeted by event => then get rules
       //console.log(event.target.value);
@@ -355,7 +354,7 @@ function Validator(formSelector) {
   formElement.onsubmit = function (event) {
     event.preventDefault();
 
-    console.log(_this);
+    //console.log(_this);
     //this.onSubmit();
     //console.log(this.onSubmit);
 
@@ -363,49 +362,88 @@ function Validator(formSelector) {
     let inputs = formElement.querySelectorAll("[name][data-rules]");
     let isValid = true;
 
+    //I would like to get the value of the radio button selected
+
+    // /solution 2: Delete all the radio inputs found in inputs and replace them with the selected radio button
+
     for (let input of inputs) {
-      //console.log(inputs.value);
-      //console.log(inputs.name);
+      //? perform the check ONLY on the selected radio button, and ignore the others
+
+      //? 1. Identify the selected radio button
+      // const radioButtonSelectedLocation = document.querySelector('input[name="location"]:checked');
+      const radioButtonSelectedLocation =
+        input.type === "radio" && input.checked;
+
+      //? 2. if The radio button is not the selected one, we didn't make the verification
+      if (radioButtonSelectedLocation) {
+        if (handleValidate({ target: input })) {
+          isValid = true;
+        }
+      }
+
+      // check only on the selected radio button
+
+      //? Realise the verification only on the selected radio button and ignore the others ones
+      // if (!radioButtonSelectedLocation && !handleValidate({ target: input }) ) {
+      //   isValid = false;
+      // }
 
       // handleValidate({
+      // if (!handleValidate({ target: input })) {
+      // }
       //   target: input});
       // this function above needs event.target === element
       //
-      if (!handleValidate({ target: input })) {
-        isValid = false;
-      }
     }
     // console.log(isValid);
     // submit => when form is valid === true
+    // console.log('isValid :>> ', isValid);
     if (isValid) {
+      // console.log('isValid, je rentre ici :>> ', isValid);
       if (typeof _this.onSubmit === "function") {
         let enableInputs = formElement.querySelectorAll("[name]");
         let formValues = Array.from(enableInputs).reduce(function (
           values,
           input
         ) {
+          // console.log("input reçus", input)
+
+          if (input.type === "radio")
+            console.log("input reçus est de type radio", input);
           switch (input.type) {
             case "radio":
+              // console.log("J'entre dans le switch radio")
+              // console.log("input");
               // values[input.name] = formElement.querySelector(
               //   'input[name="' + input.name
               // );
-              values[input.name] = document.querySelector(
-                `input[name="${input.name}"]:checked`
-              ).value;
-              // console.log(input.name);
-              // debugger;
+
+              const inputValue = (values[input.name] = document.querySelector(
+                `input[name="location"]:checked`
+              ).value);
+
+              console.log("inputValue", inputValue);
+
               break;
             case "checkbox":
-              if (!input.matches(":checked")) {
+              if (!input.matches(":selected")) {
+                console.log("values 434 :>> ", values);
                 values[input.name] = "";
                 return validatorRules;
               }
               if (!Array.isArray([input.name])) {
+                console.log("values 439 :>> ", values);
                 values[input.name] = [];
               }
+              console.log("values 442 :>> ", values);
+              console.log("input.name :>> ", input.name);
+              console.log("values undefined :>> ", values[input.name]);
               values[input.name].push(input.value);
+
               break;
             default:
+              // console.log("input");
+
               values[input.name] = input.value;
           }
           return values;
