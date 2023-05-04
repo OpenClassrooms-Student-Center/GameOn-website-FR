@@ -47,6 +47,11 @@ function hideModal() {
     singleClassInvalid.classList.remove("invalid")
   );
 
+  let deletesuccessMessage = document.querySelector(".success_text");
+  if(deletesuccessMessage){
+    deletesuccessMessage.remove();
+  } 
+
   // /TODO : DElete all reference to `.invalid` class + remove all error messages
 }
 
@@ -187,6 +192,9 @@ function Validator(formSelector) {
     },
 
     checkedRequired: function (value = false) {
+      // console.log('errorMessage sent from condition l519 for else:>> ', errorMessage);
+      // const errorMessageNotEmpty = errorMessage.length > 0 ;
+      // console.log('errorMessageNotEmpty :>> ', errorMessageNotEmpty);
       //console.log("test value of checked box :>> ", value);
       let checkedBox = document.querySelector(`input[name="cgu"]:checked`); // `!! ici => problem!` => solved!
       //console.log("value returned of checkedBox :>> ", checkedBox);
@@ -203,7 +211,8 @@ function Validator(formSelector) {
       ); // `!! ici => problem!` => solved!
       //console.log("value returned of checkedBox :>> ", checkedBox);
       value == checkedBox;
-      return value ? undefined : "Utilisateur ne veux pas être membre";
+      return value ? undefined : ""; 
+      //Utilisateur ne veux pas être membre
     },
 
     radio: function (value) {
@@ -295,7 +304,7 @@ function Validator(formSelector) {
     // function to execute validation:
     // (!!.1)  => get rules (key & functions) out based on events
     function handleValidate(event) {
-      //console.log("event du handleValidate :>> ", event);
+      //console.log("event - handleValidate :>> ", event);
       //expectation => check if err => return err messages:
       //console.log(event.target); // => get element targeted by event => then get rules
       //console.log(event.target.value);
@@ -367,11 +376,11 @@ function Validator(formSelector) {
   //(3): handle submit event:
   formElement.onsubmit = function (event) {
     event.preventDefault();
-
+    console.log("_this.onSubmit :>> ", typeof _this.onSubmit);
     //console.log(_this);
     //this.onSubmit();
     //console.log(this.onSubmit);
-
+    let errorMessages = [];
     //return;
     let inputs = formElement.querySelectorAll("[name][data-rules]");
     let isValid = true;
@@ -401,92 +410,71 @@ function Validator(formSelector) {
       // check only on the selected radio button
 
       //? Realise the verification only on the selected radio button and ignore the others ones
-      // if (!radioButtonSelectedLocation && !handleValidate({ target: input }) ) {
-      //   isValid = false;
-      // }
-
-      // handleValidate({
-      // if (!handleValidate({ target: input })) {
-      // }
-      //   target: input});
-      // this function above needs event.target === element
-      //
     }
     // console.log(isValid);
     // submit => when form is valid === true
     // console.log('isValid :>> ', isValid);
     if (isValid) {
-      // console.log('isValid, je rentre ici :>> ', isValid);
-      if (typeof _this.onSubmit === "function") {
-        let enableInputs = formElement.querySelectorAll("[name]");
-        let formValues = Array.from(enableInputs).reduce(function (
-          values,
-          input
-        ) {
-          // console.log("input reçus", input)
+      // console.log('isValid, je suis là :>> ', isValid);
 
-          // if (input.type === "radio")
-          //   console.log("input reçus est de type radio", input);
-          switch (input.type) {
-            case "radio":
-              // console.log("J'entre dans le switch radio")
+      let enableInputs = formElement.querySelectorAll("[name]");
+      //?  0. expectation: if we use onSubmit => the function onSubmit added in index.js will return: inputs (selectors.target)- [name] of the inputs : value of the inputs
+      //   1. if input is entered =>
+      let formValues = Array.from(enableInputs).reduce(function (
+        values,
+        input
+      ) {
+        // console.log("input retained", input)
 
-              const inputValue = (values[input.name] = document.querySelector(
-                `input[name="location"]:checked`
-              ).value);
+        // if (input.type === "radio")
+        //   console.log("input received is of type: radio", input);
+        switch (input.type) {
+          case "radio":
+            values[input.name] = document.querySelector(
+              `input[name="location"]:checked`
+            ).value;
+            //console.log("inputValue", inputValue);
 
-              console.log("inputValue", inputValue);
+            break;
 
-              break;
-            case "checkbox":
-              if (!input.matches(":checked")) {
-                console.log("values 434 :>> ", values);
-                values[input.name] = null;
-                return validatorRules;
-              }
-
-              if (input.matches(":checked") && input.name === "cgu") {
-                values[input.name] = document.querySelector(
-                  `input[name="cgu"]:checked`
-                ).value;
-              }
-
+          case "checkbox":
+            if (!input.matches(":checked") && !input.name === "membership") {
+              //console.log('input.name invalide :>> ', input.name);
               if (input.matches(":checked") && input.name === "membership") {
-                values[input.name] = document.querySelector(
-                  `input[name="membership"]:checked`
-                ).value;
+                //console.log('Normally here membership not cgu :>> ', input.name);
+                values[input.name] = "";
               }
-              let NullifiableInputNames = [];
-              Object.keys(values)
-                .filter(function (input) {
-                  return (
-                    NullifiableInputNames.indexOf(input) != -1 && values[input]
-                  );
-                })
-                .forEach(function (input) {
-                  values[input.name] = "NULL";
-                });
+              return validatorRules;
+            }
+            if (input.matches(":checked") && input.name === "cgu") {
+              values[input.name] = document.querySelector(
+                `input[name="cgu"]:checked`
+              ).value;
+            }
+            if (input.matches(":checked") && input.name === "membership") {
+              values[input.name] = document.querySelector(
+                `input[name="membership"]:checked`
+              ).value;
+            }
 
-                // if (!Array.isArray([input.name])) {
-                //   values[input.name] = [];
-                // }
-                // values[input.name].push(input.value);
-              break;
-            default:
-              // console.log("input");
-              values[input.name] = input.value;
-          }
-          return values;
-        },
-        {});
-        console.log('formValues :>> ', formValues);
-        // callback onSubmit() & return values of inputs of form...
+            break;
+
+          default:
+            // console.log("input");
+            values[input.name] = input.value;
+        }
+
+        return values;
+      },
+      {});
+
+      // console.log('formValues :>> ', formValues);
+      // callback onSubmit() & return values of inputs of form...
+      if (formValues.cgu) {
+        //console.log("Condition des cgu existe");
         _this.onSubmit(formValues);
         setTimeout(successMessage.classList.add("show"), 1000);
-      } else {
-        formElement.submit();
-        setTimeout(successMessage.classList.add("show"), 1000);
-      }
+      } 
     }
   };
 
