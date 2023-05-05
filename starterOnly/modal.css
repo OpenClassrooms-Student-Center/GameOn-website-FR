@@ -554,6 +554,7 @@ footer {
   .topnav a.icon {
     float: right;
     display: block;
+    color: #f00;
   }
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
@@ -595,8 +596,8 @@ footer {
   .topnav a.icon {
     float: right;
     display: block;
+    color: #f00;
   }
-
   .content {
     margin-top: 4em;
   }
