@@ -44,6 +44,7 @@ function hideModal() {
   if(btnClose) {
     btnClose.remove();
   }
+
   
   // let allInputs = document.querySelectorAll("input:not(input[type=submit])");
   // allInputs.forEach((singleInput) => (singleInput.value = ""));
