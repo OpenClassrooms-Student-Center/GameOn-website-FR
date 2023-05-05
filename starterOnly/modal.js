@@ -12,6 +12,8 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const successMessage = document.querySelector(".content .success_text");
+const buttonCLose = document.querySelector(".content .btn-close");
+const formElement = document.getElementById("formModal");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -30,10 +32,19 @@ function launchModal() {
 function hideModal() {
   modalbg.style.display = "none";
 
-  // reset form with default values with reset()
-  let resetForm = document.getElementById("formModal");
-  resetForm.reset();
+  formElement.classList.remove("hidden");
 
+
+  let deletesuccessMessage = document.querySelector(".success_text");
+  if(deletesuccessMessage){
+    deletesuccessMessage.remove();
+  }  
+
+  let btnClose = document.querySelector(".btn-close");
+  if(btnClose) {
+    btnClose.remove();
+  }
+  
   // let allInputs = document.querySelectorAll("input:not(input[type=submit])");
   // allInputs.forEach((singleInput) => (singleInput.value = ""));
 
@@ -47,12 +58,10 @@ function hideModal() {
     singleClassInvalid.classList.remove("invalid")
   );
 
-  let deletesuccessMessage = document.querySelector(".success_text");
-  if(deletesuccessMessage){
-    deletesuccessMessage.remove();
-  } 
+  // reset form with default values with reset()
+  let resetForm = document.getElementById("formModal");
+  resetForm.reset();
 
-  // /TODO : DElete all reference to `.invalid` class + remove all error messages
 }
 
 let spanClose = document.querySelector(".close");
@@ -62,6 +71,14 @@ spanClose.addEventListener("click", (e) => {
     hideModal();
   }
 });
+
+let btnClose = document.querySelector(".btn-close");
+btnClose.addEventListener("click", (e) => {
+  let target = e.target;
+  if (target === btnClose) {
+    hideModal();
+  }
+}); 
 
 // ##################################################################################################
 // ##################################################################################################
@@ -472,7 +489,10 @@ function Validator(formSelector) {
       // callback onSubmit() & return values of inputs of form...
       if (formValues.cgu) {
         //console.log("Condition des cgu existe");
-        _this.onSubmit(formValues);
+        _this.onSubmit(formValues); 
+        //visibility form content hidden
+        formElement.classList.add("hidden");
+        setTimeout(buttonCLose.classList.add("show"), 1000);
         setTimeout(successMessage.classList.add("show"), 1000);
       } 
     }
