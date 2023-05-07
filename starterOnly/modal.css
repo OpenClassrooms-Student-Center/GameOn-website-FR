@@ -209,12 +209,6 @@ input {
   outline: none;
 }
 
-.valid {
-  border: 2px solid green;
-}
-.invalid {
-  border: 2px solid red;
-}
 .form-warning {
   font-size: 12px;
   color: red;
