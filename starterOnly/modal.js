@@ -230,7 +230,7 @@ submit.addEventListener("click", function(event) {
   event.preventDefault();
   isTrue = []
   for (const [key, value] of Object.entries(informationObject)) {
-    console.log(key, value.isValid);
+    // console.log(key, value.isValid);
     if (value.isValid) {
       validInputHighlight(document.getElementById(key));
       isTrue.push(true);
