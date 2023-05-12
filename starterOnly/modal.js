@@ -27,15 +27,17 @@ const errorMessageName = document.querySelector("#errorName");
 const errorMessageEmail = document.querySelector("#errorEmail");
 const errorMessageCheckbox = document.querySelector("#errorCheckbox");
 const errorMessageTerms = document.querySelector("#errorCheckboxTerms");
-
+const errorMessageBirthdate = document.querySelector("#errorBirthdate");
+const errorMessageNumber = document.querySelector("#errorTournamentNumber");
 
 // declarer les variables des inputs
 const firstName = document.querySelector("#first");
 const lastName = document.querySelector("#last");
 const email = document.querySelector("#email");
+const numberTournament = document.querySelector("#quantity");
 const boxChecked = document.querySelectorAll('input[name="location"]');
 const radioButtons = document.querySelector('#checkbox1');
-
+const birthDate = document.querySelector("#birthdate");
 
 // OUVERTURE - FERMETURE DE LA MODAL
 // launch modal event
@@ -78,23 +80,19 @@ function thanksMessage(){
   
 }
 
-
-
 // valider le prénom  //
 firstName.addEventListener('blur', function(){
   validateFirstName();
-
 })
 function validateFirstName(){
-  const firstName = document.getElementById("first");
-      if (!firstName.checkValidity()){
+    if (firstName.value === "" || firstName.validity.patternMismatch){
       errorMessageFirstName.innerHTML = " Le champ Prénom a un minimum de 2 caractères";
       errorMessageFirstName.style.color= "red";
       return false;
-    }else{
-      errorMessageFirstName.innerHTML = "";
-      return true;
-    }
+  }else{
+    errorMessageFirstName.innerHTML = "";
+    return true;
+  }
 }
 
 // valider le nom  //
@@ -103,15 +101,14 @@ lastName.addEventListener('blur', function(){
   validateName();
 })
 function validateName(){
-  const lastName = document.getElementById("last");
-    if (!lastName.checkValidity()) {
-      errorMessageName.innerHTML = " Le champ Prénom a un minimum de 2 caractères";
-      errorMessageName.style.color= "red";
-      return false;
-    }else{
-      errorMessageName.innerHTML = "";
-      return true;
-    }
+  if (lastName.value === "" || lastName.validity.patternMismatch){
+    errorMessageName.innerHTML = " Le champ Nom a un minimum de 2 caractères";
+    errorMessageName.style.color= "red";
+    return false;
+}else{
+  errorMessageName.innerHTML = "";
+  return true;
+}
 }
 
 // valider Email//
@@ -133,8 +130,7 @@ function validateEmail(){
 // valider une option //
 
 function validateCheckbox(){
-  // recucperer les name des checkbox
-  const boxChecked = document.getElementsByName('location');
+
   // recuperer le span pour afficher le message
   const messageErrorCheckbox = document.getElementById('errorCheckbox');
   // initialiser la variable isChecked
@@ -155,6 +151,34 @@ function validateCheckbox(){
     return false;
   }
 };
+
+birthDate.addEventListener('blur', function(){
+  validateBirthdate();
+}) 
+function validateBirthdate(){
+  if(birthDate.value === "" || birthDate.validity.patternMismatch){
+    errorMessageBirthdate.innerHTML = "Veuillez entrer une date";
+    errorMessageBirthdate.style.color= "red";
+    return false;
+  }else{
+    errorMessageBirthdate.innerHTML = "";
+    return true;
+  }
+}
+
+numberTournament.addEventListener('blur', function(){
+  validateNbrTournament();
+}) 
+function validateNbrTournament(){
+  if(numberTournament.value === "" || numberTournament.validity.patternMismatch){
+    errorMessageNumber.innerHTML = "Veuillez entrer un nombre";
+    errorMessageNumber.style.color= "red";
+    return false;
+  }else{
+    errorMessageNumber.innerHTML = "";
+    return true;
+  }
+}
 
 // valider les conditions //
 radioButtons.addEventListener('blur', function(){
@@ -185,13 +209,15 @@ function validate(event){
     const isValideEmail = validateEmail();
     const isValideCheckbox = validateCheckbox();
     const isValideCheckboxTerms = validateCheckboxTerms();
-    if(isValideFirstName && isValideName && isValideEmail && isValideCheckbox && isValideCheckboxTerms){
+    const isValideBirthDate = validateBirthdate();
+    const isValideNumberTournament = validateNbrTournament()
+    if(isValideFirstName && isValideName && isValideEmail && isValideCheckbox && isValideCheckboxTerms && isValideBirthDate && isValideNumberTournament){
       thanksMessage();
       formulaire.style.display ="none";
     }
   }
 
-
+  console.log(firstName.validity.patternMismatch)
 
 
   
