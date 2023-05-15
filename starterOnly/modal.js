@@ -11,20 +11,25 @@
   const modalbg = document.querySelector(".bground");
   const modalBtn = document.querySelectorAll(".modal-btn");
   const formData = document.querySelectorAll(".formData");
-  const modalExit = document.querySelector(".close");;
-
+  const modalExit = document.querySelectorAll(".close, .content");
+console.log(modalExit);
   // launch and close modal event
   modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-  modalExit.addEventListener("click", closeModal);
+  modalExit.forEach((close) => close.addEventListener("click", closeModal));
 
   // launch modal form
   function launchModal() {
     modalbg.style.display = "block";
+    modalbg.style.animationName = '';
   }
 
-  //close modal
+  //close modal with animation
   function closeModal() {
-    modalbg.style.display = "none";
+    modalbg.style.animationName = 'modalclose';
+    modalbg.style.animationDuration = 'var(--modal-duration)';
+    setTimeout(function() {
+      modalbg.style.display = "none";
+    }, 500);
   }
   
 
