@@ -11,11 +11,11 @@
   const modalbg = document.querySelector(".bground");
   const modalBtn = document.querySelectorAll(".modal-btn");
   const formData = document.querySelectorAll(".formData");
-  const modalExit = document.querySelectorAll(".close, .content");
-console.log(modalExit);
+  const modalExit = document.querySelector(".close");
+
   // launch and close modal event
   modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-  modalExit.forEach((close) => close.addEventListener("click", closeModal));
+  modalExit.addEventListener("click", closeModal);
 
   // launch modal form
   function launchModal() {
