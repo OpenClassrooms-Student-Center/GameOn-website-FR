@@ -8,7 +8,7 @@ validForm.addEventListener("click", function(event) {
 });
 
 function validationForm() {
-    const inputs = document.querySelectorAll('#first, #last, #email, #birthdate, #quantity, #checkbox1');
+    const inputs = document.querySelectorAll('#first, #last, #email, #birthdate, #quantity, input[name=location], #checkbox1');
     inputs.forEach((input) => {
         input.addEventListener('input', (e) => {
             switch (e.target.id) {
@@ -33,7 +33,6 @@ function validationForm() {
             }
         })
     });
-
     const firstCheck = (value) => {
         let valid = false;
         if (value.length < 2 || value.trim() === '') {
@@ -86,7 +85,6 @@ function validationForm() {
                 valid = true;
             }
         }
-
         return valid;
     }
   
@@ -117,7 +115,70 @@ function validationForm() {
         
         return valid;
     };
+
+    const checkbox1Check = () => {
+        const checkbox1 = document.querySelector("#checkbox1");
+        let valid = false;
+        if(!checkbox1.checked) {
+            console.log('Il faut accpter les conditions générale');
+        }
+        else {
+            valid = true;
+        }
+        return valid;
+    }
+
+    checkbox1Check();
+
+    const formValues = (inputs) => {
+        let data = [];
     
-    locationCheck();
+        for (let i = 0; i < inputs.length; i++) {
+          if (inputs[i].type === "text" || inputs[i].type === "email" || inputs[i].type === "date" || inputs[i].type === "number"
+          ) {
+            data.push(inputs[i].value);
+          }
+    
+          if (inputs[i].type === "checkbox") {
+            let currentValue = "";
+    
+            if (inputs[i].checked) {
+              currentValue = inputs[i].value;
+            }
+            data.push(currentValue);
+          }
+        }
+        return data;
+      };
+
+    const formIsValid = (values) => {
+        /**
+         * Teste la validité de chaque input
+         * @type boolean
+         */
+        let validInputs = [];
+    
+        validInputs.push(firstCheck(values[0]));
+        validInputs.push(lastCheck(values[1]));
+        validInputs.push(emailCheck(values[2]));
+        validInputs.push(birthdateCheck(values[3]));
+        validInputs.push(quantityCheck(values[4]));
+        validInputs.push(locationCheck(values[4]));
+        validInputs.push(checkbox1Check(values[5]));
+    
+        let isValid = true;
+    
+        for (let i = 0; i < validInputs.length; i++) {
+          if (validInputs[i] === false) {
+            isValid = false;
+            break;
+          }
+        }
+        return isValid;
+      };
+
+      if (formIsValid(formValues(inputs))) {
+        console.log('Fomulaire validée');
+      }
 }
     
