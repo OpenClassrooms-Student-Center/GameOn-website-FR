@@ -8,6 +8,7 @@
   margin: 0;
   padding: 0;
 }
+
 /* Landing Page */
 
 body {
@@ -27,11 +28,11 @@ p {
 }
 
 img {
-  padding-right: 1rem;
+  padding-right: 7rem;
 }
 
 .topnav {
-  overflow: hidden;
+  /* overflow: hidden; */
   margin: 3.5%;
 }
 .header-logo {
@@ -48,7 +49,7 @@ img {
   padding: 12px 12px;
   margin: 5px;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 1.5vw;
   font-family: Roboto, sans-serif;
 }
 
@@ -66,6 +67,8 @@ img {
 
 .topnav .icon {
   display: none;
+  background-color: transparent;
+  color: #ff0000;
 }
 
 @media screen and (max-width: 768px) {
@@ -73,6 +76,12 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
+    font-size: 4vw;
+    background-color: transparent;
+    color: #ff0000;
+  }
+  .header-logo{
+    padding: 1%;
   }
 }
 
@@ -87,6 +96,7 @@ img {
     float: none;
     display: block;
     text-align: left;
+    font-size: 4vw;
   }
 }
 
@@ -97,7 +107,11 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+  }
+  .bground{
+    position: absolute !important;
+    top: 55px !important;
+    background-color: transparent !important;
   }
 } 
 
@@ -106,9 +120,9 @@ main {
   font-weight: bolder;
   color: black;
   padding-top: 0.5vw;
-  padding-left: 2vw;
-  padding-right: 2vw;
-  margin: 1px 20px 15px;
+  /* padding-left: 2vw;
+  padding-right: 2vw; */
+  margin: 1px 3.5% 15px;
   border-radius: 2rem;
   text-align: justify;
 
@@ -135,6 +149,41 @@ main {
   margin: 20px;
   padding: 10px;
   font-family: var(--font-slab);
+}
+/* Messages d'erreur */
+
+.errorBox{
+  font-size: 12px;
+  margin-top: -10%;
+}
+
+/* Message de remerciement */
+.thanks_message{
+  transform: translateY(100%);
+}
+
+.thanks_message__text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 400;
+}
+
+.btn-close{
+    background: #fe142f;
+    display: block;
+    margin: 0 auto;
+    border-radius: 7px;
+    font-size: 1rem;
+    padding: 12px 82px;
+    color: #fff;
+    cursor: pointer;
+    border: 0;
+    transform: translateY(30vh);
 }
 
 /* Modal form */
@@ -165,19 +214,19 @@ main {
   top: 0;
   height: 100%;
   width: 100%;
-  overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
 }
 
 .content {
   margin: 5% auto;
   width: 100%;
+  height: 80vh;
   max-width: 500px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
   background: #232323;
   border-radius: 10px;
-  overflow: hidden;
+  overflow: scroll;
   position: relative;
   color: #fff;
   padding-top: 10px;
@@ -405,7 +454,7 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
+  /* min-height: 93vh; */
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -436,14 +485,14 @@ input[data-error]::after {
   z-index: 1;
 }
 .hero-headline {
-  font-size: 6rem;
-  font-weight: normal;
+  font-size: 7vw;
+  font-weight: 500;
   white-space: nowrap;
 }
 .hero-text {
   width: 146%;
-  font-weight: normal;
-  margin-top: 57px;
+  font-weight: 400;
+  margin: 30% 0;
   padding: 0;
 }
 .btn-signup {
@@ -454,6 +503,24 @@ input[data-error]::after {
   margin: 0;
   margin-top: 59px;
 }
+
+
+/* page remerciement*/
+
+.thanks-page{
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 8%;
+  margin: 15px auto;
+}
+
+.thanks-page__text-label{
+margin: 20vh auto;
+}
+
+/* page remerciement*/
 .hero-img {
   grid-column: span 8;
 }
@@ -462,6 +529,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 .copyrights {
   color: #fe142f;
@@ -478,6 +546,7 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -487,7 +556,13 @@ footer {
     background: #fff;
     color: #000;
     padding: 20px;
+    min-width: 0;
   }
+
+  .hero-text{
+    margin: 5% 0;
+  }
+
   .hero-content::after {
     content: unset;
   }
@@ -495,16 +570,16 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 9vw;
     white-space: normal;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 3vw;
   }
   .hero-img img {
     border-radius: 10px;
-    margin-top: 40px;
+    /* margin-top: 40px; */
   }
   .hero-section > .btn-signup {
     display: block;
@@ -527,3 +602,17 @@ footer {
   }
 }
 
+@media screen and (max-width: 425px) {
+  .header-logo{
+    padding: 12px;
+    width: 50%;
+    height: 50%;
+  }
+  img{
+    padding-right: 0;
+    width: 100%;
+  }
+  .content{
+    height: 100%;
+  }
+}
