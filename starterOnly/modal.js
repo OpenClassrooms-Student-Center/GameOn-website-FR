@@ -61,6 +61,11 @@ function launchModal() {
     birthdateIsValid(this);
   });
 
+    // ecouter la modification de la quantité
+  form.quantity.addEventListener("change", function () {
+    quantityIsValid(this);
+  });
+
 
 
 
@@ -169,6 +174,32 @@ function launchModal() {
       small.innerHTML =
         "Vous devez entrer votre date de naissance.";
       small.classList.add("text-danger");
+      input.classList.add("border-danger");
+      return false;
+    }
+  }
+
+    // ============== Vérification de la quantity ===========
+
+  function quantityIsValid(inputQuantity) {
+    // création de la regex pour la validation de la quantité
+    let quantityRegEx = new RegExp("^(?:[1-9]|[1-9][0-9]|0)$");
+    // on teste la regex
+    let testQuantity = quantityRegEx.test(inputQuantity.value);
+    // récupérer la balise small (la balise suivant l'input quantity)
+    const smallQ = document.getElementById("squantity");
+
+    // on recupere l'input
+    const input = document.querySelector("#quantity");
+
+    if (testQuantity === true) {
+      smallQ.innerHTML = "";
+      smallQ.classList.remove("text-danger");
+      input.classList.remove("border-danger");
+      return true;
+    } else {
+      smallQ.innerHTML = "Entrer un chiffre entre 0 et 99";
+      smallQ.classList.add("text-danger");
       input.classList.add("border-danger");
       return false;
     }
