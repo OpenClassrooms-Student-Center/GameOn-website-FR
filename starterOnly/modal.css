@@ -738,6 +738,21 @@ top: 30px;
 
 }
 
+@media screen and (min-width: 1024px)  and (max-width: 1439px) {
+  .topnav {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .header-logo {
+    width: 200px;
+  }
+  .header-logo img {
+    width: 100%;
+
+  }
+}
+
 @keyframes modalopen {
   from {
     opacity: 0;
