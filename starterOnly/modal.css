@@ -34,7 +34,7 @@ img {
 
 .fa-bars {
   /* position: absolute;
-  top: 10px;
+  top: 20px;
   right: 15px; */
   color: #fe142f;
 }
@@ -535,10 +535,18 @@ footer {
   align-items: center;
   justify-content: center;
 }
-@media screen and (min-width: 320px) and (max-width: 768px) {
+@media screen and (min-width: 320px) and (max-width: 767px) {
 
+  .main-navbar {
+    margin-top: 30px;
+
+  }
   .topnav {
     margin-top: 30px;
+  }
+
+  .active {
+    margin-top: 50px;
   }
 
   .icon i{
@@ -618,8 +626,47 @@ footer {
   .content {
     margin-top: 70px;
   }
+
+  .icon i{
+    font-size: 25px;
+  }
+
+  /* .icon i:hover {
+    background-color: transparent;
+    color: transparent;
+
+  } */
+
+  .responsive a i {
+  color: #fe142f;
+    background-color: transparent;
+  }
+
+  .responsive a i:hover {
+    background-color: transparent;
+    color: white;
+
+  }
+
+  .main-navbar a.no-hover:hover {
+    background-color: transparent;
+    color: #fe142f;
+  }
+
+  .fa-bars {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    color: #fe142f;
+  }
+
+
 }
-@media screen and (min-width: 769px)  and (max-width: 1023px) {
+@media screen and (min-width: 768px)  and (max-width: 1023px) {
+  .main-navbar {
+    margin-top: 40px;
+
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -656,6 +703,39 @@ footer {
     margin-top: 50px;
     text-align: center;
   }
+
+  .icon i{
+    font-size: 25px;
+  }
+
+  /* .icon i:hover {
+    background-color: transparent;
+    color: transparent;
+
+  } */
+
+  .responsive a i {
+  color: #fe142f;
+    background-color: transparent;
+  }
+
+  .responsive a i:hover {
+    background-color: transparent;
+    color: white;
+
+  }
+
+  .main-navbar a.no-hover:hover {
+    background-color: transparent;
+    color: #fe142f;
+  }
+
+  .fa-bars {
+position: absolute;
+top: 30px;
+    color: #fe142f;
+  }
+
 }
 
 @keyframes modalopen {
