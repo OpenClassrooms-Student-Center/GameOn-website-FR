@@ -56,6 +56,11 @@ function launchModal() {
     emailIsValid(this);
   });
 
+    //ecouter la modification de la date de naissance
+  form.birthdate.addEventListener("change", function () {
+    birthdateIsValid(this);
+  });
+
 
 
 
@@ -139,6 +144,31 @@ function launchModal() {
     } else {
       smallMail.innerHTML = "Vous devez entrer un email valide";
       smallMail.classList.add("text-danger");
+      input.classList.add("border-danger");
+      return false;
+    }
+  }
+
+    // ========= Vérification de la date de naissance =======
+
+  function birthdateIsValid(inputBirthdate) {
+    let birthdate = inputBirthdate.value;
+    const input = document.querySelector("#birthdate");
+
+    let birthdateRegEx = /^\d{4}-\d{2}-\d{2}$/;
+    let testBirthdate = birthdateRegEx.test(birthdate);
+    console.log(testBirthdate);
+    const small = document.getElementById("sbirthdate");
+
+    if (testBirthdate === true ) {
+      small.innerHTML = "";
+      small.classList.remove("text-danger");
+      input.classList.remove("border-danger");
+      return true;
+    } else {
+      small.innerHTML =
+        "Vous devez entrer votre date de naissance.";
+      small.classList.add("text-danger");
       input.classList.add("border-danger");
       return false;
     }
