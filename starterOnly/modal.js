@@ -51,6 +51,21 @@ function launchModal() {
     nomIsValid(this);
   });
 
+    // ecouter la modification de l'email
+  form.email.addEventListener("change", function () {
+    emailIsValid(this);
+  });
+
+
+
+
+
+
+
+
+
+
+
   // ============== Vérification du prénom ================
 
   function prenomIsValid(inputPrenom) {
@@ -95,6 +110,35 @@ function launchModal() {
     } else {
       small.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom";
       small.classList.add("text-danger");
+      input.classList.add("border-danger");
+      return false;
+    }
+  }
+
+    // ============== Vérification de l'email ===============
+
+  function emailIsValid(inputEmail) {
+    // création de la regex pour la validation email
+    let emailRegEx = new RegExp(
+      "^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$",
+      "g"
+    );
+    // on test la regex
+    let testEmail = emailRegEx.test(inputEmail.value);
+    console.log(testEmail);
+
+    // récupérer la balise small (la balise suivant l'input email)
+    const smallMail = document.getElementById("mail");
+    const input = document.querySelector("#email");
+
+    if (testEmail === true) {
+      smallMail.innerHTML = "";
+      smallMail.classList.remove("text-danger");
+      input.classList.remove("border-danger");
+      return true;
+    } else {
+      smallMail.innerHTML = "Vous devez entrer un email valide";
+      smallMail.classList.add("text-danger");
       input.classList.add("border-danger");
       return false;
     }
