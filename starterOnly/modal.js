@@ -31,8 +31,23 @@ function launchModal() {
 
   // close modal form
   function closeModal() {
+    const textDanger = document.querySelectorAll(".text-danger");
+    const borderDanger = document.querySelectorAll(".border-danger");
+    const smalls = document.querySelectorAll("small");
+    textDanger.forEach((element) => {
+      element.classList.remove("text-danger");
+    });
+    borderDanger.forEach((element) => {
+      element.classList.remove("border-danger");
+    });
+    for (let i = 0; i < smalls.length; i++) {
+      smalls[i].innerHTML = "";
+    }
     modalbg.style.display = "none";
   }
+
+      // masquer le message de confirmation
+    msg.style.display = "none";
 
 
     // ======================================================
@@ -82,6 +97,45 @@ function launchModal() {
   form.checkbox1.addEventListener("change", function () {
     checkboxIsValid(this);
   });
+
+  // ======================================================
+  // ============== Vérification du formulaire ============
+  // ======================================================
+  // ======================================================
+
+  function submitForm(event) {
+    event.preventDefault(); // Empêche la soumission par défaut du formulaire
+
+    // Récupération des valeurs des champs du formulaire
+    const firstName = document.querySelector("#first");
+    const lastName = document.querySelector("#last");
+    const email = document.querySelector("#email");
+    const birthdate = document.querySelector("#birthdate");
+    const quantity = document.querySelector("#quantity");
+    const condition = document.querySelector("#checkbox1").checked;
+
+    // Vérification que tous les champs sont valides
+    const isFirstNameValid = prenomIsValid(firstName);
+    const isLastNameValid = nomIsValid(lastName);
+    const isEmailValid = emailIsValid(email);
+    console.log(isEmailValid);
+    const isBirthdateValid = birthdateIsValid(birthdate);
+    const isQuantityValid = quantityIsValid(quantity);
+    console.log(isQuantityValid);
+    const isLocationValid = locationIsValid();
+    const isConditionValid = checkboxIsValid(condition);
+
+    if (isFirstNameValid && isLastNameValid && isEmailValid && isBirthdateValid && isQuantityValid && isLocationValid && isConditionValid) {
+      modalBody.style.display = "none";
+      document.getElementById("msg").style.display = "block";
+      console.log("Formulaire valide"); 
+    } 
+  }
+
+  // Ajout d'un écouteur d'événements sur le bouton de soumission du formulaire
+  const submitButton = document.getElementById("btn-validation");
+  submitButton.addEventListener("click", submitForm);
+});
 
 
 
