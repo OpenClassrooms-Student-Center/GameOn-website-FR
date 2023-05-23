@@ -46,6 +46,11 @@ function launchModal() {
     prenomIsValid(this);
   });
 
+    // ecouter la modification du nom
+  form.last.addEventListener("change", function () {
+    nomIsValid(this);
+  });
+
   // ============== Vérification du prénom ================
 
   function prenomIsValid(inputPrenom) {
@@ -64,6 +69,31 @@ function launchModal() {
       return true;
     } else {
       small.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du prénom";
+      small.classList.add("text-danger");
+      input.classList.add("border-danger");
+      return false;
+    }
+  }
+
+    // ========== Vérification du nom et du prenom ==========
+
+  function nomIsValid(inputNom) {
+    // creation de la regex pour la validation du nom
+    let nomRegEx = new RegExp("^[a-zA-Z]{2,}$");
+    // on test la regex
+    let testNom = nomRegEx.test(inputNom.value);
+    console.log(testNom);
+    // on recupere la balise small
+    const small = document.getElementById("nom");
+    const input = document.querySelector("#last");
+
+    if (testNom === true) {
+      small.innerHTML = "";
+      small.classList.remove("text-danger");
+      input.classList.remove("border-danger");
+      return true;
+    } else {
+      small.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom";
       small.classList.add("text-danger");
       input.classList.add("border-danger");
       return false;
