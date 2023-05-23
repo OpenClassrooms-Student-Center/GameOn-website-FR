@@ -78,6 +78,11 @@ function launchModal() {
     });
   });
 
+    //ecouter la modification des conditions
+  form.checkbox1.addEventListener("change", function () {
+    checkboxIsValid(this);
+  });
+
 
 
 
@@ -247,6 +252,27 @@ function launchModal() {
     }
   }
 
+// ============== Vérification des conditions ===========
 
+  function checkboxIsValid() {
+    // Récupérer la balise input de type "checkbox" avec l'id "checkbox1"
+    let checkbox = document.querySelector(
+      'input[type="checkbox"][id="checkbox1"]'
+    );
+
+    // Récupérer la balise small
+    const small = document.getElementById("check");
+
+    // Vérifier si la checkbox est cochée
+    if (checkbox.checked) {
+      small.innerHTML = "";
+      small.classList.remove("text-danger");
+      return true;
+    } else {
+      small.innerHTML = "Vous devez accepter les conditions d'utilisation";
+      small.classList.add("text-danger");
+      return false;
+    }
+  }
 
 });
