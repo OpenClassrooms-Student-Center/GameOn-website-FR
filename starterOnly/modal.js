@@ -35,6 +35,40 @@ function launchModal() {
   }
 
 
+    // ======================================================
+  // ===== Vérification des champs avant validation =======
+  // ======================================================
+  // ======================================================
+
+
+  // ecouter la modification du prenom
+  form.first.addEventListener("change", function () {
+    prenomIsValid(this);
+  });
+
+  // ============== Vérification du prénom ================
+
+  function prenomIsValid(inputPrenom) {
+    // creation de la regex pour la validation du prenom
+    let prenomRegEx = new RegExp("^[a-zA-Z]{2,}$");
+    // on test la regex
+    let testPrenom = prenomRegEx.test(inputPrenom.value);
+    console.log(testPrenom);
+    const small = document.getElementById("prenom");
+    const input = document.querySelector("#first");
+
+    if (testPrenom === true) {
+      small.innerHTML = "";
+      small.classList.remove("text-danger");
+      input.classList.remove("border-danger");
+      return true;
+    } else {
+      small.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du prénom";
+      small.classList.add("text-danger");
+      input.classList.add("border-danger");
+      return false;
+    }
+  }
 
 
 
