@@ -66,6 +66,18 @@ function launchModal() {
     quantityIsValid(this);
   });
 
+    // ecouter la modification de la location
+  // selectionner tous les inputs de type "radio" avec name="location"
+  let locationInputs = document.querySelectorAll(
+    'input[type="radio"][name="location"]'
+  );
+  // ajouter un écouteur d'événement "change" sur chacun des inputs
+  locationInputs.forEach((input) => {
+    input.addEventListener("change", function () {
+      locationIsValid();
+    });
+  });
+
 
 
 
@@ -201,6 +213,36 @@ function launchModal() {
       smallQ.innerHTML = "Entrer un chiffre entre 0 et 99";
       smallQ.classList.add("text-danger");
       input.classList.add("border-danger");
+      return false;
+    }
+  }
+
+    // ============== Vérification de la location ===========
+
+  function locationIsValid() {
+    // récupérer tous les inputs de type "radio" avec name="location"
+    let inputs = document.querySelectorAll(
+      'input[type="radio"][name="location"]'
+    );
+    const small = document.getElementById("small-loc");
+
+    // console.log(inputs);
+    // vérifier si au moins un input est sélectionné
+    let isInputSelected = false;
+    for (let i = 0; i < inputs.length; i++) {
+      if (inputs[i].checked) {
+        isInputSelected = true;
+        break;
+      }
+    }
+    // afficher le message en fonction de l'état des inputs
+    if (isInputSelected === true) {
+      small.innerHTML = "";
+      small.classList.remove("text-danger");
+      return true;
+    } else {
+      small.innerHTML = "Vous devez sélectionner au moins un champs";
+      small.classList.add("text-danger");
       return false;
     }
   }
