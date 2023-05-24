@@ -208,7 +208,8 @@ input {
   font-size: 20px;
   height: 48px;
 }
-.formData[data-error]::after {
+.formData[data-error]::after,
+.formData[data-error-1]::after {
   content: attr(data-error);
   font-size: 0.4em;
   color: #e54858;
@@ -220,11 +221,16 @@ input {
   opacity: 0;
   transition: 0.3s;
 }
-.formData[data-error-visible="true"]::after {
+.formData[data-error-visible="true"]::after,
+.formData[data-error-1-visible="true"]::after {
   opacity: 1;
 }
-.formData[data-error-visible="true"] .text-control {
+.formData[data-error-visible="true"] .text-control,
+.formData[data-error-1-visible="true"] .text-control {
   border: 2px solid #e54858;
+}
+.formData[data-error-visible="ok"] .text-control {
+  border: 2px solid #279e7a;
 }
 /* 
 input[data-error]::after {

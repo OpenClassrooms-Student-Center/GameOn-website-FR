@@ -1,5 +1,6 @@
 const form = document.querySelector('form');
 const validForm = document.querySelector('input[type="submit"]');
+const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ\s]+$/;
 
 // Protège contre en envois du formulaire par default + appelle fonction de validation
 validForm.addEventListener("click", function(event) {
@@ -34,96 +35,110 @@ function validationForm() {
         })
     });
     const firstCheck = (value) => {
+        const error = document.querySelector('.first');
         let valid = false;
-        if (value.length < 2 || value.trim() === '') {
-             console.log('erreur nom');
+        if (value.length < 2 || value.trim() === '' || !regex.test(value)) {
+            error.setAttribute('data-error-visible', 'true');
         }
         else {
             valid = true;
+            error.setAttribute('data-error-visible', 'ok');
         }
         return valid;
     }
-    
     const lastCheck = (value) => {
+        const error = document.querySelector('.last');
         let valid = false;
-        if (value.length < 2 || value.trim() === '') {
-            console.log('erreur prenom');
+        if (value.length < 2 || value.trim() === '' || !regex.test(value)) {
+            error.setAttribute('data-error-visible', 'true');
         }
         else {
             valid = true;
+            error.setAttribute('data-error-visible', 'ok');
         }
         return valid;
     }    
 
     const emailCheck = (value) => {
+        const error = document.querySelector('.email');
         let valid = false;
         if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-            console.log('erreur mail'); 
+            error.setAttribute('data-error-visible', 'true');
         }
         else {
             valid = true;
+            error.setAttribute('data-error-visible', 'ok');
         }
         return valid;
     } 
 
     const birthdateCheck = (value) => {
+        const error = document.querySelector('.birthdate');
         let valid = false;
         const currentYear = new Date().getFullYear();
 
         if (!value) {
-            console.log('erreur date');
+            error.setAttribute('data-error-visible', 'true');
+            error.setAttribute('data-error-1-visible', 'false');
         }
-
         else {
+            error.setAttribute('data-error-visible', 'ok');
             const parts = value.split('/');
             const birthYear = parseInt(parts[0], 10);
 
             if (currentYear - birthYear < 18) {
-                console.log('mineur');
+                error.setAttribute('data-error-1-visible', 'true');
             } 
             else {
                 valid = true;
+                error.setAttribute('data-error-1-visible', 'ok');
             }
         }
         return valid;
     }
   
     const quantityCheck = (value) => {
+        const error = document.querySelector('.quantity');
         let valid = false;
         if (!value || Number.isInteger(value)) {
-            console.log('erreur quantité');
+            error.setAttribute('data-error-visible', 'true');
         }
         else {
             valid = true;
+            error.setAttribute('data-error-visible', 'ok');
         }
         return valid;
     }
 
     const locationCheck = () => {
+        const error = document.querySelector('.location');
         const radios = document.querySelectorAll('input[name = "location"]');
         let valid = false;
         
         for (let i = 0; i < radios.length; i++) {
             if (radios[i].checked) {
                 valid = true;
+                error.setAttribute('data-error-visible', 'ok');
                 break;
             } 
         }
             if (!valid){
-                console.log('erreur cheeckbox')
+                error.setAttribute('data-error-visible', 'true');
             }
         
         return valid;
     };
 
     const checkbox1Check = () => {
+        const error = document.querySelector('.condition');
         const checkbox1 = document.querySelector("#checkbox1");
         let valid = false;
         if(!checkbox1.checked) {
-            console.log('Il faut accpter les conditions générale');
+            error.setAttribute('data-error-visible', 'true');
         }
         else {
             valid = true;
+            error.setAttribute('data-error-visible', 'ok');
         }
         return valid;
     }
@@ -152,10 +167,6 @@ function validationForm() {
       };
 
     const formIsValid = (values) => {
-        /**
-         * Teste la validité de chaque input
-         * @type boolean
-         */
         let validInputs = [];
     
         validInputs.push(firstCheck(values[0]));
