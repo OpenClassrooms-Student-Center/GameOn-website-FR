@@ -344,8 +344,6 @@ input[data-error]::after {
 .close:after {
   transform: rotate(-45deg);
 }
-
-
 .btn-submit,
 .btn-signup {
   background: #fe142f;
@@ -621,7 +619,6 @@ footer {
     .main-navbar a {
       background-color: white;
       color: black;
-      border-radius: none;
       padding: 5px 0 0 0;
       text-decoration: none;
   } 
@@ -829,7 +826,6 @@ footer {
       justify-content: flex-end;
       background-color: white;
       color: black;
-      border-radius: none;
       padding: 5px 0 0 0px;
       text-decoration: none;
       font-size: 17px;
