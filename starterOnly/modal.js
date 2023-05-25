@@ -16,14 +16,17 @@ document.addEventListener("DOMContentLoaded", function () {
   const modalBody = document.getElementById("modal-body");
   const close = document.getElementById("close");
   const form = document.getElementById("form");
+  const firstName = document.querySelector("#first");
+  const lastName = document.querySelector("#last");
+  const email = document.querySelector("#email");
+  const birthdate = document.querySelector("#birthdate");
+  const quantity = document.querySelector("#quantity");
+  const condition = document.querySelector("#checkbox1");
 
 
-  // launch modal event
-  modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-  // close modal
-  btnFermer.addEventListener("click", closeModal);
-  close.addEventListener("click", closeModal);
+    // masquer le message de confirmation
+    msg.style.display = "none";
 
   // launch modal form
   function launchModal() {
@@ -32,6 +35,9 @@ document.addEventListener("DOMContentLoaded", function () {
     msg.style.display = "none";
     form.reset();
   }
+
+    // launch modal event
+    modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
   // close modal form
   function closeModal() {
@@ -50,182 +56,127 @@ document.addEventListener("DOMContentLoaded", function () {
     modalbg.style.display = "none";
   }
 
-    // masquer le message de confirmation
-    msg.style.display = "none";
+    // close modal
+    btnFermer.addEventListener("click", closeModal);
+    close.addEventListener("click", closeModal);
 
 
+    // ============== Vérification du prénom ================
 
-  // ======================================================
-  // ===== Vérification des champs avant validation =======
-  // ======================================================
-  // ======================================================
-
-
-  // ecouter la modification du prenom
-  form.first.addEventListener("change", function () {
-    prenomIsValid(this);
-  });
-
-  // ecouter la modification du nom
-  form.last.addEventListener("change", function () {
-    nomIsValid(this);
-  });
-  // ecouter la modification de l'email
-  form.email.addEventListener("change", function () {
-    emailIsValid(this);
-  });
-  //ecouter la modification de la date de naissance
-  form.birthdate.addEventListener("change", function () {
-    birthdateIsValid(this);
-  });
-  // ecouter la modification de la quantité
-  form.quantity.addEventListener("change", function () {
-    quantityIsValid(this);
-  });
-  // ecouter la modification de la location
-  // selectionner tous les inputs de type "radio" avec name="location"
-  let locationInputs = document.querySelectorAll(
-    'input[type="radio"][name="location"]'
-  );
-  // ajouter un écouteur d'événement "change" sur chacun des inputs
-  locationInputs.forEach((input) => {
-    input.addEventListener("change", function () {
-      locationIsValid();
-    });
-  });
-  //ecouter la modification des conditions
-  form.checkbox1.addEventListener("change", function () {
-    checkboxIsValid(this);
-  });
-  // console.log(formulaire);
-
-
-
-  // ============== Vérification du prénom ================
-
-  function prenomIsValid(inputPrenom) {
+  function prenomIsValid() {
     // creation de la regex pour la validation du prenom
-    let prenomRegEx = new RegExp("^[a-zA-Z]{2,}$");
+    let prenomRegEx = /^[a-zA-Z]{2,}$/;
     // on test la regex
-    let testPrenom = prenomRegEx.test(inputPrenom.value);
+    let testPrenom = prenomRegEx.test(firstName.value);
     console.log(testPrenom);
     const small = document.getElementById("prenom");
-    const input = document.querySelector("#first");
 
     if (testPrenom === true) {
       small.innerHTML = "";
       small.classList.remove("text-danger");
-      input.classList.remove("border-danger");
+      firstName.classList.remove("border-danger");
       return true;
     } else {
       small.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du prénom";
       small.classList.add("text-danger");
-      input.classList.add("border-danger");
+      firstName.classList.add("border-danger");
       return false;
     }
   }
 
   // ========== Vérification du nom et du prenom ==========
 
-  function nomIsValid(inputNom) {
+  function nomIsValid() {
     // creation de la regex pour la validation du nom
-    let nomRegEx = new RegExp("^[a-zA-Z]{2,}$");
+    let nomRegEx = /^[a-zA-Z]{2,}$/;
     // on test la regex
-    let testNom = nomRegEx.test(inputNom.value);
+    let testNom = nomRegEx.test(lastName.value);
     console.log(testNom);
     // on recupere la balise small
     const small = document.getElementById("nom");
-    const input = document.querySelector("#last");
 
     if (testNom === true) {
       small.innerHTML = "";
       small.classList.remove("text-danger");
-      input.classList.remove("border-danger");
+      lastName.classList.remove("border-danger");
       return true;
     } else {
       small.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom";
       small.classList.add("text-danger");
-      input.classList.add("border-danger");
+      lastName.classList.add("border-danger");
       return false;
     }
   }
 
   // ============== Vérification de l'email ===============
 
-  function emailIsValid(inputEmail) {
+  function emailIsValid() {
     // création de la regex pour la validation email
-    let emailRegEx = new RegExp(
-      "^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$",
-      "g"
-    );
+    let emailRegEx = /^[a-zA-Z0-9.-_]+[@]{1}[a-zA-Z0-9.-_]+[.]{1}[a-z]{2,10}$/;
+
     // on test la regex
-    let testEmail = emailRegEx.test(inputEmail.value);
+    let testEmail = emailRegEx.test(email.value);
     console.log(testEmail);
 
     // récupérer la balise small (la balise suivant l'input email)
     const smallMail = document.getElementById("mail");
-    const input = document.querySelector("#email");
 
     if (testEmail === true) {
       smallMail.innerHTML = "";
       smallMail.classList.remove("text-danger");
-      input.classList.remove("border-danger");
+      email.classList.remove("border-danger");
       return true;
     } else {
       smallMail.innerHTML = "Vous devez entrer un email valide";
       smallMail.classList.add("text-danger");
-      input.classList.add("border-danger");
+      email.classList.add("border-danger");
       return false;
     }
   }
 
   // ========= Vérification de la date de naissance =======
 
-  function birthdateIsValid(inputBirthdate) {
-    let birthdate = inputBirthdate.value;
-    const input = document.querySelector("#birthdate");
-
+  function birthdateIsValid() {
     let birthdateRegEx = /^\d{4}-\d{2}-\d{2}$/;
-    let testBirthdate = birthdateRegEx.test(birthdate);
+    let testBirthdate = birthdateRegEx.test(birthdate.value);
     console.log(testBirthdate);
     const small = document.getElementById("sbirthdate");
 
     if (testBirthdate === true ) {
       small.innerHTML = "";
       small.classList.remove("text-danger");
-      input.classList.remove("border-danger");
+      birthdate.classList.remove("border-danger");
       return true;
     } else {
       small.innerHTML =
         "Vous devez entrer votre date de naissance.";
       small.classList.add("text-danger");
-      input.classList.add("border-danger");
+      birthdate.classList.add("border-danger");
       return false;
     }
   }
 
   // ============== Vérification de la quantity ===========
 
-  function quantityIsValid(inputQuantity) {
+  function quantityIsValid() {
     // création de la regex pour la validation de la quantité
-    let quantityRegEx = new RegExp("^(?:[1-9]|[1-9][0-9]|0)$");
+    let quantityRegEx = /^\d+$/;
     // on teste la regex
-    let testQuantity = quantityRegEx.test(inputQuantity.value);
+    let testQuantity = quantityRegEx.test(quantity.value);
     // récupérer la balise small (la balise suivant l'input quantity)
     const smallQ = document.getElementById("squantity");
 
     // on recupere l'input
-    const input = document.querySelector("#quantity");
-
     if (testQuantity === true) {
       smallQ.innerHTML = "";
       smallQ.classList.remove("text-danger");
-      input.classList.remove("border-danger");
+      quantity.classList.remove("border-danger");
       return true;
     } else {
-      smallQ.innerHTML = "Entrer un chiffre entre 0 et 99";
+      smallQ.innerHTML = "Entrer un chiffre entre 1 et 99";
       smallQ.classList.add("text-danger");
-      input.classList.add("border-danger");
+      quantity.classList.add("border-danger");
+      console.log(testQuantity);
       return false;
     }
   }
@@ -239,7 +190,6 @@ document.addEventListener("DOMContentLoaded", function () {
     );
     const small = document.getElementById("small-loc");
 
-    // console.log(inputs);
     // vérifier si au moins un input est sélectionné
     let isInputSelected = false;
     for (let i = 0; i < inputs.length; i++) {
@@ -263,16 +213,11 @@ document.addEventListener("DOMContentLoaded", function () {
   // ============== Vérification des conditions ===========
 
   function checkboxIsValid() {
-    // Récupérer la balise input de type "checkbox" avec l'id "checkbox1"
-    let checkbox = document.querySelector(
-      'input[type="checkbox"][id="checkbox1"]'
-    );
-
     // Récupérer la balise small
     const small = document.getElementById("check");
 
     // Vérifier si la checkbox est cochée
-    if (checkbox.checked) {
+    if (condition.checked) {
       small.innerHTML = "";
       small.classList.remove("text-danger");
       return true;
@@ -283,6 +228,49 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+
+  // ======================================================
+  // ===== Vérification des champs avant validation =======
+  // ======================================================
+  // ======================================================
+  // ecouter la modification du prenom
+  form.first.addEventListener("change", function () {
+    prenomIsValid();
+  });
+
+  // ecouter la modification du nom
+  form.last.addEventListener("change", function () {
+    nomIsValid();
+  });
+  // ecouter la modification de l'email
+  form.email.addEventListener("change", function () {
+    emailIsValid();
+  });
+  //ecouter la modification de la date de naissance
+  form.birthdate.addEventListener("change", function () {
+    birthdateIsValid();
+  });
+  // ecouter la modification de la quantité
+  form.quantity.addEventListener("change", function () {
+    quantityIsValid();
+  });
+  // ecouter la modification de la location
+  // selectionner tous les inputs de type "radio" avec name="location"
+  let locationInputs = document.querySelectorAll(
+    'input[type="radio"][name="location"]'
+  );
+  // ajouter un écouteur d'événement "change" sur chacun des inputs
+  locationInputs.forEach((input) => {
+    input.addEventListener("change", function () {
+      locationIsValid();
+    });
+  });
+  //ecouter la modification des conditions
+  form.checkbox1.addEventListener("change", function () {
+    checkboxIsValid();
+  });
+  
+
   // ======================================================
   // ============== Vérification du formulaire ============
   // ======================================================
@@ -291,26 +279,17 @@ document.addEventListener("DOMContentLoaded", function () {
   function submitForm(event) {
     event.preventDefault(); // Empêche la soumission par défaut du formulaire
 
-    // Récupération des valeurs des champs du formulaire
-    const firstName = document.querySelector("#first");
-    const lastName = document.querySelector("#last");
-    const email = document.querySelector("#email");
-    const birthdate = document.querySelector("#birthdate");
-    const quantity = document.querySelector("#quantity");
-    const condition = document.querySelector("#checkbox1").checked;
+    // Vérification que les champs sont valides
+    prenomIsValid();
+    nomIsValid();
+    emailIsValid();
+    birthdateIsValid();
+    quantityIsValid();
+    locationIsValid();
+    checkboxIsValid();
 
-    // Vérification que tous les champs sont valides
-    const isFirstNameValid = prenomIsValid(firstName);
-    const isLastNameValid = nomIsValid(lastName);
-    const isEmailValid = emailIsValid(email);
-    console.log(isEmailValid);
-    const isBirthdateValid = birthdateIsValid(birthdate);
-    const isQuantityValid = quantityIsValid(quantity);
-    console.log(isQuantityValid);
-    const isLocationValid = locationIsValid();
-    const isConditionValid = checkboxIsValid(condition);
-
-    if (isFirstNameValid && isLastNameValid && isEmailValid && isBirthdateValid && isQuantityValid && isLocationValid && isConditionValid) {
+    if (prenomIsValid() && nomIsValid() && emailIsValid() && birthdateIsValid() 
+      && quantityIsValid() && locationIsValid() && checkboxIsValid()) {
       modalBody.style.display = "none";
       document.getElementById("msg").style.display = "block";
       console.log("Formulaire valide"); 
