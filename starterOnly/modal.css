@@ -526,4 +526,12 @@ footer {
     opacity: 1;
   }
 }
+@keyframes modalclose {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 
