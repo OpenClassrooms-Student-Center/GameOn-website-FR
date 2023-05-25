@@ -29,10 +29,11 @@ function launchModal() {
 modalCloseBtn.addEventListener("click", closeModal);
 
 function closeModal() {
-  modalcontent.style.animationName = "modalclose";
-  modalcontent.style.animationFillMode = "forwards";
+  const closeAnimation = "modalclose 0.8s";
 
-  modalbg.style.animation = "modalclose 0.8s";
+  modalcontent.style.animation = closeAnimation;
+  modalbg.style.animation = closeAnimation;
+  
   //L'élément modalbg disparaît seulement à la fin de l'animation
   modalbg.addEventListener("animationend", function() {
     if (modalbg.style.animationName === "modalclose") {
