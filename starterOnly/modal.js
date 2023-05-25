@@ -1,5 +1,8 @@
+/* eslint-env es6 */
+
+let x;
 function editNav() {
-  const x = document.getElementById("myTopnav");
+  let x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
     x.className += " responsive";
   } else {
@@ -38,17 +41,22 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
     // launch modal event
-    modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+    // modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+    modalBtn.forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        launchModal();
+      });
+    });
 
   // close modal form
   function closeModal() {
     const textDanger = document.querySelectorAll(".text-danger");
     const borderDanger = document.querySelectorAll(".border-danger");
     const smalls = document.querySelectorAll("small");
-    textDanger.forEach((element) => {
+    textDanger.forEach(function(element) {
       element.classList.remove("text-danger");
     });
-    borderDanger.forEach((element) => {
+    borderDanger.forEach(function(element) {
       element.classList.remove("border-danger");
     });
     for (let i = 0; i < smalls.length; i++) {
@@ -263,11 +271,12 @@ document.addEventListener("DOMContentLoaded", function () {
     'input[type="radio"][name="location"]'
   );
   // ajouter un écouteur d'événement "change" sur chacun des inputs
-  locationInputs.forEach((input) => {
-    input.addEventListener("change", function () {
+  locationInputs.forEach(function(input) {
+    input.addEventListener("change", function() {
       locationIsValid();
     });
   });
+  
   //ecouter la modification des conditions
   form.checkbox1.addEventListener("change", function () {
     checkboxIsValid();
@@ -291,8 +300,7 @@ document.addEventListener("DOMContentLoaded", function () {
     locationIsValid();
     checkboxIsValid();
 
-    if (prenomIsValid() && nomIsValid() && emailIsValid() && birthdateIsValid() 
-      && quantityIsValid() && locationIsValid() && checkboxIsValid()) {
+    if (prenomIsValid() && nomIsValid() && emailIsValid() && birthdateIsValid() && quantityIsValid() && locationIsValid() && checkboxIsValid()) {
       modalBody.style.display = "none";
       document.getElementById("msg").style.display = "block";
       console.log("Formulaire valide"); 
