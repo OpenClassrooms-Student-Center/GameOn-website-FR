@@ -15,6 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const msg = document.getElementById("msg");
   const modalBody = document.getElementById("modal-body");
   const close = document.getElementById("close");
+  const close1 = document.getElementById("close1");
   const form = document.getElementById("form");
   const firstName = document.querySelector("#first");
   const lastName = document.querySelector("#last");
@@ -59,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // close modal
     btnFermer.addEventListener("click", closeModal);
     close.addEventListener("click", closeModal);
+    close1.addEventListener("click", closeModal);
 
 
     // ============== Vérification du prénom ================
