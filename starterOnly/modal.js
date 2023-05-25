@@ -63,6 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
     close1.addEventListener("click", closeModal);
 
 
+
     // ============== Vérification du prénom ================
 
   function prenomIsValid() {
