@@ -479,6 +479,86 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+.container-confirmation-submit {
+  display: none;
+  background-color: rgba(35, 35, 35, .5);
+  width: 100%;
+  height: 200vh;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+}
+
+.submitted-form {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  margin: 0 auto;
+  position: fixed;
+  top: 0px;
+}
+
+.close-modal-submit {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 2rem;
+  height: 2rem;
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(0.7);
+  color: #FFFFFF;
+}
+
+.close-modal-submit:before,
+.close-modal-submit:after {
+  position: absolute;
+  left: 0.9375rem;
+  content: " ";
+  height: 2.0625rem;
+  width: 0.1875rem;
+  background-color: #fff;
+}
+
+.close-modal-submit:before {
+  transform: rotate(45deg);
+}
+
+.close-modal-submit:after {
+  transform: rotate(-45deg);
+}
+
+.submitted-form p {
+  width: 100%;
+  height: 100%;
+  background-color: #232323;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+}
+
+#close-btn-confirmation {
+  position: relative;
+  top: -165px;
+  outline: none;
+  border: none;
+  font-size: 22px;
+  background: #fe142f;
+  display: flex;
+  margin: auto;
+  padding: 2em;
+  color: #fff;
+  padding: 0.75rem 2.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
 footer {
   padding-left: 2vw;
   padding-right: 2vw;

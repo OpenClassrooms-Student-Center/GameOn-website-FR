@@ -12,15 +12,25 @@
   const modalBtn = document.querySelectorAll(".modal-btn");
   const formData = document.querySelectorAll(".formData");
   const modalExit = document.querySelector(".close");
+  const modalSubmit = document.querySelector(".container-confirmation-submit");
+  const confirmationExit = document.querySelectorAll(".close-modal-submit, .close-btn-confirmation");
 
   // launch and close modal event
   modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
   modalExit.addEventListener("click", closeModal);
+  confirmationExit.forEach(element => {
+    element.addEventListener("click", closeConfirmation);
+  });
 
   // launch modal form
-  function launchModal() {
+  function launchModal(formCompleted) {
+    if (formCompleted = true) {
+      confirmationForm()
+    }
+    else {
     modalbg.style.display = "block";
     modalbg.style.animationName = '';
+    }
   }
 
   //close modal with animation
@@ -32,5 +42,12 @@
     }, 500);
   }
   
+  function confirmationForm() {
+    modalSubmit.style.display = 'block';
+  }
+
+  function closeConfirmation() {
+    modalSubmit.style.display = "none";
+  }
 
 

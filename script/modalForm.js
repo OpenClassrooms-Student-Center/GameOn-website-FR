@@ -1,6 +1,7 @@
 const form = document.querySelector('form');
 const validForm = document.querySelector('input[type="submit"]');
 const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ\s]+$/;
+const formCompleted = 'iiiiii';
 
 // Protège contre en envois du formulaire par default + appelle fonction de validation
 validForm.addEventListener("click", function(event) {
@@ -168,7 +169,7 @@ function validationForm() {
 
     const formIsValid = (values) => {
         let validInputs = [];
-    
+        
         validInputs.push(firstCheck(values[0]));
         validInputs.push(lastCheck(values[1]));
         validInputs.push(emailCheck(values[2]));
@@ -176,20 +177,23 @@ function validationForm() {
         validInputs.push(quantityCheck(values[4]));
         validInputs.push(locationCheck(values[4]));
         validInputs.push(checkbox1Check(values[5]));
-    
+        
         let isValid = true;
-    
+        
         for (let i = 0; i < validInputs.length; i++) {
-          if (validInputs[i] === false) {
-            isValid = false;
-            break;
-          }
+            if (validInputs[i] === false) {
+                isValid = false;
+                break;
+            }
         }
         return isValid;
-      };
-
-      if (formIsValid(formValues(inputs))) {
-        console.log('Fomulaire validée');
-      }
+    };
+    
+    if (formIsValid(formValues(inputs))) {
+        confirmationForm();
+        closeModal();
+        formCompleted = true;
+    }
+    return formCompleted
 }
     
