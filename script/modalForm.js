@@ -40,6 +40,7 @@ function validationForm() {
             }
         })
     });
+    //check du prenom (input vide + regex)
     const firstCheck = (value) => {
         const error = document.querySelector('.first');
         let valid = false;
@@ -52,6 +53,7 @@ function validationForm() {
         }
         return valid;
     }
+    // check du nom (input vide + regex)
     const lastCheck = (value) => {
         const error = document.querySelector('.last');
         let valid = false;
@@ -64,7 +66,7 @@ function validationForm() {
         }
         return valid;
     }    
-
+    // check du mail 
     const emailCheck = (value) => {
         const error = document.querySelector('.email');
         let valid = false;
@@ -77,7 +79,7 @@ function validationForm() {
         }
         return valid;
     } 
-
+    // check de la date d'anniversaire (champ vide + majeur avec l'activation des different data error)
     const birthdateCheck = (value) => {
         const error = document.querySelector('.birthdate');
         let valid = false;
@@ -104,7 +106,7 @@ function validationForm() {
         }
         return valid;
     }
-  
+    // check du nombre de tournois participé
     const quantityCheck = (value) => {
         const error = document.querySelector('.quantity');
         let valid = false;
@@ -117,7 +119,7 @@ function validationForm() {
         }
         return valid;
     }
-
+    // check de la ville du tournois
     const locationCheck = () => {
         const error = document.querySelector('.location');
         const radios = document.querySelectorAll('input[name = "location"]');
@@ -136,7 +138,7 @@ function validationForm() {
         
         return valid;
     };
-
+    // check des condition d'utilisation
     const checkbox1Check = () => {
         const error = document.querySelector('.condition');
         const checkbox1 = document.querySelector("#checkbox1");
@@ -150,9 +152,9 @@ function validationForm() {
         }
         return valid;
     }
-
     checkbox1Check();
 
+    // enregistrement des données dans un tableau "data"
     const formValues = (inputs) => {
         let data = [];
     
@@ -172,8 +174,9 @@ function validationForm() {
           }
         }
         return data;
-      };
+    };
 
+    // verificaation que toutes les valeurs sont ok 
     const formIsValid = (values) => {
         let validInputs = [];
         
@@ -195,7 +198,7 @@ function validationForm() {
         }
         return isValid;
     };
-    
+    // si le forom est valid on ferme la modal et on lance la fenetre de comfirmation
     if (formIsValid(formValues(inputs))) {
         confirmationForm();
         closeModal();
