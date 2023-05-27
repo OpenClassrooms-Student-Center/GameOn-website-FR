@@ -14,7 +14,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -31,6 +30,9 @@ img {
 }
 
 .topnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   overflow: hidden;
   margin: 3.5%;
 }
@@ -66,38 +68,14 @@ img {
 
 .topnav .icon {
   display: none;
+  color:#ff0000;
 }
-
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
-
 
  @media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
 } 
 
@@ -208,9 +186,8 @@ input {
   font-size: 20px;
   height: 48px;
 }
-.formData[data-error]::after,
-.formData[data-error-1]::after {
-  content: attr(data-error);
+.formData[data-error]::after {
+  content: '';
   font-size: 0.4em;
   color: #e54858;
   display: block;
@@ -221,23 +198,23 @@ input {
   opacity: 0;
   transition: 0.3s;
 }
-.formData[data-error-visible="true"]::after,
+.formData[data-error-visible="true"]::after {
+  opacity: 1;
+  content: attr(data-error);
+}
 .formData[data-error-1-visible="true"]::after {
   opacity: 1;
+  content: attr(data-error-1);
 }
-.formData[data-error-visible="true"] .text-control,
+.formData[data-error-visible="true"] .text-control {
+  border: 2px solid #e54858;
+}
 .formData[data-error-1-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
 .formData[data-error-visible="ok"] .text-control {
   border: 2px solid #279e7a;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -426,7 +403,6 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -464,6 +440,7 @@ input[data-error]::after {
   grid-column: span 8;
 }
 .hero-img img {
+  object-fit: cover;
   width: 100%;
   height: 100%;
   display: block;
@@ -565,6 +542,9 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+  .logo {
+    width: 150px;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -581,16 +561,17 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 40px;
     white-space: normal;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 20px;
+    margin-top: 17px;
   }
   .hero-img img {
     border-radius: 10px;
-    margin-top: 40px;
+    margin-top: 35px;
   }
   .hero-section > .btn-signup {
     display: block;
@@ -600,6 +581,22 @@ footer {
   .copyrights {
     margin-top: 50px;
     text-align: center;
+  }
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  .topnav.responsive {position: relative}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
   }
 }
 

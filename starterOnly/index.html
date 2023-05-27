@@ -14,7 +14,7 @@
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
+      <img class="logo" alt="logo" src="Logo.png" width="auto" height="auto" />
     </div>
     <div class="main-navbar">
       
@@ -99,15 +99,14 @@
                   required
                 /><br>
               </div>
-              <div
-                class="formData birthdate" data-error="Vous devez entrer votre date de naissance." data-error-type="1" data-error-visible="false">
+              <div class="formData birthdate" data-error="Vous devez entrer votre date de naissance." data-error-visible="false" data-error-1="Vous devez être majeur pour participer à cet événement" data-error-1-visible="false">
                 <label for="birthdate">Date de naissance</label><br>
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                  required max="2005-05-25"
+                  required
                   /><br>
               </div>
               <div

@@ -1,7 +1,12 @@
 const form = document.querySelector('form');
 const validForm = document.querySelector('input[type="submit"]');
 const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ\s]+$/;
-const formCompleted = 'iiiiii';
+let formCompleted = false;
+
+// reprise de l'input et de la date actuelle pour ne pas pouvoir mettre de date dans le futur
+const birthdateInput = document.getElementById('birthdate');
+const today = new Date().toISOString().split('T')[0];
+birthdateInput.setAttribute('max', today);
 
 // Protège contre en envois du formulaire par default + appelle fonction de validation
 validForm.addEventListener("click", function(event) {
@@ -77,13 +82,13 @@ function validationForm() {
         const error = document.querySelector('.birthdate');
         let valid = false;
         const currentYear = new Date().getFullYear();
+        error.setAttribute('data-error-visible', '');
 
         if (!value) {
             error.setAttribute('data-error-visible', 'true');
             error.setAttribute('data-error-1-visible', 'false');
         }
         else {
-            error.setAttribute('data-error-visible', 'ok');
             const parts = value.split('/');
             const birthYear = parseInt(parts[0], 10);
 
@@ -92,7 +97,9 @@ function validationForm() {
             } 
             else {
                 valid = true;
-                error.setAttribute('data-error-1-visible', 'ok');
+                error.setAttribute('data-error-visible', 'ok');
+                error.setAttribute('data-error-1-visible', 'false');
+                error.setAttribute('data-error-1-visible', 'false');
             }
         }
         return valid;

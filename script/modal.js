@@ -23,8 +23,8 @@
   });
 
   // launch modal form
-  function launchModal(formCompleted) {
-    if (formCompleted = true) {
+  function launchModal() {
+    if (formCompleted === true) {
       confirmationForm()
     }
     else {
