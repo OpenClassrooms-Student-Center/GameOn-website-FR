@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const modalBody = document.getElementById("modal-body");
   const close = document.getElementById("close");
   const close1 = document.getElementById("close1");
-  const form = document.getElementById("form");
   const firstName = document.querySelector("#first");
   const lastName = document.querySelector("#last");
   const email = document.querySelector("#email");
@@ -41,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
     // launch modal event
-    // modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
     modalBtn.forEach(function(btn) {
       btn.addEventListener("click", function() {
         launchModal();
@@ -95,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // ========== Vérification du nom et du prenom ==========
+  // ========== Vérification du nom  ==========
 
   function nomIsValid() {
     // creation de la regex pour la validation du nom
@@ -245,24 +243,24 @@ document.addEventListener("DOMContentLoaded", function () {
   // ======================================================
   // ======================================================
   // ecouter la modification du prenom
-  form.first.addEventListener("change", function () {
+  firstName.addEventListener("change", function () {
     prenomIsValid();
   });
 
   // ecouter la modification du nom
-  form.last.addEventListener("change", function () {
+  lastName.addEventListener("change", function () {
     nomIsValid();
   });
   // ecouter la modification de l'email
-  form.email.addEventListener("change", function () {
+  email.addEventListener("change", function () {
     emailIsValid();
   });
   //ecouter la modification de la date de naissance
-  form.birthdate.addEventListener("change", function () {
+  birthdate.addEventListener("change", function () {
     birthdateIsValid();
   });
   // ecouter la modification de la quantité
-  form.quantity.addEventListener("change", function () {
+  quantity.addEventListener("change", function () {
     quantityIsValid();
   });
   // ecouter la modification de la location
@@ -278,7 +276,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   
   //ecouter la modification des conditions
-  form.checkbox1.addEventListener("change", function () {
+  condition.addEventListener("change", function () {
     checkboxIsValid();
   });
   
@@ -302,7 +300,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (prenomIsValid() && nomIsValid() && emailIsValid() && birthdateIsValid() && quantityIsValid() && locationIsValid() && checkboxIsValid()) {
       modalBody.style.display = "none";
-      document.getElementById("msg").style.display = "block";
+      msg.style.display = "block";
       console.log("Formulaire valide"); 
     } 
   }
