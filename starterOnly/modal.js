@@ -48,18 +48,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // close modal form
   function closeModal() {
+     // Récupérer tous les éléments avec la classe CSS "text-danger"
     const textDanger = document.querySelectorAll(".text-danger");
+    // Récupérer tous les éléments avec la classe CSS "border-danger"
     const borderDanger = document.querySelectorAll(".border-danger");
+     // Récupérer tous les éléments "small"
     const smalls = document.querySelectorAll("small");
+    // Supprimer la classe CSS "text-danger" de tous les éléments "text-danger"
     textDanger.forEach(function(element) {
       element.classList.remove("text-danger");
     });
+    // Supprimer la classe CSS "border-danger" de tous les éléments "border-danger"
     borderDanger.forEach(function(element) {
       element.classList.remove("border-danger");
     });
-    for (let i = 0; i < smalls.length; i++) {
-      smalls[i].innerHTML = "";
-    }
+     // Effacer le contenu de tous les éléments "small"
+    smalls.forEach(function(element) {
+      element.innerHTML = "";
+  });
+  // Cacher la modal en définissant la propriété "display" sur "none"
     modalbg.style.display = "none";
   }
 
@@ -201,12 +208,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // vérifier si au moins un input est sélectionné
     let isInputSelected = false;
-    for (let i = 0; i < inputs.length; i++) {
-      if (inputs[i].checked) {
-        isInputSelected = true;
-        break;
-      }
-    }
+    inputs.forEach(function(input) {
+        if (input.checked) {
+          // Si un élément est sélectionné, mettre la variable "isInputSelected" à true
+            isInputSelected = true;
+        }
+    });
+    
     // afficher le message en fonction de l'état des inputs
     if (isInputSelected === true) {
       small.innerHTML = "";
