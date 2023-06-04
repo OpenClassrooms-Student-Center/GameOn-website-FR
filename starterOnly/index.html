@@ -60,7 +60,7 @@
               method="get"
               onsubmit="return validate();"
             >
-              <div class="formData">
+              <div class="formData" data-error-visible="false" data-error="">
                 <label for="first">Prénom</label><br />
                 <input
                   class="text-control"
@@ -70,6 +70,7 @@
                   minlength="2"
                   required
                 /><br />
+                <span class="error-message"></span>
               </div>
               <div class="formData">
                 <label for="last">Nom</label><br />
