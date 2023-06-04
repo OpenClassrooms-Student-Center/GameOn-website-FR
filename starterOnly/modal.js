@@ -11,13 +11,22 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const modalClose = document.querySelectorAll(".close");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-// launch modal form
+// launch modal open
 function launchModal() {
   modalbg.style.display = "block";
 }
+
+
+// issue #1: fermeture de la modale via Btn(X) 
+modalClose.forEach((btn) => btn.addEventListener("click", closeModal));
+// launch modal close
+function closeModal() {
+  modalbg.style.display = "none";
+}
+
 
 

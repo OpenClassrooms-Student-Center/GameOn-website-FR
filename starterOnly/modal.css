@@ -296,6 +296,7 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
+/* Btn (X) fermeture de la modale */
 .close {
   position: absolute;
   right: 15px;
