@@ -21,6 +21,12 @@ body {
   margin: 0 auto;
 }
 
+.formConfirmation {
+  padding: 15px 8%;
+  margin: 15px auto;
+  display: none;
+}
+
 p {
   margin-bottom: 0;
   padding: 0.5vw;

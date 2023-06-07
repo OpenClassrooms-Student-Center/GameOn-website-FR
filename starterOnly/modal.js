@@ -20,49 +20,51 @@ const modalClose = document.querySelector(".close");
  */
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
-  modalInit();
+  //modalInit();
   modalbg.style.display = "block"; //Onclick
 }
 
 /**
- * init all modal's field
+ * init all modal's field  Not need with location.reload() function
  */
-function modalInit() {
-  let baliseNom = document.forms.reserve.last;
-  baliseNom.value = "";
-  let balisePrenom = document.getElementById("first");
-  balisePrenom.value = "";
-  let baliseEmail = document.getElementById("email");
-  baliseEmail.value = "";
-  let baliseQuantity = document.getElementById("quantity");
-  baliseQuantity.value = "";
 
-  let errorNom = document.getElementById("errorNom");
-  errorNom.setAttribute("data-error-visible", "false");
-  errorNom.setAttribute("data-error", " ");
-  let errorPrenom = document.getElementById("errorPrenom");
-  errorPrenom.setAttribute("data-error-visible", "false");
-  errorPrenom.setAttribute("data-error", " ");
-  let errorEmail = document.getElementById("errorEmail");
-  errorEmail.setAttribute("data-error-visible", "false");
-  errorEmail.setAttribute("data-error", " ");
-  let errorQuantity = document.getElementById("errorQuantity");
-  errorQuantity.setAttribute("data-error-visible", "false");
-  errorQuantity.setAttribute("data-error", " ");
-  let errorBirthday = document.getElementById("errorBirthday");
-  errorBirthday.setAttribute("data-error-visible", "false");
-  errorBirthday.setAttribute("data-error", " ");
-  initBirthday = document.getElementById("birthdate");
-  console.log(initBirthday);
-  initBirthday.value = "jj/mm/aaaa";
-  let errorButtonRadio = document.getElementById("errorButtonRadio");
-  errorButtonRadio.setAttribute("data-error-visible", "false");
-  errorButtonRadio.setAttribute("data-error", " ");
-  let errorButtonCondition = document.getElementById("errorButtonCondition");
-  errorButtonCondition.setAttribute("data-error-visible", "false");
-  errorButtonCondition.setAttribute("data-error", " ");
+// function modalInit() {
+//   let baliseNom = document.forms.reserve.last;
+//   baliseNom.value = "";
+//   let balisePrenom = document.getElementById("first");
+//   balisePrenom.value = "";
+//   let baliseEmail = document.getElementById("email");
+//   baliseEmail.value = "";
+//   let baliseQuantity = document.getElementById("quantity");
+//   baliseQuantity.value = "";
 
-}
+//   let errorNom = document.getElementById("errorNom");
+//   errorNom.setAttribute("data-error-visible", "false");
+//   errorNom.setAttribute("data-error", " ");
+//   let errorPrenom = document.getElementById("errorPrenom");
+//   errorPrenom.setAttribute("data-error-visible", "false");
+//   errorPrenom.setAttribute("data-error", " ");
+//   let errorEmail = document.getElementById("errorEmail");
+//   errorEmail.setAttribute("data-error-visible", "false");
+//   errorEmail.setAttribute("data-error", " ");
+//   let errorQuantity = document.getElementById("errorQuantity");
+//   errorQuantity.setAttribute("data-error-visible", "false");
+//   errorQuantity.setAttribute("data-error", " ");
+//   let errorBirthday = document.getElementById("errorBirthday");
+//   errorBirthday.setAttribute("data-error-visible", "false");
+//   errorBirthday.setAttribute("data-error", " ");
+//   initBirthday = document.getElementById("birthdate");
+//   console.log(initBirthday);
+//   initBirthday.value = "jj/mm/aaaa";
+//   let errorButtonRadio = document.getElementById("errorButtonRadio");
+//   errorButtonRadio.setAttribute("data-error-visible", "false");
+//   errorButtonRadio.setAttribute("data-error", " ");
+//   let errorButtonCondition = document.getElementById("errorButtonCondition");
+//   errorButtonCondition.setAttribute("data-error-visible", "false");
+//   errorButtonCondition.setAttribute("data-error", " ");
+// }
+
+
 
 /**
  * issue #1: fermeture de la modale via Btn(X)
@@ -72,7 +74,7 @@ function closeModal() {
   modalbg.style.display = "none"; //Onclick
 }
 
-//issue #2: implemented error message validation form
+//issue #2 and #3: implemented error message validation form
 
 /**
  * Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
@@ -196,7 +198,7 @@ function validerButtonCondition(conditionUtilisation) {
 
 /**
  * cette fonction permet de valider l'envoie du formulaire lorsque tous les champs sont
- * remplis sans erreur.
+ * remplis sans erreur et recharge la page.
  *
  */
 let form = document.querySelector("form");
@@ -242,8 +244,11 @@ form.addEventListener("submit", (event) => {
 
     if (formValid) {
       //all field are correct
-      modalbg.style.display = "none";
+      //modalbg.style.display = "none";
+      //#4:envoie confirmation d'envoie réussi
+      let initBlock = document.querySelector(".formConfirmation").style.display = "block"; 
     }
+    location.reload();
   } catch (erreur) {
     console.log(erreur.message);
     afficherMessageError(erreur.message);
