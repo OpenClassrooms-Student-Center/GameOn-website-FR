@@ -59,24 +59,24 @@
         <span class="close"> </span>
         <div class="modal-body">
           <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
-            <div class="formData" >
+            <div class="formData" id="errorPrenom" >
               <label for="first">Prénom</label><br>
               <input class="text-control" type="text" id="first" name="first" /><br>
             </div>
-            <div class="formData">
+            <div class="formData" id="errorNom">
               <label for="last">Nom</label><br>
               <input class="text-control" type="text" id="last" name="last" /><br>
             </div>
-            <div class="formData">
+            <div class="formData" id="errorEmail">
               <label for="email">E-mail</label><br>
               <input class="text-control" type="text" id="email" name="email" /><br>
             </div>
 
-            <div class="formData">
+            <div class="formData" id="errorBirthday">
               <label for="birthdate">Date de naissance</label><br>
-              <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
+              <input class="text-control" type="date" id="birthdate" name="birthdate" value="jj/mm/aaaa"/><br>
             </div>
-            <div class="formData">
+            <div class="formData" id="errorQuantity">
               <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
               <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
             </div>
