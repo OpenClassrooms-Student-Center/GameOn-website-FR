@@ -55,6 +55,13 @@ function modalInit() {
   initBirthday = document.getElementById("birthdate");
   console.log(initBirthday);
   initBirthday.value = "jj/mm/aaaa";
+  let errorButtonRadio = document.getElementById("errorButtonRadio");
+  errorButtonRadio.setAttribute("data-error-visible", "false");
+  errorButtonRadio.setAttribute("data-error", " ");
+  let errorButtonCondition = document.getElementById("errorButtonCondition");
+  errorButtonCondition.setAttribute("data-error-visible", "false");
+  errorButtonCondition.setAttribute("data-error", " ");
+
 }
 
 /**
@@ -297,12 +304,12 @@ function afficherMessageError(message) {
   }
 
   if (firstTwoCaractere === "#6") {
-    let errorButtonData = document.getElementById("errorButtonData");
-    errorButtonData.setAttribute("data-error-visible", "true");
-    errorButtonData.setAttribute("data-error", message.substring(3));
+    let errorButtonRadio = document.getElementById("errorButtonRadio");
+    errorButtonRadio.setAttribute("data-error-visible", "true");
+    errorButtonRadio.setAttribute("data-error", message.substring(3));
   } else {
-    errorButtonData.removeAttribute("data-error-visible");
-    errorButtonData.removeAttribute("data-error");
+    errorButtonRadio.removeAttribute("data-error-visible");
+    errorButtonRadio.removeAttribute("data-error");
   }
 
   if (firstTwoCaractere === "#7") {
