@@ -8,12 +8,21 @@ function editNav() {
 }
 
 /**
- * DOM elements
+ * const elements
  */
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalClose = document.querySelector(".close");
+const arrayError = [
+  "errorNom",
+  "errorEmail",
+  "errorPrenom",
+  "errorQuantity",
+  "errorBirthday",
+  "errorButtonRadio",
+  "errorButtonCondition",
+];
 
 /**
  * launch modal open
@@ -21,11 +30,34 @@ const modalClose = document.querySelector(".close");
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   //modalInit();
+  initModal();
   modalbg.style.display = "block"; //Onclick
 }
 
 /**
- * init all modal's field  Not need with location.reload() function
+ * fonction which init content modal window
+ */
+function initModal() {
+  let baliseNom = document.forms.reserve.last;
+  baliseNom.value = "";
+  let balisePrenom = document.getElementById("first");
+  balisePrenom.value = "";
+  let baliseEmail = document.getElementById("email");
+  baliseEmail.value = "";
+  let baliseQuantity = document.getElementById("quantity");
+  baliseQuantity.value = "";
+  initBirthday = document.getElementById("birthdate");
+  initBirthday.value = "jj/mm/aaaa";
+  //delete error managment
+  for (let element of arrayError) {
+    let error = document.getElementById(element);
+    error.removeAttribute("data-error-visible");
+    error.removeAttribute("data-error");
+  }
+}
+
+/**
+ * init all modal's field  Not need this with location.reload() function
  */
 
 // function modalInit() {
@@ -38,54 +70,60 @@ function launchModal() {
 //   let baliseQuantity = document.getElementById("quantity");
 //   baliseQuantity.value = "";
 
-//   let errorNom = document.getElementById("errorNom");
-//   errorNom.setAttribute("data-error-visible", "false");
-//   errorNom.setAttribute("data-error", " ");
-//   let errorPrenom = document.getElementById("errorPrenom");
-//   errorPrenom.setAttribute("data-error-visible", "false");
-//   errorPrenom.setAttribute("data-error", " ");
-//   let errorEmail = document.getElementById("errorEmail");
-//   errorEmail.setAttribute("data-error-visible", "false");
-//   errorEmail.setAttribute("data-error", " ");
-//   let errorQuantity = document.getElementById("errorQuantity");
-//   errorQuantity.setAttribute("data-error-visible", "false");
-//   errorQuantity.setAttribute("data-error", " ");
-//   let errorBirthday = document.getElementById("errorBirthday");
-//   errorBirthday.setAttribute("data-error-visible", "false");
-//   errorBirthday.setAttribute("data-error", " ");
-//   initBirthday = document.getElementById("birthdate");
-//   console.log(initBirthday);
-//   initBirthday.value = "jj/mm/aaaa";
-//   let errorButtonRadio = document.getElementById("errorButtonRadio");
-//   errorButtonRadio.setAttribute("data-error-visible", "false");
-//   errorButtonRadio.setAttribute("data-error", " ");
-//   let errorButtonCondition = document.getElementById("errorButtonCondition");
-//   errorButtonCondition.setAttribute("data-error-visible", "false");
-//   errorButtonCondition.setAttribute("data-error", " ");
-// }
-
-
+// let errorNom = document.getElementById("errorNom");
+// errorNom.setAttribute("data-error-visible", "false");
+// errorNom.setAttribute("data-error", " ");
+// let errorPrenom = document.getElementById("errorPrenom");
+// errorPrenom.setAttribute("data-error-visible", "false");
+// errorPrenom.setAttribute("data-error", " ");
+// let errorEmail = document.getElementById("errorEmail");
+// errorEmail.setAttribute("data-error-visible", "false");
+// errorEmail.setAttribute("data-error", " ");
+// let errorQuantity = document.getElementById("errorQuantity");
+// errorQuantity.setAttribute("data-error-visible", "false");
+// errorQuantity.setAttribute("data-error", " ");
+// let errorBirthday = document.getElementById("errorBirthday");
+// errorBirthday.setAttribute("data-error-visible", "false");
+// errorBirthday.setAttribute("data-error", " ");
+// initBirthday = document.getElementById("birthdate");
+// console.log(initBirthday);
+// initBirthday.value = "jj/mm/aaaa";
+// let errorButtonRadio = document.getElementById("errorButtonRadio");
+// errorButtonRadio.setAttribute("data-error-visible", "false");
+// errorButtonRadio.setAttribute("data-error", " ");
+// let errorButtonCondition = document.getElementById("errorButtonCondition");
+// errorButtonCondition.setAttribute("data-error-visible", "false");
+// errorButtonCondition.setAttribute("data-error", " ");
+//}
 
 /**
  * issue #1: fermeture de la modale via Btn(X)
  */
 modalClose.addEventListener("click", closeModal);
 function closeModal() {
+  location.reload();
   modalbg.style.display = "none"; //Onclick
 }
 
 //issue #2 and #3: implemented error message validation form
-
 /**
- * Le champ Prénom a un minimum de 2 caractères / n'est pas vide.
+ * Le champ Prénom a un minimum de 2 caractères / n'est pas vide et sans chiffres.
  * @param {*} nom
  * @returns
  */
 function validerNom(nom) {
   let valid = false;
+  let error = false;
   nom = nom.trim();
-  if (nom.length < 2 || nom.value === "") {
-    throw new Error("#1:Veuillez entrer 2 caractères ou plus...");
+
+  for (let i = 0; i < nom.length; i++) {
+    if (!isNaN(nom[i])) {
+      error = true;
+      break;
+    }
+  }
+  if (nom.length < 2 || nom.value === "" || error) {
+    throw new Error("#1:Veuillez entrer 2 caractères ou plus sans chifffres");
   } else {
     valid = true;
   }
@@ -93,15 +131,23 @@ function validerNom(nom) {
 }
 
 /**
- * Le champ du nom de famille a un minimum de 2 caractères / n'est pas vide.
+ * Le champ du nom de famille a un minimum de 2 caractères / n'est pas vide et sans chiffres.
  * @param {*} prenom
  * @returns
  */
 function validerPrenom(prenom) {
   let valid = false;
+  let error = false;
   prenom = prenom.trim();
-  if (prenom.length < 2 || prenom.value === " ") {
-    throw new Error("#2:Veuillez entrer 2 caractères ou plus...");
+
+  for (let i = 0; i < prenom.length; i++) {
+    if (!isNaN(prenom[i])) {
+      error = true;
+      break;
+    }
+  }
+  if (prenom.length < 2 || prenom.value === " " || error) {
+    throw new Error("#2:Veuillez entrer 2 caractères ou plus sans chiffres");
   } else {
     valid = true;
   }
@@ -146,7 +192,8 @@ function validerQuantity(quantity) {
  */
 function validerBirthday(birthday) {
   let valid = false;
-  let birthdayRegExp = new RegExp(/^\d{4}-\d{2}-\d{2}$/);
+  //entre 1900 & 2999 avec le format "YYYY-MM-DD"
+  let birthdayRegExp = new RegExp(/^(19[0-9]{2}|2[0-9]{3})-\d{2}-\d{2}$/);
   if (!birthdayRegExp.test(birthday)) {
     throw new Error("#5:Vous devez entrer votre date de naissance.");
   } else {
@@ -181,8 +228,8 @@ function validerButtonsRadio(listeBtnRadio) {
 
 /**
  * cette fonction valide le choix des conditions d'utilisations
- * @param {*} conditionUtilisation 
- * @returns 
+ * @param {*} conditionUtilisation
+ * @returns
  */
 function validerButtonCondition(conditionUtilisation) {
   let valid = false;
@@ -198,7 +245,7 @@ function validerButtonCondition(conditionUtilisation) {
 
 /**
  * cette fonction permet de valider l'envoie du formulaire lorsque tous les champs sont
- * remplis sans erreur et recharge la page.
+ * remplis sans erreur et ensuite recharge la page.
  *
  */
 let form = document.querySelector("form");
@@ -246,9 +293,18 @@ form.addEventListener("submit", (event) => {
       //all field are correct
       //modalbg.style.display = "none";
       //#4:envoie confirmation d'envoie réussi
-      let initBlock = document.querySelector(".formConfirmation").style.display = "block"; 
+      //because the last!
+      let errorButtonCondition = document.getElementById(
+        "errorButtonCondition"
+      );
+      errorButtonCondition.setAttribute("data-error-visible", "false");
+      errorButtonCondition.setAttribute("data-error", " ");
+      //send the element HTML
+      let sendBlock = (document.querySelector(
+        ".formConfirmation"
+      ).style.display = "block");
     }
-    location.reload();
+  
   } catch (erreur) {
     console.log(erreur.message);
     afficherMessageError(erreur.message);
@@ -328,5 +384,5 @@ function afficherMessageError(message) {
 }
 
 function validate() {
-  //to have to do
+  //have to do
 }
