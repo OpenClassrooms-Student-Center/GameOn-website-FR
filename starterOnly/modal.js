@@ -43,6 +43,18 @@ function closeModal() {
   });
 }
 
+function validateFirstName() {
+  const firstName = document.getElementById("first");
+  if (firstName.value.length < 2) {
+    showError(
+      firstName,
+      "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
+    );
+  } else {
+    hideError(firstName);
+  }
+}
+
 function validate() {
   //Mettre en var à l'extérieur de la fonction avec un scope plus large
   //GetDataFromForm() pour tout récupérer
@@ -71,7 +83,7 @@ function validate() {
   } else {
     hideError(firstName);
   }
-  
+
   if (firstName.length < 2 || lastName.length < 2) {
     alert("Le prénom et le nom doivent comporter au moins 2 caractères.");
     return false;
@@ -115,15 +127,11 @@ function validateEmail(email) {
 }
 
 function showError(inputElement, errorMessage) {
-  var errorSpan = inputElement.nextElementSibling;
-  errorSpan.textContent = errorMessage;
-  inputElement.setAttribute("data-error-visible", "true");
-  inputElement.setAttribute("data-error", errorMessage);
+  inputElement.parentNode.setAttribute("data-error-visible", "true");
+  inputElement.parentNode.setAttribute("data-error", errorMessage);
 }
 
 function hideError(inputElement) {
-  var errorSpan = inputElement.nextElementSibling;
-  errorSpan.textContent = "";
-  inputElement.setAttribute("data-error-visible", "false");
-  inputElement.setAttribute("data-error", "");
+  inputElement.parentNode.setAttribute("data-error-visible", "false");
+  inputElement.parentNode.setAttribute("data-error", "");
 }
