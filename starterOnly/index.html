@@ -9,7 +9,6 @@
   <script src="modal.js" defer></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" />
-  
 </head>
 
 <body>
@@ -18,7 +17,6 @@
       <img alt="logo" src="Logo.png" width="auto" height="auto" />
     </div>
     <div class="main-navbar">
-
       <a href="#" class="active"><span>Accueil</span></a>
       <a href="#"><span>Détails de l'évènement</span></a>
       <a href="#"><span>À propos</span></a>
@@ -38,53 +36,51 @@
           de jeux vidéos
         </h1>
         <p class="hero-text">
-          Vous aimez jouer ? Notre prochain évènement gaming est ouvert
-          aux réservations... Places limitées !
+          Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux
+          réservations... Places limitées !
         </p>
-        <button class="btn-signup modal-btn">
-          je m'inscris
-        </button>
+        <button class="btn-signup modal-btn">je m'inscris</button>
       </div>
       <div class="hero-img">
-        <img src="./bg_img.jpg" alt="img" />
+        <img src="./bg_img.jpg" alt="imgage-background-du-site" />
       </div>
-      <button class="btn-signup modal-btn">
-        je m'inscris
-      </button>
+      <button class="btn-signup modal-btn">je m'inscris</button>
     </div>
 
     <div class="bground">
       <div class="content">
         <!-- issue #1: fermeture de la modale -->
         <span class="close"> </span>
-        <div 
-            class="formConfirmation">
-            <span>Merci ! Votre réservation a été reçue.</span>
-          </div>
         <div class="modal-body">
+          <span id = "envoyer" style='color: aquamarine; position:absolute;top:50%;left:10%;display:none' 
+              >Merci ! Votre réservation a été reçue.</span
+            >
           <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
-            <div class="formData" id="errorPrenom" >
+            <div class="formData" id="errorPrenom">
               <label for="first">Prénom</label><br>
               <input class="text-control" type="text" id="first" name="first" /><br>
             </div>
             <div class="formData" id="errorNom">
-              <label for="last">Nom</label><br>
+              <label for="last">Nom</label><br />
               <input class="text-control" type="text" id="last" name="last" /><br>
             </div>
             <div class="formData" id="errorEmail">
-              <label for="email">E-mail</label><br>
+              <label for="email">E-mail</label><br />
               <input class="text-control" type="text" id="email" name="email" /><br>
             </div>
 
             <div class="formData" id="errorBirthday">
-              <label for="birthdate">Date de naissance</label><br>
-              <input class="text-control" type="date" id="birthdate" name="birthdate" value="jj/mm/aaaa"/><br>
+              <label for="birthdate">Date de naissance</label><br />
+              <input class="text-control" type="date" id="birthdate" name="birthdate" value="jj/mm/aaaa" /><br>
             </div>
             <div class="formData" id="errorQuantity">
-              <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+              <label for="quantity">À combien de tournois GameOn avez-vous déjà participé
+                ?</label><br />
               <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
             </div>
-            <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
+            <p class="text-label">
+              A quel tournoi souhaitez-vous participer cette année ?
+            </p>
             <div class="formData" id="errorButtonRadio">
               <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
               <label class="checkbox-label" for="location1"><span class="checkbox-icon"></span>New York</label>
@@ -107,13 +103,15 @@
 
             <div class="formData" id="errorButtonCondition">
               <input class="checkbox-input" type="checkbox" id="checkbox1" name="checkbox1" />
-              <label class="checkbox2-label" for="checkbox1" required><span class="checkbox-icon"></span>
-                J'ai lu et accepte les conditions d'utilisation.</label>
-              <br>
+              <label class="checkbox2-label" for="checkbox1" required><span class="checkbox-icon"></span> J'ai lu et
+                accepte les
+                conditions d'utilisation.</label>
+              <br />
               <input class="checkbox-input" type="checkbox" id="checkbox2" name="checkbox2" />
-              <label class="checkbox2-label" for="checkbox2"><span class="checkbox-icon"></span>
-                Je souhaite être prévenu des prochains évènements.</label>
-              <br>
+              <label class="checkbox2-label" for="checkbox2"><span class="checkbox-icon"></span> Je souhaite être
+                prévenu
+                des prochains évènements.</label>
+              <br />
             </div>
             <input class="btn-submit" type="submit" class="button" value="C'est parti" />
           </form>
@@ -122,9 +120,7 @@
     </div>
   </main>
   <footer>
-    <p class="copyrights">
-      Copyright 2014 - 2022, GameOn Inc.
-    </p>
+    <p class="copyrights">Copyright 2014 - 2022, GameOn Inc.</p>
   </footer>
 </body>
 

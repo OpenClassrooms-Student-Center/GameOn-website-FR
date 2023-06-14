@@ -29,7 +29,6 @@ const arrayError = [
  */
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
-  //modalInit();
   initModal();
   modalbg.style.display = "block"; //Onclick
 }
@@ -56,45 +55,12 @@ function initModal() {
   }
 }
 
-/**
- * init all modal's field  Not need this with location.reload() function
- */
-
-// function modalInit() {
-//   let baliseNom = document.forms.reserve.last;
-//   baliseNom.value = "";
-//   let balisePrenom = document.getElementById("first");
-//   balisePrenom.value = "";
-//   let baliseEmail = document.getElementById("email");
-//   baliseEmail.value = "";
-//   let baliseQuantity = document.getElementById("quantity");
-//   baliseQuantity.value = "";
-
-// let errorNom = document.getElementById("errorNom");
-// errorNom.setAttribute("data-error-visible", "false");
-// errorNom.setAttribute("data-error", " ");
-// let errorPrenom = document.getElementById("errorPrenom");
-// errorPrenom.setAttribute("data-error-visible", "false");
-// errorPrenom.setAttribute("data-error", " ");
-// let errorEmail = document.getElementById("errorEmail");
-// errorEmail.setAttribute("data-error-visible", "false");
-// errorEmail.setAttribute("data-error", " ");
-// let errorQuantity = document.getElementById("errorQuantity");
-// errorQuantity.setAttribute("data-error-visible", "false");
-// errorQuantity.setAttribute("data-error", " ");
-// let errorBirthday = document.getElementById("errorBirthday");
-// errorBirthday.setAttribute("data-error-visible", "false");
-// errorBirthday.setAttribute("data-error", " ");
-// initBirthday = document.getElementById("birthdate");
-// console.log(initBirthday);
-// initBirthday.value = "jj/mm/aaaa";
-// let errorButtonRadio = document.getElementById("errorButtonRadio");
-// errorButtonRadio.setAttribute("data-error-visible", "false");
-// errorButtonRadio.setAttribute("data-error", " ");
-// let errorButtonCondition = document.getElementById("errorButtonCondition");
-// errorButtonCondition.setAttribute("data-error-visible", "false");
-// errorButtonCondition.setAttribute("data-error", " ");
-//}
+function sendMessage(){
+  let form = document.getElementsByName("reserve")[0];
+  form.style.opacity = 0.2;
+  let span = document.getElementById("envoyer");
+  span.style.display = "block";
+}
 
 /**
  * issue #1: fermeture de la modale via Btn(X)
@@ -291,18 +257,16 @@ form.addEventListener("submit", (event) => {
 
     if (formValid) {
       //all field are correct
-      //modalbg.style.display = "none";
-      //#4:envoie confirmation d'envoie réussi
+
       //because the last!
       let errorButtonCondition = document.getElementById(
         "errorButtonCondition"
       );
+      //initialisation
       errorButtonCondition.setAttribute("data-error-visible", "false");
       errorButtonCondition.setAttribute("data-error", " ");
-      //send the element HTML
-      let sendBlock = (document.querySelector(
-        ".formConfirmation"
-      ).style.display = "block");
+      //#4:envoie confirmation d'envoie réussi
+      sendMessage();
     }
   
   } catch (erreur) {

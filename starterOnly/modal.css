@@ -14,7 +14,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
+  background-image: url("bg_img.jpg");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -214,6 +214,7 @@ input {
   font-size: 20px;
   height: 48px;
 }
+/*gestion des erreurs************************************/
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.6em;
@@ -239,7 +240,7 @@ input[data-error]::after {
     font-size: 0.4em;
     color: red;
 } 
-
+/*******************************************************/
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -315,6 +316,8 @@ input[data-error]::after {
   cursor: pointer;
   transform: scale(0.7);
 }
+
+/*croix de fermeture*/
 .close:before,
 .close:after {
   position: absolute;
@@ -342,7 +345,7 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
-/* custom select styles */
+/* ****************************************custom select styles *****************************************/
 .custom-select {
   position: relative;
   font-family: Arial;
@@ -408,11 +411,13 @@ input[data-error]::after {
 .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
 }
+/*************************************************************************************************/
 /* custom select end */
 .text-label {
   font-weight: normal;
   font-size: 16px;
 }
+
 .hero-section {
   min-height: 93vh;
   border-radius: 10px;
@@ -525,6 +530,10 @@ footer {
     text-align: center;
   }
 }
+
+/* #envoyer{
+  display:none;
+} */
 
 @keyframes modalopen {
   from {
