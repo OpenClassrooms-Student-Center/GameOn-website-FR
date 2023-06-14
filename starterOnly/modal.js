@@ -47,7 +47,8 @@ function closeModal() {
 const firstName = document.getElementById("first");
 const lastName = document.getElementById("last");
 const email = document.getElementById("email");
-const quantity = document.getElementById("quantity").value;
+const date = document.getElementById("birthdate");
+const quantity = document.getElementById("quantity");
 const locationInputs = document.querySelectorAll('input[name="location"]');
 const checkbox1 = document.getElementById("checkbox1").checked;
 
@@ -75,64 +76,21 @@ function validateEmail() {
   }
 }
 
-function validate() {
-  //Mettre en var à l'extérieur de la fonction avec un scope plus large
-  //GetDataFromForm() pour tout récupérer
-  //Factoriser chaque validation de champ function(nomduchamp, fonction validation)
-  //validateField(input, fonction de validation)
-  //fichier validationfunctions, ou faire en fonction fléchée directement
-
-  var isValid = true;
-
-  // Validation du champ Prénom
-  //Faire une fonction générique, retourner un object avec le message d'erreur, et la var isValid boolean
-  //(field, function fléchée) pour retourner le champ entier avec ou non le message d'erreur (pourquoi pas dans un autre fichier)
-  //Mettre le curseur à l'intérieur du premier champ où il y a une erreur
-  if (firstName.value.length < 2) {
-    isValid = false;
-    showError(
-      firstName,
-      "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
-    );
+function validateDate() {
+  console.log("validateDate()");
+  if (!date.checkValidity()) {
+    showError(date, "Veuillez entrer une date valide.");
   } else {
-    hideError(firstName);
+    hideError(date);
   }
+}
 
-  if (firstName.length < 2 || lastName.length < 2) {
-    alert("Le prénom et le nom doivent comporter au moins 2 caractères.");
-    return false;
+function validateQuantity() {
+  if (!quantity.checkValidity()) {
+    showError(quantity, "Veuillez entrer un nombre entre 0 et 99.");
+  } else {
+    hideError(quantity);
   }
-
-  if (!validateEmail(email)) {
-    alert("Veuillez entrer une adresse e-mail valide.");
-    return false;
-  }
-
-  if (isNaN(quantity) || quantity < 0) {
-    alert(
-      "Veuillez saisir une valeur numérique positive pour le nombre de tournois."
-    );
-    return false;
-  }
-
-  let locationSelected = false;
-  for (let i = 0; i < locationInputs.length; i++) {
-    if (locationInputs[i].checked) {
-      locationSelected = true;
-      break;
-    }
-  }
-  if (!locationSelected) {
-    alert("Veuillez sélectionner une option de tournoi.");
-    return false;
-  }
-
-  if (!checkbox1) {
-    alert("Veuillez accepter les conditions d'utilisation.");
-    return false;
-  }
-
-  return isValid;
 }
 
 function showError(inputElement, errorMessage) {
@@ -144,3 +102,44 @@ function hideError(inputElement) {
   inputElement.parentNode.setAttribute("data-error-visible", "false");
   inputElement.parentNode.setAttribute("data-error", "");
 }
+
+// function validate() {
+//   //Mettre en var à l'extérieur de la fonction avec un scope plus large
+//   //GetDataFromForm() pour tout récupérer
+//   //Factoriser chaque validation de champ function(nomduchamp, fonction validation)
+//   //validateField(input, fonction de validation)
+//   //fichier validationfunctions, ou faire en fonction fléchée directement
+
+//   var isValid = true;
+
+//   // Validation du champ Prénom
+//   //Faire une fonction générique, retourner un object avec le message d'erreur, et la var isValid boolean
+//   //(field, function fléchée) pour retourner le champ entier avec ou non le message d'erreur (pourquoi pas dans un autre fichier)
+//   //Mettre le curseur à l'intérieur du premier champ où il y a une erreur
+
+//   if (isNaN(quantity) || quantity < 0) {
+//     alert(
+//       "Veuillez saisir une valeur numérique positive pour le nombre de tournois."
+//     );
+//     return false;
+//   }
+
+//   let locationSelected = false;
+//   for (let i = 0; i < locationInputs.length; i++) {
+//     if (locationInputs[i].checked) {
+//       locationSelected = true;
+//       break;
+//     }
+//   }
+//   if (!locationSelected) {
+//     alert("Veuillez sélectionner une option de tournoi.");
+//     return false;
+//   }
+
+//   if (!checkbox1) {
+//     alert("Veuillez accepter les conditions d'utilisation.");
+//     return false;
+//   }
+
+//   return isValid;
+// }
