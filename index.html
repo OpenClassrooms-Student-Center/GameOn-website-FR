@@ -68,31 +68,33 @@
                   id="first"
                   name="first"
                   minlength="2"
-                  onfocusout="validateFirstName()"
+                  oninput="validateFirstName()"
                   required
                 /><br />
               </div>
-              <div class="formData">
+              <div class="formData" data-error-visible="false" data-error="">
                 <label for="last">Nom</label><br />
                 <input
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
+                  oninput="validateLastName()"
                   required
                 /><br />
               </div>
-              <div class="formData">
+              <div class="formData" data-error-visible="false" data-error="">
                 <label for="email">E-mail</label><br />
                 <input
                   class="text-control"
                   type="email"
                   id="email"
                   name="email"
+                  oninput="validateEmail()"
                   required
                 /><br />
               </div>
-              <div class="formData">
+              <div class="formData" data-error-visible="false" data-error="">
                 <label for="birthdate">Date de naissance</label><br />
                 <input
                   class="text-control"
@@ -102,7 +104,7 @@
                   required
                 /><br />
               </div>
-              <div class="formData">
+              <div class="formData" data-error-visible="false" data-error="">
                 <label for="quantity"
                   >À combien de tournois GameOn avez-vous déjà participé
                   ?</label
@@ -120,7 +122,12 @@
               <p class="text-label">
                 A quel tournoi souhaitez-vous participer cette année ?
               </p>
-              <div class="formData" required>
+              <div
+                class="formData"
+                data-error-visible="false"
+                data-error=""
+                required
+              >
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -188,7 +195,7 @@
                   Portland
                 </label>
               </div>
-              <div class="formData">
+              <div class="formData" data-error-visible="false" data-error="">
                 <input class="checkbox-input" type="checkbox" id="checkbox1" />
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>

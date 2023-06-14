@@ -43,15 +43,35 @@ function closeModal() {
   });
 }
 
+//Form inputs Elements
+const firstName = document.getElementById("first");
+const lastName = document.getElementById("last");
+const email = document.getElementById("email");
+const quantity = document.getElementById("quantity").value;
+const locationInputs = document.querySelectorAll('input[name="location"]');
+const checkbox1 = document.getElementById("checkbox1").checked;
+
 function validateFirstName() {
-  const firstName = document.getElementById("first");
   if (firstName.value.length < 2) {
-    showError(
-      firstName,
-      "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
-    );
+    showError(firstName, "Veuillez entrer 2 caractères ou plus.");
   } else {
     hideError(firstName);
+  }
+}
+
+function validateLastName() {
+  if (lastName.value.length < 2) {
+    showError(lastName, "Veuillez entrer 2 caractères ou plus.");
+  } else {
+    hideError(lastName);
+  }
+}
+
+function validateEmail() {
+  if (!email.checkValidity()) {
+    showError(email, "Veuillez entrer une adresse e-mail valide.");
+  } else {
+    hideError(email);
   }
 }
 
@@ -61,12 +81,6 @@ function validate() {
   //Factoriser chaque validation de champ function(nomduchamp, fonction validation)
   //validateField(input, fonction de validation)
   //fichier validationfunctions, ou faire en fonction fléchée directement
-  const firstName = document.getElementById("first").value;
-  const lastName = document.getElementById("last").value;
-  const email = document.getElementById("email").value;
-  const quantity = document.getElementById("quantity").value;
-  const locationInputs = document.querySelectorAll('input[name="location"]');
-  const checkbox1 = document.getElementById("checkbox1").checked;
 
   var isValid = true;
 
@@ -119,11 +133,6 @@ function validate() {
   }
 
   return isValid;
-}
-
-function validateEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
 }
 
 function showError(inputElement, errorMessage) {
