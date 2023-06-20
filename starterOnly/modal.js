@@ -7,9 +7,14 @@ function editNav() {
   }
 }
 
+function effacerChamp() {
+  document.getElementById("birthdate").value = "";
+}
+
 /**
  * const elements
  */
+const btnMessage = document.querySelectorAll(".closeBtnMessage");
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
@@ -25,12 +30,30 @@ const arrayError = [
 ];
 
 /**
+ * close message box
+ */
+btnMessage.forEach((btn) => btn.addEventListener("click", closeMessage));
+function closeMessage() {
+  location.reload();
+  modalbg.style.display = "none"; //Onclick
+}
+
+/**
  * launch modal open
  */
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   initModal();
   modalbg.style.display = "block"; //Onclick
+}
+
+/**
+ * issue #1: fermeture de la modale via Btn(X)
+ */
+modalClose.addEventListener("click", closeModal);
+function closeModal() {
+  location.reload();
+  modalbg.style.display = "none"; //Onclick
 }
 
 /**
@@ -55,20 +78,20 @@ function initModal() {
   }
 }
 
-function sendMessage(){
-  let form = document.getElementsByName("reserve")[0];
-  form.style.opacity = 0.2;
-  let span = document.getElementById("envoyer");
-  span.style.display = "block";
-}
-
 /**
- * issue #1: fermeture de la modale via Btn(X)
+ * La fonction affiche un message pour indiquer au joueur que son inscription à été faite
+ * @returns null
  */
-modalClose.addEventListener("click", closeModal);
-function closeModal() {
-  location.reload();
-  modalbg.style.display = "none"; //Onclick
+function sendMessage() {
+  let form = document.getElementsByName("reserve")[0];
+  form.style.display = "none";
+  let div = document.getElementById("message");
+  div.style.display = "flex";
+  div.style.flexDirection = "column";
+  div.style.justifyContent = "start";
+  div.style.alignItems = "center";
+  div.style.gap ="255px";
+  return null;
 }
 
 //issue #2 and #3: implemented error message validation form
@@ -78,22 +101,19 @@ function closeModal() {
  * @returns
  */
 function validerNom(nom) {
-  let valid = false;
-  let error = false;
-  nom = nom.trim();
+  let longueur = false;
 
-  for (let i = 0; i < nom.length; i++) {
-    if (!isNaN(nom[i])) {
-      error = true;
-      break;
-    }
-  }
-  if (nom.length < 2 || nom.value === "" || error) {
-    throw new Error("#1:Veuillez entrer 2 caractères ou plus sans chifffres");
+  const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ\s(--)]+$/;
+  const estValide = regex.test(nom)
+  if (nom.length > 1) { longueur = true };
+
+  let resultat = longueur && estValide;
+
+  if (!resultat) {
+    throw new Error("#1:Veuillez entrer 2 caractères ou plus sans chiffres");
   } else {
-    valid = true;
+    return resultat;
   }
-  return valid;
 }
 
 /**
@@ -102,22 +122,18 @@ function validerNom(nom) {
  * @returns
  */
 function validerPrenom(prenom) {
-  let valid = false;
-  let error = false;
-  prenom = prenom.trim();
+  let longueur = false;
+  const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ\s(--)]+$/;
+  const estValide = regex.test(prenom)
+  if (prenom.length > 1) { longueur = true };
 
-  for (let i = 0; i < prenom.length; i++) {
-    if (!isNaN(prenom[i])) {
-      error = true;
-      break;
-    }
-  }
-  if (prenom.length < 2 || prenom.value === " " || error) {
+  let resultat = longueur && estValide;
+
+  if (!resultat) {
     throw new Error("#2:Veuillez entrer 2 caractères ou plus sans chiffres");
   } else {
-    valid = true;
+    return resultat;
   }
-  return valid;
 }
 
 /**
@@ -129,7 +145,7 @@ function validerEmail(email) {
   let valid = false;
   let emailRegExp = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+");
   if (!emailRegExp.test(email)) {
-    throw new Error("#3:L'email n'est pas valide.");
+    throw new Error("#3:Cet adresse email n'est pas valide.");
   } else {
     valid = true;
   }
@@ -157,13 +173,27 @@ function validerQuantity(quantity) {
  * @returns
  */
 function validerBirthday(birthday) {
-  let valid = false;
-  //entre 1900 & 2999 avec le format "YYYY-MM-DD"
-  let birthdayRegExp = new RegExp(/^(19[0-9]{2}|2[0-9]{3})-\d{2}-\d{2}$/);
-  if (!birthdayRegExp.test(birthday)) {
-    throw new Error("#5:Vous devez entrer votre date de naissance.");
+  let valid = true;
+  const message = "#5:Respecter le format."
+  const dateAujourdhui = new Date();
+  // Analyser la date saisie
+  const [jour, mois, annee] = birthday.split('/').map(Number);
+  if (([jour] <= 0) || ([jour] > 31)) { throw new Error(message); }
+  if (([mois] <= 0) || ([mois] > 12)) { throw new Error(message); }
+
+  // Créer un objet date à partir de la date saisie
+  if ((isNaN([jour]) || isNaN([mois]) || isNaN([annee])) === true) {
+    valid = false;
+    throw new Error(message);
   } else {
-    valid = true;
+    const dateSaisieObj = new Date(annee, mois, jour);
+    // Comparer la date saisie avec la date du jour
+    if (dateSaisieObj > dateAujourdhui) {
+      valid = false;
+      throw new Error(message);
+    } else {
+      valid = true;
+    }
   }
   return valid;
 }
@@ -175,20 +205,16 @@ function validerBirthday(birthday) {
  */
 function validerButtonsRadio(listeBtnRadio) {
   let valid = false;
-  //console.table(listeBtnRadio)
 
   for (let index = 0; index < listeBtnRadio.length; index++) {
     if (listeBtnRadio[index].checked) {
       valid = true;
-      //console.log(valid)
       break; // Sortir de la boucle dès qu'un bouton radio est sélectionné
     }
   }
-
   if (!valid) {
     throw new Error("#6: Vous devez choisir une option.");
   }
-
   return valid;
 }
 
@@ -201,7 +227,7 @@ function validerButtonCondition(conditionUtilisation) {
   let valid = false;
   if (!conditionUtilisation.checked) {
     throw new Error(
-      "#7:Vous devez vérifier que vous acceptez les termes et conditions."
+      "#7:Vous devez acceptez les termes et conditions."
     );
   } else {
     valid = true;
@@ -265,10 +291,11 @@ form.addEventListener("submit", (event) => {
       //initialisation
       errorButtonCondition.setAttribute("data-error-visible", "false");
       errorButtonCondition.setAttribute("data-error", " ");
+
       //#4:envoie confirmation d'envoie réussi
       sendMessage();
     }
-  
+
   } catch (erreur) {
     console.log(erreur.message);
     afficherMessageError(erreur.message);

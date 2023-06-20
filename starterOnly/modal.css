@@ -14,7 +14,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("bg_img.jpg");
+  /* background-image: url("bg_img.jpg"); */
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -305,7 +305,7 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
-/* Btn (X) fermeture de la modale */
+/* Btn (X:croix) fermeture de la modale */
 .close {
   position: absolute;
   right: 15px;
@@ -509,12 +509,15 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 38px;
     white-space: normal;
+    line-height: 52px;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 13px;
+    line-height: 17px;
+    text-align: left;
   }
   .hero-img img {
     border-radius: 10px;
@@ -531,9 +534,11 @@ footer {
   }
 }
 
-/* #envoyer{
-  display:none;
-} */
+#message h2 {
+  width: 100%;
+  text-align: center; 
+  padding-top: 20rem;
+}
 
 @keyframes modalopen {
   from {

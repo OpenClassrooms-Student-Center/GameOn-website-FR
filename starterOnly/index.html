@@ -49,20 +49,21 @@
 
     <div class="bground">
       <div class="content">
-        <!-- issue #1: fermeture de la modale -->
+        <!-- issue #1: fermeture de la modale (span dessine une croix)-->
         <span class="close"> </span>
         <div class="modal-body">
-          <span id = "envoyer" style='color: aquamarine; position:absolute;top:50%;left:10%;display:none' 
-              >Merci ! Votre réservation a été reçue.</span
-            >
+          <div id="message" style="display:none">
+            <h2>Merci pour votre inscription.</h2>
+            <button class="btn-submit closeBtnMessage">Fermer</button>
+          </div>
           <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
-            <div class="formData" id="errorPrenom">
-              <label for="first">Prénom</label><br>
-              <input class="text-control" type="text" id="first" name="first" /><br>
-            </div>
             <div class="formData" id="errorNom">
               <label for="last">Nom</label><br />
               <input class="text-control" type="text" id="last" name="last" /><br>
+            </div>
+            <div class="formData" id="errorPrenom">
+              <label for="first">Prénom</label><br>
+              <input class="text-control" type="text" id="first" name="first" /><br>
             </div>
             <div class="formData" id="errorEmail">
               <label for="email">E-mail</label><br />
@@ -71,7 +72,8 @@
 
             <div class="formData" id="errorBirthday">
               <label for="birthdate">Date de naissance</label><br />
-              <input class="text-control" type="date" id="birthdate" name="birthdate" value="jj/mm/aaaa" /><br>
+              <input class="text-control" type="text" id="birthdate" name="birthdate" placeholder="jj/mm/aaaa"
+                onclick="effacerChamp()" /><br>
             </div>
             <div class="formData" id="errorQuantity">
               <label for="quantity">À combien de tournois GameOn avez-vous déjà participé
