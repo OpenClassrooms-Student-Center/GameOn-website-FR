@@ -41,10 +41,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -70,42 +70,49 @@ img {
   border-radius: 15px;
 }
 
-.topnav .icon {
+.topnav a.icon {
   display: none;
 }
 
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
+  /* burger */
   .topnav a.icon {
     float: right;
     display: block;
   }
 }
 
+/* affichage du menu */
 @media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
+  .topnav.responsive {
+    position: relative;
+  }
+  /* burger */
+  .topnav.responsive a.icon {
     position: absolute;
     right: 0;
     top: 0;
   }
   .topnav.responsive a {
-    float: none;
+    float:none;
     display: block;
     text-align: left;
   }
 }
 
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+/* not necessary ! */
+/* @media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
-} 
+} */
 
 main {
   font-size: 130%;
@@ -117,8 +124,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -176,7 +181,7 @@ main {
 }
 
 .content {
-  margin: 5% auto;
+  margin: 6% auto;
   width: 100%;
   max-width: 500px;
   animation-name: modalopen;
@@ -196,7 +201,7 @@ main {
 
 label {
   font-family: var(--font-default);
-  font-size: 17px;
+  font-size: 14px;
   font-weight: normal;
   display: inline-block;
   margin-bottom: 11px;
@@ -211,13 +216,13 @@ input {
   padding: 8px;
   width: 100%;
   border-radius: 8px;
-  font-size: 20px;
+  font-size: 18px;
   height: 48px;
 }
 /*gestion des erreurs************************************/
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.6em;
+  font-size: 0.625em;
   color: #e54858;
   display: block;
   margin-top: 7px;
@@ -234,12 +239,11 @@ input {
   border: 2px solid #e54858;
 }
 
- 
 input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} 
+  content: attr(data-error);
+  font-size: 0.625em;
+  color: red;
+}
 /*******************************************************/
 .checkbox-label,
 .checkbox2-label {
@@ -339,7 +343,7 @@ input[data-error]::after {
   display: block;
   margin: 0 auto;
   border-radius: 7px;
-  font-size: 1rem;
+  font-size: 0.875rem;
   padding: 12px 82px;
   color: #fff;
   cursor: pointer;
@@ -415,7 +419,7 @@ input[data-error]::after {
 /* custom select end */
 .text-label {
   font-weight: normal;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .hero-section {
@@ -464,7 +468,7 @@ input[data-error]::after {
   outline: none;
   text-transform: capitalize;
   font-size: 1.3rem;
-  padding: 15px 23px;
+  padding: 20px 45px;
   margin: 0;
   margin-top: 59px;
 }
@@ -536,17 +540,16 @@ footer {
 
 #message h2 {
   width: 100%;
-  text-align: center; 
+  text-align: center;
   padding-top: 20rem;
 }
 
 @keyframes modalopen {
   from {
     opacity: 0;
-    transform: translateY(-150px);
+    transform: translateY(-50px);
   }
   to {
     opacity: 1;
   }
 }
-

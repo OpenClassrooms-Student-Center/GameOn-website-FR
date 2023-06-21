@@ -16,6 +16,7 @@
     <div class="header-logo">
       <img alt="logo" src="Logo.png" width="auto" height="auto" />
     </div>
+    <!-- barre de navigation -->
     <div class="main-navbar">
       <a href="#" class="active"><span>Accueil</span></a>
       <a href="#"><span>Détails de l'évènement</span></a>
@@ -57,13 +58,13 @@
             <button class="btn-submit closeBtnMessage">Fermer</button>
           </div>
           <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
-            <div class="formData" id="errorNom">
-              <label for="last">Nom</label><br />
-              <input class="text-control" type="text" id="last" name="last" /><br>
-            </div>
             <div class="formData" id="errorPrenom">
               <label for="first">Prénom</label><br>
               <input class="text-control" type="text" id="first" name="first" /><br>
+            </div>
+            <div class="formData" id="errorNom">
+              <label for="last">Nom</label><br />
+              <input class="text-control" type="text" id="last" name="last" /><br>
             </div>
             <div class="formData" id="errorEmail">
               <label for="email">E-mail</label><br />

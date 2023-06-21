@@ -7,9 +7,9 @@ function editNav() {
   }
 }
 
-function effacerChamp() {
-  document.getElementById("birthdate").value = "";
-}
+// function effacerChamp() {
+//   document.getElementById("birthdate").value = "";
+// }
 
 /**
  * const elements
@@ -62,14 +62,27 @@ function closeModal() {
 function initModal() {
   let baliseNom = document.forms.reserve.last;
   baliseNom.value = "";
+
   let balisePrenom = document.getElementById("first");
   balisePrenom.value = "";
+
   let baliseEmail = document.getElementById("email");
   baliseEmail.value = "";
+
   let baliseQuantity = document.getElementById("quantity");
   baliseQuantity.value = "";
+
   initBirthday = document.getElementById("birthdate");
   initBirthday.value = "jj/mm/aaaa";
+
+  let listeBtnRadio = document.getElementsByName("location");
+  for (let index = 0; index < listeBtnRadio.length; index++) {
+    listeBtnRadio[index].checked = false;
+    }
+  
+  let conditionUtilisation = document.getElementById("checkbox1");
+  conditionUtilisation.checked = false;
+
   //delete error managment
   for (let element of arrayError) {
     let error = document.getElementById(element);
@@ -90,7 +103,7 @@ function sendMessage() {
   div.style.flexDirection = "column";
   div.style.justifyContent = "start";
   div.style.alignItems = "center";
-  div.style.gap ="255px";
+  div.style.gap = "255px";
   return null;
 }
 
@@ -104,13 +117,15 @@ function validerNom(nom) {
   let longueur = false;
 
   const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ\s(--)]+$/;
-  const estValide = regex.test(nom)
-  if (nom.length > 1) { longueur = true };
+  const estValide = regex.test(nom);
+  if (nom.length > 1) {
+    longueur = true;
+  }
 
   let resultat = longueur && estValide;
 
   if (!resultat) {
-    throw new Error("#1:Veuillez entrer 2 caractères ou plus sans chiffres");
+    throw new Error("#1:Veuillez entrer au moins 2 caractères.");
   } else {
     return resultat;
   }
@@ -124,13 +139,15 @@ function validerNom(nom) {
 function validerPrenom(prenom) {
   let longueur = false;
   const regex = /^[a-zA-ZÀ-ÖØ-öø-ÿ\s(--)]+$/;
-  const estValide = regex.test(prenom)
-  if (prenom.length > 1) { longueur = true };
+  const estValide = regex.test(prenom);
+  if (prenom.length > 1) {
+    longueur = true;
+  }
 
   let resultat = longueur && estValide;
 
   if (!resultat) {
-    throw new Error("#2:Veuillez entrer 2 caractères ou plus sans chiffres");
+    throw new Error("#2:Veuillez entrer au moins 2 caractères.");
   } else {
     return resultat;
   }
@@ -174,12 +191,16 @@ function validerQuantity(quantity) {
  */
 function validerBirthday(birthday) {
   let valid = true;
-  const message = "#5:Respecter le format."
+  const message = "#5:Respecter ce format de date: jj/mm/aaaa.";
   const dateAujourdhui = new Date();
   // Analyser la date saisie
-  const [jour, mois, annee] = birthday.split('/').map(Number);
-  if (([jour] <= 0) || ([jour] > 31)) { throw new Error(message); }
-  if (([mois] <= 0) || ([mois] > 12)) { throw new Error(message); }
+  const [jour, mois, annee] = birthday.split("/").map(Number);
+  if ([jour] <= 0 || [jour] > 31) {
+    throw new Error(message);
+  }
+  if ([mois] <= 0 || [mois] > 12) {
+    throw new Error(message);
+  }
 
   // Créer un objet date à partir de la date saisie
   if ((isNaN([jour]) || isNaN([mois]) || isNaN([annee])) === true) {
@@ -226,9 +247,7 @@ function validerButtonsRadio(listeBtnRadio) {
 function validerButtonCondition(conditionUtilisation) {
   let valid = false;
   if (!conditionUtilisation.checked) {
-    throw new Error(
-      "#7:Vous devez acceptez les termes et conditions."
-    );
+    throw new Error("#7:Vous devez acceptez les termes et conditions.");
   } else {
     valid = true;
   }
@@ -246,25 +265,25 @@ form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   try {
-    let baliseNom = document.getElementById("last");
-    let nom = baliseNom.value;
-    let validName = validerNom(nom);
-
     let balisePrenom = document.getElementById("first");
     let prenom = balisePrenom.value;
     let validPrenom = validerPrenom(prenom);
+
+    let baliseNom = document.getElementById("last");
+    let nom = baliseNom.value;
+    let validName = validerNom(nom);
 
     let baliseEmail = document.getElementById("email");
     let email = baliseEmail.value;
     let validEmail = validerEmail(email);
 
-    let baliseQuantity = document.getElementById("quantity");
-    let quantity = baliseQuantity.value;
-    let validQuantity = validerQuantity(quantity);
-
     let baliseBirthday = document.getElementById("birthdate");
     let birthdate = baliseBirthday.value;
     let validBirthday = validerBirthday(birthdate);
+
+    let baliseQuantity = document.getElementById("quantity");
+    let quantity = baliseQuantity.value;
+    let validQuantity = validerQuantity(quantity);
 
     let listeBtnRadio = document.getElementsByName("location");
     let validButtonRadio = validerButtonsRadio(listeBtnRadio);
@@ -295,7 +314,6 @@ form.addEventListener("submit", (event) => {
       //#4:envoie confirmation d'envoie réussi
       sendMessage();
     }
-
   } catch (erreur) {
     console.log(erreur.message);
     afficherMessageError(erreur.message);
