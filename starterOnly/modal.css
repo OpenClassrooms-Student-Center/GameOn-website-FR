@@ -244,7 +244,7 @@ input[data-error]::after {
   font-size: 0.625em;
   color: red;
 }
-/*******************************************************/
+/**********************************boutons radios*********************/
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -349,7 +349,7 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
-/* ****************************************custom select styles *****************************************/
+/* ****************************************custom select styles Not Used*****************************************/
 .custom-select {
   position: relative;
   font-family: Arial;
