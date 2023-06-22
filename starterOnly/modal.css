@@ -104,7 +104,7 @@ img {
 }
 
 /* not necessary ! */
-/* @media screen and (max-width: 540px) {
+@media screen and (max-width: 540px) {
   .topnav a {
     display: none;
   }
@@ -112,7 +112,7 @@ img {
     float: right;
     display: block;
   }
-} */
+}
 
 main {
   font-size: 130%;
