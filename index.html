@@ -59,6 +59,7 @@
               action="index.html"
               method="get"
               onsubmit="return validate();"
+              novalidate
             >
               <div class="formData" data-error-visible="false" data-error="">
                 <label for="first">Prénom</label><br />
@@ -68,7 +69,6 @@
                   id="first"
                   name="first"
                   minlength="2"
-                  oninput="validateFirstName()"
                   required
                 /><br />
               </div>
@@ -79,7 +79,6 @@
                   type="text"
                   id="last"
                   name="last"
-                  oninput="validateLastName()"
                   required
                 /><br />
               </div>
@@ -90,7 +89,6 @@
                   type="email"
                   id="email"
                   name="email"
-                  oninput="validateEmail()"
                   required
                 /><br />
               </div>
@@ -102,11 +100,11 @@
                   id="birthdate"
                   name="birthdate"
                   min="1899-01-01"
-                  onkeypress="validateDate()"
+                  max=""
                   required
                 /><br />
               </div>
-              <div class="formData" data-error-visible="true" data-error="test">
+              <div class="formData" data-error-visible="false" data-error="">
                 <label for="quantity"
                   >À combien de tournois GameOn avez-vous déjà participé
                   ?</label
@@ -118,7 +116,6 @@
                   name="quantity"
                   min="0"
                   max="99"
-                  oninput="validateQuantity()"
                   required
                 />
               </div>
@@ -127,8 +124,8 @@
               </p>
               <div
                 class="formData"
-                data-error-visible="true"
-                data-error="test"
+                data-error-visible="false"
+                data-error=""
                 required
               >
                 <input
@@ -198,7 +195,7 @@
                   Portland
                 </label>
               </div>
-              <div class="formData" data-error-visible="true" data-error="test">
+              <div class="formData" data-error-visible="false" data-error="">
                 <input class="checkbox-input" type="checkbox" id="checkbox1" />
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
@@ -213,13 +210,25 @@
                 <br />
               </div>
               <input
-                class="btn-submit"
+                class="button btn-submit"
                 type="submit"
-                class="button"
                 value="C'est parti"
               />
             </form>
-            
+
+            <div class="thanks">
+              <p>
+                Merci pour <br />
+                votre inscription
+              </p>
+              <input
+                class="button btn-submit"
+                type="submit"
+                value="Fermer"
+                onclick="closeModal()"
+              />
+              <span class="close" onclick="closeModal()"></span>
+            </div>
           </div>
         </div>
       </div>

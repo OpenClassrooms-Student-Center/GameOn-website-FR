@@ -478,6 +478,36 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+/* THANKS */
+.modal-body .thanks {
+  display: none;
+  padding: 250px 0 17.19px
+}
+
+.thanks p {
+  margin-bottom: 250px;
+  font-size: 36px;
+  line-height: 142.6%;
+  text-align: center;
+}
+
+.thanks .btn-close {
+  display: block;
+  margin: 0 auto;
+  padding: 11px 67px;
+}
+
+@media screen and (max-width: 768px) {
+  .modal-body .thanks {
+    margin: 56vw 0 5.072vw
+  }
+
+  .thanks p {
+    margin-bottom: 62vw;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
