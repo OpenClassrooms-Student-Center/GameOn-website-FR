@@ -1,3 +1,4 @@
+/*managment menu*/
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -7,9 +8,9 @@ function editNav() {
   }
 }
 
-// function effacerChamp() {
-//   document.getElementById("birthdate").value = "";
-// }
+function effacerChamp() {
+  document.getElementById("birthdate").value = "";
+}
 
 /**
  * const elements
@@ -19,15 +20,6 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalClose = document.querySelector(".close");
-const arrayError = [
-  "errorNom",
-  "errorEmail",
-  "errorPrenom",
-  "errorQuantity",
-  "errorBirthday",
-  "errorButtonRadio",
-  "errorButtonCondition",
-];
 
 /**
  * close message box
@@ -48,7 +40,7 @@ function launchModal() {
 }
 
 /**
- * issue #1: fermeture de la modale via Btn(X)
+ * issue #1: fermeture de la modal via Btn(X)
  */
 modalClose.addEventListener("click", closeModal);
 function closeModal() {
@@ -57,7 +49,7 @@ function closeModal() {
 }
 
 /**
- * fonction which init content modal window
+ * fonction which init content modal
  */
 function initModal() {
   let baliseNom = document.forms.reserve.last;
@@ -82,17 +74,11 @@ function initModal() {
   
   let conditionUtilisation = document.getElementById("checkbox1");
   conditionUtilisation.checked = false;
-
-  //delete error managment
-  for (let element of arrayError) {
-    let error = document.getElementById(element);
-    error.removeAttribute("data-error-visible");
-    error.removeAttribute("data-error");
-  }
 }
 
 /**
  * La fonction affiche un message pour indiquer au joueur que son inscription à été faite
+ * [0] indique le premier element de la collection form
  * @returns null
  */
 function sendMessage() {
@@ -111,7 +97,7 @@ function sendMessage() {
 /**
  * Le champ Prénom a un minimum de 2 caractères / n'est pas vide et sans chiffres.
  * @param {*} nom
- * @returns
+ * @returns false or true
  */
 function validerNom(nom) {
   let longueur = false;
@@ -125,7 +111,7 @@ function validerNom(nom) {
   let resultat = longueur && estValide;
 
   if (!resultat) {
-    throw new Error("#1:Veuillez entrer au moins 2 caractères.");
+    throw new Error("#1:Entrer au moins 2 caractères.");
   } else {
     return resultat;
   }
@@ -134,7 +120,7 @@ function validerNom(nom) {
 /**
  * Le champ du nom de famille a un minimum de 2 caractères / n'est pas vide et sans chiffres.
  * @param {*} prenom
- * @returns
+ * @returns false or true
  */
 function validerPrenom(prenom) {
   let longueur = false;
@@ -147,7 +133,7 @@ function validerPrenom(prenom) {
   let resultat = longueur && estValide;
 
   if (!resultat) {
-    throw new Error("#2:Veuillez entrer au moins 2 caractères.");
+    throw new Error("#2:Entrer au moins 2 caractères.");
   } else {
     return resultat;
   }
@@ -156,13 +142,13 @@ function validerPrenom(prenom) {
 /**
  * L'adresse électronique dois etre valide.
  * @param {*} email
- * @returns
+ * @returns false or true
  */
 function validerEmail(email) {
   let valid = false;
   let emailRegExp = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+");
   if (!emailRegExp.test(email)) {
-    throw new Error("#3:Cet adresse email n'est pas valide.");
+    throw new Error("#3:L'adresse email n'est pas valide.");
   } else {
     valid = true;
   }
@@ -172,12 +158,12 @@ function validerEmail(email) {
 /**
  * Pour le nombre de concours, une valeur numérique dois etre saisie.
  * @param {*} quantity
- * @returns
+ * @returns false or true
  */
 function validerQuantity(quantity) {
   let valid = false;
   if (quantity === "") {
-    throw new Error("#4:Vous devez répondre à la question.");
+    throw new Error("#4:La réponse est obligatoire.");
   } else {
     valid = true;
   }
@@ -185,13 +171,13 @@ function validerQuantity(quantity) {
 }
 
 /**
- * La date de naissance dois etre valide.
+ * La date de naissance dois etre valide et inférieure à la date du jour.
  * @param {*} birthday
- * @returns
+ * @returns false or true
  */
 function validerBirthday(birthday) {
   let valid = true;
-  const message = "#5:Respecter ce format de date: jj/mm/aaaa.";
+  const message = "#5:Respecter le format de date.";
   const dateAujourdhui = new Date();
   // Analyser la date saisie
   const [jour, mois, annee] = birthday.split("/").map(Number);
@@ -220,9 +206,9 @@ function validerBirthday(birthday) {
 }
 
 /**
- * cette fonction retourne true si il y a un bouton radio de coché
+ * cette fonction retourne true si il y a au moins un bouton radio de coché
  * @param {*} listeBtnRadio
- * @returns
+ * @returns false or true
  */
 function validerButtonsRadio(listeBtnRadio) {
   let valid = false;
@@ -242,12 +228,12 @@ function validerButtonsRadio(listeBtnRadio) {
 /**
  * cette fonction valide le choix des conditions d'utilisations
  * @param {*} conditionUtilisation
- * @returns
+ * @returns false or true
  */
 function validerButtonCondition(conditionUtilisation) {
   let valid = false;
   if (!conditionUtilisation.checked) {
-    throw new Error("#7:Vous devez acceptez les termes et conditions.");
+    throw new Error("#7:Vous devez acceptez les conditions.");
   } else {
     valid = true;
   }
@@ -256,7 +242,7 @@ function validerButtonCondition(conditionUtilisation) {
 
 /**
  * cette fonction permet de valider l'envoie du formulaire lorsque tous les champs sont
- * remplis sans erreur et ensuite recharge la page.
+ * remplis sans erreur et envoie un message de confirmation.
  *
  */
 let form = document.querySelector("form");
@@ -307,11 +293,11 @@ form.addEventListener("submit", (event) => {
       let errorButtonCondition = document.getElementById(
         "errorButtonCondition"
       );
-      //initialisation
+      //Efface les messges d'erreurs
       errorButtonCondition.setAttribute("data-error-visible", "false");
       errorButtonCondition.setAttribute("data-error", " ");
 
-      //#4:envoie confirmation d'envoie réussi
+      //#4:envoie la confirmation de l'envoie 
       sendMessage();
     }
   } catch (erreur) {
@@ -326,11 +312,13 @@ form.addEventListener("submit", (event) => {
  * @param {string} message
  */
 function afficherMessageError(message) {
+  /*recupère le numero de l'erreur*/
   let firstTwoCaractere = message.substring(0, 2);
 
   if (firstTwoCaractere === "#1") {
     let errorNom = document.getElementById("errorNom");
     errorNom.setAttribute("data-error-visible", "true");
+    /*recupère le message d'erreur seulement*/
     errorNom.setAttribute("data-error", message.substring(3));
   } else {
     errorNom.removeAttribute("data-error-visible");
