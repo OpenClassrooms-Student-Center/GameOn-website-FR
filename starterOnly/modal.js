@@ -53,6 +53,7 @@ const locationInputs = document.querySelectorAll('input[name="location"]');
 const checkbox1 = document.getElementById("checkbox1").checked;
 
 function validateFirstName() {
+  let isValid = false;
   if (firstName.value.length < 2) {
     showError(firstName, "Veuillez entrer 2 caractères ou plus.");
   } else {

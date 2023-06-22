@@ -101,11 +101,12 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                  oninput="validateDate()"
+                  min="1899-01-01"
+                  onkeypress="validateDate()"
                   required
                 /><br />
               </div>
-              <div class="formData" data-error-visible="false" data-error="">
+              <div class="formData" data-error-visible="true" data-error="test">
                 <label for="quantity"
                   >À combien de tournois GameOn avez-vous déjà participé
                   ?</label
@@ -126,8 +127,8 @@
               </p>
               <div
                 class="formData"
-                data-error-visible="false"
-                data-error=""
+                data-error-visible="true"
+                data-error="test"
                 required
               >
                 <input
@@ -197,7 +198,7 @@
                   Portland
                 </label>
               </div>
-              <div class="formData" data-error-visible="false" data-error="">
+              <div class="formData" data-error-visible="true" data-error="test">
                 <input class="checkbox-input" type="checkbox" id="checkbox1" />
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
@@ -218,6 +219,7 @@
                 value="C'est parti"
               />
             </form>
+            
           </div>
         </div>
       </div>
