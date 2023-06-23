@@ -233,7 +233,7 @@ function validerButtonsRadio(listeBtnRadio) {
 function validerButtonCondition(conditionUtilisation) {
   let valid = false;
   if (!conditionUtilisation.checked) {
-    throw new Error("#7:Vous devez acceptez les conditions.");
+    throw new Error("#7:Vous devez acceptez les conditions d'utilisation.");
   } else {
     valid = true;
   }
