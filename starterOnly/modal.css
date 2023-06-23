@@ -196,6 +196,12 @@ label {
   display: inline-block;
   margin-bottom: 11px;
 }
+
+.required-input::after {
+  content: " *";
+  color: #fe142f;
+}
+
 input {
   padding: 8px;
   border: 0.8px solid #ccc;
@@ -482,22 +488,16 @@ footer {
 /* THANKS */
 .modal-body .thanks {
   display: none;
-  padding: 250px 0 17.19px
+  /* padding: 250px 0 17.19px */
 }
 
 .thanks p {
-  margin-bottom: 250px;
+  /* margin-bottom: 250px; */
   font-size: 36px;
-  line-height: 142.6%;
+  line-height: 51.34px;
   text-align: center;
 }
-
-.thanks .btn-close {
-  display: block;
-  margin: 0 auto;
-  padding: 11px 67px;
-}
-
+/* Ne pas oublier de modifier le responsive */
 @media screen and (max-width: 768px) {
   .modal-body .thanks {
     margin: 56vw 0 5.072vw

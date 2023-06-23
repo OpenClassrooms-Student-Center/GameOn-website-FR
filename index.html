@@ -58,11 +58,11 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+              onsubmit="return validate(event);"
               novalidate
             >
               <div class="formData" data-error-visible="false" data-error="">
-                <label for="first">Prénom</label><br />
+                <label for="first" class="required-input">Prénom</label><br />
                 <input
                   class="text-control"
                   type="text"
@@ -73,17 +73,18 @@
                 /><br />
               </div>
               <div class="formData" data-error-visible="false" data-error="">
-                <label for="last">Nom</label><br />
+                <label for="last" class="required-input">Nom</label><br />
                 <input
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
+                  minlength="2"
                   required
                 /><br />
               </div>
               <div class="formData" data-error-visible="false" data-error="">
-                <label for="email">E-mail</label><br />
+                <label for="email" class="required-input">E-mail</label><br />
                 <input
                   class="text-control"
                   type="email"
@@ -93,7 +94,9 @@
                 /><br />
               </div>
               <div class="formData" data-error-visible="false" data-error="">
-                <label for="birthdate">Date de naissance</label><br />
+                <label for="birthdate" class="required-input"
+                  >Date de naissance</label
+                ><br />
                 <input
                   class="text-control"
                   type="date"
@@ -105,7 +108,7 @@
                 /><br />
               </div>
               <div class="formData" data-error-visible="false" data-error="">
-                <label for="quantity"
+                <label for="quantity" class="required-input"
                   >À combien de tournois GameOn avez-vous déjà participé
                   ?</label
                 ><br />
@@ -119,14 +122,13 @@
                   required
                 />
               </div>
-              <p class="text-label">
+              <p class="text-label required-input">
                 A quel tournoi souhaitez-vous participer cette année ?
               </p>
               <div
                 class="formData"
                 data-error-visible="false"
                 data-error=""
-                required
               >
                 <input
                   class="checkbox-input"
@@ -134,6 +136,7 @@
                   id="location1"
                   name="location"
                   value="New York"
+                  required
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -145,6 +148,7 @@
                   id="location2"
                   name="location"
                   value="San Francisco"
+                  required
                 />
                 <label class="checkbox-label" for="location2">
                   <span class="checkbox-icon"></span>
@@ -156,6 +160,7 @@
                   id="location3"
                   name="location"
                   value="Seattle"
+                  required
                 />
                 <label class="checkbox-label" for="location3">
                   <span class="checkbox-icon"></span>
@@ -167,6 +172,7 @@
                   id="location4"
                   name="location"
                   value="Chicago"
+                  required
                 />
                 <label class="checkbox-label" for="location4">
                   <span class="checkbox-icon"></span>
@@ -178,6 +184,7 @@
                   id="location5"
                   name="location"
                   value="Boston"
+                  required
                 />
                 <label class="checkbox-label" for="location5">
                   <span class="checkbox-icon"></span>
@@ -189,6 +196,7 @@
                   id="location6"
                   name="location"
                   value="Portland"
+                  required
                 />
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
@@ -196,8 +204,13 @@
                 </label>
               </div>
               <div class="formData" data-error-visible="false" data-error="">
-                <input class="checkbox-input" type="checkbox" id="checkbox1" />
-                <label class="checkbox2-label" for="checkbox1" required>
+                <input
+                  class="checkbox-input"
+                  type="checkbox"
+                  id="checkbox1"
+                  required
+                />
+                <label class="checkbox2-label required-input" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
@@ -209,11 +222,7 @@
                 </label>
                 <br />
               </div>
-              <input
-                class="button btn-submit"
-                type="submit"
-                value="C'est parti"
-              />
+              <input class="btn-submit" type="submit" value="C'est parti" />
             </form>
 
             <div class="thanks">
@@ -222,12 +231,11 @@
                 votre inscription
               </p>
               <input
-                class="button btn-submit"
+                class="btn-submit"
                 type="submit"
                 value="Fermer"
                 onclick="closeModal()"
               />
-              <span class="close" onclick="closeModal()"></span>
             </div>
           </div>
         </div>
