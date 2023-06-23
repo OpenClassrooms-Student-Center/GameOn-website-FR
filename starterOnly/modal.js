@@ -134,6 +134,3 @@ function validate(event) {
     });
   }
 }
-modalbg.style.display = "block";
-modalForm.style.display = "none";
-modalThanks.style.display = "block";

@@ -485,27 +485,19 @@ footer {
   margin: 0 20px;
 }
 
-/* THANKS */
+/* Confirmation de l'inscription */
 .modal-body .thanks {
   display: none;
-  /* padding: 250px 0 17.19px */
 }
 
 .thanks p {
-  /* margin-bottom: 250px; */
+  height: 75vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 36px;
   line-height: 51.34px;
   text-align: center;
-}
-/* Ne pas oublier de modifier le responsive */
-@media screen and (max-width: 768px) {
-  .modal-body .thanks {
-    margin: 56vw 0 5.072vw
-  }
-
-  .thanks p {
-    margin-bottom: 62vw;
-  }
 }
 
 @media screen and (max-width: 800px) {
