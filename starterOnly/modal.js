@@ -1,3 +1,4 @@
+// Responsive de la barre de navigation
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -28,9 +29,10 @@ function launchModal() {
   modalcontent.style.animationName = "modalopen";
 }
 
-// Fermer le formulaire
+// Déclencher la fermeture du formulaire
 modalCloseBtn.addEventListener("click", closeModal);
 
+// Fermer le formulaire
 function closeModal() {
   const closeAnimation = "modalclose 0.8s";
 
@@ -59,6 +61,7 @@ const checkbox1 = document.getElementById("checkbox1");
 // Aucune limite d'âge
 birthdate.max = new Date().toISOString().split("T")[0];
 
+// Fonction générique de validation de chaque champ du formulaire
 function validateInput(inputElement, errorMessage) {
   if (!inputElement.checkValidity()) {
     showError(inputElement, errorMessage);
@@ -67,6 +70,7 @@ function validateInput(inputElement, errorMessage) {
   }
 }
 
+// Fonctions pour faire apparaître ou disparaître une erreur sous un champ
 function showError(inputElement, errorMessage) {
   inputElement.parentNode.setAttribute("data-error-visible", "true");
   inputElement.parentNode.setAttribute("data-error", errorMessage);
@@ -115,8 +119,11 @@ function validate(event) {
   var errorElements = document.querySelectorAll(
     '.formData[data-error-visible="true"]'
   );
+
   // Empêcher la fermeture automatique du formulaire
   event.preventDefault();
+
+  // S'il existe au moins une erreur
   if (errorElements.length > 0) {
     // Définir le focus sur le premier champ en erreur
     errorElements[0].querySelector(".text-control").focus();
@@ -134,6 +141,7 @@ function validate(event) {
     });
 
     // Réinitialiser le formulaire (pour Firefox)
+    // pour avoir un formulaire vierge au rafraîchissement de la page
     modalForm.reset();
   }
 }
