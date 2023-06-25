@@ -132,5 +132,8 @@ function validate(event) {
       button.style.backgroundColor = "#3876ac";
       button.style.cursor = "default";
     });
+
+    // Réinitialiser le formulaire (pour Firefox)
+    modalForm.reset();
   }
 }
