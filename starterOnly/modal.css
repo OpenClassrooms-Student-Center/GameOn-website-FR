@@ -28,6 +28,7 @@ p {
 
 img {
   padding-right: 1rem;
+  object-fit: cover; /* ADDED for main img to be not stretched */
 }
 
 .topnav {
@@ -64,8 +65,18 @@ img {
   border-radius: 15px;
 }
 
+/* ADDED border active nav */
+.topnav a.active:after {
+  content: "";
+  display: block; 
+  width: 100%;
+  padding-top: 1px;
+  border-bottom: 2px solid #ffffff;
+}
+
 .topnav .icon {
   display: none;
+  color: #ff0000; /* ADDED */
 }
 
 @media screen and (max-width: 768px) {
@@ -97,7 +108,7 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    /* margin-top: -15px; REMOVED for icon menu aligns with logo header  */ 
   }
 } 
 
@@ -141,7 +152,7 @@ main {
 
 .button {
   background: #fe142f;
-  margin-top: 0.5em;
+  margin-top: 1.5em;
   padding: 1em;
   color: #fff;
   border-radius: 15px;
@@ -193,6 +204,7 @@ label {
   font-size: 17px;
   font-weight: normal;
   display: inline-block;
+  margin-top: 11px; /* ADDED for question quantity tournament */
   margin-bottom: 11px;
 }
 input {
@@ -210,12 +222,12 @@ input {
 }
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
+  font-size: 0.5em;
   color: #e54858;
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  /* text-align: left; REMOVED */
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -226,12 +238,6 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -332,6 +338,11 @@ input[data-error]::after {
   color: #fff;
   cursor: pointer;
   border: 0;
+  margin-top: 20px;
+}
+/* ADDED */
+.btn-submit:hover {
+  background: #3876ac;
 }
 /* custom select styles */
 .custom-select {
@@ -402,7 +413,7 @@ input[data-error]::after {
 /* custom select end */
 .text-label {
   font-weight: normal;
-  font-size: 16px;
+  font-size: 16.5px;
 }
 .hero-section {
   min-height: 93vh;
@@ -478,6 +489,15 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+/* ADDED to avoid that the title goes out of the div*/
+@media screen and (max-width: 995px) {
+  .hero-headline {
+    font-size: 4.5rem;
+  }
+  
+}
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
@@ -487,6 +507,7 @@ footer {
     background: #fff;
     color: #000;
     padding: 20px;
+    min-width: auto; /* ADDED */
   }
   .hero-content::after {
     content: unset;
@@ -517,6 +538,17 @@ footer {
   }
 }
 
+/* ADDED */
+@media screen and (max-width: 400px) {
+  /* put logo and icon menu in same line  */
+  .header-logo { 
+    width: 80%;
+  }
+  .hero-headline {
+    font-size: 3.5rem;
+  }
+}
+
 @keyframes modalopen {
   from {
     opacity: 0;
@@ -526,4 +558,3 @@ footer {
     opacity: 1;
   }
 }
-
