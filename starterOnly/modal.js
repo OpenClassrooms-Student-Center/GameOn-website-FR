@@ -41,7 +41,11 @@ function validate() {
   const last = form["last"].value;
   const Email = form["email"].value;
   const birthdate = form["birthdate"].value;
+  const birthdateForAge = new Date(birthdate);
   const quantity = form["quantity"].value;
+  //verifier l'age 
+  const currentDate = new Date();
+  const age = currentDate.getFullYear() - birthdateForAge.getFullYear();
 
   //pour le prenom
   if (first === "" || first.length < 2) {
@@ -85,15 +89,24 @@ function validate() {
     validateEmail.setAttribute("data-error-visible", "false");
     validateEmail.removeAttribute("data-error", "Veuillez saisir votre email.");
   }
+ 
   //pour la date de naissance
-  if (birthdate === "") {
+  if (birthdate === ""  ) {
     validateBirthdate.setAttribute("data-error-visible", "true");
     validateBirthdate.setAttribute(
       "data-error",
       "Vous devez entrer votre date de naissance"
     );
 
-    return false;
+    return false;}
+    else if (age < 16 ) {
+      validateBirthdate.setAttribute("data-error-visible", "true");
+      validateBirthdate.setAttribute(
+        "data-error",
+        "Vous devez avoir au moins 16 ans"
+      );
+  
+      return false;
   } else {
     validateBirthdate.setAttribute("data-error-visible", "false");
     validateBirthdate.removeAttribute(
@@ -101,6 +114,7 @@ function validate() {
       "Vous devez entrer votre date de naissance"
     );
   }
+ 
   //pour la quantité
   if (isNaN(quantity) || quantity === "") {
     validateQuantity.setAttribute("data-error-visible", "true");
