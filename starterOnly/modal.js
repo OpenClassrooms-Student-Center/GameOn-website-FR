@@ -209,7 +209,7 @@ document
 
 //ferme le modal
 function close_modal(e) {
-  e.preventDefault;
+  e.preventDefault();
   modalbg.style.display = "none";
 }
 ////ecoute  le click de closeModal
