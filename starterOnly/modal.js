@@ -27,56 +27,8 @@ function close_modal(e) {
 }
 document.getElementById("closeModal").addEventListener("click", close_modal);
 
-// function validate() {
-//   // Get the values of the form fields
-//   var first = document.forms["reserve"]["first"].value;
-//   var last = document.forms["reserve"]["last"].value;
-//   var Email = document.forms["reserve"]["email"].value;
 
-// // Sélectionnez l'élément avec la classe "formData"
-// var formDataElement = document.querySelector('.formData');
-
-//   // Perform the validations
-//   if (first === "" || first.length < 2) {
-//   // Ajoutez l'attribut "data-error" à l'élément
-// formDataElement.setAttribute('data-error', 'valeur-de-lattribut');
-
-// // Ajoutez l'attribut "data-error-visible" à l'élément
-// formDataElement.setAttribute('data-error-visible', 'true');
-//     return false; // Prevent form submission
-//   }
-
-//   if (last === "" || last.length < 2) {
-// // Ajoutez l'attribut "data-error" à l'élément
-// formDataElement.setAttribute('data-error', 'valeur-de-lattribut');
-
-// // Ajoutez l'attribut "data-error-visible" à l'élément
-// formDataElement.setAttribute('data-error-visible', 'true');
-//     return false; // Prevent form submission
-//   }
-//   if (Email === "") {
-// // Ajoutez l'attribut "data-error" à l'élément
-// formDataElement.setAttribute('data-error', 'valeur-de-lattribut');
-
-// // Ajoutez l'attribut "data-error-visible" à l'élément
-// formDataElement.setAttribute('data-error-visible', 'true');
-//     return false; // Prevent form submission
-//   }
-//   // the other validation
-
-//   // if all its ok the form will be submitted
-//   return true;
-// }
-// var form = document.forms["reserve"];
-
-// Ajoutez un écouteur d'événements pour l'événement "submit"
-// form.addEventListener("submit", function(e) {
-//   // Empêchez l'envoi du formulaire si la validation échoue
-//   if (!validate()) {
-//     e.preventDefault();
-//   }
-// });
-
+///validate 
 function validate() {
   var form = document.forms["reserve"];
   var formDataElement = document.querySelector(".formData");
@@ -85,35 +37,51 @@ function validate() {
   var validateEmail = document.querySelector(".email");
   var validateBirthdate = document.querySelector(".birthdate");
   var validateQuantity = document.querySelector(".quantity");
-
+  var validateRadioButtons = document.querySelector(".location");
+  var radioButtons = document.getElementsByName("location");
+  var isChecked = false;
+  var validateRadioConditions = document.querySelector(".checkboxCondition");
+  var Conditions = document.getElementById("checkbox1");
+  var isCheckedConditions = false;
   var first = form["first"].value;
   var last = form["last"].value;
   var Email = form["email"].value;
   var birthdate = form["birthdate"].value;
   var quantity = form["quantity"].value;
+
+//for first
   if (first === "" || first.length < 2) {
     validateFirst.setAttribute("data-error-visible", "true");
-    validateFirst.setAttribute("data-error", "Veuillez saisir votre prénom.");
+    validateFirst.setAttribute(
+      "data-error",
+      "Veuillez entrer 2 caractères ou plus pour le champ du Prénom"
+    );
 
     return false;
   } else {
     validateFirst.setAttribute("data-error-visible", "false");
     validateFirst.removeAttribute(
       "data-error",
-      "Veuillez saisir votre prénom."
+      "Veuillez entrer 2 caractères ou plus pour le champ du Prénom"
     );
   }
-
+//for last 
   if (last === "" || last.length < 2) {
     validateLast.setAttribute("data-error-visible", "true");
-    validateLast.setAttribute("data-error", "Veuillez saisir votre nom.");
+    validateLast.setAttribute(
+      "data-error",
+      "Veuillez entrer 2 caractères ou plus pour le champ du nom"
+    );
 
     return false;
   } else {
     validateLast.setAttribute("data-error-visible", "false");
-    validateLast.removeAttribute("data-error", "Veuillez saisir votre nom.");
+    validateLast.removeAttribute(
+      "data-error",
+      "Veuillez entrer 2 caractères ou plus pour le champ du nom"
+    );
   }
-
+//for email
   if (Email === "") {
     validateEmail.setAttribute("data-error-visible", "true");
     validateEmail.setAttribute("data-error", "Veuillez saisir votre email");
@@ -123,11 +91,12 @@ function validate() {
     validateEmail.setAttribute("data-error-visible", "false");
     validateEmail.removeAttribute("data-error", "Veuillez saisir votre email.");
   }
+  //for birthdate
   if (birthdate === "") {
     validateBirthdate.setAttribute("data-error-visible", "true");
     validateBirthdate.setAttribute(
       "data-error",
-      "Veuillez saisir votre date de naissance "
+      "Vous devez entrer votre date de naissance"
     );
 
     return false;
@@ -135,10 +104,10 @@ function validate() {
     validateBirthdate.setAttribute("data-error-visible", "false");
     validateBirthdate.removeAttribute(
       "data-error",
-      "Veuillez saisir votre date de naissance."
+      "Vous devez entrer votre date de naissance"
     );
   }
-
+//for quantity
   if (isNaN(quantity) || quantity === "") {
     validateQuantity.setAttribute("data-error-visible", "true");
     validateQuantity.setAttribute(
@@ -154,7 +123,48 @@ function validate() {
       "Veuillez saisir une valeur numérique"
     );
   }
+//for radioButtons
+  for (var i = 0; i < radioButtons.length; i++) {
+    if (radioButtons[i].checked) {
+      isChecked = true;
+      break;
+    }
+  }
 
+  if (!isChecked) {
+    validateRadioButtons.setAttribute("data-error-visible", "true");
+    validateRadioButtons.setAttribute(
+      "data-error",
+      "Vous devez choisir une option."
+    );
+    return false;
+  } else {
+    validateRadioButtons.setAttribute("data-error-visible", "false");
+    validateRadioButtons.removeAttribute(
+      "data-error",
+      "Veuillez saisir une valeur numérique"
+    );
+  }
+
+  //check Conditions
+  if (Conditions.checked) {
+    isCheckedConditions = true;
+    validateRadioConditions.setAttribute("data-error-visible", "false");
+    validateRadioConditions.removeAttribute(
+      "data-error",
+      "Vous devez vérifier que vous acceptez les termes et conditions"
+    );
+  } else {
+    validateRadioConditions.setAttribute("data-error-visible", "true");
+    validateRadioConditions.setAttribute(
+      "data-error",
+      "Vous devez vérifier que vous acceptez les termes et conditions"
+    );
+    return false;
+  }
+//if all its ok return true
   formDataElement.setAttribute("data-error-visible", "false");
   return true;
 }
+
+
