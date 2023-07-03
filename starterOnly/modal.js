@@ -7,7 +7,7 @@ function editNav() {
   }
 }
 
-// DOM Elements
+// les Elements de DOM
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
@@ -20,36 +20,30 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-//close modal
-function close_modal(e) {
-  e.preventDefault;
-  modalbg.style.display = "none";
-}
-document.getElementById("closeModal").addEventListener("click", close_modal);
+///validation de formulaire
 
-
-///validate 
 function validate() {
-  var form = document.forms["reserve"];
-  var formDataElement = document.querySelector(".formData");
-  var validateFirst = document.querySelector(".first");
-  var validateLast = document.querySelector(".last");
-  var validateEmail = document.querySelector(".email");
-  var validateBirthdate = document.querySelector(".birthdate");
-  var validateQuantity = document.querySelector(".quantity");
-  var validateRadioButtons = document.querySelector(".location");
-  var radioButtons = document.getElementsByName("location");
+  // les Elements de DOM
+  const form = document.forms["reserve"];
+  const formDataElement = document.querySelector(".formData");
+  const validateFirst = document.querySelector(".first");
+  const validateLast = document.querySelector(".last");
+  const validateEmail = document.querySelector(".email");
+  const validateBirthdate = document.querySelector(".birthdate");
+  const validateQuantity = document.querySelector(".quantity");
+  const validateRadioButtons = document.querySelector(".location");
+  const radioButtons = document.getElementsByName("location");
   var isChecked = false;
-  var validateRadioConditions = document.querySelector(".checkboxCondition");
-  var Conditions = document.getElementById("checkbox1");
+  const validateRadioConditions = document.querySelector(".checkboxCondition");
+  const Conditions = document.getElementById("checkbox1");
   var isCheckedConditions = false;
-  var first = form["first"].value;
-  var last = form["last"].value;
-  var Email = form["email"].value;
-  var birthdate = form["birthdate"].value;
-  var quantity = form["quantity"].value;
+  const first = form["first"].value;
+  const last = form["last"].value;
+  const Email = form["email"].value;
+  const birthdate = form["birthdate"].value;
+  const quantity = form["quantity"].value;
 
-//for first
+  //pour le prenom
   if (first === "" || first.length < 2) {
     validateFirst.setAttribute("data-error-visible", "true");
     validateFirst.setAttribute(
@@ -65,7 +59,7 @@ function validate() {
       "Veuillez entrer 2 caractères ou plus pour le champ du Prénom"
     );
   }
-//for last 
+  // pour le nom
   if (last === "" || last.length < 2) {
     validateLast.setAttribute("data-error-visible", "true");
     validateLast.setAttribute(
@@ -81,7 +75,7 @@ function validate() {
       "Veuillez entrer 2 caractères ou plus pour le champ du nom"
     );
   }
-//for email
+  //pour l'email
   if (Email === "") {
     validateEmail.setAttribute("data-error-visible", "true");
     validateEmail.setAttribute("data-error", "Veuillez saisir votre email");
@@ -91,7 +85,7 @@ function validate() {
     validateEmail.setAttribute("data-error-visible", "false");
     validateEmail.removeAttribute("data-error", "Veuillez saisir votre email.");
   }
-  //for birthdate
+  //pour la date de naissance
   if (birthdate === "") {
     validateBirthdate.setAttribute("data-error-visible", "true");
     validateBirthdate.setAttribute(
@@ -107,7 +101,7 @@ function validate() {
       "Vous devez entrer votre date de naissance"
     );
   }
-//for quantity
+  //pour la quantité
   if (isNaN(quantity) || quantity === "") {
     validateQuantity.setAttribute("data-error-visible", "true");
     validateQuantity.setAttribute(
@@ -123,7 +117,7 @@ function validate() {
       "Veuillez saisir une valeur numérique"
     );
   }
-//for radioButtons
+  //pour les option
   for (var i = 0; i < radioButtons.length; i++) {
     if (radioButtons[i].checked) {
       isChecked = true;
@@ -146,7 +140,7 @@ function validate() {
     );
   }
 
-  //check Conditions
+  //pour les  Conditions
   if (Conditions.checked) {
     isCheckedConditions = true;
     validateRadioConditions.setAttribute("data-error-visible", "false");
@@ -162,9 +156,45 @@ function validate() {
     );
     return false;
   }
-//if all its ok return true
+  //si tout est validé, retourne true
   formDataElement.setAttribute("data-error-visible", "false");
   return true;
 }
 
+function modal() {
+  //cree le 2 modal
+  const modal = `
+    <div class="modal-body">
+    <div class="modal_text">
+      <p>Merci pour </p>
+      <p>votre inscription</p>
+      </div>
+      <input id="closeModal2" class="btn-submit" type="submit"   value="Fermer" />
+    </div>`;
+  document.querySelector(".modal-body").innerHTML = modal;
+  document.getElementById("closeModal2").addEventListener("click", close_modal);
+}
 
+// Fonction pour gérer  le bouton de soumission "cest parti"
+function handleFormSubmit(e) {
+  e.preventDefault(); // Empêche la soumission du formulaire
+
+  // Appeler la fonction validate() si elle retourne true
+  if (validate()) {
+    // Si elle est true , appeler la fonction modal()
+    modal();
+  }
+}
+
+//ecoute  le click de submit
+document
+  .getElementById("btn-submit")
+  .addEventListener("click", handleFormSubmit);
+
+//ferme le modal
+function close_modal(e) {
+  e.preventDefault;
+  modalbg.style.display = "none";
+}
+////ecoute  le click de closeModal
+document.getElementById("closeModal").addEventListener("click", close_modal);

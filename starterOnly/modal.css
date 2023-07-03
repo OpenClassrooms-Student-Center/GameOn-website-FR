@@ -184,7 +184,18 @@ main {
   color: #fff;
   padding-top: 10px;
 }
+/* jai ajouté le modal_text */
+.modal_text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 600px;
+}
 
+.modal_text p {
+  font-size: 40px;
+}
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
@@ -481,6 +492,11 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+  /* ajouter */
+  .content {
+    margin: 0 auto;
+    min-height: 100vh;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -516,6 +532,10 @@ footer {
   .copyrights {
     margin-top: 50px;
     text-align: center;
+  }
+
+  .modal_text p {
+    font-size: 30px;
   }
 }
 
