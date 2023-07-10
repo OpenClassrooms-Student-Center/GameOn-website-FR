@@ -19,5 +19,6 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.style.display = "block";
 }
-
-
+function hideModal() {
+  modalbg.style.display = "none";
+}
