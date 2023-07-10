@@ -7,47 +7,25 @@ function editNav() {
   }
 }
 
-// les Elements de DOM
+/////// les Elements de DOM
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const form = document.forms["reserve"];
 
-// launch modal event
+////////// launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// launch modal form
+///// launch modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
 
-///validation de formulaire
-
-function validate() {
-  // les Elements de DOM
-  const form = document.forms["reserve"];
-  const formDataElement = document.querySelector(".formData");
+/////////////validation pour le prenom
+function validateFirst(form) {
   const validateFirst = document.querySelector(".first");
-  const validateLast = document.querySelector(".last");
-  const validateEmail = document.querySelector(".email");
-  const validateBirthdate = document.querySelector(".birthdate");
-  const validateQuantity = document.querySelector(".quantity");
-  const validateRadioButtons = document.querySelector(".location");
-  const radioButtons = document.getElementsByName("location");
-  var isChecked = false;
-  const validateRadioConditions = document.querySelector(".checkboxCondition");
-  const Conditions = document.getElementById("checkbox1");
-  var isCheckedConditions = false;
   const first = form["first"].value;
-  const last = form["last"].value;
-  const Email = form["email"].value;
-  const birthdate = form["birthdate"].value;
-  const birthdateForAge = new Date(birthdate);
-  const quantity = form["quantity"].value;
-  //verifier l'age
-  const currentDate = new Date();
-  const age = currentDate.getFullYear() - birthdateForAge.getFullYear();
-
-  //pour le prenom
+  //Si le prénom est vide ou contient moins de 2 lettres
   if (first === "" || first.length < 2) {
     validateFirst.setAttribute("data-error-visible", "true");
     validateFirst.setAttribute(
@@ -56,14 +34,22 @@ function validate() {
     );
 
     return false;
+    //Si le prénom est correctement rempli
   } else {
     validateFirst.setAttribute("data-error-visible", "false");
     validateFirst.removeAttribute(
       "data-error",
       "Veuillez entrer 2 caractères ou plus pour le champ du Prénom"
     );
+    return true;
   }
-  // pour le nom
+}
+
+///////////////validation pour le nom
+function validateLast(form) {
+  const validateLast = document.querySelector(".last");
+  const last = form["last"].value;
+  //Si le nom est vide ou contient moins de 2 lettres
   if (last === "" || last.length < 2) {
     validateLast.setAttribute("data-error-visible", "true");
     validateLast.setAttribute(
@@ -72,13 +58,20 @@ function validate() {
     );
 
     return false;
+    //Si le prénom est correctement rempli
   } else {
     validateLast.setAttribute("data-error-visible", "false");
     validateLast.removeAttribute(
       "data-error",
       "Veuillez entrer 2 caractères ou plus pour le champ du nom"
     );
+    return true;
   }
+}
+///////////////validation pour l'email
+function validateEmail(form) {
+  const validateEmail = document.querySelector(".email");
+  const Email = form["email"].value;
   //pour l'email
   if (Email === "") {
     validateEmail.setAttribute("data-error-visible", "true");
@@ -88,9 +81,18 @@ function validate() {
   } else {
     validateEmail.setAttribute("data-error-visible", "false");
     validateEmail.removeAttribute("data-error", "Veuillez saisir votre email.");
+    return true;
   }
+}
+///////////////validation pour la date de naissance
+function validateBirthdate(form) {
+  const validateBirthdate = document.querySelector(".birthdate");
+  const birthdate = form["birthdate"].value;
+  const birthdateForAge = new Date(birthdate);
+  //verifier l'age
+  const currentDate = new Date();
+  const age = currentDate.getFullYear() - birthdateForAge.getFullYear();
 
-  //pour la date de naissance
   if (birthdate === "") {
     validateBirthdate.setAttribute("data-error-visible", "true");
     validateBirthdate.setAttribute(
@@ -100,12 +102,12 @@ function validate() {
 
     return false;
   }
-  //l'age min 16ans
-  else if (age < 16) {
+  //l'age min 18ans
+  else if (age < 18) {
     validateBirthdate.setAttribute("data-error-visible", "true");
     validateBirthdate.setAttribute(
       "data-error",
-      "Vous devez avoir au moins 16 ans"
+      "Vous devez avoir au moins 18 ans"
     );
 
     return false;
@@ -115,9 +117,13 @@ function validate() {
       "data-error",
       "Vous devez entrer votre date de naissance"
     );
+    return true;
   }
-
-  //pour la quantité
+}
+/////////////validate la quantité
+function validateQuantity(form) {
+  const validateQuantity = document.querySelector(".quantity");
+  const quantity = form["quantity"].value;
   if (isNaN(quantity) || quantity === "") {
     validateQuantity.setAttribute("data-error-visible", "true");
     validateQuantity.setAttribute(
@@ -132,8 +138,15 @@ function validate() {
       "data-error",
       "Veuillez saisir une valeur numérique"
     );
+    return true;
   }
-  //pour les option
+}
+
+///////////////validate pour les option
+function validateRadioButtons(form) {
+  const validateRadioButtons = document.querySelector(".location");
+  const radioButtons = document.getElementsByName("location");
+  var isChecked = false;
   for (var i = 0; i < radioButtons.length; i++) {
     if (radioButtons[i].checked) {
       isChecked = true;
@@ -154,9 +167,14 @@ function validate() {
       "data-error",
       "Veuillez saisir une valeur numérique"
     );
+    return true;
   }
-
-  //pour les  Conditions
+}
+///////////////validate pour les  Conditions
+function validateConditions(form) {
+  const validateRadioConditions = document.querySelector(".checkboxCondition");
+  const Conditions = document.getElementById("checkbox1");
+  var isCheckedConditions = false;
   if (Conditions.checked) {
     isCheckedConditions = true;
     validateRadioConditions.setAttribute("data-error-visible", "false");
@@ -164,6 +182,7 @@ function validate() {
       "data-error",
       "Vous devez vérifier que vous acceptez les termes et conditions"
     );
+    return true;
   } else {
     validateRadioConditions.setAttribute("data-error-visible", "true");
     validateRadioConditions.setAttribute(
@@ -172,11 +191,29 @@ function validate() {
     );
     return false;
   }
-  //si tout est validé, retourne true
-  formDataElement.setAttribute("data-error-visible", "false");
-  return true;
 }
 
+/////////////// Form validation
+function validate() {
+  const isFirstNameValid = validateFirst(form);
+  const isLastNameValid = validateLast(form);
+  const isEmailValid = validateEmail(form);
+  const isBirthdateValid = validateBirthdate(form);
+  const isQuantityValid = validateQuantity(form);
+  const isRadioButtonsValid = validateRadioButtons(form);
+  const isConditionsValid = validateConditions(form);
+
+  return (
+    isFirstNameValid &&
+    isLastNameValid &&
+    isEmailValid &&
+    isBirthdateValid &&
+    isQuantityValid &&
+    isRadioButtonsValid &&
+    isConditionsValid
+  );
+}
+////////  modal
 function modal() {
   //cree le 2 modal
   const modal = `
@@ -191,11 +228,11 @@ function modal() {
   document.getElementById("closeModal2").addEventListener("click", close_modal);
 }
 
-// Fonction pour gérer  le bouton de soumission "cest parti"
+////////// Fonction pour gérer  le bouton de soumission "cest parti"
 function handleFormSubmit(e) {
   e.preventDefault(); // Empêche la soumission du formulaire
 
-  // Appeler la fonction validate() si elle retourne true
+  ////////// Appeler la fonction validate() si elle retourne true
   if (validate()) {
     // Si elle est true , appeler la fonction modal()
     modal();
