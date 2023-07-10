@@ -29,4 +29,4 @@ J'ai travaillé sur la partie JavaScript du projet en utilisant les concepts sui
 
  
 
-🌐 Le site de projet  https://64a32966bad6fb4c104129e2--warm-pastelito-e06acc.netlify.app/
+🌐 Le site de projet: https://friendly-rolypoly-f3cef3.netlify.app
