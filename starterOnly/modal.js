@@ -1,8 +1,12 @@
 // liste des variables dont on aura besoin pour manipuler les événements.
-const firstNameField = document.getElementById("first-name");
-const lastNameField = document.getElementById("last-name");
+const firstnameField = document.getElementById("first-name");
+const formDataFirstname = document.getElementById("form-data-firstname");
+const lastnameField = document.getElementById("last-name");
+const formDataLastname = document.getElementById("form-data-lastname");
 const emailField = document.getElementById("email");
+const formDataEmail = document.getElementById("form-data-email");
 const birthdateField = document.getElementById("birthdate");
+const formDataBirthdate = document.getElementById("form-data-birthdate");
 const tournamentQuantityField = document.getElementById("tournament-quantity");
 const locationField1 = document.getElementById("location1");
 const locationField2 = document.getElementById("location2");
@@ -63,9 +67,9 @@ submitBtn.addEventListener("click", validate); // écouteur d'événement posé 
 // liste des messages d'erreur stockée dans un objet.
 const ERROR_MESSAGE = {
   emptyField: "Veuillez remplir ce champ s'il vous plait",
-  tooShortFirstName:
+  tooShortFirstname:
     "Veuillez entrer 2 caractères ou plus pour le champ du prénom.",
-  tooShortLastName:
+  tooShortLastname:
     "Veuillez entrer 2 caractères ou plus pour le champ du nom.", // divers messages d'erreur a afficher selon l'erreur saisie dans le champ correspondant
   invalidEmail:
     "votre email n'est pas valide, essayez ce format : 'exemple@exemple.fr'",
@@ -75,76 +79,118 @@ const ERROR_MESSAGE = {
   onlyIntegers: "veuillez entrer uniquement des chiffres",
   onlyChars: "veuillez saisir uniquement des lettres",
   option: "Veuillez cocher un lieu s'il vous plait",
-  termsOfUse: "Veuillez accepter les termes et conditions",
+  termsOfUse: "Veuillez accepter les termes et conditions"
 };
 
 function validateFirstName() {
   let isValid = false; // rend la fonction fausse par défaut en attendant la bonne valeur
-  const firstName = firstNameField.value; // récupération du champ correspondant dans le html en l'occurence ici, l'id first-name
+  const firstname = firstnameField.value; // récupération du champ correspondant dans le html en l'occurence ici, l'id first-name
   const firstNameError = document.getElementById("firstname-error"); //champ qui permet d'afficher les messages d'erreur si besoin.
   const stringRegex = /^[a-zA-Z\s-]+$/; // regex qui accepte les lettres majuscules et minuscules répétables, espaces et traits d'union
-  if (firstName.trim() == "") {
+  if (firstname.trim() == "") {
     // .trim() permet de supprimer les espaces en trop qund on récupère la valeur du champ.
-    firstNameError.innerHTML = ERROR_MESSAGE.emptyField; // message d'erreur pour un champ vide.
-    firstNameField.className = "formData[data-error-visible='true']", "text-control";
+    // firstNameError.innerHTML = ERROR_MESSAGE.emptyField; // message d'erreur pour un champ vide.
+    formDataFirstname.setAttribute("data-error-visible", true);
+    formDataFirstname.setAttribute("data-accepted-visible", false);
+    formDataFirstname.setAttribute("data-error", `${ERROR_MESSAGE.emptyField}`);
     isValid = false; // la condition reste fausse
-  } else if (/[\d]/.test(firstName)) {
+  } else if (/[\d]/.test(firstname)) {
     // regex qui permet de détecter s'il y a des chiffres.
     // .test() permet de comparer si la variable donnée est identique à la regex
-    firstNameError.innerHTML = ERROR_MESSAGE.onlyChars; // message d'erreur qui demande a insérer des lettres uniqueemnt
-  } else if (firstName.length < 2) {
-    // vérifie si le champ inséré n'est pas inférieur à une chaine de caractère inférieure à 2
-    firstNameError.innerHTML = ERROR_MESSAGE.tooShortFirstName; // message d'erreur qui annonce une chaine de caracte1re trop courte pour être acceptée
+    // firstNameError.innerHTML = ERROR_MESSAGE.onlyChars; // message d'erreur qui demande a insérer des lettres uniqueemnt
+    formDataFirstname.setAttribute("data-error-visible", true);
+    formDataFirstname.setAttribute("data-accepted-visible", false);
+    formDataFirstname.setAttribute("data-error", `${ERROR_MESSAGE.onlyChars}`);
     isValid = false;
-  } else if (!stringRegex.test(firstName)) {
-    // regex qui permet de savoir si une chaine de caractère rentre dans les crite1res demandés, en l'occurence des lettres
-    firstNameError.innerHTML = ERROR_MESSAGE.notAString; // message d'erreur qui annonce que cette chaine de caractère n'est pas conforme
+  } else if (firstname.length < 2) {
+    // vérifie si le champ inséré n'est pas inférieur à une chaine de caractère inférieure à 2
+    // firstNameError.innerHTML = ERROR_MESSAGE.tooShortFirstName; // message d'erreur qui annonce une chaine de caracte1re trop courte pour être acceptée
+    formDataFirstname.setAttribute("data-error-visible", true);
+    formDataFirstname.setAttribute("data-accepted-visible", false);
+    formDataFirstname.setAttribute(
+      "data-error",
+      `${ERROR_MESSAGE.tooShortFirstname}`
+    );
+    isValid = false;
   } else {
-    firstNameError.innerHTML = ""; // vide le champ des message d'erreur
+    formDataFirstname.setAttribute("data-error-visible", false);
+    formDataFirstname.setAttribute("data-error", "");
+    formDataFirstname.setAttribute("data-accepted-visible", true);
+    // firstNameError.innerHTML = ""; // vide le champ des message d'erreur
     isValid = true; // la condition est bonne, on passe donc la valeur a vrai.
   }
   return isValid; // on retourne la valeur vrai à la sortie de la fonction.
 }
-firstNameField.addEventListener("blur", validateFirstName); // "blur" permet de récupérer un événement lorsque l'on sort d'un champ.
+firstnameField.addEventListener("blur", validateFirstName); // "blur" permet de récupérer un événement lorsque l'on sort d'un champ.
 
 function validateLastName() {
   let isValid = false;
-  const lastName = lastNameField.value;
-  const lastNameError = document.getElementById("lastname-error");
-  const lastNameRegex = /^[a-zA-Z]+$/;
-  if (lastName.trim() == "") {
-    lastNameError.innerHTML = ERROR_MESSAGE.emptyField;
+  const lastname = lastnameField.value;
+  // const lastNameError = document.getElementById("lastname-error");
+  const lastnameRegex = /^[a-zA-Z]+$/;
+  if (lastname.trim() == "") {
+    // lastNameError.innerHTML = ERROR_MESSAGE.emptyField;
+    formDataLastname.setAttribute("data-error-visible", true);
+    formDataLastname.setAttribute(
+      "data-error",
+      `${ERROR_MESSAGE.tooShortLastname}`
+    );
+    formDataLastname.setAttribute("data-accepted-visible", false);
     isValid = false;
-  } else if (/[\d]/.test(lastName)) {
-    lastNameError.innerHTML = ERROR_MESSAGE.onlyChars;
+  } else if (/[\d]/.test(lastname)) {
+    // lastNameError.innerHTML = ERROR_MESSAGE.onlyChars;
+    formDataLastname.setAttribute("data-error-visible", true);
+    formDataLastname.setAttribute("data-error", `${ERROR_MESSAGE.onlyChars}`);
+    formDataLastname.setAttribute("data-accepted-visible", false);
     isValid = false;
-  } else if (lastName.length < 2) {
-    lastNameError.innerHTML = ERROR_MESSAGE.tooShortLastName;
+  } else if (lastname.length < 2) {
+    // lastNameError.innerHTML = ERROR_MESSAGE.tooShortLastName;
+    formDataLastname.setAttribute("data-error-visible", true);
+    formDataLastname.setAttribute(
+      "data-error",
+      `${ERROR_MESSAGE.tooShortLastname}`
+    );
+    formDataLastname.setAttribute("data-accepted-visible", false);
     isValid = false;
-  } else if (!lastNameRegex.test(lastName)) {
-    lastNameError.innerHTML = ERROR_MESSAGE.notAString;
+  } else if (!lastnameRegex.test(lastname)) {
+    // lastNameError.innerHTML = ERROR_MESSAGE.notAString;
+    formDataLastname.setAttribute("data-error-visible", true);
+    formDataLastname.setAttribute("data-error", `${ERROR_MESSAGE.notAString}`);
+    formDataLastname.setAttribute("data-accepted-visible", false);
     isValid = false;
   } else {
-    lastNameError.innerHTML = "";
+    // lastNameError.innerHTML = "";
+    formDataLastname.setAttribute("data-error-visible", false);
+    formDataLastname.setAttribute("data-error", "");
+    formDataLastname.setAttribute("data-accepted-visible", true);
     isValid = true;
   }
   return isValid;
 }
-lastNameField.addEventListener("blur", validateLastName);
+lastnameField.addEventListener("blur", validateLastName);
 
 function validateEmail() {
   let isValid = false;
   const email = emailField.value;
   const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,5})+$/; // Regex qui valide les adresses mail
-  const emailError = document.getElementById("email-error");
+  // const emailError = document.getElementById("email-error");
   if (email.trim() == "") {
+    // emailError.innerHTML = ERROR_MESSAGE.emptyField; // renvoi un message d'erreur si le champ est vide
+    formDataEmail.setAttribute("data-error-visible", true);
+    formDataEmail.setAttribute("data-error", `${ERROR_MESSAGE.emptyField}`);
+    formDataEmail.setAttribute("data-accepted-visible", false);
     isValid = false;
-    emailError.innerHTML = ERROR_MESSAGE.emptyField; // renvoi un message d'erreur si le champ est vide
   } else if (!emailRegex.test(email)) {
+    // emailError.innerHTML = ERROR_MESSAGE.invalidEmail; // renvoi un message d'email invalide après avoir testé la valeur du champ avec la methode .test()
+    formDataEmail.setAttribute("data-error-visible", true);
+    formDataEmail.setAttribute("data-error", `${ERROR_MESSAGE.invalidEmail}`);
+    formDataEmail.setAttribute("data-accepted-visible", false);
     isValid = false;
-    emailError.innerHTML = ERROR_MESSAGE.invalidEmail; // renvoi un message d'email invalide après avoir testé la valeur du champ avec la methode .test()
   } else {
-    emailError.innerHTML = "";
+    // emailError.innerHTML = "";
+    formDataEmail.setAttribute("data-error-visible", false);
+    formDataEmail.setAttribute("data-error", "");
+    formDataEmail.setAttribute("data-accepted-visible", true);
     isValid = true;
   }
   return isValid;
@@ -153,24 +199,22 @@ emailField.addEventListener("blur", validateEmail);
 
 function validateBirthdate() {
   let isValid = false;
-  const birthDate = birthdateField.value;
-  console.log(birthDate);
-  const birthDateError = document.getElementById("birthdate-error");
-  const birthDateObj = new Date(birthDate); // stockage de la date de l'input dans une variable et j'utilise une nouvelle instance de date
-  const currentDate = new Date(); // stockage de la date du jour dans une variable
+  const birthdate = birthdateField.value;
+  // const birthDateError = document.getElementById("birthdate-error");
   const birthDateRegex =
     /^(0?[1-9]|[1-2][0-9]|3[0-1])([\s.-\\/])(0?[1-9]|1[0-2])\2((19|20)\d\d)$/; // regex qui accepte les date de naissances avec les espace, "/", "-" et ".", elle n'accepte que les noombres jusqu'à 31 pour les jours, 12 pour les mois et avvec uniquement les années commençant par 1900 ou 2000.
-  if (birthDate.trim() == "") {
-    birthDateError.innerHTML = ERROR_MESSAGE.emptyField;
+  if (birthdate.trim() == "") {
+    // birthDateError.innerHTML = ERROR_MESSAGE.emptyField;
+    formDataBirthdate.setAttribute("data-error-visible", true);
+    formDataBirthdate.setAttribute("data-error", `${ERROR_MESSAGE.emptyField}`);
     isValid = false;
-  } else if (birthDateObj === currentDate) {
-    birthDateError.innerHTML = ERROR_MESSAGE.sameAsCurrentDate;
-    isValid = false;
-  } else if (!birthDateRegex.test(birthDate)) {
-    birthDateError.innerHTML = ERROR_MESSAGE.invalidBirthDate;
+  } else if (!birthDateRegex.test(birthdate)) {
+    // birthDateError.innerHTML = ERROR_MESSAGE.invalidBirthDate;
+    formDataBirthdate.setAttribute("data-error-visible", true);
     isValid = false;
   } else {
-    birthDateError.innerHTML = "";
+    // birthDateError.innerHTML = "";
+    formDataBirthdate.setAttribute("data-error-visible", false);
     isValid = true;
   }
   return isValid;
@@ -187,8 +231,8 @@ function validateTournamentNumber() {
     // iNaN() vérifie si la variable n'est pas un chiffre et renvoie un booléen;
     tournamentQuantityError.innerHTML = ERROR_MESSAGE.onlyIntegers;
   } else {
-    isValide = true;
     tournamentQuantityError.innerHTML = "";
+    isValide = true;
   }
   return isValide;
 }
@@ -260,6 +304,6 @@ function validate(e) {
   } else {
     isValid = false;
   }
-  e.preventDefault();
+  e.preventDefault(); // prevnetDefault permet de ne pas recharger la page après une action.
   return isValid;
 }

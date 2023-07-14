@@ -56,7 +56,7 @@
           ></span>
           <div class="modal-body">
             <form name="reserve" action="index.html" method="get" id="form">
-              <div class="formData">
+              <div class="formData" id="form-data-firstname">
                 <label>Prénom</label><br />
                 <input
                   class="text-control"
@@ -68,7 +68,7 @@
                 /><br />
                 <p id="firstname-error" class="error-message"></p>
               </div>
-              <div class="formData">
+              <div class="formData" id="form-data-lastname">
                 <label>Nom</label><br />
                 <input
                   class="text-control"
@@ -80,7 +80,7 @@
                 /><br />
                 <p id="lastname-error" class="error-message"></p>
               </div>
-              <div class="formData">
+              <div class="formData" id="form-data-email">
                 <label>E-mail</label><br />
                 <input
                   class="text-control"
@@ -92,7 +92,7 @@
                 /><br />
                 <p id="email-error" class="error-message"></p>
               </div>
-              <div class="formData">
+              <div class="formData" id="form-data-birthdate">
                 <label>Date de naissance</label><br />
                 <!-- input de la date mis en commentaire pour mettre un input type texte pour manipuler les methodes js pour traiter un entier -->
                 <!-- <input
@@ -112,7 +112,7 @@
                 <br>
                 <p id="birthdate-error" class="error-message"></p>
               </div>
-              <div class="formData">
+              <div class="formData" id="formDataTournaments">
                 <label
                   >À combien de tournois GameOn avez-vous déjà participé
                   ?</label
@@ -137,7 +137,7 @@
               <p class="text-label">
                 A quel tournoi souhaitez-vous participer cette année ?
               </p>
-              <div class="formData">
+              <div class="formData" id="formDataLocation">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -207,7 +207,7 @@
               </div>
               <p id="option-error" class="error-message"></p>
 
-              <div class="formData">
+              <div class="formData" id="formDataTermsOfUse">
                 <input
                   class="checkbox-input"
                   type="checkbox"
