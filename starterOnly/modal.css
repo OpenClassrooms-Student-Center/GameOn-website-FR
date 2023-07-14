@@ -45,8 +45,8 @@ img {
   display: block;
   color: #000000;
   text-align: center;
-  padding: 12px 12px;
-  margin: 5px;
+  padding: 7px 10px;
+  /* margin: 5px; */
   text-decoration: none;
   font-size: 20px;
   font-family: Roboto, sans-serif;
@@ -68,11 +68,18 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+/* ancienne valeur 768px redimensionné à 800px pour passer de manière plus fluide avec la navbar sans burger menu*/
+@media screen and (max-width: 800px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .main-navbar {
+    margin-top: 1.5rem;
   }
 }
 
@@ -81,7 +88,8 @@ img {
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
-    top: 0;
+    top: 0px;
+    margin-top: unset;
   }
   .topnav.responsive a {
     float: none;
@@ -90,16 +98,23 @@ img {
   }
 }
 
-
-
  @media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    margin-top: 0px;
   }
 } 
+
+/* redimension de la taille du texte dans la navbar au format mobile small */
+@media screen and (min-width: 320px) and (max-width: 425px){
+  a span {
+    font-size: 4vw;
+  }
+}
+
+
 
 main {
   font-size: 130%;
@@ -111,8 +126,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -210,7 +223,7 @@ input {
 }
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
+  font-size: 55%;
   color: #e54858;
   display: block;
   margin-top: 7px;
@@ -223,15 +236,38 @@ input {
 .formData[data-error-visible="true"]::after {
   opacity: 1;
 }
+.formData[data-accepted]::after{
+  content: attr(data-accepted);
+  color:#289E7A;
+  font-size: 55%;
+  display: block;
+  margin-top: 7px;
+  margin-bottom: 7px;
+  text-align: right;
+  line-height: 0.3;
+  opacity: 0;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -ms-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+.formData[data-accepted-visible="true"]::after{
+  opacity: 1;
+}
+
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
+.formData[data-accepted-visible="true"] .text-control {
+  border: 2px solid #289E7A;
+}
+
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
-} */
+}
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -420,7 +456,8 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
+  /* passé de 424px a 300px pour lire sous format téléphone */
+  min-width: 300px;
 }
 .hero-content::after {
   content: "";
@@ -436,7 +473,7 @@ input[data-error]::after {
   z-index: 1;
 }
 .hero-headline {
-  font-size: 6rem;
+  font-size: 9vw;
   font-weight: normal;
   white-space: nowrap;
 }
@@ -462,6 +499,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 .copyrights {
   color: #fe142f;
@@ -478,7 +516,18 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
+/* alignement de la navbar avec le logo au dela de 1034px */
+@media screen and (min-width: 1034px) {
+.main-navbar {
+  margin-top: .8rem;
+}
+}
+
 @media screen and (max-width: 800px) {
+  .logo {
+    width: 40vw;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -494,13 +543,9 @@ footer {
   .hero-content .btn-signup {
     display: none;
   }
-  .hero-headline {
-    font-size: 4.5rem;
-    white-space: normal;
-  }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 5.9vw;
   }
   .hero-img img {
     border-radius: 10px;
@@ -514,6 +559,12 @@ footer {
   .copyrights {
     margin-top: 50px;
     text-align: center;
+  }
+  /* alignement du logo et du burger menu */
+  .topnav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 
