@@ -11,6 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const listRadioInputs = document.querySelectorAll(".formData input");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -18,6 +19,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  console.log("listRadioInputs", listRadioInputs);
 }
 function hideModal() {
   modalbg.style.display = "none";
@@ -28,7 +30,12 @@ function displayPopupMessage(message) {
   popupMessage.textContent = message;
   setTimeout(() => {
     popupMessage.textContent = "";
-  }, 3000); // Clear the message after 3 seconds
+  }, 3000);
+}
+
+function displayValidationMessage() {
+  const validationMessage = document.getElementById("validation-message");
+  validationMessage.textContent = "Merci !";
 }
 
 function validate(event) {
@@ -44,6 +51,10 @@ function validate(event) {
     ];
 
     let isValid = true;
+    let isRadioChecked = false;
+    const listRadioInputs = document.querySelectorAll(
+      ".formData input[type='radio']"
+    );
 
     fields.forEach((field) => {
       const baliseField = document.getElementById(field.id);
@@ -56,17 +67,36 @@ function validate(event) {
       }
     });
 
+    listRadioInputs.forEach((radioInput) => {
+      if (radioInput.checked) {
+        isRadioChecked = true;
+      }
+    });
+
+    if (!isRadioChecked) {
+      console.log("Aucun choix de radio n'est sélectionné");
+      isValid = false;
+      throw new Error("Aucun choix de radio n'est sélectionné");
+    }
+    const isCheckboxChecked = document.getElementById("checkbox1").checked;
+
+    if (!isCheckboxChecked) {
+      console.log(
+        "La case à cocher 'J'ai lu et accepté les conditions d'utilisation"
+      );
+      isValid = false;
+      throw new Error(
+        "La case à cocher 'J'ai lu et accepté les conditions d'utilisation"
+      );
+    }
+
     if (isValid) {
       console.log("All fields are filled");
-
-      // Additional validation logic can be added here
-
-      // If all validations pass, you can submit the form
       form.submit();
 
-      // Alternatively, you can hide the modal or perform any other desired action
       hideModal();
       displayPopupMessage("All fields are filled");
+      displayValidationMessage("Yoohooo");
     }
   } catch (error) {
     console.error(error.message);

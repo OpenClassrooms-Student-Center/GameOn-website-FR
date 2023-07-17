@@ -12,7 +12,7 @@
     />
   </head>
   <body>
-    <div id="popup-message"></div>
+          <div id="validation-message"></div>
 
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
@@ -57,6 +57,7 @@
       <div class="bground">
         <div class="content">
           <span class="close" onclick="hideModal()"></span>
+          <div id="popup-message"></div>
           <div class="modal-body">
             <form
               name="reserve"
@@ -83,6 +84,7 @@
                   type="text"
                   id="last"
                   name="last"
+                  minlength="2"
                 /><br>
               </div>
               <div
