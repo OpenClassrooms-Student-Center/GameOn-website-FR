@@ -35,10 +35,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -69,7 +69,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
@@ -77,7 +79,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -90,16 +94,16 @@ img {
   }
 }
 
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
     margin-top: -15px;
   }
-} 
+}
 
 main {
   font-size: 130%;
@@ -111,8 +115,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -428,7 +430,7 @@ input[data-error]::after {
   height: 100%;
   background: #232323;
   position: absolute;
-  right: -80px;
+  /* right: -80px; */
   top: 0;
 }
 .hero-content > * {
@@ -478,15 +480,20 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
     box-shadow: unset;
+    /* background-color: pink; */
+    max-width: 100%;
   }
   .hero-content {
     background: #fff;
     color: #000;
     padding: 20px;
+    /* background-color: green; */
+    width: 100%;
   }
   .hero-content::after {
     content: unset;
@@ -496,10 +503,15 @@ footer {
   }
   .hero-headline {
     font-size: 4.5rem;
+    font-weight: normal;
     white-space: normal;
+    width: 100%;
   }
+
   .hero-text {
-    width: unset;
+    /* width: unset; */
+    width: 70%;
+
     font-size: 1.5rem;
   }
   .hero-img img {
@@ -517,6 +529,21 @@ footer {
   }
 }
 
+@media screen and (max-width: 500px) {
+  .hero-content {
+    width: inherit;
+    /* background-color: pink; */
+    padding: 0;
+    padding-top: 2em;
+  }
+  .hero-headline {
+    width: inherit;
+    font-weight: bold;
+    /* background-color: green; */
+    font-size: clamp(2rem, 8vw, 6rem);
+  }
+}
+
 @keyframes modalopen {
   from {
     opacity: 0;
@@ -526,4 +553,3 @@ footer {
     opacity: 1;
   }
 }
-
