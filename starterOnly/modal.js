@@ -11,6 +11,9 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const formBod = document.querySelector(".form-body");
+const validationMessage = document.getElementById("validation-message");
+const popupMessage = document.getElementById("popup-message");
 const listRadioInputs = document.querySelectorAll(".formData input");
 
 // launch modal event
@@ -25,17 +28,28 @@ function hideModal() {
   modalbg.style.display = "none";
 }
 
-function displayPopupMessage(message) {
-  const popupMessage = document.getElementById("popup-message");
-  popupMessage.textContent = message;
-  setTimeout(() => {
-    popupMessage.textContent = "";
-  }, 3000);
+function hideContent() {
+  formBod.style.display = "none";
 }
 
 function displayValidationMessage() {
-  const validationMessage = document.getElementById("validation-message");
+  validationMessage.style.display = "flex";
   validationMessage.textContent = "Merci !";
+}
+
+function displayPopupMessage(message) {
+  popupMessage.textContent = message;
+  popupMessage.style.display = "block";
+}
+
+function hidePopupMessage() {
+  popupMessage.style.display = "none";
+}
+
+function ajaxPost() {
+  var data = newFormData();
+  data.append("data");
+  return false;
 }
 
 function validate(event) {
@@ -82,21 +96,22 @@ function validate(event) {
 
     if (!isCheckboxChecked) {
       console.log(
-        "La case à cocher 'J'ai lu et accepté les conditions d'utilisation"
+        "La case à cocher 'J'ai lu et accepté les conditions d'utilisation' n'est pas cochée."
       );
       isValid = false;
       throw new Error(
-        "La case à cocher 'J'ai lu et accepté les conditions d'utilisation"
+        "La case à cocher 'J'ai lu et accepté les conditions d'utilisation' n'est pas cochée."
       );
     }
 
     if (isValid) {
       console.log("All fields are filled");
-      form.submit();
-
-      hideModal();
-      displayPopupMessage("All fields are filled");
-      displayValidationMessage("Yoohooo");
+      hideContent();
+      hidePopupMessage();
+      displayValidationMessage();
+      setTimeout(() => {
+        form.submit();
+      }, 5000);
     }
   } catch (error) {
     console.error(error.message);
@@ -106,3 +121,5 @@ function validate(event) {
 
 const form = document.querySelector("form");
 form.addEventListener("submit", validate);
+
+// ... (your existing code)
