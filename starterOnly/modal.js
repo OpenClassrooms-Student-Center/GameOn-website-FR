@@ -13,8 +13,13 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const formBod = document.querySelector(".form-body");
 const validationMessage = document.getElementById("validation-message");
-const popupMessage = document.getElementById("popup-message");
-const listRadioInputs = document.querySelectorAll(".formData input");
+const listRadioInputs = document.querySelectorAll('input[name="location"]');
+const validationConditions = document.getElementById('input[name="checkbox"]');
+const errorElementRadio = document.getElementById("error-location");
+errorElementRadio.textContent = "";
+let isRadioChecked = false;
+let isCheckboxChecked = false;
+let isValid = true;
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -22,34 +27,17 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
-  console.log("listRadioInputs", listRadioInputs);
+  console.log("validationConditions", validationConditions);
 }
 function hideModal() {
   modalbg.style.display = "none";
 }
-
 function hideContent() {
   formBod.style.display = "none";
 }
-
 function displayValidationMessage() {
   validationMessage.style.display = "flex";
-  validationMessage.textContent = "Merci !";
-}
-
-function displayPopupMessage(message) {
-  popupMessage.textContent = message;
-  popupMessage.style.display = "block";
-}
-
-function hidePopupMessage() {
-  popupMessage.style.display = "none";
-}
-
-function ajaxPost() {
-  var data = newFormData();
-  data.append("data");
-  return false;
+  validationMessage.textContent = "Merci! Votre réservation a été reçue.";
 }
 
 function validate(event) {
@@ -64,50 +52,63 @@ function validate(event) {
       { id: "quantity", name: "quantité" },
     ];
 
-    let isValid = true;
-    let isRadioChecked = false;
-    const listRadioInputs = document.querySelectorAll(
-      ".formData input[type='radio']"
-    );
-
     fields.forEach((field) => {
       const baliseField = document.getElementById(field.id);
       const valeurField = baliseField.value.trim();
+      const errorElement = document.getElementById("error-" + field.id);
+      errorElement.textContent = "";
 
       if (valeurField === "") {
         console.log(`Le champ ${field.name} est vide`);
         isValid = false;
-        throw new Error(`Le champ ${field.name} est vide`);
+        errorElement.textContent = `Le champ ${field.name} est vide`;
       }
     });
+
+    // --------------------------------------------------------------------------
 
     listRadioInputs.forEach((radioInput) => {
       if (radioInput.checked) {
         isRadioChecked = true;
+        return;
       }
     });
 
     if (!isRadioChecked) {
-      console.log("Aucun choix de radio n'est sélectionné");
+      document.getElementById("error-location").innerHTML =
+        "Veuillez sélectionner un tournoi";
       isValid = false;
-      throw new Error("Aucun choix de radio n'est sélectionné");
+    } else {
+      document.getElementById("error-location").innerHTML = "";
     }
-    const isCheckboxChecked = document.getElementById("checkbox1").checked;
+
+    // --------------------------------------------------------------------------
+
+    validationConditions.forEach((validationCondition) => {
+      if (validationCondition.checked) {
+        console.log("test bip boop");
+        isRadioChecked = true;
+        return;
+      }
+    });
 
     if (!isCheckboxChecked) {
-      console.log(
-        "La case à cocher 'J'ai lu et accepté les conditions d'utilisation' n'est pas cochée."
-      );
+      document.getElementById("error-location").innerHTML =
+        "Veuillez sélectionner un tournoi";
       isValid = false;
-      throw new Error(
-        "La case à cocher 'J'ai lu et accepté les conditions d'utilisation' n'est pas cochée."
-      );
+    } else {
+      document.getElementById("error-validation").innerHTML = "";
     }
 
+    // --------------------------------------------------------------------------
+
     if (isValid) {
+      fields.forEach((field) => {
+        const errorElement = document.getElementById("error-" + field.id);
+        errorElement.textContent = "";
+      });
       console.log("All fields are filled");
       hideContent();
-      hidePopupMessage();
       displayValidationMessage();
       setTimeout(() => {
         form.submit();
@@ -115,11 +116,8 @@ function validate(event) {
     }
   } catch (error) {
     console.error(error.message);
-    displayPopupMessage(error.message);
   }
 }
 
 const form = document.querySelector("form");
 form.addEventListener("submit", validate);
-
-// ... (your existing code)
