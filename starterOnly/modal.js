@@ -14,12 +14,9 @@ const formData = document.querySelectorAll(".formData");
 const formBod = document.querySelector(".form-body");
 const validationMessage = document.getElementById("validation-message");
 const listRadioInputs = document.querySelectorAll('input[name="location"]');
-const validationConditions = document.getElementById('input[name="checkbox"]');
+const validationConditions = document.querySelector('input[name="checkbox"]');
 const errorElementRadio = document.getElementById("error-location");
 errorElementRadio.textContent = "";
-let isRadioChecked = false;
-let isCheckboxChecked = false;
-let isValid = true;
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -27,7 +24,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
-  console.log("validationConditions", validationConditions);
+  console.log("validationConditions", validationConditions.checked);
 }
 function hideModal() {
   modalbg.style.display = "none";
@@ -43,6 +40,9 @@ function displayValidationMessage() {
 function validate(event) {
   try {
     event.preventDefault();
+    isValid = true;
+    isCheckboxChecked = false; // Reset to false at the beginning of validation
+    isRadioChecked = false; // Reset to false at the beginning of validation
 
     const fields = [
       { id: "first", name: "prénom" },
@@ -79,30 +79,30 @@ function validate(event) {
         "Veuillez sélectionner un tournoi";
       isValid = false;
     } else {
+      console.log("RadioChecked");
       document.getElementById("error-location").innerHTML = "";
     }
 
     // --------------------------------------------------------------------------
 
-    validationConditions.forEach((validationCondition) => {
-      if (validationCondition.checked) {
-        console.log("test bip boop");
-        isRadioChecked = true;
-        return;
-      }
-    });
+    if (validationConditions.checked) {
+      isCheckboxChecked = true;
+    } else {
+      isCheckboxChecked = false;
+    }
 
     if (!isCheckboxChecked) {
-      document.getElementById("error-location").innerHTML =
-        "Veuillez sélectionner un tournoi";
+      document.getElementById("error-checkbox").innerHTML =
+        "Veuillez accepter les conditions d'utilisation.";
       isValid = false;
     } else {
-      document.getElementById("error-validation").innerHTML = "";
+      console.log("CheckboxChecked");
+      document.getElementById("error-checkbox").innerHTML = "";
     }
 
     // --------------------------------------------------------------------------
 
-    if (isValid) {
+    if (isValid && isCheckboxChecked && isRadioChecked) {
       fields.forEach((field) => {
         const errorElement = document.getElementById("error-" + field.id);
         errorElement.textContent = "";
