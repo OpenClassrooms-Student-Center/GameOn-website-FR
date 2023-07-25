@@ -102,6 +102,21 @@ function validate(event) {
 
     // --------------------------------------------------------------------------
 
+    // Corrected selector to capture elements with the class "error-message"
+    const errorMessageSpans = document.querySelectorAll(".error-message");
+
+    // Apply red background color to all error message spans and hide if no error
+    let hasError = false;
+    errorMessageSpans.forEach((span) => {
+      if (span.innerHTML.trim() !== "") {
+        span.style.backgroundColor = "red";
+        hasError = true;
+      } else {
+        span.style.backgroundColor = "";
+      }
+    });
+    // --------------------------------------------------------------------------
+
     if (isValid && isCheckboxChecked && isRadioChecked) {
       fields.forEach((field) => {
         const errorElement = document.getElementById("error-" + field.id);
