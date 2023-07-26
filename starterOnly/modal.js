@@ -19,16 +19,15 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   modalbg.style.display = "block";
 }
-//Ticket #1
+//Ticket #1 fermer la modale
 const btnClose = document.querySelector('.close');
 btnClose.addEventListener('click', closeModal);
 
-//Ticket #1
 function closeModal() {
   modalbg.style.display = "none";
 }
 
-// Ticket #2
+// Ticket #2 
 const BtnRadio = document.getElementsByName('location');
 const CheckCondition = document.getElementById('checkbox1');
 
