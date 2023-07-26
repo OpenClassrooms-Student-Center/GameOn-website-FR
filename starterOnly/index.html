@@ -55,12 +55,13 @@
           <span class="close"></span>
           <div class="modal-body">
             <form
+              novalidate
               name="reserve"
               action="index.html"
               method="get"
               onsubmit="return validate();"
             >
-              <div class="formData">
+              <div class="formData" id="formPrenom">
                 <label for="first">Prénom</label><br />
                 <input
                   class="text-control"
@@ -71,17 +72,18 @@
                   required
                 /><br />
               </div>
-              <div class="formData">
+              <div class="formData" id="formNom">
                 <label for="last">Nom</label><br />
                 <input
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
+                  minlength="2"
                   required
                 /><br />
               </div>
-              <div class="formData">
+              <div class="formData" id="formEmail">
                 <label for="email">E-mail</label><br />
                 <input
                   class="text-control"
@@ -91,7 +93,7 @@
                   required
                 /><br />
               </div>
-              <div class="formData">
+              <div class="formData" id="formDateNaissance">
                 <label for="birthdate">Date de naissance</label><br />
                 <input
                   class="text-control"
@@ -101,7 +103,7 @@
                   required
                 /><br />
               </div>
-              <div class="formData">
+              <div class="formData" id="formNbParticipations">
                 <label for="quantity"
                   >À combien de tournois GameOn avez-vous déjà participé
                   ?</label
@@ -119,7 +121,7 @@
               <p class="text-label">
                 A quel tournoi souhaitez-vous participer cette année ?
               </p>
-              <div class="formData">
+              <div class="formData" id="formVille">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -188,14 +190,9 @@
                 >
               </div>
 
-              <div class="formData">
-                <input
-                  class="checkbox-input"
-                  type="checkbox"
-                  id="checkbox1"
-                  checked
-                />
-                <label class="checkbox2-label" for="checkbox1" required>
+              <div class="formData" id="formConditions">
+                <input class="checkbox-input" type="checkbox" id="checkbox1" />
+                <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
 
                   J'ai lu et accepté les conditions d'utilisation.
