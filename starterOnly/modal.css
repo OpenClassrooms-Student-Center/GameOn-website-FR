@@ -70,7 +70,7 @@ img {
 
 #popup-message {
   display: none;
-  background-color: red;
+  color: red;
   padding: 1em;
   border-radius: 30px;
   font-size: small;

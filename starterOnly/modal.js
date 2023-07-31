@@ -109,7 +109,7 @@ function validate(event) {
     let hasError = false;
     errorMessageSpans.forEach((span) => {
       if (span.innerHTML.trim() !== "") {
-        span.style.backgroundColor = "red";
+        span.style.color = "red";
         hasError = true;
       } else {
         span.style.backgroundColor = "";
