@@ -2,6 +2,8 @@
 	--font-default: "DM Sans", Arial, Helvetica, sans-serif;
 	--font-slab: var(--font-default);
 	--modal-duration: 0.8s;
+	--form-error-message: #e74c3c;
+	--form-success-message: #2ecc71;
 }
 * {
 	box-sizing: border-box;
@@ -210,7 +212,7 @@ input {
 	font-size: 20px;
 	height: 48px;
 }
-.formGroup[data-error]::after {
+.form-group[data-error]::after {
 	content: attr(data-error);
 	font-size: 0.4em;
 	color: #e54858;
@@ -222,10 +224,10 @@ input {
 	opacity: 0;
 	transition: 0.3s;
 }
-.formGroup[data-error-visible="true"]::after {
+.form-group[data-error-visible="true"]::after {
 	opacity: 1;
 }
-.formGroup[data-error-visible="true"] .text-control {
+.form-group[data-error-visible="true"] .text-control {
 	border: 2px solid #e54858;
 }
 /* 
@@ -527,4 +529,68 @@ footer {
 	to {
 		opacity: 1;
 	}
+}
+
+/* ---------------------------------------------- */
+
+.form-group {
+	margin-bottom: 10px;
+	/*padding-bottom: 20px; */
+	position: relative; 
+}
+
+.form-group label {
+	display: inline-block;
+	margin-bottom: 5px;
+}
+
+.form-group > #quantity i {
+	top: 80px !important;
+}
+
+.form-group input {
+	border: 2px solid #f0f0f0;
+	border-radius: 4px;
+	display: block;
+	font-family: inherit;
+	font-size: 14px;
+	padding: 10px;
+	width: 100%;
+}
+
+.form-group.success input {
+	border-color: var(--form-success-message);
+}
+
+.form-group.error input {
+	border-color: var(--form-error-message);
+}
+
+.form-group i {
+	position: absolute;
+	top: 45px;
+	right: 10px;
+	visibility: hidden;
+}
+.form-group.success i.fa-check-circle {
+	visibility: visible;
+	color: var(--form-success-message);
+}
+
+.form-group.error i.fa-exclamation-circle {
+	visibility: visible;
+	color: var(--form-error-message);
+}
+
+.form-group small {
+	visibility: hidden;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.form-group.error small {
+	visibility: visible;
+	color: var(--form-error-message);
+	font-size: .9rem;
 }
