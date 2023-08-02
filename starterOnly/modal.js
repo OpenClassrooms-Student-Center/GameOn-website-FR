@@ -1,5 +1,5 @@
 function editNav() {
-  var x = document.getElementById("myTopnav");
+  var x = document.getElementById("headerSection");
   if (x.className === "topnav") {
     x.className += " responsive";
   } else {
@@ -8,9 +8,9 @@ function editNav() {
 }
 
 // DOM Elements
-const modalbg = document.querySelector(".bground");
+const modalbg = document.querySelector(".hero-section-bg");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
+const formGroup = document.querySelectorAll(".form-group");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
