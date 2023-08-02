@@ -20,4 +20,10 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+// My code starts here
 
+let close = document.querySelector(".close")
+
+close.addEventListener("click", () => {
+  modalbg.style.display = "none"
+})
