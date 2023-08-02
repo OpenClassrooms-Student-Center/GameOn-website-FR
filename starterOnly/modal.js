@@ -115,7 +115,7 @@ function ControleNbParticipations() {
 
 // Vérification une ville sélectionnée btn radio
 const formVille = document.getElementById("formVille");
-function Location() {
+function ControleLocation() {
   let j = 0;
   for (let i = 0; i < BtnRadio.length; i++) {
     if (BtnRadio[i].checked) {
@@ -136,6 +136,7 @@ function Location() {
 const formConditions = document.getElementById("formConditions");
 function Conditions() {
   if (CheckCondition.checked) {
+    formConditions.setAttribute("data-error-visible", false);
     return true;
   } else {
     formConditions.setAttribute(
@@ -147,19 +148,39 @@ function Conditions() {
   }
 }
 
-//validation
-function validate() {
+// Ticket #4 Message de remerciement
+const formulaire = document.getElementById("form");
+const messageRemerciement = document.getElementById("messageRemerciement");
+const btnMerci = document.getElementById("btnMerci");
+
+function Message() {
+  formulaire.className = "notActive";
+  messageRemerciement.className = "active";
+}
+
+btnMerci.addEventListener("click", function event() {
+  formulaire.className = "active";
+  messageRemerciement.className = "notActive";
+  closeModal();
+  formulaire.reset();
+});
+
+// Validation
+
+formulaire.addEventListener("submit", function validate(e) {
+  e.preventDefault();
   if (
     ControlePrenom() &&
     ControleNom() &&
     ControleEmail() &&
     ControleDateNaissance() &&
     ControleNbParticipations() &&
-    Location() &&
+    ControleLocation() &&
     Conditions()
   ) {
+    Message();
     return true;
   } else {
     return false;
   }
-}
+});
