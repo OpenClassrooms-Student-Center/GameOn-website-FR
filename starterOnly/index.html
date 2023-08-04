@@ -72,6 +72,7 @@
                   id="first"
                   name="first"
                   minlength="2"
+                  required
                 /><br>
               </div>
               <div
@@ -83,6 +84,8 @@
                   type="text"
                   id="last"
                   name="last"
+                  minlength="2"
+                  required
                 /><br>
               </div>
               <div
@@ -94,6 +97,7 @@
                   type="email"
                   id="email"
                   name="email"
+                  required
                 /><br>
               </div>
               <div
@@ -105,6 +109,7 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
+                  required
                 /><br>
               </div>
               <div
@@ -117,11 +122,13 @@
                   id="quantity" 
                   name="quantity" 
                   min="0" 
-                  max="99">
+                  max="99"
+                  required
+                  />
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                class="formData">
+                class="formData formData--radios">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -131,8 +138,7 @@
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
-                  New York</label
-                >
+                  New York</label>
                 <input
                   class="checkbox-input"
                   type="radio"
