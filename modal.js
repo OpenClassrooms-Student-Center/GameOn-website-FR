@@ -43,7 +43,7 @@ function displayValidationMessage() {
 }
 
 
-function validate(event) {
+function validate(event) { //paramètre event
   try {
     event.preventDefault(); //prevents page refreshing when form is filled
     isValid = true; 
@@ -143,4 +143,4 @@ function validate(event) {
 }
 
 const form = document.querySelector("form"); //initialize form
-form.addEventListener("submit", validate); //sumbit form
+form.addEventListener("submit", validate); //sumbit form if valide
