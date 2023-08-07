@@ -35,10 +35,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -68,8 +68,26 @@ img {
   display: none;
 }
 
+#popup-message {
+  display: none;
+  color: red;
+  padding: 1em;
+  border-radius: 30px;
+  font-size: small;
+}
+
+.error-message {
+  display: inline-block;
+  font-size: small;
+  margin: 1em;
+  padding: 0.3em;
+  border-radius: 30px;
+}
+
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
@@ -77,7 +95,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -90,16 +110,16 @@ img {
   }
 }
 
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
     margin-top: -15px;
   }
-} 
+}
 
 main {
   font-size: 130%;
@@ -111,8 +131,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -172,6 +190,7 @@ main {
 .content {
   margin: 5% auto;
   width: 100%;
+  height: auto;
   max-width: 500px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
@@ -186,6 +205,19 @@ main {
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
+}
+
+.form-body {
+  display: block;
+}
+
+#validation-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 75%;
+  padding: 10em 0;
+  display: none;
 }
 
 label {
@@ -226,12 +258,12 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
+
 input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
+  content: attr(data-error);
+  font-size: 0.4em;
+  color: red;
+}
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -239,6 +271,7 @@ input[data-error]::after {
   font-size: 12px;
   font-weight: normal;
 }
+
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
   display: block;
@@ -253,6 +286,7 @@ input[data-error]::after {
   top: -1px;
   transition: 0.3s;
 }
+
 .checkbox-label .checkbox-icon::after,
 .checkbox2-label .checkbox-icon::after {
   content: "";
@@ -269,21 +303,26 @@ input[data-error]::after {
   transition: 0.3s;
   opacity: 0;
 }
-.checkbox-input {
+
+.checkbox-input,
+.radio-input {
   display: none;
 }
+
 .checkbox-input:checked + .checkbox-label .checkbox-icon::after,
 .checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
   opacity: 1;
 }
+
 .checkbox-input:checked + .checkbox2-label .checkbox-icon {
   background: #279e7a;
 }
+
 .checkbox2-label .checkbox-icon {
   border-radius: 4px;
-  border: 0;
-  background: #c4c4c4;
+  border: 2px solid #c4c4c4;
 }
+
 .checkbox2-label .checkbox-icon::after {
   width: 7px;
   height: 4px;
@@ -296,6 +335,7 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
+
 .close {
   position: absolute;
   right: 15px;
@@ -428,7 +468,7 @@ input[data-error]::after {
   height: 100%;
   background: #232323;
   position: absolute;
-  right: -80px;
+  /* right: -80px; */
   top: 0;
 }
 .hero-content > * {
@@ -478,15 +518,18 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
 @media screen and (max-width: 800px) {
   .hero-section {
     display: block;
     box-shadow: unset;
+    max-width: 100%;
   }
   .hero-content {
     background: #fff;
     color: #000;
     padding: 20px;
+    width: 100%;
   }
   .hero-content::after {
     content: unset;
@@ -496,10 +539,14 @@ footer {
   }
   .hero-headline {
     font-size: 4.5rem;
+    font-weight: normal;
     white-space: normal;
+    width: 100%;
   }
+
   .hero-text {
-    width: unset;
+    width: 70%;
+
     font-size: 1.5rem;
   }
   .hero-img img {
@@ -517,6 +564,23 @@ footer {
   }
 }
 
+@media screen and (max-width: 500px) {
+  .hero-content {
+    width: inherit;
+    padding: 0;
+    padding-top: 2em;
+  }
+  .hero-headline {
+    width: inherit;
+    font-weight: bold;
+    font-size: clamp(2rem, 8vw, 6rem);
+  }
+
+  .content {
+    height: auto;
+  }
+}
+
 @keyframes modalopen {
   from {
     opacity: 0;
@@ -526,4 +590,3 @@ footer {
     opacity: 1;
   }
 }
-
