@@ -70,17 +70,30 @@ function validateLast(form) {
 }
 ///////////////validation pour l'email
 function validateEmail(form) {
-  const validateEmail = document.querySelector(".email");
-  const Email = form["email"].value;
-  //pour l'email
-  if (Email === "") {
-    validateEmail.setAttribute("data-error-visible", "true");
-    validateEmail.setAttribute("data-error", "Veuillez saisir votre email");
+  const validateEmailField = document.querySelector(".email");
+  const email = form["email"].value;
 
+  // Utilisation d'une expression régulière pour valider le format de l'email
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+  //si l'email est vide
+  if (email === "") {
+    validateEmailField.setAttribute("data-error-visible", "true");
+    validateEmailField.setAttribute(
+      "data-error",
+      "Veuillez saisir votre email"
+    );
+    return false;
+    // si l'email nai pas valide
+  } else if (!emailRegex.test(email)) {
+    validateEmailField.setAttribute("data-error-visible", "true");
+    validateEmailField.setAttribute(
+      "data-error",
+      "Veuillez saisir une adresse email valide"
+    );
     return false;
   } else {
-    validateEmail.setAttribute("data-error-visible", "false");
-    validateEmail.removeAttribute("data-error", "Veuillez saisir votre email.");
+    validateEmailField.setAttribute("data-error-visible", "false");
+    validateEmailField.removeAttribute("data-error");
     return true;
   }
 }
