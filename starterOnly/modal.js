@@ -238,7 +238,9 @@ function modal() {
       <input id="closeModal2" class="btn-submit" type="submit"   value="Fermer" />
     </div>`;
   document.querySelector(".modal-body").innerHTML = modal;
-  document.getElementById("closeModal2").addEventListener("click", close_modal);
+  document
+    .getElementById("closeModal2")
+    .addEventListener("click", close_modal2);
 }
 
 ////////// Fonction pour gérer  le bouton de soumission "cest parti"
@@ -261,6 +263,11 @@ document
 function close_modal(e) {
   e.preventDefault();
   modalbg.style.display = "none";
+}
+//close modal 2 avec le rafraîchissement de la page 
+function close_modal2() {
+  modalbg.style.display = "none";
+  location.reload(false);
 }
 ////ecoute  le click de closeModal
 document.getElementById("closeModal").addEventListener("click", close_modal);
