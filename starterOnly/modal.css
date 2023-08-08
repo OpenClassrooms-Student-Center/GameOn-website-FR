@@ -53,7 +53,7 @@ img {
 }
 
 .topnav a:hover {
-  background-color: #ff0000;
+  /* background-color: #ff0000; */
   color: #ffffff;
   border-radius: 15px;
 }
@@ -75,6 +75,7 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
+    color: red;
   }
 }
 
@@ -418,7 +419,7 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-   border-radius: 10px;
+  border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   overflow: hidden;
@@ -490,6 +491,7 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+/* for mobile */
 @media screen and (max-width: 800px) {
   /* ajouter */
   .bground {
@@ -497,10 +499,11 @@ footer {
     background-color: transparent;
     top: 50px;
   }
-  
+
   .content {
     margin: 0 auto;
     min-height: 100vh;
+    min-width: 100vw;
   }
   .hero-section {
     display: block;
@@ -518,7 +521,7 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 4rem;
     white-space: normal;
   }
   .hero-text {
@@ -551,5 +554,16 @@ footer {
   }
   to {
     opacity: 1;
+  }
+}
+
+@media screen and (max-width: 457px) {
+  .hero-text {
+    width: 80%;
+  }
+}
+@media screen and (max-width: 350px) {
+  .hero-text {
+    width: 70%;
   }
 }
