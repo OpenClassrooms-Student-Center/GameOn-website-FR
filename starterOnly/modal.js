@@ -145,7 +145,17 @@ function validateQuantity(form) {
     );
 
     return false;
-  } else {
+    
+  } 
+  else if   (quantity > 99) {
+ 
+   validateQuantity.setAttribute("data-error-visible", "true");
+   validateQuantity.setAttribute(
+     "data-error",
+     "le  maximum est 99"
+   );
+   return false;
+}else {
     validateQuantity.setAttribute("data-error-visible", "false");
     validateQuantity.removeAttribute(
       "data-error",
