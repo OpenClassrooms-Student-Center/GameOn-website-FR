@@ -492,6 +492,12 @@ footer {
 }
 @media screen and (max-width: 800px) {
   /* ajouter */
+  .bground {
+    height: 100%;
+    background-color: transparent;
+    top: 50px;
+  }
+  
   .content {
     margin: 0 auto;
     min-height: 100vh;
