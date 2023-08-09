@@ -67,7 +67,6 @@ img {
 .topnav .icon {
   display: none;
 }
-
 @media screen and (max-width: 768px) {
   .topnav a {
     display: none;
@@ -77,9 +76,6 @@ img {
     display: block;
     color: red;
   }
-}
-
-@media screen and (max-width: 768px) {
   .topnav.responsive {
     position: relative;
   }
@@ -499,7 +495,9 @@ footer {
     background-color: transparent;
     top: 50px;
   }
-
+  .form {
+    padding-bottom: 50px;
+  }
   .content {
     margin: 0 auto;
     min-height: 100vh;
@@ -561,6 +559,7 @@ footer {
   .hero-text {
     width: 80%;
   }
+ 
 }
 @media screen and (max-width: 350px) {
   .hero-text {
