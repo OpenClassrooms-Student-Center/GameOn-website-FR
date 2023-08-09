@@ -236,15 +236,15 @@ input[data-error]::after {
     font-size: 0.4em;
     color: red;
 } */
-.checkbox-label,
-.checkbox2-label {
+.radio-label,
+.checkbox-label {
 	position: relative;
 	margin-left: 36px;
 	font-size: 12px;
 	font-weight: normal;
 }
-.checkbox-label .checkbox-icon,
-.checkbox2-label .checkbox-icon {
+.radio-label .radio-icon,
+.checkbox-label .checkbox-icon {
 	display: block;
 	width: 20px;
 	height: 20px;
@@ -257,8 +257,8 @@ input[data-error]::after {
 	top: -1px;
 	transition: 0.3s;
 }
-.checkbox-label .checkbox-icon::after,
-.checkbox2-label .checkbox-icon::after {
+.radio-label .radio-icon::after,
+.checkbox-label .checkbox-icon::after {
 	content: "";
 	width: 13px;
 	height: 13px;
@@ -273,22 +273,23 @@ input[data-error]::after {
 	transition: 0.3s;
 	opacity: 0;
 }
+.radio-input,
 .checkbox-input {
 	display: none;
 }
-.checkbox-input:checked + .checkbox-label .checkbox-icon::after,
-.checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
+.radio-input:checked + .radio-label .radio-icon::after,
+.checkbox-input:checked + .checkbox-label .checkbox-icon::after {
 	opacity: 1;
 }
-.checkbox-input:checked + .checkbox2-label .checkbox-icon {
+.checkbox-input:checked + .checkbox-label .checkbox-icon {
 	background: #279e7a;
 }
-.checkbox2-label .checkbox-icon {
+.checkbox-label .checkbox-icon {
 	border-radius: 4px;
 	border: 0;
 	background: #c4c4c4;
 }
-.checkbox2-label .checkbox-icon::after {
+.checkbox-label .checkbox-icon::after {
 	width: 7px;
 	height: 4px;
 	border-radius: 2px;
