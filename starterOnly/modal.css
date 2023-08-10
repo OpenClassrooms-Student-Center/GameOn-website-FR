@@ -534,7 +534,9 @@ footer {
 
 /* ---------------------------------------------- */
 
-.form-group {
+.form-group, 
+.form-groups {
+	height:max-content;
 	margin-bottom: 10px;
 	/*padding-bottom: 20px; */
 	position: relative; 
@@ -583,15 +585,21 @@ footer {
 	color: var(--form-error-message);
 }
 
-.form-group small {
+.form-group small,
+.form-groups small {
 	visibility: hidden;
 	position: absolute;
-	bottom: 0;
+	bottom: 5px;
 	left: 0;
 }
 
-.form-group.error small {
+.form-group.error small,
+.form-groups.error small {
 	visibility: visible;
 	color: var(--form-error-message);
 	font-size: .9rem;
 }
+
+/* .form-group-custom.error small{
+	bottom: -40px !important;
+} */

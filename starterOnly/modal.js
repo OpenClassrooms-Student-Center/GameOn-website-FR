@@ -1,5 +1,5 @@
 function editNav() {
-	var x = document.getElementById("headerSection");
+	const x = document.getElementById("headerSection");
 	if (x.className === "header") {
 		x.className += " responsive";
 	} else {
@@ -11,7 +11,6 @@ function editNav() {
 const modalbg = document.querySelector(".hero-section-bg");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const closeModalBtn = document.querySelector("#closeModalBtn");
-// const formGroup = document.querySelectorAll(".form-group");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", openModal));
@@ -26,7 +25,7 @@ function closeModal() {
 	modalbg.style.display = "none";
 }
 
-// ------------------- Form Validations ----------------------------
+// ------------------- Form Inputs ----------------------------
 const form = document.getElementById("form");
 const firstName = document.getElementById("firstName");
 const lastName = document.getElementById("lastName");
@@ -34,22 +33,40 @@ const email = document.getElementById("email");
 const birthDate = document.getElementById("birthDate");
 const quantity = document.getElementById("quantity");
 
-form.addEventListener("input", (e) => {
+const locations = document.getElementsByName("location");
+// const termOfUses = document.getElementById("termOfUse");
+// console.log(lastName)
+// const lcoation = document.querySelector('input[name="place"]:checked');
+
+form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     checkInputs();
-    sitTimeout(() => {
-        getInputFromTextBox();
-    }, 1000);
 });
 
+
+// Checks form input values
 function checkInputs() {
+
+	let place = null;
+
+	for (let i = 0; i < locations.length; i++) {
+		if (locations[i].checked) {
+			place = locations[i];
+			break;
+		}
+	}
+
 	//get the values from the inputs
-	var firstNameValue = firstName.value.trim();
-    var lastNameValue = lastName.value.trim();
-	var emailValue = email.value.trim();
-	var birthDateValue = birthDate.value.trim();
-	var quantityValue = quantity.value.trim();
+	const firstNameValue = firstName.value.trim();
+    const lastNameValue = lastName.value.trim();
+	const emailValue = email.value.trim();
+	const birthDateValue = birthDate.value.trim();
+	const quantityValue = quantity.value.trim();
+
+    let locationValue = place !== null ? place.value : null;
+    // const termOfUseValues = termOfUse.value.trim();
+
 
      // First name validation
 	if (firstNameValue === "") {
@@ -96,22 +113,41 @@ function checkInputs() {
 	} else {
 		setSuccessFor(quantity);
 	}
+
+    if (locationValue === "" || locationValue === null) {
+		setErrorFor(locations.item(1), "Sélectionnez le lieu de tournoi !");
+	} else {
+		setSuccessFor(locations.item(1));
+	}
+
+    // if (termOfUseValues === "") {
+	// 	setErrorFor(termOfUses, "Vous devez accepter les termes et conditions");
+	// } else {
+	// 	setSuccessFor(termOfUses);
+	// }
 }
 
 function setErrorFor(input, message) {
 	const formGroup = input.parentElement; //form-group
 	const small = formGroup.querySelector("small");
 
-	// add error message inside small
-	small.innerText = message;
+	small.innerText = message; 	// add error message
 
-	// add error message
-	formGroup.className = "form-group error";
+	if(formGroup.classList.contains('form-group')) formGroup.className = "form-group error";
+
+	else if(formGroup.classList.contains('form-groups')) formGroup.className = "form-groups error";
+	
+
+	
+		console.log(formGroup)
 }
 
 function setSuccessFor(input) {
 	const formGroup = input.parentElement;
-	formGroup.className = "form-group success";
+
+	if(formGroup.classList.contains('form-group')) {
+		formGroup.className = "form-group success";
+	} else if(formGroup.classList.contains('form-groups')) formGroup.className = "form-groups success";
 }
 
 function isLetters(letter) {
@@ -121,4 +157,3 @@ function isLetters(letter) {
 function isEmail(email) {
 	return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
 }
-
