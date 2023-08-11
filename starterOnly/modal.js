@@ -18,6 +18,7 @@ const regexEmail = new RegExp("^[a-z0-9._-]+@[a-z0-9-_]+\\.[a-z]{2,}$");
 const checkBoxRequired = document.getElementById("checkbox1");
 const firstnameInput = document.getElementById("first");
 const lastnameInput = document.getElementById("last");
+const closeModalBtn = document.querySelector('.close');
 
 // launches modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -30,6 +31,11 @@ function validate(){
   const email = emailInput.value;
   return (regexEmail.test(email) && radioChecked() && checkBoxRequired.checked);
 }
+
+// close modal event
+closeModalBtn.addEventListener("click", ()=>{
+  closeModal();
+});
 
 // launches modal form
 function launchModal() {
@@ -44,6 +50,11 @@ function radioChecked(){
     }
   }
   return false;
+}
+
+// closes modal form
+function closeModal(){
+  modalbg.style.display = "none";
 }
 
 // Verifies that the firstname input has something and more than 2 characters
