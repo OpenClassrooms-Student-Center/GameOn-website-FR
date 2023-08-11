@@ -21,8 +21,8 @@ const checkBoxNotRequired = document.getElementById("checkbox2");
 const firstnameInput = document.getElementById("first");
 const lastnameInput = document.getElementById("last");
 const closeModalBtn = document.querySelector('.close');
-const birthDateInput = document.getElementById("birthdate")
-const quantityInput = document.getElementById("quantity")
+const birthDateInput = document.getElementById("birthdate");
+const quantityInput = document.getElementById("quantity");
 
 // launches modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -33,14 +33,40 @@ function validate(){
   console.log("Prénom : "+firstnameInput.value+", Validité : "+validateFirstname());
   console.log("Nom : "+lastnameInput.value+", Validité : "+validateLastname());
   console.log("Email : "+emailInput.value+", Validité : "+validateEmail());
-  console.log("Date de naissance : "+birthDateInput.value);
+  console.log("Date de naissance : "+birthDateInput.value+", Validité : "+validateBirthDate());
   console.log("Nombre de participation à des tournois : "+quantityInput.value+", Validité : "+validateQuantity());
   console.log("Lieu de participation souhaité : "+radioChecked()+", Validité : "+validateRadioChecked());
   console.log("Conditions générales cochées : "+checkBoxRequired.checked+", Validité : "+checkBoxRequired.checked);
   console.log("Checkbox facultative cochée : "+checkBoxNotRequired.checked);
-  if (validateFirstname() && validateLastname() && validateEmail() && validateQuantity() && validateRadioChecked() && checkBoxRequired.checked){
+  if (validateFirstname() && validateLastname() && validateEmail() && validateBirthDate() && validateQuantity() && validateRadioChecked() && checkBoxRequired.checked){
+    removeErrors();
     console.log("TOUT EST VALIDE");
   } else {
+
+    removeErrors();
+
+    if(!validateFirstname()){
+      errorFirstname();
+    }
+    if(!validateLastname()){
+      errorLastname();
+    }
+    if(!validateEmail()){
+      errorEmail();
+    }
+    if(!validateBirthDate()){
+      errorBirthDate();
+    }
+    if(!validateQuantity()){
+      errorQuantity();
+    }
+    if(!validateRadioChecked()){
+      errorRadio();
+    }
+    if(!checkBoxRequired.checked){
+      console.log('?');
+      errorCheckbox();
+    }
     console.log("INVALIDE");
   }
 }
@@ -100,4 +126,94 @@ function validateLastname(){
 // Verifies that there is a number inside the quantity input
 function validateEmail(){
   return regexEmail.test(emailInput.value);
+}
+
+// Verifies that there is a birth date
+function validateBirthDate(){
+  return birthDateInput.value!="";
+}
+
+// Removes error messages
+function removeErrors(){
+  let errors=document.querySelectorAll(".modalErrorMsg");
+  errors.forEach(error => {
+    error.remove();
+  });
+}
+
+// Adds an error message under the firstname input
+function errorFirstname(){
+  if(document.getElementById("errorFirstname")==null){
+    let errorMsg=document.createElement("p");
+    errorMsg.setAttribute("id","errorFirstname");
+    errorMsg.classList.add("modalErrorMsg");
+    errorMsg.innerText="Veuillez entrer 2 caractères ou plus pour le champ du Prénom.";
+    firstnameInput.parentElement.appendChild(errorMsg);
+  }
+}
+
+// Adds an error message under the lastname input
+function errorLastname(){
+  if(document.getElementById("errorLastname")==null){
+    let errorMsg=document.createElement("p");
+    errorMsg.setAttribute("id","errorLastname");
+    errorMsg.classList.add("modalErrorMsg");
+    errorMsg.innerText="Veuillez entrer 2 caractères ou plus pour le champ du Nom.";
+    lastnameInput.parentElement.appendChild(errorMsg);
+  }
+}
+
+// Adds an error message under the email input
+function errorEmail(){
+  if(document.getElementById("errorEmail")==null){
+    let errorMsg=document.createElement("p");
+    errorMsg.setAttribute("id","errorEmail");
+    errorMsg.classList.add("modalErrorMsg");
+    errorMsg.innerText="Votre adresse mail a un mauvais format.";
+    emailInput.parentElement.appendChild(errorMsg);
+  }
+}
+
+// Adds an error message under the birthDate input
+function errorBirthDate(){
+  if(document.getElementById("errorBirthDate")==null){
+    let errorMsg=document.createElement("p");
+    errorMsg.setAttribute("id","errorBirthDate");
+    errorMsg.classList.add("modalErrorMsg");
+    errorMsg.innerText="Vous devez indiquer votre date de naissance.";
+    birthDateInput.parentElement.appendChild(errorMsg);
+  }
+}
+
+// Adds an error message under the quantity input
+function errorQuantity(){
+  if(document.getElementById("errorQuantity")==null){
+    let errorMsg=document.createElement("p");
+    errorMsg.setAttribute("id","errorQuantity");
+    errorMsg.classList.add("modalErrorMsg");
+    errorMsg.innerText="Vous devez entrer votre date de naissance";
+    quantityInput.parentElement.appendChild(errorMsg);
+  }
+}
+
+// Adds an error message under the quantity input
+function errorRadio(){
+  if(document.getElementById("errorRadio")==null){
+    let errorMsg=document.createElement("p");
+    errorMsg.setAttribute("id","errorRadio");
+    errorMsg.classList.add("modalErrorMsg");
+    errorMsg.innerText="Vous devez sélectionner une localisation.";
+    formDataRadios.before(errorMsg);
+  }
+}
+
+// Adds an error message under the quantity input
+function errorCheckbox(){
+  if(document.getElementById("errorCheckbox")==null){
+    let errorMsg=document.createElement("p");
+    errorMsg.setAttribute("id","errorCheckbox");
+    errorMsg.classList.add("modalErrorMsg");
+    errorMsg.innerText="Vous devez vérifier que vous acceptez les termes et conditions.";
+    checkBoxRequired.parentElement.appendChild(errorMsg);
+  }
 }

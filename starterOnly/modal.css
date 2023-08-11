@@ -333,6 +333,18 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+/* Modal errors */
+
+.modalErrorMsg{
+  font-size: 1rem;
+  padding: 0.5rem;
+  background-color: #4d1e23;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 7px;
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;
