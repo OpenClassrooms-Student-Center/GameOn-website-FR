@@ -191,7 +191,7 @@ function errorQuantity(){
     let errorMsg=document.createElement("p");
     errorMsg.setAttribute("id","errorQuantity");
     errorMsg.classList.add("modalErrorMsg");
-    errorMsg.innerText="Vous devez entrer votre date de naissance";
+    errorMsg.innerText="Vous devez insérer un nombre dans ce champ.";
     quantityInput.parentElement.appendChild(errorMsg);
   }
 }
