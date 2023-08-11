@@ -16,22 +16,27 @@ const radios = formDataRadios.querySelectorAll("input");
 const emailInput = document.getElementById("email");
 const regexEmail = new RegExp("^[a-z0-9._-]+@[a-z0-9-_]+\\.[a-z]{2,}$");
 const checkBoxRequired = document.getElementById("checkbox1");
+const firstnameInput = document.getElementById("first");
+const lastnameInput = document.getElementById("last");
 
-// launch modal event
+// launches modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
-// submit modal event
+// submits modal event
 function validate(){
+  event.preventDefault();
+  console.log(validateFirstname());
+  console.log(validateLastname());
   const email = emailInput.value;
   return (regexEmail.test(email) && radioChecked() && checkBoxRequired.checked);
 }
 
-// launch modal form
+// launches modal form
 function launchModal() {
   modalbg.style.display = "block";
 }
 
-// Verify that a radio has been checked
+// Verifies that a radio has been checked
 function radioChecked(){
   for (radio of radios){
     if(radio.checked){
@@ -39,4 +44,16 @@ function radioChecked(){
     }
   }
   return false;
+}
+
+// Verifies that the firstname input has something and more than 2 characters
+function validateFirstname(){
+  let firstname=firstnameInput.value;
+  return (firstname.length>=2);
+}
+
+// Verifies that the lastname input has something and more than 2 characters
+function validateLastname(){
+  let lastname=lastnameInput.value;
+  return (lastname.length>=2);
 }
