@@ -146,8 +146,17 @@ function validateQuantity(form) {
 
     return false;
     
-  } 
-  else if   (quantity > 99) {
+ 
+  //si la quantity est moin de 0
+} else if (quantity < 0) {
+  validateQuantity.setAttribute("data-error-visible", "true");
+  validateQuantity.setAttribute(
+    "data-error",
+    "La valeur ne peut pas être négative"
+  );
+  return false;
+  //si la quantity est plus de 99
+  }else if   (quantity > 99) {
  
    validateQuantity.setAttribute("data-error-visible", "true");
    validateQuantity.setAttribute(
