@@ -24,7 +24,7 @@ function launchModal() {
 /////////////validation pour le prenom
 function validateFirst(form) {
   const validateFirst = document.querySelector(".first");
-  const first = form["first"].value;
+  const first = form["first"].value.trim();
   //Si le prénom est vide ou contient moins de 2 lettres
   if (first === "" || first.length < 2) {
     validateFirst.setAttribute("data-error-visible", "true");
@@ -48,7 +48,7 @@ function validateFirst(form) {
 ///////////////validation pour le nom
 function validateLast(form) {
   const validateLast = document.querySelector(".last");
-  const last = form["last"].value;
+  const last = form["last"].value.trim();
   //Si le nom est vide ou contient moins de 2 lettres
   if (last === "" || last.length < 2) {
     validateLast.setAttribute("data-error-visible", "true");
