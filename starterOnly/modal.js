@@ -145,26 +145,21 @@ function validateQuantity(form) {
     );
 
     return false;
-    
- 
-  //si la quantity est moin de 0
-} else if (quantity < 0) {
-  validateQuantity.setAttribute("data-error-visible", "true");
-  validateQuantity.setAttribute(
-    "data-error",
-    "La valeur ne peut pas être négative"
-  );
-  return false;
-  //si la quantity est plus de 99
-  }else if   (quantity > 99) {
- 
-   validateQuantity.setAttribute("data-error-visible", "true");
-   validateQuantity.setAttribute(
-     "data-error",
-     "le  maximum est 99"
-   );
-   return false;
-}else {
+
+    //si la quantity est moin de 0
+  } else if (quantity < 0) {
+    validateQuantity.setAttribute("data-error-visible", "true");
+    validateQuantity.setAttribute(
+      "data-error",
+      "La valeur ne peut pas être négative"
+    );
+    return false;
+    //si la quantity est plus de 99
+  } else if (quantity > 99) {
+    validateQuantity.setAttribute("data-error-visible", "true");
+    validateQuantity.setAttribute("data-error", "le  maximum est 99");
+    return false;
+  } else {
     validateQuantity.setAttribute("data-error-visible", "false");
     validateQuantity.removeAttribute(
       "data-error",
@@ -224,7 +219,14 @@ function validateConditions(form) {
     return false;
   }
 }
+const reserveForm = document.getElementById("reserve-form");
 
+
+//declache la validation de formulaire 
+reserveForm.addEventListener("submit", function (event) {
+  event.preventDefault();  
+  validate();
+});
 /////////////// Form validation
 function validate() {
   const isFirstNameValid = validateFirst(form);
@@ -283,7 +285,7 @@ function close_modal(e) {
   e.preventDefault();
   modalbg.style.display = "none";
 }
-//close modal 2 avec le rafraîchissement de la page 
+//close modal 2 avec le rafraîchissement de la page
 function close_modal2() {
   modalbg.style.display = "none";
   location.reload(false);
