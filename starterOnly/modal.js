@@ -172,6 +172,13 @@ function Message() {
 //Reactive et reset le formulaire, desactive le message de remerciement et ferme la modale quand on clique sur le bouton de remerciement
 btnMerci.addEventListener("click", closeModal);
 
+//Fonctionalité pour fermer la modale avec la touche 'esc'
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    closeModal();
+  }
+});
+
 // Validation du formulaire au moment de l'envoi et affichage du message de remerciement si validé
 formulaire.addEventListener("submit", function validate(e) {
   e.preventDefault();
