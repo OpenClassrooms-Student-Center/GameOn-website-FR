@@ -1,3 +1,4 @@
+//ajoute la classe responsive a l'element Topnav quand JS est activé
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -10,7 +11,25 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
+const btnClose = document.querySelector(".close");
 const formData = document.querySelectorAll(".formData");
+const formulaire = document.getElementById("form");
+const BtnRadio = document.getElementsByName("location");
+const CheckCondition = document.getElementById("checkbox1");
+const prenom = document.getElementById("first");
+const formPrenom = document.getElementById("formPrenom");
+const nom = document.getElementById("last");
+const formNom = document.getElementById("formNom");
+const mail = document.getElementById("email");
+const formEmail = document.getElementById("formEmail");
+const dateNaissance = document.getElementById("birthdate");
+const formDateNaissance = document.getElementById("formDateNaissance");
+const nbParticipations = document.getElementById("quantity");
+const formNbParticipations = document.getElementById("formNbParticipations");
+const formVille = document.getElementById("formVille");
+const formConditions = document.getElementById("formConditions");
+const messageRemerciement = document.getElementById("messageRemerciement");
+const btnMerci = document.getElementById("btnMerci");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -20,21 +39,22 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 //Ticket #1 fermer la modale
-const btnClose = document.querySelector(".close");
 btnClose.addEventListener("click", closeModal);
 
+//ferme la modale
 function closeModal() {
   modalbg.style.display = "none";
+  if (formulaire.className == "notActive") {
+    formulaire.className = "active";
+    messageRemerciement.className = "notActive";
+    formulaire.reset();
+  }
 }
 
-// Ticket #2
-const BtnRadio = document.getElementsByName("location");
-const CheckCondition = document.getElementById("checkbox1");
+// Ticket #2, les entrées du formulaire sont implementées en html
 
-// Ticket #3
-
-const prenom = document.getElementById("first");
-const formPrenom = document.getElementById("formPrenom");
+// Ticket #3 validation et messages d'erreurs
+//verifie que le champ prenom fait 2 caractères ou plus, sinon affiche un msg d'erreur
 function ControlePrenom() {
   if (!prenom.validity.valid) {
     formPrenom.setAttribute(
@@ -49,8 +69,7 @@ function ControlePrenom() {
   }
 }
 
-const nom = document.getElementById("last");
-const formNom = document.getElementById("formNom");
+//verifie que le champ nom fait 2 caractères ou plus, sinon affiche un msg d'erreur
 function ControleNom() {
   if (!nom.validity.valid) {
     formNom.setAttribute(
@@ -65,8 +84,7 @@ function ControleNom() {
   }
 }
 
-const mail = document.getElementById("email");
-const formEmail = document.getElementById("formEmail");
+//verifie que le champ mail est un email valide, sinon affiche un msg d'erreur
 function ControleEmail() {
   if (!mail.validity.valid) {
     formEmail.setAttribute(
@@ -81,8 +99,7 @@ function ControleEmail() {
   }
 }
 
-const dateNaissance = document.getElementById("birthdate");
-const formDateNaissance = document.getElementById("formDateNaissance");
+//verifie que le champ date de naissance est une date valide, sinon affiche un msg d'erreur
 function ControleDateNaissance() {
   if (!dateNaissance.validity.valid) {
     formDateNaissance.setAttribute(
@@ -97,8 +114,7 @@ function ControleDateNaissance() {
   }
 }
 
-const nbParticipations = document.getElementById("quantity");
-const formNbParticipations = document.getElementById("formNbParticipations");
+//verifie que le champ nombre de participation est entre 0-99, sinon affiche un msg d'erreur
 function ControleNbParticipations() {
   if (!nbParticipations.validity.valid) {
     formNbParticipations.setAttribute(
@@ -113,8 +129,7 @@ function ControleNbParticipations() {
   }
 }
 
-// Vérification une ville sélectionnée btn radio
-const formVille = document.getElementById("formVille");
+//verifie qu'une ville a étée selectionnée dans les boutons radio, sinon affiche un msg d'erreur
 function ControleLocation() {
   let j = 0;
   for (let i = 0; i < BtnRadio.length; i++) {
@@ -132,8 +147,7 @@ function ControleLocation() {
   }
 }
 
-// Vérification conditions d'utilisation
-const formConditions = document.getElementById("formConditions");
+//verifie que les conditions d'utilisation sont acceptés, sinon affiche un msg d'erreur
 function Conditions() {
   if (CheckCondition.checked) {
     formConditions.setAttribute("data-error-visible", false);
@@ -149,24 +163,16 @@ function Conditions() {
 }
 
 // Ticket #4 Message de remerciement
-const formulaire = document.getElementById("form");
-const messageRemerciement = document.getElementById("messageRemerciement");
-const btnMerci = document.getElementById("btnMerci");
-
+//active le message de remerciement et desactive le formulaire
 function Message() {
   formulaire.className = "notActive";
   messageRemerciement.className = "active";
 }
 
-btnMerci.addEventListener("click", function event() {
-  formulaire.className = "active";
-  messageRemerciement.className = "notActive";
-  closeModal();
-  formulaire.reset();
-});
+//Reactive et reset le formulaire, desactive le message de remerciement et ferme la modale quand on clique sur le bouton de remerciement
+btnMerci.addEventListener("click", closeModal);
 
-// Validation
-
+// Validation du formulaire au moment de l'envoi et affichage du message de remerciement si validé
 formulaire.addEventListener("submit", function validate(e) {
   e.preventDefault();
   if (
