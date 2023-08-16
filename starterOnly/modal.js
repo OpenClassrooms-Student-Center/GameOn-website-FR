@@ -34,9 +34,7 @@ const birthDate = document.getElementById("birthDate");
 const quantity = document.getElementById("quantity");
 
 const locations = document.getElementsByName("location");
-// const termOfUses = document.getElementById("termOfUse");
-// console.log(lastName)
-// const lcoation = document.querySelector('input[name="place"]:checked');
+const terms = document.querySelectorAll('.checkbox-input[name="terms"]');
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -48,15 +46,6 @@ form.addEventListener("submit", (e) => {
 // Checks form input values
 function checkInputs() {
 
-	let place = null;
-
-	for (let i = 0; i < locations.length; i++) {
-		if (locations[i].checked) {
-			place = locations[i];
-			break;
-		}
-	}
-
 	//get the values from the inputs
 	const firstNameValue = firstName.value.trim();
     const lastNameValue = lastName.value.trim();
@@ -64,8 +53,20 @@ function checkInputs() {
 	const birthDateValue = birthDate.value.trim();
 	const quantityValue = quantity.value.trim();
 
-    let locationValue = place !== null ? place.value : null;
-    // const termOfUseValues = termOfUse.value.trim();
+    let locationValue =  null;
+
+	// Gets the selected value of a radio button
+	for (let i = 0; i < locations.length; i++) {
+		if (locations[i].checked) {
+			locationValue = locations[i];
+			break;
+		}
+	}
+
+	// Gets the checked values of checkboxes
+	const termsValues = Array.from(terms)
+		.filter(term => term.checked)
+		.map(item => item.value);
 
 
      // First name validation
@@ -120,11 +121,13 @@ function checkInputs() {
 		setSuccessFor(locations.item(1));
 	}
 
-    // if (termOfUseValues === "") {
-	// 	setErrorFor(termOfUses, "Vous devez accepter les termes et conditions");
-	// } else {
-	// 	setSuccessFor(termOfUses);
-	// }
+    if (termsValues[0] !== 'acceptedTerm' || termsValues[0] === undefined) {
+		setErrorFor(terms[0], "Vous devez accepter les termes et conditions");
+	} else {
+		setSuccessFor(terms[0]);
+	}
+
+	console.log(termsValues[1])
 }
 
 function setErrorFor(input, message) {
@@ -136,10 +139,6 @@ function setErrorFor(input, message) {
 	if(formGroup.classList.contains('form-group')) formGroup.className = "form-group error";
 
 	else if(formGroup.classList.contains('form-groups')) formGroup.className = "form-groups error";
-	
-
-	
-		console.log(formGroup)
 }
 
 function setSuccessFor(input) {
