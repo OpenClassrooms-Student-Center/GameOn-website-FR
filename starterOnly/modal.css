@@ -542,6 +542,10 @@ footer {
 	position: relative; 
 }
 
+.form-groups {
+	margin-bottom: 20px;
+}
+
 .form-group label {
 	display: inline-block;
 	margin-bottom: 5px;
@@ -571,8 +575,8 @@ footer {
 
 .form-group i {
 	position: absolute;
-	top: 45px;
 	right: 10px;
+	bottom: 41px;
 	visibility: hidden;
 }
 .form-group.success i.fa-check-circle {
@@ -600,6 +604,6 @@ footer {
 	font-size: .9rem;
 }
 
-/* .form-group-custom.error small{
-	bottom: -40px !important;
-} */
+.form-groups small{
+	bottom: -13px !important;
+}
