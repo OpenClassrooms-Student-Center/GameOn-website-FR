@@ -45,7 +45,6 @@ form.addEventListener("submit", (e) => {
 
 // Checks form input values
 function checkInputs() {
-
 	//get the values from the inputs
 	const firstNameValue = firstName.value.trim();
     const lastNameValue = lastName.value.trim();
@@ -58,7 +57,7 @@ function checkInputs() {
 	// Gets the selected value of a radio button
 	for (let i = 0; i < locations.length; i++) {
 		if (locations[i].checked) {
-			locationValue = locations[i];
+			locationValue = locations[i].value;
 			break;
 		}
 	}
@@ -127,7 +126,24 @@ function checkInputs() {
 		setSuccessFor(terms[0]);
 	}
 
-	console.log(termsValues[1])
+	const errorMessages = document.querySelectorAll('.form-group>small, .form-groups>small');
+	
+	const notErrorMessages = Array.from(errorMessages).every(err => err.innerText === "");
+	
+	if(notErrorMessages) {
+		const formData = {
+			firstNameValue, 
+			lastNameValue, 
+			emailValue, 
+			birthDateValue, 
+			quantityValue, 
+			locationValue, 
+			termsValues 
+		};
+
+		saveFormDataAndShowAlert(formData);
+	} 
+	
 }
 
 function setErrorFor(input, message) {
@@ -155,4 +171,31 @@ function isLetters(letter) {
 
 function isEmail(email) {
 	return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+}
+
+
+const alertMessage = document.querySelector('.alert-message');
+
+function saveFormDataAndShowAlert(formData) {
+
+	console.log(formData) // Data that will be send it to the server !
+	
+	setTimeout(() =>{ 
+		Array.from(document.querySelectorAll('.form-group')).map(formGroup => formGroup.classList.remove('success'));
+		form.reset();
+		closeModal();
+	}, 500);
+
+	setTimeout(() => {
+		alertMessage.classList.add('show');
+
+		setTimeout(() =>{ 
+			alertMessage.classList.remove('show')
+		}, 7000);
+	}, 2000);
+
+};
+
+function hideAlertMessage() {
+	alertMessage.classList.remove('show');
 }
