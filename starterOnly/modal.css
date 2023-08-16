@@ -607,3 +607,44 @@ footer {
 .form-groups small{
 	bottom: -13px !important;
 }
+
+/* Alert message */
+.alert-message {
+	min-width: 430px;
+	min-height: 180px;
+	background-color: #fde5e3;
+	padding: 1rem;
+	position: absolute;
+	top: 35%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 100;
+	opacity: 1;
+	display: none;
+	flex-direction: column;
+	justify-content: strt;
+	align-items: center;
+	border-radius: 15px;
+	opacity: 0;
+	transition: opacity 800ms;
+}
+
+.alert-message.show {
+	display: flex !important;
+	opacity: 1 !important;
+}
+
+.alert-message h1 {
+	font-size: 1.8rem;
+}
+
+.alert-message button {
+	width: 80px;
+	height: 35px;
+	font-size: 1.2rem;
+	margin-top: 30px;
+	border: none;
+	background-color: #e74c3c;
+	color: #fff;
+	border-radius: 7px;
+}
