@@ -35,10 +35,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -69,7 +69,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
@@ -77,7 +79,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -90,16 +94,16 @@ img {
   }
 }
 
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
     margin-top: -15px;
   }
-} 
+}
 
 main {
   font-size: 130%;
@@ -110,9 +114,6 @@ main {
   padding-right: 2vw;
   margin: 1px 20px 15px;
   border-radius: 2rem;
-  text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -157,7 +158,8 @@ main {
   font-size: 16px;
 }
 
-.bground {
+/* Modal */
+.modal {
   display: none;
   position: fixed;
   z-index: 1;
@@ -169,10 +171,10 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
-.content {
+.modal-content {
   margin: 5% auto;
   width: 100%;
-  max-width: 500px;
+  max-width: 560px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
   background: #232323;
@@ -184,8 +186,33 @@ main {
 }
 
 .modal-body {
-  padding: 15px 8%;
+  padding: 15px 38px;
   margin: 15px auto;
+}
+.modal-close {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(0.7);
+}
+.modal-close:before,
+.modal-close:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 3px;
+  background-color: #fff;
+}
+.modal-close:before {
+  transform: rotate(45deg);
+}
+.modal-close:after {
+  transform: rotate(-45deg);
 }
 
 label {
@@ -200,7 +227,7 @@ input {
   border: 0.8px solid #ccc;
   outline: none;
 }
-.text-control {
+.input-control {
   margin: 0;
   padding: 8px;
   width: 100%;
@@ -208,7 +235,17 @@ input {
   font-size: 20px;
   height: 48px;
 }
-.formData[data-error]::after {
+.input-group {
+  position: relative;
+}
+
+.input-group + .input-group {
+  margin-top: 16px;
+}
+.input-group[data-error]::after {
+  position: absolute;
+  right: 0;
+  bottom: -14px;
   content: attr(data-error);
   font-size: 0.4em;
   color: #e54858;
@@ -220,10 +257,10 @@ input {
   opacity: 0;
   transition: 0.3s;
 }
-.formData[data-error-visible="true"]::after {
+.input-group[data-error-visible="true"]::after {
   opacity: 1;
 }
-.formData[data-error-visible="true"] .text-control {
+.input-group[data-error-visible="true"] .input-control {
   border: 2px solid #e54858;
 }
 /* 
@@ -232,15 +269,19 @@ input[data-error]::after {
     font-size: 0.4em;
     color: red;
 } */
-.checkbox-label,
-.checkbox2-label {
+.radio-label,
+.checkbox-label {
   position: relative;
-  margin-left: 36px;
+  margin-inline: 30px 15px;
   font-size: 12px;
   font-weight: normal;
 }
-.checkbox-label .checkbox-icon,
-.checkbox2-label .checkbox-icon {
+.checkbox-label a,
+.radio-label a {
+  color: inherit;
+}
+.radio-label .radio-icon,
+.checkbox-label .checkbox-icon {
   display: block;
   width: 20px;
   height: 20px;
@@ -253,8 +294,8 @@ input[data-error]::after {
   top: -1px;
   transition: 0.3s;
 }
-.checkbox-label .checkbox-icon::after,
-.checkbox2-label .checkbox-icon::after {
+.radio-label .radio-icon::after,
+.checkbox-label .checkbox-icon::after {
   content: "";
   width: 13px;
   height: 13px;
@@ -269,22 +310,23 @@ input[data-error]::after {
   transition: 0.3s;
   opacity: 0;
 }
+.radio-input,
 .checkbox-input {
   display: none;
 }
-.checkbox-input:checked + .checkbox-label .checkbox-icon::after,
-.checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
+.radio-input:checked + .radio-label .radio-icon::after,
+.checkbox-input:checked + .checkbox-label .checkbox-icon::after {
   opacity: 1;
 }
-.checkbox-input:checked + .checkbox2-label .checkbox-icon {
+.checkbox-input:checked + .checkbox-label .checkbox-icon {
   background: #279e7a;
 }
-.checkbox2-label .checkbox-icon {
+.checkbox-label .checkbox-icon {
   border-radius: 4px;
   border: 0;
   background: #c4c4c4;
 }
-.checkbox2-label .checkbox-icon::after {
+.checkbox-label .checkbox-icon::after {
   width: 7px;
   height: 4px;
   border-radius: 2px;
@@ -295,31 +337,6 @@ input[data-error]::after {
   transform: rotate(-55deg);
   left: 21%;
   top: 19%;
-}
-.close {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  width: 32px;
-  height: 32px;
-  opacity: 1;
-  cursor: pointer;
-  transform: scale(0.7);
-}
-.close:before,
-.close:after {
-  position: absolute;
-  left: 15px;
-  content: " ";
-  height: 33px;
-  width: 3px;
-  background-color: #fff;
-}
-.close:before {
-  transform: rotate(45deg);
-}
-.close:after {
-  transform: rotate(-45deg);
 }
 .btn-submit,
 .btn-signup {
@@ -400,7 +417,13 @@ input[data-error]::after {
   background-color: rgba(0, 0, 0, 0.1);
 }
 /* custom select end */
-.text-label {
+
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+fieldset legend {
   font-weight: normal;
   font-size: 16px;
 }
@@ -526,4 +549,3 @@ footer {
     opacity: 1;
   }
 }
-
