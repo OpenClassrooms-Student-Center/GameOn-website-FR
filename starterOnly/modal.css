@@ -185,6 +185,8 @@ main {
 	position: relative;
 	color: #fff;
 	padding-top: 10px;
+	display: flex;
+	align-items: center;
 }
 
 .modal-body {
@@ -327,7 +329,9 @@ input[data-error]::after {
 	transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.modal-btn,
+.close-alert-btn {
 	background: #fe142f;
 	display: block;
 	margin: 0 auto;
@@ -608,43 +612,64 @@ footer {
 	bottom: -13px !important;
 }
 
+
+
 /* Alert message */
-.alert-message {
-	min-width: 430px;
-	min-height: 180px;
-	background-color: #fde5e3;
-	padding: 1rem;
-	position: absolute;
-	top: 35%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: 100;
-	opacity: 1;
-	display: none;
-	flex-direction: column;
-	justify-content: strt;
+
+.container {
+	width: 100%;
+	height: 100vh;
+	position: sticky;
+	display: flex;
+	justify-content: center;
 	align-items: center;
-	border-radius: 15px;
-	opacity: 0;
-	transition: opacity 800ms;
+	top: 0;
+	left: 0;
+	background-color: #fff;
+	z-index: 100;
+	display: none;
+	overflow: hidden;
 }
 
-.alert-message.show {
-	display: flex !important;
-	opacity: 1 !important;
+.container .alert-message-bg {
+	width: 45vh;
+	height: 80vh;
+	padding: 2rem;
+	background-color: #232323;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	position: relative;
 }
 
-.alert-message h1 {
-	font-size: 1.8rem;
+.container .alert-message-holder {
+	height: 60%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
 }
 
-.alert-message button {
-	width: 80px;
-	height: 35px;
-	font-size: 1.2rem;
-	margin-top: 30px;
-	border: none;
-	background-color: #e74c3c;
+.container .alert-message-holder p {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1.7rem;
+	text-align: center;
 	color: #fff;
-	border-radius: 7px;
+	font-weight: light;
+}
+
+
+@media screen and (max-width: 768px) {
+	.container {
+		position: fixed;
+		height:  calc(100vh - 96px) !important;
+		top: 90px !important;
+	}
+
+	.container .alert-message-bg {
+		width: 100%;
+		height: 100%;
+	}
+	
 }

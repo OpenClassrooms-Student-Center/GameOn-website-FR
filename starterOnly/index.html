@@ -10,18 +10,21 @@
 </head>
 
 <body>
-    <div class="alert-message">
-        <h1>GameOn</h1>
-        <p>Vos information ont bien été enregistrées !</p>
-        <button onclick="hideAlertMessage()">Ok</button>
+    <div class="container">
+        <div class="alert-message-bg">
+            <span class="close close-modal-btn" id="closeModalBtn"></span>
+            <div  class="alert-message-holder">
+                <p>Merci pour votre inscription</p>
+                <button class="close-alert-btn" onclick="closeModal()">Fermer</button>
+            </div>
+        </div>
     </div>
     <header class="header" id="headerSection">
         <div class="header-logo">
             <img alt="logo" src="Logo.png" width="auto" height="auto" />
         </div>
         <nav class="header-navbar">
-            <a href="#" class="active"><span>Accueil</span></a>
-            <a href="#"><span>Détails de l'évènement</span></a>
+            <a href="#" class="active"><span>Détails de l'évènement</span></a>
             <a href="#"><span>À propos</span></a>
             <a href="#"><span>Contact</span></a>
             <a href="#"><span>Évènements passés</span></a>
@@ -54,7 +57,8 @@
 
         <section class="hero-section-bg">
             <div class="content">
-                <span class="close" id="closeModalBtn"></span>
+                <span class="close close-modal-btn" id="closeModalBtn"></span>
+                <div class="alert-message"></div>
                 <div class="modal-body">
                     <form id="form" action="">
                         <div class="form-group">

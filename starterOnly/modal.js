@@ -1,29 +1,3 @@
-function editNav() {
-	const x = document.getElementById("headerSection");
-	if (x.className === "header") {
-		x.className += " responsive";
-	} else {
-		x.className = "header";
-	}
-}
-
-// DOM Elements
-const modalbg = document.querySelector(".hero-section-bg");
-const modalBtn = document.querySelectorAll(".modal-btn");
-const closeModalBtn = document.querySelector("#closeModalBtn");
-
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", openModal));
-closeModalBtn.addEventListener("click", closeModal);
-
-// open modal form
-function openModal() {
-	modalbg.style.display = "block";
-}
-// close modal form
-function closeModal() {
-	modalbg.style.display = "none";
-}
 
 // ------------------- Form Inputs ----------------------------
 const form = document.getElementById("form");
@@ -174,28 +148,45 @@ function isEmail(email) {
 }
 
 
-const alertMessage = document.querySelector('.alert-message');
+const heroSection = document.querySelector(".hero-section-bg");
+const alertMessage =  document.querySelector('.container');
 
 function saveFormDataAndShowAlert(formData) {
-
-	console.log(formData) // Data that will be send it to the server !
+	// console.log(formData) // Data that will be send it to the server !
 	
 	setTimeout(() =>{ 
 		Array.from(document.querySelectorAll('.form-group')).map(formGroup => formGroup.classList.remove('success'));
 		form.reset();
-		closeModal();
+		
+		
+		heroSection.style.display = "none";
+		alertMessage.style.display = 'flex';
 	}, 500);
-
-	setTimeout(() => {
-		alertMessage.classList.add('show');
-
-		setTimeout(() =>{ 
-			alertMessage.classList.remove('show')
-		}, 7000);
-	}, 2000);
-
 };
 
-function hideAlertMessage() {
-	alertMessage.classList.remove('show');
+function editNav() {
+	const x = document.getElementById("headerSection");
+	if (x.className === "header") {
+		x.className += " responsive";
+	} else {
+		x.className = "header";
+	}
+}
+
+// DOM Elements
+const modalBtn = document.querySelectorAll(".modal-btn");
+const closeModalBtns = document.querySelectorAll(".close-modal-btn");
+
+// launch modal event
+modalBtn.forEach((btn) => btn.addEventListener("click", openModal));
+closeModalBtns.forEach((btn) => btn.addEventListener("click", closeModal));
+
+// open modal form
+function openModal() {
+	heroSection.style.display = "block";
+}
+// close modal form
+function closeModal() {
+	alertMessage.style.display = 'none';
+	heroSection.style.display = "none";
 }
