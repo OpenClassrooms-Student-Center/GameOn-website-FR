@@ -668,8 +668,8 @@ footer {
 @media screen and (max-width: 768px) {
 	.container {
 		position: fixed;
-		height:  calc(100vh - 96px) !important;
-		top: 90px !important;
+		height:  calc(100vh - 65px) !important;
+		top: 65px !important;
 	}
 
 	.container .alert-message-bg {
