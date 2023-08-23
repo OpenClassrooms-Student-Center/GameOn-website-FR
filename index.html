@@ -60,23 +60,23 @@
         <form name="reserve" action="index.html" method="get" novalidate>
           <div class="input-group">
             <label>Prénom</label>
-            <input class="input-control" type="text" id="firstName" name="firstName" minlength="2" />
+            <input class="input-control" type="text" id="firstName" name="firstName" data-validate="notEmpty" />
           </div>
           <div class="input-group">
             <label>Nom</label>
-            <input class="input-control" type="text" id="lastName" name="lastName" />
+            <input class="input-control" type="text" id="lastName" name="lastName" data-validate="notEmpty" />
           </div>
           <div class="input-group">
             <label>E-mail</label>
-            <input class="input-control" type="email" id="email" name="email" />
+            <input class="input-control" type="email" id="email" name="email" data-validate="isEmail" />
           </div>
           <div class="input-group">
             <label>Date de naissance</label>
-            <input class="input-control" type="date" id="birthDate" name="birthDate" />
+            <input class="input-control" type="date" id="birthDate" name="birthDate" data-validate="isBirthDate" />
           </div>
           <div class="input-group">
             <label>À combien de tournois GameOn avez-vous déjà participé ?</label>
-            <input type="number" class="input-control" id="quantity" name="quantity" min="0" max="99">
+            <input type="number" class="input-control" id="quantity" name="quantity" data-validate="isNumber" />
           </div>
 
           <fieldset class="input-group">
