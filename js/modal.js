@@ -6,49 +6,62 @@ function editNav() {
 }
 
 // DOM elements
-const modalContainer = document.querySelector(".modal")
-const modalOpenBtns = document.querySelectorAll(".modal-btn")
-const modalCloseBtns = document.querySelectorAll(".modal-close")
+const modal = document.querySelector(".modal")
+const modalBackdrop = modal.querySelector(".modal-backdrop")
+const openModalHandlers = document.querySelectorAll(".open-modal")
+const closeModalHandlers = document.querySelectorAll(".close-modal")
 
 const form = document.querySelector("form")
 const formGroupElements = document.querySelectorAll(".input-group")
 
 // Open modal
 function openModal() {
-  modalContainer.style.display = "block"
-  document.querySelector("input").focus()
+  modal.removeAttribute("hidden")
+  modal.classList.add("visible")
 }
 
 // Close modal
 function closeModal() {
-  modalContainer.removeAttribute("style")
-  resetForm()
+  const successMessage = document.querySelector(".form-success")
+  modal.classList.remove("visible")
+
+  // setTimeout to wait for the animation to finish
+  setTimeout(() => {
+    // reset form
+    resetForm(form)
+    // hide success message
+    successMessage.classList.remove("visible")
+    successMessage.setAttribute("hidden", true)
+    // show form
+    form.removeAttribute("hidden")
+  }, 1000)
+}
+
+// Group modal event listeners in one function
+function addModalEventListeners() {
+  // open modal on click on open modal button
+  openModalHandlers.forEach((handler) => {
+    handler.addEventListener("click", openModal)
+  })
+  // close modal on close button click
+  closeModalHandlers.forEach((handler) => {
+    handler.addEventListener("click", closeModal)
+  })
+
+  // close modal when clicking outside modal-content
+  modal.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      closeModal()
+    }
+  })
 }
 
 // Reset form function
 // used when the user closes the modal or after a successful form submission
-function resetForm() {
+function resetForm(form) {
   form.reset()
   formGroupElements.forEach((element) => {
     clearError(element)
-  })
-}
-
-// Add some event listeners to modal
-function addModalEventListeners() {
-  modalOpenBtns.forEach((btn) => btn.addEventListener("click", openModal))
-  modalCloseBtns.forEach((btn) => btn.addEventListener("click", closeModal))
-
-  window.addEventListener("click", (event) => {
-    if (event.target === modalContainer) {
-      closeModal()
-    }
-  })
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeModal()
-    }
   })
 }
 
@@ -150,27 +163,29 @@ function getErrorMessage(fieldName) {
   }
 }
 
+function addFormEventListeners() {
+  form.addEventListener("submit", (event) => {
+    event.preventDefault()
+    checkInputs()
+    if (!document.querySelector("[data-error-visible]")) {
+      form.setAttribute("hidden", true)
+      const successMessage = document.querySelector(".form-success")
+      successMessage.removeAttribute("hidden")
+      successMessage.classList.add("visible")
+    }
+  })
+}
+
 // Initialize
 // ============================================================
 
 // modale event listeners
-addModalEventListeners()
-
-// live check inputs
-addInputEventListener()
+if (modal) {
+  addModalEventListeners()
+}
 
 // form event listeners
-form.addEventListener("submit", (event) => {
-  event.preventDefault()
-  checkInputs()
-  if (!document.querySelector("[data-error-visible]")) {
-    form.remove()
-    document.querySelector(".modal-body").innerHTML = `
-      <div class="confirmation">
-        <h2>Merci !</h2>
-        <p>Votre réservation a été reçue.</p>
-        <button class="modal-close">Fermer</button>
-      </div>
-    `
-  }
-})
+if (form) {
+  addFormEventListeners()
+  addInputEventListener()
+}
