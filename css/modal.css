@@ -270,7 +270,8 @@ input {
   opacity: 1;
 }
 .input-group[data-error-visible="true"] .input-control {
-  border: 2px solid #e54858;
+  outline: 2px solid #e54858;
+  outline-offset: -2px;
 }
 /* 
 input[data-error]::after {
@@ -281,7 +282,9 @@ input[data-error]::after {
 .radio-label,
 .checkbox-label {
   position: relative;
-  margin-inline: 30px 15px;
+  display: inline-flex;
+  gap: 0.5rem;
+  margin-inline-end: 1rem;
   font-size: 0.875rem;
   font-weight: normal;
   cursor: pointer;
@@ -299,11 +302,9 @@ input[data-error]::after {
   border-radius: 50%;
   text-indent: 29px;
   white-space: nowrap;
-  position: absolute;
-  left: -30px;
-  top: -1px;
   transition: 0.3s;
 }
+
 .radio-label .radio-icon::after,
 .checkbox-label .checkbox-icon::after {
   content: "";
@@ -322,11 +323,24 @@ input[data-error]::after {
 }
 .radio-input,
 .checkbox-input {
-  display: none;
+  position: absolute;
+  visibility: visible;
+  opacity: 0;
+}
+
+.radio-icon,
+.checkbox-icon {
+  position: relative;
 }
 .radio-input:checked + .radio-label .radio-icon::after,
 .checkbox-input:checked + .checkbox-label .checkbox-icon::after {
   opacity: 1;
+}
+.radio-input:focus + .radio-label,
+.checkbox-input:focus + .checkbox-label {
+  outline: 1px solid #279e7a;
+  outline-offset: 4px;
+  border-radius: 2px;
 }
 .checkbox-input:checked + .checkbox-label .checkbox-icon {
   background: #279e7a;
