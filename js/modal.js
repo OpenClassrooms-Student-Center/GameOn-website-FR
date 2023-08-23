@@ -124,6 +124,23 @@ function addInputEventListener() {
   })
 }
 
+// Get error message for each field by name
+function getErrorMessage(fieldName) {
+  return errorMessages[fieldName] || ""
+}
+
+// Error messages object used to display error message for each field
+const errorMessages = {
+  firstName: "Veuillez entrer 2 caractères ou plus pour le champ du prénom.",
+  lastName: "Veuillez entrer 2 caractères ou plus pour le champ du nom.",
+  email: "Veuillez entrer une adresse email valide.",
+  birthDate: "Vous devez entrer votre date de naissance.",
+  quantity: "Vous devez entrer un nombre.",
+  location: "Vous devez choisir un tournoi.",
+  acceptTerms:
+    "Vous devez vérifier que vous acceptez les termes et conditions.",
+}
+
 // Display error message for each field
 function displayError(element, errorMessage) {
   const errorVisibleAttribute = "data-error-visible"
@@ -139,28 +156,6 @@ function clearError(element) {
   const errorAttribute = "data-error"
   element.removeAttribute(errorVisibleAttribute)
   element.removeAttribute(errorAttribute)
-}
-
-// Get error message for each field by name
-function getErrorMessage(fieldName) {
-  switch (fieldName) {
-    case "firstName":
-      return "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
-    case "lastName":
-      return "Veuillez entrer 2 caractères ou plus pour le champ du nom."
-    case "email":
-      return "Veuillez entrer une adresse email valide."
-    case "birthDate":
-      return "Vous devez entrer votre date de naissance."
-    case "quantity":
-      return "Vous devez entrer un nombre."
-    case "location":
-      return "Vous devez choisir un tournoi."
-    case "acceptTerms":
-      return "Vous devez vérifier que vous acceptez les termes et conditions."
-    default:
-      return ""
-  }
 }
 
 function addFormEventListeners() {
