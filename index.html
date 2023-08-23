@@ -33,95 +33,99 @@
     <div class="hero-section">
       <div class="hero-content">
         <h1 class="hero-headline">
-          Marathon national<br>
+          Marathon national
           de jeux vidéos
         </h1>
         <p class="hero-text">
           Vous aimez jouer ? Notre prochain évènement gaming est ouvert
           aux réservations... Places limitées !
         </p>
-        <button class="btn-signup modal-btn">
+        <button class="btn-signup open-modal">
           je m'inscris
         </button>
       </div>
       <div class="hero-img">
         <img src="images/bg_img.jpg" alt="img" />
       </div>
-      <button class="btn-signup modal-btn">
-        je m'inscris
-      </button>
     </div>
 
-    <div class="modal">
+    <div class="modal" role="dialog" aria-modal="true" hidden>
       <div class="modal-content">
-        <span class="modal-close"></span>
-        <div class="modal-body">
-          <form name="reserve" action="index.html" method="get" novalidate>
-            <div class="input-group">
-              <label>Prénom</label><br>
-              <input class="input-control" type="text" id="firstName" name="firstName" minlength="2" /><br>
-            </div>
-            <div class="input-group">
-              <label>Nom</label><br>
-              <input class="input-control" type="text" id="lastName" name="lastName" /><br>
-            </div>
-            <div class="input-group">
-              <label>E-mail</label><br>
-              <input class="input-control" type="email" id="email" name="email" /><br>
-            </div>
-            <div class="input-group">
-              <label>Date de naissance</label><br>
-              <input class="input-control" type="date" id="birthDate" name="birthDate" /><br>
-            </div>
-            <div class="input-group">
-              <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-              <input type="number" class="input-control" id="quantity" name="quantity" min="0" max="99">
-            </div>
+        <button class="close-button close-modal" aria-label="close modal" data-close>
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" fill="currentColor" height="32" viewBox="0 0 24 24">
+            <path
+              d="M10.657 12.071L5 6.414L6.414 5l5.657 5.657L17.728 5l1.414 1.414l-5.657 5.657l5.657 5.657l-1.414 1.414l-5.657-5.657l-5.657 5.657L5 17.728z" />
+          </svg>
+        </button>
+        <form name="reserve" action="index.html" method="get" novalidate>
+          <div class="input-group">
+            <label>Prénom</label>
+            <input class="input-control" type="text" id="firstName" name="firstName" minlength="2" />
+          </div>
+          <div class="input-group">
+            <label>Nom</label>
+            <input class="input-control" type="text" id="lastName" name="lastName" />
+          </div>
+          <div class="input-group">
+            <label>E-mail</label>
+            <input class="input-control" type="email" id="email" name="email" />
+          </div>
+          <div class="input-group">
+            <label>Date de naissance</label>
+            <input class="input-control" type="date" id="birthDate" name="birthDate" />
+          </div>
+          <div class="input-group">
+            <label>À combien de tournois GameOn avez-vous déjà participé ?</label>
+            <input type="number" class="input-control" id="quantity" name="quantity" min="0" max="99">
+          </div>
 
-            <fieldset class="input-group">
-              <legend>A quel tournoi souhaitez-vous participer cette année ?</legend>
-              <input class="radio-input" type="radio" id="location1" name="location" value="New York" />
-              <label class="radio-label" for="location1">
-                <span class="radio-icon"></span>
-                New York</label>
-              <input class="radio-input" type="radio" id="location2" name="location" value="San Francisco" />
-              <label class="radio-label" for="location2">
-                <span class="radio-icon"></span>
-                San Francisco</label>
-              <input class="radio-input" type="radio" id="location3" name="location" value="Seattle" />
-              <label class="radio-label" for="location3">
-                <span class="radio-icon"></span>
-                Seattle</label>
-              <input class="radio-input" type="radio" id="location4" name="location" value="Chicago" />
-              <label class="radio-label" for="location4">
-                <span class="radio-icon"></span>
-                Chicago</label>
-              <input class="radio-input" type="radio" id="location5" name="location" value="Boston" />
-              <label class="radio-label" for="location5">
-                <span class="radio-icon"></span>
-                Boston</label>
-              <input class="radio-input" type="radio" id="location6" name="location" value="Portland" />
-              <label class="radio-label" for="location6">
-                <span class="radio-icon"></span>
-                Portland</label>
-            </fieldset>
+          <fieldset class="input-group">
+            <legend>A quel tournoi souhaitez-vous participer cette année ?</legend>
+            <input class="radio-input" type="radio" id="location1" name="location" value="New York" />
+            <label class="radio-label" for="location1">
+              <span class="radio-icon"></span>
+              New York</label>
+            <input class="radio-input" type="radio" id="location2" name="location" value="San Francisco" />
+            <label class="radio-label" for="location2">
+              <span class="radio-icon"></span>
+              San Francisco</label>
+            <input class="radio-input" type="radio" id="location3" name="location" value="Seattle" />
+            <label class="radio-label" for="location3">
+              <span class="radio-icon"></span>
+              Seattle</label>
+            <input class="radio-input" type="radio" id="location4" name="location" value="Chicago" />
+            <label class="radio-label" for="location4">
+              <span class="radio-icon"></span>
+              Chicago</label>
+            <input class="radio-input" type="radio" id="location5" name="location" value="Boston" />
+            <label class="radio-label" for="location5">
+              <span class="radio-icon"></span>
+              Boston</label>
+            <input class="radio-input" type="radio" id="location6" name="location" value="Portland" />
+            <label class="radio-label" for="location6">
+              <span class="radio-icon"></span>
+              Portland</label>
+          </fieldset>
 
-            <div class="input-group">
-              <input class="checkbox-input" type="checkbox" id="acceptTerms" name="acceptTerms" />
-              <label class="checkbox-label" for="acceptTerms" required>
-                <span class="checkbox-icon"></span>
-                J'ai lu et accepté les <a href="#" target="_blank">conditions d'utilisation</a>.
-              </label>
-              <input class="checkbox-input" type="checkbox" id="subscription" name="subscription" />
-              <label class="checkbox-label" for="subscription">
-                <span class="checkbox-icon"></span>
-                Je Je souhaite être prévenu des prochains évènements.
-              </label>
-            </div>
-            <div class="input-group">
-              <input class="btn-submit" type="submit" class="button" value="C'est parti" />
-            </div>
-          </form>
+          <div class="input-group">
+            <input class="checkbox-input" type="checkbox" id="acceptTerms" name="acceptTerms" />
+            <label class="checkbox-label" for="acceptTerms" required>
+              <span class="checkbox-icon"></span>
+              J'ai lu et accepté les <a href="#" target="_blank">conditions d'utilisation</a>.
+            </label>
+            <input class="checkbox-input" type="checkbox" id="subscription" name="subscription" />
+            <label class="checkbox-label" for="subscription">
+              <span class="checkbox-icon"></span>
+              Je Je souhaite être prévenu des prochains évènements.
+            </label>
+          </div>
+          <div class="input-group">
+            <input class="btn-submit" type="submit" class="button" value="C'est parti" />
+          </div>
+        </form>
+        <div class="form-success" hidden>
+          <p class="form-success__text">Merci pour votre inscription</p>
+          <button class="btn-submit" onclick="closeModal()">Fermer</button>
         </div>
       </div>
     </div>

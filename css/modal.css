@@ -116,22 +116,6 @@ main {
   border-radius: 2rem;
 }
 
-.modal-btn {
-  font-size: 145%;
-  background: #fe142f;
-  display: flex;
-  margin: auto;
-  padding: 2em;
-  color: #fff;
-  padding: 0.75rem 2.5rem;
-  border-radius: 1rem;
-  cursor: pointer;
-}
-
-.modal-btn:hover {
-  background: #3876ac;
-}
-
 .footer {
   margin: 20px;
   padding: 10px;
@@ -158,66 +142,91 @@ main {
   font-size: 16px;
 }
 
-/* Modal */
+/** 
+ * Modal 
+ * ------------------------------------------------ */
 .modal {
-  display: none;
+  display: grid;
+  place-content: center;
   position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  z-index: 1000;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
 }
 
-.modal-content {
-  margin: 5% auto;
-  width: 100%;
-  max-width: 560px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
+.modal .modal-content {
+  display: grid;
+  place-content: center;
+  padding: 30px;
+  border-radius: 8px;
   background: #232323;
-  border-radius: 10px;
-  overflow: hidden;
-  position: relative;
+  box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25);
   color: #fff;
-  padding-top: 10px;
+  max-width: 530px;
+  translate: 0 -50px;
+  transition: all 0.6s ease;
+  z-index: 1000;
 }
 
-.modal-body {
-  padding: 15px 38px;
-  margin: 15px auto;
+.modal .modal-content > * {
+  grid-row: 1;
+  grid-column: 1;
 }
-.modal-close {
+
+.modal .close-button {
   position: absolute;
   right: 15px;
-  top: 15px;
-  width: 32px;
-  height: 32px;
-  opacity: 1;
+  top: -15px;
+  z-index: 1;
+  background: transparent;
+  border: none;
+  color: #fff;
   cursor: pointer;
-  transform: scale(0.7);
-}
-.modal-close:before,
-.modal-close:after {
-  position: absolute;
-  left: 15px;
-  content: " ";
-  height: 33px;
-  width: 3px;
-  background-color: #fff;
-}
-.modal-close:before {
-  transform: rotate(45deg);
-}
-.modal-close:after {
-  transform: rotate(-45deg);
 }
 
-label {
+.modal .form-success {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+}
+.modal .form-success__text {
+  margin-block: auto;
+  text-align: center;
+  font-family: DM Sans;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  text-wrap: balance;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.modal .form-success.visible {
+  pointer-events: initial;
+}
+.modal .form-success.visible .form-success__text {
+  opacity: 1;
+}
+
+/* Modal visible */
+.modal.visible {
+  opacity: 1;
+  visibility: visible;
+}
+.modal.visible .modal-content {
+  translate: 0 0;
+}
+
+label,
+legend {
   font-family: var(--font-default);
-  font-size: 17px;
+  font-size: 1rem;
   font-weight: normal;
   display: inline-block;
   margin-bottom: 11px;
@@ -245,9 +254,9 @@ input {
 .input-group[data-error]::after {
   position: absolute;
   right: 0;
-  bottom: -14px;
+  bottom: -1rem;
   content: attr(data-error);
-  font-size: 0.4em;
+  font-size: 0.675rem;
   color: #e54858;
   display: block;
   margin-top: 7px;
@@ -273,8 +282,9 @@ input[data-error]::after {
 .checkbox-label {
   position: relative;
   margin-inline: 30px 15px;
-  font-size: 12px;
+  font-size: 0.875rem;
   font-weight: normal;
+  cursor: pointer;
 }
 .checkbox-label a,
 .radio-label a {
@@ -422,10 +432,6 @@ fieldset {
   border: 0;
   padding: 0;
   margin: 0;
-}
-fieldset legend {
-  font-weight: normal;
-  font-size: 16px;
 }
 .hero-section {
   min-height: 93vh;
