@@ -20,4 +20,18 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+// hide modal form
+function hideModal() {
+  modalbg.style.display = "none";
+}
 
+ // Hide modal whith the button close
+ btnclose = document.querySelector(".close")
+ btnclose.addEventListener("click", hideModal);
+
+// Hide modal whith click in background
+modalbg.addEventListener("click", (event) => {
+  if (event.target === modalbg) {
+      hideModal()
+  }
+})
