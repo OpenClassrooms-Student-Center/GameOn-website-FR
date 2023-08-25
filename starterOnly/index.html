@@ -12,7 +12,7 @@
 <body>
     <div class="container">
         <div class="alert-message-bg">
-            <span class="close close-modal-btn" id="closeModalBtn"></span>
+            <span class="close close-modal-btn"></span>
             <div  class="alert-message-holder">
                 <p>Merci pour votre inscription</p>
                 <button class="close-alert-btn" onclick="closeModal()">Fermer</button>
@@ -21,7 +21,7 @@
     </div>
     <header class="header" id="headerSection">
         <div class="header-logo">
-            <img alt="logo" src="Logo.png" width="auto" height="auto" />
+            <img alt="logo" src="Logo.png"/>
         </div>
         <nav class="header-navbar">
             <a href="#" class="active"><span>Détails de l'évènement</span></a>
@@ -33,7 +33,6 @@
             </a>
         </nav>
     </header>
-    </div>
     <main>
         <section class="hero-section-content">
             <div class="hero-content">
@@ -55,12 +54,12 @@
             <button class="btn-signup modal-btn">je m'inscris</button>
         </section>
 
-        <section class="hero-section-bg">
+        <div class="hero-section-bg">
             <div class="content">
-                <span class="close close-modal-btn" id="closeModalBtn"></span>
+                <span class="close close-modal-btn"></span>
                 <div class="alert-message"></div>
                 <div class="modal-body">
-                    <form id="form" action="">
+                    <form id="form">
                         <div class="form-group">
                             <label for="firstName">Prénom</label><br>
                             <input class="text-control" type="text" id="firstName" name="firstName" minlength="2" placeholder="John" /><br>
@@ -98,10 +97,10 @@
                         </div>
                         <div class="form-groups">
                             <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
-                            <input class="radio-input" type="radio" id="location1" name="location"value="New York" />
+                            <input class="radio-input" type="radio" id="location1" name="location" value="New York" />
                             <label class="radio-label" for="location1"><span class="radio-icon"></span>New York</label>
 
-                            <input class="radio-input" type="radio" id="location2" name="location"value="San Francisco" />
+                            <input class="radio-input" type="radio" id="location2" name="location" value="San Francisco" />
                             <label class="radio-label" for="location2"><span class="radio-icon"></span>San Francisco</label>
 
                             <input class="radio-input" type="radio" id="location3" name="location" value="Seattle" />
@@ -113,7 +112,7 @@
                             <input class="radio-input" type="radio" id="location5" name="location" value="Boston" />
                             <label class="radio-label" for="location5"><span class="radio-icon"></span>Boston</label>
 
-                            <input class="radio-input" type="radio" id="location6" name="location"value="Portland" />
+                            <input class="radio-input" type="radio" id="location6" name="location" value="Portland" />
                             <label class="radio-label" for="location6"><span class="radio-icon"></span>Portland</label>
 
                             <br>
@@ -122,7 +121,7 @@
 
                         <div class="form-groups">
                             <input class="checkbox-input" type="checkbox" name="terms" value="acceptedTerm" checked id="checkbox1"  />
-                            <label class="checkbox-label" for="checkbox1" required>
+                            <label class="checkbox-label" for="checkbox1">
                                 <span class="checkbox-icon"></span>J'ai lu et accepté les conditions d'utilisation.
                             </label>
                             <br>
@@ -133,11 +132,11 @@
                             <br>
                             <small></small>
                         </div>
-                        <input class="btn-submit" type="submit" class="button" value="C'est parti" />
+                        <input class="btn-submit" type="submit" value="C'est parti" />
                     </form>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
     <footer>
         <p class="copyrights">
