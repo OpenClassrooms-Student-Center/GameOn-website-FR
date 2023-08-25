@@ -21,3 +21,11 @@ function launchModal() {
 }
 
 
+let close = document.querySelector(".close");
+close.addEventListener("click", () =>{
+  closeModal();
+})
+
+function closeModal() {
+  modalbg.style.display = 'none';
+}
