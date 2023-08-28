@@ -41,11 +41,11 @@ close.addEventListener("click", () => {
 // *************************************************************************************
 
 function verifyNbreCaracteres(chaine) {
-  let regex = new RegExp("/[a-zA-Z]{2,}/gm"); 
+  let regex = /[a-zA-Z]{2,}/; /*new RegExp("[a-zA-Z]{2,}"); */
   let resultat = regex.test(chaine);
 
-  if (resultat == false) {
-    throw new Error("vous devez rentrer au moins 2 caractères");
+  if (resultat === false) {
+    throw new Error("Vous devez rentrer au moins 2 caractères en minuscule ou majuscule");
   }
 
   if (chaine === "") {
@@ -54,18 +54,28 @@ function verifyNbreCaracteres(chaine) {
 }
 
 // **********************
-// Vérification du Prénom et nom
+// Vérification du Prénom
 // Pas vide
 // Au minimum 2 caractères
 // **********************
 
-function prenomNomOk() {
+function prenomOk() {
   let balisePrenom = document.getElementById("first");
-  let baliseNom = document.getElementById("last");
-  let prenom = balisePrenom.value;
-  let nom = baliseNom.value;
+  let prenom = balisePrenom.value.trim(); /* .trim() supprime les espaces inutiles et les caractères de contrôle qui pourraient empêcher la regex de fonctionner correctement */
 
   verifyNbreCaracteres(prenom);
+}
+
+// **********************
+// Vérification du nom
+// Pas vide
+// Au minimum 2 caractères
+// **********************
+
+function nomOk() {
+  let baliseNom = document.getElementById("last");
+  let nom = baliseNom.value.trim(); /* .trim() supprime les espaces inutiles et les caractères de contrôle qui pourraient empêcher la regex de fonctionner correctement */
+
   verifyNbreCaracteres(nom);
 }
 
@@ -99,16 +109,41 @@ function nbreConcoursOk() {
   }
 }
 
+// *******************************************************************************
+// Vérification que le champs date de naissance est valide
+// *******************************************************************************
+
+function birthdateOk() {
+  let baliseBirthdate = document.getElementById("birthdate");
+  let birthdate = baliseBirthdate.value;
+  let regexBirthdate = /^([0-2][0-9]|3[0-1])\/(0[0-9]|1[0-2])\/\d{4}$/;
+  let resultat = regexBirthdate.test(birthdate);
+
+  if ((resultat == false)) {
+    throw new Error("Votre date de naissance n'est pas valide");
+  }
+}
+
 // ***************************************************
 // Vérif qu'un des boutons radios est bien sélectionné
 // ***************************************************
 
 function radioBtnOk() {
-  let btnRadio = document.querySelectorAll('input[name="location"]')
+  // Option 1
+  let btnRadio = document.querySelector('input[name="location"]:checked')
 
-  if (!btnRadio.checked){
+  if (!btnRadio){
     throw new Error("Vous devez sélectionner une ville")
   }
+
+  // Option 2
+  /*
+  let btnRadios = document.querySelectorAll('input[name="location"]:checked')
+
+  if (btnRadios.length === 0){
+    throw new Error("Vous devez sélectionner une ville")
+  }
+  */
 }
 
 // **********************************************************
@@ -123,19 +158,36 @@ function termsOfUseOk() {
   }
 }
 
+// ***************************************************
+// Fonction pour faire apparaîtere le message d'erreur
+// ***************************************************
+
+function alertMessage(message){
+
+  let injectionMessageErreur = document.getElementById("error-first")
+
+  injectionMessageErreur.textContent = message
+
+  injectionMessageErreur.style.fontSize = "1rem"
+  injectionMessageErreur.style.color = "red"
+}
+
 // **********************************************************
 // Fonction finale
 // **********************************************************
 
 function validate() {
+
   try {
-    prenomNomOk();
+    prenomOk();
+    nomOk();
     emailOk();
+    birthdateOk();
     nbreConcoursOk();
     radioBtnOk();
     termsOfUseOk();
   } catch (error) {
-    console.log("une erreur s'est produite : " + error.message);
+    alertMessage(error.message)
   }
 }
 
