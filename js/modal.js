@@ -70,6 +70,17 @@ function isNumber(element) {
   return isValid ? null : message
 }
 
+// check if one of the radio button with same name is checked
+function isRadioChecked(element) {
+  const radioButtons = document.querySelectorAll(
+    `input[name=${element.name}]:checked`
+  )
+  const isValid = radioButtons.length > 0
+  const message = "Veuillez choisir une option."
+
+  return isValid ? null : message
+}
+
 // Check if the input is not empty
 function isBirthDate(element) {
   // is valid if date is in the past and is correct format
@@ -103,7 +114,6 @@ function setError(element, errorMessage) {
 // ============================================================
 // Check inputs and display error message if needed
 function validateInput(field) {
-  console.log(field)
   const parentElement = field.parentElement
   const errorMessage = getError(field)
 

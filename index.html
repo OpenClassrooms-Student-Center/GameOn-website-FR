@@ -81,34 +81,40 @@
 
           <fieldset class="input-group">
             <legend>A quel tournoi souhaitez-vous participer cette année ?</legend>
-            <input class="radio-input" type="radio" id="location1" name="location" value="New York" />
+            <input class="radio-input" type="radio" id="location1" name="location" value="New York"
+              data-validate="isRadioChecked" />
             <label class="radio-label" for="location1">
               <span class="radio-icon"></span>
               New York</label>
-            <input class="radio-input" type="radio" id="location2" name="location" value="San Francisco" />
+            <input class="radio-input" type="radio" id="location2" name="location" value="San Francisco"
+              data-validate="isRadioChecked" />
             <label class="radio-label" for="location2">
               <span class="radio-icon"></span>
               San Francisco</label>
-            <input class="radio-input" type="radio" id="location3" name="location" value="Seattle" />
+            <input class="radio-input" type="radio" id="location3" name="location" value="Seattle"
+              data-validate="isRadioChecked" />
             <label class="radio-label" for="location3">
               <span class="radio-icon"></span>
               Seattle</label>
-            <input class="radio-input" type="radio" id="location4" name="location" value="Chicago" />
+            <input class="radio-input" type="radio" id="location4" name="location" value="Chicago"
+              data-validate="isRadioChecked" />
             <label class="radio-label" for="location4">
               <span class="radio-icon"></span>
               Chicago</label>
-            <input class="radio-input" type="radio" id="location5" name="location" value="Boston" />
+            <input class="radio-input" type="radio" id="location5" name="location" value="Boston"
+              data-validate="isRadioChecked" />
             <label class="radio-label" for="location5">
               <span class="radio-icon"></span>
               Boston</label>
-            <input class="radio-input" type="radio" id="location6" name="location" value="Portland" />
+            <input class="radio-input" type="radio" id="location6" name="location" value="Portland"
+              data-validate="isRadioChecked" />
             <label class="radio-label" for="location6">
               <span class="radio-icon"></span>
               Portland</label>
           </fieldset>
 
           <div class="input-group">
-            <input class="checkbox-input" type="checkbox" id="acceptTerms" name="acceptTerms" />
+            <input class="checkbox-input" type="checkbox" id="acceptTerms" name="acceptTerms" required />
             <label class="checkbox-label" for="acceptTerms" required>
               <span class="checkbox-icon"></span>
               J'ai lu et accepté les <a href="#" target="_blank">conditions d'utilisation</a>.
