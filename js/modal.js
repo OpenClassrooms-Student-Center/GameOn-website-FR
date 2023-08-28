@@ -81,6 +81,14 @@ function isRadioChecked(element) {
   return isValid ? null : message
 }
 
+// check if accept terms is checked
+function isCheckboxChecked(element) {
+  const isValid = element.checked
+  const message = "Veuillez accepter les conditions d'utilisation."
+
+  return isValid ? null : message
+}
+
 // Check if the input is not empty
 function isBirthDate(element) {
   // is valid if date is in the past and is correct format

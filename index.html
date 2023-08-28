@@ -114,11 +114,14 @@
           </fieldset>
 
           <div class="input-group">
-            <input class="checkbox-input" type="checkbox" id="acceptTerms" name="acceptTerms" required />
+            <input class="checkbox-input" type="checkbox" id="acceptTerms" name="acceptTerms"
+              data-validate="isCheckboxChecked" />
             <label class="checkbox-label" for="acceptTerms" required>
               <span class="checkbox-icon"></span>
               J'ai lu et accepté les <a href="#" target="_blank">conditions d'utilisation</a>.
             </label>
+          </div>
+          <div class="input-group">
             <input class="checkbox-input" type="checkbox" id="subscription" name="subscription" />
             <label class="checkbox-label" for="subscription">
               <span class="checkbox-icon"></span>
