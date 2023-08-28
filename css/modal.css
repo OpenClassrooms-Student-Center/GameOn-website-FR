@@ -14,7 +14,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -76,14 +75,27 @@ img {
 }
 
 @media screen and (max-width: 768px) {
+
+  .topnav{
+    margin: 33px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header-logo{
+    width: 160px;
+  }
+
+  .logo{
+    width: 100%;
+  }
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
   }
-}
 
-@media screen and (max-width: 768px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
@@ -97,14 +109,16 @@ img {
   }
 }
 
-
-
- @media screen and (max-width: 540px) {
+ @media screen and (max-width: 768px) {
   .topnav a {display: none;}
   .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .icon i{
+    font-size: 29px;
+    color: #FF001B;
   }
 } 
 
@@ -240,14 +254,14 @@ input[data-error]::after {
     color: red;
 } */
 .checkbox-label,
-.checkbox2-label {
+.checkboxlabel {
   position: relative;
   margin-left: 36px;
   font-size: 12px;
   font-weight: normal;
 }
 .checkbox-label .checkbox-icon,
-.checkbox2-label .checkbox-icon {
+.checkboxlabel .checkbox-icon {
   display: block;
   width: 20px;
   height: 20px;
@@ -261,7 +275,7 @@ input[data-error]::after {
   transition: 0.3s;
 }
 .checkbox-label .checkbox-icon::after,
-.checkbox2-label .checkbox-icon::after {
+.checkboxlabel .checkbox-icon::after {
   content: "";
   width: 13px;
   height: 13px;
@@ -280,18 +294,18 @@ input[data-error]::after {
   display: none;
 }
 .checkbox-input:checked + .checkbox-label .checkbox-icon::after,
-.checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
+.checkbox-input:checked + .checkboxlabel .checkbox-icon::after {
   opacity: 1;
 }
-.checkbox-input:checked + .checkbox2-label .checkbox-icon {
+.checkbox-input:checked + .checkboxlabel .checkbox-icon {
   background: #279e7a;
 }
-.checkbox2-label .checkbox-icon {
+.checkboxlabel .checkbox-icon {
   border-radius: 4px;
   border: 0;
   background: #c4c4c4;
 }
-.checkbox2-label .checkbox-icon::after {
+.checkboxlabel .checkbox-icon::after {
   width: 7px;
   height: 4px;
   border-radius: 2px;
@@ -412,7 +426,6 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -427,7 +440,6 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -493,7 +505,7 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px;
   }
   .hero-content::after {
     content: unset;
@@ -502,12 +514,14 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 2.3rem;
     white-space: normal;
+    font-weight: 500;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 0.8rem;
+    margin-top: 20px;
   }
   .hero-img img {
     border-radius: 10px;
