@@ -158,8 +158,8 @@ main {
 
 }
 
-.modal-btn {
-  font-size: 145%;
+.modal-btn{
+  font-size: 25px;
   background: #fe142f;
   display: flex;
   margin: auto;
@@ -170,7 +170,7 @@ main {
   cursor: pointer;
 }
 
-.modal-btn:hover {
+.modal-btn:hover{
   background: #3876ac;
 }
 
@@ -200,8 +200,8 @@ main {
   font-size: 16px;
 }
 
-.bground {
-  display: none;
+.bground{
+  display: block;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -212,7 +212,7 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
-.content {
+.content, .form_success_content {
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
@@ -226,7 +226,14 @@ main {
   padding-top: 10px;
 }
 
-.modal-body {
+.form_success_content{
+  height: 688.78px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-body{
   padding: 15px 8%;
   margin: 15px auto;
 }
@@ -365,7 +372,7 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup, .form-success_close  {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -376,6 +383,7 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -583,4 +591,18 @@ footer {
   .btn-signup{
     font-size: 0.7rem;
   }
+}
+
+.form-success{
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 90px 30px 20px 30px;
+  gap: 200px;
+
+}
+.form-success h2{
+  text-align: center;
+  font-size: 32px;
 }

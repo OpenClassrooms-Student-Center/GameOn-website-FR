@@ -1,3 +1,4 @@
+// Edit Navigation
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -25,9 +26,13 @@ function hideModal() {
   modalbg.style.display = "none";
 }
 
- // Hide modal whith the button close
- btnclose = document.querySelector(".close")
- btnclose.addEventListener("click", hideModal);
+ // Hide modal whith the button X
+ xclose = document.querySelector(".close")
+ xclose.addEventListener("click", hideModal);
+
+  // Hide modal whith the button close
+  btnclose = document.querySelector(".form-success_close")
+  btnclose.addEventListener("click", hideModal);
 
 // Hide modal whith click in background
 modalbg.addEventListener("click", (event) => {
