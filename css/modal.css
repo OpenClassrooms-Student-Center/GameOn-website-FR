@@ -54,27 +54,41 @@ img {
   text-decoration: none;
   font-size: 20px;
   font-family: Roboto, sans-serif;
-  border-radius: 15px;
+  border-radius: 8px;
   transition: all 0.4s ease-in-out;
 }
 
 .topnav a:hover {
   background-color: #ff0000;
   color: #ffffff;
-  border-radius: 15px;
+  border-radius: 8px;
+}
+
+.topnav a:hover ::after{
+  content: "";
+  display: block; 
+  height: 1px;
+  background-color: #fff;
 }
 
 .topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
-  border-radius: 15px;
+  border-radius: 8px;
+}
+
+.active ::after{
+  content: "";
+  display: block; 
+  height: 1px;
+  background-color: #fff;
 }
 
 .topnav .icon {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1121px) {
 
   .topnav{
     margin: 33px 30px;
@@ -107,19 +121,27 @@ img {
     display: block;
     text-align: left;
   }
+
+  .firstlink{
+    margin-top: 50px !important;
+  }
 }
 
- @media screen and (max-width: 768px) {
+ @media screen and (max-width: 1121px) {
   .topnav a {display: none;}
   .topnav a.icon {
-    padding: 0;
+    padding: 4px;
     margin: 0;
   }
 
   .icon i{
     font-size: 29px;
-    color: #FF001B;
   }
+
+  .icon i:active{
+    color: #fff;
+  }
+
 } 
 
 main {
@@ -211,7 +233,7 @@ main {
 
 label {
   font-family: var(--font-default);
-  font-size: 17px;
+  font-size: 14px;
   font-weight: normal;
   display: inline-block;
   margin-bottom: 11px;
@@ -423,7 +445,7 @@ input[data-error]::after {
 /* custom select end */
 .text-label {
   font-weight: normal;
-  font-size: 16px;
+  font-size: 14px;
 }
 .hero-section {
   border-radius: 10px;
@@ -548,3 +570,17 @@ footer {
   }
 }
 
+@media screen and (max-width: 1020px) and (min-width: 801px) {
+
+  .hero-headline{
+    font-size: 4.5rem;
+  }
+  
+  .hero-text{
+    font-size: 1.3rem;
+  }
+
+  .btn-signup{
+    font-size: 0.7rem;
+  }
+}
