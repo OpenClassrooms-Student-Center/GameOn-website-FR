@@ -21,35 +21,38 @@
     const regExpEmail = new RegExp(`^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$`);
     const RegExpQuantity = new RegExp(`^(?:[0-9]|[1-9][0-9])$`);
 
-    function checkInputValue(regex, input, errorMessage ) {
-      if (!regex.test(input.value)) {
-        alert(errorMessage)
-        return false;
-      }
-      return true;
-    }
 
-// Check checkbox conditions
-  function checkConditions(input, errorMessage) {
-      if (!input.checked) {
-        alert(errorMessage)
-        return false;
-      }
-      return true;
-    }
 
-// Check selection of the tournament's city
-  function checkLocations(locations, errorMessage) {
-      for (let location of locations) {
-        if (location.checked) {
+//Functions
+
+    // Check input values
+      function checkInputValue(regex, input, errorMessage ) {
+        if (!regex.test(input.value)) {
+          alert(errorMessage)
+          return false;
+        }
+        return true;
+      }
+
+    // Check checkbox conditions
+      function checkConditions(input, errorMessage) {
+          if (!input.checked) {
+            alert(errorMessage)
+            return false;
+          }
           return true;
         }
-      }
-      alert(errorMessage)
-      return false;
-    }
 
-
+    // Check selection of the tournament's city
+      function checkLocations(locations, errorMessage) {
+          for (let location of locations) {
+            if (location.checked) {
+              return true;
+            }
+          }
+          alert(errorMessage)
+          return false;
+        }
 
 // Form validation
   function validateForm() {
@@ -66,12 +69,12 @@
       return firstnameValid && lastnameValid && emailValid && quantityValid && locationvalid && conditionsChecked
   }
 
-form.addEventListener("submit", function(event) {
-    event.preventDefault();
-    console.log("Avant")
-    if (validateForm()) {
-      alert("Merci ! Votre réservation a bien été reçue.")
-    } else {
-      console.log("Merci ! Votre réservation")
-    }
-});
+    form.addEventListener("submit", function(event) {
+        event.preventDefault();
+        console.log("Avant")
+        if (validateForm()) {
+          alert("Merci ! Votre réservation a bien été reçue.")
+        } else {
+          console.log("Merci ! Votre réservation")
+        }
+    });
