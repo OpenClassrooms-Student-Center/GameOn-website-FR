@@ -70,10 +70,7 @@
 
     form.addEventListener("submit", function(event) {
         event.preventDefault();
-        console.log("Avant")
         if (validateForm()) {
           alert("Merci ! Votre réservation a bien été reçue.")
-        } else {
-          console.log("Merci ! Votre réservation")
         }
     });
