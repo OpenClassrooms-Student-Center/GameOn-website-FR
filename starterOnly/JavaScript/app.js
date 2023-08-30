@@ -22,7 +22,6 @@
     const RegExpQuantity = new RegExp(`^(?:[0-9]|[1-9][0-9])$`);
 
 
-
 //Functions
 
     // Check input values
