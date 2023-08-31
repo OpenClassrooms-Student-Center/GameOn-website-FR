@@ -189,7 +189,7 @@ main {
 }
 
 /* ====================================== */
-.error-message {
+.error-field {
   color: red;
   font-size: 14px;
   margin-top: 5px;
@@ -356,7 +356,7 @@ input[data-error]::after {
   background-color: #fff;
 }
 
-/* Style the arrow inside the select element: */
+/* style the arrow inside the select element: */
 .select-selected:after {
   position: absolute;
   content: "";
@@ -388,7 +388,7 @@ input[data-error]::after {
   height: 48px;
 }
 
-/* Style items (options): */
+/* style items (options): */
 .select-items {
   position: absolute;
   background-color: #fff;
