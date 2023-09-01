@@ -37,19 +37,36 @@ close.addEventListener("click", () => {
 });
 
 // *************************************************************************************
-// Fonction pour vérifier le nombre de caractères utilisés dans les champs nom et prénom
+// Fonction pour vérifier le nombre de caractères utilisés dans le champs prénom
 // *************************************************************************************
 
-function verifyNbreCaracteres(chaine) {
+function verifyNbreCaracteresPrenom(chaine) {
   let regex = /[a-zA-Z]{2,}/; /*new RegExp("[a-zA-Z]{2,}"); */
   let resultat = regex.test(chaine);
 
-  if (resultat === false) {
-    throw new Error("Vous devez rentrer au moins 2 caractères en minuscule ou majuscule");
-  }
-
   if (chaine === "") {
     throw new Error("Le champ ne peut pas être vide");
+  }
+
+  if (resultat === false){
+    throw new Error("Veuillez entrer 2 caractères ou plus pour le champ du prénom.");
+  }
+}
+
+// *************************************************************************************
+// Fonction pour vérifier le nombre de caractères utilisés dans le champs prénom
+// *************************************************************************************
+
+function verifyNbreCaracteresNom(chaine) {
+  let regex = /[a-zA-Z]{2,}/; /*new RegExp("[a-zA-Z]{2,}"); */
+  let resultat = regex.test(chaine);
+
+  if (chaine === "") {
+    throw new Error("Le champ ne peut pas rester vide");
+  }
+
+  if (resultat === false){
+    throw new Error("Veuillez entrer 2 caractères ou plus pour le champ du nom.");
   }
 }
 
@@ -113,13 +130,21 @@ function nbreConcoursOk() {
 // Vérification que le champs date de naissance est valide
 // *******************************************************************************
 
+function formatBirthdate(date) {
+  const parts = date.split("-");
+  return `${parts[2]}/${parts[1]}/${parts[0]}`;
+}
+
 function birthdateOk() {
   let baliseBirthdate = document.getElementById("birthdate");
   let birthdate = baliseBirthdate.value;
-  let regexBirthdate = /^([0-2][0-9]|3[0-1])\/(0[0-9]|1[0-2])\/\d{4}$/;
-  let resultat = regexBirthdate.test(birthdate);
 
-  if ((resultat == false)) {
+  let formattedDate = formatBirthdate(birthdate);
+
+  let regexBirthdate = /^([0-2][0-9]|3[0-1])\/(0[0-9]|1[0-2])\/\d{4}$/;
+  let resultat = regexBirthdate.test(formattedDate);
+
+  if (!resultat) {
     throw new Error("Votre date de naissance n'est pas valide");
   }
 }
@@ -135,15 +160,6 @@ function radioBtnOk() {
   if (!btnRadio){
     throw new Error("Vous devez sélectionner une ville")
   }
-
-  // Option 2
-  /*
-  let btnRadios = document.querySelectorAll('input[name="location"]:checked')
-
-  if (btnRadios.length === 0){
-    throw new Error("Vous devez sélectionner une ville")
-  }
-  */
 }
 
 // **********************************************************
@@ -162,9 +178,9 @@ function termsOfUseOk() {
 // Fonction pour faire apparaîtere le message d'erreur
 // ***************************************************
 
-function alertMessage(message){
+function alertMessage(message, errorSpanId){
 
-  let injectionMessageErreur = document.getElementById("error-first")
+  let injectionMessageErreur = document.getElementById(errorSpanId)
 
   injectionMessageErreur.textContent = message
 
@@ -187,7 +203,30 @@ function validate() {
     radioBtnOk();
     termsOfUseOk();
   } catch (error) {
-    alertMessage(error.message)
+
+    let errorSpanId = "";
+
+    if(error.message.includes("prénom")){
+      errorSpanId = "error-first"
+    } else if (error.message.includes("nom")){
+      errorSpanId = "error-last"
+    } else if (error.message.includes("être")){
+      errorSpanId = "error-first"
+    } else if (error.message.includes("rester")){
+      errorSpanId = "error-last"
+    } else if (error.message.includes("conforme")){
+      errorSpanId = "error-email"
+    } else if (error.message.includes("chiffre")){
+      errorSpanId = "error-quantity"
+    } else if (error.message.includes("naissance")){
+      errorSpanId = "error-birthdate"
+    } else if (error.message.includes("ville")){
+      errorSpanId = "error-location"
+    } else if (error.message.includes("obligatoires")){
+      errorSpanId = "error-termsOfUse"
+    }
+
+    alertMessage(error.message, errorSpanId)
   }
 }
 
