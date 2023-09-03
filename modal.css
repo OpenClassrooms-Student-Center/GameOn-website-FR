@@ -183,6 +183,10 @@ main {
   padding-top: 10px;
 }
 
+.closed {
+  animation: 0.8s modalclose;
+  animation-fill-mode: both;
+}
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
@@ -524,6 +528,16 @@ footer {
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes modalclose {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-150px);
   }
 }
 
