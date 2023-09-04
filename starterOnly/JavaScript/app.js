@@ -23,6 +23,49 @@
     const regExpEmail = new RegExp(`^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$`);
     const RegExpQuantity = new RegExp(`^(?:[0-9]|[1-9][0-9])$`);
 
+// Hamburger menu
+    const btnHamburger = document.getElementById('hamburger-menu');
+    btnHamburger.addEventListener('click', () => {
+      document.querySelector('.menu').classList.toggle('menu_toggle')
+    })
+
+// Modal
+    function editNav() {
+      var x = document.getElementById("myTopnav");
+      if (x.className === "topnav") {
+        x.className += " responsive";
+      } else {
+        x.className = "topnav";
+      }
+    }
+
+// DOM Elements
+    const modalbg = document.querySelector(".bground");
+    const validedModal = document.querySelector(".valided-modal");
+    const validedModalContent = document.querySelector(".valided-modal-content");
+    const modalBtn = document.querySelectorAll(".btn");
+    const formData = document.querySelectorAll(".formData");
+
+// launch modal event
+    modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
+// launch modal form
+    function launchModal() {
+      modalbg.style.display = "block";
+}
+
+// close modal event
+    let close = document.querySelector(".close");
+    close.addEventListener("click", () =>{
+      closeModal();
+    })
+
+// close modal form
+    function closeModal() {
+      modalbg.style.display = 'none';
+      validedModal.style.display = 'none';
+    }
+
 // display error messages
   function errorMessageVisible(input, message) {
     let existingErrorField = input.parentNode.querySelector('.error-field');
@@ -33,16 +76,17 @@
       errorField.className = 'error-field'
       errorField.textContent = message
       input.parentNode.appendChild(errorField)
+      input.style.border = 'solid 2px red'
     }
   }
 
 // Remove error messages
-function removeErrorMessage(input) {
-  const existingErrorField = input.parentNode.querySelector('.error-field');
-  if (existingErrorField) {
-    existingErrorField.remove();
-  }
-}
+    function removeErrorMessage(input) {
+      const existingErrorField = input.parentNode.querySelector('.error-field');
+      if (existingErrorField) {
+        existingErrorField.remove();
+      }
+    }
 
 //Functions
 
@@ -101,6 +145,34 @@ function removeErrorMessage(input) {
             return true;
         }
 
+    // Display and close confirmation's modal
+        function confirmationModal() {
+            let closeModal = document.querySelector('.content')
+            closeModal.style.display = 'none';
+            validedModal.style.display = "flex";
+            let closeButton = document.querySelector('.btn-close')
+            let closeButtonMobile = document.querySelector('.btn-close-mobile')
+            let closeCross = document.querySelector('.close-modal')
+
+            closeButton.addEventListener('click', function() {
+            validedModal.style.display = 'none';
+            modalbg.style.display = 'none';
+            let disabledBtns = document.querySelectorAll('.btn-signup');
+                for (const disabledBtn of disabledBtns) {
+                  disabledBtn.style.display = 'none';
+                }
+            });
+
+            closeCross.addEventListener('click', function() {
+              validedModal.style.display = 'none';
+              modalbg.style.display = 'none';
+              let disabledBtns = document.querySelectorAll('.btn-signup');
+                  for (const disabledBtn of disabledBtns) {
+                    disabledBtn.style.display = 'none';
+                  }
+              });
+        }
+
 // Form validation
   function validateForm() {
 
@@ -118,6 +190,6 @@ function removeErrorMessage(input) {
     form.addEventListener("submit", function(event) {
         event.preventDefault();
         if (validateForm()) {
-          alert("Merci ! Votre réservation a bien été reçue.")
+          confirmationModal()
         }
     });
