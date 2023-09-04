@@ -45,3 +45,8 @@ function closeModal(e) {
         });
 
 }
+
+
+function validate() {
+    console.log('salut')
+}
