@@ -36,6 +36,9 @@ body {
   background: #3876ac;
 }
 
+.btn-remove {
+  display: none;
+}
  /* **************** HEADER ****************  */
 
 .topnav {

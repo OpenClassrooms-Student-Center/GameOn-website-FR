@@ -151,9 +151,9 @@
             closeModal.style.display = 'none';
             validedModal.style.display = "flex";
             let closeButton = document.querySelector('.btn-close')
-            let closeButtonMobile = document.querySelector('.btn-close-mobile')
             let closeCross = document.querySelector('.close-modal')
 
+            // This part allows you to hide the "sign up" button for a computer or tablet by clicking the "close" button.
             closeButton.addEventListener('click', function() {
             validedModal.style.display = 'none';
             modalbg.style.display = 'none';
@@ -163,6 +163,7 @@
                 }
             });
 
+            // This part allows you to hide the "sign up" button for a computer or tablet by clicking the cross.
             closeCross.addEventListener('click', function() {
               validedModal.style.display = 'none';
               modalbg.style.display = 'none';
@@ -171,6 +172,26 @@
                     disabledBtn.style.display = 'none';
                   }
               });
+
+            // This part allows you to hide the "sign up" button for a mobile phone by clicking the "close" button.
+              closeButton.addEventListener('click', function() {
+                validedModal.style.display = 'none';
+                modalbg.style.display = 'none';
+                let disabledBtns = document.querySelectorAll('.btn-signup-mobile');
+                    for (const disabledBtn of disabledBtns) {
+                      disabledBtn.style.display = 'none';
+                    }
+                });
+
+            // This part allows you to hide the "sign up" button for a mobile phone by clicking the cross.
+              closeCross.addEventListener('click', function() {
+                validedModal.style.display = 'none';
+                modalbg.style.display = 'none';
+                let disabledBtns = document.querySelectorAll('.btn-signup-mobile');
+                    for (const disabledBtn of disabledBtns) {
+                      disabledBtn.style.display = 'none';
+                    }
+                });
         }
 
 // Form validation
