@@ -55,8 +55,23 @@ form.email.addEventListener('change',function() {
 
 //Fonction vérifier via la RegExp que l'email est conforme'
 const valideEmail = function(inputEmail) {
-  let emailRegExp = new RegExp('^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$', 'gm');
+  let emailRegExp = new RegExp(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/, 'g');
 
 let testEmail = emailRegExp.test(inputEmail.value)
 console.log(testEmail);
+};
+
+
+
+//Ecouter la modification de la birthdate
+form.birthdate.addEventListener('change',function() {
+  valideBirthdate(this);
+});
+
+//Fonction vérifier via la RegExp que la birthdate est conforme
+const valideBirthdate = function(inputBirthdate) {
+  let birthdateRegExp = new RegExp(/^(0?[1-9]|[12][0-9]|3[01])[\/](0?[1-9]|1[012])[\/]\d{4}$/, 'g');
+
+let testBirthdate = birthdateRegExp.test(inputBirthdate.value)
+console.log(testBirthdate);
 };
