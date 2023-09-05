@@ -11,7 +11,9 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const closeBtn = document.querySelector('.close')
+let closeBtn = document.querySelectorAll('.close-btn')
+const modalBody = document.querySelector('.modal-body')
+
 
 // DOM Elements Form Input
 const formDataFirst = document.getElementById("first")
@@ -24,19 +26,37 @@ const formDataCGU = document.getElementById('checkbox1')
 const formDataNewsletter = document.getElementById('checkbox2')
 
 
-// **************  Lunch OR Close modal ***************
+// **************  Lunch modal ***************
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+
 }
+
+// **************  Close modal ***************
 //close modal event
-closeBtn.addEventListener('click', closeModal)
+closeBtn.forEach((btn) => btn.addEventListener('click', closeModal))
+
+//Met à jour la liste des bouttons close
+function updateCloseBtn() {
+  closeBtn = document.querySelectorAll('.close-btn')
+  closeBtn.forEach((btn) => btn.addEventListener('click', closeModal))
+}
 // close modal form
 function closeModal() {
+  //Vérifie si message remerciement
+  const thanksContainer = document.querySelector('.thanks-container')
+  if (thanksContainer) {
+    thanksContainer.remove()
+    const formBody = document.getElementById('form')
+    formBody.style.display = "block";
+  }
+  //fait disparaitre le modal
   modalbg.style.display = "none"
+
 }
 
 
@@ -98,12 +118,16 @@ function verifyData(data) {
     data.target.parentElement.setAttribute("data-error-visible", "true")
     // console.error(`La valeur ${data.target.value} est refusé`)
   } 
-  // return resultat
 }
+
+
+// **************  Validate Form ***************
 
 //validate form
 function validate(event) {
   try {
+    //******************* Controle si formulaire Ok ou Nok ************************/
+
     //désactive le rafraichissement de la page
     event.preventDefault()
     //initialise un tableau vide pour lister les erreurs
@@ -122,10 +146,11 @@ function validate(event) {
       }
     })
 
-
+    
     //"every" renvoie true si toute les valeurs du tableau sont égale à 'false'
     //C'est à dire aucune error
     const validData = arrayDataError.every(value => value === 'false')
+    //******************* Si Ok ou Nok ************************/
     if (validData) {
       //stock dans arrayLocation la ville choisi
       let arrayLocation = []
@@ -147,12 +172,31 @@ function validate(event) {
       }
 
       console.log(responseForm)
-      closeModal()
       console.log("Formulaire envoyé.")
+
+      //Désactive le formulaire
+      const formBody = document.getElementById('form')
+      formBody.style.display = "none"
+      //Initialise le message
+      const thanksMessage = `
+      <div class="thanks-container">
+      <p class="thanks-container-text">
+        Merci pour votre inscription
+      </p>
+      <button class="thanks-container-btn close-btn">
+        Fermer
+      </button>
+      </div>
+      `
+      //Ajoute au DOM le message remerciement
+      // += pour par supprimer le contenu de modalBody
+      modalBody.innerHTML += thanksMessage
+      //Met à jour les boutton close
+      updateCloseBtn()
 
     } else {
       console.log("Formulaire non envoyé.")
-
+      
     }
 
   } catch (error) {
