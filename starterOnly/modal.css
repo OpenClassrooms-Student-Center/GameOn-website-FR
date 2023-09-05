@@ -184,8 +184,7 @@ main {
   padding-top: 10px;
 
   display: flex;
-  /* justify-content: center;
-  align-items: center; */
+
 }
 
 .modal-body {
@@ -200,7 +199,6 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* border: 1px solid red; */
 }
 .thanks-container-text {
   height: 80%;
@@ -254,8 +252,8 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
+
+/* input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
