@@ -8,6 +8,9 @@
   margin: 0;
   padding: 0;
 }
+html {
+  font-size: 100%;
+}
 /* Landing Page */
 
 body {
@@ -26,89 +29,67 @@ p {
   padding: 0.5vw;
 }
 
-img {
-  padding-right: 1rem;
-}
+/* Header Navbar ------------------------------ */ 
 
 .topnav {
-  overflow: hidden;
-  margin: 3.5%;
+  min-height: 3rem;
+  margin: 1.375rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 .header-logo {
-    float: left;
+    display: flex;
+    align-items: center;
+    width: 15rem;
 }
-.main-navbar {
-    float: right;
+.header-logo img {
+  object-fit: cover;
 }
-.topnav a {
-  float: left;
-  display: block;
+.navbar {
+  position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+.navbar-link {
   color: #000000;
   text-align: center;
-  padding: 12px 12px;
-  margin: 5px;
+  padding: 0.75rem 0.75rem;
   text-decoration: none;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-family: Roboto, sans-serif;
 }
 
 .topnav a:hover {
   background-color: #ff0000;
   color: #ffffff;
-  border-radius: 15px;
+  border-radius: 0.875rem;
 }
 
 .topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
-  border-radius: 15px;
+  border-radius: 0.875rem;
 }
 
-.topnav .icon {
+.icon {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
+/* Main ------------------------------ */ 
 
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} 
 
 main {
-  font-size: 130%;
+  /* font-size: 130%; */
   font-weight: bolder;
   color: black;
   padding-top: 0.5vw;
   padding-left: 2vw;
   padding-right: 2vw;
-  margin: 1px 20px 15px;
+  margin: 0 1.25rem 1rem;
   border-radius: 2rem;
   text-align: justify;
 
@@ -137,7 +118,7 @@ main {
   font-family: var(--font-slab);
 }
 
-/* Modal form */
+/* Modal form ------------------------------ */
 
 .button {
   background: #fe142f;
@@ -166,18 +147,20 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  /* background-color: rgba(26, 39, 156, 0.4); */
 }
 
 .content {
+  /* margin: 5rem auto auto auto; */
+  min-height: 70%;
   margin: 5% auto;
   width: 100%;
-  min-height: 70%;
+
   max-width: 500px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
   background: #232323;
-  border-radius: 10px;
+  border-radius: 0.75rem;
   overflow: hidden;
   position: relative;
   color: #fff;
@@ -252,12 +235,11 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
+.text-label {
+  font-weight: normal;
+  font-size: 1rem;
+}
 
-/* input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -360,8 +342,8 @@ input {
   cursor: pointer;
   border: 0;
 }
-/* custom select styles */
-.custom-select {
+/* custom select styles ------------------------------ */
+/* .custom-select {
   position: relative;
   font-family: Arial;
   font-size: 1.1rem;
@@ -373,10 +355,10 @@ input {
 }
 .select-selected {
   background-color: #fff;
-}
+} */
 
 /* Style the arrow inside the select element: */
-.select-selected:after {
+/* .select-selected:after {
   position: absolute;
   content: "";
   top: 10px;
@@ -388,15 +370,15 @@ input {
   border-left-color: #f00;
   transform: rotate(-48deg);
   border-radius: 5px 0 5px 0;
-}
+} */
 
 /* Point the arrow upwards when the select box is open (active): */
-.select-selected.select-arrow-active:after {
+/* .select-selected.select-arrow-active:after {
   transform: rotate(135deg);
   top: 13px;
-}
+} */
 
-.select-items div,
+/* .select-items div,
 .select-selected {
   color: #000;
   padding: 11px 16px;
@@ -405,40 +387,36 @@ input {
   cursor: pointer;
   border-radius: 8px;
   height: 48px;
-}
+} */
 
 /* Style items (options): */
-.select-items {
+/* .select-items {
   position: absolute;
   background-color: #fff;
   top: 89%;
   left: 0;
   right: 0;
   z-index: 99;
-}
+} */
 
 /* Hide the items when the select box is closed: */
-.select-hide {
+/* .select-hide {
   display: none;
-}
+} */
 
-.select-items div:hover,
+/* .select-items div:hover,
 .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
-}
+} */
 /* custom select end */
-.text-label {
-  font-weight: normal;
-  font-size: 16px;
-}
+
 .hero-section {
-  min-height: 93vh;
-  border-radius: 10px;
+  border-radius: 0.75rem;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   overflow: hidden;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
-  margin-bottom: 10px;
+  margin: 3rem 0 0.75rem;
 }
 .hero-content {
   padding: 51px 67px;
@@ -503,9 +481,11 @@ input {
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
-  margin: 0 20px;
+  margin: 0 1.25rem;
 }
-@media screen and (max-width: 800px) {
+
+
+@media screen and (max-width: 1023.98px) {
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -514,6 +494,7 @@ footer {
     background: #fff;
     color: #000;
     padding: 20px;
+    min-width: auto;
   }
   .hero-content::after {
     content: unset;
@@ -522,16 +503,18 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
+    /* text-align: center; */
     white-space: normal;
   }
   .hero-text {
     width: unset;
     font-size: 1.5rem;
+    margin-top: 2rem;
   }
   .hero-img img {
-    border-radius: 10px;
-    margin-top: 40px;
+    border-radius: 0.75rem;
+    margin-top: 2rem;
   }
   .hero-section > .btn-signup {
     display: block;
@@ -543,6 +526,65 @@ footer {
     text-align: center;
   }
 }
+
+@media screen and (max-width: 1023.98px) {
+  /* Header Navbar ------------------------------ */ 
+  .topnav .navbar-link {display: none;}
+  .icon {
+    display: block;
+    width: fit-content;
+    color: #000000;
+    margin-left: auto;
+    padding: 0.75rem 0.75rem;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-family: Roboto, sans-serif;
+    
+  }
+  .topnav.responsive {
+    position: relative;
+  }
+  .responsive .navbar {
+    background-color: white;
+    border: 1px solid #ff0000;
+    border-radius: 0.875rem;
+    flex-direction: column;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    z-index: 2;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive .navbar-link {
+    display: block;
+    text-align: left;
+  }
+}
+
+
+
+
+@media screen and (max-width: 540px) {
+  html {
+    font-size: 75%;
+  }
+}
+@media screen and (max-width: 424.98px) {
+  html {
+    font-size: 65%;
+  }
+  .hero-headline {
+    font-size: 2.5rem;
+  }
+  .hero-text {
+    font-size: 1.5rem;
+  }
+} 
 
 @keyframes modalopen {
   from {

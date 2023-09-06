@@ -116,7 +116,7 @@ function verifyData(data) {
       Regex Control ----------------------------------
    */
   let resultat = false                            // Resultat Regex - Vrai ou Faux
-  console.log(data.target.value)
+  // console.log(data.target.value)
   if (data.target.id === "first" || data.target.id === "last") {
     resultat = alphabetRegex.test(data.target.value)
 
@@ -234,8 +234,8 @@ function validate(event) { // ------------------------------ Control if Form Ok 
       modalBody.innerHTML += thanksMessage  //           Ajoute au DOM le message remerciement
       //                                                 += pour par supprimer le contenu de modalBody
 
-      console.log(responseForm)
-      console.log("Formulaire envoyé.")
+      console.log("Formulaire envoyé :")
+      console.table(responseForm)
       updateInputForm()                               // Mise à jour du DOM
 
     /*
