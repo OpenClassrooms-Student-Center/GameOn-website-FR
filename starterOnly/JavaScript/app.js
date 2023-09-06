@@ -13,7 +13,7 @@
         name: "Il doit être composé de deux lettres minimum et cinquantes lettres maximum.",
         email: "L'adresse e-mail est incorrecte. Elle doit être au format : utilisateur@service.com.",
         quantity: 'Le nombre de tournois doit être compris entre 0 et 99.',
-        birthdate: 'Vous devez etre majeur pour participer.',
+        birthdate: 'Vous devez avoir entre 18 et 100 ans.',
         city: 'Vous devez choisir une ville pour vous inscrire.',
         conditions: "Vous devez accepter les conditions d'utilisation.",
     }
@@ -26,7 +26,7 @@
 // Hamburger menu
     const btnHamburger = document.getElementById('hamburger-menu');
     btnHamburger.addEventListener('click', () => {
-      document.querySelector('.menu').classList.toggle('menu_toggle')
+        document.querySelector('.menu').classList.toggle('menu_toggle')
     })
 
 // Modal
@@ -102,19 +102,24 @@
 
       // Check birthdate value
       function checkBirthdateValue(input, errorMessage) {
-          let birthdate = new Date(input.value);
-          let difference = Date.now() - birthdate.getTime();
-          difference = new Date(difference);
-          let userAge = difference.getFullYear() - 1970;
+        let birthdate = new Date(input.value);
+        let currentDate = new Date();
+        console.log(currentDate)
 
-          // Check if userAge <18 and the value of the input is empty or not provided (or if the value cannot be converted into a valid date).
-          if (userAge < 18 || isNaN(birthdate.getTime())) {
-              errorMessageVisible(input, errorMessage)
-              return false;
-          }
-          removeErrorMessage(input)
+        // Difference is in milliseconds
+        let difference = currentDate - birthdate;
+        console.log(difference)
+
+        // Convert the difference into years
+        let userAge = Math.floor(difference / (365.25 * 24 * 60 * 60 * 1000));
+        console.log(userAge);
+        if (userAge < 18 || userAge > 100 || isNaN(birthdate.getTime())) {
+            errorMessageVisible(input, errorMessage);
+            return false;
+        }
+        removeErrorMessage(input);
         return true;
-      }
+    }
 
     // Check selection of the tournament's city
     function checkLocations(locations, errorMessage) {
@@ -157,41 +162,13 @@
             closeButton.addEventListener('click', function() {
             validedModal.style.display = 'none';
             modalbg.style.display = 'none';
-            let disabledBtns = document.querySelectorAll('.btn-signup');
-                for (const disabledBtn of disabledBtns) {
-                  disabledBtn.style.display = 'none';
-                }
             });
 
             // This part allows you to hide the "sign up" button for a computer or tablet by clicking the cross.
             closeCross.addEventListener('click', function() {
               validedModal.style.display = 'none';
               modalbg.style.display = 'none';
-              let disabledBtns = document.querySelectorAll('.btn-signup');
-                  for (const disabledBtn of disabledBtns) {
-                    disabledBtn.style.display = 'none';
-                  }
               });
-
-            // This part allows you to hide the "sign up" button for a mobile phone by clicking the "close" button.
-              closeButton.addEventListener('click', function() {
-                validedModal.style.display = 'none';
-                modalbg.style.display = 'none';
-                let disabledBtns = document.querySelectorAll('.btn-signup-mobile');
-                    for (const disabledBtn of disabledBtns) {
-                      disabledBtn.style.display = 'none';
-                    }
-                });
-
-            // This part allows you to hide the "sign up" button for a mobile phone by clicking the cross.
-              closeCross.addEventListener('click', function() {
-                validedModal.style.display = 'none';
-                modalbg.style.display = 'none';
-                let disabledBtns = document.querySelectorAll('.btn-signup-mobile');
-                    for (const disabledBtn of disabledBtns) {
-                      disabledBtn.style.display = 'none';
-                    }
-                });
         }
 
 // Form validation
