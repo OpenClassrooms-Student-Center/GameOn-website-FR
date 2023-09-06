@@ -428,11 +428,7 @@ input {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-
-
-
 /* **************** FOOTER ****************  */
-
 footer {
     margin-left: -30px;
 }
@@ -444,8 +440,6 @@ footer {
     margin: 60px 0 30px;
     font-weight: bolder;
 }
-
-
 /* **************** ANIMATION ****************  */
 @keyframes modalopen {
   from {
@@ -456,9 +450,7 @@ footer {
     opacity: 1;
   }
 }
-
 /* **************** RESPONSIVE ****************  */
-
     /* **************** TABLETTES ****************  */
 
 @media screen and (max-width: 1024px) {
@@ -523,7 +515,6 @@ footer {
 }
 
     /* **************** MOBILES ****************  */
-
     @media screen and (max-width: 768px) {
 
       main {
