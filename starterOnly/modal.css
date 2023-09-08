@@ -169,6 +169,10 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
+.opened-modal {
+  display: block;
+}
+
 .content {
   margin: 5% auto;
   width: 100%;
