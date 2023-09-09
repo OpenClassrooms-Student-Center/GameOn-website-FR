@@ -5,6 +5,10 @@ const formData = document.querySelectorAll(".formData");
 const closeButton = document.querySelector(".close");
 const acceptedConditions = document.querySelector("#checkbox1");
 const submitButton = document.querySelector(".btn-submit");
+const firstName = document.querySelector("#first");
+const lastName = document.querySelector("#last");
+const email = document.querySelector("#email");
+const birthdate = document.querySelector("#birthdate");
 
 
 // ouverture de la modale au clic sur le bouton
@@ -29,15 +33,85 @@ function closeModal() {
 acceptedConditions.addEventListener("click", disableSubmit)
 
 function disableSubmit(event) {
-  console.log(event);
+
+  const input = event.target;
+  const parentElement = input.parentElement;
 
   const conditionsAreAccepted = event.target.checked;   //On récupère dans l'événément l'attribut checked dans target. Aperçu dans la console
   if(conditionsAreAccepted === false) {                 //Si les conditions ne sont pas acceptées, alors on active l'attribut disabled sur le submitButton
   submitButton.setAttribute("disabled", "true");
+
+  parentElement.setAttribute("data-error", "Vous devez vérifier que vous acceptez les termes et conditions.");  // Message d'erreur apparaît
+  parentElement.setAttribute("data-error-visible", "true");
+
    } else {
   submitButton.removeAttribute("disabled");       //Si les conditions sont acceptées, alors on retire l'attribut disabled sur le submitButton
- }
+  
+  parentElement.removeAttribute("data-error");
+  parentElement.removeAttribute("data-error-visible"); 
+  }
+ 
 }
+
+
+
+// MESSAGE D'ERREUR DU PRÉNOM
+
+firstName.addEventListener("invalid", errorOnFirstName);
+
+function errorOnFirstName(event) {
+  const input = event.target;
+  const parentElement = input.parentElement;
+  parentElement.setAttribute("data-error", "Veuillez entrer 2 caractères ou plus pour le champ du prénom.");
+  parentElement.setAttribute("data-error-visible", "true");
+
+  input.addEventListener("input", function () {
+    if (input.value.length >= 2) {
+      parentElement.removeAttribute("data-error");
+      parentElement.removeAttribute("data-error-visible");
+    }
+  });
+}
+
+// MESSAGE D'ERREUR DU NOM DE FAMILLE
+
+lastName.addEventListener("invalid", errorOnLastName);
+function errorOnLastName(event) {
+  const input = event.target;
+  const parentElement = input.parentElement;
+  parentElement.setAttribute("data-error", "Veuillez entrer 2 caractères ou plus pour le champ du nom.");
+  parentElement.setAttribute("data-error-visible", "true");
+
+  input.addEventListener("input", function () {
+    if (input.value.length >= 2) {
+      parentElement.removeAttribute("data-error");
+      parentElement.removeAttribute("data-error-visible");
+    }
+  });
+}
+
+// MESSAGE D'ERREUR DE LA DATE DE NAISSANCE
+
+birthdate.addEventListener("invalid", errorOnBirthdate);
+
+function errorOnBirthdate(event) {
+  const input = event.target;
+  const parentElement = input.parentElement;
+  parentElement.setAttribute("data-error", "Vous devez entrer votre date de naissance.");
+  parentElement.setAttribute("data-error-visible", "true");
+
+  input.addEventListener("input", function () {
+    if (input.value != null) {                          
+      parentElement.removeAttribute("data-error");
+      parentElement.removeAttribute("data-error-visible");
+    }
+  });
+}
+
+
+
+
+
 
 function editNav() {
   var x = document.getElementById("myTopnav");
