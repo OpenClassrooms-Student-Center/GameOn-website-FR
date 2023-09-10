@@ -9,7 +9,8 @@ const firstName = document.querySelector("#first");
 const lastName = document.querySelector("#last");
 const email = document.querySelector("#email");
 const birthdate = document.querySelector("#birthdate");
-
+const radioButton = document.querySelector("#location1");
+const form = document.querySelector("form");
 
 // ouverture de la modale au clic sur le bouton
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -107,6 +108,34 @@ function errorOnBirthdate(event) {
     }
   });
 }
+
+// MESSAGE D'ERREUR DES BOUTONS RADIO
+
+radioButton.addEventListener("invalid", errorOnLocation);
+
+function errorOnLocation(event) {
+  const input = event.target;
+  const parentElement = input.parentElement;
+  parentElement.setAttribute("data-error", "Vous devez choisir une option.");
+  parentElement.setAttribute("data-error-visible", "true");
+  
+  input.addEventListener("input", function () {
+    if (input.value != null) {                          
+      parentElement.removeAttribute("data-error");
+      parentElement.removeAttribute("data-error-visible");
+    }
+  });
+  
+}
+
+function validate () {   //cette fonction était déjà nommée dans le HTML. Ici on vérifie que le formulaire est valide avec checkValidity
+    if(form.checkValidity()) {
+      //closeModal();                   ici, on peut soit appeler la fonction closeModal(), soit ajouter un display = "none";
+      modalForm.style.display = "none";
+      alert("Merci ! Votre réservation a été reçue.")
+    }
+}
+
 
 
 

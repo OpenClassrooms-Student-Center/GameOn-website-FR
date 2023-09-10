@@ -39,6 +39,8 @@ img {
 }
 .main-navbar {
     float: right;
+    display: flex;
+    align-items: center;
 }
 .topnav a {
   float: left;
@@ -66,6 +68,7 @@ img {
 
 .topnav .icon {
   display: none;
+  color:red;
 }
 
 @media screen and (max-width: 768px) {
@@ -74,9 +77,15 @@ img {
     float: right;
     display: block;
   }
+  .topnav {
+    margin-top: 20px;
+  }
+  .hero-text {
+    padding-inline: 25px;
+  }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (min-width:500px) and (max-width: 830px) {
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
@@ -90,15 +99,74 @@ img {
   }
 }
 
+@media screen and (max-width: 1110px){
+  .topnav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+} 
+
+@media screen and (min-width:500px) and (max-width: 768px) {
+
+  #myTopnav {
+    flex-direction: row;
+    align-items: start;
+  }
+}
+
+@media screen and (max-width:500px) {
+
+  #myTopnav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;  
+    }
+    .hero-content {
+     padding-inline: 25px;
+    }
+  .hero-headline {
+      width: 100%;
+    }
+
+  .hero-text {
+      text-align: justify;
+      padding:0px;
+    }
+
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+   
+  }
+  .topnav.responsive a {
+    float: none;
+    display: flex;
+    margin: auto;
+    text-align: right;
+  }
+  .main-navbar {
+    margin-top: 20px;
+  }
+ 
+}
 
 
- @media screen and (max-width: 540px) {
+ @media screen and (max-width: 540px){
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
+
+  .hero-headline h1 {
+    font-size: 20px;
+  }
+.hero-text {
+  margin: 0px;
+}
+ 
+
 } 
 
 main {
@@ -106,9 +174,7 @@ main {
   font-weight: bolder;
   color: black;
   padding-top: 0.5vw;
-  padding-left: 2vw;
-  padding-right: 2vw;
-  margin: 1px 20px 15px;
+ 
   border-radius: 2rem;
   text-align: justify;
 
@@ -177,7 +243,7 @@ main {
 .content {
   margin: 5% auto;
   width: 100%;
-  max-width: 500px;
+  max-width: 560px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
   background: #232323;
@@ -215,7 +281,7 @@ input {
 }
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
+  font-size: 0.6em;
   color: #e54858;
   display: block;
   margin-top: 7px;
@@ -424,6 +490,7 @@ input[data-error]::after {
   overflow: hidden;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
+
 }
 .hero-content {
   padding: 51px 67px;
@@ -432,7 +499,6 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -448,15 +514,13 @@ input[data-error]::after {
   z-index: 1;
 }
 .hero-headline {
-  font-size: 6rem;
+  font-size: 96px;
   font-weight: normal;
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
   font-weight: normal;
   margin-top: 57px;
-  padding: 0;
 }
 .btn-signup {
   outline: none;
@@ -474,6 +538,8 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
+
 }
 .copyrights {
   color: #fe142f;
@@ -490,15 +556,23 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
+
+  #myTopnav {
+    justify-content: space-between;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
+    min-height: 0px;
   }
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .hero-content::after {
     content: unset;
@@ -506,13 +580,16 @@ footer {
   .hero-content .btn-signup {
     display: none;
   }
+
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 36px;
     white-space: normal;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 1rem;
+    margin-top: 30px;
+
   }
   .hero-img img {
     border-radius: 10px;
@@ -527,7 +604,26 @@ footer {
     margin-top: 50px;
     text-align: center;
   }
+  .topnav a {
+    font-size: 15px;
+  }
+
+  .main-navbar {
+flex-direction: column;  
+align-items: start;}
+
 }
+
+@media screen and (min-width:768px) and (max-width: 1110px) {
+
+  .hero-headline {
+    font-size: 70px;
+  }
+  .topnav a {
+    font-size: 18px;
+  }
+}
+
 
 @keyframes modalopen {
   from {
