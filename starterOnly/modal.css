@@ -393,7 +393,7 @@ input[data-error]::after {
   overflow: hidden;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
-
+margin-inline: 25px;
 }
 .hero-content {
 
@@ -464,6 +464,10 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 768px) {
+  .hero-section {
+    height: 100%;
+
+  }
 
   .topnav a {display: none;}
   .topnav a.icon {
@@ -481,6 +485,8 @@ footer {
   }
   #myTopnav {
     justify-content: space-between;
+    margin-top:30px;
+    margin-inline: 30px;
   }
   .hero-section {
     display: block;
@@ -502,8 +508,9 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 36px;
+    font-size: 50px;
     white-space: normal;
+    font-weight: 700;
   }
   .hero-img img {
     border-radius: 10px;
@@ -521,16 +528,24 @@ footer {
   .topnav a {
     font-size: 15px;
   }
+
+  .header-logo img{
+    width:170px;
+  }
   .main-navbar {
-  flex-direction: column;  
-  align-items: start;}
+    display: flex;  
+  flex-direction: column;
+  align-items: start;
+  }
+  .main-navbar i {
+    font-size: 20px;
+  }
 }
 
 @media screen and (max-width: 1110px){
   .topnav {
     display: flex;
     flex-direction: column;
-    align-items: center;
   }
 } 
 
@@ -543,6 +558,9 @@ footer {
     font-size: 18px;
   }
 
+  .topnav {
+    align-items: center;
+  }
   .hero-text {
   text-align: justify;
   width:155%;
@@ -571,7 +589,14 @@ footer {
 
   #myTopnav {
     flex-direction: row;
-    align-items: start;
+  }
+  .header-logo {
+    margin-top: 10px;
+  }
+  .hero-text {
+    font-size: 20px;
+    padding-inline: 60px;
+    text-align: justify;
   }
 }
 
@@ -586,10 +611,7 @@ footer {
   .hero-headline h1 {
     font-size: 20px;
   }
-  .hero-text {
-    margin: 0px;
-  }
-} 
+ }
 
 
 @media screen and (max-width:500px) {
@@ -597,18 +619,27 @@ footer {
   #myTopnav {
     display: flex;
     flex-direction: column;
-    justify-content: center;  
+    justify-content: center; 
+    align-items: center; 
     }
     .hero-content {
      padding-inline: 25px;
     }
-  .hero-headline {
+
+    .hero-headline {
       width: 100%;
+      font-size: 40px;
+      font-weight: 700;
+      text-align: center;
     }
   .hero-text {
       text-align: justify;
       padding:0px;
+      font-size: 18px;
+      padding-inline: 30px;
+
     }
+
   .topnav.responsive {position: relative;}
   .topnav.responsive .icon {
     position: absolute;
@@ -622,8 +653,25 @@ footer {
   .main-navbar {
     margin-top: 20px;
   }
+
+  .main-navbar i {
+    font-size: 15px;
+  }
 }
 
+
+@media screen and (min-width:100px) and (max-width: 500px) {
+  .hero-content {
+    padding: 0px;
+  }
+  .hero-headline {
+    font-size: 28px;
+  }
+  .hero-text {
+    font-size: 16px;
+    padding-inline: 10px;
+  }
+}
 
 
 @keyframes modalopen {
