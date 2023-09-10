@@ -104,18 +104,15 @@
       function checkBirthdateValue(input, errorMessage) {
         let birthdate = new Date(input.value);
         let currentDate = new Date();
-        console.log(currentDate)
 
         // Difference is in milliseconds
         let difference = currentDate - birthdate;
-        console.log(difference)
 
-        // Convert the difference into years
+        // The difference into years
         let userAge = Math.floor(difference / (365.25 * 24 * 60 * 60 * 1000));
-        console.log(userAge);
         if (userAge < 18 || userAge > 100 || isNaN(birthdate.getTime())) {
             errorMessageVisible(input, errorMessage);
-            return false;
+        false;
         }
         removeErrorMessage(input);
         return true;
