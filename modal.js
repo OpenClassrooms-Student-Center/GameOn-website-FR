@@ -12,7 +12,12 @@ const modalbg = document.querySelector(".bground");
 const modal = modalbg.querySelector(".content");
 const modalCloseBtn = modal.querySelector(".modal-close")
 const modalBtn = document.querySelectorAll(".modal-btn");
-const formData = document.querySelectorAll(".formData");
+
+const myForm = modal.querySelector("#modal-form")
+
+myForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+})
 
 
 // launch modal event
@@ -47,6 +52,6 @@ function closeModal(e) {
 }
 
 
-function validate() {
-    console.log('salut')
+function validate(form) {
+    console.log(form)
 }
