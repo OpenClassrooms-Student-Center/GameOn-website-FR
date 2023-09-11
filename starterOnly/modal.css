@@ -141,6 +141,9 @@ main {
 .opened-modal {
   display: block;
 }
+.opened-modal2 {
+  display: block;
+}
 
 .content {
   margin: 5% auto;
@@ -687,16 +690,19 @@ footer {
 
 /* MISE EN FORME DE LA MODALE 2*/
 
-.modal2 {
+.closed-modal2 {
   display: none;
-
+}
+.opened-modal2 {
+  display: block;
+}
+.modal2 {
   position: fixed;
   z-index: 1;
   left: 0;
   top: 0;
   height: 90%;
   width: 100%;
-  overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
 }
 
@@ -704,8 +710,6 @@ footer {
   margin: 5% auto;
   width: 100%;
   max-width: 560px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
   background: #232323;
   border-radius: 10px;
   overflow: hidden;
@@ -744,8 +748,8 @@ footer {
 }
 
 .text-modal2 {
-  margin-top: 200px;
-  margin-bottom: 200px;
+  margin-top: 250px;
+  margin-bottom: 280px;
   font-size: 40px;
   text-align: center;
   font-weight: 200;
@@ -753,5 +757,17 @@ footer {
 
 .button-modal2 {
   text-align: center;
-  padding : 15px 30px 15px 30px;
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+  padding: 1em;
+}
+
+.button-modal2:hover {
+  background: #3876ac;
 }

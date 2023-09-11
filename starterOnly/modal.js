@@ -30,6 +30,7 @@ closeButton.addEventListener("click", closeModal)
 // function pour fermer la modale
 function closeModal() {
   modalForm.classList.remove("opened-modal")
+  
 }
 
 // si les conditions ne sont pas acceptées, le formulaire passe en disabled
@@ -131,31 +132,67 @@ function errorOnLocation(event) {
   
 }
 
-function validate () {   //cette fonction était déjà nommée dans le HTML. Ici on vérifie que le formulaire est valide avec checkValidity
+//GESTION DE L'ENVOI DU FORMULAIRE //
+
+form.addEventListener("submit", validate)
+
+function validate (event) {
+    event.preventDefault();
+
     if(form.checkValidity()) {
-      closeModal();                   //ici, on peut soit appeler la fonction closeModal(), soit ajouter un display = "none";
-      modalForm.style.display = 'none';
-      //alert("Merci ! Votre réservation a été reçue.") //
+
+      modalForm.style.display = 'none';   // FERMETURE DE LA MODAL 1. On aurait pu appeler closeModal()
+
+      openValidationMessage()    // OUVERTURE DE LA MODALE 2
     }
+    else {
+      throw new Error("Formulaire non valide");
+    }
+  };
 
-}
 
 
-function openModal2() {
-    modal2.style.display = 'block';
-    modal2.classList.add("opened-modal")
-};
+
+function openValidationMessage () {
+
+
+  let validationMessage = document.createElement("p");
+  validationMessage.className = "text-modal2";
+  validationMessage.innerHTML = "Merci pour <br> votre inscription"
+
+  let closeButtonTop = document.createElement("span");
+  closeButtonTop.className = "close-modal2";
+
+  let closeButtonBottom = document.createElement("input");
+  closeButtonBottom.className = "button-modal2";
+  closeButtonBottom.value = "Fermer";
+
+
+  let validationnWrapper = document.createElement("div");
+  validationnWrapper.className = "content-modal2";
+  validationnWrapper.appendChild(validationMessage);
+  validationnWrapper.appendChild(closeButtonTop);
+  validationnWrapper.appendChild(closeButtonBottom);
+
+  let modalContainer = document.createElement("div");
+  modalContainer.className = "modal2";   //permet de cacher le contenu
+  document.body.appendChild(modalContainer);
+
+  modalContainer.appendChild(validationnWrapper);
 
 //fermeture de la modale 2 au clic sur la croix ou sur le bouton fermer
 
-closeButtonModal2.addEventListener("click", closeModal2)
-closeButtonBottomModal2.addEventListener("click", closeModal2)
+  closeButtonTop.addEventListener("click", closeModal2)
+  closeButtonBottom.addEventListener("click", closeModal2)
+  
+  // function pour fermer la modale
+  function closeModal2() {
+    modalContainer.style.display = "none";
+  }
+};
 
 
-// function pour fermer la modale
-function closeModal2() {
-  modal2.style.display = "none";
-}
+
 
 
 function editNav() {
