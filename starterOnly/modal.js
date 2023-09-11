@@ -46,10 +46,10 @@ function verifyNbreCaracteresPrenom(chaine) {
 
   if (chaine === "") {
     throw new Error("Le champ ne peut pas être vide");
-  }
-
-  if (resultat === false){
-    throw new Error("Veuillez entrer 2 caractères ou plus pour le champ du prénom.");
+  } else if (resultat === false) {
+    throw new Error(
+      "Veuillez entrer 2 caractères ou plus pour le champ du prénom."
+    );
   }
 }
 
@@ -63,10 +63,10 @@ function verifyNbreCaracteresNom(chaine) {
 
   if (chaine === "") {
     throw new Error("Le champ ne peut pas rester vide");
-  }
-
-  if (resultat === false){
-    throw new Error("Veuillez entrer 2 caractères ou plus pour le champ du nom.");
+  } else if (resultat === false) {
+    throw new Error(
+      "Veuillez entrer 2 caractères ou plus pour le champ du nom."
+    );
   }
 }
 
@@ -78,9 +78,10 @@ function verifyNbreCaracteresNom(chaine) {
 
 function prenomOk() {
   let balisePrenom = document.getElementById("first");
-  let prenom = balisePrenom.value.trim(); /* .trim() supprime les espaces inutiles et les caractères de contrôle qui pourraient empêcher la regex de fonctionner correctement */
+  let prenom =
+    balisePrenom.value.trim(); /* .trim() supprime les espaces inutiles et les caractères de contrôle qui pourraient empêcher la regex de fonctionner correctement */
 
-  verifyNbreCaracteres(prenom);
+  verifyNbreCaracteresPrenom(prenom);
 }
 
 // **********************
@@ -91,9 +92,10 @@ function prenomOk() {
 
 function nomOk() {
   let baliseNom = document.getElementById("last");
-  let nom = baliseNom.value.trim(); /* .trim() supprime les espaces inutiles et les caractères de contrôle qui pourraient empêcher la regex de fonctionner correctement */
+  let nom =
+    baliseNom.value.trim(); /* .trim() supprime les espaces inutiles et les caractères de contrôle qui pourraient empêcher la regex de fonctionner correctement */
 
-  verifyNbreCaracteres(nom);
+  verifyNbreCaracteresNom(nom);
 }
 
 // ***********************
@@ -106,7 +108,7 @@ function emailOk() {
   let regexEmail = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+.[a-z0-9._-]+");
   let resultat = regexEmail.test(email);
 
-  if ((resultat == false)) {
+  if (resultat == false) {
     throw new Error("L'adresse mail rentrée n'est pas conforme");
   }
 }
@@ -121,7 +123,7 @@ function nbreConcoursOk() {
   let regexQuantity = new RegExp("[0-9]");
   let resultat = regexQuantity.test(quantity);
 
-  if ((resultat == false)) {
+  if (resultat == false) {
     throw new Error("Vous devez remplir le champs avec un chiffre");
   }
 }
@@ -155,10 +157,10 @@ function birthdateOk() {
 
 function radioBtnOk() {
   // Option 1
-  let btnRadio = document.querySelector('input[name="location"]:checked')
+  let btnRadio = document.querySelector('input[name="location"]:checked');
 
-  if (!btnRadio){
-    throw new Error("Vous devez sélectionner une ville")
+  if (!btnRadio) {
+    throw new Error("Vous devez sélectionner une ville");
   }
 }
 
@@ -167,25 +169,38 @@ function radioBtnOk() {
 // **********************************************************
 
 function termsOfUseOk() {
-  let checkboxTermsOfUse = document.getElementById("checkbox1")
+  let checkboxTermsOfUse = document.getElementById("checkbox1");
 
   if (!checkboxTermsOfUse.checked) {
-    throw new Error("Les conditions d'utilisation sont obligatoires")
+    throw new Error("Les conditions d'utilisation sont obligatoires");
   }
 }
 
 // ***************************************************
-// Fonction pour faire apparaîtere le message d'erreur
+// Fonction pour faire apparaître le message d'erreur
 // ***************************************************
 
-function alertMessage(message, errorSpanId){
+function alertMessage(message, errorSpanId) {
+  let injectionMessageErreur = document.getElementById(errorSpanId);
 
-  let injectionMessageErreur = document.getElementById(errorSpanId)
+  injectionMessageErreur.innerText = message;
 
-  injectionMessageErreur.textContent = message
+  injectionMessageErreur.style.fontSize = "1rem";
+  injectionMessageErreur.style.color = "red";
+}
 
-  injectionMessageErreur.style.fontSize = "1rem"
-  injectionMessageErreur.style.color = "red"
+// ********************************************************************************************
+// Fonction pour réninitialiser le message d'erreur à chaque clique sur le bouton "C'est parti"
+// ********************************************************************************************
+
+function resetAlertMessage() {
+  alertMessage("", "error-first");
+  alertMessage("", "error-last");
+  alertMessage("", "error-email");
+  alertMessage("", "error-birthdate");
+  alertMessage("", "error-quantity");
+  alertMessage("", "error-location");
+  alertMessage("", "error-termsOfUse");
 }
 
 // **********************************************************
@@ -193,6 +208,7 @@ function alertMessage(message, errorSpanId){
 // **********************************************************
 
 function validate() {
+  resetAlertMessage();
 
   try {
     prenomOk();
@@ -202,31 +218,33 @@ function validate() {
     nbreConcoursOk();
     radioBtnOk();
     termsOfUseOk();
-  } catch (error) {
 
+    modalbg.style.display = "none";
+    alert("Merci ! Votre réservation a été reçue.");
+  } catch (error) {
     let errorSpanId = "";
 
-    if(error.message.includes("prénom")){
-      errorSpanId = "error-first"
-    } else if (error.message.includes("nom")){
-      errorSpanId = "error-last"
-    } else if (error.message.includes("être")){
-      errorSpanId = "error-first"
-    } else if (error.message.includes("rester")){
-      errorSpanId = "error-last"
-    } else if (error.message.includes("conforme")){
-      errorSpanId = "error-email"
-    } else if (error.message.includes("chiffre")){
-      errorSpanId = "error-quantity"
-    } else if (error.message.includes("naissance")){
-      errorSpanId = "error-birthdate"
-    } else if (error.message.includes("ville")){
-      errorSpanId = "error-location"
-    } else if (error.message.includes("obligatoires")){
-      errorSpanId = "error-termsOfUse"
+    if (error.message.includes("prénom")) {
+      errorSpanId = "error-first";
+    } else if (error.message.includes("nom")) {
+      errorSpanId = "error-last";
+    } else if (error.message.includes("être")) {
+      errorSpanId = "error-first";
+    } else if (error.message.includes("rester")) {
+      errorSpanId = "error-last";
+    } else if (error.message.includes("conforme")) {
+      errorSpanId = "error-email";
+    } else if (error.message.includes("chiffre")) {
+      errorSpanId = "error-quantity";
+    } else if (error.message.includes("naissance")) {
+      errorSpanId = "error-birthdate";
+    } else if (error.message.includes("ville")) {
+      errorSpanId = "error-location";
+    } else if (error.message.includes("obligatoires")) {
+      errorSpanId = "error-termsOfUse";
     }
 
-    alertMessage(error.message, errorSpanId)
+    alertMessage(error.message, errorSpanId);
   }
 }
 
