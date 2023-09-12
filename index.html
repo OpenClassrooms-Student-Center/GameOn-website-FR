@@ -59,6 +59,7 @@
                 method="post"
                 name="reserve"
                 onsubmit="return validate(this)"
+                novalidate
             >
               <div
                   class="formData">
@@ -142,21 +143,24 @@
                   Portland
                 </label>
               </div>
-              <div
-                  class="formData">
-                <input class="checkbox-input" id="checkbox1" required type="checkbox"/>
+              <div class="formData">
+
+                <input class="checkbox-input" id="checkbox1" required type="checkbox" name="termsOfUse"/>
                 <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
-                <input class="checkbox-input" id="checkbox2" type="checkbox"/>
+
+                <input class="checkbox-input" id="checkbox2" type="checkbox" name="newsletter"/>
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
+
               </div>
+
               <input class="button btn-submit" type="submit" value="C'est parti" />
             </form>
           </div>
