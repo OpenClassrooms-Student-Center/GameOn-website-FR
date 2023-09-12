@@ -33,7 +33,7 @@ function launchModal() {
 }
 
 // Animation function of the modal when the modal is closed
-function closeModal(e) {
+function closeModal() {
     setTimeout(() => {
         modalbg.style.display = "none"
     }, 390)
@@ -57,22 +57,24 @@ function validate(form) {
     let inputs = {
         firstname: {
             value: form['first'].value.trim(), required: true, validation: (value) => {
-                isName(value)
+                return isName(value)
             }
         }, lastname: {
             value: form['last'].value.trim(), required: true, validation: (value) => {
-                isName(value)
+                return isName(value)
             }
         }, email: {
             value: form['email'].value.trim(), required: true, validation: (value) => {
-                isEmail(value)
+                return isEmail(value)
             }
         }, birthday: {
             value: form['birthdate'].value.trim(), required: true, validation: (value) => {
-                isCorrectBirthDate(value)
+                return isCorrectBirthDate(value)
             }
         }, tournament: {
-            value: form['quantity'].value.trim(), required: true,
+            value: form['quantity'].value.trim(), required: true, validation: (value) => {
+                return isPositiveInteger(value)
+            }
         }, location: {
             value: form['location'].value.trim(), required: true
         }, termsOfUse: {
@@ -82,23 +84,27 @@ function validate(form) {
         }
     }
     for (const [key, input] of Object.entries(inputs)) {
-        const {value, required} = input;
         if (isRequired(input)) {
             console.error(`Please complete the form for ${key}`);
+            continue;
         }
 
+        if (input.hasOwnProperty("validation")) {
+            console.log(key, input.validation(input.value))
+        }
     }
 
 }
 
+function handleErrorValidation(input, error) {
 
+}
 function isRequired(input) {
-    return (input.required && (input.value === "" || input.value === false))
-
+    return (input.required && (!input.value))
 }
 
 function isEmail(email) {
-    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3})|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     return re.test(email);
 }
 
@@ -109,4 +115,9 @@ function isName(name) {
 
 function isCorrectBirthDate(birthDate) {
     return new Date(birthDate) < new Date();
+}
+
+function isPositiveInteger(value) {
+    const number = Number(value);
+    return Number.isInteger(number) && number >= 0
 }
