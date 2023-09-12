@@ -9,11 +9,11 @@ function editNav() {
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
-const modal = modalbg.querySelector(".content");
+const modal = document.querySelector(".content");
 const modalCloseBtn = modal.querySelector(".modal-close")
 const modalBtn = document.querySelectorAll(".modal-btn");
-
-const myForm = modal.querySelector("#modal-form")
+const formData = document.querySelectorAll('.formInput');
+const form = modal.querySelector("form")
 
 
 // launch/close modal event
@@ -48,63 +48,105 @@ function closeModal() {
 }
 
 // Prevent the page from reloading when the form is submitted
-myForm.addEventListener("submit", (e) => {
+form.addEventListener("submit", (e) => {
     e.preventDefault();
 })
 
 // Handle the validation of the form when the form is submitted
 function validate(form) {
+
+    let hasErrors = false;
+
+    formData.forEach(element => {
+        delete element.dataset.error;
+    })
     let inputs = {
         firstname: {
-            value: form['first'].value.trim(), required: true, validation : {
-                validate: value => { return isName(value)},
-                message: "Veuillez entrer 2 caractères valides ou plus."
+            value: form['first'].value.trim(), domElement: form['first'], required: true, validation: {
+                validate: value => {
+                    return isName(value)
+                }, message: "Veuillez entrer un prénom valide contenant au moins 2 caractères alphabétiques."
             }
         }, lastname: {
-            value: form['last'].value.trim(), required: true, validation : {
-                validate: value => { return isName(value)},
-                message: "Veuillez entrer 2 caractères valides ou plus."
+            value: form['last'].value.trim(), domElement: form['last'], required: true, validation: {
+                validate: value => {
+                    return isName(value)
+                }, message: "Veuillez entrer un nom de famille valide contenant au moins 2 caractères alphabétiques."
             }
         }, email: {
-            value: form['email'].value.trim(), required: true, validation : {
-                validate: value => { return isEmail(value)},
-                message: "Veuillez entrer un adresse email valide."
+            value: form['email'].value.trim(), domElement: form['email'], required: true, validation: {
+                validate: value => {
+                    return isEmail(value)
+                }, message: "Veuillez entrer une adresse email valide."
             }
         }, birthday: {
-            value: form['birthdate'].value.trim(), required: true, validation : {
-                validate: value => { return isValidBirthdate(value)},
-                message: "Vous devez entrer votre date de naissance."
+            value: form['birthdate'].value.trim(), domElement: form['birthdate'], required: true, validation: {
+                validate: value => {
+                    return isValidBirthdate(value)
+                }, message: "Veuillez entrer une date de naissance valide."
             }
         }, tournament: {
-            value: form['quantity'].value.trim(), required: true, validation : {
-                validate: value => { return isPositiveInteger(value)},
-                message: "Veuillez entrer un chiffre valide."
+            value: form['quantity'].value.trim(), domElement: form['quantity'], required: true, validation: {
+                validate: value => {
+                    return isPositiveInteger(value)
+                }, message: "Veuillez entrer un nombre entier positif pour le nombre de tournois."
             }
         }, location: {
-            value: form['location'].value.trim(), required: true
+            value: form['location'].value.trim(), domElement: form['location'], required: true
         }, termsOfUse: {
-            value: form['termsOfUse'].checked, required: true
+            value: form['termsOfUse'].checked, domElement: form['termsOfUse'], required: true
         }, newsletter: {
-            value: form['newsletter'].checked
+            value: form['newsletter'].checked, domElement: form['newsletter']
         }
     }
-    for (const [key, input] of Object.entries(inputs)) {
+
+
+    for (const key in inputs) {
+        const input = inputs[key];
+        let formInput;
+        const isNodeList = NodeList.prototype.isPrototypeOf(input.domElement);
+        if (isNodeList) {
+            formInput = input.domElement[0].closest('.formInput')
+        } else {
+            formInput = input.domElement.closest('.formInput')
+        }
+
+        console.log(formInput)
+
         if (isRequired(input)) {
-            console.error(`Please complete the form for ${key}`);
+            handleErrorValidation(formInput, "Ce champ ne peut pas être vide.")
+            hasErrors = true;
+            continue; // next iteration
         }
 
         if (input.hasOwnProperty("validation")) {
-            console.log(key, input.validation.validate(input.value));
-            handleErrorValidation(input);
+            if (!input.validation.validate(input.value)) {
+                handleErrorValidation(formInput, input.validation.message);
+                hasErrors = true;
+            }
         }
     }
-    form.submit();
+    if (hasErrors) {
+        modal.classList.add("shake");
+        setTimeout(() => {
+            modal.classList.remove("shake");
+        }, 1000)
+        return false;
+    } else {
+        closeModal()
+        setTimeout(() => {
+            form.submit();
+        }, 1000)
+    }
 }
 
-function handleErrorValidation(input) {
-    let error = input.validation.message ? input.validation.message : "Une erreur est survenue"
-    console.log(error)
+function handleErrorValidation(input, message) {
+    const errorElement = input.querySelector('.validation-error');
+    input.dataset.error = "true";
+    errorElement ? errorElement.innerText = String(message) : null;
+
 }
+
 function isRequired(input) {
     return (input.required && (!input.value))
 }
