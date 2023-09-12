@@ -56,24 +56,29 @@ myForm.addEventListener("submit", (e) => {
 function validate(form) {
     let inputs = {
         firstname: {
-            value: form['first'].value.trim(), required: true, validation: (value) => {
-                return isName(value)
+            value: form['first'].value.trim(), required: true, validation : {
+                validate: value => { return isName(value)},
+                message: "Veuillez entrer 2 caractères valides ou plus."
             }
         }, lastname: {
-            value: form['last'].value.trim(), required: true, validation: (value) => {
-                return isName(value)
+            value: form['last'].value.trim(), required: true, validation : {
+                validate: value => { return isName(value)},
+                message: "Veuillez entrer 2 caractères valides ou plus."
             }
         }, email: {
-            value: form['email'].value.trim(), required: true, validation: (value) => {
-                return isEmail(value)
+            value: form['email'].value.trim(), required: true, validation : {
+                validate: value => { return isEmail(value)},
+                message: "Veuillez entrer un adresse email valide."
             }
         }, birthday: {
-            value: form['birthdate'].value.trim(), required: true, validation: (value) => {
-                return isCorrectBirthDate(value)
+            value: form['birthdate'].value.trim(), required: true, validation : {
+                validate: value => { return isValidBirthdate(value)},
+                message: "Vous devez entrer votre date de naissance."
             }
         }, tournament: {
-            value: form['quantity'].value.trim(), required: true, validation: (value) => {
-                return isPositiveInteger(value)
+            value: form['quantity'].value.trim(), required: true, validation : {
+                validate: value => { return isPositiveInteger(value)},
+                message: "Veuillez entrer un chiffre valide."
             }
         }, location: {
             value: form['location'].value.trim(), required: true
@@ -86,18 +91,19 @@ function validate(form) {
     for (const [key, input] of Object.entries(inputs)) {
         if (isRequired(input)) {
             console.error(`Please complete the form for ${key}`);
-            continue;
         }
 
         if (input.hasOwnProperty("validation")) {
-            console.log(key, input.validation(input.value))
+            console.log(key, input.validation.validate(input.value));
+            handleErrorValidation(input);
         }
     }
-
+    form.submit();
 }
 
-function handleErrorValidation(input, error) {
-
+function handleErrorValidation(input) {
+    let error = input.validation.message ? input.validation.message : "Une erreur est survenue"
+    console.log(error)
 }
 function isRequired(input) {
     return (input.required && (!input.value))
@@ -113,7 +119,7 @@ function isName(name) {
     return nameRegex.test(name);
 }
 
-function isCorrectBirthDate(birthDate) {
+function isValidBirthdate(birthDate) {
     return new Date(birthDate) < new Date();
 }
 
