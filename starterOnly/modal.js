@@ -21,3 +21,19 @@ function launchModal() {
 }
 
 
+// DOM elements for closing the modal form 
+
+let closeModalBtn = document.querySelector(".close")
+let entireModal = document.querySelector(".bground")
+
+// listening to the event of click 
+
+closeModalBtn.addEventListener("click", closeModal)
+
+// function for closing the modal form 
+
+function closeModal () {
+  entireModal.style.display = "none" 
+
+}
+
