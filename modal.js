@@ -7,6 +7,12 @@ function editNav() {
     }
 }
 
+
+// TODO:
+//  - Messages d'erreur Tournois et Condition d'utilisation,
+//  - Success message, form submission
+//  - Responsive
+
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modal = document.querySelector(".content");
@@ -23,7 +29,7 @@ formData.forEach(form => {
     })
 })
 
-// launch/close modal event
+// launch/close modal event listeners
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 modalCloseBtn.addEventListener("click", closeModal)
 
@@ -62,10 +68,14 @@ form.addEventListener("submit", (e) => {
 function validate(form) {
 
     let hasErrors = false;
-
+    // remove all errors (function?)
     formData.forEach(element => {
-        delete element.dataset.error;
+        if (element.hasAttribute("data-error")) {
+            delete form.dataset.error;
+        }
     })
+
+    // Get all the input fields values
     let inputs = {
         firstname: {
             value: form['first'].value.trim(), domElement: form['first'], required: true, validation: {
@@ -98,15 +108,15 @@ function validate(form) {
                 }, message: "Veuillez entrer un nombre entier positif pour le nombre de tournois."
             }
         }, location: {
-            value: form['location'].value.trim(), domElement: form['location'], required: true
+            value: form['location'].value.trim(), domElement: form['location'], required: true  // Validation
         }, termsOfUse: {
-            value: form['termsOfUse'].checked, domElement: form['termsOfUse'], required: true
+            value: form['termsOfUse'].checked, domElement: form['termsOfUse'], required: true // Validation
         }, newsletter: {
             value: form['newsletter'].checked, domElement: form['newsletter']
         }
     }
 
-
+    // For each inputs, handle required and validation
     for (const key in inputs) {
         const input = inputs[key];
         let formInput;
@@ -132,6 +142,7 @@ function validate(form) {
             }
         }
     }
+
     if (hasErrors) {
         modal.classList.add("shake");
         setTimeout(() => {
@@ -150,7 +161,6 @@ function handleErrorValidation(input, message) {
     const errorElement = input.querySelector('.validation-error');
     input.dataset.error = "true";
     errorElement ? errorElement.innerText = String(message) : null;
-
 }
 
 function isRequired(input) {
@@ -175,3 +185,4 @@ function isPositiveInteger(value) {
     const number = Number(value);
     return Number.isInteger(number) && number >= 0
 }
+
