@@ -14,7 +14,14 @@ const modalCloseBtn = modal.querySelector(".modal-close")
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll('.formInput');
 const form = modal.querySelector("form")
-
+formData.forEach(form => {
+    let input = form.querySelector("input");
+    input.addEventListener("change", () => {
+        if (form.hasAttribute("data-error")) {
+            delete form.dataset.error;
+        }
+    })
+})
 
 // launch/close modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -29,7 +36,6 @@ function launchModal() {
         // temporisation
         duration: 400, iterations: 1, easing: "cubic-bezier(.35,.43,.18,1.54)"
     },);
-
 }
 
 // Animation function of the modal when the modal is closed
