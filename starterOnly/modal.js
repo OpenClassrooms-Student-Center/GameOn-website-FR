@@ -9,7 +9,12 @@ const firstName = document.querySelector("#first");
 const lastName = document.querySelector("#last");
 const email = document.querySelector("#email");
 const birthdate = document.querySelector("#birthdate");
-const radioButton = document.querySelector("#location1");
+const radioButton1 = document.querySelector("#location1");
+const radioButton2 = document.querySelector("#location2");
+const radioButton3 = document.querySelector("#location3");
+const radioButton4 = document.querySelector("#location4");
+const radioButton5 = document.querySelector("#location5");
+const radioButton6 = document.querySelector("#location6");
 const form = document.querySelector("form");
 const modal2 = document.querySelector(".modal2");
 const closeButtonModal2 = document.querySelector(".close-modal2");
@@ -116,7 +121,12 @@ function errorOnBirthdate(event) {
 
 // MESSAGE D'ERREUR DES BOUTONS RADIO
 
-radioButton.addEventListener("invalid", errorOnLocation);
+radioButton1.addEventListener("invalid", errorOnLocation);
+radioButton2.addEventListener("invalid", errorOnLocation);
+radioButton3.addEventListener("invalid", errorOnLocation);
+radioButton4.addEventListener("invalid", errorOnLocation);
+radioButton5.addEventListener("invalid", errorOnLocation);
+radioButton6.addEventListener("invalid", errorOnLocation);
 
 function errorOnLocation(event) {
   const input = event.target;
@@ -124,14 +134,16 @@ function errorOnLocation(event) {
   parentElement.setAttribute("data-error", "Vous devez choisir une option.");
   parentElement.setAttribute("data-error-visible", "true");
   
-  input.addEventListener("input", function () {
-    if (input.value != null) {                          
+  input.addEventListener("change", function () {
+    if (input.checked === true) {                          
       parentElement.removeAttribute("data-error");
       parentElement.removeAttribute("data-error-visible");
+
     }
   });
-  
-}
+};
+
+
 
 // MESSAGE D'ERREUR DE L'EMAIL
 
@@ -221,3 +233,4 @@ function editNav() {
     x.className = "topnav";
   }
 }
+
