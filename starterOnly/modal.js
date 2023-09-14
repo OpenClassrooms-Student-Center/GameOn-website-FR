@@ -15,6 +15,7 @@ const radioButton3 = document.querySelector("#location3");
 const radioButton4 = document.querySelector("#location4");
 const radioButton5 = document.querySelector("#location5");
 const radioButton6 = document.querySelector("#location6");
+const allBtnRadio = document.querySelectorAll("input[name='location']");
 const form = document.querySelector("form");
 const modal2 = document.querySelector(".modal2");
 const closeButtonModal2 = document.querySelector(".close-modal2");
@@ -167,22 +168,6 @@ function errorOnEmail(event) {
 
 }
 
-//GESTION DE L'ENVOI DU FORMULAIRE //
-
-form.addEventListener("submit", validate)
-
-function validate (event) {
-    event.preventDefault();
-
-    if(form.checkValidity()) {
-      modalForm.style.display = 'none';   // FERMETURE DE LA MODAL 1. On aurait pu appeler closeModal()
-      openValidationMessage()    // OUVERTURE DE LA MODALE 2
-    }
-    else {
-      throw new Error("Formulaire non valide");
-    }
-  };
-
 
 function openValidationMessage () {
 
@@ -233,4 +218,34 @@ function editNav() {
     x.className = "topnav";
   }
 }
+
+
+//GESTION DE L'ENVOI DU FORMULAIRE //
+
+
+
+
+function validate(event) {
+  event.preventDefault();
+
+  const firstNameIsValid = firstName.value.trim().length >= 2;
+  const lastNameIsValid = lastName.value.trim().length >= 2;
+  const emailIsValid = email.checkValidity();
+  const birthdateIsValid = birthdate.value !== "";
+  const locationIsValid = [...allBtnRadio].some((radio) => radio.checked);
+  const conditionsAreAccepted = acceptedConditions.checked;
+
+  if (firstNameIsValid && lastNameIsValid && emailIsValid && birthdateIsValid && locationIsValid && conditionsAreAccepted) {
+
+    modalForm.style.display = 'none';   // FERMETURE DE LA MODAL 1. On aurait pu appeler closeModal()
+    openValidationMessage()    // OUVERTURE DE LA MODALE 2
+    return true;
+
+  } else {
+    throw new Error("Formulaire non valide");
+  }
+}
+
+form.addEventListener("submit", validate);
+
 
