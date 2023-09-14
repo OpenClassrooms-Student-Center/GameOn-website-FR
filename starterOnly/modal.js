@@ -71,7 +71,7 @@ function errorOnFirstName(event) {
   parentElement.setAttribute("data-error-visible", "true");
 
   input.addEventListener("input", function () {
-    if (input.value.length >= 2) {
+    if (input.value.trim().length >= 2) {
       parentElement.removeAttribute("data-error");
       parentElement.removeAttribute("data-error-visible");
     }
@@ -82,13 +82,14 @@ function errorOnFirstName(event) {
 
 lastName.addEventListener("invalid", errorOnLastName);
 function errorOnLastName(event) {
+
   const input = event.target;
   const parentElement = input.parentElement;
   parentElement.setAttribute("data-error", "Veuillez entrer 2 caractères ou plus pour le champ du nom.");
   parentElement.setAttribute("data-error-visible", "true");
 
   input.addEventListener("input", function () {
-    if (input.value.length >= 2) {
+    if (input.value.trim().length >= 2) {
       parentElement.removeAttribute("data-error");
       parentElement.removeAttribute("data-error-visible");
     }
@@ -132,6 +133,28 @@ function errorOnLocation(event) {
   
 }
 
+// MESSAGE D'ERREUR DE L'EMAIL
+
+
+email.addEventListener("invalid", errorOnEmail);
+
+function errorOnEmail(event) {
+
+  const input = event.target;
+  const parentElement = input.parentElement;
+  parentElement.setAttribute("data-error", "Veuillez entrer un email valide");
+  parentElement.setAttribute("data-error-visible", "true");
+  
+  input.addEventListener("input", function () {
+    if (input.checkValidity()) {                          
+      parentElement.removeAttribute("data-error");
+      parentElement.removeAttribute("data-error-visible");
+    }
+
+  });
+
+}
+
 //GESTION DE L'ENVOI DU FORMULAIRE //
 
 form.addEventListener("submit", validate)
@@ -140,9 +163,7 @@ function validate (event) {
     event.preventDefault();
 
     if(form.checkValidity()) {
-
       modalForm.style.display = 'none';   // FERMETURE DE LA MODAL 1. On aurait pu appeler closeModal()
-
       openValidationMessage()    // OUVERTURE DE LA MODALE 2
     }
     else {
@@ -151,10 +172,7 @@ function validate (event) {
   };
 
 
-
-
 function openValidationMessage () {
-
 
   let validationMessage = document.createElement("p");
   validationMessage.className = "text-modal2";
@@ -167,18 +185,18 @@ function openValidationMessage () {
   closeButtonBottom.className = "button-modal2";
   closeButtonBottom.value = "Fermer";
 
-
   let validationnWrapper = document.createElement("div");
   validationnWrapper.className = "content-modal2";
-  validationnWrapper.appendChild(validationMessage);
-  validationnWrapper.appendChild(closeButtonTop);
-  validationnWrapper.appendChild(closeButtonBottom);
 
   let modalContainer = document.createElement("div");
   modalContainer.className = "modal2";   //permet de cacher le contenu
+
+  validationnWrapper.appendChild(validationMessage);
+  validationnWrapper.appendChild(closeButtonTop);
+  validationnWrapper.appendChild(closeButtonBottom);
+  modalContainer.appendChild(validationnWrapper);
   document.body.appendChild(modalContainer);
 
-  modalContainer.appendChild(validationnWrapper);
 
 //fermeture de la modale 2 au clic sur la croix ou sur le bouton fermer
 

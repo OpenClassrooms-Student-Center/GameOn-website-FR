@@ -91,9 +91,11 @@
                   type="email"
                   id="email"
                   name="email"
-                  required
-                  pattern=".+@.+\..+"  
+                  pattern="[a-z0-9.-_]+@[a-z0-9.-_]+\.[a-z]{2,4}"
+                  required            
+
                 ><br>     <!-- pattern ici précise la structure de l'email attendue  -->
+                
               </div>
               <div
                 class="formData">
@@ -232,5 +234,6 @@
     </div>
  -->
     <script src="modal.js"></script>
+    
   </body>
 </html>
