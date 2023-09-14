@@ -239,7 +239,6 @@ function validate(event) {
 
     modalForm.style.display = 'none';   // FERMETURE DE LA MODAL 1. On aurait pu appeler closeModal()
     openValidationMessage()    // OUVERTURE DE LA MODALE 2
-    return true;
 
   } else {
     throw new Error("Formulaire non valide");
