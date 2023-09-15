@@ -26,20 +26,16 @@ p {
   padding: 0.5vw;
 }
 
-img {
-  padding-right: 1rem;
-}
-
+/********** Header **********/
 .topnav {
   overflow: hidden;
   margin: 3.5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
 }
-.header-logo {
-    float: left;
-}
-.main-navbar {
-    float: right;
-}
+
 .topnav a {
   float: left;
   display: block;
@@ -67,7 +63,7 @@ img {
 .topnav .icon {
   display: none;
 }
-
+/********** Main **********/
 main {
   font-size: 130%;
   font-weight: bolder;
@@ -96,12 +92,6 @@ main {
 
 .modal-btn:hover {
   background: #3876ac;
-}
-
-.footer {
-  margin: 20px;
-  padding: 10px;
-  font-family: var(--font-slab);
 }
 
 /* Modal form */
@@ -445,17 +435,23 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
-footer {
-  padding-left: 2vw;
-  padding-right: 2vw;
-  margin: 0 20px;
-}
 
 .error {
   font-size: 16px;
   color: red;
 }
 
+/********** Footer **********/
+footer {
+  padding-left: 2vw;
+  padding-right: 2vw;
+  margin: 0 20px;
+}
+.footer {
+  margin: 20px;
+  padding: 10px;
+  font-family: var(--font-slab);
+}
 
 /* Animation modal open and close */
 @keyframes modalopen {
@@ -521,6 +517,8 @@ footer {
   }
 }
 
+
+/********** Responsive **********/
 @media screen and (max-width: 768px) {
   .topnav a {display: none;}
   .topnav a.icon {
@@ -543,8 +541,6 @@ footer {
   }
 }
 
-
-
  @media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
@@ -556,8 +552,13 @@ footer {
   .hero-headline {
     font-size: 2rem;
   }
-
-
 } 
+
+@media screen and (max-width: 425px) {
+
+  
+  
+
+}
 
 
