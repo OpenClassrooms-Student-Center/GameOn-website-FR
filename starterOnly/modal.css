@@ -771,3 +771,14 @@ footer {
 .button-modal2:hover {
   background: #3876ac;
 }
+
+@media screen and (max-width: 1110px) {
+
+  .text-modal2 {
+    margin-top: 250px;
+    margin-bottom: 200px;
+    font-size: 40px;
+    text-align: center;
+    font-weight: 200;
+  }
+}
