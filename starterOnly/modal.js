@@ -34,6 +34,7 @@ closeModalBtn.addEventListener("click", ()=> {
 
   let firstNameOk = false
   let firstName = document.getElementById("first-name")
+  let firstNameMessage = document.getElementById("error-first-name")
 
   firstName.addEventListener("input", () => {
 
@@ -43,11 +44,15 @@ closeModalBtn.addEventListener("click", ()=> {
     if (firstName.value != "" && firstName.value.length >= 2 && regexFirstNameOk === true) {
 
       firstNameOk = true
-     console.log("prénom valide")
+     firstName.style.border = "2px solid white"
+     firstNameMessage.style.display = "none"
+     
     }
     else {
       firstNameOk = false
-      console.log("prénom invalide")
+      firstName.style.border ="2px solid #fe142f"
+      firstNameMessage.style.display = "block"
+
     }
     formValidation ()
   })
@@ -57,6 +62,7 @@ closeModalBtn.addEventListener("click", ()=> {
 
     let lastNameOk = false
     let lastName = document.getElementById("last-name")
+    let lastNameMessage = document.getElementById("error-last-name")
 
     lastName.addEventListener("input", () => {
 
@@ -66,11 +72,13 @@ closeModalBtn.addEventListener("click", ()=> {
     if (lastName.value != "" && lastName.value.length >= 2 && regexLastNameOk === true) {
 
     lastNameOk = true
-    console.log("nom valide")
+    lastName.style.border = "2px solid white"
+    lastNameMessage.style.display = "none"
   }
   else {
     lastNameOk = false
-    console.log("nom invalide")
+    lastName.style.border ="2px solid #fe142f"
+    lastNameMessage.style.display = "block"
   }
   formValidation ()
 })
@@ -80,6 +88,8 @@ closeModalBtn.addEventListener("click", ()=> {
 
 let emailUserOk = false
 let emailUser = document.getElementById("email")
+let emailMessage = document.getElementById("error-email")
+
 emailUser.addEventListener("input", () => {
 
   let regexEmail = new RegExp("[a-z1-9-_.]+@[a-z1-9-_.]+\\.[a-z1-9-_.]+")
@@ -87,11 +97,13 @@ emailUser.addEventListener("input", () => {
 
   if (emailUser.value != "" && regexEmailUserOk == true) {
     emailUserOk = true
-    console.log("email valide")
+    emailUser.style.border = "2px solid white"
+    emailMessage.style.display = "none"
   }
   else {
     emailUserOk = false
-    console.log("email invalide")
+    emailUser.style.border ="2px solid #fe142f"
+    emailMessage.style.display = "block"
   }
 
   console.log(emailUserOk)
@@ -103,6 +115,8 @@ emailUser.addEventListener("input", () => {
 
 let birthDateOk = false
 let birthDate = document.getElementById("birth-date")
+let birthDateMessage = document.getElementById("error-birth-date")
+
 birthDate.addEventListener("input", () => {
   
   let birthDateValue = birthDate.value
@@ -113,11 +127,13 @@ birthDate.addEventListener("input", () => {
   if (currentYear - birthDateYear <= 100 && currentYear - birthDateYear >= 7) {
 
      birthDateOk = true
-    console.log("date de naissance valide")
+    birthDate.style.border = "2px solid white"
+    birthDateMessage.style.display = "none"
   }
   else {
     birthDateOk = false
-    console.log("date de naissance invalide")
+    birthDate.style.border = "2px solid #fe142f"
+    birthDateMessage.style.display = "block"
   }
   formValidation ()
 })
@@ -127,16 +143,20 @@ birthDate.addEventListener("input", () => {
 
 let nberTournamentsOk = false
 let nberTournaments = document.getElementById("quantity")
+let nberTournamentsMessage = document.getElementById("error-quantity")
+
 nberTournaments.addEventListener("input", () => {
 
-  if (nberTournaments.value != "" && nberTournaments.value <= 50 ) {
+  if (nberTournaments.value != "" && nberTournaments.value <= 99 ) {
 
     nberTournamentsOk = true
-    console.log("nombre de tournois valide")
+    nberTournaments.style.border = "2px solid white"
+    nberTournamentsMessage.style.display = "none"
   }
   else {
     nberTournamentsOk = false
-    console.log("nombre de tournois invalide")
+    nberTournaments.style.border = "2px solid #fe142f"
+    nberTournamentsMessage.style.display = "block"
   }
   formValidation ()
 })
@@ -146,17 +166,20 @@ nberTournaments.addEventListener("input", () => {
 
 let locationListOk = false
 let locationList = document.querySelectorAll("input[name=location]")
+let locationListMessage = document.getElementById("error-location")
+locationListMessage.style.display = "block"
+
 for (let i=0; i < locationList.length; i++) {
   locationList[i].addEventListener ("input", () => {
     
     if(locationList[i] != "") {
 
       locationListOk = true
-      console.log("emplacement valide")
+      locationListMessage.style.display = "none"
     }
     else {
       locationListOk = false
-      console.log("emplacement invalide")
+      locationListMessage.style.display = "block"
     }
     formValidation ()
   })
@@ -165,24 +188,23 @@ for (let i=0; i < locationList.length; i++) {
 /* CONDITIONS D'UTILISATION -  On crée un bool avec la condition checked pour les radios */
 /* On execute formValidation */
 
-
-let termsAndConditionsOk = false
+let termsAndConditionsOk = true
 let termsAndConditions = document.getElementById("checkbox1")
+let termsAndConditionsMessage = document.getElementById("error-terms-conditions")
+
 termsAndConditions.addEventListener("input", () => {
   let termsAndConditionsChecked = termsAndConditions.checked
   if (termsAndConditionsChecked == true) {
 
     termsAndConditionsOk = true
-    console.log("Merci d'avoir accepté les conditions")
   }
   else {
     termsAndConditionsOk = false
-    console.log("merci d'accepter les conditions")
   }
   formValidation()
 })
 
-/* formValidation () : pour chaque bool, on boucle avec forEach sur l'array allResults */
+/* formValidation () : pour chaque bool de chaque champ, on boucle avec forEach sur l'array allResults */
 
 function formValidation () {
 
@@ -198,12 +220,12 @@ function formValidation () {
     
   })
 
-
 let submitBtn = document.querySelector(".btn-submit")
 let result = allResults.length == elementValidated // si la taille de l'array a la même valeur que le nbre d'elements valides
 submitBtn.disabled = !result // inverse du resultat pour désactiver le bouton SUBMIT
 
 }
+
 
 /*  */
 
@@ -236,4 +258,3 @@ submitBtn.disabled = !result // inverse du resultat pour désactiver le bouton S
 
 
 // prevoir une span avec le meme style . recup l'element 
-// changer couleur quand le champ est faux 

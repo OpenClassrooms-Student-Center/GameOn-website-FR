@@ -207,6 +207,16 @@ input {
   font-size: 20px;
   height: 48px;
 }
+
+.formData span {
+  display: none;
+  font-size: 0.5em;
+  padding-top: 3px;
+  color: #white;
+  font-style: italic;
+}
+
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
