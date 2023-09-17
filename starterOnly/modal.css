@@ -14,7 +14,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -208,6 +207,16 @@ input {
   font-size: 20px;
   height: 48px;
 }
+
+.formData span {
+  display: none;
+  font-size: 0.5em;
+  padding-top: 3px;
+  color: #white;
+  font-style: italic;
+}
+
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
