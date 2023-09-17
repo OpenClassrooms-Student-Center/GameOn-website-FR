@@ -1,11 +1,35 @@
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
+/********** navbar tablet et mobile ***********/
+
+// DOM Elements
+const icon = document.querySelector(".icon");
+const navbar = document.querySelector(".main-navbar");
+const navbarClose = document.querySelector(".navbar-close");
+
+// Ajouter la class open à main-navbar
+function openNavbar() {
+
+  navbar.classList.add("open");
+
 }
+
+// Enlever la class open à main-navbar 
+function removeNavbar() {
+
+  navbar.classList.remove("open");
+  
+}
+
+
+// Cliquer sur l'icon pour ouvrir la navbar de la version tablette ou mobile
+icon.addEventListener("click", openNavbar);
+
+// Cliquer sur navabr-close pour fermer la navbar de la version tablette ou mobile
+navbarClose.addEventListener("click", removeNavbar);
+
+
+
+
+/********** Formulaire ***********/
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
@@ -42,38 +66,60 @@ function closeModal() {
 // Formulaire
 
 // Input du formulaire
-const first = document.getElementById("first");
+const first = document.getElementById("first").value;
 const last = document.getElementById("last");
 const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
+const form = document.getElementById("form");
 
 
 // Créer un message d'erreur pour les inputs du formulaire
 
 // first erreur
-let errorFirst = document.createElement('span');
-errorFirst.classList.add("error");
+let error = document.createElement("div");
+error.classList.add("error");
 
-// last erreur
-let errorLast = document.createElement('span');
-errorLast.classList.add("error");
+let errorNoValue = document.createElement("p");
+errorNoValue = "Veuillez renseigner le champ ci-dessus"
 
-//
-first.addEventListener('input', function(event){  
-  let firstValue = event.target.value;   
+console.log(errorNoValue);
 
-    if(firstValue.length < 2) {  
-      first.parentElement.appendChild(errorFirst)    
-      errorFirst.innerHTML = "Le prénom doit contenir un minimum de 2 caractères.";
-    }
-})
+/*
+form.addEventListener("submit", (event) => {
+  // On empêche le comportement par défaut
+  event.preventDefault();
+  console.log("Il n’y a pas eu de rechargement de page");
 
-//
-last.addEventListener('input', function(event){  
-  let firstValue = event.target.value;   
+  const first = document.getElementById("first").value;
+  
+  form.reset();
+  console.log(first);
 
-    if(firstValue.length < 2) {  
-      last.parentElement.appendChild(errorLast)    
-      errorLast.innerHTML = "Le nom doit contenir un minimum de 2 caractères.";
-    }
-})
+  if(!first.value) {
+
+    console.log("veuillez renseigner un prénom avec au moins deux caractères");
+  }
+
+});
+*/
+function validate(event) {
+
+  // On empêche le comportement par défaut
+  event.preventDefault();
+  console.log("Il n’y a pas eu de rechargement de page");
+
+  const first = document.getElementById("first").value;
+  
+  form.reset();
+
+  console.log("Prénom:"+ first);
+  console.log("Nom:"+ last);
+  console.log("E-mail:"+ email);
+
+
+  if(!first.value) {
+
+    console.log("veuillez renseigner un prénom avec au moins deux caractères");
+  }
+}
+
