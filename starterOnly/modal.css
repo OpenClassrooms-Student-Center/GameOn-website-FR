@@ -528,12 +528,4 @@ footer {
   }
 }
 
-@keyframes modalopen {
-  from {
-    transform: translateY(-150px);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
 
