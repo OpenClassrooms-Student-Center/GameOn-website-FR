@@ -481,7 +481,10 @@ input[data-error]::after {
   font-size: 16px;
   color: red;
 }
-
+.valide {
+  font-size: 16px;
+  color: rgb(0, 179, 0);
+}
 /********** Footer **********/
 footer {
   padding-left: 2vw;
