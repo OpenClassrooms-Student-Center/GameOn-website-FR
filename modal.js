@@ -68,6 +68,12 @@ const birthdate = document.getElementById("birthdate");
 const input = document.getElementsByTagName("input");
 const form = document.getElementById("form");
 
+// Regex
+const regexName = /^([A-Za-z|\s]{2,15})?([-]{0,1})?([A-Za-z|\s]{2,15})$/;
+const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+const regexDate = /^([0-2]{1}[0-9]{3})\/([0-1]{1}[0-9]{1})\/([0-2]{1}[0-9]{1}|30|31)$/;
+const regexQuantity = /^([0-9]{1,2})$/;
+
 
 // Créer un message d'erreur pour les inputs du formulaire
 // first erreur
@@ -82,6 +88,9 @@ errorLast.classList.add("error");
 //let valide = document.createElement("p");
 //valide.classList.add("valide");
 
+// Variable de validation
+let isValid = true;
+
 //Ecouter la modification de prénom
 first.addEventListener('change', (event) => {
   event.preventDefault();
@@ -89,21 +98,27 @@ first.addEventListener('change', (event) => {
   if(first.value.length < 2) {
     first.parentElement.appendChild(errorFirst);
     errorFirst.style.display = "block";
-    errorFirst.innerHTML = "Le prénom doit contenir au moins 2 lettres";
+    errorFirst.innerHTML = "Le champ prénom ne doit pas être vide, contenir  minimum 2 caractères et ne pas contenir de caractères spéciaux";
+    isValid = false;
+  }
+  else if(first.value.length = 0) {
+      first.parentElement.appendChild(errorFirst);
+      errorFirst.style.display = "block";
+      errorFirst.innerHTML = "Le champ ne doit pas être vide";
+      isValid = false;
+  }
+  else if(!first.value.match(regexName)){ 
+    errorFirst.innerHTML = "Ce champ ne doit pas contenir de caractères spéciaux"; 
+    isValid = false;
   }
   else {
     errorFirst.style.display = "none";
+    isValid = true;
   }
 
 });
 
 
-if(first.value.length === 0) {
-  errorFirst.style.display = "block";
-  first.parentElement.appendChild(errorFirst);
-  errorFirst.innerHTML = "Champ requis";
-
-}
 
 
 last.addEventListener('change', (event) => {
@@ -113,30 +128,44 @@ last.addEventListener('change', (event) => {
     last.parentElement.appendChild(errorLast);
     errorLast.style.display = "block";
     errorLast.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
+    isValid = false;
   }
   else {
     errorLast.style.display = "none";
+    isValid = true;
   }
 
 });
 
 
-
 form.addEventListener("submit", (event) => {
   // On empêche le comportement par défaut
   event.preventDefault();
-  console.log("Il n’y a pas eu de rechargement de page");
 
+  // Vérifier la validation
+  if (isValid) {
+    // Les conditions sont remplies, vous pouvez envoyer le formulaire ici
 
-  form.reset();
+    // Log the form field values
+    console.log("Prénom: " + first.value);
+    console.log("Nom: " + last.value);
+    console.log("E-mail: " + email.value);
+    console.log("Anniversaire: " + birthdate.value);
 
-  console.log("Prénom:"+ first);
-  console.log("Nom:"+ last);
-  console.log("E-mail:"+ email);
-  console.log("anniversaire:"+ birthdate);
+    // Réinitialiser le formulaire
+    form.reset();
+  } 
 
-  return true;
+  if(!first.value) {
+    first.parentElement.appendChild(errorFirst);
+    
+    errorFirst.innerHTML = "Ce champ ne doit pas être vide.";
+  }
 
+  else {
+    // Les conditions ne sont pas remplies, affichez un message d'erreur
+    alert("Le formulaire contient des erreurs. Veuillez corriger les champs en rouge.");
+  }
 });
 
 
