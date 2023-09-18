@@ -14,11 +14,11 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
   margin: 0 auto;
+  overflow-x: hidden;
 }
 
 p {
@@ -26,27 +26,35 @@ p {
   padding: 0.5vw;
 }
 
-img {
-  padding-right: 1rem;
-}
-
+/********** Header **********/
 .topnav {
-  overflow: hidden;
-  margin: 3.5%;
+  margin: 3.5% 0;
+  padding: 0 3.5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
 }
-.header-logo {
-    float: left;
+.icon {
+  display: none;
+  color: #ff001b;
 }
 .main-navbar {
-    float: right;
+  display: flex;
+  gap: 12px;
+}
+.navbar-close {
+  display: none;
+  margin-left: auto;
+  padding: 20px;
+  width: max-content;
 }
 .topnav a {
-  float: left;
   display: block;
   color: #000000;
   text-align: center;
-  padding: 12px 12px;
-  margin: 5px;
+  padding: 12px;
   text-decoration: none;
   font-size: 20px;
   font-family: Roboto, sans-serif;
@@ -68,14 +76,44 @@ img {
   display: none;
 }
 
+@media screen and (max-width: 768px) {
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+
+
+ @media screen and (max-width: 540px) {
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+    margin-top: -15px;
+  }
+} 
+
 main {
   font-size: 130%;
   font-weight: bolder;
   color: black;
-  padding-top: 0.5vw;
-  padding-left: 2vw;
-  padding-right: 2vw;
-  margin: 1px 20px 15px;
+  margin: 0 3.5%;
   border-radius: 2rem;
   text-align: justify;
 
@@ -96,12 +134,6 @@ main {
 
 .modal-btn:hover {
   background: #3876ac;
-}
-
-.footer {
-  margin: 20px;
-  padding: 10px;
-  font-family: var(--font-slab);
 }
 
 /* Modal form */
@@ -197,12 +229,12 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-
+/* 
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
-}
+} */
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -444,65 +476,100 @@ input[data-error]::after {
 .hero-section > .btn-signup {
   display: none;
 }
+
+.error {
+  font-size: 16px;
+  color: red;
+}
+
+/********** Footer **********/
 footer {
   padding-left: 2vw;
   padding-right: 2vw;
   margin: 0 20px;
 }
-
-@keyframes modalopen {
-  from {
-    opacity: 0;
-    transform: translateY(-150px);
+@media screen and (max-width: 800px) {
+  .hero-section {
+    display: block;
+    box-shadow: unset;
   }
-  to {
-    opacity: 1;
+  .hero-content {
+    background: #fff;
+    color: #000;
+    padding: 20px;
+  }
+  .hero-content::after {
+    content: unset;
+  }
+  .hero-content .btn-signup {
+    display: none;
+  }
+  .hero-headline {
+    font-size: 4.5rem;
+    white-space: normal;
+  }
+  .hero-text {
+    width: unset;
+    font-size: 1.5rem;
+  }
+  .hero-img img {
+    border-radius: 10px;
+    margin-top: 40px;
+  }
+  .hero-section > .btn-signup {
+    display: block;
+    margin: 32px auto 10px;
+    padding: 12px 35px;
+  }
+  .copyrights {
+    margin-top: 50px;
+    text-align: center;
   }
 }
-/* Animations */
+
+
+/********** Responsive **********/
+@media screen and (max-width: 768px) {
+  .icon {
+    display: block;
+  }
+  .main-navbar {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    z-index: 999;
+    top: 0%;
+    background-color: #000;
+    color: #fff;
+    /*border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;;*/
+    margin: 3.5% 0;
+    transition: 0.5s ease-in-out;
+    display: none;
+  }
+}
+
 @keyframes modalclose {
   from {
     opacity: 1;
   }
-  to {
-    opacity: 0;
-    transform: translateY(-150px);
-  }
-}
-
-
-
-
-/* Responsive */
-
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .icon .fa {
-    color: red;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
+  .main-navbar .topnav a.active, .main-navbar .topnav a.hover {
+    background-color: transparent;
+    color: #ff001b;
   }
 }
 
  @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
+
+  .hero-headline {
+    font-size: 2rem;
   }
 } 
 
+@media screen and (max-width: 425px) {
+
+  .main-navbar {
+    width: 80%;
+  }
+}
 
