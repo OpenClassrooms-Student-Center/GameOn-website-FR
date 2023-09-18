@@ -19,15 +19,11 @@ function removeNavbar() {
   
 }
 
-
 // Cliquer sur l'icon pour ouvrir la navbar de la version tablette ou mobile
 icon.addEventListener("click", openNavbar);
 
 // Cliquer sur navabr-close pour fermer la navbar de la version tablette ou mobile
 navbarClose.addEventListener("click", removeNavbar);
-
-
-
 
 /********** Formulaire ***********/
 
@@ -62,64 +58,86 @@ function closeModal() {
 
 }
 
-
 // Formulaire
 
 // Input du formulaire
-const first = document.getElementById("first").value;
+const first = document.getElementById("first");
 const last = document.getElementById("last");
 const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
+const input = document.getElementsByTagName("input");
 const form = document.getElementById("form");
 
 
 // Créer un message d'erreur pour les inputs du formulaire
-
 // first erreur
-let error = document.createElement("div");
-error.classList.add("error");
+let errorFirst = document.createElement("p");
+errorFirst.classList.add("error");
 
-let errorNoValue = document.createElement("p");
-errorNoValue = "Veuillez renseigner le champ ci-dessus"
+let errorLast = document.createElement("p");
+errorLast.classList.add("error");
 
-console.log(errorNoValue);
 
-/*
+// valide
+//let valide = document.createElement("p");
+//valide.classList.add("valide");
+
+//Ecouter la modification de prénom
+first.addEventListener('change', (event) => {
+  event.preventDefault();
+
+  if(first.value.length < 2) {
+    first.parentElement.appendChild(errorFirst);
+    errorFirst.style.display = "block";
+    errorFirst.innerHTML = "Le prénom doit contenir au moins 2 lettres";
+  }
+  else {
+    errorFirst.style.display = "none";
+  }
+
+});
+
+
+if(first.value.length === 0) {
+  errorFirst.style.display = "block";
+  first.parentElement.appendChild(errorFirst);
+  errorFirst.innerHTML = "Champ requis";
+
+}
+
+
+last.addEventListener('change', (event) => {
+  event.preventDefault();
+
+  if(last.value.length < 2) {
+    last.parentElement.appendChild(errorLast);
+    errorLast.style.display = "block";
+    errorLast.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
+  }
+  else {
+    errorLast.style.display = "none";
+  }
+
+});
+
+
+
 form.addEventListener("submit", (event) => {
   // On empêche le comportement par défaut
   event.preventDefault();
   console.log("Il n’y a pas eu de rechargement de page");
 
-  const first = document.getElementById("first").value;
-  
-  form.reset();
-  console.log(first);
 
-  if(!first.value) {
-
-    console.log("veuillez renseigner un prénom avec au moins deux caractères");
-  }
-
-});
-*/
-function validate(event) {
-
-  // On empêche le comportement par défaut
-  event.preventDefault();
-  console.log("Il n’y a pas eu de rechargement de page");
-
-  const first = document.getElementById("first").value;
-  
   form.reset();
 
   console.log("Prénom:"+ first);
   console.log("Nom:"+ last);
   console.log("E-mail:"+ email);
+  console.log("anniversaire:"+ birthdate);
+
+  return true;
+
+});
 
 
-  if(!first.value) {
-
-    console.log("veuillez renseigner un prénom avec au moins deux caractères");
-  }
-}
 

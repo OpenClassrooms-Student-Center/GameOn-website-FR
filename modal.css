@@ -553,10 +553,7 @@ footer {
   from {
     opacity: 1;
   }
-  .main-navbar .topnav a.active, .main-navbar .topnav a.hover {
-    background-color: transparent;
-    color: #ff001b;
-  }
+  
 }
 
  @media screen and (max-width: 540px) {
