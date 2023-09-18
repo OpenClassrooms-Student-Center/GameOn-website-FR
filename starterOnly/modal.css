@@ -158,7 +158,6 @@ main {
 }
 
 .bground {
-  display: none;
   position: fixed;
   z-index: 1;
   left: 0;
@@ -167,20 +166,32 @@ main {
   width: 100%;
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 500ms ease;
+}
+
+.bground.open {
+  pointer-events: auto;
+  opacity: 1;
 }
 
 .content {
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
   background: #232323;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
   color: #fff;
   padding-top: 10px;
+  transform: translateY(-100%);
+  transition: transform 500ms;
+}
+
+.content.open {
+  transform: translateY(0%);
 }
 
 .modal-body {
@@ -519,11 +530,10 @@ footer {
 
 @keyframes modalopen {
   from {
-    opacity: 0;
     transform: translateY(-150px);
   }
   to {
-    opacity: 1;
+    transform: translateY(0);
   }
 }
 
