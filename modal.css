@@ -629,6 +629,11 @@ footer {
     outline: 2px solid #e54858;
 }
 
+.formInput[data-error="false"] .text-control {
+     outline: 2px solid #43d043;
+}
+
+
 .formInput[data-error="true"] .validation-error {
     opacity: 1;
     visibility: visible;
