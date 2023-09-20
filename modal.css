@@ -664,7 +664,7 @@ footer {
 }
 
 .formInput input[type="text"], .formInput input[type="email"], .formInput input[type="date"], .formInput input[type="number"] {
-    height: 65px;
+    height: 55px;
     flex-shrink: 0;
     border-radius: 8px;
     border: 1px solid #C4C4C4;
