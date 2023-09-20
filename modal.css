@@ -195,8 +195,12 @@ main {
 }
 
 .modal-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding: 15px 8%;
     margin: 15px auto;
+    min-height: 870px;
 }
 
 /*label {*/
@@ -270,7 +274,7 @@ input[data-error]::after {
     position: absolute;
     left: -30px;
     top: -1px;
-    transition: 0.3s;
+    transition: background 0.3s;
 }
 
 .radio-label .radio-icon::after,
@@ -286,7 +290,7 @@ input[data-error]::after {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    transition: 0.3s;
+    transition: background 0.3s;
     opacity: 0;
 }
 
@@ -606,7 +610,8 @@ footer {
     line-height: 142.6%;
     padding: 0;
     margin-top: 5px;
-    height: 14px;
+    min-height: 14px;
+    white-space: pre-wrap;
 }
 
 .modalForm {
@@ -630,9 +635,16 @@ footer {
 }
 
 .formInput[data-error="false"] .text-control {
-     outline: 2px solid #43d043;
+    outline: 2px solid #43d043;
 }
 
+.formInput[data-error="true"] .checkbox-label .checkbox-icon {
+    border: 2px solid #e54858;
+}
+
+.formInput[data-error="false"] .checkbox-label .checkbox-icon {
+    border: none;
+}
 
 .formInput[data-error="true"] .validation-error {
     opacity: 1;
@@ -680,7 +692,6 @@ footer {
     align-items: flex-start;
     gap: 8px;
     flex-shrink: 0;
-    margin-top: 20px;
 }
 
 .btn-submit {
@@ -699,6 +710,15 @@ footer {
 .content.shake {
     animation: shake 0.82s cubic-bezier(.36, .07, .19, .97) both;
     transform: translate3d(0, 0, 0);
+}
+
+.successMessage {
+    color: #FFF;
+    text-align: center;
+    font-family: DM Sans, sans-serif;
+    font-size: 2.25rem;
+    font-weight: 400;
+    line-height: 142.6%;
 }
 
 @keyframes shake {

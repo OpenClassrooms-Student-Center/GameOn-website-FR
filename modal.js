@@ -52,11 +52,10 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 modalCloseBtn.addEventListener("click", closeModal)
 
 form.addEventListener("submit", (e) => {
-    if (!form.checkValidity()) {
-        e.preventDefault();
-    }
+    e.preventDefault();
 })
 let formData = {};
+let hasError = false;
 const getAllInputs = () => {
     formData = {
         first: form['first'],
@@ -70,50 +69,64 @@ const getAllInputs = () => {
     }
 }
 getAllInputs();
-const validate = form => {
+
+// TODO:
+//  - Merge submit validation and inline validation behaviour into one function
+//  - Success animation
+
+const inlineValidation = () => {
+    inputsWrapper.forEach(input => {
+        input.addEventListener("input", (e) => {
+            let input = formData[e.target.name];
+            resetError(input);
+            if (isRequired(input)) {
+                handleErrorValidation(input, "Ce champs ne peut pas être vide.")
+            }
+            validateInput(input);
+        })
+    })
+}
+
+const validate = () => {
+    hasError = false;
     for (const name in formData) {
         let input = formData[name];
         resetError(input);
         if (isRequired(input)) {
             handleErrorValidation(input, "Ce champs ne peut pas être vide.");
+            hasError = true;
             continue;
         }
-        validation(input)
+        if (!validateInput(input) && !hasError) {
+            hasError = true
+        }
     }
+    inlineValidation();
+    checkFormValidity(hasError)
 }
 
-inputsWrapper.forEach(input => {
-    input.addEventListener("input", (e) => {
-        let input = formData[e.target.name];
-        resetError(input);
 
-        if (isRequired(input)) {
-            handleErrorValidation(input, "Ce champs ne peut pas être vide.")
-        }
-        validation(input)
-    })
-})
-
-const validation = input => {
+const validateInput = input => {
     const name = getInputName(input);
     const value = getInputValue(input);
     if ((name === "first" || name === "last") && !isValidName(value)) {
         handleErrorValidation(input, "Nom invalide : minimum 2 caractères et caractères spéciaux non autorisés.")
+        return false
     } else if (name === "email" && !isValidEmail(value)) {
         handleErrorValidation(input, "Adresse e-mail invalide. Veuillez entrer une adresse e-mail valide.")
+        return false
     } else if (name === "birthdate" && !isValidBirthdate(value)) {
         handleErrorValidation(input, "Date de naissance invalide. Veuillez entrer une date de naissance valide.")
+        return false
     } else if (name === "quantity" && !isPositiveInteger(value)) {
         handleErrorValidation(input, "Quantité invalide. Veuillez entrer un nombre entier positif.");
-    } else if (name === "termsOfUse" && !value) {
-        // CHECKBOX ERROR MESSAGE
+        return false
+    } else if (name === "location" && !value) {
+        handleErrorValidation(input, "Veuillez sélectionner un tournoi en cochant l'une des options disponibles.");
+        return false
     }
-    let wrapper = getInputWrapper(input);
-    if (!wrapper.hasAttribute("data-error")) {
-        input.classList.add("success");
-    }
+    return true;
 }
-
 
 const isValidEmail = value => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -127,20 +140,16 @@ const isValidName = value => {
 
 const isValidBirthdate = value => {
     const birthdate = new Date(value);
-    return !(birthdate > new Date() || birthdate.getFullYear() < 1900);
+    return !(birthdate > new Date() || birthdate.getFullYear() < 1900 || isNaN(birthdate.getFullYear()));
 }
 
 const isPositiveInteger = value => {
     const number = Number(value);
     return Number.isInteger(number) && number >= 0
 }
-const resetError = input => {
-    const wrapper = getInputWrapper(input);
-    if (wrapper.hasAttribute("data-error")) {
-        wrapper.dataset.error = "false";
-    }
+const isRequired = input => {
+    return input.required && !getInputValue(input);
 }
-
 
 const getInputValue = input => {
     return input.type === "checkbox" ? input.checked : input.value;
@@ -154,9 +163,7 @@ const getInputName = input => {
         return input.name;
     }
 }
-const isRequired = input => {
-    return input.required && !getInputValue(input);
-}
+
 const getInputWrapper = input => {
     let formInput;
     const isNodeList = NodeList.prototype.isPrototypeOf(input);
@@ -173,6 +180,49 @@ const handleErrorValidation = (input, message) => {
     const errorElement = inputWrapper.querySelector('.validation-error');
     inputWrapper.dataset.error = "true";
     errorElement ? errorElement.innerText = String(message) : null;
+}
+
+const resetError = input => {
+    const wrapper = getInputWrapper(input);
+    wrapper.dataset.error = "false";
+}
+
+const checkFormValidity = (errors) => {
+    console.log(errors)
+    if (errors) {
+        errorSubmit();
+    } else {
+        successSubmit();
+    }
+}
+
+const errorSubmit = () => {
+    modal.classList.add("shake");
+    setTimeout(() => {
+        modal.classList.remove("shake");
+    }, 1000)
+}
+
+const successSubmit = () => {
+    form.innerHTML = '';
+    let successMessage = "Merci pour votre inscription";
+    let successDom = document.createElement("p");
+    successDom.classList.add('successMessage');
+    successDom.innerText = successMessage
+
+    form.append(successDom);
+    successDom.animate([// étapes/keyframes
+        {transform: "translateY(70px)", opacity: 0}, {transform: "translateY(0px)", opacity: 1},], {
+        // temporisation
+        duration: 300, iterations: 1, ease: "ease-in-out"
+    },);
+
+    setTimeout(() => {
+        closeModal()
+    }, 2000)
+    setTimeout(() => {
+        form.submit();
+    }, 3000)
 }
 
 // const getInputFieldValues = (name, isRequired = false, validate = null) => {
@@ -293,17 +343,3 @@ const handleErrorValidation = (input, message) => {
 //
 
 //
-// const checkFormValidity = (errors) => {
-//     if (errors) {
-//         modal.classList.add("shake");
-//         setTimeout(() => {
-//             modal.classList.remove("shake");
-//         }, 1000)
-//         return false;
-//     } else {
-//         closeModal()
-//         setTimeout(() => {
-//             form.submit();
-//         }, 1000)
-//     }
-// }
