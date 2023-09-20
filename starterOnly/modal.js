@@ -223,8 +223,6 @@ function editNav() {
 //GESTION DE L'ENVOI DU FORMULAIRE //
 
 
-
-
 function validate(event) {
   event.preventDefault();
 
@@ -236,8 +234,8 @@ function validate(event) {
   const conditionsAreAccepted = acceptedConditions.checked;
 
   if (firstNameIsValid && lastNameIsValid && emailIsValid && birthdateIsValid && locationIsValid && conditionsAreAccepted) {
-
-    modalForm.style.display = 'none';   // FERMETURE DE LA MODAL 1. On aurait pu appeler closeModal()
+    form.reset();
+    closeModal()
     openValidationMessage()    // OUVERTURE DE LA MODALE 2
 
   } else {

@@ -701,7 +701,7 @@ footer {
   z-index: 1;
   left: 0;
   top: 0;
-  height: 90%;
+  height: 100%;
   width: 100%;
   background-color: rgba(26, 39, 156, 0.4);
 }
@@ -716,7 +716,7 @@ footer {
   position: relative;
   color: #fff;
   padding-top: 10px;
-  height: 90%;
+  height: 85%;
 }
 
 .close-modal2 {
@@ -748,8 +748,8 @@ footer {
 }
 
 .text-modal2 {
-  margin-top: 250px;
-  margin-bottom: 280px;
+  margin-top: 180px;
+  margin-bottom: 150px;
   font-size: 40px;
   text-align: center;
   font-weight: 200;
@@ -775,8 +775,7 @@ footer {
 @media screen and (max-width: 1110px) {
 
   .text-modal2 {
-    margin-top: 250px;
-    margin-bottom: 200px;
+ 
     font-size: 40px;
     text-align: center;
     font-weight: 200;
