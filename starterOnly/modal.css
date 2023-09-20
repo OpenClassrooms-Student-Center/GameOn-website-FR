@@ -14,7 +14,6 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -39,6 +38,8 @@ img {
 }
 .main-navbar {
     float: right;
+    display: flex;
+    align-items: center;
 }
 .topnav a {
   float: left;
@@ -66,49 +67,16 @@ img {
 
 .topnav .icon {
   display: none;
+  color:red;
 }
 
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} 
 
 main {
   font-size: 130%;
   font-weight: bolder;
   color: black;
   padding-top: 0.5vw;
-  padding-left: 2vw;
-  padding-right: 2vw;
-  margin: 1px 20px 15px;
+ 
   border-radius: 2rem;
   text-align: justify;
 
@@ -147,6 +115,7 @@ main {
   border-radius: 15px;
   cursor: pointer;
   font-size: 16px;
+  
 }
 
 .button:hover {
@@ -169,10 +138,17 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
+.opened-modal {
+  display: block;
+}
+.opened-modal2 {
+  display: block;
+}
+
 .content {
   margin: 5% auto;
   width: 100%;
-  max-width: 500px;
+  max-width: 560px;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
   background: #232323;
@@ -210,7 +186,7 @@ input {
 }
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
+  font-size: 0.6em;
   color: #e54858;
   display: block;
   margin-top: 7px;
@@ -333,6 +309,13 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+.btn-submit:disabled {
+  cursor:not-allowed;
+  color:grey;
+  background-color: rgb(190, 190, 190);
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -405,22 +388,25 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
+  height: 660px;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   overflow: hidden;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
+margin-inline: 25px;
 }
 .hero-content {
-  padding: 51px 67px;
+
+  padding:50px;
+  padding-right : 0px;
+  padding-bottom: 0px;
   grid-column: span 4;
   background: #232323;
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
 }
 .hero-content::after {
   content: "";
@@ -436,15 +422,14 @@ input[data-error]::after {
   z-index: 1;
 }
 .hero-headline {
-  font-size: 6rem;
+  font-size: 96px;
   font-weight: normal;
   white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
   font-weight: normal;
   margin-top: 57px;
-  padding: 0;
+  width:120%;
 }
 .btn-signup {
   outline: none;
@@ -462,6 +447,8 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
+
 }
 .copyrights {
   color: #fe142f;
@@ -478,15 +465,42 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
+  .hero-section {
+    height: 100%;
+  }
+
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  .topnav {
+    margin-top: 20px;
+  }
+  .hero-text {
+    padding-inline: 25px;
+    width: unset;
+    font-size: 1rem;
+    margin-top: 30px;
+  }
+  #myTopnav {
+    justify-content: space-between;
+    margin-top:30px;
+    margin-inline: 30px;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
+    min-height: 0px;
   }
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .hero-content::after {
     content: unset;
@@ -495,12 +509,9 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 50px;
     white-space: normal;
-  }
-  .hero-text {
-    width: unset;
-    font-size: 1.5rem;
+    font-weight: 700;
   }
   .hero-img img {
     border-radius: 10px;
@@ -515,7 +526,157 @@ footer {
     margin-top: 50px;
     text-align: center;
   }
+  .topnav a {
+    font-size: 15px;
+  }
+
+  .header-logo img{
+    width:170px;
+  }
+  .main-navbar {
+    display: flex;  
+  flex-direction: column;
+  align-items: start;
+  }
+  .main-navbar i {
+    font-size: 20px;
+  }
 }
+
+@media screen and (max-width: 1110px){
+  .topnav {
+    display: flex;
+    flex-direction: column;
+  }
+} 
+
+@media screen and (min-width:768px) and (max-width: 1110px) {
+
+  .hero-headline {
+    font-size: 70px;
+  }
+  .topnav a {
+    font-size: 18px;
+  }
+
+  .topnav {
+    align-items: center;
+  }
+  .hero-text {
+  text-align: justify;
+  width:155%;
+
+  }
+}
+
+
+@media screen and (min-width:500px) and (max-width: 830px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+
+
+@media screen and (min-width:500px) and (max-width: 768px) {
+
+  #myTopnav {
+    flex-direction: row;
+  }
+  .header-logo {
+    margin-top: 10px;
+  }
+  .hero-text {
+    font-size: 20px;
+    padding-inline: 60px;
+    text-align: justify;
+  }
+}
+
+
+ @media screen and (max-width: 540px){
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+
+  .hero-headline h1 {
+    font-size: 20px;
+  }
+ }
+
+
+@media screen and (max-width:500px) {
+
+  #myTopnav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    }
+    .hero-content {
+     padding-inline: 25px;
+    }
+
+    .hero-headline {
+      width: 100%;
+      font-size: 40px;
+      font-weight: 700;
+      text-align: center;
+    }
+  .hero-text {
+      text-align: justify;
+      padding:0px;
+      font-size: 18px;
+      padding-inline: 30px;
+
+    }
+
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: flex;
+    margin: auto;
+    text-align: right;
+  }
+  .main-navbar {
+    margin-top: 20px;
+  }
+
+  .main-navbar i {
+    font-size: 15px;
+  }
+}
+
+
+@media screen and (min-width:100px) and (max-width: 500px) {
+  .hero-content {
+    padding: 0px;
+  }
+  .hero-headline {
+    font-size: 28px;
+  }
+  .hero-text {
+    font-size: 16px;
+    padding-inline: 10px;
+  }
+  .text-modal2 p {
+    font-size: 35px;
+  }
+}
+
 
 @keyframes modalopen {
   from {
@@ -527,3 +688,96 @@ footer {
   }
 }
 
+/* MISE EN FORME DE LA MODALE 2*/
+
+.closed-modal2 {
+  display: none;
+}
+.opened-modal2 {
+  display: block;
+}
+.modal2 {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+
+.content-modal2 {
+  margin: 5% auto;
+  width: 100%;
+  max-width: 560px;
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+  height: 85%;
+}
+
+.close-modal2 {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(0.7);
+}
+
+
+.close-modal2:before,
+.close-modal2:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 3px;
+  background-color: #fff;
+}
+.close-modal2:before {
+  transform: rotate(45deg);
+}
+.close-modal2:after {
+  transform: rotate(-45deg);
+}
+
+.text-modal2 {
+  margin-top: 180px;
+  margin-bottom: 150px;
+  font-size: 40px;
+  text-align: center;
+  font-weight: 200;
+}
+
+.button-modal2 {
+  text-align: center;
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+  padding: 1em;
+}
+
+.button-modal2:hover {
+  background: #3876ac;
+}
+
+@media screen and (max-width: 1110px) {
+
+  .text-modal2 {
+ 
+    font-size: 40px;
+    text-align: center;
+    font-weight: 200;
+  }
+}
