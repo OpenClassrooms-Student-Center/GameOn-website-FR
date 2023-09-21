@@ -11,6 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const inscriptionOk = document.querySelector(".inscription-ok");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -31,9 +32,14 @@ function launchModal() {
 // **********************
 
 let close = document.querySelector(".close");
+let closeInscription = document.querySelector(".close-inscription");
 
 close.addEventListener("click", () => {
   modalbg.style.display = "none";
+});
+
+closeInscription.addEventListener("click", () => {
+  inscriptionOk.style.display = "none";
 });
 
 // *************************************************************************************
@@ -54,7 +60,7 @@ function verifyNbreCaracteresPrenom(chaine) {
 }
 
 // *************************************************************************************
-// Fonction pour vérifier le nombre de caractères utilisés dans le champs prénom
+// Fonction pour vérifier le nombre de caractères utilisés dans le champs nom
 // *************************************************************************************
 
 function verifyNbreCaracteresNom(chaine) {
@@ -220,7 +226,7 @@ function validate() {
     termsOfUseOk();
 
     modalbg.style.display = "none";
-    alert("Merci ! Votre réservation a été reçue.");
+    inscriptionOk.style.display = "block";
   } catch (error) {
     let errorSpanId = "";
 
@@ -254,7 +260,19 @@ function validate() {
 
 const form = document.querySelector("form");
 
+function resetForm() {
+  const formInscription = document.getElementById("form-inscription");
+  formInscription.reset();
+}
+
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   validate();
+});
+
+const lastBtn = document.querySelector(".btn-close");
+
+lastBtn.addEventListener("click", () => {
+  inscriptionOk.style.display = "none";
+  resetForm();
 });

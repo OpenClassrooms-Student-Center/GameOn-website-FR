@@ -102,8 +102,6 @@ img {
   }
 }
 
-
-
 @media screen and (max-width: 540px) {
   .topnav a {
     display: none;
@@ -126,8 +124,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -184,6 +180,18 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
+.inscription-ok {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+
 .content {
   margin: 5% auto;
   width: 100%;
@@ -196,6 +204,35 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+}
+
+.content-2 {
+  margin: 5% auto;
+  width: 100%;
+  height: 80%;
+  max-width: 500px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+}
+
+.inscription-top {
+  height: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inscription-top p {
+  font-size: 2rem;
+  width: 60%;
+  text-align: center;
+  line-height: 2em;
+  font-weight: 300;
 }
 
 .modal-body {
@@ -297,12 +334,12 @@ input[data-error]::after {
   display: none;
 }
 
-.checkbox-input:checked+.checkbox-label .checkbox-icon::after,
-.checkbox-input:checked+.checkbox2-label .checkbox-icon::after {
+.checkbox-input:checked + .checkbox-label .checkbox-icon::after,
+.checkbox-input:checked + .checkbox2-label .checkbox-icon::after {
   opacity: 1;
 }
 
-.checkbox-input:checked+.checkbox2-label .checkbox-icon {
+.checkbox-input:checked + .checkbox2-label .checkbox-icon {
   background: #279e7a;
 }
 
@@ -354,6 +391,35 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 
+.close-inscription {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 32px;
+  height: 32px;
+  opacity: 1;
+  cursor: pointer;
+  transform: scale(0.7);
+}
+
+.close-inscription:before,
+.close-inscription:after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 33px;
+  width: 3px;
+  background-color: #fff;
+}
+
+.close-inscription:before {
+  transform: rotate(45deg);
+}
+
+.close-inscription:after {
+  transform: rotate(-45deg);
+}
+
 .btn-submit,
 .btn-signup {
   background: #fe142f;
@@ -362,6 +428,24 @@ input[data-error]::after {
   border-radius: 7px;
   font-size: 1rem;
   padding: 12px 82px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+}
+
+.inscription-bottom {
+  display: flex;
+  justify-content: center;
+}
+.btn-close {
+  background: #fe142f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 42px;
+  width: 235.531px;
+  border-radius: 7px;
+  font-size: 1rem;
   color: #fff;
   cursor: pointer;
   border: 0;
@@ -471,7 +555,7 @@ input[data-error]::after {
   top: 0;
 }
 
-.hero-content>* {
+.hero-content > * {
   position: relative;
   z-index: 1;
 }
@@ -517,7 +601,7 @@ input[data-error]::after {
   font-weight: bolder;
 }
 
-.hero-section>.btn-signup {
+.hero-section > .btn-signup {
   display: none;
 }
 
@@ -562,7 +646,7 @@ footer {
     margin-top: 40px;
   }
 
-  .hero-section>.btn-signup {
+  .hero-section > .btn-signup {
     display: block;
     margin: 32px auto 10px;
     padding: 12px 35px;
@@ -571,6 +655,52 @@ footer {
   .copyrights {
     margin-top: 50px;
     text-align: center;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  body {
+    overflow: hidden;
+  }
+  .hero-content {
+    padding: 0;
+  }
+  .hero-section {
+    min-height: 0;
+  }
+  .hero-headline {
+    font-size: 2.3rem;
+    font-weight: 900;
+  }
+  .header-logo img {
+    width: 50%;
+    padding-left: 15px;
+  }
+  .hero-text {
+    font-size: 1rem;
+    margin-top: 30px;
+  }
+  .copyrights {
+    margin-top: 0;
+  }
+  .content {
+    padding: 0;
+    margin-top: 60px;
+  }
+  label {
+    font-size: 0.8rem;
+  }
+  .text-label {
+    font-size: 0.8rem;
+  }
+  .bground {
+    background-color: transparent;
+    overflow: hidden;
+  }
+  .inscription-ok {
+    background-color: transparent;
+    overflow: hidden;
+    margin-top: 45px;
   }
 }
 
