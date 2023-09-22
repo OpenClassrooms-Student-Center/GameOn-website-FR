@@ -56,11 +56,11 @@
               <h2>Merci pour <br>votre inscription</h2>
               <button class="form-success_close" type="button" aria-label="close modal">Fermer</button>
             </div>
-            <form
+            <form novalidate
               name="reserve"
               action="index.html"
-              method="get"
-              onsubmit="return validate();"
+              class="formbody"
+              onsubmit=""
             >
               <div
                 class="formData">
@@ -70,8 +70,9 @@
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
+                  
                 ><br>
+                <span id="firsterror"></span>
               </div>
               <div
                 class="formData">
@@ -82,6 +83,7 @@
                   id="last"
                   name="last"
                 ><br>
+                <span id="lasterror"></span>
               </div>
               <div
                 class="formData">
@@ -93,6 +95,7 @@
                   name="email"
                   autocomplete="email"
                 ><br>
+                <span id="emailerror"></span>
               </div>
               <div
                 class="formData">
@@ -102,12 +105,13 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                ><br>
+                ><br><span id="ageerror"></span>
               </div>
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99"><br>
+                <span id="quantityerror"></span>
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
@@ -177,9 +181,9 @@
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
                   Portland</label
-                >
+                ><br>
+                <span id="locationerror"></span>
               </div>
-
               <div
                 class="formData">
                 <input
@@ -187,13 +191,12 @@
                   type="checkbox"
                   id="checkbox1"
                   checked
-                  required
                 >
                 <label class="checkboxlabel" for="checkbox1">
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
-                <br>
+                <br><span id="conditionserror"></span>
                 <input class="checkbox-input" type="checkbox" id="checkbox2">
                 <label class="checkboxlabel" for="checkbox2">
                   <span class="checkbox-icon"></span>
@@ -213,13 +216,11 @@
           
       </div>
     </main>
-    
   </div>
     <footer>
       <p class="copyrights">
         Copyright 2014 - 2022, GameOn Inc.
       </p>
     </footer>
-    
   </body>
 </html>

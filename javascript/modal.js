@@ -10,6 +10,8 @@ function editNav() {
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
+const formBody = document.querySelector(".formbody")
+const formSuccess = document.querySelector(".form-success");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
@@ -28,11 +30,20 @@ function hideModal() {
 
  // Hide modal whith the button X
  xclose = document.querySelector(".close")
- xclose.addEventListener("click", hideModal);
+ xclose.addEventListener("click", resetModal);
+ //xclose.addEventListener("click", resetModal);
+
+//reset modal
+function resetModal(){
+  formBody.style.display = "block";
+  formSuccess.style.display = 'none';
+  modalbg.style.display = "none";
+}
 
   // Hide modal whith the button close
   btnclose = document.querySelector(".form-success_close")
-  btnclose.addEventListener("click", hideModal);
+  //btnclose.addEventListener("click", hideModal);
+  btnclose.addEventListener("click", resetModal);
 
 // Hide modal whith click in background
 modalbg.addEventListener("click", (event) => {
@@ -40,3 +51,6 @@ modalbg.addEventListener("click", (event) => {
       hideModal()
   }
 })
+
+
+
