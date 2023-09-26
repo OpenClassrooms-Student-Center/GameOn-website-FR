@@ -7,12 +7,6 @@ const editNav = () => {
     }
 }
 
-
-// TODO:
-//  - Messages d'erreur Tournois et Condition d'utilisation,
-//  - Success message, form submission
-//  - Responsive
-
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modal = document.querySelector(".content");
@@ -20,7 +14,6 @@ const modalCloseBtn = modal.querySelector(".modal-close")
 const modalBtn = document.querySelectorAll(".modal-btn");
 const inputsWrapper = document.querySelectorAll('.formInput');
 const form = document.querySelector('.modalForm');
-
 
 // Animation const of the modal when the modal is oppended
 const launchModal = () => {
@@ -32,7 +25,6 @@ const launchModal = () => {
         duration: 400, iterations: 1, easing: "cubic-bezier(.35,.43,.18,1.54)"
     },);
 }
-
 // Animation function of the modal when the modal is closed
 const closeModal = () => {
     setTimeout(() => {
@@ -45,7 +37,6 @@ const closeModal = () => {
             // temporisation
             duration: 400, iterations: 1, easing: "cubic-bezier(.35,.43,.18,1.54)"
         });
-
 }
 
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -86,7 +77,6 @@ const inlineValidation = () => {
         })
     })
 }
-
 const validate = () => {
     hasError = false;
     for (const name in formData) {
@@ -104,8 +94,6 @@ const validate = () => {
     inlineValidation();
     checkFormValidity(hasError)
 }
-
-
 const validateInput = input => {
     const name = getInputName(input);
     const value = getInputValue(input);
@@ -119,15 +107,14 @@ const validateInput = input => {
         handleErrorValidation(input, "Date de naissance invalide. Veuillez entrer une date de naissance valide.")
         return false
     } else if (name === "quantity" && !isPositiveInteger(value)) {
-        handleErrorValidation(input, "Quantité invalide. Veuillez entrer un nombre entier positif.");
+        handleErrorValidation(input, "Quantité invalide. Veuillez entrer un nombre entier positif.")
         return false
     } else if (name === "location" && !value) {
-        handleErrorValidation(input, "Veuillez sélectionner un tournoi en cochant l'une des options disponibles.");
+        handleErrorValidation(input, "Veuillez sélectionner un tournoi en cochant l'une des options disponibles.")
         return false
     }
     return true;
 }
-
 const isValidEmail = value => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     return emailRegex.test(value);
@@ -141,6 +128,8 @@ const isValidName = value => {
 const isValidBirthdate = value => {
     const birthdate = new Date(value);
     return !(birthdate > new Date() || birthdate.getFullYear() < 1900 || isNaN(birthdate.getFullYear()));
+    // && a la place
+    // REGEX
 }
 
 const isPositiveInteger = value => {
