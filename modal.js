@@ -217,6 +217,7 @@ const successSubmit = () => {
 // TODO : - Remove empty lines
 //        - Check WS settings for ending lines with ";"
 //        - REGEX : prevent for specials characters at the start of the name and prevent multiple spe. char in a row.
+//        - Responsive
 
 // const getInputFieldValues = (name, isRequired = false, validate = null) => {
 //     const value = form[name].value.trim();
