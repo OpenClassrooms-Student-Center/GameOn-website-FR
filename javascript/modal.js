@@ -40,10 +40,11 @@ function resetModal(){
   modalbg.style.display = "none";
 }
 
-  // Hide modal whith the button close
-  btnclose = document.querySelector(".form-success_close")
-  //btnclose.addEventListener("click", hideModal);
-  btnclose.addEventListener("click", resetModal);
+// Hide modal whith the button close
+btnclose = document.querySelector(".form-success_close")
+
+//btnclose.addEventListener("click", hideModal);
+btnclose.addEventListener("click", resetModal);
 
 // Hide modal whith click in background
 modalbg.addEventListener("click", (event) => {
