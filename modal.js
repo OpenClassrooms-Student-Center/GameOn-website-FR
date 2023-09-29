@@ -98,7 +98,7 @@ first.addEventListener('change', (event) => {
   if(first.value.length < 2) {
     first.parentElement.appendChild(errorFirst);
     errorFirst.style.display = "block";
-    errorFirst.innerHTML = "Le champ prénom ne doit pas être vide, contenir  minimum 2 caractères et ne pas contenir de caractères spéciaux";
+    errorFirst.innerHTML = "Le champ doit contenir minimum 2 caractères.";
     isValid = false;
   }
   else if(first.value.length = 0) {
@@ -124,10 +124,20 @@ first.addEventListener('change', (event) => {
 last.addEventListener('change', (event) => {
   event.preventDefault();
 
-  if(last.value.length < 2) {
+  if(last.value.length < 2 || !last.value) {
     last.parentElement.appendChild(errorLast);
     errorLast.style.display = "block";
-    errorLast.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
+    errorLast.innerHTML = "Le champ doit contenir minimum 2 caractères.";
+    isValid = false;
+  }
+  else if(last.value.length = 0) {
+    last.parentElement.appendChild(errorLast);
+    errorLast.style.display = "block";
+    errorLast.innerHTML = "Le champ ne doit pas être vide";
+    isValid = false;
+}
+  else if(!last.value.match(regexName)){ 
+    errorLast.innerHTML = "Ce champ ne doit pas contenir de caractères spéciaux"; 
     isValid = false;
   }
   else {
@@ -151,9 +161,10 @@ form.addEventListener("submit", (event) => {
     console.log("Nom: " + last.value);
     console.log("E-mail: " + email.value);
     console.log("Anniversaire: " + birthdate.value);
+    console.log(isValid);
 
     // Réinitialiser le formulaire
-    form.reset();
+    //form.reset();
   } 
 
   if(!first.value) {
@@ -161,8 +172,14 @@ form.addEventListener("submit", (event) => {
     
     errorFirst.innerHTML = "Ce champ ne doit pas être vide.";
   }
+  if(!last.value) {
+    last.parentElement.appendChild(errorLast);
+    
+    errorLast.innerHTML = "Ce champ ne doit pas être vide.";
+  }
 
   else {
+    console.log(isValid);
     // Les conditions ne sont pas remplies, affichez un message d'erreur
     alert("Le formulaire contient des erreurs. Veuillez corriger les champs en rouge.");
   }
