@@ -90,8 +90,8 @@ errorEmail.classList.add("error");
 let errorBirthdate = document.createElement("p");
 errorBirthdate.classList.add("error");
 
-let quantityLast = document.createElement("p");
-quantityLast.classList.add("error");
+let errorQuantity = document.createElement("p");
+errorQuantity.classList.add("error");
 
 // valide
 //let valide = document.createElement("p");
@@ -108,7 +108,7 @@ first.addEventListener('change', (event) => {
     first.parentElement.appendChild(errorFirst);
     first.style.border ="2px solid #e54858"
     errorFirst.style.display = "block";
-    errorFirst.innerHTML = "Le champ prénom ne doit pas être vide, contenir  minimum 2 caractères et ne pas contenir de caractères spéciaux";
+    errorFirst.innerHTML = "Ce champ ne doit contenir minimum 2 caractères et ne pas contenir de caractères spéciaux";
     isValid = false;
   }
   else if(first.value.length = 0) {
@@ -135,18 +135,18 @@ last.addEventListener('change', (event) => {
   if(last.value.length < 2 || !last.value) {
     last.parentElement.appendChild(errorLast);
     errorLast.style.display = "block";
-    errorLast.innerHTML = "Le champ doit contenir minimum 2 caractères.";
+    errorLast.innerHTML = "Ce champ ne doit contenir minimum 2 caractères et ne pas contenir de caractères spéciaux";
     isValid = false;
   }
   else if(last.value.length = 0) {
     last.parentElement.appendChild(errorLast);
     errorLast.style.display = "block";
-    errorLast.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
+    errorLast.innerHTML ="Le champ ne doit pas être vide";
     isValid = false;
   }
   else {
     last.style.border ="none"
-    errorLast.style.display = "none";
+    errorLast.style.display ="none";
     isValid = true;
   }
 
@@ -215,6 +215,23 @@ form.addEventListener("submit", (event) => {
     last.style.border="2px solid #e54858"
     errorLast.innerHTML = "Le champ ne doit pas être vide.";
   }
+  if(!email.value) {
+    email.parentElement.appendChild(errorEmail);
+    email.style.border="2px solid #e54858"
+    errorEmail.innerHTML = "Le champ ne doit pas être vide.";
+  }
+  if(!birthdate.value) {
+    birthdate.parentElement.appendChild(errorBirthdate);
+    birthdate.style.border="2px solid #e54858"
+    errorBirthdate.innerHTML = "Le champ ne doit pas être vide.";
+  }
+  if(!quantity.value) {
+    quantity.parentElement.appendChild(errorQuantity);
+    quantity.style.border="2px solid #e54858"
+    errorQuantity.innerHTML = "Le champ ne doit pas être vide.";
+  }
+
+
 
   else {
     console.log(isValid);
