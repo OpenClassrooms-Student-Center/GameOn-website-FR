@@ -65,6 +65,7 @@ const first = document.getElementById("first");
 const last = document.getElementById("last");
 const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
+const quantity = document.getElementById("quantity");
 const input = document.getElementsByTagName("input");
 const form = document.getElementById("form");
 
@@ -83,6 +84,14 @@ errorFirst.classList.add("error");
 let errorLast = document.createElement("p");
 errorLast.classList.add("error");
 
+let errorEmail = document.createElement("p");
+errorEmail.classList.add("error");
+
+let errorBirthdate = document.createElement("p");
+errorBirthdate.classList.add("error");
+
+let quantityLast = document.createElement("p");
+quantityLast.classList.add("error");
 
 // valide
 //let valide = document.createElement("p");
@@ -95,31 +104,20 @@ let isValid = true;
 first.addEventListener('change', (event) => {
   event.preventDefault();
 
-  if(first.value.length < 2) {
+  if (first.value.length < 2 || !first.value.match(regexName)) {
     first.parentElement.appendChild(errorFirst);
+    first.style.border ="2px solid #e54858"
     errorFirst.style.display = "block";
-    errorFirst.innerHTML = "Le champ prénom ne doit pas être vide, contenir  minimum 2 caractères et ne pas contenir de caractères spéciaux";
-    isValid = false;
-  }
-  else if(first.value.length = 0) {
-      first.parentElement.appendChild(errorFirst);
-      errorFirst.style.display = "block";
-      errorFirst.innerHTML = "Le champ ne doit pas être vide";
-      isValid = false;
-  }
-  else if(!first.value.match(regexName)){ 
-    errorFirst.innerHTML = "Ce champ ne doit pas contenir de caractères spéciaux"; 
+    errorFirst.innerHTML = "Le champ doit contenir au minimum 2 caractères et ne doit pas contenir de caractères spéciaux";
     isValid = false;
   }
   else {
+    first.style.border ="none"
     errorFirst.style.display = "none";
     isValid = true;
   }
 
 });
-
-
-
 
 last.addEventListener('change', (event) => {
   event.preventDefault();
@@ -127,16 +125,51 @@ last.addEventListener('change', (event) => {
   if(last.value.length < 2) {
     last.parentElement.appendChild(errorLast);
     errorLast.style.display = "block";
+    last.style.border ="2px solid #e54858"
     errorLast.innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
     isValid = false;
   }
   else {
+    last.style.border ="none"
     errorLast.style.display = "none";
     isValid = true;
   }
 
 });
+email.addEventListener('change', (event) => {
+  event.preventDefault();
 
+  if(!email.value.match(regexEmail)) {
+    email.parentElement.appendChild(errorEmail);
+    errorEmail.style.display = "block";
+    email.style.border ="2px solid #e54858"
+    errorEmail.innerHTML = "Veuillez renseigner une adresse email valide";
+    isValid = false;
+  }
+  else {
+    email.style.border ="none"
+    errorEmail.style.display = "none";
+    isValid = true;
+  }
+
+});
+quantity.addEventListener('change', (event) => {
+  event.preventDefault();
+
+  if(quantity.value.length == "") {
+    quantity.parentElement.appendChild(quantityLast);
+    quantityLast.style.display = "block";
+    last.style.border ="2px solid #e54858"
+    quantityLast.innerHTML = "Le champ ne doit pas être vide.";
+    isValid = false;
+  }
+  else {
+    quantity.style.border ="none"
+    quantityLast.style.display = "none";
+    isValid = true;
+  }
+
+});
 
 form.addEventListener("submit", (event) => {
   // On empêche le comportement par défaut
@@ -158,10 +191,29 @@ form.addEventListener("submit", (event) => {
 
   if(!first.value) {
     first.parentElement.appendChild(errorFirst);
-    
-    errorFirst.innerHTML = "Ce champ ne doit pas être vide.";
+    first.style.border="2px solid #e54858"
+    errorFirst.innerHTML = "Le champ ne doit pas être vide.";
   }
-
+  if(!last.value) {
+    last.parentElement.appendChild(errorLast);
+    last.style.border="2px solid #e54858"
+    errorLast.innerHTML = "Le champ ne doit pas être vide.";
+  }
+  if(!email.value) {
+    email.parentElement.appendChild(errorEmail);
+    email.style.border="2px solid #e54858"
+    errorEmail.innerHTML = "Le champ ne doit pas être vide.";
+  }
+  if(!birthdate.value) {
+    birthdate.parentElement.appendChild(errorBirthdate);
+    birthdate.style.border="2px solid #e54858"
+    errorBirthdate.innerHTML = "Le champ ne doit pas être vide.";
+  }
+  if(!quantity.value) {
+    quantity.parentElement.appendChild(quantityLast);
+    quantity.style.border="2px solid #e54858"
+    quantityLast.innerHTML = "Le champ ne doit pas être vide.";
+  }
   else {
     // Les conditions ne sont pas remplies, affichez un message d'erreur
     alert("Le formulaire contient des erreurs. Veuillez corriger les champs en rouge.");

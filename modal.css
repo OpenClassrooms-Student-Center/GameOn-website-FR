@@ -480,6 +480,7 @@ input[data-error]::after {
 .error {
   font-size: 16px;
   color: red;
+  text-align: left;
 }
 .valide {
   font-size: 16px;
