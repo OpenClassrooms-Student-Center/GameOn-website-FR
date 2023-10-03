@@ -210,7 +210,7 @@ form.addEventListener("submit", (event) => {
     errorLast.innerHTML = "Ce champ ne doit pas être vide.";
   }
 
-  else {
+  else { 
     console.log(isValid);
     // Les conditions ne sont pas remplies, affichez un message d'erreur
     alert("Le formulaire contient des erreurs. Veuillez corriger les champs en rouge.");
