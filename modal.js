@@ -33,7 +33,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeForm = document.querySelector(".close");
 const modalBgContent = document.querySelector(".content");
-
+ 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -61,12 +61,14 @@ function closeModal() {
 // Formulaire
 
 // Input du formulaire
+const form = document.getElementById("form");
 const first = document.getElementById("first");
 const last = document.getElementById("last");
 const email = document.getElementById("email");
 const birthdate = document.getElementById("birthdate");
-const input = document.getElementsByTagName("input");
-const form = document.getElementById("form");
+const quantity = document.getElementById("quantity");
+const checkbox1 = document.getElementById("checkbox1")
+
 
 // Regex
 const regexName = /^([A-Za-z|\s]{2,15})?([-]{0,1})?([A-Za-z|\s]{2,15})$/;
@@ -83,6 +85,17 @@ errorFirst.classList.add("error");
 let errorLast = document.createElement("p");
 errorLast.classList.add("error");
 
+let errorEmail = document.createElement("p");
+errorEmail.classList.add("error");
+
+let errorBirthdate = document.createElement("p");
+errorBirthdate.classList.add("error");
+
+let errorQuantity = document.createElement("p");
+errorQuantity.classList.add("error");
+
+let errorCheckbox1 = document.createElement("p");
+errorCheckbox1.classList.add("error");
 
 // valide
 //let valide = document.createElement("p");
@@ -92,7 +105,7 @@ errorLast.classList.add("error");
 let isValid = true;
 
 //Ecouter la modification de prénom
-first.addEventListener('change', (event) => {
+const valideFirst = first.addEventListener('change', (event) => {
   event.preventDefault();
 
   if(first.value.length < 2) {
@@ -118,13 +131,11 @@ first.addEventListener('change', (event) => {
 
 });
 
-
-
-
+//Ecouter la modification de nom
 last.addEventListener('change', (event) => {
   event.preventDefault();
 
-  if(last.value.length < 2 || !last.value) {
+  if(last.value.length < 2) {
     last.parentElement.appendChild(errorLast);
     errorLast.style.display = "block";
     errorLast.innerHTML = "Le champ doit contenir minimum 2 caractères.";
@@ -148,6 +159,23 @@ last.addEventListener('change', (event) => {
 });
 
 
+//Ecouter la modification de l'email
+email.addEventListener('change', (event) => {
+  event.preventDefault();
+
+if(!last.value.match(regexEmail)){ 
+    errorEmail.innerHTML = "Veuillez renseigner une adresse email valide"; 
+    isValid = false;
+  }
+  else {
+    errorEmail.style.display = "none";
+    isValid = true;
+  }
+
+});
+
+
+
 form.addEventListener("submit", (event) => {
   // On empêche le comportement par défaut
   event.preventDefault();
@@ -169,15 +197,28 @@ form.addEventListener("submit", (event) => {
 
   if(!first.value) {
     first.parentElement.appendChild(errorFirst);
-    
-    errorFirst.innerHTML = "Ce champ ne doit pas être vide.";
+    errorFirst.innerHTML = "Vous devez renseigner votre prénom";
   }
   if(!last.value) {
     last.parentElement.appendChild(errorLast);
-    
-    errorLast.innerHTML = "Ce champ ne doit pas être vide.";
+     errorLast.innerHTML = "Vous devez renseigner votre nom";
   }
-
+  if(!email.value) {
+    email.parentElement.appendChild(errorEmail);
+    errorEmail.innerHTML = "Vous devez entrer une adresse email.";
+  }
+  if(!birthdate.value) {
+    birthdate.parentElement.appendChild(errorBirthdate);
+    errorBirthdate.innerHTML = "Vous devez renseigner votre date de naissance.";
+  }
+  if(!quantity.value) {
+    quantity.parentElement.appendChild(errorQuantity);
+    errorQuantity.innerHTML = "Vous devez renseigner un nombre de tournoi";
+  }
+  if(!checkbox1.checked) {
+    checkbox1.parentElement.appendChild(errorCheckbox1);
+    errorCheckbox1.innerHTML = "Vous devez accepter les conditions d'utilisation.";
+  }
   else {
     console.log(isValid);
     // Les conditions ne sont pas remplies, affichez un message d'erreur
