@@ -167,7 +167,7 @@ email.addEventListener('change', (event) => {
   }
 
 });
-/*
+
 quantity.addEventListener('change', (event) => {
   event.preventDefault();
 
@@ -185,7 +185,7 @@ quantity.addEventListener('change', (event) => {
   }
 
 });
-*/
+
 
 form.addEventListener("submit", (event) => {
   // On empêche le comportement par défaut
@@ -233,7 +233,7 @@ form.addEventListener("submit", (event) => {
   }
   
   if(!conditions.checked) {
-    conditions.parentElement.appendChild(errorQuantity);
+    conditions.parentElement.appendChild(errorConditions);
     errorConditions.innerHTML = "Veuillez accepter les conditions d'utilisation";
   }
 
