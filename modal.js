@@ -82,7 +82,7 @@ const conditions = document.getElementById("checkbox1");
 // Regex
 const regexName = /^([A-Za-z|\s]{2,15})?([-]{0,1})?([A-Za-z|\s]{2,15})$/g;
 const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-const regexDate = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/g;
+const regexDate = /^([0-2][0-9]|(3)[0-1])(\/)(((0)[0-9])|((1)[0-2]))(\/)\d{4}$/;
 const regexQuantity = /^[1-9]{0,1}[0-9]$/g;
 
 
@@ -181,7 +181,7 @@ birthdate.addEventListener('change', (event) => {
   event.preventDefault();
 
 //Récupérer la date de naissance de l'utilsiateur
-  birthdateValue = new Date(birthdate.value);
+  const birthdateValue = new Date(birthdate.value);
 
   //Récupérer la date actuelle
   const currentDate = new Date();
@@ -189,20 +189,24 @@ birthdate.addEventListener('change', (event) => {
   //Calculez la différence entre la date actuelle et la date de naissance
   const difference_currentDate_birthdate = currentDate - birthdateValue;
 
-  // Convertissez la différence en années                    // calcule du nombre de millisecondes dans une année
+  // Convertissez la différence en années                    // nombre de millisecondes dans une année
   const differenceInYears = difference_currentDate_birthdate / (1000 * 60 * 60 * 24 * 365.25); 
 
-  console.log(differenceInYears);
 
-// 4. Vérifiez si l'utilisateur a plus de 18 ans
-if (differenceInYears < 18) {
-  birthdate.parentElement.appendChild(errorBirthdate);
-    errorBirthdate.style.display = "block";
+  // 4. Vérifiez si l'utilisateur a plus de 18 ans
+  if (differenceInYears < 18) {
+    birthdate.parentElement.appendChild(errorBirthdate);
+      errorBirthdate.style.display = "block";
+      birthdate.style.border ="2px solid #e54858"
+      errorBirthdate.innerHTML = "Vous devez avoir plus de 18 ans pour participer.";
+      console.log(differenceInYears);
+  }
+  else if (differenceInYears > 130) {
+    birthdate.parentElement.appendChild(errorBirthdate)
     birthdate.style.border ="2px solid #e54858"
-    errorBirthdate.innerHTML = "Vous devez avoir plus de 18 ans pour participer.";
-    console.log(differenceInYears);
-}
-
+    errorBirthdate.style.display = "block";
+    errorBirthdate.innerHTML = "Veullez renseigner une date de naissance valide";
+  }
   else {
     birthdate.style.border ="none"
     errorBirthdate.style.display = "none";
