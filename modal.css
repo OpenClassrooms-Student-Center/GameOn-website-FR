@@ -596,3 +596,6 @@ footer {
   width: 100%;
   background-color: #232323;
 }
+.modal-succes {
+  display: none;
+}
