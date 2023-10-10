@@ -56,29 +56,29 @@
         <span class="close"></span>
         <div class="modal-body">
           <form name="reserve" action="index.html" method="get" onsubmit="return validate();" novalidate>
-            <div class="formData">
-              <label for="first">Prénom</label><br>
+            <div class="formData" data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom">
+              <label for="first">Prénom</label>
               <input class="text-control" type="text" id="first" name="first" minlength="2" required>
             </div>
-            <div class="formData">
+            <div class="formData" data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom">
               <label for="last">Nom</label>
               <input class="text-control" type="text" id="last" name="last" minlength="2" required>
             </div>
-            <div class="formData">
+            <div class="formData" data-error="Veuillez entrer une adresse e-mail valide">
               <label for="email">E-mail</label>
               <input class="text-control" type="email" id="email" name="email" required>
             </div>
-            <div class="formData">
+            <div class="formData" data-error="Veuillez saisir une date de naissance">
               <label for="birthdate">Date de naissance</label>
-              <input class="text-control" type="date" id="birthdate" name="birthdate">
+              <input class="text-control" type="date" id="birthdate" name="birthdate" required>
             </div>
-            <div class="formData">
+            <div class="formData" data-error="Veuillez entrer un nombre (entre 0 et 99)">
               <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label>
               <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
             </div>
             <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
-            <div class="formData">
-              <input class="checkbox-input" type="radio" id="location1" name="location" value="New York">
+            <div class="formData" data-error="Veuillez indiquer un tournoi auquel vous voulez participer">
+              <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" required>
               <label class="checkbox-label" for="location1">
                 <span class="checkbox-icon"></span>
                 New York</label>
@@ -103,20 +103,19 @@
                 <span class="checkbox-icon"></span>
                 Portland</label>
             </div>
-
-            <div class="formData">
-              <input class="checkbox-input" type="checkbox" id="checkbox1" name="cgu">
+            <div class="formData" data-error="Vous devez lire et accepter les conditions d'utilisation">
+              <input class="checkbox-input" type="checkbox" id="checkbox1" name="cgu" required>
               <label class="checkbox2-label" for="checkbox1" required>
                 <span class="checkbox-icon"></span>
                 J'ai lu et accepté les conditions d'utilisation.
               </label>
-              <br>
+            </div>
+            <div class="formData">
               <input class="checkbox-input" type="checkbox" id="checkbox2" name="news">
               <label class="checkbox2-label" for="checkbox2">
                 <span class="checkbox-icon"></span>
                 Je souhaite être prévenu des prochains évènements.
               </label>
-              <br>
             </div>
             <input class="btn-submit" type="submit" class="button" value="C'est parti" />
           </form>

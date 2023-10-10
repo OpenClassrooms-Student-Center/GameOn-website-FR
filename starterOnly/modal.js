@@ -10,6 +10,7 @@ function editNav() {
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
+const form = document.querySelector("form[name=reserve]");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelectorAll(".close");
 
@@ -18,6 +19,10 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal() {
+  form.reset();
+  formData.forEach((element) => {
+    element.dataset.errorVisible = false;
+  });
   modalbg.style.display = "block";
 }
 
@@ -29,41 +34,14 @@ function closeModal() {
 }
 
 // Vérification des données du formulaire
-const form = document.querySelector("form");
-
-const validators = [
-  { name: "first", pattern: /^\S{2}/ },
-  { name: "last", pattern: /^\S{2}/ },
-  { name: "email", internal: true },
-  { name: "quantity", pattern: /^\d+$/ },
-  { name: "location", pattern: /^.+$/ },
-  { name: "cgu", checked: true },
-];
-
-function isValidate(validator) {
-  const data = form[validator.name];
-  if (!data) {
-    console.log(
-      `Le champs '${validator.name}' ne semble pas disponible dans ce formulaire !`
-    );
-  }
-  if (validator.pattern) {
-    return data.value.match(validator.pattern);
-  } else if (validator.internal) {
-    return data.validity.valid;
-  } else if (validator.checked !== undefined) {
-    return data.checked === validator.checked;
-  }
-  return false;
-}
-
 function validate() {
-  let errors = 0;
-  validators.forEach((validator) => {
-    if (isValidate(validator)) {
-      // Masquer les messages d'erreurs sur le formulaire
-    } else {
-      // Afficher les messages d'erreurs sur le formulaire
+  let errors = 1;
+  formData.forEach((element) => {
+    const input = element.querySelector("input");
+    if (
+      input?.required &&
+      (element.dataset.errorVisible = !input.validity.valid)
+    ) {
       errors++;
     }
   });
