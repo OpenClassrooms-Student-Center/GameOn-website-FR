@@ -9,10 +9,11 @@ function editNav() {
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
+const modaldone = document.querySelector(".signup-done");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const form = document.querySelector("form[name=reserve]");
 const formData = document.querySelectorAll(".formData");
-const closeBtn = document.querySelectorAll(".close");
+const closeBtn = document.querySelectorAll(".close, .btn-close");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -29,13 +30,18 @@ function launchModal() {
 // close modal event
 closeBtn.forEach((btn) => btn.addEventListener("click", closeModal));
 
-function closeModal() {
-  modalbg.style.display = "none";
+function closeModal(e) {
+  e.preventDefault();
+  e.stopPropagation();
+  const modal = e.target.closest(".bground");
+  if (modal) {
+    modal.style.display = "none";
+  }
 }
 
 // Vérification des données du formulaire
 function validate() {
-  let errors = 1;
+  let errors = 0;
   formData.forEach((element) => {
     const input = element.querySelector("input");
     if (
@@ -43,7 +49,13 @@ function validate() {
       (element.dataset.errorVisible = !input.validity.valid)
     ) {
       errors++;
+      if (errors === 1) input.focus();
     }
   });
-  return errors === 0;
+  if (errors === 0) {
+    modalbg.style.display = "none";
+    modaldone.style.display = "block";
+  }
+  // return errors === 0;
+  return false;
 }

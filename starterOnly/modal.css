@@ -196,6 +196,14 @@ main {
   padding-top: 10px;
 }
 
+.signup-done .content {
+  margin: 0 auto;
+  top: 50vh;
+  transform: translateY(-50%);
+  animation-name: fadeIn;
+  animation-direction: normal;
+}
+
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
@@ -342,7 +350,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-close {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -424,6 +433,12 @@ input[data-error]::after {
   font-weight: normal;
   font-size: 16px;
 }
+
+.text-center {
+  padding: 2em;
+  text-align: center;
+}
+
 .hero-section {
   min-height: 93vh;
   border-radius: 10px;
@@ -541,6 +556,15 @@ footer {
   from {
     opacity: 0;
     transform: translateY(-150px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
   to {
     opacity: 1;
