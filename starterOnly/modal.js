@@ -1,10 +1,7 @@
+const topNav = document.querySelector("#myTopnav");
+
 function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
+  topNav.classList.toggle("responsive");
 }
 
 // DOM Elements
@@ -24,6 +21,9 @@ function launchModal() {
   formData.forEach((element) => {
     element.dataset.errorVisible = false;
   });
+  const now = new Date();
+  now.setFullYear(now.getFullYear() - 18);
+  form.birthdate.max = now.toISOString().slice(0, 10); //`${now.getFullYear()}-${now.getMonth()}-${now.getDay()}`;
   modalbg.style.display = "block";
 }
 
