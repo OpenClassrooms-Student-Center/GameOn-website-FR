@@ -104,7 +104,6 @@ function formValidate(e) {
  *
  */
 function keyupEvent(e) {
-  console.log("Key", e.key);
   switch (e.key) {
     case "Escape":
       document.querySelectorAll(".modal").forEach((element) => {
