@@ -32,18 +32,10 @@ a {
 }
 
 input {
-  font-family: var(--font-default);
+  font-family: inherit;
   padding: 8px;
   border: 0.8px solid #ccc;
   outline: none;
-}
-
-label {
-  display: inline-block;
-  font-family: var(--font-default);
-  xfont-size: inherite;
-  font-weight: normal;
-  margin-bottom: 17px;
 }
 
 main {
@@ -129,9 +121,8 @@ p {
 
 .btn-submit,
 .btn-close {
-  margin-top: 1.2rem;
+  margin-top: 3rem;
   padding: 1rem 5rem;
-  xmin-width: 18rem;
 }
 
 .btn-signup {
@@ -196,22 +187,12 @@ p {
   margin: 15px auto;
 }
 
-.text-control {
-  margin: 0;
-  padding: 8px;
-  width: 100%;
-  border-radius: 8px;
-  font-size: 2rem;
-  height: 48px;
-  transition: all 0.3s ease-in-out;
-}
-
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.8em;
   color: #e54858;
   display: block;
-  margin: 4px 0;
+  margin: 0.5em 0;
   opacity: 0;
   transition: all 0.3s ease-in-out;
 }
@@ -224,6 +205,28 @@ p {
   border: 2px solid #e54858;
 }
 
+.label-control {
+  display: inline-block;
+  text-align: justify;
+  margin-bottom: 0.5em;
+}
+
+.text-control {
+  width: 100%;
+  padding: 0.5em;
+  font-size: 1.25em;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.radio-group {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 1em;
+}
+
 .radio-input,
 .checkbox-input {
   display: none;
@@ -232,20 +235,24 @@ p {
 .radio-label,
 .checkbox-label {
   position: relative;
+  display: flex;
   cursor: pointer;
-  margin-left: 36px;
-  font-size: 1.2rem;
-  font-weight: normal;
+  gap: 1em;
+  align-items: center;
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+.radio-label {
+  flex: 1 0;
 }
 
 .radio-icon,
 .checkbox-icon {
-  position: absolute;
+  position: relative;
   display: inline-block;
   width: 20px;
   height: 20px;
-  left: -30px;
-  top: -1px;
   transition: all 0.3s ease-in-out;
 }
 

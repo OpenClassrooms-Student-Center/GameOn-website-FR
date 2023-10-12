@@ -56,51 +56,54 @@
         <div class="modal-body">
           <form name="reserve" action="index.html" method="get" novalidate>
             <div class="formData" data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom">
-              <label for="first">Prénom</label>
+              <label class="label-control" for="first">Prénom</label>
               <input class="text-control" type="text" id="first" name="first" minlength="2" required>
             </div>
             <div class="formData" data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom">
-              <label for="last">Nom</label>
+              <label class="label-control" for="last">Nom</label>
               <input class="text-control" type="text" id="last" name="last" minlength="2" required>
             </div>
             <div class="formData" data-error="Veuillez entrer une adresse e-mail valide">
-              <label for="email">E-mail</label>
+              <label class="label-control" for="email">E-mail</label>
               <input class="text-control" type="email" id="email" name="email" required>
             </div>
             <div class="formData" data-error="Veuillez saisir une date de naissance valide et être majeur.">
-              <label for="birthdate">Date de naissance</label>
+              <label class="label-control" for="birthdate">Date de naissance</label>
               <input class="text-control" type="date" id="birthdate" name="birthdate" max="2005-01-01" required>
             </div>
             <div class="formData" data-error="Veuillez entrer un nombre (entre 0 et 99)">
-              <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label>
+              <label class="label-control" for="quantity">À combien de tournois GameOn avez-vous déjà participé
+                ?</label>
               <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
             </div>
             <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
             <div class="formData" data-error="Veuillez indiquer un tournoi auquel vous voulez participer">
-              <input class="radio-input" type="radio" id="location1" name="location" value="New York" required>
-              <label class="radio-label" for="location1">
-                <span class="radio-icon"></span>
-                New York</label>
-              <input class="radio-input" type="radio" id="location2" name="location" value="San Francisco">
-              <label class="radio-label" for="location2">
-                <span class="radio-icon"></span>
-                San Francisco</label>
-              <input class="radio-input" type="radio" id="location3" name="location" value="Seattle">
-              <label class="radio-label" for="location3">
-                <span class="radio-icon"></span>
-                Seattle</label>
-              <input class="radio-input" type="radio" id="location4" name="location" value="Chicago">
-              <label class="radio-label" for="location4">
-                <span class="radio-icon"></span>
-                Chicago</label>
-              <input class="radio-input" type="radio" id="location5" name="location" value="Boston">
-              <label class="radio-label" for="location5">
-                <span class="radio-icon"></span>
-                Boston</label>
-              <input class="radio-input" type="radio" id="location6" name="location" value="Portland">
-              <label class="radio-label" for="location6">
-                <span class="radio-icon"></span>
-                Portland</label>
+              <div class="radio-group">
+                <input class="radio-input" type="radio" id="location1" name="location" value="New York" required>
+                <label class="radio-label" for="location1">
+                  <span class="radio-icon"></span>
+                  New York</label>
+                <input class="radio-input" type="radio" id="location2" name="location" value="San Francisco">
+                <label class="radio-label" for="location2">
+                  <span class="radio-icon"></span>
+                  San Francisco</label>
+                <input class="radio-input" type="radio" id="location3" name="location" value="Seattle">
+                <label class="radio-label" for="location3">
+                  <span class="radio-icon"></span>
+                  Seattle</label>
+                <input class="radio-input" type="radio" id="location4" name="location" value="Chicago">
+                <label class="radio-label" for="location4">
+                  <span class="radio-icon"></span>
+                  Chicago</label>
+                <input class="radio-input" type="radio" id="location5" name="location" value="Boston">
+                <label class="radio-label" for="location5">
+                  <span class="radio-icon"></span>
+                  Boston</label>
+                <input class="radio-input" type="radio" id="location6" name="location" value="Portland">
+                <label class="radio-label" for="location6">
+                  <span class="radio-icon"></span>
+                  Portland</label>
+              </div>
             </div>
             <div class="formData" data-error="Vous devez lire et accepter les conditions d'utilisation">
               <input class="checkbox-input" type="checkbox" id="checkbox1" name="cgu" required>
