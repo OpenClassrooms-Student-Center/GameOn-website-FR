@@ -16,14 +16,15 @@
       <img class="logo" alt="logo" src="Logo.png">
     </div>
     <nav class="main-navbar">
-      <a href="#" class="active"><span>Accueil</span></a>
-      <a href="#"><span>Détails de l'évènement</span></a>
-      <a href="#"><span>À propos</span></a>
-      <a href="#"><span>Contact</span></a>
-      <a href="#"><span>Évènements passés</span></a>
-      <a href="javascript:void(0);" class="icon" onclick="editNav()">
+      <input type="checkbox" id="burger" hidden>
+      <label class="nav-burger" for="burger">
         <i class="fa fa-bars"></i>
-      </a>
+      </label>
+      <a class="nav-link active" href="#" class="active"><span>Accueil</span></a>
+      <a class="nav-link" href="#"><span>Détails de l'évènement</span></a>
+      <a class="nav-link" href="#"><span>À propos</span></a>
+      <a class="nav-link" href="#"><span>Contact</span></a>
+      <a class="nav-link" href="#"><span>Évènements passés</span></a>
     </nav>
   </header>
 
@@ -38,23 +39,22 @@
           Vous aimez jouer ? Notre prochain évènement gaming est ouvert
           aux réservations... Places limitées !
         </p>
-        <button class="btn-signup modal-btn">
-          je m'inscris
+        <button class="btn btn-signup">
+          Je m'inscris
         </button>
       </div>
       <div class="hero-img">
         <img src="./bg_img.jpg" alt="img">
       </div>
-      <button class="btn-signup modal-btn">
-        je m'inscris
+      <button class="btn btn-signup">
+        Je m'inscris
       </button>
     </div>
-
-    <div class="bground">
+    <div id="modal-signup" class="modal">
       <div class="content">
-        <span class="close"></span>
+        <span class="modal-close"></span>
         <div class="modal-body">
-          <form name="reserve" action="index.html" method="get" onsubmit="return validate();" novalidate>
+          <form name="reserve" action="index.html" method="get" novalidate>
             <div class="formData" data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom">
               <label for="first">Prénom</label>
               <input class="text-control" type="text" id="first" name="first" minlength="2" required>
@@ -116,22 +116,20 @@
                 Je souhaite être prévenu des prochains évènements.
               </label>
             </div>
-            <input class="button btn-submit" type="submit" value="C'est parti">
+            <input class="btn btn-submit" type="submit" value="C'est parti">
           </form>
         </div>
       </div>
     </div>
 
-    <div class="bground signup-done">
+    <div id="modal-done" class="modal">
       <div class="content">
-        <span class="close"></span>
+        <span class="modal-close"></span>
         <div class="modal-body">
           <P class="text-center">
-            Merci !
-            <br>
-            Votre réservation, a été reçue.
+            Merci pour votre inscription
           </P>
-          <button class="btn-close">Fermer</button>
+          <button class="btn btn-close">Fermer</button>
         </div>
       </div>
     </div>
