@@ -284,8 +284,8 @@ p {
 }
 
 .checkbox-icon::after {
-  width: 7px;
-  height: 4px;
+  width: 12px;
+  height: 7px;
   left: 22%;
   top: 20%;
   border-radius: 2px;

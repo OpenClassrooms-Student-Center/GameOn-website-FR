@@ -83,23 +83,23 @@
                 <label class="radio-label" for="location1">
                   <span class="radio-icon"></span>
                   New York</label>
-                <input class="radio-input" type="radio" id="location2" name="location" value="San Francisco">
+                <input class="radio-input" type="radio" id="location2" name="location" value="San Francisco" required>
                 <label class="radio-label" for="location2">
                   <span class="radio-icon"></span>
                   San Francisco</label>
-                <input class="radio-input" type="radio" id="location3" name="location" value="Seattle">
+                <input class="radio-input" type="radio" id="location3" name="location" value="Seattle" required>
                 <label class="radio-label" for="location3">
                   <span class="radio-icon"></span>
                   Seattle</label>
-                <input class="radio-input" type="radio" id="location4" name="location" value="Chicago">
+                <input class="radio-input" type="radio" id="location4" name="location" value="Chicago" required>
                 <label class="radio-label" for="location4">
                   <span class="radio-icon"></span>
                   Chicago</label>
-                <input class="radio-input" type="radio" id="location5" name="location" value="Boston">
+                <input class="radio-input" type="radio" id="location5" name="location" value="Boston" required>
                 <label class="radio-label" for="location5">
                   <span class="radio-icon"></span>
                   Boston</label>
-                <input class="radio-input" type="radio" id="location6" name="location" value="Portland">
+                <input class="radio-input" type="radio" id="location6" name="location" value="Portland" required>
                 <label class="radio-label" for="location6">
                   <span class="radio-icon"></span>
                   Portland</label>
@@ -136,10 +136,22 @@
         </div>
       </div>
     </div>
+
+    <div id="modal-error" class="modal">
+      <div class="modal-content">
+        <span class="modal-close" data-dismiss="modal"></span>
+        <div class="modal-body">
+          <P class="text-center">
+            Désolé, une erreur a eu lieu, nous n'avons pas pu traiter votre réservation !
+          </P>
+          <button class="btn btn-close" data-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
   </main>
   <footer>
     <p class="copyrights">
-      Copyright 2014 - 2022, GameOn Inc.
+      Copyright 2014 - 2023, GameOn Inc.
     </p>
   </footer>
   <script src="modal.js"></script>
