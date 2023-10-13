@@ -2,7 +2,9 @@
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-menu: Roboto, sans-serif;
   --font-slab: var(--font-default);
+
   --modal-duration: 0.8s;
+  --simple-duration: 300ms;
 
   --bg-color-modal: #232323;
 }
@@ -83,7 +85,7 @@ p {
   color: #000000;
   border-radius: 15px;
 
-  transition: all 0.3s ease-in-out;
+  transition: all var(--simple-duration) ease-in-out;
 }
 
 .nav-burger {
@@ -191,7 +193,7 @@ p {
   display: block;
   margin: 0.5em 0;
   opacity: 0;
-  transition: all 0.3s ease-in-out;
+  transition: all var(--simple-duration) ease-in-out;
 }
 
 .formData[data-error-visible="true"]::after {
@@ -215,7 +217,7 @@ p {
   font-size: 1.25em;
   border-radius: 8px;
   border: 2px solid transparent;
-  transition: all 0.3s ease-in-out;
+  transition: all var(--simple-duration) ease-in-out;
 }
 
 .radio-group {
@@ -252,7 +254,7 @@ p {
   display: inline-block;
   width: 20px;
   height: 20px;
-  transition: all 0.3s ease-in-out;
+  transition: all var(--simple-duration) ease-in-out;
 }
 
 .radio-icon::after,
@@ -260,7 +262,7 @@ p {
   position: absolute;
   content: "";
   opacity: 0;
-  transition: all 0.3s ease-in-out;
+  transition: all var(--simple-duration) ease-in-out;
 }
 
 .radio-icon {

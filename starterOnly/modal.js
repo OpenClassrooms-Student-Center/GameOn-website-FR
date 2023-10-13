@@ -69,12 +69,12 @@ for (const element of document.querySelectorAll("[data-dismiss=modal]")) {
 // DOM Elements
 const topNav = document.querySelector("#myTopnav");
 
-const signupModal = document.querySelector("#modal-signup");
+const signupModal = document.querySelector("#modal-signup"); // Modale de réservation
 const signupForm = signupModal.querySelector("form[name=reserve]");
 const formDatas = signupForm.querySelectorAll(".formData");
 
-const modalDone = document.querySelector("#modal-done");
-const modalError = document.querySelector("#modal-error");
+const modalDone = document.querySelector("#modal-done"); // Modale de réussite
+const modalError = document.querySelector("#modal-error"); // Modale d'erreur
 
 // Affectation d'un EventListener "click" à tout les .nav-burger
 // permettant d'afficher le menu responsive
