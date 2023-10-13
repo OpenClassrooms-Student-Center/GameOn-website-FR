@@ -7,7 +7,9 @@
   --bg-color-modal: #232323;
 }
 
-* {
+*,
+::before,
+::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -140,27 +142,24 @@ p {
 /* Modal form */
 
 .modal {
-  display: none;
   position: fixed;
-  z-index: 1;
+  opacity: 0;
+  z-index: -1;
   left: 0;
   top: 0;
   height: 100%;
   width: 100%;
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
+  transition: all var(--modal-duration) ease-in-out;
 }
 
-.modal.open {
-  display: block;
-  animation: fadeIn var(--modal-duration) ease-in-out both;
+.modal.show {
+  z-index: 99;
+  opacity: 1;
 }
 
-.modal.close {
-  animation: fadeOut var(--modal-duration) ease-in-out both !important;
-}
-
-.content {
+.modal-content {
   margin: 0 auto;
   max-width: 500px;
   background: var(--bg-color-modal);
@@ -171,20 +170,18 @@ p {
   padding-top: 10px;
   top: 50vh;
   transform: translateY(-50%);
-}
-
-#modal-signup.open {
-  animation: fadeIn var(--modal-duration) ease-in-out backwards;
-}
-
-#modal-signup.open .content {
-  animation: trailerIn var(--modal-duration) ease-in-out;
+  transition: all var(--modal-duration) ease-in-out;
 }
 
 .modal-body {
   font-size: 1.6rem;
   padding: 15px 8%;
   margin: 15px auto;
+}
+
+#modal-signup:not(.show) .modal-content {
+  top: -150px;
+  transform: none;
 }
 
 .formData[data-error]::after {
@@ -209,6 +206,7 @@ p {
   display: inline-block;
   text-align: justify;
   margin-bottom: 0.5em;
+  padding: 0;
 }
 
 .text-control {
@@ -216,6 +214,7 @@ p {
   padding: 0.5em;
   font-size: 1.25em;
   border-radius: 8px;
+  border: 2px solid transparent;
   transition: all 0.3s ease-in-out;
 }
 
@@ -223,7 +222,6 @@ p {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  justify-content: space-between;
   gap: 8px 1em;
 }
 
@@ -244,7 +242,8 @@ p {
 }
 
 .radio-label {
-  flex: 1 0;
+  flex: 0;
+  gap: 0.5em;
 }
 
 .radio-icon,
@@ -331,11 +330,6 @@ p {
 
 .modal-close::after {
   transform: rotate(-45deg);
-}
-
-.text-label {
-  font-weight: normal;
-  font-size: 1.6rem;
 }
 
 .text-center {
@@ -483,36 +477,5 @@ footer {
     width: auto;
     right: 0;
     top: 0;
-  }
-}
-
-@keyframes trailerIn {
-  from {
-    opacity: 0;
-    top: 0;
-    transform: translateY(-150px);
-  }
-  to {
-    top: 50vh;
-    transform: translateY(-50%);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
   }
 }

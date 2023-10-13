@@ -1,3 +1,18 @@
+const openEvent = new CustomEvent("open");
+const closeEvent = new CustomEvent("close");
+
+const observer = new MutationObserver((records) => {
+  for (const { attributeName, target } of records) {
+    if (attributeName === "open") {
+      if (target.getAttribute("open") == "true") {
+        target.dispatchEvent(openEvent);
+      } else {
+        target.dispatchEvent(closeEvent);
+      }
+    }
+  }
+});
+
 // DOM Elements
 const topNav = document.querySelector("#myTopnav");
 
@@ -7,9 +22,6 @@ const formData = signupForm.querySelectorAll(".formData");
 
 const modalDone = document.querySelector("#modal-done");
 
-const modalBtn = document.querySelectorAll(".btn-signup");
-const closeBtn = document.querySelectorAll(".modal-close, .btn-close");
-
 /**
  * Démarre une modale
  *
@@ -18,10 +30,8 @@ const closeBtn = document.querySelectorAll(".modal-close, .btn-close");
  *
  **/
 function launchModal(modal) {
-  if (modal.init) {
-    modal.init(modal);
-  }
-  modal.classList.add("open");
+  modal.classList.add("show");
+  modal.setAttribute("open", true);
 }
 
 /**
@@ -30,22 +40,9 @@ function launchModal(modal) {
  * Permet le lancement d'un animation pour lors de la fermeture
  * de la modale
  */
-function closeModal(modal, animate = true) {
-  if (modal) {
-    if (animate) {
-      modal.classList.add("close");
-      modal.addEventListener(
-        "animationend",
-        (e) => {
-          modal.classList.remove("open");
-          modal.classList.remove("close");
-        },
-        { once: true }
-      );
-    } else {
-      modal.classList.remove("open");
-    }
-  }
+function closeModal(modal) {
+  modal.setAttribute("open", false);
+  modal.classList.remove("show");
 }
 
 /**
@@ -57,6 +54,7 @@ function closeModal(modal, animate = true) {
  *
  */
 function initForm(modal) {
+  console.log("Init");
   signupForm.reset();
   formData.forEach((element) => {
     element.dataset.errorVisible = false;
@@ -99,6 +97,37 @@ function formValidate(e) {
   }
 }
 
+for (const element of document.querySelectorAll(".modal")) {
+  observer.observe(element, { attributes: true });
+}
+
+/***
+ * Mise en place du lancement des modales en fonction des cibles
+ * des "boutons" avec le toggle=modal
+ */
+for (const element of document.querySelectorAll(
+  "[data-toggle=modal][data-target]"
+)) {
+  const target = document.querySelector(element.dataset.target);
+  if (target && target.classList.contains("modal")) {
+    element.addEventListener("click", (e) => {
+      launchModal(target);
+    });
+  }
+}
+
+/***
+ * Fermeture des modales
+ */
+for (const element of document.querySelectorAll("[data-dismiss=modal]")) {
+  const target = element.closest(".modal");
+  if (target) {
+    element.addEventListener("click", (e) => {
+      closeModal(target);
+    });
+  }
+}
+
 /**
  * Gestionnaire des événements clavier
  *
@@ -107,7 +136,7 @@ function keyupEvent(e) {
   switch (e.key) {
     case "Escape":
       document.querySelectorAll(".modal").forEach((element) => {
-        if (element.classList.contains("open")) {
+        if (element.classList.contains("show")) {
           closeModal(element);
         }
       });
@@ -121,26 +150,20 @@ topNav.querySelector(".nav-burger").addEventListener("click", () => {
   topNav.classList.toggle("responsive");
 });
 
-// Affectation d'un EventListener "click" à tout les boutons
-// permettant de lancer la modale de réservation
-modalBtn.forEach((element) =>
-  element.addEventListener("click", (e) => {
-    launchModal(signupModal);
-  })
-);
-
-// Affectation d'un EventListener "click" à tout les boutons
-// permettant de fermer une modale
-closeBtn.forEach((element) =>
-  element.addEventListener("click", (e) => {
-    closeModal(e.target?.closest(".modal"));
-  })
-);
-
 // Affectation d'un EventListener "submit" au formulaire de
 // réservation
 signupForm.addEventListener("submit", formValidate);
-signupModal.init = initForm;
+signupModal.addEventListener("open", initForm);
+//signupModal.init = initForm;
 
 // Ajout du gestionnaire du clavier
 document.addEventListener("keyup", keyupEvent);
+
+document.querySelectorAll("input").forEach((element) => {
+  element.addEventListener("change", (e) => {
+    console.log(e.target.validity);
+    if (e.target.validity.valid) {
+      e.target.closest(".formData").dataset.errorVisible = false;
+    }
+  });
+});

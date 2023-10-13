@@ -39,20 +39,20 @@
           Vous aimez jouer ? Notre prochain évènement gaming est ouvert
           aux réservations... Places limitées !
         </p>
-        <button class="btn btn-signup">
+        <button class="btn btn-signup" data-toggle="modal" data-target="#modal-signup">
           Je m'inscris
         </button>
       </div>
       <div class="hero-img">
         <img src="./bg_img.jpg" alt="img">
       </div>
-      <button class="btn btn-signup">
+      <button class="btn btn-signup" data-toggle="modal" data-target="#modal-signup">
         Je m'inscris
       </button>
     </div>
     <div id="modal-signup" class="modal">
-      <div class="content">
-        <span class="modal-close"></span>
+      <div class="modal-content">
+        <span class="modal-close" data-dismiss="modal"></span>
         <div class="modal-body">
           <form name="reserve" action="index.html" method="get" novalidate>
             <div class="formData" data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom">
@@ -76,9 +76,9 @@
                 ?</label>
               <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required>
             </div>
-            <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
             <div class="formData" data-error="Veuillez indiquer un tournoi auquel vous voulez participer">
-              <div class="radio-group">
+              <p class="label-control">A quel tournoi souhaitez-vous participer cette année ?</p>
+              <div class="radio-group text-control">
                 <input class="radio-input" type="radio" id="location1" name="location" value="New York" required>
                 <label class="radio-label" for="location1">
                   <span class="radio-icon"></span>
@@ -126,13 +126,13 @@
     </div>
 
     <div id="modal-done" class="modal">
-      <div class="content">
-        <span class="modal-close"></span>
+      <div class="modal-content">
+        <span class="modal-close" data-dismiss="modal"></span>
         <div class="modal-body">
           <P class="text-center">
             Merci pour votre inscription
           </P>
-          <button class="btn btn-close">Fermer</button>
+          <button class="btn btn-close" data-dismiss="modal">Fermer</button>
         </div>
       </div>
     </div>
