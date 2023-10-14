@@ -1,5 +1,2 @@
-# Ignore .vscode folder
-.vscode/
-
-# Ignore node_modules folder
 node_modules/
+package-lock.json
