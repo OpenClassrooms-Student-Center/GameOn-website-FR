@@ -85,7 +85,8 @@ p {
   color: #000000;
   border-radius: 15px;
 
-  transition: all var(--simple-duration) ease-in-out;
+  transition: background-color var(--simple-duration) ease-in-out,
+    color var(--simple-duration) ease-in-out;
 }
 
 .nav-burger {
@@ -154,7 +155,8 @@ p {
   font-size: 1.6rem;
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
-  transition: all var(--modal-duration) ease-in-out;
+  transition: opacity var(--modal-duration) ease-in-out,
+    visibility var(--modal-duration) ease-in-out;
 }
 
 .modal.show {
@@ -172,7 +174,8 @@ p {
   color: #fff;
   top: 50vh;
   transform: scale(1) translateY(-50%);
-  transition: all var(--modal-duration) ease-in-out;
+  transition: transform var(--modal-duration) ease-in-out,
+    top var(--modal-duration) ease-in-out;
 }
 
 .modal-header {
@@ -205,7 +208,7 @@ p {
   display: block;
   margin: 0.5em 0;
   opacity: 0;
-  transition: all var(--simple-duration) ease-in-out;
+  transition: opacity var(--simple-duration) ease-in-out;
 }
 
 .formData[data-error-visible="true"]::after {
@@ -213,7 +216,7 @@ p {
 }
 
 .formData[data-error-visible="true"] .text-control {
-  border: 2px solid #e54858;
+  border-color: #e54858;
 }
 
 .label-control {
@@ -229,13 +232,14 @@ p {
   font-size: 1.25em;
   border-radius: 8px;
   border: 2px solid transparent;
-  transition: all var(--simple-duration) ease-in-out;
+  transition: border-color var(--simple-duration) ease-in-out;
 }
 
 .radio-group {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
+  justify-content: space-around;
   font-size: inherit;
   gap: 8px 1em;
   padding: 0;
@@ -260,6 +264,7 @@ p {
 .radio-label {
   flex: 0;
   gap: 0.5em;
+  min-width: 120px;
 }
 
 .radio-icon,
@@ -268,7 +273,7 @@ p {
   display: inline-block;
   width: 20px;
   height: 20px;
-  transition: all var(--simple-duration) ease-in-out;
+  transition: background-color var(--simple-duration) ease-in-out;
 }
 
 .radio-icon::after,
@@ -276,7 +281,7 @@ p {
   position: absolute;
   content: "";
   opacity: 0;
-  transition: all var(--simple-duration) ease-in-out;
+  transition: opacity var(--simple-duration) ease-in-out;
 }
 
 .radio-icon {
