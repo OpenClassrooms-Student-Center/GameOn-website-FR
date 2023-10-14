@@ -84,9 +84,6 @@ p {
   font-family: var(--font-menu);
   color: #000000;
   border-radius: 15px;
-
-  transition: background-color var(--simple-duration) ease-in-out,
-    color var(--simple-duration) ease-in-out;
 }
 
 .nav-burger {
