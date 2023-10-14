@@ -239,9 +239,9 @@ p {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   font-size: inherit;
-  gap: 8px 1em;
+  gap: 0.5em 1em;
   padding: 0;
 }
 
@@ -262,9 +262,7 @@ p {
 }
 
 .radio-label {
-  flex: 0;
-  gap: 0.5em;
-  min-width: 120px;
+  flex: 1 0;
 }
 
 .radio-icon,
