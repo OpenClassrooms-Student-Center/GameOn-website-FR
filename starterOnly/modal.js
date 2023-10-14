@@ -1,3 +1,17 @@
+// Ajout de getter et setter pour l'attribut "open" aux
+// prototypes, elle ne sera appellé que si la classe
+// n'a pas défini de mutateur pour cette propriété.
+Object.defineProperty(HTMLElement.prototype, "open", {
+  enumerable: true,
+  configurable: true,
+  get: function () {
+    return this.getAttribute("open");
+  },
+  set: function (value) {
+    this.setAttribute("open", value);
+  },
+});
+
 // Ajout d'événement personnalisés pour "open" et
 // "close" afin de gérer l'ouverture et/ou la formeture
 // d'une modale (par exemple, pour initialiser un
@@ -6,37 +20,31 @@ const openEvent = new CustomEvent("open");
 const closeEvent = new CustomEvent("close");
 
 const observer = new MutationObserver((records) => {
-  for (const { attributeName, target } of records)
-    if (attributeName === "open")
-      target.dispatchEvent(
-        target.getAttribute("open") == "true" ? openEvent : closeEvent
-      );
+  for (const { target } of records) {
+    if (target.getAttribute("open") === "true") {
+      target.classList.add("show");
+      target.dispatchEvent(openEvent);
+    } else {
+      target.classList.remove("show");
+      target.dispatchEvent(closeEvent);
+    }
+  }
 });
 
-for (const element of document.querySelectorAll(".modal"))
-  observer.observe(element, { attributes: true });
+const options = {
+  attributeFilter: ["open"],
+  attributes: true,
+};
 
-// Functions pour gérer les modales
-function showModal(modal) {
-  modal.classList.add("show");
-  modal.setAttribute("open", true);
-}
-
-function closeModal(modal) {
-  modal.setAttribute("open", false);
-  modal.classList.remove("show");
-}
-
-function toggleModal(modal) {
-  if (isShow(modal)) {
-    showModal(modal);
-  } else {
-    closeModal(modal);
-  }
-}
-
-function isShow(modal) {
-  return modal.classList.contains("show");
+for (const modal of document.querySelectorAll(".modal")) {
+  modal.open = false;
+  observer.observe(modal, options);
+  modal.showModal = function () {
+    this.open = true;
+  };
+  modal.close = function () {
+    this.open = false;
+  };
 }
 
 /***
@@ -49,7 +57,7 @@ for (const element of document.querySelectorAll(
   const target = document.querySelector(element.dataset.target);
   if (target && target.classList.contains("modal")) {
     element.addEventListener("click", (e) => {
-      showModal(target);
+      target.showModal();
     });
   }
 }
@@ -61,7 +69,7 @@ for (const element of document.querySelectorAll("[data-dismiss=modal]")) {
   const target = element.closest(".modal");
   if (target) {
     element.addEventListener("click", (e) => {
-      closeModal(target);
+      target.close();
     });
   }
 }
@@ -74,7 +82,7 @@ const signupForm = signupModal.querySelector("form[name=reserve]");
 const formDatas = signupForm.querySelectorAll(".formData");
 
 const modalDone = document.querySelector("#modal-done"); // Modale de réussite
-const modalError = document.querySelector("#modal-error"); // Modale d'erreur
+const messageDone = modalDone.querySelector(".message");
 
 // Affectation d'un EventListener "click" à tout les .nav-burger
 // permettant d'afficher le menu responsive
@@ -112,15 +120,15 @@ signupForm.addEventListener("submit", (e) => {
     // Début du traitement de l'envoie des données du formulaire et réception de
     // la confirmation de la réservation
     // ...
-    success = true; // Pour l'instant, on met a "true" pour simulier la réussite
+    success = true; // Pour l'instant, on met a "true" pour simuler la réussite
     // ...
     // Fin du traitement
-    closeModal(signupModal);
-    if (success) {
-      showModal(modalDone);
-    } else {
-      showModal(modalError);
-    }
+    //signupModal.close();
+    signupModal.close();
+    messageDone.innerHTML = success
+      ? "Merci pour votre inscription !"
+      : "Désolé, nous n'avons pas vu valider votre réservation !";
+    modalDone.showModal();
   } else {
     errors[0].focus();
   }
@@ -147,8 +155,8 @@ window.addEventListener("keyup", ({ key, target }) => {
         target.blur();
       } else {
         for (const modal of document.querySelectorAll(".modal"))
-          if (isShow(modal)) {
-            closeModal(element);
+          if (modal.open) {
+            modal.close();
           }
       }
       break;
@@ -157,7 +165,7 @@ window.addEventListener("keyup", ({ key, target }) => {
 
 // Ajout du gestionnaire du click pour fermer les modales
 window.addEventListener("click", ({ target }) => {
-  if (target.classList.contains("modal")) {
-    closeModal(target);
+  if (target.classList.contains("modal") && target.open) {
+    target.close();
   }
 });

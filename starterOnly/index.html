@@ -52,9 +52,11 @@
     </div>
     <div id="modal-signup" class="modal">
       <div class="modal-content">
-        <span class="modal-close" data-dismiss="modal"></span>
+        <header class="modal-header">
+          <span class="modal-close" data-dismiss="modal"></span>
+        </header>
         <div class="modal-body">
-          <form name="reserve" action="index.html" method="get" novalidate>
+          <form id="reserve" name="reserve" action="index.html" method="get" novalidate>
             <div class="formData" data-error="Veuillez entrer 2 caractères ou plus pour le champ du prénom">
               <label class="label-control" for="first">Prénom</label>
               <input class="text-control" type="text" id="first" name="first" minlength="2" required>
@@ -119,37 +121,32 @@
                 Je souhaite être prévenu des prochains évènements.
               </label>
             </div>
-            <input class="btn btn-submit" type="submit" value="C'est parti">
           </form>
         </div>
+        <footer class="modal-footer">
+          <button class="btn btn-submit" type="submit" form="reserve">C'est parti</button>
+        </footer>
       </div>
     </div>
 
     <div id="modal-done" class="modal">
       <div class="modal-content">
-        <span class="modal-close" data-dismiss="modal"></span>
+        <header class="modal-header">
+          <span class="modal-close" data-dismiss="modal"></span>
+        </header>
         <div class="modal-body">
-          <P class="text-center">
-            Merci pour votre inscription
-          </P>
-          <button class="btn btn-close" data-dismiss="modal">Fermer</button>
+          <div class="message">
+            {message}
+          </div>
         </div>
+        <footer class="modal-footer">
+          <button class="btn btn-close" data-dismiss="modal">Fermer</button>
+        </footer>
       </div>
     </div>
 
-    <div id="modal-error" class="modal">
-      <div class="modal-content">
-        <span class="modal-close" data-dismiss="modal"></span>
-        <div class="modal-body">
-          <P class="text-center">
-            Désolé, une erreur a eu lieu, nous n'avons pas pu traiter votre réservation !
-          </P>
-          <button class="btn btn-close" data-dismiss="modal">Fermer</button>
-        </div>
-      </div>
-    </div>
   </main>
-  <footer>
+  <footer class="footer">
     <p class="copyrights">
       Copyright 2014 - 2023, GameOn Inc.
     </p>

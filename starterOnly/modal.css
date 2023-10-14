@@ -125,7 +125,6 @@ p {
 
 .btn-submit,
 .btn-close {
-  margin-top: 3rem;
   padding: 1rem 5rem;
 }
 
@@ -145,19 +144,21 @@ p {
 
 .modal {
   position: fixed;
+  visibility: hidden;
   opacity: 0;
-  z-index: -1;
+  z-index: 1;
   left: 0;
   top: 0;
   height: 100%;
   width: 100%;
+  font-size: 1.6rem;
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
   transition: all var(--modal-duration) ease-in-out;
 }
 
 .modal.show {
-  z-index: 99;
+  visibility: visible;
   opacity: 1;
 }
 
@@ -169,21 +170,32 @@ p {
   overflow: hidden;
   position: relative;
   color: #fff;
-  padding-top: 10px;
   top: 50vh;
-  transform: translateY(-50%);
+  transform: scale(1) translateY(-50%);
   transition: all var(--modal-duration) ease-in-out;
 }
 
+.modal-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 4px;
+}
+
 .modal-body {
-  font-size: 1.6rem;
-  padding: 15px 8%;
-  margin: 15px auto;
+  padding: 15px 2em;
+}
+
+.modal-footer {
+  padding: 15px;
 }
 
 #modal-signup:not(.show) .modal-content {
   top: -150px;
-  transform: none;
+  transform: scale(1);
+}
+
+#modal-done:not(.show) .modal-content {
+  transform: scale(0) translateY(-50%);
 }
 
 .formData[data-error]::after {
@@ -224,7 +236,9 @@ p {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
+  font-size: inherit;
   gap: 8px 1em;
+  padding: 0;
 }
 
 .radio-input,
@@ -307,13 +321,12 @@ p {
 }
 
 .modal-close {
-  position: absolute;
-  right: 15px;
-  top: 15px;
+  position: relative;
+  display: block;
   width: 32px;
   height: 32px;
   cursor: pointer;
-  transform: scale(0.7);
+  border-radius: 10px;
 }
 
 .modal-close::before,
@@ -321,20 +334,29 @@ p {
   position: absolute;
   left: 15px;
   content: " ";
-  height: 33px;
-  width: 3px;
+  height: 100%;
+  width: 8%;
   background-color: #fff;
 }
 
 .modal-close::before {
-  transform: rotate(45deg);
+  transform: scale(0.7) rotate(45deg);
 }
 
 .modal-close::after {
-  transform: rotate(-45deg);
+  transform: scale(0.7) rotate(-45deg);
 }
 
-.text-center {
+.modal-close:hover {
+  background-color: #ffffff;
+}
+
+.modal-close:hover::before,
+.modal-close:hover::after {
+  background-color: black;
+}
+
+.message {
   padding: 2em;
   text-align: center;
 }
@@ -405,7 +427,7 @@ footer {
 @media screen and (max-width: 850px) {
   main {
     padding: 30px;
-    font-size: 1.3rem;
+    font-size: 1.6rem;
     margin: 0;
   }
 
