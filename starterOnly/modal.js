@@ -46,7 +46,11 @@ function closeModal() {
 // (4) Pour le nombre de concours, une valeur numérique est saisie.
 //Condition, vérifier si le nombre est composé de chiffres
 // (5) Un bouton radio est sélectionné.
-//condition, vérifier tout les boutons, si il y en a un checké
-// (6) La case des conditions générales est cochée, l'autre case est facultative / peut être laissée décochée.
+//condition, vérifier tout les boutons, si il y en a un checké, avec une boucle
+// (6) La case des conditions générales est cochée, l'autre case est facultative / peut être laissée décochée. propriété checked 
+// true or false, utiliser un boléen
 //Consigne peu claire, demander au tuteur, je laisse comme ça?
-// Conserver les données du formulaire (ne pas effacer le formulaire) lorsqu'il ne passe pas la validation.
+// Conserver les données du formulaire (ne pas effacer le formulaire) lorsqu'il ne passe pas la validation. => utiliser la prorpiété event prevent defaut pour éviter
+//le rechargement au submit du formulaire
+
+//Voir le cours chapitre "récupérez la valeur d'un champ de formulaire"
