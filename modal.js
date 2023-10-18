@@ -1,3 +1,22 @@
+const modal = document.querySelector(".bground");
+let closeCross = document.querySelector(".close");
+function closeModal() {
+  modal.style.display = "none"
+}
+closeCross.addEventListener('click', closeModal);
+
+
+  // When the user clicks anywhere outside of the modal, close it
+  window.onclick = function(event) {
+  if (event.target == modal) {
+  modal.style.display = "none";
+}
+}
+
+
+
+
+
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -8,7 +27,6 @@ function editNav() {
 }
 
 // DOM Elements
-const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
