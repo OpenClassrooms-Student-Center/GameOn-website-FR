@@ -8,10 +8,11 @@ function editNav() {
 }
 
 // DOM Elements
-const modalbg = document.querySelector(".bground");
+const modalbg = document.getElementById("bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const closeModal = document.querySelector(".close");
+const closeModal = document.getElementById("close");
+const closeValidation = document.getElementById("close-modal");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -19,18 +20,19 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 //close modal event
 closeModal.addEventListener("click", closeModalHandler);
 
-const closeValidation = document.getElementById("close-modal");
-closeValidation.addEventListener("click", closeValidationHandler);
+//close validation modal
+closeValidation.addEventListener("click", function () {
+  modalValidate.style.display = "none"; // Masque la modal de remerciement
+  modalbg.style.display = "none";
+});
 
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  modalBody.style.display = "flex";
 }
 
 //close modal form
 function closeModalHandler() {
-  modalbg.style.display = "none";
-}
-function closeValidationHandler() {
   modalbg.style.display = "none";
 }

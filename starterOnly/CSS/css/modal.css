@@ -142,7 +142,10 @@ main {
 
 .validation-msg {
   padding-top: 10%;
-
+  font-size: 36px;
+  line-height: 51px;
+  text-align: center;
+  font-weight: 400;
 }
 
 #close-modal {
@@ -249,12 +252,13 @@ input {
 
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
+  /* font-size: 0.4em; */
+  font-size: 0.6em;
   color: #e54858;
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  /* text-align: right; */
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -268,12 +272,13 @@ input {
   border: 2px solid #e54858;
 }
 
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
+
+/* input[data-error]::after {
+  content: attr(data-error);
+  font-size: 0.4em;
+  color: red;
 } */
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;

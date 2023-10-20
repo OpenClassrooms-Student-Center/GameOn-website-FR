@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <title>Reservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="modal.css" />
+    <link rel="stylesheet" href="CSS/css/modal.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
       href="https://fonts.googleapis.com/css?family=DM+Sans"
@@ -14,7 +14,7 @@
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
+      <img alt="logo" src="CSS/assets/Logo.png" width="auto" height="auto" />
     </div>
     <div class="main-navbar">
       
@@ -45,18 +45,19 @@
           </button>
         </div>
         <div class="hero-img">
-          <img src="./bg_img.jpg" alt="img" />
+          <img src="CSS/assets/bg_img.jpg" alt="img" />
         </div>
         <button class="btn-signup modal-btn">
           je m'inscris
         </button>
       </div>
 
-      <div class="bground">
+      <div class="bground" id="bground">
         <div class="content">
-          <span class="close"></span>
+          <span class="close" id="close"></span>
+          <!-- validation modal  -->
           <div class="modal-validate">
-            <div class="validation-msg">Merci pour votre inscription</div>
+            <div class="validation-msg">Merci pour inscription</div>
             <button class="btn-signup modal-btn" id="close-modal">
               Fermer
             </button>
@@ -65,23 +66,22 @@
           <div class="modal-body">
             <form
               name="reserve"
+              id="reserve"
               action="index.html"
-              method="get"
-              onsubmit="return validate();"
+             
             >
               <div
-                class="formData">
+                class="formData" data-error="Le champ Prénom doit contenir au moins 2 caractères">
                 <label for="first">Prénom</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData" data-error="Le champ Nom doit contenir au moins 2 caractères.">
                 <label for="last">Nom</label><br>
                 <input
                   class="text-control"
@@ -91,7 +91,7 @@
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData" data-error="L'adresse électronique n'est pas valide.">
                 <label for="email">E-mail</label><br>
                 <input
                   class="text-control"
@@ -111,13 +111,13 @@
                 /><br>
               </div>
               <div
-                class="formData">
+                class="formData" data-error="Le nombre de concours doit être une valeur numérique.">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
-                class="formData">
+                class="formData" data-error="Sélectionnez un emplacement.">
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -187,7 +187,7 @@
               </div>
 
               <div
-                class="formData">
+                class="formData" data-error="Vous devez accepter les conditions générales.">
                 <input
                   class="checkbox-input"
                   type="checkbox"
@@ -209,7 +209,7 @@
               <input
                 class="btn-submit"
                 type="submit"
-                class="button"
+                id="button-submit"
                 value="C'est parti"
               />
             </form>
@@ -222,7 +222,7 @@
         Copyright 2014 - 2022, GameOn Inc.
       </p>
     </footer>
-    <script src="modal.js"></script>
-    <script src="validate.js"></script>
+    <script src="JS/modal.js"></script>
+    <script src="JS/validate.js"></script>
   </body>
 </html>
