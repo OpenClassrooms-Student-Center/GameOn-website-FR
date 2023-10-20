@@ -14,7 +14,10 @@ const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
+const modalSuccess = document.querySelector(".modal-success");
 const modalBtn = document.querySelectorAll(".modal-btn");
+const closeBtn = document.querySelector(".close");
+const closeBtnSuccess = document.querySelector(".close-success");
 const formData = document.querySelectorAll(".formData");
 
 const firstName = document.querySelector("#first");
@@ -22,7 +25,9 @@ const lastName = document.querySelector("#last");
 const email = document.querySelector("#email");
 const birthDate = document.querySelector("#birthdate");
 const quantity = document.querySelector("#quantity");
-const locationCheckbox = document.querySelectorAll('input[name="location"]');
+const locationCheckboxArray = Array.from(
+  document.querySelectorAll('input[name="location"]')
+);
 const conditionCheckbox1 = document.querySelector("#checkbox1");
 const conditionCheckbox2 = document.querySelector("#checkbox2");
 
@@ -30,11 +35,16 @@ const conditionCheckbox2 = document.querySelector("#checkbox2");
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 //close modal event
-formData.forEach((form) => form.addEventListener("submit", closeModal));
+closeBtn.addEventListener("click", closeModal);
 
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+}
+
+// launch modal event
+function launchSuccessModal() {
+  modalSuccess.style.display = "block";
 }
 
 // close modal event
@@ -42,78 +52,52 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
+// close success modal
+function closeSuccessModal() {
+  modalSuccess.style.display = "none";
+}
+
 // form validation
 const submit = document.querySelector(".btn-submit");
-
 submit.addEventListener("click", (e) => {
   e.preventDefault();
 
   if (checkForm()) {
     closeModal();
+    launchSuccessModal();
   }
 });
 
 function checkForm() {
-  // check firstname
-  let firstNameValid =
-    firstName.value.length >= 2 && nameRegex.test(firstName.value);
-  formData[0].setAttribute(
-    "data-error-visible",
-    firstNameValid ? "false" : "true"
-  );
+  const validations = [
+    { input: firstName, regex: nameRegex },
+    { input: lastName, regex: nameRegex },
+    { input: email, regex: emailRegex },
+    { input: birthDate, regex: dateRegex },
+    { input: quantity, regex: null  },
+    { input: locationCheckboxArray, regex: null },
+    { input: conditionCheckbox1, regex: null }
+  ];
 
-  // check lastname
-  let lastNameValid =
-    lastName.value.length >= 2 && nameRegex.test(lastName.value);
-  formData[1].setAttribute(
-    "data-error-visible",
-    lastNameValid ? "false" : "true"
-  );
+  let isValid = true;
 
-  // check email
-  let emailValid = email.value !== "" && emailRegex.test(email.value);
-  formData[2].setAttribute("data-error-visible", emailValid ? "false" : "true");
+  validations.forEach((validation, index) => {
+    const { input, regex } = validation;
 
-  // check birthdate
-  let birthDateValid =
-    birthDate.value !== "" && dateRegex.test(birthDate.value);
-  formData[3].setAttribute(
-    "data-error-visible",
-    birthDateValid ? "false" : "true"
-  );
+    let isValidInput = true;
 
-  // check quantity
-  let numberValid = !quantity.value;
-  formData[4].setAttribute(
-    "data-error-visible",
-    numberValid ? "false" : "true"
-  );
+    if (regex) {
+      isValidInput = regex.test(input.value);
+    } else if (Array.isArray(input)) {
+      isValidInput = input.some((item) => item.checked);
+    } else {
+      console.log(input.value);
+      isValidInput = input.value ?? input.checked;
+    }
 
-  // check location
+    formData[index].setAttribute("data-error-visible", String(!isValidInput));
+    isValid &&= isValidInput;
+  });
 
-  let locationValid =
-    locationCheckbox.filter((x) => x.checked === true).length === 1;
-  formData[5].setAttribute(
-    "data-error-visible",
-    locationValid ? "false" : "true"
-  );
-
-  // check conditions
-  let conditionValid =
-    conditionCheckbox1.checked || conditionCheckbox2.checked;
-    formData[6].setAttribute(
-    "data-error-visible",
-    conditionValid ? "false" : "true"
-  );
-
-
-  return !!(
-    firstNameValid &&
-    lastNameValid &&
-    emailValid &&
-    birthDateValid &&
-    numberValid &&
-    locationValid &&
-    conditionValid
-  );
+  return isValid;
 }

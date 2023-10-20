@@ -186,6 +186,16 @@ main {
   margin: 15px auto;
 }
 
+.modal-body-success {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 500px;
+  text-align: center;
+  align-items: center;
+}
+
+
 label {
   font-family: var(--font-default);
   font-size: 17px;
