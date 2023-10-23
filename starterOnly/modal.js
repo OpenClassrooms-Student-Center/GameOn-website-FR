@@ -16,8 +16,10 @@ const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
 const modalbg = document.querySelector(".bground");
 const modalSuccess = document.querySelector(".modal-success");
 const modalBtn = document.querySelectorAll(".modal-btn");
-const closeBtn = document.querySelector(".close");
+const closeBtn = document.querySelector("#close-btn");
 const closeBtnSuccess = document.querySelector(".close-success");
+const closeBtnByBtn = document.querySelector(".close-by-btn");
+const modalContent = document.querySelector(".modal-content");
 const formData = document.querySelectorAll(".formData");
 
 const firstName = document.querySelector("#first");
@@ -36,6 +38,8 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 //close modal event
 closeBtn.addEventListener("click", closeModal);
+closeBtnSuccess.addEventListener("click", closeSuccessModal);
+closeBtnByBtn.addEventListener("click", closeSuccessModal);
 
 // launch modal form
 function launchModal() {
@@ -62,7 +66,24 @@ const submit = document.querySelector(".btn-submit");
 submit.addEventListener("click", (e) => {
   e.preventDefault();
 
+  let selectedLocation = locationCheckboxArray.find((item) =>
+    item.checked ? item.value : null
+  );
+  console.log("selectedLocation", selectedLocation?.value);
+
   if (checkForm()) {
+    let sendFormData = {
+      firstName: firstName.value,
+      lastName: lastName.value,
+      email: email.value,
+      birthDate: birthDate.value,
+      quantity: quantity.value,
+      location: selectedLocation?.value,
+      condition1: conditionCheckbox1.checked,
+      condition2: conditionCheckbox2.checked,
+    };
+
+    console.log(sendFormData);
     closeModal();
     launchSuccessModal();
   }
@@ -74,9 +95,9 @@ function checkForm() {
     { input: lastName, regex: nameRegex },
     { input: email, regex: emailRegex },
     { input: birthDate, regex: dateRegex },
-    { input: quantity, regex: null  },
+    { input: quantity, regex: null },
     { input: locationCheckboxArray, regex: null },
-    { input: conditionCheckbox1, regex: null }
+    { input: conditionCheckbox1, regex: null },
   ];
 
   let isValid = true;
@@ -91,7 +112,6 @@ function checkForm() {
     } else if (Array.isArray(input)) {
       isValidInput = input.some((item) => item.checked);
     } else {
-      console.log(input.value);
       isValidInput = input.value ?? input.checked;
     }
 

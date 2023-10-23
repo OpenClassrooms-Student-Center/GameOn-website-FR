@@ -51,16 +51,20 @@
 
       <div class="bground">
         <div class="content">
-          <span class="close"></span>
+          <span id="close-btn" class="close"></span>
           <div class="modal-body">
             <form
               class="form"
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate()"
+              onsubmit="return checkForm()"
             >
-              <div class="formData" data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom." data-error-visible="false">
+              <div
+                class="formData"
+                data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom."
+                data-error-visible="false"
+              >
                 <label>Prénom</label><br />
                 <input
                   class="text-control"
@@ -70,7 +74,11 @@
                   minlength="2"
                 /><br />
               </div>
-              <div class="formData" data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom." data-error-visible="false">
+              <div
+                class="formData"
+                data-error="Veuillez entrer 2 caractères ou plus pour le champ du nom."
+                data-error-visible="false"
+              >
                 <label>Nom</label><br />
                 <input
                   class="text-control"
@@ -79,15 +87,19 @@
                   name="last"
                 /><br />
               </div>
-              <div class="formData" data-error="Veuillez entrer un email valide" data-error-visible="false">
+              <div
+                class="formData"
+                data-error="Veuillez entrer un email valide"
+                data-error-visible="false"
+              >
                 <label>E-mail</label><br />
-                <input
-                  class="text-control"
-                  type="email"
-                  id="email"
-                /><br />
+                <input class="text-control" type="email" id="email" /><br />
               </div>
-              <div class="formData" data-error="Vous devez entrer votre date de naissance." data-error-visible="false">
+              <div
+                class="formData"
+                data-error="Vous devez entrer votre date de naissance."
+                data-error-visible="false"
+              >
                 <label>Date de naissance</label><br />
                 <input
                   class="text-control"
@@ -96,7 +108,11 @@
                   name="birthdate"
                 /><br />
               </div>
-              <div class="formData" data-error="Veuillez entrer un nombre" data-error-visible="false">
+              <div
+                class="formData"
+                data-error="Veuillez entrer un nombre"
+                data-error-visible="false"
+              >
                 <label
                   >À combien de tournois GameOn avez-vous déjà participé
                   ?</label
@@ -113,7 +129,11 @@
               <p class="text-label">
                 A quel tournoi souhaitez-vous participer cette année ?
               </p>
-              <div class="formData" data-error="Vous devez choisir une option." data-error-visible="false">
+              <div
+                class="formData"
+                data-error="Vous devez choisir une option."
+                data-error-visible="false"
+              >
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -182,7 +202,11 @@
                 >
               </div>
 
-              <div class="formData" data-error="Vous devez vérifier que vous acceptez les termes et conditions." data-error-visible="false">
+              <div
+                class="formData"
+                data-error="Vous devez vérifier que vous acceptez les termes et conditions."
+                data-error-visible="false"
+              >
                 <input
                   class="checkbox-input"
                   type="checkbox"
@@ -218,7 +242,7 @@
             <p class="modal-body-success">
               Votre inscription a bien été prise en compte.
             </p>
-            <button class="btn-submit">Fermer</button>
+            <button class="btn-submit close-by-btn">Fermer</button>
           </div>
         </div>
       </div>
