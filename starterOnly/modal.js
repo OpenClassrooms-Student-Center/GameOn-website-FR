@@ -89,6 +89,7 @@ submit.addEventListener("click", (e) => {
   }
 });
 
+// check all form fields
 function checkForm() {
   const validations = [
     { input: firstName, regex: nameRegex },
