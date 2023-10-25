@@ -130,6 +130,16 @@ function newsLetterCheck(value) {
 
 }
 
+//Fonction pour afficher les erreurs dans le HTML
+
+function displayError(error){
+  const divError = document.createElement("div");
+  divError.classList.add("error-div");
+  const paraError = document.createElement("p");
+  paraError.textContent = error.message;
+  divError.appendChild(paraError);
+}
+
 
 //Traitement du formulaire en try/catch event en submit
 
