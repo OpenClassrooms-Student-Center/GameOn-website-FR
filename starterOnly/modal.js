@@ -56,6 +56,19 @@ function checkEmail(email){
 
 //Fonction qui vérifie la date de naissance (année comprise entre 1900 et 2023)
 
+function checkBirthdate(birthdate) {
+  const currentYear = new Date().getFullYear();
+  const regex = new RegExp("^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/(19[0-9]{2}|20[0-" + (currentYear - 2000) + "]{2})$");
+  
+  if (birthdate.value.trim() === "") {
+      throw new Error(`Vous devez entrer une ${birthdate.name}`);
+  }
+  if (!regex.test(birthdate.value.trim())) {
+      throw new Error(`La date de naissance est invalide`);
+  }
+}
+
+
 //Fonction qui vérifie le nombre de tournoi
 
 //Fonction qui vérifie si un tournoi est checké
@@ -80,6 +93,9 @@ checkIdentity(last);
 
 const email = document.getElementById("email");
 checkEmail(email);
+
+const birthdate = document.getElementById("birthdate");
+checkBirthdate(birthdate);
 
 }catch(error){
   console.log(error.message);
