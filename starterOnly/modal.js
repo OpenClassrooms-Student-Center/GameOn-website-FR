@@ -22,18 +22,18 @@ function launchModal() {
 }
 
 
-//////////////////Fermeture du formulaire///////////
+//Fermeture du formulaire
 const closeModalBtn = document.querySelector(".close");
 closeModalBtn.addEventListener("click", closeModal);
 
 function closeModal() {
   modalbg.style.display = "none";
-  form.reset();
+  form.reset(); //reset du formulaire à la fermeture
 }
 
-//Vérifier que le champ Prénom a un minimum de 2 caractères n'est pas vide.
 
-//Fonction qui vérifie le prénom et le nom non vide et au moins 2 caractère
+
+//Fonction qui vérifie que le prénom et le nom ne soient pas vide et aient au moins 2 caractère
 
 function checkIdentity(identity) {
   if (identity.value.trim() === "") {
@@ -48,7 +48,7 @@ function checkIdentity(identity) {
 function checkEmail(email) {
   const regex = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$");
   if (email.value.trim() === "") {
-    throw new Error(`Vous devez mettre un ${email.name}`);
+    throw new Error(`Vous devez mettre un email`);
   }
   if (!regex.test(email.value.trim())) {
     throw new Error(`L'adresse e-mail est invalide`);

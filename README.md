@@ -9,7 +9,7 @@
 
 1. Issue 1 : Terminé
 
-2. Issue 2 :
+2. Issue 2 : Terminé
 
  (1) Terminé
 (2) Utiliser du JavaScript pur (pas de jQuery) pour terminer le formulaire :
