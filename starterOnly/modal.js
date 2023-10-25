@@ -72,7 +72,7 @@ function checkBirthdate(birthdate) {
 
 //Fonction qui vérifie le nombre de tournoi
 
-function checkTournament(numberTournament) {
+function checkTournamentNumber(numberTournament) {
   if (numberTournament.value.trim() === "") {
     throw new Error(`Vous devez mettre un nombre de tournois`);
   }
@@ -89,10 +89,44 @@ function checkTournament(numberTournament) {
 }
 //Fonction qui vérifie si un tournoi est checké
 
+function tournamentChecked(inputLocation){
+  let place ="";
+  for(let i =0; i < inputLocation.length; i++){
+    if(inputLocation[i].checked){
+      place = inputLocation[i].value;
+      break;
+    }
+  }
+  
+  if (place === "") {
+    throw new Error("Aucune option n'a été cochée !");
+}
+  console.log(place);
+}
+
 //Fonction qui vérifie le check des conditions d'utilisation
 
-//Une fois les fonctions mise en place, mettre en place le try/catch
+function conditionAccepted(value){
+  let accepted = value.checked;
+  console.log(accepted);
+  if (accepted === false) {
+    throw new Error("Vous devez accepter les conditions!");
+}
+}
+//Fonction qui vérifie le check de la newsletter facultative
 
+function newsLetterCheck(value){
+  let accepted = value.checked;
+  console.log(accepted);
+
+  if (accepted === true) {
+    console.log("Test newsletter acceptée");
+}
+
+}
+
+
+//Traitement du formulaire en try/catch event en submit
 
 const form = document.getElementById("main-form");
 console.log(form);
@@ -113,8 +147,17 @@ form.addEventListener("submit", (event) => {
     const birthdate = document.getElementById("birthdate");
     checkBirthdate(birthdate);
 
-    const tournament = document.getElementById("quantity");
-    checkTournament(tournament);
+    const tournamentNumber = document.getElementById("quantity");
+    checkTournamentNumber(tournamentNumber);
+
+    const tournamentPlace = document.querySelectorAll('input[name="location"]');
+    tournamentChecked(tournamentPlace);
+
+    const conditions = document.getElementById("checkbox1");
+    conditionAccepted(conditions);
+
+    const newsletter = document.getElementById("checkbox2");
+    newsLetterCheck(newsletter);
 
   } catch (error) {
     console.log(error.message);
