@@ -11,6 +11,11 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const mainForm = document.getElementById("main-form");
+
+mainForm.addEventListener("submit", (event)=>{
+  console.log("click");
+})
 
 
 // launch modal event
@@ -89,39 +94,39 @@ function checkTournamentNumber(numberTournament) {
 }
 //Fonction qui vérifie si un tournoi est checké
 
-function tournamentChecked(inputLocation){
-  let place ="";
-  for(let i =0; i < inputLocation.length; i++){
-    if(inputLocation[i].checked){
+function tournamentChecked(inputLocation) {
+  let place = "";
+  for (let i = 0; i < inputLocation.length; i++) {
+    if (inputLocation[i].checked) {
       place = inputLocation[i].value;
       break;
     }
   }
-  
+
   if (place === "") {
     throw new Error("Aucune option n'a été cochée !");
-}
+  }
   console.log(place);
 }
 
 //Fonction qui vérifie le check des conditions d'utilisation
 
-function conditionAccepted(value){
+function conditionAccepted(value) {
   let accepted = value.checked;
   console.log(accepted);
   if (accepted === false) {
     throw new Error("Vous devez accepter les conditions!");
-}
+  }
 }
 //Fonction qui vérifie le check de la newsletter facultative
 
-function newsLetterCheck(value){
+function newsLetterCheck(value) {
   let accepted = value.checked;
   console.log(accepted);
 
   if (accepted === true) {
     console.log("Test newsletter acceptée");
-}
+  }
 
 }
 
