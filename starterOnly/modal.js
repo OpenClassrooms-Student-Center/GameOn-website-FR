@@ -197,10 +197,10 @@ function deleteDivError(idValue){
 
 }
 //Fonction pour afficher les erreurs dans le HTML
-function createDivError (idValue){
+function createDivError (idValue, messageError){
   
 
-deleteDivError(idValue, mesageError)
+deleteDivError(idValue)
 
 let divError = document.createElement("div");
 divError.classList.add("error-message");
@@ -218,13 +218,15 @@ idValue.parentNode.insertBefore(divError, idValue.nextSibling);
 //Création de fonctions pour les élémens redondants 
 
 //Fonction qui vérifie que le champs n'est pas vide
-function isEmpty(idValue, textError) {
+function isEmpty(idValue, messageError) {
+  // let messageError;
   if (idValue.value.trim() === "") {
-    messageError ="teeeesssst";
-    createDivError (idValue)
+    messageError =`Le champ ${idValue.name} ne doit pas être vide`;
+    createDivError (idValue, messageError)
     return true;
 
-  } else {
+  } 
+  else {
 
     deleteDivError(idValue)
   }
@@ -232,10 +234,13 @@ function isEmpty(idValue, textError) {
 }
 
 //Fonction qui vérifie que le champs comprend au moins 2 caractères
-function checkLength(idValue){
+function checkLength(idValue, messageError){
  
   if(idValue.value.trim().length < 2){
-    console.log(`Champs ${idValue.name} trop petit`);
+    messageError =`Le champ ${idValue.name} doit contenir au moins 2 caractères`;
+    createDivError (idValue, messageError)
+    // console.log(`Champs ${idValue.name} trop petit`);
+    
   
   }
 }
