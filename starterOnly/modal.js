@@ -143,16 +143,20 @@ function checkLength(idValue, messageError) {
 function checkFirst(idValue) {
 
   if (!isEmpty(idValue)) {
-    checkLength(idValue)
+    checkLength(idValue);
+    return true;
   }
+  return false;
 }
 
 //Fonction vérification du nom "last"
 function checkLast(idValue) {
 
   if (!isEmpty(idValue)) {
-    checkLength(idValue)
+    checkLength(idValue);
+    return true;
   }
+  return false
 }
 //Fonction vérification de l'email "email"
 function checkEmail(idValue) {
@@ -162,9 +166,11 @@ function checkEmail(idValue) {
 
     if (!regex.test(idValue.value.trim())) {
       messageError = `Le champ ${idValue.name} doit être de forme valide`;
-      createDivError(idValue, messageError)
+      createDivError(idValue, messageError);
+      return false;
     }
   }
+  return true;
 }
 
 //Fonction vérification de la date de naissance "birthdate"
@@ -177,8 +183,10 @@ function checkBirthdate(idValue) {
     if (!regex.test(idValue.value.trim())) {
       messageError = `Le champ ${idValue.name} doit être de forme valide`;
       createDivError(idValue, messageError)
+      return false;
     }
   }
+  return true;
 }
 
 //Fonction vérification du nombre de tournois
@@ -189,20 +197,24 @@ function checkTournamentNumber(idValue) {
     if (intValue.toString() !== idValue.value.trim()) {
       messageError = `Veuillez entrer uniquement un nombre entier`;
       createDivError(idValue, messageError)
+      return false;
     }
 
     if (intValue < 0 || intValue > 99) {
       messageError = `Vous devez mettre un nombre de tournois entre 0 et 99`;
       createDivError(idValue, messageError)
+      return false;
     }
 
   }
+  return true;
 };
 
 //Fonction pour demander le prochain lieu de tournoi
 
 function tournamentChecked(idValue) {
   deleteDivErrorList(idValue);
+  
 
   let place = "";
   for (let i = 0; i < idValue.length; i++) {
@@ -210,13 +222,16 @@ function tournamentChecked(idValue) {
       place = idValue[i].value;
       break;
     }
+    
   }
 
   if (place === "") {
     messageError = "Aucune option n'a été cochée !";
     createDivErrorList(idValue, messageError)
+    return false;
   }
-  console.log(place);
+  return true;
+  
 }
 
 //Fonction qui vérifie que les conditions d'utilisations sont checké
@@ -224,9 +239,11 @@ function conditionAccepted(idValue) {
   let accepted = idValue.checked;
   if (accepted) {
     deleteDivError(idValue);
+    return true;
   } else {
     messageError = "Vous devez accepter les conditions!";
     createDivError(idValue, messageError);
+    return false;
   }
 }
 
@@ -241,12 +258,29 @@ function newsLetterCheck(idValue) {
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  checkFirst(first);
-  checkLast(last);
-  checkEmail(email);
-  checkBirthdate(birthdate);
-  checkTournamentNumber(tournamentNumber);
-  tournamentChecked(tournamentPlace);
-  conditionAccepted(conditions);
-  newsLetterCheck(newsletter);
+  let isValid = true;
+
+  isValid = checkFirst(first) && isValid;
+
+  isValid = checkLast(last) && isValid;
+
+  isValid = checkEmail(email) && isValid;
+
+
+  isValid = checkBirthdate(birthdate) && isValid;
+
+
+  isValid = checkTournamentNumber(tournamentNumber) && isValid;
+
+  isValid = tournamentChecked(tournamentPlace) && isValid;
+
+
+  isValid = conditionAccepted(conditions) && isValid;
+
+  if (isValid) {
+      console.log("Le formulaire est valide !");
+  } else {
+      console.log("Le formulaire contient des erreurs.");
+  }
+
 })
