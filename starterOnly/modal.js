@@ -187,7 +187,7 @@ function closeModal() {
 
 
 
-//Fonction pour supprimer les erreurs dans le HTML
+//Fonction pour supprimer la div d'erreur si elle existe
 
 function deleteDivError(idValue){
   let existingError = idValue.parentNode.querySelector(".error-message");
@@ -199,15 +199,12 @@ function deleteDivError(idValue){
 //Fonction pour afficher les erreurs dans le HTML
 function createDivError (idValue, messageError){
   
-
 deleteDivError(idValue)
 
 let divError = document.createElement("div");
 divError.classList.add("error-message");
 let paraError = document.createElement("p");
 divError.appendChild(paraError);
-// let textError = `Le champ ${idValue.name} ne doit pas être vide`;
-// textError = errorMessage;
 paraError.textContent = messageError;
 idValue.parentNode.insertBefore(divError, idValue.nextSibling);
 }
@@ -239,23 +236,32 @@ function checkLength(idValue, messageError){
   if(idValue.value.trim().length < 2){
     messageError =`Le champ ${idValue.name} doit contenir au moins 2 caractères`;
     createDivError (idValue, messageError)
-    // console.log(`Champs ${idValue.name} trop petit`);
-    
-  
   }
 }
 
-function checkFirst(first){
+function checkFirst(idValue){
 
-  if(!isEmpty(first)){
-  checkLength(first)}
+  if(!isEmpty(idValue)){
+  checkLength(idValue)}
 }
 
-function checkLast(last){
+function checkLast(idValue){
 
-  if(!isEmpty(last)){
-  checkLength(last)}
+  if(!isEmpty(idValue)){
+  checkLength(idValue)}
 }
+
+function checkEmail(idValue){
+
+  if(!isEmpty(idValue)){
+    const regex = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$");
+
+  if (!regex.test(idValue.value.trim())) {
+    messageError =`Le champ ${idValue.name} doit être de forme valide`;
+    createDivError (idValue, messageError)
+  }
+}}
+
 
 const form =document.querySelector('form');
 
@@ -268,4 +274,7 @@ checkFirst(first);
 
 const last = document.getElementById("last");
 checkLast(last);
+
+const email = document.getElementById("email");
+checkEmail(email)
 })
