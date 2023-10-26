@@ -268,7 +268,7 @@ function checkEmail(idValue){
   }
 }}
 
-
+//Fonction vérification de la date de naissance "birthdate"
 function checkBirthdate(idValue){
   if(!isEmpty(idValue)){
 
@@ -280,6 +280,26 @@ function checkBirthdate(idValue){
       createDivError (idValue, messageError)
   }
 }}
+
+//Fonction vérification du nombre de tournois
+function checkTournamentNumber(idValue){
+  if(!isEmpty(idValue)){
+
+
+  const intValue = parseInt(idValue.value.trim(), 10);
+
+  if (intValue.toString() !== idValue.value.trim()) {
+    messageError =`Veuillez entrer uniquement un nombre entier`;
+    createDivError (idValue, messageError)
+  }
+
+  if (intValue < 0 || intValue > 99) {
+    messageError =`Vous devez mettre un nombre de tournois entre 0 et 99`;
+    createDivError (idValue, messageError)
+  }
+
+  }
+};
 
 
 //Traitement du formulaire
@@ -298,6 +318,9 @@ checkLast(last);
 const email = document.getElementById("email");
 checkEmail(email);
 
-    const birthdate = document.getElementById("birthdate");
-    checkBirthdate(birthdate);
+const birthdate = document.getElementById("birthdate");
+checkBirthdate(birthdate);
+
+const tournamentNumber = document.getElementById("quantity");
+checkTournamentNumber(tournamentNumber);
 })
