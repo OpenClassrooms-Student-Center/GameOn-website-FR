@@ -187,6 +187,9 @@ function closeModal() {
 
 
 
+
+
+
 //Fonction pour supprimer la div d'erreur si elle existe
 
 function deleteDivError(idValue){
@@ -239,18 +242,21 @@ function checkLength(idValue, messageError){
   }
 }
 
+
+//Fonction vérification du prénom "first"
 function checkFirst(idValue){
 
   if(!isEmpty(idValue)){
   checkLength(idValue)}
 }
 
+//Fonction vérification du nom "last"
 function checkLast(idValue){
 
   if(!isEmpty(idValue)){
   checkLength(idValue)}
 }
-
+//Fonction vérification de l'email "email"
 function checkEmail(idValue){
 
   if(!isEmpty(idValue)){
@@ -263,6 +269,20 @@ function checkEmail(idValue){
 }}
 
 
+function checkBirthdate(idValue){
+  if(!isEmpty(idValue)){
+
+  const currentYear = new Date().getFullYear();
+  const regex = new RegExp("^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/(19[0-9]{2}|20[0-" + (currentYear - 2000) + "]{2})$");
+
+    if (!regex.test(idValue.value.trim())) {
+      messageError =`Le champ ${idValue.name} doit être de forme valide`;
+      createDivError (idValue, messageError)
+  }
+}}
+
+
+//Traitement du formulaire
 const form =document.querySelector('form');
 
 form.addEventListener("submit", (event)=>{
@@ -276,5 +296,8 @@ const last = document.getElementById("last");
 checkLast(last);
 
 const email = document.getElementById("email");
-checkEmail(email)
+checkEmail(email);
+
+    const birthdate = document.getElementById("birthdate");
+    checkBirthdate(birthdate);
 })
