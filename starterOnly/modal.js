@@ -22,6 +22,7 @@ const tournamentNumber = document.getElementById("quantity");
 const tournamentPlace = document.querySelectorAll('input[name="location"]');
 const conditions = document.getElementById("checkbox1");
 const newsletter = document.getElementById("checkbox2");
+const success = document.getElementById("success-message");
 
 
 mainForm.addEventListener("submit", (event) => {
@@ -253,6 +254,18 @@ function newsLetterCheck(idValue) {
   console.log(accepted);
 }
 
+//Fonction pour activer le display none sur le formulaire de succès
+function closeSuccessScreen() {
+  document.getElementById('success-message').style.display = 'none';
+}
+
+//Fonction pour fermer le message de succès sur le bouton
+function closeSuccessMessage() {
+  closeSuccessScreen();
+  closeModal();
+}
+
+
 //Traitement du formulaire
 
 form.addEventListener("submit", (event) => {
@@ -279,6 +292,9 @@ form.addEventListener("submit", (event) => {
 
   if (isValid) {
       console.log("Le formulaire est valide !");
+      success.style.display ="block";
+      success.classList.add('success-message-container');
+
   } else {
       console.log("Le formulaire contient des erreurs.");
   }
