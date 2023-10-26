@@ -12,11 +12,21 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const mainForm = document.getElementById("main-form");
+const closeModalBtn = document.querySelector(".close");
+const form = document.querySelector('form');
+const first = document.getElementById("first");
+const last = document.getElementById("last");
+const email = document.getElementById("email");
+const birthdate = document.getElementById("birthdate");
+const tournamentNumber = document.getElementById("quantity");
+const tournamentPlace = document.querySelectorAll('input[name="location"]');
+const conditions = document.getElementById("checkbox1");
+const newsletter = document.getElementById("checkbox2");
+
 
 mainForm.addEventListener("submit", (event) => {
   // console.log("click");
 })
-
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -26,9 +36,7 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-
 //Fermeture du formulaire
-const closeModalBtn = document.querySelector(".close");
 closeModalBtn.addEventListener("click", closeModal);
 
 function closeModal() {
@@ -37,7 +45,6 @@ function closeModal() {
 }
 
 //Fonction pour supprimer la div d'erreur si elle existe
-
 function deleteDivError(idValue) {
   let existingError = idValue.parentNode.querySelector(".error-message");
   if (existingError) {
@@ -81,12 +88,8 @@ function createDivError(idValue, messageError) {
       return;
     }
   }
-
-
-
   idValue.parentNode.insertBefore(divError, idValue.nextSibling);
 }
-
 
 //Fonction pour afficher les erreurs dans le HTML sous les boutons à checker
 function createDivErrorList(idValue, messageError) {
@@ -181,8 +184,6 @@ function checkBirthdate(idValue) {
 //Fonction vérification du nombre de tournois
 function checkTournamentNumber(idValue) {
   if (!isEmpty(idValue)) {
-
-
     const intValue = parseInt(idValue.value.trim(), 10);
 
     if (intValue.toString() !== idValue.value.trim()) {
@@ -197,7 +198,6 @@ function checkTournamentNumber(idValue) {
 
   }
 };
-
 
 //Fonction pour demander le prochain lieu de tournoi
 
@@ -231,39 +231,22 @@ function conditionAccepted(idValue) {
 }
 
 //Fonction qui vérifie si la newsletter est coché, facultative
-function newsLetterCheck(idValue){
+function newsLetterCheck(idValue) {
   let accepted = idValue.checked;
   console.log(accepted);
 }
 
 //Traitement du formulaire
-const form = document.querySelector('form');
 
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
-  const first = document.getElementById("first");
   checkFirst(first);
-
-
-  const last = document.getElementById("last");
   checkLast(last);
-
-  const email = document.getElementById("email");
   checkEmail(email);
-
-  const birthdate = document.getElementById("birthdate");
   checkBirthdate(birthdate);
-
-  const tournamentNumber = document.getElementById("quantity");
   checkTournamentNumber(tournamentNumber);
-
-  const tournamentPlace = document.querySelectorAll('input[name="location"]');
   tournamentChecked(tournamentPlace);
-
-  const conditions = document.getElementById("checkbox1");
   conditionAccepted(conditions);
-
-  const newsletter = document.getElementById("checkbox2");
   newsLetterCheck(newsletter);
 })
