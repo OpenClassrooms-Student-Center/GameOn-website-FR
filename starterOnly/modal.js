@@ -139,29 +139,66 @@ function checkLength(idValue, messageError) {
     messageError = `Le champ ${idValue.name} doit contenir au moins 2 caractères`;
     createDivError(idValue, messageError)
     idValue.classList.add('error-input');
+    return false;
+   
   }
+  return true;
+
 }
 
 
-//Fonction vérification du prénom "first"
-function checkFirst(idValue) {
+// //Fonction vérification du prénom "first"
+// function checkFirst(idValue) {
 
-  if (!isEmpty(idValue)) {
-    checkLength(idValue);
-    return true;
+//   if (!isEmpty(idValue)) {
+//     checkLength(idValue);
+//     return true;
+//   }
+//   return false;
+// }
+
+// //Fonction vérification du nom "last"
+// function checkLast(idValue) {
+
+//   if (!isEmpty(idValue)) {
+//     checkLength(idValue);
+//     return true;
+//   }
+//   return false
+// }
+
+
+function checkIdentity(idValue) {
+  let valid = true;
+
+  if (isEmpty(idValue)) {
+    valid = false;
   }
-  return false;
+
+  if (!checkLength(idValue)) {
+    valid = false;
+  }
+
+  return valid;
 }
 
-//Fonction vérification du nom "last"
-function checkLast(idValue) {
+// function checkLast(idValue) {
+//   let valid = true;
 
-  if (!isEmpty(idValue)) {
-    checkLength(idValue);
-    return true;
-  }
-  return false
-}
+//   if (isEmpty(idValue)) {
+//     valid = false;
+//   }
+
+//   if (!checkLength(idValue)) {
+//     valid = false;
+//   }
+
+//   return valid;
+// }
+
+
+
+
 //Fonction vérification de l'email "email"
 function checkEmail(idValue) {
 
@@ -280,9 +317,9 @@ form.addEventListener("submit", (event) => {
 
   let isValid = true;
 
-  isValid = checkFirst(first) && isValid;
+  isValid = checkIdentity(first) && isValid;
 
-  isValid = checkLast(last) && isValid;
+  isValid = checkIdentity(last) && isValid;
 
   isValid = checkEmail(email) && isValid;
 
