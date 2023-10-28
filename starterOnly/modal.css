@@ -541,6 +541,9 @@ footer {
   
 }
 
+.error-message>p{
+  padding-top: 0px;
+}
 
 #success-message{
   display: none;
@@ -578,5 +581,14 @@ footer {
 }
 
 .error-input {
-  border: 1px solid red;
+  border: 2px solid red;
 }
+
+.formDisplay{
+  max-height: 110px;
+}
+
+/* .formDisplay2{
+  
+  max-height: 90px;
+} */
