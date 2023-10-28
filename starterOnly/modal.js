@@ -120,12 +120,14 @@ function isEmpty(idValue, messageError) {
   if (idValue.value.trim() === "") {
     messageError = `Le champ ${idValue.name} ne doit pas être vide`;
     createDivError(idValue, messageError)
+    idValue.classList.add('error-input');
     return true;
 
   }
   else {
 
     deleteDivError(idValue)
+    idValue.classList.remove('error-input');
   }
   return false;
 }
@@ -136,6 +138,7 @@ function checkLength(idValue, messageError) {
   if (idValue.value.trim().length < 2) {
     messageError = `Le champ ${idValue.name} doit contenir au moins 2 caractères`;
     createDivError(idValue, messageError)
+    idValue.classList.add('error-input');
   }
 }
 
@@ -168,6 +171,7 @@ function checkEmail(idValue) {
     if (!regex.test(idValue.value.trim())) {
       messageError = `Le champ ${idValue.name} doit être de forme valide`;
       createDivError(idValue, messageError);
+      idValue.classList.add('error-input');
       return false;
     }
   }
@@ -184,6 +188,7 @@ function checkBirthdate(idValue) {
     if (!regex.test(idValue.value.trim())) {
       messageError = `Le champ ${idValue.name} doit être de forme valide`;
       createDivError(idValue, messageError)
+      idValue.classList.add('error-input');
       return false;
     }
   }
@@ -198,12 +203,14 @@ function checkTournamentNumber(idValue) {
     if (intValue.toString() !== idValue.value.trim()) {
       messageError = `Veuillez entrer uniquement un nombre entier`;
       createDivError(idValue, messageError)
+      idValue.classList.add('error-input');
       return false;
     }
 
     if (intValue < 0 || intValue > 99) {
       messageError = `Vous devez mettre un nombre de tournois entre 0 et 99`;
       createDivError(idValue, messageError)
+      idValue.classList.add('error-input');
       return false;
     }
 
