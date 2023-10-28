@@ -1,0 +1,22 @@
+
+  const locationName = document.getElementsByName("location");
+
+  function validateLocation() {
+
+    var coché = false;
+  
+    for (var i = 0; i < locationName.length; i++) { 
+      if (locationName[i].checked) {
+        coché = true;
+        break;
+      } 
+    }
+  
+    if (!coché) {
+      messageErreur.textContent = "Veuillez sélectionner un lieu";
+    }
+  }
+
+  
+  
+  validateLocation();

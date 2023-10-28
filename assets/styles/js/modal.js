@@ -7,7 +7,7 @@ function editNav() {
   }
 }
 
-// DOM Elements
+// DOM Elements  ///Valeur à null 
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
@@ -16,13 +16,8 @@ const form = document.querySelector('form');
 
 const messageErreur = document.querySelectorAll(".errorMessage");
 
-const lastname = document.getElementById("lastname").value;
-const firstname = document.getElementById("firstname").value;
-const email = document.getElementById("email").value;
-const competition = document.getElementById("quantity").value;
-const terms = document.getElementById("termsCondition");
-const locationName = document.getElementsByName("location");
 
+document.getElementById("firstname").closest(".errorMessage");
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -47,19 +42,24 @@ modalbg.addEventListener('click', function (event) {
 })
 
 function validate() {
+
+  
+  event.preventDefault();
+
+  const firstname = document.getElementById("firstname").value;
+  const lastname = document.getElementById("lastname").value;
+  const email = document.getElementById("email").value;
+
   validateFirstname();
   validateLastname();
   validateEmail();
-  validateLocation();
-  validateCompetition();
-  termsAccepted();
   
-  return true;
 }
 
 function validateFirstname() {
   if (firstname.length < 2) {
     messageErreur.textContent = "Le prénom doit contenir au moins deux caractères";
+    messageErreur.setAttribute("data-error-visible", "true");
     return false;
   }
 
@@ -83,34 +83,5 @@ function validateEmail() {
 
   if (regex.test(email) == false) {
     messageErreur.textContent = "L'adresse mail n'est pas valide";
-  }
-}
-
-function validateCompetition() {
-
-  if (Number.isInteger(competition) == false) {
-    messageErreur.textContent = "Ce champ doit contenir un chiffre";
-  }
-}
-
-function validateLocation() {
-
-  var coché = false;
-
-  for (var i = 0; i < locationName.length; i++) { //Pourqoi location.length
-    if (locationName[i].checked) {
-      coché = true;
-      break;
-    } 
-  }
-
-  if (!coché) {
-    messageErreur.textContent = "Veuillez sélectionner un lieu";
-  }
-}
-
-function termsAccepted() {
-  if (terms.checked == false) {
-    messageErreur.textContent = "L'acceptation des conditions d'utilisation est obligatoire";
   }
 }
