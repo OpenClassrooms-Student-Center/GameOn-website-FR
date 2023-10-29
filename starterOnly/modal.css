@@ -326,7 +326,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-success {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -549,12 +550,13 @@ footer {
   padding-top: 0px;
 }
 
-#success-message{
+/* #success-message{
   display: none;
-}
+} */
 .success-message-container{
-  display: none;
+  /* display: none;
   position: fixed;
+ 
   top: 0;
   left: 0;
   right: 0;
@@ -564,11 +566,26 @@ footer {
   font-size: 36px;
   z-index: 1000;
   text-align: center;
-  padding-top: 20%; 
+  padding-top: 20%;  */
+
+
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
 
 }
 
-.success-message-container button {
+
+/* .btn-success{
+  margin-top: 150px;
+} */
+/* .success-message-container button {
   background-color: red;
   color: white;
   border: none;
@@ -582,7 +599,7 @@ footer {
   bottom: 20px; 
   left: 50%; 
   transform: translateX(-50%); 
-}
+} */
 
 .error-input {
   border: 2px solid red;
