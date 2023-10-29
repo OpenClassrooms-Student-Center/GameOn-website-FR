@@ -536,11 +536,8 @@ footer {
   width: 100%;
   height: 20px;
   margin-top: 5px;
-  /* background-color: red; */
+
   color: red;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
   border-radius: 8px;
   font-size: 10px;
   
@@ -554,22 +551,12 @@ footer {
   display: none;
 } */
 .success-message-container{
-  /* display: none;
-  position: fixed;
  
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: black;
-  color: white;
-  font-size: 36px;
-  z-index: 1000;
-  text-align: center;
-  padding-top: 20%;  */
-
-
+  display: flex;
   display: none;
+  align-items: center; 
+  justify-content: center;
+
   position: fixed;
   z-index: 999;
   left: 0;
@@ -578,28 +565,22 @@ footer {
   width: 100%;
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
+ 
 
 }
 
+.modal-body-success {
+  padding: 15px 8%;
+  margin: 15px auto;
+  height: 600px;
+  position: relative;
+  display: flex;
+  align-items: center; 
+  justify-content: center;
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 100;
 
-/* .btn-success{
-  margin-top: 150px;
-} */
-/* .success-message-container button {
-  background-color: red;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  font-size: 16px;
-  width: 183px;
-  height: 40px;
-  position: fixed;
-  bottom: 20px; 
-  left: 50%; 
-  transform: translateX(-50%); 
-} */
+}
 
 .error-input {
   border: 2px solid red;
@@ -609,7 +590,11 @@ footer {
   max-height: 110px;
 }
 
-/* .formDisplay2{
-  
-  max-height: 90px;
-} */
+
+.btn-success {
+  position: absolute;
+  bottom: 20px; 
+  left: 50%; 
+  transform: translateX(-50%);
+
+}
