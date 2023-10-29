@@ -553,12 +553,12 @@ footer {
 .success-message-container{
  
   display: flex;
-  display: none;
+  /* display: none; */
   align-items: center; 
   justify-content: center;
 
   position: fixed;
-  z-index: 999;
+  z-index: 3;
   left: 0;
   top: 0;
   height: 100%;
@@ -597,4 +597,51 @@ footer {
   left: 50%; 
   transform: translateX(-50%);
 
+}
+
+
+
+@media screen and (max-width: 540px) {
+
+.topnav{
+  padding-bottom: 49px;
+  z-index: 99999999;
+}
+
+  .bground {
+    position: fixed;
+    top: 60px; 
+    left: 0;
+    width: 100%;
+    height: calc(100% - 60px); 
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+  }
+
+  .bground .content {
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between; 
+    height: 100%;
+  }
+
+  
+  #success-message {
+    position: fixed;
+    top: 60px; 
+    left: 0;
+    width: 100%;
+    height: calc(100% - 60px); 
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+  }
+
+  #success-message .content {
+    display: flex;
+    flex-direction: column; 
+    justify-content: space-between;
+    height: 100%;
+  }
 }
