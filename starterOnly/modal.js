@@ -13,6 +13,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const mainForm = document.getElementById("main-form");
 const closeModalBtn = document.querySelector(".close");
+const closeModalSuccessBtn = document.querySelector(".close-btn");
 const form = document.querySelector('form');
 const first = document.getElementById("first");
 const last = document.getElementById("last");
@@ -39,6 +40,7 @@ function launchModal() {
 
 //Fermeture du formulaire
 closeModalBtn.addEventListener("click", closeModal);
+closeModalSuccessBtn.addEventListener("click", closeSuccessScreen);
 
 function closeModal() {
   modalbg.style.display = "none";
@@ -338,6 +340,8 @@ form.addEventListener("submit", (event) => {
       console.log("Le formulaire est valide !");
       success.style.display ="block";
       success.classList.add('success-message-container');
+      form.reset();
+      closeModal();
 
   } else {
       console.log("Le formulaire contient des erreurs.");

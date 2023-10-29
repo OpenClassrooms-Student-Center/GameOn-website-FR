@@ -296,7 +296,7 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
-.close {
+.close, .close-btn {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -307,7 +307,9 @@ input[data-error]::after {
   transform: scale(0.7);
 }
 .close:before,
-.close:after {
+.close:after,
+.close-btn:before,
+.close-btn:after {
   position: absolute;
   left: 15px;
   content: " ";
@@ -315,10 +317,12 @@ input[data-error]::after {
   width: 3px;
   background-color: #fff;
 }
-.close:before {
+.close:before,
+.close-btn:before {
   transform: rotate(45deg);
 }
-.close:after {
+.close:after,
+.close-btn:after {
   transform: rotate(-45deg);
 }
 .btn-submit,
@@ -549,7 +553,7 @@ footer {
   display: none;
 }
 .success-message-container{
-  /* display: none; */
+  display: none;
   position: fixed;
   top: 0;
   left: 0;
