@@ -13,7 +13,7 @@ const nameRegex = /^[$A-Za-zéèà\s-]+$/;
 const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
 
 // DOM Elements
-const modalbg = document.querySelector(".bground");
+const modalbg = document.querySelector(".bground"); 
 const modalSuccess = document.querySelector(".modal-success");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const closeBtn = document.querySelector("#close-btn");
@@ -112,8 +112,10 @@ function checkForm() {
       isValidInput = regex.test(input.value);
     } else if (Array.isArray(input)) {
       isValidInput = input.some((item) => item.checked);
+    } else if (input.type === "checkbox") {
+      isValidInput = input.checked;
     } else {
-      isValidInput = input.value ?? input.checked;
+      isValidInput = input.value !== "";
     }
 
     formData[index].setAttribute("data-error-visible", String(!isValidInput));
