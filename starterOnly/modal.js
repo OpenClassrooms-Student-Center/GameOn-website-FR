@@ -9,7 +9,7 @@ function editNav() {
 
 //REGEX
 const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-const nameRegex = /^[a-zA-Z]+$/;
+const nameRegex = /^[$A-Za-zéèà\s-]+$/;
 const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
 
 // DOM Elements
