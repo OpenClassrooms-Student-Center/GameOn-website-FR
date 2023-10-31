@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Reservation</title>
+    <meta content="width=device-width,initial-scale=1" name="viewport"/>
+    <link href="modal.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400;1,9..40,500;1,9..40,700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+  </head>
+  <body>
+    <div class="topnav" id="myTopnav">
+      <div class="header-logo">
+        <img alt="logo" height="auto" src="assets/Logo.png" width="auto"/>
+      </div>
+      <div class="main-navbar">
+        <a class="active" href="#"><span>Accueil</span></a>
+        <a href="#"><span>Détails de l'évènement</span></a>
+        <a href="#"><span>À propos</span></a>
+        <a href="#"><span>Contact</span></a>
+        <a href="#"><span>Évènements passés</span></a>
+        <a class="icon" href="javascript:void(0);" onclick="editNav()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+    </div>
+    <main>
+      <div class="hero-section">
+        <div class="hero-content">
+          <h1 class="hero-headline">
+            Marathon national<br>
+            de jeux vidéos
+          </h1>
+          <p class="hero-text">
+            Vous aimez jouer ? Notre prochain évènement gaming est ouvert
+            aux réservations... Places limitées !
+          </p>
+          <button class="btn-signup modal-btn">
+            je m'inscris
+          </button>
+        </div>
+        <div class="hero-img">
+          <img alt="img" src="assets/bg_img.jpg"/>
+        </div>
+        <button class="btn-signup modal-btn">
+          je m'inscris
+        </button>
+      </div>
+      <div class="bground">
+        <div class="content">
+          <span class="modal-close"></span>
+          <div class="modal-body">
+            <form
+                class="modalForm"
+                method="post"
+                name="reserve"
+                novalidate
+                onsubmit="return validate(this)">
+
+              <div class="formInput">
+                <label class="formLabel" for="first">
+                  Prénom <span class="input-required">*</span>
+                </label>
+                <input class="text-control" id="first" minlength="2" name="first" required type="text"/>
+                <span class="validation-error">Veuillez entrer 2 caractères valides ou plus.</span>
+              </div>
+
+              <div class="formInput">
+                <label class="formLabel" for="last">
+                  Nom <span class="input-required">*</span>
+                </label>
+                <input class="text-control" id="last" minlength="2" name="last" required type="text"/>
+                <span class="validation-error">Veuillez entrer 2 caractères valides ou plus.</span>
+              </div>
+
+              <div class="formInput">
+                <label class="formLabel" for="email">
+                  Email <span class="input-required">*</span>
+                </label>
+                <input class="text-control" id="email" minlength="2" name="email" required type="email"/>
+                <span class="validation-error">Veuillez entrer un adresse email valide.</span>
+              </div>
+
+              <div class="formInput">
+                <label class="formLabel" for="birthdate">
+                  Date de naissance <span class="input-required">*</span>
+                </label>
+                <input class="text-control" id="birthdate" minlength="2" name="birthdate" required type="date"/>
+                <span class="validation-error">Vous devez entrer votre date de naissance.</span>
+              </div>
+
+              <div class="formInput">
+                <label class="formLabel" for="quantity">
+                  À combien de tournois GameOn avez-vous déjà participé ? <span class="input-required">*</span>
+                </label>
+                <input class="text-control" id="quantity" max="99" min="0" name="quantity" required type="number"/>
+                <span class="validation-error">Vous devez entrer votre date de naissance.</span>
+              </div>
+
+              <p class="formLabel">
+                A quel tournoi souhaitez-vous participer cette année ? <span class="input-required">*</span>
+              </p>
+              <div class="formInput ">
+                <div class="location-grid">
+                  <input class="radio-input" id="New York" name="location" required type="radio" value="New York"/>
+                  <label class="radio-label" for="New York">
+                    <span class="radio-icon"></span>
+                    New York
+                  </label>
+
+                  <input class="radio-input" id="San Francisco" name="location" required type="radio"
+                         value="San Francisco"/>
+                  <label class="radio-label" for="San Francisco">
+                    <span class="radio-icon"></span>
+                    San Francisco
+                  </label>
+
+                  <input class="radio-input" id="Seattle" name="location" required type="radio" value="Seattle"/>
+                  <label class="radio-label" for="Seattle">
+                    <span class="radio-icon"></span>
+                    Seattle
+                  </label>
+
+                  <input class="radio-input" id="Chicago" name="location" required type="radio" value="Chicago"/>
+                  <label class="radio-label" for="Chicago">
+                    <span class="radio-icon"></span>
+                    Chicago
+                  </label>
+
+                  <input class="radio-input" id="Boston" name="location" required type="radio" value="Boston"/>
+                  <label class="radio-label" for="Boston">
+                    <span class="radio-icon"></span>
+                    Boston
+                  </label>
+
+                  <input class="radio-input" id="Portland" name="location" required type="radio" value="Portland"/>
+                  <label class="radio-label" for="Portland">
+                    <span class="radio-icon"></span>
+                    Portland
+                  </label>
+                </div>
+                <span class="validation-error">Vous devez entrer votre date de naissance.</span>
+              </div>
+              <div class="checkbox-container">
+                <div class="formInput form-checkbox">
+                  <input class="checkbox-input" id="termsOfUse" name="termsOfUse" required type="checkbox"/>
+                  <label class="checkbox-label" for="termsOfUse">
+                    <span class="checkbox-icon"></span>
+                    J'ai lu et accepté les conditions d'utilisation. <span class="input-required">*</span>
+                  </label>
+                </div>
+                <div class="formInput form-checkbox">
+                  <input class="checkbox-input" id="newsletter" name="newsletter" type="checkbox"/>
+                  <label class="checkbox-label" for="newsletter">
+                    <span class="checkbox-icon"></span>
+                    Je Je souhaite être prévenu des prochains évènements.
+                  </label>
+                </div>
+              </div>
+              <button class="button btn-submit" type="submit">C'est parti</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p class="copyrights">
+        Copyright 2014 - 2022, GameOn Inc.
+      </p>
+    </footer>
+    <script src="modal.js"></script>
+  </body>
+</html>
