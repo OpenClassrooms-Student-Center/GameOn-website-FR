@@ -11,6 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const mainPage = document.getElementById("main-page");
 const mainForm = document.getElementById("main-form");
 const closeModalBtn = document.querySelector(".close");
 const closeModalSuccessBtn = document.querySelector(".close-btn");
@@ -37,6 +38,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  
 }
 
 //Fermeture du formulaire
@@ -302,6 +304,7 @@ form.addEventListener("submit", (event) => {
   if (isValid) {
       console.log("Le formulaire est valide !");
       success.style.display ="block";
+      mainPage.style.display ="none";
       success.classList.add('success-message-container');
       form.reset();
       closeModal();

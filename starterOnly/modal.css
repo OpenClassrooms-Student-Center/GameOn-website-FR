@@ -620,10 +620,12 @@ footer {
   top: 80px;
   max-width: 100%;
 
+
 }
 
 .bground{
    background-color: rgba(255, 255, 255, 0);
+ 
 
 }
 
@@ -632,7 +634,8 @@ footer {
 }
 
 .main-navbar{
-  /* background-color: grey; */
+  background-color: white;
+  border-radius: 12px;
   /* border: 1px solid black; */
   z-index: 999;
 }
