@@ -148,28 +148,6 @@ function checkLength(idValue, messageError) {
 
 }
 
-
-// //Fonction vérification du prénom "first"
-// function checkFirst(idValue) {
-
-//   if (!isEmpty(idValue)) {
-//     checkLength(idValue);
-//     return true;
-//   }
-//   return false;
-// }
-
-// //Fonction vérification du nom "last"
-// function checkLast(idValue) {
-
-//   if (!isEmpty(idValue)) {
-//     checkLength(idValue);
-//     return true;
-//   }
-//   return false
-// }
-
-
 function checkIdentity(idValue) {
   let valid = true;
 
@@ -177,28 +155,12 @@ function checkIdentity(idValue) {
     valid = false;
   }
 
-  if (!checkLength(idValue)) {
+  else if (!checkLength(idValue)) {
     valid = false;
   }
 
   return valid;
 }
-
-// function checkLast(idValue) {
-//   let valid = true;
-
-//   if (isEmpty(idValue)) {
-//     valid = false;
-//   }
-
-//   if (!checkLength(idValue)) {
-//     valid = false;
-//   }
-
-//   return valid;
-// }
-
-
 
 
 //Fonction vérification de l'email "email"

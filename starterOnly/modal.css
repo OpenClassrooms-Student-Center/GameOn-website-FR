@@ -19,6 +19,7 @@ body {
   font-size: 18px;
   max-width: 1300px;
   margin: 0 auto;
+  font-family: 'DM Sans', sans-serif;
 }
 
 p {
@@ -98,6 +99,7 @@ img {
     float: right;
     display: block;
     margin-top: -15px;
+  
   }
 } 
 
@@ -181,6 +183,7 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+  margin-top : 100px;
 }
 
 .modal-body {
@@ -553,7 +556,7 @@ footer {
 .success-message-container{
  
   display: flex;
-  /* display: none; */
+  display: none;
   align-items: center; 
   justify-content: center;
 
@@ -601,3 +604,21 @@ footer {
 
 
 
+#page-content{
+  display:block;
+}
+
+@media (max-width: 540px){
+
+
+
+
+.content{
+  margin: 0;
+  border-radius: 10px 10px 0px 0px;
+  top: 80px;
+  max-width: 100%;
+
+}
+
+}
