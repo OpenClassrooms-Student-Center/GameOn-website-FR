@@ -24,6 +24,7 @@ const tournamentPlace = document.querySelectorAll('input[name="location"]');
 const conditions = document.getElementById("checkbox1");
 const newsletter = document.getElementById("checkbox2");
 const success = document.getElementById("success-message");
+const navItems = document.querySelectorAll('.topnav a');
 
 
 mainForm.addEventListener("submit", (event) => {
@@ -310,3 +311,30 @@ form.addEventListener("submit", (event) => {
   }
 
 })
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  
+  function removeActiveClass() {
+    navItems.forEach(function (item) {
+      item.classList.remove('active');
+    });
+  }
+
+  navItems.forEach(function (item) {
+    item.addEventListener('click', function () {
+
+      removeActiveClass();
+      this.classList.add('active');
+    });
+  });
+});
