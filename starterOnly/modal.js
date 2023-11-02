@@ -63,7 +63,8 @@ for (const element of document.querySelectorAll(
 }
 
 /***
- * Fermeture des modales
+ * Mise en place de la Fermeture des modales en fonction de l'emplacement
+ * des "boutons" avec dismiss
  */
 for (const element of document.querySelectorAll("[data-dismiss=modal]")) {
   const target = element.closest(".modal");
