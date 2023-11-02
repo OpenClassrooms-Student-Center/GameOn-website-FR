@@ -1,16 +1,6 @@
-// Ajout de getter et setter pour l'attribut "open" aux
-// prototypes, elle ne sera appellé que si la classe
-// n'a pas défini de mutateur pour cette propriété.
-Object.defineProperty(HTMLElement.prototype, "open", {
-  enumerable: true,
-  configurable: true,
-  get: function () {
-    return this.getAttribute("open");
-  },
-  set: function (value) {
-    this.setAttribute("open", value);
-  },
-});
+/***
+ * Mise en place de la gestion des modales
+ */
 
 // Ajout d'événement personnalisés pour "open" et
 // "close" afin de gérer l'ouverture et/ou la formeture
@@ -37,8 +27,28 @@ const options = {
 };
 
 for (const modal of document.querySelectorAll(".modal")) {
+  // Valeur par défaut de la "propriété" open (qui sera
+  // également l'attribut)
   modal.open = false;
+
+  // On ajoute un "oservateur" sur la modale
   observer.observe(modal, options);
+
+  // Ajout de getter et setter pour l'attribut "open" aux
+  // modales
+  Object.defineProperty(modal, "open", {
+    enumerable: true,
+    configurable: true,
+    get: function () {
+      return this.getAttribute("open");
+    },
+    set: function (value) {
+      this.setAttribute("open", value);
+    },
+  });
+
+  // Ajout de méthode aux showModal() et close() aux
+  // modales
   modal.showModal = function () {
     this.open = true;
   };
@@ -75,7 +85,9 @@ for (const element of document.querySelectorAll("[data-dismiss=modal]")) {
   }
 }
 
-// DOM Elements
+/***
+ * Ajout d'événement sur différents éléments du DOM
+ */
 const topNav = document.querySelector("#myTopnav");
 
 const signupModal = document.querySelector("#modal-signup"); // Modale de réservation
@@ -93,6 +105,7 @@ topNav.querySelector(".nav-burger").addEventListener("click", () => {
 
 // Ajout de l'événement "change" aux entrées du formulaire
 // de réservation pour afficher ou non les erreurs
+// Note: uniquement sur les inputs ayant l'attribut required
 for (const formData of formDatas) {
   for (const input of formData.querySelectorAll("input")) {
     if (input.required)
@@ -124,7 +137,6 @@ signupForm.addEventListener("submit", (e) => {
     success = true; // Pour l'instant, on met a "true" pour simuler la réussite
     // ...
     // Fin du traitement
-    //signupModal.close();
     signupModal.close();
     messageDone.innerHTML = success
       ? "Merci pour votre inscription !"
