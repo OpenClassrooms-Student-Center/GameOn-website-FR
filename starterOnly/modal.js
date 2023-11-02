@@ -121,11 +121,8 @@ signupForm.addEventListener("submit", (e) => {
   e.preventDefault();
   const errors = [];
   for (const formData of formDatas) {
-    const input = formData.querySelector("input");
-    if (
-      input?.required &&
-      (formData.dataset.errorVisible = !input.validity.valid)
-    ) {
+    const input = formData.querySelector("input[required]");
+    if (input && (formData.dataset.errorVisible = !input.validity.valid)) {
       errors.push(input);
     }
   }
