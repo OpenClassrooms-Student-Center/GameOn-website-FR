@@ -27,10 +27,6 @@ const options = {
 };
 
 for (const modal of document.querySelectorAll(".modal")) {
-  // Valeur par défaut de la "propriété" open (qui sera
-  // également l'attribut)
-  modal.open = false;
-
   // On ajoute un "oservateur" sur la modale
   observer.observe(modal, options);
 
@@ -94,7 +90,7 @@ const signupModal = document.querySelector("#modal-signup"); // Modale de réser
 const signupForm = signupModal.querySelector("form[name=reserve]");
 const formDatas = signupForm.querySelectorAll(".formData");
 
-const modalDone = document.querySelector("#modal-done"); // Modale de réussite
+const modalDone = document.querySelector("#modal-done"); // Modale de message
 const messageDone = modalDone.querySelector(".message");
 
 // Affectation d'un EventListener "click" à tout les .nav-burger
