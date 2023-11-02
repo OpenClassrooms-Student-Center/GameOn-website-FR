@@ -107,11 +107,10 @@ topNav.querySelector(".nav-burger").addEventListener("click", () => {
 // de réservation pour afficher ou non les erreurs
 // Note: uniquement sur les inputs ayant l'attribut required
 for (const formData of formDatas) {
-  for (const input of formData.querySelectorAll("input")) {
-    if (input.required)
-      input.addEventListener("change", ({ target }) => {
-        formData.dataset.errorVisible = !target.validity.valid;
-      });
+  for (const input of formData.querySelectorAll("input[required]")) {
+    input.addEventListener("change", ({ target }) => {
+      formData.dataset.errorVisible = !target.validity.valid;
+    });
   }
 }
 
