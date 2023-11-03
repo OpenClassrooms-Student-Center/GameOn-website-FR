@@ -54,7 +54,7 @@ for (const modal of document.querySelectorAll(".modal")) {
 }
 
 // Fonction qui ferme toutes les modales qui sont "open"
-function closeModalAll() {
+export function closeModalAll() {
   let counter = 0;
   for (const modal of document.querySelectorAll(".modal[open]")) {
     modal.close();
@@ -64,7 +64,7 @@ function closeModalAll() {
 }
 
 // Fonction qui ferme toutes les modales ciblées par un sélecteur CSS
-function closeModalBySelector(selectors) {
+export function closeModalBySelector(selectors) {
   let counter = 0;
   for (const element of document.querySelector(selectors)) {
     counter += closeModalByElement(element);
@@ -73,7 +73,7 @@ function closeModalBySelector(selectors) {
 }
 
 // Fonction qui ferme une modale clibé par un élément (HTMLElement)
-function closeModalByElement(element) {
+export function closeModalByElement(element) {
   if (element.classList.contains("modal") && element.open) {
     element.close();
     return 1;
@@ -84,7 +84,7 @@ function closeModalByElement(element) {
 // Fonction polyvalente permettant de fermer la/lesa modale(s),
 // soit en le(s) ciblant avec un sélecteur CSS, soit par un
 // HTMLElement ou TOUS !
-function closeModal(target = null) {
+export function closeModal(target = null) {
   if (target === null) {
     return closeModalAll();
   }

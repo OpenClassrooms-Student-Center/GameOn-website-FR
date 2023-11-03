@@ -1,3 +1,4 @@
+import { closeModal } from "./modal.js";
 /**
  * Gestion du menu
  */
