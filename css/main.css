@@ -169,10 +169,6 @@ p {
   overflow: hidden;
   position: relative;
   color: #fff;
-  top: 50vh;
-  transform: scale(1) translateY(-50%);
-  transition: transform var(--modal-duration) ease-in-out,
-    top var(--modal-duration) ease-in-out;
 }
 
 .modal-header {
@@ -189,9 +185,20 @@ p {
   padding: 15px;
 }
 
+#modal-signup .modal-content {
+  top: 150px;
+  transition: all var(--modal-duration) ease-in-out;
+}
+
 #modal-signup:not(.show) .modal-content {
   top: -150px;
   transform: scale(1);
+}
+
+#modal-done .modal-content {
+  top: 50vh;
+  transform: scale(1) translateY(-50%);
+  transition: all var(--modal-duration) ease-in-out;
 }
 
 #modal-done:not(.show) .modal-content {
