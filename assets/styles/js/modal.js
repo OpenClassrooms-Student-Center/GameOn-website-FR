@@ -40,12 +40,18 @@ modalbg.addEventListener('click', function (event) {
 function validate() {
 
   event.preventDefault();
-
-  const competition = document.getElementById("quantity");
   
-  validateFirstname();
-  validateLastname();
-  validateEmail();
+  var firstnameValid = validateFirstname();
+  var lastnameValid = validateLastname();
+  var emailValid = validateEmail();
+  var competitionValid = validateCompetition();
+  var locationValid = validateLocation();
+  var termsValid = termsAccepted();
+
+  if (firstnameValid && lastnameValid && emailValid && competitionValid && locationValid && termsValid) {
+    var successMessage = document.getElementById("successMessage");
+    successMessage.style.display = "block";
+  }
 }
 
 function validateFirstname() {
@@ -59,8 +65,6 @@ function validateFirstname() {
   if (firstname.value.length == 0) {
     firstname.closest(".formData").setAttribute("data-error", "Le champ prénom ne peut pas être vide");
     firstname.closest(".formData").setAttribute("data-error-visible", "true");
-  } else {
-    firstname.closest(".formData").setAttribute("data-error-visible", "false");
   }
 }
 
@@ -72,11 +76,9 @@ function validateLastname() {
     lastname.closest(".formData").setAttribute("data-error-visible", "false");
   }
 
-  if (firstname.length == 0) {
+  if (lastname.value.length == 0) {
     lastname.closest(".formData").setAttribute("data-error", "Le champ nom ne peut pas être vide");
     lastname.closest(".formData").setAttribute("data-error-visible", "true");
-  } else {
-    firstname.closest(".formData").setAttribute("data-error-visible", "false");
   }
 }
 
@@ -90,10 +92,52 @@ function validateEmail() {
     email.closest(".formData").setAttribute("data-error-visible", "false");
   }
 
-  if (email.length == 0) {
+  if (email.value.length == 0) {
     email.closest(".formData").setAttribute("data-eror", "le champ email ne peut pas être vide");
     email.closest(".formData").setAttribute("data-error-visible", "true");
+  }
+}
+
+function validateCompetition() {
+
+  competition = parseInt(quantity.value);
+  if (Number.isInteger(competition) == false && quantity.value != '' && 0 <= quantity.value < 100) {
+    quantity.closest(".formData").setAttribute("data-error", "La valeur entrée doit être un chiffre compris entre 0 et 100");
+    quantity.closest(".formData").setAttribute("data-error-visible", "true");
   } else {
-    email.closest(".formData").setAttribute("data-error-visible", "false");
+    quantity.closest(".formData").setAttribute("data-error-visible", "false");
+  }
+}
+
+
+function validateLocation() {
+
+  const locationName = document.getElementsByName("location");
+  var coché = false;
+
+  for (var i = 0; i < locationName.length; i++) { 
+    if (locationName[i].checked) {
+      console.log(locationName[i]);
+      coché = true;
+      break;
+    } 
+  }
+
+  if (coché == false) {
+    location1.closest(".formData").setAttribute("data-error", "Veuillez sélectionner un lieu");
+    location1.closest(".formData").setAttribute("data-error-visible", "true");
+  } else {
+    location1.closest(".formData").setAttribute("data-error-visible", "false");  
+  }
+}
+
+function termsAccepted() {
+  if (termsCondition.checked == false) {
+    console.log("test1");
+    termsCondition.closest(".formData").setAttribute("data-error", "Il est obligatoire d'accepter les conditions d'utilisation");  
+    termsCondition.closest(".formData").setAttribute("data-error-visible", "true");
+  } else {
+    console.log("test2");
+    termsCondition.closest(".formData").setAttribute("data-error-visible", "false");  
   }
 }
