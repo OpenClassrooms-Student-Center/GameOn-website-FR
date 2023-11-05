@@ -11,14 +11,12 @@
 /* Landing Page */
 
 body {
-  margin: 0;
+  margin: auto;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
   font-family: var(--font-default);
   font-size: 18px;
-  max-width: 1300px;
-  margin: 0 auto;
+  max-width: 1280px;
 }
 
 p {
@@ -120,7 +118,6 @@ main {
   background: #fe142f;
   display: flex;
   margin: auto;
-  padding: 2em;
   color: #fff;
   padding: 0.75rem 2.5rem;
   border-radius: 1rem;
@@ -188,6 +185,16 @@ main {
   margin: 15px auto;
 }
 
+.modal-body-success {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 500px;
+  text-align: center;
+  align-items: center;
+}
+
+
 label {
   font-family: var(--font-default);
   font-size: 17px;
@@ -210,7 +217,7 @@ input {
 }
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
+  font-size: 0.6em;
   color: #e54858;
   display: block;
   margin-top: 7px;
@@ -226,12 +233,12 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
+
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;
     color: red;
-} */
+}
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -405,7 +412,6 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -526,4 +532,3 @@ footer {
     opacity: 1;
   }
 }
-
