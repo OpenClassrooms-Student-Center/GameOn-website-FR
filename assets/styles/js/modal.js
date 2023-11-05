@@ -14,10 +14,6 @@ const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
 const form = document.querySelector('form');
 
-const messageErreur = document.querySelectorAll(".errorMessage");
-
-
-document.getElementById("firstname").closest(".errorMessage");
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -43,45 +39,61 @@ modalbg.addEventListener('click', function (event) {
 
 function validate() {
 
-  
   event.preventDefault();
 
-  const firstname = document.getElementById("firstname").value;
-  const lastname = document.getElementById("lastname").value;
-  const email = document.getElementById("email").value;
-
+  const competition = document.getElementById("quantity");
+  
   validateFirstname();
   validateLastname();
   validateEmail();
-  
 }
 
 function validateFirstname() {
-  if (firstname.length < 2) {
-    messageErreur.textContent = "Le prénom doit contenir au moins deux caractères";
-    messageErreur.setAttribute("data-error-visible", "true");
-    return false;
+  if (firstname.value.length < 2) {
+    firstname.closest(".formData").setAttribute("data-error", "Le prénom doit contenir au moins deux caractères");
+    firstname.closest(".formData").setAttribute("data-error-visible", "true");
+  } else {
+    firstname.closest(".formData").setAttribute("data-error-visible", "false");
   }
 
-  if (firstname.length == 0) {
-    messageErreur.textContent = "Le champ prénom ne peut pas être vide";
+  if (firstname.value.length == 0) {
+    firstname.closest(".formData").setAttribute("data-error", "Le champ prénom ne peut pas être vide");
+    firstname.closest(".formData").setAttribute("data-error-visible", "true");
+  } else {
+    firstname.closest(".formData").setAttribute("data-error-visible", "false");
   }
 }
 
 function validateLastname() {
-  if (firstname.length < 2) {
-    messageErreur.textContent = "Le nom doit contenir au moins deux caractères";
+  if (lastname.value.length < 2) {
+    lastname.closest(".formData").setAttribute("data-error", "Le nom doit contenir au moins deux caractères");
+    lastname.closest(".formData").setAttribute("data-error-visible", "true");
+  } else {
+    lastname.closest(".formData").setAttribute("data-error-visible", "false");
   }
 
   if (firstname.length == 0) {
-    messageErreur.textContent = "Le champ nom ne peut pas être vide";
+    lastname.closest(".formData").setAttribute("data-error", "Le champ nom ne peut pas être vide");
+    lastname.closest(".formData").setAttribute("data-error-visible", "true");
+  } else {
+    firstname.closest(".formData").setAttribute("data-error-visible", "false");
   }
 }
 
 function validateEmail() {
   var regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-  if (regex.test(email) == false) {
-    messageErreur.textContent = "L'adresse mail n'est pas valide";
+  if (regex.test(email.value) == false) {
+    email.closest(".formData").setAttribute("data-error", "L'adresse email n'est pas valide");
+    email.closest(".formData").setAttribute("data-error-visible", "true");
+  } else {
+    email.closest(".formData").setAttribute("data-error-visible", "false");
+  }
+
+  if (email.length == 0) {
+    email.closest(".formData").setAttribute("data-eror", "le champ email ne peut pas être vide");
+    email.closest(".formData").setAttribute("data-error-visible", "true");
+  } else {
+    email.closest(".formData").setAttribute("data-error-visible", "false");
   }
 }
