@@ -117,7 +117,6 @@ function validateLocation() {
 
   for (var i = 0; i < locationName.length; i++) { 
     if (locationName[i].checked) {
-      console.log(locationName[i]);
       coché = true;
       break;
     } 
@@ -133,11 +132,9 @@ function validateLocation() {
 
 function termsAccepted() {
   if (termsCondition.checked == false) {
-    console.log("test1");
     termsCondition.closest(".formData").setAttribute("data-error", "Il est obligatoire d'accepter les conditions d'utilisation");  
     termsCondition.closest(".formData").setAttribute("data-error-visible", "true");
   } else {
-    console.log("test2");
     termsCondition.closest(".formData").setAttribute("data-error-visible", "false");  
   }
 }
