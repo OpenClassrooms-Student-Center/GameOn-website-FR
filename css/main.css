@@ -1,0 +1,513 @@
+:root {
+  --font-default: "DM Sans", Arial, Helvetica, sans-serif;
+  --font-menu: Roboto, sans-serif;
+  --font-slab: var(--font-default);
+
+  --modal-duration: 0.8s;
+  --simple-duration: 300ms;
+
+  --bg-color-modal: #232323;
+}
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-default);
+  font-size: 62.5%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.8rem;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+input {
+  font-family: inherit;
+  padding: 8px;
+  border: 0.8px solid #ccc;
+  outline: none;
+}
+
+main {
+  font-size: 2.4rem;
+  color: white;
+  padding: 0.5vw 2vw 0;
+  margin: 1px 20px 15px;
+  border-radius: 3.2rem;
+}
+
+p {
+  padding: 0.5vw;
+}
+
+.logo {
+  width: auto;
+  height: auto;
+}
+
+.topnav {
+  position: relative;
+  overflow: hidden;
+  margin: 3.5%;
+}
+
+.header-logo {
+  float: left;
+  padding-right: 1.6rem;
+}
+
+.main-navbar {
+  float: right;
+}
+
+.nav-link,
+.nav-burger {
+  float: left;
+  display: block;
+  padding: 12px 12px;
+  margin: 5px;
+  font-size: 2rem;
+  font-family: var(--font-menu);
+  color: #000000;
+  border-radius: 15px;
+}
+
+.nav-burger {
+  display: none;
+  cursor: pointer;
+  color: #ff0000;
+}
+
+.nav-burger:hover,
+.nav-link:hover,
+.nav-link.active {
+  background-color: #ff0000;
+  color: #ffffff;
+}
+
+.nav-link.active {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.btn {
+  display: block;
+  margin: 0 auto;
+  cursor: pointer;
+  font-size: 1.6rem;
+
+  color: #ffffff;
+  background: #fe142f;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+}
+
+.btn:hover {
+  background: #3876ac;
+}
+
+.btn-submit,
+.btn-close {
+  padding: 1rem 5rem;
+}
+
+.btn-signup {
+  font-size: 2.5rem;
+  padding: 1.1rem 3rem;
+  margin: 59px 0 0;
+}
+
+.footer {
+  margin: 20px;
+  padding: 10px;
+  font-family: var(--font-slab);
+}
+
+/* Modal form */
+
+.modal {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  font-size: 1.6rem;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+  transition: opacity var(--modal-duration) ease-in-out,
+    visibility var(--modal-duration) ease-in-out;
+}
+
+.modal.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-content {
+  margin: 0 auto;
+  max-width: 500px;
+  background: var(--bg-color-modal);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: flex-end;
+  padding: 4px;
+}
+
+.modal-body {
+  padding: 15px 2em;
+}
+
+.modal-footer {
+  padding: 15px;
+}
+
+#modal-signup .modal-content {
+  top: 150px;
+  transition: all var(--modal-duration) ease-in-out;
+}
+
+#modal-signup:not(.show) .modal-content {
+  top: -150px;
+  transform: scale(1);
+}
+
+#modal-done .modal-content {
+  top: 50vh;
+  transform: scale(1) translateY(-50%);
+  transition: all var(--modal-duration) ease-in-out;
+}
+
+#modal-done:not(.show) .modal-content {
+  transform: scale(0) translateY(-50%);
+}
+
+.formData[data-error]::after {
+  content: attr(data-error);
+  font-size: 0.8em;
+  color: #e54858;
+  display: block;
+  margin: 0.5em 0;
+  opacity: 0;
+  transition: opacity var(--simple-duration) ease-in-out;
+}
+
+.formData[data-error-visible="true"]::after {
+  opacity: 1;
+}
+
+.formData[data-error-visible="true"] .text-control {
+  border-color: #e54858;
+}
+
+.label-control {
+  display: inline-block;
+  text-align: justify;
+  margin-bottom: 0.5em;
+  padding: 0;
+}
+
+.text-control {
+  width: 100%;
+  padding: 0.5em;
+  font-size: 1.25em;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  transition: border-color var(--simple-duration) ease-in-out;
+}
+
+.radio-group {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  justify-content: space-between;
+  font-size: inherit;
+  gap: 0.5em 1em;
+  padding: 0;
+}
+
+.radio-input,
+.checkbox-input {
+  display: none;
+}
+
+.radio-label,
+.checkbox-label {
+  position: relative;
+  display: flex;
+  cursor: pointer;
+  gap: 1em;
+  align-items: center;
+  font-size: 0.9em;
+  white-space: nowrap;
+}
+
+.radio-label {
+  flex: 1 0;
+}
+
+.radio-icon,
+.checkbox-icon {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  transition: background-color var(--simple-duration) ease-in-out;
+}
+
+.radio-icon::after,
+.checkbox-icon::after {
+  position: absolute;
+  content: "";
+  opacity: 0;
+  transition: opacity var(--simple-duration) ease-in-out;
+}
+
+.radio-icon {
+  border-radius: 50%;
+  border: 2px solid #279e7a;
+}
+
+.radio-icon::after {
+  width: 13px;
+  height: 13px;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-color: #279e7a;
+}
+
+.checkbox-icon {
+  border-radius: 4px;
+  background: #c4c4c4;
+}
+
+.checkbox-icon::after {
+  width: 12px;
+  height: 7px;
+  left: 22%;
+  top: 20%;
+  border-radius: 2px;
+  border: 2px solid transparent;
+  border-bottom-color: #fff;
+  border-left-color: #fff;
+  transform: rotate(-55deg);
+}
+
+.radio-input:checked + .radio-label .radio-icon::after,
+.checkbox-input:checked + .checkbox-label .checkbox-icon::after {
+  opacity: 1;
+}
+
+.checkbox-input:checked + .checkbox-label .checkbox-icon {
+  background: #279e7a;
+}
+
+.modal-close {
+  position: relative;
+  display: block;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.modal-close::before,
+.modal-close::after {
+  position: absolute;
+  left: 15px;
+  content: " ";
+  height: 100%;
+  width: 8%;
+  background-color: #fff;
+}
+
+.modal-close::before {
+  transform: scale(0.7) rotate(45deg);
+}
+
+.modal-close::after {
+  transform: scale(0.7) rotate(-45deg);
+}
+
+.modal-close:hover {
+  background-color: #ffffff;
+}
+
+.modal-close:hover::before,
+.modal-close:hover::after {
+  background-color: black;
+}
+
+.message {
+  padding: 2em;
+  text-align: center;
+}
+
+.hero-section {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  min-height: 657px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  box-shadow: 0px 12px 12px 0px rgba(0, 0, 0, 0.25);
+}
+
+.hero-content {
+  grid-column: span 5;
+  position: relative;
+  padding: 51px 67px;
+  background: var(--bg-color-modal);
+  text-align: justify;
+}
+
+.hero-content > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-headline {
+  font-size: 9.6rem;
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+.hero-text {
+  margin-top: 57px;
+  text-align: justify;
+}
+
+.hero-img {
+  grid-column: span 7;
+}
+
+.hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  padding: 0;
+}
+
+.hero-section > .btn-signup {
+  display: none;
+}
+
+.copyrights {
+  color: #fe142f;
+  padding: 0;
+  font-size: 1.6rem;
+  margin: 60px 0 30px;
+  font-weight: bolder;
+}
+
+footer {
+  padding-left: 2vw;
+  padding-right: 2vw;
+  margin: 0 20px;
+}
+
+@media screen and (max-width: 850px) {
+  main {
+    padding: 30px;
+    font-size: 1.6rem;
+    margin: 0;
+  }
+
+  .hero-section {
+    display: block;
+    box-shadow: unset;
+  }
+
+  .hero-content {
+    background: #fff;
+    color: #000;
+    padding: 0;
+  }
+
+  .hero-content .btn-signup {
+    display: none;
+  }
+
+  .hero-headline {
+    font-size: 4rem;
+    white-space: normal;
+  }
+
+  .hero-text {
+    width: unset;
+  }
+
+  .hero-img img {
+    border-radius: 10px;
+    margin-top: 40px;
+  }
+
+  .hero-section > .btn-signup {
+    display: block;
+    margin: 32px auto 10px;
+    padding: 12px 35px;
+  }
+
+  .modal-body {
+    font-size: 1.4rem;
+  }
+
+  .copyrights {
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  .topnav .nav-link {
+    display: none;
+  }
+
+  .topnav .nav-burger {
+    display: block;
+  }
+
+  .topnav.responsive {
+    position: relative;
+  }
+
+  .topnav.responsive .main-navbar {
+    width: 100%;
+  }
+
+  .topnav.responsive a {
+    float: none;
+    display: block;
+  }
+
+  .topnav.responsive .nav-burger {
+    position: absolute;
+    width: auto;
+    right: 0;
+    top: 0;
+  }
+}
