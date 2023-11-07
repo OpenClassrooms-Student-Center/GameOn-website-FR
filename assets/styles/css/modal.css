@@ -477,7 +477,7 @@ footer {
   margin: 0 20px;
 }
 
-.successMessage {
+#successMessage {
   display: none;
   color: lightgreen;
 }
