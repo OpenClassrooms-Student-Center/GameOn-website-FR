@@ -27,6 +27,12 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  const closeButton = document.getElementById('closeButton');
+  closeButton.addEventListener('click', closeSuccessMessage);
+});
+
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
