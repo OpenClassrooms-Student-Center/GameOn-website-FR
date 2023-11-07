@@ -174,14 +174,27 @@ function checkLength(idValue, messageError) {
 
 }
 
+
+//Fonction qui vérifie que le champs comprend au moins 2 caractères
+
+
 function checkIdentity(idValue) {
   let valid = true;
+
+  const regex = /^[A-Za-z]+$/;
 
   if (isEmpty(idValue)) {
     valid = false;
   }
 
   else if (!checkLength(idValue)) {
+    valid = false;
+  }
+
+  else if (!regex.test(idValue.value.trim())) {
+    messageError = `Le champ ${idValue.name} doit contenir uniquement des lettres`;
+    createDivError(idValue, messageError);
+    idValue.classList.add('error-input');
     valid = false;
   }
 
