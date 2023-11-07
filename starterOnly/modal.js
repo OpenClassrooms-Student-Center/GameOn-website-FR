@@ -7,10 +7,31 @@ function editNav() {
   }
 }
 
+
+//Modification de la couleur au choix des éléments de navigation
+
+document.addEventListener('DOMContentLoaded', function () {
+  
+  function removeActiveClass() {
+    navItems.forEach(function (item) {
+      item.classList.remove('active');
+    });
+  }
+
+  navItems.forEach(function (item) {
+    item.addEventListener('click', function () {
+
+      removeActiveClass();
+      this.classList.add('active');
+    });
+  });
+});
+
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+// const formContent = document.getElementById("formContent");
 const mainPage = document.getElementById("main-page");
 const mainForm = document.getElementById("main-form");
 const closeModalBtn = document.querySelector(".close");
@@ -38,6 +59,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  mainPage.classList.add('displayer');
   
 }
 
@@ -47,6 +69,7 @@ closeModalSuccessBtn.addEventListener("click", closeSuccessScreen);
 
 function closeModal() {
   modalbg.style.display = "none";
+  mainPage.classList.remove('displayer');
   form.reset(); //reset du formulaire à la fermeture
 }
 
@@ -304,10 +327,15 @@ form.addEventListener("submit", (event) => {
   if (isValid) {
       console.log("Le formulaire est valide !");
       success.style.display ="block";
-      mainPage.style.display ="none";
+      
       success.classList.add('success-message-container');
+      mainPage.classList.add('displayer');
+    
+      
       form.reset();
       closeModal();
+        // formContent.classList.add('displayer');
+    
 
   } else {
       console.log("Le formulaire contient des erreurs.");
@@ -322,22 +350,3 @@ form.addEventListener("submit", (event) => {
 
 
 
-
-
-
-document.addEventListener('DOMContentLoaded', function () {
-  
-  function removeActiveClass() {
-    navItems.forEach(function (item) {
-      item.classList.remove('active');
-    });
-  }
-
-  navItems.forEach(function (item) {
-    item.addEventListener('click', function () {
-
-      removeActiveClass();
-      this.classList.add('active');
-    });
-  });
-});

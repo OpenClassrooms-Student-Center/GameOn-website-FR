@@ -162,7 +162,7 @@ main {
 .bground {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 4;
   left: 0;
   top: 0;
   height: 100%;
@@ -561,7 +561,7 @@ footer {
   justify-content: center;
 
   position: fixed;
-  z-index: 3;
+  z-index: 4;
   left: 0;
   top: 0;
   height: 100%;
@@ -619,24 +619,37 @@ footer {
   border-radius: 10px 10px 0px 0px;
   top: 80px;
   max-width: 100%;
+  z-index: 1;
 
 
 }
 
 .bground{
    background-color: rgba(255, 255, 255, 0);
+   /* z-index: 1; */
  
 
 }
 
 .topnav{
-  z-index: 999;
+  /* z-index: 999; */
+  /* background-color: white;
+  border-radius: 15px;
+  padding: 5px 20px; */
+ 
+
 }
 
 .main-navbar{
   background-color: white;
   border-radius: 12px;
   /* border: 1px solid black; */
-  z-index: 999;
+  /* z-index: 999; */
+}
+
+.displayer{
+  display: none;
 }
 }
+
+
