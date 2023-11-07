@@ -40,7 +40,6 @@ modalbg.addEventListener('click', function (event) {
 function validate() {
 
   event.preventDefault();
-  
   var firstnameValid = validateFirstname();
   var lastnameValid = validateLastname();
   var emailValid = validateEmail();
@@ -49,52 +48,43 @@ function validate() {
   var termsValid = termsAccepted();
 
   if (firstnameValid && lastnameValid && emailValid && competitionValid && locationValid && termsValid) {
-    var successMessage = document.getElementById("successMessage");
     successMessage.style.display = "block";
   }
 }
 
 function validateFirstname() {
-  if (firstname.value.length < 2) {
-    firstname.closest(".formData").setAttribute("data-error", "Le prénom doit contenir au moins deux caractères");
+  if (firstname.value.length < 2 || firstname.value.length === 0) {
+    firstname.closest(".formData").setAttribute("data-error", firstname.value.length === 0 ? "Le champ prénom ne peut pas être vide" : "Le prénom doit contenir au moins deux caractères");
     firstname.closest(".formData").setAttribute("data-error-visible", "true");
+    return false;
   } else {
     firstname.closest(".formData").setAttribute("data-error-visible", "false");
-  }
-
-  if (firstname.value.length == 0) {
-    firstname.closest(".formData").setAttribute("data-error", "Le champ prénom ne peut pas être vide");
-    firstname.closest(".formData").setAttribute("data-error-visible", "true");
+    return true; 
   }
 }
 
+
 function validateLastname() {
-  if (lastname.value.length < 2) {
-    lastname.closest(".formData").setAttribute("data-error", "Le nom doit contenir au moins deux caractères");
+  if (lastname.value.length < 2 || lastname.value.length === 0) {
+    lastname.closest(".formData").setAttribute("data-error", lastname.value.length === 0 ? "Le champ nom ne peut pas être vide" : "Le nom doit contenir au moins deux caractères");
     lastname.closest(".formData").setAttribute("data-error-visible", "true");
+    return false;
   } else {
     lastname.closest(".formData").setAttribute("data-error-visible", "false");
-  }
-
-  if (lastname.value.length == 0) {
-    lastname.closest(".formData").setAttribute("data-error", "Le champ nom ne peut pas être vide");
-    lastname.closest(".formData").setAttribute("data-error-visible", "true");
+    return true; 
   }
 }
 
 function validateEmail() {
   var regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-  if (regex.test(email.value) == false) {
-    email.closest(".formData").setAttribute("data-error", "L'adresse email n'est pas valide");
+  if (regex.test(email.value) == false || email.value.length === 0) {
+    email.closest(".formData").setAttribute("data-error", email.value.length === 0 ? "Veuillez renseigner une adresse email" : "L'adresse email n'est pas valide");
     email.closest(".formData").setAttribute("data-error-visible", "true");
+    return false;
   } else {
     email.closest(".formData").setAttribute("data-error-visible", "false");
-  }
-
-  if (email.value.length == 0) {
-    email.closest(".formData").setAttribute("data-eror", "le champ email ne peut pas être vide");
-    email.closest(".formData").setAttribute("data-error-visible", "true");
+    return true; 
   }
 }
 
@@ -104,8 +94,10 @@ function validateCompetition() {
   if (Number.isInteger(competition) == false && quantity.value != '' && 0 <= quantity.value < 100) {
     quantity.closest(".formData").setAttribute("data-error", "La valeur entrée doit être un chiffre compris entre 0 et 100");
     quantity.closest(".formData").setAttribute("data-error-visible", "true");
+    return false;
   } else {
     quantity.closest(".formData").setAttribute("data-error-visible", "false");
+    return true;
   }
 }
 
@@ -125,8 +117,10 @@ function validateLocation() {
   if (coché == false) {
     location1.closest(".formData").setAttribute("data-error", "Veuillez sélectionner un lieu");
     location1.closest(".formData").setAttribute("data-error-visible", "true");
+    return false;
   } else {
     location1.closest(".formData").setAttribute("data-error-visible", "false");  
+    return true;
   }
 }
 
@@ -134,7 +128,9 @@ function termsAccepted() {
   if (termsCondition.checked == false) {
     termsCondition.closest(".formData").setAttribute("data-error", "Il est obligatoire d'accepter les conditions d'utilisation");  
     termsCondition.closest(".formData").setAttribute("data-error-visible", "true");
+    return false;
   } else {
-    termsCondition.closest(".formData").setAttribute("data-error-visible", "false");  
+    termsCondition.closest(".formData").setAttribute("data-error-visible", "false"); 
+    return true;
   }
 }
