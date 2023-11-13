@@ -170,7 +170,7 @@ function isEmpty(idValue, messageError) {
 function checkLength(idValue, messageError) {
 
   if (idValue.value.trim().length < 2) {
-    messageError = `Le champ ${idValue.name} doit contenir au moins 2 caractères`;
+    messageError = `Veuillez entrer 2 caractères ou plus pour le champ du  ${idValue.name}`;
     createDivError(idValue, messageError)
     idValue.classList.add('error-input');
     return false;
@@ -238,7 +238,7 @@ function checkBirthdate(idValue) {
 
   }
   if (!regex.test(idValue.value.trim())) {
-    messageError = `Le champ ${idValue.name} doit être de forme valide`;
+    messageError = "Vous devez entrer votre date de naissance.";
     createDivError(idValue, messageError)
     idValue.classList.add('error-input');
     return false;
@@ -286,7 +286,7 @@ function tournamentChecked(idValue) {
   }
 
   if (place === "") {
-    messageError = "Aucune option n'a été cochée !";
+    messageError = "Vous devez choisir une option";
     createDivErrorList(idValue, messageError)
     return false;
   }
@@ -301,7 +301,7 @@ function conditionAccepted(idValue) {
     deleteDivError(idValue);
     return true;
   } else {
-    messageError = "Vous devez accepter les conditions!";
+    messageError = "Vous devez vérifier que vous acceptez les termes et conditions.";
     createDivError(idValue, messageError);
     return false;
   }
