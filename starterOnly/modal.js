@@ -21,10 +21,27 @@ function launchModal() {
   hideModal()
 }
 
+//hide modal when click on background
 function hideModal(){
   modalbg.addEventListener("click", (event) =>{
     if(event.target === modalbg){
       modalbg.style.display = "none";
     }
   })
+}
+
+//close modal when click on X
+let closeButton = document.querySelector(".content .close")
+closeButton.addEventListener("click", () =>{
+  modalbg.style.display = "none";
+  clearFields()
+})
+
+//clear fields when click on X
+function clearFields(){
+  let nbrFields = document.querySelectorAll(".formData .text-control")
+
+  for(let actualFields = 0; actualFields < nbrFields.length; actualFields++){
+    nbrFields[actualFields].value = ""
+  }
 }
