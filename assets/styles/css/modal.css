@@ -306,6 +306,7 @@ input {
   display: none;
   position: relative;
   z-index: 3;
+  bottom: 43px;
 }
 
 #successMessage {
@@ -514,6 +515,46 @@ footer {
     margin: 0 7% 0 7%;
     padding: 0;
   }
+  .bground{
+    position: absolute;
+    background-color: transparent;
+    top: 70px;
+  }
+  .content{
+    margin: 0;
+    padding: 0;
+  }
+  .close:before,
+  .close:after {
+    position: absolute;
+    left: 15px;
+    content: " ";
+    height: 23px;
+    width: 3px;
+    background-color: #fff;
+  }
+  label {
+    font-size: 12px;
+    margin: 0;
+  }
+  label.checkbox2-label{
+    margin-bottom: 11px;
+  }
+  .checkbox-label, .checkbox2-label{
+    font-size: 11px;
+  }
+  .text-label{
+    font-size: 12px;
+  }
+  .GameOn{
+    display: none;
+  }
+  .text-control{
+    height: 35px;
+  }
+  .btn-close, .btn-submit{
+    padding: 12px 44px;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -531,7 +572,7 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 40px;
+    font-size: 38px;
     white-space: normal;
   }
   .hero-text {
@@ -561,14 +602,5 @@ footer {
   }
   to {
     opacity: 1;
-  }
-}
-
-@keyframes success {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
   }
 }
