@@ -25,10 +25,7 @@ p {
   margin-bottom: 0;
   padding: 0.5vw;
 }
-img {
-  padding-right: 1rem;
-}
-.topnav {
+header {
   overflow: hidden;
   margin: 3.5%;
   display: flex;
@@ -46,7 +43,7 @@ img {
 .main-navbar {
     float: right;
 }
-.topnav a {
+header a {
   float: left;
   display: block;
   color: #000000;
@@ -58,41 +55,22 @@ img {
   font-family: Roboto, sans-serif;
 }
 
-.topnav a:hover {
+header a:hover {
   background-color: var(--color-red);
   color: #ffffff;
   border-radius: 15px;
   text-decoration: underline 1px white;
 }
 
-.topnav a.active {
+header a.active {
   background-color: var(--color-red);
   color: #ffffff;
   border-radius: 15px;
   text-decoration: underline 1px white;
 }
 
-.topnav .icon {
+header .icon {
   display: none;
-}
-
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
 }
 
 main {
@@ -180,6 +158,18 @@ main {
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
+}
+
+#successMessage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #232323;
+  z-index: 2;
+  align-items: center;
+  justify-content: center;
 }
 
 label {
@@ -472,7 +462,33 @@ footer {
   color: lightgreen;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 768px) {
+  header {
+    margin-left: 7%;
+    margin-right: 7%;
+  }
+  header a {display: none;}
+  header a.icon {
+    float: right;
+    display: block;
+    color: var(--color-red);
+    padding-right: 0;
+  }
+  header.responsive {position: relative;}
+  header.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  header.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  main {
+    margin: 0 7% 0 7%;
+    padding: 0;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -480,7 +496,8 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px;
+    min-width: 0;
   }
   .hero-content::after {
     content: unset;
@@ -489,12 +506,13 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 40px;
     white-space: normal;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 15px;
+    margin-top: 17px;
   }
   .hero-img img {
     border-radius: 10px;
@@ -511,30 +529,6 @@ footer {
   }
 }
 
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    color: var(--color-red);
-  }
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-}
-
 @keyframes modalopen {
   from {
     opacity: 0;
@@ -545,3 +539,11 @@ footer {
   }
 }
 
+@keyframes success {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}

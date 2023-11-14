@@ -48,8 +48,10 @@ function validate() {
   var termsValid = termsAccepted();
 
   if (firstnameValid && lastnameValid && emailValid && competitionValid && locationValid && termsValid) {
-    successMessage.style.display = "block";
+    successMessage.style.display = "flex"; 
   }
+   
+
 }
 
 function validateFirstname() {
