@@ -160,18 +160,6 @@ main {
   margin: 15px auto;
 }
 
-#successMessage {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #232323;
-  z-index: 2;
-  align-items: center;
-  justify-content: center;
-}
-
 label {
   font-family: var(--font-default);
   font-size: 17px;
@@ -283,6 +271,7 @@ input {
   opacity: 1;
   cursor: pointer;
   transform: scale(0.7);
+  z-index: 3;
 }
 .close:before,
 .close:after {
@@ -300,7 +289,8 @@ input {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-close {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -310,6 +300,33 @@ input {
   color: #fff;
   cursor: pointer;
   border: 0;
+}
+
+.btn-close{
+  display: none;
+  position: relative;
+  z-index: 3;
+}
+
+#successMessage {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #232323;
+  z-index: 2;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  font-size: 36px;
+  font-weight: 400;
+}
+
+#sucessMessage span{
+  text-align: center;
+  padding: 0 20% 0 20%;
 }
 /* custom select styles */
 .custom-select {
@@ -459,7 +476,15 @@ footer {
 
 #successMessage {
   display: none;
-  color: lightgreen;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #232323;
+  z-index: 2;
+  align-items: center;
+  justify-content: center;
 }
 
 @media screen and (max-width: 768px) {

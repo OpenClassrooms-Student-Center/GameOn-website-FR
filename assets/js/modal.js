@@ -13,6 +13,7 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
 const form = document.querySelector('form');
+const btnClose =document.querySelector(".btn-close");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -48,7 +49,8 @@ function validate() {
   var termsValid = termsAccepted();
 
   if (firstnameValid && lastnameValid && emailValid && competitionValid && locationValid && termsValid) {
-    successMessage.style.display = "flex"; 
+    successMessage.style.display = "flex";
+    btnClose.style.display = "block";
   }
    
 
