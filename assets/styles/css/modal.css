@@ -2,6 +2,7 @@
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
   --modal-duration: 0.8s;
+  --color-red: #fe142f;
 }
 * {
   box-sizing: border-box;
@@ -20,27 +21,29 @@ body {
   max-width: 1300px;
   margin: 0 auto;
 }
-
 p {
   margin-bottom: 0;
   padding: 0.5vw;
 }
-
-img {
-  padding-right: 1rem;
-}
-
-.topnav {
+header {
   overflow: hidden;
   margin: 3.5%;
+  display: flex;
+  justify-content: space-between;
 }
 .header-logo {
     float: left;
+    display: flex;
+}
+.header-logo img {
+  width: 103px;
+  height: 19px;
+  align-self: center;
 }
 .main-navbar {
     float: right;
 }
-.topnav a {
+header a {
   float: left;
   display: block;
   color: #000000;
@@ -52,54 +55,23 @@ img {
   font-family: Roboto, sans-serif;
 }
 
-.topnav a:hover {
-  background-color: #ff0000;
+header a:hover {
+  background-color: var(--color-red);
   color: #ffffff;
   border-radius: 15px;
+  text-decoration: underline 1px white;
 }
 
-.topnav a.active {
-  background-color: #ff0000;
+header a.active {
+  background-color: var(--color-red);
   color: #ffffff;
   border-radius: 15px;
+  text-decoration: underline 1px white;
 }
 
-.topnav .icon {
+header .icon {
   display: none;
 }
-
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-} 
 
 main {
   font-size: 130%;
@@ -210,12 +182,12 @@ input {
 }
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
-  color: #e54858;
+  font-size: 10px;
+  color: #FF4E60;
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  text-align: left;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -226,12 +198,6 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
-/* 
-input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
-} */
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -305,6 +271,7 @@ input[data-error]::after {
   opacity: 1;
   cursor: pointer;
   transform: scale(0.7);
+  z-index: 3;
 }
 .close:before,
 .close:after {
@@ -322,7 +289,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-close {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -332,6 +300,34 @@ input[data-error]::after {
   color: #fff;
   cursor: pointer;
   border: 0;
+}
+
+.btn-close{
+  display: none;
+  position: relative;
+  z-index: 3;
+  bottom: 43px;
+}
+
+#successMessage {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #232323;
+  z-index: 2;
+  align-items: center;
+  justify-content: center;
+  color: #FFF;
+  font-size: 36px;
+  font-weight: 400;
+}
+
+#successMessage span{
+  text-align: center;
+  padding: 0 20% 0 20%;
 }
 /* custom select styles */
 .custom-select {
@@ -478,15 +474,102 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+
+#successMessage {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #232323;
+  z-index: 2;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    margin-left: 7%;
+    margin-right: 7%;
+  }
+  header a {display: none;}
+  header a.icon {
+    float: right;
+    display: block;
+    color: var(--color-red);
+    padding-right: 0;
+  }
+  header.responsive {position: relative;}
+  header.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  header.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  main {
+    margin: 0 7% 0 7%;
+    padding: 0;
+  }
+  .bground{
+    position: absolute;
+    background-color: transparent;
+    top: 70px;
+  }
+  .content{
+    margin: 0;
+    padding: 0;
+  }
+  .close:before,
+  .close:after {
+    position: absolute;
+    left: 15px;
+    content: " ";
+    height: 23px;
+    width: 3px;
+    background-color: #fff;
+  }
+  label {
+    font-size: 12px;
+    margin: 0;
+  }
+  label.checkbox2-label{
+    margin-bottom: 11px;
+  }
+  .checkbox-label, .checkbox2-label{
+    font-size: 11px;
+  }
+  .text-label{
+    font-size: 12px;
+  }
+  .GameOn{
+    display: none;
+  }
+  .text-control{
+    height: 35px;
+  }
+  .btn-close,.btn-signup, .btn-submit{
+    padding: 12px 44px;
+    position: relative;
+    height: 31px;
+    bottom: 10px;
+    font-size: 14px;
+    line-height: 10px;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
+    margin-bottom: 0;
   }
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+    padding: 0px;
+    min-width: 0;
   }
   .hero-content::after {
     content: unset;
@@ -495,12 +578,13 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 38px;
     white-space: normal;
   }
   .hero-text {
     width: unset;
-    font-size: 1.5rem;
+    font-size: 13px;
+    margin-top: 17px;
   }
   .hero-img img {
     border-radius: 10px;
@@ -512,8 +596,10 @@ footer {
     padding: 12px 35px;
   }
   .copyrights {
-    margin-top: 50px;
+    margin-top: 0px;
     text-align: center;
+    position: relative;
+    bottom: 50px;
   }
 }
 
@@ -526,4 +612,3 @@ footer {
     opacity: 1;
   }
 }
-
