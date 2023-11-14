@@ -552,12 +552,18 @@ footer {
   .text-control{
     height: 35px;
   }
-  .btn-close, .btn-submit{
+  .btn-close,.btn-signup, .btn-submit{
     padding: 12px 44px;
+    position: relative;
+    height: 31px;
+    bottom: 10px;
+    font-size: 14px;
+    line-height: 10px;
   }
   .hero-section {
     display: block;
     box-shadow: unset;
+    margin-bottom: 0;
   }
   .hero-content {
     background: #fff;
@@ -577,7 +583,7 @@ footer {
   }
   .hero-text {
     width: unset;
-    font-size: 15px;
+    font-size: 13px;
     margin-top: 17px;
   }
   .hero-img img {
@@ -590,8 +596,10 @@ footer {
     padding: 12px 35px;
   }
   .copyrights {
-    margin-top: 50px;
+    margin-top: 0px;
     text-align: center;
+    position: relative;
+    bottom: 50px;
   }
 }
 
