@@ -23,13 +23,16 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-// close modal event, click x button
-closeBtn.addEventListener("click", closeModal);
-
 // close modal form
 function closeModal() {
   modalbg.style.display = "none";
 }
+
+// close modal event, click x button
+closeBtn.addEventListener("click", closeModal);
+
+// close modal event, click on Fermer button
+btnClose.addEventListener("click", closeModal);
 
 // close modal event, click outside modal
 modalbg.addEventListener('click', function (event) {
