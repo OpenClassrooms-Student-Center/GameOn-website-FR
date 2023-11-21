@@ -14,6 +14,8 @@ const closeModalBtn = document.querySelector(".close");
 const form = document.getElementById("form");
 const formData = document.querySelectorAll(".formData");
 const formBtn = document.querySelector(".btn-submit");
+const modalConfirm = document.getElementById("confirm");
+const closeMessage = document.getElementById("closeMessage");
 
 // Création de constante pour récuperer les noeuds htmd les champs du formulaire
 const firstName = document.getElementById("firstName");
@@ -41,6 +43,9 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // Création d'un écouteur d'événement pour le bouton de fermeture de la modale.
 closeModalBtn.addEventListener("click", closeModal);
 
+// Création d'un écouteur d'événement pour le bouton du formulaire.
+closeMessage.addEventListener("click", closeModal);
+
 // Affichage de la modale
 function launchModal() {
   modalbg.style.display = "block";
@@ -49,6 +54,7 @@ function launchModal() {
 // Fermeture de la modale
 function closeModal() {
   modalbg.style.display = "none";
+  modalConfirm.style.display = "none";
 }
 
 // Création d'une fonction isRequired pour vérifier si un champ obligatoire est bien renseigné
@@ -92,17 +98,10 @@ function isValidDate(value) {
   return false;
 }
 
-// Création d'une fonction pour écouter l'événement submit et valider les valeurs du formulaire
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-
-  // Création d'une constante formData pour créer un nouvel objet formData dans le formulaire.
-  // Création d'une constante values pour transformer et récupérer les paires cles et valeurs dans le formulaire.
-  // Création d'une constante errors pour regrouper toutes les erreurs du formulaire.
-  const formData = new FormData(form);
-  const values = Object.fromEntries(formData.entries());
+// Création d'une fonction pour valider le formulaire
+function validateForm(values) {
+  //Création d'une constante pour stocker les erreurs des différents champs s'il y en a.
   const errors = {};
-
   // Instruction d'une condition : si le nom n'est pas renseigné, on ajoute une erreur à l'objet errors.
   if (!isRequired(values.firstName)) {
     errors.firstName = "Veuillez renseigner ce champs.";
@@ -157,14 +156,31 @@ form.addEventListener("submit", (e) => {
 
   // Instruction d'une condition : si les conditions d'utilisation ne sont pas acceptées, on ajoute une erreur à l'objet errors.
   if (!isRequired(values.conditions)) {
-    errors.conditions = "Veuillez accepter les conditions.";
+    errors.conditions = "Veuillez accepter les conditions d'utilisation.";
   }
+
+  return errors;
+}
+
+// Création d'une fonction pour écouter l'événement submit et valider les valeurs du formulaire
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  // Création d'une constante formData pour créer un nouvel objet formData dans le formulaire.
+  // Création d'une constante values pour transformer et récupérer les paires cles et valeurs dans le formulaire.
+  // Création d'une constante errors pour regrouper toutes les erreurs du formulaire.
+  const formData = new FormData(form);
+  const values = Object.fromEntries(formData.entries());
+  const errors = validateForm(values);
+  const fieldNames = Object.keys(formElements);
+
+  const hasErrors = Object.keys(errors).length > 0;
 
   // Instruction d'une condition : s'il y a des erreurs
   // S'il y a une erreur le message d'erreur s'affiche, sinon le message ne s'affiche pas car le formulaire ne contient pas d'erreurs.
-  if (errors) {
+  if (hasErrors) {
     // On récupère l'ensemble des clés de nos champs de formulaire et on itère dessus
-    Object.keys(formElements).forEach((field) => {
+    fieldNames.forEach((field) => {
       // Pour chaque élément on récupère le parent
       const parent = formElements[field].parentElement;
       // Pour chaque élément on récupère un erreur si elle existe
@@ -184,4 +200,9 @@ form.addEventListener("submit", (e) => {
     // Si des erreurs sont rencontrées on retourne false pour ne pas envoyer le formulaire
     return false;
   }
+
+  // S'il n'y a pas d'erreur de validation, la fonction continue de s'exécuter et le formulaire pourra être envoyé
+  modalConfirm.style.display = "flex";
+  //Si le formulaire est validé et envoyé, on le réinitialise
+  form.reset();
 });

@@ -171,6 +171,34 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
+#confirm {
+  display: none;
+  position: absolute;
+  background: #232323;
+  left: 8%;
+  right: 8%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  top: -2px;
+  bottom: 15px;
+  z-index: 1;
+}
+
+#confirm p {
+  text-align: center;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 142.6%;
+}
+
+#confirm input {
+  text-align: center;
+  padding: 12px;
+}
+
 .content {
   margin: 5% auto;
   width: 100%;
@@ -188,6 +216,7 @@ main {
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
+  position: relative;
 }
 
 label {
@@ -307,6 +336,7 @@ input[data-error]::after {
   opacity: 1;
   cursor: pointer;
   transform: scale(0.7);
+  z-index: 3;
 }
 .close:before,
 .close:after {

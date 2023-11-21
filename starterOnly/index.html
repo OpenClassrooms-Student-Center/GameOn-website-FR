@@ -55,6 +55,11 @@
       <div class="content">
         <span class="close"></span>
         <div class="modal-body">
+          <div class="confirm" id="confirm">
+            <span></span>
+            <p>Merci pour votre inscription</p>
+            <button type="submit" class="btn-submit" id="closeMessage">Fermer</button>
+          </div>
           <form id="form" novalidate>
             <div class="formData">
 
@@ -82,8 +87,9 @@
               <input class="text-control" id="quantity" name="quantity">
             </div>
 
-            <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
+
             <div class="formData" data-error="" data-error-visible="">
+              <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <input class="checkbox-input" type="radio" id="location1" name="tournament" value="New York" />
               <label class="checkbox-label" for="location1">
                 <span class="checkbox-icon"></span>
