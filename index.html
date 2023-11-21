@@ -49,57 +49,73 @@
         <div class="content">
           <span class="close"></span>
           <div class="modal-body">
+            <div class="hide" id="reservation">
+              <div class="wrapper">
+                <p> Merci pour votre inscription</p>
+                <button class="button btn-close">Fermer</button>
+              </div>
+            </div>
             <form
               name="reserve"
+              id="reserveForm"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+              onsubmit=""
             >
               <div
                 class="formData">
-                <label>Prénom</label><br>
+                <label for="first">Prénom</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="first"
                   name="first"
                   minlength="2"
-                /><br>
+                  value=""
+                />
+                <span id="firstError"  class="error hide" ></span>
+                <br>
               </div>
               <div
                 class="formData">
-                <label>Nom</label><br>
+                <label for="last">Nom</label><br>
                 <input
                   class="text-control"
                   type="text"
                   id="last"
                   name="last"
-                /><br>
+                />
+                <span id="lastError"  class="error hide" ></span>
+                <br>
               </div>
               <div
                 class="formData">
-                <label>E-mail</label><br>
+                <label for="email" >E-mail</label><br>
                 <input
                   class="text-control"
                   type="email"
                   id="email"
                   name="email"
-                /><br>
+                />
+                <span id="emailError" class="error hide" ></span>
+                <br>
               </div>
               <div
                 class="formData">
-                <label>Date de naissance</label><br>
+                <label for="birthdate">Date de naissance</label><br>
                 <input
                   class="text-control"
                   type="date"
                   id="birthdate"
                   name="birthdate"
                 /><br>
+                <span id="birthdateError" class="error hide" ></span>
               </div>
               <div
                 class="formData">
-                <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+                <input  class="text-control" id="quantity" name="quantity">
+                <span id="quantityError" class="error hide" ></span>
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
@@ -169,31 +185,33 @@
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
                   Portland</label
-                >
+                > <br/>
+                <span id="locationError" class="error hide" ></span>
               </div>
 
               <div class="formData">
                 <input
                   class="checkbox-input"
                   type="checkbox"
-                  id="checkbox1"
+                  id="cgu"
                 />
-                <label class="checkbox2-label" for="checkbox1">
+                <label class="checkbox2-label" for="cgu">
                   <span class="checkbox-icon"></span>
-                  J'ai lu et accepté les conditions d'utilisation.fdsfds
+                  J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
-                <input class="checkbox-input" type="checkbox" id="checkbox2" />
-                <label class="checkbox2-label" for="checkbox2">
+                <span id="cguError" class="error hide" ></span>
+                <input class="checkbox-input" type="checkbox" id="nextEvent" />
+                <label class="checkbox2-label" for="nextEvent">
                   <span class="checkbox-icon"></span>
                    Je souhaite être prévenu des prochains évènements.
                 </label>
                 <br>
               </div>
               <input
-                class="btn-submit"
+                id="btn-submit"
                 type="submit"
-                class="button"
+                class="modal-btn btn-submit"
                 value="C'est parti"
               />
             </form>

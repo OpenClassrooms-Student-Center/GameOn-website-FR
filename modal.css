@@ -127,7 +127,7 @@ main {
   padding-right: 2vw;
   margin: 1px 20px 15px;
   border-radius: 2rem;
-  text-align: justify;
+  /*text-align: justify;*/
 }
 
 .modal-btn {
@@ -254,6 +254,7 @@ input[data-error]::after {
   font-size: 12px;
   font-weight: normal;
 }
+
 .checkbox-label .checkbox-icon,
 .checkbox2-label .checkbox-icon {
   display: block;
@@ -337,7 +338,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-close {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -347,6 +349,10 @@ input[data-error]::after {
   color: #fff;
   cursor: pointer;
   border: 0;
+}
+
+.btn-close {
+margin-top: auto;
 }
 /* custom select styles */
 .custom-select {
@@ -483,6 +489,43 @@ input[data-error]::after {
 
 .hero-section > .btn-signup {
   display: none;
+}
+
+.invalid {
+  background-color: ivory;
+  border: none;
+  outline: 2px solid red;
+  border-radius: 5px;
+}
+
+.error {
+  color: red;
+  font-size: 11px;
+}
+
+
+.hide {
+  display: none;
+}
+
+#reservation {
+  height: 570px;
+  width: 100%;
+}
+
+#reservation p {
+  margin-top : auto;
+  padding : 0;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex:1
 }
 
 footer {
