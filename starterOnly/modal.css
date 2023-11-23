@@ -33,23 +33,27 @@ img {
 .topnav {
   overflow: hidden;
   margin: 3.5%;
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
 }
 .header-logo {
   float: left;
 }
 .main-navbar {
   float: right;
+  width: 100%;
 }
 .topnav a {
   float: left;
   display: block;
-  color: #000000;
   text-align: center;
   padding: 12px 12px;
   margin: 5px;
   text-decoration: none;
   font-size: 20px;
   font-family: Roboto, sans-serif;
+  color: black;
 }
 
 .topnav a:hover {
@@ -68,6 +72,18 @@ img {
   display: none;
 }
 
+.topnav a i {
+  color: #ff0000;
+}
+
+.topnav a i:hover {
+  color: #ffffff;
+}
+
+.topnav a i:active {
+  color: #ffffff;
+}
+
 @media screen and (max-width: 768px) {
   .topnav a {
     display: none;
@@ -81,6 +97,9 @@ img {
 @media screen and (max-width: 768px) {
   .topnav.responsive {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
   .topnav.responsive .icon {
     position: absolute;
@@ -94,25 +113,30 @@ img {
   }
 }
 
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 570px) {
   .topnav a {
     display: none;
   }
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+  }
+  .hero-headline {
+    font-size: 3.5rem;
+    white-space: normal;
+  }
+  .hero-text {
+    width: unset;
+    font-size: 0.5rem;
   }
 }
 
 main {
-  font-size: 130%;
   font-weight: bolder;
   color: black;
   padding-top: 0.5vw;
   padding-left: 2vw;
   padding-right: 2vw;
-  margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
 }
@@ -181,7 +205,7 @@ main {
   align-items: center;
   justify-content: space-between;
   height: 100%;
-  top: -2px;
+  top: -15px;
   bottom: 15px;
   z-index: 1;
 }
@@ -191,7 +215,6 @@ main {
   font-size: 36px;
   font-style: normal;
   font-weight: 400;
-  line-height: 142.6%;
 }
 
 #confirm input {
@@ -210,7 +233,13 @@ main {
   overflow: hidden;
   position: relative;
   color: #fff;
-  padding-top: 10px;
+  padding: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .content {
+    padding: 0;
+  }
 }
 
 .modal-body {
@@ -452,8 +481,8 @@ input[data-error]::after {
   color: #fff;
   position: relative;
   text-align: left;
-  min-width: 424px;
 }
+
 .hero-content::after {
   content: "";
   width: 100%;
@@ -480,7 +509,6 @@ input[data-error]::after {
 }
 .btn-signup {
   outline: none;
-  text-transform: capitalize;
   font-size: 1.3rem;
   padding: 15px 23px;
   margin: 0;
@@ -527,7 +555,7 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
     white-space: normal;
   }
   .hero-text {
