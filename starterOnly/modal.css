@@ -199,9 +199,10 @@ input {
   padding: 8px;
   border: 0.8px solid #ccc;
   outline: none;
+  margin: 2px;
 }
 .text-control {
-  margin: 0;
+  margin: 8px 0;
   padding: 8px;
   width: 100%;
   border-radius: 8px;
@@ -226,6 +227,23 @@ input {
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
 }
+
+.inputName{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+
+
+}
+
+.validInput{
+  //display: none;
+  color: #ff0000;
+  font-size: small;
+  font-weight: 100;
+  text-align: center;
+}
+
 /* 
 input[data-error]::after {
     content: attr(data-error);
