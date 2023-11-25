@@ -11,10 +11,9 @@
 /* Landing Page */
 
 body {
-  margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
+
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -120,7 +119,6 @@ main {
   background: #fe142f;
   display: flex;
   margin: auto;
-  padding: 2em;
   color: #fff;
   padding: 0.75rem 2.5rem;
   border-radius: 1rem;
@@ -197,7 +195,7 @@ label {
 }
 input {
   padding: 8px;
-  border: 0.8px solid #ccc;
+  border: 1px solid #ccc;
   outline: none;
 }
 .text-control {
@@ -336,7 +334,7 @@ input[data-error]::after {
 /* custom select styles */
 .custom-select {
   position: relative;
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   font-size: 1.1rem;
   font-weight: normal;
 }
@@ -373,7 +371,7 @@ input[data-error]::after {
 .select-selected {
   color: #000;
   padding: 11px 16px;
-  border: 1px solid transparent;
+  border: 1px solid;
   border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
   cursor: pointer;
   border-radius: 8px;
@@ -451,8 +449,7 @@ input[data-error]::after {
   text-transform: capitalize;
   font-size: 1.3rem;
   padding: 15px 23px;
-  margin: 0;
-  margin-top: 59px;
+  margin: 59px 0 0;
 }
 .hero-img {
   grid-column: span 8;
@@ -527,3 +524,30 @@ footer {
   }
 }
 
+.error {
+  font-size: 14px;
+  margin-top: 0;
+  background: indianred;
+}
+
+.valide {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-weight: normal;
+  font-size: 30px;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+@media screen and (max-width: 1100px) {
+  .hero-headline {
+    font-size: 4.5rem;
+  }
+}
+
+@media screen and (max-width: 708px) {
+  .hero-headline {
+    font-size: 3.4rem;
+  }
+}

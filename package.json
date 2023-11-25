@@ -1,0 +1,15 @@
+{
+  "name": "Creez_une_landing_page_avec_Javascript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "deploy": "node deployFaceSite.js && node deploy.js",
+    "build": "npm run deploy"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ftp-deploy": "^2.4.5"
+  }
+}
