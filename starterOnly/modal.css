@@ -35,10 +35,10 @@ img {
   margin: 3.5%;
 }
 .header-logo {
-    float: left;
+  float: left;
 }
 .main-navbar {
-    float: right;
+  float: right;
 }
 .topnav a {
   float: left;
@@ -69,7 +69,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
@@ -77,7 +79,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
+  .topnav.responsive {
+    position: relative;
+  }
   .topnav.responsive .icon {
     position: absolute;
     right: 0;
@@ -90,16 +94,16 @@ img {
   }
 }
 
-
-
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
     margin-top: -15px;
   }
-} 
+}
 
 main {
   font-size: 130%;
@@ -111,8 +115,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -188,6 +190,34 @@ main {
   margin: 15px auto;
 }
 
+.merci{
+  color: #FFF;
+text-align: center;
+font-family: DM Sans;
+font-size: 36px;
+font-style: normal;
+font-weight: 400;
+line-height: 142.6%; /* 51.336px */
+}
+
+.bye .modal-body{
+  display:flex;
+  height:100%;
+  flex-direction: column;
+ justify-content: center;
+  align-items: center;
+ gap:400px;
+}
+
+.hi {
+  display: none;
+}
+
+.bye {
+  display: block;
+  height: 100%;
+}
+
 label {
   font-family: var(--font-default);
   font-size: 17px;
@@ -228,15 +258,13 @@ input {
   border: 2px solid #e54858;
 }
 
-.inputName{
+.inputName {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-
-
 }
 
-.validInput{
+.validInput {
   //display: none;
   color: #ff0000;
   font-size: small;
@@ -351,6 +379,9 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+
+
 /* custom select styles */
 .custom-select {
   position: relative;
@@ -544,4 +575,3 @@ footer {
     opacity: 1;
   }
 }
-
