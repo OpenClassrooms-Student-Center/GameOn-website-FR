@@ -42,6 +42,20 @@ window.onclick = function (event) {
     }
 }
 
+
+let menuIcon = document.querySelector(".icon");
+let wrapMenu = document.querySelector(".wrap-links-menu");
+let logoDiv =   document.querySelector(".header-logo");
+function showMenu() {
+    wrapMenu.style.display = wrapMenu.style.display === 'none' ? 'block' : 'none';
+    let logoMarginTop = parseInt(window.getComputedStyle(logoDiv).marginTop);
+    logoDiv.style.marginTop = logoMarginTop === -190 ? "0px" : "-190px";
+   
+    menuIcon.style.marginTop = logoMarginTop === -190 ? "0px" : "-190px";
+}
+
+menuIcon.addEventListener('click', showMenu);
+
 //ajoute le message d'erreur
 function addErrorMsg(spanError) {
     errorTest = true;
@@ -242,11 +256,10 @@ function checkNextEvent() {
 nextEvent.addEventListener('change', checkCgu);
 
 function removeForm() {
-    let reserveForm2 = document.querySelector("#reserveForm");
-    console.log(reservation);
-    reserveForm2.classList.add("hide");
+    let reserveForm = document.getElementById("reserveForm");
     reservation.classList.remove("hide");
-   // reserveForm.reset();
+    reserveForm.classList.add("hide");
+    reserveForm.reset();
 }
 
 document.getElementById("btn-submit").addEventListener("click", function (event) {
@@ -265,21 +278,5 @@ document.getElementById("btn-submit").addEventListener("click", function (event)
 });
 
 
-function editNav() {
-    var x = document.getElementById("myTopnav");
-    if (x.className === "topnav") {
-        x.className += " responsive";
-    } else {
-        x.className = "topnav";
-    }
-}
 
-// DOM Elements
-
-const formData = document.querySelectorAll(".formData");
-
-// launch modal event
-
-
-// launch modal form
 
