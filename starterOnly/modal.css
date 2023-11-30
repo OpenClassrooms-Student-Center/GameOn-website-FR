@@ -68,6 +68,8 @@ img {
   background-color: #ff0000;
   color: #ffffff;
   border-radius: 15px;
+  position: relative;
+  right:  40px;
 }
 
 .topnav .icon {
@@ -616,6 +618,11 @@ footer {
 
   .topnav a {
     display: none;
+    
+  }
+  .topnav a.active {
+    position: relative;
+    right:  40px;
   }
 
   .topnav a.icon {
@@ -638,6 +645,9 @@ footer {
     float: none;
     display: block;
     text-align: left;
+    position: relative;
+    right: 50px;
+    top: 5px;
   }
 
   .hero-section {
@@ -692,10 +702,7 @@ footer {
     margin-top: unset;
   }
 
-  span {
-    position: relative;
-    right: 40px;
-  }
+ 
 }
 
 @media screen and (767px< width< 800px) {
@@ -746,6 +753,10 @@ footer {
     border-radius: 10px;
     margin-top: 40px;
     object-fit: cover;
+  }
+  .topnav a:hover {
+    position: relative;
+    right: 100px;
   }
 
   .hero-section>.btn-signup {
