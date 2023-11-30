@@ -191,7 +191,7 @@ main {
 }
 
 .merci{
-  color: #FFF;
+color: #FFF;
 text-align: center;
 font-family: DM Sans;
 font-size: 36px;
@@ -200,24 +200,24 @@ font-weight: 400;
 line-height: 142.6%; /* 51.336px */
 }
 
+.bye{
+  display: none;
+}
+
 .bye .modal-body{
-  display:flex;
-  height:100%;
-  flex-direction: column;
+height:100%;
+flex-direction: column;
  justify-content: center;
-  align-items: center;
+align-items: center;
  gap:400px;
 }
+
 
 .hi {
   display: none;
 }
 
-.bye {
-  display: none;
-  
-  
-}
+
 
 label {
   font-family: var(--font-default);
