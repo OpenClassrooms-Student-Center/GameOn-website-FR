@@ -210,12 +210,13 @@ line-height: 142.6%; /* 51.336px */
 }
 
 .hi {
-  display: block;
+  display: none;
 }
 
 .bye {
   display: none;
-  height: 100%;
+  
+  
 }
 
 label {
