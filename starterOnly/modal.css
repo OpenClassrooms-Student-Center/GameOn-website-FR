@@ -14,7 +14,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
+  /*background-image: url("background.png");*/
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -49,7 +49,7 @@ img {
   margin: 5px;
   text-decoration: none;
   font-size: 20px;
-  font-family: Roboto, sans-serif;
+  /*font-family: Roboto, sans-serif;*/
 }
 
 .topnav a:hover {
@@ -210,11 +210,11 @@ line-height: 142.6%; /* 51.336px */
 }
 
 .hi {
-  display: none;
+  display: block;
 }
 
 .bye {
-  display: block;
+  display: none;
   height: 100%;
 }
 
@@ -264,8 +264,8 @@ input {
   align-items: baseline;
 }
 
-.validInput {
-  //display: none;
+.invalidInput {
+  display: none; 
   color: #ff0000;
   font-size: small;
   font-weight: 100;
