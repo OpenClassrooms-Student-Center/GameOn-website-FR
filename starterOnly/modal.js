@@ -3,7 +3,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closemodalBtn = document.querySelector(".close");
-const thanks = document.querySelector(".bgThanks")
+
 
 // Form elements
 const form = document.querySelector("form");
@@ -15,12 +15,13 @@ const quantity = document.getElementById("quantity");
 const inputlocation = document.querySelectorAll('input[name="location"]');
 const spanLocation = document.querySelectorAll('.check-icon')
 const condition = document.getElementById("checkbox1");
-const close = document.querySelector(".close");
+
 
 //form thank
+const thanks = document.querySelector(".bgThanks");
 const message = document.getElementById("message");
 const thanksBtn = document.querySelector(".thanksBtn");
-
+const closeModalThanksBtn = document.querySelector(".X");
 //regex
 const regexText = new RegExp("^[a-zA-ZéèîïÉÈÎÏ]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$")
 const regexEmail = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+")
@@ -68,6 +69,7 @@ function launchModal() {
 function closeModal() {
   modalbg.style.display = "none";
 }
+
 
 // check length
 function validerInput(element, error) {
@@ -161,25 +163,26 @@ modalbg.addEventListener("click", (event) => {
 });
 
 // close modal form x
-closemodalBtn.addEventListener("click", closeModal);
+closemodalBtn.addEventListener("click", () => closeModal());
+closeModalThanksBtn.addEventListener("click", () => closeModalThanks());
 
 // close modal thanks
-thanksBtn.addEventListener('click', () => closeModalThanks());
+thanksBtn.addEventListener("click", () => closeModalThanks());
 
 // submit modal ==> check validation
-form.addEventListener('submit', e => validate(e));
+form.addEventListener("submit", (e) => validate(e));
 
 
 
 // addEventListener ==> change / imput form
-first.addEventListener('change', () => (checkInput(regexText, first, error.text) && validerInput(first, error.length)));
-last.addEventListener('change', () => (checkInput(regexText, last, error.text) && validerInput(last, error.length)));
-email.addEventListener('change', () => (checkInput(regexEmail, email, error.email) && checkInputVide(email, error.email)));
-birthdate.addEventListener('change', () => (majeur(birthdate, error.birthdate) && checkInputVide(birthdate, error.nonValide)));
-quantity.addEventListener('change', () => checkInputVide(quantity, error.quantity));
+first.addEventListener("change", () => (checkInput(regexText, first, error.text) && validerInput(first, error.length)));
+last.addEventListener("change", () => (checkInput(regexText, last, error.text) && validerInput(last, error.length)));
+email.addEventListener("change", () => (checkInput(regexEmail, email, error.email) && checkInputVide(email, error.email)));
+birthdate.addEventListener("change", () => (majeur(birthdate, error.birthdate) && checkInputVide(birthdate, error.nonValide)));
+quantity.addEventListener("change", () => checkInputVide(quantity, error.quantity));
 
-inputlocation.forEach(radio => radio.addEventListener('change', () => checkLocation(inputlocation, error.location)));
-condition.addEventListener('change', () => checkCondition(condition, error.condition));
+inputlocation.forEach(radio => radio.addEventListener("change", () => checkLocation(inputlocation, error.location)));
+condition.addEventListener("change", () => checkCondition(condition, error.condition));
 
 //valide form
 function validate(e) {

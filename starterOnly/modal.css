@@ -13,7 +13,6 @@
 /* Landing Page */
 
 body {
-  margin: 0;
   display: flex;
   flex-direction: column;
   background-image: url("background.png");
@@ -69,7 +68,10 @@ img {
   color: #ffffff;
   border-radius: 15px;
   position: relative;
-  right:  40px;
+  right: 40px;
+}
+.main-navbar>.active.docs-creator {
+  display: none;
 }
 
 .topnav .icon {
@@ -145,11 +147,12 @@ main {
   width: 100%;
   overflow: auto;
   background-color: rgba(26, 39, 156, 0.4);
+
 }
 
 .content,
-.f {
-  height: 100%;
+.contentThanks{
+  
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
@@ -161,6 +164,9 @@ main {
   position: relative;
   color: #fff;
   padding-top: 10px;
+}
+.content{
+  height: 130vh;
 }
 
 
@@ -300,6 +306,7 @@ input[data-error]::after {
   opacity: 1;
   cursor: pointer;
   transform: scale(0.7);
+  z-index: 1;
 }
 
 .close:before,
@@ -421,6 +428,8 @@ main>.btn-signup {
   overflow: hidden;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
+  
+
 }
 
 .hero-section>.btn-signup {
@@ -502,17 +511,18 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
+
 /* Modal de remerciement */
-.f {
-  
+.contentThanks{
+  height: 90vh;
+  max-width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 10% auto 5% auto;
   width: unset;
   max-width: unset;
- 
+
 }
 
 .thanks {
@@ -527,24 +537,35 @@ footer {
 
 .thanks>h1 {
   font-weight: 400;
-  
+
 
 }
-.f>.btn-submit{
+
+.contentThanks>.btn-submit {
   position: relative;
-  top: 30%;
+  top: 20%;
 }
 
 
 
 @media screen and (max-width: 540px) {
-  .topnav{
-    margin: 20px 20px 0 25px;
+  *{
+    position: relative;
+    
+  }
+
+  .bground,
+  .bgThanks {
+    margin: 20% auto 5% auto;
+  }
+
+  .topnav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
+
   .topnav a {
     display: none;
   }
@@ -552,6 +573,33 @@ footer {
   .topnav a.icon {
     float: right;
     display: block;
+  }
+  .topnav a.active {
+    position: relative;
+    right: 40px;
+  }
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+    position: relative;
+    top: 35px;
+    right: 1px;
+    
+
+  }
+  .topnav.responsive {
+    position: relative;
+    top: 20%;
+  }
+  .header-logo{
+    display: flex;
   }
   .hero-section {
     display: block;
@@ -568,10 +616,12 @@ footer {
   .hero-content::after {
     content: unset;
   }
+
   .hero-headline {
     font-size: 1.7em;
     font-weight: 500;
   }
+
   .hero-text {
     width: unset;
     font-weight: 400;
@@ -579,11 +629,15 @@ footer {
     padding: 0;
     font-size: 0.55em;
   }
+
   .header-logo>img {
     height: 1.188rem;
     width: auto;
-    
+    position: fixed;
+    top: 4.5%;
+    left: 25px;
   }
+
   .btn-signup {
     display: none;
   }
@@ -593,23 +647,74 @@ footer {
     margin: 25px auto 0 auto;
     width: 165px;
   }
+
   .hero-img {
     margin-top: 25px;
   }
+
   .copyrights {
     text-align: center;
     font-weight: 500;
     margin-top: 15px;
     font-size: 0.8em;
   }
+  .main-navbar{
+    margin-bottom: 30px;
+  }
   .content{
-  margin: 20% auto 5% auto;
+    height: 130vh;
+  }
+  
+  .contentThanks{
+    height: 110vh;
+    max-width: 100%;
+  }
+  .close {
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    width: 32px;
+    height: 32px;
+    opacity: 1;
+    cursor: pointer;
+    transform: scale(0.7);
+    z-index: 1;
+  }
+  
+  .close:before,
+  .close:after {
+    position: absolute;
+    left: 15px;
+    content: " ";
+    height: 33px;
+    width: 3px;
+    background-color: #fff;
+  }
+  
+  .close:before {
+    transform: rotate(45deg);
+  }
+  
+  .close:after {
+    transform: rotate(-45deg);
+  }
+  
 }
-.f {
-  margin: 20% auto 5% auto;
-}
-}
-@media screen and (539px < width < 768px) {
+
+@media screen and (540px< width< 768px) {
+
+  .content{
+    height: 120vh;
+  }
+  .contentThanks{
+    height: 80vh;
+    max-width: 50%;
+  }
+  .bground,
+    .bgThanks {
+      margin: 15% auto 5% auto;
+    }
+  
   .topnav {
     display: flex;
     flex-direction: row;
@@ -618,11 +723,12 @@ footer {
 
   .topnav a {
     display: none;
-    
+
   }
+
   .topnav a.active {
     position: relative;
-    right:  40px;
+    right: 40px;
   }
 
   .topnav a.icon {
@@ -664,12 +770,9 @@ footer {
   .hero-content::after {
     content: unset;
   }
-  .content{
-    margin: 20% auto 5% auto;
-  }
-  .f {
-    margin: 20% auto 5% auto;
-  }
+
+
+
   .hero-headline {
     font-size: 3em;
   }
@@ -702,10 +805,22 @@ footer {
     margin-top: unset;
   }
 
- 
+
 }
 
 @media screen and (767px< width< 800px) {
+  .content{
+    height: 120vh;
+  }
+  .contentThanks{
+    height: 90vh;
+  }
+
+  .bground,
+  .bgThanks {
+    margin: 10% auto 5% auto;
+  }
+
   footer {
     margin-top: 15px;
   }
@@ -754,6 +869,7 @@ footer {
     margin-top: 40px;
     object-fit: cover;
   }
+
   .topnav a:hover {
     position: relative;
     right: 100px;
@@ -778,44 +894,44 @@ footer {
 }
 
 @media screen and (799px< width< 971px) {
-.hero-headline{
-  font-size: 3.2em;
-}
-.hero-content{
-min-width: 340px;
-}
-.hero-text{
-  font-size: 0.8em;
-}
+  .content{
+    height: 130vh;
+  }
+  .contentThanks{
+    height: 90vh;
+    max-width: 40%;
+  }
+  .hero-headline {
+    font-size: 3.2em;
+  }
 
-.content{
-  margin: 5% auto 5% auto;
-}
+  .hero-content {
+    min-width: 340px;
+  }
 
-.f {
-  margin: 15% auto 5% auto;
-}
-.content{
-  margin: 5% auto;
-}
+  .hero-text {
+    font-size: 0.8em;
+  }
 }
 
 @media screen and (540px< width< 685px) {
-  .hero-headline{
+  .hero-headline {
     font-size: 2.25em;
   }
 }
 
 @media screen and (320px< width< 400px) {
-  .hero-headline{
+  .hero-headline {
     font-size: 1.7em;
   }
+
   .thanks>h1 {
     font-size: 1.63em;
-    
-  
+
+
   }
 }
+
 @keyframes modalopen {
   from {
     opacity: 0;
