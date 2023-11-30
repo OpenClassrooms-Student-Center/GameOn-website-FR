@@ -1,0 +1,439 @@
+body {
+  padding-left: 2vw;
+}
+
+img {  
+  width: 250px;
+}
+
+/* Modal form */
+
+.smFont {
+  font-size: 16px;
+}
+
+.bground,
+.bgThanks {
+color: #fff;
+}
+
+.f {
+
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+
+}
+
+.thanks {
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 70%;
+  margin: 15px auto;
+}
+
+.thanks>h1 {
+  font-weight: 400;
+  
+
+}
+
+.f>input {
+  position: relative;
+  top: 27%;
+}
+
+.text-control {
+  margin: 0;
+  padding: 8px;
+  width: 100%;
+  border-radius: 8px;
+  font-size: 20px;
+  height: 48px;
+}
+
+.btn-submit{
+  margin-top: 25px;
+}
+
+
+.hero-content {
+  padding: 51px 0 0 67px;
+  min-width: 420px;
+}
+
+
+.btn-signup {
+  position: absolute;
+  top: 620px;
+  left: 15%;
+}
+
+.hero-img {
+  grid-column:span 5;
+}
+
+@media screen and (min-device-width: 320px) and (max-device-width: 540px) {
+  .topnav {
+    margin: unset;
+    padding: 8vw;
+  }
+
+  .topnav a {
+    display: none;
+  }
+
+  .hero-box {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+    height: auto;
+  }
+
+ 
+  
+
+  .topnav a.icon {
+    margin-top: -15px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+    /* padding-right: 2vw; */
+  }
+
+  .hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: unset;
+    min-height: auto;
+    align-items: center;
+    
+  }
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    
+    min-height: auto;
+    min-width: unset;
+  }
+
+  .hero-content::after {
+    background: #fff;
+    color: #000;
+  }
+
+  
+  .hero-img{
+    margin-top: 20px;
+  }
+  
+  .f {
+    height: auto;
+    top: 8%;
+  }
+
+  .f>input {
+    top: 27%;
+  }
+
+  .bgThanks {
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  .hero-section>.btn-signup {
+   display: flex;
+   align-items: center;
+   margin: unset;
+   width: 141px;
+   height: 31px;
+   font-size: 1rem;
+   margin-top: 25px;
+   left: unset;
+   position: sticky;
+  }
+
+  footer {
+    text-align: center;
+    margin: unset;
+    width: 100%;
+}
+  
+
+  .copyrights {
+    margin: 15px 0 0 0;
+
+  }
+
+}
+@media screen and (min-device-width: 541px) and (max-device-width: 768px) {
+  .topnav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .topnav a {
+    display: none;
+  }
+
+  .topnav a.icon {
+    float: right;
+    display: block;
+    font-size: 3rem;
+  }
+
+  .hero-box{
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+    height: 800px;
+  }
+
+  .hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: unset;
+    min-height: auto;
+    align-items: center;
+    
+  }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+
+    background: #fff;
+    color: #000;
+    padding: unset;
+    min-width: unset;
+  }
+
+
+  .hero-text {
+    width: unset;
+    font-weight: 400;
+    margin-top: 17px;
+    padding: 0;
+    font-size: 1em;
+  }
+  .hero-content::after {
+    background: #fff;
+    color: #000;
+  }
+
+  .hero-img{
+    margin-top: 20px;
+  }
+
+  .hero-section>.btn-signup {
+    display: flex;
+    align-items: center;
+    margin: unset;
+    width: 141px;
+    height: 31px;
+    font-size: 1rem;
+    margin-top: 25px;
+   left: unset;
+   position: sticky;
+    
+   }
+   
+
+  .hero-headline {
+    font-size: 2.5em;
+    font-weight: 500;
+  }
+
+  .f {
+    height: 100%;
+    top: unset;
+  }
+
+  .f>input {
+    top: 27%;
+  }
+  footer {
+    text-align: center;
+    margin: unset;
+    width: 100%;
+}
+  
+  .copyrights {
+    margin: 15px 0 0 0;
+    font-size: 1rem;
+
+  }
+
+  
+
+}
+
+@media screen and (max-width: 768px) {
+  .topnav.responsive {
+    position: fixed;
+  }
+
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+@media screen and (min-device-width: 769px) and (max-width: 800px) {
+  .hero-section {
+    display: flex;
+    box-shadow: unset;
+    height: 1300px;
+  }
+
+  .hero-content {
+    background: #fff;
+    color: #000;
+    padding: 20px;
+  }
+
+  .hero-text {
+    width: unset;
+    font-weight: 400;
+    margin-top: 17px;
+    padding: 0;
+    font-size: 1.4em;
+  }
+  .hero-content::after {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    color: #000;
+    left: -80px;
+    right: unset;
+  }
+
+  .hero-content .btn-signup {
+    display: none;
+  }
+
+  .hero-headline {
+    font-size: 4.5rem;
+    font-weight: 500;
+    white-space: normal;
+  }
+
+  .hero-text {
+    width: unset;
+    font-size: 1.5rem;
+  }
+
+  .hero-img {
+    border-radius: 10px;
+    margin-top: 40px;
+    padding-right: 30px;
+  }
+  .hero-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: unset;
+    min-height: auto;
+    align-items: center;
+    height: unset;
+  }
+
+  .hero-section>.btn-signup {
+    display: block;
+    margin: 32px auto 10px;
+    padding: 12px 35px;
+    margin-top: 25px;
+   left: unset;
+   position: sticky;
+  }
+
+  .copyrights {
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  .hero-box {
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+    height: 1000px;
+  }
+
+  .f>input {
+
+    top: 27%;
+  }
+}
+
+@media screen and (min-device-width: 801px) and (max-width: 1439px) {
+  .hero-headline{
+    font-size: 2.8em;
+  }
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-150px);
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+f {
+
+    background: #000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+  
+  }
+  
+  .thanks {
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 70%;
+    margin: 15px auto;
+  }
+  
+  .thanks>h1 {
+    font-weight: 400;
+    
+  
+  }
+  
+  .f>input {
+    position: relative;
+    top: 27%;
+  }
+  
+  .text-control {
+    margin: 0;
+    padding: 8px;
+    width: 100%;
+    border-radius: 8px;
+    font-size: 1em;
+    height: 48px;
+  }
