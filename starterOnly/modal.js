@@ -4,7 +4,6 @@ const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closemodalBtn = document.querySelector(".close");
 
-
 // Form elements
 const form = document.querySelector("form");
 const first = document.getElementById("first");
@@ -16,12 +15,12 @@ const inputlocation = document.querySelectorAll('input[name="location"]');
 const spanLocation = document.querySelectorAll('.check-icon')
 const condition = document.getElementById("checkbox1");
 
-
 //form thank
 const thanks = document.querySelector(".bgThanks");
 const message = document.getElementById("message");
 const thanksBtn = document.querySelector(".thanksBtn");
 const closeModalThanksBtn = document.querySelector(".X");
+
 //regex
 const regexText = new RegExp("^[a-zA-ZéèîïÉÈÎÏ]+([-'\s][a-zA-ZéèîïÉÈÎÏ][a-zéèêàçîï]+)?$")
 const regexEmail = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+")
@@ -37,7 +36,6 @@ const error = {
   quantity: 'Veuillez selectionner un nombre de 0 ou plus',
   location: 'Veuillez selectionner une ville',
   condition: 'Veuillez accepter les conditions',
-
 };
 
 //error visible
@@ -45,11 +43,30 @@ const errorVisible = (element, error) => {
   element.parentElement.setAttribute("data-error-visible", "true");
   element.parentElement.setAttribute("data-error", error);
 }
+
 //error hidden
 const errorHiden = element => {
   element.parentElement.removeAttribute("data-error-visible");
   element.parentElement.removeAttribute("data-error", error);
 }
+// launch modal event
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
+// close modal form x
+closemodalBtn.addEventListener("click", () => closeModal());
+
+// close modal thanks X
+closeModalThanksBtn.addEventListener("click", () => closeModalThanks());
+
+// close modal thanks = bnt
+thanksBtn.addEventListener("click", () => closeModalThanks());
+
+// close modal form
+modalbg.addEventListener("click", (event) => {
+  if (event.target === modalbg) {
+    modalbg.style.display = "none";
+  }
+});
 
 function editNav() {
   const x = document.getElementById("myTopnav");
@@ -65,11 +82,25 @@ function launchModal() {
   modalbg.style.display = "flex";
 }
 
+// launch modal thanks
+function modalthanks() {
+  modalbg.style.display = "none";
+  thanks.style.display = "flex";
+  form.reset();
+};
+
+
+
 //close modal form
 function closeModal() {
   modalbg.style.display = "none";
 }
 
+//close  modal thanks
+function closeModalThanks() {
+  thanks.style.display = "none";
+  form.reset();
+};
 
 // check length
 function validerInput(element, error) {
@@ -116,7 +147,7 @@ function majeur(element, error) {
   return true;
 };
 
-//location
+//Check location => radio
 function checkLocation(element, error) {
   const isChecked = Array.from(element).some(radio => radio.checked);
   if (!isChecked) {
@@ -127,7 +158,7 @@ function checkLocation(element, error) {
   return true;
 };
 
-//conditions
+//check conditions => checkbox
 function checkCondition(element, error) {
   if (!element.checked) {
     errorVisible(element, error);
@@ -137,42 +168,8 @@ function checkCondition(element, error) {
   return true;
 }
 
-//thanks
-function modalthanks() {
-  modalbg.style.display = "none";
-  thanks.style.display = "flex";
-  form.reset();
-};
-
-//close thanks
-function closeModalThanks() {
-  thanks.style.display = "none";
-  form.reset();
-};
-
-//eventlistener
-
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-// close modal form
-modalbg.addEventListener("click", (event) => {
-  if (event.target === modalbg) {
-    modalbg.style.display = "none";
-  }
-});
-
-// close modal form x
-closemodalBtn.addEventListener("click", () => closeModal());
-closeModalThanksBtn.addEventListener("click", () => closeModalThanks());
-
-// close modal thanks
-thanksBtn.addEventListener("click", () => closeModalThanks());
-
 // submit modal ==> check validation
 form.addEventListener("submit", (e) => validate(e));
-
-
 
 // addEventListener ==> change / imput form
 first.addEventListener("change", () => (checkInput(regexText, first, error.text) && validerInput(first, error.length)));
