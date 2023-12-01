@@ -547,6 +547,43 @@ footer {
 }
 
 
+/* _______________________________ font size ____________________________________*/
+
+@media screen and (max-width: 400px) {
+  .hero-headline {
+    font-size: 1.3em;
+    font-weight: 500;
+  }
+
+  .thanks>h1 {
+    font-size: 1.63em;
+  }
+}
+@media screen and (400px< width< 540px) {
+  .hero-headline {
+    font-size: 1.77em;
+    font-weight: 500;
+  }
+}
+@media screen and (539px < width< 675px) {
+  .hero-headline {
+    font-size: 2.36em;
+    font-weight: 500;
+  }
+}
+@media screen and (674px< width< 800px) {
+  .hero-headline {
+    font-size: 3em;
+  }
+}
+
+@media screen and (799px< width< 971px) {
+  .hero-headline {
+    font-size: 1.7em;
+    font-weight: 500;
+  }
+}
+/* ______________________________________    responsive < 540 px _________________________________*/
 
 @media screen and (max-width: 540px) {
   *{
@@ -617,10 +654,7 @@ footer {
     content: unset;
   }
 
-  .hero-headline {
-    font-size: 1.7em;
-    font-weight: 500;
-  }
+ 
 
   .hero-text {
     width: unset;
@@ -634,7 +668,7 @@ footer {
     height: 1.188rem;
     width: auto;
     position: fixed;
-    top: 4.5%;
+    top: 5%;
     left: 25px;
   }
 
@@ -701,6 +735,8 @@ footer {
   
 }
 
+/* ______________________________________    responsive < 768 px _________________________________*/
+
 @media screen and (540px< width< 768px) {
 
   .content{
@@ -755,6 +791,11 @@ footer {
     right: 50px;
     top: 5px;
   }
+  .header-logo>img {
+    height: 2.3rem;
+    position: absolute;
+    top: 5%;
+  }
 
   .hero-section {
     display: block;
@@ -771,11 +812,6 @@ footer {
     content: unset;
   }
 
-
-
-  .hero-headline {
-    font-size: 3em;
-  }
 
   .hero-text {
     width: unset;
@@ -808,6 +844,8 @@ footer {
 
 }
 
+/* ______________________________________    responsive < 800 px _________________________________*/
+
 @media screen and (767px< width< 800px) {
   .content{
     height: 120vh;
@@ -832,7 +870,7 @@ footer {
   .topnav {
     flex-direction: column;
     display: flex;
-    align-items: center;
+    align-items:flex-start;
     gap: 2rem;
   }
 
@@ -853,11 +891,6 @@ footer {
 
   .hero-content .btn-signup {
     display: none;
-  }
-
-  .hero-headline {
-    font-size: 3.05em;
-    white-space: normal;
   }
 
   .hero-text {
@@ -893,6 +926,8 @@ footer {
 
 }
 
+/* ______________________________________    responsive < 971 px _________________________________*/
+
 @media screen and (799px< width< 971px) {
   .content{
     height: 130vh;
@@ -901,34 +936,13 @@ footer {
     height: 90vh;
     max-width: 40%;
   }
-  .hero-headline {
-    font-size: 3.2em;
-  }
-
+ 
   .hero-content {
     min-width: 340px;
   }
 
   .hero-text {
     font-size: 0.8em;
-  }
-}
-
-@media screen and (540px< width< 685px) {
-  .hero-headline {
-    font-size: 2.25em;
-  }
-}
-
-@media screen and (320px< width< 400px) {
-  .hero-headline {
-    font-size: 1.7em;
-  }
-
-  .thanks>h1 {
-    font-size: 1.63em;
-
-
   }
 }
 

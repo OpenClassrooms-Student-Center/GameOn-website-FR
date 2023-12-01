@@ -80,6 +80,7 @@ function editNav() {
 // launch modal form
 function launchModal() {
   modalbg.style.display = "flex";
+  
 }
 
 // launch modal thanks
