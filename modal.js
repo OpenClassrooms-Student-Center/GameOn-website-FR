@@ -27,7 +27,7 @@ const cparti = document.getElementById("cparti");
 const form = document.getElementById("reserve");  //ensemble 
 const first = document.getElementById("first");
 const last = document.getElementById("last");
-const mel = document.getElementById("email");
+const mail = document.getElementById("email");
 const bdate = document.getElementById("birthdate");
 const tournaments = document.getElementById("quantity");
 const locations = document.querySelectorAll("location");
@@ -38,10 +38,16 @@ const locations = document.querySelectorAll("location");
 
 ////////////OTHER VARIQBLES//////////////////////
 
-var enterpressed=false;
+
 document.getElementById("terms").required=true; // require terme and conditions to be accepted
-document.getElementById("quantity").min = "1";
+document.getElementById("quantity").min = "1"; // 
 document.getElementById("quantity").max = "99"; 
+let locationchecked=false;
+
+const validated =new Set();
+const regexmel=new RegExp("[a-z0-9._-]+@[a-z0-9]+\.[a-z0-9]+");
+let mailvalue = mail.value;
+
 
 
 //EVENT LISTENERS/////////
@@ -54,6 +60,11 @@ form.addEventListener("submit", (event) => {
 
 //
 
+first.addEventListener("change",validfirst);
+last.addEventListener("change",validlast);
+mail.addEventListener("change",validmel);
+quantity.addEventListener("change",validquantity);
+
 
 
 
@@ -65,6 +76,7 @@ cross.addEventListener("click",closeModal);
 cross2.addEventListener("click",closeModal);
 
 /////////////////////////////FUNCTIONS///////////////////////
+
 
 
 // launch modal form 
@@ -94,31 +106,94 @@ function switchmodal(){
 }
 
 
-//Form validation functions
+//Form validation functions////////////
 
 function validfirst() {
   if (first.value.length<2){
     document.getElementById("prenom").style.display="inline";
-    console.log("invalid first name!")
+    console.log("invalid first name!");
   }
   else{
-    document.getElementById("prenom").style.display="none";
     console.log("valid first name");
+    validated.add("first");
+    console.log(validated)
   }
+};
+
+function validlast(){
+  if (last.value.length<2){
+    document.getElementById("nom").style.display="inline";
+    console.log("invalid last name!")
+  }
+  else{
+    
+    console.log("valid last name");
+    validated.add("last");
+    console.log(validated);
+  }
+};
+
+function validmel(){
+if(!regexmel.test(mailvalue)){
+  document.getElementById("mel").style.display="inline";
+  console.log("Invalid email");
 }
+else{
+  console.log("Valid email");
+  validated.add("mail");
+}
+};
+
+function validbdate(){};
+
+function validquantity(){};
+
+
+let form = document.querySelector("form")
+
+form.addEventListener("submit", (event) => {
+    try {
+        event.preventDefault()
+
+        validfirst(first)
+
+        validlast(last)
+
+        validmel(mail)
+
+        validbdate(bdate)
+
+        validquantity(locations)
+        
+
+
+        // traitement du formulaire
+        // ...
+    } catch (error) {
+        console.log("Une erreur est survenue : " + error.message)
+    }
+})
+
+
+
+
+
+
+
+
 
 //chekc for enter pressed
 
-first.addEventListener('keydown', (event) => {
-  if (event.key === 'Enter') {
-    console.log('Enter key pressed!');
-    enterpressed=true;
+// first.addEventListener('keydown', (event) => {
+//   if (event.key === 'Enter') {
+//     console.log('Enter key pressed!');
+//     enterpressed=true;
 
-  }
-  if (enterpressed){
-    validfirst();
-  }
-});
+//   }
+//   if (enterpressed){
+//     validfirst();
+//   }
+// });
 
 
 

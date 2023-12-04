@@ -190,41 +190,37 @@ main {
   margin: 15px auto;
 }
 
-.merci{
-color: #FFF;
-text-align: center;
-font-family: DM Sans;
-font-size: 36px;
-font-style: normal;
-font-weight: 400;
-line-height: 142.6%; /* 51.336px */
+.merci {
+  color: #fff;
+  text-align: center;
+  font-family: DM Sans;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 142.6%; /* 51.336px */
 }
 
-.bye{
+.bye {
   display: none;
 }
 
-.bye .modal-body{
-height:100%;
+.bye .modal-body {
+  height: 100%;
   flex-direction: column;
- justify-content: center;
-align-items: center;
- gap:400px;
+  justify-content: center;
+  align-items: center;
+  gap: 400px;
 }
-
-
 
 .hi {
   display: none;
 }
 
-
-
 label {
   font-family: var(--font-default);
   font-size: 17px;
   font-weight: normal;
-  display: inline-block;
+  display: inline;
   margin-bottom: 11px;
 }
 input {
@@ -266,13 +262,20 @@ input {
   align-items: baseline;
 }
 
+#bday{
+  display:inline;
+}
+
 .invalidInput {
-  display: none; 
+  display: none;
   color: #ff0000;
   font-size: small;
   font-weight: 100;
   text-align: center;
+  justify-content: end;
 }
+
+
 
 /* 
 input[data-error]::after {
@@ -381,8 +384,6 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
-
-
 
 /* custom select styles */
 .custom-select {
