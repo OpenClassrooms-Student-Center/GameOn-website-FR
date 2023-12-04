@@ -25,13 +25,13 @@ const cparti = document.getElementById("cparti");
 //form data
 
 const form = document.getElementById("reserve");  //ensemble 
-const first = document.getElementById("fist");
+const first = document.getElementById("first");
 const last = document.getElementById("last");
 const mel = document.getElementById("email");
 const bdate = document.getElementById("birthdate");
 const tournaments = document.getElementById("quantity");
-const location = document.querySelectorAll("location");
-const termsconditions = document.getElementById("")
+const locations = document.querySelectorAll("location");
+
 
 
 
