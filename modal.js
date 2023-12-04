@@ -12,6 +12,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
+const form = document.getElementById("reserve");  //ensemble des données du formulaire
 
 //concerns closing modal
 const cross = document.getElementById("cross");
@@ -27,19 +28,27 @@ const cparti = document.getElementById("cparti");
 var enterpressed=false;
 
 
-/////////////////////////////FUNCTIONS///////////////////////
+//EVENT LISTENERS/////////
+
+//pas de reload
+form.addEventListener("submit", (event) => {
+  event.preventDefault();   
+  console.log("No reload");
+});
 
 
 
 
-// launch modal event  FUNCTION
+
+
+// launch modal event  
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 cross.addEventListener("click",closeModal);
-cparti.addEventListener("click",switchmodal);
+//cparti.addEventListener("click",switchmodal);
 cross2.addEventListener("click",closeModal);
 
-
+/////////////////////////////FUNCTIONS///////////////////////
 
 
 // launch modal form 
@@ -53,6 +62,7 @@ function launchModal() {
 
 function closeModal() {
   modalbg.style.display = "none";
+  bye.style.display="none";
   console.log("exit");
 
 }

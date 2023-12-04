@@ -206,11 +206,12 @@ line-height: 142.6%; /* 51.336px */
 
 .bye .modal-body{
 height:100%;
-flex-direction: column;
+  flex-direction: column;
  justify-content: center;
 align-items: center;
  gap:400px;
 }
+
 
 
 .hi {
