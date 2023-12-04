@@ -163,7 +163,6 @@ form.addEventListener("submit", (event) => {
 
         validbdate(bdate)
         
-
         validquantity(locations)
         
 
