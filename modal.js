@@ -162,6 +162,7 @@ form.addEventListener("submit", (event) => {
         validmel(mail)
 
         validbdate(bdate)
+        
 
         validquantity(locations)
         
