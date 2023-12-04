@@ -111,7 +111,7 @@
               <div
                 class="formData">
                 <label for="quantity" >À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <input type="number" class="text-control" id="quantity" name="quantity">
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
@@ -192,15 +192,15 @@
                   id="checkbox1"
                   checked
                 />
-                <label   class="checkbox2-label" for="checkbox1" required>
+                <label   class="checkbox2-label" for="terms" id="terms" >
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
                 <br>
-                <span class="invalidInput" id="terms">Merci d'accepter les termes et conditions!</span>
+                <span class="invalidInput" id="noterms">Merci d'accepter les termes et conditions!</span>
 
-                <input class="checkbox-input" type="checkbox" id="checkbox2" />
-                <label   class="checkbox2-label" for="checkbox2">
+                <input class="checkbox-input" type="checkbox" id="newsletter" />
+                <label   class="checkbox2-label" for="newsletter">
                   <span class="checkbox-icon"></span>
                   Je Je souhaite être prévenu des prochains évènements.
                 </label>

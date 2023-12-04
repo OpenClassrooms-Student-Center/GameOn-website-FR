@@ -12,7 +12,6 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const form = document.getElementById("reserve");  //ensemble des données du formulaire
 
 //concerns closing modal
 const cross = document.getElementById("cross");
@@ -23,9 +22,26 @@ const hi =document.querySelector(".hi");
 const bye =document.querySelector(".bye");
 const cparti = document.getElementById("cparti");
 
-////////////OTHER VQRIQBLES//////////////////////
+//form data
+
+const form = document.getElementById("reserve");  //ensemble 
+const first = document.getElementById("fist");
+const last = document.getElementById("last");
+const mel = document.getElementById("email");
+const bdate = document.getElementById("birthdate");
+const tournaments = document.getElementById("quantity");
+const location = document.querySelectorAll("location");
+const termsconditions = document.getElementById("")
+
+
+
+
+////////////OTHER VARIQBLES//////////////////////
 
 var enterpressed=false;
+document.getElementById("terms").required=true; // require terme and conditions to be accepted
+document.getElementById("quantity").min = "1";
+document.getElementById("quantity").max = "99"; 
 
 
 //EVENT LISTENERS/////////
@@ -36,7 +52,7 @@ form.addEventListener("submit", (event) => {
   console.log("No reload");
 });
 
-
+//
 
 
 
@@ -79,7 +95,6 @@ function switchmodal(){
 
 
 //Form validation functions
-
 
 function validfirst() {
   if (first.value.length<2){
