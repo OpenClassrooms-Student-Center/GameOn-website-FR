@@ -31,6 +31,8 @@ const mail = document.getElementById("email");
 const bdate = document.getElementById("birthdate");
 const tournaments = document.getElementById("quantity");
 const locations = document.querySelectorAll("location");
+const terms = document.querySelector("#checkbox1");
+
 
 
 
@@ -39,7 +41,7 @@ const locations = document.querySelectorAll("location");
 ////////////OTHER VARIQBLES//////////////////////
 
 
-document.getElementById("terms").required=true; // require terme and conditions to be accepted
+//document.getElementById("terms").required=true; // require terme and conditions to be accepted
 document.getElementById("quantity").min = "1"; // 
 document.getElementById("quantity").max = "99"; 
 let locationchecked=false;
@@ -108,8 +110,8 @@ function switchmodal(){
 
 //Form validation functions////////////
 
-function validfirst() {
-  if (first.value.length<2){
+function validfirst(variable) {
+  if (variable.length<2){
     document.getElementById("prenom").style.display="inline";
     console.log("invalid first name!");
   }
@@ -120,8 +122,8 @@ function validfirst() {
   }
 };
 
-function validlast(){
-  if (last.value.length<2){
+function validlast(variable){
+  if (variable.length<2){
     document.getElementById("nom").style.display="inline";
     console.log("invalid last name!")
   }
@@ -133,8 +135,8 @@ function validlast(){
   }
 };
 
-function validmel(){
-if(!regexmel.test(mailvalue)){
+function validmel(variable){
+if(!regexmel.test(variable)){
   document.getElementById("mel").style.display="inline";
   console.log("Invalid email");
 }
@@ -144,12 +146,32 @@ else{
 }
 };
 
-function validbdate(){};
+function validbdate(variable){
+  if (typeof variable != 'number'){
+    throw new BdateError ()
+  }
+};
 
-function validquantity(){};
+function validquantity(variable){
+
+};
+
+function termschecked(checkbox){};
+;
+//ERROR OBJECT FUNCITONS///
+
+// const FirstError(){};
+// const LastError(){};
+// const MelError(){};
+// const BdateError(){};
+// const TournamentNbError(){};
+// const LocationError(){};
+// const TermsError(){};
 
 
-let form = document.querySelector("form")
+
+
+////CODE////////
 
 form.addEventListener("submit", (event) => {
     try {
@@ -164,52 +186,16 @@ form.addEventListener("submit", (event) => {
         validbdate(bdate)
         
         validquantity(locations)
+
+        validateterms(ter)
         
 
 
-        // traitement du formulaire
-        // ...
+      
     } catch (error) {
         console.log("Une erreur est survenue : " + error.message)
     }
 })
 
 
-
-
-
-
-
-
-
-//chekc for enter pressed
-
-// first.addEventListener('keydown', (event) => {
-//   if (event.key === 'Enter') {
-//     console.log('Enter key pressed!');
-//     enterpressed=true;
-
-//   }
-//   if (enterpressed){
-//     validfirst();
-//   }
-// });
-
-
-
-
-
-
-
-
-
-
-
-// switch modal form to bye
-
-// function closeModal(e) {
-//   console.log(e)
-//   e.target.parentElement.parentElement.style.display = "none";
-//   console.log("exit modal")
-// }
 
