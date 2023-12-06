@@ -158,44 +158,44 @@ function validquantity(variable){
 
 function termschecked(checkbox){};
 ;
-//ERROR OBJECT FUNCITONS///
-
-// const FirstError(){};
-// const LastError(){};
-// const MelError(){};
-// const BdateError(){};
-// const TournamentNbError(){};
-// const LocationError(){};
-// const TermsError(){};
-
 
 
 
 ////CODE////////
 
 form.addEventListener("submit", (event) => {
-    try {
+  
         event.preventDefault()
 
-        validfirst(first)
-
-        validlast(last)
-
-        validmel(mail)
-
-        validbdate(bdate)
-        
-        validquantity(locations)
-
-        validateterms(ter)
-        
-
+        isformcomplete();
 
       
-    } catch (error) {
-        console.log("Une erreur est survenue : " + error.message)
-    }
+   
 })
 
 
+function isformcomplete(){
+
+  //first name
+  if (first.value.length<2){
+    document.getElementById("prenom").style.display="inline";
+    console.log("invalid first name!");
+  }
+
+  //last name
+  if (last.value.length<2){
+    document.getElementById("nom").style.display="inline";
+    console.log("invalid last name!")
+  }
+
+  if(!regexmel.test(mail.value)){
+    document.getElementById("mel").style.display="inline";
+    console.log("Invalid email");
+  }
+
+  return true;
+  
+  
+
+}
 
