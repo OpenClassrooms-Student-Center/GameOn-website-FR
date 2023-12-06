@@ -33,6 +33,13 @@ const tournaments = document.getElementById("quantity");
 const locations = document.querySelectorAll("location");
 const terms = document.querySelector("#checkbox1");
 
+//divs to display on error///
+const prenom=document.getElementById("prenom")
+const nom= document.getElementById("nom")
+const mel =document.getElementById("mel")
+const daten= document.getElementById("daten");
+const nombre =document.getElementById("nombre")
+const  noterms=document.getElementById("noterms")
 
 
 
@@ -54,18 +61,13 @@ let mailvalue = mail.value;
 
 //EVENT LISTENERS/////////
 
-//pas de reload
-form.addEventListener("submit", (event) => {
-  event.preventDefault();   
-  console.log("No reload");
-});
 
 //
 
-first.addEventListener("change",validfirst);
-last.addEventListener("change",validlast);
-mail.addEventListener("change",validmel);
-quantity.addEventListener("change",validquantity);
+// first.addEventListener("change",validfirst);
+// last.addEventListener("change",validlast);
+// mail.addEventListener("change",validmel);
+// quantity.addEventListener("change",validquantity);
 
 
 
@@ -94,8 +96,12 @@ function closeModal() {
   modalbg.style.display = "none";
   bye.style.display="none";
   console.log("exit");
+  form.reset();
+  console.log("Form cleared")
 
 }
+
+
 
 //switch modal hi to bye
 
@@ -110,54 +116,54 @@ function switchmodal(){
 
 //Form validation functions////////////
 
-function validfirst(variable) {
-  if (variable.length<2){
-    document.getElementById("prenom").style.display="inline";
-    console.log("invalid first name!");
-  }
-  else{
-    console.log("valid first name");
-    validated.add("first");
-    console.log(validated)
-  }
-};
+// function validfirst(variable) {
+//   if (variable.length<2){
+//     document.getElementById("prenom").style.display="inline";
+//     console.log("invalid first name!");
+//   }
+//   else{
+//     console.log("valid first name");
+//     validated.add("first");
+//     console.log(validated)
+//   }
+// };
 
-function validlast(variable){
-  if (variable.length<2){
-    document.getElementById("nom").style.display="inline";
-    console.log("invalid last name!")
-  }
-  else{
+// function validlast(variable){
+//   if (variable.length<2){
+//     document.getElementById("nom").style.display="inline";
+//     console.log("invalid last name!")
+//   }
+//   else{
     
-    console.log("valid last name");
-    validated.add("last");
-    console.log(validated);
-  }
-};
+//     console.log("valid last name");
+//     validated.add("last");
+//     console.log(validated);
+//   }
+// };
 
-function validmel(variable){
-if(!regexmel.test(variable)){
-  document.getElementById("mel").style.display="inline";
-  console.log("Invalid email");
-}
-else{
-  console.log("Valid email");
-  validated.add("mail");
-}
-};
+// function validmel(variable){
+// if(!regexmel.test(variable)){
+//   document.getElementById("mel").style.display="inline";
+//   console.log("Invalid email");
+// }
+// else{
+//   console.log("Valid email");
+//   validated.add("mail");
+// }
+// };
 
-function validbdate(variable){
-  if (typeof variable != 'number'){
-    throw new BdateError ()
-  }
-};
+// function validbdate(variable){
+//   if (typeof variable != 'number'){
+//     throw new BdateError ()
+//   }
+// };
 
-function validquantity(variable){
+// function validquantity(variable){
 
-};
+// };
 
-function termschecked(checkbox){};
-;
+// function termschecked(checkbox){};
+// ;
 
 
 
@@ -178,19 +184,23 @@ function isformcomplete(){
 
   //first name
   if (first.value.length<2){
-    document.getElementById("prenom").style.display="inline";
+    prenom.style.display="inline";
     console.log("invalid first name!");
   }
 
   //last name
   if (last.value.length<2){
-    document.getElementById("nom").style.display="inline";
+    nom.style.display="inline";
     console.log("invalid last name!")
   }
 
   if(!regexmel.test(mail.value)){
-    document.getElementById("mel").style.display="inline";
+    mel.style.display="inline";
     console.log("Invalid email");
+  }
+
+  if (bdate.value===""){
+    daten.style.display="inline";
   }
 
   return true;
