@@ -54,7 +54,6 @@ let tournamentsnb=new RegExp("[\d]+")
 ////////////OTHER VARIQBLES//////////////////////
 
 
-document.getElementById("terms").required=true; // require terme and conditions to be accepted
 
 
 
