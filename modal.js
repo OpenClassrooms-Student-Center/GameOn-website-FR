@@ -30,7 +30,7 @@ const last = document.getElementById("last");
 const mail = document.getElementById("email");
 const bdate = document.getElementById("birthdate");
 const tournaments = document.getElementById("quantity");
-const locations = document.querySelectorAll("location");
+const locations = document.getElementsByName("location");
 const terms = document.querySelector("#checkbox1");
 
 //divs to display on error///
@@ -40,7 +40,13 @@ const mel =document.getElementById("mel")
 const daten= document.getElementById("daten");
 const nombre =document.getElementById("nombre")
 const  noterms=document.getElementById("noterms")
+const nolocation=document.getElementById("nolocation");
 
+
+//regex
+
+let regexmel=new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\.[a-z0-9._-]+")
+let tournamentsnb=new RegExp("[\d]+")
 
 
 
@@ -48,14 +54,9 @@ const  noterms=document.getElementById("noterms")
 ////////////OTHER VARIQBLES//////////////////////
 
 
-//document.getElementById("terms").required=true; // require terme and conditions to be accepted
-document.getElementById("quantity").min = "1"; // 
-document.getElementById("quantity").max = "99"; 
-let locationchecked=false;
+document.getElementById("terms").required=true; // require terme and conditions to be accepted
 
-const validated =new Set();
-const regexmel=new RegExp("[a-z0-9._-]+@[a-z0-9]+\.[a-z0-9]+");
-let mailvalue = mail.value;
+
 
 
 
@@ -67,7 +68,7 @@ let mailvalue = mail.value;
 // first.addEventListener("change",validfirst);
 // last.addEventListener("change",validlast);
 // mail.addEventListener("change",validmel);
-// quantity.addEventListener("change",validquantity);
+ //quantity.addEventListener("change",onechecked);
 
 
 
@@ -97,7 +98,9 @@ function closeModal() {
   bye.style.display="none";
   console.log("exit");
   form.reset();
-  console.log("Form cleared")
+  console.log("Form cleared");
+  location.reload();
+  
 
 }
 
@@ -112,6 +115,20 @@ function switchmodal(){
   console.log("Merci pour votre inscription!");
 
 }
+
+//check if one location chosen
+function onechecked(){
+  for (var i=0;i<locations.length;i++){             //i of locations?
+    if(locations[i].checked){
+      return true;
+    }
+    else{
+      nolocation.style.display="inline";
+    }
+  }
+}
+
+
 
 
 //Form validation functions////////////
@@ -166,21 +183,21 @@ function switchmodal(){
 // ;
 
 
-
 ////CODE////////
+
+
 
 form.addEventListener("submit", (event) => {
   
-        event.preventDefault()
+        event.preventDefault();
 
         isformcomplete();
-
-      
-   
+        
 })
 
 
 function isformcomplete(){
+  //start function///
 
   //first name
   if (first.value.length<2){
@@ -203,9 +220,18 @@ function isformcomplete(){
     daten.style.display="inline";
   }
 
+  if (!tournamentsnb.test(tournaments.value)){
+    nombre.style.display="inline";
+  }
+
+onechecked();
+
+  if(!terms.checked){
+    noterms.style.display="inline";
+  }
   return true;
-  
-  
+ //end function/// 
 
 }
+
 
