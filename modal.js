@@ -46,7 +46,7 @@ const nolocation=document.getElementById("nolocation");
 //regex
 
 let regexmel=new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\.[a-z0-9._-]+")
-let tournamentsnb=new RegExp("[\d]+")
+let tournamentsnb=new RegExp("^[0123456789]+")
 
 
 
@@ -78,6 +78,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 cross.addEventListener("click",closeModal);
 //cparti.addEventListener("click",switchmodal);
 cross2.addEventListener("click",closeModal);
+abientot.addEventListener("click",closeModal);
 
 /////////////////////////////FUNCTIONS///////////////////////
 
@@ -121,9 +122,7 @@ function onechecked(){
     if(locations[i].checked){
       return true;
     }
-    else{
-      nolocation.style.display="inline";
-    }
+
   }
 }
 
@@ -190,7 +189,9 @@ form.addEventListener("submit", (event) => {
   
         event.preventDefault();
 
-        isformcomplete();
+        if(isformcomplete()==="true"){
+          switchmodal();
+        }
         
 })
 
@@ -217,16 +218,22 @@ function isformcomplete(){
 
   if (bdate.value===""){
     daten.style.display="inline";
+    console.log("Invalid bdate")
   }
 
-  if (!tournamentsnb.test(tournaments.value)){
+  if (!parseInt(tournaments.value)>0){
     nombre.style.display="inline";
+    console.log("Invalid tournament number")
   }
 
-onechecked();
+  if (!onechecked())  {
+      nolocation.style.display="inline";
+      console.log("No location checked")
+    };
 
   if(!terms.checked){
     noterms.style.display="inline";
+    console.log("Terms not checked")
   }
   return true;
  //end function/// 
