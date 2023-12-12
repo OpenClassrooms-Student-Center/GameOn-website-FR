@@ -4,20 +4,17 @@
     <meta charset="utf-8" />
     <title>Reservation</title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <link rel="stylesheet" href="modal.css" />
+    <link rel="stylesheet" href="css/modal.css" />
+    <script src="scripts/modal.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link
-      href="https://fonts.googleapis.com/css?family=DM+Sans"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet"/>
   </head>
   <body>
     <div class="topnav" id="myTopnav">
       <div class="header-logo">
-      <img alt="logo" src="Logo.png" width="auto" height="auto" />
+      <img alt="logo" src="assets/logo/Logo.png" width="auto" height="auto" />
     </div>
     <div class="main-navbar">
-      
       <a href="#" class="active"><span>Accueil</span></a>
       <a href="#"><span>Détails de l'évènement</span></a>
       <a href="#"><span>À propos</span></a>
@@ -45,7 +42,7 @@
           </button>
         </div>
         <div class="hero-img">
-          <img src="./bg_img.jpg" alt="img" />
+          <img src="assets/img/bg_img.jpg" alt="img" />
         </div>
         <button class="btn-signup modal-btn">
           je m'inscris
@@ -60,10 +57,9 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
-            >
-              <div
-                class="formData">
+              onsubmit="">
+
+              <div class="formData">
                 <label>Prénom</label><br>
                 <input
                   class="text-control"
@@ -73,8 +69,8 @@
                   minlength="2"
                 /><br>
               </div>
-              <div
-                class="formData">
+
+              <div class="formData">
                 <label>Nom</label><br>
                 <input
                   class="text-control"
@@ -83,8 +79,8 @@
                   name="last"
                 /><br>
               </div>
-              <div
-                class="formData">
+
+              <div class="formData">
                 <label>E-mail</label><br>
                 <input
                   class="text-control"
@@ -93,6 +89,7 @@
                   name="email"
                 /><br>
               </div>
+
               <div
                 class="formData">
                 <label>Date de naissance</label><br>
@@ -103,15 +100,16 @@
                   name="birthdate"
                 /><br>
               </div>
-              <div
-                class="formData">
+
+              <div class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
               </div>
+
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
-              <div
-                class="formData">
-                <input
+              <div class="formData">
+
+                <input 
                   class="checkbox-input"
                   type="radio"
                   id="location1"
@@ -120,8 +118,9 @@
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
-                  New York</label
-                >
+                  New York
+                </label>
+
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -131,8 +130,9 @@
                 />
                 <label class="checkbox-label" for="location2">
                   <span class="checkbox-icon"></span>
-                  San Francisco</label
-                >
+                  San Francisco
+                </label>
+
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -142,8 +142,9 @@
                 />
                 <label class="checkbox-label" for="location3">
                   <span class="checkbox-icon"></span>
-                  Seattle</label
-                >
+                  Seattle
+                </label>
+
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -153,8 +154,9 @@
                 />
                 <label class="checkbox-label" for="location4">
                   <span class="checkbox-icon"></span>
-                  Chicago</label
-                >
+                  Chicago
+                </label>
+
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -164,8 +166,9 @@
                 />
                 <label class="checkbox-label" for="location5">
                   <span class="checkbox-icon"></span>
-                  Boston</label
-                >
+                  Boston
+                </label>
+
                 <input
                   class="checkbox-input"
                   type="radio"
@@ -175,12 +178,13 @@
                 />
                 <label class="checkbox-label" for="location6">
                   <span class="checkbox-icon"></span>
-                  Portland</label
-                >
+                  Portland
+                </label>
+
               </div>
 
-              <div
-                class="formData">
+              <div class="formData">
+                
                 <input
                   class="checkbox-input"
                   type="checkbox"
@@ -191,12 +195,19 @@
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
+
                 <br>
-                <input class="checkbox-input" type="checkbox" id="checkbox2" />
+
+                <input  
+                  class="checkbox-input"
+                  type="checkbox"
+                  id="checkbox2"
+                />
                 <label class="checkbox2-label" for="checkbox2">
                   <span class="checkbox-icon"></span>
                   Je Je souhaite être prévenu des prochains évènements.
                 </label>
+                
                 <br>
               </div>
               <input
@@ -215,6 +226,5 @@
         Copyright 2014 - 2022, GameOn Inc.
       </p>
     </footer>
-    <script src="modal.js"></script>
   </body>
 </html>
