@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="css/modal.css" />
     <script src="scripts/modal.js" defer></script>
+    <script src="scripts/script.js" defer></script>
+    <script src="scripts/main.js" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet"/>
   </head>
@@ -57,9 +59,10 @@
               name="reserve"
               action="index.html"
               method="get"
-              onsubmit="">
+              onsubmit=""
+              novalidate>
 
-              <div class="formData">
+              <div class="formData firstJs">
                 <label>Prénom</label><br>
                 <input
                   class="text-control"
@@ -70,7 +73,7 @@
                 /><br>
               </div>
 
-              <div class="formData">
+              <div class="formData lastJs">
                 <label>Nom</label><br>
                 <input
                   class="text-control"
@@ -80,7 +83,7 @@
                 /><br>
               </div>
 
-              <div class="formData">
+              <div class="formData emailJs">
                 <label>E-mail</label><br>
                 <input
                   class="text-control"
@@ -91,7 +94,7 @@
               </div>
 
               <div
-                class="formData">
+                class="formData birthdateJs">
                 <label>Date de naissance</label><br>
                 <input
                   class="text-control"
@@ -101,14 +104,19 @@
                 /><br>
               </div>
 
-              <div class="formData">
+              <div class="formData numberJS">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <input
+                  type="number"
+                  class="text-control"
+                  id="quantity"
+                  name="quantity"
+                  min="0" max="99"
+                />
               </div>
 
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
-              <div class="formData">
-
+              <div class="formData locationJs">
                 <input 
                   class="checkbox-input"
                   type="radio"
@@ -183,7 +191,7 @@
 
               </div>
 
-              <div class="formData">
+              <div class="formData cguJs">
                 
                 <input
                   class="checkbox-input"
