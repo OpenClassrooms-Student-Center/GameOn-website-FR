@@ -12,8 +12,10 @@ changeInput(formData)
 form.addEventListener("submit",(event)=>{   
         event.preventDefault()
         missing = submitClick(formData)
-        for (let cpt = 0 ; cpt < missing.length ; cpt++ ){
+        for (let cpt = 0 ; cpt < missing.length -1 ; cpt++ ){
             erreurDisplay(missing[cpt],"Champs incorrect")
         }
-        console.log(`Manque ${missing.toString()}.`)
+        if(missing[missing.length-1]==="cgu"){
+            erreurDisplay(missing[missing.length-1],"Veuillez accepter les conditions")
+        }
   })

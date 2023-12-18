@@ -85,6 +85,9 @@ function submitClick(objData){
             missingList.push(elt)
         }
     }
+    if(!objData.cgu){
+        missingList.push("cgu")
+    }
     return missingList
 }
 
@@ -129,8 +132,13 @@ function removeErreurDisplay(erreurTag){
     let spanErrorId= erreurTag + "JsErreur"
     const spanError = document.getElementById(spanErrorId)
     const pTag = document.getElementById(spanErrorId)
+
+    const redBorderTag="." + erreurTag + "Js input"
+    const inputText=document.querySelector(redBorderTag)
+
     if(pTag){
         pTag.remove()
+        inputText.classList.remove("borderJsErreur")
     } 
 }
 
@@ -138,23 +146,21 @@ function removeErreurDisplay(erreurTag){
 function erreurDisplay(erreurTag,text){
     let spanErrorId= erreurTag + "JsErreur"
     const spanError = document.getElementById(spanErrorId)
+    
     erreurTag= "." + erreurTag + "Js"
     const parentTag = document.querySelector(erreurTag)
     const createTag = document.createElement("span")
-    
-    with (createTag.style){
-        fontFamily="var(--font-default)"
-        fontSize="10px"
-        fontWeight=400
-        color="#FF4E60"
-    }
+
+    const redBorderTag=erreurTag + " input"
+    const inputText=document.querySelector(redBorderTag)
 
     if (text!=true && !spanError){
         createTag.id = spanErrorId
         parentTag.appendChild(createTag)
         createTag.innerText=text
-    }else {
-        createTag.innerText=text
+        inputText.classList.add("borderJsErreur")
+        return
     }
 
+    createTag.innerText=text
 } 
