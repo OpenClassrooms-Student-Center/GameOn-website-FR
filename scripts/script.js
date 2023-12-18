@@ -12,14 +12,26 @@ function editNav() {
     }
 }
 
+function initForm(){
+    const formInput = document.querySelectorAll(".text-control")
+    for (let cpt = 0 ; cpt < formInput.length ; cpt++){
+        formInput[cpt].value = ""
+    }
+
+    const formChkBox = document.querySelectorAll(".checkbox-input")
+    for (let cpt = 0 ; cpt <formChkBox.length ; cpt++){
+        formChkBox[cpt].checked = false
+    }
+    formChkBox[6].checked = true
+}
+
 /// Tests all text and date input form ///
 /// writes them to an object parameter ///
 /// Returns an erreur in wrong input   ///
 function changeInput(objData){
     const formInput = document.querySelectorAll(".text-control")
-    console.log(formInput)
     for (let cpt=0 ; cpt<5; cpt++){
-        formInput[cpt].addEventListener("change",(event)=>{
+        formInput[cpt].addEventListener("input",(event)=>{
             console.log(formInput[cpt].id)
             try {
                 switch(event.target.name){
@@ -40,9 +52,9 @@ function changeInput(objData){
                         break
                 }
                 objData[event.target.name]=event.target.value
-                erreurDisplay(event.target.name,true,"")
+                removeErreurDisplay(event.target.name)
             }catch (Error) {
-                erreurDisplay(event.target.name,false,`Une erreur est survenue: ${Error.message}`)
+                erreurDisplay(event.target.name,`Une erreur est survenue: ${Error.message}`)
             }
         })
     }
@@ -106,37 +118,43 @@ function checkNumber(nb){
 
 /// Validate date ///
 function checkDate(date){
-    regex = new RegExp("\\d\\d\\d\\d\\-\\d\\d\\-\\d\\d")
+    regex = new RegExp("\\d\\d\\/\\d\\d\\/\\d\\d\\d\\d")
     if (!regex.test(date)){
         throw new Error(`${date} n'est pas une date`)
     }  
 }
 
-/// error message display //
-function erreurDisplay(erreurTag,remove,text){
+/// remove error message display
+function removeErreurDisplay(erreurTag){
     let spanErrorId= erreurTag + "JsErreur"
-    erreurTag= "." + erreurTag + "Js"
-
-    const parentTag = document.querySelector(erreurTag)
     const spanError = document.getElementById(spanErrorId)
+    const pTag = document.getElementById(spanErrorId)
+    if(pTag){
+        pTag.remove()
+    } 
+}
+
+/// error message display //
+function erreurDisplay(erreurTag,text){
+    let spanErrorId= erreurTag + "JsErreur"
+    const spanError = document.getElementById(spanErrorId)
+    erreurTag= "." + erreurTag + "Js"
+    const parentTag = document.querySelector(erreurTag)
     const createTag = document.createElement("span")
+    
     with (createTag.style){
         fontFamily="var(--font-default)"
         fontSize="10px"
         fontWeight=400
         color="#FF4E60"
     }
-console.log(text)
-    if(remove===true){
-        const pTag = document.getElementById(spanErrorId)
-        pTag.remove()
-    }else{
-        if (text!=true && !spanError){
-            createTag.id = spanErrorId
-            parentTag.appendChild(createTag)
-            createTag.innerText=text
-        }else {
-            createTag.innerText=text
-        }   
+
+    if (text!=true && !spanError){
+        createTag.id = spanErrorId
+        parentTag.appendChild(createTag)
+        createTag.innerText=text
+    }else {
+        createTag.innerText=text
     }
+
 } 

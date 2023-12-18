@@ -9,6 +9,13 @@ const closeBtn = document.querySelector(".close")
 
 // launch modal form
 function launchModal() {
+  if (missing[0]){
+    for (let cpt = 0 ; cpt < missing.length ; cpt++){
+      removeErreurDisplay(missing[cpt])
+    }
+  }
+
+  initForm()
   modalbg.style.display = "block";
 }
 
