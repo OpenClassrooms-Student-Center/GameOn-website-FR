@@ -12,7 +12,8 @@ function editNav() {
     }
 }
 
-function initForm(){
+/// Initialize form data if modal is closed
+function initForm(objData){
     const formInput = document.querySelectorAll(".text-control")
     for (let cpt = 0 ; cpt < formInput.length ; cpt++){
         formInput[cpt].value = ""
@@ -23,6 +24,34 @@ function initForm(){
         formChkBox[cpt].checked = false
     }
     formChkBox[6].checked = true
+
+    for (let i in objData){
+        removeErreurDisplay(i)
+        objData[i]=""
+    }
+    objData.cgu=true
+    objData.next_event=false
+}
+
+function tryInput(targetName,targetValue){
+    switch(targetName){
+        case "first":
+            checkNames(targetValue,false)
+            break
+        case "last":
+            checkNames(targetValue,true)
+            break
+        case "email":
+            checkEmail(targetValue)
+            break
+        case "birthdate":
+             checkDate(targetValue)
+             break
+        case "quantity":
+            checkNumber(targetValue)
+            break
+    }
+
 }
 
 /// Tests all text and date input form ///
@@ -32,29 +61,13 @@ function changeInput(objData){
     const formInput = document.querySelectorAll(".text-control")
     for (let cpt=0 ; cpt<5; cpt++){
         formInput[cpt].addEventListener("input",(event)=>{
-            console.log(formInput[cpt].id)
             try {
-                switch(event.target.name){
-                    case "first":
-                        checkNames(event.target.value,false)
-                        break
-                    case "last":
-                        checkNames(event.target.value,true)
-                        break
-                    case "email":
-                        checkEmail(event.target.value)
-                        break
-                    case "birthdate":
-                        checkDate(event.target.value)
-                        break
-                    case "quantity":
-                        checkNumber(event.target.value)
-                        break
-                }
+                tryInput(event.target.name,event.target.value)
                 objData[event.target.name]=event.target.value
                 removeErreurDisplay(event.target.name)
             }catch (Error) {
-                erreurDisplay(event.target.name,`Une erreur est survenue: ${Error.message}`)
+                objData[event.target.name]="error"
+                erreurDisplay(event.target.name,Error.message)
             }
         })
     }
@@ -63,32 +76,30 @@ function changeInput(objData){
 /// add checkbox and radio input in an object parameter ///
 function addRadioCheck(objData) {
     const formChkBox = document.querySelectorAll(".checkbox-input")
-        /*recovery the selected tournement*/
-    for (let cpt=0 ; cpt<formChkBox.length-2 ; cpt++){
-      if (formChkBox[cpt].checked){
-        objData.location = formChkBox[cpt].value
-      }
-    }
-        /*recovery cgu and next event*/
-    objData.cgu = formChkBox[6].checked
-    objData.next_event = formChkBox[7].checked
-}
 
-/// check missing ///
-function submitClick(objData){
-    checkList = ["first","last","email","birthdate","quantity","location"]
-    missingList=[]
-    addRadioCheck(objData)
-    for (let cpt = 0; cpt < checkList.length; cpt++) {
-        const elt = checkList[cpt];
-        if(objData[elt]===undefined){
-            missingList.push(elt)
-        }
+    for (let cpt=0 ; cpt<formChkBox.length ; cpt++){
+        formChkBox[cpt].addEventListener("change",(event)=>{
+
+            if (event.target.id==="checkbox1"){
+                objData.cgu = event.target.checked
+                //if (event.target.checked){
+                    removeErreurDisplay("cgu")
+                 //   return
+                //}
+                //erreurDisplay("cgu","Vous devez vérifier que vous acceptez les termes et conditions.")
+                return
+            }
+
+            if (event.target.id==="checkbox2"){
+                objData.next_event = event.target.checked
+                return
+            }
+
+            objData[event.target.name] = event.target.value 
+            removeErreurDisplay("location")
+        })
     }
-    if(!objData.cgu){
-        missingList.push("cgu")
-    }
-    return missingList
+    
 }
 
 /// Validate first and last name: no error if more than tow letters ///
@@ -96,9 +107,9 @@ function checkNames(name , isLast=true){
     name = name.trim()
     if (name.length<2) {
         if (isLast===true){
-            throw new Error("nom")
+            throw new Error("Veuillez entrer 2 caractères ou plus pour le champ du nom.")
         } else{
-            throw new Error("premon")
+            throw new Error("Veuillez entrer 2 caractères ou plus pour le champ du prénom.")
         }
     }
 }
@@ -107,24 +118,24 @@ function checkNames(name , isLast=true){
 function checkEmail(email){
     let regex = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+")
     if (!regex.test(email)) {
-        throw new Error(`L'Email ${email} n'est pas valide`)
+        throw new Error("Vous devez entrer une adresse de messagerie valide")
     }
 }
 
 /// Validate the number of participants ///
 function checkNumber(nb){
     regex = new RegExp("^[0-9]+$")
-    if (!regex.test(nb)){
-        throw new Error(`${nb} n'est pas une valeur numérique`)
+    if ( !regex.test(nb) || nb>100){
+        throw new Error("Vous devez entrer une valeur numérique entre 0 et 99")
     }
 }
 
-/// Validate date ///
-function checkDate(date){
-    regex = new RegExp("\\d\\d\\/\\d\\d\\/\\d\\d\\d\\d")
-    if (!regex.test(date)){
-        throw new Error(`${date} n'est pas une date`)
-    }  
+// /// Validate date ///
+ function checkDate(date){
+     //regex = new RegExp("\\d\\d\\/\\d\\d\\/\\d\\d\\d\\d")
+     if (date===""){
+         throw new Error("Vous devez entrer votre date de naissance.")
+     }  
 }
 
 /// remove error message display

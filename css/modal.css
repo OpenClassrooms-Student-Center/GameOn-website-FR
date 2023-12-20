@@ -138,6 +138,42 @@ main {
 }
 
 /* Modal form */
+.success {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+}
+
+.success__modal {
+  display: grid;
+  grid-template-rows: auto 43px;
+  margin: 5% auto;
+  width: 100%;
+  max-width: 500px;
+  height: 769px;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+  background: #232323;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.successText{
+  display: grid;
+  font-size: 150%;
+  align-content: center;
+  text-align: center;
+}
 
 .button {
   background: #fe142f;
@@ -160,7 +196,7 @@ main {
 .bground {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   left: 0;
   top: 0;
   height: 100%;
@@ -342,7 +378,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-closeSuccess {
   background: #fe142f;
   display: block;
   margin: 0 auto;
