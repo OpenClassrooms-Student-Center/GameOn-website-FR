@@ -4,7 +4,7 @@ This file contains all the functions required to operate
 
 /// Burger menu ///
 function editNav() {
-    var x = document.getElementById("myTopnav");
+    var x = document.getElementById("myTopnav")
     if (x.className === "topnav") {
       x.className += " responsive";
     } else {
@@ -12,7 +12,8 @@ function editNav() {
     }
 }
 
-/// Initialize form data if modal is closed
+/// Initialize form data if modal is closed ///
+// @param {object} objData: object storing form values
 function initForm(objData){
     const formInput = document.querySelectorAll(".text-control")
     for (let cpt = 0 ; cpt < formInput.length ; cpt++){
@@ -33,6 +34,42 @@ function initForm(objData){
     objData.next_event=false
 }
 
+/// test all the values in the form,                        ///
+/// send the values, and display the confirmation message   ///
+// @param {object} objData: object storing form values
+function submitClick (objData) {
+    const form = document.querySelector("form")
+
+    form.addEventListener("submit",(event)=>{
+        event.preventDefault()
+        let cpt=0
+        for (let obj in objData){
+            try {
+                tryInput(obj,objData[obj])
+                if(obj==="location" && objData[obj]===""){
+                    throw new Error("Vous devez choisir une option.")
+                }
+                if(obj==="cgu" && objData[obj]===false){
+                    throw new Error("Vous devez vérifier que vous acceptez les termes et conditions.")
+                }
+            } catch (Error) {
+                erreurDisplay(obj,Error.message)
+                cpt++
+            } 
+        }
+        if(cpt===0){
+            modalbg.style.display ="none"
+            modalSucess.style.display = "block"
+            console.log(objData)
+        }
+        
+    })
+}
+
+/// check that the values entered are correct
+// @param {string} targetName: name of input to test
+// @param {string} targetValue: value of input to test
+// @throw {string} Error 
 function tryInput(targetName,targetValue){
     switch(targetName){
         case "first":
@@ -55,9 +92,9 @@ function tryInput(targetName,targetValue){
 }
 
 /// Tests all text and date input form ///
-/// writes them to an object parameter ///
-/// Returns an erreur in wrong input   ///
-function changeInput(objData){
+// @param {object} objData: object storing the form's correct values
+// @catch {string} Error: display error on wrong values
+function testInput(objData){
     const formInput = document.querySelectorAll(".text-control")
     for (let cpt=0 ; cpt<5; cpt++){
         formInput[cpt].addEventListener("input",(event)=>{
@@ -73,8 +110,9 @@ function changeInput(objData){
     }
 }
 
-/// add checkbox and radio input in an object parameter ///
-function addRadioCheck(objData) {
+/// add or remove next event option and removes cgu and location error message ///
+// @param {object} objData: object storing form values
+function testRadioCheck(objData) {
     const formChkBox = document.querySelectorAll(".checkbox-input")
 
     for (let cpt=0 ; cpt<formChkBox.length ; cpt++){
@@ -82,11 +120,7 @@ function addRadioCheck(objData) {
 
             if (event.target.id==="checkbox1"){
                 objData.cgu = event.target.checked
-                //if (event.target.checked){
                     removeErreurDisplay("cgu")
-                 //   return
-                //}
-                //erreurDisplay("cgu","Vous devez vérifier que vous acceptez les termes et conditions.")
                 return
             }
 
@@ -103,6 +137,9 @@ function addRadioCheck(objData) {
 }
 
 /// Validate first and last name: no error if more than tow letters ///
+// @param {string} name : first or last name to be tested
+// @param {booleen} islast : true = name / false = first name
+// @throw {string} Erreur
 function checkNames(name , isLast=true){
     name = name.trim()
     if (name.length<2) {
@@ -115,6 +152,8 @@ function checkNames(name , isLast=true){
 }
 
 /// Validate email: error if invalid email format ///
+// @param {string} email: email to be tested
+// @throw {string} Erreur
 function checkEmail(email){
     let regex = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+")
     if (!regex.test(email)) {
@@ -123,6 +162,8 @@ function checkEmail(email){
 }
 
 /// Validate the number of participants ///
+// @param {number} nb: number to be tested
+//@throw {string} Erreur
 function checkNumber(nb){
     regex = new RegExp("^[0-9]+$")
     if ( !regex.test(nb) || nb>100){
@@ -130,15 +171,18 @@ function checkNumber(nb){
     }
 }
 
-// /// Validate date ///
+/// Validate the presence of the date ///
+// @param {string} date: date value
+// @throw {string} Erreur
  function checkDate(date){
-     //regex = new RegExp("\\d\\d\\/\\d\\d\\/\\d\\d\\d\\d")
      if (date===""){
          throw new Error("Vous devez entrer votre date de naissance.")
      }  
 }
 
-/// remove error message display
+/// remove span tag error from the html code ///
+// @param {string} erreurTag: name of value (ex: "first" , "location" , "cgu")
+//
 function removeErreurDisplay(erreurTag){
     let spanErrorId= erreurTag + "JsErreur"
     const spanError = document.getElementById(spanErrorId)
@@ -153,7 +197,9 @@ function removeErreurDisplay(erreurTag){
     } 
 }
 
-/// error message display //
+/// add span tag error from the html code if no present ///
+// @param {string} erreurTag: name of value (ex: "first" , "location" , "cgu")
+// @param {string} text: message to insert
 function erreurDisplay(erreurTag,text){
     let spanErrorId= erreurTag + "JsErreur"
     const spanError = document.getElementById(spanErrorId)

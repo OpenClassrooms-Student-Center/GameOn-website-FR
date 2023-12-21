@@ -1,6 +1,6 @@
-/************************************* 
-This file contains code for all events
-*************************************/
+/**************************** 
+This file contains main code
+****************************/
 
 const formData = {
     first:"",
@@ -12,32 +12,20 @@ const formData = {
     cgu:true,
     next_event:false
 }
-const form = document.querySelector("form")
 
+/* remove all values in the forms input
+and initialise the formdata object */
 initForm(formData)
-changeInput(formData)
-addRadioCheck(formData)
 
-form.addEventListener("submit",(event)=>{
-    event.preventDefault()
-    let cpt=0
-    for (let obj in formData){
-        try {
-            tryInput(obj,formData[obj])
-            if(obj==="location" && formData[obj]===""){
-                throw new Error("Vous devez choisir une option.")
-            }
-            if(obj==="cgu" && formData[obj]===false){
-                throw new Error("Vous devez vérifier que vous acceptez les termes et conditions.")
-            }
-        } catch (Error) {
-            erreurDisplay(obj,Error.message)
-            cpt++
-        } 
-    }
-    if(cpt===0){
-        modalbg.style.display ="none"
-        console.log(formData)
-    }
-    
-})
+/* monitors with "change" event
+and checks the validity of values */
+testInput(formData)
+
+/* add or remove next event option
+and removes cgu and location error message if present */
+testRadioCheck(formData)
+
+/* test all the values in the form,
+send the values, and display the confirmation message */
+submitClick(formData)
+
