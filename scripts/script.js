@@ -14,56 +14,51 @@ function editNav() {
 
 /// Initialize form data if modal is closed ///
 // @param {object} objData: object storing form values
-function initForm(objData){
+function resetForm(objData){
+
     const formInput = document.querySelectorAll(".text-control")
-    for (let cpt = 0 ; cpt < formInput.length ; cpt++){
-        formInput[cpt].value = ""
-    }
+    formInput.forEach((elt)=>{
+        elt.value = ""
+        removeErreurDisplay(elt.id)
+    })
 
     const formChkBox = document.querySelectorAll(".checkbox-input")
-    for (let cpt = 0 ; cpt <formChkBox.length ; cpt++){
-        formChkBox[cpt].checked = false
-    }
-    formChkBox[6].checked = true
+    formChkBox.forEach((elt)=>elt.checked = false)
+    removeErreurDisplay("location")
 
-    for (let i in objData){
-        removeErreurDisplay(i)
-        objData[i]=""
-    }
-    objData.cgu=true
-    objData.next_event=false
+    formChkBox[6].checked = objData.cgu
+    removeErreurDisplay("cgu")
+
+    formChkBox[7].checked = objData.next_event
+    
+    return {...objData}
 }
 
 /// test all the values in the form,                        ///
 /// send the values, and display the confirmation message   ///
 // @param {object} objData: object storing form values
-function submitClick (objData) {
-    const form = document.querySelector("form")
+function onSubmit (objData) { 
+    let isValid = true
 
-    form.addEventListener("submit",(event)=>{
-        event.preventDefault()
-        let cpt=0
-        for (let obj in objData){
-            try {
-                tryInput(obj,objData[obj])
-                if(obj==="location" && objData[obj]===""){
-                    throw new Error("Vous devez choisir une option.")
-                }
-                if(obj==="cgu" && objData[obj]===false){
-                    throw new Error("Vous devez vérifier que vous acceptez les termes et conditions.")
-                }
-            } catch (Error) {
-                erreurDisplay(obj,Error.message)
-                cpt++
-            } 
-        }
-        if(cpt===0){
-            modalbg.style.display ="none"
-            modalSucess.style.display = "block"
-            console.log(objData)
-        }
-        
-    })
+    for (let obj in objData){
+        try {
+            tryInput(obj,objData[obj])
+            if(obj==="location" && objData[obj]===""){
+                throw new Error("Vous devez choisir une option.")
+            }
+            if(obj==="cgu" && objData[obj]===false){
+                throw new Error("Vous devez vérifier que vous acceptez les termes et conditions.")
+            }
+        } catch (Error) {
+            erreurDisplay(obj,Error.message)
+            isValid = false
+        } 
+    }
+    if(isValid){
+        modalbg.style.display ="none"
+        modalSucess.style.display = "block"
+        console.log(objData)
+    } 
 }
 
 /// check that the values entered are correct
@@ -94,7 +89,7 @@ function tryInput(targetName,targetValue){
 /// Tests all text and date input form ///
 // @param {object} objData: object storing the form's correct values
 // @catch {string} Error: display error on wrong values
-function testInput(objData){
+function attachInputsValidationHandlers(objData){
     const formInput = document.querySelectorAll(".text-control")
     for (let cpt=0 ; cpt<5; cpt++){
         formInput[cpt].addEventListener("input",(event)=>{
@@ -103,7 +98,7 @@ function testInput(objData){
                 objData[event.target.name]=event.target.value
                 removeErreurDisplay(event.target.name)
             }catch (Error) {
-                objData[event.target.name]="error"
+                //objData[event.target.name]="error"
                 erreurDisplay(event.target.name,Error.message)
             }
         })
@@ -211,7 +206,7 @@ function erreurDisplay(erreurTag,text){
     const redBorderTag=erreurTag + " input"
     const inputText=document.querySelector(redBorderTag)
 
-    if (text!=true && !spanError){
+    if (/*text!=true &&*/ !spanError){
         createTag.id = spanErrorId
         parentTag.appendChild(createTag)
         createTag.innerText=text
