@@ -26,7 +26,7 @@ closeBtnModalSucess.addEventListener("click",closeModal)
 function closeModal(){
   modalbg.style.display ="none"
   modalSucess.style.display = "none"
-  resetForm(formData)
+  resetForm()
 }
 
 

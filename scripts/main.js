@@ -2,6 +2,8 @@
 This file contains main code
 ****************************/
 
+const form = document.querySelector("form")
+
 const initData = {
     first:"",
     last:"",
@@ -9,17 +11,15 @@ const initData = {
     birthdate:"",
     quantity:"",
     location:"",
-    cgu:false,
+    cgu:true,
     next_event:false
 }
 
-const form = document.querySelector("form")
-
-let formData = {}
+const formData={}
 
 /* remove all values in the forms input
 and initialise the formdata object */
-formData = resetForm(initData)
+resetForm()
 
 /* monitors with "change" event
 and checks the validity of values */
@@ -34,5 +34,5 @@ send the values, and display the confirmation message */
 //submitClick(formData)
 form.addEventListener("submit",(event)=>{
     event.preventDefault()
-    onSubmit(formData)
+    onSubmit(formData)    
 })

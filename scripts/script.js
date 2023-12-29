@@ -14,7 +14,7 @@ function editNav() {
 
 /// Initialize form data if modal is closed ///
 // @param {object} objData: object storing form values
-function resetForm(objData){
+function resetForm(){
 
     const formInput = document.querySelectorAll(".text-control")
     formInput.forEach((elt)=>{
@@ -26,12 +26,12 @@ function resetForm(objData){
     formChkBox.forEach((elt)=>elt.checked = false)
     removeErreurDisplay("location")
 
-    formChkBox[6].checked = objData.cgu
+    formChkBox[6].checked = initData["cgu"]
     removeErreurDisplay("cgu")
 
-    formChkBox[7].checked = objData.next_event
-    
-    return {...objData}
+    formChkBox[7].checked = initData["next_event"]
+
+    Object.assign(formData,initData)
 }
 
 /// test all the values in the form,                        ///
@@ -52,8 +52,10 @@ function onSubmit (objData) {
         } catch (Error) {
             erreurDisplay(obj,Error.message)
             isValid = false
+            
         } 
     }
+    //console.log(formData)
     if(isValid){
         modalbg.style.display ="none"
         modalSucess.style.display = "block"
