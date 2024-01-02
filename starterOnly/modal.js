@@ -20,4 +20,12 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+let BoutonX = document.querySelector(".close")
+console.log(BoutonX)
+BoutonX.addEventListener('click',()=>{
+  console.log("on clique sur le bouton x")
+
+  modalbg.style.display = "none"
+})
+
 
