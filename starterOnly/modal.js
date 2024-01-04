@@ -20,42 +20,50 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+// bouton de fermeture
 let BoutonX = document.querySelector(".close")
-console.log(BoutonX)
 BoutonX.addEventListener('click', () => {
-  console.log("on clique sur le bouton x")
-
   modalbg.style.display = "none"
 })
 
-
+// lancement de l'évènement "submit" sur le formulaire
 const form = document.querySelector('form')
 form.addEventListener("submit", (event) => {
 
   event.preventDefault();
-
 })
 
+/////////////////////////////Les Fonctions de validation utlisées
 
+// La fonction de la validation du nom et du prénom avec le message d'erreur
 function validerNomEtPrenom(nom) {
 
   if (nom.trim().length < 2) {
     throw new Error("Veuillez entrer 2 caractères ou plus .")
   }
-
 }
 
-
+// La fonction de la validation de l'émail avec le message d'erreur
 function validerEmail(email) {
+
   let emailRegex = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+")
   if (!emailRegex.test(email.trim())) {
     throw new Error("Veuillez entrer un Email valide")
   }
 }
 
+// La fonction de la validation de l'anniversaire avec le message d'erreur
+function validerChampBirthday(birthd) {
+
+  let birthDRegEx = new RegExp("^(?!(\d{4}\s\d{2}\s\d{2}))$")
+  if (birthDRegEx.test(birthd)) {
+    throw new Error("Vous devez entrer votre date de naissance.")
+  }
+}
+
+// La fonction de la validation du champ "quantity" avec le message d'erreur
 function validerChampQuantity(quantity) {
-  // let quantityRegEx = new RegExp("^\d+$")
-  // !quantityRegEx.test(quantity)
+
   if (quantity === "") {
     throw new Error("Veuillez choisir un nombre")
   }
@@ -63,51 +71,35 @@ function validerChampQuantity(quantity) {
   // return !!quantity && !isNaN(quantity)
 }
 
-
+// La fonction de la validation du bouton radio avec le message d'erreur
 function validerBoutonRadio(Var) {
+
   if (Var === "") {
-    // cette fait la meme chose que li 9bal hh
     throw new Error("Vous devez choisir une option.")
   }
-
 }
+
+// La fonction de la validation du champ "checkbox" avec le message d'erreur
 function validerCheckBox(btn) {
+
   if (!btn.checked) {
     throw new Error("Vous devez vérifier que vous acceptez les termes et conditions.")
-  } // better way to do the same as if (tatata) return true 
-
-
+  }
 }
 
-// function afficherMessageErreurPrenom(message){
-//   let SpanMessageErreur = document.getElementById("erreurMessage1")
-//   if(!SpanMessageErreur){
+//////////////////////////////////Les fonction d'affichage utilisées 
 
-//   let formData = document.querySelector(".formData1")
-//   SpanMessageErreur = document.createElement("span")
-//   SpanMessageErreur.id = "erreurMessage1"
-//   formData.append(SpanMessageErreur)
-// }
-// SpanMessageErreur.innerHTML = message
-// }
+// La fonction de l'affichage du message d'erreur pour les champs : nom/prenom/anniversaire/email/quantité
 
-function afficherMessageErreur(message, formDataSelector, erreurMessageSelector) {
-  let SpanMessageErreur1 = document.getElementById(erreurMessageSelector);
+function afficherMessageErreur(message, element) {
+  let SpanMessageErreur1 = document.getElementById(element.id + "_erreur")
 
   if (!SpanMessageErreur1) {
-    let formData = document.querySelector(formDataSelector);
-    SpanMessageErreur1 = document.createElement("div");
-    SpanMessageErreur1.id = erreurMessageSelector;
-    formData.append(SpanMessageErreur1);
+    SpanMessageErreur1 = document.createElement("span")
+    element.after(SpanMessageErreur1)
+    SpanMessageErreur1.id = element.id + "_erreur"
   }
-
-  SpanMessageErreur1.innerHTML = message;
-}
-
-function afficherMessageErreurTest(message, element) {
-  let SpanMessageErreur1 = document.createElement("div");
-  SpanMessageErreur1.innerHTML = message;
-  element.after(SpanMessageErreur1)
+  SpanMessageErreur1.innerHTML = message
   element.addEventListener('input', () => {
     if (SpanMessageErreur1) {
       SpanMessageErreur1.remove()
@@ -115,54 +107,74 @@ function afficherMessageErreurTest(message, element) {
   })
 }
 
+// La fonction de l'affichage du message d'erreur pour le champ "radio" et le champ "checkbox"
+
+function afficherMsgErreurChampChoix(message, element) {
+
+  let SpanMessageErreur2 = document.getElementById(element.id + "_erreur")
+
+  if (!SpanMessageErreur2) {
+    let varr = element.parentNode
+    SpanMessageErreur2 = document.createElement("div")
+    SpanMessageErreur2.id = element.id + "_erreur"
+    varr.append(SpanMessageErreur2)
+  }
+
+  SpanMessageErreur2.innerHTML = message
+  element.addEventListener('input', () => {
+    if (SpanMessageErreur2) {
+      SpanMessageErreur2.remove()
+    }
+  })
+}
+
+// Récupération des élements du formulaire 
+
+let prenom = document.getElementById("first")
+let nom = document.getElementById("last")
+let email = document.getElementById("email")
+let birthday = document.getElementById("birthdate")
+let quantity = document.getElementById("quantity")
+let baliseLocation = document.querySelectorAll('input[name="location"]')
+let location1 = document.getElementById("location1")
+let checkBox1 = document.getElementById("checkbox1")
+
+/////////////// La fonction de validation principale du formulaire 
+
 
 function validate() {
-  let prenom = document.getElementById("first")
   try {
-    console.log(prenom)
-    console.log("validation Prenom", validerNomEtPrenom(prenom.value))
-    // afficherMessageErreurPrenom("")
-    // afficherMessageErreur("", ".formData1", "#erreurMessage1")
+    validerNomEtPrenom(prenom.value)
   }
   catch (Error) {
-    // afficherMessageErreurPrenom(Error.message)
-    // afficherMessageErreur(Error.message, ".formData1", "#erreurMessage1")
-    afficherMessageErreurTest(Error.message, prenom)
+    afficherMessageErreur(Error.message, prenom)
   }
 
   try {
-    let nom = document.getElementById("last").value
-    console.log(nom)
-    console.log("validation nom", validerNomEtPrenom(nom))
-    afficherMessageErreur("", ".formData2", "#erreurMessage2")
+    validerNomEtPrenom(nom.value)
   } catch (Error) {
-
-    afficherMessageErreur(Error.message, ".formData2", "#erreurMessage2")
+    afficherMessageErreur(Error.message, nom)
   }
 
   try {
-    let email = document.getElementById("email").value
-    console.log(email)
-    console.log("validation email", validerEmail(email))
-    afficherMessageErreur("", ".formData3", "#erreurMessage3")
+    validerEmail(email.value)
   } catch (Error) {
-    afficherMessageErreur(Error.message, ".formData3", "#erreurMessage3")
+    afficherMessageErreur(Error.message, email)
   }
 
-  let birthday = document.getElementById("birthdate").value
-  console.log(birthday)
-
   try {
-    let quantity = document.getElementById("quantity").value
-    console.log(quantity)
-    console.log("validation du champ quantity", validerChampQuantity(quantity))
-    afficherMessageErreur("", ".formData5", "#erreurMessage5")
+    validerChampBirthday(birthday.value)
   } catch (Error) {
-    afficherMessageErreur(Error.message, ".formData5", "#erreurMessage5")
+    afficherMessageErreur(Error.message, birthday)
   }
 
   try {
-    let baliseLocation = document.querySelectorAll('input[name="location"]')
+  validerChampQuantity(quantity.value)
+  } catch (Error) {
+    afficherMessageErreur(Error.message, quantity)
+  }
+
+  try {
     let location = ""
     for (let i = 0; i < baliseLocation.length; i++) {
       if (baliseLocation[i].checked) {
@@ -170,29 +182,18 @@ function validate() {
         break
       }
     }
-    console.log(location)
-    console.log("validation bouton radio", validerBoutonRadio(location))
-    afficherMessageErreur("", ".formData6", "#erreurMessage6")
+    validerBoutonRadio(location)
   } catch (Error) {
-    afficherMessageErreur(Error.message, ".formData6", "#erreurMessage6")
+    afficherMsgErreurChampChoix(Error.message, location1)
   }
+
   try {
-    // let checkBox = document.querySelectorAll('input[type="checkbox"]')
-    // for (let i = 0; i < checkBox.length; i++) {
-    //   checkBoxChecked = checkBox[i].checked
-    //   console.log(checkBoxChecked)
-    // }
-    let checkBox1 = document.getElementById("checkbox1")
-    console.log("validation checkbox1", validerCheckBox(checkBox1))
-    afficherMessageErreur("", ".formData7", "#erreurMessage7")
 
+    validerCheckBox(checkBox1)
   } catch (Error) {
-    afficherMessageErreur(Error.message, ".formData7", "#erreurMessage7")
+    afficherMsgErreurChampChoix(Error.message, checkBox1)
   }
 
-  // code a netoyer , c-a-d supprimer les console log 
-  // return validerNomEtPrenom(prenom) && validerNomEtPrenom(nom) && validerEmail(email)
-  //   && validerChampQuantity(quantity) && validerBoutonRadio(location) && validerCheckBox(checkBox1)
   return true
 
 }
