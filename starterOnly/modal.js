@@ -56,7 +56,7 @@ function validerEmail(email) {
 function validerChampQuantity(quantity) {
   // let quantityRegEx = new RegExp("^\d+$")
   // !quantityRegEx.test(quantity)
-  if (quantity==="") {
+  if (quantity === "") {
     throw new Error("Veuillez choisir un nombre")
   }
   // console.log(typeof quantity)
@@ -72,7 +72,7 @@ function validerBoutonRadio(Var) {
 
 }
 function validerCheckBox(btn) {
-  if (!btn.checked){
+  if (!btn.checked) {
     throw new Error("Vous devez vérifier que vous acceptez les termes et conditions.")
   } // better way to do the same as if (tatata) return true 
 
@@ -104,19 +104,30 @@ function afficherMessageErreur(message, formDataSelector, erreurMessageSelector)
   SpanMessageErreur1.innerHTML = message;
 }
 
-function validate() {
-  try {
+function afficherMessageErreurTest(message, element) {
+  let SpanMessageErreur1 = document.createElement("div");
+  SpanMessageErreur1.innerHTML = message;
+  element.after(SpanMessageErreur1)
+  element.addEventListener('input', () => {
+    if (SpanMessageErreur1) {
+      SpanMessageErreur1.remove()
+    }
+  })
+}
 
-    let prenom = document.getElementById("first").value
+
+function validate() {
+  let prenom = document.getElementById("first")
+  try {
     console.log(prenom)
-    console.log("validation Prenom", validerNomEtPrenom(prenom))
+    console.log("validation Prenom", validerNomEtPrenom(prenom.value))
     // afficherMessageErreurPrenom("")
-    afficherMessageErreur("", ".formData1", "#erreurMessage1")
+    // afficherMessageErreur("", ".formData1", "#erreurMessage1")
   }
   catch (Error) {
     // afficherMessageErreurPrenom(Error.message)
-    afficherMessageErreur(Error.message, ".formData1", "#erreurMessage1")
-
+    // afficherMessageErreur(Error.message, ".formData1", "#erreurMessage1")
+    afficherMessageErreurTest(Error.message, prenom)
   }
 
   try {
@@ -150,34 +161,34 @@ function validate() {
     afficherMessageErreur(Error.message, ".formData5", "#erreurMessage5")
   }
 
-try {
-  let baliseLocation = document.querySelectorAll('input[name="location"]')
-  let location = ""
-  for (let i = 0; i < baliseLocation.length; i++) {
-    if (baliseLocation[i].checked) {
-      location = baliseLocation[i].value
-      break
+  try {
+    let baliseLocation = document.querySelectorAll('input[name="location"]')
+    let location = ""
+    for (let i = 0; i < baliseLocation.length; i++) {
+      if (baliseLocation[i].checked) {
+        location = baliseLocation[i].value
+        break
+      }
     }
+    console.log(location)
+    console.log("validation bouton radio", validerBoutonRadio(location))
+    afficherMessageErreur("", ".formData6", "#erreurMessage6")
+  } catch (Error) {
+    afficherMessageErreur(Error.message, ".formData6", "#erreurMessage6")
   }
-  console.log(location)
-  console.log("validation bouton radio", validerBoutonRadio(location))
-  afficherMessageErreur("", ".formData6", "#erreurMessage6")
-} catch (Error) {
-  afficherMessageErreur(Error.message, ".formData6", "#erreurMessage6")
-}
-try {
-  let checkBox = document.querySelectorAll('input[type="checkbox"]')
-  for (let i = 0; i < checkBox.length; i++) {
-    checkBoxChecked = checkBox[i].checked
-    console.log(checkBoxChecked)
-  }
-  let checkBox1 = document.getElementById("checkbox1")
-  console.log("validation checkbox1", validerCheckBox(checkBox1))
-  afficherMessageErreur("", ".formData7", "#erreurMessage7")
+  try {
+    // let checkBox = document.querySelectorAll('input[type="checkbox"]')
+    // for (let i = 0; i < checkBox.length; i++) {
+    //   checkBoxChecked = checkBox[i].checked
+    //   console.log(checkBoxChecked)
+    // }
+    let checkBox1 = document.getElementById("checkbox1")
+    console.log("validation checkbox1", validerCheckBox(checkBox1))
+    afficherMessageErreur("", ".formData7", "#erreurMessage7")
 
-} catch (Error) {
-  afficherMessageErreur(Error.message, ".formData7", "#erreurMessage7")
-}
+  } catch (Error) {
+    afficherMessageErreur(Error.message, ".formData7", "#erreurMessage7")
+  }
 
   // code a netoyer , c-a-d supprimer les console log 
   // return validerNomEtPrenom(prenom) && validerNomEtPrenom(nom) && validerEmail(email)
