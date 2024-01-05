@@ -182,7 +182,7 @@ function validate() {
 
   try {
 
-    console.log("hi", validerChampBirthday(birthday.value))
+ validerChampBirthday(birthday.value)
   } catch (Error) {
     afficherMessageErreur(Error.message, birthday)
   }
@@ -218,6 +218,7 @@ function validate() {
     && validerChampBirthday(birthday.value) && validerChampQuantity(quantity.value) && validerBoutonRadio(location)
     && validerCheckBox(checkBox1)) {
     window.alert("Merci ! Votre réservation a été reçue.")
+    modalbg.style.display = "none"
   }
   return true
 }
