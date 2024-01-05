@@ -41,6 +41,9 @@ function validerNomEtPrenom(nom) {
   if (nom.trim().length < 2) {
     throw new Error("Veuillez entrer 2 caractères ou plus .")
   }
+  else {
+    return true
+  }
 }
 
 // La fonction de la validation de l'émail avec le message d'erreur
@@ -49,6 +52,9 @@ function validerEmail(email) {
   let emailRegex = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+")
   if (!emailRegex.test(email.trim())) {
     throw new Error("Veuillez entrer un Email valide")
+  }
+  else {
+    return true
   }
 }
 
@@ -59,6 +65,9 @@ function validerChampBirthday(birthd) {
   if (birthDRegEx.test(birthd)) {
     throw new Error("Vous devez entrer votre date de naissance.")
   }
+  else {
+    return true
+  }
 }
 
 // La fonction de la validation du champ "quantity" avec le message d'erreur
@@ -66,6 +75,9 @@ function validerChampQuantity(quantity) {
 
   if (quantity === "") {
     throw new Error("Veuillez choisir un nombre")
+  }
+  else {
+    return true
   }
   // console.log(typeof quantity)
   // return !!quantity && !isNaN(quantity)
@@ -77,6 +89,9 @@ function validerBoutonRadio(Var) {
   if (Var === "") {
     throw new Error("Vous devez choisir une option.")
   }
+  else {
+    return true
+  }
 }
 
 // La fonction de la validation du champ "checkbox" avec le message d'erreur
@@ -84,6 +99,9 @@ function validerCheckBox(btn) {
 
   if (!btn.checked) {
     throw new Error("Vous devez vérifier que vous acceptez les termes et conditions.")
+  }
+  else {
+    return true
   }
 }
 
@@ -163,13 +181,14 @@ function validate() {
   }
 
   try {
-    validerChampBirthday(birthday.value)
+
+    console.log("hi", validerChampBirthday(birthday.value))
   } catch (Error) {
     afficherMessageErreur(Error.message, birthday)
   }
 
   try {
-  validerChampQuantity(quantity.value)
+    validerChampQuantity(quantity.value)
   } catch (Error) {
     afficherMessageErreur(Error.message, quantity)
   }
@@ -194,8 +213,13 @@ function validate() {
     afficherMsgErreurChampChoix(Error.message, checkBox1)
   }
 
-  return true
 
+  if (validerNomEtPrenom(prenom.value) && validerNomEtPrenom(nom.value) && validerEmail(email.value)
+    && validerChampBirthday(birthday.value) && validerChampQuantity(quantity.value) && validerBoutonRadio(location)
+    && validerCheckBox(checkBox1)) {
+    window.alert("Merci ! Votre réservation a été reçue.")
+  }
+  return true
 }
 
 
