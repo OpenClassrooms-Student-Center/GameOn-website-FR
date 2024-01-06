@@ -41,9 +41,9 @@ function validerNomEtPrenom(nom) {
   if (nom.trim().length < 2) {
     throw new Error("Veuillez entrer 2 caractères ou plus .")
   }
-  else {
+
     return true
-  }
+
 }
 
 // La fonction de la validation de l'émail avec le message d'erreur
@@ -53,9 +53,9 @@ function validerEmail(email) {
   if (!emailRegex.test(email.trim())) {
     throw new Error("Veuillez entrer un Email valide")
   }
-  else {
+
     return true
-  }
+
 }
 
 // La fonction de la validation de l'anniversaire avec le message d'erreur
@@ -65,9 +65,9 @@ function validerChampBirthday(birthd) {
   if (birthDRegEx.test(birthd)) {
     throw new Error("Vous devez entrer votre date de naissance.")
   }
-  else {
+
     return true
-  }
+
 }
 
 // La fonction de la validation du champ "quantity" avec le message d'erreur
@@ -76,9 +76,9 @@ function validerChampQuantity(quantity) {
   if (quantity === "") {
     throw new Error("Veuillez choisir un nombre")
   }
-  else {
+
     return true
-  }
+
   // console.log(typeof quantity)
   // return !!quantity && !isNaN(quantity)
 }
@@ -89,9 +89,9 @@ function validerBoutonRadio(Var) {
   if (Var === "") {
     throw new Error("Vous devez choisir une option.")
   }
-  else {
+
     return true
-  }
+
 }
 
 // La fonction de la validation du champ "checkbox" avec le message d'erreur
@@ -100,9 +100,9 @@ function validerCheckBox(btn) {
   if (!btn.checked) {
     throw new Error("Vous devez vérifier que vous acceptez les termes et conditions.")
   }
-  else {
+
     return true
-  }
+
 }
 
 //////////////////////////////////Les fonction d'affichage utilisées 
@@ -116,11 +116,14 @@ function afficherMessageErreur(message, element) {
     SpanMessageErreur1 = document.createElement("span")
     element.after(SpanMessageErreur1)
     SpanMessageErreur1.id = element.id + "_erreur"
+    SpanMessageErreur1.style.cssText = "color: #FF4E60;font-family: Roboto;font-size: 10px;font-style: normal;font-weight: 400;line-height: 142.6%;"
+    element.style.cssText = "border-radius: 8px;border: 2px solid #FF4E60;"
   }
   SpanMessageErreur1.innerHTML = message
   element.addEventListener('input', () => {
     if (SpanMessageErreur1) {
       SpanMessageErreur1.remove()
+      element.style.cssText = ""
     }
   })
 }
@@ -136,6 +139,8 @@ function afficherMsgErreurChampChoix(message, element) {
     SpanMessageErreur2 = document.createElement("div")
     SpanMessageErreur2.id = element.id + "_erreur"
     varr.append(SpanMessageErreur2)
+    SpanMessageErreur2.style.cssText = "color: #FF4E60;font-family: Roboto;font-size: 10px;font-style: normal;font-weight: 400;line-height: 142.6%;"
+  
   }
 
   SpanMessageErreur2.innerHTML = message
@@ -145,6 +150,12 @@ function afficherMsgErreurChampChoix(message, element) {
     }
   })
 }
+// // La fonction de validation 
+
+// function ValidationForm(){
+//   return variablex === true
+
+// }
 
 // Récupération des élements du formulaire 
 
@@ -156,6 +167,7 @@ let quantity = document.getElementById("quantity")
 let baliseLocation = document.querySelectorAll('input[name="location"]')
 let location1 = document.getElementById("location1")
 let checkBox1 = document.getElementById("checkbox1")
+ 
 
 /////////////// La fonction de validation principale du formulaire 
 
@@ -163,9 +175,11 @@ let checkBox1 = document.getElementById("checkbox1")
 function validate() {
   try {
     validerNomEtPrenom(prenom.value)
+
   }
   catch (Error) {
     afficherMessageErreur(Error.message, prenom)
+
   }
 
   try {
@@ -217,8 +231,18 @@ function validate() {
   if (validerNomEtPrenom(prenom.value) && validerNomEtPrenom(nom.value) && validerEmail(email.value)
     && validerChampBirthday(birthday.value) && validerChampQuantity(quantity.value) && validerBoutonRadio(location)
     && validerCheckBox(checkBox1)) {
-    window.alert("Merci ! Votre réservation a été reçue.")
-    modalbg.style.display = "none"
+    // window.alert("Merci ! Votre réservation a été reçue.")
+    // modalbg.style.display = "none"
+      // formData.style.display = "none"
+      // formData.classList.remove(".formData")
+      
+//       let formData = document.querySelectorAll(".formData");
+
+// // Suppression de chaque élément sélectionné
+// formData.forEach(function(div) {
+//   div.style.cssText = "display:none;height: 850.609px;"
+// })
+  
   }
   return true
 }
