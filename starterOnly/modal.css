@@ -9,6 +9,26 @@
   padding: 0;
 }
 /* Landing Page */
+/* style ajouté pour le message d'erreur */
+.errorInput {
+  border-radius: 8px;
+  border: 2px solid #ff4e60;
+}
+.errorMessage {
+  color: #ff4e60;
+  font-family: Roboto;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 142.6%;
+}
+/*style ajouté pour le message du success */
+.success {
+  margin: 250px auto;
+  width: 50%;
+  text-align: center;
+  font-family: "DM Sans";
+}
 
 body {
   margin: 0;
