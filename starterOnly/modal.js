@@ -67,8 +67,6 @@ function validerChampQuantity(quantity) {
   if (quantity === "" || parseInt(quantity) > 99) {
     throw new Error("Veuillez choisir un nombre")
   }
-  // console.log(typeof quantity)
-  // return !!quantity && !isNaN(quantity)
 }
 
 // La fonction de la validation du bouton radio avec le message d'erreur
@@ -98,8 +96,6 @@ function afficherMessageErreur(message, element) {
     SpanMessageErreur1 = document.createElement("span")
     element.after(SpanMessageErreur1)
     SpanMessageErreur1.id = element.id + "_erreur"
-    // SpanMessageErreur1.style.cssText = "color: #FF4E60;font-family: Roboto;font-size: 10px;font-style: normal;font-weight: 400;line-height: 142.6%;"
-    // element.style.cssText = "border-radius: 8px;border: 2px solid #FF4E60;"
     SpanMessageErreur1.classList.add("errorMessage")
     element.classList.add("errorInput")
   }
@@ -107,7 +103,6 @@ function afficherMessageErreur(message, element) {
   element.addEventListener('input', () => {
     if (SpanMessageErreur1) {
       SpanMessageErreur1.remove()
-      // element.style.cssText = ""
       element.classList.remove("errorInput")
     }
   })
@@ -124,7 +119,6 @@ function afficherMsgErreurChampChoix(message, element) {
     SpanMessageErreur2 = document.createElement("div")
     SpanMessageErreur2.id = element.id + "_erreur"
     varr.append(SpanMessageErreur2)
-    // SpanMessageErreur2.style.cssText = "color: #FF4E60;font-family: Roboto;font-size: 10px;font-style: normal;font-weight: 400;line-height: 142.6%;"
     SpanMessageErreur2.classList.add("errorMessage")
   }
 
