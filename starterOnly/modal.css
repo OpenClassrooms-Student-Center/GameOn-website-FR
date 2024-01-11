@@ -296,7 +296,7 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
-.close {
+#close-modal {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -306,8 +306,8 @@ input[data-error]::after {
   cursor: pointer;
   transform: scale(0.7);
 }
-.close:before,
-.close:after {
+#close-modal:before,
+#close-modal:after {
   position: absolute;
   left: 15px;
   content: " ";
@@ -315,10 +315,10 @@ input[data-error]::after {
   width: 3px;
   background-color: #fff;
 }
-.close:before {
+#close-modal:before {
   transform: rotate(45deg);
 }
-.close:after {
+#close-modal:after {
   transform: rotate(-45deg);
 }
 .btn-submit,
