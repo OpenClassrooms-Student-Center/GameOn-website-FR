@@ -69,7 +69,9 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-  .topnav a {display: none;}
+  .topnav a {
+    display: none;
+  }
   .topnav a.icon {
     float: right;
     display: block;
@@ -88,16 +90,34 @@ img {
     display: block;
     text-align: left;
   }
+  .topnav .icon{
+    color: red;
+  }
 }
 
-
-
  @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
+  .topnav {
+    margin-bottom: 0;
+  }
+  .topnav a {
+    display: none;
+  }
+  .topnav .icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    /* margin-top: -15px; */
+  }
+
+  .header-logo img{
+    width: 103px;
+    height: 19px;
+  }
+  .header-logo{
+    display: flex;
+    align-items: center;
+    width:266px;
+    height: 51px;
+    padding-left: 15px;
   }
 } 
 
@@ -147,7 +167,7 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-color: rgba(26, 39, 156, 0.4);
+  background-color: rgba(26, 39, 156, 0.4); */
 }
 
 .success__modal {
@@ -157,8 +177,8 @@ main {
   width: 100%;
   max-width: 500px;
   height: 769px;
-  animation-name: modalopen;
-  animation-duration: var(--modal-duration);
+  /* animation-name: modalopen;
+  animation-duration: var(--modal-duration); */
   background: #232323;
   border-radius: 10px;
   overflow: hidden;
@@ -462,7 +482,7 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
+  /* min-height:93vh; */
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -582,5 +602,67 @@ footer {
   to {
     opacity: 1;
   }
+}
+
+@media screen and (max-width: 540px) {
+  /* main */
+  .hero-text{
+    margin:0;
+    margin-top: 20px;
+    font-size: 13px;
+  }
+  .hero-content{
+    padding:0;
+    min-width: 375px;
+  }
+  .hero-section{
+    min-height: unset;
+  }
+  .hero-headline{
+    font-size: 2.5rem;
+    font-weight: 500;
+  }
+  .hero-section > .btn-signup,
+  .btn-submit{
+    padding:7px 35px;
+    font-size: 0.875rem;
+  }
+
+/* footer */
+  .copyrights{
+    font-size: 10px;
+    font-weight: 500;
+    margin: 0;
+  }
+  /* form modal */
+  label{
+    font-size: 12px;
+    margin-bottom: 9px;
+  }
+  .text-label{
+    font-size: 12px;
+  }
+  .checkbox-label,
+  .checkbox2-label {
+  margin-bottom: 0;
+  }
+  .btn-submit{
+    margin-top: -20px;
+    margin-bottom: -15px;
+  }
+  .bground{
+    background-color: rgba(26, 39, 156, 0);
+  }
+  .content{
+    margin-top: 20%;
+  }
+  .success{
+    background-color: rgba(26, 39, 156, 0);
+  }
+  .success__modal {
+    margin-top: 20%;
+    height: 655px;
+  }  
+
 }
 

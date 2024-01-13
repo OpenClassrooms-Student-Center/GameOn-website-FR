@@ -13,7 +13,6 @@ function editNav() {
 }
 
 /// Initialize form data if modal is closed ///
-// @param {object} objData: object storing form values
 function resetForm(){
 
     const formInput = document.querySelectorAll(".text-control")
@@ -94,7 +93,7 @@ function tryInput(targetName,targetValue){
 function attachInputsValidationHandlers(objData){
     const formInput = document.querySelectorAll(".text-control")
     for (let cpt=0 ; cpt<5; cpt++){
-        formInput[cpt].addEventListener("input",(event)=>{
+        formInput[cpt].addEventListener("change",(event)=>{
             try {
                 tryInput(event.target.name,event.target.value)
                 objData[event.target.name]=event.target.value
@@ -138,9 +137,10 @@ function testRadioCheck(objData) {
 // @param {booleen} islast : true = name / false = first name
 // @throw {string} Erreur
 function checkNames(name , isLast=true){
+    let regex = new RegExp("[A-Za-z-]+$")
     name = name.trim()
-    if (name.length<2) {
-        if (isLast===true){
+    if (name.length<2 || !regex.test(name)) {
+        if (isLast/*===true*/){
             throw new Error("Veuillez entrer 2 caractères ou plus pour le champ du nom.")
         } else{
             throw new Error("Veuillez entrer 2 caractères ou plus pour le champ du prénom.")
@@ -172,9 +172,15 @@ function checkNumber(nb){
 // @param {string} date: date value
 // @throw {string} Erreur
  function checkDate(date){
+    // Calcul de l'age /86400000 = ms --> jours
+    let age = (Date.now()-Date.parse(date))/86400000/365
+    console.log((Date.now()-Date.parse(date))/86400000/365)
      if (date===""){
          throw new Error("Vous devez entrer votre date de naissance.")
-     }  
+     }
+     if (age<16){
+        throw new Error("L'âge limite d'inscription est de 16 ans")
+     }
 }
 
 /// remove span tag error from the html code ///
@@ -182,7 +188,7 @@ function checkNumber(nb){
 //
 function removeErreurDisplay(erreurTag){
     let spanErrorId= erreurTag + "JsErreur"
-    const spanError = document.getElementById(spanErrorId)
+    //const spanError = document.getElementById(spanErrorId)
     const pTag = document.getElementById(spanErrorId)
 
     const redBorderTag="." + erreurTag + "Js input"
@@ -198,13 +204,16 @@ function removeErreurDisplay(erreurTag){
 // @param {string} erreurTag: name of value (ex: "first" , "location" , "cgu")
 // @param {string} text: message to insert
 function erreurDisplay(erreurTag,text){
+    // Build Span ID identifier
     let spanErrorId= erreurTag + "JsErreur"
     const spanError = document.getElementById(spanErrorId)
     
+    // Build parent class identifier
     erreurTag= "." + erreurTag + "Js"
     const parentTag = document.querySelector(erreurTag)
     const createTag = document.createElement("span")
 
+    // Build red border CSS class indentifier
     const redBorderTag=erreurTag + " input"
     const inputText=document.querySelector(redBorderTag)
 
