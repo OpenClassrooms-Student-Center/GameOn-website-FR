@@ -93,14 +93,14 @@ function tryInput(targetName,targetValue){
 function attachInputsValidationHandlers(objData){
     const formInput = document.querySelectorAll(".text-control")
     for (let cpt=0 ; cpt<5; cpt++){
-        formInput[cpt].addEventListener("change",(event)=>{
+        formInput[cpt].addEventListener("input",(event)=>{
             try {
                 tryInput(event.target.name,event.target.value)
                 objData[event.target.name]=event.target.value
                 removeErreurDisplay(event.target.name)
             }catch (Error) {
                 //objData[event.target.name]="error"
-                erreurDisplay(event.target.name,Error.message)
+                //erreurDisplay(event.target.name,Error.message)
             }
         })
     }
@@ -173,13 +173,11 @@ function checkNumber(nb){
 // @throw {string} Erreur
  function checkDate(date){
     // Calcul de l'age /86400000 = ms --> jours
+    const ageDate= new Date(date)
+    yearDate = ageDate.getFullYear()
     let age = (Date.now()-Date.parse(date))/86400000/365
-    console.log((Date.now()-Date.parse(date))/86400000/365)
-     if (date===""){
-         throw new Error("Vous devez entrer votre date de naissance.")
-     }
-     if (age<16){
-        throw new Error("L'âge limite d'inscription est de 16 ans")
+     if (date==="" || age<16 || yearDate<1900){
+         throw new Error("Entrer votre date de naissance(Age limite 16 ans)")
      }
 }
 
