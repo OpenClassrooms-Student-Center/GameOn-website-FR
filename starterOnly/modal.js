@@ -47,41 +47,51 @@ form.addEventListener("submit", validateForm);
 function validateForm(event) {
   // name validation (at least 2 characters, not empty)
   function validateName(input) {
-    return input.trim() !== '' && /^[a-zA-Z]{2,}$/.test(input);
+    if (input.trim() === '' || !/^[a-zA-Z]{2,}$/.test(input)) {
+      throw new Error("Le nom doit comporter au moins 2 caractères alphabétiques.");
+    }
   }
 
   // email validation
   function validateEmail(input) {
-    return input.trim() !== '' && /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z0-9._-]+$/.test(input);
+    if (input.trim() === '' || !/^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z0-9._-]+$/.test(input)) {
+      throw new Error("Veuillez fournir une adresse e-mail valide.");
+    }
   }
 
   // quantity validation
   function validateQuantity(input) {
-    return input.trim() !== '' && /^\d+$/.test(input);
+    if (input.trim() === '' || !/^\d+$/.test(input)) {
+      throw new Error("La quantité doit être un nombre entier.");
+    }
   }
 
   // location checked
   function locSelected() {
-    return loc1.checked || loc2.checked || loc3.checked || loc4.checked || loc5.checked || loc6.checked;
+    if (!loc1.checked && !loc2.checked && !loc3.checked && !loc4.checked && !loc5.checked && !loc6.checked) {
+      throw new Error("Veuillez choisir au moins une option de localisation.");
+    }
   }
 
   // general terms & condition
   function gtcChecked() {
-    return gtc.checked;
+    if (!gtc.checked) {
+      throw new Error("Veuillez accepter les conditions générales pour continuer.");
+    }
   }
 
-  // Validation checks
-  const ValidName = validateName(firstName.value) && validateName(lastName.value);
-  const ValidEmail = validateEmail(email.value);
-  const ValidQty = validateQuantity(quantity.value);
-  const LocationSelected = locSelected();
-  const GTCChecked = gtcChecked();
+  try {
+    // Validation checks for each field
+    validateName(firstName.value);
+    validateName(lastName.value);
+    validateEmail(email.value);
+    validateQuantity(quantity.value);
+    locSelected();
+    gtcChecked();
+    alert("Votre inscription est validée !");
 
-  // Check all validations
-  const ValidForm = ValidName && ValidEmail && ValidQty && LocationSelected && GTCChecked;
-
-  // If form is not valid, prevent submission and display error messages
-  if (!ValidForm) {
+  } catch (error) {
+    alert(error.message);
     event.preventDefault();
   }
 }
