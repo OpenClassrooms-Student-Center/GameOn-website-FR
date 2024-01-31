@@ -58,8 +58,10 @@
           <div class="modal-body">
             <form
               name="reserve"
+              id="reserve"
               action="index.html"
               method="get"
+              novalidate
               onsubmit="return validate();"
             >
               <div
@@ -70,7 +72,7 @@
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
+                  required
                 /><br>
               </div>
               <div
@@ -81,6 +83,7 @@
                   type="text"
                   id="last"
                   name="last"
+                  required
                 /><br>
               </div>
               <div
@@ -91,6 +94,7 @@
                   type="email"
                   id="email"
                   name="email"
+                  required
                 /><br>
               </div>
               <div
@@ -101,12 +105,21 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
+                  required
                 /><br>
               </div>
               <div
                 class="formData">
                 <label for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <input
+                  type="number"
+                  class="text-control"
+                  id="quantity"
+                  name="quantity"
+                  min="0"
+                  max="99"
+                  required
+                >
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
               <div
@@ -117,8 +130,9 @@
                   id="location1"
                   name="location"
                   value="New York"
+                  required
                 />
-                <label for="location1" class="checkbox-label" for="location1">
+                <label for="location1" class="checkbox-label">
                   <span class="checkbox-icon"></span>
                   New York</label
                 >
@@ -129,7 +143,7 @@
                   name="location"
                   value="San Francisco"
                 />
-                <label for="locattion2" class="checkbox-label" for="location2">
+                <label for="location2" class="checkbox-label">
                   <span class="checkbox-icon"></span>
                   San Francisco</label
                 >
@@ -140,7 +154,7 @@
                   name="location"
                   value="Seattle"
                 />
-                <label for="location3" class="checkbox-label" for="location3">
+                <label for="location3" class="checkbox-label">
                   <span class="checkbox-icon"></span>
                   Seattle</label
                 >
@@ -151,7 +165,7 @@
                   name="location"
                   value="Chicago"
                 />
-                <label for="location3" class="checkbox-label" for="location4">
+                <label for="location4" class="checkbox-label">
                   <span class="checkbox-icon"></span>
                   Chicago</label
                 >
@@ -162,7 +176,7 @@
                   name="location"
                   value="Boston"
                 />
-                <label for="location5" class="checkbox-label" for="location5">
+                <label for="location5" class="checkbox-label">
                   <span class="checkbox-icon"></span>
                   Boston</label
                 >
@@ -173,7 +187,7 @@
                   name="location"
                   value="Portland"
                 />
-                <label for="location6" class="checkbox-label" for="location6">
+                <label for="location6" class="checkbox-label">
                   <span class="checkbox-icon"></span>
                   Portland</label
                 >

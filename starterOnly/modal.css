@@ -210,12 +210,13 @@ input {
 }
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
+  font-size: 0.5em;
+  font-weight: lighter;
   color: #e54858;
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  /*text-align: right;*/
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -252,6 +253,7 @@ input[data-error]::after {
   left: -30px;
   top: -1px;
   transition: 0.3s;
+  cursor: pointer;
 }
 .checkbox-label .checkbox-icon::after,
 .checkbox2-label .checkbox-icon::after {
