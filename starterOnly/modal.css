@@ -92,7 +92,7 @@ img {
 
 
 
- @media screen and (max-width: 540px) {
+@media screen and (max-width: 540px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
@@ -111,8 +111,6 @@ main {
   margin: 1px 20px 15px;
   border-radius: 2rem;
   text-align: justify;
-
-
 }
 
 .modal-btn {
@@ -215,7 +213,7 @@ input {
   color: #e54858;
   display: block;
   margin-top: 7px;
-  margin-bottom: 7px;
+  margin-bottom: 15px;
   /*text-align: right;*/
   line-height: 0.3;
   opacity: 0;
@@ -327,13 +325,13 @@ input[data-error]::after {
 .btn-signup {
   background: #fe142f;
   display: block;
-  margin: 0 auto;
   border-radius: 7px;
   font-size: 1rem;
   padding: 12px 82px;
   color: #fff;
   cursor: pointer;
   border: 0;
+  align-self: flex-start;
 }
 /* custom select styles */
 .custom-select {
@@ -409,30 +407,34 @@ input[data-error]::after {
 .hero-section {
   min-height: 93vh;
   border-radius: 10px;
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  display: flex;
   overflow: hidden;
   box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
 }
 .hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-basis: 75%;
   padding: 51px 67px;
-  grid-column: span 4;
   background: #232323;
   color: #fff;
   position: relative;
   text-align: left;
   min-width: 424px;
 }
+/*
 .hero-content::after {
   content: "";
   width: 100%;
   height: 100%;
-  background: #232323;
+  background: #d9080864;
   position: absolute;
   right: -80px;
   top: 0;
 }
+*/
 .hero-content > * {
   position: relative;
   z-index: 1;
@@ -440,10 +442,8 @@ input[data-error]::after {
 .hero-headline {
   font-size: 6rem;
   font-weight: normal;
-  white-space: nowrap;
 }
 .hero-text {
-  width: 146%;
   font-weight: normal;
   margin-top: 57px;
   padding: 0;
@@ -464,6 +464,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 .copyrights {
   color: #fe142f;

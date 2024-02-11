@@ -98,12 +98,13 @@ function validate() {
     const now = new Date();
     const age = now.getFullYear() - date.getFullYear();
 
-    if (age < 18) {
+    if (!(age > 18)) {
       showError(birthdate, "Vous devez avoir plus de 18 ans");
       isValid = false;
+    } else if (age > 100) {
+      showError(birthdate, "Vous devez avoir moins de 100 ans");
+      isValid = false;
     }
-
-    //Ajouter vérification date postérieure à aujourd'hui
   }
 
   // QUANTITY
