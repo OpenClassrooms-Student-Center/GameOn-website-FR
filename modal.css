@@ -69,49 +69,6 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .topnav a {
-    display: none;
-  }
-
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .topnav.responsive {
-    position: relative;
-  }
-
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
-
-
-@media screen and (max-width: 540px) {
-  .topnav a {
-    display: none;
-  }
-
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-}
-
 main {
   color: black;
   padding-top: 0.5vw;
@@ -174,10 +131,11 @@ main {
   height: 100%;
   width: 100%;
   overflow: auto;
+  background-color: white;
 }
 
 .content {
-  margin: 12% auto;
+  margin: 5% auto;
   width: 100%;
   max-width: 500px;
   animation-name: modalopen;
@@ -198,7 +156,7 @@ main {
 
 label {
   font-family: var(--font-default);
-  font-size: 17px;
+  font-size: 0.875rem;
   font-weight: normal;
   display: inline-block;
   margin-bottom: 11px;
@@ -486,10 +444,10 @@ input[data-error]::after {
   font-size: 1.3rem;
   padding: 15px 23px;
   margin: 0;
+  margin-left: 70px;
   margin-top: 59px;
   position: absolute;
-  left: 125px;
-  bottom: 70px;
+  bottom: -10%;
 }
 
 .hero-img {
@@ -537,13 +495,13 @@ footer {
 
 .valid-message p {
   font-size: 36px;
-  margin-top: 190px;
+  margin-top: 330px;
+  margin-bottom: 300px;
   text-align: center;
 }
 
 .btn-close {
   bottom: 17px;
-  font-size: 0.8rem;
 }
 
 @media screen and (max-width: 800px) {
@@ -598,10 +556,20 @@ footer {
     order: 4;
   }
 
+  .content {
+    margin: 12% auto;
+  }
+
+  .valid-message p {
+    margin-top: 190px;
+    margin-bottom: 239px;
+  }
+
   .btn-close {
     width: 141px;
     height: 31px;
     padding: 0px;
+    font-size: 0.8rem;
     margin-top: 225px;
     text-align: center;
   }
@@ -613,7 +581,48 @@ footer {
     margin-bottom: 26px;
   }
 }
+@media screen and (max-width: 768px) {
+  .topnav a {
+    display: none;
+  }
 
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+
+  .topnav.responsive {
+    position: relative;
+  }
+
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  .bground {
+    background-color: transparent;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .topnav a {
+    display: none;
+  }
+
+  .topnav a.icon {
+    float: right;
+    display: block;
+    margin-top: -15px;
+  }
+}
 @keyframes modalopen {
   from {
     opacity: 0;
