@@ -143,6 +143,9 @@ function validateCheckboxTerms() {
 form.addEventListener('submit', function (e) {
   e.preventDefault();
   validateFormFields();
+  if (isFormValid()) {
+    displayValidMessage();
+  }
 });
 
 // Validate all form fields
@@ -168,18 +171,9 @@ function isFormValid() {
     validateCheckboxTerms() &&
     validateBirthdate()
   )
-    console.log(
-      firstName.value,
-      lastName.value,
-      email.value,
-      birthdate.value,
-      quantity.value,
-      validateCheckboxLocation(),
-      checkbox1.checked,
-      checkbox2.checked
-    );
+    return true;
   else {
-    console.log('not valid');
+    return false;
   }
 }
 
@@ -195,3 +189,19 @@ function hideError(inputElement) {
   formData.removeAttribute('data-error');
   formData.removeAttribute('data-error-visible');
 }
+
+// valid message after submit
+function displayValidMessage() {
+  const validMessage = document.querySelector('#text-validMessage');
+  const buttonValid = document.querySelector('#valid-btn-close');
+  const container = document.querySelector('.container-validMessage');
+  form.style.display = 'none';
+  validMessage.style.display = 'inline-block';
+  buttonValid.style.display = 'block';
+  container.style.display = 'block';
+}
+
+// close modal after submit
+
+const closeValidBtn = document.querySelector('#valid-btn-close');
+closeValidBtn.addEventListener('click', closeModal);
