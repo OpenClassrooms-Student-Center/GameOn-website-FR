@@ -44,8 +44,13 @@ const submit = document.getElementById('submit');
 // First name
 function validateFirstName() {
   if (firstName.value.length < 2) {
+    displayError(
+      firstName,
+      'Veuillez entrer 2 caractères ou plus pour le champ du prénom.'
+    );
     return false;
   } else {
+    hideError(firstName);
     return true;
   }
 }
@@ -53,8 +58,13 @@ function validateFirstName() {
 // Last name
 function validateLastName() {
   if (lastName.value.length < 2) {
+    displayError(
+      lastName,
+      'Veuillez entrer 2 caractères ou plus pour le champ du nom.'
+    );
     return false;
   } else {
+    hideError(lastName);
     return true;
   }
 }
@@ -63,8 +73,10 @@ function validateLastName() {
 function validateEmail() {
   const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
   if (!emailRegex.test(email.value)) {
+    displayError(email, 'Veuillez entrer un email valide.');
     return false;
   } else {
+    hideError(email);
     return true;
   }
 }
@@ -72,17 +84,21 @@ function validateEmail() {
 // Birthdate
 function validateBirthdate() {
   if (birthdate.value.trim() !== '') {
+    hideError(birthdate);
     return true;
   } else {
+    displayError(birthdate, 'Vous devez entrer votre date de naissance.');
     return false;
   }
 }
 
 // Quantity
 function validateQuantity() {
-  if (isNaN(quantity.value) && quantity.value < 0) {
+  if (isNaN(quantity.value) || quantity.value < 0 || quantity.value === '') {
+    displayError(quantity, 'Veuillez entrer un nombre valide.');
     return false;
   } else {
+    hideError(quantity);
     return true;
   }
 }
@@ -99,8 +115,11 @@ function validateCheckboxLocation() {
   });
 
   if (checkedValue === null) {
+    displayError(locationCheckBoxes[0], 'Veuillez choisir une option.');
+
     return false;
   } else {
+    hideError(locationCheckBoxes[0]);
     return checkedValue;
   }
 }
@@ -108,8 +127,13 @@ function validateCheckboxLocation() {
 // Checkbox Terms of use
 function validateCheckboxTerms() {
   if (!checkbox1.checked) {
+    displayError(
+      checkbox1,
+      'Vous devez vérifier que vous acceptez les termes et conditions.'
+    );
     return false;
   } else {
+    hideError(checkbox1);
     return true;
   }
 }
@@ -118,8 +142,19 @@ function validateCheckboxTerms() {
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
-  isFormValid();
+  validateFormFields();
 });
+
+// Validate all form fields
+function validateFormFields() {
+  validateLastName();
+  validateFirstName();
+  validateEmail();
+  validateQuantity();
+  validateCheckboxLocation();
+  validateCheckboxTerms();
+  validateBirthdate();
+}
 
 // Is Form Valid
 
@@ -146,4 +181,17 @@ function isFormValid() {
   else {
     console.log('not valid');
   }
+}
+
+//  error message
+function displayError(inputElement, message) {
+  const formData = inputElement.parentElement;
+  formData.setAttribute('data-error', message);
+  formData.setAttribute('data-error-visible', 'true');
+}
+
+function hideError(inputElement) {
+  const formData = inputElement.parentElement;
+  formData.removeAttribute('data-error');
+  formData.removeAttribute('data-error-visible');
 }
