@@ -169,6 +169,10 @@ class FormValidator {
     buttonValid.style.display = 'none';
     container.style.display = 'none';
   }
+
+  resetForm() {
+    this.form.reset();
+  }
 }
 
 // Form validation
