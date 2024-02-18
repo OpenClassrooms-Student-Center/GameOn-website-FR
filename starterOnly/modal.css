@@ -572,6 +572,9 @@ footer {
   .hero-content {
     min-width: unset;
   }
+  .header-logo img {
+    max-width: 175px;
+  }
 }
 
 @keyframes modalopen {
