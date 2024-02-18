@@ -72,32 +72,6 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 1020px) {
-  .topnav a {
-    display: none;
-  }
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 1020px) {
-  .topnav.responsive {
-    position: relative;
-  }
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
-
 main {
   font-size: 130%;
   font-weight: bolder;
@@ -517,7 +491,8 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+
+@media screen and (max-width: 1020px) {
   .topnav {
     display: flex;
     justify-content: space-between;
@@ -526,8 +501,47 @@ footer {
     padding-left: 2vw;
     padding-right: 2vw;
     margin: 1px 20px 15px;
+    overflow: visible;
   }
 
+  .topnav .icon {
+    color: #ff001b;
+  }
+  .topnav a {
+    display: none;
+  }
+
+  .topnav a.icon {
+    display: block;
+  }
+
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+
+  .topnav.responsive .main-navbar {
+    position: absolute;
+    right: 40px;
+    top: 75px;
+    background-color: white;
+    z-index: 100;
+    border-radius: 15px;
+    box-shadow: 0 2px 7px 2px rgba(0, 0, 0, 0.15);
+  }
+
+  .topnav .main-navbar {
+    position: absolute;
+    right: 40px;
+    top: 75px;
+    background-color: white;
+    z-index: 100;
+    border-radius: 15px;
+  }
+}
+
+@media screen and (max-width: 800px) {
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -573,6 +587,17 @@ footer {
   .header-logo img {
     max-width: 200px;
   }
+
+  .topnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    margin: 1px 20px 15px;
+    overflow: visible;
+  }
 }
 
 @media screen and (max-width: 540px) {
@@ -584,6 +609,7 @@ footer {
     padding-left: 2vw;
     padding-right: 2vw;
     margin: 1px 20px 15px;
+    overflow: visible;
   }
   .topnav a {
     display: none;
