@@ -74,6 +74,7 @@ class FormValidator {
       console.log(this.fieldValues);
       console.log(this.isFormValid());
       if (this.isFormValid()) {
+        this.displayValidMessage('Merci pour votre inscription');
       }
     });
   }
@@ -144,6 +145,29 @@ class FormValidator {
     const formData = inputElement.parentElement;
     formData.removeAttribute('data-error');
     formData.removeAttribute('data-error-visible');
+  }
+
+  displayValidMessage(message) {
+    const validMessage = document.querySelector('#text-validMessage');
+    const buttonValid = document.querySelector('#valid-btn-close');
+    const container = document.querySelector('.container-validMessage');
+    this.form.style.display = 'none';
+    validMessage.style.display = 'inline-block';
+    buttonValid.style.display = 'block';
+    container.style.display = 'block';
+
+    // Set the validation message
+    validMessage.textContent = message;
+  }
+
+  hideValidMessage() {
+    const validMessage = document.querySelector('#text-validMessage');
+    const buttonValid = document.querySelector('#valid-btn-close');
+    const container = document.querySelector('.container-validMessage');
+    this.form.style.display = 'block';
+    validMessage.style.display = 'none';
+    buttonValid.style.display = 'none';
+    container.style.display = 'none';
   }
 }
 
