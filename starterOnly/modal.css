@@ -65,13 +65,14 @@ img {
 .topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
+  border-radius: 15px;
 }
 
 .topnav .icon {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1020px) {
   .topnav a {
     display: none;
   }
@@ -81,7 +82,7 @@ img {
   }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1020px) {
   .topnav.responsive {
     position: relative;
   }
@@ -348,6 +349,7 @@ input[data-error]::after {
   opacity: 1;
   cursor: pointer;
   transform: scale(0.7);
+  z-index: 2;
 }
 .close:before,
 .close:after {
@@ -479,7 +481,7 @@ input[data-error]::after {
   z-index: 1;
 }
 .hero-headline {
-  font-size: 6rem;
+  font-size: clamp(3rem, 6.5vw, 6rem);
   font-weight: normal;
   white-space: nowrap;
 }
@@ -505,6 +507,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 .copyrights {
   color: #fe142f;
