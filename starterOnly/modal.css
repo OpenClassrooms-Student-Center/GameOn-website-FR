@@ -50,18 +50,21 @@ img {
   text-decoration: none;
   font-size: 20px;
   font-family: Roboto, sans-serif;
+  transition: 0.15s ease-in-out all;
+  border-radius: 15px;
 }
 
 .topnav a:hover {
   background-color: #ff0000;
   color: #ffffff;
-  border-radius: 15px;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+  text-underline-offset: 0.3em;
 }
 
 .topnav a.active {
   background-color: #ff0000;
   color: #ffffff;
-  border-radius: 15px;
 }
 
 .topnav .icon {
