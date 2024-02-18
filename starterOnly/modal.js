@@ -50,11 +50,25 @@ class ModalManager {
   // Method to open the modal
   close() {
     this.modal.style.display = 'none';
+
+    // Reset the form
+    for (const fieldId in formValidator.fields) {
+      const field = document.getElementById(fieldId);
+      formValidator.hideError(field);
+    }
+    const location = document.getElementsByName('location');
+    formValidator.hideError(location[0]);
+    formValidator.hideValidMessage();
+
+    formValidator.resetForm();
   }
 }
 
 // Create a new instance of the ModalManager class
-const signUpModal = new ModalManager('.bground', '.modal-btn', '.close');
+const signUpModal = new ModalManager('.bground', '.modal-btn', [
+  '.close',
+  '#valid-btn-close',
+]);
 
 // Bind the click events to the open and close buttons
 signUpModal.buttonEvents();
