@@ -552,6 +552,9 @@ footer {
   .hero-text {
     width: unset;
     font-size: 1.5rem;
+    margin-top: 30px;
+
+    line-height: 1.6;
   }
   .hero-img img {
     border-radius: 10px;
