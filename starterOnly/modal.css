@@ -566,6 +566,10 @@ footer {
     margin-top: 50px;
     text-align: center;
   }
+
+  .header-logo img {
+    max-width: 200px;
+  }
 }
 
 @media screen and (max-width: 540px) {
@@ -596,6 +600,13 @@ footer {
   }
   .header-logo img {
     max-width: 135px;
+  }
+
+  .hero-text {
+    width: unset;
+    font-size: 13px;
+    margin-top: 20px;
+    line-height: 1.6;
   }
 }
 
