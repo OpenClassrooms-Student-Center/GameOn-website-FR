@@ -12,20 +12,14 @@ const modalbg = document.querySelector('.bground');
 const modalBtn = document.querySelectorAll('.modal-btn');
 const formData = document.querySelectorAll('.formData');
 
-// launch modal event
-modalBtn.forEach((btn) => btn.addEventListener('click', launchModal));
-
-// launch modal form
-function launchModal() {
-  modalbg.style.display = 'block';
-}
-
 class ModalManager {
-  constructor(modalId, closeButtonsIds) {
+  constructor(modalId, openButtonsIds, closeButtonsIds) {
     //Select the Modal
     this.modal = document.querySelector(modalId);
     //Select the close buttons
     this.closeButtons = this.selectElements(closeButtonsIds);
+    //Select the open buttons
+    this.openButtons = this.selectElements(openButtonsIds);
   }
 
   // Method to select elements
@@ -45,7 +39,12 @@ class ModalManager {
 
   // Method to bind click events to open and close buttons
   buttonEvents() {
+    this.addEventListeners(this.openButtons, () => this.open());
     this.addEventListeners(this.closeButtons, () => this.close());
+  }
+
+  open() {
+    this.modal.style.display = 'block';
   }
 
   // Method to open the modal
@@ -55,7 +54,7 @@ class ModalManager {
 }
 
 // Create a new instance of the ModalManager class
-const signUpModal = new ModalManager('.bground', '.close');
+const signUpModal = new ModalManager('.bground', '.modal-btn', '.close');
 
 // Bind the click events to the open and close buttons
 signUpModal.buttonEvents();
