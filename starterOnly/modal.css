@@ -466,6 +466,10 @@ input[data-error]::after {
   position: relative;
   text-align: left;
   min-width: 424px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 .hero-content::after {
   content: '';
