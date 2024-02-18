@@ -99,8 +99,10 @@ class FormValidator {
     // If no checkbox is checked, display an error message
     if (checkedValue === null) {
       isValid = false;
+      this.displayError(locationCheckBoxes[0], 'Veuillez choisir une option.');
     } else {
       this.fieldValues['location'] = checkedValue;
+      this.hideError(locationCheckBoxes[0]);
     }
 
     // Get checkbox2
@@ -112,12 +114,14 @@ class FormValidator {
     for (const fieldId in this.fields) {
       // Get the field element and its validation rules
       const field = document.getElementById(fieldId);
-      const { test } = this.fields[fieldId];
+      const { test, errorMessage } = this.fields[fieldId];
 
       // For other fields, validate the field based on its type and validation rules
       if (!test(field.type === 'checkbox' ? field : field.value)) {
+        this.displayError(field, errorMessage);
         isValid = false;
       } else {
+        this.hideError(field);
         // Set the value of the field
         this.fieldValues[fieldId] =
           field.type === 'checkbox' ? field.checked : field.value;
@@ -151,24 +155,32 @@ const birthdayRegex = /^\d{4}-\d{2}-\d{2}$/;
 const formRules = {
   first: {
     test: (value) => value.length >= 2,
+    errorMessage:
+      'Veuillez entrer 2 caractères ou plus pour le champ du prénom.',
   },
   last: {
     test: (value) => value.length >= 2,
+    errorMessage: 'Veuillez entrer 2 caractères ou plus pour le champ du nom.',
   },
   email: {
     test: (value) => emailRegex.test(value),
+    errorMessage: 'Veuillez entrer un email valide.',
   },
   birthdate: {
     test: (value) =>
       value.trim() !== '' &&
       birthdayRegex.test(value) &&
       new Date(value) < new Date(),
+    errorMessage: 'Vous devez entrer une date de naissance valide.',
   },
   quantity: {
     test: (value) => !isNaN(value) && value >= 0 && value !== '',
+    errorMessage: 'Veuillez entrer un nombre valide.',
   },
   checkbox1: {
     test: (value) => value.checked,
+    errorMessage:
+      'Vous devez vérifier que vous acceptez les termes et conditions.',
   },
 };
 
