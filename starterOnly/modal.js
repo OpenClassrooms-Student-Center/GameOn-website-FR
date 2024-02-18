@@ -118,11 +118,8 @@ class FormValidator {
         isValid = false;
       } else {
         // Set the value of the field
-        if (field.type === 'checkbox') {
-          this.fieldValues[fieldId] = field.checked;
-        } else {
-          this.fieldValues[fieldId] = field.value;
-        }
+        this.fieldValues[fieldId] =
+          field.type === 'checkbox' ? field.checked : field.value;
       }
     }
     return isValid;
