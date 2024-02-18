@@ -413,7 +413,6 @@ input[data-error]::after {
   font-size: 16px;
 }
 .hero-section {
-  min-height: 93vh;
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -539,6 +538,10 @@ footer {
     z-index: 100;
     border-radius: 15px;
   }
+
+  .hero-section {
+    min-height: 0;
+  }
 }
 
 @media screen and (max-width: 800px) {
@@ -598,6 +601,11 @@ footer {
     margin: 1px 20px 15px;
     overflow: visible;
   }
+
+  .copyrights {
+    margin-top: 16px;
+    text-align: center;
+  }
 }
 
 @media screen and (max-width: 540px) {
@@ -636,6 +644,14 @@ footer {
     font-size: 13px;
     margin-top: 20px;
     line-height: 1.6;
+  }
+
+  .btn-signup {
+    font-size: 14px;
+  }
+
+  .copyrights {
+    font-size: 12px;
   }
 }
 
