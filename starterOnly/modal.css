@@ -518,6 +518,16 @@ footer {
   margin: 0 20px;
 }
 @media screen and (max-width: 800px) {
+  .topnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    margin: 1px 20px 15px;
+  }
+
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -525,7 +535,9 @@ footer {
   .hero-content {
     background: #fff;
     color: #000;
-    padding: 20px;
+
+    min-width: unset;
+    padding: 0;
   }
   .hero-content::after {
     content: unset;
@@ -557,6 +569,15 @@ footer {
 }
 
 @media screen and (max-width: 540px) {
+  .topnav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    margin: 1px 20px 15px;
+  }
   .topnav a {
     display: none;
   }
@@ -571,9 +592,10 @@ footer {
 
   .hero-content {
     min-width: unset;
+    padding: 0;
   }
   .header-logo img {
-    max-width: 175px;
+    max-width: 135px;
   }
 }
 
