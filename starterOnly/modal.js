@@ -129,6 +129,18 @@ class FormValidator {
   isFormValid() {
     return this.validateFormFields();
   }
+
+  displayError(inputElement, message) {
+    const formData = inputElement.parentElement;
+    formData.setAttribute('data-error', message);
+    formData.setAttribute('data-error-visible', 'true');
+  }
+
+  hideError(inputElement) {
+    const formData = inputElement.parentElement;
+    formData.removeAttribute('data-error');
+    formData.removeAttribute('data-error-visible');
+  }
 }
 
 // Form validation
