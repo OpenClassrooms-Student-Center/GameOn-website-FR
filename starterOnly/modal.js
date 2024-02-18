@@ -72,6 +72,7 @@ class FormValidator {
       e.preventDefault();
       this.validateFormFields();
       console.log(this.fieldValues);
+      console.log(this.isFormValid());
       if (this.isFormValid()) {
       }
     });
