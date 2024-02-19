@@ -73,6 +73,7 @@ form.addEventListener('submit', function (event) {
 function validateFirstName() {
   const firstNameInput = document.getElementById("first")
   const firstName = firstNameInput.value.trim(); // Supprime les espaces blancs avant et après
+  // Seules les lettres sont autorisées
   const regex = new RegExp("^[a-z]+$");
   const isFirstNameValid = regex.test(firstName);
   
@@ -92,6 +93,7 @@ function validateFirstName() {
 function validateLastName() {
   const lastNameInput = document.getElementById("last");
   const lastName = lastNameInput.value.trim();
+  // Seules les lettres sont autorisées
   const regex = new RegExp("^[a-z]+$");
   const isLastNameValid = regex.test(lastName);
   // Vérifie que le nom contient au moins 2 caractères
