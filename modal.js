@@ -38,7 +38,7 @@ function validateForm(event) {
       displayError(errorElementId, "Votre prénom doit comprendre au moins 2 caractères alphabétiques.");
       markInputAsInvalid(errorElementId);
       hasErrors = true;
-    } 
+    }
   }
 
   function validateLastName(input, errorElementId) {
@@ -104,7 +104,7 @@ function validateForm(event) {
     }
   }
 
-  // Validation de chaque champ
+  // Field validation
   validateFirstName(firstName.value, 'error-first');
   validateLastName(lastName.value, 'error-last');
   validateEmail(email.value, 'error-email');
@@ -113,20 +113,20 @@ function validateForm(event) {
   validateLocation(locations, 'error-location');
   validateGTC(gtcCheckbox, 'error-gtc');
 
-  // Empêcher l'envoi du formulaire si des erreurs sont détectées
+  // Keep form from beeing sent if errors
   event.preventDefault();
   if (hasErrors) {
     return;
   }
 
-  // hide form and display success message si le formulaire est valide
+  // hide form and display success message if form valid
   document.querySelectorAll(".formData").forEach((element) => {
     element.style.display = "none";
   });
   document.getElementById("valid-message").style.display = "block";
 }
 
-// Fermer le message de succès
+// Close success message
 function closeSuccessMessage() {
   document.querySelector('.bground').style.display = 'none';
 }
