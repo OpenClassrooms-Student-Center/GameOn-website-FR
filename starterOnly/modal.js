@@ -71,9 +71,15 @@ form.addEventListener('submit', function (event) {
 function validateFirstName() {
   const firstNameInput = document.getElementById("first")
   const firstName = firstNameInput.value.trim(); // Supprime les espaces blancs avant et après
+  const regex = new RegExp("^[a-z]+$");
+  const isFirstNameValid = regex.test(firstName);
+  
   // Vérifie que le prénom contient au moins 2 caractères
   if (firstName.length < 2) {
     console.log("Le prénom doit contenir au moins 2 caractères.");
+    return false;
+  } else if (isFirstNameValid === false) {
+    console.log("Le prénom ne doit contenir que des lettres.")
     return false;
   } else {
     console.log("Le champ prénom est valide.");
@@ -86,7 +92,7 @@ function validateLastName() {
   const lastName = lastNameInput.value.trim();
   // Vérifie que le nom contient au moins 2 caractères
   if (lastName.length < 2) {
-    console.log("Le prénom doit contenir au moins 2 caractères.");
+    console.log("Le nom doit contenir au moins 2 caractères.");
     return false;
   } else {
     console.log("Le champ nom est valide.");
