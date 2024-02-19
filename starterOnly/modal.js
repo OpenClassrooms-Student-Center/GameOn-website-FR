@@ -196,3 +196,4 @@ function newsletterSignup() {
     console.log("Vous n'avez pas accepté d'être prévenu des prochains évènements.")
   }
 }
+
