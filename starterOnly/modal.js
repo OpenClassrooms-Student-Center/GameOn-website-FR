@@ -92,9 +92,14 @@ function validateFirstName() {
 function validateLastName() {
   const lastNameInput = document.getElementById("last");
   const lastName = lastNameInput.value.trim();
+  const regex = new RegExp("^[a-z]+$");
+  const isLastNameValid = regex.test(lastName);
   // Vérifie que le nom contient au moins 2 caractères
   if (lastName.length < 2) {
     console.log("Le nom doit contenir au moins 2 caractères.");
+    return false;
+  } else if (isLastNameValid === false) {
+    console.log("Le nom ne doit contenir que des lettres.")
     return false;
   } else {
     console.log("Le champ nom est valide.");
