@@ -13,6 +13,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtn = document.querySelector(".close");
+
 const form = document.querySelector("form");
 
 // launch modal event
@@ -24,6 +25,7 @@ function launchModal() {
 }
 
 // closing modal event
+
 closeBtn.addEventListener("click", function () {
   modalbg.style.display = "none"
 });
@@ -157,6 +159,7 @@ function validateQuantity() {
 function validateLocation() {
   let locationTag = document.querySelectorAll('input[name="location"]');
   let locationSelected = false;
+
 
   // Vérifie qu'une option de localisation est sélectionnée
   for (let i = 0; i < locationTag.length; i++) {
