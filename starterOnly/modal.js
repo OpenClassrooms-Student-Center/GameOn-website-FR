@@ -26,15 +26,18 @@ closeBtn.addEventListener("click", function () {
 // Soumission du formulaire
 form.addEventListener('submit', function (event) {
   event.preventDefault(); // Empêche le rechargement de la page
+
   // Vérification de chaque champ du formulaire en une seule ligne
-  const isValid = validateFirstName() && 
-                 validateLastName() && 
-                 validateEmail() && 
-                 validateBirthdate() && 
-                 validateQuantity() && 
-                 validateLocation() && 
-                 validateConditions();
+  const isValid = validateFirstName() &&
+    validateLastName() &&
+    validateEmail() &&
+    validateBirthdate() &&
+    validateQuantity() &&
+    validateLocation() &&
+    validateConditions();
+
   newsletterSignup(); // Enregistrement de la préférence pour la newsletter, ne change pas la validité
+
   // Affichage du résultat de la validation du formulaire
   if (isValid) {
     console.log("Le formulaire est validé.");
@@ -43,7 +46,7 @@ form.addEventListener('submit', function (event) {
   }
 });
 // Ajout d'un écouteur d'événement pour valider le prénom à chaque changement
-document.getElementById("first").addEventListener("input", function() {
+document.getElementById("first").addEventListener("input", function () {
   validateFirstName();
 });
 // Fonction de validation du prénom
@@ -55,13 +58,16 @@ function validateFirstName() {
   if (firstName.length < 2) {
     formDataElement.setAttribute("data-error", "Le prénom doit contenir au moins 2 caractères et ne peut pas être vide.");
     formDataElement.setAttribute("data-error-visible", "true");
+    return false; // La validation échoue, retourne false
   } else if (!regex.test(firstName)) {
     formDataElement.setAttribute("data-error", "Le prénom ne doit contenir que des lettres.");
     formDataElement.setAttribute("data-error-visible", "true");
+    return false; // La validation échoue, retourne false
   } else {
     // En cas de succès, efface les attributs pour ne pas afficher d'erreur
     formDataElement.setAttribute("data-error", "");
     formDataElement.removeAttribute("data-error-visible");
+    return true; // La validation réussit, retourne true
   }
 }
 // Ajout d'un écouteur d'événement pour valider le nom à chaque changement
@@ -75,12 +81,16 @@ function validateLastName() {
   if (lastName.length < 2) {
     formDataElement.setAttribute("data-error", "Le nom doit contenir au moins 2 caractères et ne peut pas être vide.");
     formDataElement.setAttribute("data-error-visible", "true");
+    return false; // La validation échoue, retourne false
   } else if (!regex.test(lastName)) {
     formDataElement.setAttribute("data-error", "Le nom ne doit contenir que des lettres.");
     formDataElement.setAttribute("data-error-visible", "true");
+    return false; // La validation échoue, retourne false
   } else {
     formDataElement.setAttribute("data-error", "");
     formDataElement.removeAttribute("data-error-visible");
+    return true; // La validation réussit, retourne true
+
   }
 }
 // Ajout d'un écouteur d'événement pour valider l'email à chaque changement
@@ -94,9 +104,12 @@ function validateEmail() {
   if (!regex.test(email)) {
     formDataElement.setAttribute("data-error", "L'email est invalide");
     formDataElement.setAttribute("data-error-visible", "true");
+    return false; // La validation échoue, retourne false
   } else {
     formDataElement.setAttribute("data-error", "");
     formDataElement.removeAttribute("data-error-visible");
+    return true; // La validation réussit, retourne true
+
   }
 }
 // Ajout d'un écouteur d'événement pour valider la date de naissance à chaque changement
@@ -111,9 +124,11 @@ function validateBirthdate() {
   if (birthdate === "" || convertBirthdate >= today) {
     formDataElement.setAttribute("data-error", "La date de naissance doit être antérieure à la date d'aujourd'hui et ne peut pas être vide.");
     formDataElement.setAttribute("data-error-visible", "true");
+    return false; // La validation échoue, retourne false
   } else {
     formDataElement.setAttribute("data-error", "");
     formDataElement.removeAttribute("data-error-visible");
+    return true; // La validation réussit, retourne true
   }
 }
 // Ajout d'un écouteur d'événement pour valider la quantité à chaque changement
@@ -126,9 +141,12 @@ function validateQuantity() {
   if (quantity === "" || isNaN(quantity)) {
     formDataElement.setAttribute("data-error", "Merci d'entrer une valeur numérique pour la quantité.");
     formDataElement.setAttribute("data-error-visible", "true");
+    return false; // La validation échoue, retourne false
   } else {
     formDataElement.setAttribute("data-error", "");
     formDataElement.removeAttribute("data-error-visible");
+    return true; // La validation réussit, retourne true
+
   }
 }
 // Fonction de validation de la localisation
@@ -145,9 +163,11 @@ function validateLocation() {
   if (!locationSelected) {
     formDataElement.setAttribute("data-error", "Veuillez sélectionner une option de localisation.");
     formDataElement.setAttribute("data-error-visible", "true");
+    return false; // La validation échoue, retourne false
   } else {
     formDataElement.setAttribute("data-error", "");
     formDataElement.removeAttribute("data-error-visible");
+    return true; // La validation réussit, retourne true
   }
 }
 // Ajout d'un écouteur d'événement pour valider les conditions à chaque changement
@@ -156,13 +176,15 @@ document.getElementById("checkbox1").addEventListener("change", validateConditio
 function validateConditions() {
   const conditionsCheckbox = document.getElementById("checkbox1");
   const formDataElement = conditionsCheckbox.closest(".formData"); // Trouvez le conteneur .formData approprié.
-  
+
   if (!conditionsCheckbox.checked) {
     formDataElement.setAttribute("data-error", "Vous devez accepter les conditions d'utilisation.");
     formDataElement.setAttribute("data-error-visible", "true");
+    return false; // La validation échoue, retourne false
   } else {
     formDataElement.setAttribute("data-error", "");
     formDataElement.removeAttribute("data-error-visible");
+    return true; // La validation réussit, retourne true
   }
 }
 // Fonction pour enregistrer la préférence pour la newsletter
@@ -173,5 +195,4 @@ function newsletterSignup() {
   } else {
     console.log("Vous n'avez pas accepté d'être prévenu des prochains évènements.")
   }
-
 }
