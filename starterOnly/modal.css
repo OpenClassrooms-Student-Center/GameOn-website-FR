@@ -187,6 +187,14 @@ main {
   margin: 15px auto;
 }
 
+.form-confirmation {
+  margin-top: 290px;
+  margin-bottom: 290px;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 400;
+}
+
 label {
   font-family: var(--font-default);
   font-size: 17px;

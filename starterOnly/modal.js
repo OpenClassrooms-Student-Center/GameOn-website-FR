@@ -11,7 +11,7 @@ function editNav() {
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const closeBtn = document.querySelector(".close");
+const closeBtnCross = document.querySelector(".close");
 const form = document.querySelector("form");
 // Ajout des écouteurs d'événements pour afficher la modal
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -20,7 +20,7 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 // Ajout d'un écouteur d'événement pour fermer la modal
-closeBtn.addEventListener("click", function () {
+closeBtnCross.addEventListener("click", function () {
   modalbg.style.display = "none"
 });
 // Soumission du formulaire
@@ -41,6 +41,11 @@ form.addEventListener('submit', function (event) {
   // Affichage du résultat de la validation du formulaire
   if (isValid) {
     console.log("Le formulaire est validé.");
+    // Afficher un message de validation
+    displayConfirmationMessage("Merci pour votre inscription");
+
+    // Masquer le formulaire
+    form.style.display = 'none';
   } else {
     console.log("Le formulaire contient des erreurs. La soumission est bloquée.");
   }
@@ -49,6 +54,28 @@ form.addEventListener('submit', function (event) {
 document.getElementById("first").addEventListener("input", function () {
   validateFirstName();
 });
+
+// Fonction pour afficher un message de confirmation
+function displayConfirmationMessage(message) {
+  // Création du message de confirmation
+  const successMessage = document.createElement('p');
+  successMessage.textContent = message;
+  successMessage.classList.add('form-confirmation');
+
+  // Sélectionner l'élément avec la classe "modal-body"
+  const modalBody = document.querySelector('.modal-body');
+  modalBody.appendChild(successMessage);
+
+  // Création et ajout du bouton Fermer
+  const closeButton = document.createElement('button');
+  closeButton.textContent = "Fermer";
+  closeButton.classList.add('button', 'btn-submit');
+  closeButton.addEventListener('click', function () {
+    modalbg.style.display = 'none';
+  });
+  modalBody.appendChild(closeButton);
+}
+
 // Fonction de validation du prénom
 function validateFirstName() {
   const firstNameInput = document.getElementById("first");
