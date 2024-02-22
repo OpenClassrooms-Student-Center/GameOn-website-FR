@@ -1,12 +1,12 @@
 // Fonction pour basculer la classe CSS de la barre de navigation, rendant le menu responsive
 function editNav() {
-  var x = document.getElementById("myTopnav");
+  let x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
     x.className += " responsive";
   } else {
     x.className = "topnav";
   }
-}
+};
 
 // Sélection des éléments du DOM nécessaires pour manipuler la modale et le formulaire
 const modalbg = document.querySelector(".bground");
@@ -22,7 +22,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 function launchModal() {
   resetFormAndModal(); // Réinitialise le formulaire et la modale avant de l'afficher
   modalbg.style.display = "block";
-}
+};
 
 // Écouteur d'événement pour fermer la modale
 closeBtnCross.addEventListener("click", function () {
@@ -35,12 +35,12 @@ form.addEventListener('submit', (event) => {
 
   // Vérifie la validité de chaque champ du formulaire
   const isValid = validateFirstName() &&
-                  validateLastName() &&
-                  validateEmail() &&
-                  validateBirthdate() &&
-                  validateQuantity() &&
-                  validateLocation() &&
-                  validateConditions();
+    validateLastName() &&
+    validateEmail() &&
+    validateBirthdate() &&
+    validateQuantity() &&
+    validateLocation() &&
+    validateConditions();
 
   newsletterSignup(); // Gère l'inscription à la newsletter indépendamment de la validité du formulaire
 
@@ -65,13 +65,13 @@ document.getElementById("checkbox1").addEventListener("change", validateConditio
 function resetFormAndModal() {
   form.reset(); // Réinitialise les champs du formulaire
   form.style.display = 'block'; // Assure que le formulaire est visible
-  
+
   // Supprime le message de confirmation et le bouton Fermer s'ils existent
   const successMessage = document.querySelector('.form-confirmation');
   if (successMessage) {
     successMessage.remove();
   }
-}
+};
 
 // Affiche un message de confirmation dans la modale
 function displayConfirmationMessage(message) {
@@ -96,7 +96,7 @@ function displayConfirmationMessage(message) {
   modalBody.appendChild(closeButton);
 
   form.style.display = 'none'; // Masque le formulaire pour afficher uniquement le message de confirmation
-}
+};
 
 // Fonction de validation du prénom
 function validateFirstName() {
@@ -104,52 +104,46 @@ function validateFirstName() {
   const formDataElement = firstNameInput.closest(".formData"); // Trouve le parent .formData
   const firstName = firstNameInput.value.trim();
   const regex = new RegExp("^[A-Za-zÀ-ÿ]+$");
-  if (firstName.length < 2) {
+
+  // Si le prénom est trop court ou ne correspond pas au regex, affiche un message d'erreur.
+  if (firstName.length < 2 || !regex.test(firstName)) {
     formDataElement.setAttribute("data-error", "Le prénom doit contenir au moins 2 caractères et ne peut pas être vide.");
     formDataElement.setAttribute("data-error-visible", "true");
-    return false; // La validation échoue, retourne false
-  } else if (!regex.test(firstName)) {
-    formDataElement.setAttribute("data-error", "Le prénom ne doit contenir que des lettres.");
-    formDataElement.setAttribute("data-error-visible", "true");
-    return false; // La validation échoue, retourne false
+    return false;
   } else {
     // En cas de succès, efface les attributs pour ne pas afficher d'erreur
     formDataElement.setAttribute("data-error", "");
     formDataElement.removeAttribute("data-error-visible");
     return true; // La validation réussit, retourne true
   }
-}
-// Ajout d'un écouteur d'événement pour valider le nom à chaque changement
-document.getElementById("last").addEventListener("input", validateLastName);
+};
+
 // Fonction de validation du nom
 function validateLastName() {
   const lastNameInput = document.getElementById("last");
   const formDataElement = lastNameInput.closest(".formData");
   const lastName = lastNameInput.value.trim();
   const regex = new RegExp("^[A-Za-zÀ-ÿ]+$");
-  if (lastName.length < 2) {
+
+  if (lastName.length < 2 || !regex.test(lastName)) {
     formDataElement.setAttribute("data-error", "Le nom doit contenir au moins 2 caractères et ne peut pas être vide.");
     formDataElement.setAttribute("data-error-visible", "true");
-    return false; // La validation échoue, retourne false
-  } else if (!regex.test(lastName)) {
-    formDataElement.setAttribute("data-error", "Le nom ne doit contenir que des lettres.");
-    formDataElement.setAttribute("data-error-visible", "true");
-    return false; // La validation échoue, retourne false
+    return false;
   } else {
     formDataElement.setAttribute("data-error", "");
     formDataElement.removeAttribute("data-error-visible");
     return true; // La validation réussit, retourne true
 
   }
-}
-// Ajout d'un écouteur d'événement pour valider l'email à chaque changement
-document.getElementById("email").addEventListener("input", validateEmail);
+};
+
 // Fonction de validation de l'email
 function validateEmail() {
   const emailInput = document.getElementById("email");
   const formDataElement = emailInput.closest(".formData");
   const email = emailInput.value.trim();
   const regex = new RegExp("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}$", "i");
+
   if (!regex.test(email)) {
     formDataElement.setAttribute("data-error", "L'email est invalide");
     formDataElement.setAttribute("data-error-visible", "true");
@@ -158,11 +152,10 @@ function validateEmail() {
     formDataElement.setAttribute("data-error", "");
     formDataElement.removeAttribute("data-error-visible");
     return true; // La validation réussit, retourne true
-
   }
-}
-// Ajout d'un écouteur d'événement pour valider la date de naissance à chaque changement
-document.getElementById("birthdate").addEventListener("input", validateBirthdate);
+};
+
+
 // Fonction de validation de la date de naissance
 function validateBirthdate() {
   const birthdateInput = document.getElementById("birthdate");
@@ -170,6 +163,7 @@ function validateBirthdate() {
   const birthdate = birthdateInput.value;
   const convertBirthdate = new Date(birthdate);
   const today = new Date();
+
   if (birthdate === "" || convertBirthdate >= today) {
     formDataElement.setAttribute("data-error", "La date de naissance doit être antérieure à la date d'aujourd'hui et ne peut pas être vide.");
     formDataElement.setAttribute("data-error-visible", "true");
@@ -179,9 +173,9 @@ function validateBirthdate() {
     formDataElement.removeAttribute("data-error-visible");
     return true; // La validation réussit, retourne true
   }
-}
-// Ajout d'un écouteur d'événement pour valider la quantité à chaque changement
-document.getElementById("quantity").addEventListener("input", validateQuantity);
+};
+
+
 // Fonction de validation de la quantité
 function validateQuantity() {
   const quantityInput = document.getElementById("quantity");
@@ -197,12 +191,14 @@ function validateQuantity() {
     formDataElement.removeAttribute("data-error-visible");
     return true; // La validation réussit, retourne true
   }
-}
+};
+
 // Fonction de validation de la localisation
 function validateLocation() {
   const locationTags = document.querySelectorAll('input[name="location"]');
-  let locationSelected = false;
   const formDataElement = document.getElementById("formData-location");
+  let locationSelected = false;
+
   for (let i = 0; i < locationTags.length; i++) {
     if (locationTags[i].checked) {
       locationSelected = true;
@@ -218,9 +214,8 @@ function validateLocation() {
     formDataElement.removeAttribute("data-error-visible");
     return true; // La validation réussit, retourne true
   }
-}
-// Ajout d'un écouteur d'événement pour valider les conditions à chaque changement
-document.getElementById("checkbox1").addEventListener("change", validateConditions);
+};
+
 // Fonction de validation des conditions
 function validateConditions() {
   const conditionsCheckbox = document.getElementById("checkbox1");
@@ -235,7 +230,8 @@ function validateConditions() {
     formDataElement.removeAttribute("data-error-visible");
     return true; // La validation réussit, retourne true
   }
-}
+};
+
 // Fonction pour enregistrer la préférence pour la newsletter
 function newsletterSignup() {
   let newsletterCheckbox = document.getElementById("checkbox2");
