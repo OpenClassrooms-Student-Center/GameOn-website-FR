@@ -1,4 +1,4 @@
-// Fonction pour basculer la navigation responsive
+// Fonction pour basculer la classe CSS de la barre de navigation, rendant le menu responsive
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -7,72 +7,95 @@ function editNav() {
     x.className = "topnav";
   }
 }
-// Éléments du DOM
+
+// Sélection des éléments du DOM nécessaires pour manipuler la modale et le formulaire
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const closeBtnCross = document.querySelector(".close");
 const form = document.querySelector("form");
-// Ajout des écouteurs d'événements pour afficher la modal
+
+// Ajoute des écouteurs d'événements sur chaque bouton pour ouvrir la modale
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-// Fonction pour afficher la modal
+
+// Fonction pour afficher la modale
 function launchModal() {
+  resetFormAndModal(); // Réinitialise le formulaire et la modale avant de l'afficher
   modalbg.style.display = "block";
 }
-// Ajout d'un écouteur d'événement pour fermer la modal
+
+// Écouteur d'événement pour fermer la modale
 closeBtnCross.addEventListener("click", function () {
-  modalbg.style.display = "none"
+  modalbg.style.display = "none";
 });
-// Soumission du formulaire
-form.addEventListener('submit',  (event) => {
+
+// Gère la soumission du formulaire
+form.addEventListener('submit', (event) => {
   event.preventDefault(); // Empêche le rechargement de la page
 
-  // Vérification de chaque champ du formulaire en une seule ligne
+  // Vérifie la validité de chaque champ du formulaire
   const isValid = validateFirstName() &&
-    validateLastName() &&
-    validateEmail() &&
-    validateBirthdate() &&
-    validateQuantity() &&
-    validateLocation() &&
-    validateConditions();
+                  validateLastName() &&
+                  validateEmail() &&
+                  validateBirthdate() &&
+                  validateQuantity() &&
+                  validateLocation() &&
+                  validateConditions();
 
-  newsletterSignup(); // Enregistrement de la préférence pour la newsletter, ne change pas la validité
+  newsletterSignup(); // Gère l'inscription à la newsletter indépendamment de la validité du formulaire
 
-  // Affichage du résultat de la validation du formulaire
   if (isValid) {
     console.log("Le formulaire est validé.");
-    // Masquer le formulaire
-    form.style.display = 'none';
-    // Afficher un message de validation
-    displayConfirmationMessage("Merci pour votre inscription");
+    form.style.display = 'none'; // Masque le formulaire
+    displayConfirmationMessage("Merci pour votre inscription"); // Affiche le message de confirmation
   } else {
     console.log("Le formulaire contient des erreurs. La soumission est bloquée.");
   }
 });
-// Ajout d'un écouteur d'événement pour valider le prénom à chaque changement
-document.getElementById("first").addEventListener("input", function () {
-  validateFirstName();
-});
 
-// Fonction pour afficher un message de confirmation
+// Écouteurs d'événements pour la validation en temps réel des champs du formulaire
+document.getElementById("first").addEventListener("input", validateFirstName);
+document.getElementById("last").addEventListener("input", validateLastName);
+document.getElementById("email").addEventListener("input", validateEmail);
+document.getElementById("birthdate").addEventListener("input", validateBirthdate);
+document.getElementById("quantity").addEventListener("input", validateQuantity);
+document.getElementById("checkbox1").addEventListener("change", validateConditions);
+
+// Réinitialise le formulaire et le contenu de la modale
+function resetFormAndModal() {
+  form.reset(); // Réinitialise les champs du formulaire
+  form.style.display = 'block'; // Assure que le formulaire est visible
+  
+  // Supprime le message de confirmation et le bouton Fermer s'ils existent
+  const successMessage = document.querySelector('.form-confirmation');
+  if (successMessage) {
+    successMessage.remove();
+  }
+}
+
+// Affiche un message de confirmation dans la modale
 function displayConfirmationMessage(message) {
-  // Création du message de confirmation
+  const existingSuccessMessage = document.querySelector('.form-confirmation');
+  if (existingSuccessMessage) {
+    existingSuccessMessage.remove();
+  }
+
   const successMessage = document.createElement('p');
   successMessage.textContent = message;
   successMessage.classList.add('form-confirmation');
-
-  // Sélectionner l'élément avec la classe "modal-body"
   const modalBody = document.querySelector('.modal-body');
   modalBody.appendChild(successMessage);
 
-  // Création et ajout du bouton Fermer
   const closeButton = document.createElement('button');
   closeButton.textContent = "Fermer";
-  closeButton.classList.add('button', 'btn-submit');
-  closeButton.addEventListener('click', function () {
+  closeButton.classList.add('button', 'btn-submit', 'btn-close');
+  closeButton.onclick = function () {
     modalbg.style.display = 'none';
-  });
+    resetFormAndModal(); // Réinitialise la modale pour la prochaine ouverture
+  };
   modalBody.appendChild(closeButton);
+
+  form.style.display = 'none'; // Masque le formulaire pour afficher uniquement le message de confirmation
 }
 
 // Fonction de validation du prénom
