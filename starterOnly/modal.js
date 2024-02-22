@@ -66,10 +66,16 @@ function resetFormAndModal() {
   form.reset(); // Réinitialise les champs du formulaire
   form.style.display = 'block'; // Assure que le formulaire est visible
 
-  // Supprime le message de confirmation et le bouton Fermer s'ils existent
+  // Supprime le message de confirmation s'il existe 
   const successMessage = document.querySelector('.form-confirmation');
   if (successMessage) {
     successMessage.remove();
+  }
+
+  // Supprime le bouton fermer s'il existe 
+  const closeButton = document.querySelector('.btn-close');
+  if (closeButton) {
+    closeButton.remove();
   }
 };
 
