@@ -24,7 +24,7 @@ closeBtnCross.addEventListener("click", function () {
   modalbg.style.display = "none"
 });
 // Soumission du formulaire
-form.addEventListener('submit', function (event) {
+form.addEventListener('submit',  (event) => {
   event.preventDefault(); // Empêche le rechargement de la page
 
   // Vérification de chaque champ du formulaire en une seule ligne
@@ -41,11 +41,10 @@ form.addEventListener('submit', function (event) {
   // Affichage du résultat de la validation du formulaire
   if (isValid) {
     console.log("Le formulaire est validé.");
-    // Afficher un message de validation
-    displayConfirmationMessage("Merci pour votre inscription");
-
     // Masquer le formulaire
     form.style.display = 'none';
+    // Afficher un message de validation
+    displayConfirmationMessage("Merci pour votre inscription");
   } else {
     console.log("Le formulaire contient des erreurs. La soumission est bloquée.");
   }
@@ -164,16 +163,16 @@ document.getElementById("quantity").addEventListener("input", validateQuantity);
 function validateQuantity() {
   const quantityInput = document.getElementById("quantity");
   const formDataElement = quantityInput.closest(".formData");
-  const quantity = quantityInput.value;
-  if (quantity === "" || isNaN(quantity)) {
-    formDataElement.setAttribute("data-error", "Merci d'entrer une valeur numérique pour la quantité.");
+  const quantity = parseInt(quantityInput.value); // Convertir la valeur en nombre entier
+
+  if (isNaN(quantity) || quantity < 0) { // Vérifier si la quantité est NaN ou négative
+    formDataElement.setAttribute("data-error", "Merci d'entrer une valeur numérique positive pour la quantité.");
     formDataElement.setAttribute("data-error-visible", "true");
     return false; // La validation échoue, retourne false
   } else {
     formDataElement.setAttribute("data-error", "");
     formDataElement.removeAttribute("data-error-visible");
     return true; // La validation réussit, retourne true
-
   }
 }
 // Fonction de validation de la localisation
