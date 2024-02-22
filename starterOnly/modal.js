@@ -1,15 +1,11 @@
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
-  } else {
-    x.className = "topnav";
-  }
+function openNav() {
+  var navbar = document.getElementById("main-navbar");
+  navbar.classList.toggle("open");
 }
 
 // DOM Elements
-const modalbg    = document.querySelector(".bground");
-const modalBtn   = document.querySelectorAll(".modal-btn");
+const modalOverlay = document.querySelector(".overlay");
+const modalBtn   = document.querySelectorAll(".signup-btn");
 const formData   = document.querySelectorAll(".formData");
 const modalClose = document.querySelector("#close-modal");
 const form       = document.querySelector("#reserve");
@@ -31,13 +27,16 @@ modalClose.addEventListener("click", closeModal);
 
 // launch modal form
 function launchModal() {
-  modalbg.style.display = "block";
+  modalOverlay.style.display = "flex";
+  //window.scrollTo(0, 0);
+  document.body.style.position = "fixed";
   removeErrors();
 }
 
 // close modal form
 function closeModal() {
-  modalbg.style.display = "none";
+  modalOverlay.style.display = "none";
+  document.body.style.position = "";
 }
 
 // Error messages
