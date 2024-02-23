@@ -52,7 +52,7 @@
         position: absolute;
         right: 5%;
         top: 70px;
-        z-index: 10;
+        z-index: 20;
         align-self:flex-start;
         background-color: white;
         border-radius: 12px;
