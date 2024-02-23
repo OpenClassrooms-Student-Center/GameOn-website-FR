@@ -171,7 +171,8 @@ input[data-error]::after {
   color: #fff;
   cursor: pointer;
   border: 0;
-  align-self: center;
+  margin-right: auto;
+  margin-left: auto;
 }
 /* custom select styles */
 .custom-select {
