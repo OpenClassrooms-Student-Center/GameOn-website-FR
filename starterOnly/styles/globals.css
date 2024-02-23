@@ -15,8 +15,8 @@ body {
   font-family: var(--font-default);
   height: 100dvh;
   display: flex;
-  gap:     5%;
-  padding: 5%;
+  gap:     5dvh;
+  padding: 5dvw;
   flex-direction: column;
   justify-content: space-between;
 }
@@ -36,4 +36,9 @@ footer {
   footer {
     text-align: center;
   }
+
+  body {
+    height: auto;
+  }
+
 }
