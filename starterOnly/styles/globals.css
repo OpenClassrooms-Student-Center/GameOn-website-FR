@@ -1,0 +1,44 @@
+:root {
+  --font-default: "DM Sans", Arial, Helvetica, sans-serif;
+  --modal-duration: 0.5s;
+}
+
+
+* {
+  box-sizing: border-box;
+  margin:  0;
+  padding: 0;
+}
+
+
+body {
+  font-family: var(--font-default);
+  height: 100dvh;
+  display: flex;
+  gap:     5dvh;
+  padding: 5dvw;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+main {
+  position: relative;
+  height: 100%;
+}
+
+
+footer {
+  color: #fe142f;
+}
+
+@media screen and (max-width: 800px) {
+  footer {
+    text-align: center;
+  }
+
+  body {
+    height: auto;
+  }
+
+}
