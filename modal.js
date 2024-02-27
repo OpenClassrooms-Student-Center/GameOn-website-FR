@@ -1,3 +1,12 @@
+function editNav() {
+  var x = document.getElementById("myTopnav");
+  if (x.className === "topnav") {
+    x.className += " responsive";
+  } else {
+    x.className = "topnav";
+  }
+}
+
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
@@ -33,8 +42,20 @@ form.addEventListener("submit", validateForm);
 function validateForm(event) {
   let hasErrors = false;
 
+  // Reset errors for resubmission
+  function resetErrors() {
+    document.querySelectorAll('.error').forEach((errorElement) => {
+      errorElement.textContent = '';
+    });
+    document.querySelectorAll('.invalid-input').forEach((inputElement) => {
+      inputElement.classList.remove('invalid-input'); 
+    });
+  }
+  resetErrors();
+
   function validateFirstName(input, errorElementId) {
-    if (input.trim() === '' || !/^[a-zA-Z]{2,}$/.test(input)) {
+    let hasErrors = false;
+    if (input.trim() === '' || !/^[a-zA-Z\s]{2,}$/.test(input.trim())) {
       displayError(errorElementId, "Votre prénom doit comprendre au moins 2 caractères alphabétiques.");
       markInputAsInvalid(errorElementId);
       hasErrors = true;
@@ -42,7 +63,7 @@ function validateForm(event) {
   }
 
   function validateLastName(input, errorElementId) {
-    if (input.trim() === '' || !/^[a-zA-Z]{2,}$/.test(input)) {
+    if (input.trim() === '' || !/^[a-zA-Z\s]{2,}$/.test(input.trim())) {
       displayError(errorElementId, "Votre nom doit comprendre au moins 2 caractères alphabétiques.");
       markInputAsInvalid(errorElementId);
       hasErrors = true;
@@ -50,7 +71,7 @@ function validateForm(event) {
   }
 
   function validateEmail(input, errorElementId) {
-    if (input.trim() === '' || !/^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z0-9._-]+$/.test(input)) {
+    if (input.trim() === '' || !/^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z0-9._-]{2}$/.test(input.trim())) {
       displayError(errorElementId, "Veuillez renseigner une adresse email valide.");
       markInputAsInvalid(errorElementId);
       hasErrors = true;
@@ -58,15 +79,15 @@ function validateForm(event) {
   }
 
   function validateDate(input, errorElementId) {
-    if (input.trim() === '' || !/^\d{4}-\d{2}-\d{2}$/.test(input)) {
-      displayError(errorElementId, "Veuillez indiquer votre date de naissance.");
+    if (input.trim() === '' || !/^((19[2-9][0-9])|(200[0-6]))-\d{2}-\d{2}$/.test(input.trim())) {
+      displayError(errorElementId, "Veuillez indiquer votre date de naissance (18 ans et plus).");
       markInputAsInvalid(errorElementId);
       hasErrors = true;
     }
-  }
+}
 
   function validateQuantity(input, errorElementId) {
-    if (input.trim() === '' || !/^\d+$/.test(input)) {
+    if (input.trim() === '' || !/^\d+$/.test(input.trim())) {
       displayError(errorElementId, "La quantité doit être un nombre entier.");
       markInputAsInvalid(errorElementId);
       hasErrors = true;
@@ -122,12 +143,36 @@ function validateForm(event) {
   // hide form and display success message if form valid
   document.querySelectorAll(".formData").forEach((element) => {
     element.style.display = "none";
+    form.reset();
   });
   document.getElementById("valid-message").style.display = "block";
 }
 
 // Close success message
 function closeSuccessMessage() {
-  document.querySelector('.bground').style.display = 'none';
+  document.getElementById("valid-message").style.display = "none";
+  modalbg.style.display = "none";
+
+  // Form reset
+  setTimeout(() => {
+    document.getElementById("reserveForm").reset();
+    function resetErrors() {
+      document.querySelectorAll('.error').forEach((errorElement) => {
+        errorElement.textContent = ''; // Clear error message
+      });
+    
+      document.querySelectorAll('.invalid-input').forEach((inputElement) => {
+        inputElement.classList.remove('invalid-input'); // Remove invalid input styling
+      });
+    }
+    resetErrors();
+  })
+
+  // Form layout reset
+  document.querySelectorAll(".formData").forEach((element) => {
+    element.style.display = "block";
+  });
 }
+
+
 document.querySelector('.btn-close').addEventListener('click', closeSuccessMessage);
