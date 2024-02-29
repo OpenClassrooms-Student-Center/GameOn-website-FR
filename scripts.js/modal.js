@@ -29,7 +29,3 @@ function closeModal() {
 }
 // close modal event
 closeForm.addEventListener("click", closeModal);
-
-
-
-
