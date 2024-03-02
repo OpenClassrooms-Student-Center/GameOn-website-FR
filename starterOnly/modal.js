@@ -8,8 +8,9 @@ function editNav() {
 }
 
 // REGEX
-const regexName = new RegExp("^[a-z]+$");
-const regexEmail = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\.[a-z0-9._-]+");
+const regexName = new RegExp("^[a-zA-Z]+$");
+const regexEmail = new RegExp("^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]{2,}$");
+const regexQuantity = new RegExp("^[0-9]{1,2}$");
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
@@ -21,6 +22,7 @@ const last = document.getElementById('last');
 const mail = document.getElementById('email');
 const quantity = document.getElementById('quantity');
 const locations = document.querySelectorAll('input[name="location"]');
+const checkbox1 = document.getElementById('checkbox1');
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -47,7 +49,7 @@ form.addEventListener("submit", (event) => {
     const mailValue = mail.value;
     const quantityValue = quantity.value;
 
-    if (firstIsValid(firstValue) && lastIsValid(lastValue) && mailIsValid(mailValue) && quantityIsValid(quantityValue)) {
+    if (firstIsValid(firstValue) && lastIsValid(lastValue) && mailIsValid(mailValue) && quantityIsValid(quantityValue) && radioBtnIsSelected() && conditionsIsChecked()) {
       console.log("Merci pour votre inscription !");
     } else {
       console.log("Le formulaire est invalide");
@@ -58,8 +60,8 @@ form.addEventListener("submit", (event) => {
 
 //fonction pour valider le prénom
 const firstIsValid = (firstValue) => {
-  if (firstValue === "") {
-    console.log('Le prénom est obligatoire');
+  if (firstValue.trim().length < 2) {
+    console.log('Le prénom doit contenir au moins deux caractères');
     return false;
   } else {
     const result = regexName.test(firstValue);
@@ -75,8 +77,8 @@ const firstIsValid = (firstValue) => {
  
 //fonction pour valider le nom
 const lastIsValid = (lastValue) => {
-  if (lastValue === "") {
-    console.log('Le nom est obligatoire');
+  if (lastValue.trim().length < 2) {
+    console.log('Le nom doit contenir au moins deux caractères');
     return false;
   } else {
     const result = regexName.test(lastValue);
@@ -102,12 +104,12 @@ const lastIsValid = (lastValue) => {
  }
  // vérification nombre de concours
  const quantityIsValid = (quantityValue) => {
-  if (quantityValue === "") {
-    console.log('Veuillez choisir un nombre de concours entre 0 et 99');
-    return false;
+  if (regexQuantity.test(quantityValue)) {
+    return true;
   }
    else {
-    return true;
+    console.log('Veuillez choisir un nombre de concours entre 0 et 99');
+    return false;
    }
  }
  // vérification du button radio
@@ -120,4 +122,14 @@ const radioBtnIsSelected = () => {
     }
     console.log('Veuillez séléctionner un tournoi');
     return false;
+}
+// vérification de chekbox
+const conditionsIsChecked =() => {
+   if (checkbox1.checked){
+    return  true;
+   }
+   else {
+    console.log('veuillez accepter les conditions générales');
+    return false;
+   }
 }
