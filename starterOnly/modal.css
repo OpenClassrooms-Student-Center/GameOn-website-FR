@@ -188,6 +188,7 @@ main {
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
+  min-height: 800px;
 }
 
 label {
@@ -534,6 +535,32 @@ button:disabled {
 
 .closing {
   animation: modalclose 0.5s forwards;
+}
+
+.btn-close {
+  position: absolute;
+  bottom: 20px;
+  right: 30%;
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 7px;
+  font-size: 1rem;
+  padding: 10px 80px;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+}
+
+.thank-you-msg {
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  width: 300px;
+  top: 40%;
+  right: 20%;
+  font-weight: 400;
+  font-size: 36px;
 }
 
 @keyframes modalopen {
