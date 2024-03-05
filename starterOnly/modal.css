@@ -519,6 +519,15 @@ footer {
   }
 }
 
+.error-message {
+  color: red;
+  font-size: small;
+}
+
+button:disabled {
+  background-color: grey;
+}
+
 @keyframes modalopen {
   from {
     opacity: 0;
