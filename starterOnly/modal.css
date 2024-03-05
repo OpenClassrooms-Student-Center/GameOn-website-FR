@@ -528,6 +528,14 @@ button:disabled {
   background-color: grey;
 }
 
+.opening {
+  animation: modalopen 0.5s forwards;
+}
+
+.closing {
+  animation: modalclose 0.5s forwards;
+}
+
 @keyframes modalopen {
   from {
     opacity: 0;
@@ -535,5 +543,17 @@ button:disabled {
   }
   to {
     opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes modalclose {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-150px);
   }
 }

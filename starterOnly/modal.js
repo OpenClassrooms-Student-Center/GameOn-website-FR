@@ -18,18 +18,22 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // close modal event
 modalClose.addEventListener("click", closeModal);
 
-// launch modal form
-function launchModal() {
-  modalbg.style.display = "block";
-  var submitButton = document.querySelector(".btn-submit");
-  submitButton.disabled = true;
-  submitButton.style.backgroundColor = "grey";
-  validateForm(); // call validateForm when the modal is launched
-}
+var modal = document.querySelector(".content");
 
 // close modal form
 function closeModal() {
-  modalbg.style.display = "none";
+  modal.classList.add("closing");
+  modal.classList.remove("opening");
+  setTimeout(function () {
+    modalbg.style.display = "none";
+    modal.classList.remove("closing");
+  }, 500); // apply display: none; after the closing animation has played
+}
+
+// launch modal form
+function launchModal() {
+  modalbg.style.display = "block";
+  modal.classList.add("opening");
 }
 
 // get form fields
