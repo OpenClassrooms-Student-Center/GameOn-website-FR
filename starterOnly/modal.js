@@ -15,6 +15,10 @@ const regexQuantity = new RegExp("^[0-9]{1,2}$");
 // DOM Elements
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
+const modal1bg = document.querySelector(".bground1");
+const closeBtn = document.querySelector(".btn-fermer")
+const form = document.querySelector('form');
+const modalConfirmationBtn = document.querySelector(".btn-submit");
 const formData = document.querySelectorAll(".formData");
 const modalClose = document.querySelector(".close");
 const first = document.getElementById('first');
@@ -33,12 +37,20 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
+ // launch  confirmation modal 
+function launchConfirmationModal() {
+  modal1bg.style.display = "block";
+}
+
 //close modal event
 modalClose.addEventListener("click", () => {
   modalbg.style.display = "none";
 });
-
-const form = document.querySelector('form');
+// close confirmation modal 
+closeBtn.addEventListener("click", () => {
+modal1bg.style.display = "none";
+}
+ )
 
 // Ajout d'un écouteur d'événement sur le formulaire pour écouter le submit
 form.addEventListener("submit", (event) => {
@@ -61,6 +73,9 @@ form.addEventListener("submit", (event) => {
       && conditionsIsChecked()
       ) {
       console.log("Merci pour votre inscription !");
+      modalbg.style.display = "none";
+      form.reset();
+      launchConfirmationModal();
     } else {
       console.log("Le formulaire est invalide");
       return;
@@ -153,10 +168,11 @@ const lastIsValid = (lastValue) => {
  const radioBtnIsSelected = () => {
   for (let i = 0; i < locations.length; i++) {
       if (locations[i].checked) {
-        removeErrorMessage(locations[locations.length - 1]);
-        return true; 
+        removeErrorMessage(locations[i]);
+        return true;  
         break; 
       }
+     
   }
   console.log('Veuillez séléctionner un tournoi');
   setErrorMessage(locations[locations.length - 1], 'Veuillez séléctionner un tournoi');
