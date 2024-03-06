@@ -157,7 +157,8 @@ main {
   font-size: 16px;
 }
 
-.bground {
+.bground ,
+.bground1 {
   display: none;
   position: fixed;
   z-index: 1;
@@ -210,12 +211,12 @@ input {
 }
 .formData[data-error]::after {
   content: attr(data-error);
-  font-size: 0.4em;
+  font-size: 0.5em;
   color: #e54858;
   display: block;
   margin-top: 7px;
-  margin-bottom: 7px;
-  text-align: right;
+  margin-bottom: 15px;
+  text-align: left;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -322,7 +323,8 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup,
+.btn-fermer {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -332,6 +334,10 @@ input[data-error]::after {
   color: #fff;
   cursor: pointer;
   border: 0;
+}
+
+.success-message {
+  margin: 10px;
 }
 /* custom select styles */
 .custom-select {
