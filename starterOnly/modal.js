@@ -44,16 +44,16 @@ function launchModal() {
 var firstName = document.getElementById("first");
 var lastName = document.getElementById("last");
 var email = document.getElementById("email");
+var birthdate = document.getElementById("birthdate");
 var quantity = document.getElementById("quantity");
 var radios = document.querySelectorAll('input[name="location"]');
 var terms = document.getElementById("checkbox1");
 var submitButton = document.querySelector('input[type="submit"]');
-var birthdate = document.getElementById("birthdate");
-var birthdateValue = new Date(birthdate.value);
 
 firstName.addEventListener("input", validateForm);
 lastName.addEventListener("input", validateForm);
 email.addEventListener("input", validateForm);
+birthdate.addEventListener("input", validateBirthdate); // Change ici
 quantity.addEventListener("input", validateForm);
 radios.forEach((r) => r.addEventListener("input", validateForm));
 terms.addEventListener("input", validateForm);
@@ -64,6 +64,7 @@ function validateForm() {
     firstName.value ||
     lastName.value ||
     email.value ||
+    birthdate.value ||
     quantity.value ||
     document.querySelector('input[name="location"]:checked') ||
     terms.checked;
@@ -76,15 +77,41 @@ function validateForm() {
   } else {
     submitButton.style.backgroundColor = ""; // Reset to default color
   }
+
+  // Clear previous error messages and reset input border colors
+  clearError(firstName);
+  clearError(lastName);
+  clearError(email);
+  clearError(birthdate);
+  clearError(quantity);
+  clearError(document.querySelector('input[name="location"]'));
+  clearError(terms);
 }
 
-function displayError(input, message) {
+function validateBirthdate() {
+  // Clear previous error messages and reset input border colors for birthdate
+  clearError(birthdate);
+
+  var birthdateValue = new Date(birthdate.value);
+  if (!birthdate.value || isNaN(birthdateValue.getTime())) {
+    displayError(birthdate, "La date de naissance n'est pas valide");
+    return false;
+  }
+  return true;
+}
+
+function clearError(input) {
   // remove existing error messages
   var existingError = input.parentElement.querySelector(".error-message");
   if (existingError) {
     existingError.remove();
   }
 
+  // reset input border color
+  input.style.borderColor = "";
+}
+
+function displayError(input, message) {
   // create error message element
   var error = document.createElement("div");
   error.className = "error-message";
@@ -116,9 +143,8 @@ document.querySelector("form").addEventListener("submit", function (event) {
   } else if (!email.value.includes("@")) {
     displayError(email, "L'adresse électronique n'est pas valide");
     isValid = false;
-  } else if (isNaN(birthdateValue)) {
-    displayError(birthdate, "La date de naissance doit être valide");
-    isValid = false;
+  } else if (!validateBirthdate()) {
+    isValid = false; // On ne fait rien ici, la validation de la date de naissance est faite dans validateBirthdate()
   } else if (isNaN(quantity.value) || quantity.value === "") {
     displayError(quantity, "Le nombre de tournois doit être inscrit");
     isValid = false;
