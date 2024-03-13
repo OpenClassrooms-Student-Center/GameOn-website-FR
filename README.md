@@ -2,4 +2,4 @@
 
 ## Projet 3
 
-*Dynamisez une page web avec des animations CSS* : https://kevin-jerbic.github.io/ohmyfood/
+*Créez une landing page avec Javascript* : https://kevin-jerbic.github.io/GameOn-website-FR/starterOnly/
