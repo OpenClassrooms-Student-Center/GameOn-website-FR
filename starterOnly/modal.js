@@ -21,6 +21,7 @@ const form = document.querySelector('form');
 const modalConfirmationBtn = document.querySelector(".btn-submit");
 const formData = document.querySelectorAll(".formData");
 const modalClose = document.querySelector(".close");
+const modalconfirmationClose = document.querySelector(".close-modal");
 const first = document.getElementById('first');
 const last = document.getElementById('last');
 const mail = document.getElementById('email');
@@ -47,6 +48,9 @@ modalClose.addEventListener("click", () => {
   modalbg.style.display = "none";
 });
 // close confirmation modal 
+modalconfirmationClose.addEventListener("click", () => {
+  modal1bg.style.display = "none";
+})
 closeBtn.addEventListener("click", () => {
 modal1bg.style.display = "none";
 }
@@ -74,7 +78,16 @@ form.addEventListener("submit", (event) => {
       ) {
       console.log("Merci pour votre inscription !");
       modalbg.style.display = "none";
-      form.reset();
+      first.value = '';
+      last.value = '';
+      mail.value = '';
+      quantity.value = '';
+      birthDate.value = '';
+      for (let i = 0; i < locations.length; i++) {
+        locations[i].checked = false;  
+      }
+      checkbox1.checked = false;
+
       launchConfirmationModal();
     } else {
       console.log("Le formulaire est invalide");
