@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8" />
+        <title>Reservation</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <!-- add "normalize.css", see the commit : "debugging header" -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+        <!-- add "ROBOTO" of "GOOGLE FONTS" for messages error -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" />
+        <link rel="stylesheet" href="./assets/styles/normalize.css" />
+        <link rel="stylesheet" href="./assets/styles/style.css" />
+    </head>
+
+    <body class="body">
+        <div class="body__content">
+            <header class="header">
+                <a class="button-linkHome" href="./index.html" aria-label="Retour à la page d'accueil">
+                    <img class="button-linkHome__img" src="./assets/images/logo.png" alt="logo de GameOn" />
+                </a>
+                <button class="button-navToggle" id="button-navToggle" aria-label="Ouvrir le menu de navigation">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <nav class="nav">
+                    <a href="#" class="nav__link nav__link--activeDefault"><span>Détails de l'évènement</span></a>
+                    <a href="#" class="nav__link"><span>À propos</span></a>
+                    <a href="#" class="nav__link"><span>Contact</span></a>
+                    <a href="#" class="nav__link"><span>Évènements passés</span></a>
+                </nav>
+            </header>
+            <main class="main">
+                <section class="section-introEvent">
+                    <div class="section-introEvent__content">
+                        <h1 class="section-introEvent__content__title">
+                            <span class="section-introEvent__content__title__txt">Marathon national</span>
+                            <span class="section-introEvent__content__title__txt">de jeux vidéos</span>
+                        </h1>
+                        <p class="section-introEvent__content__txt">Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux réservations... Places limitées !</p>
+                        <div class="section-introEvent__content__ctn">
+                            <img class="section-introEvent__content__ctn__img" src="./assets/images/bg_img.jpg" alt="Image de l'événement" />
+                        </div>
+                        <button id="button-openModal" class="button-openModal" aria-label="Ouvre la fenêtre d'inscription à l'événement">Je M'inscris</button>
+                    </div>
+                </section>
+            </main>
+            <aside id="aside-modalRegistration" class="aside-modalRegistration">
+                <div class="aside-modalRegistration__content">
+                    <div class="formRegistration__ctn-button-closeModal">
+                        <button id="button-closeModal" class="button-closeModal" aria-label="Fermer la fenêtre"></button>
+                    </div>
+                    <form id="formRegistration" class="formRegistration" name="reserve" method="get">
+                        <fieldset class="formRegistration__fieldset">
+                            <label class="txt-label" for="input-firstName">Prénom</label>
+                            <input class="txt-input" type="text" id="input-firstName" name="firstName" />
+                            <p id="msgErr-firstName" class="msgErr">Le prénom doit contenir au moins 2 caractères et 20 maximum.</p>
+                        </fieldset>
+                        <fieldset class="formRegistration__fieldset">
+                            <label class="txt-label" for="input-lastName">Nom</label>
+                            <input class="txt-input" type="text" id="input-lastName" name="lastName" />
+                            <p id="msgErr-lastName" class="msgErr">Le nom doit contenir au moins 2 caractères et 20 maximum.</p>
+                        </fieldset>
+                        <fieldset class="formRegistration__fieldset">
+                            <label class="txt-label" for="input-email">E-mail</label>
+                            <input class="txt-input" type="text" id="input-email" name="email" />
+                            <p id="msgErr-email" class="msgErr">Veuillez entrer une adresse e-mail valide (ex : "monAdresse@gmail.com").</p>
+                        </fieldset>
+                        <fieldset class="formRegistration__fieldset">
+                            <label class="txt-label" for="input-birthDate">Date de naissance</label>
+                            <input class="txt-input" type="date" id="input-birthDate" name="birthDate" />
+                            <p id="msgErr-birthDate" class="msgErr">Veuillez entrer votre date de naissance.</p>
+                        </fieldset>
+                        <fieldset class="formRegistration__fieldset">
+                            <label class="txt-label" for="input-eventQuantity">À combien de tournois GameOn avez-vous déjà participé ?</label>
+                            <input type="number" class="txt-input" id="input-eventQuantity" name="eventQuantity" />
+                            <p id="msgErr-eventQuantity" class="msgErr">Veuillez indiquer le nombre de tournois auxquels vous avez déjà participé.</p>
+                        </fieldset>
+                        <fieldset class="formRegistration__fieldset--location">
+                            <p class="txt-label">A quel tournoi souhaitez-vous participer cette année ?</p>
+                            <fieldset class="formRegistration__fieldset--location__ctn">
+                                <input class="input-location" type="radio" id="input-location-newYork" name="location" value="New York" checked />
+                                <label class="radio-label" for="input-location-newYork"><span class="radio-label__icon"></span>New York</label>
+                            </fieldset>
+                            <fieldset class="formRegistration__fieldset--location__ctn">
+                                <input class="input-location" type="radio" id="input-location-sanFrancisco" name="location" value="San Francisco" />
+                                <label class="radio-label" for="input-location-sanFrancisco"><span class="radio-label__icon"></span>San Francisco</label>
+                            </fieldset>
+                            <fieldset class="formRegistration__fieldset--location__ctn">
+                                <input class="input-location" type="radio" id="input-location-seattle" name="location" value="Seattle" />
+                                <label class="radio-label" for="input-location-seattle"><span class="radio-label__icon"></span>Seattle</label>
+                            </fieldset>
+                            <fieldset class="formRegistration__fieldset--location__ctn">
+                                <input class="input-location" type="radio" id="input-location-chicago" name="location" value="Chicago" />
+                                <label class="radio-label" for="input-location-chicago"><span class="radio-label__icon"></span>Chicago</label>
+                            </fieldset>
+                            <fieldset class="formRegistration__fieldset--location__ctn">
+                                <input class="input-location" type="radio" id="input-location-boston" name="location" value="Boston" />
+                                <label class="radio-label" for="input-location-boston"><span class="radio-label__icon"></span>Boston</label>
+                            </fieldset>
+                            <fieldset class="formRegistration__fieldset--location__ctn">
+                                <input class="input-location" type="radio" id="input-location-portland" name="location" value="Portland" />
+                                <label class="radio-label" for="input-location-portland"><span class="radio-label__icon"></span>Portland</label>
+                            </fieldset>
+                            <p id="msgErr-location" class="msgErr">Veuillez sélectionner le tournoi auquel vous souhaitez participer.</p>
+                        </fieldset>
+                        <fieldset class="formRegistration__fieldset">
+                            <fieldset class="formRegistration__fieldset--termsCondition">
+                                <!-- "input" element for the "terms condition" -->
+                                <input class="input-termsCondition" type="checkbox" id="input-termsCondition" name="termsCondition" checked />
+                                <label class="txt-label" for="input-termsCondition">
+                                    <span class="checkbox-label__icon"></span>
+                                    J'ai lu et accepté les conditions d'utilisation.
+                                </label>
+                            </fieldset>
+                            <fieldset class="formRegistration__fieldset--termsCondition">
+                                <!-- "input" element for the "notify" -->
+                                <input class="input-termsCondition" type="checkbox" id="input-termsNotify" name="termsNotify" />
+                                <label class="txt-label" for="input-termsNotify">
+                                    <span class="checkbox-label__icon"></span>
+                                    Je souhaite être prévenu des prochains évènements.
+                                </label>
+                            </fieldset>
+                            <p id="msgErr-termsCondition" class="msgErr">
+                                Vous devez accepter les conditions d'utilisation,
+                                <a class="msgErr-termsCondition__link" href="#">en savoir plus.</a>
+                            </p>
+                        </fieldset>
+                        <input id="button-submitForm" class="button-submitForm" type="submit" value="C'est parti" />
+                    </form>
+                    <section id="successRegistration" class="successRegistration">
+                        <h2 class="successRegistration__title">
+                            <span class="successRegistration__title__txt">Merci pour</span>
+                            <span class="successRegistration__title__txt">votre inscription</span>
+                        </h2>
+                        <button id="button-closeSuccessRegistration" class="button-closeSuccessRegistration" aria-label="Fermer la fenêtre d'inscription">Fermer</button>
+                    </section>
+                </div>
+            </aside>
+            <footer class="footer">
+                <p class="footer__copyrights">Copyright 2014 - 2022, GameOn Inc.</p>
+            </footer>
+        </div>
+        <script type="module" src="./javascript/index.js"></script>
+    </body>
+</html>
