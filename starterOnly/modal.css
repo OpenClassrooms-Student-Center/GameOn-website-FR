@@ -157,7 +157,7 @@ main {
   font-size: 16px;
 }
 
-.bground {
+.bground, .bgroundbis {
   display: none;
   position: fixed;
   z-index: 1;
@@ -169,7 +169,7 @@ main {
   background-color: rgba(26, 39, 156, 0.4);
 }
 
-.content {
+.content, .confirmation {
   margin: 5% auto;
   width: 100%;
   max-width: 500px;
@@ -183,9 +183,33 @@ main {
   padding-top: 10px;
 }
 
-.modal-body {
+.confirmation {
+    height: 760px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-body, .confirmationContent {
   padding: 15px 8%;
   margin: 15px auto;
+}
+
+.confirmationContent p {
+  font-family: DM Sans;
+  font-weight: 400;
+  font-size: 32px;
+  width: 271px;
+  height: 102px;
+  text-align: center;
+  line-height: 40px;
+}
+
+#fermer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 25px;
 }
 
 label {
@@ -215,7 +239,7 @@ input {
   display: block;
   margin-top: 7px;
   margin-bottom: 7px;
-  text-align: right;
+  text-align: left;
   line-height: 0.3;
   opacity: 0;
   transition: 0.3s;
@@ -296,7 +320,7 @@ input[data-error]::after {
   left: 21%;
   top: 19%;
 }
-.close {
+.close, .closebis {
   position: absolute;
   right: 15px;
   top: 15px;
@@ -307,7 +331,7 @@ input[data-error]::after {
   transform: scale(0.7);
 }
 .close:before,
-.close:after {
+.close:after, .closebis:before, .closebis:after {
   position: absolute;
   left: 15px;
   content: " ";
@@ -315,14 +339,14 @@ input[data-error]::after {
   width: 3px;
   background-color: #fff;
 }
-.close:before {
+.close:before, .closebis:before {
   transform: rotate(45deg);
 }
-.close:after {
+.close:after, .closebis:after {
   transform: rotate(-45deg);
 }
 .btn-submit,
-.btn-signup {
+.btn-signup, .btn-fermer {
   background: #fe142f;
   display: block;
   margin: 0 auto;
@@ -526,4 +550,3 @@ footer {
     opacity: 1;
   }
 }
-
