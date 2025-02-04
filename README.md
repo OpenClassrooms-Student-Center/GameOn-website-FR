@@ -1,5 +1,6 @@
 # Projet GameOn
-1. Forkez ce repo ;
-2. Il est conseillé d'utiliser VisualStudio Code et vous pouvez utiliser Docker, mais ce n'est pas obligatoire ;
-3. Il n'y a aucune dépendance ;
-4. Vous ne devez utiliser que du CSS personnalisé et du JavaScript pur, sans jQuery, Bootstrap ou autre librairie.
+1. Ajout d'une fermeture de la modale
+2. Implémentation des entrées du formulaire
+3. Ajout de validation ou de messages d'erreur
+4. Confirmation quand envoi réussi
+5. Tests manuels effectués
