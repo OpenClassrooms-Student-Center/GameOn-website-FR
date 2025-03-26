@@ -1,3 +1,5 @@
 @import 'base.css';
-@import 'landing.css';
+@import 'header.css';
+@import 'hero-section.css';
+@import 'footer.css';
 @import 'modal.css';

@@ -1,0 +1,26 @@
+/* .footer {
+    margin: 20px;
+    padding: 10px;
+    font-family: var(--font-slab)
+} */
+
+footer {
+    padding-left: 2vw;
+    padding-right: 2vw;
+    margin: 0 20px;
+  }
+
+.copyrights {
+    color: #fe142f;
+    padding: 0;
+    font-size: 1rem;
+    margin: 60px 0 30px;
+    font-weight: bolder;
+  }
+
+  @media screen and (max-width: 800px) {
+    .copyrights {
+      margin-top: 50px;
+      text-align: center;
+    }
+  }
