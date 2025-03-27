@@ -1,7 +1,4 @@
-:root {
-    --font-default: "DM Sans", Arial, Helvetica, sans-serif;
-    --modal-duration: 0.8s
-}
+
 
 * {
     box-sizing: border-box;

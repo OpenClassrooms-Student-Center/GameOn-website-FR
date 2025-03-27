@@ -14,7 +14,7 @@
 .topnav a {
     float: left;
     display: block;
-    color: #000000;
+    color: black;
     text-align: center;
     padding: 12px 12px;
     margin: 5px;
@@ -24,22 +24,29 @@
 }
 
 .topnav a:hover {
-    background-color: #ff0000;
-    color: #ffffff;
+    background-color: var(--primary-red);
+    color: white;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 1px;
     border-radius: 15px;
 }
 
 .topnav a.active {
-    background-color: #ff0000;
-    color: #ffffff;
+    background-color: var(--primary-red);
+    color: white;
     border-radius: 15px;
+    text-decoration: underline;
+    text-underline-offset: 6px;
+    text-decoration-thickness: 1px;
+
 }
 
 .topnav .icon {
-display: none;  
+    display: none;  
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 992px) {
     .topnav a {
         display: none;
     }
@@ -47,14 +54,21 @@ display: none;
     .topnav a.icon {
         float: right;
         display: block;
+        color: red;
+
     }
 
-    .topnav.responsive {
+    .topnav a.icon:hover {
+        color: white;
+    }
+
+    .topnav.responsive .main-navbar {
         position: relative;
     }
 
     .topnav.responsive .icon {
         position: absolute;
+        color: white;
         right: 0;
         top: 0;
     }
@@ -66,9 +80,3 @@ display: none;
     }
 }
 
-@media screen and (max-width: 540px) {
-    .topnav a.icon {
-        margin-top: -15px;
-    }
-} 
-  

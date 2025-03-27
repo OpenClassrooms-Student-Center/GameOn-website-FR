@@ -1,0 +1,8 @@
+:root {
+    --font-default: "DM Sans", Arial, Helvetica, sans-serif;
+    --modal-duration: 0.8s;
+    --primary-red: #FF001B;
+    --dark-grey: #232323;
+    --green: #279E7A;
+    --error-color: #FF4E60;
+}
