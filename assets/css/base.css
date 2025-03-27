@@ -1,5 +1,3 @@
-
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -7,15 +5,11 @@
 }
 
 body {
-    margin: 0;
+    margin: auto;
     display: flex;
     flex-direction: column;
-    background-image: url(background.png);
     font-family: var(--font-default);
-    font-size: 18px;
-    max-width: 1300px;
-    margin: 0 auto;
-    
+    font-size: 18px;    
 }
 
 p {
@@ -28,18 +22,28 @@ img {
 }
 
 
-
 .btn-signup,
 .btn-submit {
-    background: #fe142f;
+    background: var(--primary-red);
     display: block;
     margin: 0 auto;
     border-radius: 8px;
     font-size: 1rem;
     padding: 12px 82px;
-    color: #fff;
+    color: white;
     cursor: pointer;
     border: 0
 }
 
+main {
+    font-size: 130%;
+    font-weight: bolder;
+    color: black;
+    padding-top: 0.5vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    margin: 1px 20px 15px;
+    border-radius: 2rem;
+    text-align: justify;
+}
 

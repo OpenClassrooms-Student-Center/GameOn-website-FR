@@ -1,5 +1,6 @@
 :root {
     --font-default: "DM Sans", Arial, Helvetica, sans-serif;
+    --font-secondary: "Roboto", Arial, Helvetica, sans-serif;
     --modal-duration: 0.8s;
     --primary-red: #FF001B;
     --dark-grey: #232323;
