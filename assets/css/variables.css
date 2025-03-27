@@ -1,3 +1,6 @@
+@import url('https://fonts.cdnfonts.com/css/roboto');
+@import url('https://fonts.cdnfonts.com/css/dm-sans');
+
 :root {
     --font-default: "DM Sans", Arial, Helvetica, sans-serif;
     --font-secondary: "Roboto", Arial, Helvetica, sans-serif;

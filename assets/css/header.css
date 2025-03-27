@@ -1,82 +1,80 @@
 .topnav {
-    overflow: hidden;
     margin: 3.5%;
-}
-
-.header-logo {
-    float: left;
-}
-
-.main-navbar {
-    float: right;
-}
-
-.topnav a {
-    float: left;
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 12px 12px;
-    margin: 5px;
-    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-size: 20px;
     font-family: Roboto, sans-serif;
 }
 
-.topnav a:hover {
-    background-color: var(--primary-red);
+.main-navbar .icon {
+    display: none;
+}
+
+.main-navbar a {
+    color: black;
+    padding: 12px 12px;
+    text-decoration: none;
+}
+
+.main-navbar a:hover,
+.main-navbar a.active {
     color: white;
+    background-color: var(--primary-red);
     text-decoration: underline;
     text-underline-offset: 6px;
     text-decoration-thickness: 1px;
     border-radius: 15px;
 }
 
-.topnav a.active {
-    background-color: var(--primary-red);
-    color: white;
-    border-radius: 15px;
-    text-decoration: underline;
-    text-underline-offset: 6px;
-    text-decoration-thickness: 1px;
-
-}
-
-.topnav .icon {
-    display: none;  
-}
 
 @media screen and (max-width: 992px) {
-    .topnav a {
+    .topnav {
+        align-items: flex-start;
+    }
+
+    .main-navbar a {
         display: none;
+        margin: 5px;
+        font-size: 18px;
+        padding: 12px 12px;
     }
 
-    .topnav a.icon {
-        float: right;
-        display: block;
+    .main-navbar {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        margin-right: 20px;
+    }
+
+    .main-navbar .icon {
+        display: flex;
         color: red;
+        position: absolute;
+        right: -40px;
+        top: 2px;
+    }
+
+    .main-navbar .icon:hover {
+        display: flex;
+        color: red;
+        text-decoration: none;
+        background-color: transparent;
+        transform: scale(1.1);
 
     }
 
-    .topnav a.icon:hover {
-        color: white;
+    .topnav.responsive .main-navbar a {
+        display: flex;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .topnav.topnav.responsive {
+        flex-direction: column;
     }
 
     .topnav.responsive .main-navbar {
-        position: relative;
-    }
-
-    .topnav.responsive .icon {
-        position: absolute;
-        color: white;
-        right: 0;
-        top: 0;
-    }
-
-    .topnav.responsive a {
-        float: none;
-        display: block;
-        text-align: left;
+        align-self: flex-end;
     }
 }
-
