@@ -39,9 +39,11 @@ img {
   justify-content: space-between;
   align-items: center;
 }
+
 .header-logo {
     float: left;
 }
+
 
 .main-navbar {
     float: right;
@@ -57,8 +59,6 @@ img {
   font-size: 20px;
   font-family: Roboto, sans-serif;
 }
-
-
 
 .topnav a:hover {
   background-color: #ff0000;
@@ -76,38 +76,9 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-}
 
 
 
- @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-
-  }
-} 
 
 main {
   font-size: 130%;
@@ -481,7 +452,36 @@ footer {
   padding-right: 2vw;
   margin: 0 20px;
 }
-@media screen and (max-width: 800px) {
+
+/**********RESPONSIVE************/
+
+
+@media screen and (max-width: 980px) {
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+
+  }
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav a {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+  .header-logo img{
+    width: 50%;
+  }
   .hero-section {
     display: block;
     box-shadow: unset;
@@ -519,6 +519,8 @@ footer {
     text-align: center;
   }
 }
+
+
 
 @keyframes modalopen {
   from {

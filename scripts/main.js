@@ -5,9 +5,9 @@ const closeBtn = document.querySelector(".close");
 const burgerIcon = document.querySelector(".icon");
 const inputs = document.querySelectorAll("input[type='text'], input[type='email'], input[type='radio'], input[type='checkbox'], input[type='date'], input[type='number'], input[type='password'], textarea");
 
-/******************************************************/
+/***************************/
 /* Modal */
-/******************************************************/
+/***************************/
 
 
 // Fonctions d'ouverture et de fermeture du modal
@@ -42,9 +42,9 @@ modalBg.addEventListener("click", event => {
 
 
 
-/******************************************************/
+/***************************/
 /* Formulaire */
-/******************************************************/
+/***************************/
 
 const firstNamesChecker = (value) => {
   if (value.length < 2) {
