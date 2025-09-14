@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'DM Sans';
+  src: url('../DM_Sans/DMSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap; /* conseillé pour éviter un blocage lors du chargement */
+}
+
+:root {
+  --font-default: "DM Sans", Arial, Helvetica, sans-serif;
+  --font-slab: var(--font-default);
+  --modal-duration: 0.8s;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 0.06rem;
+  height: 0.06rem;
+  padding: 0;
+  margin: -0.06rem;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

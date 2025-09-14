@@ -1,0 +1,143 @@
+/* --- Overlay de la modale de confirmation --- */ 
+#confirmation_modal {
+  display: none;
+  position: fixed;
+  z-index: 10; /* même que .bground pour superposition */
+  justify-content: center;
+  align-items: flex-start; /* débordement en haut et bas */
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(26, 39, 156, 0.4);
+  padding-top: 5vh; /* débordement haut */
+  padding-bottom: 5vh; /* débordement bas */
+}
+
+#confirmation_modal.show {
+  display: flex;
+}
+
+/* --- Conteneur principal de la modale --- */
+.confirmation_modal_content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  min-width: 320px;
+  min-height: 960px;
+  background: #232323;
+  border-radius: 0.6rem;
+  overflow: hidden;
+  position: relative;
+  color: #fff;
+  padding-bottom: 1rem;
+  animation-name: modalopen;
+  animation-duration: var(--modal-duration);
+}
+
+.confirmation-modal-body {
+  position: relative;
+  height: auto;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+
+
+
+
+.confirmation-modal-body p {
+  font-size: 2.25rem;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+}
+
+/* --- Bouton en bas --- */
+.close_bottom {
+  background: #fe142f;
+  display: block;
+  margin: 0 auto;
+  border-radius: 0.45rem;
+  font-size: 1rem;
+  padding: 0.8rem 5.125rem;
+  color: #fff;
+  cursor: pointer;
+  border: 0;
+  margin-top: auto; /* pousse le bouton en bas */
+}
+
+.close_bottom:hover {
+  background: #3876ac;
+}
+
+/* --- Bouton croix en haut --- */
+#close_button{
+    position: absolute;   
+  top: 1rem;
+  right: 1rem;
+  width: 2rem;
+  height: 2rem;
+  color: #fff;
+  background: transparent;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  border: none;
+  z-index: 20;
+}
+
+button.close:before,
+button.close:after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 50%;
+  height: 2rem;
+  width: 0.2rem;
+  background-color: #fff;
+  transform-origin: center;
+}
+
+button.close:before {
+  transform: translateX(-50%) rotate(45deg);
+}
+
+button.close:after {
+  transform: translateX(-50%) rotate(-45deg);
+}
+
+/* --- RESPONSIVE --- */
+@media screen and (max-width: 768px) {
+  #confirmation_modal {
+    align-items: flex-start; /* laisse nav visible */
+    padding-top: 65px;
+    padding-bottom: 0;
+    background-color: transparent;
+  }
+
+  .confirmation_modal_content {
+    flex: 1 1 auto; 
+
+    height: calc(100vh - var(--nav-height, 65px));
+  }
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+    transform: translateY(-9.375rem);
+  }
+  to {
+    opacity: 1;
+  }
+}

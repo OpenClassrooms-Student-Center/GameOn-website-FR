@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>GameOn - Marathon Jeux Vidéos</title>
+
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="CSS/global.css">
+  <link rel="stylesheet" href="CSS/inscription.css">
+  <link rel="stylesheet" href="CSS/confirmation.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet">
+</head>
+
+<body>
+  <div class="topnav" id="myTopnav">
+    <div class="header-logo">
+      <img alt="logo" src="images/logo.png">
+    </div>
+    <div class="main-navbar">
+      <a href="#" class="active"><span>Accueil</span></a>
+      <a href="#"><span>Détails de l'évènement</span></a>
+      <a href="#"><span>À propos</span></a>
+      <a href="#"><span>Contact</span></a>
+      <a href="#"><span>Évènements passés</span></a>
+      <a href="javascript:void(0);" class="icon" onclick="editNav()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+  </div>
+
+  <main>
+    <section class="hero-section">
+      <div class="hero-content">
+        <h1 class="hero-headline">
+          Marathon national
+          <br>
+          de jeux vidéos
+        </h1>
+
+        <p class="hero-text">
+          Vous aimez jouer ? Notre prochain évènement gaming est ouvert aux
+          réservations... Places limitées !
+        </p>
+
+        <button class="btn-signup modal-btn">je m'inscris</button>
+      </div>
+
+      <div class="hero-img">
+        <img src="images/bg_img.jpg" alt="img">
+      </div>
+
+      <button class="btn-signup modal-btn">je m'inscris</button>
+    </section>
+
+    <!-- DEBUT MODALE INSCRIPTION -->
+    <div class="bground" role="dialog" aria-modal="true" aria-labelledby="inscription-modal-title">
+      <div class="content">
+        <button class="close" aria-label="Fermer la modale"></button>
+        <div class="modal-body">
+          <h2 id="inscription-modal-title" class="sr-only">Inscription à l'événement</h2>
+
+          <form name="reserve" action="index.html" method="get" id="form" novalidate>
+            <!-- Prénom -->
+            <fieldset class="formData">
+              <label for="firstname">Prénom</label>
+              <input class="text-control" type="text" id="firstname" name="firstname" minlength="2" required
+                aria-describedby="firstname-error">
+              <div id="firstname-error" class="form-error" aria-live="polite"></div>
+            </fieldset>
+
+            <!-- Nom -->
+            <fieldset class="formData">
+              <label for="lastname">Nom</label>
+              <input class="text-control" type="text" id="lastname" name="lastname" minlength="2" required
+                aria-describedby="lastname-error">
+              <div id="lastname-error" class="form-error" aria-live="polite"></div>
+            </fieldset>
+
+            <!-- Email -->
+            <fieldset class="formData">
+              <label for="email">E-mail</label>
+              <input class="text-control" type="email" id="email" name="email" required aria-describedby="email-error">
+              <div id="email-error" class="form-error" aria-live="polite"></div>
+            </fieldset>
+
+            <!-- Date de naissance -->
+            <fieldset class="formData">
+              <label for="birthdate">Date de naissance</label>
+              <input class="text-control" type="date" id="birthdate" name="birthdate" required
+                aria-describedby="birthdate-error birthdate-format">
+              <div id="birthdate-error" class="form-error" aria-live="polite"></div>
+              <div id="birthdate-format" class="sr-only">
+                Format : année-mois-jour. Vous pouvez taper directement ou utiliser le calendrier.
+              </div>
+            </fieldset>
+
+            <!-- Nombre de tournois -->
+            <fieldset class="formData">
+              <label for="quantity">
+                À combien de tournois GameOn avez-vous déjà participé ?
+              </label>
+              <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" required
+                aria-describedby="quantity-error">
+              <div id="quantity-error" class="form-error" aria-live="polite"></div>
+            </fieldset>
+
+            <!-- Choix du tournoi -->
+            <fieldset class="formData">
+              <legend class="text-label">À quel tournoi souhaitez-vous participer cette année ?</legend>
+              <div id="location-error" class="form-error" aria-live="polite"></div>
+
+              <input class="checkbox-input" type="radio" id="location-new-york" name="location" value="New York"
+                required aria-describedby="location-error">
+              <label class="form-label-radio" for="location-new-york"><span class="checkbox-icon"></span> New
+                York</label>
+
+              <input class="checkbox-input" type="radio" id="location-sanfrancisco" name="location"
+                value="San Francisco" aria-describedby="location-error">
+              <label class="form-label-radio" for="location-sanfrancisco"><span class="checkbox-icon"></span> San
+                Francisco</label>
+
+              <input class="checkbox-input" type="radio" id="location-seattle" name="location" value="Seattle"
+                aria-describedby="location-error">
+              <label class="form-label-radio" for="location-seattle"><span class="checkbox-icon"></span> Seattle</label>
+
+              <input class="checkbox-input" type="radio" id="location-chicago" name="location" value="Chicago"
+                aria-describedby="location-error">
+              <label class="form-label-radio" for="location-chicago"><span class="checkbox-icon"></span> Chicago</label>
+
+              <input class="checkbox-input" type="radio" id="location-boston" name="location" value="Boston"
+                aria-describedby="location-error">
+              <label class="form-label-radio" for="location-boston"><span class="checkbox-icon"></span> Boston</label>
+
+              <input class="checkbox-input" type="radio" id="location-portland" name="location" value="Portland"
+                aria-describedby="location-error">
+              <label class="form-label-radio" for="location-portland"><span class="checkbox-icon"></span>
+                Portland</label>
+            </fieldset>
+
+            <!-- Consentements -->
+            <fieldset class="formData">
+              <legend class="sr-only">Consentements</legend>
+
+              <input type="checkbox" id="terms-consent" class="checkbox-input" required aria-describedby="terms-error">
+              <label for="terms-consent" class="form-label-checkbox">
+                <span class="checkbox-icon"></span>
+                J'ai lu et accepté les conditions d'utilisation.
+              </label>
+              <div id="terms-error" class="form-error" aria-live="polite"></div>
+
+              <input type="checkbox" id="events-consent" class="checkbox-input">
+              <label for="events-consent" class="form-label-checkbox">
+                <span class="checkbox-icon"></span>
+                Je souhaite être prévenu des prochains évènements.
+              </label>
+            </fieldset>
+
+            <input class="btn-submit button" type="submit" value="C'est parti">
+            <div id="valid-message" class="form-success" aria-live="polite"></div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <!-- FIN MODALE INSCRIPTION-->
+    <!-- DEBUT MODALE CONFIRMATION-->
+    <div id="confirmation_modal" class="modal" role="dialog" aria-modal="true"
+      aria-labelledby="confirmation-modal-title">
+      <div class="confirmation_modal_content">
+        <button id="close_button" class="close" aria-label="Fermer la modale"></button>
+        <div class="confirmation-modal-body">
+
+          <h2 id="confirmation-modal-title" class="sr-only">Inscription à l'événement</h2>
+          <p>
+            Merci pour <br>
+            votre inscription
+          </p>
+          <button id="confirm_close" class="close_bottom" type="button">
+            Fermer
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- FIN MODALE CONFIRMATION-->
+
+
+  </main>
+
+  <footer>
+    <p class="copyrights">Copyright 2014 - 2022, GameOn Inc.</p>
+  </footer>
+
+
+
+  <script src="JS/nav.js" defer></script>
+  <script src="JS/inscription_modal.js" defer></script>
+
+  <script src="JS/form_confirmation.js" defer></script>
+
+
+
+</body>
+
+</html>

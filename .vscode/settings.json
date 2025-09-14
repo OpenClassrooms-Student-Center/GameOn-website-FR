@@ -1,0 +1,15 @@
+{
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
+
+  "[html]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[css]": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "liveServer.settings.port": 5500
+}
